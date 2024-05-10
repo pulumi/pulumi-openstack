@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,27 +50,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secgroup1 = new SecGroup(&#34;secgroup1&#34;, SecGroupArgs.builder()        
- *             .name(&#34;my_secgroup&#34;)
- *             .description(&#34;my security group&#34;)
+ *         var secgroup1 = new SecGroup("secgroup1", SecGroupArgs.builder()        
+ *             .name("my_secgroup")
+ *             .description("my security group")
  *             .rules(            
  *                 SecGroupRuleArgs.builder()
  *                     .fromPort(22)
  *                     .toPort(22)
- *                     .ipProtocol(&#34;tcp&#34;)
- *                     .cidr(&#34;0.0.0.0/0&#34;)
+ *                     .ipProtocol("tcp")
+ *                     .cidr("0.0.0.0/0")
  *                     .build(),
  *                 SecGroupRuleArgs.builder()
  *                     .fromPort(80)
  *                     .toPort(80)
- *                     .ipProtocol(&#34;tcp&#34;)
- *                     .cidr(&#34;0.0.0.0/0&#34;)
+ *                     .ipProtocol("tcp")
+ *                     .cidr("0.0.0.0/0")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Notes
@@ -79,7 +81,8 @@ import javax.annotation.Nullable;
  * When referencing a security group in a configuration (for example, a configuration creates a new security group and then needs to apply it to an instance being created in the same configuration), it is currently recommended to reference the security group by name and not by ID, like this:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -100,17 +103,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test_server = new Instance(&#34;test-server&#34;, InstanceArgs.builder()        
- *             .name(&#34;tf-test&#34;)
- *             .imageId(&#34;ad091b52-742f-469e-8f3c-fd81cadf0743&#34;)
- *             .flavorId(&#34;3&#34;)
- *             .keyPair(&#34;my_key_pair_name&#34;)
+ *         var test_server = new Instance("test-server", InstanceArgs.builder()        
+ *             .name("tf-test")
+ *             .imageId("ad091b52-742f-469e-8f3c-fd81cadf0743")
+ *             .flavorId("3")
+ *             .keyPair("my_key_pair_name")
  *             .securityGroups(secgroup1.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

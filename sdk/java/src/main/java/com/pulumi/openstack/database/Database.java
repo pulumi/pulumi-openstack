@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ### Database
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,14 +43,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mydb = new Database(&#34;mydb&#34;, DatabaseArgs.builder()        
- *             .name(&#34;mydb&#34;)
+ *         var mydb = new Database("mydb", DatabaseArgs.builder()        
+ *             .name("mydb")
  *             .instanceId(basic.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

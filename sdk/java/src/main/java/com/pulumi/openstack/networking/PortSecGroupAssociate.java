@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ### Append a security group to an existing port
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,27 +48,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var systemPort = NetworkingFunctions.getPort(GetPortArgs.builder()
- *             .fixedIp(&#34;10.0.0.10&#34;)
+ *             .fixedIp("10.0.0.10")
  *             .build());
  * 
  *         final var secgroup = NetworkingFunctions.getSecGroup(GetSecGroupArgs.builder()
- *             .name(&#34;secgroup&#34;)
+ *             .name("secgroup")
  *             .build());
  * 
- *         var port1 = new PortSecGroupAssociate(&#34;port1&#34;, PortSecGroupAssociateArgs.builder()        
- *             .portId(systemPort.applyValue(getPortResult -&gt; getPortResult.id()))
- *             .securityGroupIds(secgroup.applyValue(getSecGroupResult -&gt; getSecGroupResult.id()))
+ *         var port1 = new PortSecGroupAssociate("port1", PortSecGroupAssociateArgs.builder()        
+ *             .portId(systemPort.applyValue(getPortResult -> getPortResult.id()))
+ *             .securityGroupIds(secgroup.applyValue(getSecGroupResult -> getSecGroupResult.id()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Enforce a security group to an existing port
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -92,28 +95,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var systemPort = NetworkingFunctions.getPort(GetPortArgs.builder()
- *             .fixedIp(&#34;10.0.0.10&#34;)
+ *             .fixedIp("10.0.0.10")
  *             .build());
  * 
  *         final var secgroup = NetworkingFunctions.getSecGroup(GetSecGroupArgs.builder()
- *             .name(&#34;secgroup&#34;)
+ *             .name("secgroup")
  *             .build());
  * 
- *         var port1 = new PortSecGroupAssociate(&#34;port1&#34;, PortSecGroupAssociateArgs.builder()        
- *             .portId(systemPort.applyValue(getPortResult -&gt; getPortResult.id()))
- *             .enforce(&#34;true&#34;)
- *             .securityGroupIds(secgroup.applyValue(getSecGroupResult -&gt; getSecGroupResult.id()))
+ *         var port1 = new PortSecGroupAssociate("port1", PortSecGroupAssociateArgs.builder()        
+ *             .portId(systemPort.applyValue(getPortResult -> getPortResult.id()))
+ *             .enforce("true")
+ *             .securityGroupIds(secgroup.applyValue(getSecGroupResult -> getSecGroupResult.id()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Remove all security groups from an existing port
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -137,18 +142,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var systemPort = NetworkingFunctions.getPort(GetPortArgs.builder()
- *             .fixedIp(&#34;10.0.0.10&#34;)
+ *             .fixedIp("10.0.0.10")
  *             .build());
  * 
- *         var port1 = new PortSecGroupAssociate(&#34;port1&#34;, PortSecGroupAssociateArgs.builder()        
- *             .portId(systemPort.applyValue(getPortResult -&gt; getPortResult.id()))
- *             .enforce(&#34;true&#34;)
+ *         var port1 = new PortSecGroupAssociate("port1", PortSecGroupAssociateArgs.builder()        
+ *             .portId(systemPort.applyValue(getPortResult -> getPortResult.id()))
+ *             .enforce("true")
  *             .securityGroupIds()
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

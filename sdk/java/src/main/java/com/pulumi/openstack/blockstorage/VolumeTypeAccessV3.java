@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,23 +47,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project1 = new Project(&#34;project1&#34;, ProjectArgs.builder()        
- *             .name(&#34;project_1&#34;)
+ *         var project1 = new Project("project1", ProjectArgs.builder()        
+ *             .name("project_1")
  *             .build());
  * 
- *         var volumeType1 = new VolumeTypeV3(&#34;volumeType1&#34;, VolumeTypeV3Args.builder()        
- *             .name(&#34;volume_type_1&#34;)
+ *         var volumeType1 = new VolumeTypeV3("volumeType1", VolumeTypeV3Args.builder()        
+ *             .name("volume_type_1")
  *             .isPublic(false)
  *             .build());
  * 
- *         var volumeTypeAccess = new VolumeTypeAccessV3(&#34;volumeTypeAccess&#34;, VolumeTypeAccessV3Args.builder()        
+ *         var volumeTypeAccess = new VolumeTypeAccessV3("volumeTypeAccess", VolumeTypeAccessV3Args.builder()        
  *             .projectId(project1.id())
  *             .volumeTypeId(volumeType1.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

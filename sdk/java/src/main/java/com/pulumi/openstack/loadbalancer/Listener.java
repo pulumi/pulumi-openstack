@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,16 +50,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var listener1 = new Listener(&#34;listener1&#34;, ListenerArgs.builder()        
- *             .protocol(&#34;HTTP&#34;)
+ *         var listener1 = new Listener("listener1", ListenerArgs.builder()        
+ *             .protocol("HTTP")
  *             .protocolPort(8080)
- *             .loadbalancerId(&#34;d9415786-5f1a-428b-b35f-2f1523e146d2&#34;)
- *             .insertHeaders(Map.of(&#34;X-Forwarded-For&#34;, &#34;true&#34;))
+ *             .loadbalancerId("d9415786-5f1a-428b-b35f-2f1523e146d2")
+ *             .insertHeaders(Map.of("X-Forwarded-For", "true"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ### Compute service API version 2.63 or below:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,20 +48,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test_sg = new ServerGroup(&#34;test-sg&#34;, ServerGroupArgs.builder()        
- *             .name(&#34;my-sg&#34;)
- *             .policies(&#34;anti-affinity&#34;)
+ *         var test_sg = new ServerGroup("test-sg", ServerGroupArgs.builder()        
+ *             .name("my-sg")
+ *             .policies("anti-affinity")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Compute service API version 2.64 or above:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -82,9 +85,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test_sg = new ServerGroup(&#34;test-sg&#34;, ServerGroupArgs.builder()        
- *             .name(&#34;my-sg&#34;)
- *             .policies(&#34;anti-affinity&#34;)
+ *         var test_sg = new ServerGroup("test-sg", ServerGroupArgs.builder()        
+ *             .name("my-sg")
+ *             .policies("anti-affinity")
  *             .rules(ServerGroupRulesArgs.builder()
  *                 .maxServerPerHost(3)
  *                 .build())
@@ -92,7 +95,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Policies

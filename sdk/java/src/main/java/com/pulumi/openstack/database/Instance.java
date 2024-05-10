@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Instance
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,23 +56,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Instance(&#34;test&#34;, InstanceArgs.builder()        
- *             .region(&#34;region-test&#34;)
- *             .name(&#34;test&#34;)
- *             .flavorId(&#34;31792d21-c355-4587-9290-56c1ed0ca376&#34;)
+ *         var test = new Instance("test", InstanceArgs.builder()        
+ *             .region("region-test")
+ *             .name("test")
+ *             .flavorId("31792d21-c355-4587-9290-56c1ed0ca376")
  *             .size(8)
  *             .networks(InstanceNetworkArgs.builder()
- *                 .uuid(&#34;c0612505-caf2-4fb0-b7cb-56a0240a2b12&#34;)
+ *                 .uuid("c0612505-caf2-4fb0-b7cb-56a0240a2b12")
  *                 .build())
  *             .datastore(InstanceDatastoreArgs.builder()
- *                 .version(&#34;mysql-5.7&#34;)
- *                 .type(&#34;mysql&#34;)
+ *                 .version("mysql-5.7")
+ *                 .type("mysql")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

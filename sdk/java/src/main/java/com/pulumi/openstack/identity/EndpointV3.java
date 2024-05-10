@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,21 +46,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var service1 = new ServiceV3(&#34;service1&#34;, ServiceV3Args.builder()        
- *             .name(&#34;my-service&#34;)
- *             .type(&#34;my-service-type&#34;)
+ *         var service1 = new ServiceV3("service1", ServiceV3Args.builder()        
+ *             .name("my-service")
+ *             .type("my-service-type")
  *             .build());
  * 
- *         var endpoint1 = new EndpointV3(&#34;endpoint1&#34;, EndpointV3Args.builder()        
- *             .name(&#34;my-endpoint&#34;)
+ *         var endpoint1 = new EndpointV3("endpoint1", EndpointV3Args.builder()        
+ *             .name("my-endpoint")
  *             .serviceId(service1.id())
  *             .endpointRegion(service1.region())
- *             .url(&#34;http://my-endpoint&#34;)
+ *             .url("http://my-endpoint")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

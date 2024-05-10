@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### User
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,16 +49,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new User(&#34;basic&#34;, UserArgs.builder()        
- *             .name(&#34;basic&#34;)
+ *         var basic = new User("basic", UserArgs.builder()        
+ *             .name("basic")
  *             .instanceId(basicOpenstackDbInstanceV1.id())
- *             .password(&#34;password&#34;)
- *             .databases(&#34;testdb&#34;)
+ *             .password("password")
+ *             .databases("testdb")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

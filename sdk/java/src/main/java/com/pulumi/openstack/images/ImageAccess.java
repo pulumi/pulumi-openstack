@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,23 +49,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var rancheros = new Image(&#34;rancheros&#34;, ImageArgs.builder()        
- *             .name(&#34;RancherOS&#34;)
- *             .imageSourceUrl(&#34;https://releases.rancher.com/os/latest/rancheros-openstack.img&#34;)
- *             .containerFormat(&#34;bare&#34;)
- *             .diskFormat(&#34;qcow2&#34;)
- *             .visibility(&#34;shared&#34;)
- *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
+ *         var rancheros = new Image("rancheros", ImageArgs.builder()        
+ *             .name("RancherOS")
+ *             .imageSourceUrl("https://releases.rancher.com/os/latest/rancheros-openstack.img")
+ *             .containerFormat("bare")
+ *             .diskFormat("qcow2")
+ *             .visibility("shared")
+ *             .properties(Map.of("key", "value"))
  *             .build());
  * 
- *         var rancherosMember = new ImageAccess(&#34;rancherosMember&#34;, ImageAccessArgs.builder()        
+ *         var rancherosMember = new ImageAccess("rancherosMember", ImageAccessArgs.builder()        
  *             .imageId(rancheros.id())
- *             .memberId(&#34;bed6b6cbb86a4e2d8dc2735c2f1000e4&#34;)
+ *             .memberId("bed6b6cbb86a4e2d8dc2735c2f1000e4")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Privileged user
@@ -73,7 +75,8 @@ import javax.annotation.Nullable;
  * `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -96,24 +99,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var rancheros = new Image(&#34;rancheros&#34;, ImageArgs.builder()        
- *             .name(&#34;RancherOS&#34;)
- *             .imageSourceUrl(&#34;https://releases.rancher.com/os/latest/rancheros-openstack.img&#34;)
- *             .containerFormat(&#34;bare&#34;)
- *             .diskFormat(&#34;qcow2&#34;)
- *             .visibility(&#34;shared&#34;)
- *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
+ *         var rancheros = new Image("rancheros", ImageArgs.builder()        
+ *             .name("RancherOS")
+ *             .imageSourceUrl("https://releases.rancher.com/os/latest/rancheros-openstack.img")
+ *             .containerFormat("bare")
+ *             .diskFormat("qcow2")
+ *             .visibility("shared")
+ *             .properties(Map.of("key", "value"))
  *             .build());
  * 
- *         var rancherosMember = new ImageAccess(&#34;rancherosMember&#34;, ImageAccessArgs.builder()        
+ *         var rancherosMember = new ImageAccess("rancherosMember", ImageAccessArgs.builder()        
  *             .imageId(rancheros.id())
- *             .memberId(&#34;bed6b6cbb86a4e2d8dc2735c2f1000e4&#34;)
- *             .status(&#34;accepted&#34;)
+ *             .memberId("bed6b6cbb86a4e2d8dc2735c2f1000e4")
+ *             .status("accepted")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

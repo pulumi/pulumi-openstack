@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ### EC2 credential in current project scope
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,11 +49,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ec2Key1 = new Ec2CredentialV3(&#34;ec2Key1&#34;);
+ *         var ec2Key1 = new Ec2CredentialV3("ec2Key1");
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### EC2 credential in pre-defined project scope
@@ -61,7 +63,8 @@ import javax.annotation.Nullable;
  * from the current auth scope.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -82,13 +85,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ec2Key1 = new Ec2CredentialV3(&#34;ec2Key1&#34;, Ec2CredentialV3Args.builder()        
- *             .projectId(&#34;f7ac731cc11f40efbc03a9f9e1d1d21f&#34;)
+ *         var ec2Key1 = new Ec2CredentialV3("ec2Key1", Ec2CredentialV3Args.builder()        
+ *             .projectId("f7ac731cc11f40efbc03a9f9e1d1d21f")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

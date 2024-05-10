@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * Accept a shared image membershipship proposal within the current project.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,19 +47,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var rancheros = ImagesFunctions.getImage(GetImageArgs.builder()
- *             .name(&#34;RancherOS&#34;)
- *             .visibility(&#34;shared&#34;)
- *             .memberStatus(&#34;all&#34;)
+ *             .name("RancherOS")
+ *             .visibility("shared")
+ *             .memberStatus("all")
  *             .build());
  * 
- *         var rancherosMember = new ImageAccessAccept(&#34;rancherosMember&#34;, ImageAccessAcceptArgs.builder()        
- *             .imageId(rancheros.applyValue(getImageResult -&gt; getImageResult.id()))
- *             .status(&#34;accepted&#34;)
+ *         var rancherosMember = new ImageAccessAccept("rancherosMember", ImageAccessAcceptArgs.builder()        
+ *             .imageId(rancheros.applyValue(getImageResult -> getImageResult.id()))
+ *             .status("accepted")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

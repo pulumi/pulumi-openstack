@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,36 +54,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network_1&#34;)
- *             .adminStateUp(&#34;true&#34;)
+ *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *             .name("network_1")
+ *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
- *             .name(&#34;subnet_1&#34;)
- *             .cidr(&#34;192.168.199.0/24&#34;)
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *             .name("subnet_1")
+ *             .cidr("192.168.199.0/24")
  *             .ipVersion(4)
  *             .networkId(network1.id())
  *             .build());
  * 
- *         var sharenetwork1 = new ShareNetwork(&#34;sharenetwork1&#34;, ShareNetworkArgs.builder()        
- *             .name(&#34;test_sharenetwork&#34;)
- *             .description(&#34;test share network with security services&#34;)
+ *         var sharenetwork1 = new ShareNetwork("sharenetwork1", ShareNetworkArgs.builder()        
+ *             .name("test_sharenetwork")
+ *             .description("test share network with security services")
  *             .neutronNetId(network1.id())
  *             .neutronSubnetId(subnet1.id())
  *             .build());
  * 
- *         var share1 = new Share(&#34;share1&#34;, ShareArgs.builder()        
- *             .name(&#34;nfs_share&#34;)
- *             .description(&#34;test share description&#34;)
- *             .shareProto(&#34;NFS&#34;)
+ *         var share1 = new Share("share1", ShareArgs.builder()        
+ *             .name("nfs_share")
+ *             .description("test share description")
+ *             .shareProto("NFS")
  *             .size(1)
  *             .shareNetworkId(sharenetwork1.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

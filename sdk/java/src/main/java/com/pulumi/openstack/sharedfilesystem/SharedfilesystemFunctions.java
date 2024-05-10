@@ -30,7 +30,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -55,7 +56,8 @@ public final class SharedfilesystemFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -69,7 +71,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -94,7 +97,8 @@ public final class SharedfilesystemFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -108,7 +112,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -133,7 +138,8 @@ public final class SharedfilesystemFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -147,7 +153,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -172,7 +179,8 @@ public final class SharedfilesystemFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -186,7 +194,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -211,7 +220,8 @@ public final class SharedfilesystemFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -225,7 +235,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -250,7 +261,8 @@ public final class SharedfilesystemFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -263,7 +275,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -285,12 +298,13 @@ public final class SharedfilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var share1 = SharedfilesystemFunctions.getShare(GetShareArgs.builder()
-     *             .name(&#34;share_1&#34;)
+     *             .name("share_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -303,7 +317,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -325,12 +340,13 @@ public final class SharedfilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var share1 = SharedfilesystemFunctions.getShare(GetShareArgs.builder()
-     *             .name(&#34;share_1&#34;)
+     *             .name("share_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -343,7 +359,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -365,12 +382,13 @@ public final class SharedfilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var share1 = SharedfilesystemFunctions.getShare(GetShareArgs.builder()
-     *             .name(&#34;share_1&#34;)
+     *             .name("share_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -383,7 +401,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -405,12 +424,13 @@ public final class SharedfilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var share1 = SharedfilesystemFunctions.getShare(GetShareArgs.builder()
-     *             .name(&#34;share_1&#34;)
+     *             .name("share_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -423,7 +443,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -445,12 +466,13 @@ public final class SharedfilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var share1 = SharedfilesystemFunctions.getShare(GetShareArgs.builder()
-     *             .name(&#34;share_1&#34;)
+     *             .name("share_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -463,7 +485,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -485,12 +508,13 @@ public final class SharedfilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var share1 = SharedfilesystemFunctions.getShare(GetShareArgs.builder()
-     *             .name(&#34;share_1&#34;)
+     *             .name("share_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -503,7 +527,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -525,12 +550,13 @@ public final class SharedfilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sharenetwork1 = SharedfilesystemFunctions.getShareNetwork(GetShareNetworkArgs.builder()
-     *             .name(&#34;sharenetwork_1&#34;)
+     *             .name("sharenetwork_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -543,7 +569,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -565,12 +592,13 @@ public final class SharedfilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sharenetwork1 = SharedfilesystemFunctions.getShareNetwork(GetShareNetworkArgs.builder()
-     *             .name(&#34;sharenetwork_1&#34;)
+     *             .name("sharenetwork_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -583,7 +611,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -605,12 +634,13 @@ public final class SharedfilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sharenetwork1 = SharedfilesystemFunctions.getShareNetwork(GetShareNetworkArgs.builder()
-     *             .name(&#34;sharenetwork_1&#34;)
+     *             .name("sharenetwork_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -623,7 +653,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -645,12 +676,13 @@ public final class SharedfilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sharenetwork1 = SharedfilesystemFunctions.getShareNetwork(GetShareNetworkArgs.builder()
-     *             .name(&#34;sharenetwork_1&#34;)
+     *             .name("sharenetwork_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -663,7 +695,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -685,12 +718,13 @@ public final class SharedfilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sharenetwork1 = SharedfilesystemFunctions.getShareNetwork(GetShareNetworkArgs.builder()
-     *             .name(&#34;sharenetwork_1&#34;)
+     *             .name("sharenetwork_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -703,7 +737,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -725,12 +760,13 @@ public final class SharedfilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sharenetwork1 = SharedfilesystemFunctions.getShareNetwork(GetShareNetworkArgs.builder()
-     *             .name(&#34;sharenetwork_1&#34;)
+     *             .name("sharenetwork_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -743,7 +779,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -765,12 +802,13 @@ public final class SharedfilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot1 = SharedfilesystemFunctions.getSnapshot(GetSnapshotArgs.builder()
-     *             .name(&#34;snapshot_1&#34;)
+     *             .name("snapshot_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -783,7 +821,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -805,12 +844,13 @@ public final class SharedfilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot1 = SharedfilesystemFunctions.getSnapshot(GetSnapshotArgs.builder()
-     *             .name(&#34;snapshot_1&#34;)
+     *             .name("snapshot_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -823,7 +863,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -845,12 +886,13 @@ public final class SharedfilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot1 = SharedfilesystemFunctions.getSnapshot(GetSnapshotArgs.builder()
-     *             .name(&#34;snapshot_1&#34;)
+     *             .name("snapshot_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -863,7 +905,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -885,12 +928,13 @@ public final class SharedfilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot1 = SharedfilesystemFunctions.getSnapshot(GetSnapshotArgs.builder()
-     *             .name(&#34;snapshot_1&#34;)
+     *             .name("snapshot_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -903,7 +947,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -925,12 +970,13 @@ public final class SharedfilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot1 = SharedfilesystemFunctions.getSnapshot(GetSnapshotArgs.builder()
-     *             .name(&#34;snapshot_1&#34;)
+     *             .name("snapshot_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -943,7 +989,8 @@ public final class SharedfilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -965,12 +1012,13 @@ public final class SharedfilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot1 = SharedfilesystemFunctions.getSnapshot(GetSnapshotArgs.builder()
-     *             .name(&#34;snapshot_1&#34;)
+     *             .name("snapshot_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

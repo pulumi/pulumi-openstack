@@ -36,7 +36,8 @@ import javax.annotation.Nullable;
  * ### Simple port
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,26 +60,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network_1&#34;)
- *             .adminStateUp(&#34;true&#34;)
+ *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *             .name("network_1")
+ *             .adminStateUp("true")
  *             .build());
  * 
- *         var port1 = new Port(&#34;port1&#34;, PortArgs.builder()        
- *             .name(&#34;port_1&#34;)
+ *         var port1 = new Port("port1", PortArgs.builder()        
+ *             .name("port_1")
  *             .networkId(network1.id())
- *             .adminStateUp(&#34;true&#34;)
+ *             .adminStateUp("true")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Port defining fixed_ip.subnet_id
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -104,21 +107,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network_1&#34;)
- *             .adminStateUp(&#34;true&#34;)
+ *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *             .name("network_1")
+ *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
- *             .name(&#34;subnet_1&#34;)
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *             .name("subnet_1")
  *             .networkId(network1.id())
- *             .cidr(&#34;192.168.199.0/24&#34;)
+ *             .cidr("192.168.199.0/24")
  *             .build());
  * 
- *         var port1 = new Port(&#34;port1&#34;, PortArgs.builder()        
- *             .name(&#34;port_1&#34;)
+ *         var port1 = new Port("port1", PortArgs.builder()        
+ *             .name("port_1")
  *             .networkId(network1.id())
- *             .adminStateUp(&#34;true&#34;)
+ *             .adminStateUp("true")
  *             .fixedIps(PortFixedIpArgs.builder()
  *                 .subnetId(subnet1.id())
  *                 .build())
@@ -126,13 +129,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Port with physical binding information
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -156,43 +161,44 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network_1&#34;)
- *             .adminStateUp(&#34;true&#34;)
+ *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *             .name("network_1")
+ *             .adminStateUp("true")
  *             .build());
  * 
- *         var port1 = new Port(&#34;port1&#34;, PortArgs.builder()        
- *             .name(&#34;port_1&#34;)
+ *         var port1 = new Port("port1", PortArgs.builder()        
+ *             .name("port_1")
  *             .networkId(network1.id())
- *             .deviceId(&#34;cdf70fcf-c161-4f24-9c70-96b3f5a54b71&#34;)
- *             .deviceOwner(&#34;baremetal:none&#34;)
- *             .adminStateUp(&#34;true&#34;)
+ *             .deviceId("cdf70fcf-c161-4f24-9c70-96b3f5a54b71")
+ *             .deviceOwner("baremetal:none")
+ *             .adminStateUp("true")
  *             .binding(PortBindingArgs.builder()
- *                 .hostId(&#34;b080b9cf-46e0-4ce8-ad47-0fd4accc872b&#34;)
- *                 .vnicType(&#34;baremetal&#34;)
- *                 .profile(&#34;&#34;&#34;
+ *                 .hostId("b080b9cf-46e0-4ce8-ad47-0fd4accc872b")
+ *                 .vnicType("baremetal")
+ *                 .profile("""
  * {
- *   &#34;local_link_information&#34;: [
+ *   "local_link_information": [
  *     {
- *       &#34;switch_info&#34;: &#34;info1&#34;,
- *       &#34;port_id&#34;: &#34;Ethernet3/4&#34;,
- *       &#34;switch_id&#34;: &#34;12:34:56:78:9A:BC&#34;
+ *       "switch_info": "info1",
+ *       "port_id": "Ethernet3/4",
+ *       "switch_id": "12:34:56:78:9A:BC"
  *     },
  *     {
- *       &#34;switch_info&#34;: &#34;info2&#34;,
- *       &#34;port_id&#34;: &#34;Ethernet3/4&#34;,
- *       &#34;switch_id&#34;: &#34;12:34:56:78:9A:BD&#34;
+ *       "switch_info": "info2",
+ *       "port_id": "Ethernet3/4",
+ *       "switch_id": "12:34:56:78:9A:BD"
  *     }
  *   ],
- *   &#34;vlan_type&#34;: &#34;allowed&#34;
+ *   "vlan_type": "allowed"
  * }
- *                 &#34;&#34;&#34;)
+ *                 """)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Notes

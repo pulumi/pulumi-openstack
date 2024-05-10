@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ### Create a QoS Policy with some DSCP marking rule
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,19 +46,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var qosPolicy1 = new QosPolicy(&#34;qosPolicy1&#34;, QosPolicyArgs.builder()        
- *             .name(&#34;qos_policy_1&#34;)
- *             .description(&#34;dscp_mark&#34;)
+ *         var qosPolicy1 = new QosPolicy("qosPolicy1", QosPolicyArgs.builder()        
+ *             .name("qos_policy_1")
+ *             .description("dscp_mark")
  *             .build());
  * 
- *         var dscpMarkingRule1 = new QosDscpMarkingRule(&#34;dscpMarkingRule1&#34;, QosDscpMarkingRuleArgs.builder()        
+ *         var dscpMarkingRule1 = new QosDscpMarkingRule("dscpMarkingRule1", QosDscpMarkingRuleArgs.builder()        
  *             .qosPolicyId(qosPolicy1.id())
  *             .dscpMark(26)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

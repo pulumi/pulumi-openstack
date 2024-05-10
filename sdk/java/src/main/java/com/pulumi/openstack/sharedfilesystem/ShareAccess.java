@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ### NFS
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,49 +50,51 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network_1&#34;)
- *             .adminStateUp(&#34;true&#34;)
+ *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *             .name("network_1")
+ *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
- *             .name(&#34;subnet_1&#34;)
- *             .cidr(&#34;192.168.199.0/24&#34;)
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *             .name("subnet_1")
+ *             .cidr("192.168.199.0/24")
  *             .ipVersion(4)
  *             .networkId(network1.id())
  *             .build());
  * 
- *         var sharenetwork1 = new ShareNetwork(&#34;sharenetwork1&#34;, ShareNetworkArgs.builder()        
- *             .name(&#34;test_sharenetwork&#34;)
- *             .description(&#34;test share network with security services&#34;)
+ *         var sharenetwork1 = new ShareNetwork("sharenetwork1", ShareNetworkArgs.builder()        
+ *             .name("test_sharenetwork")
+ *             .description("test share network with security services")
  *             .neutronNetId(network1.id())
  *             .neutronSubnetId(subnet1.id())
  *             .build());
  * 
- *         var share1 = new Share(&#34;share1&#34;, ShareArgs.builder()        
- *             .name(&#34;nfs_share&#34;)
- *             .description(&#34;test share description&#34;)
- *             .shareProto(&#34;NFS&#34;)
+ *         var share1 = new Share("share1", ShareArgs.builder()        
+ *             .name("nfs_share")
+ *             .description("test share description")
+ *             .shareProto("NFS")
  *             .size(1)
  *             .shareNetworkId(sharenetwork1.id())
  *             .build());
  * 
- *         var shareAccess1 = new ShareAccess(&#34;shareAccess1&#34;, ShareAccessArgs.builder()        
+ *         var shareAccess1 = new ShareAccess("shareAccess1", ShareAccessArgs.builder()        
  *             .shareId(share1.id())
- *             .accessType(&#34;ip&#34;)
- *             .accessTo(&#34;192.168.199.10&#34;)
- *             .accessLevel(&#34;rw&#34;)
+ *             .accessType("ip")
+ *             .accessTo("192.168.199.10")
+ *             .accessLevel("rw")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### CIFS
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -122,63 +125,64 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network_1&#34;)
- *             .adminStateUp(&#34;true&#34;)
+ *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *             .name("network_1")
+ *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
- *             .name(&#34;subnet_1&#34;)
- *             .cidr(&#34;192.168.199.0/24&#34;)
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *             .name("subnet_1")
+ *             .cidr("192.168.199.0/24")
  *             .ipVersion(4)
  *             .networkId(network1.id())
  *             .build());
  * 
- *         var securityservice1 = new SecurityService(&#34;securityservice1&#34;, SecurityServiceArgs.builder()        
- *             .name(&#34;security&#34;)
- *             .description(&#34;created by terraform&#34;)
- *             .type(&#34;active_directory&#34;)
- *             .server(&#34;192.168.199.10&#34;)
- *             .dnsIp(&#34;192.168.199.10&#34;)
- *             .domain(&#34;example.com&#34;)
- *             .ou(&#34;CN=Computers,DC=example,DC=com&#34;)
- *             .user(&#34;joinDomainUser&#34;)
- *             .password(&#34;s8cret&#34;)
+ *         var securityservice1 = new SecurityService("securityservice1", SecurityServiceArgs.builder()        
+ *             .name("security")
+ *             .description("created by terraform")
+ *             .type("active_directory")
+ *             .server("192.168.199.10")
+ *             .dnsIp("192.168.199.10")
+ *             .domain("example.com")
+ *             .ou("CN=Computers,DC=example,DC=com")
+ *             .user("joinDomainUser")
+ *             .password("s8cret")
  *             .build());
  * 
- *         var sharenetwork1 = new ShareNetwork(&#34;sharenetwork1&#34;, ShareNetworkArgs.builder()        
- *             .name(&#34;test_sharenetwork_secure&#34;)
- *             .description(&#34;share the secure love&#34;)
+ *         var sharenetwork1 = new ShareNetwork("sharenetwork1", ShareNetworkArgs.builder()        
+ *             .name("test_sharenetwork_secure")
+ *             .description("share the secure love")
  *             .neutronNetId(network1.id())
  *             .neutronSubnetId(subnet1.id())
  *             .securityServiceIds(securityservice1.id())
  *             .build());
  * 
- *         var share1 = new Share(&#34;share1&#34;, ShareArgs.builder()        
- *             .name(&#34;cifs_share&#34;)
- *             .shareProto(&#34;CIFS&#34;)
+ *         var share1 = new Share("share1", ShareArgs.builder()        
+ *             .name("cifs_share")
+ *             .shareProto("CIFS")
  *             .size(1)
  *             .shareNetworkId(sharenetwork1.id())
  *             .build());
  * 
- *         var shareAccess1 = new ShareAccess(&#34;shareAccess1&#34;, ShareAccessArgs.builder()        
+ *         var shareAccess1 = new ShareAccess("shareAccess1", ShareAccessArgs.builder()        
  *             .shareId(share1.id())
- *             .accessType(&#34;user&#34;)
- *             .accessTo(&#34;windows&#34;)
- *             .accessLevel(&#34;ro&#34;)
+ *             .accessType("user")
+ *             .accessTo("windows")
+ *             .accessLevel("ro")
  *             .build());
  * 
- *         var shareAccess2 = new ShareAccess(&#34;shareAccess2&#34;, ShareAccessArgs.builder()        
+ *         var shareAccess2 = new ShareAccess("shareAccess2", ShareAccessArgs.builder()        
  *             .shareId(share1.id())
- *             .accessType(&#34;user&#34;)
- *             .accessTo(&#34;linux&#34;)
- *             .accessLevel(&#34;rw&#34;)
+ *             .accessType("user")
+ *             .accessTo("linux")
+ *             .accessLevel("rw")
  *             .build());
  * 
- *         ctx.export(&#34;exportLocations&#34;, share1.exportLocations());
+ *         ctx.export("exportLocations", share1.exportLocations());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

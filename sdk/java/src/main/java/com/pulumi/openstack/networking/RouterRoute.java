@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,38 +50,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var router1 = new Router(&#34;router1&#34;, RouterArgs.builder()        
- *             .name(&#34;router_1&#34;)
- *             .adminStateUp(&#34;true&#34;)
+ *         var router1 = new Router("router1", RouterArgs.builder()        
+ *             .name("router_1")
+ *             .adminStateUp("true")
  *             .build());
  * 
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network_1&#34;)
- *             .adminStateUp(&#34;true&#34;)
+ *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *             .name("network_1")
+ *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
  *             .networkId(network1.id())
- *             .cidr(&#34;192.168.199.0/24&#34;)
+ *             .cidr("192.168.199.0/24")
  *             .ipVersion(4)
  *             .build());
  * 
- *         var int1 = new RouterInterface(&#34;int1&#34;, RouterInterfaceArgs.builder()        
+ *         var int1 = new RouterInterface("int1", RouterInterfaceArgs.builder()        
  *             .routerId(router1.id())
  *             .subnetId(subnet1.id())
  *             .build());
  * 
- *         var routerRoute1 = new RouterRoute(&#34;routerRoute1&#34;, RouterRouteArgs.builder()        
+ *         var routerRoute1 = new RouterRoute("routerRoute1", RouterRouteArgs.builder()        
  *             .routerId(router1.id())
- *             .destinationCidr(&#34;10.0.1.0/24&#34;)
- *             .nextHop(&#34;192.168.199.254&#34;)
+ *             .destinationCidr("10.0.1.0/24")
+ *             .nextHop("192.168.199.254")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(int1)
  *                 .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Notes

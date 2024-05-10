@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,42 +59,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network_1&#34;)
- *             .adminStateUp(&#34;true&#34;)
+ *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *             .name("network_1")
+ *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
- *             .name(&#34;subnet_1&#34;)
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *             .name("subnet_1")
  *             .networkId(network1.id())
- *             .cidr(&#34;192.168.199.0/24&#34;)
+ *             .cidr("192.168.199.0/24")
  *             .ipVersion(4)
  *             .build());
  * 
- *         var secgroup1 = new SecGroup(&#34;secgroup1&#34;, SecGroupArgs.builder()        
- *             .name(&#34;secgroup_1&#34;)
- *             .description(&#34;a security group&#34;)
+ *         var secgroup1 = new SecGroup("secgroup1", SecGroupArgs.builder()        
+ *             .name("secgroup_1")
+ *             .description("a security group")
  *             .rules(SecGroupRuleArgs.builder()
  *                 .fromPort(22)
  *                 .toPort(22)
- *                 .ipProtocol(&#34;tcp&#34;)
- *                 .cidr(&#34;0.0.0.0/0&#34;)
+ *                 .ipProtocol("tcp")
+ *                 .cidr("0.0.0.0/0")
  *                 .build())
  *             .build());
  * 
- *         var port1 = new Port(&#34;port1&#34;, PortArgs.builder()        
- *             .name(&#34;port_1&#34;)
+ *         var port1 = new Port("port1", PortArgs.builder()        
+ *             .name("port_1")
  *             .networkId(network1.id())
- *             .adminStateUp(&#34;true&#34;)
+ *             .adminStateUp("true")
  *             .securityGroupIds(secgroup1.id())
  *             .fixedIps(PortFixedIpArgs.builder()
  *                 .subnetId(subnet1.id())
- *                 .ipAddress(&#34;192.168.199.10&#34;)
+ *                 .ipAddress("192.168.199.10")
  *                 .build())
  *             .build());
  * 
- *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        
- *             .name(&#34;instance_1&#34;)
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()        
+ *             .name("instance_1")
  *             .securityGroups(secgroup1.name())
  *             .networks(InstanceNetworkArgs.builder()
  *                 .port(port1.id())
@@ -102,7 +103,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

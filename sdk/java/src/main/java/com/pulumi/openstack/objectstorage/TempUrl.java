@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,27 +55,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var container1 = new Container(&#34;container1&#34;, ContainerArgs.builder()        
- *             .name(&#34;test&#34;)
- *             .metadata(Map.of(&#34;Temp-URL-Key&#34;, &#34;testkey&#34;))
+ *         var container1 = new Container("container1", ContainerArgs.builder()        
+ *             .name("test")
+ *             .metadata(Map.of("Temp-URL-Key", "testkey"))
  *             .build());
  * 
- *         var object1 = new ContainerObject(&#34;object1&#34;, ContainerObjectArgs.builder()        
+ *         var object1 = new ContainerObject("object1", ContainerObjectArgs.builder()        
  *             .containerName(container1.name())
- *             .name(&#34;test&#34;)
- *             .content(&#34;Hello, world!&#34;)
+ *             .name("test")
+ *             .content("Hello, world!")
  *             .build());
  * 
- *         var objTempurl = new TempUrl(&#34;objTempurl&#34;, TempUrlArgs.builder()        
+ *         var objTempurl = new TempUrl("objTempurl", TempUrlArgs.builder()        
  *             .container(container1.name())
  *             .object(object1.name())
- *             .method(&#34;post&#34;)
+ *             .method("post")
  *             .ttl(20)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

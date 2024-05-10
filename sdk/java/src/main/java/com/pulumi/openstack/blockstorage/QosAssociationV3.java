@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,24 +47,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var qos = new QosV3(&#34;qos&#34;, QosV3Args.builder()        
- *             .name(&#34;%s&#34;)
- *             .consumer(&#34;front-end&#34;)
- *             .specs(Map.of(&#34;read_iops_sec&#34;, &#34;20000&#34;))
+ *         var qos = new QosV3("qos", QosV3Args.builder()        
+ *             .name("%s")
+ *             .consumer("front-end")
+ *             .specs(Map.of("read_iops_sec", "20000"))
  *             .build());
  * 
- *         var volumeType = new VolumeTypeV3(&#34;volumeType&#34;, VolumeTypeV3Args.builder()        
- *             .name(&#34;%s&#34;)
+ *         var volumeType = new VolumeTypeV3("volumeType", VolumeTypeV3Args.builder()        
+ *             .name("%s")
  *             .build());
  * 
- *         var qosAssociation = new QosAssociationV3(&#34;qosAssociation&#34;, QosAssociationV3Args.builder()        
+ *         var qosAssociation = new QosAssociationV3("qosAssociation", QosAssociationV3Args.builder()        
  *             .qosId(qos.id())
  *             .volumeTypeId(volumeType.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

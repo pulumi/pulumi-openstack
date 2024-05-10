@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,18 +46,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var volumeType1 = new VolumeTypeV3(&#34;volumeType1&#34;, VolumeTypeV3Args.builder()        
- *             .name(&#34;volume_type_1&#34;)
- *             .description(&#34;Volume type 1&#34;)
+ *         var volumeType1 = new VolumeTypeV3("volumeType1", VolumeTypeV3Args.builder()        
+ *             .name("volume_type_1")
+ *             .description("Volume type 1")
  *             .extraSpecs(Map.ofEntries(
- *                 Map.entry(&#34;capabilities&#34;, &#34;gpu&#34;),
- *                 Map.entry(&#34;volume_backend_name&#34;, &#34;ssd&#34;)
+ *                 Map.entry("capabilities", "gpu"),
+ *                 Map.entry("volume_backend_name", "ssd")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

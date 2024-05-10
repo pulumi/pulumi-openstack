@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Automatically detect the correct network
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,26 +51,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZone = new Zone(&#34;exampleZone&#34;, ZoneArgs.builder()        
- *             .name(&#34;example.com.&#34;)
- *             .email(&#34;email2@example.com&#34;)
- *             .description(&#34;a zone&#34;)
+ *         var exampleZone = new Zone("exampleZone", ZoneArgs.builder()        
+ *             .name("example.com.")
+ *             .email("email2{@literal @}example.com")
+ *             .description("a zone")
  *             .ttl(6000)
- *             .type(&#34;PRIMARY&#34;)
+ *             .type("PRIMARY")
  *             .build());
  * 
- *         var rsExampleCom = new RecordSet(&#34;rsExampleCom&#34;, RecordSetArgs.builder()        
+ *         var rsExampleCom = new RecordSet("rsExampleCom", RecordSetArgs.builder()        
  *             .zoneId(exampleZone.id())
- *             .name(&#34;rs.example.com.&#34;)
- *             .description(&#34;An example record set&#34;)
+ *             .name("rs.example.com.")
+ *             .description("An example record set")
  *             .ttl(3000)
- *             .type(&#34;A&#34;)
- *             .records(&#34;10.0.0.1&#34;)
+ *             .type("A")
+ *             .records("10.0.0.1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

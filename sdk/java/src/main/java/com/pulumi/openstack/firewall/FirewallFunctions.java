@@ -20,7 +20,8 @@ public final class FirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -42,12 +43,13 @@ public final class FirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = FirewallFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .name(&#34;tf_test_policy&#34;)
+     *             .name("tf_test_policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -60,7 +62,8 @@ public final class FirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -82,12 +85,13 @@ public final class FirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = FirewallFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .name(&#34;tf_test_policy&#34;)
+     *             .name("tf_test_policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -100,7 +104,8 @@ public final class FirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -122,12 +127,13 @@ public final class FirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = FirewallFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .name(&#34;tf_test_policy&#34;)
+     *             .name("tf_test_policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -140,7 +146,8 @@ public final class FirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -162,12 +169,13 @@ public final class FirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = FirewallFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .name(&#34;tf_test_policy&#34;)
+     *             .name("tf_test_policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -180,7 +188,8 @@ public final class FirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -202,12 +211,13 @@ public final class FirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = FirewallFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .name(&#34;tf_test_policy&#34;)
+     *             .name("tf_test_policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -220,7 +230,8 @@ public final class FirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -242,12 +253,13 @@ public final class FirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = FirewallFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .name(&#34;tf_test_policy&#34;)
+     *             .name("tf_test_policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

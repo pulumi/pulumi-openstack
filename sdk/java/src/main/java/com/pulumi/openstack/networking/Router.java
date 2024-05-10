@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,15 +48,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var router1 = new Router(&#34;router1&#34;, RouterArgs.builder()        
- *             .name(&#34;my_router&#34;)
+ *         var router1 = new Router("router1", RouterArgs.builder()        
+ *             .name("my_router")
  *             .adminStateUp(true)
- *             .externalNetworkId(&#34;f67f0d72-0ddf-11e4-9d95-e1f29f417e2f&#34;)
+ *             .externalNetworkId("f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

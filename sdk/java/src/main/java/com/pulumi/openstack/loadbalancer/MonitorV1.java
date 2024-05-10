@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,17 +43,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var monitor1 = new MonitorV1(&#34;monitor1&#34;, MonitorV1Args.builder()        
- *             .type(&#34;PING&#34;)
+ *         var monitor1 = new MonitorV1("monitor1", MonitorV1Args.builder()        
+ *             .type("PING")
  *             .delay(30)
  *             .timeout(5)
  *             .maxRetries(3)
- *             .adminStateUp(&#34;true&#34;)
+ *             .adminStateUp("true")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

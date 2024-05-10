@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,17 +49,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var conn1 = new SiteConnection(&#34;conn1&#34;, SiteConnectionArgs.builder()        
- *             .name(&#34;connection_1&#34;)
+ *         var conn1 = new SiteConnection("conn1", SiteConnectionArgs.builder()        
+ *             .name("connection_1")
  *             .ikepolicyId(policy2.id())
  *             .ipsecpolicyId(policy1.id())
  *             .vpnserviceId(service1.id())
- *             .psk(&#34;secret&#34;)
- *             .peerAddress(&#34;192.168.10.1&#34;)
+ *             .psk("secret")
+ *             .peerAddress("192.168.10.1")
  *             .localEpGroupId(group2.id())
  *             .peerEpGroupId(group1.id())
  *             .dpds(SiteConnectionDpdArgs.builder()
- *                 .action(&#34;restart&#34;)
+ *                 .action("restart")
  *                 .timeout(42)
  *                 .interval(21)
  *                 .build())
@@ -66,7 +67,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Create a QoS Policy with some minimum bandwidth rule
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,19 +47,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var qosPolicy1 = new QosPolicy(&#34;qosPolicy1&#34;, QosPolicyArgs.builder()        
- *             .name(&#34;qos_policy_1&#34;)
- *             .description(&#34;min_kbps&#34;)
+ *         var qosPolicy1 = new QosPolicy("qosPolicy1", QosPolicyArgs.builder()        
+ *             .name("qos_policy_1")
+ *             .description("min_kbps")
  *             .build());
  * 
- *         var minimumBandwidthRule1 = new QosMinimumBandwidthRule(&#34;minimumBandwidthRule1&#34;, QosMinimumBandwidthRuleArgs.builder()        
+ *         var minimumBandwidthRule1 = new QosMinimumBandwidthRule("minimumBandwidthRule1", QosMinimumBandwidthRuleArgs.builder()        
  *             .qosPolicyId(qosPolicy1.id())
  *             .minKbps(200)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

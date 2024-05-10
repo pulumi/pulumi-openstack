@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,24 +47,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secgroup1 = new SecGroup(&#34;secgroup1&#34;, SecGroupArgs.builder()        
- *             .name(&#34;secgroup_1&#34;)
- *             .description(&#34;My neutron security group&#34;)
+ *         var secgroup1 = new SecGroup("secgroup1", SecGroupArgs.builder()        
+ *             .name("secgroup_1")
+ *             .description("My neutron security group")
  *             .build());
  * 
- *         var secgroupRule1 = new SecGroupRule(&#34;secgroupRule1&#34;, SecGroupRuleArgs.builder()        
- *             .direction(&#34;ingress&#34;)
- *             .ethertype(&#34;IPv4&#34;)
- *             .protocol(&#34;tcp&#34;)
+ *         var secgroupRule1 = new SecGroupRule("secgroupRule1", SecGroupRuleArgs.builder()        
+ *             .direction("ingress")
+ *             .ethertype("IPv4")
+ *             .protocol("tcp")
  *             .portRangeMin(22)
  *             .portRangeMax(22)
- *             .remoteIpPrefix(&#34;0.0.0.0/0&#34;)
+ *             .remoteIpPrefix("0.0.0.0/0")
  *             .securityGroupId(secgroup1.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &gt; **Note:** To expose the full port-range 1:65535, use `0` for `port_range_min`

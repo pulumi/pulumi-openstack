@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,32 +57,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project1 = new Project(&#34;project1&#34;, ProjectArgs.builder()        
- *             .name(&#34;project_1&#34;)
+ *         var project1 = new Project("project1", ProjectArgs.builder()        
+ *             .name("project_1")
  *             .build());
  * 
- *         var user1 = new User(&#34;user1&#34;, UserArgs.builder()        
+ *         var user1 = new User("user1", UserArgs.builder()        
  *             .defaultProjectId(project1.id())
- *             .name(&#34;user_1&#34;)
- *             .description(&#34;A user&#34;)
- *             .password(&#34;password123&#34;)
+ *             .name("user_1")
+ *             .description("A user")
+ *             .password("password123")
  *             .ignoreChangePasswordUponFirstUse(true)
  *             .multiFactorAuthEnabled(true)
  *             .multiFactorAuthRules(            
  *                 UserMultiFactorAuthRuleArgs.builder()
  *                     .rules(                    
- *                         &#34;password&#34;,
- *                         &#34;totp&#34;)
+ *                         "password",
+ *                         "totp")
  *                     .build(),
  *                 UserMultiFactorAuthRuleArgs.builder()
- *                     .rules(&#34;password&#34;)
+ *                     .rules("password")
  *                     .build())
- *             .extra(Map.of(&#34;email&#34;, &#34;user_1@foobar.com&#34;))
+ *             .extra(Map.of("email", "user_1{@literal @}foobar.com"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -35,7 +35,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -60,7 +61,8 @@ public final class BlockstorageFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -73,7 +75,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -98,7 +101,8 @@ public final class BlockstorageFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -111,7 +115,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -136,7 +141,8 @@ public final class BlockstorageFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -149,7 +155,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -174,7 +181,8 @@ public final class BlockstorageFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -187,7 +195,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -212,7 +221,8 @@ public final class BlockstorageFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -225,7 +235,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -250,7 +261,8 @@ public final class BlockstorageFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -263,7 +275,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -285,12 +298,13 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var quota = BlockstorageFunctions.getQuotasetV3(GetQuotasetV3Args.builder()
-     *             .projectId(&#34;2e367a3d29f94fd988e6ec54e305ec9d&#34;)
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -303,7 +317,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -325,12 +340,13 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var quota = BlockstorageFunctions.getQuotasetV3(GetQuotasetV3Args.builder()
-     *             .projectId(&#34;2e367a3d29f94fd988e6ec54e305ec9d&#34;)
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -343,7 +359,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -365,12 +382,13 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var quota = BlockstorageFunctions.getQuotasetV3(GetQuotasetV3Args.builder()
-     *             .projectId(&#34;2e367a3d29f94fd988e6ec54e305ec9d&#34;)
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -383,7 +401,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -405,12 +424,13 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var quota = BlockstorageFunctions.getQuotasetV3(GetQuotasetV3Args.builder()
-     *             .projectId(&#34;2e367a3d29f94fd988e6ec54e305ec9d&#34;)
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -423,7 +443,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -445,13 +466,14 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot1 = BlockstorageFunctions.getSnapshotV2(GetSnapshotV2Args.builder()
-     *             .name(&#34;snapshot_1&#34;)
+     *             .name("snapshot_1")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -464,7 +486,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -486,13 +509,14 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot1 = BlockstorageFunctions.getSnapshotV2(GetSnapshotV2Args.builder()
-     *             .name(&#34;snapshot_1&#34;)
+     *             .name("snapshot_1")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -505,7 +529,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -527,13 +552,14 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot1 = BlockstorageFunctions.getSnapshotV2(GetSnapshotV2Args.builder()
-     *             .name(&#34;snapshot_1&#34;)
+     *             .name("snapshot_1")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -546,7 +572,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -568,13 +595,14 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot1 = BlockstorageFunctions.getSnapshotV2(GetSnapshotV2Args.builder()
-     *             .name(&#34;snapshot_1&#34;)
+     *             .name("snapshot_1")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -587,7 +615,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -609,13 +638,14 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot1 = BlockstorageFunctions.getSnapshotV2(GetSnapshotV2Args.builder()
-     *             .name(&#34;snapshot_1&#34;)
+     *             .name("snapshot_1")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -628,7 +658,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -650,13 +681,14 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot1 = BlockstorageFunctions.getSnapshotV2(GetSnapshotV2Args.builder()
-     *             .name(&#34;snapshot_1&#34;)
+     *             .name("snapshot_1")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -669,7 +701,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -691,13 +724,14 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot1 = BlockstorageFunctions.getSnapshotV3(GetSnapshotV3Args.builder()
-     *             .name(&#34;snapshot_1&#34;)
+     *             .name("snapshot_1")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -710,7 +744,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -732,13 +767,14 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot1 = BlockstorageFunctions.getSnapshotV3(GetSnapshotV3Args.builder()
-     *             .name(&#34;snapshot_1&#34;)
+     *             .name("snapshot_1")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -751,7 +787,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -773,13 +810,14 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot1 = BlockstorageFunctions.getSnapshotV3(GetSnapshotV3Args.builder()
-     *             .name(&#34;snapshot_1&#34;)
+     *             .name("snapshot_1")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -792,7 +830,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -814,13 +853,14 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot1 = BlockstorageFunctions.getSnapshotV3(GetSnapshotV3Args.builder()
-     *             .name(&#34;snapshot_1&#34;)
+     *             .name("snapshot_1")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -833,7 +873,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -855,13 +896,14 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot1 = BlockstorageFunctions.getSnapshotV3(GetSnapshotV3Args.builder()
-     *             .name(&#34;snapshot_1&#34;)
+     *             .name("snapshot_1")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -874,7 +916,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -896,13 +939,14 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshot1 = BlockstorageFunctions.getSnapshotV3(GetSnapshotV3Args.builder()
-     *             .name(&#34;snapshot_1&#34;)
+     *             .name("snapshot_1")
      *             .mostRecent(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -915,7 +959,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -937,12 +982,13 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var volume1 = BlockstorageFunctions.getVolumeV2(GetVolumeV2Args.builder()
-     *             .name(&#34;volume_1&#34;)
+     *             .name("volume_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -955,7 +1001,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -977,12 +1024,13 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var volume1 = BlockstorageFunctions.getVolumeV2(GetVolumeV2Args.builder()
-     *             .name(&#34;volume_1&#34;)
+     *             .name("volume_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -995,7 +1043,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1017,12 +1066,13 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var volume1 = BlockstorageFunctions.getVolumeV2(GetVolumeV2Args.builder()
-     *             .name(&#34;volume_1&#34;)
+     *             .name("volume_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1035,7 +1085,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1057,12 +1108,13 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var volume1 = BlockstorageFunctions.getVolumeV2(GetVolumeV2Args.builder()
-     *             .name(&#34;volume_1&#34;)
+     *             .name("volume_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1075,7 +1127,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1097,12 +1150,13 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var volume1 = BlockstorageFunctions.getVolumeV2(GetVolumeV2Args.builder()
-     *             .name(&#34;volume_1&#34;)
+     *             .name("volume_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1115,7 +1169,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1137,12 +1192,13 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var volume1 = BlockstorageFunctions.getVolumeV2(GetVolumeV2Args.builder()
-     *             .name(&#34;volume_1&#34;)
+     *             .name("volume_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1155,7 +1211,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1177,12 +1234,13 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var volume1 = BlockstorageFunctions.getVolumeV3(GetVolumeV3Args.builder()
-     *             .name(&#34;volume_1&#34;)
+     *             .name("volume_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1195,7 +1253,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1217,12 +1276,13 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var volume1 = BlockstorageFunctions.getVolumeV3(GetVolumeV3Args.builder()
-     *             .name(&#34;volume_1&#34;)
+     *             .name("volume_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1235,7 +1295,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1257,12 +1318,13 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var volume1 = BlockstorageFunctions.getVolumeV3(GetVolumeV3Args.builder()
-     *             .name(&#34;volume_1&#34;)
+     *             .name("volume_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1275,7 +1337,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1297,12 +1360,13 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var volume1 = BlockstorageFunctions.getVolumeV3(GetVolumeV3Args.builder()
-     *             .name(&#34;volume_1&#34;)
+     *             .name("volume_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1315,7 +1379,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1337,12 +1402,13 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var volume1 = BlockstorageFunctions.getVolumeV3(GetVolumeV3Args.builder()
-     *             .name(&#34;volume_1&#34;)
+     *             .name("volume_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1355,7 +1421,8 @@ public final class BlockstorageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1377,12 +1444,13 @@ public final class BlockstorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var volume1 = BlockstorageFunctions.getVolumeV3(GetVolumeV3Args.builder()
-     *             .name(&#34;volume_1&#34;)
+     *             .name("volume_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

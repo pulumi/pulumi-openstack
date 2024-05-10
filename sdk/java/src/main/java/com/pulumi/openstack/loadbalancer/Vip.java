@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,17 +46,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vip1 = new Vip(&#34;vip1&#34;, VipArgs.builder()        
- *             .name(&#34;tf_test_lb_vip&#34;)
- *             .subnetId(&#34;12345&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var vip1 = new Vip("vip1", VipArgs.builder()        
+ *             .name("tf_test_lb_vip")
+ *             .subnetId("12345")
+ *             .protocol("HTTP")
  *             .port(80)
- *             .poolId(&#34;67890&#34;)
+ *             .poolId("67890")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

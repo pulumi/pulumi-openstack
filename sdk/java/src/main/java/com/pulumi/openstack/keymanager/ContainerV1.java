@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,63 +59,63 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var certificate1 = new SecretV1(&#34;certificate1&#34;, SecretV1Args.builder()        
- *             .name(&#34;certificate&#34;)
+ *         var certificate1 = new SecretV1("certificate1", SecretV1Args.builder()        
+ *             .name("certificate")
  *             .payload(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;cert.pem&#34;)
+ *                 .input("cert.pem")
  *                 .build()).result())
- *             .secretType(&#34;certificate&#34;)
- *             .payloadContentType(&#34;text/plain&#34;)
+ *             .secretType("certificate")
+ *             .payloadContentType("text/plain")
  *             .build());
  * 
- *         var privateKey1 = new SecretV1(&#34;privateKey1&#34;, SecretV1Args.builder()        
- *             .name(&#34;private_key&#34;)
+ *         var privateKey1 = new SecretV1("privateKey1", SecretV1Args.builder()        
+ *             .name("private_key")
  *             .payload(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;cert-key.pem&#34;)
+ *                 .input("cert-key.pem")
  *                 .build()).result())
- *             .secretType(&#34;private&#34;)
- *             .payloadContentType(&#34;text/plain&#34;)
+ *             .secretType("private")
+ *             .payloadContentType("text/plain")
  *             .build());
  * 
- *         var intermediate1 = new SecretV1(&#34;intermediate1&#34;, SecretV1Args.builder()        
- *             .name(&#34;intermediate&#34;)
+ *         var intermediate1 = new SecretV1("intermediate1", SecretV1Args.builder()        
+ *             .name("intermediate")
  *             .payload(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;intermediate-ca.pem&#34;)
+ *                 .input("intermediate-ca.pem")
  *                 .build()).result())
- *             .secretType(&#34;certificate&#34;)
- *             .payloadContentType(&#34;text/plain&#34;)
+ *             .secretType("certificate")
+ *             .payloadContentType("text/plain")
  *             .build());
  * 
- *         var tls1 = new ContainerV1(&#34;tls1&#34;, ContainerV1Args.builder()        
- *             .name(&#34;tls&#34;)
- *             .type(&#34;certificate&#34;)
+ *         var tls1 = new ContainerV1("tls1", ContainerV1Args.builder()        
+ *             .name("tls")
+ *             .type("certificate")
  *             .secretRefs(            
  *                 ContainerV1SecretRefArgs.builder()
- *                     .name(&#34;certificate&#34;)
+ *                     .name("certificate")
  *                     .secretRef(certificate1.secretRef())
  *                     .build(),
  *                 ContainerV1SecretRefArgs.builder()
- *                     .name(&#34;private_key&#34;)
+ *                     .name("private_key")
  *                     .secretRef(privateKey1.secretRef())
  *                     .build(),
  *                 ContainerV1SecretRefArgs.builder()
- *                     .name(&#34;intermediates&#34;)
+ *                     .name("intermediates")
  *                     .secretRef(intermediate1.secretRef())
  *                     .build())
  *             .build());
  * 
  *         final var subnet1 = NetworkingFunctions.getSubnet(GetSubnetArgs.builder()
- *             .name(&#34;my-subnet&#34;)
+ *             .name("my-subnet")
  *             .build());
  * 
- *         var lb1 = new LoadBalancer(&#34;lb1&#34;, LoadBalancerArgs.builder()        
- *             .name(&#34;loadbalancer&#34;)
- *             .vipSubnetId(subnet1.applyValue(getSubnetResult -&gt; getSubnetResult.id()))
+ *         var lb1 = new LoadBalancer("lb1", LoadBalancerArgs.builder()        
+ *             .name("loadbalancer")
+ *             .vipSubnetId(subnet1.applyValue(getSubnetResult -> getSubnetResult.id()))
  *             .build());
  * 
- *         var listener1 = new Listener(&#34;listener1&#34;, ListenerArgs.builder()        
- *             .name(&#34;https&#34;)
- *             .protocol(&#34;TERMINATED_HTTPS&#34;)
+ *         var listener1 = new Listener("listener1", ListenerArgs.builder()        
+ *             .name("https")
+ *             .protocol("TERMINATED_HTTPS")
  *             .protocolPort(443)
  *             .loadbalancerId(lb1.id())
  *             .defaultTlsContainerRef(tls1.containerRef())
@@ -122,7 +123,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Container with the ACL
@@ -130,7 +132,8 @@ import javax.annotation.Nullable;
  * &gt; **Note** Only read ACLs are supported
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -154,35 +157,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tls1 = new ContainerV1(&#34;tls1&#34;, ContainerV1Args.builder()        
- *             .name(&#34;tls&#34;)
- *             .type(&#34;certificate&#34;)
+ *         var tls1 = new ContainerV1("tls1", ContainerV1Args.builder()        
+ *             .name("tls")
+ *             .type("certificate")
  *             .secretRefs(            
  *                 ContainerV1SecretRefArgs.builder()
- *                     .name(&#34;certificate&#34;)
+ *                     .name("certificate")
  *                     .secretRef(certificate1.secretRef())
  *                     .build(),
  *                 ContainerV1SecretRefArgs.builder()
- *                     .name(&#34;private_key&#34;)
+ *                     .name("private_key")
  *                     .secretRef(privateKey1.secretRef())
  *                     .build(),
  *                 ContainerV1SecretRefArgs.builder()
- *                     .name(&#34;intermediates&#34;)
+ *                     .name("intermediates")
  *                     .secretRef(intermediate1.secretRef())
  *                     .build())
  *             .acl(ContainerV1AclArgs.builder()
  *                 .read(ContainerV1AclReadArgs.builder()
  *                     .projectAccess(false)
  *                     .users(                    
- *                         &#34;userid1&#34;,
- *                         &#34;userid2&#34;)
+ *                         "userid1",
+ *                         "userid2")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

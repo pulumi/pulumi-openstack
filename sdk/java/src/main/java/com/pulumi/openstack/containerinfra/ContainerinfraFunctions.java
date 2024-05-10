@@ -26,7 +26,8 @@ public final class ContainerinfraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -48,12 +49,13 @@ public final class ContainerinfraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cluster1 = ContainerinfraFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;cluster_1&#34;)
+     *             .name("cluster_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -66,7 +68,8 @@ public final class ContainerinfraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -88,12 +91,13 @@ public final class ContainerinfraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cluster1 = ContainerinfraFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;cluster_1&#34;)
+     *             .name("cluster_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -106,7 +110,8 @@ public final class ContainerinfraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -128,12 +133,13 @@ public final class ContainerinfraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cluster1 = ContainerinfraFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;cluster_1&#34;)
+     *             .name("cluster_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -146,7 +152,8 @@ public final class ContainerinfraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -168,12 +175,13 @@ public final class ContainerinfraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cluster1 = ContainerinfraFunctions.getCluster(GetClusterArgs.builder()
-     *             .name(&#34;cluster_1&#34;)
+     *             .name("cluster_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -187,7 +195,8 @@ public final class ContainerinfraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -209,12 +218,13 @@ public final class ContainerinfraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var clustertemplate1 = ContainerinfraFunctions.getClusterTemplate(GetClusterTemplateArgs.builder()
-     *             .name(&#34;clustertemplate_1&#34;)
+     *             .name("clustertemplate_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -228,7 +238,8 @@ public final class ContainerinfraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -250,12 +261,13 @@ public final class ContainerinfraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var clustertemplate1 = ContainerinfraFunctions.getClusterTemplate(GetClusterTemplateArgs.builder()
-     *             .name(&#34;clustertemplate_1&#34;)
+     *             .name("clustertemplate_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -269,7 +281,8 @@ public final class ContainerinfraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -291,12 +304,13 @@ public final class ContainerinfraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var clustertemplate1 = ContainerinfraFunctions.getClusterTemplate(GetClusterTemplateArgs.builder()
-     *             .name(&#34;clustertemplate_1&#34;)
+     *             .name("clustertemplate_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -310,7 +324,8 @@ public final class ContainerinfraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -332,12 +347,13 @@ public final class ContainerinfraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var clustertemplate1 = ContainerinfraFunctions.getClusterTemplate(GetClusterTemplateArgs.builder()
-     *             .name(&#34;clustertemplate_1&#34;)
+     *             .name("clustertemplate_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -350,7 +366,8 @@ public final class ContainerinfraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -372,13 +389,14 @@ public final class ContainerinfraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nodegroup1 = ContainerinfraFunctions.getNodeGroup(GetNodeGroupArgs.builder()
-     *             .clusterId(&#34;cluster_1&#34;)
-     *             .name(&#34;nodegroup_1&#34;)
+     *             .clusterId("cluster_1")
+     *             .name("nodegroup_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -391,7 +409,8 @@ public final class ContainerinfraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -413,13 +432,14 @@ public final class ContainerinfraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nodegroup1 = ContainerinfraFunctions.getNodeGroup(GetNodeGroupArgs.builder()
-     *             .clusterId(&#34;cluster_1&#34;)
-     *             .name(&#34;nodegroup_1&#34;)
+     *             .clusterId("cluster_1")
+     *             .name("nodegroup_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -432,7 +452,8 @@ public final class ContainerinfraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -454,13 +475,14 @@ public final class ContainerinfraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nodegroup1 = ContainerinfraFunctions.getNodeGroup(GetNodeGroupArgs.builder()
-     *             .clusterId(&#34;cluster_1&#34;)
-     *             .name(&#34;nodegroup_1&#34;)
+     *             .clusterId("cluster_1")
+     *             .name("nodegroup_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -473,7 +495,8 @@ public final class ContainerinfraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -495,13 +518,14 @@ public final class ContainerinfraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nodegroup1 = ContainerinfraFunctions.getNodeGroup(GetNodeGroupArgs.builder()
-     *             .clusterId(&#34;cluster_1&#34;)
-     *             .name(&#34;nodegroup_1&#34;)
+     *             .clusterId("cluster_1")
+     *             .name("nodegroup_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

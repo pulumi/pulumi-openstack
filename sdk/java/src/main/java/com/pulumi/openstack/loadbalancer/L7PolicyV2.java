@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,41 +54,41 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network_1&#34;)
- *             .adminStateUp(&#34;true&#34;)
+ *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *             .name("network_1")
+ *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
- *             .name(&#34;subnet_1&#34;)
- *             .cidr(&#34;192.168.199.0/24&#34;)
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *             .name("subnet_1")
+ *             .cidr("192.168.199.0/24")
  *             .ipVersion(4)
  *             .networkId(network1.id())
  *             .build());
  * 
- *         var loadbalancer1 = new LoadBalancer(&#34;loadbalancer1&#34;, LoadBalancerArgs.builder()        
- *             .name(&#34;loadbalancer_1&#34;)
+ *         var loadbalancer1 = new LoadBalancer("loadbalancer1", LoadBalancerArgs.builder()        
+ *             .name("loadbalancer_1")
  *             .vipSubnetId(subnet1.id())
  *             .build());
  * 
- *         var listener1 = new Listener(&#34;listener1&#34;, ListenerArgs.builder()        
- *             .name(&#34;listener_1&#34;)
- *             .protocol(&#34;HTTP&#34;)
+ *         var listener1 = new Listener("listener1", ListenerArgs.builder()        
+ *             .name("listener_1")
+ *             .protocol("HTTP")
  *             .protocolPort(8080)
  *             .loadbalancerId(loadbalancer1.id())
  *             .build());
  * 
- *         var pool1 = new Pool(&#34;pool1&#34;, PoolArgs.builder()        
- *             .name(&#34;pool_1&#34;)
- *             .protocol(&#34;HTTP&#34;)
- *             .lbMethod(&#34;ROUND_ROBIN&#34;)
+ *         var pool1 = new Pool("pool1", PoolArgs.builder()        
+ *             .name("pool_1")
+ *             .protocol("HTTP")
+ *             .lbMethod("ROUND_ROBIN")
  *             .loadbalancerId(loadbalancer1.id())
  *             .build());
  * 
- *         var l7policy1 = new L7PolicyV2(&#34;l7policy1&#34;, L7PolicyV2Args.builder()        
- *             .name(&#34;test&#34;)
- *             .action(&#34;REDIRECT_TO_POOL&#34;)
- *             .description(&#34;test l7 policy&#34;)
+ *         var l7policy1 = new L7PolicyV2("l7policy1", L7PolicyV2Args.builder()        
+ *             .name("test")
+ *             .action("REDIRECT_TO_POOL")
+ *             .description("test l7 policy")
  *             .position(1)
  *             .listenerId(listener1.id())
  *             .redirectPoolId(pool1.id())
@@ -95,7 +96,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
