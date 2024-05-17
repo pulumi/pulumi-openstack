@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var floatip1 = new FloatingIp("floatip1", FloatingIpArgs.builder()        
+ *         var floatip1 = new FloatingIp("floatip1", FloatingIpArgs.builder()
  *             .pool("public")
  *             .build());
  * 

@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var lb1 = new LoadBalancer("lb1", LoadBalancerArgs.builder()        
+ *         var lb1 = new LoadBalancer("lb1", LoadBalancerArgs.builder()
  *             .vipSubnetId("d9415786-5f1a-428b-b35f-2f1523e146d2")
  *             .build());
  * 

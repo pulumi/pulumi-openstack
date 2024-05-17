@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var group1 = new EndpointGroup("group1", EndpointGroupArgs.builder()        
+ *         var group1 = new EndpointGroup("group1", EndpointGroupArgs.builder()
  *             .name("Group 1")
  *             .type("cidr")
  *             .endpoints(            

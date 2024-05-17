@@ -50,28 +50,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var router1 = new Router("router1", RouterArgs.builder()        
+ *         var router1 = new Router("router1", RouterArgs.builder()
  *             .name("router_1")
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()
  *             .networkId(network1.id())
  *             .cidr("192.168.199.0/24")
  *             .ipVersion(4)
  *             .build());
  * 
- *         var int1 = new RouterInterface("int1", RouterInterfaceArgs.builder()        
+ *         var int1 = new RouterInterface("int1", RouterInterfaceArgs.builder()
  *             .routerId(router1.id())
  *             .subnetId(subnet1.id())
  *             .build());
  * 
- *         var routerRoute1 = new RouterRoute("routerRoute1", RouterRouteArgs.builder()        
+ *         var routerRoute1 = new RouterRoute("routerRoute1", RouterRouteArgs.builder()
  *             .routerId(router1.id())
  *             .destinationCidr("10.0.1.0/24")
  *             .nextHop("192.168.199.254")

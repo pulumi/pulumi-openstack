@@ -47,12 +47,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secgroup1 = new SecGroup("secgroup1", SecGroupArgs.builder()        
+ *         var secgroup1 = new SecGroup("secgroup1", SecGroupArgs.builder()
  *             .name("secgroup_1")
  *             .description("My neutron security group")
  *             .build());
  * 
- *         var secgroupRule1 = new SecGroupRule("secgroupRule1", SecGroupRuleArgs.builder()        
+ *         var secgroupRule1 = new SecGroupRule("secgroupRule1", SecGroupRuleArgs.builder()
  *             .direction("ingress")
  *             .ethertype("IPv4")
  *             .protocol("tcp")

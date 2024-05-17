@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZone = new Zone("exampleZone", ZoneArgs.builder()        
+ *         var exampleZone = new Zone("exampleZone", ZoneArgs.builder()
  *             .name("example.com.")
  *             .email("jdoe{@literal @}example.com")
  *             .description("An example zone")
@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .type("PRIMARY")
  *             .build());
  * 
- *         var request1 = new TransferRequest("request1", TransferRequestArgs.builder()        
+ *         var request1 = new TransferRequest("request1", TransferRequestArgs.builder()
  *             .zoneId(exampleZone.id())
  *             .description("a transfer request")
  *             .build());

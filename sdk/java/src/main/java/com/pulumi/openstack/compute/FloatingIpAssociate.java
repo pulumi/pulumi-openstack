@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance1 = new Instance("instance1", InstanceArgs.builder()        
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()
  *             .name("instance_1")
  *             .imageId("ad091b52-742f-469e-8f3c-fd81cadf0743")
  *             .flavorId(3)
@@ -57,11 +57,11 @@ import javax.annotation.Nullable;
  *             .securityGroups("default")
  *             .build());
  * 
- *         var fip1 = new FloatingIp("fip1", FloatingIpArgs.builder()        
+ *         var fip1 = new FloatingIp("fip1", FloatingIpArgs.builder()
  *             .pool("my_pool")
  *             .build());
  * 
- *         var fip1FloatingIpAssociate = new FloatingIpAssociate("fip1FloatingIpAssociate", FloatingIpAssociateArgs.builder()        
+ *         var fip1FloatingIpAssociate = new FloatingIpAssociate("fip1FloatingIpAssociate", FloatingIpAssociateArgs.builder()
  *             .floatingIp(fip1.address())
  *             .instanceId(instance1.id())
  *             .build());
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance1 = new Instance("instance1", InstanceArgs.builder()        
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()
  *             .name("instance_1")
  *             .imageId("ad091b52-742f-469e-8f3c-fd81cadf0743")
  *             .flavorId(3)
@@ -117,11 +117,11 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var fip1 = new FloatingIp("fip1", FloatingIpArgs.builder()        
+ *         var fip1 = new FloatingIp("fip1", FloatingIpArgs.builder()
  *             .pool("my_pool")
  *             .build());
  * 
- *         var fip1FloatingIpAssociate = new FloatingIpAssociate("fip1FloatingIpAssociate", FloatingIpAssociateArgs.builder()        
+ *         var fip1FloatingIpAssociate = new FloatingIpAssociate("fip1FloatingIpAssociate", FloatingIpAssociateArgs.builder()
  *             .floatingIp(fip1.address())
  *             .instanceId(instance1.id())
  *             .fixedIp(instance1.networks().applyValue(networks -> networks[1].fixedIpV4()))

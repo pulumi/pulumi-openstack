@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .name("secgroup")
  *             .build());
  * 
- *         var port1 = new PortSecGroupAssociate("port1", PortSecGroupAssociateArgs.builder()        
+ *         var port1 = new PortSecGroupAssociate("port1", PortSecGroupAssociateArgs.builder()
  *             .portId(systemPort.applyValue(getPortResult -> getPortResult.id()))
  *             .securityGroupIds(secgroup.applyValue(getSecGroupResult -> getSecGroupResult.id()))
  *             .build());
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *             .name("secgroup")
  *             .build());
  * 
- *         var port1 = new PortSecGroupAssociate("port1", PortSecGroupAssociateArgs.builder()        
+ *         var port1 = new PortSecGroupAssociate("port1", PortSecGroupAssociateArgs.builder()
  *             .portId(systemPort.applyValue(getPortResult -> getPortResult.id()))
  *             .enforce("true")
  *             .securityGroupIds(secgroup.applyValue(getSecGroupResult -> getSecGroupResult.id()))
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  *             .fixedIp("10.0.0.10")
  *             .build());
  * 
- *         var port1 = new PortSecGroupAssociate("port1", PortSecGroupAssociateArgs.builder()        
+ *         var port1 = new PortSecGroupAssociate("port1", PortSecGroupAssociateArgs.builder()
  *             .portId(systemPort.applyValue(getPortResult -> getPortResult.id()))
  *             .enforce("true")
  *             .securityGroupIds()

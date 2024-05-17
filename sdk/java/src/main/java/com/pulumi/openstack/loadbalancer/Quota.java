@@ -57,11 +57,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project1 = new Project("project1", ProjectArgs.builder()        
+ *         var project1 = new Project("project1", ProjectArgs.builder()
  *             .name("project_1")
  *             .build());
  * 
- *         var quota1 = new Quota("quota1", QuotaArgs.builder()        
+ *         var quota1 = new Quota("quota1", QuotaArgs.builder()
  *             .projectId(project1.id())
  *             .loadbalancer(6)
  *             .listener(7)

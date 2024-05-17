@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var conn1 = new SiteConnection("conn1", SiteConnectionArgs.builder()        
+ *         var conn1 = new SiteConnection("conn1", SiteConnectionArgs.builder()
  *             .name("connection_1")
  *             .ikepolicyId(policy2.id())
  *             .ipsecpolicyId(policy1.id())

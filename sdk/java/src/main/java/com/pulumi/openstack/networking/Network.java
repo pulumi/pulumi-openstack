@@ -59,19 +59,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()
  *             .name("subnet_1")
  *             .networkId(network1.id())
  *             .cidr("192.168.199.0/24")
  *             .ipVersion(4)
  *             .build());
  * 
- *         var secgroup1 = new SecGroup("secgroup1", SecGroupArgs.builder()        
+ *         var secgroup1 = new SecGroup("secgroup1", SecGroupArgs.builder()
  *             .name("secgroup_1")
  *             .description("a security group")
  *             .rules(SecGroupRuleArgs.builder()
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var port1 = new Port("port1", PortArgs.builder()        
+ *         var port1 = new Port("port1", PortArgs.builder()
  *             .name("port_1")
  *             .networkId(network1.id())
  *             .adminStateUp("true")
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var instance1 = new Instance("instance1", InstanceArgs.builder()        
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()
  *             .name("instance_1")
  *             .securityGroups(secgroup1.name())
  *             .networks(InstanceNetworkArgs.builder()

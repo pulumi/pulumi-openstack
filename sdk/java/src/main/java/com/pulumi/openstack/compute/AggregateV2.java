@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dellServers = new AggregateV2("dellServers", AggregateV2Args.builder()        
+ *         var dellServers = new AggregateV2("dellServers", AggregateV2Args.builder()
  *             .region("RegionOne")
  *             .name("dell_servers")
  *             .zone("nova")
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new AggregateV2("test", AggregateV2Args.builder()        
+ *         var test = new AggregateV2("test", AggregateV2Args.builder()
  *             .name("test")
  *             .build());
  * 

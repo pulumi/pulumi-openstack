@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var rule1 = new RuleV2("rule1", RuleV2Args.builder()        
+ *         var rule1 = new RuleV2("rule1", RuleV2Args.builder()
  *             .name("firewall_rule_2")
  *             .description("drop TELNET traffic")
  *             .action("deny")
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .enabled("true")
  *             .build());
  * 
- *         var rule2 = new RuleV2("rule2", RuleV2Args.builder()        
+ *         var rule2 = new RuleV2("rule2", RuleV2Args.builder()
  *             .name("firewall_rule_1")
  *             .description("drop NTP traffic")
  *             .action("deny")
@@ -68,17 +68,17 @@ import javax.annotation.Nullable;
  *             .enabled("false")
  *             .build());
  * 
- *         var policy1 = new PolicyV2("policy1", PolicyV2Args.builder()        
+ *         var policy1 = new PolicyV2("policy1", PolicyV2Args.builder()
  *             .name("firewall_ingress_policy")
  *             .rules(rule1.id())
  *             .build());
  * 
- *         var policy2 = new PolicyV2("policy2", PolicyV2Args.builder()        
+ *         var policy2 = new PolicyV2("policy2", PolicyV2Args.builder()
  *             .name("firewall_egress_policy")
  *             .rules(rule2.id())
  *             .build());
  * 
- *         var group1 = new GroupV2("group1", GroupV2Args.builder()        
+ *         var group1 = new GroupV2("group1", GroupV2Args.builder()
  *             .name("firewall_group")
  *             .ingressFirewallPolicyId(policy1.id())
  *             .egressFirewallPolicyId(policy2.id())

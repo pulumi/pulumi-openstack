@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool1 = new PoolV1("pool1", PoolV1Args.builder()        
+ *         var pool1 = new PoolV1("pool1", PoolV1Args.builder()
  *             .name("tf_test_lb_pool")
  *             .protocol("HTTP")
  *             .subnetId("12345")

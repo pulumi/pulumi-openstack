@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test_flavor = new Flavor("test-flavor", FlavorArgs.builder()        
+ *         var test_flavor = new Flavor("test-flavor", FlavorArgs.builder()
  *             .name("my-flavor")
  *             .ram("8096")
  *             .vcpus("2")

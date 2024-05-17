@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var monitor1 = new Monitor("monitor1", MonitorArgs.builder()        
+ *         var monitor1 = new Monitor("monitor1", MonitorArgs.builder()
  *             .poolId(pool1.id())
  *             .type("PING")
  *             .delay(20)

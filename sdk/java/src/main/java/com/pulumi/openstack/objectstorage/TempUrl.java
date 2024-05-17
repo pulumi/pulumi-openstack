@@ -55,18 +55,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var container1 = new Container("container1", ContainerArgs.builder()        
+ *         var container1 = new Container("container1", ContainerArgs.builder()
  *             .name("test")
  *             .metadata(Map.of("Temp-URL-Key", "testkey"))
  *             .build());
  * 
- *         var object1 = new ContainerObject("object1", ContainerObjectArgs.builder()        
+ *         var object1 = new ContainerObject("object1", ContainerObjectArgs.builder()
  *             .containerName(container1.name())
  *             .name("test")
  *             .content("Hello, world!")
  *             .build());
  * 
- *         var objTempurl = new TempUrl("objTempurl", TempUrlArgs.builder()        
+ *         var objTempurl = new TempUrl("objTempurl", TempUrlArgs.builder()
  *             .container(container1.name())
  *             .object(object1.name())
  *             .method("post")

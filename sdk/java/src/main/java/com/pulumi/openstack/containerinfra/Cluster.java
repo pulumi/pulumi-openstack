@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cluster1 = new Cluster("cluster1", ClusterArgs.builder()        
+ *         var cluster1 = new Cluster("cluster1", ClusterArgs.builder()
  *             .name("cluster_1")
  *             .clusterTemplateId("b9a45c5c-cd03-4958-82aa-b80bf93cb922")
  *             .masterCount(3)

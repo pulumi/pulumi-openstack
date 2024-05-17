@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secgroup1 = new SecGroup("secgroup1", SecGroupArgs.builder()        
+ *         var secgroup1 = new SecGroup("secgroup1", SecGroupArgs.builder()
  *             .name("my_secgroup")
  *             .description("my security group")
  *             .rules(            
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test_server = new Instance("test-server", InstanceArgs.builder()        
+ *         var test_server = new Instance("test-server", InstanceArgs.builder()
  *             .name("tf-test")
  *             .imageId("ad091b52-742f-469e-8f3c-fd81cadf0743")
  *             .flavorId("3")

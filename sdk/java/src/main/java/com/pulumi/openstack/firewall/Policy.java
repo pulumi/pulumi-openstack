@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var rule1 = new Rule("rule1", RuleArgs.builder()        
+ *         var rule1 = new Rule("rule1", RuleArgs.builder()
  *             .name("my-rule-1")
  *             .description("drop TELNET traffic")
  *             .action("deny")
@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .enabled("true")
  *             .build());
  * 
- *         var rule2 = new Rule("rule2", RuleArgs.builder()        
+ *         var rule2 = new Rule("rule2", RuleArgs.builder()
  *             .name("my-rule-2")
  *             .description("drop NTP traffic")
  *             .action("deny")
@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .enabled("false")
  *             .build());
  * 
- *         var policy1 = new Policy("policy1", PolicyArgs.builder()        
+ *         var policy1 = new Policy("policy1", PolicyArgs.builder()
  *             .name("my-policy")
  *             .rules(            
  *                 rule1.id(),

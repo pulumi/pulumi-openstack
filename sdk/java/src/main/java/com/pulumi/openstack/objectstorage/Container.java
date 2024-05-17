@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var container1 = new Container("container1", ContainerArgs.builder()        
+ *         var container1 = new Container("container1", ContainerArgs.builder()
  *             .region("RegionOne")
  *             .name("tf-test-container-1")
  *             .metadata(Map.of("test", "true"))
@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var container1 = new Container("container1", ContainerArgs.builder()        
+ *         var container1 = new Container("container1", ContainerArgs.builder()
  *             .region("RegionOne")
  *             .name("tf-test-container-1")
  *             .metadata(Map.of("test", "true"))
@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Requires that a user know the object name they are attempting to download
- *         var container1 = new Container("container1", ContainerArgs.builder()        
+ *         var container1 = new Container("container1", ContainerArgs.builder()
  *             .region("RegionOne")
  *             .name("tf-test-container-1")
  *             .containerRead(".r:*")
@@ -169,7 +169,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Any user can read any object, and list all objects in the container
- *         var container1 = new Container("container1", ContainerArgs.builder()        
+ *         var container1 = new Container("container1", ContainerArgs.builder()
  *             .region("RegionOne")
  *             .name("tf-test-container-1")
  *             .containerRead(".r:*,.rlistings")
@@ -213,7 +213,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // The named user can only upload objects, not read objects or list the container
- *         var container1 = new Container("container1", ContainerArgs.builder()        
+ *         var container1 = new Container("container1", ContainerArgs.builder()
  *             .region("RegionOne")
  *             .name("tf-test-container-1")
  *             .containerRead(String.format(".r:-%s", username))

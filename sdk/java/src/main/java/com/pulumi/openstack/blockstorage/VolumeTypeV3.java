@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var volumeType1 = new VolumeTypeV3("volumeType1", VolumeTypeV3Args.builder()        
+ *         var volumeType1 = new VolumeTypeV3("volumeType1", VolumeTypeV3Args.builder()
  *             .name("volume_type_1")
  *             .description("Volume type 1")
  *             .extraSpecs(Map.ofEntries(

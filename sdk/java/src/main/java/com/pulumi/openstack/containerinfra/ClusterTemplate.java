@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var clustertemplate1 = new ClusterTemplate("clustertemplate1", ClusterTemplateArgs.builder()        
+ *         var clustertemplate1 = new ClusterTemplate("clustertemplate1", ClusterTemplateArgs.builder()
  *             .name("clustertemplate_1")
  *             .image("Fedora-Atomic-27")
  *             .coe("kubernetes")

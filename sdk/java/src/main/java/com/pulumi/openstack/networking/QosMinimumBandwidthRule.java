@@ -47,12 +47,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var qosPolicy1 = new QosPolicy("qosPolicy1", QosPolicyArgs.builder()        
+ *         var qosPolicy1 = new QosPolicy("qosPolicy1", QosPolicyArgs.builder()
  *             .name("qos_policy_1")
  *             .description("min_kbps")
  *             .build());
  * 
- *         var minimumBandwidthRule1 = new QosMinimumBandwidthRule("minimumBandwidthRule1", QosMinimumBandwidthRuleArgs.builder()        
+ *         var minimumBandwidthRule1 = new QosMinimumBandwidthRule("minimumBandwidthRule1", QosMinimumBandwidthRuleArgs.builder()
  *             .qosPolicyId(qosPolicy1.id())
  *             .minKbps(200)
  *             .build());

@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test_sg = new ServerGroup("test-sg", ServerGroupArgs.builder()        
+ *         var test_sg = new ServerGroup("test-sg", ServerGroupArgs.builder()
  *             .name("my-sg")
  *             .policies("anti-affinity")
  *             .build());
@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test_sg = new ServerGroup("test-sg", ServerGroupArgs.builder()        
+ *         var test_sg = new ServerGroup("test-sg", ServerGroupArgs.builder()
  *             .name("my-sg")
  *             .policies("anti-affinity")
  *             .rules(ServerGroupRulesArgs.builder()
