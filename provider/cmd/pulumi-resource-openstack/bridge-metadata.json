@@ -3,23 +3,23 @@
         "resources": {
             "openstack_blockstorage_qos_association_v3": {
                 "current": "openstack:blockstorage/qosAssociationV3:QosAssociationV3",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_blockstorage_qos_v3": {
                 "current": "openstack:blockstorage/qosV3:QosV3",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_blockstorage_quotaset_v2": {
                 "current": "openstack:blockstorage/quoteSetV2:QuoteSetV2",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_blockstorage_quotaset_v3": {
                 "current": "openstack:blockstorage/quoteSetV3:QuoteSetV3",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_blockstorage_volume_attach_v2": {
                 "current": "openstack:blockstorage/volumeAttachV2:VolumeAttachV2",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "wwpn": {
                         "maxItemsOne": false
@@ -28,7 +28,7 @@
             },
             "openstack_blockstorage_volume_attach_v3": {
                 "current": "openstack:blockstorage/volumeAttach:VolumeAttach",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "wwpn": {
                         "maxItemsOne": false
@@ -37,15 +37,15 @@
             },
             "openstack_blockstorage_volume_type_access_v3": {
                 "current": "openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_blockstorage_volume_type_v3": {
                 "current": "openstack:blockstorage/volumeTypeV3:VolumeTypeV3",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_blockstorage_volume_v1": {
                 "current": "openstack:blockstorage/volumeV1:VolumeV1",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "attachment": {
                         "maxItemsOne": false
@@ -54,7 +54,7 @@
             },
             "openstack_blockstorage_volume_v2": {
                 "current": "openstack:blockstorage/volumeV2:VolumeV2",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "attachment": {
                         "maxItemsOne": false
@@ -76,7 +76,7 @@
             },
             "openstack_blockstorage_volume_v3": {
                 "current": "openstack:blockstorage/volume:Volume",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "attachment": {
                         "maxItemsOne": false
@@ -98,7 +98,7 @@
             },
             "openstack_compute_aggregate_v2": {
                 "current": "openstack:compute/aggregateV2:AggregateV2",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "hosts": {
                         "maxItemsOne": false
@@ -107,23 +107,23 @@
             },
             "openstack_compute_flavor_access_v2": {
                 "current": "openstack:compute/flavorAccess:FlavorAccess",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_compute_flavor_v2": {
                 "current": "openstack:compute/flavor:Flavor",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_compute_floatingip_associate_v2": {
                 "current": "openstack:compute/floatingIpAssociate:FloatingIpAssociate",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_compute_floatingip_v2": {
                 "current": "openstack:compute/floatingIp:FloatingIp",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_compute_instance_v2": {
                 "current": "openstack:compute/instance:Instance",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_tags": {
                         "maxItemsOne": false
@@ -164,27 +164,24 @@
                     },
                     "vendor_options": {
                         "maxItemsOne": true
-                    },
-                    "volume": {
-                        "maxItemsOne": false
                     }
                 }
             },
             "openstack_compute_interface_attach_v2": {
                 "current": "openstack:compute/interfaceAttach:InterfaceAttach",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_compute_keypair_v2": {
                 "current": "openstack:compute/keypair:Keypair",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_compute_quotaset_v2": {
                 "current": "openstack:compute/quotaSetV2:QuotaSetV2",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_compute_secgroup_v2": {
                 "current": "openstack:compute/secGroup:SecGroup",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "rule": {
                         "maxItemsOne": false
@@ -193,7 +190,7 @@
             },
             "openstack_compute_servergroup_v2": {
                 "current": "openstack:compute/serverGroup:ServerGroup",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "members": {
                         "maxItemsOne": false
@@ -208,7 +205,7 @@
             },
             "openstack_compute_volume_attach_v2": {
                 "current": "openstack:compute/volumeAttach:VolumeAttach",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "vendor_options": {
                         "maxItemsOne": true
@@ -217,7 +214,7 @@
             },
             "openstack_containerinfra_cluster_v1": {
                 "current": "openstack:containerinfra/cluster:Cluster",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "master_addresses": {
                         "maxItemsOne": false
@@ -229,15 +226,15 @@
             },
             "openstack_containerinfra_clustertemplate_v1": {
                 "current": "openstack:containerinfra/clusterTemplate:ClusterTemplate",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_containerinfra_nodegroup_v1": {
                 "current": "openstack:containerinfra/nodeGroup:NodeGroup",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_db_configuration_v1": {
                 "current": "openstack:database/configuration:Configuration",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "configuration": {
                         "maxItemsOne": false
@@ -249,11 +246,11 @@
             },
             "openstack_db_database_v1": {
                 "current": "openstack:database/database:Database",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_db_instance_v1": {
                 "current": "openstack:database/instance:Instance",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "addresses": {
                         "maxItemsOne": false
@@ -281,7 +278,7 @@
             },
             "openstack_db_user_v1": {
                 "current": "openstack:database/user:User",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "databases": {
                         "maxItemsOne": false
@@ -290,7 +287,7 @@
             },
             "openstack_dns_recordset_v2": {
                 "current": "openstack:dns/recordSet:RecordSet",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "records": {
                         "maxItemsOne": false
@@ -299,15 +296,15 @@
             },
             "openstack_dns_transfer_accept_v2": {
                 "current": "openstack:dns/transferAccept:TransferAccept",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_dns_transfer_request_v2": {
                 "current": "openstack:dns/transferRequest:TransferRequest",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_dns_zone_v2": {
                 "current": "openstack:dns/zone:Zone",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "masters": {
                         "maxItemsOne": false
@@ -316,7 +313,7 @@
             },
             "openstack_fw_firewall_v1": {
                 "current": "openstack:firewall/firewall:Firewall",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "associated_routers": {
                         "maxItemsOne": false
@@ -325,7 +322,7 @@
             },
             "openstack_fw_group_v2": {
                 "current": "openstack:firewall/groupV2:GroupV2",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "ports": {
                         "maxItemsOne": false
@@ -334,7 +331,7 @@
             },
             "openstack_fw_policy_v1": {
                 "current": "openstack:firewall/policy:Policy",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "rules": {
                         "maxItemsOne": false
@@ -343,7 +340,7 @@
             },
             "openstack_fw_policy_v2": {
                 "current": "openstack:firewall/policyV2:PolicyV2",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "rules": {
                         "maxItemsOne": false
@@ -352,15 +349,15 @@
             },
             "openstack_fw_rule_v1": {
                 "current": "openstack:firewall/rule:Rule",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_fw_rule_v2": {
                 "current": "openstack:firewall/ruleV2:RuleV2",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_identity_application_credential_v3": {
                 "current": "openstack:identity/applicationCredential:ApplicationCredential",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "access_rules": {
                         "maxItemsOne": false
@@ -372,23 +369,23 @@
             },
             "openstack_identity_ec2_credential_v3": {
                 "current": "openstack:identity/ec2CredentialV3:Ec2CredentialV3",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_identity_endpoint_v3": {
                 "current": "openstack:identity/endpointV3:EndpointV3",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_identity_group_v3": {
                 "current": "openstack:identity/groupV3:GroupV3",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_identity_inherit_role_assignment_v3": {
                 "current": "openstack:identity/inheritRoleAssignment:InheritRoleAssignment",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_identity_project_v3": {
                 "current": "openstack:identity/project:Project",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "tags": {
                         "maxItemsOne": false
@@ -397,23 +394,23 @@
             },
             "openstack_identity_role_assignment_v3": {
                 "current": "openstack:identity/roleAssignment:RoleAssignment",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_identity_role_v3": {
                 "current": "openstack:identity/role:Role",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_identity_service_v3": {
                 "current": "openstack:identity/serviceV3:ServiceV3",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_identity_user_membership_v3": {
                 "current": "openstack:identity/userMembershipV3:UserMembershipV3",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_identity_user_v3": {
                 "current": "openstack:identity/user:User",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "multi_factor_auth_rule": {
                         "maxItemsOne": false,
@@ -429,15 +426,15 @@
             },
             "openstack_images_image_access_accept_v2": {
                 "current": "openstack:images/imageAccessAccept:ImageAccessAccept",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_images_image_access_v2": {
                 "current": "openstack:images/imageAccess:ImageAccess",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_images_image_v2": {
                 "current": "openstack:images/image:Image",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "tags": {
                         "maxItemsOne": false
@@ -446,7 +443,7 @@
             },
             "openstack_keymanager_container_v1": {
                 "current": "openstack:keymanager/containerV1:ContainerV1",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "acl": {
                         "maxItemsOne": true,
@@ -475,7 +472,7 @@
             },
             "openstack_keymanager_order_v1": {
                 "current": "openstack:keymanager/orderV1:OrderV1",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "meta": {
                         "maxItemsOne": true
@@ -484,7 +481,7 @@
             },
             "openstack_keymanager_secret_v1": {
                 "current": "openstack:keymanager/secretV1:SecretV1",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "acl": {
                         "maxItemsOne": true,
@@ -507,15 +504,15 @@
             },
             "openstack_lb_l7policy_v2": {
                 "current": "openstack:loadbalancer/l7PolicyV2:L7PolicyV2",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_lb_l7rule_v2": {
                 "current": "openstack:loadbalancer/l7RuleV2:L7RuleV2",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_lb_listener_v2": {
                 "current": "openstack:loadbalancer/listener:Listener",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "allowed_cidrs": {
                         "maxItemsOne": false
@@ -530,7 +527,7 @@
             },
             "openstack_lb_loadbalancer_v2": {
                 "current": "openstack:loadbalancer/loadBalancer:LoadBalancer",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "security_group_ids": {
                         "maxItemsOne": false
@@ -542,15 +539,15 @@
             },
             "openstack_lb_member_v1": {
                 "current": "openstack:loadbalancer/memberV1:MemberV1",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_lb_member_v2": {
                 "current": "openstack:loadbalancer/member:Member",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_lb_members_v2": {
                 "current": "openstack:loadbalancer/members:Members",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "member": {
                         "maxItemsOne": false
@@ -559,19 +556,16 @@
             },
             "openstack_lb_monitor_v1": {
                 "current": "openstack:loadbalancer/monitorV1:MonitorV1",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_lb_monitor_v2": {
                 "current": "openstack:loadbalancer/monitor:Monitor",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_lb_pool_v1": {
                 "current": "openstack:loadbalancer/poolV1:PoolV1",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
-                    "member": {
-                        "maxItemsOne": false
-                    },
                     "monitor_ids": {
                         "maxItemsOne": false
                     }
@@ -579,7 +573,7 @@
             },
             "openstack_lb_pool_v2": {
                 "current": "openstack:loadbalancer/pool:Pool",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "persistence": {
                         "maxItemsOne": true
@@ -588,23 +582,23 @@
             },
             "openstack_lb_quota_v2": {
                 "current": "openstack:loadbalancer/quota:Quota",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_lb_vip_v1": {
                 "current": "openstack:loadbalancer/vip:Vip",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_networking_addressscope_v2": {
                 "current": "openstack:networking/addressScope:AddressScope",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_networking_floatingip_associate_v2": {
                 "current": "openstack:networking/floatingIpAssociate:FloatingIpAssociate",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_networking_floatingip_v2": {
                 "current": "openstack:networking/floatingIp:FloatingIp",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_tags": {
                         "maxItemsOne": false
@@ -619,7 +613,7 @@
             },
             "openstack_networking_network_v2": {
                 "current": "openstack:networking/network:Network",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_tags": {
                         "maxItemsOne": false
@@ -637,7 +631,7 @@
             },
             "openstack_networking_port_secgroup_associate_v2": {
                 "current": "openstack:networking/portSecGroupAssociate:PortSecGroupAssociate",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_security_group_ids": {
                         "maxItemsOne": false
@@ -649,7 +643,7 @@
             },
             "openstack_networking_port_v2": {
                 "current": "openstack:networking/port:Port",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_fixed_ips": {
                         "maxItemsOne": false
@@ -685,23 +679,23 @@
             },
             "openstack_networking_portforwarding_v2": {
                 "current": "openstack:networking/portForwardingV2:PortForwardingV2",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_networking_qos_bandwidth_limit_rule_v2": {
                 "current": "openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_networking_qos_dscp_marking_rule_v2": {
                 "current": "openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_networking_qos_minimum_bandwidth_rule_v2": {
                 "current": "openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_networking_qos_policy_v2": {
                 "current": "openstack:networking/qosPolicy:QosPolicy",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_tags": {
                         "maxItemsOne": false
@@ -713,23 +707,23 @@
             },
             "openstack_networking_quota_v2": {
                 "current": "openstack:networking/quotaV2:QuotaV2",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_networking_rbac_policy_v2": {
                 "current": "openstack:networking/rbacPolicyV2:RbacPolicyV2",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_networking_router_interface_v2": {
                 "current": "openstack:networking/routerInterface:RouterInterface",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_networking_router_route_v2": {
                 "current": "openstack:networking/routerRoute:RouterRoute",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_networking_router_v2": {
                 "current": "openstack:networking/router:Router",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_tags": {
                         "maxItemsOne": false
@@ -753,11 +747,11 @@
             },
             "openstack_networking_secgroup_rule_v2": {
                 "current": "openstack:networking/secGroupRule:SecGroupRule",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_networking_secgroup_v2": {
                 "current": "openstack:networking/secGroup:SecGroup",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_tags": {
                         "maxItemsOne": false
@@ -769,11 +763,11 @@
             },
             "openstack_networking_subnet_route_v2": {
                 "current": "openstack:networking/subnetRoute:SubnetRoute",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_networking_subnet_v2": {
                 "current": "openstack:networking/subnet:Subnet",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_tags": {
                         "maxItemsOne": false
@@ -781,13 +775,7 @@
                     "allocation_pool": {
                         "maxItemsOne": false
                     },
-                    "allocation_pools": {
-                        "maxItemsOne": false
-                    },
                     "dns_nameservers": {
-                        "maxItemsOne": false
-                    },
-                    "host_routes": {
                         "maxItemsOne": false
                     },
                     "service_types": {
@@ -800,7 +788,7 @@
             },
             "openstack_networking_subnetpool_v2": {
                 "current": "openstack:networking/subnetPool:SubnetPool",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_tags": {
                         "maxItemsOne": false
@@ -815,7 +803,7 @@
             },
             "openstack_networking_trunk_v2": {
                 "current": "openstack:networking/trunk:Trunk",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_tags": {
                         "maxItemsOne": false
@@ -830,7 +818,7 @@
             },
             "openstack_objectstorage_container_v1": {
                 "current": "openstack:objectstorage/container:Container",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "versioning_legacy": {
                         "maxItemsOne": true
@@ -839,15 +827,15 @@
             },
             "openstack_objectstorage_object_v1": {
                 "current": "openstack:objectstorage/containerObject:ContainerObject",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_objectstorage_tempurl_v1": {
                 "current": "openstack:objectstorage/tempUrl:TempUrl",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_orchestration_stack_v1": {
                 "current": "openstack:orchestration/stackV1:StackV1",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "capabilities": {
                         "maxItemsOne": false
@@ -865,15 +853,15 @@
             },
             "openstack_sharedfilesystem_securityservice_v2": {
                 "current": "openstack:sharedfilesystem/securityService:SecurityService",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_sharedfilesystem_share_access_v2": {
                 "current": "openstack:sharedfilesystem/shareAccess:ShareAccess",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_sharedfilesystem_share_v2": {
                 "current": "openstack:sharedfilesystem/share:Share",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "export_locations": {
                         "maxItemsOne": false
@@ -882,7 +870,7 @@
             },
             "openstack_sharedfilesystem_sharenetwork_v2": {
                 "current": "openstack:sharedfilesystem/shareNetwork:ShareNetwork",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "security_service_ids": {
                         "maxItemsOne": false
@@ -891,7 +879,7 @@
             },
             "openstack_vpnaas_endpoint_group_v2": {
                 "current": "openstack:vpnaas/endpointGroup:EndpointGroup",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "endpoints": {
                         "maxItemsOne": false
@@ -900,7 +888,7 @@
             },
             "openstack_vpnaas_ike_policy_v2": {
                 "current": "openstack:vpnaas/ikePolicy:IkePolicy",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "lifetime": {
                         "maxItemsOne": false
@@ -909,7 +897,7 @@
             },
             "openstack_vpnaas_ipsec_policy_v2": {
                 "current": "openstack:vpnaas/ipSecPolicy:IpSecPolicy",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "lifetime": {
                         "maxItemsOne": false
@@ -918,11 +906,11 @@
             },
             "openstack_vpnaas_service_v2": {
                 "current": "openstack:vpnaas/service:Service",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_vpnaas_site_connection_v2": {
                 "current": "openstack:vpnaas/siteConnection:SiteConnection",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "dpd": {
                         "maxItemsOne": false
@@ -936,7 +924,7 @@
         "datasources": {
             "openstack_blockstorage_availability_zones_v3": {
                 "current": "openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "names": {
                         "maxItemsOne": false
@@ -945,23 +933,23 @@
             },
             "openstack_blockstorage_quotaset_v3": {
                 "current": "openstack:blockstorage/getQuotasetV3:getQuotasetV3",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_blockstorage_snapshot_v2": {
                 "current": "openstack:blockstorage/getSnapshotV2:getSnapshotV2",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_blockstorage_snapshot_v3": {
                 "current": "openstack:blockstorage/getSnapshotV3:getSnapshotV3",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_blockstorage_volume_v2": {
                 "current": "openstack:blockstorage/getVolumeV2:getVolumeV2",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_blockstorage_volume_v3": {
                 "current": "openstack:blockstorage/getVolumeV3:getVolumeV3",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "attachment": {
                         "maxItemsOne": false
@@ -970,7 +958,7 @@
             },
             "openstack_compute_aggregate_v2": {
                 "current": "openstack:compute/getAggregateV2:getAggregateV2",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "hosts": {
                         "maxItemsOne": false
@@ -979,7 +967,7 @@
             },
             "openstack_compute_availability_zones_v2": {
                 "current": "openstack:compute/getAvailabilityZones:getAvailabilityZones",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "names": {
                         "maxItemsOne": false
@@ -988,15 +976,15 @@
             },
             "openstack_compute_flavor_v2": {
                 "current": "openstack:compute/getFlavor:getFlavor",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_compute_hypervisor_v2": {
                 "current": "openstack:compute/getHypervisorV2:getHypervisorV2",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_compute_instance_v2": {
                 "current": "openstack:compute/getInstanceV2:getInstanceV2",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "network": {
                         "maxItemsOne": false
@@ -1011,19 +999,19 @@
             },
             "openstack_compute_keypair_v2": {
                 "current": "openstack:compute/getKeypair:getKeypair",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_compute_limits_v2": {
                 "current": "openstack:compute/getLimitsV2:getLimitsV2",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_compute_quotaset_v2": {
                 "current": "openstack:compute/getQuotaSetV2:getQuotaSetV2",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_containerinfra_cluster_v1": {
                 "current": "openstack:containerinfra/getCluster:getCluster",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "master_addresses": {
                         "maxItemsOne": false
@@ -1035,15 +1023,15 @@
             },
             "openstack_containerinfra_clustertemplate_v1": {
                 "current": "openstack:containerinfra/getClusterTemplate:getClusterTemplate",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_containerinfra_nodegroup_v1": {
                 "current": "openstack:containerinfra/getNodeGroup:getNodeGroup",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_dns_zone_v2": {
                 "current": "openstack:dns/getDnsZone:getDnsZone",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "masters": {
                         "maxItemsOne": false
@@ -1052,7 +1040,7 @@
             },
             "openstack_fw_group_v2": {
                 "current": "openstack:index/getFwGroupV2:getFwGroupV2",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "ports": {
                         "maxItemsOne": false
@@ -1061,7 +1049,7 @@
             },
             "openstack_fw_policy_v1": {
                 "current": "openstack:firewall/getPolicy:getPolicy",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "rules": {
                         "maxItemsOne": false
@@ -1070,7 +1058,7 @@
             },
             "openstack_fw_policy_v2": {
                 "current": "openstack:index/getFwPolicyV2:getFwPolicyV2",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "rules": {
                         "maxItemsOne": false
@@ -1079,7 +1067,7 @@
             },
             "openstack_fw_rule_v2": {
                 "current": "openstack:index/getFwRuleV2:getFwRuleV2",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "firewall_policy_id": {
                         "maxItemsOne": false
@@ -1088,7 +1076,7 @@
             },
             "openstack_identity_auth_scope_v3": {
                 "current": "openstack:identity/getAuthScope:getAuthScope",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "roles": {
                         "maxItemsOne": false
@@ -1107,15 +1095,15 @@
             },
             "openstack_identity_endpoint_v3": {
                 "current": "openstack:identity/getEndpoint:getEndpoint",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_identity_group_v3": {
                 "current": "openstack:identity/getGroup:getGroup",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_identity_project_v3": {
                 "current": "openstack:identity/getProject:getProject",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "tags": {
                         "maxItemsOne": false
@@ -1124,19 +1112,19 @@
             },
             "openstack_identity_role_v3": {
                 "current": "openstack:identity/getRole:getRole",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_identity_service_v3": {
                 "current": "openstack:identity/getService:getService",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_identity_user_v3": {
                 "current": "openstack:identity/getUser:getUser",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_images_image_ids_v2": {
                 "current": "openstack:images/getImageIds:getImageIds",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "ids": {
                         "maxItemsOne": false
@@ -1148,7 +1136,7 @@
             },
             "openstack_images_image_v2": {
                 "current": "openstack:images/getImage:getImage",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "tags": {
                         "maxItemsOne": false
@@ -1157,7 +1145,7 @@
             },
             "openstack_keymanager_container_v1": {
                 "current": "openstack:keymanager/getContainer:getContainer",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "acl": {
                         "maxItemsOne": false,
@@ -1186,7 +1174,7 @@
             },
             "openstack_keymanager_secret_v1": {
                 "current": "openstack:keymanager/getSecret:getSecret",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "acl": {
                         "maxItemsOne": false,
@@ -1207,13 +1195,17 @@
                     }
                 }
             },
+            "openstack_loadbalancer_flavor_v2": {
+                "current": "openstack:loadbalancer/getFlavorV2:getFlavorV2",
+                "majorVersion": 4
+            },
             "openstack_networking_addressscope_v2": {
                 "current": "openstack:networking/getAddressScope:getAddressScope",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_networking_floatingip_v2": {
                 "current": "openstack:networking/getFloatingIp:getFloatingIp",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_tags": {
                         "maxItemsOne": false
@@ -1225,7 +1217,7 @@
             },
             "openstack_networking_network_v2": {
                 "current": "openstack:networking/getNetwork:getNetwork",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_tags": {
                         "maxItemsOne": false
@@ -1246,7 +1238,7 @@
             },
             "openstack_networking_port_ids_v2": {
                 "current": "openstack:networking/getPortIds:getPortIds",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "ids": {
                         "maxItemsOne": false
@@ -1261,7 +1253,7 @@
             },
             "openstack_networking_port_v2": {
                 "current": "openstack:networking/getPort:getPort",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_fixed_ips": {
                         "maxItemsOne": false
@@ -1294,19 +1286,19 @@
             },
             "openstack_networking_qos_bandwidth_limit_rule_v2": {
                 "current": "openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_networking_qos_dscp_marking_rule_v2": {
                 "current": "openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_networking_qos_minimum_bandwidth_rule_v2": {
                 "current": "openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_networking_qos_policy_v2": {
                 "current": "openstack:networking/getQosPolicy:getQosPolicy",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_tags": {
                         "maxItemsOne": false
@@ -1318,11 +1310,11 @@
             },
             "openstack_networking_quota_v2": {
                 "current": "openstack:networking/getQuotaV2:getQuotaV2",
-                "majorVersion": 3
+                "majorVersion": 4
             },
             "openstack_networking_router_v2": {
                 "current": "openstack:networking/getRouter:getRouter",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_tags": {
                         "maxItemsOne": false
@@ -1340,7 +1332,7 @@
             },
             "openstack_networking_secgroup_v2": {
                 "current": "openstack:networking/getSecGroup:getSecGroup",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_tags": {
                         "maxItemsOne": false
@@ -1352,7 +1344,7 @@
             },
             "openstack_networking_subnet_ids_v2": {
                 "current": "openstack:networking/getSubnetIdsV2:getSubnetIdsV2",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "ids": {
                         "maxItemsOne": false
@@ -1364,7 +1356,7 @@
             },
             "openstack_networking_subnet_v2": {
                 "current": "openstack:networking/getSubnet:getSubnet",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_tags": {
                         "maxItemsOne": false
@@ -1388,7 +1380,7 @@
             },
             "openstack_networking_subnetpool_v2": {
                 "current": "openstack:networking/getSubnetPool:getSubnetPool",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_tags": {
                         "maxItemsOne": false
@@ -1403,7 +1395,7 @@
             },
             "openstack_networking_trunk_v2": {
                 "current": "openstack:networking/getTrunk:getTrunk",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "all_tags": {
                         "maxItemsOne": false
@@ -1418,7 +1410,7 @@
             },
             "openstack_sharedfilesystem_availability_zones_v2": {
                 "current": "openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "names": {
                         "maxItemsOne": false
@@ -1427,7 +1419,7 @@
             },
             "openstack_sharedfilesystem_share_v2": {
                 "current": "openstack:sharedfilesystem/getShare:getShare",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "export_locations": {
                         "maxItemsOne": false
@@ -1436,7 +1428,7 @@
             },
             "openstack_sharedfilesystem_sharenetwork_v2": {
                 "current": "openstack:sharedfilesystem/getShareNetwork:getShareNetwork",
-                "majorVersion": 3,
+                "majorVersion": 4,
                 "fields": {
                     "security_service_ids": {
                         "maxItemsOne": false
@@ -1445,7 +1437,7 @@
             },
             "openstack_sharedfilesystem_snapshot_v2": {
                 "current": "openstack:sharedfilesystem/getSnapshot:getSnapshot",
-                "majorVersion": 3
+                "majorVersion": 4
             }
         }
     },

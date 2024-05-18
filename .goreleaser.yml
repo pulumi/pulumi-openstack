@@ -33,7 +33,7 @@ builds:
   ignore: []
   ldflags:
   - -X
-    github.com/pulumi/pulumi-openstack/provider/v3/pkg/version.Version={{.Tag}}
+    github.com/pulumi/pulumi-openstack/provider/v4/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-openstack/
 changelog:
   filters:
