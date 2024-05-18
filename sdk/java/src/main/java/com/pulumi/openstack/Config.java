@@ -210,13 +210,6 @@ public final class Config {
         return Codegen.stringProp("token").config(config).get();
     }
 /**
- * If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
- * 
- */
-    public Optional<Boolean> useOctavia() {
-        return Codegen.booleanProp("useOctavia").config(config).env("OS_USE_OCTAVIA").get();
-    }
-/**
  * The ID of the domain where the user resides (Identity v3).
  * 
  */

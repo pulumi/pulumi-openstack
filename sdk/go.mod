@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-openstack/sdk/v3
+module github.com/pulumi/pulumi-openstack/sdk/v4
 
 go 1.21
 

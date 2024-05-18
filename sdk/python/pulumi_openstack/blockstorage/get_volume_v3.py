@@ -22,7 +22,7 @@ class GetVolumeV3Result:
     """
     A collection of values returned by getVolumeV3.
     """
-    def __init__(__self__, attachments=None, bootable=None, host=None, id=None, metadata=None, multiattach=None, name=None, region=None, size=None, source_volume_id=None, status=None, volume_type=None):
+    def __init__(__self__, attachments=None, bootable=None, host=None, id=None, metadata=None, name=None, region=None, size=None, source_volume_id=None, status=None, volume_type=None):
         if attachments and not isinstance(attachments, list):
             raise TypeError("Expected argument 'attachments' to be a list")
         pulumi.set(__self__, "attachments", attachments)
@@ -38,9 +38,6 @@ class GetVolumeV3Result:
         if metadata and not isinstance(metadata, dict):
             raise TypeError("Expected argument 'metadata' to be a dict")
         pulumi.set(__self__, "metadata", metadata)
-        if multiattach and not isinstance(multiattach, bool):
-            raise TypeError("Expected argument 'multiattach' to be a bool")
-        pulumi.set(__self__, "multiattach", multiattach)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -104,14 +101,6 @@ class GetVolumeV3Result:
 
     @property
     @pulumi.getter
-    def multiattach(self) -> bool:
-        """
-        Indicates if the volume can be attached to more then one server.
-        """
-        return pulumi.get(self, "multiattach")
-
-    @property
-    @pulumi.getter
     def name(self) -> str:
         """
         See Argument Reference above.
@@ -170,7 +159,6 @@ class AwaitableGetVolumeV3Result(GetVolumeV3Result):
             host=self.host,
             id=self.id,
             metadata=self.metadata,
-            multiattach=self.multiattach,
             name=self.name,
             region=self.region,
             size=self.size,
@@ -226,7 +214,6 @@ def get_volume_v3(bootable: Optional[str] = None,
         host=pulumi.get(__ret__, 'host'),
         id=pulumi.get(__ret__, 'id'),
         metadata=pulumi.get(__ret__, 'metadata'),
-        multiattach=pulumi.get(__ret__, 'multiattach'),
         name=pulumi.get(__ret__, 'name'),
         region=pulumi.get(__ret__, 'region'),
         size=pulumi.get(__ret__, 'size'),

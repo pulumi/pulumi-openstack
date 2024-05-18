@@ -77,8 +77,7 @@ export class Pool extends pulumi.CustomResource {
     /**
      * The load balancing algorithm to
      * distribute traffic to the pool's members. Must be one of
-     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-     * in Octavia).
+     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
      */
     public readonly lbMethod!: pulumi.Output<string>;
     /**
@@ -105,8 +104,8 @@ export class Pool extends pulumi.CustomResource {
     public readonly persistence!: pulumi.Output<outputs.loadbalancer.PoolPersistence>;
     /**
      * The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-     * UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
-     * or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+     * UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
+     * (**Octavia minor version >= 2.23**). Changing this creates a new pool.
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
@@ -186,8 +185,7 @@ export interface PoolState {
     /**
      * The load balancing algorithm to
      * distribute traffic to the pool's members. Must be one of
-     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-     * in Octavia).
+     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
      */
     lbMethod?: pulumi.Input<string>;
     /**
@@ -214,8 +212,8 @@ export interface PoolState {
     persistence?: pulumi.Input<inputs.loadbalancer.PoolPersistence>;
     /**
      * The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-     * UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
-     * or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+     * UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
+     * (**Octavia minor version >= 2.23**). Changing this creates a new pool.
      */
     protocol?: pulumi.Input<string>;
     /**
@@ -249,8 +247,7 @@ export interface PoolArgs {
     /**
      * The load balancing algorithm to
      * distribute traffic to the pool's members. Must be one of
-     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-     * in Octavia).
+     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
      */
     lbMethod: pulumi.Input<string>;
     /**
@@ -277,8 +274,8 @@ export interface PoolArgs {
     persistence?: pulumi.Input<inputs.loadbalancer.PoolPersistence>;
     /**
      * The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-     * UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
-     * or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+     * UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
+     * (**Octavia minor version >= 2.23**). Changing this creates a new pool.
      */
     protocol: pulumi.Input<string>;
     /**

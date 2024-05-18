@@ -52,7 +52,7 @@ export interface GetFloatingIpArgs {
      */
     fixedIp?: string;
     /**
-     * The name of the pool from which the floating IP belongs to.
+     * The ID of the network from which the floating IP belongs to.
      */
     pool?: string;
     /**
@@ -146,7 +146,7 @@ export interface GetFloatingIpOutputArgs {
      */
     fixedIp?: pulumi.Input<string>;
     /**
-     * The name of the pool from which the floating IP belongs to.
+     * The ID of the network from which the floating IP belongs to.
      */
     pool?: pulumi.Input<string>;
     /**

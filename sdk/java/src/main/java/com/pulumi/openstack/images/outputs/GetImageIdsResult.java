@@ -31,20 +31,6 @@ public final class GetImageIdsResult {
     private @Nullable Integer sizeMax;
     private @Nullable Integer sizeMin;
     private @Nullable String sort;
-    /**
-     * @deprecated
-     * Use option &#39;sort&#39; instead.
-     * 
-     */
-    @Deprecated /* Use option 'sort' instead. */
-    private @Nullable String sortDirection;
-    /**
-     * @deprecated
-     * Use option &#39;sort&#39; instead.
-     * 
-     */
-    @Deprecated /* Use option 'sort' instead. */
-    private @Nullable String sortKey;
     private @Nullable String tag;
     private @Nullable List<String> tags;
     private @Nullable String visibility;
@@ -87,24 +73,6 @@ public final class GetImageIdsResult {
     public Optional<String> sort() {
         return Optional.ofNullable(this.sort);
     }
-    /**
-     * @deprecated
-     * Use option &#39;sort&#39; instead.
-     * 
-     */
-    @Deprecated /* Use option 'sort' instead. */
-    public Optional<String> sortDirection() {
-        return Optional.ofNullable(this.sortDirection);
-    }
-    /**
-     * @deprecated
-     * Use option &#39;sort&#39; instead.
-     * 
-     */
-    @Deprecated /* Use option 'sort' instead. */
-    public Optional<String> sortKey() {
-        return Optional.ofNullable(this.sortKey);
-    }
     public Optional<String> tag() {
         return Optional.ofNullable(this.tag);
     }
@@ -135,8 +103,6 @@ public final class GetImageIdsResult {
         private @Nullable Integer sizeMax;
         private @Nullable Integer sizeMin;
         private @Nullable String sort;
-        private @Nullable String sortDirection;
-        private @Nullable String sortKey;
         private @Nullable String tag;
         private @Nullable List<String> tags;
         private @Nullable String visibility;
@@ -154,8 +120,6 @@ public final class GetImageIdsResult {
     	      this.sizeMax = defaults.sizeMax;
     	      this.sizeMin = defaults.sizeMin;
     	      this.sort = defaults.sort;
-    	      this.sortDirection = defaults.sortDirection;
-    	      this.sortKey = defaults.sortKey;
     	      this.tag = defaults.tag;
     	      this.tags = defaults.tags;
     	      this.visibility = defaults.visibility;
@@ -237,18 +201,6 @@ public final class GetImageIdsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder sortDirection(@Nullable String sortDirection) {
-
-            this.sortDirection = sortDirection;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder sortKey(@Nullable String sortKey) {
-
-            this.sortKey = sortKey;
-            return this;
-        }
-        @CustomType.Setter
         public Builder tag(@Nullable String tag) {
 
             this.tag = tag;
@@ -282,8 +234,6 @@ public final class GetImageIdsResult {
             _resultValue.sizeMax = sizeMax;
             _resultValue.sizeMin = sizeMin;
             _resultValue.sort = sort;
-            _resultValue.sortDirection = sortDirection;
-            _resultValue.sortKey = sortKey;
             _resultValue.tag = tag;
             _resultValue.tags = tags;
             _resultValue.visibility = visibility;

@@ -123,10 +123,6 @@ export class VolumeAttachV2 extends pulumi.CustomResource {
      */
     public readonly initiator!: pulumi.Output<string | undefined>;
     /**
-     * @deprecated instance_id is no longer used in this resource
-     */
-    public readonly instanceId!: pulumi.Output<string | undefined>;
-    /**
      * The IP address of the `hostName` above.
      */
     public readonly ipAddress!: pulumi.Output<string | undefined>;
@@ -186,7 +182,6 @@ export class VolumeAttachV2 extends pulumi.CustomResource {
             resourceInputs["driverVolumeType"] = state ? state.driverVolumeType : undefined;
             resourceInputs["hostName"] = state ? state.hostName : undefined;
             resourceInputs["initiator"] = state ? state.initiator : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
             resourceInputs["mountPointBase"] = state ? state.mountPointBase : undefined;
             resourceInputs["multipath"] = state ? state.multipath : undefined;
@@ -208,7 +203,6 @@ export class VolumeAttachV2 extends pulumi.CustomResource {
             resourceInputs["device"] = args ? args.device : undefined;
             resourceInputs["hostName"] = args ? args.hostName : undefined;
             resourceInputs["initiator"] = args ? args.initiator : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
             resourceInputs["multipath"] = args ? args.multipath : undefined;
             resourceInputs["osType"] = args ? args.osType : undefined;
@@ -262,10 +256,6 @@ export interface VolumeAttachV2State {
      * The iSCSI initiator string to make the connection.
      */
     initiator?: pulumi.Input<string>;
-    /**
-     * @deprecated instance_id is no longer used in this resource
-     */
-    instanceId?: pulumi.Input<string>;
     /**
      * The IP address of the `hostName` above.
      */
@@ -332,10 +322,6 @@ export interface VolumeAttachV2Args {
      * The iSCSI initiator string to make the connection.
      */
     initiator?: pulumi.Input<string>;
-    /**
-     * @deprecated instance_id is no longer used in this resource
-     */
-    instanceId?: pulumi.Input<string>;
     /**
      * The IP address of the `hostName` above.
      */

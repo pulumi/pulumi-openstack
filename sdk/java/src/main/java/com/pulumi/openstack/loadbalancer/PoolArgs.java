@@ -53,8 +53,7 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The load balancing algorithm to
      * distribute traffic to the pool&#39;s members. Must be one of
-     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-     * in Octavia).
+     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
      * 
      */
     @Import(name="lbMethod", required=true)
@@ -63,8 +62,7 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The load balancing algorithm to
      * distribute traffic to the pool&#39;s members. Must be one of
-     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-     * in Octavia).
+     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
      * 
      */
     public Output<String> lbMethod() {
@@ -145,8 +143,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-     * UDP (supported only in Octavia), PROXYV2 (**Octavia minor version &gt;= 2.22**)
-     * or SCTP (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+     * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
+     * (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
      * 
      */
     @Import(name="protocol", required=true)
@@ -154,8 +152,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-     * UDP (supported only in Octavia), PROXYV2 (**Octavia minor version &gt;= 2.22**)
-     * or SCTP (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+     * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
+     * (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
      * 
      */
     public Output<String> protocol() {
@@ -282,8 +280,7 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param lbMethod The load balancing algorithm to
          * distribute traffic to the pool&#39;s members. Must be one of
-         * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-         * in Octavia).
+         * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
          * 
          * @return builder
          * 
@@ -296,8 +293,7 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param lbMethod The load balancing algorithm to
          * distribute traffic to the pool&#39;s members. Must be one of
-         * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-         * in Octavia).
+         * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
          * 
          * @return builder
          * 
@@ -404,8 +400,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocol The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-         * UDP (supported only in Octavia), PROXYV2 (**Octavia minor version &gt;= 2.22**)
-         * or SCTP (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+         * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
+         * (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
          * 
          * @return builder
          * 
@@ -417,8 +413,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocol The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-         * UDP (supported only in Octavia), PROXYV2 (**Octavia minor version &gt;= 2.22**)
-         * or SCTP (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+         * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
+         * (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
          * 
          * @return builder
          * 

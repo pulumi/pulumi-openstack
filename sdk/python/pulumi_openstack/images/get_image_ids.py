@@ -21,7 +21,7 @@ class GetImageIdsResult:
     """
     A collection of values returned by getImageIds.
     """
-    def __init__(__self__, id=None, ids=None, member_status=None, name=None, name_regex=None, owner=None, properties=None, region=None, size_max=None, size_min=None, sort=None, sort_direction=None, sort_key=None, tag=None, tags=None, visibility=None):
+    def __init__(__self__, id=None, ids=None, member_status=None, name=None, name_regex=None, owner=None, properties=None, region=None, size_max=None, size_min=None, sort=None, tag=None, tags=None, visibility=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -55,12 +55,6 @@ class GetImageIdsResult:
         if sort and not isinstance(sort, str):
             raise TypeError("Expected argument 'sort' to be a str")
         pulumi.set(__self__, "sort", sort)
-        if sort_direction and not isinstance(sort_direction, str):
-            raise TypeError("Expected argument 'sort_direction' to be a str")
-        pulumi.set(__self__, "sort_direction", sort_direction)
-        if sort_key and not isinstance(sort_key, str):
-            raise TypeError("Expected argument 'sort_key' to be a str")
-        pulumi.set(__self__, "sort_key", sort_key)
         if tag and not isinstance(tag, str):
             raise TypeError("Expected argument 'tag' to be a str")
         pulumi.set(__self__, "tag", tag)
@@ -130,22 +124,6 @@ class GetImageIdsResult:
         return pulumi.get(self, "sort")
 
     @property
-    @pulumi.getter(name="sortDirection")
-    def sort_direction(self) -> Optional[str]:
-        warnings.warn("""Use option 'sort' instead.""", DeprecationWarning)
-        pulumi.log.warn("""sort_direction is deprecated: Use option 'sort' instead.""")
-
-        return pulumi.get(self, "sort_direction")
-
-    @property
-    @pulumi.getter(name="sortKey")
-    def sort_key(self) -> Optional[str]:
-        warnings.warn("""Use option 'sort' instead.""", DeprecationWarning)
-        pulumi.log.warn("""sort_key is deprecated: Use option 'sort' instead.""")
-
-        return pulumi.get(self, "sort_key")
-
-    @property
     @pulumi.getter
     def tag(self) -> Optional[str]:
         return pulumi.get(self, "tag")
@@ -178,8 +156,6 @@ class AwaitableGetImageIdsResult(GetImageIdsResult):
             size_max=self.size_max,
             size_min=self.size_min,
             sort=self.sort,
-            sort_direction=self.sort_direction,
-            sort_key=self.sort_key,
             tag=self.tag,
             tags=self.tags,
             visibility=self.visibility)
@@ -194,8 +170,6 @@ def get_image_ids(member_status: Optional[str] = None,
                   size_max: Optional[int] = None,
                   size_min: Optional[int] = None,
                   sort: Optional[str] = None,
-                  sort_direction: Optional[str] = None,
-                  sort_key: Optional[str] = None,
                   tag: Optional[str] = None,
                   tags: Optional[Sequence[str]] = None,
                   visibility: Optional[str] = None,
@@ -240,14 +214,7 @@ def get_image_ids(member_status: Optional[str] = None,
            direction combinations. You can also set multiple sort keys and directions.
            Default direction is `desc`. Use the comma (,) character to separate
            multiple values. For example expression `sort = "name:asc,status"`
-           sorts ascending by name and descending by status. `sort` cannot be used
-           simultaneously with `sort_key`. If both are present in a configuration
-           then only `sort` will be used.
-    :param str sort_direction: Order the results in either `asc` or `desc`.
-           Can be applied only with `sort_key`. Defaults to `asc`
-    :param str sort_key: Sort images based on a certain key. Defaults to
-           `name`. `sort_key` cannot be used simultaneously with `sort`. If both
-           are present in a configuration then only `sort` will be used.
+           sorts ascending by name and descending by status.
     :param str tag: Search for images with a specific tag.
     :param Sequence[str] tags: A list of tags required to be set on the image
            (all specified tags must be in the images tag list for it to be matched).
@@ -264,8 +231,6 @@ def get_image_ids(member_status: Optional[str] = None,
     __args__['sizeMax'] = size_max
     __args__['sizeMin'] = size_min
     __args__['sort'] = sort
-    __args__['sortDirection'] = sort_direction
-    __args__['sortKey'] = sort_key
     __args__['tag'] = tag
     __args__['tags'] = tags
     __args__['visibility'] = visibility
@@ -284,8 +249,6 @@ def get_image_ids(member_status: Optional[str] = None,
         size_max=pulumi.get(__ret__, 'size_max'),
         size_min=pulumi.get(__ret__, 'size_min'),
         sort=pulumi.get(__ret__, 'sort'),
-        sort_direction=pulumi.get(__ret__, 'sort_direction'),
-        sort_key=pulumi.get(__ret__, 'sort_key'),
         tag=pulumi.get(__ret__, 'tag'),
         tags=pulumi.get(__ret__, 'tags'),
         visibility=pulumi.get(__ret__, 'visibility'))
@@ -301,8 +264,6 @@ def get_image_ids_output(member_status: Optional[pulumi.Input[Optional[str]]] = 
                          size_max: Optional[pulumi.Input[Optional[int]]] = None,
                          size_min: Optional[pulumi.Input[Optional[int]]] = None,
                          sort: Optional[pulumi.Input[Optional[str]]] = None,
-                         sort_direction: Optional[pulumi.Input[Optional[str]]] = None,
-                         sort_key: Optional[pulumi.Input[Optional[str]]] = None,
                          tag: Optional[pulumi.Input[Optional[str]]] = None,
                          tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          visibility: Optional[pulumi.Input[Optional[str]]] = None,
@@ -347,14 +308,7 @@ def get_image_ids_output(member_status: Optional[pulumi.Input[Optional[str]]] = 
            direction combinations. You can also set multiple sort keys and directions.
            Default direction is `desc`. Use the comma (,) character to separate
            multiple values. For example expression `sort = "name:asc,status"`
-           sorts ascending by name and descending by status. `sort` cannot be used
-           simultaneously with `sort_key`. If both are present in a configuration
-           then only `sort` will be used.
-    :param str sort_direction: Order the results in either `asc` or `desc`.
-           Can be applied only with `sort_key`. Defaults to `asc`
-    :param str sort_key: Sort images based on a certain key. Defaults to
-           `name`. `sort_key` cannot be used simultaneously with `sort`. If both
-           are present in a configuration then only `sort` will be used.
+           sorts ascending by name and descending by status.
     :param str tag: Search for images with a specific tag.
     :param Sequence[str] tags: A list of tags required to be set on the image
            (all specified tags must be in the images tag list for it to be matched).

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -107,11 +107,6 @@ func NewProvider(ctx *pulumi.Context,
 			args.Swauth = pulumi.BoolPtr(d.(bool))
 		}
 	}
-	if args.UseOctavia == nil {
-		if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "OS_USE_OCTAVIA"); d != nil {
-			args.UseOctavia = pulumi.BoolPtr(d.(bool))
-		}
-	}
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
@@ -186,10 +181,6 @@ type providerArgs struct {
 	TenantName *string `pulumi:"tenantName"`
 	// Authentication token to use as an alternative to username/password.
 	Token *string `pulumi:"token"`
-	// If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
-	//
-	// Deprecated: Users not using loadbalancer resources can ignore this message. Support for neutron-lbaas will be removed on next major release. Octavia will be the only supported method for loadbalancer resources. Users using octavia will have to remove 'use_octavia' option from the provider configuration block. Users using neutron-lbaas will have to migrate/upgrade to octavia.
-	UseOctavia *bool `pulumi:"useOctavia"`
 	// The ID of the domain where the user resides (Identity v3).
 	UserDomainId *string `pulumi:"userDomainId"`
 	// The name of the domain where the user resides (Identity v3).
@@ -259,10 +250,6 @@ type ProviderArgs struct {
 	TenantName pulumi.StringPtrInput
 	// Authentication token to use as an alternative to username/password.
 	Token pulumi.StringPtrInput
-	// If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
-	//
-	// Deprecated: Users not using loadbalancer resources can ignore this message. Support for neutron-lbaas will be removed on next major release. Octavia will be the only supported method for loadbalancer resources. Users using octavia will have to remove 'use_octavia' option from the provider configuration block. Users using neutron-lbaas will have to migrate/upgrade to octavia.
-	UseOctavia pulumi.BoolPtrInput
 	// The ID of the domain where the user resides (Identity v3).
 	UserDomainId pulumi.StringPtrInput
 	// The name of the domain where the user resides (Identity v3).

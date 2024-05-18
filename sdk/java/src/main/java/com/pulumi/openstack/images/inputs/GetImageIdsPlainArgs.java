@@ -163,9 +163,7 @@ public final class GetImageIdsPlainArgs extends com.pulumi.resources.InvokeArgs 
      * direction combinations. You can also set multiple sort keys and directions.
      * Default direction is `desc`. Use the comma (,) character to separate
      * multiple values. For example expression `sort = &#34;name:asc,status&#34;`
-     * sorts ascending by name and descending by status. `sort` cannot be used
-     * simultaneously with `sort_key`. If both are present in a configuration
-     * then only `sort` will be used.
+     * sorts ascending by name and descending by status.
      * 
      */
     @Import(name="sort")
@@ -176,65 +174,11 @@ public final class GetImageIdsPlainArgs extends com.pulumi.resources.InvokeArgs 
      * direction combinations. You can also set multiple sort keys and directions.
      * Default direction is `desc`. Use the comma (,) character to separate
      * multiple values. For example expression `sort = &#34;name:asc,status&#34;`
-     * sorts ascending by name and descending by status. `sort` cannot be used
-     * simultaneously with `sort_key`. If both are present in a configuration
-     * then only `sort` will be used.
+     * sorts ascending by name and descending by status.
      * 
      */
     public Optional<String> sort() {
         return Optional.ofNullable(this.sort);
-    }
-
-    /**
-     * Order the results in either `asc` or `desc`.
-     * Can be applied only with `sort_key`. Defaults to `asc`
-     * 
-     * @deprecated
-     * Use option &#39;sort&#39; instead.
-     * 
-     */
-    @Deprecated /* Use option 'sort' instead. */
-    @Import(name="sortDirection")
-    private @Nullable String sortDirection;
-
-    /**
-     * @return Order the results in either `asc` or `desc`.
-     * Can be applied only with `sort_key`. Defaults to `asc`
-     * 
-     * @deprecated
-     * Use option &#39;sort&#39; instead.
-     * 
-     */
-    @Deprecated /* Use option 'sort' instead. */
-    public Optional<String> sortDirection() {
-        return Optional.ofNullable(this.sortDirection);
-    }
-
-    /**
-     * Sort images based on a certain key. Defaults to
-     * `name`. `sort_key` cannot be used simultaneously with `sort`. If both
-     * are present in a configuration then only `sort` will be used.
-     * 
-     * @deprecated
-     * Use option &#39;sort&#39; instead.
-     * 
-     */
-    @Deprecated /* Use option 'sort' instead. */
-    @Import(name="sortKey")
-    private @Nullable String sortKey;
-
-    /**
-     * @return Sort images based on a certain key. Defaults to
-     * `name`. `sort_key` cannot be used simultaneously with `sort`. If both
-     * are present in a configuration then only `sort` will be used.
-     * 
-     * @deprecated
-     * Use option &#39;sort&#39; instead.
-     * 
-     */
-    @Deprecated /* Use option 'sort' instead. */
-    public Optional<String> sortKey() {
-        return Optional.ofNullable(this.sortKey);
     }
 
     /**
@@ -298,8 +242,6 @@ public final class GetImageIdsPlainArgs extends com.pulumi.resources.InvokeArgs 
         this.sizeMax = $.sizeMax;
         this.sizeMin = $.sizeMin;
         this.sort = $.sort;
-        this.sortDirection = $.sortDirection;
-        this.sortKey = $.sortKey;
         this.tag = $.tag;
         this.tags = $.tags;
         this.visibility = $.visibility;
@@ -426,48 +368,13 @@ public final class GetImageIdsPlainArgs extends com.pulumi.resources.InvokeArgs 
          * direction combinations. You can also set multiple sort keys and directions.
          * Default direction is `desc`. Use the comma (,) character to separate
          * multiple values. For example expression `sort = &#34;name:asc,status&#34;`
-         * sorts ascending by name and descending by status. `sort` cannot be used
-         * simultaneously with `sort_key`. If both are present in a configuration
-         * then only `sort` will be used.
+         * sorts ascending by name and descending by status.
          * 
          * @return builder
          * 
          */
         public Builder sort(@Nullable String sort) {
             $.sort = sort;
-            return this;
-        }
-
-        /**
-         * @param sortDirection Order the results in either `asc` or `desc`.
-         * Can be applied only with `sort_key`. Defaults to `asc`
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use option &#39;sort&#39; instead.
-         * 
-         */
-        @Deprecated /* Use option 'sort' instead. */
-        public Builder sortDirection(@Nullable String sortDirection) {
-            $.sortDirection = sortDirection;
-            return this;
-        }
-
-        /**
-         * @param sortKey Sort images based on a certain key. Defaults to
-         * `name`. `sort_key` cannot be used simultaneously with `sort`. If both
-         * are present in a configuration then only `sort` will be used.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use option &#39;sort&#39; instead.
-         * 
-         */
-        @Deprecated /* Use option 'sort' instead. */
-        public Builder sortKey(@Nullable String sortKey) {
-            $.sortKey = sortKey;
             return this;
         }
 

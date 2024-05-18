@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/blockstorage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -81,8 +81,6 @@ type GetVolumeV3Result struct {
 	Id string `pulumi:"id"`
 	// See Argument Reference above.
 	Metadata map[string]interface{} `pulumi:"metadata"`
-	// Indicates if the volume can be attached to more then one server.
-	Multiattach bool `pulumi:"multiattach"`
 	// See Argument Reference above.
 	Name string `pulumi:"name"`
 	// See Argument Reference above.
@@ -173,11 +171,6 @@ func (o GetVolumeV3ResultOutput) Id() pulumi.StringOutput {
 // See Argument Reference above.
 func (o GetVolumeV3ResultOutput) Metadata() pulumi.MapOutput {
 	return o.ApplyT(func(v GetVolumeV3Result) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
-}
-
-// Indicates if the volume can be attached to more then one server.
-func (o GetVolumeV3ResultOutput) Multiattach() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetVolumeV3Result) bool { return v.Multiattach }).(pulumi.BoolOutput)
 }
 
 // See Argument Reference above.

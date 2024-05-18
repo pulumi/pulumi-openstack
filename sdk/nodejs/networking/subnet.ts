@@ -76,14 +76,6 @@ export class Subnet extends pulumi.CustomResource {
      */
     public readonly allocationPools!: pulumi.Output<outputs.networking.SubnetAllocationPool[]>;
     /**
-     * A block declaring the start and end range of the IP addresses available for
-     * use with DHCP in this subnet.
-     * The `allocationPools` block is documented below.
-     *
-     * @deprecated use allocationPool instead
-     */
-    public readonly allocationPoolsCollection!: pulumi.Output<outputs.networking.SubnetAllocationPoolsCollection[]>;
-    /**
      * CIDR representing IP range for this subnet, based on IP
      * version. You can omit this option if you are creating a subnet from a
      * subnet pool.
@@ -113,16 +105,6 @@ export class Subnet extends pulumi.CustomResource {
      * existing subnet.
      */
     public readonly gatewayIp!: pulumi.Output<string>;
-    /**
-     * (**Deprecated** - use `openstack.networking.SubnetRoute`
-     * instead) An array of routes that should be used by devices
-     * with IPs from this subnet (not including local subnet route). The hostRoute
-     * object structure is documented below. Changing this updates the host routes
-     * for the existing subnet.
-     *
-     * @deprecated Use openstack.networking.SubnetRoute instead
-     */
-    public readonly hostRoutes!: pulumi.Output<outputs.networking.SubnetHostRoute[] | undefined>;
     /**
      * IP version, either 4 (default) or 6. Changing this creates a
      * new subnet.
@@ -205,13 +187,11 @@ export class Subnet extends pulumi.CustomResource {
             const state = argsOrState as SubnetState | undefined;
             resourceInputs["allTags"] = state ? state.allTags : undefined;
             resourceInputs["allocationPools"] = state ? state.allocationPools : undefined;
-            resourceInputs["allocationPoolsCollection"] = state ? state.allocationPoolsCollection : undefined;
             resourceInputs["cidr"] = state ? state.cidr : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dnsNameservers"] = state ? state.dnsNameservers : undefined;
             resourceInputs["enableDhcp"] = state ? state.enableDhcp : undefined;
             resourceInputs["gatewayIp"] = state ? state.gatewayIp : undefined;
-            resourceInputs["hostRoutes"] = state ? state.hostRoutes : undefined;
             resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
             resourceInputs["ipv6AddressMode"] = state ? state.ipv6AddressMode : undefined;
             resourceInputs["ipv6RaMode"] = state ? state.ipv6RaMode : undefined;
@@ -231,13 +211,11 @@ export class Subnet extends pulumi.CustomResource {
                 throw new Error("Missing required property 'networkId'");
             }
             resourceInputs["allocationPools"] = args ? args.allocationPools : undefined;
-            resourceInputs["allocationPoolsCollection"] = args ? args.allocationPoolsCollection : undefined;
             resourceInputs["cidr"] = args ? args.cidr : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["dnsNameservers"] = args ? args.dnsNameservers : undefined;
             resourceInputs["enableDhcp"] = args ? args.enableDhcp : undefined;
             resourceInputs["gatewayIp"] = args ? args.gatewayIp : undefined;
-            resourceInputs["hostRoutes"] = args ? args.hostRoutes : undefined;
             resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
             resourceInputs["ipv6AddressMode"] = args ? args.ipv6AddressMode : undefined;
             resourceInputs["ipv6RaMode"] = args ? args.ipv6RaMode : undefined;
@@ -277,14 +255,6 @@ export interface SubnetState {
      */
     allocationPools?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPool>[]>;
     /**
-     * A block declaring the start and end range of the IP addresses available for
-     * use with DHCP in this subnet.
-     * The `allocationPools` block is documented below.
-     *
-     * @deprecated use allocationPool instead
-     */
-    allocationPoolsCollection?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPoolsCollection>[]>;
-    /**
      * CIDR representing IP range for this subnet, based on IP
      * version. You can omit this option if you are creating a subnet from a
      * subnet pool.
@@ -314,16 +284,6 @@ export interface SubnetState {
      * existing subnet.
      */
     gatewayIp?: pulumi.Input<string>;
-    /**
-     * (**Deprecated** - use `openstack.networking.SubnetRoute`
-     * instead) An array of routes that should be used by devices
-     * with IPs from this subnet (not including local subnet route). The hostRoute
-     * object structure is documented below. Changing this updates the host routes
-     * for the existing subnet.
-     *
-     * @deprecated Use openstack.networking.SubnetRoute instead
-     */
-    hostRoutes?: pulumi.Input<pulumi.Input<inputs.networking.SubnetHostRoute>[]>;
     /**
      * IP version, either 4 (default) or 6. Changing this creates a
      * new subnet.
@@ -406,14 +366,6 @@ export interface SubnetArgs {
      */
     allocationPools?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPool>[]>;
     /**
-     * A block declaring the start and end range of the IP addresses available for
-     * use with DHCP in this subnet.
-     * The `allocationPools` block is documented below.
-     *
-     * @deprecated use allocationPool instead
-     */
-    allocationPoolsCollection?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPoolsCollection>[]>;
-    /**
      * CIDR representing IP range for this subnet, based on IP
      * version. You can omit this option if you are creating a subnet from a
      * subnet pool.
@@ -443,16 +395,6 @@ export interface SubnetArgs {
      * existing subnet.
      */
     gatewayIp?: pulumi.Input<string>;
-    /**
-     * (**Deprecated** - use `openstack.networking.SubnetRoute`
-     * instead) An array of routes that should be used by devices
-     * with IPs from this subnet (not including local subnet route). The hostRoute
-     * object structure is documented below. Changing this updates the host routes
-     * for the existing subnet.
-     *
-     * @deprecated Use openstack.networking.SubnetRoute instead
-     */
-    hostRoutes?: pulumi.Input<pulumi.Input<inputs.networking.SubnetHostRoute>[]>;
     /**
      * IP version, either 4 (default) or 6. Changing this creates a
      * new subnet.

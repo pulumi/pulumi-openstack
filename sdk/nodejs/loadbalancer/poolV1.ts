@@ -109,10 +109,6 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## Notes
- *
- * The `member` block is deprecated in favor of the `openstack.loadbalancer.MemberV1` resource.
- *
  * ## Import
  *
  * Load Balancer Pools can be imported using the `id`, e.g.
@@ -160,15 +156,6 @@ export class PoolV1 extends pulumi.CustomResource {
      * `haproxy`, `F5`, etc.
      */
     public readonly lbProvider!: pulumi.Output<string>;
-    /**
-     * An existing node to add to the pool. Changing this
-     * updates the members of the pool. The member object structure is documented
-     * below. Please note that the `member` block is deprecated in favor of the
-     * `openstack.loadbalancer.MemberV1` resource.
-     *
-     * @deprecated Use openstack.loadbalancer.MemberV1 instead
-     */
-    public readonly members!: pulumi.Output<string[] | undefined>;
     /**
      * A list of IDs of monitors to associate with the
      * pool.
@@ -218,7 +205,6 @@ export class PoolV1 extends pulumi.CustomResource {
             const state = argsOrState as PoolV1State | undefined;
             resourceInputs["lbMethod"] = state ? state.lbMethod : undefined;
             resourceInputs["lbProvider"] = state ? state.lbProvider : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
             resourceInputs["monitorIds"] = state ? state.monitorIds : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
@@ -238,7 +224,6 @@ export class PoolV1 extends pulumi.CustomResource {
             }
             resourceInputs["lbMethod"] = args ? args.lbMethod : undefined;
             resourceInputs["lbProvider"] = args ? args.lbProvider : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
             resourceInputs["monitorIds"] = args ? args.monitorIds : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
@@ -266,15 +251,6 @@ export interface PoolV1State {
      * `haproxy`, `F5`, etc.
      */
     lbProvider?: pulumi.Input<string>;
-    /**
-     * An existing node to add to the pool. Changing this
-     * updates the members of the pool. The member object structure is documented
-     * below. Please note that the `member` block is deprecated in favor of the
-     * `openstack.loadbalancer.MemberV1` resource.
-     *
-     * @deprecated Use openstack.loadbalancer.MemberV1 instead
-     */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of IDs of monitors to associate with the
      * pool.
@@ -325,15 +301,6 @@ export interface PoolV1Args {
      * `haproxy`, `F5`, etc.
      */
     lbProvider?: pulumi.Input<string>;
-    /**
-     * An existing node to add to the pool. Changing this
-     * updates the members of the pool. The member object structure is documented
-     * below. Please note that the `member` block is deprecated in favor of the
-     * `openstack.loadbalancer.MemberV1` resource.
-     *
-     * @deprecated Use openstack.loadbalancer.MemberV1 instead
-     */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of IDs of monitors to associate with the
      * pool.

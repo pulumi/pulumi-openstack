@@ -415,7 +415,6 @@ class _ImageState:
                  size_bytes: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 update_at: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
                  verify_checksum: Optional[pulumi.Input[bool]] = None,
                  visibility: Optional[pulumi.Input[str]] = None,
@@ -473,7 +472,6 @@ class _ImageState:
                or "saving".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the image. It must be a list of strings.
                At this time, it is not possible to delete all tags of an image.
-        :param pulumi.Input[str] update_at: (**Deprecated** - use `updated_at` instead)
         :param pulumi.Input[str] updated_at: The date the image was last updated.
         :param pulumi.Input[bool] verify_checksum: If false, the checksum will not be verified
                once the image is finished uploading. Conflicts with `web_download`.
@@ -535,11 +533,6 @@ class _ImageState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if update_at is not None:
-            warnings.warn("""Use updated_at instead""", DeprecationWarning)
-            pulumi.log.warn("""update_at is deprecated: Use updated_at instead""")
-        if update_at is not None:
-            pulumi.set(__self__, "update_at", update_at)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
         if verify_checksum is not None:
@@ -874,21 +867,6 @@ class _ImageState:
         pulumi.set(self, "tags", value)
 
     @property
-    @pulumi.getter(name="updateAt")
-    def update_at(self) -> Optional[pulumi.Input[str]]:
-        """
-        (**Deprecated** - use `updated_at` instead)
-        """
-        warnings.warn("""Use updated_at instead""", DeprecationWarning)
-        pulumi.log.warn("""update_at is deprecated: Use updated_at instead""")
-
-        return pulumi.get(self, "update_at")
-
-    @update_at.setter
-    def update_at(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update_at", value)
-
-    @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1194,7 +1172,6 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["schema"] = None
             __props__.__dict__["size_bytes"] = None
             __props__.__dict__["status"] = None
-            __props__.__dict__["update_at"] = None
             __props__.__dict__["updated_at"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["imageSourcePassword"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -1233,7 +1210,6 @@ class Image(pulumi.CustomResource):
             size_bytes: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            update_at: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
             verify_checksum: Optional[pulumi.Input[bool]] = None,
             visibility: Optional[pulumi.Input[str]] = None,
@@ -1296,7 +1272,6 @@ class Image(pulumi.CustomResource):
                or "saving".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the image. It must be a list of strings.
                At this time, it is not possible to delete all tags of an image.
-        :param pulumi.Input[str] update_at: (**Deprecated** - use `updated_at` instead)
         :param pulumi.Input[str] updated_at: The date the image was last updated.
         :param pulumi.Input[bool] verify_checksum: If false, the checksum will not be verified
                once the image is finished uploading. Conflicts with `web_download`.
@@ -1337,7 +1312,6 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["size_bytes"] = size_bytes
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
-        __props__.__dict__["update_at"] = update_at
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["verify_checksum"] = verify_checksum
         __props__.__dict__["visibility"] = visibility
@@ -1567,17 +1541,6 @@ class Image(pulumi.CustomResource):
         At this time, it is not possible to delete all tags of an image.
         """
         return pulumi.get(self, "tags")
-
-    @property
-    @pulumi.getter(name="updateAt")
-    def update_at(self) -> pulumi.Output[str]:
-        """
-        (**Deprecated** - use `updated_at` instead)
-        """
-        warnings.warn("""Use updated_at instead""", DeprecationWarning)
-        pulumi.log.warn("""update_at is deprecated: Use updated_at instead""")
-
-        return pulumi.get(self, "update_at")
 
     @property
     @pulumi.getter(name="updatedAt")

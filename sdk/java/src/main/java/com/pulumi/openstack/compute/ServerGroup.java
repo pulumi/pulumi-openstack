@@ -35,6 +35,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.openstack.compute.ServerGroup;
  * import com.pulumi.openstack.compute.ServerGroupArgs;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceSchedulerHintArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceNetworkArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,6 +55,18 @@ import javax.annotation.Nullable;
  *         var test_sg = new ServerGroup("test-sg", ServerGroupArgs.builder()        
  *             .name("my-sg")
  *             .policies("anti-affinity")
+ *             .build());
+ * 
+ *         var test_instance = new Instance("test-instance", InstanceArgs.builder()        
+ *             .name("my-instance")
+ *             .imageId("ad091b52-742f-469e-8f3c-fd81cadf0743")
+ *             .flavorId("3")
+ *             .schedulerHints(InstanceSchedulerHintArgs.builder()
+ *                 .group(test_sg.id())
+ *                 .build())
+ *             .networks(InstanceNetworkArgs.builder()
+ *                 .name("my_network")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -72,6 +88,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.openstack.compute.ServerGroup;
  * import com.pulumi.openstack.compute.ServerGroupArgs;
  * import com.pulumi.openstack.compute.inputs.ServerGroupRulesArgs;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceSchedulerHintArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceNetworkArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -90,6 +110,18 @@ import javax.annotation.Nullable;
  *             .policies("anti-affinity")
  *             .rules(ServerGroupRulesArgs.builder()
  *                 .maxServerPerHost(3)
+ *                 .build())
+ *             .build());
+ * 
+ *         var test_instance = new Instance("test-instance", InstanceArgs.builder()        
+ *             .name("my-instance")
+ *             .imageId("ad091b52-742f-469e-8f3c-fd81cadf0743")
+ *             .flavorId("3")
+ *             .schedulerHints(InstanceSchedulerHintArgs.builder()
+ *                 .group(test_sg.id())
+ *                 .build())
+ *             .networks(InstanceNetworkArgs.builder()
+ *                 .name("my_network")
  *                 .build())
  *             .build());
  * 

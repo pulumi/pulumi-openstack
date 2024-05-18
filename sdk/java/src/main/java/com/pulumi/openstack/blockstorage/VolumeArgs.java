@@ -148,29 +148,6 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional) Allow the volume to be attached to more than one Compute instance.
-     * 
-     * @deprecated
-     * multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
-     * 
-     */
-    @Deprecated /* multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types */
-    @Import(name="multiattach")
-    private @Nullable Output<Boolean> multiattach;
-
-    /**
-     * @return (Optional) Allow the volume to be attached to more than one Compute instance.
-     * 
-     * @deprecated
-     * multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
-     * 
-     */
-    @Deprecated /* multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types */
-    public Optional<Output<Boolean>> multiattach() {
-        return Optional.ofNullable(this.multiattach);
-    }
-
-    /**
      * A unique name for the volume. Changing this updates the
      * volume&#39;s name.
      * 
@@ -318,7 +295,6 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         this.enableOnlineResize = $.enableOnlineResize;
         this.imageId = $.imageId;
         this.metadata = $.metadata;
-        this.multiattach = $.multiattach;
         this.name = $.name;
         this.region = $.region;
         this.schedulerHints = $.schedulerHints;
@@ -512,35 +488,6 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder metadata(Map<String,Object> metadata) {
             return metadata(Output.of(metadata));
-        }
-
-        /**
-         * @param multiattach (Optional) Allow the volume to be attached to more than one Compute instance.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
-         * 
-         */
-        @Deprecated /* multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types */
-        public Builder multiattach(@Nullable Output<Boolean> multiattach) {
-            $.multiattach = multiattach;
-            return this;
-        }
-
-        /**
-         * @param multiattach (Optional) Allow the volume to be attached to more than one Compute instance.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
-         * 
-         */
-        @Deprecated /* multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types */
-        public Builder multiattach(Boolean multiattach) {
-            return multiattach(Output.of(multiattach));
         }
 
         /**

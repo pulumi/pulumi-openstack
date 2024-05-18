@@ -24,7 +24,6 @@ namespace Pulumi.OpenStack.Compute.Outputs
         /// </summary>
         public readonly string? FixedIpV4;
         public readonly string? FixedIpV6;
-        public readonly string? FloatingIp;
         public readonly string? Mac;
         /// <summary>
         /// The human-readable
@@ -50,8 +49,6 @@ namespace Pulumi.OpenStack.Compute.Outputs
 
             string? fixedIpV6,
 
-            string? floatingIp,
-
             string? mac,
 
             string? name,
@@ -63,7 +60,6 @@ namespace Pulumi.OpenStack.Compute.Outputs
             AccessNetwork = accessNetwork;
             FixedIpV4 = fixedIpV4;
             FixedIpV6 = fixedIpV6;
-            FloatingIp = floatingIp;
             Mac = mac;
             Name = name;
             Port = port;

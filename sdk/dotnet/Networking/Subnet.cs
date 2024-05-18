@@ -67,14 +67,6 @@ namespace Pulumi.OpenStack.Networking
         public Output<ImmutableArray<Outputs.SubnetAllocationPool>> AllocationPools { get; private set; } = null!;
 
         /// <summary>
-        /// A block declaring the start and end range of the IP addresses available for
-        /// use with DHCP in this subnet.
-        /// The `allocation_pools` block is documented below.
-        /// </summary>
-        [Output("allocationPoolsCollection")]
-        public Output<ImmutableArray<Outputs.SubnetAllocationPoolsCollection>> AllocationPoolsCollection { get; private set; } = null!;
-
-        /// <summary>
         /// CIDR representing IP range for this subnet, based on IP
         /// version. You can omit this option if you are creating a subnet from a
         /// subnet pool.
@@ -113,16 +105,6 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Output("gatewayIp")]
         public Output<string> GatewayIp { get; private set; } = null!;
-
-        /// <summary>
-        /// (**Deprecated** - use `openstack.networking.SubnetRoute`
-        /// instead) An array of routes that should be used by devices
-        /// with IPs from this subnet (not including local subnet route). The host_route
-        /// object structure is documented below. Changing this updates the host routes
-        /// for the existing subnet.
-        /// </summary>
-        [Output("hostRoutes")]
-        public Output<ImmutableArray<Outputs.SubnetHostRoute>> HostRoutes { get; private set; } = null!;
 
         /// <summary>
         /// IP version, either 4 (default) or 6. Changing this creates a
@@ -279,21 +261,6 @@ namespace Pulumi.OpenStack.Networking
             set => _allocationPools = value;
         }
 
-        [Input("allocationPoolsCollection")]
-        private InputList<Inputs.SubnetAllocationPoolsCollectionArgs>? _allocationPoolsCollection;
-
-        /// <summary>
-        /// A block declaring the start and end range of the IP addresses available for
-        /// use with DHCP in this subnet.
-        /// The `allocation_pools` block is documented below.
-        /// </summary>
-        [Obsolete(@"use allocation_pool instead")]
-        public InputList<Inputs.SubnetAllocationPoolsCollectionArgs> AllocationPoolsCollection
-        {
-            get => _allocationPoolsCollection ?? (_allocationPoolsCollection = new InputList<Inputs.SubnetAllocationPoolsCollectionArgs>());
-            set => _allocationPoolsCollection = value;
-        }
-
         /// <summary>
         /// CIDR representing IP range for this subnet, based on IP
         /// version. You can omit this option if you are creating a subnet from a
@@ -339,23 +306,6 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Input("gatewayIp")]
         public Input<string>? GatewayIp { get; set; }
-
-        [Input("hostRoutes")]
-        private InputList<Inputs.SubnetHostRouteArgs>? _hostRoutes;
-
-        /// <summary>
-        /// (**Deprecated** - use `openstack.networking.SubnetRoute`
-        /// instead) An array of routes that should be used by devices
-        /// with IPs from this subnet (not including local subnet route). The host_route
-        /// object structure is documented below. Changing this updates the host routes
-        /// for the existing subnet.
-        /// </summary>
-        [Obsolete(@"Use openstack.networking.SubnetRoute instead")]
-        public InputList<Inputs.SubnetHostRouteArgs> HostRoutes
-        {
-            get => _hostRoutes ?? (_hostRoutes = new InputList<Inputs.SubnetHostRouteArgs>());
-            set => _hostRoutes = value;
-        }
 
         /// <summary>
         /// IP version, either 4 (default) or 6. Changing this creates a
@@ -505,21 +455,6 @@ namespace Pulumi.OpenStack.Networking
             set => _allocationPools = value;
         }
 
-        [Input("allocationPoolsCollection")]
-        private InputList<Inputs.SubnetAllocationPoolsCollectionGetArgs>? _allocationPoolsCollection;
-
-        /// <summary>
-        /// A block declaring the start and end range of the IP addresses available for
-        /// use with DHCP in this subnet.
-        /// The `allocation_pools` block is documented below.
-        /// </summary>
-        [Obsolete(@"use allocation_pool instead")]
-        public InputList<Inputs.SubnetAllocationPoolsCollectionGetArgs> AllocationPoolsCollection
-        {
-            get => _allocationPoolsCollection ?? (_allocationPoolsCollection = new InputList<Inputs.SubnetAllocationPoolsCollectionGetArgs>());
-            set => _allocationPoolsCollection = value;
-        }
-
         /// <summary>
         /// CIDR representing IP range for this subnet, based on IP
         /// version. You can omit this option if you are creating a subnet from a
@@ -565,23 +500,6 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Input("gatewayIp")]
         public Input<string>? GatewayIp { get; set; }
-
-        [Input("hostRoutes")]
-        private InputList<Inputs.SubnetHostRouteGetArgs>? _hostRoutes;
-
-        /// <summary>
-        /// (**Deprecated** - use `openstack.networking.SubnetRoute`
-        /// instead) An array of routes that should be used by devices
-        /// with IPs from this subnet (not including local subnet route). The host_route
-        /// object structure is documented below. Changing this updates the host routes
-        /// for the existing subnet.
-        /// </summary>
-        [Obsolete(@"Use openstack.networking.SubnetRoute instead")]
-        public InputList<Inputs.SubnetHostRouteGetArgs> HostRoutes
-        {
-            get => _hostRoutes ?? (_hostRoutes = new InputList<Inputs.SubnetHostRouteGetArgs>());
-            set => _hostRoutes = value;
-        }
 
         /// <summary>
         /// IP version, either 4 (default) or 6. Changing this creates a

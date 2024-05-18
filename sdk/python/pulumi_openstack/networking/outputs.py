@@ -18,8 +18,6 @@ __all__ = [
     'RouterExternalFixedIp',
     'RouterVendorOptions',
     'SubnetAllocationPool',
-    'SubnetAllocationPoolsCollection',
-    'SubnetHostRoute',
     'TrunkSubPort',
     'GetNetworkSegmentResult',
     'GetPortAllowedAddressPairResult',
@@ -474,83 +472,6 @@ class SubnetAllocationPool(dict):
         The starting address.
         """
         return pulumi.get(self, "start")
-
-
-@pulumi.output_type
-class SubnetAllocationPoolsCollection(dict):
-    def __init__(__self__, *,
-                 end: str,
-                 start: str):
-        """
-        :param str end: The ending address.
-        :param str start: The starting address.
-        """
-        pulumi.set(__self__, "end", end)
-        pulumi.set(__self__, "start", start)
-
-    @property
-    @pulumi.getter
-    def end(self) -> str:
-        """
-        The ending address.
-        """
-        return pulumi.get(self, "end")
-
-    @property
-    @pulumi.getter
-    def start(self) -> str:
-        """
-        The starting address.
-        """
-        return pulumi.get(self, "start")
-
-
-@pulumi.output_type
-class SubnetHostRoute(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "destinationCidr":
-            suggest = "destination_cidr"
-        elif key == "nextHop":
-            suggest = "next_hop"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SubnetHostRoute. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SubnetHostRoute.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SubnetHostRoute.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 destination_cidr: str,
-                 next_hop: str):
-        """
-        :param str destination_cidr: The destination CIDR.
-        :param str next_hop: The next hop in the route.
-        """
-        pulumi.set(__self__, "destination_cidr", destination_cidr)
-        pulumi.set(__self__, "next_hop", next_hop)
-
-    @property
-    @pulumi.getter(name="destinationCidr")
-    def destination_cidr(self) -> str:
-        """
-        The destination CIDR.
-        """
-        return pulumi.get(self, "destination_cidr")
-
-    @property
-    @pulumi.getter(name="nextHop")
-    def next_hop(self) -> str:
-        """
-        The next hop in the route.
-        """
-        return pulumi.get(self, "next_hop")
 
 
 @pulumi.output_type

@@ -154,7 +154,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["tenantName"] = args ? args.tenantName : undefined;
             resourceInputs["token"] = args ? args.token : undefined;
-            resourceInputs["useOctavia"] = pulumi.output((args ? args.useOctavia : undefined) ?? utilities.getEnvBoolean("OS_USE_OCTAVIA")).apply(JSON.stringify);
             resourceInputs["userDomainId"] = args ? args.userDomainId : undefined;
             resourceInputs["userDomainName"] = args ? args.userDomainName : undefined;
             resourceInputs["userId"] = args ? args.userId : undefined;
@@ -282,12 +281,6 @@ export interface ProviderArgs {
      * Authentication token to use as an alternative to username/password.
      */
     token?: pulumi.Input<string>;
-    /**
-     * If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
-     *
-     * @deprecated Users not using loadbalancer resources can ignore this message. Support for neutron-lbaas will be removed on next major release. Octavia will be the only supported method for loadbalancer resources. Users using octavia will have to remove 'use_octavia' option from the provider configuration block. Users using neutron-lbaas will have to migrate/upgrade to octavia.
-     */
-    useOctavia?: pulumi.Input<boolean>;
     /**
      * The ID of the domain where the user resides (Identity v3).
      */

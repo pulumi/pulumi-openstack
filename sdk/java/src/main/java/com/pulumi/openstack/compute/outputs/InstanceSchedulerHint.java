@@ -39,7 +39,8 @@ public final class InstanceSchedulerHint {
     private @Nullable List<String> differentHosts;
     /**
      * @return A UUID of a Server Group. The instance will be placed
-     * into that group.
+     * into that group. See reference
+     * for details on managing servergroup resources
      * 
      */
     private @Nullable String group;
@@ -99,7 +100,8 @@ public final class InstanceSchedulerHint {
     }
     /**
      * @return A UUID of a Server Group. The instance will be placed
-     * into that group.
+     * into that group. See reference
+     * for details on managing servergroup resources
      * 
      */
     public Optional<String> group() {

@@ -123,9 +123,6 @@ namespace Pulumi.OpenStack.BlockStorage
         [Output("initiator")]
         public Output<string?> Initiator { get; private set; } = null!;
 
-        [Output("instanceId")]
-        public Output<string?> InstanceId { get; private set; } = null!;
-
         /// <summary>
         /// The IP address of the `host_name` above.
         /// </summary>
@@ -262,9 +259,6 @@ namespace Pulumi.OpenStack.BlockStorage
         [Input("initiator")]
         public Input<string>? Initiator { get; set; }
 
-        [Input("instanceId")]
-        public Input<string>? InstanceId { get; set; }
-
         /// <summary>
         /// The IP address of the `host_name` above.
         /// </summary>
@@ -382,9 +376,6 @@ namespace Pulumi.OpenStack.BlockStorage
         /// </summary>
         [Input("initiator")]
         public Input<string>? Initiator { get; set; }
-
-        [Input("instanceId")]
-        public Input<string>? InstanceId { get; set; }
 
         /// <summary>
         /// The IP address of the `host_name` above.
