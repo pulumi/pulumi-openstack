@@ -33,6 +33,27 @@ namespace Pulumi.OpenStack.Compute
     ///         },
     ///     });
     /// 
+    ///     var test_instance = new OpenStack.Compute.Instance("test-instance", new()
+    ///     {
+    ///         Name = "my-instance",
+    ///         ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
+    ///         FlavorId = "3",
+    ///         SchedulerHints = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceSchedulerHintArgs
+    ///             {
+    ///                 Group = test_sg.Id,
+    ///             },
+    ///         },
+    ///         Networks = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Name = "my_network",
+    ///             },
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -56,6 +77,27 @@ namespace Pulumi.OpenStack.Compute
     ///         Rules = new OpenStack.Compute.Inputs.ServerGroupRulesArgs
     ///         {
     ///             MaxServerPerHost = 3,
+    ///         },
+    ///     });
+    /// 
+    ///     var test_instance = new OpenStack.Compute.Instance("test-instance", new()
+    ///     {
+    ///         Name = "my-instance",
+    ///         ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
+    ///         FlavorId = "3",
+    ///         SchedulerHints = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceSchedulerHintArgs
+    ///             {
+    ///                 Group = test_sg.Id,
+    ///             },
+    ///         },
+    ///         Networks = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Name = "my_network",
+    ///             },
     ///         },
     ///     });
     /// 

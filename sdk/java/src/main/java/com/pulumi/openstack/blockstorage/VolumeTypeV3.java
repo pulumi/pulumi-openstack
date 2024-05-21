@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Basic Volume Type
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -53,6 +55,43 @@ import javax.annotation.Nullable;
  *                 Map.entry("capabilities", "gpu"),
  *                 Map.entry("volume_backend_name", "ssd")
  *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Volume Type with multiattach enabled
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.blockstorage.VolumeTypeV3;
+ * import com.pulumi.openstack.blockstorage.VolumeTypeV3Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var multiattach = new VolumeTypeV3("multiattach", VolumeTypeV3Args.builder()        
+ *             .name("multiattach")
+ *             .description("Multiattach-enabled volume type")
+ *             .extraSpecs(Map.of("multiattach", "<is> True"))
  *             .build());
  * 
  *     }

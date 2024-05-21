@@ -76,6 +76,25 @@ public final class VolumeAttachState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Add a device role tag that is applied to the volume when
+     * attaching it to the VM. Changing this creates a new volume attachment with
+     * the new tag. Requires microversion &gt;= 2.49.
+     * 
+     */
+    @Import(name="tag")
+    private @Nullable Output<String> tag;
+
+    /**
+     * @return Add a device role tag that is applied to the volume when
+     * attaching it to the VM. Changing this creates a new volume attachment with
+     * the new tag. Requires microversion &gt;= 2.49.
+     * 
+     */
+    public Optional<Output<String>> tag() {
+        return Optional.ofNullable(this.tag);
+    }
+
+    /**
      * Map of additional vendor-specific options.
      * Supported options are described below.
      * 
@@ -114,6 +133,7 @@ public final class VolumeAttachState extends com.pulumi.resources.ResourceArgs {
         this.instanceId = $.instanceId;
         this.multiattach = $.multiattach;
         this.region = $.region;
+        this.tag = $.tag;
         this.vendorOptions = $.vendorOptions;
         this.volumeId = $.volumeId;
     }
@@ -212,6 +232,31 @@ public final class VolumeAttachState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param tag Add a device role tag that is applied to the volume when
+         * attaching it to the VM. Changing this creates a new volume attachment with
+         * the new tag. Requires microversion &gt;= 2.49.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tag(@Nullable Output<String> tag) {
+            $.tag = tag;
+            return this;
+        }
+
+        /**
+         * @param tag Add a device role tag that is applied to the volume when
+         * attaching it to the VM. Changing this creates a new volume attachment with
+         * the new tag. Requires microversion &gt;= 2.49.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tag(String tag) {
+            return tag(Output.of(tag));
         }
 
         /**

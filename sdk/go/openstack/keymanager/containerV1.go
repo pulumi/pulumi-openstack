@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,9 +25,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/networking"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -139,7 +139,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/keymanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

@@ -18,13 +18,11 @@ class SubnetArgs:
     def __init__(__self__, *,
                  network_id: pulumi.Input[str],
                  allocation_pools: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]] = None,
-                 allocation_pools_collection: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolsCollectionArgs']]]] = None,
                  cidr: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_dhcp: Optional[pulumi.Input[bool]] = None,
                  gateway_ip: Optional[pulumi.Input[str]] = None,
-                 host_routes: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetHostRouteArgs']]]] = None,
                  ip_version: Optional[pulumi.Input[int]] = None,
                  ipv6_address_mode: Optional[pulumi.Input[str]] = None,
                  ipv6_ra_mode: Optional[pulumi.Input[str]] = None,
@@ -47,9 +45,6 @@ class SubnetArgs:
                than one range of IP addresses to use with DHCP. However, each IP range
                must be from the same CIDR that the subnet is part of.
                The `allocation_pool` block is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolsCollectionArgs']]] allocation_pools_collection: A block declaring the start and end range of the IP addresses available for
-               use with DHCP in this subnet.
-               The `allocation_pools` block is documented below.
         :param pulumi.Input[str] cidr: CIDR representing IP range for this subnet, based on IP
                version. You can omit this option if you are creating a subnet from a
                subnet pool.
@@ -65,11 +60,6 @@ class SubnetArgs:
                Leaving this blank and not setting `no_gateway` will cause a default
                gateway of `.1` to be used. Changing this updates the gateway IP of the
                existing subnet.
-        :param pulumi.Input[Sequence[pulumi.Input['SubnetHostRouteArgs']]] host_routes: (**Deprecated** - use `networking.SubnetRoute`
-               instead) An array of routes that should be used by devices
-               with IPs from this subnet (not including local subnet route). The host_route
-               object structure is documented below. Changing this updates the host routes
-               for the existing subnet.
         :param pulumi.Input[int] ip_version: IP version, either 4 (default) or 6. Changing this creates a
                new subnet.
         :param pulumi.Input[str] ipv6_address_mode: The IPv6 address mode. Valid values are
@@ -99,11 +89,6 @@ class SubnetArgs:
         pulumi.set(__self__, "network_id", network_id)
         if allocation_pools is not None:
             pulumi.set(__self__, "allocation_pools", allocation_pools)
-        if allocation_pools_collection is not None:
-            warnings.warn("""use allocation_pool instead""", DeprecationWarning)
-            pulumi.log.warn("""allocation_pools_collection is deprecated: use allocation_pool instead""")
-        if allocation_pools_collection is not None:
-            pulumi.set(__self__, "allocation_pools_collection", allocation_pools_collection)
         if cidr is not None:
             pulumi.set(__self__, "cidr", cidr)
         if description is not None:
@@ -114,11 +99,6 @@ class SubnetArgs:
             pulumi.set(__self__, "enable_dhcp", enable_dhcp)
         if gateway_ip is not None:
             pulumi.set(__self__, "gateway_ip", gateway_ip)
-        if host_routes is not None:
-            warnings.warn("""Use networking.SubnetRoute instead""", DeprecationWarning)
-            pulumi.log.warn("""host_routes is deprecated: Use networking.SubnetRoute instead""")
-        if host_routes is not None:
-            pulumi.set(__self__, "host_routes", host_routes)
         if ip_version is not None:
             pulumi.set(__self__, "ip_version", ip_version)
         if ipv6_address_mode is not None:
@@ -173,23 +153,6 @@ class SubnetArgs:
     @allocation_pools.setter
     def allocation_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]]):
         pulumi.set(self, "allocation_pools", value)
-
-    @property
-    @pulumi.getter(name="allocationPoolsCollection")
-    def allocation_pools_collection(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolsCollectionArgs']]]]:
-        """
-        A block declaring the start and end range of the IP addresses available for
-        use with DHCP in this subnet.
-        The `allocation_pools` block is documented below.
-        """
-        warnings.warn("""use allocation_pool instead""", DeprecationWarning)
-        pulumi.log.warn("""allocation_pools_collection is deprecated: use allocation_pool instead""")
-
-        return pulumi.get(self, "allocation_pools_collection")
-
-    @allocation_pools_collection.setter
-    def allocation_pools_collection(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolsCollectionArgs']]]]):
-        pulumi.set(self, "allocation_pools_collection", value)
 
     @property
     @pulumi.getter
@@ -260,25 +223,6 @@ class SubnetArgs:
     @gateway_ip.setter
     def gateway_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gateway_ip", value)
-
-    @property
-    @pulumi.getter(name="hostRoutes")
-    def host_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubnetHostRouteArgs']]]]:
-        """
-        (**Deprecated** - use `networking.SubnetRoute`
-        instead) An array of routes that should be used by devices
-        with IPs from this subnet (not including local subnet route). The host_route
-        object structure is documented below. Changing this updates the host routes
-        for the existing subnet.
-        """
-        warnings.warn("""Use networking.SubnetRoute instead""", DeprecationWarning)
-        pulumi.log.warn("""host_routes is deprecated: Use networking.SubnetRoute instead""")
-
-        return pulumi.get(self, "host_routes")
-
-    @host_routes.setter
-    def host_routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetHostRouteArgs']]]]):
-        pulumi.set(self, "host_routes", value)
 
     @property
     @pulumi.getter(name="ipVersion")
@@ -443,13 +387,11 @@ class _SubnetState:
     def __init__(__self__, *,
                  all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allocation_pools: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]] = None,
-                 allocation_pools_collection: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolsCollectionArgs']]]] = None,
                  cidr: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_dhcp: Optional[pulumi.Input[bool]] = None,
                  gateway_ip: Optional[pulumi.Input[str]] = None,
-                 host_routes: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetHostRouteArgs']]]] = None,
                  ip_version: Optional[pulumi.Input[int]] = None,
                  ipv6_address_mode: Optional[pulumi.Input[str]] = None,
                  ipv6_ra_mode: Optional[pulumi.Input[str]] = None,
@@ -473,9 +415,6 @@ class _SubnetState:
                than one range of IP addresses to use with DHCP. However, each IP range
                must be from the same CIDR that the subnet is part of.
                The `allocation_pool` block is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolsCollectionArgs']]] allocation_pools_collection: A block declaring the start and end range of the IP addresses available for
-               use with DHCP in this subnet.
-               The `allocation_pools` block is documented below.
         :param pulumi.Input[str] cidr: CIDR representing IP range for this subnet, based on IP
                version. You can omit this option if you are creating a subnet from a
                subnet pool.
@@ -491,11 +430,6 @@ class _SubnetState:
                Leaving this blank and not setting `no_gateway` will cause a default
                gateway of `.1` to be used. Changing this updates the gateway IP of the
                existing subnet.
-        :param pulumi.Input[Sequence[pulumi.Input['SubnetHostRouteArgs']]] host_routes: (**Deprecated** - use `networking.SubnetRoute`
-               instead) An array of routes that should be used by devices
-               with IPs from this subnet (not including local subnet route). The host_route
-               object structure is documented below. Changing this updates the host routes
-               for the existing subnet.
         :param pulumi.Input[int] ip_version: IP version, either 4 (default) or 6. Changing this creates a
                new subnet.
         :param pulumi.Input[str] ipv6_address_mode: The IPv6 address mode. Valid values are
@@ -528,11 +462,6 @@ class _SubnetState:
             pulumi.set(__self__, "all_tags", all_tags)
         if allocation_pools is not None:
             pulumi.set(__self__, "allocation_pools", allocation_pools)
-        if allocation_pools_collection is not None:
-            warnings.warn("""use allocation_pool instead""", DeprecationWarning)
-            pulumi.log.warn("""allocation_pools_collection is deprecated: use allocation_pool instead""")
-        if allocation_pools_collection is not None:
-            pulumi.set(__self__, "allocation_pools_collection", allocation_pools_collection)
         if cidr is not None:
             pulumi.set(__self__, "cidr", cidr)
         if description is not None:
@@ -543,11 +472,6 @@ class _SubnetState:
             pulumi.set(__self__, "enable_dhcp", enable_dhcp)
         if gateway_ip is not None:
             pulumi.set(__self__, "gateway_ip", gateway_ip)
-        if host_routes is not None:
-            warnings.warn("""Use networking.SubnetRoute instead""", DeprecationWarning)
-            pulumi.log.warn("""host_routes is deprecated: Use networking.SubnetRoute instead""")
-        if host_routes is not None:
-            pulumi.set(__self__, "host_routes", host_routes)
         if ip_version is not None:
             pulumi.set(__self__, "ip_version", ip_version)
         if ipv6_address_mode is not None:
@@ -604,23 +528,6 @@ class _SubnetState:
     @allocation_pools.setter
     def allocation_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]]):
         pulumi.set(self, "allocation_pools", value)
-
-    @property
-    @pulumi.getter(name="allocationPoolsCollection")
-    def allocation_pools_collection(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolsCollectionArgs']]]]:
-        """
-        A block declaring the start and end range of the IP addresses available for
-        use with DHCP in this subnet.
-        The `allocation_pools` block is documented below.
-        """
-        warnings.warn("""use allocation_pool instead""", DeprecationWarning)
-        pulumi.log.warn("""allocation_pools_collection is deprecated: use allocation_pool instead""")
-
-        return pulumi.get(self, "allocation_pools_collection")
-
-    @allocation_pools_collection.setter
-    def allocation_pools_collection(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolsCollectionArgs']]]]):
-        pulumi.set(self, "allocation_pools_collection", value)
 
     @property
     @pulumi.getter
@@ -691,25 +598,6 @@ class _SubnetState:
     @gateway_ip.setter
     def gateway_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gateway_ip", value)
-
-    @property
-    @pulumi.getter(name="hostRoutes")
-    def host_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubnetHostRouteArgs']]]]:
-        """
-        (**Deprecated** - use `networking.SubnetRoute`
-        instead) An array of routes that should be used by devices
-        with IPs from this subnet (not including local subnet route). The host_route
-        object structure is documented below. Changing this updates the host routes
-        for the existing subnet.
-        """
-        warnings.warn("""Use networking.SubnetRoute instead""", DeprecationWarning)
-        pulumi.log.warn("""host_routes is deprecated: Use networking.SubnetRoute instead""")
-
-        return pulumi.get(self, "host_routes")
-
-    @host_routes.setter
-    def host_routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetHostRouteArgs']]]]):
-        pulumi.set(self, "host_routes", value)
 
     @property
     @pulumi.getter(name="ipVersion")
@@ -888,13 +776,11 @@ class Subnet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocation_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetAllocationPoolArgs']]]]] = None,
-                 allocation_pools_collection: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetAllocationPoolsCollectionArgs']]]]] = None,
                  cidr: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_dhcp: Optional[pulumi.Input[bool]] = None,
                  gateway_ip: Optional[pulumi.Input[str]] = None,
-                 host_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetHostRouteArgs']]]]] = None,
                  ip_version: Optional[pulumi.Input[int]] = None,
                  ipv6_address_mode: Optional[pulumi.Input[str]] = None,
                  ipv6_ra_mode: Optional[pulumi.Input[str]] = None,
@@ -942,9 +828,6 @@ class Subnet(pulumi.CustomResource):
                than one range of IP addresses to use with DHCP. However, each IP range
                must be from the same CIDR that the subnet is part of.
                The `allocation_pool` block is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetAllocationPoolsCollectionArgs']]]] allocation_pools_collection: A block declaring the start and end range of the IP addresses available for
-               use with DHCP in this subnet.
-               The `allocation_pools` block is documented below.
         :param pulumi.Input[str] cidr: CIDR representing IP range for this subnet, based on IP
                version. You can omit this option if you are creating a subnet from a
                subnet pool.
@@ -960,11 +843,6 @@ class Subnet(pulumi.CustomResource):
                Leaving this blank and not setting `no_gateway` will cause a default
                gateway of `.1` to be used. Changing this updates the gateway IP of the
                existing subnet.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetHostRouteArgs']]]] host_routes: (**Deprecated** - use `networking.SubnetRoute`
-               instead) An array of routes that should be used by devices
-               with IPs from this subnet (not including local subnet route). The host_route
-               object structure is documented below. Changing this updates the host routes
-               for the existing subnet.
         :param pulumi.Input[int] ip_version: IP version, either 4 (default) or 6. Changing this creates a
                new subnet.
         :param pulumi.Input[str] ipv6_address_mode: The IPv6 address mode. Valid values are
@@ -1040,13 +918,11 @@ class Subnet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocation_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetAllocationPoolArgs']]]]] = None,
-                 allocation_pools_collection: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetAllocationPoolsCollectionArgs']]]]] = None,
                  cidr: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enable_dhcp: Optional[pulumi.Input[bool]] = None,
                  gateway_ip: Optional[pulumi.Input[str]] = None,
-                 host_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetHostRouteArgs']]]]] = None,
                  ip_version: Optional[pulumi.Input[int]] = None,
                  ipv6_address_mode: Optional[pulumi.Input[str]] = None,
                  ipv6_ra_mode: Optional[pulumi.Input[str]] = None,
@@ -1070,13 +946,11 @@ class Subnet(pulumi.CustomResource):
             __props__ = SubnetArgs.__new__(SubnetArgs)
 
             __props__.__dict__["allocation_pools"] = allocation_pools
-            __props__.__dict__["allocation_pools_collection"] = allocation_pools_collection
             __props__.__dict__["cidr"] = cidr
             __props__.__dict__["description"] = description
             __props__.__dict__["dns_nameservers"] = dns_nameservers
             __props__.__dict__["enable_dhcp"] = enable_dhcp
             __props__.__dict__["gateway_ip"] = gateway_ip
-            __props__.__dict__["host_routes"] = host_routes
             __props__.__dict__["ip_version"] = ip_version
             __props__.__dict__["ipv6_address_mode"] = ipv6_address_mode
             __props__.__dict__["ipv6_ra_mode"] = ipv6_ra_mode
@@ -1105,13 +979,11 @@ class Subnet(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             allocation_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetAllocationPoolArgs']]]]] = None,
-            allocation_pools_collection: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetAllocationPoolsCollectionArgs']]]]] = None,
             cidr: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             dns_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             enable_dhcp: Optional[pulumi.Input[bool]] = None,
             gateway_ip: Optional[pulumi.Input[str]] = None,
-            host_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetHostRouteArgs']]]]] = None,
             ip_version: Optional[pulumi.Input[int]] = None,
             ipv6_address_mode: Optional[pulumi.Input[str]] = None,
             ipv6_ra_mode: Optional[pulumi.Input[str]] = None,
@@ -1140,9 +1012,6 @@ class Subnet(pulumi.CustomResource):
                than one range of IP addresses to use with DHCP. However, each IP range
                must be from the same CIDR that the subnet is part of.
                The `allocation_pool` block is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetAllocationPoolsCollectionArgs']]]] allocation_pools_collection: A block declaring the start and end range of the IP addresses available for
-               use with DHCP in this subnet.
-               The `allocation_pools` block is documented below.
         :param pulumi.Input[str] cidr: CIDR representing IP range for this subnet, based on IP
                version. You can omit this option if you are creating a subnet from a
                subnet pool.
@@ -1158,11 +1027,6 @@ class Subnet(pulumi.CustomResource):
                Leaving this blank and not setting `no_gateway` will cause a default
                gateway of `.1` to be used. Changing this updates the gateway IP of the
                existing subnet.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetHostRouteArgs']]]] host_routes: (**Deprecated** - use `networking.SubnetRoute`
-               instead) An array of routes that should be used by devices
-               with IPs from this subnet (not including local subnet route). The host_route
-               object structure is documented below. Changing this updates the host routes
-               for the existing subnet.
         :param pulumi.Input[int] ip_version: IP version, either 4 (default) or 6. Changing this creates a
                new subnet.
         :param pulumi.Input[str] ipv6_address_mode: The IPv6 address mode. Valid values are
@@ -1197,13 +1061,11 @@ class Subnet(pulumi.CustomResource):
 
         __props__.__dict__["all_tags"] = all_tags
         __props__.__dict__["allocation_pools"] = allocation_pools
-        __props__.__dict__["allocation_pools_collection"] = allocation_pools_collection
         __props__.__dict__["cidr"] = cidr
         __props__.__dict__["description"] = description
         __props__.__dict__["dns_nameservers"] = dns_nameservers
         __props__.__dict__["enable_dhcp"] = enable_dhcp
         __props__.__dict__["gateway_ip"] = gateway_ip
-        __props__.__dict__["host_routes"] = host_routes
         __props__.__dict__["ip_version"] = ip_version
         __props__.__dict__["ipv6_address_mode"] = ipv6_address_mode
         __props__.__dict__["ipv6_ra_mode"] = ipv6_ra_mode
@@ -1240,19 +1102,6 @@ class Subnet(pulumi.CustomResource):
         The `allocation_pool` block is documented below.
         """
         return pulumi.get(self, "allocation_pools")
-
-    @property
-    @pulumi.getter(name="allocationPoolsCollection")
-    def allocation_pools_collection(self) -> pulumi.Output[Sequence['outputs.SubnetAllocationPoolsCollection']]:
-        """
-        A block declaring the start and end range of the IP addresses available for
-        use with DHCP in this subnet.
-        The `allocation_pools` block is documented below.
-        """
-        warnings.warn("""use allocation_pool instead""", DeprecationWarning)
-        pulumi.log.warn("""allocation_pools_collection is deprecated: use allocation_pool instead""")
-
-        return pulumi.get(self, "allocation_pools_collection")
 
     @property
     @pulumi.getter
@@ -1303,21 +1152,6 @@ class Subnet(pulumi.CustomResource):
         existing subnet.
         """
         return pulumi.get(self, "gateway_ip")
-
-    @property
-    @pulumi.getter(name="hostRoutes")
-    def host_routes(self) -> pulumi.Output[Optional[Sequence['outputs.SubnetHostRoute']]]:
-        """
-        (**Deprecated** - use `networking.SubnetRoute`
-        instead) An array of routes that should be used by devices
-        with IPs from this subnet (not including local subnet route). The host_route
-        object structure is documented below. Changing this updates the host routes
-        for the existing subnet.
-        """
-        warnings.warn("""Use networking.SubnetRoute instead""", DeprecationWarning)
-        pulumi.log.warn("""host_routes is deprecated: Use networking.SubnetRoute instead""")
-
-        return pulumi.get(self, "host_routes")
 
     @property
     @pulumi.getter(name="ipVersion")

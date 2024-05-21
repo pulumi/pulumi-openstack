@@ -32,7 +32,7 @@ builds:
     - env GOOS={{ .Os }} GOARCH={{ .Arch }} go clean -modcache
   ignore: []
   ldflags:
-  - -X github.com/pulumi/pulumi-openstack/provider/v3/pkg/version.Version={{.Tag}}
+  - -X github.com/pulumi/pulumi-openstack/provider/v4/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-openstack/
 changelog:
   skip: true

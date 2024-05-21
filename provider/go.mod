@@ -1,11 +1,11 @@
-module github.com/pulumi/pulumi-openstack/provider/v3
+module github.com/pulumi/pulumi-openstack/provider/v4
 
 go 1.21
 
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.82.0
 	github.com/pulumi/pulumi/sdk/v3 v3.114.0
-	github.com/terraform-provider-openstack/terraform-provider-openstack v1.54.1
+	github.com/terraform-provider-openstack/terraform-provider-openstack v1.54.2-0.20240516112058-eff4f37baab4
 )
 
 replace (
@@ -100,7 +100,7 @@ require (
 	github.com/google/wire v0.6.0 // indirect
 	github.com/googleapis/enterprise-certificate-proxy v0.3.2 // indirect
 	github.com/googleapis/gax-go/v2 v2.12.2 // indirect
-	github.com/gophercloud/gophercloud v1.8.0 // indirect
+	github.com/gophercloud/gophercloud v1.9.0 // indirect
 	github.com/gophercloud/utils v0.0.0-20230324070755-05e9e7f5ea4d // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 // indirect

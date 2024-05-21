@@ -489,24 +489,6 @@ public class Image extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * (**Deprecated** - use `updated_at` instead)
-     * 
-     * @deprecated
-     * Use updated_at instead
-     * 
-     */
-    @Deprecated /* Use updated_at instead */
-    @Export(name="updateAt", refs={String.class}, tree="[0]")
-    private Output<String> updateAt;
-
-    /**
-     * @return (**Deprecated** - use `updated_at` instead)
-     * 
-     */
-    public Output<String> updateAt() {
-        return this.updateAt;
-    }
-    /**
      * The date the image was last updated.
      * 
      */

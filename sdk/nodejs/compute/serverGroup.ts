@@ -21,6 +21,17 @@ import * as utilities from "../utilities";
  *     name: "my-sg",
  *     policies: ["anti-affinity"],
  * });
+ * const test_instance = new openstack.compute.Instance("test-instance", {
+ *     name: "my-instance",
+ *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
+ *     flavorId: "3",
+ *     schedulerHints: [{
+ *         group: test_sg.id,
+ *     }],
+ *     networks: [{
+ *         name: "my_network",
+ *     }],
+ * });
  * ```
  *
  * ### Compute service API version 2.64 or above:
@@ -35,6 +46,17 @@ import * as utilities from "../utilities";
  *     rules: {
  *         maxServerPerHost: 3,
  *     },
+ * });
+ * const test_instance = new openstack.compute.Instance("test-instance", {
+ *     name: "my-instance",
+ *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
+ *     flavorId: "3",
+ *     schedulerHints: [{
+ *         group: test_sg.id,
+ *     }],
+ *     networks: [{
+ *         name: "my_network",
+ *     }],
  * });
  * ```
  *

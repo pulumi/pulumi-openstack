@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1052,218 +1052,6 @@ func (o SubnetAllocationPoolArrayOutput) Index(i pulumi.IntInput) SubnetAllocati
 	}).(SubnetAllocationPoolOutput)
 }
 
-type SubnetAllocationPoolsCollection struct {
-	// The ending address.
-	End string `pulumi:"end"`
-	// The starting address.
-	Start string `pulumi:"start"`
-}
-
-// SubnetAllocationPoolsCollectionInput is an input type that accepts SubnetAllocationPoolsCollectionArgs and SubnetAllocationPoolsCollectionOutput values.
-// You can construct a concrete instance of `SubnetAllocationPoolsCollectionInput` via:
-//
-//	SubnetAllocationPoolsCollectionArgs{...}
-type SubnetAllocationPoolsCollectionInput interface {
-	pulumi.Input
-
-	ToSubnetAllocationPoolsCollectionOutput() SubnetAllocationPoolsCollectionOutput
-	ToSubnetAllocationPoolsCollectionOutputWithContext(context.Context) SubnetAllocationPoolsCollectionOutput
-}
-
-type SubnetAllocationPoolsCollectionArgs struct {
-	// The ending address.
-	End pulumi.StringInput `pulumi:"end"`
-	// The starting address.
-	Start pulumi.StringInput `pulumi:"start"`
-}
-
-func (SubnetAllocationPoolsCollectionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetAllocationPoolsCollection)(nil)).Elem()
-}
-
-func (i SubnetAllocationPoolsCollectionArgs) ToSubnetAllocationPoolsCollectionOutput() SubnetAllocationPoolsCollectionOutput {
-	return i.ToSubnetAllocationPoolsCollectionOutputWithContext(context.Background())
-}
-
-func (i SubnetAllocationPoolsCollectionArgs) ToSubnetAllocationPoolsCollectionOutputWithContext(ctx context.Context) SubnetAllocationPoolsCollectionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubnetAllocationPoolsCollectionOutput)
-}
-
-// SubnetAllocationPoolsCollectionArrayInput is an input type that accepts SubnetAllocationPoolsCollectionArray and SubnetAllocationPoolsCollectionArrayOutput values.
-// You can construct a concrete instance of `SubnetAllocationPoolsCollectionArrayInput` via:
-//
-//	SubnetAllocationPoolsCollectionArray{ SubnetAllocationPoolsCollectionArgs{...} }
-type SubnetAllocationPoolsCollectionArrayInput interface {
-	pulumi.Input
-
-	ToSubnetAllocationPoolsCollectionArrayOutput() SubnetAllocationPoolsCollectionArrayOutput
-	ToSubnetAllocationPoolsCollectionArrayOutputWithContext(context.Context) SubnetAllocationPoolsCollectionArrayOutput
-}
-
-type SubnetAllocationPoolsCollectionArray []SubnetAllocationPoolsCollectionInput
-
-func (SubnetAllocationPoolsCollectionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SubnetAllocationPoolsCollection)(nil)).Elem()
-}
-
-func (i SubnetAllocationPoolsCollectionArray) ToSubnetAllocationPoolsCollectionArrayOutput() SubnetAllocationPoolsCollectionArrayOutput {
-	return i.ToSubnetAllocationPoolsCollectionArrayOutputWithContext(context.Background())
-}
-
-func (i SubnetAllocationPoolsCollectionArray) ToSubnetAllocationPoolsCollectionArrayOutputWithContext(ctx context.Context) SubnetAllocationPoolsCollectionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubnetAllocationPoolsCollectionArrayOutput)
-}
-
-type SubnetAllocationPoolsCollectionOutput struct{ *pulumi.OutputState }
-
-func (SubnetAllocationPoolsCollectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetAllocationPoolsCollection)(nil)).Elem()
-}
-
-func (o SubnetAllocationPoolsCollectionOutput) ToSubnetAllocationPoolsCollectionOutput() SubnetAllocationPoolsCollectionOutput {
-	return o
-}
-
-func (o SubnetAllocationPoolsCollectionOutput) ToSubnetAllocationPoolsCollectionOutputWithContext(ctx context.Context) SubnetAllocationPoolsCollectionOutput {
-	return o
-}
-
-// The ending address.
-func (o SubnetAllocationPoolsCollectionOutput) End() pulumi.StringOutput {
-	return o.ApplyT(func(v SubnetAllocationPoolsCollection) string { return v.End }).(pulumi.StringOutput)
-}
-
-// The starting address.
-func (o SubnetAllocationPoolsCollectionOutput) Start() pulumi.StringOutput {
-	return o.ApplyT(func(v SubnetAllocationPoolsCollection) string { return v.Start }).(pulumi.StringOutput)
-}
-
-type SubnetAllocationPoolsCollectionArrayOutput struct{ *pulumi.OutputState }
-
-func (SubnetAllocationPoolsCollectionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SubnetAllocationPoolsCollection)(nil)).Elem()
-}
-
-func (o SubnetAllocationPoolsCollectionArrayOutput) ToSubnetAllocationPoolsCollectionArrayOutput() SubnetAllocationPoolsCollectionArrayOutput {
-	return o
-}
-
-func (o SubnetAllocationPoolsCollectionArrayOutput) ToSubnetAllocationPoolsCollectionArrayOutputWithContext(ctx context.Context) SubnetAllocationPoolsCollectionArrayOutput {
-	return o
-}
-
-func (o SubnetAllocationPoolsCollectionArrayOutput) Index(i pulumi.IntInput) SubnetAllocationPoolsCollectionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetAllocationPoolsCollection {
-		return vs[0].([]SubnetAllocationPoolsCollection)[vs[1].(int)]
-	}).(SubnetAllocationPoolsCollectionOutput)
-}
-
-type SubnetHostRoute struct {
-	// The destination CIDR.
-	DestinationCidr string `pulumi:"destinationCidr"`
-	// The next hop in the route.
-	NextHop string `pulumi:"nextHop"`
-}
-
-// SubnetHostRouteInput is an input type that accepts SubnetHostRouteArgs and SubnetHostRouteOutput values.
-// You can construct a concrete instance of `SubnetHostRouteInput` via:
-//
-//	SubnetHostRouteArgs{...}
-type SubnetHostRouteInput interface {
-	pulumi.Input
-
-	ToSubnetHostRouteOutput() SubnetHostRouteOutput
-	ToSubnetHostRouteOutputWithContext(context.Context) SubnetHostRouteOutput
-}
-
-type SubnetHostRouteArgs struct {
-	// The destination CIDR.
-	DestinationCidr pulumi.StringInput `pulumi:"destinationCidr"`
-	// The next hop in the route.
-	NextHop pulumi.StringInput `pulumi:"nextHop"`
-}
-
-func (SubnetHostRouteArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetHostRoute)(nil)).Elem()
-}
-
-func (i SubnetHostRouteArgs) ToSubnetHostRouteOutput() SubnetHostRouteOutput {
-	return i.ToSubnetHostRouteOutputWithContext(context.Background())
-}
-
-func (i SubnetHostRouteArgs) ToSubnetHostRouteOutputWithContext(ctx context.Context) SubnetHostRouteOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubnetHostRouteOutput)
-}
-
-// SubnetHostRouteArrayInput is an input type that accepts SubnetHostRouteArray and SubnetHostRouteArrayOutput values.
-// You can construct a concrete instance of `SubnetHostRouteArrayInput` via:
-//
-//	SubnetHostRouteArray{ SubnetHostRouteArgs{...} }
-type SubnetHostRouteArrayInput interface {
-	pulumi.Input
-
-	ToSubnetHostRouteArrayOutput() SubnetHostRouteArrayOutput
-	ToSubnetHostRouteArrayOutputWithContext(context.Context) SubnetHostRouteArrayOutput
-}
-
-type SubnetHostRouteArray []SubnetHostRouteInput
-
-func (SubnetHostRouteArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SubnetHostRoute)(nil)).Elem()
-}
-
-func (i SubnetHostRouteArray) ToSubnetHostRouteArrayOutput() SubnetHostRouteArrayOutput {
-	return i.ToSubnetHostRouteArrayOutputWithContext(context.Background())
-}
-
-func (i SubnetHostRouteArray) ToSubnetHostRouteArrayOutputWithContext(ctx context.Context) SubnetHostRouteArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubnetHostRouteArrayOutput)
-}
-
-type SubnetHostRouteOutput struct{ *pulumi.OutputState }
-
-func (SubnetHostRouteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetHostRoute)(nil)).Elem()
-}
-
-func (o SubnetHostRouteOutput) ToSubnetHostRouteOutput() SubnetHostRouteOutput {
-	return o
-}
-
-func (o SubnetHostRouteOutput) ToSubnetHostRouteOutputWithContext(ctx context.Context) SubnetHostRouteOutput {
-	return o
-}
-
-// The destination CIDR.
-func (o SubnetHostRouteOutput) DestinationCidr() pulumi.StringOutput {
-	return o.ApplyT(func(v SubnetHostRoute) string { return v.DestinationCidr }).(pulumi.StringOutput)
-}
-
-// The next hop in the route.
-func (o SubnetHostRouteOutput) NextHop() pulumi.StringOutput {
-	return o.ApplyT(func(v SubnetHostRoute) string { return v.NextHop }).(pulumi.StringOutput)
-}
-
-type SubnetHostRouteArrayOutput struct{ *pulumi.OutputState }
-
-func (SubnetHostRouteArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SubnetHostRoute)(nil)).Elem()
-}
-
-func (o SubnetHostRouteArrayOutput) ToSubnetHostRouteArrayOutput() SubnetHostRouteArrayOutput {
-	return o
-}
-
-func (o SubnetHostRouteArrayOutput) ToSubnetHostRouteArrayOutputWithContext(ctx context.Context) SubnetHostRouteArrayOutput {
-	return o
-}
-
-func (o SubnetHostRouteArrayOutput) Index(i pulumi.IntInput) SubnetHostRouteOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetHostRoute {
-		return vs[0].([]SubnetHostRoute)[vs[1].(int)]
-	}).(SubnetHostRouteOutput)
-}
-
 type TrunkSubPort struct {
 	// The ID of the port to be made a subport of the trunk.
 	PortId string `pulumi:"portId"`
@@ -2280,10 +2068,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterVendorOptionsPtrInput)(nil)).Elem(), RouterVendorOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetAllocationPoolInput)(nil)).Elem(), SubnetAllocationPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetAllocationPoolArrayInput)(nil)).Elem(), SubnetAllocationPoolArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubnetAllocationPoolsCollectionInput)(nil)).Elem(), SubnetAllocationPoolsCollectionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubnetAllocationPoolsCollectionArrayInput)(nil)).Elem(), SubnetAllocationPoolsCollectionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubnetHostRouteInput)(nil)).Elem(), SubnetHostRouteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubnetHostRouteArrayInput)(nil)).Elem(), SubnetHostRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrunkSubPortInput)(nil)).Elem(), TrunkSubPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrunkSubPortArrayInput)(nil)).Elem(), TrunkSubPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkSegmentInput)(nil)).Elem(), GetNetworkSegmentArgs{})
@@ -2318,10 +2102,6 @@ func init() {
 	pulumi.RegisterOutputType(RouterVendorOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SubnetAllocationPoolOutput{})
 	pulumi.RegisterOutputType(SubnetAllocationPoolArrayOutput{})
-	pulumi.RegisterOutputType(SubnetAllocationPoolsCollectionOutput{})
-	pulumi.RegisterOutputType(SubnetAllocationPoolsCollectionArrayOutput{})
-	pulumi.RegisterOutputType(SubnetHostRouteOutput{})
-	pulumi.RegisterOutputType(SubnetHostRouteArrayOutput{})
 	pulumi.RegisterOutputType(TrunkSubPortOutput{})
 	pulumi.RegisterOutputType(TrunkSubPortArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkSegmentOutput{})

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +25,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/images"
+//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/images"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -152,10 +152,6 @@ type Image struct {
 	// The tags of the image. It must be a list of strings.
 	// At this time, it is not possible to delete all tags of an image.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// (**Deprecated** - use `updatedAt` instead)
-	//
-	// Deprecated: Use updatedAt instead
-	UpdateAt pulumi.StringOutput `pulumi:"updateAt"`
 	// The date the image was last updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// If false, the checksum will not be verified
@@ -291,10 +287,6 @@ type imageState struct {
 	// The tags of the image. It must be a list of strings.
 	// At this time, it is not possible to delete all tags of an image.
 	Tags []string `pulumi:"tags"`
-	// (**Deprecated** - use `updatedAt` instead)
-	//
-	// Deprecated: Use updatedAt instead
-	UpdateAt *string `pulumi:"updateAt"`
 	// The date the image was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// If false, the checksum will not be verified
@@ -388,10 +380,6 @@ type ImageState struct {
 	// The tags of the image. It must be a list of strings.
 	// At this time, it is not possible to delete all tags of an image.
 	Tags pulumi.StringArrayInput
-	// (**Deprecated** - use `updatedAt` instead)
-	//
-	// Deprecated: Use updatedAt instead
-	UpdateAt pulumi.StringPtrInput
 	// The date the image was last updated.
 	UpdatedAt pulumi.StringPtrInput
 	// If false, the checksum will not be verified
@@ -787,13 +775,6 @@ func (o ImageOutput) Status() pulumi.StringOutput {
 // At this time, it is not possible to delete all tags of an image.
 func (o ImageOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
-}
-
-// (**Deprecated** - use `updatedAt` instead)
-//
-// Deprecated: Use updatedAt instead
-func (o ImageOutput) UpdateAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.UpdateAt }).(pulumi.StringOutput)
 }
 
 // The date the image was last updated.

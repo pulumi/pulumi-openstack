@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -33,6 +33,24 @@ import (
 //				Name: pulumi.String("my-sg"),
 //				Policies: pulumi.StringArray{
 //					pulumi.String("anti-affinity"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "test-instance", &compute.InstanceArgs{
+//				Name:     pulumi.String("my-instance"),
+//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
+//				FlavorId: pulumi.String("3"),
+//				SchedulerHints: compute.InstanceSchedulerHintArray{
+//					&compute.InstanceSchedulerHintArgs{
+//						Group: test_sg.ID(),
+//					},
+//				},
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Name: pulumi.String("my_network"),
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -51,7 +69,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -65,6 +83,24 @@ import (
 //				},
 //				Rules: &compute.ServerGroupRulesArgs{
 //					MaxServerPerHost: pulumi.Int(3),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "test-instance", &compute.InstanceArgs{
+//				Name:     pulumi.String("my-instance"),
+//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
+//				FlavorId: pulumi.String("3"),
+//				SchedulerHints: compute.InstanceSchedulerHintArray{
+//					&compute.InstanceSchedulerHintArgs{
+//						Group: test_sg.ID(),
+//					},
+//				},
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Name: pulumi.String("my_network"),
+//					},
 //				},
 //			})
 //			if err != nil {

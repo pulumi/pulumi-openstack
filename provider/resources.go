@@ -30,7 +30,7 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
-	"github.com/pulumi/pulumi-openstack/provider/v3/pkg/version"
+	"github.com/pulumi/pulumi-openstack/provider/v4/pkg/version"
 )
 
 // all of the OpenStack token components used below.
@@ -231,9 +231,6 @@ func Provider() tfbridge.ProviderInfo {
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"allocation_pool": {
 						Name: "allocationPools",
-					},
-					"allocation_pools": {
-						Name: "allocationPoolsCollection",
 					},
 				},
 			},

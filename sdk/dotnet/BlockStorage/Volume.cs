@@ -105,12 +105,6 @@ namespace Pulumi.OpenStack.BlockStorage
         public Output<ImmutableDictionary<string, object>> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Allow the volume to be attached to more than one Compute instance.
-        /// </summary>
-        [Output("multiattach")]
-        public Output<bool?> Multiattach { get; private set; } = null!;
-
-        /// <summary>
         /// A unique name for the volume. Changing this updates the
         /// volume's name.
         /// </summary>
@@ -272,12 +266,6 @@ namespace Pulumi.OpenStack.BlockStorage
         }
 
         /// <summary>
-        /// (Optional) Allow the volume to be attached to more than one Compute instance.
-        /// </summary>
-        [Input("multiattach")]
-        public Input<bool>? Multiattach { get; set; }
-
-        /// <summary>
         /// A unique name for the volume. Changing this updates the
         /// volume's name.
         /// </summary>
@@ -419,12 +407,6 @@ namespace Pulumi.OpenStack.BlockStorage
             get => _metadata ?? (_metadata = new InputMap<object>());
             set => _metadata = value;
         }
-
-        /// <summary>
-        /// (Optional) Allow the volume to be attached to more than one Compute instance.
-        /// </summary>
-        [Input("multiattach")]
-        public Input<bool>? Multiattach { get; set; }
 
         /// <summary>
         /// A unique name for the volume. Changing this updates the

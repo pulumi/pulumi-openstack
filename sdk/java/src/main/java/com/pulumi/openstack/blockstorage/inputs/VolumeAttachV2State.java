@@ -122,25 +122,6 @@ public final class VolumeAttachV2State extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * @deprecated
-     * instance_id is no longer used in this resource
-     * 
-     */
-    @Deprecated /* instance_id is no longer used in this resource */
-    @Import(name="instanceId")
-    private @Nullable Output<String> instanceId;
-
-    /**
-     * @deprecated
-     * instance_id is no longer used in this resource
-     * 
-     */
-    @Deprecated /* instance_id is no longer used in this resource */
-    public Optional<Output<String>> instanceId() {
-        return Optional.ofNullable(this.instanceId);
-    }
-
-    /**
      * The IP address of the `host_name` above.
      * 
      */
@@ -292,7 +273,6 @@ public final class VolumeAttachV2State extends com.pulumi.resources.ResourceArgs
         this.driverVolumeType = $.driverVolumeType;
         this.hostName = $.hostName;
         this.initiator = $.initiator;
-        this.instanceId = $.instanceId;
         this.ipAddress = $.ipAddress;
         this.mountPointBase = $.mountPointBase;
         this.multipath = $.multipath;
@@ -458,31 +438,6 @@ public final class VolumeAttachV2State extends com.pulumi.resources.ResourceArgs
          */
         public Builder initiator(String initiator) {
             return initiator(Output.of(initiator));
-        }
-
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * instance_id is no longer used in this resource
-         * 
-         */
-        @Deprecated /* instance_id is no longer used in this resource */
-        public Builder instanceId(@Nullable Output<String> instanceId) {
-            $.instanceId = instanceId;
-            return this;
-        }
-
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * instance_id is no longer used in this resource
-         * 
-         */
-        @Deprecated /* instance_id is no longer used in this resource */
-        public Builder instanceId(String instanceId) {
-            return instanceId(Output.of(instanceId));
         }
 
         /**

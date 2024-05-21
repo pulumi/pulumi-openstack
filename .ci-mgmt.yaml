@@ -1,5 +1,5 @@
 provider: openstack
-major-version: 3
+major-version: 4
 env:
   OS_AUTH_URL: "https://auth.cloud.ovh.net/v3/"
   OS_IDENTITY_API_VERSION: 3

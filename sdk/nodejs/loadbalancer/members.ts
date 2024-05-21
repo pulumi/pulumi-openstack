@@ -12,10 +12,6 @@ import * as utilities from "../utilities";
  * > **Note:** This resource has attributes that depend on octavia minor versions.
  * Please ensure your Openstack cloud supports the required minor version.
  *
- * > **Note:** This resource works only within Octavia API. For
- * legacy Neutron LBaaS v2 extension please use
- * openstack.loadbalancer.Member resource.
- *
  * ## Example Usage
  *
  * ```typescript

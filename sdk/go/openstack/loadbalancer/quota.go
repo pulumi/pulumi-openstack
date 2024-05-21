@@ -8,15 +8,13 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages a V2 load balancer quota resource within OpenStack.
 //
 // > **Note:** This usually requires admin privileges.
-//
-// > **Note:** This resource is only available for Octavia.
 //
 // > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack
 //
@@ -36,8 +34,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/identity"
+//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/loadbalancer"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

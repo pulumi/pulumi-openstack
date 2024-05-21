@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/networking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -68,12 +68,6 @@ type Subnet struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools SubnetAllocationPoolArrayOutput `pulumi:"allocationPools"`
-	// A block declaring the start and end range of the IP addresses available for
-	// use with DHCP in this subnet.
-	// The `allocationPools` block is documented below.
-	//
-	// Deprecated: use allocationPool instead
-	AllocationPoolsCollection SubnetAllocationPoolsCollectionArrayOutput `pulumi:"allocationPoolsCollection"`
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
 	// subnet pool.
@@ -94,14 +88,6 @@ type Subnet struct {
 	// gateway of `.1` to be used. Changing this updates the gateway IP of the
 	// existing subnet.
 	GatewayIp pulumi.StringOutput `pulumi:"gatewayIp"`
-	// (**Deprecated** - use `networking.SubnetRoute`
-	// instead) An array of routes that should be used by devices
-	// with IPs from this subnet (not including local subnet route). The hostRoute
-	// object structure is documented below. Changing this updates the host routes
-	// for the existing subnet.
-	//
-	// Deprecated: Use networking.SubnetRoute instead
-	HostRoutes SubnetHostRouteArrayOutput `pulumi:"hostRoutes"`
 	// IP version, either 4 (default) or 6. Changing this creates a
 	// new subnet.
 	IpVersion pulumi.IntPtrOutput `pulumi:"ipVersion"`
@@ -187,12 +173,6 @@ type subnetState struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools []SubnetAllocationPool `pulumi:"allocationPools"`
-	// A block declaring the start and end range of the IP addresses available for
-	// use with DHCP in this subnet.
-	// The `allocationPools` block is documented below.
-	//
-	// Deprecated: use allocationPool instead
-	AllocationPoolsCollection []SubnetAllocationPoolsCollection `pulumi:"allocationPoolsCollection"`
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
 	// subnet pool.
@@ -213,14 +193,6 @@ type subnetState struct {
 	// gateway of `.1` to be used. Changing this updates the gateway IP of the
 	// existing subnet.
 	GatewayIp *string `pulumi:"gatewayIp"`
-	// (**Deprecated** - use `networking.SubnetRoute`
-	// instead) An array of routes that should be used by devices
-	// with IPs from this subnet (not including local subnet route). The hostRoute
-	// object structure is documented below. Changing this updates the host routes
-	// for the existing subnet.
-	//
-	// Deprecated: Use networking.SubnetRoute instead
-	HostRoutes []SubnetHostRoute `pulumi:"hostRoutes"`
 	// IP version, either 4 (default) or 6. Changing this creates a
 	// new subnet.
 	IpVersion *int `pulumi:"ipVersion"`
@@ -274,12 +246,6 @@ type SubnetState struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools SubnetAllocationPoolArrayInput
-	// A block declaring the start and end range of the IP addresses available for
-	// use with DHCP in this subnet.
-	// The `allocationPools` block is documented below.
-	//
-	// Deprecated: use allocationPool instead
-	AllocationPoolsCollection SubnetAllocationPoolsCollectionArrayInput
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
 	// subnet pool.
@@ -300,14 +266,6 @@ type SubnetState struct {
 	// gateway of `.1` to be used. Changing this updates the gateway IP of the
 	// existing subnet.
 	GatewayIp pulumi.StringPtrInput
-	// (**Deprecated** - use `networking.SubnetRoute`
-	// instead) An array of routes that should be used by devices
-	// with IPs from this subnet (not including local subnet route). The hostRoute
-	// object structure is documented below. Changing this updates the host routes
-	// for the existing subnet.
-	//
-	// Deprecated: Use networking.SubnetRoute instead
-	HostRoutes SubnetHostRouteArrayInput
 	// IP version, either 4 (default) or 6. Changing this creates a
 	// new subnet.
 	IpVersion pulumi.IntPtrInput
@@ -362,12 +320,6 @@ type subnetArgs struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools []SubnetAllocationPool `pulumi:"allocationPools"`
-	// A block declaring the start and end range of the IP addresses available for
-	// use with DHCP in this subnet.
-	// The `allocationPools` block is documented below.
-	//
-	// Deprecated: use allocationPool instead
-	AllocationPoolsCollection []SubnetAllocationPoolsCollection `pulumi:"allocationPoolsCollection"`
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
 	// subnet pool.
@@ -388,14 +340,6 @@ type subnetArgs struct {
 	// gateway of `.1` to be used. Changing this updates the gateway IP of the
 	// existing subnet.
 	GatewayIp *string `pulumi:"gatewayIp"`
-	// (**Deprecated** - use `networking.SubnetRoute`
-	// instead) An array of routes that should be used by devices
-	// with IPs from this subnet (not including local subnet route). The hostRoute
-	// object structure is documented below. Changing this updates the host routes
-	// for the existing subnet.
-	//
-	// Deprecated: Use networking.SubnetRoute instead
-	HostRoutes []SubnetHostRoute `pulumi:"hostRoutes"`
 	// IP version, either 4 (default) or 6. Changing this creates a
 	// new subnet.
 	IpVersion *int `pulumi:"ipVersion"`
@@ -447,12 +391,6 @@ type SubnetArgs struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools SubnetAllocationPoolArrayInput
-	// A block declaring the start and end range of the IP addresses available for
-	// use with DHCP in this subnet.
-	// The `allocationPools` block is documented below.
-	//
-	// Deprecated: use allocationPool instead
-	AllocationPoolsCollection SubnetAllocationPoolsCollectionArrayInput
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
 	// subnet pool.
@@ -473,14 +411,6 @@ type SubnetArgs struct {
 	// gateway of `.1` to be used. Changing this updates the gateway IP of the
 	// existing subnet.
 	GatewayIp pulumi.StringPtrInput
-	// (**Deprecated** - use `networking.SubnetRoute`
-	// instead) An array of routes that should be used by devices
-	// with IPs from this subnet (not including local subnet route). The hostRoute
-	// object structure is documented below. Changing this updates the host routes
-	// for the existing subnet.
-	//
-	// Deprecated: Use networking.SubnetRoute instead
-	HostRoutes SubnetHostRouteArrayInput
 	// IP version, either 4 (default) or 6. Changing this creates a
 	// new subnet.
 	IpVersion pulumi.IntPtrInput
@@ -626,15 +556,6 @@ func (o SubnetOutput) AllocationPools() SubnetAllocationPoolArrayOutput {
 	return o.ApplyT(func(v *Subnet) SubnetAllocationPoolArrayOutput { return v.AllocationPools }).(SubnetAllocationPoolArrayOutput)
 }
 
-// A block declaring the start and end range of the IP addresses available for
-// use with DHCP in this subnet.
-// The `allocationPools` block is documented below.
-//
-// Deprecated: use allocationPool instead
-func (o SubnetOutput) AllocationPoolsCollection() SubnetAllocationPoolsCollectionArrayOutput {
-	return o.ApplyT(func(v *Subnet) SubnetAllocationPoolsCollectionArrayOutput { return v.AllocationPoolsCollection }).(SubnetAllocationPoolsCollectionArrayOutput)
-}
-
 // CIDR representing IP range for this subnet, based on IP
 // version. You can omit this option if you are creating a subnet from a
 // subnet pool.
@@ -668,17 +589,6 @@ func (o SubnetOutput) EnableDhcp() pulumi.BoolPtrOutput {
 // existing subnet.
 func (o SubnetOutput) GatewayIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.GatewayIp }).(pulumi.StringOutput)
-}
-
-// (**Deprecated** - use `networking.SubnetRoute`
-// instead) An array of routes that should be used by devices
-// with IPs from this subnet (not including local subnet route). The hostRoute
-// object structure is documented below. Changing this updates the host routes
-// for the existing subnet.
-//
-// Deprecated: Use networking.SubnetRoute instead
-func (o SubnetOutput) HostRoutes() SubnetHostRouteArrayOutput {
-	return o.ApplyT(func(v *Subnet) SubnetHostRouteArrayOutput { return v.HostRoutes }).(SubnetHostRouteArrayOutput)
 }
 
 // IP version, either 4 (default) or 6. Changing this creates a

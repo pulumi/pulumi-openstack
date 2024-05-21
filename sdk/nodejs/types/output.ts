@@ -212,10 +212,6 @@ export namespace compute {
          */
         fixedIpV4: string;
         fixedIpV6: string;
-        /**
-         * @deprecated Use the openstack.compute.FloatingIpAssociate resource instead
-         */
-        floatingIp: string;
         mac: string;
         /**
          * The human-readable
@@ -267,7 +263,8 @@ export namespace compute {
         differentHosts?: string[];
         /**
          * A UUID of a Server Group. The instance will be placed
-         * into that group.
+         * into that group. See reference
+         * for details on managing servergroup resources
          */
         group?: string;
         /**
@@ -308,12 +305,6 @@ export namespace compute {
          * instances after some timeout.
          */
         ignoreResizeConfirmation?: boolean;
-    }
-
-    export interface InstanceVolume {
-        device: string;
-        id: string;
-        volumeId: string;
     }
 
     export interface SecGroupRule {
@@ -999,28 +990,6 @@ export namespace networking {
          * The starting address.
          */
         start: string;
-    }
-
-    export interface SubnetAllocationPoolsCollection {
-        /**
-         * The ending address.
-         */
-        end: string;
-        /**
-         * The starting address.
-         */
-        start: string;
-    }
-
-    export interface SubnetHostRoute {
-        /**
-         * The destination CIDR.
-         */
-        destinationCidr: string;
-        /**
-         * The next hop in the route.
-         */
-        nextHop: string;
     }
 
     export interface TrunkSubPort {

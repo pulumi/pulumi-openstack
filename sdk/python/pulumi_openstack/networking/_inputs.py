@@ -18,8 +18,6 @@ __all__ = [
     'RouterExternalFixedIpArgs',
     'RouterVendorOptionsArgs',
     'SubnetAllocationPoolArgs',
-    'SubnetAllocationPoolsCollectionArgs',
-    'SubnetHostRouteArgs',
     'TrunkSubPortArgs',
 ]
 
@@ -411,80 +409,6 @@ class SubnetAllocationPoolArgs:
     @start.setter
     def start(self, value: pulumi.Input[str]):
         pulumi.set(self, "start", value)
-
-
-@pulumi.input_type
-class SubnetAllocationPoolsCollectionArgs:
-    def __init__(__self__, *,
-                 end: pulumi.Input[str],
-                 start: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] end: The ending address.
-        :param pulumi.Input[str] start: The starting address.
-        """
-        pulumi.set(__self__, "end", end)
-        pulumi.set(__self__, "start", start)
-
-    @property
-    @pulumi.getter
-    def end(self) -> pulumi.Input[str]:
-        """
-        The ending address.
-        """
-        return pulumi.get(self, "end")
-
-    @end.setter
-    def end(self, value: pulumi.Input[str]):
-        pulumi.set(self, "end", value)
-
-    @property
-    @pulumi.getter
-    def start(self) -> pulumi.Input[str]:
-        """
-        The starting address.
-        """
-        return pulumi.get(self, "start")
-
-    @start.setter
-    def start(self, value: pulumi.Input[str]):
-        pulumi.set(self, "start", value)
-
-
-@pulumi.input_type
-class SubnetHostRouteArgs:
-    def __init__(__self__, *,
-                 destination_cidr: pulumi.Input[str],
-                 next_hop: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] destination_cidr: The destination CIDR.
-        :param pulumi.Input[str] next_hop: The next hop in the route.
-        """
-        pulumi.set(__self__, "destination_cidr", destination_cidr)
-        pulumi.set(__self__, "next_hop", next_hop)
-
-    @property
-    @pulumi.getter(name="destinationCidr")
-    def destination_cidr(self) -> pulumi.Input[str]:
-        """
-        The destination CIDR.
-        """
-        return pulumi.get(self, "destination_cidr")
-
-    @destination_cidr.setter
-    def destination_cidr(self, value: pulumi.Input[str]):
-        pulumi.set(self, "destination_cidr", value)
-
-    @property
-    @pulumi.getter(name="nextHop")
-    def next_hop(self) -> pulumi.Input[str]:
-        """
-        The next hop in the route.
-        """
-        return pulumi.get(self, "next_hop")
-
-    @next_hop.setter
-    def next_hop(self, value: pulumi.Input[str]):
-        pulumi.set(self, "next_hop", value)
 
 
 @pulumi.input_type

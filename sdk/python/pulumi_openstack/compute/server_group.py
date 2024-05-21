@@ -254,6 +254,16 @@ class ServerGroup(pulumi.CustomResource):
         test_sg = openstack.compute.ServerGroup("test-sg",
             name="my-sg",
             policies=["anti-affinity"])
+        test_instance = openstack.compute.Instance("test-instance",
+            name="my-instance",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
+            scheduler_hints=[openstack.compute.InstanceSchedulerHintArgs(
+                group=test_sg.id,
+            )],
+            networks=[openstack.compute.InstanceNetworkArgs(
+                name="my_network",
+            )])
         ```
 
         ### Compute service API version 2.64 or above:
@@ -268,6 +278,16 @@ class ServerGroup(pulumi.CustomResource):
             rules=openstack.compute.ServerGroupRulesArgs(
                 max_server_per_host=3,
             ))
+        test_instance = openstack.compute.Instance("test-instance",
+            name="my-instance",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
+            scheduler_hints=[openstack.compute.InstanceSchedulerHintArgs(
+                group=test_sg.id,
+            )],
+            networks=[openstack.compute.InstanceNetworkArgs(
+                name="my_network",
+            )])
         ```
 
         ## Policies
@@ -330,6 +350,16 @@ class ServerGroup(pulumi.CustomResource):
         test_sg = openstack.compute.ServerGroup("test-sg",
             name="my-sg",
             policies=["anti-affinity"])
+        test_instance = openstack.compute.Instance("test-instance",
+            name="my-instance",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
+            scheduler_hints=[openstack.compute.InstanceSchedulerHintArgs(
+                group=test_sg.id,
+            )],
+            networks=[openstack.compute.InstanceNetworkArgs(
+                name="my_network",
+            )])
         ```
 
         ### Compute service API version 2.64 or above:
@@ -344,6 +374,16 @@ class ServerGroup(pulumi.CustomResource):
             rules=openstack.compute.ServerGroupRulesArgs(
                 max_server_per_host=3,
             ))
+        test_instance = openstack.compute.Instance("test-instance",
+            name="my-instance",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
+            scheduler_hints=[openstack.compute.InstanceSchedulerHintArgs(
+                group=test_sg.id,
+            )],
+            networks=[openstack.compute.InstanceNetworkArgs(
+                name="my_network",
+            )])
         ```
 
         ## Policies

@@ -38,8 +38,8 @@ class ListenerArgs:
         :param pulumi.Input[str] loadbalancer_id: The load balancer on which to provision this
                Listener. Changing this creates a new Listener.
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS,
-               TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-               in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+               TERMINATED_HTTPS, UDP, SCTP (supported only in
+               **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
                **Octavia minor version >=2.25**). Changing this creates a new Listener.
         :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
                Changing this creates a new Listener.
@@ -133,8 +133,8 @@ class ListenerArgs:
     def protocol(self) -> pulumi.Input[str]:
         """
         The protocol - can either be TCP, HTTP, HTTPS,
-        TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-        in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+        TERMINATED_HTTPS, UDP, SCTP (supported only in
+        **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
         **Octavia minor version >=2.25**). Changing this creates a new Listener.
         """
         return pulumi.get(self, "protocol")
@@ -412,8 +412,8 @@ class _ListenerState:
         :param pulumi.Input[str] name: Human-readable name for the Listener. Does not have
                to be unique.
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS,
-               TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-               in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+               TERMINATED_HTTPS, UDP, SCTP (supported only in
+               **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
                **Octavia minor version >=2.25**). Changing this creates a new Listener.
         :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
                Changing this creates a new Listener.
@@ -598,8 +598,8 @@ class _ListenerState:
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
         The protocol - can either be TCP, HTTP, HTTPS,
-        TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-        in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+        TERMINATED_HTTPS, UDP, SCTP (supported only in
+        **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
         **Octavia minor version >=2.25**). Changing this creates a new Listener.
         """
         return pulumi.get(self, "protocol")
@@ -802,8 +802,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] name: Human-readable name for the Listener. Does not have
                to be unique.
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS,
-               TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-               in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+               TERMINATED_HTTPS, UDP, SCTP (supported only in
+               **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
                **Octavia minor version >=2.25**). Changing this creates a new Listener.
         :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
                Changing this creates a new Listener.
@@ -985,8 +985,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] name: Human-readable name for the Listener. Does not have
                to be unique.
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS,
-               TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-               in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+               TERMINATED_HTTPS, UDP, SCTP (supported only in
+               **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
                **Octavia minor version >=2.25**). Changing this creates a new Listener.
         :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
                Changing this creates a new Listener.
@@ -1121,8 +1121,8 @@ class Listener(pulumi.CustomResource):
     def protocol(self) -> pulumi.Output[str]:
         """
         The protocol - can either be TCP, HTTP, HTTPS,
-        TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-        in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+        TERMINATED_HTTPS, UDP, SCTP (supported only in
+        **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
         **Octavia minor version >=2.25**). Changing this creates a new Listener.
         """
         return pulumi.get(self, "protocol")

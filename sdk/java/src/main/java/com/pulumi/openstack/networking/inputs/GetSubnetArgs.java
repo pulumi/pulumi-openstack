@@ -49,25 +49,6 @@ public final class GetSubnetArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * @deprecated
-     * use dhcp_enabled instead
-     * 
-     */
-    @Deprecated /* use dhcp_enabled instead */
-    @Import(name="dhcpDisabled")
-    private @Nullable Output<Boolean> dhcpDisabled;
-
-    /**
-     * @deprecated
-     * use dhcp_enabled instead
-     * 
-     */
-    @Deprecated /* use dhcp_enabled instead */
-    public Optional<Output<Boolean>> dhcpDisabled() {
-        return Optional.ofNullable(this.dhcpDisabled);
-    }
-
-    /**
      * If the subnet has DHCP enabled.
      * 
      */
@@ -260,7 +241,6 @@ public final class GetSubnetArgs extends com.pulumi.resources.InvokeArgs {
     private GetSubnetArgs(GetSubnetArgs $) {
         this.cidr = $.cidr;
         this.description = $.description;
-        this.dhcpDisabled = $.dhcpDisabled;
         this.dhcpEnabled = $.dhcpEnabled;
         this.gatewayIp = $.gatewayIp;
         this.ipVersion = $.ipVersion;
@@ -333,31 +313,6 @@ public final class GetSubnetArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
-        }
-
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * use dhcp_enabled instead
-         * 
-         */
-        @Deprecated /* use dhcp_enabled instead */
-        public Builder dhcpDisabled(@Nullable Output<Boolean> dhcpDisabled) {
-            $.dhcpDisabled = dhcpDisabled;
-            return this;
-        }
-
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * use dhcp_enabled instead
-         * 
-         */
-        @Deprecated /* use dhcp_enabled instead */
-        public Builder dhcpDisabled(Boolean dhcpDisabled) {
-            return dhcpDisabled(Output.of(dhcpDisabled));
         }
 
         /**
