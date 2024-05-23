@@ -86,12 +86,8 @@ func openstackResource(mod string, res string) tokens.Type {
 
 // Provider returns additional overlaid schema and metadata associated with the openstack package.
 func Provider() tfbridge.ProviderInfo {
-	falseVar := false
-
-	p := shimv2.NewProvider(openstack.Provider())
-
 	prov := tfbridge.ProviderInfo{
-		P:            p,
+		P:            shimv2.NewProvider(openstack.Provider()),
 		Name:         "openstack",
 		Description:  "A Pulumi package for creating and managing OpenStack cloud resources.",
 		Keywords:     []string{"pulumi", "openstack"},
@@ -101,6 +97,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:   "https://github.com/pulumi/pulumi-openstack",
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 		Version:      version.Version,
+
 		Config: map[string]*tfbridge.SchemaInfo{
 			"region": {
 				Default: &tfbridge.DefaultInfo{
@@ -122,11 +119,6 @@ func Provider() tfbridge.ProviderInfo {
 					EnvVars: []string{"OS_SWAUTH"},
 				},
 			},
-			"use_octavia": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"OS_USE_OCTAVIA"},
-				},
-			},
 			"cloud": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OS_CLOUD"},
@@ -145,17 +137,10 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Block Storage
-			"openstack_blockstorage_volume_v1":             {Tok: openstackResource(blockstorageMod, "VolumeV1")},
-			"openstack_blockstorage_volume_v2":             {Tok: openstackResource(blockstorageMod, "VolumeV2")},
-			"openstack_blockstorage_volume_attach_v2":      {Tok: openstackResource(blockstorageMod, "VolumeAttachV2")},
-			"openstack_blockstorage_volume_v3":             {Tok: openstackResource(blockstorageMod, "Volume")},
-			"openstack_blockstorage_volume_attach_v3":      {Tok: openstackResource(blockstorageMod, "VolumeAttach")},
-			"openstack_blockstorage_quotaset_v2":           {Tok: openstackResource(blockstorageMod, "QuoteSetV2")},
-			"openstack_blockstorage_quotaset_v3":           {Tok: openstackResource(blockstorageMod, "QuoteSetV3")},
-			"openstack_blockstorage_volume_type_v3":        {Tok: openstackResource(blockstorageMod, "VolumeTypeV3")},
-			"openstack_blockstorage_volume_type_access_v3": {Tok: openstackResource(blockstorageMod, "VolumeTypeAccessV3")},
-			"openstack_blockstorage_qos_v3":                {Tok: openstackResource(blockstorageMod, "QosV3")},
-			"openstack_blockstorage_qos_association_v3":    {Tok: openstackResource(blockstorageMod, "QosAssociationV3")},
+			"openstack_blockstorage_volume_v3":        {Tok: openstackResource(blockstorageMod, "Volume")},
+			"openstack_blockstorage_volume_attach_v3": {Tok: openstackResource(blockstorageMod, "VolumeAttach")},
+			"openstack_blockstorage_quotaset_v2":      {Tok: openstackResource(blockstorageMod, "QuoteSetV2")},
+			"openstack_blockstorage_quotaset_v3":      {Tok: openstackResource(blockstorageMod, "QuoteSetV3")},
 
 			// Compute
 			"openstack_compute_flavor_v2":               {Tok: openstackResource(computeMod, "Flavor")},
@@ -167,19 +152,10 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_compute_keypair_v2":              {Tok: openstackResource(computeMod, "Keypair")},
 			"openstack_compute_secgroup_v2":             {Tok: openstackResource(computeMod, "SecGroup")},
 
-			"openstack_compute_servergroup_v2": {
-				Tok: openstackResource(computeMod, "ServerGroup"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"policies": {
-						// TODO[pulumi/pulumi-openstack#249]
-						MaxItemsOne: &falseVar,
-					},
-				},
-			},
+			"openstack_compute_servergroup_v2": {Tok: openstackResource(computeMod, "ServerGroup")},
 
 			"openstack_compute_volume_attach_v2": {Tok: openstackResource(computeMod, "VolumeAttach")},
 			"openstack_compute_quotaset_v2":      {Tok: openstackResource(computeMod, "QuotaSetV2")},
-			"openstack_compute_aggregate_v2":     {Tok: openstackResource(computeMod, "AggregateV2")},
 
 			// Container Infrastructure
 			"openstack_containerinfra_cluster_v1":         {Tok: openstackResource(containerinfraMod, "Cluster")},
@@ -205,11 +181,6 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_identity_inherit_role_assignment_v3": {Tok: openstackResource(identityMod, "InheritRoleAssignment")},
 			"openstack_identity_role_assignment_v3":         {Tok: openstackResource(identityMod, "RoleAssignment")},
 			"openstack_identity_user_v3":                    {Tok: openstackResource(identityMod, "User")},
-			"openstack_identity_endpoint_v3":                {Tok: openstackResource(identityMod, "EndpointV3")},
-			"openstack_identity_service_v3":                 {Tok: openstackResource(identityMod, "ServiceV3")},
-			"openstack_identity_group_v3":                   {Tok: openstackResource(identityMod, "GroupV3")},
-			"openstack_identity_ec2_credential_v3":          {Tok: openstackResource(identityMod, "Ec2CredentialV3")},
-			"openstack_identity_user_membership_v3":         {Tok: openstackResource(identityMod, "UserMembershipV3")},
 
 			// Images
 			"openstack_images_image_v2":               {Tok: openstackResource(imagesMod, "Image")},
@@ -269,9 +240,7 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_lb_members_v2": {
 				Tok: openstackResource(lbMod, "Members"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"member": {
-						CSharpName: "MemberList",
-					},
+					"member": {CSharpName: "MemberList"},
 				},
 			},
 
