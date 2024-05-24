@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var swift = new ApplicationCredential("swift", ApplicationCredentialArgs.builder()        
+ *         var swift = new ApplicationCredential("swift", ApplicationCredentialArgs.builder()
  *             .name("swift")
  *             .description("Swift technical application credential")
  *             .secret("supersecret")
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var unrestricted = new ApplicationCredential("unrestricted", ApplicationCredentialArgs.builder()        
+ *         var unrestricted = new ApplicationCredential("unrestricted", ApplicationCredentialArgs.builder()
  *             .name("unrestricted")
  *             .description("Unrestricted application credential")
  *             .unrestricted(true)
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var monitoring = new ApplicationCredential("monitoring", ApplicationCredentialArgs.builder()        
+ *         var monitoring = new ApplicationCredential("monitoring", ApplicationCredentialArgs.builder()
  *             .name("monitoring")
  *             .expiresAt("2019-02-13T12:12:12Z")
  *             .accessRules(            

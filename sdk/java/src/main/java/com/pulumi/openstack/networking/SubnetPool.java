@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var subnetpool1 = new SubnetPool("subnetpool1", SubnetPoolArgs.builder()        
+ *         var subnetpool1 = new SubnetPool("subnetpool1", SubnetPoolArgs.builder()
  *             .name("subnetpool_1")
  *             .ipVersion(6)
  *             .prefixes(            
@@ -92,17 +92,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnetpool1 = new SubnetPool("subnetpool1", SubnetPoolArgs.builder()        
+ *         var subnetpool1 = new SubnetPool("subnetpool1", SubnetPoolArgs.builder()
  *             .name("subnetpool_1")
  *             .prefixes("10.11.12.0/24")
  *             .build());
  * 
- *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()
  *             .name("subnet_1")
  *             .cidr("10.11.12.0/25")
  *             .networkId(network1.id())

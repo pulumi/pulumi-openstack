@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     ipVersion: 4,
  *     networkId: network1.id,
  * });
- * const loadbalancer1 = new openstack.loadbalancer.LoadBalancer("loadbalancer_1", {
+ * const loadbalancer1 = new openstack.LbLoadbalancerV2("loadbalancer_1", {
  *     name: "loadbalancer_1",
  *     vipSubnetId: subnet1.id,
  * });

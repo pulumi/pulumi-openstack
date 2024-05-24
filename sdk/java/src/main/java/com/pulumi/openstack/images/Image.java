@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var rancheros = new Image("rancheros", ImageArgs.builder()        
+ *         var rancheros = new Image("rancheros", ImageArgs.builder()
  *             .name("RancherOS")
  *             .imageSourceUrl("https://releases.rancher.com/os/latest/rancheros-openstack.img")
  *             .containerFormat("bare")

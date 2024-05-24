@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var qosPolicy1 = new QosPolicy("qosPolicy1", QosPolicyArgs.builder()        
+ *         var qosPolicy1 = new QosPolicy("qosPolicy1", QosPolicyArgs.builder()
  *             .name("qos_policy_1")
  *             .description("bw_limit")
  *             .build());

@@ -115,6 +115,7 @@
         "keymanager/index.ts",
         "keymanager/orderV1.ts",
         "keymanager/secretV1.ts",
+        "lbLoadbalancerV2.ts",
         "loadbalancer/getFlavorV2.ts",
         "loadbalancer/index.ts",
         "loadbalancer/l7policyV2.ts",

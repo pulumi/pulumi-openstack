@@ -50,11 +50,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project1 = new Project("project1", ProjectArgs.builder()        
+ *         var project1 = new Project("project1", ProjectArgs.builder()
  *             .name("my-project")
  *             .build());
  * 
- *         var flavor1 = new Flavor("flavor1", FlavorArgs.builder()        
+ *         var flavor1 = new Flavor("flavor1", FlavorArgs.builder()
  *             .name("my-flavor")
  *             .ram("8096")
  *             .vcpus("2")
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .isPublic(false)
  *             .build());
  * 
- *         var access1 = new FlavorAccess("access1", FlavorAccessArgs.builder()        
+ *         var access1 = new FlavorAccess("access1", FlavorAccessArgs.builder()
  *             .tenantId(project1.id())
  *             .flavorId(flavor1.id())
  *             .build());

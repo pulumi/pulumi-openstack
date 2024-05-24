@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var addressscope1 = new AddressScope("addressscope1", AddressScopeArgs.builder()        
+ *         var addressscope1 = new AddressScope("addressscope1", AddressScopeArgs.builder()
  *             .name("addressscope_1")
  *             .ipVersion(6)
  *             .build());
@@ -84,12 +84,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var addressscope1 = new AddressScope("addressscope1", AddressScopeArgs.builder()        
+ *         var addressscope1 = new AddressScope("addressscope1", AddressScopeArgs.builder()
  *             .name("addressscope_1")
  *             .ipVersion(6)
  *             .build());
  * 
- *         var subnetpool1 = new SubnetPool("subnetpool1", SubnetPoolArgs.builder()        
+ *         var subnetpool1 = new SubnetPool("subnetpool1", SubnetPoolArgs.builder()
  *             .name("subnetpool_1")
  *             .prefixes(            
  *                 "fdf7:b13d:dead:beef::/64",

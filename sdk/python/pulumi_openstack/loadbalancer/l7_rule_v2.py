@@ -407,7 +407,7 @@ class L7RuleV2(pulumi.CustomResource):
             cidr="192.168.199.0/24",
             ip_version=4,
             network_id=network1.id)
-        loadbalancer1 = openstack.loadbalancer.LoadBalancer("loadbalancer_1",
+        loadbalancer1 = openstack.LbLoadbalancerV2("loadbalancer_1",
             name="loadbalancer_1",
             vip_subnet_id=subnet1.id)
         listener1 = openstack.loadbalancer.Listener("listener_1",
@@ -490,7 +490,7 @@ class L7RuleV2(pulumi.CustomResource):
             cidr="192.168.199.0/24",
             ip_version=4,
             network_id=network1.id)
-        loadbalancer1 = openstack.loadbalancer.LoadBalancer("loadbalancer_1",
+        loadbalancer1 = openstack.LbLoadbalancerV2("loadbalancer_1",
             name="loadbalancer_1",
             vip_subnet_id=subnet1.id)
         listener1 = openstack.loadbalancer.Listener("listener_1",

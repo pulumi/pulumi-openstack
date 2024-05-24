@@ -51,20 +51,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project1 = new Project("project1", ProjectArgs.builder()        
+ *         var project1 = new Project("project1", ProjectArgs.builder()
  *             .name("project_1")
  *             .build());
  * 
- *         var user1 = new User("user1", UserArgs.builder()        
+ *         var user1 = new User("user1", UserArgs.builder()
  *             .name("user_1")
  *             .defaultProjectId(project1.id())
  *             .build());
  * 
- *         var role1 = new Role("role1", RoleArgs.builder()        
+ *         var role1 = new Role("role1", RoleArgs.builder()
  *             .name("role_1")
  *             .build());
  * 
- *         var roleAssignment1 = new RoleAssignment("roleAssignment1", RoleAssignmentArgs.builder()        
+ *         var roleAssignment1 = new RoleAssignment("roleAssignment1", RoleAssignmentArgs.builder()
  *             .userId(user1.id())
  *             .projectId(project1.id())
  *             .roleId(role1.id())

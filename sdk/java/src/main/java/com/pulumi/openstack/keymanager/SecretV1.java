@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret1 = new SecretV1("secret1", SecretV1Args.builder()        
+ *         var secret1 = new SecretV1("secret1", SecretV1Args.builder()
  *             .algorithm("aes")
  *             .bitLength(256)
  *             .mode("cbc")
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret1 = new SecretV1("secret1", SecretV1Args.builder()        
+ *         var secret1 = new SecretV1("secret1", SecretV1Args.builder()
  *             .name("password")
  *             .payload(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                 .input("password with the whitespace at the end ")
@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret1 = new SecretV1("secret1", SecretV1Args.builder()        
+ *         var secret1 = new SecretV1("secret1", SecretV1Args.builder()
  *             .name("certificate")
  *             .payload(StdFunctions.file(FileArgs.builder()
  *                 .input("certificate.pem")

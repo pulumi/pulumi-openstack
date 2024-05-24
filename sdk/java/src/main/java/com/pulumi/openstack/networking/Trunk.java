@@ -56,12 +56,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()
  *             .name("subnet_1")
  *             .networkId(network1.id())
  *             .cidr("192.168.1.0/24")
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .noGateway(true)
  *             .build());
  * 
- *         var parentPort1 = new Port("parentPort1", PortArgs.builder()        
+ *         var parentPort1 = new Port("parentPort1", PortArgs.builder()
  *             .name("parent_port_1")
  *             .networkId(network1.id())
  *             .adminStateUp("true")
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *                 .dependsOn(subnet1)
  *                 .build());
  * 
- *         var subport1 = new Port("subport1", PortArgs.builder()        
+ *         var subport1 = new Port("subport1", PortArgs.builder()
  *             .name("subport_1")
  *             .networkId(network1.id())
  *             .adminStateUp("true")
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *                 .dependsOn(subnet1)
  *                 .build());
  * 
- *         var trunk1 = new Trunk("trunk1", TrunkArgs.builder()        
+ *         var trunk1 = new Trunk("trunk1", TrunkArgs.builder()
  *             .name("trunk_1")
  *             .adminStateUp("true")
  *             .portId(parentPort1.id())
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var instance1 = new Instance("instance1", InstanceArgs.builder()        
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()
  *             .name("instance_1")
  *             .securityGroups("default")
  *             .networks(InstanceNetworkArgs.builder()

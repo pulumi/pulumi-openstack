@@ -13,7 +13,13 @@ namespace Pulumi.OpenStack.ObjectStorage.Outputs
     [OutputType]
     public sealed class ContainerVersioningLegacy
     {
+        /// <summary>
+        /// Container in which versions will be stored.
+        /// </summary>
         public readonly string Location;
+        /// <summary>
+        /// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

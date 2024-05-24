@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vip1 = new Vip("vip1", VipArgs.builder()        
+ *         var vip1 = new Vip("vip1", VipArgs.builder()
  *             .name("tf_test_lb_vip")
  *             .subnetId("12345")
  *             .protocol("HTTP")

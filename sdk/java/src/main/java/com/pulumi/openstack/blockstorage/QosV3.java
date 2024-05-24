@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var qos = new QosV3("qos", QosV3Args.builder()        
+ *         var qos = new QosV3("qos", QosV3Args.builder()
  *             .name("foo")
  *             .consumer("back-end")
  *             .specs(Map.ofEntries(

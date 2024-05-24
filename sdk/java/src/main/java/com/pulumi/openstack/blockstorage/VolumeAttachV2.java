@@ -63,12 +63,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var volume1 = new VolumeV2("volume1", VolumeV2Args.builder()        
+ *         var volume1 = new VolumeV2("volume1", VolumeV2Args.builder()
  *             .name("volume_1")
  *             .size(1)
  *             .build());
  * 
- *         var va1 = new VolumeAttachV2("va1", VolumeAttachV2Args.builder()        
+ *         var va1 = new VolumeAttachV2("va1", VolumeAttachV2Args.builder()
  *             .volumeId(volume1.id())
  *             .device("auto")
  *             .hostName("devstack")

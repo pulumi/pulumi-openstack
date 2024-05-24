@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool1 = new Pool("pool1", PoolArgs.builder()        
+ *         var pool1 = new Pool("pool1", PoolArgs.builder()
  *             .protocol("HTTP")
  *             .lbMethod("ROUND_ROBIN")
  *             .listenerId("d9415786-5f1a-428b-b35f-2f1523e146d2")

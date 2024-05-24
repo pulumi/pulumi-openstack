@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var policy1 = new IkePolicy("policy1", IkePolicyArgs.builder()        
+ *         var policy1 = new IkePolicy("policy1", IkePolicyArgs.builder()
  *             .name("my_policy")
  *             .build());
  * 

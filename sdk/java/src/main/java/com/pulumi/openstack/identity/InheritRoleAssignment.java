@@ -51,17 +51,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var user1 = new User("user1", UserArgs.builder()        
+ *         var user1 = new User("user1", UserArgs.builder()
  *             .name("user_1")
  *             .domainId("default")
  *             .build());
  * 
- *         var role1 = new Role("role1", RoleArgs.builder()        
+ *         var role1 = new Role("role1", RoleArgs.builder()
  *             .name("role_1")
  *             .domainId("default")
  *             .build());
  * 
- *         var roleAssignment1 = new InheritRoleAssignment("roleAssignment1", InheritRoleAssignmentArgs.builder()        
+ *         var roleAssignment1 = new InheritRoleAssignment("roleAssignment1", InheritRoleAssignmentArgs.builder()
  *             .userId(user1.id())
  *             .domainId("default")
  *             .roleId(role1.id())

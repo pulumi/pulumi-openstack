@@ -57,11 +57,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project1 = new Project("project1", ProjectArgs.builder()        
+ *         var project1 = new Project("project1", ProjectArgs.builder()
  *             .name("project_1")
  *             .build());
  * 
- *         var user1 = new User("user1", UserArgs.builder()        
+ *         var user1 = new User("user1", UserArgs.builder()
  *             .defaultProjectId(project1.id())
  *             .name("user_1")
  *             .description("A user")

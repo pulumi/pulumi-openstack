@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member1 = new Member("member1", MemberArgs.builder()        
+ *         var member1 = new Member("member1", MemberArgs.builder()
  *             .poolId("935685fb-a896-40f9-9ff4-ae531a3a00fe")
  *             .address("192.168.199.23")
  *             .protocolPort(8080)

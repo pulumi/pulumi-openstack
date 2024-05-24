@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var listener1 = new Listener("listener1", ListenerArgs.builder()        
+ *         var listener1 = new Listener("listener1", ListenerArgs.builder()
  *             .protocol("HTTP")
  *             .protocolPort(8080)
  *             .loadbalancerId("d9415786-5f1a-428b-b35f-2f1523e146d2")

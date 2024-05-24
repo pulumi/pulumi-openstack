@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.openstack.networking.NetworkArgs;
  * import com.pulumi.openstack.networking.Subnet;
  * import com.pulumi.openstack.networking.SubnetArgs;
- * import com.pulumi.openstack.loadbalancer.LoadBalancer;
- * import com.pulumi.openstack.loadbalancer.LoadBalancerArgs;
+ * import com.pulumi.openstack.LbLoadbalancerV2;
+ * import com.pulumi.openstack.LbLoadbalancerV2Args;
  * import com.pulumi.openstack.loadbalancer.Listener;
  * import com.pulumi.openstack.loadbalancer.ListenerArgs;
  * import com.pulumi.openstack.loadbalancer.Pool;
@@ -54,38 +54,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()
  *             .name("subnet_1")
  *             .cidr("192.168.199.0/24")
  *             .ipVersion(4)
  *             .networkId(network1.id())
  *             .build());
  * 
- *         var loadbalancer1 = new LoadBalancer("loadbalancer1", LoadBalancerArgs.builder()        
+ *         var loadbalancer1 = new LbLoadbalancerV2("loadbalancer1", LbLoadbalancerV2Args.builder()
  *             .name("loadbalancer_1")
  *             .vipSubnetId(subnet1.id())
  *             .build());
  * 
- *         var listener1 = new Listener("listener1", ListenerArgs.builder()        
+ *         var listener1 = new Listener("listener1", ListenerArgs.builder()
  *             .name("listener_1")
  *             .protocol("HTTP")
  *             .protocolPort(8080)
  *             .loadbalancerId(loadbalancer1.id())
  *             .build());
  * 
- *         var pool1 = new Pool("pool1", PoolArgs.builder()        
+ *         var pool1 = new Pool("pool1", PoolArgs.builder()
  *             .name("pool_1")
  *             .protocol("HTTP")
  *             .lbMethod("ROUND_ROBIN")
  *             .loadbalancerId(loadbalancer1.id())
  *             .build());
  * 
- *         var l7policy1 = new L7PolicyV2("l7policy1", L7PolicyV2Args.builder()        
+ *         var l7policy1 = new L7PolicyV2("l7policy1", L7PolicyV2Args.builder()
  *             .name("test")
  *             .action("REDIRECT_TO_POOL")
  *             .description("test l7 policy")

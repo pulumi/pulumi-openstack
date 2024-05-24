@@ -20,6 +20,11 @@ export const getFwRuleV2: typeof import("./getFwRuleV2").getFwRuleV2 = null as a
 export const getFwRuleV2Output: typeof import("./getFwRuleV2").getFwRuleV2Output = null as any;
 utilities.lazyLoad(exports, ["getFwRuleV2","getFwRuleV2Output"], () => require("./getFwRuleV2"));
 
+export { LbLoadbalancerV2Args, LbLoadbalancerV2State } from "./lbLoadbalancerV2";
+export type LbLoadbalancerV2 = import("./lbLoadbalancerV2").LbLoadbalancerV2;
+export const LbLoadbalancerV2: typeof import("./lbLoadbalancerV2").LbLoadbalancerV2 = null as any;
+utilities.lazyLoad(exports, ["LbLoadbalancerV2"], () => require("./lbLoadbalancerV2"));
+
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
@@ -64,6 +69,19 @@ export {
     types,
     vpnaas,
 };
+
+const _module = {
+    version: utilities.getVersion(),
+    construct: (name: string, type: string, urn: string): pulumi.Resource => {
+        switch (type) {
+            case "openstack:index/lbLoadbalancerV2:LbLoadbalancerV2":
+                return new LbLoadbalancerV2(name, <any>undefined, { urn })
+            default:
+                throw new Error(`unknown resource type ${type}`);
+        }
+    },
+};
+pulumi.runtime.registerResourceModule("openstack", "index/lbLoadbalancerV2", _module)
 pulumi.runtime.registerResourcePackage("openstack", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

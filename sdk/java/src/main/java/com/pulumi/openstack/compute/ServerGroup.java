@@ -52,12 +52,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test_sg = new ServerGroup("test-sg", ServerGroupArgs.builder()        
+ *         var test_sg = new ServerGroup("test-sg", ServerGroupArgs.builder()
  *             .name("my-sg")
  *             .policies("anti-affinity")
  *             .build());
  * 
- *         var test_instance = new Instance("test-instance", InstanceArgs.builder()        
+ *         var test_instance = new Instance("test-instance", InstanceArgs.builder()
  *             .name("my-instance")
  *             .imageId("ad091b52-742f-469e-8f3c-fd81cadf0743")
  *             .flavorId("3")
@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test_sg = new ServerGroup("test-sg", ServerGroupArgs.builder()        
+ *         var test_sg = new ServerGroup("test-sg", ServerGroupArgs.builder()
  *             .name("my-sg")
  *             .policies("anti-affinity")
  *             .rules(ServerGroupRulesArgs.builder()
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var test_instance = new Instance("test-instance", InstanceArgs.builder()        
+ *         var test_instance = new Instance("test-instance", InstanceArgs.builder()
  *             .name("my-instance")
  *             .imageId("ad091b52-742f-469e-8f3c-fd81cadf0743")
  *             .flavorId("3")

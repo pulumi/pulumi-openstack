@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var stack1 = new StackV1("stack1", StackV1Args.builder()        
+ *         var stack1 = new StackV1("stack1", StackV1Args.builder()
  *             .name("stack_1")
  *             .parameters(Map.of("length", 4))
  *             .templateOpts(Map.of("Bin", """

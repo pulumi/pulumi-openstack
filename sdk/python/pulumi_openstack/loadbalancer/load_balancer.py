@@ -30,44 +30,6 @@ class LoadBalancerArgs:
                  vip_subnet_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the Loadbalancer.
-               A valid value is true (UP) or false (DOWN).
-        :param pulumi.Input[str] availability_zone: The availability zone of the Loadbalancer.
-               Changing this creates a new loadbalancer. Available only for Octavia
-               **minor version 2.14 or later**.
-        :param pulumi.Input[str] description: Human-readable description for the Loadbalancer.
-        :param pulumi.Input[str] flavor_id: The UUID of a flavor. Changing this creates a new
-               loadbalancer.
-        :param pulumi.Input[str] loadbalancer_provider: The name of the provider. Changing this
-               creates a new loadbalancer.
-        :param pulumi.Input[str] name: Human-readable name for the Loadbalancer. Does not have
-               to be unique.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an LB member. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               LB member.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs to apply to the
-               loadbalancer. The security groups must be specified by ID and not name (as
-               opposed to how they are configured with the Compute Instance).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the loadbalancer.
-               Available only for Octavia **minor version 2.5 or later**.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the Loadbalancer.  Only administrative users can specify a tenant UUID
-               other than their own.  Changing this creates a new loadbalancer.
-        :param pulumi.Input[str] vip_address: The ip address of the load balancer.
-               Changing this creates a new loadbalancer.
-        :param pulumi.Input[str] vip_network_id: The network on which to allocate the
-               Loadbalancer's address. A tenant can only create Loadbalancers on networks
-               authorized by policy (e.g. networks that belong to them or networks that
-               are shared).  Changing this creates a new loadbalancer.
-               It is available only for Octavia.
-        :param pulumi.Input[str] vip_port_id: The port UUID that the loadbalancer will use.
-               Changing this creates a new loadbalancer. It is available only for Octavia.
-        :param pulumi.Input[str] vip_subnet_id: The subnet on which to allocate the
-               Loadbalancer's address. A tenant can only create Loadbalancers on networks
-               authorized by policy (e.g. networks that belong to them or networks that
-               are shared).  Changing this creates a new loadbalancer.
-               It is required to Neutron LBaaS but optional for Octavia.
         """
         if admin_state_up is not None:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
@@ -101,10 +63,6 @@ class LoadBalancerArgs:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The administrative state of the Loadbalancer.
-        A valid value is true (UP) or false (DOWN).
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -114,11 +72,6 @@ class LoadBalancerArgs:
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The availability zone of the Loadbalancer.
-        Changing this creates a new loadbalancer. Available only for Octavia
-        **minor version 2.14 or later**.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -128,9 +81,6 @@ class LoadBalancerArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable description for the Loadbalancer.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -140,10 +90,6 @@ class LoadBalancerArgs:
     @property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The UUID of a flavor. Changing this creates a new
-        loadbalancer.
-        """
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
@@ -153,10 +99,6 @@ class LoadBalancerArgs:
     @property
     @pulumi.getter(name="loadbalancerProvider")
     def loadbalancer_provider(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the provider. Changing this
-        creates a new loadbalancer.
-        """
         return pulumi.get(self, "loadbalancer_provider")
 
     @loadbalancer_provider.setter
@@ -166,10 +108,6 @@ class LoadBalancerArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable name for the Loadbalancer. Does not have
-        to be unique.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -179,12 +117,6 @@ class LoadBalancerArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an LB member. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        LB member.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -194,11 +126,6 @@ class LoadBalancerArgs:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of security group IDs to apply to the
-        loadbalancer. The security groups must be specified by ID and not name (as
-        opposed to how they are configured with the Compute Instance).
-        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -208,10 +135,6 @@ class LoadBalancerArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of simple strings assigned to the loadbalancer.
-        Available only for Octavia **minor version 2.5 or later**.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -221,11 +144,6 @@ class LoadBalancerArgs:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required for admins. The UUID of the tenant who owns
-        the Loadbalancer.  Only administrative users can specify a tenant UUID
-        other than their own.  Changing this creates a new loadbalancer.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -235,10 +153,6 @@ class LoadBalancerArgs:
     @property
     @pulumi.getter(name="vipAddress")
     def vip_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ip address of the load balancer.
-        Changing this creates a new loadbalancer.
-        """
         return pulumi.get(self, "vip_address")
 
     @vip_address.setter
@@ -248,13 +162,6 @@ class LoadBalancerArgs:
     @property
     @pulumi.getter(name="vipNetworkId")
     def vip_network_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The network on which to allocate the
-        Loadbalancer's address. A tenant can only create Loadbalancers on networks
-        authorized by policy (e.g. networks that belong to them or networks that
-        are shared).  Changing this creates a new loadbalancer.
-        It is available only for Octavia.
-        """
         return pulumi.get(self, "vip_network_id")
 
     @vip_network_id.setter
@@ -264,10 +171,6 @@ class LoadBalancerArgs:
     @property
     @pulumi.getter(name="vipPortId")
     def vip_port_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The port UUID that the loadbalancer will use.
-        Changing this creates a new loadbalancer. It is available only for Octavia.
-        """
         return pulumi.get(self, "vip_port_id")
 
     @vip_port_id.setter
@@ -277,13 +180,6 @@ class LoadBalancerArgs:
     @property
     @pulumi.getter(name="vipSubnetId")
     def vip_subnet_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The subnet on which to allocate the
-        Loadbalancer's address. A tenant can only create Loadbalancers on networks
-        authorized by policy (e.g. networks that belong to them or networks that
-        are shared).  Changing this creates a new loadbalancer.
-        It is required to Neutron LBaaS but optional for Octavia.
-        """
         return pulumi.get(self, "vip_subnet_id")
 
     @vip_subnet_id.setter
@@ -310,44 +206,6 @@ class _LoadBalancerState:
                  vip_subnet_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the Loadbalancer.
-               A valid value is true (UP) or false (DOWN).
-        :param pulumi.Input[str] availability_zone: The availability zone of the Loadbalancer.
-               Changing this creates a new loadbalancer. Available only for Octavia
-               **minor version 2.14 or later**.
-        :param pulumi.Input[str] description: Human-readable description for the Loadbalancer.
-        :param pulumi.Input[str] flavor_id: The UUID of a flavor. Changing this creates a new
-               loadbalancer.
-        :param pulumi.Input[str] loadbalancer_provider: The name of the provider. Changing this
-               creates a new loadbalancer.
-        :param pulumi.Input[str] name: Human-readable name for the Loadbalancer. Does not have
-               to be unique.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an LB member. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               LB member.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs to apply to the
-               loadbalancer. The security groups must be specified by ID and not name (as
-               opposed to how they are configured with the Compute Instance).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the loadbalancer.
-               Available only for Octavia **minor version 2.5 or later**.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the Loadbalancer.  Only administrative users can specify a tenant UUID
-               other than their own.  Changing this creates a new loadbalancer.
-        :param pulumi.Input[str] vip_address: The ip address of the load balancer.
-               Changing this creates a new loadbalancer.
-        :param pulumi.Input[str] vip_network_id: The network on which to allocate the
-               Loadbalancer's address. A tenant can only create Loadbalancers on networks
-               authorized by policy (e.g. networks that belong to them or networks that
-               are shared).  Changing this creates a new loadbalancer.
-               It is available only for Octavia.
-        :param pulumi.Input[str] vip_port_id: The port UUID that the loadbalancer will use.
-               Changing this creates a new loadbalancer. It is available only for Octavia.
-        :param pulumi.Input[str] vip_subnet_id: The subnet on which to allocate the
-               Loadbalancer's address. A tenant can only create Loadbalancers on networks
-               authorized by policy (e.g. networks that belong to them or networks that
-               are shared).  Changing this creates a new loadbalancer.
-               It is required to Neutron LBaaS but optional for Octavia.
         """
         if admin_state_up is not None:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
@@ -381,10 +239,6 @@ class _LoadBalancerState:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The administrative state of the Loadbalancer.
-        A valid value is true (UP) or false (DOWN).
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -394,11 +248,6 @@ class _LoadBalancerState:
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The availability zone of the Loadbalancer.
-        Changing this creates a new loadbalancer. Available only for Octavia
-        **minor version 2.14 or later**.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -408,9 +257,6 @@ class _LoadBalancerState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable description for the Loadbalancer.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -420,10 +266,6 @@ class _LoadBalancerState:
     @property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The UUID of a flavor. Changing this creates a new
-        loadbalancer.
-        """
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
@@ -433,10 +275,6 @@ class _LoadBalancerState:
     @property
     @pulumi.getter(name="loadbalancerProvider")
     def loadbalancer_provider(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the provider. Changing this
-        creates a new loadbalancer.
-        """
         return pulumi.get(self, "loadbalancer_provider")
 
     @loadbalancer_provider.setter
@@ -446,10 +284,6 @@ class _LoadBalancerState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable name for the Loadbalancer. Does not have
-        to be unique.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -459,12 +293,6 @@ class _LoadBalancerState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an LB member. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        LB member.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -474,11 +302,6 @@ class _LoadBalancerState:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of security group IDs to apply to the
-        loadbalancer. The security groups must be specified by ID and not name (as
-        opposed to how they are configured with the Compute Instance).
-        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -488,10 +311,6 @@ class _LoadBalancerState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of simple strings assigned to the loadbalancer.
-        Available only for Octavia **minor version 2.5 or later**.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -501,11 +320,6 @@ class _LoadBalancerState:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required for admins. The UUID of the tenant who owns
-        the Loadbalancer.  Only administrative users can specify a tenant UUID
-        other than their own.  Changing this creates a new loadbalancer.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -515,10 +329,6 @@ class _LoadBalancerState:
     @property
     @pulumi.getter(name="vipAddress")
     def vip_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ip address of the load balancer.
-        Changing this creates a new loadbalancer.
-        """
         return pulumi.get(self, "vip_address")
 
     @vip_address.setter
@@ -528,13 +338,6 @@ class _LoadBalancerState:
     @property
     @pulumi.getter(name="vipNetworkId")
     def vip_network_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The network on which to allocate the
-        Loadbalancer's address. A tenant can only create Loadbalancers on networks
-        authorized by policy (e.g. networks that belong to them or networks that
-        are shared).  Changing this creates a new loadbalancer.
-        It is available only for Octavia.
-        """
         return pulumi.get(self, "vip_network_id")
 
     @vip_network_id.setter
@@ -544,10 +347,6 @@ class _LoadBalancerState:
     @property
     @pulumi.getter(name="vipPortId")
     def vip_port_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The port UUID that the loadbalancer will use.
-        Changing this creates a new loadbalancer. It is available only for Octavia.
-        """
         return pulumi.get(self, "vip_port_id")
 
     @vip_port_id.setter
@@ -557,13 +356,6 @@ class _LoadBalancerState:
     @property
     @pulumi.getter(name="vipSubnetId")
     def vip_subnet_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The subnet on which to allocate the
-        Loadbalancer's address. A tenant can only create Loadbalancers on networks
-        authorized by policy (e.g. networks that belong to them or networks that
-        are shared).  Changing this creates a new loadbalancer.
-        It is required to Neutron LBaaS but optional for Octavia.
-        """
         return pulumi.get(self, "vip_subnet_id")
 
     @vip_subnet_id.setter
@@ -571,7 +363,12 @@ class _LoadBalancerState:
         pulumi.set(self, "vip_subnet_id", value)
 
 
+warnings.warn("""openstack.loadbalancer/loadbalancer.LoadBalancer has been deprecated in favor of openstack.index/lbloadbalancerv2.LbLoadbalancerV2""", DeprecationWarning)
+
+
 class LoadBalancer(pulumi.CustomResource):
+    warnings.warn("""openstack.loadbalancer/loadbalancer.LoadBalancer has been deprecated in favor of openstack.index/lbloadbalancerv2.LbLoadbalancerV2""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -592,68 +389,9 @@ class LoadBalancer(pulumi.CustomResource):
                  vip_subnet_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a V2 loadbalancer resource within OpenStack.
-
-        > **Note:** This resource has attributes that depend on octavia minor versions.
-        Please ensure your Openstack cloud supports the required minor version.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        lb1 = openstack.loadbalancer.LoadBalancer("lb_1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
-        ```
-
-        ## Import
-
-        Load Balancer can be imported using the Load Balancer ID, e.g.:
-
-        ```sh
-        $ pulumi import openstack:loadbalancer/loadBalancer:LoadBalancer loadbalancer_1 19bcfdc7-c521-4a7e-9459-6750bd16df76
-        ```
-
+        Create a LoadBalancer resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the Loadbalancer.
-               A valid value is true (UP) or false (DOWN).
-        :param pulumi.Input[str] availability_zone: The availability zone of the Loadbalancer.
-               Changing this creates a new loadbalancer. Available only for Octavia
-               **minor version 2.14 or later**.
-        :param pulumi.Input[str] description: Human-readable description for the Loadbalancer.
-        :param pulumi.Input[str] flavor_id: The UUID of a flavor. Changing this creates a new
-               loadbalancer.
-        :param pulumi.Input[str] loadbalancer_provider: The name of the provider. Changing this
-               creates a new loadbalancer.
-        :param pulumi.Input[str] name: Human-readable name for the Loadbalancer. Does not have
-               to be unique.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an LB member. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               LB member.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs to apply to the
-               loadbalancer. The security groups must be specified by ID and not name (as
-               opposed to how they are configured with the Compute Instance).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the loadbalancer.
-               Available only for Octavia **minor version 2.5 or later**.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the Loadbalancer.  Only administrative users can specify a tenant UUID
-               other than their own.  Changing this creates a new loadbalancer.
-        :param pulumi.Input[str] vip_address: The ip address of the load balancer.
-               Changing this creates a new loadbalancer.
-        :param pulumi.Input[str] vip_network_id: The network on which to allocate the
-               Loadbalancer's address. A tenant can only create Loadbalancers on networks
-               authorized by policy (e.g. networks that belong to them or networks that
-               are shared).  Changing this creates a new loadbalancer.
-               It is available only for Octavia.
-        :param pulumi.Input[str] vip_port_id: The port UUID that the loadbalancer will use.
-               Changing this creates a new loadbalancer. It is available only for Octavia.
-        :param pulumi.Input[str] vip_subnet_id: The subnet on which to allocate the
-               Loadbalancer's address. A tenant can only create Loadbalancers on networks
-               authorized by policy (e.g. networks that belong to them or networks that
-               are shared).  Changing this creates a new loadbalancer.
-               It is required to Neutron LBaaS but optional for Octavia.
         """
         ...
     @overload
@@ -662,28 +400,7 @@ class LoadBalancer(pulumi.CustomResource):
                  args: Optional[LoadBalancerArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V2 loadbalancer resource within OpenStack.
-
-        > **Note:** This resource has attributes that depend on octavia minor versions.
-        Please ensure your Openstack cloud supports the required minor version.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        lb1 = openstack.loadbalancer.LoadBalancer("lb_1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
-        ```
-
-        ## Import
-
-        Load Balancer can be imported using the Load Balancer ID, e.g.:
-
-        ```sh
-        $ pulumi import openstack:loadbalancer/loadBalancer:LoadBalancer loadbalancer_1 19bcfdc7-c521-4a7e-9459-6750bd16df76
-        ```
-
+        Create a LoadBalancer resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param LoadBalancerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -714,6 +431,7 @@ class LoadBalancer(pulumi.CustomResource):
                  vip_port_id: Optional[pulumi.Input[str]] = None,
                  vip_subnet_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""LoadBalancer is deprecated: openstack.loadbalancer/loadbalancer.LoadBalancer has been deprecated in favor of openstack.index/lbloadbalancerv2.LbLoadbalancerV2""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -767,44 +485,6 @@ class LoadBalancer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the Loadbalancer.
-               A valid value is true (UP) or false (DOWN).
-        :param pulumi.Input[str] availability_zone: The availability zone of the Loadbalancer.
-               Changing this creates a new loadbalancer. Available only for Octavia
-               **minor version 2.14 or later**.
-        :param pulumi.Input[str] description: Human-readable description for the Loadbalancer.
-        :param pulumi.Input[str] flavor_id: The UUID of a flavor. Changing this creates a new
-               loadbalancer.
-        :param pulumi.Input[str] loadbalancer_provider: The name of the provider. Changing this
-               creates a new loadbalancer.
-        :param pulumi.Input[str] name: Human-readable name for the Loadbalancer. Does not have
-               to be unique.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an LB member. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               LB member.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs to apply to the
-               loadbalancer. The security groups must be specified by ID and not name (as
-               opposed to how they are configured with the Compute Instance).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the loadbalancer.
-               Available only for Octavia **minor version 2.5 or later**.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the Loadbalancer.  Only administrative users can specify a tenant UUID
-               other than their own.  Changing this creates a new loadbalancer.
-        :param pulumi.Input[str] vip_address: The ip address of the load balancer.
-               Changing this creates a new loadbalancer.
-        :param pulumi.Input[str] vip_network_id: The network on which to allocate the
-               Loadbalancer's address. A tenant can only create Loadbalancers on networks
-               authorized by policy (e.g. networks that belong to them or networks that
-               are shared).  Changing this creates a new loadbalancer.
-               It is available only for Octavia.
-        :param pulumi.Input[str] vip_port_id: The port UUID that the loadbalancer will use.
-               Changing this creates a new loadbalancer. It is available only for Octavia.
-        :param pulumi.Input[str] vip_subnet_id: The subnet on which to allocate the
-               Loadbalancer's address. A tenant can only create Loadbalancers on networks
-               authorized by policy (e.g. networks that belong to them or networks that
-               are shared).  Changing this creates a new loadbalancer.
-               It is required to Neutron LBaaS but optional for Octavia.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -829,136 +509,70 @@ class LoadBalancer(pulumi.CustomResource):
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[Optional[bool]]:
-        """
-        The administrative state of the Loadbalancer.
-        A valid value is true (UP) or false (DOWN).
-        """
         return pulumi.get(self, "admin_state_up")
 
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[Optional[str]]:
-        """
-        The availability zone of the Loadbalancer.
-        Changing this creates a new loadbalancer. Available only for Octavia
-        **minor version 2.14 or later**.
-        """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        Human-readable description for the Loadbalancer.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> pulumi.Output[str]:
-        """
-        The UUID of a flavor. Changing this creates a new
-        loadbalancer.
-        """
         return pulumi.get(self, "flavor_id")
 
     @property
     @pulumi.getter(name="loadbalancerProvider")
     def loadbalancer_provider(self) -> pulumi.Output[str]:
-        """
-        The name of the provider. Changing this
-        creates a new loadbalancer.
-        """
         return pulumi.get(self, "loadbalancer_provider")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Human-readable name for the Loadbalancer. Does not have
-        to be unique.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an LB member. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        LB member.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
-        """
-        A list of security group IDs to apply to the
-        loadbalancer. The security groups must be specified by ID and not name (as
-        opposed to how they are configured with the Compute Instance).
-        """
         return pulumi.get(self, "security_group_ids")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        A list of simple strings assigned to the loadbalancer.
-        Available only for Octavia **minor version 2.5 or later**.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
-        """
-        Required for admins. The UUID of the tenant who owns
-        the Loadbalancer.  Only administrative users can specify a tenant UUID
-        other than their own.  Changing this creates a new loadbalancer.
-        """
         return pulumi.get(self, "tenant_id")
 
     @property
     @pulumi.getter(name="vipAddress")
     def vip_address(self) -> pulumi.Output[str]:
-        """
-        The ip address of the load balancer.
-        Changing this creates a new loadbalancer.
-        """
         return pulumi.get(self, "vip_address")
 
     @property
     @pulumi.getter(name="vipNetworkId")
     def vip_network_id(self) -> pulumi.Output[str]:
-        """
-        The network on which to allocate the
-        Loadbalancer's address. A tenant can only create Loadbalancers on networks
-        authorized by policy (e.g. networks that belong to them or networks that
-        are shared).  Changing this creates a new loadbalancer.
-        It is available only for Octavia.
-        """
         return pulumi.get(self, "vip_network_id")
 
     @property
     @pulumi.getter(name="vipPortId")
     def vip_port_id(self) -> pulumi.Output[str]:
-        """
-        The port UUID that the loadbalancer will use.
-        Changing this creates a new loadbalancer. It is available only for Octavia.
-        """
         return pulumi.get(self, "vip_port_id")
 
     @property
     @pulumi.getter(name="vipSubnetId")
     def vip_subnet_id(self) -> pulumi.Output[str]:
-        """
-        The subnet on which to allocate the
-        Loadbalancer's address. A tenant can only create Loadbalancers on networks
-        authorized by policy (e.g. networks that belong to them or networks that
-        are shared).  Changing this creates a new loadbalancer.
-        It is required to Neutron LBaaS but optional for Octavia.
-        """
         return pulumi.get(self, "vip_subnet_id")
 

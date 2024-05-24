@@ -50,12 +50,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("tf_test_network")
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()
  *             .networkId(network1.id())
  *             .cidr("192.168.199.0/24")
  *             .build());

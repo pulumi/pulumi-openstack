@@ -25,6 +25,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack"
 //	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/keymanager"
 //	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/loadbalancer"
 //	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/networking"
@@ -107,7 +108,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			lb1, err := loadbalancer.NewLoadBalancer(ctx, "lb_1", &loadbalancer.LoadBalancerArgs{
+//			lb1, err := openstack.NewLbLoadbalancerV2(ctx, "lb_1", &openstack.LbLoadbalancerV2Args{
 //				Name:        pulumi.String("loadbalancer"),
 //				VipSubnetId: pulumi.String(subnet1.Id),
 //			})

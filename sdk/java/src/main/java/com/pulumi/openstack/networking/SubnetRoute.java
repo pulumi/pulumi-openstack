@@ -47,23 +47,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var router1 = new Router("router1", RouterArgs.builder()        
+ *         var router1 = new Router("router1", RouterArgs.builder()
  *             .name("router_1")
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()
  *             .networkId(network1.id())
  *             .cidr("192.168.199.0/24")
  *             .ipVersion(4)
  *             .build());
  * 
- *         var subnetRoute1 = new SubnetRoute("subnetRoute1", SubnetRouteArgs.builder()        
+ *         var subnetRoute1 = new SubnetRoute("subnetRoute1", SubnetRouteArgs.builder()
  *             .subnetId(subnet1.id())
  *             .destinationCidr("10.0.1.0/24")
  *             .nextHop("192.168.199.254")

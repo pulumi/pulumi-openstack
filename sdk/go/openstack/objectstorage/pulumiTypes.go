@@ -14,8 +14,10 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ContainerVersioningLegacy struct {
+	// Container in which versions will be stored.
 	Location string `pulumi:"location"`
-	Type     string `pulumi:"type"`
+	// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+	Type string `pulumi:"type"`
 }
 
 // ContainerVersioningLegacyInput is an input type that accepts ContainerVersioningLegacyArgs and ContainerVersioningLegacyOutput values.
@@ -30,8 +32,10 @@ type ContainerVersioningLegacyInput interface {
 }
 
 type ContainerVersioningLegacyArgs struct {
+	// Container in which versions will be stored.
 	Location pulumi.StringInput `pulumi:"location"`
-	Type     pulumi.StringInput `pulumi:"type"`
+	// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (ContainerVersioningLegacyArgs) ElementType() reflect.Type {
@@ -111,10 +115,12 @@ func (o ContainerVersioningLegacyOutput) ToContainerVersioningLegacyPtrOutputWit
 	}).(ContainerVersioningLegacyPtrOutput)
 }
 
+// Container in which versions will be stored.
 func (o ContainerVersioningLegacyOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerVersioningLegacy) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
 func (o ContainerVersioningLegacyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerVersioningLegacy) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -143,6 +149,7 @@ func (o ContainerVersioningLegacyPtrOutput) Elem() ContainerVersioningLegacyOutp
 	}).(ContainerVersioningLegacyOutput)
 }
 
+// Container in which versions will be stored.
 func (o ContainerVersioningLegacyPtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerVersioningLegacy) *string {
 		if v == nil {
@@ -152,6 +159,7 @@ func (o ContainerVersioningLegacyPtrOutput) Location() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
 func (o ContainerVersioningLegacyPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerVersioningLegacy) *string {
 		if v == nil {

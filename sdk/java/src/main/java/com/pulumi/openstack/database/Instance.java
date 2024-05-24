@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Instance("test", InstanceArgs.builder()        
+ *         var test = new Instance("test", InstanceArgs.builder()
  *             .region("region-test")
  *             .name("test")
  *             .flavorId("31792d21-c355-4587-9290-56c1ed0ca376")
