@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var rancheros = new Image("rancheros", ImageArgs.builder()        
+ *         var rancheros = new Image("rancheros", ImageArgs.builder()
  *             .name("RancherOS")
  *             .imageSourceUrl("https://releases.rancher.com/os/latest/rancheros-openstack.img")
  *             .containerFormat("bare")
@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *             .properties(Map.of("key", "value"))
  *             .build());
  * 
- *         var rancherosMember = new ImageAccess("rancherosMember", ImageAccessArgs.builder()        
+ *         var rancherosMember = new ImageAccess("rancherosMember", ImageAccessArgs.builder()
  *             .imageId(rancheros.id())
  *             .memberId("bed6b6cbb86a4e2d8dc2735c2f1000e4")
  *             .build());
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var rancheros = new Image("rancheros", ImageArgs.builder()        
+ *         var rancheros = new Image("rancheros", ImageArgs.builder()
  *             .name("RancherOS")
  *             .imageSourceUrl("https://releases.rancher.com/os/latest/rancheros-openstack.img")
  *             .containerFormat("bare")
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *             .properties(Map.of("key", "value"))
  *             .build());
  * 
- *         var rancherosMember = new ImageAccess("rancherosMember", ImageAccessArgs.builder()        
+ *         var rancherosMember = new ImageAccess("rancherosMember", ImageAccessArgs.builder()
  *             .imageId(rancheros.id())
  *             .memberId("bed6b6cbb86a4e2d8dc2735c2f1000e4")
  *             .status("accepted")

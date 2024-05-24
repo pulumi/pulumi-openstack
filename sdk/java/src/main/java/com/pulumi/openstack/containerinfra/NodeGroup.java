@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var nodegroup1 = new NodeGroup("nodegroup1", NodeGroupArgs.builder()        
+ *         var nodegroup1 = new NodeGroup("nodegroup1", NodeGroupArgs.builder()
  *             .name("nodegroup_1")
  *             .clusterId("b9a45c5c-cd03-4958-82aa-b80bf93cb922")
  *             .nodeCount(5)

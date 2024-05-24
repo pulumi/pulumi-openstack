@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var policy1 = new IpSecPolicy("policy1", IpSecPolicyArgs.builder()        
+ *         var policy1 = new IpSecPolicy("policy1", IpSecPolicyArgs.builder()
  *             .name("my_policy")
  *             .build());
  * 

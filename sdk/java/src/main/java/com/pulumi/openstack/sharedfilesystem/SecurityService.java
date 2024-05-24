@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var securityservice1 = new SecurityService("securityservice1", SecurityServiceArgs.builder()        
+ *         var securityservice1 = new SecurityService("securityservice1", SecurityServiceArgs.builder()
  *             .name("security")
  *             .description("created by terraform")
  *             .type("active_directory")

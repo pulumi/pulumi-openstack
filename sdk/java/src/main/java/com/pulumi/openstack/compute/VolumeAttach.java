@@ -51,17 +51,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var volume1 = new Volume("volume1", VolumeArgs.builder()        
+ *         var volume1 = new Volume("volume1", VolumeArgs.builder()
  *             .name("volume_1")
  *             .size(1)
  *             .build());
  * 
- *         var instance1 = new Instance("instance1", InstanceArgs.builder()        
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()
  *             .name("instance_1")
  *             .securityGroups("default")
  *             .build());
  * 
- *         var va1 = new VolumeAttach("va1", VolumeAttachArgs.builder()        
+ *         var va1 = new VolumeAttach("va1", VolumeAttachArgs.builder()
  *             .instanceId(instance1.id())
  *             .volumeId(volume1.id())
  *             .build());
@@ -105,29 +105,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var volume1 = new Volume("volume1", VolumeArgs.builder()        
+ *         var volume1 = new Volume("volume1", VolumeArgs.builder()
  *             .name("volume_1")
  *             .size(1)
  *             .volumeType("multiattach")
  *             .build());
  * 
- *         var instance1 = new Instance("instance1", InstanceArgs.builder()        
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()
  *             .name("instance_1")
  *             .securityGroups("default")
  *             .build());
  * 
- *         var instance2 = new Instance("instance2", InstanceArgs.builder()        
+ *         var instance2 = new Instance("instance2", InstanceArgs.builder()
  *             .name("instance_2")
  *             .securityGroups("default")
  *             .build());
  * 
- *         var va1 = new VolumeAttach("va1", VolumeAttachArgs.builder()        
+ *         var va1 = new VolumeAttach("va1", VolumeAttachArgs.builder()
  *             .instanceId(instance1.id())
  *             .volumeId(volume1.id())
  *             .multiattach(true)
  *             .build());
  * 
- *         var va2 = new VolumeAttach("va2", VolumeAttachArgs.builder()        
+ *         var va2 = new VolumeAttach("va2", VolumeAttachArgs.builder()
  *             .instanceId(instance2.id())
  *             .volumeId(volume1.id())
  *             .multiattach(true)

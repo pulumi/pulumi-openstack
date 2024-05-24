@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var order1 = new OrderV1("order1", OrderV1Args.builder()        
+ *         var order1 = new OrderV1("order1", OrderV1Args.builder()
  *             .type("key")
  *             .meta(OrderV1MetaArgs.builder()
  *                 .algorithm("aes")
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var order1 = new OrderV1("order1", OrderV1Args.builder()        
+ *         var order1 = new OrderV1("order1", OrderV1Args.builder()
  *             .type("asymmetric")
  *             .meta(OrderV1MetaArgs.builder()
  *                 .algorithm("rsa")

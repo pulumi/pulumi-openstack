@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var volumeType1 = new VolumeTypeV3("volumeType1", VolumeTypeV3Args.builder()        
+ *         var volumeType1 = new VolumeTypeV3("volumeType1", VolumeTypeV3Args.builder()
  *             .name("volume_type_1")
  *             .description("Volume type 1")
  *             .extraSpecs(Map.ofEntries(
@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var multiattach = new VolumeTypeV3("multiattach", VolumeTypeV3Args.builder()        
+ *         var multiattach = new VolumeTypeV3("multiattach", VolumeTypeV3Args.builder()
  *             .name("multiattach")
  *             .description("Multiattach-enabled volume type")
  *             .extraSpecs(Map.of("multiattach", "<is> True"))

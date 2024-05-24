@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZone = new Zone("exampleZone", ZoneArgs.builder()        
+ *         var exampleZone = new Zone("exampleZone", ZoneArgs.builder()
  *             .name("example.com.")
  *             .email("email2{@literal @}example.com")
  *             .description("a zone")
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .type("PRIMARY")
  *             .build());
  * 
- *         var rsExampleCom = new RecordSet("rsExampleCom", RecordSetArgs.builder()        
+ *         var rsExampleCom = new RecordSet("rsExampleCom", RecordSetArgs.builder()
  *             .zoneId(exampleZone.id())
  *             .name("rs.example.com.")
  *             .description("An example record set")

@@ -53,19 +53,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()
  *             .name("subnet_1")
  *             .cidr("192.168.199.0/24")
  *             .ipVersion(4)
  *             .networkId(network1.id())
  *             .build());
  * 
- *         var sharenetwork1 = new ShareNetwork("sharenetwork1", ShareNetworkArgs.builder()        
+ *         var sharenetwork1 = new ShareNetwork("sharenetwork1", ShareNetworkArgs.builder()
  *             .name("test_sharenetwork")
  *             .description("test share network")
  *             .neutronNetId(network1.id())
@@ -109,19 +109,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()
  *             .name("subnet_1")
  *             .cidr("192.168.199.0/24")
  *             .ipVersion(4)
  *             .networkId(network1.id())
  *             .build());
  * 
- *         var securityservice1 = new SecurityService("securityservice1", SecurityServiceArgs.builder()        
+ *         var securityservice1 = new SecurityService("securityservice1", SecurityServiceArgs.builder()
  *             .name("security")
  *             .description("created by terraform")
  *             .type("active_directory")
@@ -133,7 +133,7 @@ import javax.annotation.Nullable;
  *             .password("s8cret")
  *             .build());
  * 
- *         var sharenetwork1 = new ShareNetwork("sharenetwork1", ShareNetworkArgs.builder()        
+ *         var sharenetwork1 = new ShareNetwork("sharenetwork1", ShareNetworkArgs.builder()
  *             .name("test_sharenetwork")
  *             .description("test share network with security services")
  *             .neutronNetId(network1.id())

@@ -60,12 +60,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var port1 = new Port("port1", PortArgs.builder()        
+ *         var port1 = new Port("port1", PortArgs.builder()
  *             .name("port_1")
  *             .networkId(network1.id())
  *             .adminStateUp("true")
@@ -107,18 +107,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()
  *             .name("subnet_1")
  *             .networkId(network1.id())
  *             .cidr("192.168.199.0/24")
  *             .build());
  * 
- *         var port1 = new Port("port1", PortArgs.builder()        
+ *         var port1 = new Port("port1", PortArgs.builder()
  *             .name("port_1")
  *             .networkId(network1.id())
  *             .adminStateUp("true")
@@ -161,12 +161,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var port1 = new Port("port1", PortArgs.builder()        
+ *         var port1 = new Port("port1", PortArgs.builder()
  *             .name("port_1")
  *             .networkId(network1.id())
  *             .deviceId("cdf70fcf-c161-4f24-9c70-96b3f5a54b71")

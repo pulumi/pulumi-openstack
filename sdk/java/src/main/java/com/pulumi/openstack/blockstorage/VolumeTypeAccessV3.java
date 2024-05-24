@@ -47,16 +47,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project1 = new Project("project1", ProjectArgs.builder()        
+ *         var project1 = new Project("project1", ProjectArgs.builder()
  *             .name("project_1")
  *             .build());
  * 
- *         var volumeType1 = new VolumeTypeV3("volumeType1", VolumeTypeV3Args.builder()        
+ *         var volumeType1 = new VolumeTypeV3("volumeType1", VolumeTypeV3Args.builder()
  *             .name("volume_type_1")
  *             .isPublic(false)
  *             .build());
  * 
- *         var volumeTypeAccess = new VolumeTypeAccessV3("volumeTypeAccess", VolumeTypeAccessV3Args.builder()        
+ *         var volumeTypeAccess = new VolumeTypeAccessV3("volumeTypeAccess", VolumeTypeAccessV3Args.builder()
  *             .projectId(project1.id())
  *             .volumeTypeId(volumeType1.id())
  *             .build());

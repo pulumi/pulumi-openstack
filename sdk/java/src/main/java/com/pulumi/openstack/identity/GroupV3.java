@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var group1 = new GroupV3("group1", GroupV3Args.builder()        
+ *         var group1 = new GroupV3("group1", GroupV3Args.builder()
  *             .name("group_1")
  *             .description("group 1")
  *             .build());

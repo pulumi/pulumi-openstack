@@ -50,14 +50,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var container1 = new Container("container1", ContainerArgs.builder()        
+ *         var container1 = new Container("container1", ContainerArgs.builder()
  *             .region("RegionOne")
  *             .name("tf-test-container-1")
  *             .metadata(Map.of("test", "true"))
  *             .contentType("application/json")
  *             .build());
  * 
- *         var doc1 = new ContainerObject("doc1", ContainerObjectArgs.builder()        
+ *         var doc1 = new ContainerObject("doc1", ContainerObjectArgs.builder()
  *             .region("RegionOne")
  *             .containerName(container1.name())
  *             .name("test/default.json")
@@ -103,14 +103,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var container1 = new Container("container1", ContainerArgs.builder()        
+ *         var container1 = new Container("container1", ContainerArgs.builder()
  *             .region("RegionOne")
  *             .name("tf-test-container-1")
  *             .metadata(Map.of("test", "true"))
  *             .contentType("application/json")
  *             .build());
  * 
- *         var doc1 = new ContainerObject("doc1", ContainerObjectArgs.builder()        
+ *         var doc1 = new ContainerObject("doc1", ContainerObjectArgs.builder()
  *             .region("RegionOne")
  *             .containerName(container1.name())
  *             .name("test/default.json")

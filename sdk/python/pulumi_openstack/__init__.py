@@ -8,6 +8,7 @@ import typing
 from .get_fw_group_v2 import *
 from .get_fw_policy_v2 import *
 from .get_fw_rule_v2 import *
+from .lb_loadbalancer_v2 import *
 from .provider import *
 
 # Make subpackages available:
@@ -495,6 +496,14 @@ _utilities.register(
   "fqn": "pulumi_openstack.images",
   "classes": {
    "openstack:images/imageAccessAccept:ImageAccessAccept": "ImageAccessAccept"
+  }
+ },
+ {
+  "pkg": "openstack",
+  "mod": "index/lbLoadbalancerV2",
+  "fqn": "pulumi_openstack",
+  "classes": {
+   "openstack:index/lbLoadbalancerV2:LbLoadbalancerV2": "LbLoadbalancerV2"
   }
  },
  {

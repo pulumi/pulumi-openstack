@@ -807,7 +807,13 @@ export namespace networking {
 
 export namespace objectstorage {
     export interface ContainerVersioningLegacy {
+        /**
+         * Container in which versions will be stored.
+         */
         location: pulumi.Input<string>;
+        /**
+         * Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+         */
         type: pulumi.Input<string>;
     }
 }

@@ -46,12 +46,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var service1 = new ServiceV3("service1", ServiceV3Args.builder()        
+ *         var service1 = new ServiceV3("service1", ServiceV3Args.builder()
  *             .name("my-service")
  *             .type("my-service-type")
  *             .build());
  * 
- *         var endpoint1 = new EndpointV3("endpoint1", EndpointV3Args.builder()        
+ *         var endpoint1 = new EndpointV3("endpoint1", EndpointV3Args.builder()
  *             .name("my-endpoint")
  *             .serviceId(service1.id())
  *             .endpointRegion(service1.region())

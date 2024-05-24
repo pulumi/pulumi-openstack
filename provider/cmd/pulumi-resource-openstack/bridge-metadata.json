@@ -526,7 +526,14 @@
                 }
             },
             "openstack_lb_loadbalancer_v2": {
-                "current": "openstack:loadbalancer/loadBalancer:LoadBalancer",
+                "current": "openstack:index/lbLoadbalancerV2:LbLoadbalancerV2",
+                "past": [
+                    {
+                        "name": "openstack:loadbalancer/loadBalancer:LoadBalancer",
+                        "inCodegen": true,
+                        "majorVersion": 4
+                    }
+                ],
                 "majorVersion": 4,
                 "fields": {
                     "security_group_ids": {
@@ -1447,6 +1454,11 @@
                 "maxItemsOneOverrides": {
                     "policies": false
                 }
+            },
+            "openstack_lb_loadbalancer_v2": {
+                "aliases": [
+                    "openstack:loadbalancer/loadBalancer:LoadBalancer"
+                ]
             }
         }
     },

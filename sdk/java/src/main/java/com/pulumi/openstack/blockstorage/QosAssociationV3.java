@@ -47,17 +47,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var qos = new QosV3("qos", QosV3Args.builder()        
+ *         var qos = new QosV3("qos", QosV3Args.builder()
  *             .name("%s")
  *             .consumer("front-end")
  *             .specs(Map.of("read_iops_sec", "20000"))
  *             .build());
  * 
- *         var volumeType = new VolumeTypeV3("volumeType", VolumeTypeV3Args.builder()        
+ *         var volumeType = new VolumeTypeV3("volumeType", VolumeTypeV3Args.builder()
  *             .name("%s")
  *             .build());
  * 
- *         var qosAssociation = new QosAssociationV3("qosAssociation", QosAssociationV3Args.builder()        
+ *         var qosAssociation = new QosAssociationV3("qosAssociation", QosAssociationV3Args.builder()
  *             .qosId(qos.id())
  *             .volumeTypeId(volumeType.id())
  *             .build());

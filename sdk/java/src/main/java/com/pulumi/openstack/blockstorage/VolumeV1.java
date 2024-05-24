@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var volume1 = new VolumeV1("volume1", VolumeV1Args.builder()        
+ *         var volume1 = new VolumeV1("volume1", VolumeV1Args.builder()
  *             .region("RegionOne")
  *             .name("tf-test-volume")
  *             .description("first test volume")

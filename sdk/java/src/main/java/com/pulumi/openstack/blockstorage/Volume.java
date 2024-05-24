@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var volume1 = new Volume("volume1", VolumeArgs.builder()        
+ *         var volume1 = new Volume("volume1", VolumeArgs.builder()
  *             .region("RegionOne")
  *             .name("volume_1")
  *             .description("first test volume")

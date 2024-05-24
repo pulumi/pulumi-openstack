@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.openstack.keymanager.inputs.ContainerV1SecretRefArgs;
  * import com.pulumi.openstack.networking.NetworkingFunctions;
  * import com.pulumi.openstack.networking.inputs.GetSubnetArgs;
- * import com.pulumi.openstack.loadbalancer.LoadBalancer;
- * import com.pulumi.openstack.loadbalancer.LoadBalancerArgs;
+ * import com.pulumi.openstack.LbLoadbalancerV2;
+ * import com.pulumi.openstack.LbLoadbalancerV2Args;
  * import com.pulumi.openstack.loadbalancer.Listener;
  * import com.pulumi.openstack.loadbalancer.ListenerArgs;
  * import java.util.List;
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var certificate1 = new SecretV1("certificate1", SecretV1Args.builder()        
+ *         var certificate1 = new SecretV1("certificate1", SecretV1Args.builder()
  *             .name("certificate")
  *             .payload(StdFunctions.file(FileArgs.builder()
  *                 .input("cert.pem")
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .payloadContentType("text/plain")
  *             .build());
  * 
- *         var privateKey1 = new SecretV1("privateKey1", SecretV1Args.builder()        
+ *         var privateKey1 = new SecretV1("privateKey1", SecretV1Args.builder()
  *             .name("private_key")
  *             .payload(StdFunctions.file(FileArgs.builder()
  *                 .input("cert-key.pem")
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *             .payloadContentType("text/plain")
  *             .build());
  * 
- *         var intermediate1 = new SecretV1("intermediate1", SecretV1Args.builder()        
+ *         var intermediate1 = new SecretV1("intermediate1", SecretV1Args.builder()
  *             .name("intermediate")
  *             .payload(StdFunctions.file(FileArgs.builder()
  *                 .input("intermediate-ca.pem")
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *             .payloadContentType("text/plain")
  *             .build());
  * 
- *         var tls1 = new ContainerV1("tls1", ContainerV1Args.builder()        
+ *         var tls1 = new ContainerV1("tls1", ContainerV1Args.builder()
  *             .name("tls")
  *             .type("certificate")
  *             .secretRefs(            
@@ -108,12 +108,12 @@ import javax.annotation.Nullable;
  *             .name("my-subnet")
  *             .build());
  * 
- *         var lb1 = new LoadBalancer("lb1", LoadBalancerArgs.builder()        
+ *         var lb1 = new LbLoadbalancerV2("lb1", LbLoadbalancerV2Args.builder()
  *             .name("loadbalancer")
  *             .vipSubnetId(subnet1.applyValue(getSubnetResult -> getSubnetResult.id()))
  *             .build());
  * 
- *         var listener1 = new Listener("listener1", ListenerArgs.builder()        
+ *         var listener1 = new Listener("listener1", ListenerArgs.builder()
  *             .name("https")
  *             .protocol("TERMINATED_HTTPS")
  *             .protocolPort(443)
@@ -157,7 +157,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tls1 = new ContainerV1("tls1", ContainerV1Args.builder()        
+ *         var tls1 = new ContainerV1("tls1", ContainerV1Args.builder()
  *             .name("tls")
  *             .type("certificate")
  *             .secretRefs(            

@@ -48,17 +48,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var instance1 = new Instance("instance1", InstanceArgs.builder()        
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()
  *             .name("instance_1")
  *             .securityGroups("default")
  *             .build());
  * 
- *         var ai1 = new InterfaceAttach("ai1", InterfaceAttachArgs.builder()        
+ *         var ai1 = new InterfaceAttach("ai1", InterfaceAttachArgs.builder()
  *             .instanceId(instance1.id())
  *             .networkId(network1OpenstackNetworkingPortV2.id())
  *             .build());
@@ -98,17 +98,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var instance1 = new Instance("instance1", InstanceArgs.builder()        
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()
  *             .name("instance_1")
  *             .securityGroups("default")
  *             .build());
  * 
- *         var ai1 = new InterfaceAttach("ai1", InterfaceAttachArgs.builder()        
+ *         var ai1 = new InterfaceAttach("ai1", InterfaceAttachArgs.builder()
  *             .instanceId(instance1.id())
  *             .networkId(network1OpenstackNetworkingPortV2.id())
  *             .fixedIp("10.0.10.10")
@@ -151,23 +151,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var port1 = new Port("port1", PortArgs.builder()        
+ *         var port1 = new Port("port1", PortArgs.builder()
  *             .name("port_1")
  *             .networkId(network1.id())
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var instance1 = new Instance("instance1", InstanceArgs.builder()        
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()
  *             .name("instance_1")
  *             .securityGroups("default")
  *             .build());
  * 
- *         var ai1 = new InterfaceAttach("ai1", InterfaceAttachArgs.builder()        
+ *         var ai1 = new InterfaceAttach("ai1", InterfaceAttachArgs.builder()
  *             .instanceId(instance1.id())
  *             .portId(port1.id())
  *             .build());

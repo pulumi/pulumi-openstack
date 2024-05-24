@@ -36,7 +36,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     ///         NetworkId = network1.Id,
     ///     });
     /// 
-    ///     var loadbalancer1 = new OpenStack.LoadBalancer.LoadBalancer("loadbalancer_1", new()
+    ///     var loadbalancer1 = new OpenStack.LbLoadbalancerV2("loadbalancer_1", new()
     ///     {
     ///         Name = "loadbalancer_1",
     ///         VipSubnetId = subnet1.Id,

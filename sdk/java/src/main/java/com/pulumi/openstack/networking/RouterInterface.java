@@ -49,23 +49,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("tf_test_network")
  *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()
  *             .networkId(network1.id())
  *             .cidr("192.168.199.0/24")
  *             .ipVersion(4)
  *             .build());
  * 
- *         var router1 = new Router("router1", RouterArgs.builder()        
+ *         var router1 = new Router("router1", RouterArgs.builder()
  *             .name("my_router")
  *             .externalNetworkId("f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
  *             .build());
  * 
- *         var routerInterface1 = new RouterInterface("routerInterface1", RouterInterfaceArgs.builder()        
+ *         var routerInterface1 = new RouterInterface("routerInterface1", RouterInterfaceArgs.builder()
  *             .routerId(router1.id())
  *             .subnetId(subnet1.id())
  *             .build());

@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var rule1 = new Rule("rule1", RuleArgs.builder()        
+ *         var rule1 = new Rule("rule1", RuleArgs.builder()
  *             .name("my_rule")
  *             .description("drop TELNET traffic")
  *             .action("deny")
