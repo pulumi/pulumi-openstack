@@ -112,10 +112,10 @@ public class App {
 
 The following arguments are supported:
 
-* `auth_url` - (Optional; required if `cloud` is not specified) The Identity
+* `authUrl` - (Optional; required if `cloud` is not specified) The Identity
   authentication URL. If omitted, the `OS_AUTH_URL` environment variable is used.
 
-* `cloud` - (Optional; required if `auth_url` is not specified) An entry in a
+* `cloud` - (Optional; required if `authUrl` is not specified) An entry in a
   `clouds.yaml` file. See the OpenStack `openstacksdk`
   [documentation](https://docs.openstack.org/openstacksdk/latest/user/config/configuration.html)
   for more information about `clouds.yaml` files. If omitted, the `OS_CLOUD`
@@ -127,76 +127,76 @@ The following arguments are supported:
   region in single-region OpenStack environments, but this behavior may vary
   depending on the OpenStack environment being used.
 
-* `user_name` - (Optional) The Username to login with. If omitted, the
+* `userName` - (Optional) The Username to login with. If omitted, the
   `OS_USERNAME` environment variable is used.
 
-* `user_id` - (Optional) The User ID to login with. If omitted, the
+* `userId` - (Optional) The User ID to login with. If omitted, the
   `OS_USER_ID` environment variable is used.
 
-* `application_credential_id` - (Optional) (Identity v3 only) The ID of an
+* `applicationCredentialId` - (Optional) (Identity v3 only) The ID of an
   application credential to authenticate with. An
-  `application_credential_secret` has to bet set along with this parameter.
+  `applicationCredentialSecret` has to bet set along with this parameter.
   If omitted, the `OS_APPLICATION_CREDENTIAL_ID` environment variable is used.
 
-* `application_credential_name` - (Optional) (Identity v3 only) The name of an
-  application credential to authenticate with. Requires `user_id`, or
-  `user_name` and `user_domain_name` (or `user_domain_id`) to be set.
+* `applicationCredentialName` - (Optional) (Identity v3 only) The name of an
+  application credential to authenticate with. Requires `userId`, or
+  `userName` and `userDomainName` (or `userDomainId`) to be set.
   If omitted, the `OS_APPLICATION_CREDENTIAL_NAME` environment variable is used.
 
-* `application_credential_secret` - (Optional) (Identity v3 only) The secret of
+* `applicationCredentialSecret` - (Optional) (Identity v3 only) The secret of
   an application credential to authenticate with. Required by
-  `application_credential_id` or `application_credential_name`.
+  `applicationCredentialId` or `applicationCredentialName`.
   If omitted, the `OS_APPLICATION_CREDENTIAL_SECRET` environment variable is used.
 
-* `tenant_id` - (Optional) The ID of the Tenant (Identity v2) or Project
+* `tenantId` - (Optional) The ID of the Tenant (Identity v2) or Project
   (Identity v3) to login with. If omitted, the `OS_TENANT_ID` or
   `OS_PROJECT_ID` environment variables are used.
 
-* `tenant_name` - (Optional) The Name of the Tenant (Identity v2) or Project
+* `tenantName` - (Optional) The Name of the Tenant (Identity v2) or Project
   (Identity v3) to login with. If omitted, the `OS_TENANT_NAME` or
   `OS_PROJECT_NAME` environment variable are used.
 
 * `password` - (Optional) The Password to login with. If omitted, the
   `OS_PASSWORD` environment variable is used.
 
-* `token` - (Optional; Required if not using `user_name` and `password`)
+* `token` - (Optional; Required if not using `userName` and `password`)
   A token is an expiring, temporary means of access issued via the Keystone
   service. By specifying a token, you do not have to specify a username/password
   combination, since the token was already created by a username/password out of
-  band of Terraform. If omitted, the `OS_TOKEN` or `OS_AUTH_TOKEN` environment
+  band of Pulumi. If omitted, the `OS_TOKEN` or `OS_AUTH_TOKEN` environment
   variables are used.
 
-* `user_domain_name` - (Optional) The domain name where the user is located. If
+* `userDomainName` - (Optional) The domain name where the user is located. If
   omitted, the `OS_USER_DOMAIN_NAME` environment variable is checked.
 
-* `user_domain_id` - (Optional) The domain ID where the user is located. If
+* `userDomainId` - (Optional) The domain ID where the user is located. If
   omitted, the `OS_USER_DOMAIN_ID` environment variable is checked.
 
-* `project_domain_name` - (Optional) The domain name where the project is
+* `projectDomainName` - (Optional) The domain name where the project is
   located. If omitted, the `OS_PROJECT_DOMAIN_NAME` environment variable is
   checked.
 
-* `project_domain_id` - (Optional) The domain ID where the project is located.
+* `projectDomainId` - (Optional) The domain ID where the project is located.
   If omitted, the `OS_PROJECT_DOMAIN_ID` environment variable is checked.
 
-* `domain_id` - (Optional) The ID of the Domain to scope to (Identity v3). If
+* `domainId` - (Optional) The ID of the Domain to scope to (Identity v3). If
   omitted, the `OS_DOMAIN_ID` environment variable is checked.
 
-* `domain_name` - (Optional) The Name of the Domain to scope to (Identity v3).
+* `domainName` - (Optional) The Name of the Domain to scope to (Identity v3).
   If omitted, the following environment variables are checked (in this order):
   `OS_DOMAIN_NAME`.
 
-* `default_domain` - (Optional) The ID of the Domain to scope to if no other
+* `defaultDomain` - (Optional) The ID of the Domain to scope to if no other
   domain is specified (Identity v3). If omitted, the environment variable
   `OS_DEFAULT_DOMAIN` is checked or a default value of "default" will be
   used.
 
-* `system_scope` - (Optional) Set to `true` to enable system scoped authorization. If omitted, the `OS_SYSTEM_SCOPE` environment variable is used.
+* `systemScope` - (Optional) Set to `true` to enable system scoped authorization. If omitted, the `OS_SYSTEM_SCOPE` environment variable is used.
 
 * `insecure` - (Optional) Trust self-signed SSL certificates. If omitted, the
   `OS_INSECURE` environment variable is used.
 
-* `cacert_file` - (Optional) Specify a custom CA certificate when communicating
+* `cacertFile` - (Optional) Specify a custom CA certificate when communicating
   over SSL. You can specify either a path to the file or the contents of the
   certificate. If omitted, the `OS_CACERT` environment variable is used.
 
@@ -208,11 +208,11 @@ The following arguments are supported:
   authentication. You can specify either a path to the file or the contents of
   the key. If omitted the `OS_KEY` environment variable is used.
 
-* `endpoint_type` - (Optional) Specify which type of endpoint to use from the
+* `endpointType` - (Optional) Specify which type of endpoint to use from the
   service catalog. It can be set using the `OS_ENDPOINT_TYPE` environment
   variable. If not set, public endpoints is used.
 
-* `endpoint_overrides` - (Optional) A set of key/value pairs that can
+* `endpointOverrides` - (Optional) A set of key/value pairs that can
   override an endpoint for a specified OpenStack service. Setting an override
   requires you to specify the full and complete endpoint URL. This might
   also invalidate any region you have set, too. Please see below for more details.
@@ -222,34 +222,34 @@ The following arguments are supported:
   Swift-native authentication system. If omitted, the `OS_SWAUTH` environment
   variable is used. You must also set `username` to the Swauth/Swift username
   such as `username:project`. Set the `password` to the Swauth/Swift key.
-  Finally, set `auth_url` as the location of the Swift service. Note that this
+  Finally, set `authUrl` as the location of the Swift service. Note that this
   will only work when used with the OpenStack Object Storage resources.
 
-* `disable_no_cache_header` - (Optional) If set to `true`, the HTTP
+* `disableNoCacheHeader` - (Optional) If set to `true`, the HTTP
   `Cache-Control: no-cache` header will not be added by default to all API requests.
   If omitted this header is added to all API requests to force HTTP caches (if any)
   to go upstream instead of serving cached responses.
 
-* `delayed_auth` - (Optional) If set to `false`, OpenStack authorization will be perfomed,
+* `delayedAuth` - (Optional) If set to `false`, OpenStack authorization will be perfomed,
   every time the service provider client is called. Defaults to `true`.
   If omitted, the `OS_DELAYED_AUTH` environment variable is checked.
 
-* `allow_reauth` - (Optional) If set to `false`, OpenStack authorization won't be
+* `allowReauth` - (Optional) If set to `false`, OpenStack authorization won't be
   perfomed automatically, if the initial auth token get expired. Defaults to `true`.
   If omitted, the `OS_ALLOW_REAUTH` environment variable is checked.
 
-* `max_retries` - (Optional) If set to a value greater than 0, the OpenStack
+* `maxRetries` - (Optional) If set to a value greater than 0, the OpenStack
   client will retry failed HTTP connections and Too Many Requests (429 code)
   HTTP responses with a `Retry-After` header within the specified value.
 
-* `enable_logging` - (Optional) When enabled, generates verbose logs containing
+* `enableLogging` - (Optional) When enabled, generates verbose logs containing
   all the calls made to and responses received from OpenStack.
 
 ## Overriding Service API Endpoints
 
 There might be a situation in which you want or need to override an API endpoint
 rather than use the endpoint which was returned to you in the service catalog.
-You can do this by configuring the `endpoint_overrides` argument in the provider
+You can do this by configuring the `endpointOverrides` argument in the provider
 configuration:
 
 {{< chooser language "typescript,python,go,csharp,java,yaml" >}}
@@ -348,14 +348,14 @@ to override an endpoint, you most likely do not need to override one.
 ## Additional Logging
 
 This provider has the ability to log all HTTP requests and responses between
-Terraform and the OpenStack cloud which is useful for troubleshooting and
+Pulumi and the OpenStack cloud which is useful for troubleshooting and
 debugging.
 
 To enable these logs, set the `OS_DEBUG` environment variable to `1` along
 with the usual `TF_LOG=DEBUG` environment variable:
 
 ```shell
-$ OS_DEBUG=1 TF_LOG=DEBUG terraform apply
+$ OS_DEBUG=1 TF_LOG=DEBUG pulumi up
 ```
 
 If you submit these logs with a bug report, please ensure any sensitive
@@ -610,7 +610,7 @@ feel these notes need further details, please open an Issue and let us know.
 ### Coding and Style
 
 This provider aims to adhere to the coding style and practices used in the
-other major Terraform Providers. However, this is not a strict rule.
+other major Pulumi Providers. However, this is not a strict rule.
 
 We're very mindful that not everyone is a full-time developer (most of the
 OpenStack Provider contributors aren't!) and we're happy to provide
@@ -642,7 +642,7 @@ OpenStack cloud is done exclusively with Gophercloud.
 
 If you'd like to add a new feature to this provider, it must first be supported
 in Gophercloud. If Gophercloud is missing the feature, then it'll first have to
-be added there before you can start working on the feature in Terraform.
+be added there before you can start working on the feature in Pulumi.
 Fortunately, most of the regular OpenStack Provider contributors also work on
 Gophercloud, so we can try to get the feature added quickly.
 
@@ -658,7 +658,7 @@ Similarly, if you find a bug in this provider, the bug might actually be a
 Gophercloud bug. If this is the case, then we'll need to get the bug fixed in
 Gophercloud first.
 
-However, if the bug is with Terraform itself, then you can begin work directly
+However, if the bug is with Pulumi itself, then you can begin work directly
 in the OpenStack provider.
 
 Again, if you have any questions about whether the bug you're trying to fix is
@@ -679,46 +679,46 @@ Build locally the provider including your changes with:
 ```
 go build .
 ```
-this should generate a `terraform-provider-openstack` binary.
+this should generate a `pulumi-provider-openstack` binary.
 
-- Remove the Terraform Lock File 
+- Remove the Pulumi Lock File 
 
-If there is already a terraform lock file, remove it with:
+If there is already a pulumi lock file, remove it with:
 ```
-rm .terraform.lock.hcl
+rm .pulumi.lock.hcl
 ```
 
-- Create or edit `.terraform.rc` as shown below:
+- Create or edit `.pulumi.rc` as shown below:
 
 ```
 provider_installation {
   dev_overrides {
-    "registry.terraform.io/terraform-provider-openstack/openstack" = "/path/to/directory/where/the/provider/binary/is"
+    "registry.pulumi.io/pulumi-provider-openstack/openstack" = "/path/to/directory/where/the/provider/binary/is"
   }
   direct {}
 }
 ```
-This configuration tells Terraform to use the provider binary at the specified path 
-instead of the one from the Terraform Registry. The direct {} block tells Terraform 
-to use the provider from the Terraform Registry if it’s not available locally. 
-Any other providers not specified in dev_overrides will still be downloaded from the 
-Terraform Registry.
+This configuration tells Pulumi to use the provider binary at the specified path 
+instead of the one from the Pulumi Registry. The direct {} block tells Pulumi 
+to use the provider from the Pulumi Registry if it’s not available locally. 
+Any other providers not specified in devOverrides will still be downloaded from the 
+Pulumi Registry.
 
-- Set Environment Variable for Terraform Configuration
-
-```
-export TF_CLI_CONFIG_FILE=~/.terraform.rc
-```
-
-- Run terraform
+- Set Environment Variable for Pulumi Configuration
 
 ```
-❯ terraform plan
+export TF_CLI_CONFIG_FILE=~/.pulumi.rc
+```
+
+- Run pulumi
+
+```
+❯ pulumi preview
 
 │ Warning: Provider development overrides are in effect
 │ 
 │ The following provider development overrides are set in the CLI configuration:
-│  - terraform-provider-openstack/openstack in /path/to/directory/where/the/provider/binary/is
+│  - pulumi-provider-openstack/openstack in /path/to/directory/where/the/provider/binary/is
 │ 
 | The behavior may therefore not match any released version of the provider and applying changes may cause the state to become incompatible with published releases.
 
@@ -727,7 +727,7 @@ export TF_CLI_CONFIG_FILE=~/.terraform.rc
 ### Acceptance Tests
 
 Acceptance Tests are a crucial part of adding features or fixing a bug. Please
-make sure to read the core [testing](https://www.terraform.io/docs/extend/testing/index.html)
+make sure to read the core testing
 documentation for more information about how Acceptance Tests work.
 
 In order to run the Acceptance Tests, you'll need to set the following
@@ -780,14 +780,14 @@ the feature or bug you're testing:
 * `OS_SFS_ENVIRONMENT` - Required if your'e working on the `openstack_openstack_sharedfilesystem_*`
   resources. Set this value to "1" to enable testing these resources.
 
-* `OS_HYPERVISOR_HOSTNAME` - Required if you're working on the `openstack_compute_hypervisor_v2`
+* `OS_HYPERVISOR_HOSTNAME` - Required if you're working on the `openstack.compute.getHypervisorV2`
   data source. Set this value to one valid hypervisor hostname to test this data source.
 
 We recommend only running the acceptance tests related to the feature or bug
 you're working on. To do this, run:
 
 ```shell
-$ cd $GOPATH/src/github.com/terraform-providers/terraform-provider-openstack
+$ cd $GOPATH/src/github.com/pulumi-providers/pulumi-provider-openstack
 $ make testacc TEST=./openstack TESTARGS="-run=<keyword> -count=1"
 ```
 
@@ -812,17 +812,17 @@ $ TF_LOG=DEBUG OS_DEBUG=1 make testacc TEST=./openstack TESTARGS="-run=TestAccCo
 ### Creating a Pull Request
 
 When you're ready to submit a Pull Request, create a branch, commit your code,
-and push to your forked version of `terraform-provider-openstack`:
+and push to your forked version of `pulumi-provider-openstack`:
 
 ```shell
-$ git remote add my-github-username https://github.com/my-github-username/terraform-provider-openstack
+$ git remote add my-github-username https://github.com/my-github-username/pulumi-provider-openstack
 $ git checkout -b my-feature
 $ git add .
 $ git commit
 $ git push -u my-github-username my-feature
 ```
 
-Then navigate to https://github.com/terraform-provider-openstack/terraform-provider-openstack
+Then navigate to https://github.com/pulumi-provider-openstack/pulumi-provider-openstack
 and create a Pull Request.
 
 ### Testing with GitHub Actions
