@@ -14,6 +14,8 @@ Use the navigation to the left to read about the available resources.
 
 ## Example Usage
 
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{% choosable language typescript %}}
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as openstack from "@pulumi/openstack";
@@ -21,6 +23,8 @@ import * as openstack from "@pulumi/openstack";
 // Create a web server
 const test_server = new openstack.compute.Instance("test-server", {});
 ```
+{{% /choosable %}}
+{{% choosable language python %}}
 ```python
 import pulumi
 import pulumi_openstack as openstack
@@ -28,6 +32,8 @@ import pulumi_openstack as openstack
 # Create a web server
 test_server = openstack.compute.Instance("test-server")
 ```
+{{% /choosable %}}
+{{% choosable language csharp %}}
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +47,8 @@ return await Deployment.RunAsync(() =>
 
 });
 ```
+{{% /choosable %}}
+{{% choosable language go %}}
 ```go
 package main
 
@@ -60,6 +68,16 @@ func main() {
 	})
 }
 ```
+{{% /choosable %}}
+{{% choosable language yaml %}}
+```yaml
+resources:
+  # Create a web server
+  test-server:
+    type: openstack:compute:Instance
+```
+{{% /choosable %}}
+{{% choosable language java %}}
 ```java
 package generated_program;
 
@@ -86,12 +104,9 @@ public class App {
     }
 }
 ```
-```yaml
-resources:
-  # Create a web server
-  test-server:
-    type: openstack:compute:Instance
-```
+{{% /choosable %}}
+{{< /chooser >}}
+
 
 ## Configuration Reference
 
@@ -237,12 +252,18 @@ rather than use the endpoint which was returned to you in the service catalog.
 You can do this by configuring the `endpoint_overrides` argument in the provider
 configuration:
 
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{% choosable language typescript %}}
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 ```
+{{% /choosable %}}
+{{% choosable language python %}}
 ```python
 import pulumi
 ```
+{{% /choosable %}}
+{{% choosable language csharp %}}
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -252,6 +273,8 @@ return await Deployment.RunAsync(() =>
 {
 });
 ```
+{{% /choosable %}}
+{{% choosable language go %}}
 ```go
 package main
 
@@ -265,6 +288,13 @@ func main() {
 	})
 }
 ```
+{{% /choosable %}}
+{{% choosable language yaml %}}
+```yaml
+{}
+```
+{{% /choosable %}}
+{{% choosable language java %}}
 ```java
 package generated_program;
 
@@ -287,9 +317,9 @@ public class App {
     }
 }
 ```
-```yaml
-{}
-```
+{{% /choosable %}}
+{{< /chooser >}}
+
 
 Note how each URL ends in a "/" and the `volumev2` service includes the
 tenant/project UUID. You must make sure you specify the full and complete
@@ -386,6 +416,8 @@ provider "openstack" {
 * Explicitly define the public and private networks in your
 instances as shown below:
 
+{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{% choosable language typescript %}}
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as openstack from "@pulumi/openstack";
@@ -407,6 +439,8 @@ const myInstance = new openstack.compute.Instance("myInstance", {
     region: "DFW",
 });
 ```
+{{% /choosable %}}
+{{% choosable language python %}}
 ```python
 import pulumi
 import pulumi_openstack as openstack
@@ -427,6 +461,8 @@ my_instance = openstack.compute.Instance("myInstance",
     ],
     region="DFW")
 ```
+{{% /choosable %}}
+{{% choosable language csharp %}}
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -458,6 +494,8 @@ return await Deployment.RunAsync(() =>
 
 });
 ```
+{{% /choosable %}}
+{{% choosable language go %}}
 ```go
 package main
 
@@ -491,6 +529,25 @@ func main() {
 	})
 }
 ```
+{{% /choosable %}}
+{{% choosable language yaml %}}
+```yaml
+resources:
+  myInstance:
+    type: openstack:compute:Instance
+    properties:
+      flavorId: general1-4
+      imageId: fabe045f-43f8-4991-9e6c-5cabd617538c
+      keyPair: provisioning_key
+      networks:
+        - name: public
+          uuid: 00000000-0000-0000-0000-000000000000
+        - name: private
+          uuid: 11111111-1111-1111-1111-111111111111
+      region: DFW
+```
+{{% /choosable %}}
+{{% choosable language java %}}
 ```java
 package generated_program;
 
@@ -532,21 +589,9 @@ public class App {
     }
 }
 ```
-```yaml
-resources:
-  myInstance:
-    type: openstack:compute:Instance
-    properties:
-      flavorId: general1-4
-      imageId: fabe045f-43f8-4991-9e6c-5cabd617538c
-      keyPair: provisioning_key
-      networks:
-        - name: public
-          uuid: 00000000-0000-0000-0000-000000000000
-        - name: private
-          uuid: 11111111-1111-1111-1111-111111111111
-      region: DFW
-```
+{{% /choosable %}}
+{{< /chooser >}}
+
 
 If you try using this provider with Rackspace and run into bugs, you
 are welcomed to open a bug report / issue on Github, but please keep
