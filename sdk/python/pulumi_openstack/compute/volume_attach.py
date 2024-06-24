@@ -330,7 +330,7 @@ class VolumeAttach(pulumi.CustomResource):
             instance_id=instance2.id,
             volume_id=volume1.id,
             multiattach=True,
-            opts=pulumi.ResourceOptions(depends_on=[va1]))
+            opts = pulumi.ResourceOptions(depends_on=[va1]))
         ```
 
         It is recommended to use `depends_on` for the attach resources
@@ -416,7 +416,7 @@ class VolumeAttach(pulumi.CustomResource):
             instance_id=instance2.id,
             volume_id=volume1.id,
             multiattach=True,
-            opts=pulumi.ResourceOptions(depends_on=[va1]))
+            opts = pulumi.ResourceOptions(depends_on=[va1]))
         ```
 
         It is recommended to use `depends_on` for the attach resources

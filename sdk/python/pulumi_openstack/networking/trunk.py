@@ -383,12 +383,12 @@ class Trunk(pulumi.CustomResource):
             name="parent_port_1",
             network_id=network1.id,
             admin_state_up=True,
-            opts=pulumi.ResourceOptions(depends_on=[subnet1]))
+            opts = pulumi.ResourceOptions(depends_on=[subnet1]))
         subport1 = openstack.networking.Port("subport_1",
             name="subport_1",
             network_id=network1.id,
             admin_state_up=True,
-            opts=pulumi.ResourceOptions(depends_on=[subnet1]))
+            opts = pulumi.ResourceOptions(depends_on=[subnet1]))
         trunk1 = openstack.networking.Trunk("trunk_1",
             name="trunk_1",
             admin_state_up=True,
@@ -457,12 +457,12 @@ class Trunk(pulumi.CustomResource):
             name="parent_port_1",
             network_id=network1.id,
             admin_state_up=True,
-            opts=pulumi.ResourceOptions(depends_on=[subnet1]))
+            opts = pulumi.ResourceOptions(depends_on=[subnet1]))
         subport1 = openstack.networking.Port("subport_1",
             name="subport_1",
             network_id=network1.id,
             admin_state_up=True,
-            opts=pulumi.ResourceOptions(depends_on=[subnet1]))
+            opts = pulumi.ResourceOptions(depends_on=[subnet1]))
         trunk1 = openstack.networking.Trunk("trunk_1",
             name="trunk_1",
             admin_state_up=True,

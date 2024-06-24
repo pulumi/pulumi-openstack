@@ -239,13 +239,11 @@ class ContainerArgs:
 
     @property
     @pulumi.getter(name="versioningLegacy")
+    @_utilities.deprecated("""Use newer \"versioning\" implementation""")
     def versioning_legacy(self) -> Optional[pulumi.Input['ContainerVersioningLegacyArgs']]:
         """
         Enable legacy object versioning. The structure is described below.
         """
-        warnings.warn("""Use newer \"versioning\" implementation""", DeprecationWarning)
-        pulumi.log.warn("""versioning_legacy is deprecated: Use newer \"versioning\" implementation""")
-
         return pulumi.get(self, "versioning_legacy")
 
     @versioning_legacy.setter
@@ -479,13 +477,11 @@ class _ContainerState:
 
     @property
     @pulumi.getter(name="versioningLegacy")
+    @_utilities.deprecated("""Use newer \"versioning\" implementation""")
     def versioning_legacy(self) -> Optional[pulumi.Input['ContainerVersioningLegacyArgs']]:
         """
         Enable legacy object versioning. The structure is described below.
         """
-        warnings.warn("""Use newer \"versioning\" implementation""", DeprecationWarning)
-        pulumi.log.warn("""versioning_legacy is deprecated: Use newer \"versioning\" implementation""")
-
         return pulumi.get(self, "versioning_legacy")
 
     @versioning_legacy.setter
@@ -977,12 +973,10 @@ class Container(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="versioningLegacy")
+    @_utilities.deprecated("""Use newer \"versioning\" implementation""")
     def versioning_legacy(self) -> pulumi.Output[Optional['outputs.ContainerVersioningLegacy']]:
         """
         Enable legacy object versioning. The structure is described below.
         """
-        warnings.warn("""Use newer \"versioning\" implementation""", DeprecationWarning)
-        pulumi.log.warn("""versioning_legacy is deprecated: Use newer \"versioning\" implementation""")
-
         return pulumi.get(self, "versioning_legacy")
 
