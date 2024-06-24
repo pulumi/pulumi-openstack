@@ -212,7 +212,7 @@ class RouterRoute(pulumi.CustomResource):
             router_id=router1.id,
             destination_cidr="10.0.1.0/24",
             next_hop="192.168.199.254",
-            opts=pulumi.ResourceOptions(depends_on=[int1]))
+            opts = pulumi.ResourceOptions(depends_on=[int1]))
         ```
 
         ## Notes
@@ -274,7 +274,7 @@ class RouterRoute(pulumi.CustomResource):
             router_id=router1.id,
             destination_cidr="10.0.1.0/24",
             next_hop="192.168.199.254",
-            opts=pulumi.ResourceOptions(depends_on=[int1]))
+            opts = pulumi.ResourceOptions(depends_on=[int1]))
         ```
 
         ## Notes
