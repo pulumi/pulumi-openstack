@@ -571,11 +571,19 @@ export namespace keymanager {
          * The date the container was created.
          */
         createdAt: string;
+        /**
+         * Whether the container is accessible project wide.
+         * Defaults to `true`.
+         */
         projectAccess?: boolean;
         /**
          * The date the container was last updated.
          */
         updatedAt: string;
+        /**
+         * The list of user IDs, which are allowed to access the
+         * container, when `projectAccess` is set to `false`.
+         */
         users?: string[];
     }
 
@@ -708,11 +716,19 @@ export namespace keymanager {
          * The date the secret was created.
          */
         createdAt: string;
+        /**
+         * Whether the secret is accessible project wide.
+         * Defaults to `true`.
+         */
         projectAccess?: boolean;
         /**
          * The date the secret was last updated.
          */
         updatedAt: string;
+        /**
+         * The list of user IDs, which are allowed to access the
+         * secret, when `projectAccess` is set to `false`.
+         */
         users?: string[];
     }
 
