@@ -1031,7 +1031,8 @@
                     "description": "The date the container was created.\n"
                 },
                 "projectAccess": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the container is accessible project wide.\nDefaults to `true`.\n"
                 },
                 "updatedAt": {
                     "type": "string",
@@ -1041,7 +1042,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The list of user IDs, which are allowed to access the\ncontainer, when `project_access` is set to `false`.\n"
                 }
             },
             "type": "object",
@@ -1144,7 +1146,8 @@
                     "description": "The date the secret was created.\n"
                 },
                 "projectAccess": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the secret is accessible project wide.\nDefaults to `true`.\n"
                 },
                 "updatedAt": {
                     "type": "string",
@@ -1154,7 +1157,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The list of user IDs, which are allowed to access the\nsecret, when `project_access` is set to `false`.\n"
                 }
             },
             "type": "object",
