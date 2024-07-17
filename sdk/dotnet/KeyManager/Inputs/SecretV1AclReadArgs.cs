@@ -18,6 +18,10 @@ namespace Pulumi.OpenStack.KeyManager.Inputs
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Whether the secret is accessible project wide.
+        /// Defaults to `true`.
+        /// </summary>
         [Input("projectAccess")]
         public Input<bool>? ProjectAccess { get; set; }
 
@@ -29,6 +33,11 @@ namespace Pulumi.OpenStack.KeyManager.Inputs
 
         [Input("users")]
         private InputList<string>? _users;
+
+        /// <summary>
+        /// The list of user IDs, which are allowed to access the
+        /// secret, when `project_access` is set to `false`.
+        /// </summary>
         public InputList<string> Users
         {
             get => _users ?? (_users = new InputList<string>());

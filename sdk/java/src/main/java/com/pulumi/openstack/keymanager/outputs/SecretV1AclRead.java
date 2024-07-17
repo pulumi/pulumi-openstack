@@ -18,12 +18,22 @@ public final class SecretV1AclRead {
      * 
      */
     private @Nullable String createdAt;
+    /**
+     * @return Whether the secret is accessible project wide.
+     * Defaults to `true`.
+     * 
+     */
     private @Nullable Boolean projectAccess;
     /**
      * @return The date the secret was last updated.
      * 
      */
     private @Nullable String updatedAt;
+    /**
+     * @return The list of user IDs, which are allowed to access the
+     * secret, when `project_access` is set to `false`.
+     * 
+     */
     private @Nullable List<String> users;
 
     private SecretV1AclRead() {}
@@ -34,6 +44,11 @@ public final class SecretV1AclRead {
     public Optional<String> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
+    /**
+     * @return Whether the secret is accessible project wide.
+     * Defaults to `true`.
+     * 
+     */
     public Optional<Boolean> projectAccess() {
         return Optional.ofNullable(this.projectAccess);
     }
@@ -44,6 +59,11 @@ public final class SecretV1AclRead {
     public Optional<String> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
+    /**
+     * @return The list of user IDs, which are allowed to access the
+     * secret, when `project_access` is set to `false`.
+     * 
+     */
     public List<String> users() {
         return this.users == null ? List.of() : this.users;
     }

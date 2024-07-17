@@ -148,11 +148,15 @@ func (o ContainerV1AclPtrOutput) Read() ContainerV1AclReadPtrOutput {
 
 type ContainerV1AclRead struct {
 	// The date the container was created.
-	CreatedAt     *string `pulumi:"createdAt"`
-	ProjectAccess *bool   `pulumi:"projectAccess"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// Whether the container is accessible project wide.
+	// Defaults to `true`.
+	ProjectAccess *bool `pulumi:"projectAccess"`
 	// The date the container was last updated.
-	UpdatedAt *string  `pulumi:"updatedAt"`
-	Users     []string `pulumi:"users"`
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// The list of user IDs, which are allowed to access the
+	// container, when `projectAccess` is set to `false`.
+	Users []string `pulumi:"users"`
 }
 
 // ContainerV1AclReadInput is an input type that accepts ContainerV1AclReadArgs and ContainerV1AclReadOutput values.
@@ -168,11 +172,15 @@ type ContainerV1AclReadInput interface {
 
 type ContainerV1AclReadArgs struct {
 	// The date the container was created.
-	CreatedAt     pulumi.StringPtrInput `pulumi:"createdAt"`
-	ProjectAccess pulumi.BoolPtrInput   `pulumi:"projectAccess"`
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Whether the container is accessible project wide.
+	// Defaults to `true`.
+	ProjectAccess pulumi.BoolPtrInput `pulumi:"projectAccess"`
 	// The date the container was last updated.
-	UpdatedAt pulumi.StringPtrInput   `pulumi:"updatedAt"`
-	Users     pulumi.StringArrayInput `pulumi:"users"`
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+	// The list of user IDs, which are allowed to access the
+	// container, when `projectAccess` is set to `false`.
+	Users pulumi.StringArrayInput `pulumi:"users"`
 }
 
 func (ContainerV1AclReadArgs) ElementType() reflect.Type {
@@ -257,6 +265,8 @@ func (o ContainerV1AclReadOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerV1AclRead) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
+// Whether the container is accessible project wide.
+// Defaults to `true`.
 func (o ContainerV1AclReadOutput) ProjectAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerV1AclRead) *bool { return v.ProjectAccess }).(pulumi.BoolPtrOutput)
 }
@@ -266,6 +276,8 @@ func (o ContainerV1AclReadOutput) UpdatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerV1AclRead) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
 
+// The list of user IDs, which are allowed to access the
+// container, when `projectAccess` is set to `false`.
 func (o ContainerV1AclReadOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerV1AclRead) []string { return v.Users }).(pulumi.StringArrayOutput)
 }
@@ -304,6 +316,8 @@ func (o ContainerV1AclReadPtrOutput) CreatedAt() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether the container is accessible project wide.
+// Defaults to `true`.
 func (o ContainerV1AclReadPtrOutput) ProjectAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerV1AclRead) *bool {
 		if v == nil {
@@ -323,6 +337,8 @@ func (o ContainerV1AclReadPtrOutput) UpdatedAt() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The list of user IDs, which are allowed to access the
+// container, when `projectAccess` is set to `false`.
 func (o ContainerV1AclReadPtrOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ContainerV1AclRead) []string {
 		if v == nil {
@@ -914,11 +930,15 @@ func (o SecretV1AclPtrOutput) Read() SecretV1AclReadPtrOutput {
 
 type SecretV1AclRead struct {
 	// The date the secret was created.
-	CreatedAt     *string `pulumi:"createdAt"`
-	ProjectAccess *bool   `pulumi:"projectAccess"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// Whether the secret is accessible project wide.
+	// Defaults to `true`.
+	ProjectAccess *bool `pulumi:"projectAccess"`
 	// The date the secret was last updated.
-	UpdatedAt *string  `pulumi:"updatedAt"`
-	Users     []string `pulumi:"users"`
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// The list of user IDs, which are allowed to access the
+	// secret, when `projectAccess` is set to `false`.
+	Users []string `pulumi:"users"`
 }
 
 // SecretV1AclReadInput is an input type that accepts SecretV1AclReadArgs and SecretV1AclReadOutput values.
@@ -934,11 +954,15 @@ type SecretV1AclReadInput interface {
 
 type SecretV1AclReadArgs struct {
 	// The date the secret was created.
-	CreatedAt     pulumi.StringPtrInput `pulumi:"createdAt"`
-	ProjectAccess pulumi.BoolPtrInput   `pulumi:"projectAccess"`
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Whether the secret is accessible project wide.
+	// Defaults to `true`.
+	ProjectAccess pulumi.BoolPtrInput `pulumi:"projectAccess"`
 	// The date the secret was last updated.
-	UpdatedAt pulumi.StringPtrInput   `pulumi:"updatedAt"`
-	Users     pulumi.StringArrayInput `pulumi:"users"`
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+	// The list of user IDs, which are allowed to access the
+	// secret, when `projectAccess` is set to `false`.
+	Users pulumi.StringArrayInput `pulumi:"users"`
 }
 
 func (SecretV1AclReadArgs) ElementType() reflect.Type {
@@ -1023,6 +1047,8 @@ func (o SecretV1AclReadOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretV1AclRead) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
+// Whether the secret is accessible project wide.
+// Defaults to `true`.
 func (o SecretV1AclReadOutput) ProjectAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecretV1AclRead) *bool { return v.ProjectAccess }).(pulumi.BoolPtrOutput)
 }
@@ -1032,6 +1058,8 @@ func (o SecretV1AclReadOutput) UpdatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretV1AclRead) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
 
+// The list of user IDs, which are allowed to access the
+// secret, when `projectAccess` is set to `false`.
 func (o SecretV1AclReadOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecretV1AclRead) []string { return v.Users }).(pulumi.StringArrayOutput)
 }
@@ -1070,6 +1098,8 @@ func (o SecretV1AclReadPtrOutput) CreatedAt() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether the secret is accessible project wide.
+// Defaults to `true`.
 func (o SecretV1AclReadPtrOutput) ProjectAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SecretV1AclRead) *bool {
 		if v == nil {
@@ -1089,6 +1119,8 @@ func (o SecretV1AclReadPtrOutput) UpdatedAt() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The list of user IDs, which are allowed to access the
+// secret, when `projectAccess` is set to `false`.
 func (o SecretV1AclReadPtrOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SecretV1AclRead) []string {
 		if v == nil {
