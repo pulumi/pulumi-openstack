@@ -83,8 +83,8 @@ import (
 //				Description: pulumi.String("Rules for secgroup_1"),
 //				Rules: compute.SecGroupRuleArray{
 //					&compute.SecGroupRuleArgs{
-//						FromPort:   -1,
-//						ToPort:     -1,
+//						FromPort:   int(-1),
+//						ToPort:     int(-1),
 //						IpProtocol: pulumi.String("icmp"),
 //						Cidr:       pulumi.String("0.0.0.0/0"),
 //					},

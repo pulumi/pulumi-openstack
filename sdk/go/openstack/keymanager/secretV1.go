@@ -77,7 +77,7 @@ import (
 //			}
 //			_, err = keymanager.NewSecretV1(ctx, "secret_1", &keymanager.SecretV1Args{
 //				Name:                   pulumi.String("password"),
-//				Payload:                invokeBase64encode.Result,
+//				Payload:                pulumi.String(invokeBase64encode.Result),
 //				SecretType:             pulumi.String("passphrase"),
 //				PayloadContentType:     pulumi.String("application/octet-stream"),
 //				PayloadContentEncoding: pulumi.String("base64"),
@@ -116,7 +116,7 @@ import (
 //			}
 //			_, err = keymanager.NewSecretV1(ctx, "secret_1", &keymanager.SecretV1Args{
 //				Name:               pulumi.String("certificate"),
-//				Payload:            invokeFile.Result,
+//				Payload:            pulumi.String(invokeFile.Result),
 //				SecretType:         pulumi.String("certificate"),
 //				PayloadContentType: pulumi.String("text/plain"),
 //				Acl: &keymanager.SecretV1AclArgs{
