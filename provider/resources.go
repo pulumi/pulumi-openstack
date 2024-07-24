@@ -16,13 +16,14 @@ package openstack
 
 import (
 	"fmt"
-	"github.com/terraform-provider-openstack/terraform-provider-openstack/v2/openstack"
 	"path/filepath"
 	"strings"
 	"unicode"
 
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
+
+	"github.com/terraform-provider-openstack/terraform-provider-openstack/v2/openstack"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
