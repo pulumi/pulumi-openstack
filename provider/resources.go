@@ -16,14 +16,13 @@ package openstack
 
 import (
 	"fmt"
+	"github.com/terraform-provider-openstack/terraform-provider-openstack/v2/openstack"
 	"path/filepath"
 	"strings"
 	"unicode"
 
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
-
-	"github.com/terraform-provider-openstack/terraform-provider-openstack/openstack"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
@@ -87,16 +86,17 @@ func openstackResource(mod string, res string) tokens.Type {
 // Provider returns additional overlaid schema and metadata associated with the openstack package.
 func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
-		P:            shimv2.NewProvider(openstack.Provider()),
-		Name:         "openstack",
-		Description:  "A Pulumi package for creating and managing OpenStack cloud resources.",
-		Keywords:     []string{"pulumi", "openstack"},
-		Homepage:     "https://pulumi.io",
-		License:      "Apache-2.0",
-		GitHubOrg:    "terraform-provider-openstack",
-		Repository:   "https://github.com/pulumi/pulumi-openstack",
-		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
-		Version:      version.Version,
+		P:                       shimv2.NewProvider(openstack.Provider()),
+		Name:                    "openstack",
+		Description:             "A Pulumi package for creating and managing OpenStack cloud resources.",
+		Keywords:                []string{"pulumi", "openstack"},
+		Homepage:                "https://pulumi.io",
+		License:                 "Apache-2.0",
+		GitHubOrg:               "terraform-provider-openstack",
+		TFProviderModuleVersion: "v2",
+		Repository:              "https://github.com/pulumi/pulumi-openstack",
+		MetadataInfo:            tfbridge.NewProviderMetadata(metadata),
+		Version:                 version.Version,
 
 		Config: map[string]*tfbridge.SchemaInfo{
 			"region": {
@@ -369,6 +369,13 @@ func Provider() tfbridge.ProviderInfo {
 			// Keymanager
 			"openstack_keymanager_secret_v1":    {Tok: openstackDataSource(keymanagerMod, "getSecret")},
 			"openstack_keymanager_container_v1": {Tok: openstackDataSource(keymanagerMod, "getContainer")},
+
+			// Load Balancer
+			"openstack_loadbalancer_flavor_v2": {
+				Docs: &tfbridge.DocInfo{
+					Source: "lb_flavor_v2.md",
+				},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{

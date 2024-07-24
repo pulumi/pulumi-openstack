@@ -1,6 +1,50 @@
 {
     "auto-aliasing": {
         "resources": {
+            "openstack_bgpvpn_network_associate_v2": {
+                "current": "openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2",
+                "majorVersion": 4
+            },
+            "openstack_bgpvpn_port_associate_v2": {
+                "current": "openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2",
+                "majorVersion": 4,
+                "fields": {
+                    "routes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "openstack_bgpvpn_router_associate_v2": {
+                "current": "openstack:index/bgpvpnRouterAssociateV2:BgpvpnRouterAssociateV2",
+                "majorVersion": 4
+            },
+            "openstack_bgpvpn_v2": {
+                "current": "openstack:index/bgpvpnV2:BgpvpnV2",
+                "majorVersion": 4,
+                "fields": {
+                    "export_targets": {
+                        "maxItemsOne": false
+                    },
+                    "import_targets": {
+                        "maxItemsOne": false
+                    },
+                    "networks": {
+                        "maxItemsOne": false
+                    },
+                    "ports": {
+                        "maxItemsOne": false
+                    },
+                    "route_distinguishers": {
+                        "maxItemsOne": false
+                    },
+                    "route_targets": {
+                        "maxItemsOne": false
+                    },
+                    "routers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "openstack_blockstorage_qos_association_v3": {
                 "current": "openstack:blockstorage/qosAssociationV3:QosAssociationV3",
                 "majorVersion": 4
@@ -164,9 +208,6 @@
                     },
                     "vendor_options": {
                         "maxItemsOne": true
-                    },
-                    "volume": {
-                        "maxItemsOne": false
                     }
                 }
             },
@@ -553,7 +594,12 @@
             },
             "openstack_lb_member_v2": {
                 "current": "openstack:loadbalancer/member:Member",
-                "majorVersion": 4
+                "majorVersion": 4,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "openstack_lb_members_v2": {
                 "current": "openstack:loadbalancer/members:Members",
@@ -576,9 +622,6 @@
                 "current": "openstack:loadbalancer/poolV1:PoolV1",
                 "majorVersion": 4,
                 "fields": {
-                    "member": {
-                        "maxItemsOne": false
-                    },
                     "monitor_ids": {
                         "maxItemsOne": false
                     }
@@ -590,6 +633,9 @@
                 "fields": {
                     "persistence": {
                         "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -788,13 +834,7 @@
                     "allocation_pool": {
                         "maxItemsOne": false
                     },
-                    "allocation_pools": {
-                        "maxItemsOne": false
-                    },
                     "dns_nameservers": {
-                        "maxItemsOne": false
-                    },
-                    "host_routes": {
                         "maxItemsOne": false
                     },
                     "service_types": {
@@ -1213,6 +1253,10 @@
                         }
                     }
                 }
+            },
+            "openstack_loadbalancer_flavor_v2": {
+                "current": "openstack:loadbalancer/getFlavorV2:getFlavorV2",
+                "majorVersion": 4
             },
             "openstack_networking_addressscope_v2": {
                 "current": "openstack:networking/getAddressScope:getAddressScope",
