@@ -164,6 +164,9 @@
                     },
                     "vendor_options": {
                         "maxItemsOne": true
+                    },
+                    "volume": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -573,6 +576,9 @@
                 "current": "openstack:loadbalancer/poolV1:PoolV1",
                 "majorVersion": 4,
                 "fields": {
+                    "member": {
+                        "maxItemsOne": false
+                    },
                     "monitor_ids": {
                         "maxItemsOne": false
                     }
@@ -782,7 +788,13 @@
                     "allocation_pool": {
                         "maxItemsOne": false
                     },
+                    "allocation_pools": {
+                        "maxItemsOne": false
+                    },
                     "dns_nameservers": {
+                        "maxItemsOne": false
+                    },
+                    "host_routes": {
                         "maxItemsOne": false
                     },
                     "service_types": {
@@ -1201,10 +1213,6 @@
                         }
                     }
                 }
-            },
-            "openstack_loadbalancer_flavor_v2": {
-                "current": "openstack:loadbalancer/getFlavorV2:getFlavorV2",
-                "majorVersion": 4
             },
             "openstack_networking_addressscope_v2": {
                 "current": "openstack:networking/getAddressScope:getAddressScope",

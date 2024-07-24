@@ -369,13 +369,6 @@ func Provider() tfbridge.ProviderInfo {
 			// Keymanager
 			"openstack_keymanager_secret_v1":    {Tok: openstackDataSource(keymanagerMod, "getSecret")},
 			"openstack_keymanager_container_v1": {Tok: openstackDataSource(keymanagerMod, "getContainer")},
-
-			// Load Balancer
-			"openstack_loadbalancer_flavor_v2": {
-				Docs: &tfbridge.DocInfo{
-					AllowMissing: true,
-				},
-			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{
