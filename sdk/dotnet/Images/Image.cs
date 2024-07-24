@@ -243,6 +243,12 @@ namespace Pulumi.OpenStack.Images
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
+        /// (**Deprecated** - use `updated_at` instead)
+        /// </summary>
+        [Output("updateAt")]
+        public Output<string> UpdateAt { get; private set; } = null!;
+
+        /// <summary>
         /// The date the image was last updated.
         /// </summary>
         [Output("updatedAt")]
@@ -697,6 +703,12 @@ namespace Pulumi.OpenStack.Images
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// (**Deprecated** - use `updated_at` instead)
+        /// </summary>
+        [Input("updateAt")]
+        public Input<string>? UpdateAt { get; set; }
 
         /// <summary>
         /// The date the image was last updated.

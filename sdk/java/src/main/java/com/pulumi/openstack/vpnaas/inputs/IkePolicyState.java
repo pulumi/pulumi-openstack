@@ -71,7 +71,7 @@ public final class IkePolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IKE version. A valid value is v1 or v2. Default is v1.
+     * The IKE mode. A valid value is v1 or v2. Default is v1.
      * Changing this updates the existing policy.
      * 
      */
@@ -79,7 +79,7 @@ public final class IkePolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> ikeVersion;
 
     /**
-     * @return The IKE version. A valid value is v1 or v2. Default is v1.
+     * @return The IKE mode. A valid value is v1 or v2. Default is v1.
      * Changing this updates the existing policy.
      * 
      */
@@ -310,7 +310,7 @@ public final class IkePolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ikeVersion The IKE version. A valid value is v1 or v2. Default is v1.
+         * @param ikeVersion The IKE mode. A valid value is v1 or v2. Default is v1.
          * Changing this updates the existing policy.
          * 
          * @return builder
@@ -322,7 +322,7 @@ public final class IkePolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ikeVersion The IKE version. A valid value is v1 or v2. Default is v1.
+         * @param ikeVersion The IKE mode. A valid value is v1 or v2. Default is v1.
          * Changing this updates the existing policy.
          * 
          * @return builder

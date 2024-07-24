@@ -211,6 +211,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('token')
 
     @property
+    def use_octavia(self) -> Optional[bool]:
+        """
+        If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
+        """
+        return __config__.get_bool('useOctavia')
+
+    @property
     def user_domain_id(self) -> Optional[str]:
         """
         The ID of the domain where the user resides (Identity v3).

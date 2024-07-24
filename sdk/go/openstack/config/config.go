@@ -207,6 +207,13 @@ func GetToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "openstack:token")
 }
 
+// If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
+//
+// Deprecated: Users not using loadbalancer resources can ignore this message. Support for neutron-lbaas will be removed on next major release. Octavia will be the only supported method for loadbalancer resources. Users using octavia will have to remove 'use_octavia' option from the provider configuration block. Users using neutron-lbaas will have to migrate/upgrade to octavia.
+func GetUseOctavia(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "openstack:useOctavia")
+}
+
 // The ID of the domain where the user resides (Identity v3).
 func GetUserDomainId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "openstack:userDomainId")

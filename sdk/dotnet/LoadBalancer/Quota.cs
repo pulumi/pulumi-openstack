@@ -14,6 +14,8 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// &gt; **Note:** This usually requires admin privileges.
     /// 
+    /// &gt; **Note:** This resource is only available for Octavia.
+    /// 
     /// &gt; **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack
     ///    API in case of delete call.
     /// 

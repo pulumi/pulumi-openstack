@@ -97,6 +97,10 @@ export interface GetVolumeV3Result {
      */
     readonly metadata: {[key: string]: any};
     /**
+     * Indicates if the volume can be attached to more then one server.
+     */
+    readonly multiattach: boolean;
+    /**
      * See Argument Reference above.
      */
     readonly name: string;

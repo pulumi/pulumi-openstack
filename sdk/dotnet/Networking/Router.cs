@@ -101,6 +101,16 @@ namespace Pulumi.OpenStack.Networking
         public Output<ImmutableArray<Outputs.RouterExternalFixedIp>> ExternalFixedIps { get; private set; } = null!;
 
         /// <summary>
+        /// The
+        /// network UUID of an external gateway for the router. A router with an
+        /// external gateway is required if any compute instances or load balancers
+        /// will be using floating IPs. Changing this updates the external gateway
+        /// of an existing router.
+        /// </summary>
+        [Output("externalGateway")]
+        public Output<string> ExternalGateway { get; private set; } = null!;
+
+        /// <summary>
         /// The network UUID of an external gateway
         /// for the router. A router with an external gateway is required if any
         /// compute instances or load balancers will be using floating IPs. Changing
@@ -270,6 +280,16 @@ namespace Pulumi.OpenStack.Networking
         }
 
         /// <summary>
+        /// The
+        /// network UUID of an external gateway for the router. A router with an
+        /// external gateway is required if any compute instances or load balancers
+        /// will be using floating IPs. Changing this updates the external gateway
+        /// of an existing router.
+        /// </summary>
+        [Input("externalGateway")]
+        public Input<string>? ExternalGateway { get; set; }
+
+        /// <summary>
         /// The network UUID of an external gateway
         /// for the router. A router with an external gateway is required if any
         /// compute instances or load balancers will be using floating IPs. Changing
@@ -430,6 +450,16 @@ namespace Pulumi.OpenStack.Networking
             get => _externalFixedIps ?? (_externalFixedIps = new InputList<Inputs.RouterExternalFixedIpGetArgs>());
             set => _externalFixedIps = value;
         }
+
+        /// <summary>
+        /// The
+        /// network UUID of an external gateway for the router. A router with an
+        /// external gateway is required if any compute instances or load balancers
+        /// will be using floating IPs. Changing this updates the external gateway
+        /// of an existing router.
+        /// </summary>
+        [Input("externalGateway")]
+        public Input<string>? ExternalGateway { get; set; }
 
         /// <summary>
         /// The network UUID of an external gateway

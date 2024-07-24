@@ -442,6 +442,29 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (**Deprecated** - use `updated_at` instead)
+     * 
+     * @deprecated
+     * Use updated_at instead
+     * 
+     */
+    @Deprecated /* Use updated_at instead */
+    @Import(name="updateAt")
+    private @Nullable Output<String> updateAt;
+
+    /**
+     * @return (**Deprecated** - use `updated_at` instead)
+     * 
+     * @deprecated
+     * Use updated_at instead
+     * 
+     */
+    @Deprecated /* Use updated_at instead */
+    public Optional<Output<String>> updateAt() {
+        return Optional.ofNullable(this.updateAt);
+    }
+
+    /**
      * The date the image was last updated.
      * 
      */
@@ -541,6 +564,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         this.sizeBytes = $.sizeBytes;
         this.status = $.status;
         this.tags = $.tags;
+        this.updateAt = $.updateAt;
         this.updatedAt = $.updatedAt;
         this.verifyChecksum = $.verifyChecksum;
         this.visibility = $.visibility;
@@ -1141,6 +1165,35 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param updateAt (**Deprecated** - use `updated_at` instead)
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use updated_at instead
+         * 
+         */
+        @Deprecated /* Use updated_at instead */
+        public Builder updateAt(@Nullable Output<String> updateAt) {
+            $.updateAt = updateAt;
+            return this;
+        }
+
+        /**
+         * @param updateAt (**Deprecated** - use `updated_at` instead)
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use updated_at instead
+         * 
+         */
+        @Deprecated /* Use updated_at instead */
+        public Builder updateAt(String updateAt) {
+            return updateAt(Output.of(updateAt));
         }
 
         /**

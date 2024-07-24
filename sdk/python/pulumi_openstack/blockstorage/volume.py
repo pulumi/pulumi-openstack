@@ -24,6 +24,7 @@ class VolumeArgs:
                  enable_online_resize: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 multiattach: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]] = None,
@@ -51,6 +52,7 @@ class VolumeArgs:
                creates a new volume.
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to associate with the volume.
                Changing this updates the existing volume metadata.
+        :param pulumi.Input[bool] multiattach: (Optional) Allow the volume to be attached to more than one Compute instance.
         :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
                volume's name.
         :param pulumi.Input[str] region: The region in which to create the volume. If
@@ -83,6 +85,11 @@ class VolumeArgs:
             pulumi.set(__self__, "image_id", image_id)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if multiattach is not None:
+            warnings.warn("""multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types""", DeprecationWarning)
+            pulumi.log.warn("""multiattach is deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types""")
+        if multiattach is not None:
+            pulumi.set(__self__, "multiattach", multiattach)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if region is not None:
@@ -206,6 +213,19 @@ class VolumeArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types""")
+    def multiattach(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Optional) Allow the volume to be attached to more than one Compute instance.
+        """
+        return pulumi.get(self, "multiattach")
+
+    @multiattach.setter
+    def multiattach(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multiattach", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         A unique name for the volume. Changing this updates the
@@ -309,6 +329,7 @@ class _VolumeState:
                  enable_online_resize: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 multiattach: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]] = None,
@@ -339,6 +360,7 @@ class _VolumeState:
                creates a new volume.
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to associate with the volume.
                Changing this updates the existing volume metadata.
+        :param pulumi.Input[bool] multiattach: (Optional) Allow the volume to be attached to more than one Compute instance.
         :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
                volume's name.
         :param pulumi.Input[str] region: The region in which to create the volume. If
@@ -373,6 +395,11 @@ class _VolumeState:
             pulumi.set(__self__, "image_id", image_id)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if multiattach is not None:
+            warnings.warn("""multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types""", DeprecationWarning)
+            pulumi.log.warn("""multiattach is deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types""")
+        if multiattach is not None:
+            pulumi.set(__self__, "multiattach", multiattach)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if region is not None:
@@ -500,6 +527,19 @@ class _VolumeState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types""")
+    def multiattach(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Optional) Allow the volume to be attached to more than one Compute instance.
+        """
+        return pulumi.get(self, "multiattach")
+
+    @multiattach.setter
+    def multiattach(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multiattach", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         A unique name for the volume. Changing this updates the
@@ -616,6 +656,7 @@ class Volume(pulumi.CustomResource):
                  enable_online_resize: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 multiattach: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeSchedulerHintArgs']]]]] = None,
@@ -668,6 +709,7 @@ class Volume(pulumi.CustomResource):
                creates a new volume.
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to associate with the volume.
                Changing this updates the existing volume metadata.
+        :param pulumi.Input[bool] multiattach: (Optional) Allow the volume to be attached to more than one Compute instance.
         :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
                volume's name.
         :param pulumi.Input[str] region: The region in which to create the volume. If
@@ -738,6 +780,7 @@ class Volume(pulumi.CustomResource):
                  enable_online_resize: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 multiattach: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeSchedulerHintArgs']]]]] = None,
@@ -762,6 +805,7 @@ class Volume(pulumi.CustomResource):
             __props__.__dict__["enable_online_resize"] = enable_online_resize
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["metadata"] = metadata
+            __props__.__dict__["multiattach"] = multiattach
             __props__.__dict__["name"] = name
             __props__.__dict__["region"] = region
             __props__.__dict__["scheduler_hints"] = scheduler_hints
@@ -791,6 +835,7 @@ class Volume(pulumi.CustomResource):
             enable_online_resize: Optional[pulumi.Input[bool]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            multiattach: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeSchedulerHintArgs']]]]] = None,
@@ -826,6 +871,7 @@ class Volume(pulumi.CustomResource):
                creates a new volume.
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to associate with the volume.
                Changing this updates the existing volume metadata.
+        :param pulumi.Input[bool] multiattach: (Optional) Allow the volume to be attached to more than one Compute instance.
         :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
                volume's name.
         :param pulumi.Input[str] region: The region in which to create the volume. If
@@ -856,6 +902,7 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["enable_online_resize"] = enable_online_resize
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["metadata"] = metadata
+        __props__.__dict__["multiattach"] = multiattach
         __props__.__dict__["name"] = name
         __props__.__dict__["region"] = region
         __props__.__dict__["scheduler_hints"] = scheduler_hints
@@ -941,6 +988,15 @@ class Volume(pulumi.CustomResource):
         Changing this updates the existing volume metadata.
         """
         return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    @_utilities.deprecated("""multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types""")
+    def multiattach(self) -> pulumi.Output[Optional[bool]]:
+        """
+        (Optional) Allow the volume to be attached to more than one Compute instance.
+        """
+        return pulumi.get(self, "multiattach")
 
     @property
     @pulumi.getter

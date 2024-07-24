@@ -5,7 +5,6 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
-from .get_flavor_v2 import *
 from .l7_policy_v2 import *
 from .l7_rule_v2 import *
 from .listener import *

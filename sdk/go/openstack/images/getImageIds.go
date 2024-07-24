@@ -85,8 +85,21 @@ type GetImageIdsArgs struct {
 	// direction combinations. You can also set multiple sort keys and directions.
 	// Default direction is `desc`. Use the comma (,) character to separate
 	// multiple values. For example expression `sort = "name:asc,status"`
-	// sorts ascending by name and descending by status.
+	// sorts ascending by name and descending by status. `sort` cannot be used
+	// simultaneously with `sortKey`. If both are present in a configuration
+	// then only `sort` will be used.
 	Sort *string `pulumi:"sort"`
+	// Order the results in either `asc` or `desc`.
+	// Can be applied only with `sortKey`. Defaults to `asc`
+	//
+	// Deprecated: Use option 'sort' instead.
+	SortDirection *string `pulumi:"sortDirection"`
+	// Sort images based on a certain key. Defaults to
+	// `name`. `sortKey` cannot be used simultaneously with `sort`. If both
+	// are present in a configuration then only `sort` will be used.
+	//
+	// Deprecated: Use option 'sort' instead.
+	SortKey *string `pulumi:"sortKey"`
 	// Search for images with a specific tag.
 	Tag *string `pulumi:"tag"`
 	// A list of tags required to be set on the image
@@ -111,9 +124,13 @@ type GetImageIdsResult struct {
 	SizeMax      *int                   `pulumi:"sizeMax"`
 	SizeMin      *int                   `pulumi:"sizeMin"`
 	Sort         *string                `pulumi:"sort"`
-	Tag          *string                `pulumi:"tag"`
-	Tags         []string               `pulumi:"tags"`
-	Visibility   *string                `pulumi:"visibility"`
+	// Deprecated: Use option 'sort' instead.
+	SortDirection *string `pulumi:"sortDirection"`
+	// Deprecated: Use option 'sort' instead.
+	SortKey    *string  `pulumi:"sortKey"`
+	Tag        *string  `pulumi:"tag"`
+	Tags       []string `pulumi:"tags"`
+	Visibility *string  `pulumi:"visibility"`
 }
 
 func GetImageIdsOutput(ctx *pulumi.Context, args GetImageIdsOutputArgs, opts ...pulumi.InvokeOption) GetImageIdsResultOutput {
@@ -161,8 +178,21 @@ type GetImageIdsOutputArgs struct {
 	// direction combinations. You can also set multiple sort keys and directions.
 	// Default direction is `desc`. Use the comma (,) character to separate
 	// multiple values. For example expression `sort = "name:asc,status"`
-	// sorts ascending by name and descending by status.
+	// sorts ascending by name and descending by status. `sort` cannot be used
+	// simultaneously with `sortKey`. If both are present in a configuration
+	// then only `sort` will be used.
 	Sort pulumi.StringPtrInput `pulumi:"sort"`
+	// Order the results in either `asc` or `desc`.
+	// Can be applied only with `sortKey`. Defaults to `asc`
+	//
+	// Deprecated: Use option 'sort' instead.
+	SortDirection pulumi.StringPtrInput `pulumi:"sortDirection"`
+	// Sort images based on a certain key. Defaults to
+	// `name`. `sortKey` cannot be used simultaneously with `sort`. If both
+	// are present in a configuration then only `sort` will be used.
+	//
+	// Deprecated: Use option 'sort' instead.
+	SortKey pulumi.StringPtrInput `pulumi:"sortKey"`
 	// Search for images with a specific tag.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 	// A list of tags required to be set on the image
@@ -235,6 +265,16 @@ func (o GetImageIdsResultOutput) SizeMin() pulumi.IntPtrOutput {
 
 func (o GetImageIdsResultOutput) Sort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImageIdsResult) *string { return v.Sort }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Use option 'sort' instead.
+func (o GetImageIdsResultOutput) SortDirection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImageIdsResult) *string { return v.SortDirection }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Use option 'sort' instead.
+func (o GetImageIdsResultOutput) SortKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImageIdsResult) *string { return v.SortKey }).(pulumi.StringPtrOutput)
 }
 
 func (o GetImageIdsResultOutput) Tag() pulumi.StringPtrOutput {

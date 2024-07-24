@@ -70,7 +70,7 @@ export class IkePolicy extends pulumi.CustomResource {
      */
     public readonly encryptionAlgorithm!: pulumi.Output<string | undefined>;
     /**
-     * The IKE version. A valid value is v1 or v2. Default is v1.
+     * The IKE mode. A valid value is v1 or v2. Default is v1.
      * Changing this updates the existing policy.
      */
     public readonly ikeVersion!: pulumi.Output<string | undefined>;
@@ -173,7 +173,7 @@ export interface IkePolicyState {
      */
     encryptionAlgorithm?: pulumi.Input<string>;
     /**
-     * The IKE version. A valid value is v1 or v2. Default is v1.
+     * The IKE mode. A valid value is v1 or v2. Default is v1.
      * Changing this updates the existing policy.
      */
     ikeVersion?: pulumi.Input<string>;
@@ -234,7 +234,7 @@ export interface IkePolicyArgs {
      */
     encryptionAlgorithm?: pulumi.Input<string>;
     /**
-     * The IKE version. A valid value is v1 or v2. Default is v1.
+     * The IKE mode. A valid value is v1 or v2. Default is v1.
      * Changing this updates the existing policy.
      */
     ikeVersion?: pulumi.Input<string>;

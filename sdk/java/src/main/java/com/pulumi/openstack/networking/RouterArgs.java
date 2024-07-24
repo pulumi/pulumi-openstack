@@ -140,6 +140,37 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The
+     * network UUID of an external gateway for the router. A router with an
+     * external gateway is required if any compute instances or load balancers
+     * will be using floating IPs. Changing this updates the external gateway
+     * of an existing router.
+     * 
+     * @deprecated
+     * use external_network_id instead
+     * 
+     */
+    @Deprecated /* use external_network_id instead */
+    @Import(name="externalGateway")
+    private @Nullable Output<String> externalGateway;
+
+    /**
+     * @return The
+     * network UUID of an external gateway for the router. A router with an
+     * external gateway is required if any compute instances or load balancers
+     * will be using floating IPs. Changing this updates the external gateway
+     * of an existing router.
+     * 
+     * @deprecated
+     * use external_network_id instead
+     * 
+     */
+    @Deprecated /* use external_network_id instead */
+    public Optional<Output<String>> externalGateway() {
+        return Optional.ofNullable(this.externalGateway);
+    }
+
+    /**
      * The network UUID of an external gateway
      * for the router. A router with an external gateway is required if any
      * compute instances or load balancers will be using floating IPs. Changing
@@ -294,6 +325,7 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
         this.distributed = $.distributed;
         this.enableSnat = $.enableSnat;
         this.externalFixedIps = $.externalFixedIps;
+        this.externalGateway = $.externalGateway;
         this.externalNetworkId = $.externalNetworkId;
         this.externalSubnetIds = $.externalSubnetIds;
         this.name = $.name;
@@ -500,6 +532,43 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder externalFixedIps(RouterExternalFixedIpArgs... externalFixedIps) {
             return externalFixedIps(List.of(externalFixedIps));
+        }
+
+        /**
+         * @param externalGateway The
+         * network UUID of an external gateway for the router. A router with an
+         * external gateway is required if any compute instances or load balancers
+         * will be using floating IPs. Changing this updates the external gateway
+         * of an existing router.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * use external_network_id instead
+         * 
+         */
+        @Deprecated /* use external_network_id instead */
+        public Builder externalGateway(@Nullable Output<String> externalGateway) {
+            $.externalGateway = externalGateway;
+            return this;
+        }
+
+        /**
+         * @param externalGateway The
+         * network UUID of an external gateway for the router. A router with an
+         * external gateway is required if any compute instances or load balancers
+         * will be using floating IPs. Changing this updates the external gateway
+         * of an existing router.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * use external_network_id instead
+         * 
+         */
+        @Deprecated /* use external_network_id instead */
+        public Builder externalGateway(String externalGateway) {
+            return externalGateway(Output.of(externalGateway));
         }
 
         /**

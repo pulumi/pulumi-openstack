@@ -104,6 +104,12 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<{[key: string]: any}>;
     /**
+     * (Optional) Allow the volume to be attached to more than one Compute instance.
+     *
+     * @deprecated multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
+     */
+    public readonly multiattach!: pulumi.Output<boolean | undefined>;
+    /**
      * A unique name for the volume. Changing this updates the
      * volume's name.
      */
@@ -166,6 +172,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["enableOnlineResize"] = state ? state.enableOnlineResize : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["multiattach"] = state ? state.multiattach : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["schedulerHints"] = state ? state.schedulerHints : undefined;
@@ -186,6 +193,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["enableOnlineResize"] = args ? args.enableOnlineResize : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["multiattach"] = args ? args.multiattach : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["schedulerHints"] = args ? args.schedulerHints : undefined;
@@ -249,6 +257,12 @@ export interface VolumeState {
      * Changing this updates the existing volume metadata.
      */
     metadata?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * (Optional) Allow the volume to be attached to more than one Compute instance.
+     *
+     * @deprecated multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
+     */
+    multiattach?: pulumi.Input<boolean>;
     /**
      * A unique name for the volume. Changing this updates the
      * volume's name.
@@ -334,6 +348,12 @@ export interface VolumeArgs {
      * Changing this updates the existing volume metadata.
      */
     metadata?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * (Optional) Allow the volume to be attached to more than one Compute instance.
+     *
+     * @deprecated multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
+     */
+    multiattach?: pulumi.Input<boolean>;
     /**
      * A unique name for the volume. Changing this updates the
      * volume's name.

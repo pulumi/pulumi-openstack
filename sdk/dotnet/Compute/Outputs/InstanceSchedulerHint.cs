@@ -34,8 +34,7 @@ namespace Pulumi.OpenStack.Compute.Outputs
         public readonly ImmutableArray<string> DifferentHosts;
         /// <summary>
         /// A UUID of a Server Group. The instance will be placed
-        /// into that group. See reference
-        /// for details on managing servergroup resources
+        /// into that group.
         /// </summary>
         public readonly string? Group;
         /// <summary>

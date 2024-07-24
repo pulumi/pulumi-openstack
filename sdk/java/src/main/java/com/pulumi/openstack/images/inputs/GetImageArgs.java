@@ -197,26 +197,33 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Sorts the response by one or more attribute and sort
-     * direction combinations. You can also set multiple sort keys and directions.
-     * Default direction is `desc`. Use the comma (,) character to separate
-     * multiple values. For example expression `sort = &#34;name:asc,status&#34;`
-     * sorts ascending by name and descending by status.
+     * Order the results in either `asc` or `desc`.
      * 
      */
-    @Import(name="sort")
-    private @Nullable Output<String> sort;
+    @Import(name="sortDirection")
+    private @Nullable Output<String> sortDirection;
 
     /**
-     * @return Sorts the response by one or more attribute and sort
-     * direction combinations. You can also set multiple sort keys and directions.
-     * Default direction is `desc`. Use the comma (,) character to separate
-     * multiple values. For example expression `sort = &#34;name:asc,status&#34;`
-     * sorts ascending by name and descending by status.
+     * @return Order the results in either `asc` or `desc`.
      * 
      */
-    public Optional<Output<String>> sort() {
-        return Optional.ofNullable(this.sort);
+    public Optional<Output<String>> sortDirection() {
+        return Optional.ofNullable(this.sortDirection);
+    }
+
+    /**
+     * Sort images based on a certain key. Defaults to `name`.
+     * 
+     */
+    @Import(name="sortKey")
+    private @Nullable Output<String> sortKey;
+
+    /**
+     * @return Sort images based on a certain key. Defaults to `name`.
+     * 
+     */
+    public Optional<Output<String>> sortKey() {
+        return Optional.ofNullable(this.sortKey);
     }
 
     /**
@@ -281,7 +288,8 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
         this.region = $.region;
         this.sizeMax = $.sizeMax;
         this.sizeMin = $.sizeMin;
-        this.sort = $.sort;
+        this.sortDirection = $.sortDirection;
+        this.sortKey = $.sortKey;
         this.tag = $.tag;
         this.tags = $.tags;
         this.visibility = $.visibility;
@@ -542,32 +550,45 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param sort Sorts the response by one or more attribute and sort
-         * direction combinations. You can also set multiple sort keys and directions.
-         * Default direction is `desc`. Use the comma (,) character to separate
-         * multiple values. For example expression `sort = &#34;name:asc,status&#34;`
-         * sorts ascending by name and descending by status.
+         * @param sortDirection Order the results in either `asc` or `desc`.
          * 
          * @return builder
          * 
          */
-        public Builder sort(@Nullable Output<String> sort) {
-            $.sort = sort;
+        public Builder sortDirection(@Nullable Output<String> sortDirection) {
+            $.sortDirection = sortDirection;
             return this;
         }
 
         /**
-         * @param sort Sorts the response by one or more attribute and sort
-         * direction combinations. You can also set multiple sort keys and directions.
-         * Default direction is `desc`. Use the comma (,) character to separate
-         * multiple values. For example expression `sort = &#34;name:asc,status&#34;`
-         * sorts ascending by name and descending by status.
+         * @param sortDirection Order the results in either `asc` or `desc`.
          * 
          * @return builder
          * 
          */
-        public Builder sort(String sort) {
-            return sort(Output.of(sort));
+        public Builder sortDirection(String sortDirection) {
+            return sortDirection(Output.of(sortDirection));
+        }
+
+        /**
+         * @param sortKey Sort images based on a certain key. Defaults to `name`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sortKey(@Nullable Output<String> sortKey) {
+            $.sortKey = sortKey;
+            return this;
+        }
+
+        /**
+         * @param sortKey Sort images based on a certain key. Defaults to `name`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sortKey(String sortKey) {
+            return sortKey(Output.of(sortKey));
         }
 
         /**

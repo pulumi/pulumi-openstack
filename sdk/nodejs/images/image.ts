@@ -205,6 +205,12 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
+     * (**Deprecated** - use `updatedAt` instead)
+     *
+     * @deprecated Use updatedAt instead
+     */
+    public /*out*/ readonly updateAt!: pulumi.Output<string>;
+    /**
      * The date the image was last updated.
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
@@ -265,6 +271,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["sizeBytes"] = state ? state.sizeBytes : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updateAt"] = state ? state.updateAt : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["verifyChecksum"] = state ? state.verifyChecksum : undefined;
             resourceInputs["visibility"] = state ? state.visibility : undefined;
@@ -305,6 +312,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["schema"] = undefined /*out*/;
             resourceInputs["sizeBytes"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["updateAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -442,6 +450,12 @@ export interface ImageState {
      * At this time, it is not possible to delete all tags of an image.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (**Deprecated** - use `updatedAt` instead)
+     *
+     * @deprecated Use updatedAt instead
+     */
+    updateAt?: pulumi.Input<string>;
     /**
      * The date the image was last updated.
      */

@@ -15,6 +15,7 @@ import com.pulumi.openstack.compute.outputs.InstanceNetwork;
 import com.pulumi.openstack.compute.outputs.InstancePersonality;
 import com.pulumi.openstack.compute.outputs.InstanceSchedulerHint;
 import com.pulumi.openstack.compute.outputs.InstanceVendorOptions;
+import com.pulumi.openstack.compute.outputs.InstanceVolume;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -218,6 +219,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> flavorName() {
         return this.flavorName;
+    }
+    /**
+     * @deprecated
+     * Use the openstack.compute.FloatingIpAssociate resource instead
+     * 
+     */
+    @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
+    @Export(name="floatingIp", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> floatingIp;
+
+    public Output<Optional<String>> floatingIp() {
+        return Codegen.optional(this.floatingIp);
     }
     /**
      * Whether to force the OpenStack instance to be
@@ -536,6 +549,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<InstanceVendorOptions>> vendorOptions() {
         return Codegen.optional(this.vendorOptions);
+    }
+    /**
+     * @deprecated
+     * Use block_device or openstack.compute.VolumeAttach instead
+     * 
+     */
+    @Deprecated /* Use block_device or openstack.compute.VolumeAttach instead */
+    @Export(name="volumes", refs={List.class,InstanceVolume.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<InstanceVolume>> volumes;
+
+    public Output<Optional<List<InstanceVolume>>> volumes() {
+        return Codegen.optional(this.volumes);
     }
 
     /**

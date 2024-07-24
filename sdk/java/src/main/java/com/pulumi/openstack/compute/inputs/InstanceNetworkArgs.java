@@ -57,6 +57,25 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.fixedIpV6);
     }
 
+    /**
+     * @deprecated
+     * Use the openstack.compute.FloatingIpAssociate resource instead
+     * 
+     */
+    @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
+    @Import(name="floatingIp")
+    private @Nullable Output<String> floatingIp;
+
+    /**
+     * @deprecated
+     * Use the openstack.compute.FloatingIpAssociate resource instead
+     * 
+     */
+    @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
+    public Optional<Output<String>> floatingIp() {
+        return Optional.ofNullable(this.floatingIp);
+    }
+
     @Import(name="mac")
     private @Nullable Output<String> mac;
 
@@ -121,6 +140,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
         this.accessNetwork = $.accessNetwork;
         this.fixedIpV4 = $.fixedIpV4;
         this.fixedIpV6 = $.fixedIpV6;
+        this.floatingIp = $.floatingIp;
         this.mac = $.mac;
         this.name = $.name;
         this.port = $.port;
@@ -198,6 +218,31 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder fixedIpV6(String fixedIpV6) {
             return fixedIpV6(Output.of(fixedIpV6));
+        }
+
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Use the openstack.compute.FloatingIpAssociate resource instead
+         * 
+         */
+        @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
+        public Builder floatingIp(@Nullable Output<String> floatingIp) {
+            $.floatingIp = floatingIp;
+            return this;
+        }
+
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Use the openstack.compute.FloatingIpAssociate resource instead
+         * 
+         */
+        @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
+        public Builder floatingIp(String floatingIp) {
+            return floatingIp(Output.of(floatingIp));
         }
 
         public Builder mac(@Nullable Output<String> mac) {

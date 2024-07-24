@@ -82,7 +82,7 @@ namespace Pulumi.OpenStack.Networking
         public string? FixedIp { get; set; }
 
         /// <summary>
-        /// The ID of the network from which the floating IP belongs to.
+        /// The name of the pool from which the floating IP belongs to.
         /// </summary>
         [Input("pool")]
         public string? Pool { get; set; }
@@ -152,7 +152,7 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? FixedIp { get; set; }
 
         /// <summary>
-        /// The ID of the network from which the floating IP belongs to.
+        /// The name of the pool from which the floating IP belongs to.
         /// </summary>
         [Input("pool")]
         public Input<string>? Pool { get; set; }

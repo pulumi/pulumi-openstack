@@ -205,6 +205,18 @@ public class VolumeAttachV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.initiator);
     }
     /**
+     * @deprecated
+     * instance_id is no longer used in this resource
+     * 
+     */
+    @Deprecated /* instance_id is no longer used in this resource */
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> instanceId;
+
+    public Output<Optional<String>> instanceId() {
+        return Codegen.optional(this.instanceId);
+    }
+    /**
      * The IP address of the `host_name` above.
      * 
      */

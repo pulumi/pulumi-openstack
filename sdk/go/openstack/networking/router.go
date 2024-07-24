@@ -80,6 +80,14 @@ type Router struct {
 	// has to be set in order to set this property. Changing this updates the
 	// external fixed IPs of the router.
 	ExternalFixedIps RouterExternalFixedIpArrayOutput `pulumi:"externalFixedIps"`
+	// The
+	// network UUID of an external gateway for the router. A router with an
+	// external gateway is required if any compute instances or load balancers
+	// will be using floating IPs. Changing this updates the external gateway
+	// of an existing router.
+	//
+	// Deprecated: use externalNetworkId instead
+	ExternalGateway pulumi.StringOutput `pulumi:"externalGateway"`
 	// The network UUID of an external gateway
 	// for the router. A router with an external gateway is required if any
 	// compute instances or load balancers will be using floating IPs. Changing
@@ -170,6 +178,14 @@ type routerState struct {
 	// has to be set in order to set this property. Changing this updates the
 	// external fixed IPs of the router.
 	ExternalFixedIps []RouterExternalFixedIp `pulumi:"externalFixedIps"`
+	// The
+	// network UUID of an external gateway for the router. A router with an
+	// external gateway is required if any compute instances or load balancers
+	// will be using floating IPs. Changing this updates the external gateway
+	// of an existing router.
+	//
+	// Deprecated: use externalNetworkId instead
+	ExternalGateway *string `pulumi:"externalGateway"`
 	// The network UUID of an external gateway
 	// for the router. A router with an external gateway is required if any
 	// compute instances or load balancers will be using floating IPs. Changing
@@ -231,6 +247,14 @@ type RouterState struct {
 	// has to be set in order to set this property. Changing this updates the
 	// external fixed IPs of the router.
 	ExternalFixedIps RouterExternalFixedIpArrayInput
+	// The
+	// network UUID of an external gateway for the router. A router with an
+	// external gateway is required if any compute instances or load balancers
+	// will be using floating IPs. Changing this updates the external gateway
+	// of an existing router.
+	//
+	// Deprecated: use externalNetworkId instead
+	ExternalGateway pulumi.StringPtrInput
 	// The network UUID of an external gateway
 	// for the router. A router with an external gateway is required if any
 	// compute instances or load balancers will be using floating IPs. Changing
@@ -293,6 +317,14 @@ type routerArgs struct {
 	// has to be set in order to set this property. Changing this updates the
 	// external fixed IPs of the router.
 	ExternalFixedIps []RouterExternalFixedIp `pulumi:"externalFixedIps"`
+	// The
+	// network UUID of an external gateway for the router. A router with an
+	// external gateway is required if any compute instances or load balancers
+	// will be using floating IPs. Changing this updates the external gateway
+	// of an existing router.
+	//
+	// Deprecated: use externalNetworkId instead
+	ExternalGateway *string `pulumi:"externalGateway"`
 	// The network UUID of an external gateway
 	// for the router. A router with an external gateway is required if any
 	// compute instances or load balancers will be using floating IPs. Changing
@@ -352,6 +384,14 @@ type RouterArgs struct {
 	// has to be set in order to set this property. Changing this updates the
 	// external fixed IPs of the router.
 	ExternalFixedIps RouterExternalFixedIpArrayInput
+	// The
+	// network UUID of an external gateway for the router. A router with an
+	// external gateway is required if any compute instances or load balancers
+	// will be using floating IPs. Changing this updates the external gateway
+	// of an existing router.
+	//
+	// Deprecated: use externalNetworkId instead
+	ExternalGateway pulumi.StringPtrInput
 	// The network UUID of an external gateway
 	// for the router. A router with an external gateway is required if any
 	// compute instances or load balancers will be using floating IPs. Changing
@@ -518,6 +558,17 @@ func (o RouterOutput) EnableSnat() pulumi.BoolOutput {
 // external fixed IPs of the router.
 func (o RouterOutput) ExternalFixedIps() RouterExternalFixedIpArrayOutput {
 	return o.ApplyT(func(v *Router) RouterExternalFixedIpArrayOutput { return v.ExternalFixedIps }).(RouterExternalFixedIpArrayOutput)
+}
+
+// The
+// network UUID of an external gateway for the router. A router with an
+// external gateway is required if any compute instances or load balancers
+// will be using floating IPs. Changing this updates the external gateway
+// of an existing router.
+//
+// Deprecated: use externalNetworkId instead
+func (o RouterOutput) ExternalGateway() pulumi.StringOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.ExternalGateway }).(pulumi.StringOutput)
 }
 
 // The network UUID of an external gateway

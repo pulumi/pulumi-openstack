@@ -35,7 +35,7 @@ class IkePolicyArgs:
                Changing this updates the description of the existing policy.
         :param pulumi.Input[str] encryption_algorithm: The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
                The default value is aes-128. Changing this updates the existing policy.
-        :param pulumi.Input[str] ike_version: The IKE version. A valid value is v1 or v2. Default is v1.
+        :param pulumi.Input[str] ike_version: The IKE mode. A valid value is v1 or v2. Default is v1.
                Changing this updates the existing policy.
         :param pulumi.Input[Sequence[pulumi.Input['IkePolicyLifetimeArgs']]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[str] name: The name of the policy. Changing this updates the name of
@@ -118,7 +118,7 @@ class IkePolicyArgs:
     @pulumi.getter(name="ikeVersion")
     def ike_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The IKE version. A valid value is v1 or v2. Default is v1.
+        The IKE mode. A valid value is v1 or v2. Default is v1.
         Changing this updates the existing policy.
         """
         return pulumi.get(self, "ike_version")
@@ -241,7 +241,7 @@ class _IkePolicyState:
                Changing this updates the description of the existing policy.
         :param pulumi.Input[str] encryption_algorithm: The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
                The default value is aes-128. Changing this updates the existing policy.
-        :param pulumi.Input[str] ike_version: The IKE version. A valid value is v1 or v2. Default is v1.
+        :param pulumi.Input[str] ike_version: The IKE mode. A valid value is v1 or v2. Default is v1.
                Changing this updates the existing policy.
         :param pulumi.Input[Sequence[pulumi.Input['IkePolicyLifetimeArgs']]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[str] name: The name of the policy. Changing this updates the name of
@@ -324,7 +324,7 @@ class _IkePolicyState:
     @pulumi.getter(name="ikeVersion")
     def ike_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The IKE version. A valid value is v1 or v2. Default is v1.
+        The IKE mode. A valid value is v1 or v2. Default is v1.
         Changing this updates the existing policy.
         """
         return pulumi.get(self, "ike_version")
@@ -470,7 +470,7 @@ class IkePolicy(pulumi.CustomResource):
                Changing this updates the description of the existing policy.
         :param pulumi.Input[str] encryption_algorithm: The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
                The default value is aes-128. Changing this updates the existing policy.
-        :param pulumi.Input[str] ike_version: The IKE version. A valid value is v1 or v2. Default is v1.
+        :param pulumi.Input[str] ike_version: The IKE mode. A valid value is v1 or v2. Default is v1.
                Changing this updates the existing policy.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IkePolicyLifetimeArgs']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[str] name: The name of the policy. Changing this updates the name of
@@ -593,7 +593,7 @@ class IkePolicy(pulumi.CustomResource):
                Changing this updates the description of the existing policy.
         :param pulumi.Input[str] encryption_algorithm: The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
                The default value is aes-128. Changing this updates the existing policy.
-        :param pulumi.Input[str] ike_version: The IKE version. A valid value is v1 or v2. Default is v1.
+        :param pulumi.Input[str] ike_version: The IKE mode. A valid value is v1 or v2. Default is v1.
                Changing this updates the existing policy.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IkePolicyLifetimeArgs']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[str] name: The name of the policy. Changing this updates the name of
@@ -658,7 +658,7 @@ class IkePolicy(pulumi.CustomResource):
     @pulumi.getter(name="ikeVersion")
     def ike_version(self) -> pulumi.Output[Optional[str]]:
         """
-        The IKE version. A valid value is v1 or v2. Default is v1.
+        The IKE mode. A valid value is v1 or v2. Default is v1.
         Changing this updates the existing policy.
         """
         return pulumi.get(self, "ike_version")

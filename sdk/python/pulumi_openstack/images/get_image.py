@@ -21,7 +21,7 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, checksum=None, container_format=None, created_at=None, disk_format=None, file=None, hidden=None, id=None, member_status=None, metadata=None, min_disk_gb=None, min_ram_mb=None, most_recent=None, name=None, name_regex=None, owner=None, properties=None, protected=None, region=None, schema=None, size_bytes=None, size_max=None, size_min=None, sort=None, tag=None, tags=None, updated_at=None, visibility=None):
+    def __init__(__self__, checksum=None, container_format=None, created_at=None, disk_format=None, file=None, hidden=None, id=None, member_status=None, metadata=None, min_disk_gb=None, min_ram_mb=None, most_recent=None, name=None, name_regex=None, owner=None, properties=None, protected=None, region=None, schema=None, size_bytes=None, size_max=None, size_min=None, sort_direction=None, sort_key=None, tag=None, tags=None, updated_at=None, visibility=None):
         if checksum and not isinstance(checksum, str):
             raise TypeError("Expected argument 'checksum' to be a str")
         pulumi.set(__self__, "checksum", checksum)
@@ -88,9 +88,12 @@ class GetImageResult:
         if size_min and not isinstance(size_min, int):
             raise TypeError("Expected argument 'size_min' to be a int")
         pulumi.set(__self__, "size_min", size_min)
-        if sort and not isinstance(sort, str):
-            raise TypeError("Expected argument 'sort' to be a str")
-        pulumi.set(__self__, "sort", sort)
+        if sort_direction and not isinstance(sort_direction, str):
+            raise TypeError("Expected argument 'sort_direction' to be a str")
+        pulumi.set(__self__, "sort_direction", sort_direction)
+        if sort_key and not isinstance(sort_key, str):
+            raise TypeError("Expected argument 'sort_key' to be a str")
+        pulumi.set(__self__, "sort_key", sort_key)
         if tag and not isinstance(tag, str):
             raise TypeError("Expected argument 'tag' to be a str")
         pulumi.set(__self__, "tag", tag)
@@ -258,9 +261,14 @@ class GetImageResult:
         return pulumi.get(self, "size_min")
 
     @property
-    @pulumi.getter
-    def sort(self) -> Optional[str]:
-        return pulumi.get(self, "sort")
+    @pulumi.getter(name="sortDirection")
+    def sort_direction(self) -> Optional[str]:
+        return pulumi.get(self, "sort_direction")
+
+    @property
+    @pulumi.getter(name="sortKey")
+    def sort_key(self) -> Optional[str]:
+        return pulumi.get(self, "sort_key")
 
     @property
     @pulumi.getter
@@ -317,7 +325,8 @@ class AwaitableGetImageResult(GetImageResult):
             size_bytes=self.size_bytes,
             size_max=self.size_max,
             size_min=self.size_min,
-            sort=self.sort,
+            sort_direction=self.sort_direction,
+            sort_key=self.sort_key,
             tag=self.tag,
             tags=self.tags,
             updated_at=self.updated_at,
@@ -334,7 +343,8 @@ def get_image(hidden: Optional[bool] = None,
               region: Optional[str] = None,
               size_max: Optional[int] = None,
               size_min: Optional[int] = None,
-              sort: Optional[str] = None,
+              sort_direction: Optional[str] = None,
+              sort_key: Optional[str] = None,
               tag: Optional[str] = None,
               tags: Optional[Sequence[str]] = None,
               visibility: Optional[str] = None,
@@ -379,11 +389,8 @@ def get_image(hidden: Optional[bool] = None,
            is used.
     :param int size_max: The maximum size (in bytes) of the image to return.
     :param int size_min: The minimum size (in bytes) of the image to return.
-    :param str sort: Sorts the response by one or more attribute and sort
-           direction combinations. You can also set multiple sort keys and directions.
-           Default direction is `desc`. Use the comma (,) character to separate
-           multiple values. For example expression `sort = "name:asc,status"`
-           sorts ascending by name and descending by status.
+    :param str sort_direction: Order the results in either `asc` or `desc`.
+    :param str sort_key: Sort images based on a certain key. Defaults to `name`.
     :param str tag: Search for images with a specific tag.
     :param Sequence[str] tags: A list of tags required to be set on the image 
            (all specified tags must be in the images tag list for it to be matched).
@@ -401,7 +408,8 @@ def get_image(hidden: Optional[bool] = None,
     __args__['region'] = region
     __args__['sizeMax'] = size_max
     __args__['sizeMin'] = size_min
-    __args__['sort'] = sort
+    __args__['sortDirection'] = sort_direction
+    __args__['sortKey'] = sort_key
     __args__['tag'] = tag
     __args__['tags'] = tags
     __args__['visibility'] = visibility
@@ -431,7 +439,8 @@ def get_image(hidden: Optional[bool] = None,
         size_bytes=pulumi.get(__ret__, 'size_bytes'),
         size_max=pulumi.get(__ret__, 'size_max'),
         size_min=pulumi.get(__ret__, 'size_min'),
-        sort=pulumi.get(__ret__, 'sort'),
+        sort_direction=pulumi.get(__ret__, 'sort_direction'),
+        sort_key=pulumi.get(__ret__, 'sort_key'),
         tag=pulumi.get(__ret__, 'tag'),
         tags=pulumi.get(__ret__, 'tags'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
@@ -449,7 +458,8 @@ def get_image_output(hidden: Optional[pulumi.Input[Optional[bool]]] = None,
                      region: Optional[pulumi.Input[Optional[str]]] = None,
                      size_max: Optional[pulumi.Input[Optional[int]]] = None,
                      size_min: Optional[pulumi.Input[Optional[int]]] = None,
-                     sort: Optional[pulumi.Input[Optional[str]]] = None,
+                     sort_direction: Optional[pulumi.Input[Optional[str]]] = None,
+                     sort_key: Optional[pulumi.Input[Optional[str]]] = None,
                      tag: Optional[pulumi.Input[Optional[str]]] = None,
                      tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      visibility: Optional[pulumi.Input[Optional[str]]] = None,
@@ -494,11 +504,8 @@ def get_image_output(hidden: Optional[pulumi.Input[Optional[bool]]] = None,
            is used.
     :param int size_max: The maximum size (in bytes) of the image to return.
     :param int size_min: The minimum size (in bytes) of the image to return.
-    :param str sort: Sorts the response by one or more attribute and sort
-           direction combinations. You can also set multiple sort keys and directions.
-           Default direction is `desc`. Use the comma (,) character to separate
-           multiple values. For example expression `sort = "name:asc,status"`
-           sorts ascending by name and descending by status.
+    :param str sort_direction: Order the results in either `asc` or `desc`.
+    :param str sort_key: Sort images based on a certain key. Defaults to `name`.
     :param str tag: Search for images with a specific tag.
     :param Sequence[str] tags: A list of tags required to be set on the image 
            (all specified tags must be in the images tag list for it to be matched).

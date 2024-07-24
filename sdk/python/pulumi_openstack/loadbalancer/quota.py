@@ -378,6 +378,8 @@ class Quota(pulumi.CustomResource):
 
         > **Note:** This usually requires admin privileges.
 
+        > **Note:** This resource is only available for Octavia.
+
         > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack
            API in case of delete call.
 
@@ -447,6 +449,8 @@ class Quota(pulumi.CustomResource):
         Manages a V2 load balancer quota resource within OpenStack.
 
         > **Note:** This usually requires admin privileges.
+
+        > **Note:** This resource is only available for Octavia.
 
         > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack
            API in case of delete call.

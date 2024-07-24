@@ -63,6 +63,10 @@ import javax.annotation.Nullable;
  * &lt;!--Start PulumiCodeChooser --&gt;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Notes
+ * 
+ * The `member` block is deprecated in favor of the `openstack.loadbalancer.MemberV1` resource.
+ * 
  * ## Import
  * 
  * Load Balancer Pools can be imported using the `id`, e.g.
@@ -107,6 +111,30 @@ public class PoolV1 extends com.pulumi.resources.CustomResource {
      */
     public Output<String> lbProvider() {
         return this.lbProvider;
+    }
+    /**
+     * An existing node to add to the pool. Changing this
+     * updates the members of the pool. The member object structure is documented
+     * below. Please note that the `member` block is deprecated in favor of the
+     * `openstack.loadbalancer.MemberV1` resource.
+     * 
+     * @deprecated
+     * Use openstack.loadbalancer.MemberV1 instead
+     * 
+     */
+    @Deprecated /* Use openstack.loadbalancer.MemberV1 instead */
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> members;
+
+    /**
+     * @return An existing node to add to the pool. Changing this
+     * updates the members of the pool. The member object structure is documented
+     * below. Please note that the `member` block is deprecated in favor of the
+     * `openstack.loadbalancer.MemberV1` resource.
+     * 
+     */
+    public Output<Optional<List<String>>> members() {
+        return Codegen.optional(this.members);
     }
     /**
      * A list of IDs of monitors to associate with the

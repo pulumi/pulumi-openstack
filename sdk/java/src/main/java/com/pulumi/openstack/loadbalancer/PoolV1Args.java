@@ -54,6 +54,35 @@ public final class PoolV1Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * An existing node to add to the pool. Changing this
+     * updates the members of the pool. The member object structure is documented
+     * below. Please note that the `member` block is deprecated in favor of the
+     * `openstack.loadbalancer.MemberV1` resource.
+     * 
+     * @deprecated
+     * Use openstack.loadbalancer.MemberV1 instead
+     * 
+     */
+    @Deprecated /* Use openstack.loadbalancer.MemberV1 instead */
+    @Import(name="members")
+    private @Nullable Output<List<String>> members;
+
+    /**
+     * @return An existing node to add to the pool. Changing this
+     * updates the members of the pool. The member object structure is documented
+     * below. Please note that the `member` block is deprecated in favor of the
+     * `openstack.loadbalancer.MemberV1` resource.
+     * 
+     * @deprecated
+     * Use openstack.loadbalancer.MemberV1 instead
+     * 
+     */
+    @Deprecated /* Use openstack.loadbalancer.MemberV1 instead */
+    public Optional<Output<List<String>>> members() {
+        return Optional.ofNullable(this.members);
+    }
+
+    /**
      * A list of IDs of monitors to associate with the
      * pool.
      * 
@@ -166,6 +195,7 @@ public final class PoolV1Args extends com.pulumi.resources.ResourceArgs {
     private PoolV1Args(PoolV1Args $) {
         this.lbMethod = $.lbMethod;
         this.lbProvider = $.lbProvider;
+        this.members = $.members;
         this.monitorIds = $.monitorIds;
         this.name = $.name;
         this.protocol = $.protocol;
@@ -238,6 +268,58 @@ public final class PoolV1Args extends com.pulumi.resources.ResourceArgs {
          */
         public Builder lbProvider(String lbProvider) {
             return lbProvider(Output.of(lbProvider));
+        }
+
+        /**
+         * @param members An existing node to add to the pool. Changing this
+         * updates the members of the pool. The member object structure is documented
+         * below. Please note that the `member` block is deprecated in favor of the
+         * `openstack.loadbalancer.MemberV1` resource.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use openstack.loadbalancer.MemberV1 instead
+         * 
+         */
+        @Deprecated /* Use openstack.loadbalancer.MemberV1 instead */
+        public Builder members(@Nullable Output<List<String>> members) {
+            $.members = members;
+            return this;
+        }
+
+        /**
+         * @param members An existing node to add to the pool. Changing this
+         * updates the members of the pool. The member object structure is documented
+         * below. Please note that the `member` block is deprecated in favor of the
+         * `openstack.loadbalancer.MemberV1` resource.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use openstack.loadbalancer.MemberV1 instead
+         * 
+         */
+        @Deprecated /* Use openstack.loadbalancer.MemberV1 instead */
+        public Builder members(List<String> members) {
+            return members(Output.of(members));
+        }
+
+        /**
+         * @param members An existing node to add to the pool. Changing this
+         * updates the members of the pool. The member object structure is documented
+         * below. Please note that the `member` block is deprecated in favor of the
+         * `openstack.loadbalancer.MemberV1` resource.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use openstack.loadbalancer.MemberV1 instead
+         * 
+         */
+        @Deprecated /* Use openstack.loadbalancer.MemberV1 instead */
+        public Builder members(String... members) {
+            return members(List.of(members));
         }
 
         /**

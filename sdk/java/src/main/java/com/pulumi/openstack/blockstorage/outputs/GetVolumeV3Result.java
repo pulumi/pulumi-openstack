@@ -6,6 +6,7 @@ package com.pulumi.openstack.blockstorage.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.blockstorage.outputs.GetVolumeV3Attachment;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -42,6 +43,11 @@ public final class GetVolumeV3Result {
      * 
      */
     private Map<String,Object> metadata;
+    /**
+     * @return Indicates if the volume can be attached to more then one server.
+     * 
+     */
+    private Boolean multiattach;
     /**
      * @return See Argument Reference above.
      * 
@@ -112,6 +118,13 @@ public final class GetVolumeV3Result {
         return this.metadata;
     }
     /**
+     * @return Indicates if the volume can be attached to more then one server.
+     * 
+     */
+    public Boolean multiattach() {
+        return this.multiattach;
+    }
+    /**
      * @return See Argument Reference above.
      * 
      */
@@ -168,6 +181,7 @@ public final class GetVolumeV3Result {
         private String host;
         private String id;
         private Map<String,Object> metadata;
+        private Boolean multiattach;
         private String name;
         private String region;
         private Integer size;
@@ -182,6 +196,7 @@ public final class GetVolumeV3Result {
     	      this.host = defaults.host;
     	      this.id = defaults.id;
     	      this.metadata = defaults.metadata;
+    	      this.multiattach = defaults.multiattach;
     	      this.name = defaults.name;
     	      this.region = defaults.region;
     	      this.size = defaults.size;
@@ -231,6 +246,14 @@ public final class GetVolumeV3Result {
               throw new MissingRequiredPropertyException("GetVolumeV3Result", "metadata");
             }
             this.metadata = metadata;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder multiattach(Boolean multiattach) {
+            if (multiattach == null) {
+              throw new MissingRequiredPropertyException("GetVolumeV3Result", "multiattach");
+            }
+            this.multiattach = multiattach;
             return this;
         }
         @CustomType.Setter
@@ -288,6 +311,7 @@ public final class GetVolumeV3Result {
             _resultValue.host = host;
             _resultValue.id = id;
             _resultValue.metadata = metadata;
+            _resultValue.multiattach = multiattach;
             _resultValue.name = name;
             _resultValue.region = region;
             _resultValue.size = size;

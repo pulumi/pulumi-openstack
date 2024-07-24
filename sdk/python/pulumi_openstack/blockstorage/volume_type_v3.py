@@ -225,8 +225,6 @@ class VolumeTypeV3(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic Volume Type
-
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -237,20 +235,6 @@ class VolumeTypeV3(pulumi.CustomResource):
             extra_specs={
                 "capabilities": "gpu",
                 "volume_backend_name": "ssd",
-            })
-        ```
-
-        ### Volume Type with multiattach enabled
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        multiattach = openstack.blockstorage.VolumeTypeV3("multiattach",
-            name="multiattach",
-            description="Multiattach-enabled volume type",
-            extra_specs={
-                "multiattach": "<is> True",
             })
         ```
 
@@ -288,8 +272,6 @@ class VolumeTypeV3(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic Volume Type
-
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -300,20 +282,6 @@ class VolumeTypeV3(pulumi.CustomResource):
             extra_specs={
                 "capabilities": "gpu",
                 "volume_backend_name": "ssd",
-            })
-        ```
-
-        ### Volume Type with multiattach enabled
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        multiattach = openstack.blockstorage.VolumeTypeV3("multiattach",
-            name="multiattach",
-            description="Multiattach-enabled volume type",
-            extra_specs={
-                "multiattach": "<is> True",
             })
         ```
 

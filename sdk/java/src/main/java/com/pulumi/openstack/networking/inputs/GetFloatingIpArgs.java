@@ -62,14 +62,14 @@ public final class GetFloatingIpArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The ID of the network from which the floating IP belongs to.
+     * The name of the pool from which the floating IP belongs to.
      * 
      */
     @Import(name="pool")
     private @Nullable Output<String> pool;
 
     /**
-     * @return The ID of the network from which the floating IP belongs to.
+     * @return The name of the pool from which the floating IP belongs to.
      * 
      */
     public Optional<Output<String>> pool() {
@@ -251,7 +251,7 @@ public final class GetFloatingIpArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param pool The ID of the network from which the floating IP belongs to.
+         * @param pool The name of the pool from which the floating IP belongs to.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class GetFloatingIpArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param pool The ID of the network from which the floating IP belongs to.
+         * @param pool The name of the pool from which the floating IP belongs to.
          * 
          * @return builder
          * 

@@ -232,6 +232,10 @@ export namespace compute {
          */
         fixedIpV4?: pulumi.Input<string>;
         fixedIpV6?: pulumi.Input<string>;
+        /**
+         * @deprecated Use the openstack.compute.FloatingIpAssociate resource instead
+         */
+        floatingIp?: pulumi.Input<string>;
         mac?: pulumi.Input<string>;
         /**
          * The human-readable
@@ -283,8 +287,7 @@ export namespace compute {
         differentHosts?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * A UUID of a Server Group. The instance will be placed
-         * into that group. See reference
-         * for details on managing servergroup resources
+         * into that group.
          */
         group?: pulumi.Input<string>;
         /**
@@ -325,6 +328,12 @@ export namespace compute {
          * instances after some timeout.
          */
         ignoreResizeConfirmation?: pulumi.Input<boolean>;
+    }
+
+    export interface InstanceVolume {
+        device?: pulumi.Input<string>;
+        id?: pulumi.Input<string>;
+        volumeId: pulumi.Input<string>;
     }
 
     export interface SecGroupRule {
@@ -803,6 +812,17 @@ export namespace networking {
          * The starting address.
          */
         start: pulumi.Input<string>;
+    }
+
+    export interface SubnetHostRoute {
+        /**
+         * The destination CIDR.
+         */
+        destinationCidr: pulumi.Input<string>;
+        /**
+         * The next hop in the route.
+         */
+        nextHop: pulumi.Input<string>;
     }
 
     export interface TrunkSubPort {

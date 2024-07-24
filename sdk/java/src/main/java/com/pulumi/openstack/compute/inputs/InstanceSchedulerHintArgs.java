@@ -86,8 +86,7 @@ public final class InstanceSchedulerHintArgs extends com.pulumi.resources.Resour
 
     /**
      * A UUID of a Server Group. The instance will be placed
-     * into that group. See reference
-     * for details on managing servergroup resources
+     * into that group.
      * 
      */
     @Import(name="group")
@@ -95,8 +94,7 @@ public final class InstanceSchedulerHintArgs extends com.pulumi.resources.Resour
 
     /**
      * @return A UUID of a Server Group. The instance will be placed
-     * into that group. See reference
-     * for details on managing servergroup resources
+     * into that group.
      * 
      */
     public Optional<Output<String>> group() {
@@ -304,8 +302,7 @@ public final class InstanceSchedulerHintArgs extends com.pulumi.resources.Resour
 
         /**
          * @param group A UUID of a Server Group. The instance will be placed
-         * into that group. See reference
-         * for details on managing servergroup resources
+         * into that group.
          * 
          * @return builder
          * 
@@ -317,8 +314,7 @@ public final class InstanceSchedulerHintArgs extends com.pulumi.resources.Resour
 
         /**
          * @param group A UUID of a Server Group. The instance will be placed
-         * into that group. See reference
-         * for details on managing servergroup resources
+         * into that group.
          * 
          * @return builder
          * 

@@ -6,6 +6,7 @@ package com.pulumi.openstack.networking.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.openstack.networking.inputs.SubnetAllocationPoolArgs;
+import com.pulumi.openstack.networking.inputs.SubnetHostRouteArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -39,26 +40,28 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A block declaring the start and end range of
-     * the IP addresses available for use with DHCP in this subnet. Multiple
-     * `allocation_pool` blocks can be declared, providing the subnet with more
-     * than one range of IP addresses to use with DHCP. However, each IP range
-     * must be from the same CIDR that the subnet is part of.
-     * The `allocation_pool` block is documented below.
+     * A block declaring the start and end range of the IP addresses available for
+     * use with DHCP in this subnet.
+     * The `allocation_pools` block is documented below.
+     * 
+     * @deprecated
+     * use allocation_pool instead
      * 
      */
+    @Deprecated /* use allocation_pool instead */
     @Import(name="allocationPools")
     private @Nullable Output<List<SubnetAllocationPoolArgs>> allocationPools;
 
     /**
-     * @return A block declaring the start and end range of
-     * the IP addresses available for use with DHCP in this subnet. Multiple
-     * `allocation_pool` blocks can be declared, providing the subnet with more
-     * than one range of IP addresses to use with DHCP. However, each IP range
-     * must be from the same CIDR that the subnet is part of.
-     * The `allocation_pool` block is documented below.
+     * @return A block declaring the start and end range of the IP addresses available for
+     * use with DHCP in this subnet.
+     * The `allocation_pools` block is documented below.
+     * 
+     * @deprecated
+     * use allocation_pool instead
      * 
      */
+    @Deprecated /* use allocation_pool instead */
     public Optional<Output<List<SubnetAllocationPoolArgs>>> allocationPools() {
         return Optional.ofNullable(this.allocationPools);
     }
@@ -156,6 +159,37 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> gatewayIp() {
         return Optional.ofNullable(this.gatewayIp);
+    }
+
+    /**
+     * (**Deprecated** - use `openstack.networking.SubnetRoute`
+     * instead) An array of routes that should be used by devices
+     * with IPs from this subnet (not including local subnet route). The host_route
+     * object structure is documented below. Changing this updates the host routes
+     * for the existing subnet.
+     * 
+     * @deprecated
+     * Use openstack.networking.SubnetRoute instead
+     * 
+     */
+    @Deprecated /* Use openstack.networking.SubnetRoute instead */
+    @Import(name="hostRoutes")
+    private @Nullable Output<List<SubnetHostRouteArgs>> hostRoutes;
+
+    /**
+     * @return (**Deprecated** - use `openstack.networking.SubnetRoute`
+     * instead) An array of routes that should be used by devices
+     * with IPs from this subnet (not including local subnet route). The host_route
+     * object structure is documented below. Changing this updates the host routes
+     * for the existing subnet.
+     * 
+     * @deprecated
+     * Use openstack.networking.SubnetRoute instead
+     * 
+     */
+    @Deprecated /* Use openstack.networking.SubnetRoute instead */
+    public Optional<Output<List<SubnetHostRouteArgs>>> hostRoutes() {
+        return Optional.ofNullable(this.hostRoutes);
     }
 
     /**
@@ -391,6 +425,7 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
         this.dnsNameservers = $.dnsNameservers;
         this.enableDhcp = $.enableDhcp;
         this.gatewayIp = $.gatewayIp;
+        this.hostRoutes = $.hostRoutes;
         this.ipVersion = $.ipVersion;
         this.ipv6AddressMode = $.ipv6AddressMode;
         this.ipv6RaMode = $.ipv6RaMode;
@@ -459,47 +494,50 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allocationPools A block declaring the start and end range of
-         * the IP addresses available for use with DHCP in this subnet. Multiple
-         * `allocation_pool` blocks can be declared, providing the subnet with more
-         * than one range of IP addresses to use with DHCP. However, each IP range
-         * must be from the same CIDR that the subnet is part of.
-         * The `allocation_pool` block is documented below.
+         * @param allocationPools A block declaring the start and end range of the IP addresses available for
+         * use with DHCP in this subnet.
+         * The `allocation_pools` block is documented below.
          * 
          * @return builder
          * 
+         * @deprecated
+         * use allocation_pool instead
+         * 
          */
+        @Deprecated /* use allocation_pool instead */
         public Builder allocationPools(@Nullable Output<List<SubnetAllocationPoolArgs>> allocationPools) {
             $.allocationPools = allocationPools;
             return this;
         }
 
         /**
-         * @param allocationPools A block declaring the start and end range of
-         * the IP addresses available for use with DHCP in this subnet. Multiple
-         * `allocation_pool` blocks can be declared, providing the subnet with more
-         * than one range of IP addresses to use with DHCP. However, each IP range
-         * must be from the same CIDR that the subnet is part of.
-         * The `allocation_pool` block is documented below.
+         * @param allocationPools A block declaring the start and end range of the IP addresses available for
+         * use with DHCP in this subnet.
+         * The `allocation_pools` block is documented below.
          * 
          * @return builder
          * 
+         * @deprecated
+         * use allocation_pool instead
+         * 
          */
+        @Deprecated /* use allocation_pool instead */
         public Builder allocationPools(List<SubnetAllocationPoolArgs> allocationPools) {
             return allocationPools(Output.of(allocationPools));
         }
 
         /**
-         * @param allocationPools A block declaring the start and end range of
-         * the IP addresses available for use with DHCP in this subnet. Multiple
-         * `allocation_pool` blocks can be declared, providing the subnet with more
-         * than one range of IP addresses to use with DHCP. However, each IP range
-         * must be from the same CIDR that the subnet is part of.
-         * The `allocation_pool` block is documented below.
+         * @param allocationPools A block declaring the start and end range of the IP addresses available for
+         * use with DHCP in this subnet.
+         * The `allocation_pools` block is documented below.
          * 
          * @return builder
          * 
+         * @deprecated
+         * use allocation_pool instead
+         * 
          */
+        @Deprecated /* use allocation_pool instead */
         public Builder allocationPools(SubnetAllocationPoolArgs... allocationPools) {
             return allocationPools(List.of(allocationPools));
         }
@@ -639,6 +677,61 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder gatewayIp(String gatewayIp) {
             return gatewayIp(Output.of(gatewayIp));
+        }
+
+        /**
+         * @param hostRoutes (**Deprecated** - use `openstack.networking.SubnetRoute`
+         * instead) An array of routes that should be used by devices
+         * with IPs from this subnet (not including local subnet route). The host_route
+         * object structure is documented below. Changing this updates the host routes
+         * for the existing subnet.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use openstack.networking.SubnetRoute instead
+         * 
+         */
+        @Deprecated /* Use openstack.networking.SubnetRoute instead */
+        public Builder hostRoutes(@Nullable Output<List<SubnetHostRouteArgs>> hostRoutes) {
+            $.hostRoutes = hostRoutes;
+            return this;
+        }
+
+        /**
+         * @param hostRoutes (**Deprecated** - use `openstack.networking.SubnetRoute`
+         * instead) An array of routes that should be used by devices
+         * with IPs from this subnet (not including local subnet route). The host_route
+         * object structure is documented below. Changing this updates the host routes
+         * for the existing subnet.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use openstack.networking.SubnetRoute instead
+         * 
+         */
+        @Deprecated /* Use openstack.networking.SubnetRoute instead */
+        public Builder hostRoutes(List<SubnetHostRouteArgs> hostRoutes) {
+            return hostRoutes(Output.of(hostRoutes));
+        }
+
+        /**
+         * @param hostRoutes (**Deprecated** - use `openstack.networking.SubnetRoute`
+         * instead) An array of routes that should be used by devices
+         * with IPs from this subnet (not including local subnet route). The host_route
+         * object structure is documented below. Changing this updates the host routes
+         * for the existing subnet.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use openstack.networking.SubnetRoute instead
+         * 
+         */
+        @Deprecated /* Use openstack.networking.SubnetRoute instead */
+        public Builder hostRoutes(SubnetHostRouteArgs... hostRoutes) {
+            return hostRoutes(List.of(hostRoutes));
         }
 
         /**

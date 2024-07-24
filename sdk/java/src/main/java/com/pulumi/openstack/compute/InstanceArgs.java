@@ -10,6 +10,7 @@ import com.pulumi.openstack.compute.inputs.InstanceNetworkArgs;
 import com.pulumi.openstack.compute.inputs.InstancePersonalityArgs;
 import com.pulumi.openstack.compute.inputs.InstanceSchedulerHintArgs;
 import com.pulumi.openstack.compute.inputs.InstanceVendorOptionsArgs;
+import com.pulumi.openstack.compute.inputs.InstanceVolumeArgs;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -189,6 +190,25 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> flavorName() {
         return Optional.ofNullable(this.flavorName);
+    }
+
+    /**
+     * @deprecated
+     * Use the openstack.compute.FloatingIpAssociate resource instead
+     * 
+     */
+    @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
+    @Import(name="floatingIp")
+    private @Nullable Output<String> floatingIp;
+
+    /**
+     * @deprecated
+     * Use the openstack.compute.FloatingIpAssociate resource instead
+     * 
+     */
+    @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
+    public Optional<Output<String>> floatingIp() {
+        return Optional.ofNullable(this.floatingIp);
     }
 
     /**
@@ -512,6 +532,25 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vendorOptions);
     }
 
+    /**
+     * @deprecated
+     * Use block_device or openstack.compute.VolumeAttach instead
+     * 
+     */
+    @Deprecated /* Use block_device or openstack.compute.VolumeAttach instead */
+    @Import(name="volumes")
+    private @Nullable Output<List<InstanceVolumeArgs>> volumes;
+
+    /**
+     * @deprecated
+     * Use block_device or openstack.compute.VolumeAttach instead
+     * 
+     */
+    @Deprecated /* Use block_device or openstack.compute.VolumeAttach instead */
+    public Optional<Output<List<InstanceVolumeArgs>>> volumes() {
+        return Optional.ofNullable(this.volumes);
+    }
+
     private InstanceArgs() {}
 
     private InstanceArgs(InstanceArgs $) {
@@ -524,6 +563,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.configDrive = $.configDrive;
         this.flavorId = $.flavorId;
         this.flavorName = $.flavorName;
+        this.floatingIp = $.floatingIp;
         this.forceDelete = $.forceDelete;
         this.imageId = $.imageId;
         this.imageName = $.imageName;
@@ -541,6 +581,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.tags = $.tags;
         this.userData = $.userData;
         this.vendorOptions = $.vendorOptions;
+        this.volumes = $.volumes;
     }
 
     public static Builder builder() {
@@ -795,6 +836,31 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder flavorName(String flavorName) {
             return flavorName(Output.of(flavorName));
+        }
+
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Use the openstack.compute.FloatingIpAssociate resource instead
+         * 
+         */
+        @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
+        public Builder floatingIp(@Nullable Output<String> floatingIp) {
+            $.floatingIp = floatingIp;
+            return this;
+        }
+
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Use the openstack.compute.FloatingIpAssociate resource instead
+         * 
+         */
+        @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
+        public Builder floatingIp(String floatingIp) {
+            return floatingIp(Output.of(floatingIp));
         }
 
         /**
@@ -1279,6 +1345,43 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vendorOptions(InstanceVendorOptionsArgs vendorOptions) {
             return vendorOptions(Output.of(vendorOptions));
+        }
+
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Use block_device or openstack.compute.VolumeAttach instead
+         * 
+         */
+        @Deprecated /* Use block_device or openstack.compute.VolumeAttach instead */
+        public Builder volumes(@Nullable Output<List<InstanceVolumeArgs>> volumes) {
+            $.volumes = volumes;
+            return this;
+        }
+
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Use block_device or openstack.compute.VolumeAttach instead
+         * 
+         */
+        @Deprecated /* Use block_device or openstack.compute.VolumeAttach instead */
+        public Builder volumes(List<InstanceVolumeArgs> volumes) {
+            return volumes(Output.of(volumes));
+        }
+
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Use block_device or openstack.compute.VolumeAttach instead
+         * 
+         */
+        @Deprecated /* Use block_device or openstack.compute.VolumeAttach instead */
+        public Builder volumes(InstanceVolumeArgs... volumes) {
+            return volumes(List.of(volumes));
         }
 
         public InstanceArgs build() {

@@ -87,12 +87,10 @@ type LookupImageArgs struct {
 	SizeMax *int `pulumi:"sizeMax"`
 	// The minimum size (in bytes) of the image to return.
 	SizeMin *int `pulumi:"sizeMin"`
-	// Sorts the response by one or more attribute and sort
-	// direction combinations. You can also set multiple sort keys and directions.
-	// Default direction is `desc`. Use the comma (,) character to separate
-	// multiple values. For example expression `sort = "name:asc,status"`
-	// sorts ascending by name and descending by status.
-	Sort *string `pulumi:"sort"`
+	// Order the results in either `asc` or `desc`.
+	SortDirection *string `pulumi:"sortDirection"`
+	// Sort images based on a certain key. Defaults to `name`.
+	SortKey *string `pulumi:"sortKey"`
 	// Search for images with a specific tag.
 	Tag *string `pulumi:"tag"`
 	// A list of tags required to be set on the image
@@ -141,11 +139,12 @@ type LookupImageResult struct {
 	// the image or image
 	Schema string `pulumi:"schema"`
 	// The size of the image (in bytes).
-	SizeBytes int     `pulumi:"sizeBytes"`
-	SizeMax   *int    `pulumi:"sizeMax"`
-	SizeMin   *int    `pulumi:"sizeMin"`
-	Sort      *string `pulumi:"sort"`
-	Tag       *string `pulumi:"tag"`
+	SizeBytes     int     `pulumi:"sizeBytes"`
+	SizeMax       *int    `pulumi:"sizeMax"`
+	SizeMin       *int    `pulumi:"sizeMin"`
+	SortDirection *string `pulumi:"sortDirection"`
+	SortKey       *string `pulumi:"sortKey"`
+	Tag           *string `pulumi:"tag"`
 	// The tags list of the image.
 	Tags []string `pulumi:"tags"`
 	// The date the image was last updated.
@@ -201,12 +200,10 @@ type LookupImageOutputArgs struct {
 	SizeMax pulumi.IntPtrInput `pulumi:"sizeMax"`
 	// The minimum size (in bytes) of the image to return.
 	SizeMin pulumi.IntPtrInput `pulumi:"sizeMin"`
-	// Sorts the response by one or more attribute and sort
-	// direction combinations. You can also set multiple sort keys and directions.
-	// Default direction is `desc`. Use the comma (,) character to separate
-	// multiple values. For example expression `sort = "name:asc,status"`
-	// sorts ascending by name and descending by status.
-	Sort pulumi.StringPtrInput `pulumi:"sort"`
+	// Order the results in either `asc` or `desc`.
+	SortDirection pulumi.StringPtrInput `pulumi:"sortDirection"`
+	// Sort images based on a certain key. Defaults to `name`.
+	SortKey pulumi.StringPtrInput `pulumi:"sortKey"`
 	// Search for images with a specific tag.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 	// A list of tags required to be set on the image
@@ -341,8 +338,12 @@ func (o LookupImageResultOutput) SizeMin() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupImageResult) *int { return v.SizeMin }).(pulumi.IntPtrOutput)
 }
 
-func (o LookupImageResultOutput) Sort() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupImageResult) *string { return v.Sort }).(pulumi.StringPtrOutput)
+func (o LookupImageResultOutput) SortDirection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupImageResult) *string { return v.SortDirection }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupImageResultOutput) SortKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupImageResult) *string { return v.SortKey }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupImageResultOutput) Tag() pulumi.StringPtrOutput {

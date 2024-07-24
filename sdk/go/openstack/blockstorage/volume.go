@@ -81,6 +81,10 @@ type Volume struct {
 	// Metadata key/value pairs to associate with the volume.
 	// Changing this updates the existing volume metadata.
 	Metadata pulumi.MapOutput `pulumi:"metadata"`
+	// (Optional) Allow the volume to be attached to more than one Compute instance.
+	//
+	// Deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
+	Multiattach pulumi.BoolPtrOutput `pulumi:"multiattach"`
 	// A unique name for the volume. Changing this updates the
 	// volume's name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -169,6 +173,10 @@ type volumeState struct {
 	// Metadata key/value pairs to associate with the volume.
 	// Changing this updates the existing volume metadata.
 	Metadata map[string]interface{} `pulumi:"metadata"`
+	// (Optional) Allow the volume to be attached to more than one Compute instance.
+	//
+	// Deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
+	Multiattach *bool `pulumi:"multiattach"`
 	// A unique name for the volume. Changing this updates the
 	// volume's name.
 	Name *string `pulumi:"name"`
@@ -225,6 +233,10 @@ type VolumeState struct {
 	// Metadata key/value pairs to associate with the volume.
 	// Changing this updates the existing volume metadata.
 	Metadata pulumi.MapInput
+	// (Optional) Allow the volume to be attached to more than one Compute instance.
+	//
+	// Deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
+	Multiattach pulumi.BoolPtrInput
 	// A unique name for the volume. Changing this updates the
 	// volume's name.
 	Name pulumi.StringPtrInput
@@ -281,6 +293,10 @@ type volumeArgs struct {
 	// Metadata key/value pairs to associate with the volume.
 	// Changing this updates the existing volume metadata.
 	Metadata map[string]interface{} `pulumi:"metadata"`
+	// (Optional) Allow the volume to be attached to more than one Compute instance.
+	//
+	// Deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
+	Multiattach *bool `pulumi:"multiattach"`
 	// A unique name for the volume. Changing this updates the
 	// volume's name.
 	Name *string `pulumi:"name"`
@@ -334,6 +350,10 @@ type VolumeArgs struct {
 	// Metadata key/value pairs to associate with the volume.
 	// Changing this updates the existing volume metadata.
 	Metadata pulumi.MapInput
+	// (Optional) Allow the volume to be attached to more than one Compute instance.
+	//
+	// Deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
+	Multiattach pulumi.BoolPtrInput
 	// A unique name for the volume. Changing this updates the
 	// volume's name.
 	Name pulumi.StringPtrInput
@@ -498,6 +518,13 @@ func (o VolumeOutput) ImageId() pulumi.StringPtrOutput {
 // Changing this updates the existing volume metadata.
 func (o VolumeOutput) Metadata() pulumi.MapOutput {
 	return o.ApplyT(func(v *Volume) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+}
+
+// (Optional) Allow the volume to be attached to more than one Compute instance.
+//
+// Deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
+func (o VolumeOutput) Multiattach() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.BoolPtrOutput { return v.Multiattach }).(pulumi.BoolPtrOutput)
 }
 
 // A unique name for the volume. Changing this updates the

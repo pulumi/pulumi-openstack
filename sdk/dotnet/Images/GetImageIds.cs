@@ -144,10 +144,27 @@ namespace Pulumi.OpenStack.Images
         /// direction combinations. You can also set multiple sort keys and directions.
         /// Default direction is `desc`. Use the comma (,) character to separate
         /// multiple values. For example expression `sort = "name:asc,status"`
-        /// sorts ascending by name and descending by status.
+        /// sorts ascending by name and descending by status. `sort` cannot be used
+        /// simultaneously with `sort_key`. If both are present in a configuration
+        /// then only `sort` will be used.
         /// </summary>
         [Input("sort")]
         public string? Sort { get; set; }
+
+        /// <summary>
+        /// Order the results in either `asc` or `desc`.
+        /// Can be applied only with `sort_key`. Defaults to `asc`
+        /// </summary>
+        [Input("sortDirection")]
+        public string? SortDirection { get; set; }
+
+        /// <summary>
+        /// Sort images based on a certain key. Defaults to
+        /// `name`. `sort_key` cannot be used simultaneously with `sort`. If both
+        /// are present in a configuration then only `sort` will be used.
+        /// </summary>
+        [Input("sortKey")]
+        public string? SortKey { get; set; }
 
         /// <summary>
         /// Search for images with a specific tag.
@@ -252,10 +269,27 @@ namespace Pulumi.OpenStack.Images
         /// direction combinations. You can also set multiple sort keys and directions.
         /// Default direction is `desc`. Use the comma (,) character to separate
         /// multiple values. For example expression `sort = "name:asc,status"`
-        /// sorts ascending by name and descending by status.
+        /// sorts ascending by name and descending by status. `sort` cannot be used
+        /// simultaneously with `sort_key`. If both are present in a configuration
+        /// then only `sort` will be used.
         /// </summary>
         [Input("sort")]
         public Input<string>? Sort { get; set; }
+
+        /// <summary>
+        /// Order the results in either `asc` or `desc`.
+        /// Can be applied only with `sort_key`. Defaults to `asc`
+        /// </summary>
+        [Input("sortDirection")]
+        public Input<string>? SortDirection { get; set; }
+
+        /// <summary>
+        /// Sort images based on a certain key. Defaults to
+        /// `name`. `sort_key` cannot be used simultaneously with `sort`. If both
+        /// are present in a configuration then only `sort` will be used.
+        /// </summary>
+        [Input("sortKey")]
+        public Input<string>? SortKey { get; set; }
 
         /// <summary>
         /// Search for images with a specific tag.
@@ -307,6 +341,8 @@ namespace Pulumi.OpenStack.Images
         public readonly int? SizeMax;
         public readonly int? SizeMin;
         public readonly string? Sort;
+        public readonly string? SortDirection;
+        public readonly string? SortKey;
         public readonly string? Tag;
         public readonly ImmutableArray<string> Tags;
         public readonly string? Visibility;
@@ -335,6 +371,10 @@ namespace Pulumi.OpenStack.Images
 
             string? sort,
 
+            string? sortDirection,
+
+            string? sortKey,
+
             string? tag,
 
             ImmutableArray<string> tags,
@@ -352,6 +392,8 @@ namespace Pulumi.OpenStack.Images
             SizeMax = sizeMax;
             SizeMin = sizeMin;
             Sort = sort;
+            SortDirection = sortDirection;
+            SortKey = sortKey;
             Tag = tag;
             Tags = tags;
             Visibility = visibility;

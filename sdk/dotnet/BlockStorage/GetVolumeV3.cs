@@ -202,6 +202,10 @@ namespace Pulumi.OpenStack.BlockStorage
         /// </summary>
         public readonly ImmutableDictionary<string, object> Metadata;
         /// <summary>
+        /// Indicates if the volume can be attached to more then one server.
+        /// </summary>
+        public readonly bool Multiattach;
+        /// <summary>
         /// See Argument Reference above.
         /// </summary>
         public readonly string Name;
@@ -238,6 +242,8 @@ namespace Pulumi.OpenStack.BlockStorage
 
             ImmutableDictionary<string, object> metadata,
 
+            bool multiattach,
+
             string name,
 
             string region,
@@ -255,6 +261,7 @@ namespace Pulumi.OpenStack.BlockStorage
             Host = host;
             Id = id;
             Metadata = metadata;
+            Multiattach = multiattach;
             Name = name;
             Region = region;
             Size = size;

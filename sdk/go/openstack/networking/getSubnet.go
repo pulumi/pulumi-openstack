@@ -54,6 +54,8 @@ type LookupSubnetArgs struct {
 	Cidr *string `pulumi:"cidr"`
 	// Human-readable description of the subnet.
 	Description *string `pulumi:"description"`
+	// Deprecated: use dhcpEnabled instead
+	DhcpDisabled *bool `pulumi:"dhcpDisabled"`
 	// If the subnet has DHCP enabled.
 	DhcpEnabled *bool `pulumi:"dhcpEnabled"`
 	// The IP of the subnet's gateway.
@@ -92,7 +94,9 @@ type LookupSubnetResult struct {
 	AllocationPools []GetSubnetAllocationPool `pulumi:"allocationPools"`
 	Cidr            string                    `pulumi:"cidr"`
 	Description     string                    `pulumi:"description"`
-	DhcpEnabled     *bool                     `pulumi:"dhcpEnabled"`
+	// Deprecated: use dhcpEnabled instead
+	DhcpDisabled *bool `pulumi:"dhcpDisabled"`
+	DhcpEnabled  *bool `pulumi:"dhcpEnabled"`
 	// DNS Nameservers of the subnet.
 	DnsNameservers []string `pulumi:"dnsNameservers"`
 	// Whether the subnet has DHCP enabled or not.
@@ -136,6 +140,8 @@ type LookupSubnetOutputArgs struct {
 	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
 	// Human-readable description of the subnet.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Deprecated: use dhcpEnabled instead
+	DhcpDisabled pulumi.BoolPtrInput `pulumi:"dhcpDisabled"`
 	// If the subnet has DHCP enabled.
 	DhcpEnabled pulumi.BoolPtrInput `pulumi:"dhcpEnabled"`
 	// The IP of the subnet's gateway.
@@ -201,6 +207,11 @@ func (o LookupSubnetResultOutput) Cidr() pulumi.StringOutput {
 
 func (o LookupSubnetResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Deprecated: use dhcpEnabled instead
+func (o LookupSubnetResultOutput) DhcpDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupSubnetResult) *bool { return v.DhcpDisabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o LookupSubnetResultOutput) DhcpEnabled() pulumi.BoolPtrOutput {

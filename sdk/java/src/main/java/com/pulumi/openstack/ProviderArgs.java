@@ -437,6 +437,29 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
+     * 
+     * @deprecated
+     * Users not using loadbalancer resources can ignore this message. Support for neutron-lbaas will be removed on next major release. Octavia will be the only supported method for loadbalancer resources. Users using octavia will have to remove &#39;use_octavia&#39; option from the provider configuration block. Users using neutron-lbaas will have to migrate/upgrade to octavia.
+     * 
+     */
+    @Deprecated /* Users not using loadbalancer resources can ignore this message. Support for neutron-lbaas will be removed on next major release. Octavia will be the only supported method for loadbalancer resources. Users using octavia will have to remove 'use_octavia' option from the provider configuration block. Users using neutron-lbaas will have to migrate/upgrade to octavia. */
+    @Import(name="useOctavia", json=true)
+    private @Nullable Output<Boolean> useOctavia;
+
+    /**
+     * @return If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
+     * 
+     * @deprecated
+     * Users not using loadbalancer resources can ignore this message. Support for neutron-lbaas will be removed on next major release. Octavia will be the only supported method for loadbalancer resources. Users using octavia will have to remove &#39;use_octavia&#39; option from the provider configuration block. Users using neutron-lbaas will have to migrate/upgrade to octavia.
+     * 
+     */
+    @Deprecated /* Users not using loadbalancer resources can ignore this message. Support for neutron-lbaas will be removed on next major release. Octavia will be the only supported method for loadbalancer resources. Users using octavia will have to remove 'use_octavia' option from the provider configuration block. Users using neutron-lbaas will have to migrate/upgrade to octavia. */
+    public Optional<Output<Boolean>> useOctavia() {
+        return Optional.ofNullable(this.useOctavia);
+    }
+
+    /**
      * The ID of the domain where the user resides (Identity v3).
      * 
      */
@@ -527,6 +550,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.tenantId = $.tenantId;
         this.tenantName = $.tenantName;
         this.token = $.token;
+        this.useOctavia = $.useOctavia;
         this.userDomainId = $.userDomainId;
         this.userDomainName = $.userDomainName;
         this.userId = $.userId;
@@ -1129,6 +1153,35 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder token(String token) {
             return token(Output.of(token));
+        }
+
+        /**
+         * @param useOctavia If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Users not using loadbalancer resources can ignore this message. Support for neutron-lbaas will be removed on next major release. Octavia will be the only supported method for loadbalancer resources. Users using octavia will have to remove &#39;use_octavia&#39; option from the provider configuration block. Users using neutron-lbaas will have to migrate/upgrade to octavia.
+         * 
+         */
+        @Deprecated /* Users not using loadbalancer resources can ignore this message. Support for neutron-lbaas will be removed on next major release. Octavia will be the only supported method for loadbalancer resources. Users using octavia will have to remove 'use_octavia' option from the provider configuration block. Users using neutron-lbaas will have to migrate/upgrade to octavia. */
+        public Builder useOctavia(@Nullable Output<Boolean> useOctavia) {
+            $.useOctavia = useOctavia;
+            return this;
+        }
+
+        /**
+         * @param useOctavia If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Users not using loadbalancer resources can ignore this message. Support for neutron-lbaas will be removed on next major release. Octavia will be the only supported method for loadbalancer resources. Users using octavia will have to remove &#39;use_octavia&#39; option from the provider configuration block. Users using neutron-lbaas will have to migrate/upgrade to octavia.
+         * 
+         */
+        @Deprecated /* Users not using loadbalancer resources can ignore this message. Support for neutron-lbaas will be removed on next major release. Octavia will be the only supported method for loadbalancer resources. Users using octavia will have to remove 'use_octavia' option from the provider configuration block. Users using neutron-lbaas will have to migrate/upgrade to octavia. */
+        public Builder useOctavia(Boolean useOctavia) {
+            return useOctavia(Output.of(useOctavia));
         }
 
         /**

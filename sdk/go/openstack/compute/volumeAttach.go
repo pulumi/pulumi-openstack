@@ -64,7 +64,7 @@ import (
 // ### Using Multiattach-enabled volumes
 //
 // Multiattach Volumes are dependent upon your OpenStack cloud and not all
-// clouds support multiattach. Multiattach volumes require a volumeType that has [multiattach enabled](https://docs.openstack.org/cinder/latest/admin/volume-multiattach.html#multiattach-volume-type).
+// clouds support multiattach.
 //
 // ```go
 // package main
@@ -80,9 +80,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			volume1, err := blockstorage.NewVolume(ctx, "volume_1", &blockstorage.VolumeArgs{
-//				Name:       pulumi.String("volume_1"),
-//				Size:       pulumi.Int(1),
-//				VolumeType: pulumi.String("multiattach"),
+//				Name:        pulumi.String("volume_1"),
+//				Size:        pulumi.Int(1),
+//				Multiattach: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -153,10 +153,6 @@ type VolumeAttach struct {
 	// `region` argument of the provider is used. Changing this creates a
 	// new volume attachment.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Add a device role tag that is applied to the volume when
-	// attaching it to the VM. Changing this creates a new volume attachment with
-	// the new tag. Requires microversion >= 2.49.
-	Tag pulumi.StringPtrOutput `pulumi:"tag"`
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions VolumeAttachVendorOptionsPtrOutput `pulumi:"vendorOptions"`
@@ -210,10 +206,6 @@ type volumeAttachState struct {
 	// `region` argument of the provider is used. Changing this creates a
 	// new volume attachment.
 	Region *string `pulumi:"region"`
-	// Add a device role tag that is applied to the volume when
-	// attaching it to the VM. Changing this creates a new volume attachment with
-	// the new tag. Requires microversion >= 2.49.
-	Tag *string `pulumi:"tag"`
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions *VolumeAttachVendorOptions `pulumi:"vendorOptions"`
@@ -232,10 +224,6 @@ type VolumeAttachState struct {
 	// `region` argument of the provider is used. Changing this creates a
 	// new volume attachment.
 	Region pulumi.StringPtrInput
-	// Add a device role tag that is applied to the volume when
-	// attaching it to the VM. Changing this creates a new volume attachment with
-	// the new tag. Requires microversion >= 2.49.
-	Tag pulumi.StringPtrInput
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions VolumeAttachVendorOptionsPtrInput
@@ -258,10 +246,6 @@ type volumeAttachArgs struct {
 	// `region` argument of the provider is used. Changing this creates a
 	// new volume attachment.
 	Region *string `pulumi:"region"`
-	// Add a device role tag that is applied to the volume when
-	// attaching it to the VM. Changing this creates a new volume attachment with
-	// the new tag. Requires microversion >= 2.49.
-	Tag *string `pulumi:"tag"`
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions *VolumeAttachVendorOptions `pulumi:"vendorOptions"`
@@ -281,10 +265,6 @@ type VolumeAttachArgs struct {
 	// `region` argument of the provider is used. Changing this creates a
 	// new volume attachment.
 	Region pulumi.StringPtrInput
-	// Add a device role tag that is applied to the volume when
-	// attaching it to the VM. Changing this creates a new volume attachment with
-	// the new tag. Requires microversion >= 2.49.
-	Tag pulumi.StringPtrInput
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions VolumeAttachVendorOptionsPtrInput
@@ -399,13 +379,6 @@ func (o VolumeAttachOutput) Multiattach() pulumi.BoolPtrOutput {
 // new volume attachment.
 func (o VolumeAttachOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeAttach) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
-}
-
-// Add a device role tag that is applied to the volume when
-// attaching it to the VM. Changing this creates a new volume attachment with
-// the new tag. Requires microversion >= 2.49.
-func (o VolumeAttachOutput) Tag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VolumeAttach) pulumi.StringPtrOutput { return v.Tag }).(pulumi.StringPtrOutput)
 }
 
 // Map of additional vendor-specific options.

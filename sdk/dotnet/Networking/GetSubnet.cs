@@ -75,6 +75,9 @@ namespace Pulumi.OpenStack.Networking
         [Input("description")]
         public string? Description { get; set; }
 
+        [Input("dhcpDisabled")]
+        public bool? DhcpDisabled { get; set; }
+
         /// <summary>
         /// If the subnet has DHCP enabled.
         /// </summary>
@@ -176,6 +179,9 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("dhcpDisabled")]
+        public Input<bool>? DhcpDisabled { get; set; }
 
         /// <summary>
         /// If the subnet has DHCP enabled.
@@ -279,6 +285,7 @@ namespace Pulumi.OpenStack.Networking
         public readonly ImmutableArray<Outputs.GetSubnetAllocationPoolResult> AllocationPools;
         public readonly string Cidr;
         public readonly string Description;
+        public readonly bool? DhcpDisabled;
         public readonly bool? DhcpEnabled;
         /// <summary>
         /// DNS Nameservers of the subnet.
@@ -325,6 +332,8 @@ namespace Pulumi.OpenStack.Networking
 
             string description,
 
+            bool? dhcpDisabled,
+
             bool? dhcpEnabled,
 
             ImmutableArray<string> dnsNameservers,
@@ -363,6 +372,7 @@ namespace Pulumi.OpenStack.Networking
             AllocationPools = allocationPools;
             Cidr = cidr;
             Description = description;
+            DhcpDisabled = dhcpDisabled;
             DhcpEnabled = dhcpEnabled;
             DnsNameservers = dnsNameservers;
             EnableDhcp = enableDhcp;

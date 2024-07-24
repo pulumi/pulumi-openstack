@@ -95,7 +95,8 @@ public final class GetImageResult {
     private Integer sizeBytes;
     private @Nullable Integer sizeMax;
     private @Nullable Integer sizeMin;
-    private @Nullable String sort;
+    private @Nullable String sortDirection;
+    private @Nullable String sortKey;
     private @Nullable String tag;
     /**
      * @return The tags list of the image.
@@ -232,8 +233,11 @@ public final class GetImageResult {
     public Optional<Integer> sizeMin() {
         return Optional.ofNullable(this.sizeMin);
     }
-    public Optional<String> sort() {
-        return Optional.ofNullable(this.sort);
+    public Optional<String> sortDirection() {
+        return Optional.ofNullable(this.sortDirection);
+    }
+    public Optional<String> sortKey() {
+        return Optional.ofNullable(this.sortKey);
     }
     public Optional<String> tag() {
         return Optional.ofNullable(this.tag);
@@ -287,7 +291,8 @@ public final class GetImageResult {
         private Integer sizeBytes;
         private @Nullable Integer sizeMax;
         private @Nullable Integer sizeMin;
-        private @Nullable String sort;
+        private @Nullable String sortDirection;
+        private @Nullable String sortKey;
         private @Nullable String tag;
         private List<String> tags;
         private String updatedAt;
@@ -317,7 +322,8 @@ public final class GetImageResult {
     	      this.sizeBytes = defaults.sizeBytes;
     	      this.sizeMax = defaults.sizeMax;
     	      this.sizeMin = defaults.sizeMin;
-    	      this.sort = defaults.sort;
+    	      this.sortDirection = defaults.sortDirection;
+    	      this.sortKey = defaults.sortKey;
     	      this.tag = defaults.tag;
     	      this.tags = defaults.tags;
     	      this.updatedAt = defaults.updatedAt;
@@ -483,9 +489,15 @@ public final class GetImageResult {
             return this;
         }
         @CustomType.Setter
-        public Builder sort(@Nullable String sort) {
+        public Builder sortDirection(@Nullable String sortDirection) {
 
-            this.sort = sort;
+            this.sortDirection = sortDirection;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sortKey(@Nullable String sortKey) {
+
+            this.sortKey = sortKey;
             return this;
         }
         @CustomType.Setter
@@ -543,7 +555,8 @@ public final class GetImageResult {
             _resultValue.sizeBytes = sizeBytes;
             _resultValue.sizeMax = sizeMax;
             _resultValue.sizeMin = sizeMin;
-            _resultValue.sort = sort;
+            _resultValue.sortDirection = sortDirection;
+            _resultValue.sortKey = sortKey;
             _resultValue.tag = tag;
             _resultValue.tags = tags;
             _resultValue.updatedAt = updatedAt;

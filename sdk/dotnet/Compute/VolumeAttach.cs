@@ -52,7 +52,7 @@ namespace Pulumi.OpenStack.Compute
     /// ### Using Multiattach-enabled volumes
     /// 
     /// Multiattach Volumes are dependent upon your OpenStack cloud and not all
-    /// clouds support multiattach. Multiattach volumes require a volume_type that has [multiattach enabled](https://docs.openstack.org/cinder/latest/admin/volume-multiattach.html#multiattach-volume-type).
+    /// clouds support multiattach.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -66,7 +66,7 @@ namespace Pulumi.OpenStack.Compute
     ///     {
     ///         Name = "volume_1",
     ///         Size = 1,
-    ///         VolumeType = "multiattach",
+    ///         Multiattach = true,
     ///     });
     /// 
     ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
@@ -148,14 +148,6 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
-
-        /// <summary>
-        /// Add a device role tag that is applied to the volume when
-        /// attaching it to the VM. Changing this creates a new volume attachment with
-        /// the new tag. Requires microversion &gt;= 2.49.
-        /// </summary>
-        [Output("tag")]
-        public Output<string?> Tag { get; private set; } = null!;
 
         /// <summary>
         /// Map of additional vendor-specific options.
@@ -241,14 +233,6 @@ namespace Pulumi.OpenStack.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Add a device role tag that is applied to the volume when
-        /// attaching it to the VM. Changing this creates a new volume attachment with
-        /// the new tag. Requires microversion &gt;= 2.49.
-        /// </summary>
-        [Input("tag")]
-        public Input<string>? Tag { get; set; }
-
-        /// <summary>
         /// Map of additional vendor-specific options.
         /// Supported options are described below.
         /// </summary>
@@ -292,14 +276,6 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
-
-        /// <summary>
-        /// Add a device role tag that is applied to the volume when
-        /// attaching it to the VM. Changing this creates a new volume attachment with
-        /// the new tag. Requires microversion &gt;= 2.49.
-        /// </summary>
-        [Input("tag")]
-        public Input<string>? Tag { get; set; }
 
         /// <summary>
         /// Map of additional vendor-specific options.

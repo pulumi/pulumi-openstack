@@ -37,6 +37,8 @@ export function getImageIds(args?: GetImageIdsArgs, opts?: pulumi.InvokeOptions)
         "sizeMax": args.sizeMax,
         "sizeMin": args.sizeMin,
         "sort": args.sort,
+        "sortDirection": args.sortDirection,
+        "sortKey": args.sortKey,
         "tag": args.tag,
         "tags": args.tags,
         "visibility": args.visibility,
@@ -94,9 +96,26 @@ export interface GetImageIdsArgs {
      * direction combinations. You can also set multiple sort keys and directions.
      * Default direction is `desc`. Use the comma (,) character to separate
      * multiple values. For example expression `sort = "name:asc,status"`
-     * sorts ascending by name and descending by status.
+     * sorts ascending by name and descending by status. `sort` cannot be used
+     * simultaneously with `sortKey`. If both are present in a configuration
+     * then only `sort` will be used.
      */
     sort?: string;
+    /**
+     * Order the results in either `asc` or `desc`.
+     * Can be applied only with `sortKey`. Defaults to `asc`
+     *
+     * @deprecated Use option 'sort' instead.
+     */
+    sortDirection?: string;
+    /**
+     * Sort images based on a certain key. Defaults to
+     * `name`. `sortKey` cannot be used simultaneously with `sort`. If both
+     * are present in a configuration then only `sort` will be used.
+     *
+     * @deprecated Use option 'sort' instead.
+     */
+    sortKey?: string;
     /**
      * Search for images with a specific tag.
      */
@@ -131,6 +150,14 @@ export interface GetImageIdsResult {
     readonly sizeMax?: number;
     readonly sizeMin?: number;
     readonly sort?: string;
+    /**
+     * @deprecated Use option 'sort' instead.
+     */
+    readonly sortDirection?: string;
+    /**
+     * @deprecated Use option 'sort' instead.
+     */
+    readonly sortKey?: string;
     readonly tag?: string;
     readonly tags?: string[];
     readonly visibility?: string;
@@ -209,9 +236,26 @@ export interface GetImageIdsOutputArgs {
      * direction combinations. You can also set multiple sort keys and directions.
      * Default direction is `desc`. Use the comma (,) character to separate
      * multiple values. For example expression `sort = "name:asc,status"`
-     * sorts ascending by name and descending by status.
+     * sorts ascending by name and descending by status. `sort` cannot be used
+     * simultaneously with `sortKey`. If both are present in a configuration
+     * then only `sort` will be used.
      */
     sort?: pulumi.Input<string>;
+    /**
+     * Order the results in either `asc` or `desc`.
+     * Can be applied only with `sortKey`. Defaults to `asc`
+     *
+     * @deprecated Use option 'sort' instead.
+     */
+    sortDirection?: pulumi.Input<string>;
+    /**
+     * Sort images based on a certain key. Defaults to
+     * `name`. `sortKey` cannot be used simultaneously with `sort`. If both
+     * are present in a configuration then only `sort` will be used.
+     *
+     * @deprecated Use option 'sort' instead.
+     */
+    sortKey?: pulumi.Input<string>;
     /**
      * Search for images with a specific tag.
      */

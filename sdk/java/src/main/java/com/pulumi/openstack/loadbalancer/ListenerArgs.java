@@ -182,8 +182,8 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The protocol - can either be TCP, HTTP, HTTPS,
-     * TERMINATED_HTTPS, UDP, SCTP (supported only in
-     * **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
+     * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
+     * in **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
      * **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
      * 
      */
@@ -192,8 +192,8 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The protocol - can either be TCP, HTTP, HTTPS,
-     * TERMINATED_HTTPS, UDP, SCTP (supported only in
-     * **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
+     * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
+     * in **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
      * **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
      * 
      */
@@ -616,8 +616,8 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocol The protocol - can either be TCP, HTTP, HTTPS,
-         * TERMINATED_HTTPS, UDP, SCTP (supported only in
-         * **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
+         * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
+         * in **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
          * **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
          * 
          * @return builder
@@ -630,8 +630,8 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocol The protocol - can either be TCP, HTTP, HTTPS,
-         * TERMINATED_HTTPS, UDP, SCTP (supported only in
-         * **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
+         * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
+         * in **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
          * **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
          * 
          * @return builder

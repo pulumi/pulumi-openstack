@@ -102,6 +102,16 @@ export class Router extends pulumi.CustomResource {
      */
     public readonly externalFixedIps!: pulumi.Output<outputs.networking.RouterExternalFixedIp[]>;
     /**
+     * The
+     * network UUID of an external gateway for the router. A router with an
+     * external gateway is required if any compute instances or load balancers
+     * will be using floating IPs. Changing this updates the external gateway
+     * of an existing router.
+     *
+     * @deprecated use externalNetworkId instead
+     */
+    public readonly externalGateway!: pulumi.Output<string>;
+    /**
      * The network UUID of an external gateway
      * for the router. A router with an external gateway is required if any
      * compute instances or load balancers will be using floating IPs. Changing
@@ -167,6 +177,7 @@ export class Router extends pulumi.CustomResource {
             resourceInputs["distributed"] = state ? state.distributed : undefined;
             resourceInputs["enableSnat"] = state ? state.enableSnat : undefined;
             resourceInputs["externalFixedIps"] = state ? state.externalFixedIps : undefined;
+            resourceInputs["externalGateway"] = state ? state.externalGateway : undefined;
             resourceInputs["externalNetworkId"] = state ? state.externalNetworkId : undefined;
             resourceInputs["externalSubnetIds"] = state ? state.externalSubnetIds : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -183,6 +194,7 @@ export class Router extends pulumi.CustomResource {
             resourceInputs["distributed"] = args ? args.distributed : undefined;
             resourceInputs["enableSnat"] = args ? args.enableSnat : undefined;
             resourceInputs["externalFixedIps"] = args ? args.externalFixedIps : undefined;
+            resourceInputs["externalGateway"] = args ? args.externalGateway : undefined;
             resourceInputs["externalNetworkId"] = args ? args.externalNetworkId : undefined;
             resourceInputs["externalSubnetIds"] = args ? args.externalSubnetIds : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -245,6 +257,16 @@ export interface RouterState {
      * external fixed IPs of the router.
      */
     externalFixedIps?: pulumi.Input<pulumi.Input<inputs.networking.RouterExternalFixedIp>[]>;
+    /**
+     * The
+     * network UUID of an external gateway for the router. A router with an
+     * external gateway is required if any compute instances or load balancers
+     * will be using floating IPs. Changing this updates the external gateway
+     * of an existing router.
+     *
+     * @deprecated use externalNetworkId instead
+     */
+    externalGateway?: pulumi.Input<string>;
     /**
      * The network UUID of an external gateway
      * for the router. A router with an external gateway is required if any
@@ -334,6 +356,16 @@ export interface RouterArgs {
      * external fixed IPs of the router.
      */
     externalFixedIps?: pulumi.Input<pulumi.Input<inputs.networking.RouterExternalFixedIp>[]>;
+    /**
+     * The
+     * network UUID of an external gateway for the router. A router with an
+     * external gateway is required if any compute instances or load balancers
+     * will be using floating IPs. Changing this updates the external gateway
+     * of an existing router.
+     *
+     * @deprecated use externalNetworkId instead
+     */
+    externalGateway?: pulumi.Input<string>;
     /**
      * The network UUID of an external gateway
      * for the router. A router with an external gateway is required if any

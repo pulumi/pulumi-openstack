@@ -21,7 +21,6 @@ class VolumeAttachArgs:
                  device: Optional[pulumi.Input[str]] = None,
                  multiattach: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 tag: Optional[pulumi.Input[str]] = None,
                  vendor_options: Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']] = None):
         """
         The set of arguments for constructing a VolumeAttach resource.
@@ -32,9 +31,6 @@ class VolumeAttachArgs:
                A Compute client is needed to create a volume attachment. If omitted, the
                `region` argument of the provider is used. Changing this creates a
                new volume attachment.
-        :param pulumi.Input[str] tag: Add a device role tag that is applied to the volume when
-               attaching it to the VM. Changing this creates a new volume attachment with
-               the new tag. Requires microversion >= 2.49.
         :param pulumi.Input['VolumeAttachVendorOptionsArgs'] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         """
@@ -46,8 +42,6 @@ class VolumeAttachArgs:
             pulumi.set(__self__, "multiattach", multiattach)
         if region is not None:
             pulumi.set(__self__, "region", region)
-        if tag is not None:
-            pulumi.set(__self__, "tag", tag)
         if vendor_options is not None:
             pulumi.set(__self__, "vendor_options", vendor_options)
 
@@ -112,20 +106,6 @@ class VolumeAttachArgs:
         pulumi.set(self, "region", value)
 
     @property
-    @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[str]]:
-        """
-        Add a device role tag that is applied to the volume when
-        attaching it to the VM. Changing this creates a new volume attachment with
-        the new tag. Requires microversion >= 2.49.
-        """
-        return pulumi.get(self, "tag")
-
-    @tag.setter
-    def tag(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "tag", value)
-
-    @property
     @pulumi.getter(name="vendorOptions")
     def vendor_options(self) -> Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']]:
         """
@@ -146,7 +126,6 @@ class _VolumeAttachState:
                  instance_id: Optional[pulumi.Input[str]] = None,
                  multiattach: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 tag: Optional[pulumi.Input[str]] = None,
                  vendor_options: Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']] = None,
                  volume_id: Optional[pulumi.Input[str]] = None):
         """
@@ -157,9 +136,6 @@ class _VolumeAttachState:
                A Compute client is needed to create a volume attachment. If omitted, the
                `region` argument of the provider is used. Changing this creates a
                new volume attachment.
-        :param pulumi.Input[str] tag: Add a device role tag that is applied to the volume when
-               attaching it to the VM. Changing this creates a new volume attachment with
-               the new tag. Requires microversion >= 2.49.
         :param pulumi.Input['VolumeAttachVendorOptionsArgs'] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         :param pulumi.Input[str] volume_id: The ID of the Volume to attach to an Instance.
@@ -172,8 +148,6 @@ class _VolumeAttachState:
             pulumi.set(__self__, "multiattach", multiattach)
         if region is not None:
             pulumi.set(__self__, "region", region)
-        if tag is not None:
-            pulumi.set(__self__, "tag", tag)
         if vendor_options is not None:
             pulumi.set(__self__, "vendor_options", vendor_options)
         if volume_id is not None:
@@ -228,20 +202,6 @@ class _VolumeAttachState:
         pulumi.set(self, "region", value)
 
     @property
-    @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[str]]:
-        """
-        Add a device role tag that is applied to the volume when
-        attaching it to the VM. Changing this creates a new volume attachment with
-        the new tag. Requires microversion >= 2.49.
-        """
-        return pulumi.get(self, "tag")
-
-    @tag.setter
-    def tag(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "tag", value)
-
-    @property
     @pulumi.getter(name="vendorOptions")
     def vendor_options(self) -> Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']]:
         """
@@ -276,7 +236,6 @@ class VolumeAttach(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  multiattach: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 tag: Optional[pulumi.Input[str]] = None,
                  vendor_options: Optional[pulumi.Input[pulumi.InputType['VolumeAttachVendorOptionsArgs']]] = None,
                  volume_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -306,7 +265,7 @@ class VolumeAttach(pulumi.CustomResource):
         ### Using Multiattach-enabled volumes
 
         Multiattach Volumes are dependent upon your OpenStack cloud and not all
-        clouds support multiattach. Multiattach volumes require a volume_type that has [multiattach enabled](https://docs.openstack.org/cinder/latest/admin/volume-multiattach.html#multiattach-volume-type).
+        clouds support multiattach.
 
         ```python
         import pulumi
@@ -315,7 +274,7 @@ class VolumeAttach(pulumi.CustomResource):
         volume1 = openstack.blockstorage.Volume("volume_1",
             name="volume_1",
             size=1,
-            volume_type="multiattach")
+            multiattach=True)
         instance1 = openstack.compute.Instance("instance_1",
             name="instance_1",
             security_groups=["default"])
@@ -353,9 +312,6 @@ class VolumeAttach(pulumi.CustomResource):
                A Compute client is needed to create a volume attachment. If omitted, the
                `region` argument of the provider is used. Changing this creates a
                new volume attachment.
-        :param pulumi.Input[str] tag: Add a device role tag that is applied to the volume when
-               attaching it to the VM. Changing this creates a new volume attachment with
-               the new tag. Requires microversion >= 2.49.
         :param pulumi.Input[pulumi.InputType['VolumeAttachVendorOptionsArgs']] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         :param pulumi.Input[str] volume_id: The ID of the Volume to attach to an Instance.
@@ -392,7 +348,7 @@ class VolumeAttach(pulumi.CustomResource):
         ### Using Multiattach-enabled volumes
 
         Multiattach Volumes are dependent upon your OpenStack cloud and not all
-        clouds support multiattach. Multiattach volumes require a volume_type that has [multiattach enabled](https://docs.openstack.org/cinder/latest/admin/volume-multiattach.html#multiattach-volume-type).
+        clouds support multiattach.
 
         ```python
         import pulumi
@@ -401,7 +357,7 @@ class VolumeAttach(pulumi.CustomResource):
         volume1 = openstack.blockstorage.Volume("volume_1",
             name="volume_1",
             size=1,
-            volume_type="multiattach")
+            multiattach=True)
         instance1 = openstack.compute.Instance("instance_1",
             name="instance_1",
             security_groups=["default"])
@@ -450,7 +406,6 @@ class VolumeAttach(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  multiattach: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 tag: Optional[pulumi.Input[str]] = None,
                  vendor_options: Optional[pulumi.Input[pulumi.InputType['VolumeAttachVendorOptionsArgs']]] = None,
                  volume_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -468,7 +423,6 @@ class VolumeAttach(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["multiattach"] = multiattach
             __props__.__dict__["region"] = region
-            __props__.__dict__["tag"] = tag
             __props__.__dict__["vendor_options"] = vendor_options
             if volume_id is None and not opts.urn:
                 raise TypeError("Missing required property 'volume_id'")
@@ -487,7 +441,6 @@ class VolumeAttach(pulumi.CustomResource):
             instance_id: Optional[pulumi.Input[str]] = None,
             multiattach: Optional[pulumi.Input[bool]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            tag: Optional[pulumi.Input[str]] = None,
             vendor_options: Optional[pulumi.Input[pulumi.InputType['VolumeAttachVendorOptionsArgs']]] = None,
             volume_id: Optional[pulumi.Input[str]] = None) -> 'VolumeAttach':
         """
@@ -503,9 +456,6 @@ class VolumeAttach(pulumi.CustomResource):
                A Compute client is needed to create a volume attachment. If omitted, the
                `region` argument of the provider is used. Changing this creates a
                new volume attachment.
-        :param pulumi.Input[str] tag: Add a device role tag that is applied to the volume when
-               attaching it to the VM. Changing this creates a new volume attachment with
-               the new tag. Requires microversion >= 2.49.
         :param pulumi.Input[pulumi.InputType['VolumeAttachVendorOptionsArgs']] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         :param pulumi.Input[str] volume_id: The ID of the Volume to attach to an Instance.
@@ -518,7 +468,6 @@ class VolumeAttach(pulumi.CustomResource):
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["multiattach"] = multiattach
         __props__.__dict__["region"] = region
-        __props__.__dict__["tag"] = tag
         __props__.__dict__["vendor_options"] = vendor_options
         __props__.__dict__["volume_id"] = volume_id
         return VolumeAttach(resource_name, opts=opts, __props__=__props__)
@@ -554,16 +503,6 @@ class VolumeAttach(pulumi.CustomResource):
         new volume attachment.
         """
         return pulumi.get(self, "region")
-
-    @property
-    @pulumi.getter
-    def tag(self) -> pulumi.Output[Optional[str]]:
-        """
-        Add a device role tag that is applied to the volume when
-        attaching it to the VM. Changing this creates a new volume attachment with
-        the new tag. Requires microversion >= 2.49.
-        """
-        return pulumi.get(self, "tag")
 
     @property
     @pulumi.getter(name="vendorOptions")

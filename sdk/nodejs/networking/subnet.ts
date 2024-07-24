@@ -67,12 +67,11 @@ export class Subnet extends pulumi.CustomResource {
      */
     public /*out*/ readonly allTags!: pulumi.Output<string[]>;
     /**
-     * A block declaring the start and end range of
-     * the IP addresses available for use with DHCP in this subnet. Multiple
-     * `allocationPool` blocks can be declared, providing the subnet with more
-     * than one range of IP addresses to use with DHCP. However, each IP range
-     * must be from the same CIDR that the subnet is part of.
-     * The `allocationPool` block is documented below.
+     * A block declaring the start and end range of the IP addresses available for
+     * use with DHCP in this subnet.
+     * The `allocationPools` block is documented below.
+     *
+     * @deprecated use allocationPool instead
      */
     public readonly allocationPools!: pulumi.Output<outputs.networking.SubnetAllocationPool[]>;
     /**
@@ -105,6 +104,16 @@ export class Subnet extends pulumi.CustomResource {
      * existing subnet.
      */
     public readonly gatewayIp!: pulumi.Output<string>;
+    /**
+     * (**Deprecated** - use `openstack.networking.SubnetRoute`
+     * instead) An array of routes that should be used by devices
+     * with IPs from this subnet (not including local subnet route). The hostRoute
+     * object structure is documented below. Changing this updates the host routes
+     * for the existing subnet.
+     *
+     * @deprecated Use openstack.networking.SubnetRoute instead
+     */
+    public readonly hostRoutes!: pulumi.Output<outputs.networking.SubnetHostRoute[] | undefined>;
     /**
      * IP version, either 4 (default) or 6. Changing this creates a
      * new subnet.
@@ -192,6 +201,7 @@ export class Subnet extends pulumi.CustomResource {
             resourceInputs["dnsNameservers"] = state ? state.dnsNameservers : undefined;
             resourceInputs["enableDhcp"] = state ? state.enableDhcp : undefined;
             resourceInputs["gatewayIp"] = state ? state.gatewayIp : undefined;
+            resourceInputs["hostRoutes"] = state ? state.hostRoutes : undefined;
             resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
             resourceInputs["ipv6AddressMode"] = state ? state.ipv6AddressMode : undefined;
             resourceInputs["ipv6RaMode"] = state ? state.ipv6RaMode : undefined;
@@ -216,6 +226,7 @@ export class Subnet extends pulumi.CustomResource {
             resourceInputs["dnsNameservers"] = args ? args.dnsNameservers : undefined;
             resourceInputs["enableDhcp"] = args ? args.enableDhcp : undefined;
             resourceInputs["gatewayIp"] = args ? args.gatewayIp : undefined;
+            resourceInputs["hostRoutes"] = args ? args.hostRoutes : undefined;
             resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
             resourceInputs["ipv6AddressMode"] = args ? args.ipv6AddressMode : undefined;
             resourceInputs["ipv6RaMode"] = args ? args.ipv6RaMode : undefined;
@@ -246,12 +257,11 @@ export interface SubnetState {
      */
     allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A block declaring the start and end range of
-     * the IP addresses available for use with DHCP in this subnet. Multiple
-     * `allocationPool` blocks can be declared, providing the subnet with more
-     * than one range of IP addresses to use with DHCP. However, each IP range
-     * must be from the same CIDR that the subnet is part of.
-     * The `allocationPool` block is documented below.
+     * A block declaring the start and end range of the IP addresses available for
+     * use with DHCP in this subnet.
+     * The `allocationPools` block is documented below.
+     *
+     * @deprecated use allocationPool instead
      */
     allocationPools?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPool>[]>;
     /**
@@ -284,6 +294,16 @@ export interface SubnetState {
      * existing subnet.
      */
     gatewayIp?: pulumi.Input<string>;
+    /**
+     * (**Deprecated** - use `openstack.networking.SubnetRoute`
+     * instead) An array of routes that should be used by devices
+     * with IPs from this subnet (not including local subnet route). The hostRoute
+     * object structure is documented below. Changing this updates the host routes
+     * for the existing subnet.
+     *
+     * @deprecated Use openstack.networking.SubnetRoute instead
+     */
+    hostRoutes?: pulumi.Input<pulumi.Input<inputs.networking.SubnetHostRoute>[]>;
     /**
      * IP version, either 4 (default) or 6. Changing this creates a
      * new subnet.
@@ -357,12 +377,11 @@ export interface SubnetState {
  */
 export interface SubnetArgs {
     /**
-     * A block declaring the start and end range of
-     * the IP addresses available for use with DHCP in this subnet. Multiple
-     * `allocationPool` blocks can be declared, providing the subnet with more
-     * than one range of IP addresses to use with DHCP. However, each IP range
-     * must be from the same CIDR that the subnet is part of.
-     * The `allocationPool` block is documented below.
+     * A block declaring the start and end range of the IP addresses available for
+     * use with DHCP in this subnet.
+     * The `allocationPools` block is documented below.
+     *
+     * @deprecated use allocationPool instead
      */
     allocationPools?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPool>[]>;
     /**
@@ -395,6 +414,16 @@ export interface SubnetArgs {
      * existing subnet.
      */
     gatewayIp?: pulumi.Input<string>;
+    /**
+     * (**Deprecated** - use `openstack.networking.SubnetRoute`
+     * instead) An array of routes that should be used by devices
+     * with IPs from this subnet (not including local subnet route). The hostRoute
+     * object structure is documented below. Changing this updates the host routes
+     * for the existing subnet.
+     *
+     * @deprecated Use openstack.networking.SubnetRoute instead
+     */
+    hostRoutes?: pulumi.Input<pulumi.Input<inputs.networking.SubnetHostRoute>[]>;
     /**
      * IP version, either 4 (default) or 6. Changing this creates a
      * new subnet.

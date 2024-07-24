@@ -37,7 +37,8 @@ export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Prom
         "region": args.region,
         "sizeMax": args.sizeMax,
         "sizeMin": args.sizeMin,
-        "sort": args.sort,
+        "sortDirection": args.sortDirection,
+        "sortKey": args.sortKey,
         "tag": args.tag,
         "tags": args.tags,
         "visibility": args.visibility,
@@ -102,13 +103,13 @@ export interface GetImageArgs {
      */
     sizeMin?: number;
     /**
-     * Sorts the response by one or more attribute and sort
-     * direction combinations. You can also set multiple sort keys and directions.
-     * Default direction is `desc`. Use the comma (,) character to separate
-     * multiple values. For example expression `sort = "name:asc,status"`
-     * sorts ascending by name and descending by status.
+     * Order the results in either `asc` or `desc`.
      */
-    sort?: string;
+    sortDirection?: string;
+    /**
+     * Sort images based on a certain key. Defaults to `name`.
+     */
+    sortKey?: string;
     /**
      * Search for images with a specific tag.
      */
@@ -194,7 +195,8 @@ export interface GetImageResult {
     readonly sizeBytes: number;
     readonly sizeMax?: number;
     readonly sizeMin?: number;
-    readonly sort?: string;
+    readonly sortDirection?: string;
+    readonly sortKey?: string;
     readonly tag?: string;
     /**
      * The tags list of the image.
@@ -286,13 +288,13 @@ export interface GetImageOutputArgs {
      */
     sizeMin?: pulumi.Input<number>;
     /**
-     * Sorts the response by one or more attribute and sort
-     * direction combinations. You can also set multiple sort keys and directions.
-     * Default direction is `desc`. Use the comma (,) character to separate
-     * multiple values. For example expression `sort = "name:asc,status"`
-     * sorts ascending by name and descending by status.
+     * Order the results in either `asc` or `desc`.
      */
-    sort?: pulumi.Input<string>;
+    sortDirection?: pulumi.Input<string>;
+    /**
+     * Sort images based on a certain key. Defaults to `name`.
+     */
+    sortKey?: pulumi.Input<string>;
     /**
      * Search for images with a specific tag.
      */

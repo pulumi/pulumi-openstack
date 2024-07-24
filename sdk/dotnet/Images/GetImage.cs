@@ -153,14 +153,16 @@ namespace Pulumi.OpenStack.Images
         public int? SizeMin { get; set; }
 
         /// <summary>
-        /// Sorts the response by one or more attribute and sort
-        /// direction combinations. You can also set multiple sort keys and directions.
-        /// Default direction is `desc`. Use the comma (,) character to separate
-        /// multiple values. For example expression `sort = "name:asc,status"`
-        /// sorts ascending by name and descending by status.
+        /// Order the results in either `asc` or `desc`.
         /// </summary>
-        [Input("sort")]
-        public string? Sort { get; set; }
+        [Input("sortDirection")]
+        public string? SortDirection { get; set; }
+
+        /// <summary>
+        /// Sort images based on a certain key. Defaults to `name`.
+        /// </summary>
+        [Input("sortKey")]
+        public string? SortKey { get; set; }
 
         /// <summary>
         /// Search for images with a specific tag.
@@ -276,14 +278,16 @@ namespace Pulumi.OpenStack.Images
         public Input<int>? SizeMin { get; set; }
 
         /// <summary>
-        /// Sorts the response by one or more attribute and sort
-        /// direction combinations. You can also set multiple sort keys and directions.
-        /// Default direction is `desc`. Use the comma (,) character to separate
-        /// multiple values. For example expression `sort = "name:asc,status"`
-        /// sorts ascending by name and descending by status.
+        /// Order the results in either `asc` or `desc`.
         /// </summary>
-        [Input("sort")]
-        public Input<string>? Sort { get; set; }
+        [Input("sortDirection")]
+        public Input<string>? SortDirection { get; set; }
+
+        /// <summary>
+        /// Sort images based on a certain key. Defaults to `name`.
+        /// </summary>
+        [Input("sortKey")]
+        public Input<string>? SortKey { get; set; }
 
         /// <summary>
         /// Search for images with a specific tag.
@@ -386,7 +390,8 @@ namespace Pulumi.OpenStack.Images
         public readonly int SizeBytes;
         public readonly int? SizeMax;
         public readonly int? SizeMin;
-        public readonly string? Sort;
+        public readonly string? SortDirection;
+        public readonly string? SortKey;
         public readonly string? Tag;
         /// <summary>
         /// The tags list of the image.
@@ -444,7 +449,9 @@ namespace Pulumi.OpenStack.Images
 
             int? sizeMin,
 
-            string? sort,
+            string? sortDirection,
+
+            string? sortKey,
 
             string? tag,
 
@@ -476,7 +483,8 @@ namespace Pulumi.OpenStack.Images
             SizeBytes = sizeBytes;
             SizeMax = sizeMax;
             SizeMin = sizeMin;
-            Sort = sort;
+            SortDirection = sortDirection;
+            SortKey = sortKey;
             Tag = tag;
             Tags = tags;
             UpdatedAt = updatedAt;

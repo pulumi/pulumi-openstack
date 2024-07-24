@@ -29,6 +29,13 @@ public final class GetSubnetResult {
     private List<GetSubnetAllocationPool> allocationPools;
     private String cidr;
     private String description;
+    /**
+     * @deprecated
+     * use dhcp_enabled instead
+     * 
+     */
+    @Deprecated /* use dhcp_enabled instead */
+    private @Nullable Boolean dhcpDisabled;
     private @Nullable Boolean dhcpEnabled;
     /**
      * @return DNS Nameservers of the subnet.
@@ -91,6 +98,15 @@ public final class GetSubnetResult {
     }
     public String description() {
         return this.description;
+    }
+    /**
+     * @deprecated
+     * use dhcp_enabled instead
+     * 
+     */
+    @Deprecated /* use dhcp_enabled instead */
+    public Optional<Boolean> dhcpDisabled() {
+        return Optional.ofNullable(this.dhcpDisabled);
     }
     public Optional<Boolean> dhcpEnabled() {
         return Optional.ofNullable(this.dhcpEnabled);
@@ -181,6 +197,7 @@ public final class GetSubnetResult {
         private List<GetSubnetAllocationPool> allocationPools;
         private String cidr;
         private String description;
+        private @Nullable Boolean dhcpDisabled;
         private @Nullable Boolean dhcpEnabled;
         private List<String> dnsNameservers;
         private Boolean enableDhcp;
@@ -205,6 +222,7 @@ public final class GetSubnetResult {
     	      this.allocationPools = defaults.allocationPools;
     	      this.cidr = defaults.cidr;
     	      this.description = defaults.description;
+    	      this.dhcpDisabled = defaults.dhcpDisabled;
     	      this.dhcpEnabled = defaults.dhcpEnabled;
     	      this.dnsNameservers = defaults.dnsNameservers;
     	      this.enableDhcp = defaults.enableDhcp;
@@ -260,6 +278,12 @@ public final class GetSubnetResult {
               throw new MissingRequiredPropertyException("GetSubnetResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dhcpDisabled(@Nullable Boolean dhcpDisabled) {
+
+            this.dhcpDisabled = dhcpDisabled;
             return this;
         }
         @CustomType.Setter
@@ -412,6 +436,7 @@ public final class GetSubnetResult {
             _resultValue.allocationPools = allocationPools;
             _resultValue.cidr = cidr;
             _resultValue.description = description;
+            _resultValue.dhcpDisabled = dhcpDisabled;
             _resultValue.dhcpEnabled = dhcpEnabled;
             _resultValue.dnsNameservers = dnsNameservers;
             _resultValue.enableDhcp = enableDhcp;

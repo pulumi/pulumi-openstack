@@ -97,6 +97,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly flavorName!: pulumi.Output<string>;
     /**
+     * @deprecated Use the openstack.compute.FloatingIpAssociate resource instead
+     */
+    public readonly floatingIp!: pulumi.Output<string | undefined>;
+    /**
      * Whether to force the OpenStack instance to be
      * forcefully deleted. This is useful for environments that have reclaim / soft
      * deletion enabled.
@@ -201,6 +205,10 @@ export class Instance extends pulumi.CustomResource {
      * Supported options are described below.
      */
     public readonly vendorOptions!: pulumi.Output<outputs.compute.InstanceVendorOptions | undefined>;
+    /**
+     * @deprecated Use blockDevice or openstack.compute.VolumeAttach instead
+     */
+    public readonly volumes!: pulumi.Output<outputs.compute.InstanceVolume[] | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -227,6 +235,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["created"] = state ? state.created : undefined;
             resourceInputs["flavorId"] = state ? state.flavorId : undefined;
             resourceInputs["flavorName"] = state ? state.flavorName : undefined;
+            resourceInputs["floatingIp"] = state ? state.floatingIp : undefined;
             resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["imageName"] = state ? state.imageName : undefined;
@@ -245,6 +254,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["updated"] = state ? state.updated : undefined;
             resourceInputs["userData"] = state ? state.userData : undefined;
             resourceInputs["vendorOptions"] = state ? state.vendorOptions : undefined;
+            resourceInputs["volumes"] = state ? state.volumes : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             resourceInputs["accessIpV4"] = args ? args.accessIpV4 : undefined;
@@ -256,6 +266,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["configDrive"] = args ? args.configDrive : undefined;
             resourceInputs["flavorId"] = args ? args.flavorId : undefined;
             resourceInputs["flavorName"] = args ? args.flavorName : undefined;
+            resourceInputs["floatingIp"] = args ? args.floatingIp : undefined;
             resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["imageName"] = args ? args.imageName : undefined;
@@ -273,6 +284,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["userData"] = args ? args.userData : undefined;
             resourceInputs["vendorOptions"] = args ? args.vendorOptions : undefined;
+            resourceInputs["volumes"] = args ? args.volumes : undefined;
             resourceInputs["allMetadata"] = undefined /*out*/;
             resourceInputs["allTags"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
@@ -351,6 +363,10 @@ export interface InstanceState {
      * desired flavor for the server. Changing this resizes the existing server.
      */
     flavorName?: pulumi.Input<string>;
+    /**
+     * @deprecated Use the openstack.compute.FloatingIpAssociate resource instead
+     */
+    floatingIp?: pulumi.Input<string>;
     /**
      * Whether to force the OpenStack instance to be
      * forcefully deleted. This is useful for environments that have reclaim / soft
@@ -456,6 +472,10 @@ export interface InstanceState {
      * Supported options are described below.
      */
     vendorOptions?: pulumi.Input<inputs.compute.InstanceVendorOptions>;
+    /**
+     * @deprecated Use blockDevice or openstack.compute.VolumeAttach instead
+     */
+    volumes?: pulumi.Input<pulumi.Input<inputs.compute.InstanceVolume>[]>;
 }
 
 /**
@@ -514,6 +534,10 @@ export interface InstanceArgs {
      * desired flavor for the server. Changing this resizes the existing server.
      */
     flavorName?: pulumi.Input<string>;
+    /**
+     * @deprecated Use the openstack.compute.FloatingIpAssociate resource instead
+     */
+    floatingIp?: pulumi.Input<string>;
     /**
      * Whether to force the OpenStack instance to be
      * forcefully deleted. This is useful for environments that have reclaim / soft
@@ -615,4 +639,8 @@ export interface InstanceArgs {
      * Supported options are described below.
      */
     vendorOptions?: pulumi.Input<inputs.compute.InstanceVendorOptions>;
+    /**
+     * @deprecated Use blockDevice or openstack.compute.VolumeAttach instead
+     */
+    volumes?: pulumi.Input<pulumi.Input<inputs.compute.InstanceVolume>[]>;
 }

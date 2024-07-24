@@ -108,7 +108,8 @@ public class Pool extends com.pulumi.resources.CustomResource {
     /**
      * The load balancing algorithm to
      * distribute traffic to the pool&#39;s members. Must be one of
-     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
+     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
+     * in Octavia).
      * 
      */
     @Export(name="lbMethod", refs={String.class}, tree="[0]")
@@ -117,7 +118,8 @@ public class Pool extends com.pulumi.resources.CustomResource {
     /**
      * @return The load balancing algorithm to
      * distribute traffic to the pool&#39;s members. Must be one of
-     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
+     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
+     * in Octavia).
      * 
      */
     public Output<String> lbMethod() {
@@ -193,8 +195,8 @@ public class Pool extends com.pulumi.resources.CustomResource {
     }
     /**
      * The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-     * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
-     * (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+     * UDP (supported only in Octavia), PROXYV2 (**Octavia minor version &gt;= 2.22**)
+     * or SCTP (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
@@ -202,8 +204,8 @@ public class Pool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-     * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
-     * (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+     * UDP (supported only in Octavia), PROXYV2 (**Octavia minor version &gt;= 2.22**)
+     * or SCTP (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
      * 
      */
     public Output<String> protocol() {

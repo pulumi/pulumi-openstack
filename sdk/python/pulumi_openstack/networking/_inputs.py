@@ -18,6 +18,7 @@ __all__ = [
     'RouterExternalFixedIpArgs',
     'RouterVendorOptionsArgs',
     'SubnetAllocationPoolArgs',
+    'SubnetHostRouteArgs',
     'TrunkSubPortArgs',
 ]
 
@@ -409,6 +410,43 @@ class SubnetAllocationPoolArgs:
     @start.setter
     def start(self, value: pulumi.Input[str]):
         pulumi.set(self, "start", value)
+
+
+@pulumi.input_type
+class SubnetHostRouteArgs:
+    def __init__(__self__, *,
+                 destination_cidr: pulumi.Input[str],
+                 next_hop: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] destination_cidr: The destination CIDR.
+        :param pulumi.Input[str] next_hop: The next hop in the route.
+        """
+        pulumi.set(__self__, "destination_cidr", destination_cidr)
+        pulumi.set(__self__, "next_hop", next_hop)
+
+    @property
+    @pulumi.getter(name="destinationCidr")
+    def destination_cidr(self) -> pulumi.Input[str]:
+        """
+        The destination CIDR.
+        """
+        return pulumi.get(self, "destination_cidr")
+
+    @destination_cidr.setter
+    def destination_cidr(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination_cidr", value)
+
+    @property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> pulumi.Input[str]:
+        """
+        The next hop in the route.
+        """
+        return pulumi.get(self, "next_hop")
+
+    @next_hop.setter
+    def next_hop(self, value: pulumi.Input[str]):
+        pulumi.set(self, "next_hop", value)
 
 
 @pulumi.input_type

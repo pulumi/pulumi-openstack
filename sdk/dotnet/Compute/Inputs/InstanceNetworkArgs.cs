@@ -29,6 +29,9 @@ namespace Pulumi.OpenStack.Compute.Inputs
         [Input("fixedIpV6")]
         public Input<string>? FixedIpV6 { get; set; }
 
+        [Input("floatingIp")]
+        public Input<string>? FloatingIp { get; set; }
+
         [Input("mac")]
         public Input<string>? Mac { get; set; }
 

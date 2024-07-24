@@ -5,11 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export { GetFlavorV2Args, GetFlavorV2Result, GetFlavorV2OutputArgs } from "./getFlavorV2";
-export const getFlavorV2: typeof import("./getFlavorV2").getFlavorV2 = null as any;
-export const getFlavorV2Output: typeof import("./getFlavorV2").getFlavorV2Output = null as any;
-utilities.lazyLoad(exports, ["getFlavorV2","getFlavorV2Output"], () => require("./getFlavorV2"));
-
 export { L7PolicyV2Args, L7PolicyV2State } from "./l7policyV2";
 export type L7PolicyV2 = import("./l7policyV2").L7PolicyV2;
 export const L7PolicyV2: typeof import("./l7policyV2").L7PolicyV2 = null as any;

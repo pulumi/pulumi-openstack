@@ -148,6 +148,11 @@ token: Optional[str]
 Authentication token to use as an alternative to username/password.
 """
 
+useOctavia: Optional[bool]
+"""
+If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
+"""
+
 userDomainId: Optional[str]
 """
 The ID of the domain where the user resides (Identity v3).

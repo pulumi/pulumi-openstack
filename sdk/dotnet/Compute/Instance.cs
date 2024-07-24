@@ -98,6 +98,9 @@ namespace Pulumi.OpenStack.Compute
         [Output("flavorName")]
         public Output<string> FlavorName { get; private set; } = null!;
 
+        [Output("floatingIp")]
+        public Output<string?> FloatingIp { get; private set; } = null!;
+
         /// <summary>
         /// Whether to force the OpenStack instance to be
         /// forcefully deleted. This is useful for environments that have reclaim / soft
@@ -239,6 +242,9 @@ namespace Pulumi.OpenStack.Compute
         [Output("vendorOptions")]
         public Output<Outputs.InstanceVendorOptions?> VendorOptions { get; private set; } = null!;
 
+        [Output("volumes")]
+        public Output<ImmutableArray<Outputs.InstanceVolume>> Volumes { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Instance resource with the given unique name, arguments, and options.
@@ -374,6 +380,9 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         [Input("flavorName")]
         public Input<string>? FlavorName { get; set; }
+
+        [Input("floatingIp")]
+        public Input<string>? FloatingIp { get; set; }
 
         /// <summary>
         /// Whether to force the OpenStack instance to be
@@ -546,6 +555,15 @@ namespace Pulumi.OpenStack.Compute
         [Input("vendorOptions")]
         public Input<Inputs.InstanceVendorOptionsArgs>? VendorOptions { get; set; }
 
+        [Input("volumes")]
+        private InputList<Inputs.InstanceVolumeArgs>? _volumes;
+        [Obsolete(@"Use block_device or openstack.compute.VolumeAttach instead")]
+        public InputList<Inputs.InstanceVolumeArgs> Volumes
+        {
+            get => _volumes ?? (_volumes = new InputList<Inputs.InstanceVolumeArgs>());
+            set => _volumes = value;
+        }
+
         public InstanceArgs()
         {
         }
@@ -666,6 +684,9 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         [Input("flavorName")]
         public Input<string>? FlavorName { get; set; }
+
+        [Input("floatingIp")]
+        public Input<string>? FloatingIp { get; set; }
 
         /// <summary>
         /// Whether to force the OpenStack instance to be
@@ -843,6 +864,15 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         [Input("vendorOptions")]
         public Input<Inputs.InstanceVendorOptionsGetArgs>? VendorOptions { get; set; }
+
+        [Input("volumes")]
+        private InputList<Inputs.InstanceVolumeGetArgs>? _volumes;
+        [Obsolete(@"Use block_device or openstack.compute.VolumeAttach instead")]
+        public InputList<Inputs.InstanceVolumeGetArgs> Volumes
+        {
+            get => _volumes ?? (_volumes = new InputList<Inputs.InstanceVolumeGetArgs>());
+            set => _volumes = value;
+        }
 
         public InstanceState()
         {

@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * ### Using Multiattach-enabled volumes
  *
  * Multiattach Volumes are dependent upon your OpenStack cloud and not all
- * clouds support multiattach. Multiattach volumes require a volumeType that has [multiattach enabled](https://docs.openstack.org/cinder/latest/admin/volume-multiattach.html#multiattach-volume-type).
+ * clouds support multiattach.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * const volume1 = new openstack.blockstorage.Volume("volume_1", {
  *     name: "volume_1",
  *     size: 1,
- *     volumeType: "multiattach",
+ *     multiattach: true,
  * });
  * const instance1 = new openstack.compute.Instance("instance_1", {
  *     name: "instance_1",
@@ -125,12 +125,6 @@ export class VolumeAttach extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * Add a device role tag that is applied to the volume when
-     * attaching it to the VM. Changing this creates a new volume attachment with
-     * the new tag. Requires microversion >= 2.49.
-     */
-    public readonly tag!: pulumi.Output<string | undefined>;
-    /**
      * Map of additional vendor-specific options.
      * Supported options are described below.
      */
@@ -157,7 +151,6 @@ export class VolumeAttach extends pulumi.CustomResource {
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["multiattach"] = state ? state.multiattach : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["tag"] = state ? state.tag : undefined;
             resourceInputs["vendorOptions"] = state ? state.vendorOptions : undefined;
             resourceInputs["volumeId"] = state ? state.volumeId : undefined;
         } else {
@@ -172,7 +165,6 @@ export class VolumeAttach extends pulumi.CustomResource {
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["multiattach"] = args ? args.multiattach : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tag"] = args ? args.tag : undefined;
             resourceInputs["vendorOptions"] = args ? args.vendorOptions : undefined;
             resourceInputs["volumeId"] = args ? args.volumeId : undefined;
         }
@@ -201,12 +193,6 @@ export interface VolumeAttachState {
      * new volume attachment.
      */
     region?: pulumi.Input<string>;
-    /**
-     * Add a device role tag that is applied to the volume when
-     * attaching it to the VM. Changing this creates a new volume attachment with
-     * the new tag. Requires microversion >= 2.49.
-     */
-    tag?: pulumi.Input<string>;
     /**
      * Map of additional vendor-specific options.
      * Supported options are described below.
@@ -238,12 +224,6 @@ export interface VolumeAttachArgs {
      * new volume attachment.
      */
     region?: pulumi.Input<string>;
-    /**
-     * Add a device role tag that is applied to the volume when
-     * attaching it to the VM. Changing this creates a new volume attachment with
-     * the new tag. Requires microversion >= 2.49.
-     */
-    tag?: pulumi.Input<string>;
     /**
      * Map of additional vendor-specific options.
      * Supported options are described below.

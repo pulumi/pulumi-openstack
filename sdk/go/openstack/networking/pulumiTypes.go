@@ -1052,6 +1052,112 @@ func (o SubnetAllocationPoolArrayOutput) Index(i pulumi.IntInput) SubnetAllocati
 	}).(SubnetAllocationPoolOutput)
 }
 
+type SubnetHostRoute struct {
+	// The destination CIDR.
+	DestinationCidr string `pulumi:"destinationCidr"`
+	// The next hop in the route.
+	NextHop string `pulumi:"nextHop"`
+}
+
+// SubnetHostRouteInput is an input type that accepts SubnetHostRouteArgs and SubnetHostRouteOutput values.
+// You can construct a concrete instance of `SubnetHostRouteInput` via:
+//
+//	SubnetHostRouteArgs{...}
+type SubnetHostRouteInput interface {
+	pulumi.Input
+
+	ToSubnetHostRouteOutput() SubnetHostRouteOutput
+	ToSubnetHostRouteOutputWithContext(context.Context) SubnetHostRouteOutput
+}
+
+type SubnetHostRouteArgs struct {
+	// The destination CIDR.
+	DestinationCidr pulumi.StringInput `pulumi:"destinationCidr"`
+	// The next hop in the route.
+	NextHop pulumi.StringInput `pulumi:"nextHop"`
+}
+
+func (SubnetHostRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetHostRoute)(nil)).Elem()
+}
+
+func (i SubnetHostRouteArgs) ToSubnetHostRouteOutput() SubnetHostRouteOutput {
+	return i.ToSubnetHostRouteOutputWithContext(context.Background())
+}
+
+func (i SubnetHostRouteArgs) ToSubnetHostRouteOutputWithContext(ctx context.Context) SubnetHostRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetHostRouteOutput)
+}
+
+// SubnetHostRouteArrayInput is an input type that accepts SubnetHostRouteArray and SubnetHostRouteArrayOutput values.
+// You can construct a concrete instance of `SubnetHostRouteArrayInput` via:
+//
+//	SubnetHostRouteArray{ SubnetHostRouteArgs{...} }
+type SubnetHostRouteArrayInput interface {
+	pulumi.Input
+
+	ToSubnetHostRouteArrayOutput() SubnetHostRouteArrayOutput
+	ToSubnetHostRouteArrayOutputWithContext(context.Context) SubnetHostRouteArrayOutput
+}
+
+type SubnetHostRouteArray []SubnetHostRouteInput
+
+func (SubnetHostRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetHostRoute)(nil)).Elem()
+}
+
+func (i SubnetHostRouteArray) ToSubnetHostRouteArrayOutput() SubnetHostRouteArrayOutput {
+	return i.ToSubnetHostRouteArrayOutputWithContext(context.Background())
+}
+
+func (i SubnetHostRouteArray) ToSubnetHostRouteArrayOutputWithContext(ctx context.Context) SubnetHostRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetHostRouteArrayOutput)
+}
+
+type SubnetHostRouteOutput struct{ *pulumi.OutputState }
+
+func (SubnetHostRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetHostRoute)(nil)).Elem()
+}
+
+func (o SubnetHostRouteOutput) ToSubnetHostRouteOutput() SubnetHostRouteOutput {
+	return o
+}
+
+func (o SubnetHostRouteOutput) ToSubnetHostRouteOutputWithContext(ctx context.Context) SubnetHostRouteOutput {
+	return o
+}
+
+// The destination CIDR.
+func (o SubnetHostRouteOutput) DestinationCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetHostRoute) string { return v.DestinationCidr }).(pulumi.StringOutput)
+}
+
+// The next hop in the route.
+func (o SubnetHostRouteOutput) NextHop() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetHostRoute) string { return v.NextHop }).(pulumi.StringOutput)
+}
+
+type SubnetHostRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (SubnetHostRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetHostRoute)(nil)).Elem()
+}
+
+func (o SubnetHostRouteArrayOutput) ToSubnetHostRouteArrayOutput() SubnetHostRouteArrayOutput {
+	return o
+}
+
+func (o SubnetHostRouteArrayOutput) ToSubnetHostRouteArrayOutputWithContext(ctx context.Context) SubnetHostRouteArrayOutput {
+	return o
+}
+
+func (o SubnetHostRouteArrayOutput) Index(i pulumi.IntInput) SubnetHostRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetHostRoute {
+		return vs[0].([]SubnetHostRoute)[vs[1].(int)]
+	}).(SubnetHostRouteOutput)
+}
+
 type TrunkSubPort struct {
 	// The ID of the port to be made a subport of the trunk.
 	PortId string `pulumi:"portId"`
@@ -2068,6 +2174,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterVendorOptionsPtrInput)(nil)).Elem(), RouterVendorOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetAllocationPoolInput)(nil)).Elem(), SubnetAllocationPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetAllocationPoolArrayInput)(nil)).Elem(), SubnetAllocationPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetHostRouteInput)(nil)).Elem(), SubnetHostRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetHostRouteArrayInput)(nil)).Elem(), SubnetHostRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrunkSubPortInput)(nil)).Elem(), TrunkSubPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrunkSubPortArrayInput)(nil)).Elem(), TrunkSubPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkSegmentInput)(nil)).Elem(), GetNetworkSegmentArgs{})
@@ -2102,6 +2210,8 @@ func init() {
 	pulumi.RegisterOutputType(RouterVendorOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SubnetAllocationPoolOutput{})
 	pulumi.RegisterOutputType(SubnetAllocationPoolArrayOutput{})
+	pulumi.RegisterOutputType(SubnetHostRouteOutput{})
+	pulumi.RegisterOutputType(SubnetHostRouteArrayOutput{})
 	pulumi.RegisterOutputType(TrunkSubPortOutput{})
 	pulumi.RegisterOutputType(TrunkSubPortArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkSegmentOutput{})

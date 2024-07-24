@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
  *
  * > **Note:** This usually requires admin privileges.
  *
+ * > **Note:** This resource is only available for Octavia.
+ *
  * > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack
  *    API in case of delete call.
  *
