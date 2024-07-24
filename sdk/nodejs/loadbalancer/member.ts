@@ -108,6 +108,11 @@ export class Member extends pulumi.CustomResource {
      */
     public readonly subnetId!: pulumi.Output<string | undefined>;
     /**
+     * A list of simple strings assigned to the member.
+     * Available only for Octavia >= 2.5.
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
      * Required for admins. The UUID of the tenant who owns
      * the member.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new member.
@@ -144,6 +149,7 @@ export class Member extends pulumi.CustomResource {
             resourceInputs["protocolPort"] = state ? state.protocolPort : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tenantId"] = state ? state.tenantId : undefined;
             resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
@@ -167,6 +173,7 @@ export class Member extends pulumi.CustomResource {
             resourceInputs["protocolPort"] = args ? args.protocolPort : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["weight"] = args ? args.weight : undefined;
         }
@@ -229,6 +236,11 @@ export interface MemberState {
      * this creates a new member.
      */
     subnetId?: pulumi.Input<string>;
+    /**
+     * A list of simple strings assigned to the member.
+     * Available only for Octavia >= 2.5.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the member.  Only administrative users can specify a tenant UUID
@@ -298,6 +310,11 @@ export interface MemberArgs {
      * this creates a new member.
      */
     subnetId?: pulumi.Input<string>;
+    /**
+     * A list of simple strings assigned to the member.
+     * Available only for Octavia >= 2.5.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the member.  Only administrative users can specify a tenant UUID

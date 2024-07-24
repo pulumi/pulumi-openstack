@@ -18,7 +18,6 @@ __all__ = [
     'RouterExternalFixedIp',
     'RouterVendorOptions',
     'SubnetAllocationPool',
-    'SubnetHostRoute',
     'TrunkSubPort',
     'GetNetworkSegmentResult',
     'GetPortAllowedAddressPairResult',
@@ -304,10 +303,10 @@ class PortFixedIp(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "subnetId":
-            suggest = "subnet_id"
-        elif key == "ipAddress":
+        if key == "ipAddress":
             suggest = "ip_address"
+        elif key == "subnetId":
+            suggest = "subnet_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PortFixedIp. Access the value via the '{suggest}' property getter instead.")
@@ -321,29 +320,21 @@ class PortFixedIp(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 subnet_id: str,
-                 ip_address: Optional[str] = None):
+                 ip_address: Optional[str] = None,
+                 subnet_id: Optional[str] = None):
         """
-        :param str subnet_id: Subnet in which to allocate IP address for
-               this port.
         :param str ip_address: IP address desired in the subnet for this port. If
                you don't specify `ip_address`, an available IP address from the specified
                subnet will be allocated to this port. This field will not be populated if it
                is left blank or omitted. To retrieve the assigned IP address, use the
                `all_fixed_ips` attribute.
+        :param str subnet_id: Subnet in which to allocate IP address for
+               this port.
         """
-        pulumi.set(__self__, "subnet_id", subnet_id)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
-
-    @property
-    @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> str:
-        """
-        Subnet in which to allocate IP address for
-        this port.
-        """
-        return pulumi.get(self, "subnet_id")
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -356,6 +347,15 @@ class PortFixedIp(dict):
         `all_fixed_ips` attribute.
         """
         return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[str]:
+        """
+        Subnet in which to allocate IP address for
+        this port.
+        """
+        return pulumi.get(self, "subnet_id")
 
 
 @pulumi.output_type
@@ -473,54 +473,6 @@ class SubnetAllocationPool(dict):
         The starting address.
         """
         return pulumi.get(self, "start")
-
-
-@pulumi.output_type
-class SubnetHostRoute(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "destinationCidr":
-            suggest = "destination_cidr"
-        elif key == "nextHop":
-            suggest = "next_hop"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SubnetHostRoute. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SubnetHostRoute.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SubnetHostRoute.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 destination_cidr: str,
-                 next_hop: str):
-        """
-        :param str destination_cidr: The destination CIDR.
-        :param str next_hop: The next hop in the route.
-        """
-        pulumi.set(__self__, "destination_cidr", destination_cidr)
-        pulumi.set(__self__, "next_hop", next_hop)
-
-    @property
-    @pulumi.getter(name="destinationCidr")
-    def destination_cidr(self) -> str:
-        """
-        The destination CIDR.
-        """
-        return pulumi.get(self, "destination_cidr")
-
-    @property
-    @pulumi.getter(name="nextHop")
-    def next_hop(self) -> str:
-        """
-        The next hop in the route.
-        """
-        return pulumi.get(self, "next_hop")
 
 
 @pulumi.output_type

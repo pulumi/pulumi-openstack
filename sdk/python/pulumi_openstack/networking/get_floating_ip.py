@@ -189,7 +189,7 @@ def get_floating_ip(address: Optional[str] = None,
     :param str address: The IP address of the floating IP.
     :param str description: Human-readable description of the floating IP.
     :param str fixed_ip: The specific IP address of the internal port which should be associated with the floating IP.
-    :param str pool: The name of the pool from which the floating IP belongs to.
+    :param str pool: The ID of the network from which the floating IP belongs to.
     :param str port_id: The ID of the port the floating IP is attached.
     :param str region: The region in which to obtain the V2 Neutron client.
            A Neutron client is needed to retrieve floating IP ids. If omitted, the
@@ -254,7 +254,7 @@ def get_floating_ip_output(address: Optional[pulumi.Input[Optional[str]]] = None
     :param str address: The IP address of the floating IP.
     :param str description: Human-readable description of the floating IP.
     :param str fixed_ip: The specific IP address of the internal port which should be associated with the floating IP.
-    :param str pool: The name of the pool from which the floating IP belongs to.
+    :param str pool: The ID of the network from which the floating IP belongs to.
     :param str port_id: The ID of the port the floating IP is attached.
     :param str region: The region in which to obtain the V2 Neutron client.
            A Neutron client is needed to retrieve floating IP ids. If omitted, the

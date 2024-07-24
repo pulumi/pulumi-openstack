@@ -108,6 +108,13 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vipPortId);
     }
 
+    @Import(name="vipQosPolicyId")
+    private @Nullable Output<String> vipQosPolicyId;
+
+    public Optional<Output<String>> vipQosPolicyId() {
+        return Optional.ofNullable(this.vipQosPolicyId);
+    }
+
     @Import(name="vipSubnetId")
     private @Nullable Output<String> vipSubnetId;
 
@@ -131,6 +138,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         this.vipAddress = $.vipAddress;
         this.vipNetworkId = $.vipNetworkId;
         this.vipPortId = $.vipPortId;
+        this.vipQosPolicyId = $.vipQosPolicyId;
         this.vipSubnetId = $.vipSubnetId;
     }
 
@@ -275,6 +283,15 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder vipPortId(String vipPortId) {
             return vipPortId(Output.of(vipPortId));
+        }
+
+        public Builder vipQosPolicyId(@Nullable Output<String> vipQosPolicyId) {
+            $.vipQosPolicyId = vipQosPolicyId;
+            return this;
+        }
+
+        public Builder vipQosPolicyId(String vipQosPolicyId) {
+            return vipQosPolicyId(Output.of(vipQosPolicyId));
         }
 
         public Builder vipSubnetId(@Nullable Output<String> vipSubnetId) {

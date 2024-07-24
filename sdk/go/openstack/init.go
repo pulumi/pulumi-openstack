@@ -21,6 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2":
+		r = &BgpvpnNetworkAssociateV2{}
+	case "openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2":
+		r = &BgpvpnPortAssociateV2{}
+	case "openstack:index/bgpvpnRouterAssociateV2:BgpvpnRouterAssociateV2":
+		r = &BgpvpnRouterAssociateV2{}
+	case "openstack:index/bgpvpnV2:BgpvpnV2":
+		r = &BgpvpnV2{}
 	case "openstack:index/lbLoadbalancerV2:LbLoadbalancerV2":
 		r = &LbLoadbalancerV2{}
 	default:
@@ -54,6 +62,26 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"index/bgpvpnNetworkAssociateV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"index/bgpvpnPortAssociateV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"index/bgpvpnRouterAssociateV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"index/bgpvpnV2",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"index/lbLoadbalancerV2",

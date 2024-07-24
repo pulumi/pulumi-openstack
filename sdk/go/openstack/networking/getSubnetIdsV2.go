@@ -60,6 +60,8 @@ type GetSubnetIdsV2Args struct {
 	Description *string `pulumi:"description"`
 	// If the subnet has DHCP enabled.
 	DhcpEnabled *bool `pulumi:"dhcpEnabled"`
+	// If the subnet publishes DNS records.
+	DnsPublishFixedIp *bool `pulumi:"dnsPublishFixedIp"`
 	// The IP of the subnet's gateway.
 	GatewayIp *string `pulumi:"gatewayIp"`
 	// The IP version of the subnet (either 4 or 6).
@@ -94,10 +96,11 @@ type GetSubnetIdsV2Args struct {
 
 // A collection of values returned by getSubnetIdsV2.
 type GetSubnetIdsV2Result struct {
-	Cidr        *string `pulumi:"cidr"`
-	Description *string `pulumi:"description"`
-	DhcpEnabled *bool   `pulumi:"dhcpEnabled"`
-	GatewayIp   *string `pulumi:"gatewayIp"`
+	Cidr              *string `pulumi:"cidr"`
+	Description       *string `pulumi:"description"`
+	DhcpEnabled       *bool   `pulumi:"dhcpEnabled"`
+	DnsPublishFixedIp *bool   `pulumi:"dnsPublishFixedIp"`
+	GatewayIp         *string `pulumi:"gatewayIp"`
 	// The provider-assigned unique ID for this managed resource.
 	Id              string   `pulumi:"id"`
 	Ids             []string `pulumi:"ids"`
@@ -136,6 +139,8 @@ type GetSubnetIdsV2OutputArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// If the subnet has DHCP enabled.
 	DhcpEnabled pulumi.BoolPtrInput `pulumi:"dhcpEnabled"`
+	// If the subnet publishes DNS records.
+	DnsPublishFixedIp pulumi.BoolPtrInput `pulumi:"dnsPublishFixedIp"`
 	// The IP of the subnet's gateway.
 	GatewayIp pulumi.StringPtrInput `pulumi:"gatewayIp"`
 	// The IP version of the subnet (either 4 or 6).
@@ -197,6 +202,10 @@ func (o GetSubnetIdsV2ResultOutput) Description() pulumi.StringPtrOutput {
 
 func (o GetSubnetIdsV2ResultOutput) DhcpEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSubnetIdsV2Result) *bool { return v.DhcpEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetSubnetIdsV2ResultOutput) DnsPublishFixedIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) *bool { return v.DnsPublishFixedIp }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetSubnetIdsV2ResultOutput) GatewayIp() pulumi.StringPtrOutput {

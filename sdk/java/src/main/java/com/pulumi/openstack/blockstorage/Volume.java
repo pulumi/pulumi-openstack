@@ -210,24 +210,6 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.metadata;
     }
     /**
-     * (Optional) Allow the volume to be attached to more than one Compute instance.
-     * 
-     * @deprecated
-     * multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
-     * 
-     */
-    @Deprecated /* multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types */
-    @Export(name="multiattach", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> multiattach;
-
-    /**
-     * @return (Optional) Allow the volume to be attached to more than one Compute instance.
-     * 
-     */
-    public Output<Optional<Boolean>> multiattach() {
-        return Codegen.optional(this.multiattach);
-    }
-    /**
      * A unique name for the volume. Changing this updates the
      * volume&#39;s name.
      * 

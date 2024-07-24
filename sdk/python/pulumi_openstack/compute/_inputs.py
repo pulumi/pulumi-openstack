@@ -15,7 +15,6 @@ __all__ = [
     'InstancePersonalityArgs',
     'InstanceSchedulerHintArgs',
     'InstanceVendorOptionsArgs',
-    'InstanceVolumeArgs',
     'SecGroupRuleArgs',
     'ServerGroupRulesArgs',
     'VolumeAttachVendorOptionsArgs',
@@ -252,7 +251,6 @@ class InstanceNetworkArgs:
                  access_network: Optional[pulumi.Input[bool]] = None,
                  fixed_ip_v4: Optional[pulumi.Input[str]] = None,
                  fixed_ip_v6: Optional[pulumi.Input[str]] = None,
-                 floating_ip: Optional[pulumi.Input[str]] = None,
                  mac: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
@@ -275,11 +273,6 @@ class InstanceNetworkArgs:
             pulumi.set(__self__, "fixed_ip_v4", fixed_ip_v4)
         if fixed_ip_v6 is not None:
             pulumi.set(__self__, "fixed_ip_v6", fixed_ip_v6)
-        if floating_ip is not None:
-            warnings.warn("""Use the compute.FloatingIpAssociate resource instead""", DeprecationWarning)
-            pulumi.log.warn("""floating_ip is deprecated: Use the compute.FloatingIpAssociate resource instead""")
-        if floating_ip is not None:
-            pulumi.set(__self__, "floating_ip", floating_ip)
         if mac is not None:
             pulumi.set(__self__, "mac", mac)
         if name is not None:
@@ -323,16 +316,6 @@ class InstanceNetworkArgs:
     @fixed_ip_v6.setter
     def fixed_ip_v6(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "fixed_ip_v6", value)
-
-    @property
-    @pulumi.getter(name="floatingIp")
-    @_utilities.deprecated("""Use the compute.FloatingIpAssociate resource instead""")
-    def floating_ip(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "floating_ip")
-
-    @floating_ip.setter
-    def floating_ip(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "floating_ip", value)
 
     @property
     @pulumi.getter
@@ -440,7 +423,8 @@ class InstanceSchedulerHintArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] different_hosts: A list of instance UUIDs. The instance will
                be scheduled on a different host than all other instances.
         :param pulumi.Input[str] group: A UUID of a Server Group. The instance will be placed
-               into that group.
+               into that group. See reference
+               for details on managing servergroup resources
         :param pulumi.Input[Sequence[pulumi.Input[str]]] queries: A conditional query that a compute node must pass in
                order to host an instance. The query must use the `JsonFilter` syntax
                which is described
@@ -528,7 +512,8 @@ class InstanceSchedulerHintArgs:
     def group(self) -> Optional[pulumi.Input[str]]:
         """
         A UUID of a Server Group. The instance will be placed
-        into that group.
+        into that group. See reference
+        for details on managing servergroup resources
         """
         return pulumi.get(self, "group")
 
@@ -630,46 +615,6 @@ class InstanceVendorOptionsArgs:
     @ignore_resize_confirmation.setter
     def ignore_resize_confirmation(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ignore_resize_confirmation", value)
-
-
-@pulumi.input_type
-class InstanceVolumeArgs:
-    def __init__(__self__, *,
-                 volume_id: pulumi.Input[str],
-                 device: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "volume_id", volume_id)
-        if device is not None:
-            pulumi.set(__self__, "device", device)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-
-    @property
-    @pulumi.getter(name="volumeId")
-    def volume_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "volume_id")
-
-    @volume_id.setter
-    def volume_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "volume_id", value)
-
-    @property
-    @pulumi.getter
-    def device(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "device")
-
-    @device.setter
-    def device(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "device", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
 
 @pulumi.input_type

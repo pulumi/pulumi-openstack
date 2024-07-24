@@ -116,6 +116,27 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Integer. Requests matching this policy will be\
+     * redirected to the specified URL or Prefix URL with the HTTP response code.
+     * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+     * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
+     * 
+     */
+    @Import(name="redirectHttpCode")
+    private @Nullable Output<Integer> redirectHttpCode;
+
+    /**
+     * @return Integer. Requests matching this policy will be\
+     * redirected to the specified URL or Prefix URL with the HTTP response code.
+     * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+     * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
+     * 
+     */
+    public Optional<Output<Integer>> redirectHttpCode() {
+        return Optional.ofNullable(this.redirectHttpCode);
+    }
+
+    /**
      * Requests matching this policy will be redirected to the
      * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
      * 
@@ -130,6 +151,23 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> redirectPoolId() {
         return Optional.ofNullable(this.redirectPoolId);
+    }
+
+    /**
+     * Requests matching this policy will be redirected to
+     * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
+     * 
+     */
+    @Import(name="redirectPrefix")
+    private @Nullable Output<String> redirectPrefix;
+
+    /**
+     * @return Requests matching this policy will be redirected to
+     * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
+     * 
+     */
+    public Optional<Output<String>> redirectPrefix() {
+        return Optional.ofNullable(this.redirectPrefix);
     }
 
     /**
@@ -198,7 +236,9 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
         this.listenerId = $.listenerId;
         this.name = $.name;
         this.position = $.position;
+        this.redirectHttpCode = $.redirectHttpCode;
         this.redirectPoolId = $.redirectPoolId;
+        this.redirectPrefix = $.redirectPrefix;
         this.redirectUrl = $.redirectUrl;
         this.region = $.region;
         this.tenantId = $.tenantId;
@@ -357,6 +397,33 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param redirectHttpCode Integer. Requests matching this policy will be\
+         * redirected to the specified URL or Prefix URL with the HTTP response code.
+         * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+         * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirectHttpCode(@Nullable Output<Integer> redirectHttpCode) {
+            $.redirectHttpCode = redirectHttpCode;
+            return this;
+        }
+
+        /**
+         * @param redirectHttpCode Integer. Requests matching this policy will be\
+         * redirected to the specified URL or Prefix URL with the HTTP response code.
+         * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+         * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirectHttpCode(Integer redirectHttpCode) {
+            return redirectHttpCode(Output.of(redirectHttpCode));
+        }
+
+        /**
          * @param redirectPoolId Requests matching this policy will be redirected to the
          * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
          * 
@@ -377,6 +444,29 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
          */
         public Builder redirectPoolId(String redirectPoolId) {
             return redirectPoolId(Output.of(redirectPoolId));
+        }
+
+        /**
+         * @param redirectPrefix Requests matching this policy will be redirected to
+         * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirectPrefix(@Nullable Output<String> redirectPrefix) {
+            $.redirectPrefix = redirectPrefix;
+            return this;
+        }
+
+        /**
+         * @param redirectPrefix Requests matching this policy will be redirected to
+         * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirectPrefix(String redirectPrefix) {
+            return redirectPrefix(Output.of(redirectPrefix));
         }
 
         /**

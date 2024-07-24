@@ -25,13 +25,6 @@ public final class InstanceNetwork {
      */
     private @Nullable String fixedIpV4;
     private @Nullable String fixedIpV6;
-    /**
-     * @deprecated
-     * Use the openstack.compute.FloatingIpAssociate resource instead
-     * 
-     */
-    @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
-    private @Nullable String floatingIp;
     private @Nullable String mac;
     /**
      * @return The human-readable
@@ -71,15 +64,6 @@ public final class InstanceNetwork {
     }
     public Optional<String> fixedIpV6() {
         return Optional.ofNullable(this.fixedIpV6);
-    }
-    /**
-     * @deprecated
-     * Use the openstack.compute.FloatingIpAssociate resource instead
-     * 
-     */
-    @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
-    public Optional<String> floatingIp() {
-        return Optional.ofNullable(this.floatingIp);
     }
     public Optional<String> mac() {
         return Optional.ofNullable(this.mac);
@@ -121,7 +105,6 @@ public final class InstanceNetwork {
         private @Nullable Boolean accessNetwork;
         private @Nullable String fixedIpV4;
         private @Nullable String fixedIpV6;
-        private @Nullable String floatingIp;
         private @Nullable String mac;
         private @Nullable String name;
         private @Nullable String port;
@@ -132,7 +115,6 @@ public final class InstanceNetwork {
     	      this.accessNetwork = defaults.accessNetwork;
     	      this.fixedIpV4 = defaults.fixedIpV4;
     	      this.fixedIpV6 = defaults.fixedIpV6;
-    	      this.floatingIp = defaults.floatingIp;
     	      this.mac = defaults.mac;
     	      this.name = defaults.name;
     	      this.port = defaults.port;
@@ -155,12 +137,6 @@ public final class InstanceNetwork {
         public Builder fixedIpV6(@Nullable String fixedIpV6) {
 
             this.fixedIpV6 = fixedIpV6;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder floatingIp(@Nullable String floatingIp) {
-
-            this.floatingIp = floatingIp;
             return this;
         }
         @CustomType.Setter
@@ -192,7 +168,6 @@ public final class InstanceNetwork {
             _resultValue.accessNetwork = accessNetwork;
             _resultValue.fixedIpV4 = fixedIpV4;
             _resultValue.fixedIpV6 = fixedIpV6;
-            _resultValue.floatingIp = floatingIp;
             _resultValue.mac = mac;
             _resultValue.name = name;
             _resultValue.port = port;

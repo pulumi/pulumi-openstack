@@ -118,8 +118,8 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The protocol - can either be TCP, HTTP, HTTPS,
-        /// TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-        /// in **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
+        /// TERMINATED_HTTPS, UDP, SCTP (supported only in
+        /// **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
         /// **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
         /// </summary>
         [Output("protocol")]
@@ -150,6 +150,10 @@ namespace Pulumi.OpenStack.LoadBalancer
         [Output("sniContainerRefs")]
         public Output<ImmutableArray<string>> SniContainerRefs { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of simple strings assigned to the pool. Available
+        /// for Octavia **minor version 2.5 or later**.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
@@ -312,8 +316,8 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The protocol - can either be TCP, HTTP, HTTPS,
-        /// TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-        /// in **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
+        /// TERMINATED_HTTPS, UDP, SCTP (supported only in
+        /// **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
         /// **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
         /// </summary>
         [Input("protocol", required: true)]
@@ -352,6 +356,11 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of simple strings assigned to the pool. Available
+        /// for Octavia **minor version 2.5 or later**.
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
@@ -479,8 +488,8 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The protocol - can either be TCP, HTTP, HTTPS,
-        /// TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-        /// in **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
+        /// TERMINATED_HTTPS, UDP, SCTP (supported only in
+        /// **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
         /// **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
         /// </summary>
         [Input("protocol")]
@@ -519,6 +528,11 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of simple strings assigned to the pool. Available
+        /// for Octavia **minor version 2.5 or later**.
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());

@@ -37,6 +37,11 @@ type SecGroup struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// security group.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// Indicates if the security group is stateful or
+	// stateless. Update of the stateful argument is allowed when there is no port
+	// associated with the security group. Available only in OpenStack environments
+	// with the `stateful-security-group` extension. Defaults to true.
+	Stateful pulumi.BoolOutput `pulumi:"stateful"`
 	// A set of string tags for the security group.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The owner of the security group. Required if admin
@@ -91,6 +96,11 @@ type secGroupState struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// security group.
 	Region *string `pulumi:"region"`
+	// Indicates if the security group is stateful or
+	// stateless. Update of the stateful argument is allowed when there is no port
+	// associated with the security group. Available only in OpenStack environments
+	// with the `stateful-security-group` extension. Defaults to true.
+	Stateful *bool `pulumi:"stateful"`
 	// A set of string tags for the security group.
 	Tags []string `pulumi:"tags"`
 	// The owner of the security group. Required if admin
@@ -116,6 +126,11 @@ type SecGroupState struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// security group.
 	Region pulumi.StringPtrInput
+	// Indicates if the security group is stateful or
+	// stateless. Update of the stateful argument is allowed when there is no port
+	// associated with the security group. Available only in OpenStack environments
+	// with the `stateful-security-group` extension. Defaults to true.
+	Stateful pulumi.BoolPtrInput
 	// A set of string tags for the security group.
 	Tags pulumi.StringArrayInput
 	// The owner of the security group. Required if admin
@@ -142,6 +157,11 @@ type secGroupArgs struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// security group.
 	Region *string `pulumi:"region"`
+	// Indicates if the security group is stateful or
+	// stateless. Update of the stateful argument is allowed when there is no port
+	// associated with the security group. Available only in OpenStack environments
+	// with the `stateful-security-group` extension. Defaults to true.
+	Stateful *bool `pulumi:"stateful"`
 	// A set of string tags for the security group.
 	Tags []string `pulumi:"tags"`
 	// The owner of the security group. Required if admin
@@ -165,6 +185,11 @@ type SecGroupArgs struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// security group.
 	Region pulumi.StringPtrInput
+	// Indicates if the security group is stateful or
+	// stateless. Update of the stateful argument is allowed when there is no port
+	// associated with the security group. Available only in OpenStack environments
+	// with the `stateful-security-group` extension. Defaults to true.
+	Stateful pulumi.BoolPtrInput
 	// A set of string tags for the security group.
 	Tags pulumi.StringArrayInput
 	// The owner of the security group. Required if admin
@@ -289,6 +314,14 @@ func (o SecGroupOutput) Name() pulumi.StringOutput {
 // security group.
 func (o SecGroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Indicates if the security group is stateful or
+// stateless. Update of the stateful argument is allowed when there is no port
+// associated with the security group. Available only in OpenStack environments
+// with the `stateful-security-group` extension. Defaults to true.
+func (o SecGroupOutput) Stateful() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SecGroup) pulumi.BoolOutput { return v.Stateful }).(pulumi.BoolOutput)
 }
 
 // A set of string tags for the security group.

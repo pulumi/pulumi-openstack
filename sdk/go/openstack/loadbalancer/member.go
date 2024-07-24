@@ -83,6 +83,9 @@ type Member struct {
 	// The subnet in which to access the member. Changing
 	// this creates a new member.
 	SubnetId pulumi.StringPtrOutput `pulumi:"subnetId"`
+	// A list of simple strings assigned to the member.
+	// Available only for Octavia >= 2.5.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
 	// the member.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new member.
@@ -163,6 +166,9 @@ type memberState struct {
 	// The subnet in which to access the member. Changing
 	// this creates a new member.
 	SubnetId *string `pulumi:"subnetId"`
+	// A list of simple strings assigned to the member.
+	// Available only for Octavia >= 2.5.
+	Tags []string `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
 	// the member.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new member.
@@ -205,6 +211,9 @@ type MemberState struct {
 	// The subnet in which to access the member. Changing
 	// this creates a new member.
 	SubnetId pulumi.StringPtrInput
+	// A list of simple strings assigned to the member.
+	// Available only for Octavia >= 2.5.
+	Tags pulumi.StringArrayInput
 	// Required for admins. The UUID of the tenant who owns
 	// the member.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new member.
@@ -251,6 +260,9 @@ type memberArgs struct {
 	// The subnet in which to access the member. Changing
 	// this creates a new member.
 	SubnetId *string `pulumi:"subnetId"`
+	// A list of simple strings assigned to the member.
+	// Available only for Octavia >= 2.5.
+	Tags []string `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
 	// the member.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new member.
@@ -294,6 +306,9 @@ type MemberArgs struct {
 	// The subnet in which to access the member. Changing
 	// this creates a new member.
 	SubnetId pulumi.StringPtrInput
+	// A list of simple strings assigned to the member.
+	// Available only for Octavia >= 2.5.
+	Tags pulumi.StringArrayInput
 	// Required for admins. The UUID of the tenant who owns
 	// the member.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new member.
@@ -450,6 +465,12 @@ func (o MemberOutput) Region() pulumi.StringOutput {
 // this creates a new member.
 func (o MemberOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Member) pulumi.StringPtrOutput { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+// A list of simple strings assigned to the member.
+// Available only for Octavia >= 2.5.
+func (o MemberOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Member) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // Required for admins. The UUID of the tenant who owns

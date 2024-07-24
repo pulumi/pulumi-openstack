@@ -52,6 +52,9 @@ namespace Pulumi.OpenStack.LoadBalancer
         [Output("vipPortId")]
         public Output<string> VipPortId { get; private set; } = null!;
 
+        [Output("vipQosPolicyId")]
+        public Output<string?> VipQosPolicyId { get; private set; } = null!;
+
         [Output("vipSubnetId")]
         public Output<string> VipSubnetId { get; private set; } = null!;
 
@@ -150,6 +153,9 @@ namespace Pulumi.OpenStack.LoadBalancer
         [Input("vipPortId")]
         public Input<string>? VipPortId { get; set; }
 
+        [Input("vipQosPolicyId")]
+        public Input<string>? VipQosPolicyId { get; set; }
+
         [Input("vipSubnetId")]
         public Input<string>? VipSubnetId { get; set; }
 
@@ -209,6 +215,9 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         [Input("vipPortId")]
         public Input<string>? VipPortId { get; set; }
+
+        [Input("vipQosPolicyId")]
+        public Input<string>? VipQosPolicyId { get; set; }
 
         [Input("vipSubnetId")]
         public Input<string>? VipSubnetId { get; set; }

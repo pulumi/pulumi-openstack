@@ -237,7 +237,7 @@ class InterfaceAttach(pulumi.CustomResource):
             security_groups=["default"])
         ai1 = openstack.compute.InterfaceAttach("ai_1",
             instance_id=instance1.id,
-            network_id=network1_openstack_networking_port_v2["id"])
+            network_id=network1.id)
         ```
 
         ### Attachment Specifying a Fixed IP
@@ -327,7 +327,7 @@ class InterfaceAttach(pulumi.CustomResource):
             security_groups=["default"])
         ai1 = openstack.compute.InterfaceAttach("ai_1",
             instance_id=instance1.id,
-            network_id=network1_openstack_networking_port_v2["id"])
+            network_id=network1.id)
         ```
 
         ### Attachment Specifying a Fixed IP

@@ -11,7 +11,6 @@ import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.networking.SubnetArgs;
 import com.pulumi.openstack.networking.inputs.SubnetState;
 import com.pulumi.openstack.networking.outputs.SubnetAllocationPool;
-import com.pulumi.openstack.networking.outputs.SubnetHostRoute;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -95,22 +94,24 @@ public class Subnet extends com.pulumi.resources.CustomResource {
         return this.allTags;
     }
     /**
-     * A block declaring the start and end range of the IP addresses available for
-     * use with DHCP in this subnet.
-     * The `allocation_pools` block is documented below.
-     * 
-     * @deprecated
-     * use allocation_pool instead
+     * A block declaring the start and end range of
+     * the IP addresses available for use with DHCP in this subnet. Multiple
+     * `allocation_pool` blocks can be declared, providing the subnet with more
+     * than one range of IP addresses to use with DHCP. However, each IP range
+     * must be from the same CIDR that the subnet is part of.
+     * The `allocation_pool` block is documented below.
      * 
      */
-    @Deprecated /* use allocation_pool instead */
     @Export(name="allocationPools", refs={List.class,SubnetAllocationPool.class}, tree="[0,1]")
     private Output<List<SubnetAllocationPool>> allocationPools;
 
     /**
-     * @return A block declaring the start and end range of the IP addresses available for
-     * use with DHCP in this subnet.
-     * The `allocation_pools` block is documented below.
+     * @return A block declaring the start and end range of
+     * the IP addresses available for use with DHCP in this subnet. Multiple
+     * `allocation_pool` blocks can be declared, providing the subnet with more
+     * than one range of IP addresses to use with DHCP. However, each IP range
+     * must be from the same CIDR that the subnet is part of.
+     * The `allocation_pool` block is documented below.
      * 
      */
     public Output<List<SubnetAllocationPool>> allocationPools() {
@@ -169,6 +170,22 @@ public class Subnet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dnsNameservers);
     }
     /**
+     * Whether to publish DNS records for IPs
+     * from this subnet. Defaults is false.
+     * 
+     */
+    @Export(name="dnsPublishFixedIp", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> dnsPublishFixedIp;
+
+    /**
+     * @return Whether to publish DNS records for IPs
+     * from this subnet. Defaults is false.
+     * 
+     */
+    public Output<Optional<Boolean>> dnsPublishFixedIp() {
+        return Codegen.optional(this.dnsPublishFixedIp);
+    }
+    /**
      * The administrative state of the network.
      * Acceptable values are &#34;true&#34; and &#34;false&#34;. Changing this value enables or
      * disables the DHCP capabilities of the existing subnet. Defaults to true.
@@ -205,32 +222,6 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      */
     public Output<String> gatewayIp() {
         return this.gatewayIp;
-    }
-    /**
-     * (**Deprecated** - use `openstack.networking.SubnetRoute`
-     * instead) An array of routes that should be used by devices
-     * with IPs from this subnet (not including local subnet route). The host_route
-     * object structure is documented below. Changing this updates the host routes
-     * for the existing subnet.
-     * 
-     * @deprecated
-     * Use openstack.networking.SubnetRoute instead
-     * 
-     */
-    @Deprecated /* Use openstack.networking.SubnetRoute instead */
-    @Export(name="hostRoutes", refs={List.class,SubnetHostRoute.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<SubnetHostRoute>> hostRoutes;
-
-    /**
-     * @return (**Deprecated** - use `openstack.networking.SubnetRoute`
-     * instead) An array of routes that should be used by devices
-     * with IPs from this subnet (not including local subnet route). The host_route
-     * object structure is documented below. Changing this updates the host routes
-     * for the existing subnet.
-     * 
-     */
-    public Output<Optional<List<SubnetHostRoute>>> hostRoutes() {
-        return Codegen.optional(this.hostRoutes);
     }
     /**
      * IP version, either 4 (default) or 6. Changing this creates a

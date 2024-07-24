@@ -136,7 +136,7 @@ export class L7RuleV2 extends pulumi.CustomResource {
     public readonly tenantId!: pulumi.Output<string>;
     /**
      * The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-     * HOST\_NAME or PATH.
+     * HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -246,7 +246,7 @@ export interface L7RuleV2State {
     tenantId?: pulumi.Input<string>;
     /**
      * The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-     * HOST\_NAME or PATH.
+     * HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
      */
     type?: pulumi.Input<string>;
     /**
@@ -300,7 +300,7 @@ export interface L7RuleV2Args {
     tenantId?: pulumi.Input<string>;
     /**
      * The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-     * HOST\_NAME or PATH.
+     * HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
      */
     type: pulumi.Input<string>;
     /**

@@ -92,6 +92,12 @@ namespace Pulumi.OpenStack.Networking
         public bool? DhcpEnabled { get; set; }
 
         /// <summary>
+        /// If the subnet publishes DNS records.
+        /// </summary>
+        [Input("dnsPublishFixedIp")]
+        public bool? DnsPublishFixedIp { get; set; }
+
+        /// <summary>
         /// The IP of the subnet's gateway.
         /// </summary>
         [Input("gatewayIp")]
@@ -204,6 +210,12 @@ namespace Pulumi.OpenStack.Networking
         public Input<bool>? DhcpEnabled { get; set; }
 
         /// <summary>
+        /// If the subnet publishes DNS records.
+        /// </summary>
+        [Input("dnsPublishFixedIp")]
+        public Input<bool>? DnsPublishFixedIp { get; set; }
+
+        /// <summary>
         /// The IP of the subnet's gateway.
         /// </summary>
         [Input("gatewayIp")]
@@ -302,6 +314,7 @@ namespace Pulumi.OpenStack.Networking
         public readonly string? Cidr;
         public readonly string? Description;
         public readonly bool? DhcpEnabled;
+        public readonly bool? DnsPublishFixedIp;
         public readonly string? GatewayIp;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -328,6 +341,8 @@ namespace Pulumi.OpenStack.Networking
             string? description,
 
             bool? dhcpEnabled,
+
+            bool? dnsPublishFixedIp,
 
             string? gatewayIp,
 
@@ -362,6 +377,7 @@ namespace Pulumi.OpenStack.Networking
             Cidr = cidr;
             Description = description;
             DhcpEnabled = dhcpEnabled;
+            DnsPublishFixedIp = dnsPublishFixedIp;
             GatewayIp = gatewayIp;
             Id = id;
             Ids = ids;

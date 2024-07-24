@@ -107,7 +107,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     /**
      * Required for HTTP(S) types. Expected HTTP codes
      * for a passing HTTP(S) monitor. You can either specify a single status like
-     * &#34;200&#34;, or a range like &#34;200-202&#34;.
+     * &#34;200&#34;, a list like &#34;200, 202&#34; or a range like &#34;200-202&#34;. Default is &#34;200&#34;.
      * 
      */
     @Export(name="expectedCodes", refs={String.class}, tree="[0]")
@@ -116,25 +116,25 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     /**
      * @return Required for HTTP(S) types. Expected HTTP codes
      * for a passing HTTP(S) monitor. You can either specify a single status like
-     * &#34;200&#34;, or a range like &#34;200-202&#34;.
+     * &#34;200&#34;, a list like &#34;200, 202&#34; or a range like &#34;200-202&#34;. Default is &#34;200&#34;.
      * 
      */
     public Output<String> expectedCodes() {
         return this.expectedCodes;
     }
     /**
-     * Required for HTTP(S) types. The HTTP method used
-     * for requests by the monitor. If this attribute is not specified, it
-     * defaults to &#34;GET&#34;.
+     * Required for HTTP(S) types. The HTTP method that
+     * the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
+     * OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
      * 
      */
     @Export(name="httpMethod", refs={String.class}, tree="[0]")
     private Output<String> httpMethod;
 
     /**
-     * @return Required for HTTP(S) types. The HTTP method used
-     * for requests by the monitor. If this attribute is not specified, it
-     * defaults to &#34;GET&#34;.
+     * @return Required for HTTP(S) types. The HTTP method that
+     * the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
+     * OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
      * 
      */
     public Output<String> httpMethod() {
@@ -159,18 +159,20 @@ public class Monitor extends com.pulumi.resources.CustomResource {
         return this.maxRetries;
     }
     /**
-     * Number of permissible ping failures befor changing the member&#39;s
-     * status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
-     * Changing this updates the max_retries_down of the existing monitor.
+     * Number of permissible ping failures before
+     * changing the member&#39;s status to ERROR. Must be a number between 1 and 10.
+     * The default is 3. Changing this updates the max_retries_down of the
+     * existing monitor.
      * 
      */
     @Export(name="maxRetriesDown", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxRetriesDown;
 
     /**
-     * @return Number of permissible ping failures befor changing the member&#39;s
-     * status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
-     * Changing this updates the max_retries_down of the existing monitor.
+     * @return Number of permissible ping failures before
+     * changing the member&#39;s status to ERROR. Must be a number between 1 and 10.
+     * The default is 3. Changing this updates the max_retries_down of the
+     * existing monitor.
      * 
      */
     public Output<Integer> maxRetriesDown() {
@@ -262,8 +264,8 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of probe, which is PING, TCP, HTTP, HTTPS,
-     * TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
-     * balancer to verify the member state. Changing this creates a new monitor.
+     * TLS-HELLO, SCTP or UDP-CONNECT, that is sent by the loadbalancer to
+     * verify the member state. Changing this creates a new monitor.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -271,8 +273,8 @@ public class Monitor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of probe, which is PING, TCP, HTTP, HTTPS,
-     * TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
-     * balancer to verify the member state. Changing this creates a new monitor.
+     * TLS-HELLO, SCTP or UDP-CONNECT, that is sent by the loadbalancer to
+     * verify the member state. Changing this creates a new monitor.
      * 
      */
     public Output<String> type() {
@@ -280,7 +282,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     }
     /**
      * Required for HTTP(S) types. URI path that will be
-     * accessed if monitor type is HTTP or HTTPS.
+     * accessed if monitor type is HTTP or HTTPS. Default is `/`.
      * 
      */
     @Export(name="urlPath", refs={String.class}, tree="[0]")
@@ -288,7 +290,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Required for HTTP(S) types. URI path that will be
-     * accessed if monitor type is HTTP or HTTPS.
+     * accessed if monitor type is HTTP or HTTPS. Default is `/`.
      * 
      */
     public Output<String> urlPath() {

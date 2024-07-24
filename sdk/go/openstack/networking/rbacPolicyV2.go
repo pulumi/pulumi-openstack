@@ -81,7 +81,7 @@ type RbacPolicyV2 struct {
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// The type of the object that the RBAC policy
 	// affects. Can be one of the following: `addressScope`, `addressGroup`,
-	// `network`, `qosPolicy`, `securityGroup` or `subnetpool`.
+	// `network`, `qosPolicy`, `securityGroup`, `subnetpool` or `bgpvpn`.
 	ObjectType pulumi.StringOutput `pulumi:"objectType"`
 	ProjectId  pulumi.StringOutput `pulumi:"projectId"`
 	// The region in which to obtain the V2 networking client.
@@ -145,7 +145,7 @@ type rbacPolicyV2State struct {
 	ObjectId *string `pulumi:"objectId"`
 	// The type of the object that the RBAC policy
 	// affects. Can be one of the following: `addressScope`, `addressGroup`,
-	// `network`, `qosPolicy`, `securityGroup` or `subnetpool`.
+	// `network`, `qosPolicy`, `securityGroup`, `subnetpool` or `bgpvpn`.
 	ObjectType *string `pulumi:"objectType"`
 	ProjectId  *string `pulumi:"projectId"`
 	// The region in which to obtain the V2 networking client.
@@ -168,7 +168,7 @@ type RbacPolicyV2State struct {
 	ObjectId pulumi.StringPtrInput
 	// The type of the object that the RBAC policy
 	// affects. Can be one of the following: `addressScope`, `addressGroup`,
-	// `network`, `qosPolicy`, `securityGroup` or `subnetpool`.
+	// `network`, `qosPolicy`, `securityGroup`, `subnetpool` or `bgpvpn`.
 	ObjectType pulumi.StringPtrInput
 	ProjectId  pulumi.StringPtrInput
 	// The region in which to obtain the V2 networking client.
@@ -195,7 +195,7 @@ type rbacPolicyV2Args struct {
 	ObjectId string `pulumi:"objectId"`
 	// The type of the object that the RBAC policy
 	// affects. Can be one of the following: `addressScope`, `addressGroup`,
-	// `network`, `qosPolicy`, `securityGroup` or `subnetpool`.
+	// `network`, `qosPolicy`, `securityGroup`, `subnetpool` or `bgpvpn`.
 	ObjectType string `pulumi:"objectType"`
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to configure a routing entry on a subnet. If omitted, the
@@ -218,7 +218,7 @@ type RbacPolicyV2Args struct {
 	ObjectId pulumi.StringInput
 	// The type of the object that the RBAC policy
 	// affects. Can be one of the following: `addressScope`, `addressGroup`,
-	// `network`, `qosPolicy`, `securityGroup` or `subnetpool`.
+	// `network`, `qosPolicy`, `securityGroup`, `subnetpool` or `bgpvpn`.
 	ObjectType pulumi.StringInput
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to configure a routing entry on a subnet. If omitted, the
@@ -332,7 +332,7 @@ func (o RbacPolicyV2Output) ObjectId() pulumi.StringOutput {
 
 // The type of the object that the RBAC policy
 // affects. Can be one of the following: `addressScope`, `addressGroup`,
-// `network`, `qosPolicy`, `securityGroup` or `subnetpool`.
+// `network`, `qosPolicy`, `securityGroup`, `subnetpool` or `bgpvpn`.
 func (o RbacPolicyV2Output) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RbacPolicyV2) pulumi.StringOutput { return v.ObjectType }).(pulumi.StringOutput)
 }

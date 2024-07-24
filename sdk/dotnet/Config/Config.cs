@@ -311,16 +311,6 @@ namespace Pulumi.OpenStack
             set => _token.Set(value);
         }
 
-        private static readonly __Value<bool?> _useOctavia = new __Value<bool?>(() => __config.GetBoolean("useOctavia"));
-        /// <summary>
-        /// If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
-        /// </summary>
-        public static bool? UseOctavia
-        {
-            get => _useOctavia.Get();
-            set => _useOctavia.Set(value);
-        }
-
         private static readonly __Value<string?> _userDomainId = new __Value<string?>(() => __config.Get("userDomainId"));
         /// <summary>
         /// The ID of the domain where the user resides (Identity v3).

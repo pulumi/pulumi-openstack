@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### Basic Volume Type
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -21,6 +23,21 @@ import * as utilities from "../utilities";
  *     extraSpecs: {
  *         capabilities: "gpu",
  *         volume_backend_name: "ssd",
+ *     },
+ * });
+ * ```
+ *
+ * ### Volume Type with multiattach enabled
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const multiattach = new openstack.blockstorage.VolumeTypeV3("multiattach", {
+ *     name: "multiattach",
+ *     description: "Multiattach-enabled volume type",
+ *     extraSpecs: {
+ *         multiattach: "<is> True",
  *     },
  * });
  * ```

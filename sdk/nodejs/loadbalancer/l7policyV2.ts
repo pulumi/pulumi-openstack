@@ -114,10 +114,22 @@ export class L7PolicyV2 extends pulumi.CustomResource {
      */
     public readonly position!: pulumi.Output<number>;
     /**
+     * Integer. Requests matching this policy will be  
+     * redirected to the specified URL or Prefix URL with the HTTP response code.
+     * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+     * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
+     */
+    public readonly redirectHttpCode!: pulumi.Output<number>;
+    /**
      * Requests matching this policy will be redirected to the
      * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
      */
     public readonly redirectPoolId!: pulumi.Output<string | undefined>;
+    /**
+     * Requests matching this policy will be redirected to 
+     * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
+     */
+    public readonly redirectPrefix!: pulumi.Output<string | undefined>;
     /**
      * Requests matching this policy will be redirected to this URL.
      * Only valid if action is REDIRECT\_TO\_URL.
@@ -156,7 +168,9 @@ export class L7PolicyV2 extends pulumi.CustomResource {
             resourceInputs["listenerId"] = state ? state.listenerId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
+            resourceInputs["redirectHttpCode"] = state ? state.redirectHttpCode : undefined;
             resourceInputs["redirectPoolId"] = state ? state.redirectPoolId : undefined;
+            resourceInputs["redirectPrefix"] = state ? state.redirectPrefix : undefined;
             resourceInputs["redirectUrl"] = state ? state.redirectUrl : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["tenantId"] = state ? state.tenantId : undefined;
@@ -174,7 +188,9 @@ export class L7PolicyV2 extends pulumi.CustomResource {
             resourceInputs["listenerId"] = args ? args.listenerId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["position"] = args ? args.position : undefined;
+            resourceInputs["redirectHttpCode"] = args ? args.redirectHttpCode : undefined;
             resourceInputs["redirectPoolId"] = args ? args.redirectPoolId : undefined;
+            resourceInputs["redirectPrefix"] = args ? args.redirectPrefix : undefined;
             resourceInputs["redirectUrl"] = args ? args.redirectUrl : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
@@ -217,10 +233,22 @@ export interface L7PolicyV2State {
      */
     position?: pulumi.Input<number>;
     /**
+     * Integer. Requests matching this policy will be  
+     * redirected to the specified URL or Prefix URL with the HTTP response code.
+     * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+     * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
+     */
+    redirectHttpCode?: pulumi.Input<number>;
+    /**
      * Requests matching this policy will be redirected to the
      * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
      */
     redirectPoolId?: pulumi.Input<string>;
+    /**
+     * Requests matching this policy will be redirected to 
+     * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
+     */
+    redirectPrefix?: pulumi.Input<string>;
     /**
      * Requests matching this policy will be redirected to this URL.
      * Only valid if action is REDIRECT\_TO\_URL.
@@ -274,10 +302,22 @@ export interface L7PolicyV2Args {
      */
     position?: pulumi.Input<number>;
     /**
+     * Integer. Requests matching this policy will be  
+     * redirected to the specified URL or Prefix URL with the HTTP response code.
+     * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+     * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
+     */
+    redirectHttpCode?: pulumi.Input<number>;
+    /**
      * Requests matching this policy will be redirected to the
      * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
      */
     redirectPoolId?: pulumi.Input<string>;
+    /**
+     * Requests matching this policy will be redirected to 
+     * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
+     */
+    redirectPrefix?: pulumi.Input<string>;
     /**
      * Requests matching this policy will be redirected to this URL.
      * Only valid if action is REDIRECT\_TO\_URL.

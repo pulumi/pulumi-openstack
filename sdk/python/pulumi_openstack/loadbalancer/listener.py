@@ -38,8 +38,8 @@ class ListenerArgs:
         :param pulumi.Input[str] loadbalancer_id: The load balancer on which to provision this
                Listener. Changing this creates a new Listener.
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS,
-               TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-               in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+               TERMINATED_HTTPS, UDP, SCTP (supported only in
+               **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
                **Octavia minor version >=2.25**). Changing this creates a new Listener.
         :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
                Changing this creates a new Listener.
@@ -70,6 +70,8 @@ class ListenerArgs:
                containers which store SNI information. See
                [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
                for more information.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the pool. Available
+               for Octavia **minor version 2.5 or later**.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the Listener.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new Listener.
@@ -133,8 +135,8 @@ class ListenerArgs:
     def protocol(self) -> pulumi.Input[str]:
         """
         The protocol - can either be TCP, HTTP, HTTPS,
-        TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-        in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+        TERMINATED_HTTPS, UDP, SCTP (supported only in
+        **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
         **Octavia minor version >=2.25**). Changing this creates a new Listener.
         """
         return pulumi.get(self, "protocol")
@@ -296,6 +298,10 @@ class ListenerArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of simple strings assigned to the pool. Available
+        for Octavia **minor version 2.5 or later**.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -412,8 +418,8 @@ class _ListenerState:
         :param pulumi.Input[str] name: Human-readable name for the Listener. Does not have
                to be unique.
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS,
-               TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-               in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+               TERMINATED_HTTPS, UDP, SCTP (supported only in
+               **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
                **Octavia minor version >=2.25**). Changing this creates a new Listener.
         :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
                Changing this creates a new Listener.
@@ -425,6 +431,8 @@ class _ListenerState:
                containers which store SNI information. See
                [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
                for more information.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the pool. Available
+               for Octavia **minor version 2.5 or later**.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the Listener.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new Listener.
@@ -598,8 +606,8 @@ class _ListenerState:
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
         The protocol - can either be TCP, HTTP, HTTPS,
-        TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-        in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+        TERMINATED_HTTPS, UDP, SCTP (supported only in
+        **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
         **Octavia minor version >=2.25**). Changing this creates a new Listener.
         """
         return pulumi.get(self, "protocol")
@@ -654,6 +662,10 @@ class _ListenerState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of simple strings assigned to the pool. Available
+        for Octavia **minor version 2.5 or later**.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -802,8 +814,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] name: Human-readable name for the Listener. Does not have
                to be unique.
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS,
-               TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-               in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+               TERMINATED_HTTPS, UDP, SCTP (supported only in
+               **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
                **Octavia minor version >=2.25**). Changing this creates a new Listener.
         :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
                Changing this creates a new Listener.
@@ -815,6 +827,8 @@ class Listener(pulumi.CustomResource):
                containers which store SNI information. See
                [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
                for more information.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the pool. Available
+               for Octavia **minor version 2.5 or later**.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the Listener.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new Listener.
@@ -985,8 +999,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] name: Human-readable name for the Listener. Does not have
                to be unique.
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS,
-               TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-               in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+               TERMINATED_HTTPS, UDP, SCTP (supported only in
+               **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
                **Octavia minor version >=2.25**). Changing this creates a new Listener.
         :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
                Changing this creates a new Listener.
@@ -998,6 +1012,8 @@ class Listener(pulumi.CustomResource):
                containers which store SNI information. See
                [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
                for more information.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the pool. Available
+               for Octavia **minor version 2.5 or later**.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the Listener.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new Listener.
@@ -1121,8 +1137,8 @@ class Listener(pulumi.CustomResource):
     def protocol(self) -> pulumi.Output[str]:
         """
         The protocol - can either be TCP, HTTP, HTTPS,
-        TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-        in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+        TERMINATED_HTTPS, UDP, SCTP (supported only in
+        **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
         **Octavia minor version >=2.25**). Changing this creates a new Listener.
         """
         return pulumi.get(self, "protocol")
@@ -1161,6 +1177,10 @@ class Listener(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A list of simple strings assigned to the pool. Available
+        for Octavia **minor version 2.5 or later**.
+        """
         return pulumi.get(self, "tags")
 
     @property

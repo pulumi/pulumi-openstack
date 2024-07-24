@@ -116,7 +116,7 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encryptionAlgorithm);
     }
     /**
-     * The IKE mode. A valid value is v1 or v2. Default is v1.
+     * The IKE version. A valid value is v1 or v2. Default is v1.
      * Changing this updates the existing policy.
      * 
      */
@@ -124,7 +124,7 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> ikeVersion;
 
     /**
-     * @return The IKE mode. A valid value is v1 or v2. Default is v1.
+     * @return The IKE version. A valid value is v1 or v2. Default is v1.
      * Changing this updates the existing policy.
      * 
      */

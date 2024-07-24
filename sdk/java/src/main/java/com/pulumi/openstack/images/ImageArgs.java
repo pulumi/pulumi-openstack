@@ -22,16 +22,16 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     public static final ImageArgs Empty = new ImageArgs();
 
     /**
-     * The container format. Must be one of
-     * &#34;ami&#34;, &#34;ari&#34;, &#34;aki&#34;, &#34;bare&#34;, &#34;ovf&#34;.
+     * The container format. Must be one of &#34;bare&#34;,
+     * &#34;ovf&#34;, &#34;aki&#34;, &#34;ari&#34;, &#34;ami&#34;, &#34;ova&#34;, &#34;docker&#34;, &#34;compressed&#34;.
      * 
      */
     @Import(name="containerFormat", required=true)
     private Output<String> containerFormat;
 
     /**
-     * @return The container format. Must be one of
-     * &#34;ami&#34;, &#34;ari&#34;, &#34;aki&#34;, &#34;bare&#34;, &#34;ovf&#34;.
+     * @return The container format. Must be one of &#34;bare&#34;,
+     * &#34;ovf&#34;, &#34;aki&#34;, &#34;ari&#34;, &#34;ami&#34;, &#34;ova&#34;, &#34;docker&#34;, &#34;compressed&#34;.
      * 
      */
     public Output<String> containerFormat() {
@@ -41,7 +41,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * If true, this provider will decompress downloaded
      * image before uploading it to OpenStack. Decompression algorithm is chosen by
-     * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2 and xz.
+     * checking &#34;Content-Type&#34; or `Content-Disposition` header to detect the
+     * filename extension. Supported algorithms are: gzip, bzip2, xz and zst.
      * Defaults to false. Changing this creates a new Image.
      * 
      */
@@ -51,7 +52,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return If true, this provider will decompress downloaded
      * image before uploading it to OpenStack. Decompression algorithm is chosen by
-     * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2 and xz.
+     * checking &#34;Content-Type&#34; or `Content-Disposition` header to detect the
+     * filename extension. Supported algorithms are: gzip, bzip2, xz and zst.
      * Defaults to false. Changing this creates a new Image.
      * 
      */
@@ -60,16 +62,16 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The disk format. Must be one of
-     * &#34;ami&#34;, &#34;ari&#34;, &#34;aki&#34;, &#34;vhd&#34;, &#34;vmdk&#34;, &#34;raw&#34;, &#34;qcow2&#34;, &#34;vdi&#34;, &#34;iso&#34;.
+     * The disk format. Must be one of &#34;raw&#34;, &#34;vhd&#34;,
+     * &#34;vhdx&#34;, &#34;vmdk&#34;, &#34;vdi&#34;, &#34;iso&#34;, &#34;ploop&#34;, &#34;qcow2&#34;, &#34;aki&#34;, &#34;ari&#34;, &#34;ami&#34;
      * 
      */
     @Import(name="diskFormat", required=true)
     private Output<String> diskFormat;
 
     /**
-     * @return The disk format. Must be one of
-     * &#34;ami&#34;, &#34;ari&#34;, &#34;aki&#34;, &#34;vhd&#34;, &#34;vmdk&#34;, &#34;raw&#34;, &#34;qcow2&#34;, &#34;vdi&#34;, &#34;iso&#34;.
+     * @return The disk format. Must be one of &#34;raw&#34;, &#34;vhd&#34;,
+     * &#34;vhdx&#34;, &#34;vmdk&#34;, &#34;vdi&#34;, &#34;iso&#34;, &#34;ploop&#34;, &#34;qcow2&#34;, &#34;aki&#34;, &#34;ari&#34;, &#34;ami&#34;
      * 
      */
     public Output<String> diskFormat() {
@@ -118,14 +120,16 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password of basic auth to download `image_source_url`.
+     * The password of basic auth to download
+     * `image_source_url`.
      * 
      */
     @Import(name="imageSourcePassword")
     private @Nullable Output<String> imageSourcePassword;
 
     /**
-     * @return The password of basic auth to download `image_source_url`.
+     * @return The password of basic auth to download
+     * `image_source_url`.
      * 
      */
     public Optional<Output<String>> imageSourcePassword() {
@@ -133,20 +137,20 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This is the url of the raw image. If `web_download`
-     * is not used, then the image will be downloaded in the `image_cache_path` before
-     * being uploaded to Glance.
-     * Conflicts with `local_file_path`.
+     * This is the url of the raw image. If
+     * `web_download` is not used, then the image will be downloaded in the
+     * `image_cache_path` before being uploaded to Glance. Conflicts with
+     * `local_file_path`.
      * 
      */
     @Import(name="imageSourceUrl")
     private @Nullable Output<String> imageSourceUrl;
 
     /**
-     * @return This is the url of the raw image. If `web_download`
-     * is not used, then the image will be downloaded in the `image_cache_path` before
-     * being uploaded to Glance.
-     * Conflicts with `local_file_path`.
+     * @return This is the url of the raw image. If
+     * `web_download` is not used, then the image will be downloaded in the
+     * `image_cache_path` before being uploaded to Glance. Conflicts with
+     * `local_file_path`.
      * 
      */
     public Optional<Output<String>> imageSourceUrl() {
@@ -154,14 +158,16 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The username of basic auth to download `image_source_url`.
+     * The username of basic auth to download
+     * `image_source_url`.
      * 
      */
     @Import(name="imageSourceUsername")
     private @Nullable Output<String> imageSourceUsername;
 
     /**
-     * @return The username of basic auth to download `image_source_url`.
+     * @return The username of basic auth to download
+     * `image_source_url`.
      * 
      */
     public Optional<Output<String>> imageSourceUsername() {
@@ -188,16 +194,16 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Amount of disk space (in GB) required to boot image.
-     * Defaults to 0.
+     * Amount of disk space (in GB) required to boot
+     * image. Defaults to 0.
      * 
      */
     @Import(name="minDiskGb")
     private @Nullable Output<Integer> minDiskGb;
 
     /**
-     * @return Amount of disk space (in GB) required to boot image.
-     * Defaults to 0.
+     * @return Amount of disk space (in GB) required to boot
+     * image. Defaults to 0.
      * 
      */
     public Optional<Output<Integer>> minDiskGb() {
@@ -238,8 +244,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A map of key/value pairs to set freeform
-     * information about an image. See the &#34;Notes&#34; section for further
-     * information about properties.
+     * information about an image. See the &#34;Notes&#34; section for further information
+     * about properties.
      * 
      */
     @Import(name="properties")
@@ -247,8 +253,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A map of key/value pairs to set freeform
-     * information about an image. See the &#34;Notes&#34; section for further
-     * information about properties.
+     * information about an image. See the &#34;Notes&#34; section for further information
+     * about properties.
      * 
      */
     public Optional<Output<Map<String,Object>>> properties() {
@@ -256,16 +262,16 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If true, image will not be deletable.
-     * Defaults to false.
+     * If true, image will not be deletable. Defaults to
+     * false.
      * 
      */
     @Import(name="protected")
     private @Nullable Output<Boolean> protected_;
 
     /**
-     * @return If true, image will not be deletable.
-     * Defaults to false.
+     * @return If true, image will not be deletable. Defaults to
+     * false.
      * 
      */
     public Optional<Output<Boolean>> protected_() {
@@ -273,20 +279,20 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The region in which to obtain the V2 Glance client.
-     * A Glance client is needed to create an Image that can be used with
-     * a compute instance. If omitted, the `region` argument of the provider
-     * is used. Changing this creates a new Image.
+     * The region in which to obtain the V2 Glance client. A
+     * Glance client is needed to create an Image that can be used with a compute
+     * instance. If omitted, the `region` argument of the provider is used. Changing
+     * this creates a new Image.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region in which to obtain the V2 Glance client.
-     * A Glance client is needed to create an Image that can be used with
-     * a compute instance. If omitted, the `region` argument of the provider
-     * is used. Changing this creates a new Image.
+     * @return The region in which to obtain the V2 Glance client. A
+     * Glance client is needed to create an Image that can be used with a compute
+     * instance. If omitted, the `region` argument of the provider is used. Changing
+     * this creates a new Image.
      * 
      */
     public Optional<Output<String>> region() {
@@ -294,16 +300,16 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The tags of the image. It must be a list of strings.
-     * At this time, it is not possible to delete all tags of an image.
+     * The tags of the image. It must be a list of strings. At
+     * this time, it is not possible to delete all tags of an image.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The tags of the image. It must be a list of strings.
-     * At this time, it is not possible to delete all tags of an image.
+     * @return The tags of the image. It must be a list of strings. At
+     * this time, it is not possible to delete all tags of an image.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -312,8 +318,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * If false, the checksum will not be verified
-     * once the image is finished uploading. Conflicts with `web_download`.
-     * Defaults to true when not using `web_download`.
+     * once the image is finished uploading. Conflicts with `web_download`. Defaults
+     * to true when not using `web_download`.
      * 
      */
     @Import(name="verifyChecksum")
@@ -321,8 +327,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return If false, the checksum will not be verified
-     * once the image is finished uploading. Conflicts with `web_download`.
-     * Defaults to true when not using `web_download`.
+     * once the image is finished uploading. Conflicts with `web_download`. Defaults
+     * to true when not using `web_download`.
      * 
      */
     public Optional<Output<Boolean>> verifyChecksum() {
@@ -349,8 +355,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If true, the &#34;web-download&#34; import method will
-     * be used to let Openstack download the image directly from the remote source.
+     * If true, the &#34;web-download&#34; import method will be
+     * used to let Openstack download the image directly from the remote source.
      * Conflicts with `local_file_path`. Defaults to false.
      * 
      */
@@ -358,8 +364,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> webDownload;
 
     /**
-     * @return If true, the &#34;web-download&#34; import method will
-     * be used to let Openstack download the image directly from the remote source.
+     * @return If true, the &#34;web-download&#34; import method will be
+     * used to let Openstack download the image directly from the remote source.
      * Conflicts with `local_file_path`. Defaults to false.
      * 
      */
@@ -411,8 +417,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerFormat The container format. Must be one of
-         * &#34;ami&#34;, &#34;ari&#34;, &#34;aki&#34;, &#34;bare&#34;, &#34;ovf&#34;.
+         * @param containerFormat The container format. Must be one of &#34;bare&#34;,
+         * &#34;ovf&#34;, &#34;aki&#34;, &#34;ari&#34;, &#34;ami&#34;, &#34;ova&#34;, &#34;docker&#34;, &#34;compressed&#34;.
          * 
          * @return builder
          * 
@@ -423,8 +429,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerFormat The container format. Must be one of
-         * &#34;ami&#34;, &#34;ari&#34;, &#34;aki&#34;, &#34;bare&#34;, &#34;ovf&#34;.
+         * @param containerFormat The container format. Must be one of &#34;bare&#34;,
+         * &#34;ovf&#34;, &#34;aki&#34;, &#34;ari&#34;, &#34;ami&#34;, &#34;ova&#34;, &#34;docker&#34;, &#34;compressed&#34;.
          * 
          * @return builder
          * 
@@ -436,7 +442,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param decompress If true, this provider will decompress downloaded
          * image before uploading it to OpenStack. Decompression algorithm is chosen by
-         * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2 and xz.
+         * checking &#34;Content-Type&#34; or `Content-Disposition` header to detect the
+         * filename extension. Supported algorithms are: gzip, bzip2, xz and zst.
          * Defaults to false. Changing this creates a new Image.
          * 
          * @return builder
@@ -450,7 +457,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param decompress If true, this provider will decompress downloaded
          * image before uploading it to OpenStack. Decompression algorithm is chosen by
-         * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2 and xz.
+         * checking &#34;Content-Type&#34; or `Content-Disposition` header to detect the
+         * filename extension. Supported algorithms are: gzip, bzip2, xz and zst.
          * Defaults to false. Changing this creates a new Image.
          * 
          * @return builder
@@ -461,8 +469,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskFormat The disk format. Must be one of
-         * &#34;ami&#34;, &#34;ari&#34;, &#34;aki&#34;, &#34;vhd&#34;, &#34;vmdk&#34;, &#34;raw&#34;, &#34;qcow2&#34;, &#34;vdi&#34;, &#34;iso&#34;.
+         * @param diskFormat The disk format. Must be one of &#34;raw&#34;, &#34;vhd&#34;,
+         * &#34;vhdx&#34;, &#34;vmdk&#34;, &#34;vdi&#34;, &#34;iso&#34;, &#34;ploop&#34;, &#34;qcow2&#34;, &#34;aki&#34;, &#34;ari&#34;, &#34;ami&#34;
          * 
          * @return builder
          * 
@@ -473,8 +481,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskFormat The disk format. Must be one of
-         * &#34;ami&#34;, &#34;ari&#34;, &#34;aki&#34;, &#34;vhd&#34;, &#34;vmdk&#34;, &#34;raw&#34;, &#34;qcow2&#34;, &#34;vdi&#34;, &#34;iso&#34;.
+         * @param diskFormat The disk format. Must be one of &#34;raw&#34;, &#34;vhd&#34;,
+         * &#34;vhdx&#34;, &#34;vmdk&#34;, &#34;vdi&#34;, &#34;iso&#34;, &#34;ploop&#34;, &#34;qcow2&#34;, &#34;aki&#34;, &#34;ari&#34;, &#34;ami&#34;
          * 
          * @return builder
          * 
@@ -539,7 +547,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageSourcePassword The password of basic auth to download `image_source_url`.
+         * @param imageSourcePassword The password of basic auth to download
+         * `image_source_url`.
          * 
          * @return builder
          * 
@@ -550,7 +559,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageSourcePassword The password of basic auth to download `image_source_url`.
+         * @param imageSourcePassword The password of basic auth to download
+         * `image_source_url`.
          * 
          * @return builder
          * 
@@ -560,10 +570,10 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageSourceUrl This is the url of the raw image. If `web_download`
-         * is not used, then the image will be downloaded in the `image_cache_path` before
-         * being uploaded to Glance.
-         * Conflicts with `local_file_path`.
+         * @param imageSourceUrl This is the url of the raw image. If
+         * `web_download` is not used, then the image will be downloaded in the
+         * `image_cache_path` before being uploaded to Glance. Conflicts with
+         * `local_file_path`.
          * 
          * @return builder
          * 
@@ -574,10 +584,10 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageSourceUrl This is the url of the raw image. If `web_download`
-         * is not used, then the image will be downloaded in the `image_cache_path` before
-         * being uploaded to Glance.
-         * Conflicts with `local_file_path`.
+         * @param imageSourceUrl This is the url of the raw image. If
+         * `web_download` is not used, then the image will be downloaded in the
+         * `image_cache_path` before being uploaded to Glance. Conflicts with
+         * `local_file_path`.
          * 
          * @return builder
          * 
@@ -587,7 +597,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageSourceUsername The username of basic auth to download `image_source_url`.
+         * @param imageSourceUsername The username of basic auth to download
+         * `image_source_url`.
          * 
          * @return builder
          * 
@@ -598,7 +609,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageSourceUsername The username of basic auth to download `image_source_url`.
+         * @param imageSourceUsername The username of basic auth to download
+         * `image_source_url`.
          * 
          * @return builder
          * 
@@ -633,8 +645,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minDiskGb Amount of disk space (in GB) required to boot image.
-         * Defaults to 0.
+         * @param minDiskGb Amount of disk space (in GB) required to boot
+         * image. Defaults to 0.
          * 
          * @return builder
          * 
@@ -645,8 +657,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minDiskGb Amount of disk space (in GB) required to boot image.
-         * Defaults to 0.
+         * @param minDiskGb Amount of disk space (in GB) required to boot
+         * image. Defaults to 0.
          * 
          * @return builder
          * 
@@ -701,8 +713,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param properties A map of key/value pairs to set freeform
-         * information about an image. See the &#34;Notes&#34; section for further
-         * information about properties.
+         * information about an image. See the &#34;Notes&#34; section for further information
+         * about properties.
          * 
          * @return builder
          * 
@@ -714,8 +726,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param properties A map of key/value pairs to set freeform
-         * information about an image. See the &#34;Notes&#34; section for further
-         * information about properties.
+         * information about an image. See the &#34;Notes&#34; section for further information
+         * about properties.
          * 
          * @return builder
          * 
@@ -725,8 +737,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protected_ If true, image will not be deletable.
-         * Defaults to false.
+         * @param protected_ If true, image will not be deletable. Defaults to
+         * false.
          * 
          * @return builder
          * 
@@ -737,8 +749,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protected_ If true, image will not be deletable.
-         * Defaults to false.
+         * @param protected_ If true, image will not be deletable. Defaults to
+         * false.
          * 
          * @return builder
          * 
@@ -748,10 +760,10 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region in which to obtain the V2 Glance client.
-         * A Glance client is needed to create an Image that can be used with
-         * a compute instance. If omitted, the `region` argument of the provider
-         * is used. Changing this creates a new Image.
+         * @param region The region in which to obtain the V2 Glance client. A
+         * Glance client is needed to create an Image that can be used with a compute
+         * instance. If omitted, the `region` argument of the provider is used. Changing
+         * this creates a new Image.
          * 
          * @return builder
          * 
@@ -762,10 +774,10 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region in which to obtain the V2 Glance client.
-         * A Glance client is needed to create an Image that can be used with
-         * a compute instance. If omitted, the `region` argument of the provider
-         * is used. Changing this creates a new Image.
+         * @param region The region in which to obtain the V2 Glance client. A
+         * Glance client is needed to create an Image that can be used with a compute
+         * instance. If omitted, the `region` argument of the provider is used. Changing
+         * this creates a new Image.
          * 
          * @return builder
          * 
@@ -775,8 +787,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tags of the image. It must be a list of strings.
-         * At this time, it is not possible to delete all tags of an image.
+         * @param tags The tags of the image. It must be a list of strings. At
+         * this time, it is not possible to delete all tags of an image.
          * 
          * @return builder
          * 
@@ -787,8 +799,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tags of the image. It must be a list of strings.
-         * At this time, it is not possible to delete all tags of an image.
+         * @param tags The tags of the image. It must be a list of strings. At
+         * this time, it is not possible to delete all tags of an image.
          * 
          * @return builder
          * 
@@ -798,8 +810,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tags of the image. It must be a list of strings.
-         * At this time, it is not possible to delete all tags of an image.
+         * @param tags The tags of the image. It must be a list of strings. At
+         * this time, it is not possible to delete all tags of an image.
          * 
          * @return builder
          * 
@@ -810,8 +822,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param verifyChecksum If false, the checksum will not be verified
-         * once the image is finished uploading. Conflicts with `web_download`.
-         * Defaults to true when not using `web_download`.
+         * once the image is finished uploading. Conflicts with `web_download`. Defaults
+         * to true when not using `web_download`.
          * 
          * @return builder
          * 
@@ -823,8 +835,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param verifyChecksum If false, the checksum will not be verified
-         * once the image is finished uploading. Conflicts with `web_download`.
-         * Defaults to true when not using `web_download`.
+         * once the image is finished uploading. Conflicts with `web_download`. Defaults
+         * to true when not using `web_download`.
          * 
          * @return builder
          * 
@@ -859,8 +871,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webDownload If true, the &#34;web-download&#34; import method will
-         * be used to let Openstack download the image directly from the remote source.
+         * @param webDownload If true, the &#34;web-download&#34; import method will be
+         * used to let Openstack download the image directly from the remote source.
          * Conflicts with `local_file_path`. Defaults to false.
          * 
          * @return builder
@@ -872,8 +884,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webDownload If true, the &#34;web-download&#34; import method will
-         * be used to let Openstack download the image directly from the remote source.
+         * @param webDownload If true, the &#34;web-download&#34; import method will be
+         * used to let Openstack download the image directly from the remote source.
          * Conflicts with `local_file_path`. Defaults to false.
          * 
          * @return builder

@@ -369,12 +369,6 @@ namespace Pulumi.OpenStack
         public Input<string>? Token { get; set; }
 
         /// <summary>
-        /// If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
-        /// </summary>
-        [Input("useOctavia", json: true)]
-        public Input<bool>? UseOctavia { get; set; }
-
-        /// <summary>
         /// The ID of the domain where the user resides (Identity v3).
         /// </summary>
         [Input("userDomainId")]

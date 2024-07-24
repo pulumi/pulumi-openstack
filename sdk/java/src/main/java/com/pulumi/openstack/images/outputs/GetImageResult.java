@@ -26,7 +26,7 @@ public final class GetImageResult {
      * @return The format of the image&#39;s container.
      * 
      */
-    private String containerFormat;
+    private @Nullable String containerFormat;
     /**
      * @return The date the image was created.
      * 
@@ -36,7 +36,7 @@ public final class GetImageResult {
      * @return The format of the image&#39;s disk.
      * 
      */
-    private String diskFormat;
+    private @Nullable String diskFormat;
     /**
      * @return the trailing path after the glance endpoint that represent the
      * location of the image or the path to retrieve it.
@@ -51,9 +51,9 @@ public final class GetImageResult {
     private String id;
     private @Nullable String memberStatus;
     /**
-     * @return The metadata associated with the image.
-     * Image metadata allow for meaningfully define the image properties
-     * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+     * @return The metadata associated with the image. Image metadata allow for
+     * meaningfully define the image properties and tags. See
+     * https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      * 
      */
     private Map<String,Object> metadata;
@@ -83,8 +83,7 @@ public final class GetImageResult {
     private Boolean protected_;
     private String region;
     /**
-     * @return The path to the JSON-schema that represent
-     * the image or image
+     * @return The path to the JSON-schema that represent the image
      * 
      */
     private String schema;
@@ -95,8 +94,7 @@ public final class GetImageResult {
     private Integer sizeBytes;
     private @Nullable Integer sizeMax;
     private @Nullable Integer sizeMin;
-    private @Nullable String sortDirection;
-    private @Nullable String sortKey;
+    private @Nullable String sort;
     private @Nullable String tag;
     /**
      * @return The tags list of the image.
@@ -122,8 +120,8 @@ public final class GetImageResult {
      * @return The format of the image&#39;s container.
      * 
      */
-    public String containerFormat() {
-        return this.containerFormat;
+    public Optional<String> containerFormat() {
+        return Optional.ofNullable(this.containerFormat);
     }
     /**
      * @return The date the image was created.
@@ -136,8 +134,8 @@ public final class GetImageResult {
      * @return The format of the image&#39;s disk.
      * 
      */
-    public String diskFormat() {
-        return this.diskFormat;
+    public Optional<String> diskFormat() {
+        return Optional.ofNullable(this.diskFormat);
     }
     /**
      * @return the trailing path after the glance endpoint that represent the
@@ -161,9 +159,9 @@ public final class GetImageResult {
         return Optional.ofNullable(this.memberStatus);
     }
     /**
-     * @return The metadata associated with the image.
-     * Image metadata allow for meaningfully define the image properties
-     * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+     * @return The metadata associated with the image. Image metadata allow for
+     * meaningfully define the image properties and tags. See
+     * https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      * 
      */
     public Map<String,Object> metadata() {
@@ -213,8 +211,7 @@ public final class GetImageResult {
         return this.region;
     }
     /**
-     * @return The path to the JSON-schema that represent
-     * the image or image
+     * @return The path to the JSON-schema that represent the image
      * 
      */
     public String schema() {
@@ -233,11 +230,8 @@ public final class GetImageResult {
     public Optional<Integer> sizeMin() {
         return Optional.ofNullable(this.sizeMin);
     }
-    public Optional<String> sortDirection() {
-        return Optional.ofNullable(this.sortDirection);
-    }
-    public Optional<String> sortKey() {
-        return Optional.ofNullable(this.sortKey);
+    public Optional<String> sort() {
+        return Optional.ofNullable(this.sort);
     }
     public Optional<String> tag() {
         return Optional.ofNullable(this.tag);
@@ -270,9 +264,9 @@ public final class GetImageResult {
     @CustomType.Builder
     public static final class Builder {
         private String checksum;
-        private String containerFormat;
+        private @Nullable String containerFormat;
         private String createdAt;
-        private String diskFormat;
+        private @Nullable String diskFormat;
         private String file;
         private @Nullable Boolean hidden;
         private String id;
@@ -291,8 +285,7 @@ public final class GetImageResult {
         private Integer sizeBytes;
         private @Nullable Integer sizeMax;
         private @Nullable Integer sizeMin;
-        private @Nullable String sortDirection;
-        private @Nullable String sortKey;
+        private @Nullable String sort;
         private @Nullable String tag;
         private List<String> tags;
         private String updatedAt;
@@ -322,8 +315,7 @@ public final class GetImageResult {
     	      this.sizeBytes = defaults.sizeBytes;
     	      this.sizeMax = defaults.sizeMax;
     	      this.sizeMin = defaults.sizeMin;
-    	      this.sortDirection = defaults.sortDirection;
-    	      this.sortKey = defaults.sortKey;
+    	      this.sort = defaults.sort;
     	      this.tag = defaults.tag;
     	      this.tags = defaults.tags;
     	      this.updatedAt = defaults.updatedAt;
@@ -339,10 +331,8 @@ public final class GetImageResult {
             return this;
         }
         @CustomType.Setter
-        public Builder containerFormat(String containerFormat) {
-            if (containerFormat == null) {
-              throw new MissingRequiredPropertyException("GetImageResult", "containerFormat");
-            }
+        public Builder containerFormat(@Nullable String containerFormat) {
+
             this.containerFormat = containerFormat;
             return this;
         }
@@ -355,10 +345,8 @@ public final class GetImageResult {
             return this;
         }
         @CustomType.Setter
-        public Builder diskFormat(String diskFormat) {
-            if (diskFormat == null) {
-              throw new MissingRequiredPropertyException("GetImageResult", "diskFormat");
-            }
+        public Builder diskFormat(@Nullable String diskFormat) {
+
             this.diskFormat = diskFormat;
             return this;
         }
@@ -489,15 +477,9 @@ public final class GetImageResult {
             return this;
         }
         @CustomType.Setter
-        public Builder sortDirection(@Nullable String sortDirection) {
+        public Builder sort(@Nullable String sort) {
 
-            this.sortDirection = sortDirection;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder sortKey(@Nullable String sortKey) {
-
-            this.sortKey = sortKey;
+            this.sort = sort;
             return this;
         }
         @CustomType.Setter
@@ -555,8 +537,7 @@ public final class GetImageResult {
             _resultValue.sizeBytes = sizeBytes;
             _resultValue.sizeMax = sizeMax;
             _resultValue.sizeMin = sizeMin;
-            _resultValue.sortDirection = sortDirection;
-            _resultValue.sortKey = sortKey;
+            _resultValue.sort = sort;
             _resultValue.tag = tag;
             _resultValue.tags = tags;
             _resultValue.updatedAt = updatedAt;

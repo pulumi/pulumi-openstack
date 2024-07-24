@@ -88,6 +88,27 @@ public final class SecGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates if the security group is stateful or
+     * stateless. Update of the stateful argument is allowed when there is no port
+     * associated with the security group. Available only in OpenStack environments
+     * with the `stateful-security-group` extension. Defaults to true.
+     * 
+     */
+    @Import(name="stateful")
+    private @Nullable Output<Boolean> stateful;
+
+    /**
+     * @return Indicates if the security group is stateful or
+     * stateless. Update of the stateful argument is allowed when there is no port
+     * associated with the security group. Available only in OpenStack environments
+     * with the `stateful-security-group` extension. Defaults to true.
+     * 
+     */
+    public Optional<Output<Boolean>> stateful() {
+        return Optional.ofNullable(this.stateful);
+    }
+
+    /**
      * A set of string tags for the security group.
      * 
      */
@@ -128,6 +149,7 @@ public final class SecGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.name = $.name;
         this.region = $.region;
+        this.stateful = $.stateful;
         this.tags = $.tags;
         this.tenantId = $.tenantId;
     }
@@ -242,6 +264,33 @@ public final class SecGroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param stateful Indicates if the security group is stateful or
+         * stateless. Update of the stateful argument is allowed when there is no port
+         * associated with the security group. Available only in OpenStack environments
+         * with the `stateful-security-group` extension. Defaults to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stateful(@Nullable Output<Boolean> stateful) {
+            $.stateful = stateful;
+            return this;
+        }
+
+        /**
+         * @param stateful Indicates if the security group is stateful or
+         * stateless. Update of the stateful argument is allowed when there is no port
+         * associated with the security group. Available only in OpenStack environments
+         * with the `stateful-security-group` extension. Defaults to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stateful(Boolean stateful) {
+            return stateful(Output.of(stateful));
         }
 
         /**

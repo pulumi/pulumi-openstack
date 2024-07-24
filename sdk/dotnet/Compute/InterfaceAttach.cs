@@ -43,7 +43,7 @@ namespace Pulumi.OpenStack.Compute
     ///     var ai1 = new OpenStack.Compute.InterfaceAttach("ai_1", new()
     ///     {
     ///         InstanceId = instance1.Id,
-    ///         NetworkId = network1OpenstackNetworkingPortV2.Id,
+    ///         NetworkId = network1.Id,
     ///     });
     /// 
     /// });

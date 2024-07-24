@@ -55,7 +55,7 @@ public final class RbacPolicyV2Args extends com.pulumi.resources.ResourceArgs {
     /**
      * The type of the object that the RBAC policy
      * affects. Can be one of the following: `address_scope`, `address_group`,
-     * `network`, `qos_policy`, `security_group` or `subnetpool`.
+     * `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
      * 
      */
     @Import(name="objectType", required=true)
@@ -64,7 +64,7 @@ public final class RbacPolicyV2Args extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The type of the object that the RBAC policy
      * affects. Can be one of the following: `address_scope`, `address_group`,
-     * `network`, `qos_policy`, `security_group` or `subnetpool`.
+     * `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
      * 
      */
     public Output<String> objectType() {
@@ -188,7 +188,7 @@ public final class RbacPolicyV2Args extends com.pulumi.resources.ResourceArgs {
         /**
          * @param objectType The type of the object that the RBAC policy
          * affects. Can be one of the following: `address_scope`, `address_group`,
-         * `network`, `qos_policy`, `security_group` or `subnetpool`.
+         * `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class RbacPolicyV2Args extends com.pulumi.resources.ResourceArgs {
         /**
          * @param objectType The type of the object that the RBAC policy
          * affects. Can be one of the following: `address_scope`, `address_group`,
-         * `network`, `qos_policy`, `security_group` or `subnetpool`.
+         * `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
          * 
          * @return builder
          * 

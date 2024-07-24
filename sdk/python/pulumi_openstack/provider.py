@@ -42,7 +42,6 @@ class ProviderArgs:
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  tenant_name: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
-                 use_octavia: Optional[pulumi.Input[bool]] = None,
                  user_domain_id: Optional[pulumi.Input[str]] = None,
                  user_domain_name: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
@@ -78,7 +77,6 @@ class ProviderArgs:
         :param pulumi.Input[str] tenant_id: The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
         :param pulumi.Input[str] tenant_name: The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
         :param pulumi.Input[str] token: Authentication token to use as an alternative to username/password.
-        :param pulumi.Input[bool] use_octavia: If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
         :param pulumi.Input[str] user_domain_id: The ID of the domain where the user resides (Identity v3).
         :param pulumi.Input[str] user_domain_name: The name of the domain where the user resides (Identity v3).
         :param pulumi.Input[str] user_id: User ID to login with.
@@ -154,11 +152,6 @@ class ProviderArgs:
             pulumi.set(__self__, "tenant_name", tenant_name)
         if token is not None:
             pulumi.set(__self__, "token", token)
-        if use_octavia is not None:
-            warnings.warn("""Users not using loadbalancer resources can ignore this message. Support for neutron-lbaas will be removed on next major release. Octavia will be the only supported method for loadbalancer resources. Users using octavia will have to remove 'use_octavia' option from the provider configuration block. Users using neutron-lbaas will have to migrate/upgrade to octavia.""", DeprecationWarning)
-            pulumi.log.warn("""use_octavia is deprecated: Users not using loadbalancer resources can ignore this message. Support for neutron-lbaas will be removed on next major release. Octavia will be the only supported method for loadbalancer resources. Users using octavia will have to remove 'use_octavia' option from the provider configuration block. Users using neutron-lbaas will have to migrate/upgrade to octavia.""")
-        if use_octavia is not None:
-            pulumi.set(__self__, "use_octavia", use_octavia)
         if user_domain_id is not None:
             pulumi.set(__self__, "user_domain_id", user_domain_id)
         if user_domain_name is not None:
@@ -504,19 +497,6 @@ class ProviderArgs:
         pulumi.set(self, "token", value)
 
     @property
-    @pulumi.getter(name="useOctavia")
-    @_utilities.deprecated("""Users not using loadbalancer resources can ignore this message. Support for neutron-lbaas will be removed on next major release. Octavia will be the only supported method for loadbalancer resources. Users using octavia will have to remove 'use_octavia' option from the provider configuration block. Users using neutron-lbaas will have to migrate/upgrade to octavia.""")
-    def use_octavia(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
-        """
-        return pulumi.get(self, "use_octavia")
-
-    @use_octavia.setter
-    def use_octavia(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "use_octavia", value)
-
-    @property
     @pulumi.getter(name="userDomainId")
     def user_domain_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -598,7 +578,6 @@ class Provider(pulumi.ProviderResource):
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  tenant_name: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
-                 use_octavia: Optional[pulumi.Input[bool]] = None,
                  user_domain_id: Optional[pulumi.Input[str]] = None,
                  user_domain_name: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
@@ -641,7 +620,6 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] tenant_id: The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
         :param pulumi.Input[str] tenant_name: The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
         :param pulumi.Input[str] token: Authentication token to use as an alternative to username/password.
-        :param pulumi.Input[bool] use_octavia: If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
         :param pulumi.Input[str] user_domain_id: The ID of the domain where the user resides (Identity v3).
         :param pulumi.Input[str] user_domain_name: The name of the domain where the user resides (Identity v3).
         :param pulumi.Input[str] user_id: User ID to login with.
@@ -702,7 +680,6 @@ class Provider(pulumi.ProviderResource):
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  tenant_name: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
-                 use_octavia: Optional[pulumi.Input[bool]] = None,
                  user_domain_id: Optional[pulumi.Input[str]] = None,
                  user_domain_name: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
@@ -758,7 +735,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["tenant_id"] = tenant_id
             __props__.__dict__["tenant_name"] = tenant_name
             __props__.__dict__["token"] = token
-            __props__.__dict__["use_octavia"] = pulumi.Output.from_input(use_octavia).apply(pulumi.runtime.to_json) if use_octavia is not None else None
             __props__.__dict__["user_domain_id"] = user_domain_id
             __props__.__dict__["user_domain_name"] = user_domain_name
             __props__.__dict__["user_id"] = user_id

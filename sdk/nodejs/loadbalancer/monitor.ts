@@ -75,13 +75,13 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Required for HTTP(S) types. Expected HTTP codes
      * for a passing HTTP(S) monitor. You can either specify a single status like
-     * "200", or a range like "200-202".
+     * "200", a list like "200, 202" or a range like "200-202". Default is "200".
      */
     public readonly expectedCodes!: pulumi.Output<string>;
     /**
-     * Required for HTTP(S) types. The HTTP method used
-     * for requests by the monitor. If this attribute is not specified, it
-     * defaults to "GET".
+     * Required for HTTP(S) types. The HTTP method that 
+     * the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
+     * OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
      */
     public readonly httpMethod!: pulumi.Output<string>;
     /**
@@ -91,9 +91,10 @@ export class Monitor extends pulumi.CustomResource {
      */
     public readonly maxRetries!: pulumi.Output<number>;
     /**
-     * Number of permissible ping failures befor changing the member's
-     * status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
-     * Changing this updates the maxRetriesDown of the existing monitor.
+     * Number of permissible ping failures before 
+     * changing the member's status to ERROR. Must be a number between 1 and 10.
+     * The default is 3. Changing this updates the maxRetriesDown of the
+     * existing monitor.
      */
     public readonly maxRetriesDown!: pulumi.Output<number>;
     /**
@@ -125,13 +126,13 @@ export class Monitor extends pulumi.CustomResource {
     public readonly timeout!: pulumi.Output<number>;
     /**
      * The type of probe, which is PING, TCP, HTTP, HTTPS,
-     * TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
-     * balancer to verify the member state. Changing this creates a new monitor.
+     * TLS-HELLO, SCTP or UDP-CONNECT, that is sent by the loadbalancer to
+     * verify the member state. Changing this creates a new monitor.
      */
     public readonly type!: pulumi.Output<string>;
     /**
      * Required for HTTP(S) types. URI path that will be
-     * accessed if monitor type is HTTP or HTTPS.
+     * accessed if monitor type is HTTP or HTTPS. Default is `/`.
      */
     public readonly urlPath!: pulumi.Output<string>;
 
@@ -213,13 +214,13 @@ export interface MonitorState {
     /**
      * Required for HTTP(S) types. Expected HTTP codes
      * for a passing HTTP(S) monitor. You can either specify a single status like
-     * "200", or a range like "200-202".
+     * "200", a list like "200, 202" or a range like "200-202". Default is "200".
      */
     expectedCodes?: pulumi.Input<string>;
     /**
-     * Required for HTTP(S) types. The HTTP method used
-     * for requests by the monitor. If this attribute is not specified, it
-     * defaults to "GET".
+     * Required for HTTP(S) types. The HTTP method that 
+     * the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
+     * OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
      */
     httpMethod?: pulumi.Input<string>;
     /**
@@ -229,9 +230,10 @@ export interface MonitorState {
      */
     maxRetries?: pulumi.Input<number>;
     /**
-     * Number of permissible ping failures befor changing the member's
-     * status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
-     * Changing this updates the maxRetriesDown of the existing monitor.
+     * Number of permissible ping failures before 
+     * changing the member's status to ERROR. Must be a number between 1 and 10.
+     * The default is 3. Changing this updates the maxRetriesDown of the
+     * existing monitor.
      */
     maxRetriesDown?: pulumi.Input<number>;
     /**
@@ -263,13 +265,13 @@ export interface MonitorState {
     timeout?: pulumi.Input<number>;
     /**
      * The type of probe, which is PING, TCP, HTTP, HTTPS,
-     * TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
-     * balancer to verify the member state. Changing this creates a new monitor.
+     * TLS-HELLO, SCTP or UDP-CONNECT, that is sent by the loadbalancer to
+     * verify the member state. Changing this creates a new monitor.
      */
     type?: pulumi.Input<string>;
     /**
      * Required for HTTP(S) types. URI path that will be
-     * accessed if monitor type is HTTP or HTTPS.
+     * accessed if monitor type is HTTP or HTTPS. Default is `/`.
      */
     urlPath?: pulumi.Input<string>;
 }
@@ -290,13 +292,13 @@ export interface MonitorArgs {
     /**
      * Required for HTTP(S) types. Expected HTTP codes
      * for a passing HTTP(S) monitor. You can either specify a single status like
-     * "200", or a range like "200-202".
+     * "200", a list like "200, 202" or a range like "200-202". Default is "200".
      */
     expectedCodes?: pulumi.Input<string>;
     /**
-     * Required for HTTP(S) types. The HTTP method used
-     * for requests by the monitor. If this attribute is not specified, it
-     * defaults to "GET".
+     * Required for HTTP(S) types. The HTTP method that 
+     * the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
+     * OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
      */
     httpMethod?: pulumi.Input<string>;
     /**
@@ -306,9 +308,10 @@ export interface MonitorArgs {
      */
     maxRetries: pulumi.Input<number>;
     /**
-     * Number of permissible ping failures befor changing the member's
-     * status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
-     * Changing this updates the maxRetriesDown of the existing monitor.
+     * Number of permissible ping failures before 
+     * changing the member's status to ERROR. Must be a number between 1 and 10.
+     * The default is 3. Changing this updates the maxRetriesDown of the
+     * existing monitor.
      */
     maxRetriesDown?: pulumi.Input<number>;
     /**
@@ -340,13 +343,13 @@ export interface MonitorArgs {
     timeout: pulumi.Input<number>;
     /**
      * The type of probe, which is PING, TCP, HTTP, HTTPS,
-     * TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
-     * balancer to verify the member state. Changing this creates a new monitor.
+     * TLS-HELLO, SCTP or UDP-CONNECT, that is sent by the loadbalancer to
+     * verify the member state. Changing this creates a new monitor.
      */
     type: pulumi.Input<string>;
     /**
      * Required for HTTP(S) types. URI path that will be
-     * accessed if monitor type is HTTP or HTTPS.
+     * accessed if monitor type is HTTP or HTTPS. Default is `/`.
      */
     urlPath?: pulumi.Input<string>;
 }

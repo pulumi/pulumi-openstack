@@ -15,7 +15,6 @@ __all__ = [
     'InstancePersonality',
     'InstanceSchedulerHint',
     'InstanceVendorOptions',
-    'InstanceVolume',
     'SecGroupRule',
     'ServerGroupRules',
     'VolumeAttachVendorOptions',
@@ -246,8 +245,6 @@ class InstanceNetwork(dict):
             suggest = "fixed_ip_v4"
         elif key == "fixedIpV6":
             suggest = "fixed_ip_v6"
-        elif key == "floatingIp":
-            suggest = "floating_ip"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceNetwork. Access the value via the '{suggest}' property getter instead.")
@@ -264,7 +261,6 @@ class InstanceNetwork(dict):
                  access_network: Optional[bool] = None,
                  fixed_ip_v4: Optional[str] = None,
                  fixed_ip_v6: Optional[str] = None,
-                 floating_ip: Optional[str] = None,
                  mac: Optional[str] = None,
                  name: Optional[str] = None,
                  port: Optional[str] = None,
@@ -287,8 +283,6 @@ class InstanceNetwork(dict):
             pulumi.set(__self__, "fixed_ip_v4", fixed_ip_v4)
         if fixed_ip_v6 is not None:
             pulumi.set(__self__, "fixed_ip_v6", fixed_ip_v6)
-        if floating_ip is not None:
-            pulumi.set(__self__, "floating_ip", floating_ip)
         if mac is not None:
             pulumi.set(__self__, "mac", mac)
         if name is not None:
@@ -320,12 +314,6 @@ class InstanceNetwork(dict):
     @pulumi.getter(name="fixedIpV6")
     def fixed_ip_v6(self) -> Optional[str]:
         return pulumi.get(self, "fixed_ip_v6")
-
-    @property
-    @pulumi.getter(name="floatingIp")
-    @_utilities.deprecated("""Use the compute.FloatingIpAssociate resource instead""")
-    def floating_ip(self) -> Optional[str]:
-        return pulumi.get(self, "floating_ip")
 
     @property
     @pulumi.getter
@@ -436,7 +424,8 @@ class InstanceSchedulerHint(dict):
         :param Sequence[str] different_hosts: A list of instance UUIDs. The instance will
                be scheduled on a different host than all other instances.
         :param str group: A UUID of a Server Group. The instance will be placed
-               into that group.
+               into that group. See reference
+               for details on managing servergroup resources
         :param Sequence[str] queries: A conditional query that a compute node must pass in
                order to host an instance. The query must use the `JsonFilter` syntax
                which is described
@@ -508,7 +497,8 @@ class InstanceSchedulerHint(dict):
     def group(self) -> Optional[str]:
         """
         A UUID of a Server Group. The instance will be placed
-        into that group.
+        into that group. See reference
+        for details on managing servergroup resources
         """
         return pulumi.get(self, "group")
 
@@ -605,51 +595,6 @@ class InstanceVendorOptions(dict):
         instances after some timeout.
         """
         return pulumi.get(self, "ignore_resize_confirmation")
-
-
-@pulumi.output_type
-class InstanceVolume(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "volumeId":
-            suggest = "volume_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InstanceVolume. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InstanceVolume.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InstanceVolume.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 volume_id: str,
-                 device: Optional[str] = None,
-                 id: Optional[str] = None):
-        pulumi.set(__self__, "volume_id", volume_id)
-        if device is not None:
-            pulumi.set(__self__, "device", device)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-
-    @property
-    @pulumi.getter(name="volumeId")
-    def volume_id(self) -> str:
-        return pulumi.get(self, "volume_id")
-
-    @property
-    @pulumi.getter
-    def device(self) -> Optional[str]:
-        return pulumi.get(self, "device")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        return pulumi.get(self, "id")
 
 
 @pulumi.output_type

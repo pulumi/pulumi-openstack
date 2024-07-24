@@ -123,11 +123,27 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Output<int> Position { get; private set; } = null!;
 
         /// <summary>
+        /// Integer. Requests matching this policy will be  
+        /// redirected to the specified URL or Prefix URL with the HTTP response code.
+        /// Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+        /// 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
+        /// </summary>
+        [Output("redirectHttpCode")]
+        public Output<int> RedirectHttpCode { get; private set; } = null!;
+
+        /// <summary>
         /// Requests matching this policy will be redirected to the
         /// pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
         /// </summary>
         [Output("redirectPoolId")]
         public Output<string?> RedirectPoolId { get; private set; } = null!;
+
+        /// <summary>
+        /// Requests matching this policy will be redirected to 
+        /// this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
+        /// </summary>
+        [Output("redirectPrefix")]
+        public Output<string?> RedirectPrefix { get; private set; } = null!;
 
         /// <summary>
         /// Requests matching this policy will be redirected to this URL.
@@ -240,11 +256,27 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<int>? Position { get; set; }
 
         /// <summary>
+        /// Integer. Requests matching this policy will be  
+        /// redirected to the specified URL or Prefix URL with the HTTP response code.
+        /// Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+        /// 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
+        /// </summary>
+        [Input("redirectHttpCode")]
+        public Input<int>? RedirectHttpCode { get; set; }
+
+        /// <summary>
         /// Requests matching this policy will be redirected to the
         /// pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
         /// </summary>
         [Input("redirectPoolId")]
         public Input<string>? RedirectPoolId { get; set; }
+
+        /// <summary>
+        /// Requests matching this policy will be redirected to 
+        /// this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
+        /// </summary>
+        [Input("redirectPrefix")]
+        public Input<string>? RedirectPrefix { get; set; }
 
         /// <summary>
         /// Requests matching this policy will be redirected to this URL.
@@ -319,11 +351,27 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<int>? Position { get; set; }
 
         /// <summary>
+        /// Integer. Requests matching this policy will be  
+        /// redirected to the specified URL or Prefix URL with the HTTP response code.
+        /// Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+        /// 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
+        /// </summary>
+        [Input("redirectHttpCode")]
+        public Input<int>? RedirectHttpCode { get; set; }
+
+        /// <summary>
         /// Requests matching this policy will be redirected to the
         /// pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
         /// </summary>
         [Input("redirectPoolId")]
         public Input<string>? RedirectPoolId { get; set; }
+
+        /// <summary>
+        /// Requests matching this policy will be redirected to 
+        /// this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
+        /// </summary>
+        [Input("redirectPrefix")]
+        public Input<string>? RedirectPrefix { get; set; }
 
         /// <summary>
         /// Requests matching this policy will be redirected to this URL.

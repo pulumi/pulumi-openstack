@@ -18,7 +18,6 @@ class PoolV1Args:
                  protocol: pulumi.Input[str],
                  subnet_id: pulumi.Input[str],
                  lb_provider: Optional[pulumi.Input[str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  monitor_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -35,10 +34,6 @@ class PoolV1Args:
                Changing this creates a new pool.
         :param pulumi.Input[str] lb_provider: The backend load balancing provider. For example:
                `haproxy`, `F5`, etc.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: An existing node to add to the pool. Changing this
-               updates the members of the pool. The member object structure is documented
-               below. Please note that the `member` block is deprecated in favor of the
-               `loadbalancer.MemberV1` resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] monitor_ids: A list of IDs of monitors to associate with the
                pool.
         :param pulumi.Input[str] name: The name of the pool. Changing this updates the name of
@@ -55,11 +50,6 @@ class PoolV1Args:
         pulumi.set(__self__, "subnet_id", subnet_id)
         if lb_provider is not None:
             pulumi.set(__self__, "lb_provider", lb_provider)
-        if members is not None:
-            warnings.warn("""Use loadbalancer.MemberV1 instead""", DeprecationWarning)
-            pulumi.log.warn("""members is deprecated: Use loadbalancer.MemberV1 instead""")
-        if members is not None:
-            pulumi.set(__self__, "members", members)
         if monitor_ids is not None:
             pulumi.set(__self__, "monitor_ids", monitor_ids)
         if name is not None:
@@ -124,22 +114,6 @@ class PoolV1Args:
         pulumi.set(self, "lb_provider", value)
 
     @property
-    @pulumi.getter
-    @_utilities.deprecated("""Use loadbalancer.MemberV1 instead""")
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        An existing node to add to the pool. Changing this
-        updates the members of the pool. The member object structure is documented
-        below. Please note that the `member` block is deprecated in favor of the
-        `loadbalancer.MemberV1` resource.
-        """
-        return pulumi.get(self, "members")
-
-    @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "members", value)
-
-    @property
     @pulumi.getter(name="monitorIds")
     def monitor_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -199,7 +173,6 @@ class _PoolV1State:
     def __init__(__self__, *,
                  lb_method: Optional[pulumi.Input[str]] = None,
                  lb_provider: Optional[pulumi.Input[str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  monitor_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -213,10 +186,6 @@ class _PoolV1State:
                'LEAST_CONNECTIONS' as valid values for this attribute.
         :param pulumi.Input[str] lb_provider: The backend load balancing provider. For example:
                `haproxy`, `F5`, etc.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: An existing node to add to the pool. Changing this
-               updates the members of the pool. The member object structure is documented
-               below. Please note that the `member` block is deprecated in favor of the
-               `loadbalancer.MemberV1` resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] monitor_ids: A list of IDs of monitors to associate with the
                pool.
         :param pulumi.Input[str] name: The name of the pool. Changing this updates the name of
@@ -237,11 +206,6 @@ class _PoolV1State:
             pulumi.set(__self__, "lb_method", lb_method)
         if lb_provider is not None:
             pulumi.set(__self__, "lb_provider", lb_provider)
-        if members is not None:
-            warnings.warn("""Use loadbalancer.MemberV1 instead""", DeprecationWarning)
-            pulumi.log.warn("""members is deprecated: Use loadbalancer.MemberV1 instead""")
-        if members is not None:
-            pulumi.set(__self__, "members", members)
         if monitor_ids is not None:
             pulumi.set(__self__, "monitor_ids", monitor_ids)
         if name is not None:
@@ -281,22 +245,6 @@ class _PoolV1State:
     @lb_provider.setter
     def lb_provider(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "lb_provider", value)
-
-    @property
-    @pulumi.getter
-    @_utilities.deprecated("""Use loadbalancer.MemberV1 instead""")
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        An existing node to add to the pool. Changing this
-        updates the members of the pool. The member object structure is documented
-        below. Please note that the `member` block is deprecated in favor of the
-        `loadbalancer.MemberV1` resource.
-        """
-        return pulumi.get(self, "members")
-
-    @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "members", value)
 
     @property
     @pulumi.getter(name="monitorIds")
@@ -387,7 +335,6 @@ class PoolV1(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  lb_method: Optional[pulumi.Input[str]] = None,
                  lb_provider: Optional[pulumi.Input[str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  monitor_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -489,10 +436,6 @@ class PoolV1(pulumi.CustomResource):
             pool_id=pool1.id)
         ```
 
-        ## Notes
-
-        The `member` block is deprecated in favor of the `loadbalancer.MemberV1` resource.
-
         ## Import
 
         Load Balancer Pools can be imported using the `id`, e.g.
@@ -508,10 +451,6 @@ class PoolV1(pulumi.CustomResource):
                'LEAST_CONNECTIONS' as valid values for this attribute.
         :param pulumi.Input[str] lb_provider: The backend load balancing provider. For example:
                `haproxy`, `F5`, etc.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: An existing node to add to the pool. Changing this
-               updates the members of the pool. The member object structure is documented
-               below. Please note that the `member` block is deprecated in favor of the
-               `loadbalancer.MemberV1` resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] monitor_ids: A list of IDs of monitors to associate with the
                pool.
         :param pulumi.Input[str] name: The name of the pool. Changing this updates the name of
@@ -628,10 +567,6 @@ class PoolV1(pulumi.CustomResource):
             pool_id=pool1.id)
         ```
 
-        ## Notes
-
-        The `member` block is deprecated in favor of the `loadbalancer.MemberV1` resource.
-
         ## Import
 
         Load Balancer Pools can be imported using the `id`, e.g.
@@ -657,7 +592,6 @@ class PoolV1(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  lb_method: Optional[pulumi.Input[str]] = None,
                  lb_provider: Optional[pulumi.Input[str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  monitor_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -677,7 +611,6 @@ class PoolV1(pulumi.CustomResource):
                 raise TypeError("Missing required property 'lb_method'")
             __props__.__dict__["lb_method"] = lb_method
             __props__.__dict__["lb_provider"] = lb_provider
-            __props__.__dict__["members"] = members
             __props__.__dict__["monitor_ids"] = monitor_ids
             __props__.__dict__["name"] = name
             if protocol is None and not opts.urn:
@@ -700,7 +633,6 @@ class PoolV1(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             lb_method: Optional[pulumi.Input[str]] = None,
             lb_provider: Optional[pulumi.Input[str]] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             monitor_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
@@ -719,10 +651,6 @@ class PoolV1(pulumi.CustomResource):
                'LEAST_CONNECTIONS' as valid values for this attribute.
         :param pulumi.Input[str] lb_provider: The backend load balancing provider. For example:
                `haproxy`, `F5`, etc.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: An existing node to add to the pool. Changing this
-               updates the members of the pool. The member object structure is documented
-               below. Please note that the `member` block is deprecated in favor of the
-               `loadbalancer.MemberV1` resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] monitor_ids: A list of IDs of monitors to associate with the
                pool.
         :param pulumi.Input[str] name: The name of the pool. Changing this updates the name of
@@ -745,7 +673,6 @@ class PoolV1(pulumi.CustomResource):
 
         __props__.__dict__["lb_method"] = lb_method
         __props__.__dict__["lb_provider"] = lb_provider
-        __props__.__dict__["members"] = members
         __props__.__dict__["monitor_ids"] = monitor_ids
         __props__.__dict__["name"] = name
         __props__.__dict__["protocol"] = protocol
@@ -772,18 +699,6 @@ class PoolV1(pulumi.CustomResource):
         `haproxy`, `F5`, etc.
         """
         return pulumi.get(self, "lb_provider")
-
-    @property
-    @pulumi.getter
-    @_utilities.deprecated("""Use loadbalancer.MemberV1 instead""")
-    def members(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        An existing node to add to the pool. Changing this
-        updates the members of the pool. The member object structure is documented
-        below. Please note that the `member` block is deprecated in favor of the
-        `loadbalancer.MemberV1` resource.
-        """
-        return pulumi.get(self, "members")
 
     @property
     @pulumi.getter(name="monitorIds")

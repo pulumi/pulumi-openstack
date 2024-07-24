@@ -102,6 +102,12 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     public Output<String> vipPortId() {
         return this.vipPortId;
     }
+    @Export(name="vipQosPolicyId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> vipQosPolicyId;
+
+    public Output<Optional<String>> vipQosPolicyId() {
+        return Codegen.optional(this.vipQosPolicyId);
+    }
     @Export(name="vipSubnetId", refs={String.class}, tree="[0]")
     private Output<String> vipSubnetId;
 

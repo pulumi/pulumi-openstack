@@ -38,6 +38,24 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = compute.NewInstance(ctx, "test-instance", &compute.InstanceArgs{
+//				Name:     pulumi.String("my-instance"),
+//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
+//				FlavorId: pulumi.String("3"),
+//				SchedulerHints: compute.InstanceSchedulerHintArray{
+//					&compute.InstanceSchedulerHintArgs{
+//						Group: test_sg.ID(),
+//					},
+//				},
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Name: pulumi.String("my_network"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -65,6 +83,24 @@ import (
 //				},
 //				Rules: &compute.ServerGroupRulesArgs{
 //					MaxServerPerHost: pulumi.Int(3),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "test-instance", &compute.InstanceArgs{
+//				Name:     pulumi.String("my-instance"),
+//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
+//				FlavorId: pulumi.String("3"),
+//				SchedulerHints: compute.InstanceSchedulerHintArray{
+//					&compute.InstanceSchedulerHintArgs{
+//						Group: test_sg.ID(),
+//					},
+//				},
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Name: pulumi.String("my_network"),
+//					},
 //				},
 //			})
 //			if err != nil {

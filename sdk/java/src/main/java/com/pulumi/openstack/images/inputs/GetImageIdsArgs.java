@@ -5,6 +5,7 @@ package com.pulumi.openstack.images.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -18,6 +19,51 @@ import javax.annotation.Nullable;
 public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetImageIdsArgs Empty = new GetImageIdsArgs();
+
+    /**
+     * The container format of the image.
+     * 
+     */
+    @Import(name="containerFormat")
+    private @Nullable Output<String> containerFormat;
+
+    /**
+     * @return The container format of the image.
+     * 
+     */
+    public Optional<Output<String>> containerFormat() {
+        return Optional.ofNullable(this.containerFormat);
+    }
+
+    /**
+     * The disk format of the image.
+     * 
+     */
+    @Import(name="diskFormat")
+    private @Nullable Output<String> diskFormat;
+
+    /**
+     * @return The disk format of the image.
+     * 
+     */
+    public Optional<Output<String>> diskFormat() {
+        return Optional.ofNullable(this.diskFormat);
+    }
+
+    /**
+     * Whether or not the image is hidden from public list.
+     * 
+     */
+    @Import(name="hidden")
+    private @Nullable Output<Boolean> hidden;
+
+    /**
+     * @return Whether or not the image is hidden from public list.
+     * 
+     */
+    public Optional<Output<Boolean>> hidden() {
+        return Optional.ofNullable(this.hidden);
+    }
 
     /**
      * The status of the image. Must be one of
@@ -37,16 +83,16 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the image. Cannot be used simultaneously
-     * with `name_regex`.
+     * The name of the image. Cannot be used simultaneously with
+     * `name_regex`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the image. Cannot be used simultaneously
-     * with `name_regex`.
+     * @return The name of the image. Cannot be used simultaneously with
+     * `name_regex`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -91,8 +137,8 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * a map of key/value pairs to match an image with.
-     * All specified properties must be matched. Unlike other options filtering
-     * by `properties` does by client on the result of OpenStack search query.
+     * All specified properties must be matched. Unlike other options filtering by
+     * `properties` does by client on the result of OpenStack search query.
      * 
      */
     @Import(name="properties")
@@ -100,8 +146,8 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return a map of key/value pairs to match an image with.
-     * All specified properties must be matched. Unlike other options filtering
-     * by `properties` does by client on the result of OpenStack search query.
+     * All specified properties must be matched. Unlike other options filtering by
+     * `properties` does by client on the result of OpenStack search query.
      * 
      */
     public Optional<Output<Map<String,Object>>> properties() {
@@ -109,20 +155,18 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The region in which to obtain the V2 Glance client.
-     * A Glance client is needed to create an Image that can be used with
-     * a compute instance. If omitted, the `region` argument of the provider
-     * is used.
+     * The region in which to obtain the V2 Glance client. A
+     * Glance client is needed to create an Image that can be used with a compute
+     * instance. If omitted, the `region` argument of the provider is used.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region in which to obtain the V2 Glance client.
-     * A Glance client is needed to create an Image that can be used with
-     * a compute instance. If omitted, the `region` argument of the provider
-     * is used.
+     * @return The region in which to obtain the V2 Glance client. A
+     * Glance client is needed to create an Image that can be used with a compute
+     * instance. If omitted, the `region` argument of the provider is used.
      * 
      */
     public Optional<Output<String>> region() {
@@ -162,11 +206,9 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Sorts the response by one or more attribute and sort
      * direction combinations. You can also set multiple sort keys and directions.
-     * Default direction is `desc`. Use the comma (,) character to separate
-     * multiple values. For example expression `sort = &#34;name:asc,status&#34;`
-     * sorts ascending by name and descending by status. `sort` cannot be used
-     * simultaneously with `sort_key`. If both are present in a configuration
-     * then only `sort` will be used.
+     * Default direction is `desc`. Use the comma (,) character to separate multiple
+     * values. For example expression `sort = &#34;name:asc,status&#34;` sorts ascending by
+     * name and descending by status.
      * 
      */
     @Import(name="sort")
@@ -175,67 +217,13 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return Sorts the response by one or more attribute and sort
      * direction combinations. You can also set multiple sort keys and directions.
-     * Default direction is `desc`. Use the comma (,) character to separate
-     * multiple values. For example expression `sort = &#34;name:asc,status&#34;`
-     * sorts ascending by name and descending by status. `sort` cannot be used
-     * simultaneously with `sort_key`. If both are present in a configuration
-     * then only `sort` will be used.
+     * Default direction is `desc`. Use the comma (,) character to separate multiple
+     * values. For example expression `sort = &#34;name:asc,status&#34;` sorts ascending by
+     * name and descending by status.
      * 
      */
     public Optional<Output<String>> sort() {
         return Optional.ofNullable(this.sort);
-    }
-
-    /**
-     * Order the results in either `asc` or `desc`.
-     * Can be applied only with `sort_key`. Defaults to `asc`
-     * 
-     * @deprecated
-     * Use option &#39;sort&#39; instead.
-     * 
-     */
-    @Deprecated /* Use option 'sort' instead. */
-    @Import(name="sortDirection")
-    private @Nullable Output<String> sortDirection;
-
-    /**
-     * @return Order the results in either `asc` or `desc`.
-     * Can be applied only with `sort_key`. Defaults to `asc`
-     * 
-     * @deprecated
-     * Use option &#39;sort&#39; instead.
-     * 
-     */
-    @Deprecated /* Use option 'sort' instead. */
-    public Optional<Output<String>> sortDirection() {
-        return Optional.ofNullable(this.sortDirection);
-    }
-
-    /**
-     * Sort images based on a certain key. Defaults to
-     * `name`. `sort_key` cannot be used simultaneously with `sort`. If both
-     * are present in a configuration then only `sort` will be used.
-     * 
-     * @deprecated
-     * Use option &#39;sort&#39; instead.
-     * 
-     */
-    @Deprecated /* Use option 'sort' instead. */
-    @Import(name="sortKey")
-    private @Nullable Output<String> sortKey;
-
-    /**
-     * @return Sort images based on a certain key. Defaults to
-     * `name`. `sort_key` cannot be used simultaneously with `sort`. If both
-     * are present in a configuration then only `sort` will be used.
-     * 
-     * @deprecated
-     * Use option &#39;sort&#39; instead.
-     * 
-     */
-    @Deprecated /* Use option 'sort' instead. */
-    public Optional<Output<String>> sortKey() {
-        return Optional.ofNullable(this.sortKey);
     }
 
     /**
@@ -254,16 +242,16 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A list of tags required to be set on the image
-     * (all specified tags must be in the images tag list for it to be matched).
+     * A list of tags required to be set on the image (all
+     * specified tags must be in the images tag list for it to be matched).
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return A list of tags required to be set on the image
-     * (all specified tags must be in the images tag list for it to be matched).
+     * @return A list of tags required to be set on the image (all
+     * specified tags must be in the images tag list for it to be matched).
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -290,6 +278,9 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
     private GetImageIdsArgs() {}
 
     private GetImageIdsArgs(GetImageIdsArgs $) {
+        this.containerFormat = $.containerFormat;
+        this.diskFormat = $.diskFormat;
+        this.hidden = $.hidden;
         this.memberStatus = $.memberStatus;
         this.name = $.name;
         this.nameRegex = $.nameRegex;
@@ -299,8 +290,6 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
         this.sizeMax = $.sizeMax;
         this.sizeMin = $.sizeMin;
         this.sort = $.sort;
-        this.sortDirection = $.sortDirection;
-        this.sortKey = $.sortKey;
         this.tag = $.tag;
         this.tags = $.tags;
         this.visibility = $.visibility;
@@ -322,6 +311,69 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetImageIdsArgs defaults) {
             $ = new GetImageIdsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param containerFormat The container format of the image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerFormat(@Nullable Output<String> containerFormat) {
+            $.containerFormat = containerFormat;
+            return this;
+        }
+
+        /**
+         * @param containerFormat The container format of the image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerFormat(String containerFormat) {
+            return containerFormat(Output.of(containerFormat));
+        }
+
+        /**
+         * @param diskFormat The disk format of the image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskFormat(@Nullable Output<String> diskFormat) {
+            $.diskFormat = diskFormat;
+            return this;
+        }
+
+        /**
+         * @param diskFormat The disk format of the image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskFormat(String diskFormat) {
+            return diskFormat(Output.of(diskFormat));
+        }
+
+        /**
+         * @param hidden Whether or not the image is hidden from public list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hidden(@Nullable Output<Boolean> hidden) {
+            $.hidden = hidden;
+            return this;
+        }
+
+        /**
+         * @param hidden Whether or not the image is hidden from public list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hidden(Boolean hidden) {
+            return hidden(Output.of(hidden));
         }
 
         /**
@@ -348,8 +400,8 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The name of the image. Cannot be used simultaneously
-         * with `name_regex`.
+         * @param name The name of the image. Cannot be used simultaneously with
+         * `name_regex`.
          * 
          * @return builder
          * 
@@ -360,8 +412,8 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The name of the image. Cannot be used simultaneously
-         * with `name_regex`.
+         * @param name The name of the image. Cannot be used simultaneously with
+         * `name_regex`.
          * 
          * @return builder
          * 
@@ -420,8 +472,8 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param properties a map of key/value pairs to match an image with.
-         * All specified properties must be matched. Unlike other options filtering
-         * by `properties` does by client on the result of OpenStack search query.
+         * All specified properties must be matched. Unlike other options filtering by
+         * `properties` does by client on the result of OpenStack search query.
          * 
          * @return builder
          * 
@@ -433,8 +485,8 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param properties a map of key/value pairs to match an image with.
-         * All specified properties must be matched. Unlike other options filtering
-         * by `properties` does by client on the result of OpenStack search query.
+         * All specified properties must be matched. Unlike other options filtering by
+         * `properties` does by client on the result of OpenStack search query.
          * 
          * @return builder
          * 
@@ -444,10 +496,9 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param region The region in which to obtain the V2 Glance client.
-         * A Glance client is needed to create an Image that can be used with
-         * a compute instance. If omitted, the `region` argument of the provider
-         * is used.
+         * @param region The region in which to obtain the V2 Glance client. A
+         * Glance client is needed to create an Image that can be used with a compute
+         * instance. If omitted, the `region` argument of the provider is used.
          * 
          * @return builder
          * 
@@ -458,10 +509,9 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param region The region in which to obtain the V2 Glance client.
-         * A Glance client is needed to create an Image that can be used with
-         * a compute instance. If omitted, the `region` argument of the provider
-         * is used.
+         * @param region The region in which to obtain the V2 Glance client. A
+         * Glance client is needed to create an Image that can be used with a compute
+         * instance. If omitted, the `region` argument of the provider is used.
          * 
          * @return builder
          * 
@@ -515,11 +565,9 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param sort Sorts the response by one or more attribute and sort
          * direction combinations. You can also set multiple sort keys and directions.
-         * Default direction is `desc`. Use the comma (,) character to separate
-         * multiple values. For example expression `sort = &#34;name:asc,status&#34;`
-         * sorts ascending by name and descending by status. `sort` cannot be used
-         * simultaneously with `sort_key`. If both are present in a configuration
-         * then only `sort` will be used.
+         * Default direction is `desc`. Use the comma (,) character to separate multiple
+         * values. For example expression `sort = &#34;name:asc,status&#34;` sorts ascending by
+         * name and descending by status.
          * 
          * @return builder
          * 
@@ -532,81 +580,15 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param sort Sorts the response by one or more attribute and sort
          * direction combinations. You can also set multiple sort keys and directions.
-         * Default direction is `desc`. Use the comma (,) character to separate
-         * multiple values. For example expression `sort = &#34;name:asc,status&#34;`
-         * sorts ascending by name and descending by status. `sort` cannot be used
-         * simultaneously with `sort_key`. If both are present in a configuration
-         * then only `sort` will be used.
+         * Default direction is `desc`. Use the comma (,) character to separate multiple
+         * values. For example expression `sort = &#34;name:asc,status&#34;` sorts ascending by
+         * name and descending by status.
          * 
          * @return builder
          * 
          */
         public Builder sort(String sort) {
             return sort(Output.of(sort));
-        }
-
-        /**
-         * @param sortDirection Order the results in either `asc` or `desc`.
-         * Can be applied only with `sort_key`. Defaults to `asc`
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use option &#39;sort&#39; instead.
-         * 
-         */
-        @Deprecated /* Use option 'sort' instead. */
-        public Builder sortDirection(@Nullable Output<String> sortDirection) {
-            $.sortDirection = sortDirection;
-            return this;
-        }
-
-        /**
-         * @param sortDirection Order the results in either `asc` or `desc`.
-         * Can be applied only with `sort_key`. Defaults to `asc`
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use option &#39;sort&#39; instead.
-         * 
-         */
-        @Deprecated /* Use option 'sort' instead. */
-        public Builder sortDirection(String sortDirection) {
-            return sortDirection(Output.of(sortDirection));
-        }
-
-        /**
-         * @param sortKey Sort images based on a certain key. Defaults to
-         * `name`. `sort_key` cannot be used simultaneously with `sort`. If both
-         * are present in a configuration then only `sort` will be used.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use option &#39;sort&#39; instead.
-         * 
-         */
-        @Deprecated /* Use option 'sort' instead. */
-        public Builder sortKey(@Nullable Output<String> sortKey) {
-            $.sortKey = sortKey;
-            return this;
-        }
-
-        /**
-         * @param sortKey Sort images based on a certain key. Defaults to
-         * `name`. `sort_key` cannot be used simultaneously with `sort`. If both
-         * are present in a configuration then only `sort` will be used.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use option &#39;sort&#39; instead.
-         * 
-         */
-        @Deprecated /* Use option 'sort' instead. */
-        public Builder sortKey(String sortKey) {
-            return sortKey(Output.of(sortKey));
         }
 
         /**
@@ -631,8 +613,8 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags A list of tags required to be set on the image
-         * (all specified tags must be in the images tag list for it to be matched).
+         * @param tags A list of tags required to be set on the image (all
+         * specified tags must be in the images tag list for it to be matched).
          * 
          * @return builder
          * 
@@ -643,8 +625,8 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags A list of tags required to be set on the image
-         * (all specified tags must be in the images tag list for it to be matched).
+         * @param tags A list of tags required to be set on the image (all
+         * specified tags must be in the images tag list for it to be matched).
          * 
          * @return builder
          * 
@@ -654,8 +636,8 @@ public final class GetImageIdsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags A list of tags required to be set on the image
-         * (all specified tags must be in the images tag list for it to be matched).
+         * @param tags A list of tags required to be set on the image (all
+         * specified tags must be in the images tag list for it to be matched).
          * 
          * @return builder
          * 

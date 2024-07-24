@@ -21,7 +21,7 @@ class GetSecGroupResult:
     """
     A collection of values returned by getSecGroup.
     """
-    def __init__(__self__, all_tags=None, description=None, id=None, name=None, region=None, secgroup_id=None, tags=None, tenant_id=None):
+    def __init__(__self__, all_tags=None, description=None, id=None, name=None, region=None, secgroup_id=None, stateful=None, tags=None, tenant_id=None):
         if all_tags and not isinstance(all_tags, list):
             raise TypeError("Expected argument 'all_tags' to be a list")
         pulumi.set(__self__, "all_tags", all_tags)
@@ -40,6 +40,9 @@ class GetSecGroupResult:
         if secgroup_id and not isinstance(secgroup_id, str):
             raise TypeError("Expected argument 'secgroup_id' to be a str")
         pulumi.set(__self__, "secgroup_id", secgroup_id)
+        if stateful and not isinstance(stateful, bool):
+            raise TypeError("Expected argument 'stateful' to be a bool")
+        pulumi.set(__self__, "stateful", stateful)
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
@@ -94,6 +97,14 @@ class GetSecGroupResult:
 
     @property
     @pulumi.getter
+    def stateful(self) -> bool:
+        """
+        See Argument Reference above.
+        """
+        return pulumi.get(self, "stateful")
+
+    @property
+    @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "tags")
 
@@ -115,6 +126,7 @@ class AwaitableGetSecGroupResult(GetSecGroupResult):
             name=self.name,
             region=self.region,
             secgroup_id=self.secgroup_id,
+            stateful=self.stateful,
             tags=self.tags,
             tenant_id=self.tenant_id)
 
@@ -123,6 +135,7 @@ def get_sec_group(description: Optional[str] = None,
                   name: Optional[str] = None,
                   region: Optional[str] = None,
                   secgroup_id: Optional[str] = None,
+                  stateful: Optional[bool] = None,
                   tags: Optional[Sequence[str]] = None,
                   tenant_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecGroupResult:
@@ -145,6 +158,7 @@ def get_sec_group(description: Optional[str] = None,
            A Neutron client is needed to retrieve security groups ids. If omitted, the
            `region` argument of the provider is used.
     :param str secgroup_id: The ID of the security group.
+    :param bool stateful: Whether the security group is stateful or not.
     :param Sequence[str] tags: The list of security group tags to filter.
     :param str tenant_id: The owner of the security group.
     """
@@ -153,6 +167,7 @@ def get_sec_group(description: Optional[str] = None,
     __args__['name'] = name
     __args__['region'] = region
     __args__['secgroupId'] = secgroup_id
+    __args__['stateful'] = stateful
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -165,6 +180,7 @@ def get_sec_group(description: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         region=pulumi.get(__ret__, 'region'),
         secgroup_id=pulumi.get(__ret__, 'secgroup_id'),
+        stateful=pulumi.get(__ret__, 'stateful'),
         tags=pulumi.get(__ret__, 'tags'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'))
 
@@ -174,6 +190,7 @@ def get_sec_group_output(description: Optional[pulumi.Input[Optional[str]]] = No
                          name: Optional[pulumi.Input[Optional[str]]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
                          secgroup_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         stateful: Optional[pulumi.Input[Optional[bool]]] = None,
                          tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecGroupResult]:
@@ -196,6 +213,7 @@ def get_sec_group_output(description: Optional[pulumi.Input[Optional[str]]] = No
            A Neutron client is needed to retrieve security groups ids. If omitted, the
            `region` argument of the provider is used.
     :param str secgroup_id: The ID of the security group.
+    :param bool stateful: Whether the security group is stateful or not.
     :param Sequence[str] tags: The list of security group tags to filter.
     :param str tenant_id: The owner of the security group.
     """

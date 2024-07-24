@@ -63,7 +63,7 @@ namespace Pulumi.OpenStack.VPNaaS
         public Output<string?> EncryptionAlgorithm { get; private set; } = null!;
 
         /// <summary>
-        /// The IKE mode. A valid value is v1 or v2. Default is v1.
+        /// The IKE version. A valid value is v1 or v2. Default is v1.
         /// Changing this updates the existing policy.
         /// </summary>
         [Output("ikeVersion")]
@@ -186,7 +186,7 @@ namespace Pulumi.OpenStack.VPNaaS
         public Input<string>? EncryptionAlgorithm { get; set; }
 
         /// <summary>
-        /// The IKE mode. A valid value is v1 or v2. Default is v1.
+        /// The IKE version. A valid value is v1 or v2. Default is v1.
         /// Changing this updates the existing policy.
         /// </summary>
         [Input("ikeVersion")]
@@ -283,7 +283,7 @@ namespace Pulumi.OpenStack.VPNaaS
         public Input<string>? EncryptionAlgorithm { get; set; }
 
         /// <summary>
-        /// The IKE mode. A valid value is v1 or v2. Default is v1.
+        /// The IKE version. A valid value is v1 or v2. Default is v1.
         /// Changing this updates the existing policy.
         /// </summary>
         [Input("ikeVersion")]

@@ -56,9 +56,12 @@ namespace Pulumi.OpenStack.Networking
         public Output<ImmutableArray<string>> AllTags { get; private set; } = null!;
 
         /// <summary>
-        /// A block declaring the start and end range of the IP addresses available for
-        /// use with DHCP in this subnet.
-        /// The `allocation_pools` block is documented below.
+        /// A block declaring the start and end range of
+        /// the IP addresses available for use with DHCP in this subnet. Multiple
+        /// `allocation_pool` blocks can be declared, providing the subnet with more
+        /// than one range of IP addresses to use with DHCP. However, each IP range
+        /// must be from the same CIDR that the subnet is part of.
+        /// The `allocation_pool` block is documented below.
         /// </summary>
         [Output("allocationPools")]
         public Output<ImmutableArray<Outputs.SubnetAllocationPool>> AllocationPools { get; private set; } = null!;
@@ -87,6 +90,13 @@ namespace Pulumi.OpenStack.Networking
         public Output<ImmutableArray<string>> DnsNameservers { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to publish DNS records for IPs
+        /// from this subnet. Defaults is false.
+        /// </summary>
+        [Output("dnsPublishFixedIp")]
+        public Output<bool?> DnsPublishFixedIp { get; private set; } = null!;
+
+        /// <summary>
         /// The administrative state of the network.
         /// Acceptable values are "true" and "false". Changing this value enables or
         /// disables the DHCP capabilities of the existing subnet. Defaults to true.
@@ -102,16 +112,6 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Output("gatewayIp")]
         public Output<string> GatewayIp { get; private set; } = null!;
-
-        /// <summary>
-        /// (**Deprecated** - use `openstack.networking.SubnetRoute`
-        /// instead) An array of routes that should be used by devices
-        /// with IPs from this subnet (not including local subnet route). The host_route
-        /// object structure is documented below. Changing this updates the host routes
-        /// for the existing subnet.
-        /// </summary>
-        [Output("hostRoutes")]
-        public Output<ImmutableArray<Outputs.SubnetHostRoute>> HostRoutes { get; private set; } = null!;
 
         /// <summary>
         /// IP version, either 4 (default) or 6. Changing this creates a
@@ -255,11 +255,13 @@ namespace Pulumi.OpenStack.Networking
         private InputList<Inputs.SubnetAllocationPoolArgs>? _allocationPools;
 
         /// <summary>
-        /// A block declaring the start and end range of the IP addresses available for
-        /// use with DHCP in this subnet.
-        /// The `allocation_pools` block is documented below.
+        /// A block declaring the start and end range of
+        /// the IP addresses available for use with DHCP in this subnet. Multiple
+        /// `allocation_pool` blocks can be declared, providing the subnet with more
+        /// than one range of IP addresses to use with DHCP. However, each IP range
+        /// must be from the same CIDR that the subnet is part of.
+        /// The `allocation_pool` block is documented below.
         /// </summary>
-        [Obsolete(@"use allocation_pool instead")]
         public InputList<Inputs.SubnetAllocationPoolArgs> AllocationPools
         {
             get => _allocationPools ?? (_allocationPools = new InputList<Inputs.SubnetAllocationPoolArgs>());
@@ -296,6 +298,13 @@ namespace Pulumi.OpenStack.Networking
         }
 
         /// <summary>
+        /// Whether to publish DNS records for IPs
+        /// from this subnet. Defaults is false.
+        /// </summary>
+        [Input("dnsPublishFixedIp")]
+        public Input<bool>? DnsPublishFixedIp { get; set; }
+
+        /// <summary>
         /// The administrative state of the network.
         /// Acceptable values are "true" and "false". Changing this value enables or
         /// disables the DHCP capabilities of the existing subnet. Defaults to true.
@@ -311,23 +320,6 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Input("gatewayIp")]
         public Input<string>? GatewayIp { get; set; }
-
-        [Input("hostRoutes")]
-        private InputList<Inputs.SubnetHostRouteArgs>? _hostRoutes;
-
-        /// <summary>
-        /// (**Deprecated** - use `openstack.networking.SubnetRoute`
-        /// instead) An array of routes that should be used by devices
-        /// with IPs from this subnet (not including local subnet route). The host_route
-        /// object structure is documented below. Changing this updates the host routes
-        /// for the existing subnet.
-        /// </summary>
-        [Obsolete(@"Use openstack.networking.SubnetRoute instead")]
-        public InputList<Inputs.SubnetHostRouteArgs> HostRoutes
-        {
-            get => _hostRoutes ?? (_hostRoutes = new InputList<Inputs.SubnetHostRouteArgs>());
-            set => _hostRoutes = value;
-        }
 
         /// <summary>
         /// IP version, either 4 (default) or 6. Changing this creates a
@@ -464,11 +456,13 @@ namespace Pulumi.OpenStack.Networking
         private InputList<Inputs.SubnetAllocationPoolGetArgs>? _allocationPools;
 
         /// <summary>
-        /// A block declaring the start and end range of the IP addresses available for
-        /// use with DHCP in this subnet.
-        /// The `allocation_pools` block is documented below.
+        /// A block declaring the start and end range of
+        /// the IP addresses available for use with DHCP in this subnet. Multiple
+        /// `allocation_pool` blocks can be declared, providing the subnet with more
+        /// than one range of IP addresses to use with DHCP. However, each IP range
+        /// must be from the same CIDR that the subnet is part of.
+        /// The `allocation_pool` block is documented below.
         /// </summary>
-        [Obsolete(@"use allocation_pool instead")]
         public InputList<Inputs.SubnetAllocationPoolGetArgs> AllocationPools
         {
             get => _allocationPools ?? (_allocationPools = new InputList<Inputs.SubnetAllocationPoolGetArgs>());
@@ -505,6 +499,13 @@ namespace Pulumi.OpenStack.Networking
         }
 
         /// <summary>
+        /// Whether to publish DNS records for IPs
+        /// from this subnet. Defaults is false.
+        /// </summary>
+        [Input("dnsPublishFixedIp")]
+        public Input<bool>? DnsPublishFixedIp { get; set; }
+
+        /// <summary>
         /// The administrative state of the network.
         /// Acceptable values are "true" and "false". Changing this value enables or
         /// disables the DHCP capabilities of the existing subnet. Defaults to true.
@@ -520,23 +521,6 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Input("gatewayIp")]
         public Input<string>? GatewayIp { get; set; }
-
-        [Input("hostRoutes")]
-        private InputList<Inputs.SubnetHostRouteGetArgs>? _hostRoutes;
-
-        /// <summary>
-        /// (**Deprecated** - use `openstack.networking.SubnetRoute`
-        /// instead) An array of routes that should be used by devices
-        /// with IPs from this subnet (not including local subnet route). The host_route
-        /// object structure is documented below. Changing this updates the host routes
-        /// for the existing subnet.
-        /// </summary>
-        [Obsolete(@"Use openstack.networking.SubnetRoute instead")]
-        public InputList<Inputs.SubnetHostRouteGetArgs> HostRoutes
-        {
-            get => _hostRoutes ?? (_hostRoutes = new InputList<Inputs.SubnetHostRouteGetArgs>());
-            set => _hostRoutes = value;
-        }
 
         /// <summary>
         /// IP version, either 4 (default) or 6. Changing this creates a

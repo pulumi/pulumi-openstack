@@ -58,6 +58,15 @@ namespace Pulumi.OpenStack.Networking
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates if the security group is stateful or
+        /// stateless. Update of the stateful argument is allowed when there is no port
+        /// associated with the security group. Available only in OpenStack environments
+        /// with the `stateful-security-group` extension. Defaults to true.
+        /// </summary>
+        [Output("stateful")]
+        public Output<bool> Stateful { get; private set; } = null!;
+
+        /// <summary>
         /// A set of string tags for the security group.
         /// </summary>
         [Output("tags")]
@@ -146,6 +155,15 @@ namespace Pulumi.OpenStack.Networking
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// Indicates if the security group is stateful or
+        /// stateless. Update of the stateful argument is allowed when there is no port
+        /// associated with the security group. Available only in OpenStack environments
+        /// with the `stateful-security-group` extension. Defaults to true.
+        /// </summary>
+        [Input("stateful")]
+        public Input<bool>? Stateful { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -215,6 +233,15 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Indicates if the security group is stateful or
+        /// stateless. Update of the stateful argument is allowed when there is no port
+        /// associated with the security group. Available only in OpenStack environments
+        /// with the `stateful-security-group` extension. Defaults to true.
+        /// </summary>
+        [Input("stateful")]
+        public Input<bool>? Stateful { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

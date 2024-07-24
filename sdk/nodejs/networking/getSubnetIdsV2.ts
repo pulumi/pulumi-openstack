@@ -28,6 +28,7 @@ export function getSubnetIdsV2(args?: GetSubnetIdsV2Args, opts?: pulumi.InvokeOp
         "cidr": args.cidr,
         "description": args.description,
         "dhcpEnabled": args.dhcpEnabled,
+        "dnsPublishFixedIp": args.dnsPublishFixedIp,
         "gatewayIp": args.gatewayIp,
         "ipVersion": args.ipVersion,
         "ipv6AddressMode": args.ipv6AddressMode,
@@ -60,6 +61,10 @@ export interface GetSubnetIdsV2Args {
      * If the subnet has DHCP enabled.
      */
     dhcpEnabled?: boolean;
+    /**
+     * If the subnet publishes DNS records.
+     */
+    dnsPublishFixedIp?: boolean;
     /**
      * The IP of the subnet's gateway.
      */
@@ -123,6 +128,7 @@ export interface GetSubnetIdsV2Result {
     readonly cidr?: string;
     readonly description?: string;
     readonly dhcpEnabled?: boolean;
+    readonly dnsPublishFixedIp?: boolean;
     readonly gatewayIp?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -178,6 +184,10 @@ export interface GetSubnetIdsV2OutputArgs {
      * If the subnet has DHCP enabled.
      */
     dhcpEnabled?: pulumi.Input<boolean>;
+    /**
+     * If the subnet publishes DNS records.
+     */
+    dnsPublishFixedIp?: pulumi.Input<boolean>;
     /**
      * The IP of the subnet's gateway.
      */

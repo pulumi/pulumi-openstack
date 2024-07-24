@@ -22,7 +22,6 @@ class RouterArgs:
                  distributed: Optional[pulumi.Input[bool]] = None,
                  enable_snat: Optional[pulumi.Input[bool]] = None,
                  external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]] = None,
-                 external_gateway: Optional[pulumi.Input[str]] = None,
                  external_network_id: Optional[pulumi.Input[str]] = None,
                  external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -53,11 +52,6 @@ class RouterArgs:
                can be repeated. The structure is described below. An `external_network_id`
                has to be set in order to set this property. Changing this updates the
                external fixed IPs of the router.
-        :param pulumi.Input[str] external_gateway: The
-               network UUID of an external gateway for the router. A router with an
-               external gateway is required if any compute instances or load balancers
-               will be using floating IPs. Changing this updates the external gateway
-               of an existing router.
         :param pulumi.Input[str] external_network_id: The network UUID of an external gateway
                for the router. A router with an external gateway is required if any
                compute instances or load balancers will be using floating IPs. Changing
@@ -92,11 +86,6 @@ class RouterArgs:
             pulumi.set(__self__, "enable_snat", enable_snat)
         if external_fixed_ips is not None:
             pulumi.set(__self__, "external_fixed_ips", external_fixed_ips)
-        if external_gateway is not None:
-            warnings.warn("""use external_network_id instead""", DeprecationWarning)
-            pulumi.log.warn("""external_gateway is deprecated: use external_network_id instead""")
-        if external_gateway is not None:
-            pulumi.set(__self__, "external_gateway", external_gateway)
         if external_network_id is not None:
             pulumi.set(__self__, "external_network_id", external_network_id)
         if external_subnet_ids is not None:
@@ -199,23 +188,6 @@ class RouterArgs:
     @external_fixed_ips.setter
     def external_fixed_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]]):
         pulumi.set(self, "external_fixed_ips", value)
-
-    @property
-    @pulumi.getter(name="externalGateway")
-    @_utilities.deprecated("""use external_network_id instead""")
-    def external_gateway(self) -> Optional[pulumi.Input[str]]:
-        """
-        The
-        network UUID of an external gateway for the router. A router with an
-        external gateway is required if any compute instances or load balancers
-        will be using floating IPs. Changing this updates the external gateway
-        of an existing router.
-        """
-        return pulumi.get(self, "external_gateway")
-
-    @external_gateway.setter
-    def external_gateway(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "external_gateway", value)
 
     @property
     @pulumi.getter(name="externalNetworkId")
@@ -337,7 +309,6 @@ class _RouterState:
                  distributed: Optional[pulumi.Input[bool]] = None,
                  enable_snat: Optional[pulumi.Input[bool]] = None,
                  external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]] = None,
-                 external_gateway: Optional[pulumi.Input[str]] = None,
                  external_network_id: Optional[pulumi.Input[str]] = None,
                  external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -370,11 +341,6 @@ class _RouterState:
                can be repeated. The structure is described below. An `external_network_id`
                has to be set in order to set this property. Changing this updates the
                external fixed IPs of the router.
-        :param pulumi.Input[str] external_gateway: The
-               network UUID of an external gateway for the router. A router with an
-               external gateway is required if any compute instances or load balancers
-               will be using floating IPs. Changing this updates the external gateway
-               of an existing router.
         :param pulumi.Input[str] external_network_id: The network UUID of an external gateway
                for the router. A router with an external gateway is required if any
                compute instances or load balancers will be using floating IPs. Changing
@@ -411,11 +377,6 @@ class _RouterState:
             pulumi.set(__self__, "enable_snat", enable_snat)
         if external_fixed_ips is not None:
             pulumi.set(__self__, "external_fixed_ips", external_fixed_ips)
-        if external_gateway is not None:
-            warnings.warn("""use external_network_id instead""", DeprecationWarning)
-            pulumi.log.warn("""external_gateway is deprecated: use external_network_id instead""")
-        if external_gateway is not None:
-            pulumi.set(__self__, "external_gateway", external_gateway)
         if external_network_id is not None:
             pulumi.set(__self__, "external_network_id", external_network_id)
         if external_subnet_ids is not None:
@@ -531,23 +492,6 @@ class _RouterState:
     @external_fixed_ips.setter
     def external_fixed_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]]):
         pulumi.set(self, "external_fixed_ips", value)
-
-    @property
-    @pulumi.getter(name="externalGateway")
-    @_utilities.deprecated("""use external_network_id instead""")
-    def external_gateway(self) -> Optional[pulumi.Input[str]]:
-        """
-        The
-        network UUID of an external gateway for the router. A router with an
-        external gateway is required if any compute instances or load balancers
-        will be using floating IPs. Changing this updates the external gateway
-        of an existing router.
-        """
-        return pulumi.get(self, "external_gateway")
-
-    @external_gateway.setter
-    def external_gateway(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "external_gateway", value)
 
     @property
     @pulumi.getter(name="externalNetworkId")
@@ -670,7 +614,6 @@ class Router(pulumi.CustomResource):
                  distributed: Optional[pulumi.Input[bool]] = None,
                  enable_snat: Optional[pulumi.Input[bool]] = None,
                  external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterExternalFixedIpArgs']]]]] = None,
-                 external_gateway: Optional[pulumi.Input[str]] = None,
                  external_network_id: Optional[pulumi.Input[str]] = None,
                  external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -725,11 +668,6 @@ class Router(pulumi.CustomResource):
                can be repeated. The structure is described below. An `external_network_id`
                has to be set in order to set this property. Changing this updates the
                external fixed IPs of the router.
-        :param pulumi.Input[str] external_gateway: The
-               network UUID of an external gateway for the router. A router with an
-               external gateway is required if any compute instances or load balancers
-               will be using floating IPs. Changing this updates the external gateway
-               of an existing router.
         :param pulumi.Input[str] external_network_id: The network UUID of an external gateway
                for the router. A router with an external gateway is required if any
                compute instances or load balancers will be using floating IPs. Changing
@@ -802,7 +740,6 @@ class Router(pulumi.CustomResource):
                  distributed: Optional[pulumi.Input[bool]] = None,
                  enable_snat: Optional[pulumi.Input[bool]] = None,
                  external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterExternalFixedIpArgs']]]]] = None,
-                 external_gateway: Optional[pulumi.Input[str]] = None,
                  external_network_id: Optional[pulumi.Input[str]] = None,
                  external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -826,7 +763,6 @@ class Router(pulumi.CustomResource):
             __props__.__dict__["distributed"] = distributed
             __props__.__dict__["enable_snat"] = enable_snat
             __props__.__dict__["external_fixed_ips"] = external_fixed_ips
-            __props__.__dict__["external_gateway"] = external_gateway
             __props__.__dict__["external_network_id"] = external_network_id
             __props__.__dict__["external_subnet_ids"] = external_subnet_ids
             __props__.__dict__["name"] = name
@@ -853,7 +789,6 @@ class Router(pulumi.CustomResource):
             distributed: Optional[pulumi.Input[bool]] = None,
             enable_snat: Optional[pulumi.Input[bool]] = None,
             external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterExternalFixedIpArgs']]]]] = None,
-            external_gateway: Optional[pulumi.Input[str]] = None,
             external_network_id: Optional[pulumi.Input[str]] = None,
             external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -891,11 +826,6 @@ class Router(pulumi.CustomResource):
                can be repeated. The structure is described below. An `external_network_id`
                has to be set in order to set this property. Changing this updates the
                external fixed IPs of the router.
-        :param pulumi.Input[str] external_gateway: The
-               network UUID of an external gateway for the router. A router with an
-               external gateway is required if any compute instances or load balancers
-               will be using floating IPs. Changing this updates the external gateway
-               of an existing router.
         :param pulumi.Input[str] external_network_id: The network UUID of an external gateway
                for the router. A router with an external gateway is required if any
                compute instances or load balancers will be using floating IPs. Changing
@@ -929,7 +859,6 @@ class Router(pulumi.CustomResource):
         __props__.__dict__["distributed"] = distributed
         __props__.__dict__["enable_snat"] = enable_snat
         __props__.__dict__["external_fixed_ips"] = external_fixed_ips
-        __props__.__dict__["external_gateway"] = external_gateway
         __props__.__dict__["external_network_id"] = external_network_id
         __props__.__dict__["external_subnet_ids"] = external_subnet_ids
         __props__.__dict__["name"] = name
@@ -1010,19 +939,6 @@ class Router(pulumi.CustomResource):
         external fixed IPs of the router.
         """
         return pulumi.get(self, "external_fixed_ips")
-
-    @property
-    @pulumi.getter(name="externalGateway")
-    @_utilities.deprecated("""use external_network_id instead""")
-    def external_gateway(self) -> pulumi.Output[str]:
-        """
-        The
-        network UUID of an external gateway for the router. A router with an
-        external gateway is required if any compute instances or load balancers
-        will be using floating IPs. Changing this updates the external gateway
-        of an existing router.
-        """
-        return pulumi.get(self, "external_gateway")
 
     @property
     @pulumi.getter(name="externalNetworkId")

@@ -27,6 +27,7 @@ export function getSecGroup(args?: GetSecGroupArgs, opts?: pulumi.InvokeOptions)
         "name": args.name,
         "region": args.region,
         "secgroupId": args.secgroupId,
+        "stateful": args.stateful,
         "tags": args.tags,
         "tenantId": args.tenantId,
     }, opts);
@@ -54,6 +55,10 @@ export interface GetSecGroupArgs {
      * The ID of the security group.
      */
     secgroupId?: string;
+    /**
+     * Whether the security group is stateful or not.
+     */
+    stateful?: boolean;
     /**
      * The list of security group tags to filter.
      */
@@ -89,6 +94,10 @@ export interface GetSecGroupResult {
      */
     readonly region: string;
     readonly secgroupId?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly stateful: boolean;
     readonly tags?: string[];
     readonly tenantId: string;
 }
@@ -132,6 +141,10 @@ export interface GetSecGroupOutputArgs {
      * The ID of the security group.
      */
     secgroupId?: pulumi.Input<string>;
+    /**
+     * Whether the security group is stateful or not.
+     */
+    stateful?: pulumi.Input<boolean>;
     /**
      * The list of security group tags to filter.
      */

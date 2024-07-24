@@ -24,6 +24,7 @@ class MemberArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None):
         """
@@ -48,6 +49,8 @@ class MemberArgs:
                argument of the provider is used. Changing this creates a new member.
         :param pulumi.Input[str] subnet_id: The subnet in which to access the member. Changing
                this creates a new member.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the member.
+               Available only for Octavia >= 2.5.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the member.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new member.
@@ -73,6 +76,8 @@ class MemberArgs:
             pulumi.set(__self__, "region", region)
         if subnet_id is not None:
             pulumi.set(__self__, "subnet_id", subnet_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if weight is not None:
@@ -209,6 +214,19 @@ class MemberArgs:
         pulumi.set(self, "subnet_id", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of simple strings assigned to the member.
+        Available only for Octavia >= 2.5.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -251,6 +269,7 @@ class _MemberState:
                  protocol_port: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None):
         """
@@ -275,6 +294,8 @@ class _MemberState:
                argument of the provider is used. Changing this creates a new member.
         :param pulumi.Input[str] subnet_id: The subnet in which to access the member. Changing
                this creates a new member.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the member.
+               Available only for Octavia >= 2.5.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the member.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new member.
@@ -303,6 +324,8 @@ class _MemberState:
             pulumi.set(__self__, "region", region)
         if subnet_id is not None:
             pulumi.set(__self__, "subnet_id", subnet_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if weight is not None:
@@ -439,6 +462,19 @@ class _MemberState:
         pulumi.set(self, "subnet_id", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of simple strings assigned to the member.
+        Available only for Octavia >= 2.5.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -483,6 +519,7 @@ class Member(pulumi.CustomResource):
                  protocol_port: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -532,6 +569,8 @@ class Member(pulumi.CustomResource):
                argument of the provider is used. Changing this creates a new member.
         :param pulumi.Input[str] subnet_id: The subnet in which to access the member. Changing
                this creates a new member.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the member.
+               Available only for Octavia >= 2.5.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the member.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new member.
@@ -595,6 +634,7 @@ class Member(pulumi.CustomResource):
                  protocol_port: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -622,6 +662,7 @@ class Member(pulumi.CustomResource):
             __props__.__dict__["protocol_port"] = protocol_port
             __props__.__dict__["region"] = region
             __props__.__dict__["subnet_id"] = subnet_id
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["tenant_id"] = tenant_id
             __props__.__dict__["weight"] = weight
         super(Member, __self__).__init__(
@@ -644,6 +685,7 @@ class Member(pulumi.CustomResource):
             protocol_port: Optional[pulumi.Input[int]] = None,
             region: Optional[pulumi.Input[str]] = None,
             subnet_id: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
             weight: Optional[pulumi.Input[int]] = None) -> 'Member':
         """
@@ -673,6 +715,8 @@ class Member(pulumi.CustomResource):
                argument of the provider is used. Changing this creates a new member.
         :param pulumi.Input[str] subnet_id: The subnet in which to access the member. Changing
                this creates a new member.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the member.
+               Available only for Octavia >= 2.5.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the member.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new member.
@@ -695,6 +739,7 @@ class Member(pulumi.CustomResource):
         __props__.__dict__["protocol_port"] = protocol_port
         __props__.__dict__["region"] = region
         __props__.__dict__["subnet_id"] = subnet_id
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["tenant_id"] = tenant_id
         __props__.__dict__["weight"] = weight
         return Member(resource_name, opts=opts, __props__=__props__)
@@ -788,6 +833,15 @@ class Member(pulumi.CustomResource):
         this creates a new member.
         """
         return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A list of simple strings assigned to the member.
+        Available only for Octavia >= 2.5.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="tenantId")

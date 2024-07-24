@@ -25,16 +25,16 @@ class PoolArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  persistence: Optional[pulumi.Input['PoolPersistenceArgs']] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Pool resource.
         :param pulumi.Input[str] lb_method: The load balancing algorithm to
                distribute traffic to the pool's members. Must be one of
-               ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-               in Octavia).
+               ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-               UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
-               or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+               UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
+               (**Octavia minor version >= 2.23**). Changing this creates a new pool.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the pool.
                A valid value is true (UP) or false (DOWN).
         :param pulumi.Input[str] description: Human-readable description for the pool.
@@ -72,6 +72,8 @@ class PoolArgs:
             pulumi.set(__self__, "persistence", persistence)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
 
@@ -81,8 +83,7 @@ class PoolArgs:
         """
         The load balancing algorithm to
         distribute traffic to the pool's members. Must be one of
-        ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-        in Octavia).
+        ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
         """
         return pulumi.get(self, "lb_method")
 
@@ -95,8 +96,8 @@ class PoolArgs:
     def protocol(self) -> pulumi.Input[str]:
         """
         The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-        UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
-        or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+        UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
+        (**Octavia minor version >= 2.23**). Changing this creates a new pool.
         """
         return pulumi.get(self, "protocol")
 
@@ -199,6 +200,15 @@ class PoolArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -225,6 +235,7 @@ class _PoolState:
                  persistence: Optional[pulumi.Input['PoolPersistenceArgs']] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Pool resources.
@@ -233,8 +244,7 @@ class _PoolState:
         :param pulumi.Input[str] description: Human-readable description for the pool.
         :param pulumi.Input[str] lb_method: The load balancing algorithm to
                distribute traffic to the pool's members. Must be one of
-               ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-               in Octavia).
+               ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
         :param pulumi.Input[str] listener_id: The Listener on which the members of the pool
                will be associated with. Changing this creates a new pool.
                Note:  One of LoadbalancerID or ListenerID must be provided.
@@ -246,8 +256,8 @@ class _PoolState:
                whether connections in the same session will be processed by the same Pool
                member or not. Changing this creates a new pool.
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-               UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
-               or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+               UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
+               (**Octavia minor version >= 2.23**). Changing this creates a new pool.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an . If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -274,6 +284,8 @@ class _PoolState:
             pulumi.set(__self__, "protocol", protocol)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
 
@@ -308,8 +320,7 @@ class _PoolState:
         """
         The load balancing algorithm to
         distribute traffic to the pool's members. Must be one of
-        ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-        in Octavia).
+        ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
         """
         return pulumi.get(self, "lb_method")
 
@@ -376,8 +387,8 @@ class _PoolState:
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
         The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-        UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
-        or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+        UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
+        (**Octavia minor version >= 2.23**). Changing this creates a new pool.
         """
         return pulumi.get(self, "protocol")
 
@@ -399,6 +410,15 @@ class _PoolState:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="tenantId")
@@ -429,6 +449,7 @@ class Pool(pulumi.CustomResource):
                  persistence: Optional[pulumi.Input[pulumi.InputType['PoolPersistenceArgs']]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -468,8 +489,7 @@ class Pool(pulumi.CustomResource):
         :param pulumi.Input[str] description: Human-readable description for the pool.
         :param pulumi.Input[str] lb_method: The load balancing algorithm to
                distribute traffic to the pool's members. Must be one of
-               ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-               in Octavia).
+               ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
         :param pulumi.Input[str] listener_id: The Listener on which the members of the pool
                will be associated with. Changing this creates a new pool.
                Note:  One of LoadbalancerID or ListenerID must be provided.
@@ -481,8 +501,8 @@ class Pool(pulumi.CustomResource):
                whether connections in the same session will be processed by the same Pool
                member or not. Changing this creates a new pool.
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-               UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
-               or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+               UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
+               (**Octavia minor version >= 2.23**). Changing this creates a new pool.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an . If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -551,6 +571,7 @@ class Pool(pulumi.CustomResource):
                  persistence: Optional[pulumi.Input[pulumi.InputType['PoolPersistenceArgs']]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -574,6 +595,7 @@ class Pool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'protocol'")
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["region"] = region
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["tenant_id"] = tenant_id
         super(Pool, __self__).__init__(
             'openstack:loadbalancer/pool:Pool',
@@ -594,6 +616,7 @@ class Pool(pulumi.CustomResource):
             persistence: Optional[pulumi.Input[pulumi.InputType['PoolPersistenceArgs']]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None) -> 'Pool':
         """
         Get an existing Pool resource's state with the given name, id, and optional extra
@@ -607,8 +630,7 @@ class Pool(pulumi.CustomResource):
         :param pulumi.Input[str] description: Human-readable description for the pool.
         :param pulumi.Input[str] lb_method: The load balancing algorithm to
                distribute traffic to the pool's members. Must be one of
-               ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-               in Octavia).
+               ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
         :param pulumi.Input[str] listener_id: The Listener on which the members of the pool
                will be associated with. Changing this creates a new pool.
                Note:  One of LoadbalancerID or ListenerID must be provided.
@@ -620,8 +642,8 @@ class Pool(pulumi.CustomResource):
                whether connections in the same session will be processed by the same Pool
                member or not. Changing this creates a new pool.
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-               UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
-               or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+               UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
+               (**Octavia minor version >= 2.23**). Changing this creates a new pool.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an . If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -643,6 +665,7 @@ class Pool(pulumi.CustomResource):
         __props__.__dict__["persistence"] = persistence
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["region"] = region
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["tenant_id"] = tenant_id
         return Pool(resource_name, opts=opts, __props__=__props__)
 
@@ -669,8 +692,7 @@ class Pool(pulumi.CustomResource):
         """
         The load balancing algorithm to
         distribute traffic to the pool's members. Must be one of
-        ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-        in Octavia).
+        ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
         """
         return pulumi.get(self, "lb_method")
 
@@ -717,8 +739,8 @@ class Pool(pulumi.CustomResource):
     def protocol(self) -> pulumi.Output[str]:
         """
         The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-        UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
-        or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+        UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
+        (**Octavia minor version >= 2.23**). Changing this creates a new pool.
         """
         return pulumi.get(self, "protocol")
 
@@ -732,6 +754,11 @@ class Pool(pulumi.CustomResource):
         pool.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="tenantId")

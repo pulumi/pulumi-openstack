@@ -66,8 +66,7 @@ type Pool struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The load balancing algorithm to
 	// distribute traffic to the pool's members. Must be one of
-	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-	// in Octavia).
+	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
 	LbMethod pulumi.StringOutput `pulumi:"lbMethod"`
 	// The Listener on which the members of the pool
 	// will be associated with. Changing this creates a new pool.
@@ -84,14 +83,15 @@ type Pool struct {
 	// member or not. Changing this creates a new pool.
 	Persistence PoolPersistenceOutput `pulumi:"persistence"`
 	// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-	// UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
-	// or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+	// UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
+	// (**Octavia minor version >= 2.23**). Changing this creates a new pool.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an . If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// pool.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region pulumi.StringOutput      `pulumi:"region"`
+	Tags   pulumi.StringArrayOutput `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
 	// the pool.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new pool.
@@ -141,8 +141,7 @@ type poolState struct {
 	Description *string `pulumi:"description"`
 	// The load balancing algorithm to
 	// distribute traffic to the pool's members. Must be one of
-	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-	// in Octavia).
+	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
 	LbMethod *string `pulumi:"lbMethod"`
 	// The Listener on which the members of the pool
 	// will be associated with. Changing this creates a new pool.
@@ -159,14 +158,15 @@ type poolState struct {
 	// member or not. Changing this creates a new pool.
 	Persistence *PoolPersistence `pulumi:"persistence"`
 	// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-	// UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
-	// or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+	// UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
+	// (**Octavia minor version >= 2.23**). Changing this creates a new pool.
 	Protocol *string `pulumi:"protocol"`
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an . If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// pool.
-	Region *string `pulumi:"region"`
+	Region *string  `pulumi:"region"`
+	Tags   []string `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
 	// the pool.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new pool.
@@ -181,8 +181,7 @@ type PoolState struct {
 	Description pulumi.StringPtrInput
 	// The load balancing algorithm to
 	// distribute traffic to the pool's members. Must be one of
-	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-	// in Octavia).
+	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
 	LbMethod pulumi.StringPtrInput
 	// The Listener on which the members of the pool
 	// will be associated with. Changing this creates a new pool.
@@ -199,14 +198,15 @@ type PoolState struct {
 	// member or not. Changing this creates a new pool.
 	Persistence PoolPersistencePtrInput
 	// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-	// UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
-	// or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+	// UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
+	// (**Octavia minor version >= 2.23**). Changing this creates a new pool.
 	Protocol pulumi.StringPtrInput
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an . If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// pool.
 	Region pulumi.StringPtrInput
+	Tags   pulumi.StringArrayInput
 	// Required for admins. The UUID of the tenant who owns
 	// the pool.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new pool.
@@ -225,8 +225,7 @@ type poolArgs struct {
 	Description *string `pulumi:"description"`
 	// The load balancing algorithm to
 	// distribute traffic to the pool's members. Must be one of
-	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-	// in Octavia).
+	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
 	LbMethod string `pulumi:"lbMethod"`
 	// The Listener on which the members of the pool
 	// will be associated with. Changing this creates a new pool.
@@ -243,14 +242,15 @@ type poolArgs struct {
 	// member or not. Changing this creates a new pool.
 	Persistence *PoolPersistence `pulumi:"persistence"`
 	// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-	// UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
-	// or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+	// UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
+	// (**Octavia minor version >= 2.23**). Changing this creates a new pool.
 	Protocol string `pulumi:"protocol"`
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an . If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// pool.
-	Region *string `pulumi:"region"`
+	Region *string  `pulumi:"region"`
+	Tags   []string `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
 	// the pool.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new pool.
@@ -266,8 +266,7 @@ type PoolArgs struct {
 	Description pulumi.StringPtrInput
 	// The load balancing algorithm to
 	// distribute traffic to the pool's members. Must be one of
-	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-	// in Octavia).
+	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
 	LbMethod pulumi.StringInput
 	// The Listener on which the members of the pool
 	// will be associated with. Changing this creates a new pool.
@@ -284,14 +283,15 @@ type PoolArgs struct {
 	// member or not. Changing this creates a new pool.
 	Persistence PoolPersistencePtrInput
 	// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-	// UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
-	// or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+	// UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
+	// (**Octavia minor version >= 2.23**). Changing this creates a new pool.
 	Protocol pulumi.StringInput
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an . If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// pool.
 	Region pulumi.StringPtrInput
+	Tags   pulumi.StringArrayInput
 	// Required for admins. The UUID of the tenant who owns
 	// the pool.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new pool.
@@ -398,8 +398,7 @@ func (o PoolOutput) Description() pulumi.StringPtrOutput {
 
 // The load balancing algorithm to
 // distribute traffic to the pool's members. Must be one of
-// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-// in Octavia).
+// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
 func (o PoolOutput) LbMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.LbMethod }).(pulumi.StringOutput)
 }
@@ -431,8 +430,8 @@ func (o PoolOutput) Persistence() PoolPersistenceOutput {
 }
 
 // The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-// UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
-// or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+// UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
+// (**Octavia minor version >= 2.23**). Changing this creates a new pool.
 func (o PoolOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -443,6 +442,10 @@ func (o PoolOutput) Protocol() pulumi.StringOutput {
 // pool.
 func (o PoolOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o PoolOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // Required for admins. The UUID of the tenant who owns

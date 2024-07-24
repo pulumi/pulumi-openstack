@@ -17,6 +17,8 @@ import (
 //
 // ## Example Usage
 //
+// ### Basic Volume Type
+//
 // ```go
 // package main
 //
@@ -35,6 +37,36 @@ import (
 //				ExtraSpecs: pulumi.Map{
 //					"capabilities":        pulumi.Any("gpu"),
 //					"volume_backend_name": pulumi.Any("ssd"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Volume Type with multiattach enabled
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := blockstorage.NewVolumeTypeV3(ctx, "multiattach", &blockstorage.VolumeTypeV3Args{
+//				Name:        pulumi.String("multiattach"),
+//				Description: pulumi.String("Multiattach-enabled volume type"),
+//				ExtraSpecs: pulumi.Map{
+//					"multiattach": pulumi.Any("<is> True"),
 //				},
 //			})
 //			if err != nil {

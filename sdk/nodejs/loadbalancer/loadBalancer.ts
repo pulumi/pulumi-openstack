@@ -49,6 +49,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     public readonly vipAddress!: pulumi.Output<string>;
     public readonly vipNetworkId!: pulumi.Output<string>;
     public readonly vipPortId!: pulumi.Output<string>;
+    public readonly vipQosPolicyId!: pulumi.Output<string | undefined>;
     public readonly vipSubnetId!: pulumi.Output<string>;
 
     /**
@@ -80,6 +81,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["vipAddress"] = state ? state.vipAddress : undefined;
             resourceInputs["vipNetworkId"] = state ? state.vipNetworkId : undefined;
             resourceInputs["vipPortId"] = state ? state.vipPortId : undefined;
+            resourceInputs["vipQosPolicyId"] = state ? state.vipQosPolicyId : undefined;
             resourceInputs["vipSubnetId"] = state ? state.vipSubnetId : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
@@ -96,6 +98,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["vipAddress"] = args ? args.vipAddress : undefined;
             resourceInputs["vipNetworkId"] = args ? args.vipNetworkId : undefined;
             resourceInputs["vipPortId"] = args ? args.vipPortId : undefined;
+            resourceInputs["vipQosPolicyId"] = args ? args.vipQosPolicyId : undefined;
             resourceInputs["vipSubnetId"] = args ? args.vipSubnetId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -120,6 +123,7 @@ export interface LoadBalancerState {
     vipAddress?: pulumi.Input<string>;
     vipNetworkId?: pulumi.Input<string>;
     vipPortId?: pulumi.Input<string>;
+    vipQosPolicyId?: pulumi.Input<string>;
     vipSubnetId?: pulumi.Input<string>;
 }
 
@@ -140,5 +144,6 @@ export interface LoadBalancerArgs {
     vipAddress?: pulumi.Input<string>;
     vipNetworkId?: pulumi.Input<string>;
     vipPortId?: pulumi.Input<string>;
+    vipQosPolicyId?: pulumi.Input<string>;
     vipSubnetId?: pulumi.Input<string>;
 }

@@ -5,6 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { BgpvpnNetworkAssociateV2Args, BgpvpnNetworkAssociateV2State } from "./bgpvpnNetworkAssociateV2";
+export type BgpvpnNetworkAssociateV2 = import("./bgpvpnNetworkAssociateV2").BgpvpnNetworkAssociateV2;
+export const BgpvpnNetworkAssociateV2: typeof import("./bgpvpnNetworkAssociateV2").BgpvpnNetworkAssociateV2 = null as any;
+utilities.lazyLoad(exports, ["BgpvpnNetworkAssociateV2"], () => require("./bgpvpnNetworkAssociateV2"));
+
+export { BgpvpnPortAssociateV2Args, BgpvpnPortAssociateV2State } from "./bgpvpnPortAssociateV2";
+export type BgpvpnPortAssociateV2 = import("./bgpvpnPortAssociateV2").BgpvpnPortAssociateV2;
+export const BgpvpnPortAssociateV2: typeof import("./bgpvpnPortAssociateV2").BgpvpnPortAssociateV2 = null as any;
+utilities.lazyLoad(exports, ["BgpvpnPortAssociateV2"], () => require("./bgpvpnPortAssociateV2"));
+
+export { BgpvpnRouterAssociateV2Args, BgpvpnRouterAssociateV2State } from "./bgpvpnRouterAssociateV2";
+export type BgpvpnRouterAssociateV2 = import("./bgpvpnRouterAssociateV2").BgpvpnRouterAssociateV2;
+export const BgpvpnRouterAssociateV2: typeof import("./bgpvpnRouterAssociateV2").BgpvpnRouterAssociateV2 = null as any;
+utilities.lazyLoad(exports, ["BgpvpnRouterAssociateV2"], () => require("./bgpvpnRouterAssociateV2"));
+
+export { BgpvpnV2Args, BgpvpnV2State } from "./bgpvpnV2";
+export type BgpvpnV2 = import("./bgpvpnV2").BgpvpnV2;
+export const BgpvpnV2: typeof import("./bgpvpnV2").BgpvpnV2 = null as any;
+utilities.lazyLoad(exports, ["BgpvpnV2"], () => require("./bgpvpnV2"));
+
 export { GetFwGroupV2Args, GetFwGroupV2Result, GetFwGroupV2OutputArgs } from "./getFwGroupV2";
 export const getFwGroupV2: typeof import("./getFwGroupV2").getFwGroupV2 = null as any;
 export const getFwGroupV2Output: typeof import("./getFwGroupV2").getFwGroupV2Output = null as any;
@@ -74,6 +94,14 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2":
+                return new BgpvpnNetworkAssociateV2(name, <any>undefined, { urn })
+            case "openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2":
+                return new BgpvpnPortAssociateV2(name, <any>undefined, { urn })
+            case "openstack:index/bgpvpnRouterAssociateV2:BgpvpnRouterAssociateV2":
+                return new BgpvpnRouterAssociateV2(name, <any>undefined, { urn })
+            case "openstack:index/bgpvpnV2:BgpvpnV2":
+                return new BgpvpnV2(name, <any>undefined, { urn })
             case "openstack:index/lbLoadbalancerV2:LbLoadbalancerV2":
                 return new LbLoadbalancerV2(name, <any>undefined, { urn })
             default:
@@ -81,6 +109,10 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("openstack", "index/bgpvpnNetworkAssociateV2", _module)
+pulumi.runtime.registerResourceModule("openstack", "index/bgpvpnPortAssociateV2", _module)
+pulumi.runtime.registerResourceModule("openstack", "index/bgpvpnRouterAssociateV2", _module)
+pulumi.runtime.registerResourceModule("openstack", "index/bgpvpnV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "index/lbLoadbalancerV2", _module)
 pulumi.runtime.registerResourcePackage("openstack", {
     version: utilities.getVersion(),

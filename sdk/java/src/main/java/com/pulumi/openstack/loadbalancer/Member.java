@@ -13,6 +13,7 @@ import com.pulumi.openstack.loadbalancer.inputs.MemberState;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -227,6 +228,22 @@ public class Member extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> subnetId() {
         return Codegen.optional(this.subnetId);
+    }
+    /**
+     * A list of simple strings assigned to the member.
+     * Available only for Octavia &gt;= 2.5.
+     * 
+     */
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> tags;
+
+    /**
+     * @return A list of simple strings assigned to the member.
+     * Available only for Octavia &gt;= 2.5.
+     * 
+     */
+    public Output<Optional<List<String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * Required for admins. The UUID of the tenant who owns

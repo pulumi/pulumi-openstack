@@ -5,6 +5,30 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface BgpvpnPortAssociateV2Route {
+    /**
+     * The ID of the BGP VPN to be advertised. Required
+     * if `type` is `bgpvpn`. Conflicts with `prefix`.
+     */
+    bgpvpnId?: string;
+    /**
+     * The BGP LOCAL\_PREF value of the routes that will
+     * be advertised.
+     */
+    localPref?: number;
+    /**
+     * The CIDR prefix (v4 or v6) to be advertised. Required
+     * if `type` is `prefix`. Conflicts with `bgpvpnId`.
+     */
+    prefix?: string;
+    /**
+     * Can be `prefix` or `bgpvpn`. For the `prefix` type, the
+     * CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
+     * `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpnId` key.
+     */
+    type: string;
+}
+
 export namespace blockstorage {
     export interface GetVolumeV3Attachment {
         device: string;
@@ -212,10 +236,6 @@ export namespace compute {
          */
         fixedIpV4: string;
         fixedIpV6: string;
-        /**
-         * @deprecated Use the openstack.compute.FloatingIpAssociate resource instead
-         */
-        floatingIp: string;
         mac: string;
         /**
          * The human-readable
@@ -267,7 +287,8 @@ export namespace compute {
         differentHosts?: string[];
         /**
          * A UUID of a Server Group. The instance will be placed
-         * into that group.
+         * into that group. See reference
+         * for details on managing servergroup resources
          */
         group?: string;
         /**
@@ -308,12 +329,6 @@ export namespace compute {
          * instances after some timeout.
          */
         ignoreResizeConfirmation?: boolean;
-    }
-
-    export interface InstanceVolume {
-        device: string;
-        id: string;
-        volumeId: string;
     }
 
     export interface SecGroupRule {
@@ -984,7 +999,7 @@ export namespace networking {
          * Subnet in which to allocate IP address for
          * this port.
          */
-        subnetId: string;
+        subnetId?: string;
     }
 
     export interface RouterExternalFixedIp {
@@ -1015,17 +1030,6 @@ export namespace networking {
          * The starting address.
          */
         start: string;
-    }
-
-    export interface SubnetHostRoute {
-        /**
-         * The destination CIDR.
-         */
-        destinationCidr: string;
-        /**
-         * The next hop in the route.
-         */
-        nextHop: string;
     }
 
     export interface TrunkSubPort {

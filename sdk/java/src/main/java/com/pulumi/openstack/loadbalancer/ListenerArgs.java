@@ -182,8 +182,8 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The protocol - can either be TCP, HTTP, HTTPS,
-     * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-     * in **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
+     * TERMINATED_HTTPS, UDP, SCTP (supported only in
+     * **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
      * **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
      * 
      */
@@ -192,8 +192,8 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The protocol - can either be TCP, HTTP, HTTPS,
-     * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-     * in **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
+     * TERMINATED_HTTPS, UDP, SCTP (supported only in
+     * **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
      * **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
      * 
      */
@@ -260,9 +260,19 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sniContainerRefs);
     }
 
+    /**
+     * A list of simple strings assigned to the pool. Available
+     * for Octavia **minor version 2.5 or later**.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
+    /**
+     * @return A list of simple strings assigned to the pool. Available
+     * for Octavia **minor version 2.5 or later**.
+     * 
+     */
     public Optional<Output<List<String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -616,8 +626,8 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocol The protocol - can either be TCP, HTTP, HTTPS,
-         * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-         * in **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
+         * TERMINATED_HTTPS, UDP, SCTP (supported only in
+         * **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
          * **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
          * 
          * @return builder
@@ -630,8 +640,8 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocol The protocol - can either be TCP, HTTP, HTTPS,
-         * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-         * in **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
+         * TERMINATED_HTTPS, UDP, SCTP (supported only in
+         * **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
          * **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
          * 
          * @return builder
@@ -731,15 +741,36 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
             return sniContainerRefs(List.of(sniContainerRefs));
         }
 
+        /**
+         * @param tags A list of simple strings assigned to the pool. Available
+         * for Octavia **minor version 2.5 or later**.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<List<String>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags A list of simple strings assigned to the pool. Available
+         * for Octavia **minor version 2.5 or later**.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(List<String> tags) {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param tags A list of simple strings assigned to the pool. Available
+         * for Octavia **minor version 2.5 or later**.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }

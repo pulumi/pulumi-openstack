@@ -112,8 +112,8 @@ export class Listener extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The protocol - can either be TCP, HTTP, HTTPS,
-     * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-     * in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+     * TERMINATED_HTTPS, UDP, SCTP (supported only in
+     * **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
      * **Octavia minor version >=2.25**). Changing this creates a new Listener.
      */
     public readonly protocol!: pulumi.Output<string>;
@@ -136,6 +136,10 @@ export class Listener extends pulumi.CustomResource {
      * for more information.
      */
     public readonly sniContainerRefs!: pulumi.Output<string[] | undefined>;
+    /**
+     * A list of simple strings assigned to the pool. Available
+     * for Octavia **minor version 2.5 or later**.
+     */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
@@ -283,8 +287,8 @@ export interface ListenerState {
     name?: pulumi.Input<string>;
     /**
      * The protocol - can either be TCP, HTTP, HTTPS,
-     * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-     * in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+     * TERMINATED_HTTPS, UDP, SCTP (supported only in
+     * **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
      * **Octavia minor version >=2.25**). Changing this creates a new Listener.
      */
     protocol?: pulumi.Input<string>;
@@ -307,6 +311,10 @@ export interface ListenerState {
      * for more information.
      */
     sniContainerRefs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of simple strings assigned to the pool. Available
+     * for Octavia **minor version 2.5 or later**.
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required for admins. The UUID of the tenant who owns
@@ -387,8 +395,8 @@ export interface ListenerArgs {
     name?: pulumi.Input<string>;
     /**
      * The protocol - can either be TCP, HTTP, HTTPS,
-     * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-     * in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+     * TERMINATED_HTTPS, UDP, SCTP (supported only in
+     * **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
      * **Octavia minor version >=2.25**). Changing this creates a new Listener.
      */
     protocol: pulumi.Input<string>;
@@ -411,6 +419,10 @@ export interface ListenerArgs {
      * for more information.
      */
     sniContainerRefs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of simple strings assigned to the pool. Available
+     * for Octavia **minor version 2.5 or later**.
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required for admins. The UUID of the tenant who owns

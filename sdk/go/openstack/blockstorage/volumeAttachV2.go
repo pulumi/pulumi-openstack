@@ -109,8 +109,6 @@ type VolumeAttachV2 struct {
 	HostName pulumi.StringOutput `pulumi:"hostName"`
 	// The iSCSI initiator string to make the connection.
 	Initiator pulumi.StringPtrOutput `pulumi:"initiator"`
-	// Deprecated: instance_id is no longer used in this resource
-	InstanceId pulumi.StringPtrOutput `pulumi:"instanceId"`
 	// The IP address of the `hostName` above.
 	IpAddress pulumi.StringPtrOutput `pulumi:"ipAddress"`
 	// A mount point base name for shared storage.
@@ -193,8 +191,6 @@ type volumeAttachV2State struct {
 	HostName *string `pulumi:"hostName"`
 	// The iSCSI initiator string to make the connection.
 	Initiator *string `pulumi:"initiator"`
-	// Deprecated: instance_id is no longer used in this resource
-	InstanceId *string `pulumi:"instanceId"`
 	// The IP address of the `hostName` above.
 	IpAddress *string `pulumi:"ipAddress"`
 	// A mount point base name for shared storage.
@@ -238,8 +234,6 @@ type VolumeAttachV2State struct {
 	HostName pulumi.StringPtrInput
 	// The iSCSI initiator string to make the connection.
 	Initiator pulumi.StringPtrInput
-	// Deprecated: instance_id is no longer used in this resource
-	InstanceId pulumi.StringPtrInput
 	// The IP address of the `hostName` above.
 	IpAddress pulumi.StringPtrInput
 	// A mount point base name for shared storage.
@@ -281,8 +275,6 @@ type volumeAttachV2Args struct {
 	HostName string `pulumi:"hostName"`
 	// The iSCSI initiator string to make the connection.
 	Initiator *string `pulumi:"initiator"`
-	// Deprecated: instance_id is no longer used in this resource
-	InstanceId *string `pulumi:"instanceId"`
 	// The IP address of the `hostName` above.
 	IpAddress *string `pulumi:"ipAddress"`
 	// Whether to connect to this volume via multipath.
@@ -319,8 +311,6 @@ type VolumeAttachV2Args struct {
 	HostName pulumi.StringInput
 	// The iSCSI initiator string to make the connection.
 	Initiator pulumi.StringPtrInput
-	// Deprecated: instance_id is no longer used in this resource
-	InstanceId pulumi.StringPtrInput
 	// The IP address of the `hostName` above.
 	IpAddress pulumi.StringPtrInput
 	// Whether to connect to this volume via multipath.
@@ -464,11 +454,6 @@ func (o VolumeAttachV2Output) HostName() pulumi.StringOutput {
 // The iSCSI initiator string to make the connection.
 func (o VolumeAttachV2Output) Initiator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VolumeAttachV2) pulumi.StringPtrOutput { return v.Initiator }).(pulumi.StringPtrOutput)
-}
-
-// Deprecated: instance_id is no longer used in this resource
-func (o VolumeAttachV2Output) InstanceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VolumeAttachV2) pulumi.StringPtrOutput { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
 // The IP address of the `hostName` above.

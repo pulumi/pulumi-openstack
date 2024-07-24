@@ -48,25 +48,6 @@ public final class GetSubnetPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * @deprecated
-     * use dhcp_enabled instead
-     * 
-     */
-    @Deprecated /* use dhcp_enabled instead */
-    @Import(name="dhcpDisabled")
-    private @Nullable Boolean dhcpDisabled;
-
-    /**
-     * @deprecated
-     * use dhcp_enabled instead
-     * 
-     */
-    @Deprecated /* use dhcp_enabled instead */
-    public Optional<Boolean> dhcpDisabled() {
-        return Optional.ofNullable(this.dhcpDisabled);
-    }
-
-    /**
      * If the subnet has DHCP enabled.
      * 
      */
@@ -79,6 +60,21 @@ public final class GetSubnetPlainArgs extends com.pulumi.resources.InvokeArgs {
      */
     public Optional<Boolean> dhcpEnabled() {
         return Optional.ofNullable(this.dhcpEnabled);
+    }
+
+    /**
+     * If the subnet publishes DNS records.
+     * 
+     */
+    @Import(name="dnsPublishFixedIp")
+    private @Nullable Boolean dnsPublishFixedIp;
+
+    /**
+     * @return If the subnet publishes DNS records.
+     * 
+     */
+    public Optional<Boolean> dnsPublishFixedIp() {
+        return Optional.ofNullable(this.dnsPublishFixedIp);
     }
 
     /**
@@ -259,8 +255,8 @@ public final class GetSubnetPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetSubnetPlainArgs(GetSubnetPlainArgs $) {
         this.cidr = $.cidr;
         this.description = $.description;
-        this.dhcpDisabled = $.dhcpDisabled;
         this.dhcpEnabled = $.dhcpEnabled;
+        this.dnsPublishFixedIp = $.dnsPublishFixedIp;
         this.gatewayIp = $.gatewayIp;
         this.ipVersion = $.ipVersion;
         this.ipv6AddressMode = $.ipv6AddressMode;
@@ -315,19 +311,6 @@ public final class GetSubnetPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @return builder
-         * 
-         * @deprecated
-         * use dhcp_enabled instead
-         * 
-         */
-        @Deprecated /* use dhcp_enabled instead */
-        public Builder dhcpDisabled(@Nullable Boolean dhcpDisabled) {
-            $.dhcpDisabled = dhcpDisabled;
-            return this;
-        }
-
-        /**
          * @param dhcpEnabled If the subnet has DHCP enabled.
          * 
          * @return builder
@@ -335,6 +318,17 @@ public final class GetSubnetPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder dhcpEnabled(@Nullable Boolean dhcpEnabled) {
             $.dhcpEnabled = dhcpEnabled;
+            return this;
+        }
+
+        /**
+         * @param dnsPublishFixedIp If the subnet publishes DNS records.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsPublishFixedIp(@Nullable Boolean dnsPublishFixedIp) {
+            $.dnsPublishFixedIp = dnsPublishFixedIp;
             return this;
         }
 

@@ -271,9 +271,7 @@ type InstanceNetwork struct {
 	// network. Changing this creates a new server.
 	FixedIpV4 *string `pulumi:"fixedIpV4"`
 	FixedIpV6 *string `pulumi:"fixedIpV6"`
-	// Deprecated: Use the compute.FloatingIpAssociate resource instead
-	FloatingIp *string `pulumi:"floatingIp"`
-	Mac        *string `pulumi:"mac"`
+	Mac       *string `pulumi:"mac"`
 	// The human-readable
 	// name of the network. Changing this creates a new server.
 	Name *string `pulumi:"name"`
@@ -304,9 +302,7 @@ type InstanceNetworkArgs struct {
 	// network. Changing this creates a new server.
 	FixedIpV4 pulumi.StringPtrInput `pulumi:"fixedIpV4"`
 	FixedIpV6 pulumi.StringPtrInput `pulumi:"fixedIpV6"`
-	// Deprecated: Use the compute.FloatingIpAssociate resource instead
-	FloatingIp pulumi.StringPtrInput `pulumi:"floatingIp"`
-	Mac        pulumi.StringPtrInput `pulumi:"mac"`
+	Mac       pulumi.StringPtrInput `pulumi:"mac"`
 	// The human-readable
 	// name of the network. Changing this creates a new server.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -383,11 +379,6 @@ func (o InstanceNetworkOutput) FixedIpV4() pulumi.StringPtrOutput {
 
 func (o InstanceNetworkOutput) FixedIpV6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.FixedIpV6 }).(pulumi.StringPtrOutput)
-}
-
-// Deprecated: Use the compute.FloatingIpAssociate resource instead
-func (o InstanceNetworkOutput) FloatingIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceNetwork) *string { return v.FloatingIp }).(pulumi.StringPtrOutput)
 }
 
 func (o InstanceNetworkOutput) Mac() pulumi.StringPtrOutput {
@@ -551,7 +542,8 @@ type InstanceSchedulerHint struct {
 	// be scheduled on a different host than all other instances.
 	DifferentHosts []string `pulumi:"differentHosts"`
 	// A UUID of a Server Group. The instance will be placed
-	// into that group.
+	// into that group. See reference
+	// for details on managing servergroup resources
 	Group *string `pulumi:"group"`
 	// A conditional query that a compute node must pass in
 	// order to host an instance. The query must use the `JsonFilter` syntax
@@ -591,7 +583,8 @@ type InstanceSchedulerHintArgs struct {
 	// be scheduled on a different host than all other instances.
 	DifferentHosts pulumi.StringArrayInput `pulumi:"differentHosts"`
 	// A UUID of a Server Group. The instance will be placed
-	// into that group.
+	// into that group. See reference
+	// for details on managing servergroup resources
 	Group pulumi.StringPtrInput `pulumi:"group"`
 	// A conditional query that a compute node must pass in
 	// order to host an instance. The query must use the `JsonFilter` syntax
@@ -682,7 +675,8 @@ func (o InstanceSchedulerHintOutput) DifferentHosts() pulumi.StringArrayOutput {
 }
 
 // A UUID of a Server Group. The instance will be placed
-// into that group.
+// into that group. See reference
+// for details on managing servergroup resources
 func (o InstanceSchedulerHintOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceSchedulerHint) *string { return v.Group }).(pulumi.StringPtrOutput)
 }
@@ -902,112 +896,6 @@ func (o InstanceVendorOptionsPtrOutput) IgnoreResizeConfirmation() pulumi.BoolPt
 		}
 		return v.IgnoreResizeConfirmation
 	}).(pulumi.BoolPtrOutput)
-}
-
-type InstanceVolume struct {
-	Device   *string `pulumi:"device"`
-	Id       *string `pulumi:"id"`
-	VolumeId string  `pulumi:"volumeId"`
-}
-
-// InstanceVolumeInput is an input type that accepts InstanceVolumeArgs and InstanceVolumeOutput values.
-// You can construct a concrete instance of `InstanceVolumeInput` via:
-//
-//	InstanceVolumeArgs{...}
-type InstanceVolumeInput interface {
-	pulumi.Input
-
-	ToInstanceVolumeOutput() InstanceVolumeOutput
-	ToInstanceVolumeOutputWithContext(context.Context) InstanceVolumeOutput
-}
-
-type InstanceVolumeArgs struct {
-	Device   pulumi.StringPtrInput `pulumi:"device"`
-	Id       pulumi.StringPtrInput `pulumi:"id"`
-	VolumeId pulumi.StringInput    `pulumi:"volumeId"`
-}
-
-func (InstanceVolumeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceVolume)(nil)).Elem()
-}
-
-func (i InstanceVolumeArgs) ToInstanceVolumeOutput() InstanceVolumeOutput {
-	return i.ToInstanceVolumeOutputWithContext(context.Background())
-}
-
-func (i InstanceVolumeArgs) ToInstanceVolumeOutputWithContext(ctx context.Context) InstanceVolumeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeOutput)
-}
-
-// InstanceVolumeArrayInput is an input type that accepts InstanceVolumeArray and InstanceVolumeArrayOutput values.
-// You can construct a concrete instance of `InstanceVolumeArrayInput` via:
-//
-//	InstanceVolumeArray{ InstanceVolumeArgs{...} }
-type InstanceVolumeArrayInput interface {
-	pulumi.Input
-
-	ToInstanceVolumeArrayOutput() InstanceVolumeArrayOutput
-	ToInstanceVolumeArrayOutputWithContext(context.Context) InstanceVolumeArrayOutput
-}
-
-type InstanceVolumeArray []InstanceVolumeInput
-
-func (InstanceVolumeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceVolume)(nil)).Elem()
-}
-
-func (i InstanceVolumeArray) ToInstanceVolumeArrayOutput() InstanceVolumeArrayOutput {
-	return i.ToInstanceVolumeArrayOutputWithContext(context.Background())
-}
-
-func (i InstanceVolumeArray) ToInstanceVolumeArrayOutputWithContext(ctx context.Context) InstanceVolumeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeArrayOutput)
-}
-
-type InstanceVolumeOutput struct{ *pulumi.OutputState }
-
-func (InstanceVolumeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceVolume)(nil)).Elem()
-}
-
-func (o InstanceVolumeOutput) ToInstanceVolumeOutput() InstanceVolumeOutput {
-	return o
-}
-
-func (o InstanceVolumeOutput) ToInstanceVolumeOutputWithContext(ctx context.Context) InstanceVolumeOutput {
-	return o
-}
-
-func (o InstanceVolumeOutput) Device() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceVolume) *string { return v.Device }).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceVolumeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceVolume) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o InstanceVolumeOutput) VolumeId() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceVolume) string { return v.VolumeId }).(pulumi.StringOutput)
-}
-
-type InstanceVolumeArrayOutput struct{ *pulumi.OutputState }
-
-func (InstanceVolumeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceVolume)(nil)).Elem()
-}
-
-func (o InstanceVolumeArrayOutput) ToInstanceVolumeArrayOutput() InstanceVolumeArrayOutput {
-	return o
-}
-
-func (o InstanceVolumeArrayOutput) ToInstanceVolumeArrayOutputWithContext(ctx context.Context) InstanceVolumeArrayOutput {
-	return o
-}
-
-func (o InstanceVolumeArrayOutput) Index(i pulumi.IntInput) InstanceVolumeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceVolume {
-		return vs[0].([]InstanceVolume)[vs[1].(int)]
-	}).(InstanceVolumeOutput)
 }
 
 type SecGroupRule struct {
@@ -1619,8 +1507,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSchedulerHintArrayInput)(nil)).Elem(), InstanceSchedulerHintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVendorOptionsInput)(nil)).Elem(), InstanceVendorOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVendorOptionsPtrInput)(nil)).Elem(), InstanceVendorOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeInput)(nil)).Elem(), InstanceVolumeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeArrayInput)(nil)).Elem(), InstanceVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupRuleInput)(nil)).Elem(), SecGroupRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupRuleArrayInput)(nil)).Elem(), SecGroupRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupRulesInput)(nil)).Elem(), ServerGroupRulesArgs{})
@@ -1639,8 +1525,6 @@ func init() {
 	pulumi.RegisterOutputType(InstanceSchedulerHintArrayOutput{})
 	pulumi.RegisterOutputType(InstanceVendorOptionsOutput{})
 	pulumi.RegisterOutputType(InstanceVendorOptionsPtrOutput{})
-	pulumi.RegisterOutputType(InstanceVolumeOutput{})
-	pulumi.RegisterOutputType(InstanceVolumeArrayOutput{})
 	pulumi.RegisterOutputType(SecGroupRuleOutput{})
 	pulumi.RegisterOutputType(SecGroupRuleArrayOutput{})
 	pulumi.RegisterOutputType(ServerGroupRulesOutput{})

@@ -28,6 +28,7 @@ type LoadBalancer struct {
 	VipAddress           pulumi.StringOutput      `pulumi:"vipAddress"`
 	VipNetworkId         pulumi.StringOutput      `pulumi:"vipNetworkId"`
 	VipPortId            pulumi.StringOutput      `pulumi:"vipPortId"`
+	VipQosPolicyId       pulumi.StringPtrOutput   `pulumi:"vipQosPolicyId"`
 	VipSubnetId          pulumi.StringOutput      `pulumi:"vipSubnetId"`
 }
 
@@ -74,6 +75,7 @@ type loadBalancerState struct {
 	VipAddress           *string  `pulumi:"vipAddress"`
 	VipNetworkId         *string  `pulumi:"vipNetworkId"`
 	VipPortId            *string  `pulumi:"vipPortId"`
+	VipQosPolicyId       *string  `pulumi:"vipQosPolicyId"`
 	VipSubnetId          *string  `pulumi:"vipSubnetId"`
 }
 
@@ -91,6 +93,7 @@ type LoadBalancerState struct {
 	VipAddress           pulumi.StringPtrInput
 	VipNetworkId         pulumi.StringPtrInput
 	VipPortId            pulumi.StringPtrInput
+	VipQosPolicyId       pulumi.StringPtrInput
 	VipSubnetId          pulumi.StringPtrInput
 }
 
@@ -112,6 +115,7 @@ type loadBalancerArgs struct {
 	VipAddress           *string  `pulumi:"vipAddress"`
 	VipNetworkId         *string  `pulumi:"vipNetworkId"`
 	VipPortId            *string  `pulumi:"vipPortId"`
+	VipQosPolicyId       *string  `pulumi:"vipQosPolicyId"`
 	VipSubnetId          *string  `pulumi:"vipSubnetId"`
 }
 
@@ -130,6 +134,7 @@ type LoadBalancerArgs struct {
 	VipAddress           pulumi.StringPtrInput
 	VipNetworkId         pulumi.StringPtrInput
 	VipPortId            pulumi.StringPtrInput
+	VipQosPolicyId       pulumi.StringPtrInput
 	VipSubnetId          pulumi.StringPtrInput
 }
 
@@ -270,6 +275,10 @@ func (o LoadBalancerOutput) VipNetworkId() pulumi.StringOutput {
 
 func (o LoadBalancerOutput) VipPortId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.VipPortId }).(pulumi.StringOutput)
+}
+
+func (o LoadBalancerOutput) VipQosPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.VipQosPolicyId }).(pulumi.StringPtrOutput)
 }
 
 func (o LoadBalancerOutput) VipSubnetId() pulumi.StringOutput {

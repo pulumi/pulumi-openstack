@@ -25,13 +25,13 @@ namespace Pulumi.OpenStack.Networking.Outputs
         /// Subnet in which to allocate IP address for
         /// this port.
         /// </summary>
-        public readonly string SubnetId;
+        public readonly string? SubnetId;
 
         [OutputConstructor]
         private PortFixedIp(
             string? ipAddress,
 
-            string subnetId)
+            string? subnetId)
         {
             IpAddress = ipAddress;
             SubnetId = subnetId;

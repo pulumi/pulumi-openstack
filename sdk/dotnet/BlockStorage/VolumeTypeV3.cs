@@ -16,6 +16,8 @@ namespace Pulumi.OpenStack.BlockStorage
     /// 
     /// ## Example Usage
     /// 
+    /// ### Basic Volume Type
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -32,6 +34,29 @@ namespace Pulumi.OpenStack.BlockStorage
     ///         {
     ///             { "capabilities", "gpu" },
     ///             { "volume_backend_name", "ssd" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Volume Type with multiattach enabled
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var multiattach = new OpenStack.BlockStorage.VolumeTypeV3("multiattach", new()
+    ///     {
+    ///         Name = "multiattach",
+    ///         Description = "Multiattach-enabled volume type",
+    ///         ExtraSpecs = 
+    ///         {
+    ///             { "multiattach", "&lt;is&gt; True" },
     ///         },
     ///     });
     /// 

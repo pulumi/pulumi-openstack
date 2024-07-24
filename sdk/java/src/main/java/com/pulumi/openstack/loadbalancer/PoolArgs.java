@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.loadbalancer.inputs.PoolPersistenceArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -53,8 +54,7 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The load balancing algorithm to
      * distribute traffic to the pool&#39;s members. Must be one of
-     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-     * in Octavia).
+     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
      * 
      */
     @Import(name="lbMethod", required=true)
@@ -63,8 +63,7 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The load balancing algorithm to
      * distribute traffic to the pool&#39;s members. Must be one of
-     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-     * in Octavia).
+     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
      * 
      */
     public Output<String> lbMethod() {
@@ -145,8 +144,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-     * UDP (supported only in Octavia), PROXYV2 (**Octavia minor version &gt;= 2.22**)
-     * or SCTP (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+     * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
+     * (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
      * 
      */
     @Import(name="protocol", required=true)
@@ -154,8 +153,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-     * UDP (supported only in Octavia), PROXYV2 (**Octavia minor version &gt;= 2.22**)
-     * or SCTP (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+     * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
+     * (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
      * 
      */
     public Output<String> protocol() {
@@ -181,6 +180,13 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
+    }
+
+    @Import(name="tags")
+    private @Nullable Output<List<String>> tags;
+
+    public Optional<Output<List<String>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -214,6 +220,7 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         this.persistence = $.persistence;
         this.protocol = $.protocol;
         this.region = $.region;
+        this.tags = $.tags;
         this.tenantId = $.tenantId;
     }
 
@@ -282,8 +289,7 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param lbMethod The load balancing algorithm to
          * distribute traffic to the pool&#39;s members. Must be one of
-         * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-         * in Octavia).
+         * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
          * 
          * @return builder
          * 
@@ -296,8 +302,7 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param lbMethod The load balancing algorithm to
          * distribute traffic to the pool&#39;s members. Must be one of
-         * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-         * in Octavia).
+         * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
          * 
          * @return builder
          * 
@@ -404,8 +409,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocol The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-         * UDP (supported only in Octavia), PROXYV2 (**Octavia minor version &gt;= 2.22**)
-         * or SCTP (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+         * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
+         * (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
          * 
          * @return builder
          * 
@@ -417,8 +422,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocol The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-         * UDP (supported only in Octavia), PROXYV2 (**Octavia minor version &gt;= 2.22**)
-         * or SCTP (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+         * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
+         * (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
          * 
          * @return builder
          * 
@@ -452,6 +457,19 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        public Builder tags(@Nullable Output<List<String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        public Builder tags(List<String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
 
         /**

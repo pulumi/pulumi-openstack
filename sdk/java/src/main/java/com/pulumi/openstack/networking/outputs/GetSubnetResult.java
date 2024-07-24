@@ -29,19 +29,13 @@ public final class GetSubnetResult {
     private List<GetSubnetAllocationPool> allocationPools;
     private String cidr;
     private String description;
-    /**
-     * @deprecated
-     * use dhcp_enabled instead
-     * 
-     */
-    @Deprecated /* use dhcp_enabled instead */
-    private @Nullable Boolean dhcpDisabled;
     private @Nullable Boolean dhcpEnabled;
     /**
      * @return DNS Nameservers of the subnet.
      * 
      */
     private List<String> dnsNameservers;
+    private @Nullable Boolean dnsPublishFixedIp;
     /**
      * @return Whether the subnet has DHCP enabled or not.
      * 
@@ -99,15 +93,6 @@ public final class GetSubnetResult {
     public String description() {
         return this.description;
     }
-    /**
-     * @deprecated
-     * use dhcp_enabled instead
-     * 
-     */
-    @Deprecated /* use dhcp_enabled instead */
-    public Optional<Boolean> dhcpDisabled() {
-        return Optional.ofNullable(this.dhcpDisabled);
-    }
     public Optional<Boolean> dhcpEnabled() {
         return Optional.ofNullable(this.dhcpEnabled);
     }
@@ -117,6 +102,9 @@ public final class GetSubnetResult {
      */
     public List<String> dnsNameservers() {
         return this.dnsNameservers;
+    }
+    public Optional<Boolean> dnsPublishFixedIp() {
+        return Optional.ofNullable(this.dnsPublishFixedIp);
     }
     /**
      * @return Whether the subnet has DHCP enabled or not.
@@ -197,9 +185,9 @@ public final class GetSubnetResult {
         private List<GetSubnetAllocationPool> allocationPools;
         private String cidr;
         private String description;
-        private @Nullable Boolean dhcpDisabled;
         private @Nullable Boolean dhcpEnabled;
         private List<String> dnsNameservers;
+        private @Nullable Boolean dnsPublishFixedIp;
         private Boolean enableDhcp;
         private String gatewayIp;
         private List<GetSubnetHostRoute> hostRoutes;
@@ -222,9 +210,9 @@ public final class GetSubnetResult {
     	      this.allocationPools = defaults.allocationPools;
     	      this.cidr = defaults.cidr;
     	      this.description = defaults.description;
-    	      this.dhcpDisabled = defaults.dhcpDisabled;
     	      this.dhcpEnabled = defaults.dhcpEnabled;
     	      this.dnsNameservers = defaults.dnsNameservers;
+    	      this.dnsPublishFixedIp = defaults.dnsPublishFixedIp;
     	      this.enableDhcp = defaults.enableDhcp;
     	      this.gatewayIp = defaults.gatewayIp;
     	      this.hostRoutes = defaults.hostRoutes;
@@ -281,12 +269,6 @@ public final class GetSubnetResult {
             return this;
         }
         @CustomType.Setter
-        public Builder dhcpDisabled(@Nullable Boolean dhcpDisabled) {
-
-            this.dhcpDisabled = dhcpDisabled;
-            return this;
-        }
-        @CustomType.Setter
         public Builder dhcpEnabled(@Nullable Boolean dhcpEnabled) {
 
             this.dhcpEnabled = dhcpEnabled;
@@ -302,6 +284,12 @@ public final class GetSubnetResult {
         }
         public Builder dnsNameservers(String... dnsNameservers) {
             return dnsNameservers(List.of(dnsNameservers));
+        }
+        @CustomType.Setter
+        public Builder dnsPublishFixedIp(@Nullable Boolean dnsPublishFixedIp) {
+
+            this.dnsPublishFixedIp = dnsPublishFixedIp;
+            return this;
         }
         @CustomType.Setter
         public Builder enableDhcp(Boolean enableDhcp) {
@@ -436,9 +424,9 @@ public final class GetSubnetResult {
             _resultValue.allocationPools = allocationPools;
             _resultValue.cidr = cidr;
             _resultValue.description = description;
-            _resultValue.dhcpDisabled = dhcpDisabled;
             _resultValue.dhcpEnabled = dhcpEnabled;
             _resultValue.dnsNameservers = dnsNameservers;
+            _resultValue.dnsPublishFixedIp = dnsPublishFixedIp;
             _resultValue.enableDhcp = enableDhcp;
             _resultValue.gatewayIp = gatewayIp;
             _resultValue.hostRoutes = hostRoutes;

@@ -20,6 +20,36 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetImagePlainArgs Empty = new GetImagePlainArgs();
 
     /**
+     * The container format of the image.
+     * 
+     */
+    @Import(name="containerFormat")
+    private @Nullable String containerFormat;
+
+    /**
+     * @return The container format of the image.
+     * 
+     */
+    public Optional<String> containerFormat() {
+        return Optional.ofNullable(this.containerFormat);
+    }
+
+    /**
+     * The disk format of the image.
+     * 
+     */
+    @Import(name="diskFormat")
+    private @Nullable String diskFormat;
+
+    /**
+     * @return The disk format of the image.
+     * 
+     */
+    public Optional<String> diskFormat() {
+        return Optional.ofNullable(this.diskFormat);
+    }
+
+    /**
      * Whether or not the image is hidden from public list.
      * 
      */
@@ -69,16 +99,16 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the image. Cannot be used simultaneously
-     * with `name_regex`.
+     * The name of the image. Cannot be used simultaneously with
+     * `name_regex`.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return The name of the image. Cannot be used simultaneously
-     * with `name_regex`.
+     * @return The name of the image. Cannot be used simultaneously with
+     * `name_regex`.
      * 
      */
     public Optional<String> name() {
@@ -123,10 +153,10 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * a map of key/value pairs to match an image with.
-     * All specified properties must be matched. Unlike other options filtering
-     * by `properties` does by client on the result of OpenStack search query.
-     * Filtering is applied if server responce contains at least 2 images. In
-     * case there is only one image the `properties` ignores.
+     * All specified properties must be matched. Unlike other options filtering by
+     * `properties` does by client on the result of OpenStack search query.
+     * Filtering is applied if server responce contains at least 2 images. In case
+     * there is only one image the `properties` ignores.
      * 
      */
     @Import(name="properties")
@@ -134,10 +164,10 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return a map of key/value pairs to match an image with.
-     * All specified properties must be matched. Unlike other options filtering
-     * by `properties` does by client on the result of OpenStack search query.
-     * Filtering is applied if server responce contains at least 2 images. In
-     * case there is only one image the `properties` ignores.
+     * All specified properties must be matched. Unlike other options filtering by
+     * `properties` does by client on the result of OpenStack search query.
+     * Filtering is applied if server responce contains at least 2 images. In case
+     * there is only one image the `properties` ignores.
      * 
      */
     public Optional<Map<String,Object>> properties() {
@@ -145,20 +175,18 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The region in which to obtain the V2 Glance client.
-     * A Glance client is needed to create an Image that can be used with
-     * a compute instance. If omitted, the `region` argument of the provider
-     * is used.
+     * The region in which to obtain the V2 Glance client. A
+     * Glance client is needed to create an Image that can be used with a compute
+     * instance. If omitted, the `region` argument of the provider is used.
      * 
      */
     @Import(name="region")
     private @Nullable String region;
 
     /**
-     * @return The region in which to obtain the V2 Glance client.
-     * A Glance client is needed to create an Image that can be used with
-     * a compute instance. If omitted, the `region` argument of the provider
-     * is used.
+     * @return The region in which to obtain the V2 Glance client. A
+     * Glance client is needed to create an Image that can be used with a compute
+     * instance. If omitted, the `region` argument of the provider is used.
      * 
      */
     public Optional<String> region() {
@@ -196,33 +224,26 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Order the results in either `asc` or `desc`.
+     * Sorts the response by one or more attribute and sort
+     * direction combinations. You can also set multiple sort keys and directions.
+     * Default direction is `desc`. Use the comma (,) character to separate multiple
+     * values. For example expression `sort = &#34;name:asc,status&#34;` sorts ascending by
+     * name and descending by status.
      * 
      */
-    @Import(name="sortDirection")
-    private @Nullable String sortDirection;
+    @Import(name="sort")
+    private @Nullable String sort;
 
     /**
-     * @return Order the results in either `asc` or `desc`.
+     * @return Sorts the response by one or more attribute and sort
+     * direction combinations. You can also set multiple sort keys and directions.
+     * Default direction is `desc`. Use the comma (,) character to separate multiple
+     * values. For example expression `sort = &#34;name:asc,status&#34;` sorts ascending by
+     * name and descending by status.
      * 
      */
-    public Optional<String> sortDirection() {
-        return Optional.ofNullable(this.sortDirection);
-    }
-
-    /**
-     * Sort images based on a certain key. Defaults to `name`.
-     * 
-     */
-    @Import(name="sortKey")
-    private @Nullable String sortKey;
-
-    /**
-     * @return Sort images based on a certain key. Defaults to `name`.
-     * 
-     */
-    public Optional<String> sortKey() {
-        return Optional.ofNullable(this.sortKey);
+    public Optional<String> sort() {
+        return Optional.ofNullable(this.sort);
     }
 
     /**
@@ -241,16 +262,16 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A list of tags required to be set on the image
-     * (all specified tags must be in the images tag list for it to be matched).
+     * A list of tags required to be set on the image (all
+     * specified tags must be in the images tag list for it to be matched).
      * 
      */
     @Import(name="tags")
     private @Nullable List<String> tags;
 
     /**
-     * @return A list of tags required to be set on the image
-     * (all specified tags must be in the images tag list for it to be matched).
+     * @return A list of tags required to be set on the image (all
+     * specified tags must be in the images tag list for it to be matched).
      * 
      */
     public Optional<List<String>> tags() {
@@ -277,6 +298,8 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetImagePlainArgs() {}
 
     private GetImagePlainArgs(GetImagePlainArgs $) {
+        this.containerFormat = $.containerFormat;
+        this.diskFormat = $.diskFormat;
         this.hidden = $.hidden;
         this.memberStatus = $.memberStatus;
         this.mostRecent = $.mostRecent;
@@ -287,8 +310,7 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
         this.region = $.region;
         this.sizeMax = $.sizeMax;
         this.sizeMin = $.sizeMin;
-        this.sortDirection = $.sortDirection;
-        this.sortKey = $.sortKey;
+        this.sort = $.sort;
         this.tag = $.tag;
         this.tags = $.tags;
         this.visibility = $.visibility;
@@ -310,6 +332,28 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetImagePlainArgs defaults) {
             $ = new GetImagePlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param containerFormat The container format of the image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerFormat(@Nullable String containerFormat) {
+            $.containerFormat = containerFormat;
+            return this;
+        }
+
+        /**
+         * @param diskFormat The disk format of the image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskFormat(@Nullable String diskFormat) {
+            $.diskFormat = diskFormat;
+            return this;
         }
 
         /**
@@ -348,8 +392,8 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The name of the image. Cannot be used simultaneously
-         * with `name_regex`.
+         * @param name The name of the image. Cannot be used simultaneously with
+         * `name_regex`.
          * 
          * @return builder
          * 
@@ -386,10 +430,10 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param properties a map of key/value pairs to match an image with.
-         * All specified properties must be matched. Unlike other options filtering
-         * by `properties` does by client on the result of OpenStack search query.
-         * Filtering is applied if server responce contains at least 2 images. In
-         * case there is only one image the `properties` ignores.
+         * All specified properties must be matched. Unlike other options filtering by
+         * `properties` does by client on the result of OpenStack search query.
+         * Filtering is applied if server responce contains at least 2 images. In case
+         * there is only one image the `properties` ignores.
          * 
          * @return builder
          * 
@@ -400,10 +444,9 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param region The region in which to obtain the V2 Glance client.
-         * A Glance client is needed to create an Image that can be used with
-         * a compute instance. If omitted, the `region` argument of the provider
-         * is used.
+         * @param region The region in which to obtain the V2 Glance client. A
+         * Glance client is needed to create an Image that can be used with a compute
+         * instance. If omitted, the `region` argument of the provider is used.
          * 
          * @return builder
          * 
@@ -436,24 +479,17 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param sortDirection Order the results in either `asc` or `desc`.
+         * @param sort Sorts the response by one or more attribute and sort
+         * direction combinations. You can also set multiple sort keys and directions.
+         * Default direction is `desc`. Use the comma (,) character to separate multiple
+         * values. For example expression `sort = &#34;name:asc,status&#34;` sorts ascending by
+         * name and descending by status.
          * 
          * @return builder
          * 
          */
-        public Builder sortDirection(@Nullable String sortDirection) {
-            $.sortDirection = sortDirection;
-            return this;
-        }
-
-        /**
-         * @param sortKey Sort images based on a certain key. Defaults to `name`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sortKey(@Nullable String sortKey) {
-            $.sortKey = sortKey;
+        public Builder sort(@Nullable String sort) {
+            $.sort = sort;
             return this;
         }
 
@@ -469,8 +505,8 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags A list of tags required to be set on the image
-         * (all specified tags must be in the images tag list for it to be matched).
+         * @param tags A list of tags required to be set on the image (all
+         * specified tags must be in the images tag list for it to be matched).
          * 
          * @return builder
          * 
@@ -481,8 +517,8 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags A list of tags required to be set on the image
-         * (all specified tags must be in the images tag list for it to be matched).
+         * @param tags A list of tags required to be set on the image (all
+         * specified tags must be in the images tag list for it to be matched).
          * 
          * @return builder
          * 

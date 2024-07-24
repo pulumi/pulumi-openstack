@@ -21,7 +21,7 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, checksum=None, container_format=None, created_at=None, disk_format=None, file=None, hidden=None, id=None, member_status=None, metadata=None, min_disk_gb=None, min_ram_mb=None, most_recent=None, name=None, name_regex=None, owner=None, properties=None, protected=None, region=None, schema=None, size_bytes=None, size_max=None, size_min=None, sort_direction=None, sort_key=None, tag=None, tags=None, updated_at=None, visibility=None):
+    def __init__(__self__, checksum=None, container_format=None, created_at=None, disk_format=None, file=None, hidden=None, id=None, member_status=None, metadata=None, min_disk_gb=None, min_ram_mb=None, most_recent=None, name=None, name_regex=None, owner=None, properties=None, protected=None, region=None, schema=None, size_bytes=None, size_max=None, size_min=None, sort=None, tag=None, tags=None, updated_at=None, visibility=None):
         if checksum and not isinstance(checksum, str):
             raise TypeError("Expected argument 'checksum' to be a str")
         pulumi.set(__self__, "checksum", checksum)
@@ -88,12 +88,9 @@ class GetImageResult:
         if size_min and not isinstance(size_min, int):
             raise TypeError("Expected argument 'size_min' to be a int")
         pulumi.set(__self__, "size_min", size_min)
-        if sort_direction and not isinstance(sort_direction, str):
-            raise TypeError("Expected argument 'sort_direction' to be a str")
-        pulumi.set(__self__, "sort_direction", sort_direction)
-        if sort_key and not isinstance(sort_key, str):
-            raise TypeError("Expected argument 'sort_key' to be a str")
-        pulumi.set(__self__, "sort_key", sort_key)
+        if sort and not isinstance(sort, str):
+            raise TypeError("Expected argument 'sort' to be a str")
+        pulumi.set(__self__, "sort", sort)
         if tag and not isinstance(tag, str):
             raise TypeError("Expected argument 'tag' to be a str")
         pulumi.set(__self__, "tag", tag)
@@ -117,7 +114,7 @@ class GetImageResult:
 
     @property
     @pulumi.getter(name="containerFormat")
-    def container_format(self) -> str:
+    def container_format(self) -> Optional[str]:
         """
         The format of the image's container.
         """
@@ -133,7 +130,7 @@ class GetImageResult:
 
     @property
     @pulumi.getter(name="diskFormat")
-    def disk_format(self) -> str:
+    def disk_format(self) -> Optional[str]:
         """
         The format of the image's disk.
         """
@@ -170,9 +167,9 @@ class GetImageResult:
     @pulumi.getter
     def metadata(self) -> Mapping[str, Any]:
         """
-        The metadata associated with the image.
-        Image metadata allow for meaningfully define the image properties
-        and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+        The metadata associated with the image. Image metadata allow for
+        meaningfully define the image properties and tags. See
+        https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
         """
         return pulumi.get(self, "metadata")
 
@@ -237,8 +234,7 @@ class GetImageResult:
     @pulumi.getter
     def schema(self) -> str:
         """
-        The path to the JSON-schema that represent
-        the image or image
+        The path to the JSON-schema that represent the image
         """
         return pulumi.get(self, "schema")
 
@@ -261,14 +257,9 @@ class GetImageResult:
         return pulumi.get(self, "size_min")
 
     @property
-    @pulumi.getter(name="sortDirection")
-    def sort_direction(self) -> Optional[str]:
-        return pulumi.get(self, "sort_direction")
-
-    @property
-    @pulumi.getter(name="sortKey")
-    def sort_key(self) -> Optional[str]:
-        return pulumi.get(self, "sort_key")
+    @pulumi.getter
+    def sort(self) -> Optional[str]:
+        return pulumi.get(self, "sort")
 
     @property
     @pulumi.getter
@@ -325,15 +316,16 @@ class AwaitableGetImageResult(GetImageResult):
             size_bytes=self.size_bytes,
             size_max=self.size_max,
             size_min=self.size_min,
-            sort_direction=self.sort_direction,
-            sort_key=self.sort_key,
+            sort=self.sort,
             tag=self.tag,
             tags=self.tags,
             updated_at=self.updated_at,
             visibility=self.visibility)
 
 
-def get_image(hidden: Optional[bool] = None,
+def get_image(container_format: Optional[str] = None,
+              disk_format: Optional[str] = None,
+              hidden: Optional[bool] = None,
               member_status: Optional[str] = None,
               most_recent: Optional[bool] = None,
               name: Optional[str] = None,
@@ -343,8 +335,7 @@ def get_image(hidden: Optional[bool] = None,
               region: Optional[str] = None,
               size_max: Optional[int] = None,
               size_min: Optional[int] = None,
-              sort_direction: Optional[str] = None,
-              sort_key: Optional[str] = None,
+              sort: Optional[str] = None,
               tag: Optional[str] = None,
               tags: Optional[Sequence[str]] = None,
               visibility: Optional[str] = None,
@@ -366,38 +357,44 @@ def get_image(hidden: Optional[bool] = None,
     ```
 
 
+    :param str container_format: The container format of the image.
+    :param str disk_format: The disk format of the image.
     :param bool hidden: Whether or not the image is hidden from public list.
     :param str member_status: The status of the image. Must be one of
            "accepted", "pending", "rejected", or "all".
     :param bool most_recent: If more than one result is returned, use the most
            recent image.
-    :param str name: The name of the image. Cannot be used simultaneously
-           with `name_regex`.
+    :param str name: The name of the image. Cannot be used simultaneously with
+           `name_regex`.
     :param str name_regex: The regular expressian of the name of the image.
            Cannot be used simultaneously with `name`. Unlike filtering by `name` the
            `name_regex` filtering does by client on the result of OpenStack search
            query.
     :param str owner: The owner (UUID) of the image.
     :param Mapping[str, Any] properties: a map of key/value pairs to match an image with.
-           All specified properties must be matched. Unlike other options filtering
-           by `properties` does by client on the result of OpenStack search query.
-           Filtering is applied if server responce contains at least 2 images. In
-           case there is only one image the `properties` ignores.
-    :param str region: The region in which to obtain the V2 Glance client.
-           A Glance client is needed to create an Image that can be used with
-           a compute instance. If omitted, the `region` argument of the provider
-           is used.
+           All specified properties must be matched. Unlike other options filtering by
+           `properties` does by client on the result of OpenStack search query.
+           Filtering is applied if server responce contains at least 2 images. In case
+           there is only one image the `properties` ignores.
+    :param str region: The region in which to obtain the V2 Glance client. A
+           Glance client is needed to create an Image that can be used with a compute
+           instance. If omitted, the `region` argument of the provider is used.
     :param int size_max: The maximum size (in bytes) of the image to return.
     :param int size_min: The minimum size (in bytes) of the image to return.
-    :param str sort_direction: Order the results in either `asc` or `desc`.
-    :param str sort_key: Sort images based on a certain key. Defaults to `name`.
+    :param str sort: Sorts the response by one or more attribute and sort
+           direction combinations. You can also set multiple sort keys and directions.
+           Default direction is `desc`. Use the comma (,) character to separate multiple
+           values. For example expression `sort = "name:asc,status"` sorts ascending by
+           name and descending by status.
     :param str tag: Search for images with a specific tag.
-    :param Sequence[str] tags: A list of tags required to be set on the image 
-           (all specified tags must be in the images tag list for it to be matched).
+    :param Sequence[str] tags: A list of tags required to be set on the image (all
+           specified tags must be in the images tag list for it to be matched).
     :param str visibility: The visibility of the image. Must be one of
            "public", "private", "community", or "shared". Defaults to "private".
     """
     __args__ = dict()
+    __args__['containerFormat'] = container_format
+    __args__['diskFormat'] = disk_format
     __args__['hidden'] = hidden
     __args__['memberStatus'] = member_status
     __args__['mostRecent'] = most_recent
@@ -408,8 +405,7 @@ def get_image(hidden: Optional[bool] = None,
     __args__['region'] = region
     __args__['sizeMax'] = size_max
     __args__['sizeMin'] = size_min
-    __args__['sortDirection'] = sort_direction
-    __args__['sortKey'] = sort_key
+    __args__['sort'] = sort
     __args__['tag'] = tag
     __args__['tags'] = tags
     __args__['visibility'] = visibility
@@ -439,8 +435,7 @@ def get_image(hidden: Optional[bool] = None,
         size_bytes=pulumi.get(__ret__, 'size_bytes'),
         size_max=pulumi.get(__ret__, 'size_max'),
         size_min=pulumi.get(__ret__, 'size_min'),
-        sort_direction=pulumi.get(__ret__, 'sort_direction'),
-        sort_key=pulumi.get(__ret__, 'sort_key'),
+        sort=pulumi.get(__ret__, 'sort'),
         tag=pulumi.get(__ret__, 'tag'),
         tags=pulumi.get(__ret__, 'tags'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
@@ -448,7 +443,9 @@ def get_image(hidden: Optional[bool] = None,
 
 
 @_utilities.lift_output_func(get_image)
-def get_image_output(hidden: Optional[pulumi.Input[Optional[bool]]] = None,
+def get_image_output(container_format: Optional[pulumi.Input[Optional[str]]] = None,
+                     disk_format: Optional[pulumi.Input[Optional[str]]] = None,
+                     hidden: Optional[pulumi.Input[Optional[bool]]] = None,
                      member_status: Optional[pulumi.Input[Optional[str]]] = None,
                      most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
                      name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -458,8 +455,7 @@ def get_image_output(hidden: Optional[pulumi.Input[Optional[bool]]] = None,
                      region: Optional[pulumi.Input[Optional[str]]] = None,
                      size_max: Optional[pulumi.Input[Optional[int]]] = None,
                      size_min: Optional[pulumi.Input[Optional[int]]] = None,
-                     sort_direction: Optional[pulumi.Input[Optional[str]]] = None,
-                     sort_key: Optional[pulumi.Input[Optional[str]]] = None,
+                     sort: Optional[pulumi.Input[Optional[str]]] = None,
                      tag: Optional[pulumi.Input[Optional[str]]] = None,
                      tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      visibility: Optional[pulumi.Input[Optional[str]]] = None,
@@ -481,34 +477,38 @@ def get_image_output(hidden: Optional[pulumi.Input[Optional[bool]]] = None,
     ```
 
 
+    :param str container_format: The container format of the image.
+    :param str disk_format: The disk format of the image.
     :param bool hidden: Whether or not the image is hidden from public list.
     :param str member_status: The status of the image. Must be one of
            "accepted", "pending", "rejected", or "all".
     :param bool most_recent: If more than one result is returned, use the most
            recent image.
-    :param str name: The name of the image. Cannot be used simultaneously
-           with `name_regex`.
+    :param str name: The name of the image. Cannot be used simultaneously with
+           `name_regex`.
     :param str name_regex: The regular expressian of the name of the image.
            Cannot be used simultaneously with `name`. Unlike filtering by `name` the
            `name_regex` filtering does by client on the result of OpenStack search
            query.
     :param str owner: The owner (UUID) of the image.
     :param Mapping[str, Any] properties: a map of key/value pairs to match an image with.
-           All specified properties must be matched. Unlike other options filtering
-           by `properties` does by client on the result of OpenStack search query.
-           Filtering is applied if server responce contains at least 2 images. In
-           case there is only one image the `properties` ignores.
-    :param str region: The region in which to obtain the V2 Glance client.
-           A Glance client is needed to create an Image that can be used with
-           a compute instance. If omitted, the `region` argument of the provider
-           is used.
+           All specified properties must be matched. Unlike other options filtering by
+           `properties` does by client on the result of OpenStack search query.
+           Filtering is applied if server responce contains at least 2 images. In case
+           there is only one image the `properties` ignores.
+    :param str region: The region in which to obtain the V2 Glance client. A
+           Glance client is needed to create an Image that can be used with a compute
+           instance. If omitted, the `region` argument of the provider is used.
     :param int size_max: The maximum size (in bytes) of the image to return.
     :param int size_min: The minimum size (in bytes) of the image to return.
-    :param str sort_direction: Order the results in either `asc` or `desc`.
-    :param str sort_key: Sort images based on a certain key. Defaults to `name`.
+    :param str sort: Sorts the response by one or more attribute and sort
+           direction combinations. You can also set multiple sort keys and directions.
+           Default direction is `desc`. Use the comma (,) character to separate multiple
+           values. For example expression `sort = "name:asc,status"` sorts ascending by
+           name and descending by status.
     :param str tag: Search for images with a specific tag.
-    :param Sequence[str] tags: A list of tags required to be set on the image 
-           (all specified tags must be in the images tag list for it to be matched).
+    :param Sequence[str] tags: A list of tags required to be set on the image (all
+           specified tags must be in the images tag list for it to be matched).
     :param str visibility: The visibility of the image. Must be one of
            "public", "private", "community", or "shared". Defaults to "private".
     """

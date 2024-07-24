@@ -13,6 +13,10 @@
         "strict": true
     },
     "files": [
+        "bgpvpnNetworkAssociateV2.ts",
+        "bgpvpnPortAssociateV2.ts",
+        "bgpvpnRouterAssociateV2.ts",
+        "bgpvpnV2.ts",
         "blockstorage/getAvailabilityZonesV3.ts",
         "blockstorage/getQuotasetV3.ts",
         "blockstorage/getSnapshotV2.ts",
@@ -116,6 +120,7 @@
         "keymanager/orderV1.ts",
         "keymanager/secretV1.ts",
         "lbLoadbalancerV2.ts",
+        "loadbalancer/getFlavorV2.ts",
         "loadbalancer/index.ts",
         "loadbalancer/l7policyV2.ts",
         "loadbalancer/l7ruleV2.ts",

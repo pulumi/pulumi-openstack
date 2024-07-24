@@ -115,6 +115,13 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Output<string?> SubnetId { get; private set; } = null!;
 
         /// <summary>
+        /// A list of simple strings assigned to the member.
+        /// Available only for Octavia &gt;= 2.5.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Required for admins. The UUID of the tenant who owns
         /// the member.  Only administrative users can specify a tenant UUID
         /// other than their own. Changing this creates a new member.
@@ -247,6 +254,19 @@ namespace Pulumi.OpenStack.LoadBalancer
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of simple strings assigned to the member.
+        /// Available only for Octavia &gt;= 2.5.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// Required for admins. The UUID of the tenant who owns
         /// the member.  Only administrative users can specify a tenant UUID
@@ -341,6 +361,19 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of simple strings assigned to the member.
+        /// Available only for Octavia &gt;= 2.5.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Required for admins. The UUID of the tenant who owns

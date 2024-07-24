@@ -92,17 +92,21 @@ type LbLoadbalancerV2 struct {
 	// The network on which to allocate the
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
 	// authorized by policy (e.g. networks that belong to them or networks that
-	// are shared).  Changing this creates a new loadbalancer.
-	// It is available only for Octavia.
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 	VipNetworkId pulumi.StringOutput `pulumi:"vipNetworkId"`
 	// The port UUID that the loadbalancer will use.
-	// Changing this creates a new loadbalancer. It is available only for Octavia.
+	// Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 	VipPortId pulumi.StringOutput `pulumi:"vipPortId"`
+	// The ID of the QoS Policy which will
+	// be applied to the Virtual IP (VIP).
+	VipQosPolicyId pulumi.StringPtrOutput `pulumi:"vipQosPolicyId"`
 	// The subnet on which to allocate the
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
 	// authorized by policy (e.g. networks that belong to them or networks that
-	// are shared).  Changing this creates a new loadbalancer.
-	// It is required to Neutron LBaaS but optional for Octavia.
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 	VipSubnetId pulumi.StringOutput `pulumi:"vipSubnetId"`
 }
 
@@ -182,17 +186,21 @@ type lbLoadbalancerV2State struct {
 	// The network on which to allocate the
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
 	// authorized by policy (e.g. networks that belong to them or networks that
-	// are shared).  Changing this creates a new loadbalancer.
-	// It is available only for Octavia.
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 	VipNetworkId *string `pulumi:"vipNetworkId"`
 	// The port UUID that the loadbalancer will use.
-	// Changing this creates a new loadbalancer. It is available only for Octavia.
+	// Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 	VipPortId *string `pulumi:"vipPortId"`
+	// The ID of the QoS Policy which will
+	// be applied to the Virtual IP (VIP).
+	VipQosPolicyId *string `pulumi:"vipQosPolicyId"`
 	// The subnet on which to allocate the
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
 	// authorized by policy (e.g. networks that belong to them or networks that
-	// are shared).  Changing this creates a new loadbalancer.
-	// It is required to Neutron LBaaS but optional for Octavia.
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 	VipSubnetId *string `pulumi:"vipSubnetId"`
 }
 
@@ -237,17 +245,21 @@ type LbLoadbalancerV2State struct {
 	// The network on which to allocate the
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
 	// authorized by policy (e.g. networks that belong to them or networks that
-	// are shared).  Changing this creates a new loadbalancer.
-	// It is available only for Octavia.
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 	VipNetworkId pulumi.StringPtrInput
 	// The port UUID that the loadbalancer will use.
-	// Changing this creates a new loadbalancer. It is available only for Octavia.
+	// Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 	VipPortId pulumi.StringPtrInput
+	// The ID of the QoS Policy which will
+	// be applied to the Virtual IP (VIP).
+	VipQosPolicyId pulumi.StringPtrInput
 	// The subnet on which to allocate the
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
 	// authorized by policy (e.g. networks that belong to them or networks that
-	// are shared).  Changing this creates a new loadbalancer.
-	// It is required to Neutron LBaaS but optional for Octavia.
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 	VipSubnetId pulumi.StringPtrInput
 }
 
@@ -296,17 +308,21 @@ type lbLoadbalancerV2Args struct {
 	// The network on which to allocate the
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
 	// authorized by policy (e.g. networks that belong to them or networks that
-	// are shared).  Changing this creates a new loadbalancer.
-	// It is available only for Octavia.
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 	VipNetworkId *string `pulumi:"vipNetworkId"`
 	// The port UUID that the loadbalancer will use.
-	// Changing this creates a new loadbalancer. It is available only for Octavia.
+	// Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 	VipPortId *string `pulumi:"vipPortId"`
+	// The ID of the QoS Policy which will
+	// be applied to the Virtual IP (VIP).
+	VipQosPolicyId *string `pulumi:"vipQosPolicyId"`
 	// The subnet on which to allocate the
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
 	// authorized by policy (e.g. networks that belong to them or networks that
-	// are shared).  Changing this creates a new loadbalancer.
-	// It is required to Neutron LBaaS but optional for Octavia.
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 	VipSubnetId *string `pulumi:"vipSubnetId"`
 }
 
@@ -352,17 +368,21 @@ type LbLoadbalancerV2Args struct {
 	// The network on which to allocate the
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
 	// authorized by policy (e.g. networks that belong to them or networks that
-	// are shared).  Changing this creates a new loadbalancer.
-	// It is available only for Octavia.
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 	VipNetworkId pulumi.StringPtrInput
 	// The port UUID that the loadbalancer will use.
-	// Changing this creates a new loadbalancer. It is available only for Octavia.
+	// Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 	VipPortId pulumi.StringPtrInput
+	// The ID of the QoS Policy which will
+	// be applied to the Virtual IP (VIP).
+	VipQosPolicyId pulumi.StringPtrInput
 	// The subnet on which to allocate the
 	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
 	// authorized by policy (e.g. networks that belong to them or networks that
-	// are shared).  Changing this creates a new loadbalancer.
-	// It is required to Neutron LBaaS but optional for Octavia.
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 	VipSubnetId pulumi.StringPtrInput
 }
 
@@ -526,23 +546,30 @@ func (o LbLoadbalancerV2Output) VipAddress() pulumi.StringOutput {
 // The network on which to allocate the
 // Loadbalancer's address. A tenant can only create Loadbalancers on networks
 // authorized by policy (e.g. networks that belong to them or networks that
-// are shared).  Changing this creates a new loadbalancer.
-// It is available only for Octavia.
+// are shared).  Changing this creates a new loadbalancer. Exactly one of
+// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 func (o LbLoadbalancerV2Output) VipNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LbLoadbalancerV2) pulumi.StringOutput { return v.VipNetworkId }).(pulumi.StringOutput)
 }
 
 // The port UUID that the loadbalancer will use.
-// Changing this creates a new loadbalancer. It is available only for Octavia.
+// Changing this creates a new loadbalancer. Exactly one of
+// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 func (o LbLoadbalancerV2Output) VipPortId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LbLoadbalancerV2) pulumi.StringOutput { return v.VipPortId }).(pulumi.StringOutput)
+}
+
+// The ID of the QoS Policy which will
+// be applied to the Virtual IP (VIP).
+func (o LbLoadbalancerV2Output) VipQosPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LbLoadbalancerV2) pulumi.StringPtrOutput { return v.VipQosPolicyId }).(pulumi.StringPtrOutput)
 }
 
 // The subnet on which to allocate the
 // Loadbalancer's address. A tenant can only create Loadbalancers on networks
 // authorized by policy (e.g. networks that belong to them or networks that
-// are shared).  Changing this creates a new loadbalancer.
-// It is required to Neutron LBaaS but optional for Octavia.
+// are shared).  Changing this creates a new loadbalancer. Exactly one of
+// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 func (o LbLoadbalancerV2Output) VipSubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LbLoadbalancerV2) pulumi.StringOutput { return v.VipSubnetId }).(pulumi.StringOutput)
 }

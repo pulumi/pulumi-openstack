@@ -28,6 +28,9 @@ export function getImageIds(args?: GetImageIdsArgs, opts?: pulumi.InvokeOptions)
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:images/getImageIds:getImageIds", {
+        "containerFormat": args.containerFormat,
+        "diskFormat": args.diskFormat,
+        "hidden": args.hidden,
         "memberStatus": args.memberStatus,
         "name": args.name,
         "nameRegex": args.nameRegex,
@@ -37,8 +40,6 @@ export function getImageIds(args?: GetImageIdsArgs, opts?: pulumi.InvokeOptions)
         "sizeMax": args.sizeMax,
         "sizeMin": args.sizeMin,
         "sort": args.sort,
-        "sortDirection": args.sortDirection,
-        "sortKey": args.sortKey,
         "tag": args.tag,
         "tags": args.tags,
         "visibility": args.visibility,
@@ -50,13 +51,25 @@ export function getImageIds(args?: GetImageIdsArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetImageIdsArgs {
     /**
+     * The container format of the image.
+     */
+    containerFormat?: string;
+    /**
+     * The disk format of the image.
+     */
+    diskFormat?: string;
+    /**
+     * Whether or not the image is hidden from public list.
+     */
+    hidden?: boolean;
+    /**
      * The status of the image. Must be one of
      * "accepted", "pending", "rejected", or "all".
      */
     memberStatus?: string;
     /**
-     * The name of the image. Cannot be used simultaneously
-     * with `nameRegex`.
+     * The name of the image. Cannot be used simultaneously with
+     * `nameRegex`.
      */
     name?: string;
     /**
@@ -72,15 +85,14 @@ export interface GetImageIdsArgs {
     owner?: string;
     /**
      * a map of key/value pairs to match an image with.
-     * All specified properties must be matched. Unlike other options filtering
-     * by `properties` does by client on the result of OpenStack search query.
+     * All specified properties must be matched. Unlike other options filtering by
+     * `properties` does by client on the result of OpenStack search query.
      */
     properties?: {[key: string]: any};
     /**
-     * The region in which to obtain the V2 Glance client.
-     * A Glance client is needed to create an Image that can be used with
-     * a compute instance. If omitted, the `region` argument of the provider
-     * is used.
+     * The region in which to obtain the V2 Glance client. A
+     * Glance client is needed to create an Image that can be used with a compute
+     * instance. If omitted, the `region` argument of the provider is used.
      */
     region?: string;
     /**
@@ -94,35 +106,18 @@ export interface GetImageIdsArgs {
     /**
      * Sorts the response by one or more attribute and sort
      * direction combinations. You can also set multiple sort keys and directions.
-     * Default direction is `desc`. Use the comma (,) character to separate
-     * multiple values. For example expression `sort = "name:asc,status"`
-     * sorts ascending by name and descending by status. `sort` cannot be used
-     * simultaneously with `sortKey`. If both are present in a configuration
-     * then only `sort` will be used.
+     * Default direction is `desc`. Use the comma (,) character to separate multiple
+     * values. For example expression `sort = "name:asc,status"` sorts ascending by
+     * name and descending by status.
      */
     sort?: string;
-    /**
-     * Order the results in either `asc` or `desc`.
-     * Can be applied only with `sortKey`. Defaults to `asc`
-     *
-     * @deprecated Use option 'sort' instead.
-     */
-    sortDirection?: string;
-    /**
-     * Sort images based on a certain key. Defaults to
-     * `name`. `sortKey` cannot be used simultaneously with `sort`. If both
-     * are present in a configuration then only `sort` will be used.
-     *
-     * @deprecated Use option 'sort' instead.
-     */
-    sortKey?: string;
     /**
      * Search for images with a specific tag.
      */
     tag?: string;
     /**
-     * A list of tags required to be set on the image
-     * (all specified tags must be in the images tag list for it to be matched).
+     * A list of tags required to be set on the image (all
+     * specified tags must be in the images tag list for it to be matched).
      */
     tags?: string[];
     /**
@@ -136,6 +131,9 @@ export interface GetImageIdsArgs {
  * A collection of values returned by getImageIds.
  */
 export interface GetImageIdsResult {
+    readonly containerFormat?: string;
+    readonly diskFormat?: string;
+    readonly hidden?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -150,14 +148,6 @@ export interface GetImageIdsResult {
     readonly sizeMax?: number;
     readonly sizeMin?: number;
     readonly sort?: string;
-    /**
-     * @deprecated Use option 'sort' instead.
-     */
-    readonly sortDirection?: string;
-    /**
-     * @deprecated Use option 'sort' instead.
-     */
-    readonly sortKey?: string;
     readonly tag?: string;
     readonly tags?: string[];
     readonly visibility?: string;
@@ -190,13 +180,25 @@ export function getImageIdsOutput(args?: GetImageIdsOutputArgs, opts?: pulumi.In
  */
 export interface GetImageIdsOutputArgs {
     /**
+     * The container format of the image.
+     */
+    containerFormat?: pulumi.Input<string>;
+    /**
+     * The disk format of the image.
+     */
+    diskFormat?: pulumi.Input<string>;
+    /**
+     * Whether or not the image is hidden from public list.
+     */
+    hidden?: pulumi.Input<boolean>;
+    /**
      * The status of the image. Must be one of
      * "accepted", "pending", "rejected", or "all".
      */
     memberStatus?: pulumi.Input<string>;
     /**
-     * The name of the image. Cannot be used simultaneously
-     * with `nameRegex`.
+     * The name of the image. Cannot be used simultaneously with
+     * `nameRegex`.
      */
     name?: pulumi.Input<string>;
     /**
@@ -212,15 +214,14 @@ export interface GetImageIdsOutputArgs {
     owner?: pulumi.Input<string>;
     /**
      * a map of key/value pairs to match an image with.
-     * All specified properties must be matched. Unlike other options filtering
-     * by `properties` does by client on the result of OpenStack search query.
+     * All specified properties must be matched. Unlike other options filtering by
+     * `properties` does by client on the result of OpenStack search query.
      */
     properties?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The region in which to obtain the V2 Glance client.
-     * A Glance client is needed to create an Image that can be used with
-     * a compute instance. If omitted, the `region` argument of the provider
-     * is used.
+     * The region in which to obtain the V2 Glance client. A
+     * Glance client is needed to create an Image that can be used with a compute
+     * instance. If omitted, the `region` argument of the provider is used.
      */
     region?: pulumi.Input<string>;
     /**
@@ -234,35 +235,18 @@ export interface GetImageIdsOutputArgs {
     /**
      * Sorts the response by one or more attribute and sort
      * direction combinations. You can also set multiple sort keys and directions.
-     * Default direction is `desc`. Use the comma (,) character to separate
-     * multiple values. For example expression `sort = "name:asc,status"`
-     * sorts ascending by name and descending by status. `sort` cannot be used
-     * simultaneously with `sortKey`. If both are present in a configuration
-     * then only `sort` will be used.
+     * Default direction is `desc`. Use the comma (,) character to separate multiple
+     * values. For example expression `sort = "name:asc,status"` sorts ascending by
+     * name and descending by status.
      */
     sort?: pulumi.Input<string>;
-    /**
-     * Order the results in either `asc` or `desc`.
-     * Can be applied only with `sortKey`. Defaults to `asc`
-     *
-     * @deprecated Use option 'sort' instead.
-     */
-    sortDirection?: pulumi.Input<string>;
-    /**
-     * Sort images based on a certain key. Defaults to
-     * `name`. `sortKey` cannot be used simultaneously with `sort`. If both
-     * are present in a configuration then only `sort` will be used.
-     *
-     * @deprecated Use option 'sort' instead.
-     */
-    sortKey?: pulumi.Input<string>;
     /**
      * Search for images with a specific tag.
      */
     tag?: pulumi.Input<string>;
     /**
-     * A list of tags required to be set on the image
-     * (all specified tags must be in the images tag list for it to be matched).
+     * A list of tags required to be set on the image (all
+     * specified tags must be in the images tag list for it to be matched).
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

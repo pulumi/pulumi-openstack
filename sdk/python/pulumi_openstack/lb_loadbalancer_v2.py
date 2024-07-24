@@ -27,6 +27,7 @@ class LbLoadbalancerV2Args:
                  vip_address: Optional[pulumi.Input[str]] = None,
                  vip_network_id: Optional[pulumi.Input[str]] = None,
                  vip_port_id: Optional[pulumi.Input[str]] = None,
+                 vip_qos_policy_id: Optional[pulumi.Input[str]] = None,
                  vip_subnet_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LbLoadbalancerV2 resource.
@@ -59,15 +60,18 @@ class LbLoadbalancerV2Args:
         :param pulumi.Input[str] vip_network_id: The network on which to allocate the
                Loadbalancer's address. A tenant can only create Loadbalancers on networks
                authorized by policy (e.g. networks that belong to them or networks that
-               are shared).  Changing this creates a new loadbalancer.
-               It is available only for Octavia.
+               are shared).  Changing this creates a new loadbalancer. Exactly one of
+               `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
         :param pulumi.Input[str] vip_port_id: The port UUID that the loadbalancer will use.
-               Changing this creates a new loadbalancer. It is available only for Octavia.
+               Changing this creates a new loadbalancer. Exactly one of
+               `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+        :param pulumi.Input[str] vip_qos_policy_id: The ID of the QoS Policy which will 
+               be applied to the Virtual IP (VIP).
         :param pulumi.Input[str] vip_subnet_id: The subnet on which to allocate the
                Loadbalancer's address. A tenant can only create Loadbalancers on networks
                authorized by policy (e.g. networks that belong to them or networks that
-               are shared).  Changing this creates a new loadbalancer.
-               It is required to Neutron LBaaS but optional for Octavia.
+               are shared).  Changing this creates a new loadbalancer. Exactly one of
+               `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
         """
         if admin_state_up is not None:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
@@ -95,6 +99,8 @@ class LbLoadbalancerV2Args:
             pulumi.set(__self__, "vip_network_id", vip_network_id)
         if vip_port_id is not None:
             pulumi.set(__self__, "vip_port_id", vip_port_id)
+        if vip_qos_policy_id is not None:
+            pulumi.set(__self__, "vip_qos_policy_id", vip_qos_policy_id)
         if vip_subnet_id is not None:
             pulumi.set(__self__, "vip_subnet_id", vip_subnet_id)
 
@@ -252,8 +258,8 @@ class LbLoadbalancerV2Args:
         The network on which to allocate the
         Loadbalancer's address. A tenant can only create Loadbalancers on networks
         authorized by policy (e.g. networks that belong to them or networks that
-        are shared).  Changing this creates a new loadbalancer.
-        It is available only for Octavia.
+        are shared).  Changing this creates a new loadbalancer. Exactly one of
+        `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
         """
         return pulumi.get(self, "vip_network_id")
 
@@ -266,7 +272,8 @@ class LbLoadbalancerV2Args:
     def vip_port_id(self) -> Optional[pulumi.Input[str]]:
         """
         The port UUID that the loadbalancer will use.
-        Changing this creates a new loadbalancer. It is available only for Octavia.
+        Changing this creates a new loadbalancer. Exactly one of
+        `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
         """
         return pulumi.get(self, "vip_port_id")
 
@@ -275,14 +282,27 @@ class LbLoadbalancerV2Args:
         pulumi.set(self, "vip_port_id", value)
 
     @property
+    @pulumi.getter(name="vipQosPolicyId")
+    def vip_qos_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the QoS Policy which will 
+        be applied to the Virtual IP (VIP).
+        """
+        return pulumi.get(self, "vip_qos_policy_id")
+
+    @vip_qos_policy_id.setter
+    def vip_qos_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vip_qos_policy_id", value)
+
+    @property
     @pulumi.getter(name="vipSubnetId")
     def vip_subnet_id(self) -> Optional[pulumi.Input[str]]:
         """
         The subnet on which to allocate the
         Loadbalancer's address. A tenant can only create Loadbalancers on networks
         authorized by policy (e.g. networks that belong to them or networks that
-        are shared).  Changing this creates a new loadbalancer.
-        It is required to Neutron LBaaS but optional for Octavia.
+        are shared).  Changing this creates a new loadbalancer. Exactly one of
+        `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
         """
         return pulumi.get(self, "vip_subnet_id")
 
@@ -307,6 +327,7 @@ class _LbLoadbalancerV2State:
                  vip_address: Optional[pulumi.Input[str]] = None,
                  vip_network_id: Optional[pulumi.Input[str]] = None,
                  vip_port_id: Optional[pulumi.Input[str]] = None,
+                 vip_qos_policy_id: Optional[pulumi.Input[str]] = None,
                  vip_subnet_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LbLoadbalancerV2 resources.
@@ -339,15 +360,18 @@ class _LbLoadbalancerV2State:
         :param pulumi.Input[str] vip_network_id: The network on which to allocate the
                Loadbalancer's address. A tenant can only create Loadbalancers on networks
                authorized by policy (e.g. networks that belong to them or networks that
-               are shared).  Changing this creates a new loadbalancer.
-               It is available only for Octavia.
+               are shared).  Changing this creates a new loadbalancer. Exactly one of
+               `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
         :param pulumi.Input[str] vip_port_id: The port UUID that the loadbalancer will use.
-               Changing this creates a new loadbalancer. It is available only for Octavia.
+               Changing this creates a new loadbalancer. Exactly one of
+               `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+        :param pulumi.Input[str] vip_qos_policy_id: The ID of the QoS Policy which will 
+               be applied to the Virtual IP (VIP).
         :param pulumi.Input[str] vip_subnet_id: The subnet on which to allocate the
                Loadbalancer's address. A tenant can only create Loadbalancers on networks
                authorized by policy (e.g. networks that belong to them or networks that
-               are shared).  Changing this creates a new loadbalancer.
-               It is required to Neutron LBaaS but optional for Octavia.
+               are shared).  Changing this creates a new loadbalancer. Exactly one of
+               `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
         """
         if admin_state_up is not None:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
@@ -375,6 +399,8 @@ class _LbLoadbalancerV2State:
             pulumi.set(__self__, "vip_network_id", vip_network_id)
         if vip_port_id is not None:
             pulumi.set(__self__, "vip_port_id", vip_port_id)
+        if vip_qos_policy_id is not None:
+            pulumi.set(__self__, "vip_qos_policy_id", vip_qos_policy_id)
         if vip_subnet_id is not None:
             pulumi.set(__self__, "vip_subnet_id", vip_subnet_id)
 
@@ -532,8 +558,8 @@ class _LbLoadbalancerV2State:
         The network on which to allocate the
         Loadbalancer's address. A tenant can only create Loadbalancers on networks
         authorized by policy (e.g. networks that belong to them or networks that
-        are shared).  Changing this creates a new loadbalancer.
-        It is available only for Octavia.
+        are shared).  Changing this creates a new loadbalancer. Exactly one of
+        `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
         """
         return pulumi.get(self, "vip_network_id")
 
@@ -546,7 +572,8 @@ class _LbLoadbalancerV2State:
     def vip_port_id(self) -> Optional[pulumi.Input[str]]:
         """
         The port UUID that the loadbalancer will use.
-        Changing this creates a new loadbalancer. It is available only for Octavia.
+        Changing this creates a new loadbalancer. Exactly one of
+        `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
         """
         return pulumi.get(self, "vip_port_id")
 
@@ -555,14 +582,27 @@ class _LbLoadbalancerV2State:
         pulumi.set(self, "vip_port_id", value)
 
     @property
+    @pulumi.getter(name="vipQosPolicyId")
+    def vip_qos_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the QoS Policy which will 
+        be applied to the Virtual IP (VIP).
+        """
+        return pulumi.get(self, "vip_qos_policy_id")
+
+    @vip_qos_policy_id.setter
+    def vip_qos_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vip_qos_policy_id", value)
+
+    @property
     @pulumi.getter(name="vipSubnetId")
     def vip_subnet_id(self) -> Optional[pulumi.Input[str]]:
         """
         The subnet on which to allocate the
         Loadbalancer's address. A tenant can only create Loadbalancers on networks
         authorized by policy (e.g. networks that belong to them or networks that
-        are shared).  Changing this creates a new loadbalancer.
-        It is required to Neutron LBaaS but optional for Octavia.
+        are shared).  Changing this creates a new loadbalancer. Exactly one of
+        `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
         """
         return pulumi.get(self, "vip_subnet_id")
 
@@ -589,6 +629,7 @@ class LbLoadbalancerV2(pulumi.CustomResource):
                  vip_address: Optional[pulumi.Input[str]] = None,
                  vip_network_id: Optional[pulumi.Input[str]] = None,
                  vip_port_id: Optional[pulumi.Input[str]] = None,
+                 vip_qos_policy_id: Optional[pulumi.Input[str]] = None,
                  vip_subnet_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -645,15 +686,18 @@ class LbLoadbalancerV2(pulumi.CustomResource):
         :param pulumi.Input[str] vip_network_id: The network on which to allocate the
                Loadbalancer's address. A tenant can only create Loadbalancers on networks
                authorized by policy (e.g. networks that belong to them or networks that
-               are shared).  Changing this creates a new loadbalancer.
-               It is available only for Octavia.
+               are shared).  Changing this creates a new loadbalancer. Exactly one of
+               `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
         :param pulumi.Input[str] vip_port_id: The port UUID that the loadbalancer will use.
-               Changing this creates a new loadbalancer. It is available only for Octavia.
+               Changing this creates a new loadbalancer. Exactly one of
+               `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+        :param pulumi.Input[str] vip_qos_policy_id: The ID of the QoS Policy which will 
+               be applied to the Virtual IP (VIP).
         :param pulumi.Input[str] vip_subnet_id: The subnet on which to allocate the
                Loadbalancer's address. A tenant can only create Loadbalancers on networks
                authorized by policy (e.g. networks that belong to them or networks that
-               are shared).  Changing this creates a new loadbalancer.
-               It is required to Neutron LBaaS but optional for Octavia.
+               are shared).  Changing this creates a new loadbalancer. Exactly one of
+               `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
         """
         ...
     @overload
@@ -712,6 +756,7 @@ class LbLoadbalancerV2(pulumi.CustomResource):
                  vip_address: Optional[pulumi.Input[str]] = None,
                  vip_network_id: Optional[pulumi.Input[str]] = None,
                  vip_port_id: Optional[pulumi.Input[str]] = None,
+                 vip_qos_policy_id: Optional[pulumi.Input[str]] = None,
                  vip_subnet_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -735,6 +780,7 @@ class LbLoadbalancerV2(pulumi.CustomResource):
             __props__.__dict__["vip_address"] = vip_address
             __props__.__dict__["vip_network_id"] = vip_network_id
             __props__.__dict__["vip_port_id"] = vip_port_id
+            __props__.__dict__["vip_qos_policy_id"] = vip_qos_policy_id
             __props__.__dict__["vip_subnet_id"] = vip_subnet_id
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="openstack:loadbalancer/loadBalancer:LoadBalancer")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
@@ -761,6 +807,7 @@ class LbLoadbalancerV2(pulumi.CustomResource):
             vip_address: Optional[pulumi.Input[str]] = None,
             vip_network_id: Optional[pulumi.Input[str]] = None,
             vip_port_id: Optional[pulumi.Input[str]] = None,
+            vip_qos_policy_id: Optional[pulumi.Input[str]] = None,
             vip_subnet_id: Optional[pulumi.Input[str]] = None) -> 'LbLoadbalancerV2':
         """
         Get an existing LbLoadbalancerV2 resource's state with the given name, id, and optional extra
@@ -798,15 +845,18 @@ class LbLoadbalancerV2(pulumi.CustomResource):
         :param pulumi.Input[str] vip_network_id: The network on which to allocate the
                Loadbalancer's address. A tenant can only create Loadbalancers on networks
                authorized by policy (e.g. networks that belong to them or networks that
-               are shared).  Changing this creates a new loadbalancer.
-               It is available only for Octavia.
+               are shared).  Changing this creates a new loadbalancer. Exactly one of
+               `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
         :param pulumi.Input[str] vip_port_id: The port UUID that the loadbalancer will use.
-               Changing this creates a new loadbalancer. It is available only for Octavia.
+               Changing this creates a new loadbalancer. Exactly one of
+               `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+        :param pulumi.Input[str] vip_qos_policy_id: The ID of the QoS Policy which will 
+               be applied to the Virtual IP (VIP).
         :param pulumi.Input[str] vip_subnet_id: The subnet on which to allocate the
                Loadbalancer's address. A tenant can only create Loadbalancers on networks
                authorized by policy (e.g. networks that belong to them or networks that
-               are shared).  Changing this creates a new loadbalancer.
-               It is required to Neutron LBaaS but optional for Octavia.
+               are shared).  Changing this creates a new loadbalancer. Exactly one of
+               `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -825,6 +875,7 @@ class LbLoadbalancerV2(pulumi.CustomResource):
         __props__.__dict__["vip_address"] = vip_address
         __props__.__dict__["vip_network_id"] = vip_network_id
         __props__.__dict__["vip_port_id"] = vip_port_id
+        __props__.__dict__["vip_qos_policy_id"] = vip_qos_policy_id
         __props__.__dict__["vip_subnet_id"] = vip_subnet_id
         return LbLoadbalancerV2(resource_name, opts=opts, __props__=__props__)
 
@@ -938,8 +989,8 @@ class LbLoadbalancerV2(pulumi.CustomResource):
         The network on which to allocate the
         Loadbalancer's address. A tenant can only create Loadbalancers on networks
         authorized by policy (e.g. networks that belong to them or networks that
-        are shared).  Changing this creates a new loadbalancer.
-        It is available only for Octavia.
+        are shared).  Changing this creates a new loadbalancer. Exactly one of
+        `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
         """
         return pulumi.get(self, "vip_network_id")
 
@@ -948,9 +999,19 @@ class LbLoadbalancerV2(pulumi.CustomResource):
     def vip_port_id(self) -> pulumi.Output[str]:
         """
         The port UUID that the loadbalancer will use.
-        Changing this creates a new loadbalancer. It is available only for Octavia.
+        Changing this creates a new loadbalancer. Exactly one of
+        `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
         """
         return pulumi.get(self, "vip_port_id")
+
+    @property
+    @pulumi.getter(name="vipQosPolicyId")
+    def vip_qos_policy_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the QoS Policy which will 
+        be applied to the Virtual IP (VIP).
+        """
+        return pulumi.get(self, "vip_qos_policy_id")
 
     @property
     @pulumi.getter(name="vipSubnetId")
@@ -959,8 +1020,8 @@ class LbLoadbalancerV2(pulumi.CustomResource):
         The subnet on which to allocate the
         Loadbalancer's address. A tenant can only create Loadbalancers on networks
         authorized by policy (e.g. networks that belong to them or networks that
-        are shared).  Changing this creates a new loadbalancer.
-        It is required to Neutron LBaaS but optional for Octavia.
+        are shared).  Changing this creates a new loadbalancer. Exactly one of
+        `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
         """
         return pulumi.get(self, "vip_subnet_id")
 

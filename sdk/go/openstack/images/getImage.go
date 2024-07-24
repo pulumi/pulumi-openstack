@@ -54,6 +54,10 @@ func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getImage.
 type LookupImageArgs struct {
+	// The container format of the image.
+	ContainerFormat *string `pulumi:"containerFormat"`
+	// The disk format of the image.
+	DiskFormat *string `pulumi:"diskFormat"`
 	// Whether or not the image is hidden from public list.
 	Hidden *bool `pulumi:"hidden"`
 	// The status of the image. Must be one of
@@ -62,8 +66,8 @@ type LookupImageArgs struct {
 	// If more than one result is returned, use the most
 	// recent image.
 	MostRecent *bool `pulumi:"mostRecent"`
-	// The name of the image. Cannot be used simultaneously
-	// with `nameRegex`.
+	// The name of the image. Cannot be used simultaneously with
+	// `nameRegex`.
 	Name *string `pulumi:"name"`
 	// The regular expressian of the name of the image.
 	// Cannot be used simultaneously with `name`. Unlike filtering by `name` the
@@ -73,28 +77,29 @@ type LookupImageArgs struct {
 	// The owner (UUID) of the image.
 	Owner *string `pulumi:"owner"`
 	// a map of key/value pairs to match an image with.
-	// All specified properties must be matched. Unlike other options filtering
-	// by `properties` does by client on the result of OpenStack search query.
-	// Filtering is applied if server responce contains at least 2 images. In
-	// case there is only one image the `properties` ignores.
+	// All specified properties must be matched. Unlike other options filtering by
+	// `properties` does by client on the result of OpenStack search query.
+	// Filtering is applied if server responce contains at least 2 images. In case
+	// there is only one image the `properties` ignores.
 	Properties map[string]interface{} `pulumi:"properties"`
-	// The region in which to obtain the V2 Glance client.
-	// A Glance client is needed to create an Image that can be used with
-	// a compute instance. If omitted, the `region` argument of the provider
-	// is used.
+	// The region in which to obtain the V2 Glance client. A
+	// Glance client is needed to create an Image that can be used with a compute
+	// instance. If omitted, the `region` argument of the provider is used.
 	Region *string `pulumi:"region"`
 	// The maximum size (in bytes) of the image to return.
 	SizeMax *int `pulumi:"sizeMax"`
 	// The minimum size (in bytes) of the image to return.
 	SizeMin *int `pulumi:"sizeMin"`
-	// Order the results in either `asc` or `desc`.
-	SortDirection *string `pulumi:"sortDirection"`
-	// Sort images based on a certain key. Defaults to `name`.
-	SortKey *string `pulumi:"sortKey"`
+	// Sorts the response by one or more attribute and sort
+	// direction combinations. You can also set multiple sort keys and directions.
+	// Default direction is `desc`. Use the comma (,) character to separate multiple
+	// values. For example expression `sort = "name:asc,status"` sorts ascending by
+	// name and descending by status.
+	Sort *string `pulumi:"sort"`
 	// Search for images with a specific tag.
 	Tag *string `pulumi:"tag"`
-	// A list of tags required to be set on the image
-	// (all specified tags must be in the images tag list for it to be matched).
+	// A list of tags required to be set on the image (all
+	// specified tags must be in the images tag list for it to be matched).
 	Tags []string `pulumi:"tags"`
 	// The visibility of the image. Must be one of
 	// "public", "private", "community", or "shared". Defaults to "private".
@@ -106,11 +111,11 @@ type LookupImageResult struct {
 	// The checksum of the data associated with the image.
 	Checksum string `pulumi:"checksum"`
 	// The format of the image's container.
-	ContainerFormat string `pulumi:"containerFormat"`
+	ContainerFormat *string `pulumi:"containerFormat"`
 	// The date the image was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// The format of the image's disk.
-	DiskFormat string `pulumi:"diskFormat"`
+	DiskFormat *string `pulumi:"diskFormat"`
 	// the trailing path after the glance endpoint that represent the
 	// location of the image or the path to retrieve it.
 	File   string `pulumi:"file"`
@@ -118,9 +123,9 @@ type LookupImageResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id           string  `pulumi:"id"`
 	MemberStatus *string `pulumi:"memberStatus"`
-	// The metadata associated with the image.
-	// Image metadata allow for meaningfully define the image properties
-	// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+	// The metadata associated with the image. Image metadata allow for
+	// meaningfully define the image properties and tags. See
+	// https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
 	Metadata map[string]interface{} `pulumi:"metadata"`
 	// The minimum amount of disk space required to use the image.
 	MinDiskGb int `pulumi:"minDiskGb"`
@@ -135,16 +140,14 @@ type LookupImageResult struct {
 	// Whether or not the image is protected.
 	Protected bool   `pulumi:"protected"`
 	Region    string `pulumi:"region"`
-	// The path to the JSON-schema that represent
-	// the image or image
+	// The path to the JSON-schema that represent the image
 	Schema string `pulumi:"schema"`
 	// The size of the image (in bytes).
-	SizeBytes     int     `pulumi:"sizeBytes"`
-	SizeMax       *int    `pulumi:"sizeMax"`
-	SizeMin       *int    `pulumi:"sizeMin"`
-	SortDirection *string `pulumi:"sortDirection"`
-	SortKey       *string `pulumi:"sortKey"`
-	Tag           *string `pulumi:"tag"`
+	SizeBytes int     `pulumi:"sizeBytes"`
+	SizeMax   *int    `pulumi:"sizeMax"`
+	SizeMin   *int    `pulumi:"sizeMin"`
+	Sort      *string `pulumi:"sort"`
+	Tag       *string `pulumi:"tag"`
 	// The tags list of the image.
 	Tags []string `pulumi:"tags"`
 	// The date the image was last updated.
@@ -167,6 +170,10 @@ func LookupImageOutput(ctx *pulumi.Context, args LookupImageOutputArgs, opts ...
 
 // A collection of arguments for invoking getImage.
 type LookupImageOutputArgs struct {
+	// The container format of the image.
+	ContainerFormat pulumi.StringPtrInput `pulumi:"containerFormat"`
+	// The disk format of the image.
+	DiskFormat pulumi.StringPtrInput `pulumi:"diskFormat"`
 	// Whether or not the image is hidden from public list.
 	Hidden pulumi.BoolPtrInput `pulumi:"hidden"`
 	// The status of the image. Must be one of
@@ -175,8 +182,8 @@ type LookupImageOutputArgs struct {
 	// If more than one result is returned, use the most
 	// recent image.
 	MostRecent pulumi.BoolPtrInput `pulumi:"mostRecent"`
-	// The name of the image. Cannot be used simultaneously
-	// with `nameRegex`.
+	// The name of the image. Cannot be used simultaneously with
+	// `nameRegex`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The regular expressian of the name of the image.
 	// Cannot be used simultaneously with `name`. Unlike filtering by `name` the
@@ -186,28 +193,29 @@ type LookupImageOutputArgs struct {
 	// The owner (UUID) of the image.
 	Owner pulumi.StringPtrInput `pulumi:"owner"`
 	// a map of key/value pairs to match an image with.
-	// All specified properties must be matched. Unlike other options filtering
-	// by `properties` does by client on the result of OpenStack search query.
-	// Filtering is applied if server responce contains at least 2 images. In
-	// case there is only one image the `properties` ignores.
+	// All specified properties must be matched. Unlike other options filtering by
+	// `properties` does by client on the result of OpenStack search query.
+	// Filtering is applied if server responce contains at least 2 images. In case
+	// there is only one image the `properties` ignores.
 	Properties pulumi.MapInput `pulumi:"properties"`
-	// The region in which to obtain the V2 Glance client.
-	// A Glance client is needed to create an Image that can be used with
-	// a compute instance. If omitted, the `region` argument of the provider
-	// is used.
+	// The region in which to obtain the V2 Glance client. A
+	// Glance client is needed to create an Image that can be used with a compute
+	// instance. If omitted, the `region` argument of the provider is used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The maximum size (in bytes) of the image to return.
 	SizeMax pulumi.IntPtrInput `pulumi:"sizeMax"`
 	// The minimum size (in bytes) of the image to return.
 	SizeMin pulumi.IntPtrInput `pulumi:"sizeMin"`
-	// Order the results in either `asc` or `desc`.
-	SortDirection pulumi.StringPtrInput `pulumi:"sortDirection"`
-	// Sort images based on a certain key. Defaults to `name`.
-	SortKey pulumi.StringPtrInput `pulumi:"sortKey"`
+	// Sorts the response by one or more attribute and sort
+	// direction combinations. You can also set multiple sort keys and directions.
+	// Default direction is `desc`. Use the comma (,) character to separate multiple
+	// values. For example expression `sort = "name:asc,status"` sorts ascending by
+	// name and descending by status.
+	Sort pulumi.StringPtrInput `pulumi:"sort"`
 	// Search for images with a specific tag.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
-	// A list of tags required to be set on the image
-	// (all specified tags must be in the images tag list for it to be matched).
+	// A list of tags required to be set on the image (all
+	// specified tags must be in the images tag list for it to be matched).
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// The visibility of the image. Must be one of
 	// "public", "private", "community", or "shared". Defaults to "private".
@@ -239,8 +247,8 @@ func (o LookupImageResultOutput) Checksum() pulumi.StringOutput {
 }
 
 // The format of the image's container.
-func (o LookupImageResultOutput) ContainerFormat() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupImageResult) string { return v.ContainerFormat }).(pulumi.StringOutput)
+func (o LookupImageResultOutput) ContainerFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupImageResult) *string { return v.ContainerFormat }).(pulumi.StringPtrOutput)
 }
 
 // The date the image was created.
@@ -249,8 +257,8 @@ func (o LookupImageResultOutput) CreatedAt() pulumi.StringOutput {
 }
 
 // The format of the image's disk.
-func (o LookupImageResultOutput) DiskFormat() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupImageResult) string { return v.DiskFormat }).(pulumi.StringOutput)
+func (o LookupImageResultOutput) DiskFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupImageResult) *string { return v.DiskFormat }).(pulumi.StringPtrOutput)
 }
 
 // the trailing path after the glance endpoint that represent the
@@ -272,9 +280,9 @@ func (o LookupImageResultOutput) MemberStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupImageResult) *string { return v.MemberStatus }).(pulumi.StringPtrOutput)
 }
 
-// The metadata associated with the image.
-// Image metadata allow for meaningfully define the image properties
-// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+// The metadata associated with the image. Image metadata allow for
+// meaningfully define the image properties and tags. See
+// https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
 func (o LookupImageResultOutput) Metadata() pulumi.MapOutput {
 	return o.ApplyT(func(v LookupImageResult) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
 }
@@ -319,8 +327,7 @@ func (o LookupImageResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The path to the JSON-schema that represent
-// the image or image
+// The path to the JSON-schema that represent the image
 func (o LookupImageResultOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Schema }).(pulumi.StringOutput)
 }
@@ -338,12 +345,8 @@ func (o LookupImageResultOutput) SizeMin() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupImageResult) *int { return v.SizeMin }).(pulumi.IntPtrOutput)
 }
 
-func (o LookupImageResultOutput) SortDirection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupImageResult) *string { return v.SortDirection }).(pulumi.StringPtrOutput)
-}
-
-func (o LookupImageResultOutput) SortKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupImageResult) *string { return v.SortKey }).(pulumi.StringPtrOutput)
+func (o LookupImageResultOutput) Sort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupImageResult) *string { return v.Sort }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupImageResultOutput) Tag() pulumi.StringPtrOutput {

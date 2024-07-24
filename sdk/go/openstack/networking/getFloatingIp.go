@@ -56,7 +56,7 @@ type LookupFloatingIpArgs struct {
 	Description *string `pulumi:"description"`
 	// The specific IP address of the internal port which should be associated with the floating IP.
 	FixedIp *string `pulumi:"fixedIp"`
-	// The name of the pool from which the floating IP belongs to.
+	// The ID of the network from which the floating IP belongs to.
 	Pool *string `pulumi:"pool"`
 	// The ID of the port the floating IP is attached.
 	PortId *string `pulumi:"portId"`
@@ -116,7 +116,7 @@ type LookupFloatingIpOutputArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The specific IP address of the internal port which should be associated with the floating IP.
 	FixedIp pulumi.StringPtrInput `pulumi:"fixedIp"`
-	// The name of the pool from which the floating IP belongs to.
+	// The ID of the network from which the floating IP belongs to.
 	Pool pulumi.StringPtrInput `pulumi:"pool"`
 	// The ID of the port the floating IP is attached.
 	PortId pulumi.StringPtrInput `pulumi:"portId"`

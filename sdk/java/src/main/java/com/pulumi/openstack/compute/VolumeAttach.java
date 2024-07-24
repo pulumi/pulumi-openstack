@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * ### Using Multiattach-enabled volumes
  * 
  * Multiattach Volumes are dependent upon your OpenStack cloud and not all
- * clouds support multiattach.
+ * clouds support multiattach. Multiattach volumes require a volume_type that has [multiattach enabled](https://docs.openstack.org/cinder/latest/admin/volume-multiattach.html#multiattach-volume-type).
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *         var volume1 = new Volume("volume1", VolumeArgs.builder()
  *             .name("volume_1")
  *             .size(1)
- *             .multiattach(true)
+ *             .volumeType("multiattach")
  *             .build());
  * 
  *         var instance1 = new Instance("instance1", InstanceArgs.builder()
@@ -209,6 +209,24 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      */
     public Output<String> region() {
         return this.region;
+    }
+    /**
+     * Add a device role tag that is applied to the volume when
+     * attaching it to the VM. Changing this creates a new volume attachment with
+     * the new tag. Requires microversion &gt;= 2.49.
+     * 
+     */
+    @Export(name="tag", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> tag;
+
+    /**
+     * @return Add a device role tag that is applied to the volume when
+     * attaching it to the VM. Changing this creates a new volume attachment with
+     * the new tag. Requires microversion &gt;= 2.49.
+     * 
+     */
+    public Output<Optional<String>> tag() {
+        return Codegen.optional(this.tag);
     }
     /**
      * Map of additional vendor-specific options.

@@ -60,6 +60,8 @@ type LookupSecGroupArgs struct {
 	Region *string `pulumi:"region"`
 	// The ID of the security group.
 	SecgroupId *string `pulumi:"secgroupId"`
+	// Whether the security group is stateful or not.
+	Stateful *bool `pulumi:"stateful"`
 	// The list of security group tags to filter.
 	Tags []string `pulumi:"tags"`
 	// The owner of the security group.
@@ -77,10 +79,12 @@ type LookupSecGroupResult struct {
 	// See Argument Reference above.
 	Name *string `pulumi:"name"`
 	// See Argument Reference above.
-	Region     string   `pulumi:"region"`
-	SecgroupId *string  `pulumi:"secgroupId"`
-	Tags       []string `pulumi:"tags"`
-	TenantId   string   `pulumi:"tenantId"`
+	Region     string  `pulumi:"region"`
+	SecgroupId *string `pulumi:"secgroupId"`
+	// See Argument Reference above.
+	Stateful bool     `pulumi:"stateful"`
+	Tags     []string `pulumi:"tags"`
+	TenantId string   `pulumi:"tenantId"`
 }
 
 func LookupSecGroupOutput(ctx *pulumi.Context, args LookupSecGroupOutputArgs, opts ...pulumi.InvokeOption) LookupSecGroupResultOutput {
@@ -108,6 +112,8 @@ type LookupSecGroupOutputArgs struct {
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The ID of the security group.
 	SecgroupId pulumi.StringPtrInput `pulumi:"secgroupId"`
+	// Whether the security group is stateful or not.
+	Stateful pulumi.BoolPtrInput `pulumi:"stateful"`
 	// The list of security group tags to filter.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// The owner of the security group.
@@ -160,6 +166,11 @@ func (o LookupSecGroupResultOutput) Region() pulumi.StringOutput {
 
 func (o LookupSecGroupResultOutput) SecgroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecGroupResult) *string { return v.SecgroupId }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o LookupSecGroupResultOutput) Stateful() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupSecGroupResult) bool { return v.Stateful }).(pulumi.BoolOutput)
 }
 
 func (o LookupSecGroupResultOutput) Tags() pulumi.StringArrayOutput {

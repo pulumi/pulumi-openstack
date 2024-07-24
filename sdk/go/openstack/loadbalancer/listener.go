@@ -89,8 +89,8 @@ type Listener struct {
 	// to be unique.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The protocol - can either be TCP, HTTP, HTTPS,
-	// TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-	// in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+	// TERMINATED_HTTPS, UDP, SCTP (supported only in
+	// **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
 	// **Octavia minor version >=2.25**). Changing this creates a new Listener.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The port on which to listen for client traffic.
@@ -106,7 +106,9 @@ type Listener struct {
 	// [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
 	// for more information.
 	SniContainerRefs pulumi.StringArrayOutput `pulumi:"sniContainerRefs"`
-	Tags             pulumi.StringArrayOutput `pulumi:"tags"`
+	// A list of simple strings assigned to the pool. Available
+	// for Octavia **minor version 2.5 or later**.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
 	// the Listener.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new Listener.
@@ -192,8 +194,8 @@ type listenerState struct {
 	// to be unique.
 	Name *string `pulumi:"name"`
 	// The protocol - can either be TCP, HTTP, HTTPS,
-	// TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-	// in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+	// TERMINATED_HTTPS, UDP, SCTP (supported only in
+	// **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
 	// **Octavia minor version >=2.25**). Changing this creates a new Listener.
 	Protocol *string `pulumi:"protocol"`
 	// The port on which to listen for client traffic.
@@ -209,7 +211,9 @@ type listenerState struct {
 	// [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
 	// for more information.
 	SniContainerRefs []string `pulumi:"sniContainerRefs"`
-	Tags             []string `pulumi:"tags"`
+	// A list of simple strings assigned to the pool. Available
+	// for Octavia **minor version 2.5 or later**.
+	Tags []string `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
 	// the Listener.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new Listener.
@@ -257,8 +261,8 @@ type ListenerState struct {
 	// to be unique.
 	Name pulumi.StringPtrInput
 	// The protocol - can either be TCP, HTTP, HTTPS,
-	// TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-	// in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+	// TERMINATED_HTTPS, UDP, SCTP (supported only in
+	// **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
 	// **Octavia minor version >=2.25**). Changing this creates a new Listener.
 	Protocol pulumi.StringPtrInput
 	// The port on which to listen for client traffic.
@@ -274,7 +278,9 @@ type ListenerState struct {
 	// [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
 	// for more information.
 	SniContainerRefs pulumi.StringArrayInput
-	Tags             pulumi.StringArrayInput
+	// A list of simple strings assigned to the pool. Available
+	// for Octavia **minor version 2.5 or later**.
+	Tags pulumi.StringArrayInput
 	// Required for admins. The UUID of the tenant who owns
 	// the Listener.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new Listener.
@@ -326,8 +332,8 @@ type listenerArgs struct {
 	// to be unique.
 	Name *string `pulumi:"name"`
 	// The protocol - can either be TCP, HTTP, HTTPS,
-	// TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-	// in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+	// TERMINATED_HTTPS, UDP, SCTP (supported only in
+	// **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
 	// **Octavia minor version >=2.25**). Changing this creates a new Listener.
 	Protocol string `pulumi:"protocol"`
 	// The port on which to listen for client traffic.
@@ -343,7 +349,9 @@ type listenerArgs struct {
 	// [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
 	// for more information.
 	SniContainerRefs []string `pulumi:"sniContainerRefs"`
-	Tags             []string `pulumi:"tags"`
+	// A list of simple strings assigned to the pool. Available
+	// for Octavia **minor version 2.5 or later**.
+	Tags []string `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
 	// the Listener.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new Listener.
@@ -392,8 +400,8 @@ type ListenerArgs struct {
 	// to be unique.
 	Name pulumi.StringPtrInput
 	// The protocol - can either be TCP, HTTP, HTTPS,
-	// TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-	// in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+	// TERMINATED_HTTPS, UDP, SCTP (supported only in
+	// **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
 	// **Octavia minor version >=2.25**). Changing this creates a new Listener.
 	Protocol pulumi.StringInput
 	// The port on which to listen for client traffic.
@@ -409,7 +417,9 @@ type ListenerArgs struct {
 	// [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
 	// for more information.
 	SniContainerRefs pulumi.StringArrayInput
-	Tags             pulumi.StringArrayInput
+	// A list of simple strings assigned to the pool. Available
+	// for Octavia **minor version 2.5 or later**.
+	Tags pulumi.StringArrayInput
 	// Required for admins. The UUID of the tenant who owns
 	// the Listener.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new Listener.
@@ -570,8 +580,8 @@ func (o ListenerOutput) Name() pulumi.StringOutput {
 }
 
 // The protocol - can either be TCP, HTTP, HTTPS,
-// TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-// in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+// TERMINATED_HTTPS, UDP, SCTP (supported only in
+// **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
 // **Octavia minor version >=2.25**). Changing this creates a new Listener.
 func (o ListenerOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
@@ -599,6 +609,8 @@ func (o ListenerOutput) SniContainerRefs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringArrayOutput { return v.SniContainerRefs }).(pulumi.StringArrayOutput)
 }
 
+// A list of simple strings assigned to the pool. Available
+// for Octavia **minor version 2.5 or later**.
 func (o ListenerOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

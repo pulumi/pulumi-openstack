@@ -74,6 +74,18 @@ namespace Pulumi.OpenStack.Images
     public sealed class GetImageArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The container format of the image.
+        /// </summary>
+        [Input("containerFormat")]
+        public string? ContainerFormat { get; set; }
+
+        /// <summary>
+        /// The disk format of the image.
+        /// </summary>
+        [Input("diskFormat")]
+        public string? DiskFormat { get; set; }
+
+        /// <summary>
         /// Whether or not the image is hidden from public list.
         /// </summary>
         [Input("hidden")]
@@ -94,8 +106,8 @@ namespace Pulumi.OpenStack.Images
         public bool? MostRecent { get; set; }
 
         /// <summary>
-        /// The name of the image. Cannot be used simultaneously
-        /// with `name_regex`.
+        /// The name of the image. Cannot be used simultaneously with
+        /// `name_regex`.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -120,10 +132,10 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// a map of key/value pairs to match an image with.
-        /// All specified properties must be matched. Unlike other options filtering
-        /// by `properties` does by client on the result of OpenStack search query.
-        /// Filtering is applied if server responce contains at least 2 images. In
-        /// case there is only one image the `properties` ignores.
+        /// All specified properties must be matched. Unlike other options filtering by
+        /// `properties` does by client on the result of OpenStack search query.
+        /// Filtering is applied if server responce contains at least 2 images. In case
+        /// there is only one image the `properties` ignores.
         /// </summary>
         public Dictionary<string, object> Properties
         {
@@ -132,10 +144,9 @@ namespace Pulumi.OpenStack.Images
         }
 
         /// <summary>
-        /// The region in which to obtain the V2 Glance client.
-        /// A Glance client is needed to create an Image that can be used with
-        /// a compute instance. If omitted, the `region` argument of the provider
-        /// is used.
+        /// The region in which to obtain the V2 Glance client. A
+        /// Glance client is needed to create an Image that can be used with a compute
+        /// instance. If omitted, the `region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -153,16 +164,14 @@ namespace Pulumi.OpenStack.Images
         public int? SizeMin { get; set; }
 
         /// <summary>
-        /// Order the results in either `asc` or `desc`.
+        /// Sorts the response by one or more attribute and sort
+        /// direction combinations. You can also set multiple sort keys and directions.
+        /// Default direction is `desc`. Use the comma (,) character to separate multiple
+        /// values. For example expression `sort = "name:asc,status"` sorts ascending by
+        /// name and descending by status.
         /// </summary>
-        [Input("sortDirection")]
-        public string? SortDirection { get; set; }
-
-        /// <summary>
-        /// Sort images based on a certain key. Defaults to `name`.
-        /// </summary>
-        [Input("sortKey")]
-        public string? SortKey { get; set; }
+        [Input("sort")]
+        public string? Sort { get; set; }
 
         /// <summary>
         /// Search for images with a specific tag.
@@ -174,8 +183,8 @@ namespace Pulumi.OpenStack.Images
         private List<string>? _tags;
 
         /// <summary>
-        /// A list of tags required to be set on the image 
-        /// (all specified tags must be in the images tag list for it to be matched).
+        /// A list of tags required to be set on the image (all
+        /// specified tags must be in the images tag list for it to be matched).
         /// </summary>
         public List<string> Tags
         {
@@ -199,6 +208,18 @@ namespace Pulumi.OpenStack.Images
     public sealed class GetImageInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The container format of the image.
+        /// </summary>
+        [Input("containerFormat")]
+        public Input<string>? ContainerFormat { get; set; }
+
+        /// <summary>
+        /// The disk format of the image.
+        /// </summary>
+        [Input("diskFormat")]
+        public Input<string>? DiskFormat { get; set; }
+
+        /// <summary>
         /// Whether or not the image is hidden from public list.
         /// </summary>
         [Input("hidden")]
@@ -219,8 +240,8 @@ namespace Pulumi.OpenStack.Images
         public Input<bool>? MostRecent { get; set; }
 
         /// <summary>
-        /// The name of the image. Cannot be used simultaneously
-        /// with `name_regex`.
+        /// The name of the image. Cannot be used simultaneously with
+        /// `name_regex`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -245,10 +266,10 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// a map of key/value pairs to match an image with.
-        /// All specified properties must be matched. Unlike other options filtering
-        /// by `properties` does by client on the result of OpenStack search query.
-        /// Filtering is applied if server responce contains at least 2 images. In
-        /// case there is only one image the `properties` ignores.
+        /// All specified properties must be matched. Unlike other options filtering by
+        /// `properties` does by client on the result of OpenStack search query.
+        /// Filtering is applied if server responce contains at least 2 images. In case
+        /// there is only one image the `properties` ignores.
         /// </summary>
         public InputMap<object> Properties
         {
@@ -257,10 +278,9 @@ namespace Pulumi.OpenStack.Images
         }
 
         /// <summary>
-        /// The region in which to obtain the V2 Glance client.
-        /// A Glance client is needed to create an Image that can be used with
-        /// a compute instance. If omitted, the `region` argument of the provider
-        /// is used.
+        /// The region in which to obtain the V2 Glance client. A
+        /// Glance client is needed to create an Image that can be used with a compute
+        /// instance. If omitted, the `region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -278,16 +298,14 @@ namespace Pulumi.OpenStack.Images
         public Input<int>? SizeMin { get; set; }
 
         /// <summary>
-        /// Order the results in either `asc` or `desc`.
+        /// Sorts the response by one or more attribute and sort
+        /// direction combinations. You can also set multiple sort keys and directions.
+        /// Default direction is `desc`. Use the comma (,) character to separate multiple
+        /// values. For example expression `sort = "name:asc,status"` sorts ascending by
+        /// name and descending by status.
         /// </summary>
-        [Input("sortDirection")]
-        public Input<string>? SortDirection { get; set; }
-
-        /// <summary>
-        /// Sort images based on a certain key. Defaults to `name`.
-        /// </summary>
-        [Input("sortKey")]
-        public Input<string>? SortKey { get; set; }
+        [Input("sort")]
+        public Input<string>? Sort { get; set; }
 
         /// <summary>
         /// Search for images with a specific tag.
@@ -299,8 +317,8 @@ namespace Pulumi.OpenStack.Images
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A list of tags required to be set on the image 
-        /// (all specified tags must be in the images tag list for it to be matched).
+        /// A list of tags required to be set on the image (all
+        /// specified tags must be in the images tag list for it to be matched).
         /// </summary>
         public InputList<string> Tags
         {
@@ -332,7 +350,7 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// The format of the image's container.
         /// </summary>
-        public readonly string ContainerFormat;
+        public readonly string? ContainerFormat;
         /// <summary>
         /// The date the image was created.
         /// </summary>
@@ -340,7 +358,7 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// The format of the image's disk.
         /// </summary>
-        public readonly string DiskFormat;
+        public readonly string? DiskFormat;
         /// <summary>
         /// the trailing path after the glance endpoint that represent the
         /// location of the image or the path to retrieve it.
@@ -353,9 +371,9 @@ namespace Pulumi.OpenStack.Images
         public readonly string Id;
         public readonly string? MemberStatus;
         /// <summary>
-        /// The metadata associated with the image.
-        /// Image metadata allow for meaningfully define the image properties
-        /// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+        /// The metadata associated with the image. Image metadata allow for
+        /// meaningfully define the image properties and tags. See
+        /// https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
         /// </summary>
         public readonly ImmutableDictionary<string, object> Metadata;
         /// <summary>
@@ -380,8 +398,7 @@ namespace Pulumi.OpenStack.Images
         public readonly bool Protected;
         public readonly string Region;
         /// <summary>
-        /// The path to the JSON-schema that represent
-        /// the image or image
+        /// The path to the JSON-schema that represent the image
         /// </summary>
         public readonly string Schema;
         /// <summary>
@@ -390,8 +407,7 @@ namespace Pulumi.OpenStack.Images
         public readonly int SizeBytes;
         public readonly int? SizeMax;
         public readonly int? SizeMin;
-        public readonly string? SortDirection;
-        public readonly string? SortKey;
+        public readonly string? Sort;
         public readonly string? Tag;
         /// <summary>
         /// The tags list of the image.
@@ -407,11 +423,11 @@ namespace Pulumi.OpenStack.Images
         private GetImageResult(
             string checksum,
 
-            string containerFormat,
+            string? containerFormat,
 
             string createdAt,
 
-            string diskFormat,
+            string? diskFormat,
 
             string file,
 
@@ -449,9 +465,7 @@ namespace Pulumi.OpenStack.Images
 
             int? sizeMin,
 
-            string? sortDirection,
-
-            string? sortKey,
+            string? sort,
 
             string? tag,
 
@@ -483,8 +497,7 @@ namespace Pulumi.OpenStack.Images
             SizeBytes = sizeBytes;
             SizeMax = sizeMax;
             SizeMin = sizeMin;
-            SortDirection = sortDirection;
-            SortKey = sortKey;
+            Sort = sort;
             Tag = tag;
             Tags = tags;
             UpdatedAt = updatedAt;

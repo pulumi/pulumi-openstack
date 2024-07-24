@@ -22,7 +22,7 @@ class GetSubnetResult:
     """
     A collection of values returned by getSubnet.
     """
-    def __init__(__self__, all_tags=None, allocation_pools=None, cidr=None, description=None, dhcp_disabled=None, dhcp_enabled=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, id=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, service_types=None, subnet_id=None, subnetpool_id=None, tags=None, tenant_id=None):
+    def __init__(__self__, all_tags=None, allocation_pools=None, cidr=None, description=None, dhcp_enabled=None, dns_nameservers=None, dns_publish_fixed_ip=None, enable_dhcp=None, gateway_ip=None, host_routes=None, id=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, service_types=None, subnet_id=None, subnetpool_id=None, tags=None, tenant_id=None):
         if all_tags and not isinstance(all_tags, list):
             raise TypeError("Expected argument 'all_tags' to be a list")
         pulumi.set(__self__, "all_tags", all_tags)
@@ -35,15 +35,15 @@ class GetSubnetResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if dhcp_disabled and not isinstance(dhcp_disabled, bool):
-            raise TypeError("Expected argument 'dhcp_disabled' to be a bool")
-        pulumi.set(__self__, "dhcp_disabled", dhcp_disabled)
         if dhcp_enabled and not isinstance(dhcp_enabled, bool):
             raise TypeError("Expected argument 'dhcp_enabled' to be a bool")
         pulumi.set(__self__, "dhcp_enabled", dhcp_enabled)
         if dns_nameservers and not isinstance(dns_nameservers, list):
             raise TypeError("Expected argument 'dns_nameservers' to be a list")
         pulumi.set(__self__, "dns_nameservers", dns_nameservers)
+        if dns_publish_fixed_ip and not isinstance(dns_publish_fixed_ip, bool):
+            raise TypeError("Expected argument 'dns_publish_fixed_ip' to be a bool")
+        pulumi.set(__self__, "dns_publish_fixed_ip", dns_publish_fixed_ip)
         if enable_dhcp and not isinstance(enable_dhcp, bool):
             raise TypeError("Expected argument 'enable_dhcp' to be a bool")
         pulumi.set(__self__, "enable_dhcp", enable_dhcp)
@@ -117,12 +117,6 @@ class GetSubnetResult:
         return pulumi.get(self, "description")
 
     @property
-    @pulumi.getter(name="dhcpDisabled")
-    @_utilities.deprecated("""use dhcp_enabled instead""")
-    def dhcp_disabled(self) -> Optional[bool]:
-        return pulumi.get(self, "dhcp_disabled")
-
-    @property
     @pulumi.getter(name="dhcpEnabled")
     def dhcp_enabled(self) -> Optional[bool]:
         return pulumi.get(self, "dhcp_enabled")
@@ -134,6 +128,11 @@ class GetSubnetResult:
         DNS Nameservers of the subnet.
         """
         return pulumi.get(self, "dns_nameservers")
+
+    @property
+    @pulumi.getter(name="dnsPublishFixedIp")
+    def dns_publish_fixed_ip(self) -> Optional[bool]:
+        return pulumi.get(self, "dns_publish_fixed_ip")
 
     @property
     @pulumi.getter(name="enableDhcp")
@@ -236,9 +235,9 @@ class AwaitableGetSubnetResult(GetSubnetResult):
             allocation_pools=self.allocation_pools,
             cidr=self.cidr,
             description=self.description,
-            dhcp_disabled=self.dhcp_disabled,
             dhcp_enabled=self.dhcp_enabled,
             dns_nameservers=self.dns_nameservers,
+            dns_publish_fixed_ip=self.dns_publish_fixed_ip,
             enable_dhcp=self.enable_dhcp,
             gateway_ip=self.gateway_ip,
             host_routes=self.host_routes,
@@ -258,8 +257,8 @@ class AwaitableGetSubnetResult(GetSubnetResult):
 
 def get_subnet(cidr: Optional[str] = None,
                description: Optional[str] = None,
-               dhcp_disabled: Optional[bool] = None,
                dhcp_enabled: Optional[bool] = None,
+               dns_publish_fixed_ip: Optional[bool] = None,
                gateway_ip: Optional[str] = None,
                ip_version: Optional[int] = None,
                ipv6_address_mode: Optional[str] = None,
@@ -288,6 +287,7 @@ def get_subnet(cidr: Optional[str] = None,
     :param str cidr: The CIDR of the subnet.
     :param str description: Human-readable description of the subnet.
     :param bool dhcp_enabled: If the subnet has DHCP enabled.
+    :param bool dns_publish_fixed_ip: If the subnet publishes DNS records.
     :param str gateway_ip: The IP of the subnet's gateway.
     :param int ip_version: The IP version of the subnet (either 4 or 6).
     :param str ipv6_address_mode: The IPv6 address mode. Valid values are
@@ -307,8 +307,8 @@ def get_subnet(cidr: Optional[str] = None,
     __args__ = dict()
     __args__['cidr'] = cidr
     __args__['description'] = description
-    __args__['dhcpDisabled'] = dhcp_disabled
     __args__['dhcpEnabled'] = dhcp_enabled
+    __args__['dnsPublishFixedIp'] = dns_publish_fixed_ip
     __args__['gatewayIp'] = gateway_ip
     __args__['ipVersion'] = ip_version
     __args__['ipv6AddressMode'] = ipv6_address_mode
@@ -328,9 +328,9 @@ def get_subnet(cidr: Optional[str] = None,
         allocation_pools=pulumi.get(__ret__, 'allocation_pools'),
         cidr=pulumi.get(__ret__, 'cidr'),
         description=pulumi.get(__ret__, 'description'),
-        dhcp_disabled=pulumi.get(__ret__, 'dhcp_disabled'),
         dhcp_enabled=pulumi.get(__ret__, 'dhcp_enabled'),
         dns_nameservers=pulumi.get(__ret__, 'dns_nameservers'),
+        dns_publish_fixed_ip=pulumi.get(__ret__, 'dns_publish_fixed_ip'),
         enable_dhcp=pulumi.get(__ret__, 'enable_dhcp'),
         gateway_ip=pulumi.get(__ret__, 'gateway_ip'),
         host_routes=pulumi.get(__ret__, 'host_routes'),
@@ -351,8 +351,8 @@ def get_subnet(cidr: Optional[str] = None,
 @_utilities.lift_output_func(get_subnet)
 def get_subnet_output(cidr: Optional[pulumi.Input[Optional[str]]] = None,
                       description: Optional[pulumi.Input[Optional[str]]] = None,
-                      dhcp_disabled: Optional[pulumi.Input[Optional[bool]]] = None,
                       dhcp_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                      dns_publish_fixed_ip: Optional[pulumi.Input[Optional[bool]]] = None,
                       gateway_ip: Optional[pulumi.Input[Optional[str]]] = None,
                       ip_version: Optional[pulumi.Input[Optional[int]]] = None,
                       ipv6_address_mode: Optional[pulumi.Input[Optional[str]]] = None,
@@ -381,6 +381,7 @@ def get_subnet_output(cidr: Optional[pulumi.Input[Optional[str]]] = None,
     :param str cidr: The CIDR of the subnet.
     :param str description: Human-readable description of the subnet.
     :param bool dhcp_enabled: If the subnet has DHCP enabled.
+    :param bool dns_publish_fixed_ip: If the subnet publishes DNS records.
     :param str gateway_ip: The IP of the subnet's gateway.
     :param int ip_version: The IP version of the subnet (either 4 or 6).
     :param str ipv6_address_mode: The IPv6 address mode. Valid values are

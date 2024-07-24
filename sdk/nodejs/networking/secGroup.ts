@@ -68,6 +68,13 @@ export class SecGroup extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * Indicates if the security group is stateful or
+     * stateless. Update of the stateful argument is allowed when there is no port
+     * associated with the security group. Available only in OpenStack environments
+     * with the `stateful-security-group` extension. Defaults to true.
+     */
+    public readonly stateful!: pulumi.Output<boolean>;
+    /**
      * A set of string tags for the security group.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
@@ -96,6 +103,7 @@ export class SecGroup extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["stateful"] = state ? state.stateful : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
@@ -104,6 +112,7 @@ export class SecGroup extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["stateful"] = args ? args.stateful : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["allTags"] = undefined /*out*/;
@@ -144,6 +153,13 @@ export interface SecGroupState {
      */
     region?: pulumi.Input<string>;
     /**
+     * Indicates if the security group is stateful or
+     * stateless. Update of the stateful argument is allowed when there is no port
+     * associated with the security group. Available only in OpenStack environments
+     * with the `stateful-security-group` extension. Defaults to true.
+     */
+    stateful?: pulumi.Input<boolean>;
+    /**
      * A set of string tags for the security group.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -180,6 +196,13 @@ export interface SecGroupArgs {
      * security group.
      */
     region?: pulumi.Input<string>;
+    /**
+     * Indicates if the security group is stateful or
+     * stateless. Update of the stateful argument is allowed when there is no port
+     * associated with the security group. Available only in OpenStack environments
+     * with the `stateful-security-group` extension. Defaults to true.
+     */
+    stateful?: pulumi.Input<boolean>;
     /**
      * A set of string tags for the security group.
      */

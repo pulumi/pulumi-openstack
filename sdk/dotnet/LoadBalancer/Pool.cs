@@ -67,8 +67,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The load balancing algorithm to
         /// distribute traffic to the pool's members. Must be one of
-        /// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-        /// in Octavia).
+        /// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
         /// </summary>
         [Output("lbMethod")]
         public Output<string> LbMethod { get; private set; } = null!;
@@ -105,8 +104,8 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-        /// UDP (supported only in Octavia), PROXYV2 (**Octavia minor version &gt;= 2.22**)
-        /// or SCTP (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+        /// UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
+        /// (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
@@ -119,6 +118,9 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Required for admins. The UUID of the tenant who owns
@@ -190,8 +192,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The load balancing algorithm to
         /// distribute traffic to the pool's members. Must be one of
-        /// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-        /// in Octavia).
+        /// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
         /// </summary>
         [Input("lbMethod", required: true)]
         public Input<string> LbMethod { get; set; } = null!;
@@ -228,8 +229,8 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-        /// UDP (supported only in Octavia), PROXYV2 (**Octavia minor version &gt;= 2.22**)
-        /// or SCTP (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+        /// UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
+        /// (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
@@ -242,6 +243,14 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Required for admins. The UUID of the tenant who owns
@@ -275,8 +284,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The load balancing algorithm to
         /// distribute traffic to the pool's members. Must be one of
-        /// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
-        /// in Octavia).
+        /// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
         /// </summary>
         [Input("lbMethod")]
         public Input<string>? LbMethod { get; set; }
@@ -313,8 +321,8 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-        /// UDP (supported only in Octavia), PROXYV2 (**Octavia minor version &gt;= 2.22**)
-        /// or SCTP (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+        /// UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
+        /// (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -327,6 +335,14 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Required for admins. The UUID of the tenant who owns

@@ -5,6 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface BgpvpnPortAssociateV2Route {
+    /**
+     * The ID of the BGP VPN to be advertised. Required
+     * if `type` is `bgpvpn`. Conflicts with `prefix`.
+     */
+    bgpvpnId?: pulumi.Input<string>;
+    /**
+     * The BGP LOCAL\_PREF value of the routes that will
+     * be advertised.
+     */
+    localPref?: pulumi.Input<number>;
+    /**
+     * The CIDR prefix (v4 or v6) to be advertised. Required
+     * if `type` is `prefix`. Conflicts with `bgpvpnId`.
+     */
+    prefix?: pulumi.Input<string>;
+    /**
+     * Can be `prefix` or `bgpvpn`. For the `prefix` type, the
+     * CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
+     * `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpnId` key.
+     */
+    type: pulumi.Input<string>;
+}
 export namespace blockstorage {
     export interface VolumeAttachment {
         device?: pulumi.Input<string>;
@@ -232,10 +255,6 @@ export namespace compute {
          */
         fixedIpV4?: pulumi.Input<string>;
         fixedIpV6?: pulumi.Input<string>;
-        /**
-         * @deprecated Use the openstack.compute.FloatingIpAssociate resource instead
-         */
-        floatingIp?: pulumi.Input<string>;
         mac?: pulumi.Input<string>;
         /**
          * The human-readable
@@ -287,7 +306,8 @@ export namespace compute {
         differentHosts?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * A UUID of a Server Group. The instance will be placed
-         * into that group.
+         * into that group. See reference
+         * for details on managing servergroup resources
          */
         group?: pulumi.Input<string>;
         /**
@@ -328,12 +348,6 @@ export namespace compute {
          * instances after some timeout.
          */
         ignoreResizeConfirmation?: pulumi.Input<boolean>;
-    }
-
-    export interface InstanceVolume {
-        device?: pulumi.Input<string>;
-        id?: pulumi.Input<string>;
-        volumeId: pulumi.Input<string>;
     }
 
     export interface SecGroupRule {
@@ -781,7 +795,7 @@ export namespace networking {
          * Subnet in which to allocate IP address for
          * this port.
          */
-        subnetId: pulumi.Input<string>;
+        subnetId?: pulumi.Input<string>;
     }
 
     export interface RouterExternalFixedIp {
@@ -812,17 +826,6 @@ export namespace networking {
          * The starting address.
          */
         start: pulumi.Input<string>;
-    }
-
-    export interface SubnetHostRoute {
-        /**
-         * The destination CIDR.
-         */
-        destinationCidr: pulumi.Input<string>;
-        /**
-         * The next hop in the route.
-         */
-        nextHop: pulumi.Input<string>;
     }
 
     export interface TrunkSubPort {

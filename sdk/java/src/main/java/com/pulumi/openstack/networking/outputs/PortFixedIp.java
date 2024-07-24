@@ -4,7 +4,6 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -26,7 +25,7 @@ public final class PortFixedIp {
      * this port.
      * 
      */
-    private String subnetId;
+    private @Nullable String subnetId;
 
     private PortFixedIp() {}
     /**
@@ -45,8 +44,8 @@ public final class PortFixedIp {
      * this port.
      * 
      */
-    public String subnetId() {
-        return this.subnetId;
+    public Optional<String> subnetId() {
+        return Optional.ofNullable(this.subnetId);
     }
 
     public static Builder builder() {
@@ -59,7 +58,7 @@ public final class PortFixedIp {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String ipAddress;
-        private String subnetId;
+        private @Nullable String subnetId;
         public Builder() {}
         public Builder(PortFixedIp defaults) {
     	      Objects.requireNonNull(defaults);
@@ -74,10 +73,8 @@ public final class PortFixedIp {
             return this;
         }
         @CustomType.Setter
-        public Builder subnetId(String subnetId) {
-            if (subnetId == null) {
-              throw new MissingRequiredPropertyException("PortFixedIp", "subnetId");
-            }
+        public Builder subnetId(@Nullable String subnetId) {
+
             this.subnetId = subnetId;
             return this;
         }

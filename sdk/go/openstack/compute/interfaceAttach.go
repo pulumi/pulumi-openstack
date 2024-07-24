@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
+//			network1, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
 //				Name:         pulumi.String("network_1"),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
@@ -50,7 +50,7 @@ import (
 //			}
 //			_, err = compute.NewInterfaceAttach(ctx, "ai_1", &compute.InterfaceAttachArgs{
 //				InstanceId: instance1.ID(),
-//				NetworkId:  pulumi.Any(network1OpenstackNetworkingPortV2.Id),
+//				NetworkId:  network1.ID(),
 //			})
 //			if err != nil {
 //				return err
