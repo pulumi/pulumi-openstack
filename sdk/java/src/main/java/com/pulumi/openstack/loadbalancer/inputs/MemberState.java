@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -188,6 +189,23 @@ public final class MemberState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A list of simple strings assigned to the member.
+     * Available only for Octavia &gt;= 2.5.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<List<String>> tags;
+
+    /**
+     * @return A list of simple strings assigned to the member.
+     * Available only for Octavia &gt;= 2.5.
+     * 
+     */
+    public Optional<Output<List<String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * Required for admins. The UUID of the tenant who owns
      * the member.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new member.
@@ -240,6 +258,7 @@ public final class MemberState extends com.pulumi.resources.ResourceArgs {
         this.protocolPort = $.protocolPort;
         this.region = $.region;
         this.subnetId = $.subnetId;
+        this.tags = $.tags;
         this.tenantId = $.tenantId;
         this.weight = $.weight;
     }
@@ -490,6 +509,40 @@ public final class MemberState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder subnetId(String subnetId) {
             return subnetId(Output.of(subnetId));
+        }
+
+        /**
+         * @param tags A list of simple strings assigned to the member.
+         * Available only for Octavia &gt;= 2.5.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<List<String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A list of simple strings assigned to the member.
+         * Available only for Octavia &gt;= 2.5.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(List<String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tags A list of simple strings assigned to the member.
+         * Available only for Octavia &gt;= 2.5.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
 
         /**

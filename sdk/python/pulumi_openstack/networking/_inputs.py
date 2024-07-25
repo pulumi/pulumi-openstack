@@ -265,33 +265,21 @@ class PortExtraDhcpOptionArgs:
 @pulumi.input_type
 class PortFixedIpArgs:
     def __init__(__self__, *,
-                 subnet_id: pulumi.Input[str],
-                 ip_address: Optional[pulumi.Input[str]] = None):
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 subnet_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] subnet_id: Subnet in which to allocate IP address for
-               this port.
         :param pulumi.Input[str] ip_address: IP address desired in the subnet for this port. If
                you don't specify `ip_address`, an available IP address from the specified
                subnet will be allocated to this port. This field will not be populated if it
                is left blank or omitted. To retrieve the assigned IP address, use the
                `all_fixed_ips` attribute.
+        :param pulumi.Input[str] subnet_id: Subnet in which to allocate IP address for
+               this port.
         """
-        pulumi.set(__self__, "subnet_id", subnet_id)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
-
-    @property
-    @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> pulumi.Input[str]:
-        """
-        Subnet in which to allocate IP address for
-        this port.
-        """
-        return pulumi.get(self, "subnet_id")
-
-    @subnet_id.setter
-    def subnet_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "subnet_id", value)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -308,6 +296,19 @@ class PortFixedIpArgs:
     @ip_address.setter
     def ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Subnet in which to allocate IP address for
+        this port.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnet_id", value)
 
 
 @pulumi.input_type

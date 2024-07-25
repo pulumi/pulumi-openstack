@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * });
  * const ai1 = new openstack.compute.InterfaceAttach("ai_1", {
  *     instanceId: instance1.id,
- *     networkId: network1OpenstackNetworkingPortV2.id,
+ *     networkId: network1.id,
  * });
  * ```
  *

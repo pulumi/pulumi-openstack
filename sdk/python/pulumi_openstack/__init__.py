@@ -5,11 +5,17 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .bgpvpn_network_associate_v2 import *
+from .bgpvpn_port_associate_v2 import *
+from .bgpvpn_router_associate_v2 import *
+from .bgpvpn_v2 import *
 from .get_fw_group_v2 import *
 from .get_fw_policy_v2 import *
 from .get_fw_rule_v2 import *
 from .lb_loadbalancer_v2 import *
 from .provider import *
+from ._inputs import *
+from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
@@ -496,6 +502,38 @@ _utilities.register(
   "fqn": "pulumi_openstack.images",
   "classes": {
    "openstack:images/imageAccessAccept:ImageAccessAccept": "ImageAccessAccept"
+  }
+ },
+ {
+  "pkg": "openstack",
+  "mod": "index/bgpvpnNetworkAssociateV2",
+  "fqn": "pulumi_openstack",
+  "classes": {
+   "openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2": "BgpvpnNetworkAssociateV2"
+  }
+ },
+ {
+  "pkg": "openstack",
+  "mod": "index/bgpvpnPortAssociateV2",
+  "fqn": "pulumi_openstack",
+  "classes": {
+   "openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2": "BgpvpnPortAssociateV2"
+  }
+ },
+ {
+  "pkg": "openstack",
+  "mod": "index/bgpvpnRouterAssociateV2",
+  "fqn": "pulumi_openstack",
+  "classes": {
+   "openstack:index/bgpvpnRouterAssociateV2:BgpvpnRouterAssociateV2": "BgpvpnRouterAssociateV2"
+  }
+ },
+ {
+  "pkg": "openstack",
+  "mod": "index/bgpvpnV2",
+  "fqn": "pulumi_openstack",
+  "classes": {
+   "openstack:index/bgpvpnV2:BgpvpnV2": "BgpvpnV2"
   }
  },
  {

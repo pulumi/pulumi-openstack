@@ -87,7 +87,7 @@ export class RbacPolicyV2 extends pulumi.CustomResource {
     /**
      * The type of the object that the RBAC policy
      * affects. Can be one of the following: `addressScope`, `addressGroup`,
-     * `network`, `qosPolicy`, `securityGroup` or `subnetpool`.
+     * `network`, `qosPolicy`, `securityGroup`, `subnetpool` or `bgpvpn`.
      */
     public readonly objectType!: pulumi.Output<string>;
     public /*out*/ readonly projectId!: pulumi.Output<string>;
@@ -167,7 +167,7 @@ export interface RbacPolicyV2State {
     /**
      * The type of the object that the RBAC policy
      * affects. Can be one of the following: `addressScope`, `addressGroup`,
-     * `network`, `qosPolicy`, `securityGroup` or `subnetpool`.
+     * `network`, `qosPolicy`, `securityGroup`, `subnetpool` or `bgpvpn`.
      */
     objectType?: pulumi.Input<string>;
     projectId?: pulumi.Input<string>;
@@ -203,7 +203,7 @@ export interface RbacPolicyV2Args {
     /**
      * The type of the object that the RBAC policy
      * affects. Can be one of the following: `addressScope`, `addressGroup`,
-     * `network`, `qosPolicy`, `securityGroup` or `subnetpool`.
+     * `network`, `qosPolicy`, `securityGroup`, `subnetpool` or `bgpvpn`.
      */
     objectType: pulumi.Input<string>;
     /**

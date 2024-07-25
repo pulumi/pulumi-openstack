@@ -136,6 +136,10 @@ export class Listener extends pulumi.CustomResource {
      * for more information.
      */
     public readonly sniContainerRefs!: pulumi.Output<string[] | undefined>;
+    /**
+     * A list of simple strings assigned to the pool. Available
+     * for Octavia **minor version 2.5 or later**.
+     */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
@@ -307,6 +311,10 @@ export interface ListenerState {
      * for more information.
      */
     sniContainerRefs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of simple strings assigned to the pool. Available
+     * for Octavia **minor version 2.5 or later**.
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required for admins. The UUID of the tenant who owns
@@ -411,6 +419,10 @@ export interface ListenerArgs {
      * for more information.
      */
     sniContainerRefs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of simple strings assigned to the pool. Available
+     * for Octavia **minor version 2.5 or later**.
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required for admins. The UUID of the tenant who owns

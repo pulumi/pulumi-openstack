@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -80,6 +81,21 @@ public final class GetSecGroupPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * Whether the security group is stateful or not.
+     * 
+     */
+    @Import(name="stateful")
+    private @Nullable Boolean stateful;
+
+    /**
+     * @return Whether the security group is stateful or not.
+     * 
+     */
+    public Optional<Boolean> stateful() {
+        return Optional.ofNullable(this.stateful);
+    }
+
+    /**
      * The list of security group tags to filter.
      * 
      */
@@ -116,6 +132,7 @@ public final class GetSecGroupPlainArgs extends com.pulumi.resources.InvokeArgs 
         this.name = $.name;
         this.region = $.region;
         this.secgroupId = $.secgroupId;
+        this.stateful = $.stateful;
         this.tags = $.tags;
         this.tenantId = $.tenantId;
     }
@@ -181,6 +198,17 @@ public final class GetSecGroupPlainArgs extends com.pulumi.resources.InvokeArgs 
          */
         public Builder secgroupId(@Nullable String secgroupId) {
             $.secgroupId = secgroupId;
+            return this;
+        }
+
+        /**
+         * @param stateful Whether the security group is stateful or not.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stateful(@Nullable Boolean stateful) {
+            $.stateful = stateful;
             return this;
         }
 

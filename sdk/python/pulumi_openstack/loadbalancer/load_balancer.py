@@ -27,6 +27,7 @@ class LoadBalancerArgs:
                  vip_address: Optional[pulumi.Input[str]] = None,
                  vip_network_id: Optional[pulumi.Input[str]] = None,
                  vip_port_id: Optional[pulumi.Input[str]] = None,
+                 vip_qos_policy_id: Optional[pulumi.Input[str]] = None,
                  vip_subnet_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
@@ -57,6 +58,8 @@ class LoadBalancerArgs:
             pulumi.set(__self__, "vip_network_id", vip_network_id)
         if vip_port_id is not None:
             pulumi.set(__self__, "vip_port_id", vip_port_id)
+        if vip_qos_policy_id is not None:
+            pulumi.set(__self__, "vip_qos_policy_id", vip_qos_policy_id)
         if vip_subnet_id is not None:
             pulumi.set(__self__, "vip_subnet_id", vip_subnet_id)
 
@@ -178,6 +181,15 @@ class LoadBalancerArgs:
         pulumi.set(self, "vip_port_id", value)
 
     @property
+    @pulumi.getter(name="vipQosPolicyId")
+    def vip_qos_policy_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "vip_qos_policy_id")
+
+    @vip_qos_policy_id.setter
+    def vip_qos_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vip_qos_policy_id", value)
+
+    @property
     @pulumi.getter(name="vipSubnetId")
     def vip_subnet_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "vip_subnet_id")
@@ -203,6 +215,7 @@ class _LoadBalancerState:
                  vip_address: Optional[pulumi.Input[str]] = None,
                  vip_network_id: Optional[pulumi.Input[str]] = None,
                  vip_port_id: Optional[pulumi.Input[str]] = None,
+                 vip_qos_policy_id: Optional[pulumi.Input[str]] = None,
                  vip_subnet_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
@@ -233,6 +246,8 @@ class _LoadBalancerState:
             pulumi.set(__self__, "vip_network_id", vip_network_id)
         if vip_port_id is not None:
             pulumi.set(__self__, "vip_port_id", vip_port_id)
+        if vip_qos_policy_id is not None:
+            pulumi.set(__self__, "vip_qos_policy_id", vip_qos_policy_id)
         if vip_subnet_id is not None:
             pulumi.set(__self__, "vip_subnet_id", vip_subnet_id)
 
@@ -352,6 +367,15 @@ class _LoadBalancerState:
     @vip_port_id.setter
     def vip_port_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vip_port_id", value)
+
+    @property
+    @pulumi.getter(name="vipQosPolicyId")
+    def vip_qos_policy_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "vip_qos_policy_id")
+
+    @vip_qos_policy_id.setter
+    def vip_qos_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vip_qos_policy_id", value)
 
     @property
     @pulumi.getter(name="vipSubnetId")
@@ -386,6 +410,7 @@ class LoadBalancer(pulumi.CustomResource):
                  vip_address: Optional[pulumi.Input[str]] = None,
                  vip_network_id: Optional[pulumi.Input[str]] = None,
                  vip_port_id: Optional[pulumi.Input[str]] = None,
+                 vip_qos_policy_id: Optional[pulumi.Input[str]] = None,
                  vip_subnet_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -429,6 +454,7 @@ class LoadBalancer(pulumi.CustomResource):
                  vip_address: Optional[pulumi.Input[str]] = None,
                  vip_network_id: Optional[pulumi.Input[str]] = None,
                  vip_port_id: Optional[pulumi.Input[str]] = None,
+                 vip_qos_policy_id: Optional[pulumi.Input[str]] = None,
                  vip_subnet_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         pulumi.log.warn("""LoadBalancer is deprecated: openstack.loadbalancer/loadbalancer.LoadBalancer has been deprecated in favor of openstack.index/lbloadbalancerv2.LbLoadbalancerV2""")
@@ -453,6 +479,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["vip_address"] = vip_address
             __props__.__dict__["vip_network_id"] = vip_network_id
             __props__.__dict__["vip_port_id"] = vip_port_id
+            __props__.__dict__["vip_qos_policy_id"] = vip_qos_policy_id
             __props__.__dict__["vip_subnet_id"] = vip_subnet_id
         super(LoadBalancer, __self__).__init__(
             'openstack:loadbalancer/loadBalancer:LoadBalancer',
@@ -477,6 +504,7 @@ class LoadBalancer(pulumi.CustomResource):
             vip_address: Optional[pulumi.Input[str]] = None,
             vip_network_id: Optional[pulumi.Input[str]] = None,
             vip_port_id: Optional[pulumi.Input[str]] = None,
+            vip_qos_policy_id: Optional[pulumi.Input[str]] = None,
             vip_subnet_id: Optional[pulumi.Input[str]] = None) -> 'LoadBalancer':
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
@@ -503,6 +531,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["vip_address"] = vip_address
         __props__.__dict__["vip_network_id"] = vip_network_id
         __props__.__dict__["vip_port_id"] = vip_port_id
+        __props__.__dict__["vip_qos_policy_id"] = vip_qos_policy_id
         __props__.__dict__["vip_subnet_id"] = vip_subnet_id
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
 
@@ -570,6 +599,11 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="vipPortId")
     def vip_port_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "vip_port_id")
+
+    @property
+    @pulumi.getter(name="vipQosPolicyId")
+    def vip_qos_policy_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "vip_qos_policy_id")
 
     @property
     @pulumi.getter(name="vipSubnetId")

@@ -135,7 +135,7 @@ type L7RuleV2 struct {
 	// other than their own. Changing this creates a new L7 Rule.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-	// HOST\_NAME or PATH.
+	// HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The value to use for the comparison. For example, the file type to
 	// compare.
@@ -211,7 +211,7 @@ type l7ruleV2State struct {
 	// other than their own. Changing this creates a new L7 Rule.
 	TenantId *string `pulumi:"tenantId"`
 	// The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-	// HOST\_NAME or PATH.
+	// HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
 	Type *string `pulumi:"type"`
 	// The value to use for the comparison. For example, the file type to
 	// compare.
@@ -246,7 +246,7 @@ type L7RuleV2State struct {
 	// other than their own. Changing this creates a new L7 Rule.
 	TenantId pulumi.StringPtrInput
 	// The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-	// HOST\_NAME or PATH.
+	// HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
 	Type pulumi.StringPtrInput
 	// The value to use for the comparison. For example, the file type to
 	// compare.
@@ -283,7 +283,7 @@ type l7ruleV2Args struct {
 	// other than their own. Changing this creates a new L7 Rule.
 	TenantId *string `pulumi:"tenantId"`
 	// The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-	// HOST\_NAME or PATH.
+	// HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
 	Type string `pulumi:"type"`
 	// The value to use for the comparison. For example, the file type to
 	// compare.
@@ -317,7 +317,7 @@ type L7RuleV2Args struct {
 	// other than their own. Changing this creates a new L7 Rule.
 	TenantId pulumi.StringPtrInput
 	// The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-	// HOST\_NAME or PATH.
+	// HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
 	Type pulumi.StringInput
 	// The value to use for the comparison. For example, the file type to
 	// compare.
@@ -462,7 +462,7 @@ func (o L7RuleV2Output) TenantId() pulumi.StringOutput {
 }
 
 // The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-// HOST\_NAME or PATH.
+// HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
 func (o L7RuleV2Output) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *L7RuleV2) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

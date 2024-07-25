@@ -27,6 +27,8 @@ export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Prom
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:images/getImage:getImage", {
+        "containerFormat": args.containerFormat,
+        "diskFormat": args.diskFormat,
         "hidden": args.hidden,
         "memberStatus": args.memberStatus,
         "mostRecent": args.mostRecent,
@@ -49,6 +51,14 @@ export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetImageArgs {
     /**
+     * The container format of the image.
+     */
+    containerFormat?: string;
+    /**
+     * The disk format of the image.
+     */
+    diskFormat?: string;
+    /**
      * Whether or not the image is hidden from public list.
      */
     hidden?: boolean;
@@ -63,8 +73,8 @@ export interface GetImageArgs {
      */
     mostRecent?: boolean;
     /**
-     * The name of the image. Cannot be used simultaneously
-     * with `nameRegex`.
+     * The name of the image. Cannot be used simultaneously with
+     * `nameRegex`.
      */
     name?: string;
     /**
@@ -80,17 +90,16 @@ export interface GetImageArgs {
     owner?: string;
     /**
      * a map of key/value pairs to match an image with.
-     * All specified properties must be matched. Unlike other options filtering
-     * by `properties` does by client on the result of OpenStack search query.
-     * Filtering is applied if server responce contains at least 2 images. In
-     * case there is only one image the `properties` ignores.
+     * All specified properties must be matched. Unlike other options filtering by
+     * `properties` does by client on the result of OpenStack search query.
+     * Filtering is applied if server responce contains at least 2 images. In case
+     * there is only one image the `properties` ignores.
      */
     properties?: {[key: string]: any};
     /**
-     * The region in which to obtain the V2 Glance client.
-     * A Glance client is needed to create an Image that can be used with
-     * a compute instance. If omitted, the `region` argument of the provider
-     * is used.
+     * The region in which to obtain the V2 Glance client. A
+     * Glance client is needed to create an Image that can be used with a compute
+     * instance. If omitted, the `region` argument of the provider is used.
      */
     region?: string;
     /**
@@ -104,9 +113,9 @@ export interface GetImageArgs {
     /**
      * Sorts the response by one or more attribute and sort
      * direction combinations. You can also set multiple sort keys and directions.
-     * Default direction is `desc`. Use the comma (,) character to separate
-     * multiple values. For example expression `sort = "name:asc,status"`
-     * sorts ascending by name and descending by status.
+     * Default direction is `desc`. Use the comma (,) character to separate multiple
+     * values. For example expression `sort = "name:asc,status"` sorts ascending by
+     * name and descending by status.
      */
     sort?: string;
     /**
@@ -114,8 +123,8 @@ export interface GetImageArgs {
      */
     tag?: string;
     /**
-     * A list of tags required to be set on the image 
-     * (all specified tags must be in the images tag list for it to be matched).
+     * A list of tags required to be set on the image (all
+     * specified tags must be in the images tag list for it to be matched).
      */
     tags?: string[];
     /**
@@ -136,7 +145,7 @@ export interface GetImageResult {
     /**
      * The format of the image's container.
      */
-    readonly containerFormat: string;
+    readonly containerFormat?: string;
     /**
      * The date the image was created.
      */
@@ -144,7 +153,7 @@ export interface GetImageResult {
     /**
      * The format of the image's disk.
      */
-    readonly diskFormat: string;
+    readonly diskFormat?: string;
     /**
      * the trailing path after the glance endpoint that represent the
      * location of the image or the path to retrieve it.
@@ -157,9 +166,9 @@ export interface GetImageResult {
     readonly id: string;
     readonly memberStatus?: string;
     /**
-     * The metadata associated with the image.
-     * Image metadata allow for meaningfully define the image properties
-     * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+     * The metadata associated with the image. Image metadata allow for
+     * meaningfully define the image properties and tags. See
+     * https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      */
     readonly metadata: {[key: string]: any};
     /**
@@ -184,8 +193,7 @@ export interface GetImageResult {
     readonly protected: boolean;
     readonly region: string;
     /**
-     * The path to the JSON-schema that represent
-     * the image or image
+     * The path to the JSON-schema that represent the image
      */
     readonly schema: string;
     /**
@@ -233,6 +241,14 @@ export function getImageOutput(args?: GetImageOutputArgs, opts?: pulumi.InvokeOp
  */
 export interface GetImageOutputArgs {
     /**
+     * The container format of the image.
+     */
+    containerFormat?: pulumi.Input<string>;
+    /**
+     * The disk format of the image.
+     */
+    diskFormat?: pulumi.Input<string>;
+    /**
      * Whether or not the image is hidden from public list.
      */
     hidden?: pulumi.Input<boolean>;
@@ -247,8 +263,8 @@ export interface GetImageOutputArgs {
      */
     mostRecent?: pulumi.Input<boolean>;
     /**
-     * The name of the image. Cannot be used simultaneously
-     * with `nameRegex`.
+     * The name of the image. Cannot be used simultaneously with
+     * `nameRegex`.
      */
     name?: pulumi.Input<string>;
     /**
@@ -264,17 +280,16 @@ export interface GetImageOutputArgs {
     owner?: pulumi.Input<string>;
     /**
      * a map of key/value pairs to match an image with.
-     * All specified properties must be matched. Unlike other options filtering
-     * by `properties` does by client on the result of OpenStack search query.
-     * Filtering is applied if server responce contains at least 2 images. In
-     * case there is only one image the `properties` ignores.
+     * All specified properties must be matched. Unlike other options filtering by
+     * `properties` does by client on the result of OpenStack search query.
+     * Filtering is applied if server responce contains at least 2 images. In case
+     * there is only one image the `properties` ignores.
      */
     properties?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The region in which to obtain the V2 Glance client.
-     * A Glance client is needed to create an Image that can be used with
-     * a compute instance. If omitted, the `region` argument of the provider
-     * is used.
+     * The region in which to obtain the V2 Glance client. A
+     * Glance client is needed to create an Image that can be used with a compute
+     * instance. If omitted, the `region` argument of the provider is used.
      */
     region?: pulumi.Input<string>;
     /**
@@ -288,9 +303,9 @@ export interface GetImageOutputArgs {
     /**
      * Sorts the response by one or more attribute and sort
      * direction combinations. You can also set multiple sort keys and directions.
-     * Default direction is `desc`. Use the comma (,) character to separate
-     * multiple values. For example expression `sort = "name:asc,status"`
-     * sorts ascending by name and descending by status.
+     * Default direction is `desc`. Use the comma (,) character to separate multiple
+     * values. For example expression `sort = "name:asc,status"` sorts ascending by
+     * name and descending by status.
      */
     sort?: pulumi.Input<string>;
     /**
@@ -298,8 +313,8 @@ export interface GetImageOutputArgs {
      */
     tag?: pulumi.Input<string>;
     /**
-     * A list of tags required to be set on the image 
-     * (all specified tags must be in the images tag list for it to be matched).
+     * A list of tags required to be set on the image (all
+     * specified tags must be in the images tag list for it to be matched).
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

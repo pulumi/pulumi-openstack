@@ -121,7 +121,7 @@ public class RbacPolicyV2 extends com.pulumi.resources.CustomResource {
     /**
      * The type of the object that the RBAC policy
      * affects. Can be one of the following: `address_scope`, `address_group`,
-     * `network`, `qos_policy`, `security_group` or `subnetpool`.
+     * `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
      * 
      */
     @Export(name="objectType", refs={String.class}, tree="[0]")
@@ -130,7 +130,7 @@ public class RbacPolicyV2 extends com.pulumi.resources.CustomResource {
     /**
      * @return The type of the object that the RBAC policy
      * affects. Can be one of the following: `address_scope`, `address_group`,
-     * `network`, `qos_policy`, `security_group` or `subnetpool`.
+     * `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
      * 
      */
     public Output<String> objectType() {

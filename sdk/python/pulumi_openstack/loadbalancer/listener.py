@@ -70,6 +70,8 @@ class ListenerArgs:
                containers which store SNI information. See
                [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
                for more information.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the pool. Available
+               for Octavia **minor version 2.5 or later**.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the Listener.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new Listener.
@@ -296,6 +298,10 @@ class ListenerArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of simple strings assigned to the pool. Available
+        for Octavia **minor version 2.5 or later**.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -425,6 +431,8 @@ class _ListenerState:
                containers which store SNI information. See
                [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
                for more information.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the pool. Available
+               for Octavia **minor version 2.5 or later**.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the Listener.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new Listener.
@@ -654,6 +662,10 @@ class _ListenerState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of simple strings assigned to the pool. Available
+        for Octavia **minor version 2.5 or later**.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -815,6 +827,8 @@ class Listener(pulumi.CustomResource):
                containers which store SNI information. See
                [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
                for more information.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the pool. Available
+               for Octavia **minor version 2.5 or later**.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the Listener.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new Listener.
@@ -998,6 +1012,8 @@ class Listener(pulumi.CustomResource):
                containers which store SNI information. See
                [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
                for more information.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the pool. Available
+               for Octavia **minor version 2.5 or later**.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
                the Listener.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new Listener.
@@ -1161,6 +1177,10 @@ class Listener(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A list of simple strings assigned to the pool. Available
+        for Octavia **minor version 2.5 or later**.
+        """
         return pulumi.get(self, "tags")
 
     @property

@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  *         var ai1 = new InterfaceAttach("ai1", InterfaceAttachArgs.builder()
  *             .instanceId(instance1.id())
- *             .networkId(network1OpenstackNetworkingPortV2.id())
+ *             .networkId(network1.id())
  *             .build());
  * 
  *     }

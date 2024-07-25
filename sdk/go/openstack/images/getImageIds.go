@@ -55,11 +55,17 @@ func GetImageIds(ctx *pulumi.Context, args *GetImageIdsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getImageIds.
 type GetImageIdsArgs struct {
+	// The container format of the image.
+	ContainerFormat *string `pulumi:"containerFormat"`
+	// The disk format of the image.
+	DiskFormat *string `pulumi:"diskFormat"`
+	// Whether or not the image is hidden from public list.
+	Hidden *bool `pulumi:"hidden"`
 	// The status of the image. Must be one of
 	// "accepted", "pending", "rejected", or "all".
 	MemberStatus *string `pulumi:"memberStatus"`
-	// The name of the image. Cannot be used simultaneously
-	// with `nameRegex`.
+	// The name of the image. Cannot be used simultaneously with
+	// `nameRegex`.
 	Name *string `pulumi:"name"`
 	// The regular expressian of the name of the image.
 	// Cannot be used simultaneously with `name`. Unlike filtering by `name` the
@@ -69,13 +75,12 @@ type GetImageIdsArgs struct {
 	// The owner (UUID) of the image.
 	Owner *string `pulumi:"owner"`
 	// a map of key/value pairs to match an image with.
-	// All specified properties must be matched. Unlike other options filtering
-	// by `properties` does by client on the result of OpenStack search query.
+	// All specified properties must be matched. Unlike other options filtering by
+	// `properties` does by client on the result of OpenStack search query.
 	Properties map[string]interface{} `pulumi:"properties"`
-	// The region in which to obtain the V2 Glance client.
-	// A Glance client is needed to create an Image that can be used with
-	// a compute instance. If omitted, the `region` argument of the provider
-	// is used.
+	// The region in which to obtain the V2 Glance client. A
+	// Glance client is needed to create an Image that can be used with a compute
+	// instance. If omitted, the `region` argument of the provider is used.
 	Region *string `pulumi:"region"`
 	// The maximum size (in bytes) of the image to return.
 	SizeMax *int `pulumi:"sizeMax"`
@@ -83,14 +88,14 @@ type GetImageIdsArgs struct {
 	SizeMin *int `pulumi:"sizeMin"`
 	// Sorts the response by one or more attribute and sort
 	// direction combinations. You can also set multiple sort keys and directions.
-	// Default direction is `desc`. Use the comma (,) character to separate
-	// multiple values. For example expression `sort = "name:asc,status"`
-	// sorts ascending by name and descending by status.
+	// Default direction is `desc`. Use the comma (,) character to separate multiple
+	// values. For example expression `sort = "name:asc,status"` sorts ascending by
+	// name and descending by status.
 	Sort *string `pulumi:"sort"`
 	// Search for images with a specific tag.
 	Tag *string `pulumi:"tag"`
-	// A list of tags required to be set on the image
-	// (all specified tags must be in the images tag list for it to be matched).
+	// A list of tags required to be set on the image (all
+	// specified tags must be in the images tag list for it to be matched).
 	Tags []string `pulumi:"tags"`
 	// The visibility of the image. Must be one of
 	// "public", "private", "community", or "shared". Defaults to "private".
@@ -99,6 +104,9 @@ type GetImageIdsArgs struct {
 
 // A collection of values returned by getImageIds.
 type GetImageIdsResult struct {
+	ContainerFormat *string `pulumi:"containerFormat"`
+	DiskFormat      *string `pulumi:"diskFormat"`
+	Hidden          *bool   `pulumi:"hidden"`
 	// The provider-assigned unique ID for this managed resource.
 	Id           string                 `pulumi:"id"`
 	Ids          []string               `pulumi:"ids"`
@@ -131,11 +139,17 @@ func GetImageIdsOutput(ctx *pulumi.Context, args GetImageIdsOutputArgs, opts ...
 
 // A collection of arguments for invoking getImageIds.
 type GetImageIdsOutputArgs struct {
+	// The container format of the image.
+	ContainerFormat pulumi.StringPtrInput `pulumi:"containerFormat"`
+	// The disk format of the image.
+	DiskFormat pulumi.StringPtrInput `pulumi:"diskFormat"`
+	// Whether or not the image is hidden from public list.
+	Hidden pulumi.BoolPtrInput `pulumi:"hidden"`
 	// The status of the image. Must be one of
 	// "accepted", "pending", "rejected", or "all".
 	MemberStatus pulumi.StringPtrInput `pulumi:"memberStatus"`
-	// The name of the image. Cannot be used simultaneously
-	// with `nameRegex`.
+	// The name of the image. Cannot be used simultaneously with
+	// `nameRegex`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The regular expressian of the name of the image.
 	// Cannot be used simultaneously with `name`. Unlike filtering by `name` the
@@ -145,13 +159,12 @@ type GetImageIdsOutputArgs struct {
 	// The owner (UUID) of the image.
 	Owner pulumi.StringPtrInput `pulumi:"owner"`
 	// a map of key/value pairs to match an image with.
-	// All specified properties must be matched. Unlike other options filtering
-	// by `properties` does by client on the result of OpenStack search query.
+	// All specified properties must be matched. Unlike other options filtering by
+	// `properties` does by client on the result of OpenStack search query.
 	Properties pulumi.MapInput `pulumi:"properties"`
-	// The region in which to obtain the V2 Glance client.
-	// A Glance client is needed to create an Image that can be used with
-	// a compute instance. If omitted, the `region` argument of the provider
-	// is used.
+	// The region in which to obtain the V2 Glance client. A
+	// Glance client is needed to create an Image that can be used with a compute
+	// instance. If omitted, the `region` argument of the provider is used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The maximum size (in bytes) of the image to return.
 	SizeMax pulumi.IntPtrInput `pulumi:"sizeMax"`
@@ -159,14 +172,14 @@ type GetImageIdsOutputArgs struct {
 	SizeMin pulumi.IntPtrInput `pulumi:"sizeMin"`
 	// Sorts the response by one or more attribute and sort
 	// direction combinations. You can also set multiple sort keys and directions.
-	// Default direction is `desc`. Use the comma (,) character to separate
-	// multiple values. For example expression `sort = "name:asc,status"`
-	// sorts ascending by name and descending by status.
+	// Default direction is `desc`. Use the comma (,) character to separate multiple
+	// values. For example expression `sort = "name:asc,status"` sorts ascending by
+	// name and descending by status.
 	Sort pulumi.StringPtrInput `pulumi:"sort"`
 	// Search for images with a specific tag.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
-	// A list of tags required to be set on the image
-	// (all specified tags must be in the images tag list for it to be matched).
+	// A list of tags required to be set on the image (all
+	// specified tags must be in the images tag list for it to be matched).
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// The visibility of the image. Must be one of
 	// "public", "private", "community", or "shared". Defaults to "private".
@@ -190,6 +203,18 @@ func (o GetImageIdsResultOutput) ToGetImageIdsResultOutput() GetImageIdsResultOu
 
 func (o GetImageIdsResultOutput) ToGetImageIdsResultOutputWithContext(ctx context.Context) GetImageIdsResultOutput {
 	return o
+}
+
+func (o GetImageIdsResultOutput) ContainerFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImageIdsResult) *string { return v.ContainerFormat }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImageIdsResultOutput) DiskFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImageIdsResult) *string { return v.DiskFormat }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImageIdsResultOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetImageIdsResult) *bool { return v.Hidden }).(pulumi.BoolPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

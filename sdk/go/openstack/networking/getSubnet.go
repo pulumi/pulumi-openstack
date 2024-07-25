@@ -56,6 +56,8 @@ type LookupSubnetArgs struct {
 	Description *string `pulumi:"description"`
 	// If the subnet has DHCP enabled.
 	DhcpEnabled *bool `pulumi:"dhcpEnabled"`
+	// If the subnet publishes DNS records.
+	DnsPublishFixedIp *bool `pulumi:"dnsPublishFixedIp"`
 	// The IP of the subnet's gateway.
 	GatewayIp *string `pulumi:"gatewayIp"`
 	// The IP version of the subnet (either 4 or 6).
@@ -94,7 +96,8 @@ type LookupSubnetResult struct {
 	Description     string                    `pulumi:"description"`
 	DhcpEnabled     *bool                     `pulumi:"dhcpEnabled"`
 	// DNS Nameservers of the subnet.
-	DnsNameservers []string `pulumi:"dnsNameservers"`
+	DnsNameservers    []string `pulumi:"dnsNameservers"`
+	DnsPublishFixedIp *bool    `pulumi:"dnsPublishFixedIp"`
 	// Whether the subnet has DHCP enabled or not.
 	EnableDhcp bool   `pulumi:"enableDhcp"`
 	GatewayIp  string `pulumi:"gatewayIp"`
@@ -138,6 +141,8 @@ type LookupSubnetOutputArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// If the subnet has DHCP enabled.
 	DhcpEnabled pulumi.BoolPtrInput `pulumi:"dhcpEnabled"`
+	// If the subnet publishes DNS records.
+	DnsPublishFixedIp pulumi.BoolPtrInput `pulumi:"dnsPublishFixedIp"`
 	// The IP of the subnet's gateway.
 	GatewayIp pulumi.StringPtrInput `pulumi:"gatewayIp"`
 	// The IP version of the subnet (either 4 or 6).
@@ -210,6 +215,10 @@ func (o LookupSubnetResultOutput) DhcpEnabled() pulumi.BoolPtrOutput {
 // DNS Nameservers of the subnet.
 func (o LookupSubnetResultOutput) DnsNameservers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSubnetResult) []string { return v.DnsNameservers }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupSubnetResultOutput) DnsPublishFixedIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupSubnetResult) *bool { return v.DnsPublishFixedIp }).(pulumi.BoolPtrOutput)
 }
 
 // Whether the subnet has DHCP enabled or not.

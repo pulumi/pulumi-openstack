@@ -90,7 +90,8 @@ type Pool struct {
 	// A Networking client is needed to create an . If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// pool.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region pulumi.StringOutput      `pulumi:"region"`
+	Tags   pulumi.StringArrayOutput `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
 	// the pool.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new pool.
@@ -164,7 +165,8 @@ type poolState struct {
 	// A Networking client is needed to create an . If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// pool.
-	Region *string `pulumi:"region"`
+	Region *string  `pulumi:"region"`
+	Tags   []string `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
 	// the pool.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new pool.
@@ -204,6 +206,7 @@ type PoolState struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// pool.
 	Region pulumi.StringPtrInput
+	Tags   pulumi.StringArrayInput
 	// Required for admins. The UUID of the tenant who owns
 	// the pool.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new pool.
@@ -246,7 +249,8 @@ type poolArgs struct {
 	// A Networking client is needed to create an . If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// pool.
-	Region *string `pulumi:"region"`
+	Region *string  `pulumi:"region"`
+	Tags   []string `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
 	// the pool.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new pool.
@@ -287,6 +291,7 @@ type PoolArgs struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// pool.
 	Region pulumi.StringPtrInput
+	Tags   pulumi.StringArrayInput
 	// Required for admins. The UUID of the tenant who owns
 	// the pool.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new pool.
@@ -437,6 +442,10 @@ func (o PoolOutput) Protocol() pulumi.StringOutput {
 // pool.
 func (o PoolOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o PoolOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // Required for admins. The UUID of the tenant who owns

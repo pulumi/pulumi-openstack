@@ -18,6 +18,7 @@ public final class GetSubnetIdsV2Result {
     private @Nullable String cidr;
     private @Nullable String description;
     private @Nullable Boolean dhcpEnabled;
+    private @Nullable Boolean dnsPublishFixedIp;
     private @Nullable String gatewayIp;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -47,6 +48,9 @@ public final class GetSubnetIdsV2Result {
     }
     public Optional<Boolean> dhcpEnabled() {
         return Optional.ofNullable(this.dhcpEnabled);
+    }
+    public Optional<Boolean> dnsPublishFixedIp() {
+        return Optional.ofNullable(this.dnsPublishFixedIp);
     }
     public Optional<String> gatewayIp() {
         return Optional.ofNullable(this.gatewayIp);
@@ -110,6 +114,7 @@ public final class GetSubnetIdsV2Result {
         private @Nullable String cidr;
         private @Nullable String description;
         private @Nullable Boolean dhcpEnabled;
+        private @Nullable Boolean dnsPublishFixedIp;
         private @Nullable String gatewayIp;
         private String id;
         private List<String> ids;
@@ -131,6 +136,7 @@ public final class GetSubnetIdsV2Result {
     	      this.cidr = defaults.cidr;
     	      this.description = defaults.description;
     	      this.dhcpEnabled = defaults.dhcpEnabled;
+    	      this.dnsPublishFixedIp = defaults.dnsPublishFixedIp;
     	      this.gatewayIp = defaults.gatewayIp;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
@@ -164,6 +170,12 @@ public final class GetSubnetIdsV2Result {
         public Builder dhcpEnabled(@Nullable Boolean dhcpEnabled) {
 
             this.dhcpEnabled = dhcpEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dnsPublishFixedIp(@Nullable Boolean dnsPublishFixedIp) {
+
+            this.dnsPublishFixedIp = dnsPublishFixedIp;
             return this;
         }
         @CustomType.Setter
@@ -275,6 +287,7 @@ public final class GetSubnetIdsV2Result {
             _resultValue.cidr = cidr;
             _resultValue.description = description;
             _resultValue.dhcpEnabled = dhcpEnabled;
+            _resultValue.dnsPublishFixedIp = dnsPublishFixedIp;
             _resultValue.gatewayIp = gatewayIp;
             _resultValue.id = id;
             _resultValue.ids = ids;

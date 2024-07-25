@@ -119,6 +119,9 @@ namespace Pulumi.OpenStack.LoadBalancer
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
         /// <summary>
         /// Required for admins. The UUID of the tenant who owns
         /// the pool.  Only administrative users can specify a tenant UUID
@@ -241,6 +244,14 @@ namespace Pulumi.OpenStack.LoadBalancer
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// Required for admins. The UUID of the tenant who owns
         /// the pool.  Only administrative users can specify a tenant UUID
@@ -324,6 +335,14 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Required for admins. The UUID of the tenant who owns

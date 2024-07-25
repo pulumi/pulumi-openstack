@@ -76,6 +76,24 @@ namespace Pulumi.OpenStack.Images
     public sealed class GetImageIdsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The container format of the image.
+        /// </summary>
+        [Input("containerFormat")]
+        public string? ContainerFormat { get; set; }
+
+        /// <summary>
+        /// The disk format of the image.
+        /// </summary>
+        [Input("diskFormat")]
+        public string? DiskFormat { get; set; }
+
+        /// <summary>
+        /// Whether or not the image is hidden from public list.
+        /// </summary>
+        [Input("hidden")]
+        public bool? Hidden { get; set; }
+
+        /// <summary>
         /// The status of the image. Must be one of
         /// "accepted", "pending", "rejected", or "all".
         /// </summary>
@@ -83,8 +101,8 @@ namespace Pulumi.OpenStack.Images
         public string? MemberStatus { get; set; }
 
         /// <summary>
-        /// The name of the image. Cannot be used simultaneously
-        /// with `name_regex`.
+        /// The name of the image. Cannot be used simultaneously with
+        /// `name_regex`.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -109,8 +127,8 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// a map of key/value pairs to match an image with.
-        /// All specified properties must be matched. Unlike other options filtering
-        /// by `properties` does by client on the result of OpenStack search query.
+        /// All specified properties must be matched. Unlike other options filtering by
+        /// `properties` does by client on the result of OpenStack search query.
         /// </summary>
         public Dictionary<string, object> Properties
         {
@@ -119,10 +137,9 @@ namespace Pulumi.OpenStack.Images
         }
 
         /// <summary>
-        /// The region in which to obtain the V2 Glance client.
-        /// A Glance client is needed to create an Image that can be used with
-        /// a compute instance. If omitted, the `region` argument of the provider
-        /// is used.
+        /// The region in which to obtain the V2 Glance client. A
+        /// Glance client is needed to create an Image that can be used with a compute
+        /// instance. If omitted, the `region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -142,9 +159,9 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// Sorts the response by one or more attribute and sort
         /// direction combinations. You can also set multiple sort keys and directions.
-        /// Default direction is `desc`. Use the comma (,) character to separate
-        /// multiple values. For example expression `sort = "name:asc,status"`
-        /// sorts ascending by name and descending by status.
+        /// Default direction is `desc`. Use the comma (,) character to separate multiple
+        /// values. For example expression `sort = "name:asc,status"` sorts ascending by
+        /// name and descending by status.
         /// </summary>
         [Input("sort")]
         public string? Sort { get; set; }
@@ -159,8 +176,8 @@ namespace Pulumi.OpenStack.Images
         private List<string>? _tags;
 
         /// <summary>
-        /// A list of tags required to be set on the image
-        /// (all specified tags must be in the images tag list for it to be matched).
+        /// A list of tags required to be set on the image (all
+        /// specified tags must be in the images tag list for it to be matched).
         /// </summary>
         public List<string> Tags
         {
@@ -184,6 +201,24 @@ namespace Pulumi.OpenStack.Images
     public sealed class GetImageIdsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The container format of the image.
+        /// </summary>
+        [Input("containerFormat")]
+        public Input<string>? ContainerFormat { get; set; }
+
+        /// <summary>
+        /// The disk format of the image.
+        /// </summary>
+        [Input("diskFormat")]
+        public Input<string>? DiskFormat { get; set; }
+
+        /// <summary>
+        /// Whether or not the image is hidden from public list.
+        /// </summary>
+        [Input("hidden")]
+        public Input<bool>? Hidden { get; set; }
+
+        /// <summary>
         /// The status of the image. Must be one of
         /// "accepted", "pending", "rejected", or "all".
         /// </summary>
@@ -191,8 +226,8 @@ namespace Pulumi.OpenStack.Images
         public Input<string>? MemberStatus { get; set; }
 
         /// <summary>
-        /// The name of the image. Cannot be used simultaneously
-        /// with `name_regex`.
+        /// The name of the image. Cannot be used simultaneously with
+        /// `name_regex`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -217,8 +252,8 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// a map of key/value pairs to match an image with.
-        /// All specified properties must be matched. Unlike other options filtering
-        /// by `properties` does by client on the result of OpenStack search query.
+        /// All specified properties must be matched. Unlike other options filtering by
+        /// `properties` does by client on the result of OpenStack search query.
         /// </summary>
         public InputMap<object> Properties
         {
@@ -227,10 +262,9 @@ namespace Pulumi.OpenStack.Images
         }
 
         /// <summary>
-        /// The region in which to obtain the V2 Glance client.
-        /// A Glance client is needed to create an Image that can be used with
-        /// a compute instance. If omitted, the `region` argument of the provider
-        /// is used.
+        /// The region in which to obtain the V2 Glance client. A
+        /// Glance client is needed to create an Image that can be used with a compute
+        /// instance. If omitted, the `region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -250,9 +284,9 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// Sorts the response by one or more attribute and sort
         /// direction combinations. You can also set multiple sort keys and directions.
-        /// Default direction is `desc`. Use the comma (,) character to separate
-        /// multiple values. For example expression `sort = "name:asc,status"`
-        /// sorts ascending by name and descending by status.
+        /// Default direction is `desc`. Use the comma (,) character to separate multiple
+        /// values. For example expression `sort = "name:asc,status"` sorts ascending by
+        /// name and descending by status.
         /// </summary>
         [Input("sort")]
         public Input<string>? Sort { get; set; }
@@ -267,8 +301,8 @@ namespace Pulumi.OpenStack.Images
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A list of tags required to be set on the image
-        /// (all specified tags must be in the images tag list for it to be matched).
+        /// A list of tags required to be set on the image (all
+        /// specified tags must be in the images tag list for it to be matched).
         /// </summary>
         public InputList<string> Tags
         {
@@ -293,6 +327,9 @@ namespace Pulumi.OpenStack.Images
     [OutputType]
     public sealed class GetImageIdsResult
     {
+        public readonly string? ContainerFormat;
+        public readonly string? DiskFormat;
+        public readonly bool? Hidden;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -313,6 +350,12 @@ namespace Pulumi.OpenStack.Images
 
         [OutputConstructor]
         private GetImageIdsResult(
+            string? containerFormat,
+
+            string? diskFormat,
+
+            bool? hidden,
+
             string id,
 
             ImmutableArray<string> ids,
@@ -341,6 +384,9 @@ namespace Pulumi.OpenStack.Images
 
             string? visibility)
         {
+            ContainerFormat = containerFormat;
+            DiskFormat = diskFormat;
+            Hidden = hidden;
             Id = id;
             Ids = ids;
             MemberStatus = memberStatus;

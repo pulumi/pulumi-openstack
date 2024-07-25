@@ -35,6 +35,7 @@ public final class GetSubnetResult {
      * 
      */
     private List<String> dnsNameservers;
+    private @Nullable Boolean dnsPublishFixedIp;
     /**
      * @return Whether the subnet has DHCP enabled or not.
      * 
@@ -101,6 +102,9 @@ public final class GetSubnetResult {
      */
     public List<String> dnsNameservers() {
         return this.dnsNameservers;
+    }
+    public Optional<Boolean> dnsPublishFixedIp() {
+        return Optional.ofNullable(this.dnsPublishFixedIp);
     }
     /**
      * @return Whether the subnet has DHCP enabled or not.
@@ -183,6 +187,7 @@ public final class GetSubnetResult {
         private String description;
         private @Nullable Boolean dhcpEnabled;
         private List<String> dnsNameservers;
+        private @Nullable Boolean dnsPublishFixedIp;
         private Boolean enableDhcp;
         private String gatewayIp;
         private List<GetSubnetHostRoute> hostRoutes;
@@ -207,6 +212,7 @@ public final class GetSubnetResult {
     	      this.description = defaults.description;
     	      this.dhcpEnabled = defaults.dhcpEnabled;
     	      this.dnsNameservers = defaults.dnsNameservers;
+    	      this.dnsPublishFixedIp = defaults.dnsPublishFixedIp;
     	      this.enableDhcp = defaults.enableDhcp;
     	      this.gatewayIp = defaults.gatewayIp;
     	      this.hostRoutes = defaults.hostRoutes;
@@ -278,6 +284,12 @@ public final class GetSubnetResult {
         }
         public Builder dnsNameservers(String... dnsNameservers) {
             return dnsNameservers(List.of(dnsNameservers));
+        }
+        @CustomType.Setter
+        public Builder dnsPublishFixedIp(@Nullable Boolean dnsPublishFixedIp) {
+
+            this.dnsPublishFixedIp = dnsPublishFixedIp;
+            return this;
         }
         @CustomType.Setter
         public Builder enableDhcp(Boolean enableDhcp) {
@@ -414,6 +426,7 @@ public final class GetSubnetResult {
             _resultValue.description = description;
             _resultValue.dhcpEnabled = dhcpEnabled;
             _resultValue.dnsNameservers = dnsNameservers;
+            _resultValue.dnsPublishFixedIp = dnsPublishFixedIp;
             _resultValue.enableDhcp = enableDhcp;
             _resultValue.gatewayIp = gatewayIp;
             _resultValue.hostRoutes = hostRoutes;

@@ -13,28 +13,64 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFlavorV2Result {
+    /**
+     * @return The description of the flavor.
+     * 
+     */
     private String description;
+    /**
+     * @return Is the flavor enabled.
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return The ID of the flavor.
+     * 
+     */
     private String flavorId;
+    /**
+     * @return The ID of the flavor profile.
+     * 
+     */
     private String flavorProfileId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The name of the flavor.
+     * 
+     */
     private String name;
     private @Nullable String region;
 
     private GetFlavorV2Result() {}
+    /**
+     * @return The description of the flavor.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Is the flavor enabled.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return The ID of the flavor.
+     * 
+     */
     public String flavorId() {
         return this.flavorId;
     }
+    /**
+     * @return The ID of the flavor profile.
+     * 
+     */
     public String flavorProfileId() {
         return this.flavorProfileId;
     }
@@ -45,6 +81,10 @@ public final class GetFlavorV2Result {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The name of the flavor.
+     * 
+     */
     public String name() {
         return this.name;
     }

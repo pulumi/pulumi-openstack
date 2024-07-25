@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -39,6 +40,11 @@ public final class GetSecGroupResult {
      */
     private String region;
     private @Nullable String secgroupId;
+    /**
+     * @return See Argument Reference above.
+     * 
+     */
+    private Boolean stateful;
     private @Nullable List<String> tags;
     private String tenantId;
 
@@ -81,6 +87,13 @@ public final class GetSecGroupResult {
     public Optional<String> secgroupId() {
         return Optional.ofNullable(this.secgroupId);
     }
+    /**
+     * @return See Argument Reference above.
+     * 
+     */
+    public Boolean stateful() {
+        return this.stateful;
+    }
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
@@ -103,6 +116,7 @@ public final class GetSecGroupResult {
         private @Nullable String name;
         private String region;
         private @Nullable String secgroupId;
+        private Boolean stateful;
         private @Nullable List<String> tags;
         private String tenantId;
         public Builder() {}
@@ -114,6 +128,7 @@ public final class GetSecGroupResult {
     	      this.name = defaults.name;
     	      this.region = defaults.region;
     	      this.secgroupId = defaults.secgroupId;
+    	      this.stateful = defaults.stateful;
     	      this.tags = defaults.tags;
     	      this.tenantId = defaults.tenantId;
         }
@@ -164,6 +179,14 @@ public final class GetSecGroupResult {
             return this;
         }
         @CustomType.Setter
+        public Builder stateful(Boolean stateful) {
+            if (stateful == null) {
+              throw new MissingRequiredPropertyException("GetSecGroupResult", "stateful");
+            }
+            this.stateful = stateful;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
 
             this.tags = tags;
@@ -188,6 +211,7 @@ public final class GetSecGroupResult {
             _resultValue.name = name;
             _resultValue.region = region;
             _resultValue.secgroupId = secgroupId;
+            _resultValue.stateful = stateful;
             _resultValue.tags = tags;
             _resultValue.tenantId = tenantId;
             return _resultValue;

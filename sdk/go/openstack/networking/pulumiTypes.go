@@ -587,7 +587,7 @@ type PortFixedIp struct {
 	IpAddress *string `pulumi:"ipAddress"`
 	// Subnet in which to allocate IP address for
 	// this port.
-	SubnetId string `pulumi:"subnetId"`
+	SubnetId *string `pulumi:"subnetId"`
 }
 
 // PortFixedIpInput is an input type that accepts PortFixedIpArgs and PortFixedIpOutput values.
@@ -610,7 +610,7 @@ type PortFixedIpArgs struct {
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// Subnet in which to allocate IP address for
 	// this port.
-	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
 func (PortFixedIpArgs) ElementType() reflect.Type {
@@ -675,8 +675,8 @@ func (o PortFixedIpOutput) IpAddress() pulumi.StringPtrOutput {
 
 // Subnet in which to allocate IP address for
 // this port.
-func (o PortFixedIpOutput) SubnetId() pulumi.StringOutput {
-	return o.ApplyT(func(v PortFixedIp) string { return v.SubnetId }).(pulumi.StringOutput)
+func (o PortFixedIpOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PortFixedIp) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
 type PortFixedIpArrayOutput struct{ *pulumi.OutputState }

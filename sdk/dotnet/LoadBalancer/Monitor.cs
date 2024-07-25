@@ -66,15 +66,15 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// Required for HTTP(S) types. Expected HTTP codes
         /// for a passing HTTP(S) monitor. You can either specify a single status like
-        /// "200", or a range like "200-202".
+        /// "200", a list like "200, 202" or a range like "200-202". Default is "200".
         /// </summary>
         [Output("expectedCodes")]
         public Output<string> ExpectedCodes { get; private set; } = null!;
 
         /// <summary>
-        /// Required for HTTP(S) types. The HTTP method used
-        /// for requests by the monitor. If this attribute is not specified, it
-        /// defaults to "GET".
+        /// Required for HTTP(S) types. The HTTP method that 
+        /// the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
+        /// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
         /// </summary>
         [Output("httpMethod")]
         public Output<string> HttpMethod { get; private set; } = null!;
@@ -88,9 +88,10 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Output<int> MaxRetries { get; private set; } = null!;
 
         /// <summary>
-        /// Number of permissible ping failures befor changing the member's
-        /// status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
-        /// Changing this updates the max_retries_down of the existing monitor.
+        /// Number of permissible ping failures before 
+        /// changing the member's status to ERROR. Must be a number between 1 and 10.
+        /// The default is 3. Changing this updates the max_retries_down of the
+        /// existing monitor.
         /// </summary>
         [Output("maxRetriesDown")]
         public Output<int> MaxRetriesDown { get; private set; } = null!;
@@ -134,15 +135,15 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The type of probe, which is PING, TCP, HTTP, HTTPS,
-        /// TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
-        /// balancer to verify the member state. Changing this creates a new monitor.
+        /// TLS-HELLO, SCTP or UDP-CONNECT, that is sent by the loadbalancer to
+        /// verify the member state. Changing this creates a new monitor.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
         /// Required for HTTP(S) types. URI path that will be
-        /// accessed if monitor type is HTTP or HTTPS.
+        /// accessed if monitor type is HTTP or HTTPS. Default is `/`.
         /// </summary>
         [Output("urlPath")]
         public Output<string> UrlPath { get; private set; } = null!;
@@ -209,15 +210,15 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// Required for HTTP(S) types. Expected HTTP codes
         /// for a passing HTTP(S) monitor. You can either specify a single status like
-        /// "200", or a range like "200-202".
+        /// "200", a list like "200, 202" or a range like "200-202". Default is "200".
         /// </summary>
         [Input("expectedCodes")]
         public Input<string>? ExpectedCodes { get; set; }
 
         /// <summary>
-        /// Required for HTTP(S) types. The HTTP method used
-        /// for requests by the monitor. If this attribute is not specified, it
-        /// defaults to "GET".
+        /// Required for HTTP(S) types. The HTTP method that 
+        /// the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
+        /// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
         /// </summary>
         [Input("httpMethod")]
         public Input<string>? HttpMethod { get; set; }
@@ -231,9 +232,10 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<int> MaxRetries { get; set; } = null!;
 
         /// <summary>
-        /// Number of permissible ping failures befor changing the member's
-        /// status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
-        /// Changing this updates the max_retries_down of the existing monitor.
+        /// Number of permissible ping failures before 
+        /// changing the member's status to ERROR. Must be a number between 1 and 10.
+        /// The default is 3. Changing this updates the max_retries_down of the
+        /// existing monitor.
         /// </summary>
         [Input("maxRetriesDown")]
         public Input<int>? MaxRetriesDown { get; set; }
@@ -277,15 +279,15 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The type of probe, which is PING, TCP, HTTP, HTTPS,
-        /// TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
-        /// balancer to verify the member state. Changing this creates a new monitor.
+        /// TLS-HELLO, SCTP or UDP-CONNECT, that is sent by the loadbalancer to
+        /// verify the member state. Changing this creates a new monitor.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
         /// Required for HTTP(S) types. URI path that will be
-        /// accessed if monitor type is HTTP or HTTPS.
+        /// accessed if monitor type is HTTP or HTTPS. Default is `/`.
         /// </summary>
         [Input("urlPath")]
         public Input<string>? UrlPath { get; set; }
@@ -314,15 +316,15 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// Required for HTTP(S) types. Expected HTTP codes
         /// for a passing HTTP(S) monitor. You can either specify a single status like
-        /// "200", or a range like "200-202".
+        /// "200", a list like "200, 202" or a range like "200-202". Default is "200".
         /// </summary>
         [Input("expectedCodes")]
         public Input<string>? ExpectedCodes { get; set; }
 
         /// <summary>
-        /// Required for HTTP(S) types. The HTTP method used
-        /// for requests by the monitor. If this attribute is not specified, it
-        /// defaults to "GET".
+        /// Required for HTTP(S) types. The HTTP method that 
+        /// the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
+        /// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
         /// </summary>
         [Input("httpMethod")]
         public Input<string>? HttpMethod { get; set; }
@@ -336,9 +338,10 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<int>? MaxRetries { get; set; }
 
         /// <summary>
-        /// Number of permissible ping failures befor changing the member's
-        /// status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
-        /// Changing this updates the max_retries_down of the existing monitor.
+        /// Number of permissible ping failures before 
+        /// changing the member's status to ERROR. Must be a number between 1 and 10.
+        /// The default is 3. Changing this updates the max_retries_down of the
+        /// existing monitor.
         /// </summary>
         [Input("maxRetriesDown")]
         public Input<int>? MaxRetriesDown { get; set; }
@@ -382,15 +385,15 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The type of probe, which is PING, TCP, HTTP, HTTPS,
-        /// TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
-        /// balancer to verify the member state. Changing this creates a new monitor.
+        /// TLS-HELLO, SCTP or UDP-CONNECT, that is sent by the loadbalancer to
+        /// verify the member state. Changing this creates a new monitor.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
         /// Required for HTTP(S) types. URI path that will be
-        /// accessed if monitor type is HTTP or HTTPS.
+        /// accessed if monitor type is HTTP or HTTPS. Default is `/`.
         /// </summary>
         [Input("urlPath")]
         public Input<string>? UrlPath { get; set; }

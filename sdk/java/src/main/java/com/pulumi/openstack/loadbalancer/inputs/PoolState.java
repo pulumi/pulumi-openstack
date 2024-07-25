@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.openstack.loadbalancer.inputs.PoolPersistenceArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -180,6 +181,13 @@ public final class PoolState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.region);
     }
 
+    @Import(name="tags")
+    private @Nullable Output<List<String>> tags;
+
+    public Optional<Output<List<String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     /**
      * Required for admins. The UUID of the tenant who owns
      * the pool.  Only administrative users can specify a tenant UUID
@@ -211,6 +219,7 @@ public final class PoolState extends com.pulumi.resources.ResourceArgs {
         this.persistence = $.persistence;
         this.protocol = $.protocol;
         this.region = $.region;
+        this.tags = $.tags;
         this.tenantId = $.tenantId;
     }
 
@@ -447,6 +456,19 @@ public final class PoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        public Builder tags(@Nullable Output<List<String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        public Builder tags(List<String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
 
         /**

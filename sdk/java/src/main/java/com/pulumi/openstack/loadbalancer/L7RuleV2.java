@@ -254,7 +254,7 @@ public class L7RuleV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-     * HOST\_NAME or PATH.
+     * HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -262,7 +262,7 @@ public class L7RuleV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-     * HOST\_NAME or PATH.
+     * HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
      * 
      */
     public Output<String> type() {

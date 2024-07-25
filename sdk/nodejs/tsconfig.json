@@ -13,6 +13,10 @@
         "strict": true
     },
     "files": [
+        "bgpvpnNetworkAssociateV2.ts",
+        "bgpvpnPortAssociateV2.ts",
+        "bgpvpnRouterAssociateV2.ts",
+        "bgpvpnV2.ts",
         "blockstorage/getAvailabilityZonesV3.ts",
         "blockstorage/getQuotasetV3.ts",
         "blockstorage/getSnapshotV2.ts",

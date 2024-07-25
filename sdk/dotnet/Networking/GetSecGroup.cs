@@ -89,6 +89,12 @@ namespace Pulumi.OpenStack.Networking
         [Input("secgroupId")]
         public string? SecgroupId { get; set; }
 
+        /// <summary>
+        /// Whether the security group is stateful or not.
+        /// </summary>
+        [Input("stateful")]
+        public bool? Stateful { get; set; }
+
         [Input("tags")]
         private List<string>? _tags;
 
@@ -141,6 +147,12 @@ namespace Pulumi.OpenStack.Networking
         [Input("secgroupId")]
         public Input<string>? SecgroupId { get; set; }
 
+        /// <summary>
+        /// Whether the security group is stateful or not.
+        /// </summary>
+        [Input("stateful")]
+        public Input<bool>? Stateful { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -190,6 +202,10 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public readonly string Region;
         public readonly string? SecgroupId;
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
+        public readonly bool Stateful;
         public readonly ImmutableArray<string> Tags;
         public readonly string TenantId;
 
@@ -207,6 +223,8 @@ namespace Pulumi.OpenStack.Networking
 
             string? secgroupId,
 
+            bool stateful,
+
             ImmutableArray<string> tags,
 
             string tenantId)
@@ -217,6 +235,7 @@ namespace Pulumi.OpenStack.Networking
             Name = name;
             Region = region;
             SecgroupId = secgroupId;
+            Stateful = stateful;
             Tags = tags;
             TenantId = tenantId;
         }

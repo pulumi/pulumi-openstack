@@ -150,6 +150,10 @@ namespace Pulumi.OpenStack.LoadBalancer
         [Output("sniContainerRefs")]
         public Output<ImmutableArray<string>> SniContainerRefs { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of simple strings assigned to the pool. Available
+        /// for Octavia **minor version 2.5 or later**.
+        /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
@@ -352,6 +356,11 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of simple strings assigned to the pool. Available
+        /// for Octavia **minor version 2.5 or later**.
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
@@ -519,6 +528,11 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of simple strings assigned to the pool. Available
+        /// for Octavia **minor version 2.5 or later**.
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());

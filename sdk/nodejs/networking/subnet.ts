@@ -93,6 +93,11 @@ export class Subnet extends pulumi.CustomResource {
      */
     public readonly dnsNameservers!: pulumi.Output<string[] | undefined>;
     /**
+     * Whether to publish DNS records for IPs
+     * from this subnet. Defaults is false.
+     */
+    public readonly dnsPublishFixedIp!: pulumi.Output<boolean | undefined>;
+    /**
      * The administrative state of the network.
      * Acceptable values are "true" and "false". Changing this value enables or
      * disables the DHCP capabilities of the existing subnet. Defaults to true.
@@ -190,6 +195,7 @@ export class Subnet extends pulumi.CustomResource {
             resourceInputs["cidr"] = state ? state.cidr : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dnsNameservers"] = state ? state.dnsNameservers : undefined;
+            resourceInputs["dnsPublishFixedIp"] = state ? state.dnsPublishFixedIp : undefined;
             resourceInputs["enableDhcp"] = state ? state.enableDhcp : undefined;
             resourceInputs["gatewayIp"] = state ? state.gatewayIp : undefined;
             resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
@@ -214,6 +220,7 @@ export class Subnet extends pulumi.CustomResource {
             resourceInputs["cidr"] = args ? args.cidr : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["dnsNameservers"] = args ? args.dnsNameservers : undefined;
+            resourceInputs["dnsPublishFixedIp"] = args ? args.dnsPublishFixedIp : undefined;
             resourceInputs["enableDhcp"] = args ? args.enableDhcp : undefined;
             resourceInputs["gatewayIp"] = args ? args.gatewayIp : undefined;
             resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
@@ -271,6 +278,11 @@ export interface SubnetState {
      * subnet.
      */
     dnsNameservers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to publish DNS records for IPs
+     * from this subnet. Defaults is false.
+     */
+    dnsPublishFixedIp?: pulumi.Input<boolean>;
     /**
      * The administrative state of the network.
      * Acceptable values are "true" and "false". Changing this value enables or
@@ -382,6 +394,11 @@ export interface SubnetArgs {
      * subnet.
      */
     dnsNameservers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to publish DNS records for IPs
+     * from this subnet. Defaults is false.
+     */
+    dnsPublishFixedIp?: pulumi.Input<boolean>;
     /**
      * The administrative state of the network.
      * Acceptable values are "true" and "false". Changing this value enables or

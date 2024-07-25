@@ -30,7 +30,7 @@ class L7RuleV2Args:
         :param pulumi.Input[str] l7policy_id: The ID of the L7 Policy to query. Changing this creates a new
                L7 Rule.
         :param pulumi.Input[str] type: The L7 Rule type - can either be COOKIE, FILE\\_TYPE, HEADER,
-               HOST\\_NAME or PATH.
+               HOST\\_NAME, PATH, SSL\\_CONN\\_HAS\\_CERT, SSL\\_VERIFY\\_RESULT or SSL\\_DN\\_FIELD.
         :param pulumi.Input[str] value: The value to use for the comparison. For example, the file type to
                compare.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the L7 Rule.
@@ -93,7 +93,7 @@ class L7RuleV2Args:
     def type(self) -> pulumi.Input[str]:
         """
         The L7 Rule type - can either be COOKIE, FILE\\_TYPE, HEADER,
-        HOST\\_NAME or PATH.
+        HOST\\_NAME, PATH, SSL\\_CONN\\_HAS\\_CERT, SSL\\_VERIFY\\_RESULT or SSL\\_DN\\_FIELD.
         """
         return pulumi.get(self, "type")
 
@@ -217,7 +217,7 @@ class _L7RuleV2State:
                the L7 Rule.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new L7 Rule.
         :param pulumi.Input[str] type: The L7 Rule type - can either be COOKIE, FILE\\_TYPE, HEADER,
-               HOST\\_NAME or PATH.
+               HOST\\_NAME, PATH, SSL\\_CONN\\_HAS\\_CERT, SSL\\_VERIFY\\_RESULT or SSL\\_DN\\_FIELD.
         :param pulumi.Input[str] value: The value to use for the comparison. For example, the file type to
                compare.
         """
@@ -353,7 +353,7 @@ class _L7RuleV2State:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The L7 Rule type - can either be COOKIE, FILE\\_TYPE, HEADER,
-        HOST\\_NAME or PATH.
+        HOST\\_NAME, PATH, SSL\\_CONN\\_HAS\\_CERT, SSL\\_VERIFY\\_RESULT or SSL\\_DN\\_FIELD.
         """
         return pulumi.get(self, "type")
 
@@ -463,7 +463,7 @@ class L7RuleV2(pulumi.CustomResource):
                the L7 Rule.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new L7 Rule.
         :param pulumi.Input[str] type: The L7 Rule type - can either be COOKIE, FILE\\_TYPE, HEADER,
-               HOST\\_NAME or PATH.
+               HOST\\_NAME, PATH, SSL\\_CONN\\_HAS\\_CERT, SSL\\_VERIFY\\_RESULT or SSL\\_DN\\_FIELD.
         :param pulumi.Input[str] value: The value to use for the comparison. For example, the file type to
                compare.
         """
@@ -623,7 +623,7 @@ class L7RuleV2(pulumi.CustomResource):
                the L7 Rule.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new L7 Rule.
         :param pulumi.Input[str] type: The L7 Rule type - can either be COOKIE, FILE\\_TYPE, HEADER,
-               HOST\\_NAME or PATH.
+               HOST\\_NAME, PATH, SSL\\_CONN\\_HAS\\_CERT, SSL\\_VERIFY\\_RESULT or SSL\\_DN\\_FIELD.
         :param pulumi.Input[str] value: The value to use for the comparison. For example, the file type to
                compare.
         """
@@ -722,7 +722,7 @@ class L7RuleV2(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         The L7 Rule type - can either be COOKIE, FILE\\_TYPE, HEADER,
-        HOST\\_NAME or PATH.
+        HOST\\_NAME, PATH, SSL\\_CONN\\_HAS\\_CERT, SSL\\_VERIFY\\_RESULT or SSL\\_DN\\_FIELD.
         """
         return pulumi.get(self, "type")
 

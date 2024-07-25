@@ -82,6 +82,12 @@ namespace Pulumi.OpenStack.Networking
         public bool? DhcpEnabled { get; set; }
 
         /// <summary>
+        /// If the subnet publishes DNS records.
+        /// </summary>
+        [Input("dnsPublishFixedIp")]
+        public bool? DnsPublishFixedIp { get; set; }
+
+        /// <summary>
         /// The IP of the subnet's gateway.
         /// </summary>
         [Input("gatewayIp")]
@@ -184,6 +190,12 @@ namespace Pulumi.OpenStack.Networking
         public Input<bool>? DhcpEnabled { get; set; }
 
         /// <summary>
+        /// If the subnet publishes DNS records.
+        /// </summary>
+        [Input("dnsPublishFixedIp")]
+        public Input<bool>? DnsPublishFixedIp { get; set; }
+
+        /// <summary>
         /// The IP of the subnet's gateway.
         /// </summary>
         [Input("gatewayIp")]
@@ -284,6 +296,7 @@ namespace Pulumi.OpenStack.Networking
         /// DNS Nameservers of the subnet.
         /// </summary>
         public readonly ImmutableArray<string> DnsNameservers;
+        public readonly bool? DnsPublishFixedIp;
         /// <summary>
         /// Whether the subnet has DHCP enabled or not.
         /// </summary>
@@ -329,6 +342,8 @@ namespace Pulumi.OpenStack.Networking
 
             ImmutableArray<string> dnsNameservers,
 
+            bool? dnsPublishFixedIp,
+
             bool enableDhcp,
 
             string gatewayIp,
@@ -365,6 +380,7 @@ namespace Pulumi.OpenStack.Networking
             Description = description;
             DhcpEnabled = dhcpEnabled;
             DnsNameservers = dnsNameservers;
+            DnsPublishFixedIp = dnsPublishFixedIp;
             EnableDhcp = enableDhcp;
             GatewayIp = gatewayIp;
             HostRoutes = hostRoutes;

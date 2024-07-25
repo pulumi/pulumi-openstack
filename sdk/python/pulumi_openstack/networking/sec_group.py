@@ -18,6 +18,7 @@ class SecGroupArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 stateful: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
@@ -31,6 +32,10 @@ class SecGroupArgs:
                A networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                security group.
+        :param pulumi.Input[bool] stateful: Indicates if the security group is stateful or
+               stateless. Update of the stateful argument is allowed when there is no port
+               associated with the security group. Available only in OpenStack environments
+               with the `stateful-security-group` extension. Defaults to true.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the security group.
         :param pulumi.Input[str] tenant_id: The owner of the security group. Required if admin
                wants to create a port for another tenant. Changing this creates a new
@@ -44,6 +49,8 @@ class SecGroupArgs:
             pulumi.set(__self__, "name", name)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if stateful is not None:
+            pulumi.set(__self__, "stateful", stateful)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
@@ -104,6 +111,21 @@ class SecGroupArgs:
 
     @property
     @pulumi.getter
+    def stateful(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if the security group is stateful or
+        stateless. Update of the stateful argument is allowed when there is no port
+        associated with the security group. Available only in OpenStack environments
+        with the `stateful-security-group` extension. Defaults to true.
+        """
+        return pulumi.get(self, "stateful")
+
+    @stateful.setter
+    def stateful(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "stateful", value)
+
+    @property
+    @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A set of string tags for the security group.
@@ -137,6 +159,7 @@ class _SecGroupState:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 stateful: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
@@ -152,6 +175,10 @@ class _SecGroupState:
                A networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                security group.
+        :param pulumi.Input[bool] stateful: Indicates if the security group is stateful or
+               stateless. Update of the stateful argument is allowed when there is no port
+               associated with the security group. Available only in OpenStack environments
+               with the `stateful-security-group` extension. Defaults to true.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the security group.
         :param pulumi.Input[str] tenant_id: The owner of the security group. Required if admin
                wants to create a port for another tenant. Changing this creates a new
@@ -167,6 +194,8 @@ class _SecGroupState:
             pulumi.set(__self__, "name", name)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if stateful is not None:
+            pulumi.set(__self__, "stateful", stateful)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
@@ -240,6 +269,21 @@ class _SecGroupState:
 
     @property
     @pulumi.getter
+    def stateful(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if the security group is stateful or
+        stateless. Update of the stateful argument is allowed when there is no port
+        associated with the security group. Available only in OpenStack environments
+        with the `stateful-security-group` extension. Defaults to true.
+        """
+        return pulumi.get(self, "stateful")
+
+    @stateful.setter
+    def stateful(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "stateful", value)
+
+    @property
+    @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A set of string tags for the security group.
@@ -274,6 +318,7 @@ class SecGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 stateful: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -297,6 +342,10 @@ class SecGroup(pulumi.CustomResource):
                A networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                security group.
+        :param pulumi.Input[bool] stateful: Indicates if the security group is stateful or
+               stateless. Update of the stateful argument is allowed when there is no port
+               associated with the security group. Available only in OpenStack environments
+               with the `stateful-security-group` extension. Defaults to true.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the security group.
         :param pulumi.Input[str] tenant_id: The owner of the security group. Required if admin
                wants to create a port for another tenant. Changing this creates a new
@@ -336,6 +385,7 @@ class SecGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 stateful: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -351,6 +401,7 @@ class SecGroup(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["region"] = region
+            __props__.__dict__["stateful"] = stateful
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tenant_id"] = tenant_id
             __props__.__dict__["all_tags"] = None
@@ -369,6 +420,7 @@ class SecGroup(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            stateful: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None) -> 'SecGroup':
         """
@@ -389,6 +441,10 @@ class SecGroup(pulumi.CustomResource):
                A networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                security group.
+        :param pulumi.Input[bool] stateful: Indicates if the security group is stateful or
+               stateless. Update of the stateful argument is allowed when there is no port
+               associated with the security group. Available only in OpenStack environments
+               with the `stateful-security-group` extension. Defaults to true.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the security group.
         :param pulumi.Input[str] tenant_id: The owner of the security group. Required if admin
                wants to create a port for another tenant. Changing this creates a new
@@ -403,6 +459,7 @@ class SecGroup(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["region"] = region
+        __props__.__dict__["stateful"] = stateful
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tenant_id"] = tenant_id
         return SecGroup(resource_name, opts=opts, __props__=__props__)
@@ -452,6 +509,17 @@ class SecGroup(pulumi.CustomResource):
         security group.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def stateful(self) -> pulumi.Output[bool]:
+        """
+        Indicates if the security group is stateful or
+        stateless. Update of the stateful argument is allowed when there is no port
+        associated with the security group. Available only in OpenStack environments
+        with the `stateful-security-group` extension. Defaults to true.
+        """
+        return pulumi.get(self, "stateful")
 
     @property
     @pulumi.getter

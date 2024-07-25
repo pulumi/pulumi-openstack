@@ -13,6 +13,7 @@ import com.pulumi.openstack.loadbalancer.inputs.PoolState;
 import com.pulumi.openstack.loadbalancer.outputs.PoolPersistence;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -228,6 +229,12 @@ public class Pool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> region() {
         return this.region;
+    }
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> tags;
+
+    public Output<Optional<List<String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * Required for admins. The UUID of the tenant who owns

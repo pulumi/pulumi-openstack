@@ -63,6 +63,21 @@ public final class GetSubnetIdsV2PlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
+     * If the subnet publishes DNS records.
+     * 
+     */
+    @Import(name="dnsPublishFixedIp")
+    private @Nullable Boolean dnsPublishFixedIp;
+
+    /**
+     * @return If the subnet publishes DNS records.
+     * 
+     */
+    public Optional<Boolean> dnsPublishFixedIp() {
+        return Optional.ofNullable(this.dnsPublishFixedIp);
+    }
+
+    /**
      * The IP of the subnet&#39;s gateway.
      * 
      */
@@ -265,6 +280,7 @@ public final class GetSubnetIdsV2PlainArgs extends com.pulumi.resources.InvokeAr
         this.cidr = $.cidr;
         this.description = $.description;
         this.dhcpEnabled = $.dhcpEnabled;
+        this.dnsPublishFixedIp = $.dnsPublishFixedIp;
         this.gatewayIp = $.gatewayIp;
         this.ipVersion = $.ipVersion;
         this.ipv6AddressMode = $.ipv6AddressMode;
@@ -328,6 +344,17 @@ public final class GetSubnetIdsV2PlainArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder dhcpEnabled(@Nullable Boolean dhcpEnabled) {
             $.dhcpEnabled = dhcpEnabled;
+            return this;
+        }
+
+        /**
+         * @param dnsPublishFixedIp If the subnet publishes DNS records.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsPublishFixedIp(@Nullable Boolean dnsPublishFixedIp) {
+            $.dnsPublishFixedIp = dnsPublishFixedIp;
             return this;
         }
 

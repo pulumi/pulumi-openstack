@@ -14,21 +14,255 @@ import com.pulumi.openstack.loadbalancer.outputs.GetFlavorV2Result;
 import java.util.concurrent.CompletableFuture;
 
 public final class LoadbalancerFunctions {
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer flavor.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var flavor1 = LoadbalancerFunctions.getFlavorV2(GetFlavorV2Args.builder()
+     *             .name("flavor_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetFlavorV2Result> getFlavorV2() {
         return getFlavorV2(GetFlavorV2Args.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer flavor.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var flavor1 = LoadbalancerFunctions.getFlavorV2(GetFlavorV2Args.builder()
+     *             .name("flavor_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetFlavorV2Result> getFlavorV2Plain() {
         return getFlavorV2Plain(GetFlavorV2PlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer flavor.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var flavor1 = LoadbalancerFunctions.getFlavorV2(GetFlavorV2Args.builder()
+     *             .name("flavor_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetFlavorV2Result> getFlavorV2(GetFlavorV2Args args) {
         return getFlavorV2(args, InvokeOptions.Empty);
     }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer flavor.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var flavor1 = LoadbalancerFunctions.getFlavorV2(GetFlavorV2Args.builder()
+     *             .name("flavor_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetFlavorV2Result> getFlavorV2Plain(GetFlavorV2PlainArgs args) {
         return getFlavorV2Plain(args, InvokeOptions.Empty);
     }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer flavor.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var flavor1 = LoadbalancerFunctions.getFlavorV2(GetFlavorV2Args.builder()
+     *             .name("flavor_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetFlavorV2Result> getFlavorV2(GetFlavorV2Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("openstack:loadbalancer/getFlavorV2:getFlavorV2", TypeShape.of(GetFlavorV2Result.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer flavor.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var flavor1 = LoadbalancerFunctions.getFlavorV2(GetFlavorV2Args.builder()
+     *             .name("flavor_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetFlavorV2Result> getFlavorV2Plain(GetFlavorV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:loadbalancer/getFlavorV2:getFlavorV2", TypeShape.of(GetFlavorV2Result.class), args, Utilities.withVersion(options));
     }

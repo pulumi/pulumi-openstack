@@ -79,6 +79,9 @@ type Subnet struct {
 	// in this subnet. Changing this updates the DNS name servers for the existing
 	// subnet.
 	DnsNameservers pulumi.StringArrayOutput `pulumi:"dnsNameservers"`
+	// Whether to publish DNS records for IPs
+	// from this subnet. Defaults is false.
+	DnsPublishFixedIp pulumi.BoolPtrOutput `pulumi:"dnsPublishFixedIp"`
 	// The administrative state of the network.
 	// Acceptable values are "true" and "false". Changing this value enables or
 	// disables the DHCP capabilities of the existing subnet. Defaults to true.
@@ -184,6 +187,9 @@ type subnetState struct {
 	// in this subnet. Changing this updates the DNS name servers for the existing
 	// subnet.
 	DnsNameservers []string `pulumi:"dnsNameservers"`
+	// Whether to publish DNS records for IPs
+	// from this subnet. Defaults is false.
+	DnsPublishFixedIp *bool `pulumi:"dnsPublishFixedIp"`
 	// The administrative state of the network.
 	// Acceptable values are "true" and "false". Changing this value enables or
 	// disables the DHCP capabilities of the existing subnet. Defaults to true.
@@ -257,6 +263,9 @@ type SubnetState struct {
 	// in this subnet. Changing this updates the DNS name servers for the existing
 	// subnet.
 	DnsNameservers pulumi.StringArrayInput
+	// Whether to publish DNS records for IPs
+	// from this subnet. Defaults is false.
+	DnsPublishFixedIp pulumi.BoolPtrInput
 	// The administrative state of the network.
 	// Acceptable values are "true" and "false". Changing this value enables or
 	// disables the DHCP capabilities of the existing subnet. Defaults to true.
@@ -331,6 +340,9 @@ type subnetArgs struct {
 	// in this subnet. Changing this updates the DNS name servers for the existing
 	// subnet.
 	DnsNameservers []string `pulumi:"dnsNameservers"`
+	// Whether to publish DNS records for IPs
+	// from this subnet. Defaults is false.
+	DnsPublishFixedIp *bool `pulumi:"dnsPublishFixedIp"`
 	// The administrative state of the network.
 	// Acceptable values are "true" and "false". Changing this value enables or
 	// disables the DHCP capabilities of the existing subnet. Defaults to true.
@@ -402,6 +414,9 @@ type SubnetArgs struct {
 	// in this subnet. Changing this updates the DNS name servers for the existing
 	// subnet.
 	DnsNameservers pulumi.StringArrayInput
+	// Whether to publish DNS records for IPs
+	// from this subnet. Defaults is false.
+	DnsPublishFixedIp pulumi.BoolPtrInput
 	// The administrative state of the network.
 	// Acceptable values are "true" and "false". Changing this value enables or
 	// disables the DHCP capabilities of the existing subnet. Defaults to true.
@@ -574,6 +589,12 @@ func (o SubnetOutput) Description() pulumi.StringPtrOutput {
 // subnet.
 func (o SubnetOutput) DnsNameservers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.StringArrayOutput { return v.DnsNameservers }).(pulumi.StringArrayOutput)
+}
+
+// Whether to publish DNS records for IPs
+// from this subnet. Defaults is false.
+func (o SubnetOutput) DnsPublishFixedIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.BoolPtrOutput { return v.DnsPublishFixedIp }).(pulumi.BoolPtrOutput)
 }
 
 // The administrative state of the network.

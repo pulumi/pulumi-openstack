@@ -107,16 +107,16 @@ public class Image extends com.pulumi.resources.CustomResource {
         return this.checksum;
     }
     /**
-     * The container format. Must be one of
-     * &#34;ami&#34;, &#34;ari&#34;, &#34;aki&#34;, &#34;bare&#34;, &#34;ovf&#34;.
+     * The container format. Must be one of &#34;bare&#34;,
+     * &#34;ovf&#34;, &#34;aki&#34;, &#34;ari&#34;, &#34;ami&#34;, &#34;ova&#34;, &#34;docker&#34;, &#34;compressed&#34;.
      * 
      */
     @Export(name="containerFormat", refs={String.class}, tree="[0]")
     private Output<String> containerFormat;
 
     /**
-     * @return The container format. Must be one of
-     * &#34;ami&#34;, &#34;ari&#34;, &#34;aki&#34;, &#34;bare&#34;, &#34;ovf&#34;.
+     * @return The container format. Must be one of &#34;bare&#34;,
+     * &#34;ovf&#34;, &#34;aki&#34;, &#34;ari&#34;, &#34;ami&#34;, &#34;ova&#34;, &#34;docker&#34;, &#34;compressed&#34;.
      * 
      */
     public Output<String> containerFormat() {
@@ -139,7 +139,8 @@ public class Image extends com.pulumi.resources.CustomResource {
     /**
      * If true, this provider will decompress downloaded
      * image before uploading it to OpenStack. Decompression algorithm is chosen by
-     * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2 and xz.
+     * checking &#34;Content-Type&#34; or `Content-Disposition` header to detect the
+     * filename extension. Supported algorithms are: gzip, bzip2, xz and zst.
      * Defaults to false. Changing this creates a new Image.
      * 
      */
@@ -149,7 +150,8 @@ public class Image extends com.pulumi.resources.CustomResource {
     /**
      * @return If true, this provider will decompress downloaded
      * image before uploading it to OpenStack. Decompression algorithm is chosen by
-     * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2 and xz.
+     * checking &#34;Content-Type&#34; or `Content-Disposition` header to detect the
+     * filename extension. Supported algorithms are: gzip, bzip2, xz and zst.
      * Defaults to false. Changing this creates a new Image.
      * 
      */
@@ -157,16 +159,16 @@ public class Image extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.decompress);
     }
     /**
-     * The disk format. Must be one of
-     * &#34;ami&#34;, &#34;ari&#34;, &#34;aki&#34;, &#34;vhd&#34;, &#34;vmdk&#34;, &#34;raw&#34;, &#34;qcow2&#34;, &#34;vdi&#34;, &#34;iso&#34;.
+     * The disk format. Must be one of &#34;raw&#34;, &#34;vhd&#34;,
+     * &#34;vhdx&#34;, &#34;vmdk&#34;, &#34;vdi&#34;, &#34;iso&#34;, &#34;ploop&#34;, &#34;qcow2&#34;, &#34;aki&#34;, &#34;ari&#34;, &#34;ami&#34;
      * 
      */
     @Export(name="diskFormat", refs={String.class}, tree="[0]")
     private Output<String> diskFormat;
 
     /**
-     * @return The disk format. Must be one of
-     * &#34;ami&#34;, &#34;ari&#34;, &#34;aki&#34;, &#34;vhd&#34;, &#34;vmdk&#34;, &#34;raw&#34;, &#34;qcow2&#34;, &#34;vdi&#34;, &#34;iso&#34;.
+     * @return The disk format. Must be one of &#34;raw&#34;, &#34;vhd&#34;,
+     * &#34;vhdx&#34;, &#34;vmdk&#34;, &#34;vdi&#34;, &#34;iso&#34;, &#34;ploop&#34;, &#34;qcow2&#34;, &#34;aki&#34;, &#34;ari&#34;, &#34;ami&#34;
      * 
      */
     public Output<String> diskFormat() {
@@ -229,48 +231,52 @@ public class Image extends com.pulumi.resources.CustomResource {
         return this.imageId;
     }
     /**
-     * The password of basic auth to download `image_source_url`.
+     * The password of basic auth to download
+     * `image_source_url`.
      * 
      */
     @Export(name="imageSourcePassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageSourcePassword;
 
     /**
-     * @return The password of basic auth to download `image_source_url`.
+     * @return The password of basic auth to download
+     * `image_source_url`.
      * 
      */
     public Output<Optional<String>> imageSourcePassword() {
         return Codegen.optional(this.imageSourcePassword);
     }
     /**
-     * This is the url of the raw image. If `web_download`
-     * is not used, then the image will be downloaded in the `image_cache_path` before
-     * being uploaded to Glance.
-     * Conflicts with `local_file_path`.
+     * This is the url of the raw image. If
+     * `web_download` is not used, then the image will be downloaded in the
+     * `image_cache_path` before being uploaded to Glance. Conflicts with
+     * `local_file_path`.
      * 
      */
     @Export(name="imageSourceUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageSourceUrl;
 
     /**
-     * @return This is the url of the raw image. If `web_download`
-     * is not used, then the image will be downloaded in the `image_cache_path` before
-     * being uploaded to Glance.
-     * Conflicts with `local_file_path`.
+     * @return This is the url of the raw image. If
+     * `web_download` is not used, then the image will be downloaded in the
+     * `image_cache_path` before being uploaded to Glance. Conflicts with
+     * `local_file_path`.
      * 
      */
     public Output<Optional<String>> imageSourceUrl() {
         return Codegen.optional(this.imageSourceUrl);
     }
     /**
-     * The username of basic auth to download `image_source_url`.
+     * The username of basic auth to download
+     * `image_source_url`.
      * 
      */
     @Export(name="imageSourceUsername", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageSourceUsername;
 
     /**
-     * @return The username of basic auth to download `image_source_url`.
+     * @return The username of basic auth to download
+     * `image_source_url`.
      * 
      */
     public Output<Optional<String>> imageSourceUsername() {
@@ -313,16 +319,16 @@ public class Image extends com.pulumi.resources.CustomResource {
         return this.metadata;
     }
     /**
-     * Amount of disk space (in GB) required to boot image.
-     * Defaults to 0.
+     * Amount of disk space (in GB) required to boot
+     * image. Defaults to 0.
      * 
      */
     @Export(name="minDiskGb", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minDiskGb;
 
     /**
-     * @return Amount of disk space (in GB) required to boot image.
-     * Defaults to 0.
+     * @return Amount of disk space (in GB) required to boot
+     * image. Defaults to 0.
      * 
      */
     public Output<Optional<Integer>> minDiskGb() {
@@ -374,8 +380,8 @@ public class Image extends com.pulumi.resources.CustomResource {
     }
     /**
      * A map of key/value pairs to set freeform
-     * information about an image. See the &#34;Notes&#34; section for further
-     * information about properties.
+     * information about an image. See the &#34;Notes&#34; section for further information
+     * about properties.
      * 
      */
     @Export(name="properties", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
@@ -383,44 +389,44 @@ public class Image extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A map of key/value pairs to set freeform
-     * information about an image. See the &#34;Notes&#34; section for further
-     * information about properties.
+     * information about an image. See the &#34;Notes&#34; section for further information
+     * about properties.
      * 
      */
     public Output<Map<String,Object>> properties() {
         return this.properties;
     }
     /**
-     * If true, image will not be deletable.
-     * Defaults to false.
+     * If true, image will not be deletable. Defaults to
+     * false.
      * 
      */
     @Export(name="protected", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> protected_;
 
     /**
-     * @return If true, image will not be deletable.
-     * Defaults to false.
+     * @return If true, image will not be deletable. Defaults to
+     * false.
      * 
      */
     public Output<Optional<Boolean>> protected_() {
         return Codegen.optional(this.protected_);
     }
     /**
-     * The region in which to obtain the V2 Glance client.
-     * A Glance client is needed to create an Image that can be used with
-     * a compute instance. If omitted, the `region` argument of the provider
-     * is used. Changing this creates a new Image.
+     * The region in which to obtain the V2 Glance client. A
+     * Glance client is needed to create an Image that can be used with a compute
+     * instance. If omitted, the `region` argument of the provider is used. Changing
+     * this creates a new Image.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return The region in which to obtain the V2 Glance client.
-     * A Glance client is needed to create an Image that can be used with
-     * a compute instance. If omitted, the `region` argument of the provider
-     * is used. Changing this creates a new Image.
+     * @return The region in which to obtain the V2 Glance client. A
+     * Glance client is needed to create an Image that can be used with a compute
+     * instance. If omitted, the `region` argument of the provider is used. Changing
+     * this creates a new Image.
      * 
      */
     public Output<String> region() {
@@ -473,16 +479,16 @@ public class Image extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The tags of the image. It must be a list of strings.
-     * At this time, it is not possible to delete all tags of an image.
+     * The tags of the image. It must be a list of strings. At
+     * this time, it is not possible to delete all tags of an image.
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return The tags of the image. It must be a list of strings.
-     * At this time, it is not possible to delete all tags of an image.
+     * @return The tags of the image. It must be a list of strings. At
+     * this time, it is not possible to delete all tags of an image.
      * 
      */
     public Output<Optional<List<String>>> tags() {
@@ -504,8 +510,8 @@ public class Image extends com.pulumi.resources.CustomResource {
     }
     /**
      * If false, the checksum will not be verified
-     * once the image is finished uploading. Conflicts with `web_download`.
-     * Defaults to true when not using `web_download`.
+     * once the image is finished uploading. Conflicts with `web_download`. Defaults
+     * to true when not using `web_download`.
      * 
      */
     @Export(name="verifyChecksum", refs={Boolean.class}, tree="[0]")
@@ -513,8 +519,8 @@ public class Image extends com.pulumi.resources.CustomResource {
 
     /**
      * @return If false, the checksum will not be verified
-     * once the image is finished uploading. Conflicts with `web_download`.
-     * Defaults to true when not using `web_download`.
+     * once the image is finished uploading. Conflicts with `web_download`. Defaults
+     * to true when not using `web_download`.
      * 
      */
     public Output<Optional<Boolean>> verifyChecksum() {
@@ -539,8 +545,8 @@ public class Image extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.visibility);
     }
     /**
-     * If true, the &#34;web-download&#34; import method will
-     * be used to let Openstack download the image directly from the remote source.
+     * If true, the &#34;web-download&#34; import method will be
+     * used to let Openstack download the image directly from the remote source.
      * Conflicts with `local_file_path`. Defaults to false.
      * 
      */
@@ -548,8 +554,8 @@ public class Image extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> webDownload;
 
     /**
-     * @return If true, the &#34;web-download&#34; import method will
-     * be used to let Openstack download the image directly from the remote source.
+     * @return If true, the &#34;web-download&#34; import method will be
+     * used to let Openstack download the image directly from the remote source.
      * Conflicts with `local_file_path`. Defaults to false.
      * 
      */

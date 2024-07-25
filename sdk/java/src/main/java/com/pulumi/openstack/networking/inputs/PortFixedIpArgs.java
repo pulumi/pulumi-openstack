@@ -5,7 +5,6 @@ package com.pulumi.openstack.networking.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -44,16 +43,16 @@ public final class PortFixedIpArgs extends com.pulumi.resources.ResourceArgs {
      * this port.
      * 
      */
-    @Import(name="subnetId", required=true)
-    private Output<String> subnetId;
+    @Import(name="subnetId")
+    private @Nullable Output<String> subnetId;
 
     /**
      * @return Subnet in which to allocate IP address for
      * this port.
      * 
      */
-    public Output<String> subnetId() {
-        return this.subnetId;
+    public Optional<Output<String>> subnetId() {
+        return Optional.ofNullable(this.subnetId);
     }
 
     private PortFixedIpArgs() {}
@@ -117,7 +116,7 @@ public final class PortFixedIpArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder subnetId(Output<String> subnetId) {
+        public Builder subnetId(@Nullable Output<String> subnetId) {
             $.subnetId = subnetId;
             return this;
         }
@@ -134,9 +133,6 @@ public final class PortFixedIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PortFixedIpArgs build() {
-            if ($.subnetId == null) {
-                throw new MissingRequiredPropertyException("PortFixedIpArgs", "subnetId");
-            }
             return $;
         }
     }

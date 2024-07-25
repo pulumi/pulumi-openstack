@@ -21,6 +21,7 @@ class SubnetArgs:
                  cidr: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dns_publish_fixed_ip: Optional[pulumi.Input[bool]] = None,
                  enable_dhcp: Optional[pulumi.Input[bool]] = None,
                  gateway_ip: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input[int]] = None,
@@ -53,6 +54,8 @@ class SubnetArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_nameservers: An array of DNS name server names used by hosts
                in this subnet. Changing this updates the DNS name servers for the existing
                subnet.
+        :param pulumi.Input[bool] dns_publish_fixed_ip: Whether to publish DNS records for IPs
+               from this subnet. Defaults is false.
         :param pulumi.Input[bool] enable_dhcp: The administrative state of the network.
                Acceptable values are "true" and "false". Changing this value enables or
                disables the DHCP capabilities of the existing subnet. Defaults to true.
@@ -95,6 +98,8 @@ class SubnetArgs:
             pulumi.set(__self__, "description", description)
         if dns_nameservers is not None:
             pulumi.set(__self__, "dns_nameservers", dns_nameservers)
+        if dns_publish_fixed_ip is not None:
+            pulumi.set(__self__, "dns_publish_fixed_ip", dns_publish_fixed_ip)
         if enable_dhcp is not None:
             pulumi.set(__self__, "enable_dhcp", enable_dhcp)
         if gateway_ip is not None:
@@ -194,6 +199,19 @@ class SubnetArgs:
     @dns_nameservers.setter
     def dns_nameservers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dns_nameservers", value)
+
+    @property
+    @pulumi.getter(name="dnsPublishFixedIp")
+    def dns_publish_fixed_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to publish DNS records for IPs
+        from this subnet. Defaults is false.
+        """
+        return pulumi.get(self, "dns_publish_fixed_ip")
+
+    @dns_publish_fixed_ip.setter
+    def dns_publish_fixed_ip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dns_publish_fixed_ip", value)
 
     @property
     @pulumi.getter(name="enableDhcp")
@@ -390,6 +408,7 @@ class _SubnetState:
                  cidr: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dns_publish_fixed_ip: Optional[pulumi.Input[bool]] = None,
                  enable_dhcp: Optional[pulumi.Input[bool]] = None,
                  gateway_ip: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input[int]] = None,
@@ -423,6 +442,8 @@ class _SubnetState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_nameservers: An array of DNS name server names used by hosts
                in this subnet. Changing this updates the DNS name servers for the existing
                subnet.
+        :param pulumi.Input[bool] dns_publish_fixed_ip: Whether to publish DNS records for IPs
+               from this subnet. Defaults is false.
         :param pulumi.Input[bool] enable_dhcp: The administrative state of the network.
                Acceptable values are "true" and "false". Changing this value enables or
                disables the DHCP capabilities of the existing subnet. Defaults to true.
@@ -468,6 +489,8 @@ class _SubnetState:
             pulumi.set(__self__, "description", description)
         if dns_nameservers is not None:
             pulumi.set(__self__, "dns_nameservers", dns_nameservers)
+        if dns_publish_fixed_ip is not None:
+            pulumi.set(__self__, "dns_publish_fixed_ip", dns_publish_fixed_ip)
         if enable_dhcp is not None:
             pulumi.set(__self__, "enable_dhcp", enable_dhcp)
         if gateway_ip is not None:
@@ -569,6 +592,19 @@ class _SubnetState:
     @dns_nameservers.setter
     def dns_nameservers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dns_nameservers", value)
+
+    @property
+    @pulumi.getter(name="dnsPublishFixedIp")
+    def dns_publish_fixed_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to publish DNS records for IPs
+        from this subnet. Defaults is false.
+        """
+        return pulumi.get(self, "dns_publish_fixed_ip")
+
+    @dns_publish_fixed_ip.setter
+    def dns_publish_fixed_ip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dns_publish_fixed_ip", value)
 
     @property
     @pulumi.getter(name="enableDhcp")
@@ -779,6 +815,7 @@ class Subnet(pulumi.CustomResource):
                  cidr: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dns_publish_fixed_ip: Optional[pulumi.Input[bool]] = None,
                  enable_dhcp: Optional[pulumi.Input[bool]] = None,
                  gateway_ip: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input[int]] = None,
@@ -836,6 +873,8 @@ class Subnet(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_nameservers: An array of DNS name server names used by hosts
                in this subnet. Changing this updates the DNS name servers for the existing
                subnet.
+        :param pulumi.Input[bool] dns_publish_fixed_ip: Whether to publish DNS records for IPs
+               from this subnet. Defaults is false.
         :param pulumi.Input[bool] enable_dhcp: The administrative state of the network.
                Acceptable values are "true" and "false". Changing this value enables or
                disables the DHCP capabilities of the existing subnet. Defaults to true.
@@ -921,6 +960,7 @@ class Subnet(pulumi.CustomResource):
                  cidr: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dns_publish_fixed_ip: Optional[pulumi.Input[bool]] = None,
                  enable_dhcp: Optional[pulumi.Input[bool]] = None,
                  gateway_ip: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input[int]] = None,
@@ -949,6 +989,7 @@ class Subnet(pulumi.CustomResource):
             __props__.__dict__["cidr"] = cidr
             __props__.__dict__["description"] = description
             __props__.__dict__["dns_nameservers"] = dns_nameservers
+            __props__.__dict__["dns_publish_fixed_ip"] = dns_publish_fixed_ip
             __props__.__dict__["enable_dhcp"] = enable_dhcp
             __props__.__dict__["gateway_ip"] = gateway_ip
             __props__.__dict__["ip_version"] = ip_version
@@ -982,6 +1023,7 @@ class Subnet(pulumi.CustomResource):
             cidr: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             dns_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            dns_publish_fixed_ip: Optional[pulumi.Input[bool]] = None,
             enable_dhcp: Optional[pulumi.Input[bool]] = None,
             gateway_ip: Optional[pulumi.Input[str]] = None,
             ip_version: Optional[pulumi.Input[int]] = None,
@@ -1020,6 +1062,8 @@ class Subnet(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_nameservers: An array of DNS name server names used by hosts
                in this subnet. Changing this updates the DNS name servers for the existing
                subnet.
+        :param pulumi.Input[bool] dns_publish_fixed_ip: Whether to publish DNS records for IPs
+               from this subnet. Defaults is false.
         :param pulumi.Input[bool] enable_dhcp: The administrative state of the network.
                Acceptable values are "true" and "false". Changing this value enables or
                disables the DHCP capabilities of the existing subnet. Defaults to true.
@@ -1064,6 +1108,7 @@ class Subnet(pulumi.CustomResource):
         __props__.__dict__["cidr"] = cidr
         __props__.__dict__["description"] = description
         __props__.__dict__["dns_nameservers"] = dns_nameservers
+        __props__.__dict__["dns_publish_fixed_ip"] = dns_publish_fixed_ip
         __props__.__dict__["enable_dhcp"] = enable_dhcp
         __props__.__dict__["gateway_ip"] = gateway_ip
         __props__.__dict__["ip_version"] = ip_version
@@ -1131,6 +1176,15 @@ class Subnet(pulumi.CustomResource):
         subnet.
         """
         return pulumi.get(self, "dns_nameservers")
+
+    @property
+    @pulumi.getter(name="dnsPublishFixedIp")
+    def dns_publish_fixed_ip(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to publish DNS records for IPs
+        from this subnet. Defaults is false.
+        """
+        return pulumi.get(self, "dns_publish_fixed_ip")
 
     @property
     @pulumi.getter(name="enableDhcp")

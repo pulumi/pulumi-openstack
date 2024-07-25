@@ -26,8 +26,8 @@ namespace Pulumi.OpenStack.Networking.Inputs
         /// Subnet in which to allocate IP address for
         /// this port.
         /// </summary>
-        [Input("subnetId", required: true)]
-        public Input<string> SubnetId { get; set; } = null!;
+        [Input("subnetId")]
+        public Input<string>? SubnetId { get; set; }
 
         public PortFixedIpArgs()
         {

@@ -144,7 +144,7 @@ public final class L7RuleV2Args extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-     * HOST\_NAME or PATH.
+     * HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
      * 
      */
     @Import(name="type", required=true)
@@ -152,7 +152,7 @@ public final class L7RuleV2Args extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-     * HOST\_NAME or PATH.
+     * HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
      * 
      */
     public Output<String> type() {
@@ -377,7 +377,7 @@ public final class L7RuleV2Args extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-         * HOST\_NAME or PATH.
+         * HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class L7RuleV2Args extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-         * HOST\_NAME or PATH.
+         * HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
          * 
          * @return builder
          * 

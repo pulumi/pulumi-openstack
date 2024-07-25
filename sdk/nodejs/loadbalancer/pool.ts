@@ -115,6 +115,7 @@ export class Pool extends pulumi.CustomResource {
      * pool.
      */
     public readonly region!: pulumi.Output<string>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the pool.  Only administrative users can specify a tenant UUID
@@ -144,6 +145,7 @@ export class Pool extends pulumi.CustomResource {
             resourceInputs["persistence"] = state ? state.persistence : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as PoolArgs | undefined;
@@ -162,6 +164,7 @@ export class Pool extends pulumi.CustomResource {
             resourceInputs["persistence"] = args ? args.persistence : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -223,6 +226,7 @@ export interface PoolState {
      * pool.
      */
     region?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the pool.  Only administrative users can specify a tenant UUID
@@ -285,6 +289,7 @@ export interface PoolArgs {
      * pool.
      */
     region?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the pool.  Only administrative users can specify a tenant UUID

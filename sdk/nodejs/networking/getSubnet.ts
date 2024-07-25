@@ -28,6 +28,7 @@ export function getSubnet(args?: GetSubnetArgs, opts?: pulumi.InvokeOptions): Pr
         "cidr": args.cidr,
         "description": args.description,
         "dhcpEnabled": args.dhcpEnabled,
+        "dnsPublishFixedIp": args.dnsPublishFixedIp,
         "gatewayIp": args.gatewayIp,
         "ipVersion": args.ipVersion,
         "ipv6AddressMode": args.ipv6AddressMode,
@@ -58,6 +59,10 @@ export interface GetSubnetArgs {
      * If the subnet has DHCP enabled.
      */
     dhcpEnabled?: boolean;
+    /**
+     * If the subnet publishes DNS records.
+     */
+    dnsPublishFixedIp?: boolean;
     /**
      * The IP of the subnet's gateway.
      */
@@ -127,6 +132,7 @@ export interface GetSubnetResult {
      * DNS Nameservers of the subnet.
      */
     readonly dnsNameservers: string[];
+    readonly dnsPublishFixedIp?: boolean;
     /**
      * Whether the subnet has DHCP enabled or not.
      */
@@ -192,6 +198,10 @@ export interface GetSubnetOutputArgs {
      * If the subnet has DHCP enabled.
      */
     dhcpEnabled?: pulumi.Input<boolean>;
+    /**
+     * If the subnet publishes DNS records.
+     */
+    dnsPublishFixedIp?: pulumi.Input<boolean>;
     /**
      * The IP of the subnet's gateway.
      */

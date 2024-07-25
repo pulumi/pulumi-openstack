@@ -300,9 +300,19 @@ public class Listener extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> sniContainerRefs() {
         return Codegen.optional(this.sniContainerRefs);
     }
+    /**
+     * A list of simple strings assigned to the pool. Available
+     * for Octavia **minor version 2.5 or later**.
+     * 
+     */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
+    /**
+     * @return A list of simple strings assigned to the pool. Available
+     * for Octavia **minor version 2.5 or later**.
+     * 
+     */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }

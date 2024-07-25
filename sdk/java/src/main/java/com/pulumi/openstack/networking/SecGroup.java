@@ -111,6 +111,26 @@ public class SecGroup extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
+     * Indicates if the security group is stateful or
+     * stateless. Update of the stateful argument is allowed when there is no port
+     * associated with the security group. Available only in OpenStack environments
+     * with the `stateful-security-group` extension. Defaults to true.
+     * 
+     */
+    @Export(name="stateful", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> stateful;
+
+    /**
+     * @return Indicates if the security group is stateful or
+     * stateless. Update of the stateful argument is allowed when there is no port
+     * associated with the security group. Available only in OpenStack environments
+     * with the `stateful-security-group` extension. Defaults to true.
+     * 
+     */
+    public Output<Boolean> stateful() {
+        return this.stateful;
+    }
+    /**
      * A set of string tags for the security group.
      * 
      */

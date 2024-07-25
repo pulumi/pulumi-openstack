@@ -14,23 +14,49 @@ public final class GetFlavorV2PlainArgs extends com.pulumi.resources.InvokeArgs 
 
     public static final GetFlavorV2PlainArgs Empty = new GetFlavorV2PlainArgs();
 
+    /**
+     * The ID of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+     * 
+     */
     @Import(name="flavorId")
     private @Nullable String flavorId;
 
+    /**
+     * @return The ID of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+     * 
+     */
     public Optional<String> flavorId() {
         return Optional.ofNullable(this.flavorId);
     }
 
+    /**
+     * The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+     * 
+     */
     @Import(name="name")
     private @Nullable String name;
 
+    /**
+     * @return The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The region in which to obtain the V2 Load Balancer client.
+     * If omitted, the `region` argument of the provider is used.
+     * 
+     */
     @Import(name="region")
     private @Nullable String region;
 
+    /**
+     * @return The region in which to obtain the V2 Load Balancer client.
+     * If omitted, the `region` argument of the provider is used.
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -61,16 +87,35 @@ public final class GetFlavorV2PlainArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetFlavorV2PlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param flavorId The ID of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder flavorId(@Nullable String flavorId) {
             $.flavorId = flavorId;
             return this;
         }
 
+        /**
+         * @param name The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param region The region in which to obtain the V2 Load Balancer client.
+         * If omitted, the `region` argument of the provider is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable String region) {
             $.region = region;
             return this;

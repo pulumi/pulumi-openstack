@@ -170,6 +170,22 @@ public class Subnet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dnsNameservers);
     }
     /**
+     * Whether to publish DNS records for IPs
+     * from this subnet. Defaults is false.
+     * 
+     */
+    @Export(name="dnsPublishFixedIp", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> dnsPublishFixedIp;
+
+    /**
+     * @return Whether to publish DNS records for IPs
+     * from this subnet. Defaults is false.
+     * 
+     */
+    public Output<Optional<Boolean>> dnsPublishFixedIp() {
+        return Codegen.optional(this.dnsPublishFixedIp);
+    }
+    /**
      * The administrative state of the network.
      * Acceptable values are &#34;true&#34; and &#34;false&#34;. Changing this value enables or
      * disables the DHCP capabilities of the existing subnet. Defaults to true.

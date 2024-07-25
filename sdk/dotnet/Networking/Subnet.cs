@@ -90,6 +90,13 @@ namespace Pulumi.OpenStack.Networking
         public Output<ImmutableArray<string>> DnsNameservers { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to publish DNS records for IPs
+        /// from this subnet. Defaults is false.
+        /// </summary>
+        [Output("dnsPublishFixedIp")]
+        public Output<bool?> DnsPublishFixedIp { get; private set; } = null!;
+
+        /// <summary>
         /// The administrative state of the network.
         /// Acceptable values are "true" and "false". Changing this value enables or
         /// disables the DHCP capabilities of the existing subnet. Defaults to true.
@@ -291,6 +298,13 @@ namespace Pulumi.OpenStack.Networking
         }
 
         /// <summary>
+        /// Whether to publish DNS records for IPs
+        /// from this subnet. Defaults is false.
+        /// </summary>
+        [Input("dnsPublishFixedIp")]
+        public Input<bool>? DnsPublishFixedIp { get; set; }
+
+        /// <summary>
         /// The administrative state of the network.
         /// Acceptable values are "true" and "false". Changing this value enables or
         /// disables the DHCP capabilities of the existing subnet. Defaults to true.
@@ -483,6 +497,13 @@ namespace Pulumi.OpenStack.Networking
             get => _dnsNameservers ?? (_dnsNameservers = new InputList<string>());
             set => _dnsNameservers = value;
         }
+
+        /// <summary>
+        /// Whether to publish DNS records for IPs
+        /// from this subnet. Defaults is false.
+        /// </summary>
+        [Input("dnsPublishFixedIp")]
+        public Input<bool>? DnsPublishFixedIp { get; set; }
 
         /// <summary>
         /// The administrative state of the network.

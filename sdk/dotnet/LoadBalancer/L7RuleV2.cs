@@ -151,7 +151,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-        /// HOST\_NAME or PATH.
+        /// HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -263,7 +263,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-        /// HOST\_NAME or PATH.
+        /// HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -343,7 +343,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-        /// HOST\_NAME or PATH.
+        /// HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

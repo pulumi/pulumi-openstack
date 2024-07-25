@@ -15,6 +15,7 @@ import (
 )
 
 func TestAccWebserver(t *testing.T) {
+	t.Skipf("Skipping test due to suspended account: https://github.com/pulumi/pulumi-openstack/issues/651")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "webserver"),
@@ -24,6 +25,7 @@ func TestAccWebserver(t *testing.T) {
 }
 
 func TestKeyPair(t *testing.T) {
+	t.Skipf("Skipping test due to suspended account: https://github.com/pulumi/pulumi-openstack/issues/651")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir:   path.Join(getCwd(t), "keypair"),

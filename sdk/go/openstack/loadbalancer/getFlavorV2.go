@@ -11,6 +11,33 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get the ID of an OpenStack Load Balancer flavor.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := loadbalancer.GetFlavorV2(ctx, &loadbalancer.GetFlavorV2Args{
+//				Name: pulumi.StringRef("flavor_1"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetFlavorV2(ctx *pulumi.Context, args *GetFlavorV2Args, opts ...pulumi.InvokeOption) (*GetFlavorV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFlavorV2Result
@@ -23,19 +50,28 @@ func GetFlavorV2(ctx *pulumi.Context, args *GetFlavorV2Args, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getFlavorV2.
 type GetFlavorV2Args struct {
+	// The ID of the flavor. Exactly one of `name`, `flavorId` is required to be set.
 	FlavorId *string `pulumi:"flavorId"`
-	Name     *string `pulumi:"name"`
-	Region   *string `pulumi:"region"`
+	// The name of the flavor. Exactly one of `name`, `flavorId` is required to be set.
+	Name *string `pulumi:"name"`
+	// The region in which to obtain the V2 Load Balancer client.
+	// If omitted, the `region` argument of the provider is used.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getFlavorV2.
 type GetFlavorV2Result struct {
-	Description     string `pulumi:"description"`
-	Enabled         bool   `pulumi:"enabled"`
-	FlavorId        string `pulumi:"flavorId"`
+	// The description of the flavor.
+	Description string `pulumi:"description"`
+	// Is the flavor enabled.
+	Enabled bool `pulumi:"enabled"`
+	// The ID of the flavor.
+	FlavorId string `pulumi:"flavorId"`
+	// The ID of the flavor profile.
 	FlavorProfileId string `pulumi:"flavorProfileId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The name of the flavor.
 	Name   string  `pulumi:"name"`
 	Region *string `pulumi:"region"`
 }
@@ -55,9 +91,13 @@ func GetFlavorV2Output(ctx *pulumi.Context, args GetFlavorV2OutputArgs, opts ...
 
 // A collection of arguments for invoking getFlavorV2.
 type GetFlavorV2OutputArgs struct {
+	// The ID of the flavor. Exactly one of `name`, `flavorId` is required to be set.
 	FlavorId pulumi.StringPtrInput `pulumi:"flavorId"`
-	Name     pulumi.StringPtrInput `pulumi:"name"`
-	Region   pulumi.StringPtrInput `pulumi:"region"`
+	// The name of the flavor. Exactly one of `name`, `flavorId` is required to be set.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The region in which to obtain the V2 Load Balancer client.
+	// If omitted, the `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetFlavorV2OutputArgs) ElementType() reflect.Type {
@@ -79,18 +119,22 @@ func (o GetFlavorV2ResultOutput) ToGetFlavorV2ResultOutputWithContext(ctx contex
 	return o
 }
 
+// The description of the flavor.
 func (o GetFlavorV2ResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorV2Result) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Is the flavor enabled.
 func (o GetFlavorV2ResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetFlavorV2Result) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// The ID of the flavor.
 func (o GetFlavorV2ResultOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorV2Result) string { return v.FlavorId }).(pulumi.StringOutput)
 }
 
+// The ID of the flavor profile.
 func (o GetFlavorV2ResultOutput) FlavorProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorV2Result) string { return v.FlavorProfileId }).(pulumi.StringOutput)
 }
@@ -100,6 +144,7 @@ func (o GetFlavorV2ResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorV2Result) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the flavor.
 func (o GetFlavorV2ResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorV2Result) string { return v.Name }).(pulumi.StringOutput)
 }

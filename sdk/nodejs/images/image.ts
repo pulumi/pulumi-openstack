@@ -85,8 +85,8 @@ export class Image extends pulumi.CustomResource {
      */
     public /*out*/ readonly checksum!: pulumi.Output<string>;
     /**
-     * The container format. Must be one of
-     * "ami", "ari", "aki", "bare", "ovf".
+     * The container format. Must be one of "bare",
+     * "ovf", "aki", "ari", "ami", "ova", "docker", "compressed".
      */
     public readonly containerFormat!: pulumi.Output<string>;
     /**
@@ -96,13 +96,14 @@ export class Image extends pulumi.CustomResource {
     /**
      * If true, this provider will decompress downloaded
      * image before uploading it to OpenStack. Decompression algorithm is chosen by
-     * checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
+     * checking "Content-Type" or `Content-Disposition` header to detect the
+     * filename extension. Supported algorithms are: gzip, bzip2, xz and zst.
      * Defaults to false. Changing this creates a new Image.
      */
     public readonly decompress!: pulumi.Output<boolean | undefined>;
     /**
-     * The disk format. Must be one of
-     * "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
+     * The disk format. Must be one of "raw", "vhd",
+     * "vhdx", "vmdk", "vdi", "iso", "ploop", "qcow2", "aki", "ari", "ami"
      */
     public readonly diskFormat!: pulumi.Output<string>;
     /**
@@ -123,18 +124,20 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly imageId!: pulumi.Output<string>;
     /**
-     * The password of basic auth to download `imageSourceUrl`.
+     * The password of basic auth to download
+     * `imageSourceUrl`.
      */
     public readonly imageSourcePassword!: pulumi.Output<string | undefined>;
     /**
-     * This is the url of the raw image. If `webDownload`
-     * is not used, then the image will be downloaded in the `imageCachePath` before
-     * being uploaded to Glance.
-     * Conflicts with `localFilePath`.
+     * This is the url of the raw image. If
+     * `webDownload` is not used, then the image will be downloaded in the
+     * `imageCachePath` before being uploaded to Glance. Conflicts with
+     * `localFilePath`.
      */
     public readonly imageSourceUrl!: pulumi.Output<string | undefined>;
     /**
-     * The username of basic auth to download `imageSourceUrl`.
+     * The username of basic auth to download
+     * `imageSourceUrl`.
      */
     public readonly imageSourceUsername!: pulumi.Output<string | undefined>;
     /**
@@ -150,8 +153,8 @@ export class Image extends pulumi.CustomResource {
      */
     public /*out*/ readonly metadata!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Amount of disk space (in GB) required to boot image.
-     * Defaults to 0.
+     * Amount of disk space (in GB) required to boot
+     * image. Defaults to 0.
      */
     public readonly minDiskGb!: pulumi.Output<number | undefined>;
     /**
@@ -169,20 +172,20 @@ export class Image extends pulumi.CustomResource {
     public /*out*/ readonly owner!: pulumi.Output<string>;
     /**
      * A map of key/value pairs to set freeform
-     * information about an image. See the "Notes" section for further
-     * information about properties.
+     * information about an image. See the "Notes" section for further information
+     * about properties.
      */
     public readonly properties!: pulumi.Output<{[key: string]: any}>;
     /**
-     * If true, image will not be deletable.
-     * Defaults to false.
+     * If true, image will not be deletable. Defaults to
+     * false.
      */
     public readonly protected!: pulumi.Output<boolean | undefined>;
     /**
-     * The region in which to obtain the V2 Glance client.
-     * A Glance client is needed to create an Image that can be used with
-     * a compute instance. If omitted, the `region` argument of the provider
-     * is used. Changing this creates a new Image.
+     * The region in which to obtain the V2 Glance client. A
+     * Glance client is needed to create an Image that can be used with a compute
+     * instance. If omitted, the `region` argument of the provider is used. Changing
+     * this creates a new Image.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -200,8 +203,8 @@ export class Image extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The tags of the image. It must be a list of strings.
-     * At this time, it is not possible to delete all tags of an image.
+     * The tags of the image. It must be a list of strings. At
+     * this time, it is not possible to delete all tags of an image.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -210,8 +213,8 @@ export class Image extends pulumi.CustomResource {
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * If false, the checksum will not be verified
-     * once the image is finished uploading. Conflicts with `webDownload`.
-     * Defaults to true when not using `webDownload`.
+     * once the image is finished uploading. Conflicts with `webDownload`. Defaults
+     * to true when not using `webDownload`.
      */
     public readonly verifyChecksum!: pulumi.Output<boolean | undefined>;
     /**
@@ -221,8 +224,8 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly visibility!: pulumi.Output<string | undefined>;
     /**
-     * If true, the "web-download" import method will
-     * be used to let Openstack download the image directly from the remote source.
+     * If true, the "web-download" import method will be
+     * used to let Openstack download the image directly from the remote source.
      * Conflicts with `localFilePath`. Defaults to false.
      */
     public readonly webDownload!: pulumi.Output<boolean | undefined>;
@@ -323,8 +326,8 @@ export interface ImageState {
      */
     checksum?: pulumi.Input<string>;
     /**
-     * The container format. Must be one of
-     * "ami", "ari", "aki", "bare", "ovf".
+     * The container format. Must be one of "bare",
+     * "ovf", "aki", "ari", "ami", "ova", "docker", "compressed".
      */
     containerFormat?: pulumi.Input<string>;
     /**
@@ -334,13 +337,14 @@ export interface ImageState {
     /**
      * If true, this provider will decompress downloaded
      * image before uploading it to OpenStack. Decompression algorithm is chosen by
-     * checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
+     * checking "Content-Type" or `Content-Disposition` header to detect the
+     * filename extension. Supported algorithms are: gzip, bzip2, xz and zst.
      * Defaults to false. Changing this creates a new Image.
      */
     decompress?: pulumi.Input<boolean>;
     /**
-     * The disk format. Must be one of
-     * "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
+     * The disk format. Must be one of "raw", "vhd",
+     * "vhdx", "vmdk", "vdi", "iso", "ploop", "qcow2", "aki", "ari", "ami"
      */
     diskFormat?: pulumi.Input<string>;
     /**
@@ -361,18 +365,20 @@ export interface ImageState {
      */
     imageId?: pulumi.Input<string>;
     /**
-     * The password of basic auth to download `imageSourceUrl`.
+     * The password of basic auth to download
+     * `imageSourceUrl`.
      */
     imageSourcePassword?: pulumi.Input<string>;
     /**
-     * This is the url of the raw image. If `webDownload`
-     * is not used, then the image will be downloaded in the `imageCachePath` before
-     * being uploaded to Glance.
-     * Conflicts with `localFilePath`.
+     * This is the url of the raw image. If
+     * `webDownload` is not used, then the image will be downloaded in the
+     * `imageCachePath` before being uploaded to Glance. Conflicts with
+     * `localFilePath`.
      */
     imageSourceUrl?: pulumi.Input<string>;
     /**
-     * The username of basic auth to download `imageSourceUrl`.
+     * The username of basic auth to download
+     * `imageSourceUrl`.
      */
     imageSourceUsername?: pulumi.Input<string>;
     /**
@@ -388,8 +394,8 @@ export interface ImageState {
      */
     metadata?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Amount of disk space (in GB) required to boot image.
-     * Defaults to 0.
+     * Amount of disk space (in GB) required to boot
+     * image. Defaults to 0.
      */
     minDiskGb?: pulumi.Input<number>;
     /**
@@ -407,20 +413,20 @@ export interface ImageState {
     owner?: pulumi.Input<string>;
     /**
      * A map of key/value pairs to set freeform
-     * information about an image. See the "Notes" section for further
-     * information about properties.
+     * information about an image. See the "Notes" section for further information
+     * about properties.
      */
     properties?: pulumi.Input<{[key: string]: any}>;
     /**
-     * If true, image will not be deletable.
-     * Defaults to false.
+     * If true, image will not be deletable. Defaults to
+     * false.
      */
     protected?: pulumi.Input<boolean>;
     /**
-     * The region in which to obtain the V2 Glance client.
-     * A Glance client is needed to create an Image that can be used with
-     * a compute instance. If omitted, the `region` argument of the provider
-     * is used. Changing this creates a new Image.
+     * The region in which to obtain the V2 Glance client. A
+     * Glance client is needed to create an Image that can be used with a compute
+     * instance. If omitted, the `region` argument of the provider is used. Changing
+     * this creates a new Image.
      */
     region?: pulumi.Input<string>;
     /**
@@ -438,8 +444,8 @@ export interface ImageState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The tags of the image. It must be a list of strings.
-     * At this time, it is not possible to delete all tags of an image.
+     * The tags of the image. It must be a list of strings. At
+     * this time, it is not possible to delete all tags of an image.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -448,8 +454,8 @@ export interface ImageState {
     updatedAt?: pulumi.Input<string>;
     /**
      * If false, the checksum will not be verified
-     * once the image is finished uploading. Conflicts with `webDownload`.
-     * Defaults to true when not using `webDownload`.
+     * once the image is finished uploading. Conflicts with `webDownload`. Defaults
+     * to true when not using `webDownload`.
      */
     verifyChecksum?: pulumi.Input<boolean>;
     /**
@@ -459,8 +465,8 @@ export interface ImageState {
      */
     visibility?: pulumi.Input<string>;
     /**
-     * If true, the "web-download" import method will
-     * be used to let Openstack download the image directly from the remote source.
+     * If true, the "web-download" import method will be
+     * used to let Openstack download the image directly from the remote source.
      * Conflicts with `localFilePath`. Defaults to false.
      */
     webDownload?: pulumi.Input<boolean>;
@@ -471,20 +477,21 @@ export interface ImageState {
  */
 export interface ImageArgs {
     /**
-     * The container format. Must be one of
-     * "ami", "ari", "aki", "bare", "ovf".
+     * The container format. Must be one of "bare",
+     * "ovf", "aki", "ari", "ami", "ova", "docker", "compressed".
      */
     containerFormat: pulumi.Input<string>;
     /**
      * If true, this provider will decompress downloaded
      * image before uploading it to OpenStack. Decompression algorithm is chosen by
-     * checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
+     * checking "Content-Type" or `Content-Disposition` header to detect the
+     * filename extension. Supported algorithms are: gzip, bzip2, xz and zst.
      * Defaults to false. Changing this creates a new Image.
      */
     decompress?: pulumi.Input<boolean>;
     /**
-     * The disk format. Must be one of
-     * "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
+     * The disk format. Must be one of "raw", "vhd",
+     * "vhdx", "vmdk", "vdi", "iso", "ploop", "qcow2", "aki", "ari", "ami"
      */
     diskFormat: pulumi.Input<string>;
     /**
@@ -499,18 +506,20 @@ export interface ImageArgs {
      */
     imageId?: pulumi.Input<string>;
     /**
-     * The password of basic auth to download `imageSourceUrl`.
+     * The password of basic auth to download
+     * `imageSourceUrl`.
      */
     imageSourcePassword?: pulumi.Input<string>;
     /**
-     * This is the url of the raw image. If `webDownload`
-     * is not used, then the image will be downloaded in the `imageCachePath` before
-     * being uploaded to Glance.
-     * Conflicts with `localFilePath`.
+     * This is the url of the raw image. If
+     * `webDownload` is not used, then the image will be downloaded in the
+     * `imageCachePath` before being uploaded to Glance. Conflicts with
+     * `localFilePath`.
      */
     imageSourceUrl?: pulumi.Input<string>;
     /**
-     * The username of basic auth to download `imageSourceUrl`.
+     * The username of basic auth to download
+     * `imageSourceUrl`.
      */
     imageSourceUsername?: pulumi.Input<string>;
     /**
@@ -520,8 +529,8 @@ export interface ImageArgs {
      */
     localFilePath?: pulumi.Input<string>;
     /**
-     * Amount of disk space (in GB) required to boot image.
-     * Defaults to 0.
+     * Amount of disk space (in GB) required to boot
+     * image. Defaults to 0.
      */
     minDiskGb?: pulumi.Input<number>;
     /**
@@ -535,31 +544,31 @@ export interface ImageArgs {
     name?: pulumi.Input<string>;
     /**
      * A map of key/value pairs to set freeform
-     * information about an image. See the "Notes" section for further
-     * information about properties.
+     * information about an image. See the "Notes" section for further information
+     * about properties.
      */
     properties?: pulumi.Input<{[key: string]: any}>;
     /**
-     * If true, image will not be deletable.
-     * Defaults to false.
+     * If true, image will not be deletable. Defaults to
+     * false.
      */
     protected?: pulumi.Input<boolean>;
     /**
-     * The region in which to obtain the V2 Glance client.
-     * A Glance client is needed to create an Image that can be used with
-     * a compute instance. If omitted, the `region` argument of the provider
-     * is used. Changing this creates a new Image.
+     * The region in which to obtain the V2 Glance client. A
+     * Glance client is needed to create an Image that can be used with a compute
+     * instance. If omitted, the `region` argument of the provider is used. Changing
+     * this creates a new Image.
      */
     region?: pulumi.Input<string>;
     /**
-     * The tags of the image. It must be a list of strings.
-     * At this time, it is not possible to delete all tags of an image.
+     * The tags of the image. It must be a list of strings. At
+     * this time, it is not possible to delete all tags of an image.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If false, the checksum will not be verified
-     * once the image is finished uploading. Conflicts with `webDownload`.
-     * Defaults to true when not using `webDownload`.
+     * once the image is finished uploading. Conflicts with `webDownload`. Defaults
+     * to true when not using `webDownload`.
      */
     verifyChecksum?: pulumi.Input<boolean>;
     /**
@@ -569,8 +578,8 @@ export interface ImageArgs {
      */
     visibility?: pulumi.Input<string>;
     /**
-     * If true, the "web-download" import method will
-     * be used to let Openstack download the image directly from the remote source.
+     * If true, the "web-download" import method will be
+     * used to let Openstack download the image directly from the remote source.
      * Conflicts with `localFilePath`. Defaults to false.
      */
     webDownload?: pulumi.Input<boolean>;

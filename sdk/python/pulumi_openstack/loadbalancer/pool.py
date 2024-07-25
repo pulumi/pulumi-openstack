@@ -25,6 +25,7 @@ class PoolArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  persistence: Optional[pulumi.Input['PoolPersistenceArgs']] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Pool resource.
@@ -71,6 +72,8 @@ class PoolArgs:
             pulumi.set(__self__, "persistence", persistence)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
 
@@ -197,6 +200,15 @@ class PoolArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -223,6 +235,7 @@ class _PoolState:
                  persistence: Optional[pulumi.Input['PoolPersistenceArgs']] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Pool resources.
@@ -271,6 +284,8 @@ class _PoolState:
             pulumi.set(__self__, "protocol", protocol)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
 
@@ -397,6 +412,15 @@ class _PoolState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -425,6 +449,7 @@ class Pool(pulumi.CustomResource):
                  persistence: Optional[pulumi.Input[pulumi.InputType['PoolPersistenceArgs']]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -546,6 +571,7 @@ class Pool(pulumi.CustomResource):
                  persistence: Optional[pulumi.Input[pulumi.InputType['PoolPersistenceArgs']]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -569,6 +595,7 @@ class Pool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'protocol'")
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["region"] = region
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["tenant_id"] = tenant_id
         super(Pool, __self__).__init__(
             'openstack:loadbalancer/pool:Pool',
@@ -589,6 +616,7 @@ class Pool(pulumi.CustomResource):
             persistence: Optional[pulumi.Input[pulumi.InputType['PoolPersistenceArgs']]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None) -> 'Pool':
         """
         Get an existing Pool resource's state with the given name, id, and optional extra
@@ -637,6 +665,7 @@ class Pool(pulumi.CustomResource):
         __props__.__dict__["persistence"] = persistence
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["region"] = region
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["tenant_id"] = tenant_id
         return Pool(resource_name, opts=opts, __props__=__props__)
 
@@ -725,6 +754,11 @@ class Pool(pulumi.CustomResource):
         pool.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="tenantId")

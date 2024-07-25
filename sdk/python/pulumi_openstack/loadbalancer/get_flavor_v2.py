@@ -47,21 +47,33 @@ class GetFlavorV2Result:
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the flavor.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        Is the flavor enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> str:
+        """
+        The ID of the flavor.
+        """
         return pulumi.get(self, "flavor_id")
 
     @property
     @pulumi.getter(name="flavorProfileId")
     def flavor_profile_id(self) -> str:
+        """
+        The ID of the flavor profile.
+        """
         return pulumi.get(self, "flavor_profile_id")
 
     @property
@@ -75,6 +87,9 @@ class GetFlavorV2Result:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the flavor.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -103,7 +118,22 @@ def get_flavor_v2(flavor_id: Optional[str] = None,
                   region: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlavorV2Result:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an OpenStack Load Balancer flavor.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    flavor1 = openstack.loadbalancer.get_flavor_v2(name="flavor_1")
+    ```
+
+
+    :param str flavor_id: The ID of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+    :param str name: The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+    :param str region: The region in which to obtain the V2 Load Balancer client.
+           If omitted, the `region` argument of the provider is used.
     """
     __args__ = dict()
     __args__['flavorId'] = flavor_id
@@ -128,6 +158,21 @@ def get_flavor_v2_output(flavor_id: Optional[pulumi.Input[Optional[str]]] = None
                          region: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlavorV2Result]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an OpenStack Load Balancer flavor.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    flavor1 = openstack.loadbalancer.get_flavor_v2(name="flavor_1")
+    ```
+
+
+    :param str flavor_id: The ID of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+    :param str name: The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+    :param str region: The region in which to obtain the V2 Load Balancer client.
+           If omitted, the `region` argument of the provider is used.
     """
     ...
