@@ -11,25 +11,105 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a V2 loadbalancer resource within OpenStack.
+//
+// > **Note:** This resource has attributes that depend on octavia minor versions.
+// Please ensure your Openstack cloud supports the required minor version.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := openstack.NewLbLoadbalancerV2(ctx, "lb_1", &openstack.LbLoadbalancerV2Args{
+//				VipSubnetId: pulumi.String("d9415786-5f1a-428b-b35f-2f1523e146d2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Load Balancer can be imported using the Load Balancer ID, e.g.:
+//
+// ```sh
+// $ pulumi import openstack:loadbalancer/loadBalancer:LoadBalancer loadbalancer_1 19bcfdc7-c521-4a7e-9459-6750bd16df76
+// ```
+//
 // Deprecated: openstack.loadbalancer/loadbalancer.LoadBalancer has been deprecated in favor of openstack.index/lbloadbalancerv2.LbLoadbalancerV2
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 
-	AdminStateUp         pulumi.BoolPtrOutput     `pulumi:"adminStateUp"`
-	AvailabilityZone     pulumi.StringPtrOutput   `pulumi:"availabilityZone"`
-	Description          pulumi.StringPtrOutput   `pulumi:"description"`
-	FlavorId             pulumi.StringOutput      `pulumi:"flavorId"`
-	LoadbalancerProvider pulumi.StringOutput      `pulumi:"loadbalancerProvider"`
-	Name                 pulumi.StringOutput      `pulumi:"name"`
-	Region               pulumi.StringOutput      `pulumi:"region"`
-	SecurityGroupIds     pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	Tags                 pulumi.StringArrayOutput `pulumi:"tags"`
-	TenantId             pulumi.StringOutput      `pulumi:"tenantId"`
-	VipAddress           pulumi.StringOutput      `pulumi:"vipAddress"`
-	VipNetworkId         pulumi.StringOutput      `pulumi:"vipNetworkId"`
-	VipPortId            pulumi.StringOutput      `pulumi:"vipPortId"`
-	VipQosPolicyId       pulumi.StringPtrOutput   `pulumi:"vipQosPolicyId"`
-	VipSubnetId          pulumi.StringOutput      `pulumi:"vipSubnetId"`
+	// The administrative state of the Loadbalancer.
+	// A valid value is true (UP) or false (DOWN).
+	AdminStateUp pulumi.BoolPtrOutput `pulumi:"adminStateUp"`
+	// The availability zone of the Loadbalancer.
+	// Changing this creates a new loadbalancer. Available only for Octavia
+	// **minor version 2.14 or later**.
+	AvailabilityZone pulumi.StringPtrOutput `pulumi:"availabilityZone"`
+	// Human-readable description for the Loadbalancer.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The UUID of a flavor. Changing this creates a new
+	// loadbalancer.
+	FlavorId pulumi.StringOutput `pulumi:"flavorId"`
+	// The name of the provider. Changing this
+	// creates a new loadbalancer.
+	LoadbalancerProvider pulumi.StringOutput `pulumi:"loadbalancerProvider"`
+	// Human-readable name for the Loadbalancer. Does not have
+	// to be unique.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The region in which to obtain the V2 Networking client.
+	// A Networking client is needed to create an LB member. If omitted, the
+	// `region` argument of the provider is used. Changing this creates a new
+	// LB member.
+	Region pulumi.StringOutput `pulumi:"region"`
+	// A list of security group IDs to apply to the
+	// loadbalancer. The security groups must be specified by ID and not name (as
+	// opposed to how they are configured with the Compute Instance).
+	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
+	// A list of simple strings assigned to the loadbalancer.
+	// Available only for Octavia **minor version 2.5 or later**.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// Required for admins. The UUID of the tenant who owns
+	// the Loadbalancer.  Only administrative users can specify a tenant UUID
+	// other than their own.  Changing this creates a new loadbalancer.
+	TenantId pulumi.StringOutput `pulumi:"tenantId"`
+	// The ip address of the load balancer.
+	// Changing this creates a new loadbalancer.
+	VipAddress pulumi.StringOutput `pulumi:"vipAddress"`
+	// The network on which to allocate the
+	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
+	// authorized by policy (e.g. networks that belong to them or networks that
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
+	VipNetworkId pulumi.StringOutput `pulumi:"vipNetworkId"`
+	// The port UUID that the loadbalancer will use.
+	// Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
+	VipPortId pulumi.StringOutput `pulumi:"vipPortId"`
+	// The ID of the QoS Policy which will
+	// be applied to the Virtual IP (VIP).
+	VipQosPolicyId pulumi.StringPtrOutput `pulumi:"vipQosPolicyId"`
+	// The subnet on which to allocate the
+	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
+	// authorized by policy (e.g. networks that belong to them or networks that
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
+	VipSubnetId pulumi.StringOutput `pulumi:"vipSubnetId"`
 }
 
 // NewLoadBalancer registers a new resource with the given unique name, arguments, and options.
@@ -62,39 +142,121 @@ func GetLoadBalancer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancer resources.
 type loadBalancerState struct {
-	AdminStateUp         *bool    `pulumi:"adminStateUp"`
-	AvailabilityZone     *string  `pulumi:"availabilityZone"`
-	Description          *string  `pulumi:"description"`
-	FlavorId             *string  `pulumi:"flavorId"`
-	LoadbalancerProvider *string  `pulumi:"loadbalancerProvider"`
-	Name                 *string  `pulumi:"name"`
-	Region               *string  `pulumi:"region"`
-	SecurityGroupIds     []string `pulumi:"securityGroupIds"`
-	Tags                 []string `pulumi:"tags"`
-	TenantId             *string  `pulumi:"tenantId"`
-	VipAddress           *string  `pulumi:"vipAddress"`
-	VipNetworkId         *string  `pulumi:"vipNetworkId"`
-	VipPortId            *string  `pulumi:"vipPortId"`
-	VipQosPolicyId       *string  `pulumi:"vipQosPolicyId"`
-	VipSubnetId          *string  `pulumi:"vipSubnetId"`
+	// The administrative state of the Loadbalancer.
+	// A valid value is true (UP) or false (DOWN).
+	AdminStateUp *bool `pulumi:"adminStateUp"`
+	// The availability zone of the Loadbalancer.
+	// Changing this creates a new loadbalancer. Available only for Octavia
+	// **minor version 2.14 or later**.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// Human-readable description for the Loadbalancer.
+	Description *string `pulumi:"description"`
+	// The UUID of a flavor. Changing this creates a new
+	// loadbalancer.
+	FlavorId *string `pulumi:"flavorId"`
+	// The name of the provider. Changing this
+	// creates a new loadbalancer.
+	LoadbalancerProvider *string `pulumi:"loadbalancerProvider"`
+	// Human-readable name for the Loadbalancer. Does not have
+	// to be unique.
+	Name *string `pulumi:"name"`
+	// The region in which to obtain the V2 Networking client.
+	// A Networking client is needed to create an LB member. If omitted, the
+	// `region` argument of the provider is used. Changing this creates a new
+	// LB member.
+	Region *string `pulumi:"region"`
+	// A list of security group IDs to apply to the
+	// loadbalancer. The security groups must be specified by ID and not name (as
+	// opposed to how they are configured with the Compute Instance).
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// A list of simple strings assigned to the loadbalancer.
+	// Available only for Octavia **minor version 2.5 or later**.
+	Tags []string `pulumi:"tags"`
+	// Required for admins. The UUID of the tenant who owns
+	// the Loadbalancer.  Only administrative users can specify a tenant UUID
+	// other than their own.  Changing this creates a new loadbalancer.
+	TenantId *string `pulumi:"tenantId"`
+	// The ip address of the load balancer.
+	// Changing this creates a new loadbalancer.
+	VipAddress *string `pulumi:"vipAddress"`
+	// The network on which to allocate the
+	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
+	// authorized by policy (e.g. networks that belong to them or networks that
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
+	VipNetworkId *string `pulumi:"vipNetworkId"`
+	// The port UUID that the loadbalancer will use.
+	// Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
+	VipPortId *string `pulumi:"vipPortId"`
+	// The ID of the QoS Policy which will
+	// be applied to the Virtual IP (VIP).
+	VipQosPolicyId *string `pulumi:"vipQosPolicyId"`
+	// The subnet on which to allocate the
+	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
+	// authorized by policy (e.g. networks that belong to them or networks that
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
+	VipSubnetId *string `pulumi:"vipSubnetId"`
 }
 
 type LoadBalancerState struct {
-	AdminStateUp         pulumi.BoolPtrInput
-	AvailabilityZone     pulumi.StringPtrInput
-	Description          pulumi.StringPtrInput
-	FlavorId             pulumi.StringPtrInput
+	// The administrative state of the Loadbalancer.
+	// A valid value is true (UP) or false (DOWN).
+	AdminStateUp pulumi.BoolPtrInput
+	// The availability zone of the Loadbalancer.
+	// Changing this creates a new loadbalancer. Available only for Octavia
+	// **minor version 2.14 or later**.
+	AvailabilityZone pulumi.StringPtrInput
+	// Human-readable description for the Loadbalancer.
+	Description pulumi.StringPtrInput
+	// The UUID of a flavor. Changing this creates a new
+	// loadbalancer.
+	FlavorId pulumi.StringPtrInput
+	// The name of the provider. Changing this
+	// creates a new loadbalancer.
 	LoadbalancerProvider pulumi.StringPtrInput
-	Name                 pulumi.StringPtrInput
-	Region               pulumi.StringPtrInput
-	SecurityGroupIds     pulumi.StringArrayInput
-	Tags                 pulumi.StringArrayInput
-	TenantId             pulumi.StringPtrInput
-	VipAddress           pulumi.StringPtrInput
-	VipNetworkId         pulumi.StringPtrInput
-	VipPortId            pulumi.StringPtrInput
-	VipQosPolicyId       pulumi.StringPtrInput
-	VipSubnetId          pulumi.StringPtrInput
+	// Human-readable name for the Loadbalancer. Does not have
+	// to be unique.
+	Name pulumi.StringPtrInput
+	// The region in which to obtain the V2 Networking client.
+	// A Networking client is needed to create an LB member. If omitted, the
+	// `region` argument of the provider is used. Changing this creates a new
+	// LB member.
+	Region pulumi.StringPtrInput
+	// A list of security group IDs to apply to the
+	// loadbalancer. The security groups must be specified by ID and not name (as
+	// opposed to how they are configured with the Compute Instance).
+	SecurityGroupIds pulumi.StringArrayInput
+	// A list of simple strings assigned to the loadbalancer.
+	// Available only for Octavia **minor version 2.5 or later**.
+	Tags pulumi.StringArrayInput
+	// Required for admins. The UUID of the tenant who owns
+	// the Loadbalancer.  Only administrative users can specify a tenant UUID
+	// other than their own.  Changing this creates a new loadbalancer.
+	TenantId pulumi.StringPtrInput
+	// The ip address of the load balancer.
+	// Changing this creates a new loadbalancer.
+	VipAddress pulumi.StringPtrInput
+	// The network on which to allocate the
+	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
+	// authorized by policy (e.g. networks that belong to them or networks that
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
+	VipNetworkId pulumi.StringPtrInput
+	// The port UUID that the loadbalancer will use.
+	// Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
+	VipPortId pulumi.StringPtrInput
+	// The ID of the QoS Policy which will
+	// be applied to the Virtual IP (VIP).
+	VipQosPolicyId pulumi.StringPtrInput
+	// The subnet on which to allocate the
+	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
+	// authorized by policy (e.g. networks that belong to them or networks that
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
+	VipSubnetId pulumi.StringPtrInput
 }
 
 func (LoadBalancerState) ElementType() reflect.Type {
@@ -102,40 +264,122 @@ func (LoadBalancerState) ElementType() reflect.Type {
 }
 
 type loadBalancerArgs struct {
-	AdminStateUp         *bool    `pulumi:"adminStateUp"`
-	AvailabilityZone     *string  `pulumi:"availabilityZone"`
-	Description          *string  `pulumi:"description"`
-	FlavorId             *string  `pulumi:"flavorId"`
-	LoadbalancerProvider *string  `pulumi:"loadbalancerProvider"`
-	Name                 *string  `pulumi:"name"`
-	Region               *string  `pulumi:"region"`
-	SecurityGroupIds     []string `pulumi:"securityGroupIds"`
-	Tags                 []string `pulumi:"tags"`
-	TenantId             *string  `pulumi:"tenantId"`
-	VipAddress           *string  `pulumi:"vipAddress"`
-	VipNetworkId         *string  `pulumi:"vipNetworkId"`
-	VipPortId            *string  `pulumi:"vipPortId"`
-	VipQosPolicyId       *string  `pulumi:"vipQosPolicyId"`
-	VipSubnetId          *string  `pulumi:"vipSubnetId"`
+	// The administrative state of the Loadbalancer.
+	// A valid value is true (UP) or false (DOWN).
+	AdminStateUp *bool `pulumi:"adminStateUp"`
+	// The availability zone of the Loadbalancer.
+	// Changing this creates a new loadbalancer. Available only for Octavia
+	// **minor version 2.14 or later**.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// Human-readable description for the Loadbalancer.
+	Description *string `pulumi:"description"`
+	// The UUID of a flavor. Changing this creates a new
+	// loadbalancer.
+	FlavorId *string `pulumi:"flavorId"`
+	// The name of the provider. Changing this
+	// creates a new loadbalancer.
+	LoadbalancerProvider *string `pulumi:"loadbalancerProvider"`
+	// Human-readable name for the Loadbalancer. Does not have
+	// to be unique.
+	Name *string `pulumi:"name"`
+	// The region in which to obtain the V2 Networking client.
+	// A Networking client is needed to create an LB member. If omitted, the
+	// `region` argument of the provider is used. Changing this creates a new
+	// LB member.
+	Region *string `pulumi:"region"`
+	// A list of security group IDs to apply to the
+	// loadbalancer. The security groups must be specified by ID and not name (as
+	// opposed to how they are configured with the Compute Instance).
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// A list of simple strings assigned to the loadbalancer.
+	// Available only for Octavia **minor version 2.5 or later**.
+	Tags []string `pulumi:"tags"`
+	// Required for admins. The UUID of the tenant who owns
+	// the Loadbalancer.  Only administrative users can specify a tenant UUID
+	// other than their own.  Changing this creates a new loadbalancer.
+	TenantId *string `pulumi:"tenantId"`
+	// The ip address of the load balancer.
+	// Changing this creates a new loadbalancer.
+	VipAddress *string `pulumi:"vipAddress"`
+	// The network on which to allocate the
+	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
+	// authorized by policy (e.g. networks that belong to them or networks that
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
+	VipNetworkId *string `pulumi:"vipNetworkId"`
+	// The port UUID that the loadbalancer will use.
+	// Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
+	VipPortId *string `pulumi:"vipPortId"`
+	// The ID of the QoS Policy which will
+	// be applied to the Virtual IP (VIP).
+	VipQosPolicyId *string `pulumi:"vipQosPolicyId"`
+	// The subnet on which to allocate the
+	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
+	// authorized by policy (e.g. networks that belong to them or networks that
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
+	VipSubnetId *string `pulumi:"vipSubnetId"`
 }
 
 // The set of arguments for constructing a LoadBalancer resource.
 type LoadBalancerArgs struct {
-	AdminStateUp         pulumi.BoolPtrInput
-	AvailabilityZone     pulumi.StringPtrInput
-	Description          pulumi.StringPtrInput
-	FlavorId             pulumi.StringPtrInput
+	// The administrative state of the Loadbalancer.
+	// A valid value is true (UP) or false (DOWN).
+	AdminStateUp pulumi.BoolPtrInput
+	// The availability zone of the Loadbalancer.
+	// Changing this creates a new loadbalancer. Available only for Octavia
+	// **minor version 2.14 or later**.
+	AvailabilityZone pulumi.StringPtrInput
+	// Human-readable description for the Loadbalancer.
+	Description pulumi.StringPtrInput
+	// The UUID of a flavor. Changing this creates a new
+	// loadbalancer.
+	FlavorId pulumi.StringPtrInput
+	// The name of the provider. Changing this
+	// creates a new loadbalancer.
 	LoadbalancerProvider pulumi.StringPtrInput
-	Name                 pulumi.StringPtrInput
-	Region               pulumi.StringPtrInput
-	SecurityGroupIds     pulumi.StringArrayInput
-	Tags                 pulumi.StringArrayInput
-	TenantId             pulumi.StringPtrInput
-	VipAddress           pulumi.StringPtrInput
-	VipNetworkId         pulumi.StringPtrInput
-	VipPortId            pulumi.StringPtrInput
-	VipQosPolicyId       pulumi.StringPtrInput
-	VipSubnetId          pulumi.StringPtrInput
+	// Human-readable name for the Loadbalancer. Does not have
+	// to be unique.
+	Name pulumi.StringPtrInput
+	// The region in which to obtain the V2 Networking client.
+	// A Networking client is needed to create an LB member. If omitted, the
+	// `region` argument of the provider is used. Changing this creates a new
+	// LB member.
+	Region pulumi.StringPtrInput
+	// A list of security group IDs to apply to the
+	// loadbalancer. The security groups must be specified by ID and not name (as
+	// opposed to how they are configured with the Compute Instance).
+	SecurityGroupIds pulumi.StringArrayInput
+	// A list of simple strings assigned to the loadbalancer.
+	// Available only for Octavia **minor version 2.5 or later**.
+	Tags pulumi.StringArrayInput
+	// Required for admins. The UUID of the tenant who owns
+	// the Loadbalancer.  Only administrative users can specify a tenant UUID
+	// other than their own.  Changing this creates a new loadbalancer.
+	TenantId pulumi.StringPtrInput
+	// The ip address of the load balancer.
+	// Changing this creates a new loadbalancer.
+	VipAddress pulumi.StringPtrInput
+	// The network on which to allocate the
+	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
+	// authorized by policy (e.g. networks that belong to them or networks that
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
+	VipNetworkId pulumi.StringPtrInput
+	// The port UUID that the loadbalancer will use.
+	// Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
+	VipPortId pulumi.StringPtrInput
+	// The ID of the QoS Policy which will
+	// be applied to the Virtual IP (VIP).
+	VipQosPolicyId pulumi.StringPtrInput
+	// The subnet on which to allocate the
+	// Loadbalancer's address. A tenant can only create Loadbalancers on networks
+	// authorized by policy (e.g. networks that belong to them or networks that
+	// are shared).  Changing this creates a new loadbalancer. Exactly one of
+	// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
+	VipSubnetId pulumi.StringPtrInput
 }
 
 func (LoadBalancerArgs) ElementType() reflect.Type {
@@ -225,62 +469,103 @@ func (o LoadBalancerOutput) ToLoadBalancerOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The administrative state of the Loadbalancer.
+// A valid value is true (UP) or false (DOWN).
 func (o LoadBalancerOutput) AdminStateUp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolPtrOutput { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
 }
 
+// The availability zone of the Loadbalancer.
+// Changing this creates a new loadbalancer. Available only for Octavia
+// **minor version 2.14 or later**.
 func (o LoadBalancerOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
 }
 
+// Human-readable description for the Loadbalancer.
 func (o LoadBalancerOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The UUID of a flavor. Changing this creates a new
+// loadbalancer.
 func (o LoadBalancerOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.FlavorId }).(pulumi.StringOutput)
 }
 
+// The name of the provider. Changing this
+// creates a new loadbalancer.
 func (o LoadBalancerOutput) LoadbalancerProvider() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.LoadbalancerProvider }).(pulumi.StringOutput)
 }
 
+// Human-readable name for the Loadbalancer. Does not have
+// to be unique.
 func (o LoadBalancerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create an LB member. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// LB member.
 func (o LoadBalancerOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
+// A list of security group IDs to apply to the
+// loadbalancer. The security groups must be specified by ID and not name (as
+// opposed to how they are configured with the Compute Instance).
 func (o LoadBalancerOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
+// A list of simple strings assigned to the loadbalancer.
+// Available only for Octavia **minor version 2.5 or later**.
 func (o LoadBalancerOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// Required for admins. The UUID of the tenant who owns
+// the Loadbalancer.  Only administrative users can specify a tenant UUID
+// other than their own.  Changing this creates a new loadbalancer.
 func (o LoadBalancerOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
+// The ip address of the load balancer.
+// Changing this creates a new loadbalancer.
 func (o LoadBalancerOutput) VipAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.VipAddress }).(pulumi.StringOutput)
 }
 
+// The network on which to allocate the
+// Loadbalancer's address. A tenant can only create Loadbalancers on networks
+// authorized by policy (e.g. networks that belong to them or networks that
+// are shared).  Changing this creates a new loadbalancer. Exactly one of
+// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 func (o LoadBalancerOutput) VipNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.VipNetworkId }).(pulumi.StringOutput)
 }
 
+// The port UUID that the loadbalancer will use.
+// Changing this creates a new loadbalancer. Exactly one of
+// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 func (o LoadBalancerOutput) VipPortId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.VipPortId }).(pulumi.StringOutput)
 }
 
+// The ID of the QoS Policy which will
+// be applied to the Virtual IP (VIP).
 func (o LoadBalancerOutput) VipQosPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.VipQosPolicyId }).(pulumi.StringPtrOutput)
 }
 
+// The subnet on which to allocate the
+// Loadbalancer's address. A tenant can only create Loadbalancers on networks
+// authorized by policy (e.g. networks that belong to them or networks that
+// are shared).  Changing this creates a new loadbalancer. Exactly one of
+// `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
 func (o LoadBalancerOutput) VipSubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.VipSubnetId }).(pulumi.StringOutput)
 }
