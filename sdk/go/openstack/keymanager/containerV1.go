@@ -44,7 +44,7 @@ import (
 //			}
 //			certificate1, err := keymanager.NewSecretV1(ctx, "certificate_1", &keymanager.SecretV1Args{
 //				Name:               pulumi.String("certificate"),
-//				Payload:            invokeFile.Result,
+//				Payload:            pulumi.String(invokeFile.Result),
 //				SecretType:         pulumi.String("certificate"),
 //				PayloadContentType: pulumi.String("text/plain"),
 //			})
@@ -59,7 +59,7 @@ import (
 //			}
 //			privateKey1, err := keymanager.NewSecretV1(ctx, "private_key_1", &keymanager.SecretV1Args{
 //				Name:               pulumi.String("private_key"),
-//				Payload:            invokeFile1.Result,
+//				Payload:            pulumi.String(invokeFile1.Result),
 //				SecretType:         pulumi.String("private"),
 //				PayloadContentType: pulumi.String("text/plain"),
 //			})
@@ -74,7 +74,7 @@ import (
 //			}
 //			intermediate1, err := keymanager.NewSecretV1(ctx, "intermediate_1", &keymanager.SecretV1Args{
 //				Name:               pulumi.String("intermediate"),
-//				Payload:            invokeFile2.Result,
+//				Payload:            pulumi.String(invokeFile2.Result),
 //				SecretType:         pulumi.String("certificate"),
 //				PayloadContentType: pulumi.String("text/plain"),
 //			})
