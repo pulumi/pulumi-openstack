@@ -385,11 +385,18 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public StackV1(String name, StackV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:orchestration/stackV1:StackV1", name, args == null ? StackV1Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:orchestration/stackV1:StackV1", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private StackV1(String name, Output<String> id, @Nullable StackV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:orchestration/stackV1:StackV1", name, state, makeResourceOptions(options, id));
+    }
+
+    private static StackV1Args makeArgs(StackV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? StackV1Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

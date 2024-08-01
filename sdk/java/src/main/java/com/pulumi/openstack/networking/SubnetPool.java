@@ -469,11 +469,18 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SubnetPool(String name, SubnetPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/subnetPool:SubnetPool", name, args == null ? SubnetPoolArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:networking/subnetPool:SubnetPool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SubnetPool(String name, Output<String> id, @Nullable SubnetPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:networking/subnetPool:SubnetPool", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SubnetPoolArgs makeArgs(SubnetPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SubnetPoolArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

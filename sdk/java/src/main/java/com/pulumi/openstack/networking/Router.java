@@ -360,11 +360,18 @@ public class Router extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Router(String name, @Nullable RouterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/router:Router", name, args == null ? RouterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:networking/router:Router", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Router(String name, Output<String> id, @Nullable RouterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:networking/router:Router", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RouterArgs makeArgs(@Nullable RouterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RouterArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

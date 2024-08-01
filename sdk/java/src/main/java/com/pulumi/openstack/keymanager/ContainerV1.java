@@ -391,11 +391,18 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ContainerV1(String name, ContainerV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:keymanager/containerV1:ContainerV1", name, args == null ? ContainerV1Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:keymanager/containerV1:ContainerV1", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ContainerV1(String name, Output<String> id, @Nullable ContainerV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:keymanager/containerV1:ContainerV1", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ContainerV1Args makeArgs(ContainerV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ContainerV1Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -259,11 +259,18 @@ public class Quota extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Quota(String name, QuotaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:loadbalancer/quota:Quota", name, args == null ? QuotaArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:loadbalancer/quota:Quota", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Quota(String name, Output<String> id, @Nullable QuotaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:loadbalancer/quota:Quota", name, state, makeResourceOptions(options, id));
+    }
+
+    private static QuotaArgs makeArgs(QuotaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? QuotaArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

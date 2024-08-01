@@ -217,11 +217,18 @@ public class TempUrl extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TempUrl(String name, TempUrlArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:objectstorage/tempUrl:TempUrl", name, args == null ? TempUrlArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:objectstorage/tempUrl:TempUrl", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TempUrl(String name, Output<String> id, @Nullable TempUrlState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:objectstorage/tempUrl:TempUrl", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TempUrlArgs makeArgs(TempUrlArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TempUrlArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

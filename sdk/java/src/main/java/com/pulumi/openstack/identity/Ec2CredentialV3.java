@@ -227,11 +227,18 @@ public class Ec2CredentialV3 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Ec2CredentialV3(String name, @Nullable Ec2CredentialV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:identity/ec2CredentialV3:Ec2CredentialV3", name, args == null ? Ec2CredentialV3Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:identity/ec2CredentialV3:Ec2CredentialV3", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Ec2CredentialV3(String name, Output<String> id, @Nullable Ec2CredentialV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:identity/ec2CredentialV3:Ec2CredentialV3", name, state, makeResourceOptions(options, id));
+    }
+
+    private static Ec2CredentialV3Args makeArgs(@Nullable Ec2CredentialV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? Ec2CredentialV3Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

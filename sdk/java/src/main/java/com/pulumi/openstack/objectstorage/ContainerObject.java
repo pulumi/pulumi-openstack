@@ -477,11 +477,18 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ContainerObject(String name, ContainerObjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:objectstorage/containerObject:ContainerObject", name, args == null ? ContainerObjectArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:objectstorage/containerObject:ContainerObject", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ContainerObject(String name, Output<String> id, @Nullable ContainerObjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:objectstorage/containerObject:ContainerObject", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ContainerObjectArgs makeArgs(ContainerObjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ContainerObjectArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

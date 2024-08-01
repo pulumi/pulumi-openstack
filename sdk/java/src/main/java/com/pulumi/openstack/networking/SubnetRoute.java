@@ -177,11 +177,18 @@ public class SubnetRoute extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SubnetRoute(String name, SubnetRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/subnetRoute:SubnetRoute", name, args == null ? SubnetRouteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:networking/subnetRoute:SubnetRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SubnetRoute(String name, Output<String> id, @Nullable SubnetRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:networking/subnetRoute:SubnetRoute", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SubnetRouteArgs makeArgs(SubnetRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SubnetRouteArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

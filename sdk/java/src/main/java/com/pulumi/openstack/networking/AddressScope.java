@@ -225,11 +225,18 @@ public class AddressScope extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AddressScope(String name, @Nullable AddressScopeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/addressScope:AddressScope", name, args == null ? AddressScopeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:networking/addressScope:AddressScope", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AddressScope(String name, Output<String> id, @Nullable AddressScopeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:networking/addressScope:AddressScope", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AddressScopeArgs makeArgs(@Nullable AddressScopeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AddressScopeArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

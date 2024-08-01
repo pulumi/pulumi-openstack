@@ -317,11 +317,18 @@ public class BgpvpnV2 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public BgpvpnV2(String name, @Nullable BgpvpnV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:index/bgpvpnV2:BgpvpnV2", name, args == null ? BgpvpnV2Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:index/bgpvpnV2:BgpvpnV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private BgpvpnV2(String name, Output<String> id, @Nullable BgpvpnV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:index/bgpvpnV2:BgpvpnV2", name, state, makeResourceOptions(options, id));
+    }
+
+    private static BgpvpnV2Args makeArgs(@Nullable BgpvpnV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BgpvpnV2Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -150,11 +150,18 @@ public class GroupV3 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public GroupV3(String name, @Nullable GroupV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:identity/groupV3:GroupV3", name, args == null ? GroupV3Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:identity/groupV3:GroupV3", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private GroupV3(String name, Output<String> id, @Nullable GroupV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:identity/groupV3:GroupV3", name, state, makeResourceOptions(options, id));
+    }
+
+    private static GroupV3Args makeArgs(@Nullable GroupV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GroupV3Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

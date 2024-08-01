@@ -153,11 +153,18 @@ public class Members extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Members(String name, MembersArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:loadbalancer/members:Members", name, args == null ? MembersArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:loadbalancer/members:Members", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Members(String name, Output<String> id, @Nullable MembersState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:loadbalancer/members:Members", name, state, makeResourceOptions(options, id));
+    }
+
+    private static MembersArgs makeArgs(MembersArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MembersArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

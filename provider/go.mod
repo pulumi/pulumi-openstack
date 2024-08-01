@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-openstack/provider/v4
 go 1.21.12
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.88.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.88.1-0.20240731155837-6b95c60de71a
 	github.com/pulumi/pulumi/sdk/v3 v3.126.0
 	github.com/terraform-provider-openstack/terraform-provider-openstack/v2 v2.1.0
 )

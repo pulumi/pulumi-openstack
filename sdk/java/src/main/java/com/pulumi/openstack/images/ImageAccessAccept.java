@@ -205,11 +205,18 @@ public class ImageAccessAccept extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ImageAccessAccept(String name, ImageAccessAcceptArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:images/imageAccessAccept:ImageAccessAccept", name, args == null ? ImageAccessAcceptArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:images/imageAccessAccept:ImageAccessAccept", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ImageAccessAccept(String name, Output<String> id, @Nullable ImageAccessAcceptState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:images/imageAccessAccept:ImageAccessAccept", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ImageAccessAcceptArgs makeArgs(ImageAccessAcceptArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ImageAccessAcceptArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -710,11 +710,18 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ClusterTemplate(String name, ClusterTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:containerinfra/clusterTemplate:ClusterTemplate", name, args == null ? ClusterTemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:containerinfra/clusterTemplate:ClusterTemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ClusterTemplate(String name, Output<String> id, @Nullable ClusterTemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:containerinfra/clusterTemplate:ClusterTemplate", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ClusterTemplateArgs makeArgs(ClusterTemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ClusterTemplateArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
