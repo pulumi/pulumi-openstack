@@ -193,11 +193,18 @@ public class RouterRoute extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RouterRoute(String name, RouterRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/routerRoute:RouterRoute", name, args == null ? RouterRouteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:networking/routerRoute:RouterRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RouterRoute(String name, Output<String> id, @Nullable RouterRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:networking/routerRoute:RouterRoute", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RouterRouteArgs makeArgs(RouterRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RouterRouteArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

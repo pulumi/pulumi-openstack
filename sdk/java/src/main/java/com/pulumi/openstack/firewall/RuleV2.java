@@ -351,11 +351,18 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RuleV2(String name, @Nullable RuleV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:firewall/ruleV2:RuleV2", name, args == null ? RuleV2Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:firewall/ruleV2:RuleV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RuleV2(String name, Output<String> id, @Nullable RuleV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:firewall/ruleV2:RuleV2", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RuleV2Args makeArgs(@Nullable RuleV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RuleV2Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

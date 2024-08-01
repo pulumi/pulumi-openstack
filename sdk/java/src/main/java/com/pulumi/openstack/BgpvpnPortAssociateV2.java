@@ -206,11 +206,18 @@ public class BgpvpnPortAssociateV2 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public BgpvpnPortAssociateV2(String name, BgpvpnPortAssociateV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2", name, args == null ? BgpvpnPortAssociateV2Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private BgpvpnPortAssociateV2(String name, Output<String> id, @Nullable BgpvpnPortAssociateV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2", name, state, makeResourceOptions(options, id));
+    }
+
+    private static BgpvpnPortAssociateV2Args makeArgs(BgpvpnPortAssociateV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BgpvpnPortAssociateV2Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

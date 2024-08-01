@@ -226,11 +226,18 @@ public class QuoteSetV3 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public QuoteSetV3(String name, QuoteSetV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:blockstorage/quoteSetV3:QuoteSetV3", name, args == null ? QuoteSetV3Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:blockstorage/quoteSetV3:QuoteSetV3", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private QuoteSetV3(String name, Output<String> id, @Nullable QuoteSetV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:blockstorage/quoteSetV3:QuoteSetV3", name, state, makeResourceOptions(options, id));
+    }
+
+    private static QuoteSetV3Args makeArgs(QuoteSetV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? QuoteSetV3Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

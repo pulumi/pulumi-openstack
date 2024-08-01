@@ -159,11 +159,18 @@ public class QosV3 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public QosV3(String name, @Nullable QosV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:blockstorage/qosV3:QosV3", name, args == null ? QosV3Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:blockstorage/qosV3:QosV3", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private QosV3(String name, Output<String> id, @Nullable QosV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:blockstorage/qosV3:QosV3", name, state, makeResourceOptions(options, id));
+    }
+
+    private static QosV3Args makeArgs(@Nullable QosV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? QosV3Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

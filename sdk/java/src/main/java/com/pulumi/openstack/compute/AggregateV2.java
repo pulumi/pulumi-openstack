@@ -225,11 +225,18 @@ public class AggregateV2 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AggregateV2(String name, @Nullable AggregateV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:compute/aggregateV2:AggregateV2", name, args == null ? AggregateV2Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:compute/aggregateV2:AggregateV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AggregateV2(String name, Output<String> id, @Nullable AggregateV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:compute/aggregateV2:AggregateV2", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AggregateV2Args makeArgs(@Nullable AggregateV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AggregateV2Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -328,11 +328,18 @@ public class ShareAccess extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ShareAccess(String name, ShareAccessArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:sharedfilesystem/shareAccess:ShareAccess", name, args == null ? ShareAccessArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:sharedfilesystem/shareAccess:ShareAccess", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ShareAccess(String name, Output<String> id, @Nullable ShareAccessState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:sharedfilesystem/shareAccess:ShareAccess", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ShareAccessArgs makeArgs(ShareAccessArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ShareAccessArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

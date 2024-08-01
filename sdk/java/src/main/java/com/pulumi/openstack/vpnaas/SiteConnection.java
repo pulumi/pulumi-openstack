@@ -405,11 +405,18 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SiteConnection(String name, SiteConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:vpnaas/siteConnection:SiteConnection", name, args == null ? SiteConnectionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:vpnaas/siteConnection:SiteConnection", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SiteConnection(String name, Output<String> id, @Nullable SiteConnectionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:vpnaas/siteConnection:SiteConnection", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SiteConnectionArgs makeArgs(SiteConnectionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SiteConnectionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

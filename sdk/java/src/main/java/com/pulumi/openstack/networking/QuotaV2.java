@@ -237,11 +237,18 @@ public class QuotaV2 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public QuotaV2(String name, QuotaV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/quotaV2:QuotaV2", name, args == null ? QuotaV2Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:networking/quotaV2:QuotaV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private QuotaV2(String name, Output<String> id, @Nullable QuotaV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:networking/quotaV2:QuotaV2", name, state, makeResourceOptions(options, id));
+    }
+
+    private static QuotaV2Args makeArgs(QuotaV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? QuotaV2Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

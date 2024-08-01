@@ -310,11 +310,18 @@ public class OrderV1 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public OrderV1(String name, OrderV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:keymanager/orderV1:OrderV1", name, args == null ? OrderV1Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:keymanager/orderV1:OrderV1", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private OrderV1(String name, Output<String> id, @Nullable OrderV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:keymanager/orderV1:OrderV1", name, state, makeResourceOptions(options, id));
+    }
+
+    private static OrderV1Args makeArgs(OrderV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? OrderV1Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

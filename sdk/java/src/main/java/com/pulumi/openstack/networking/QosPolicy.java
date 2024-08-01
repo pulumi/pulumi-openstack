@@ -284,11 +284,18 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public QosPolicy(String name, @Nullable QosPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/qosPolicy:QosPolicy", name, args == null ? QosPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:networking/qosPolicy:QosPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private QosPolicy(String name, Output<String> id, @Nullable QosPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:networking/qosPolicy:QosPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static QosPolicyArgs makeArgs(@Nullable QosPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? QosPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

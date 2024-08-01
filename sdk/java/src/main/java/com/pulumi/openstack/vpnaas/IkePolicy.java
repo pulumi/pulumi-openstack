@@ -266,11 +266,18 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public IkePolicy(String name, @Nullable IkePolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:vpnaas/ikePolicy:IkePolicy", name, args == null ? IkePolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:vpnaas/ikePolicy:IkePolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private IkePolicy(String name, Output<String> id, @Nullable IkePolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:vpnaas/ikePolicy:IkePolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static IkePolicyArgs makeArgs(@Nullable IkePolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IkePolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

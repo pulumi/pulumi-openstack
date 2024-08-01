@@ -191,11 +191,18 @@ public class TransferAccept extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public TransferAccept(String name, TransferAcceptArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:dns/transferAccept:TransferAccept", name, args == null ? TransferAcceptArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:dns/transferAccept:TransferAccept", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private TransferAccept(String name, Output<String> id, @Nullable TransferAcceptState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:dns/transferAccept:TransferAccept", name, state, makeResourceOptions(options, id));
+    }
+
+    private static TransferAcceptArgs makeArgs(TransferAcceptArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TransferAcceptArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

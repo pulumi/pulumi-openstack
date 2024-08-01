@@ -330,11 +330,18 @@ public class Vip extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Vip(String name, VipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:loadbalancer/vip:Vip", name, args == null ? VipArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:loadbalancer/vip:Vip", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Vip(String name, Output<String> id, @Nullable VipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:loadbalancer/vip:Vip", name, state, makeResourceOptions(options, id));
+    }
+
+    private static VipArgs makeArgs(VipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VipArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

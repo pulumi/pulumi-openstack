@@ -151,11 +151,18 @@ public class VolumeTypeAccessV3 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public VolumeTypeAccessV3(String name, VolumeTypeAccessV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3", name, args == null ? VolumeTypeAccessV3Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private VolumeTypeAccessV3(String name, Output<String> id, @Nullable VolumeTypeAccessV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3", name, state, makeResourceOptions(options, id));
+    }
+
+    private static VolumeTypeAccessV3Args makeArgs(VolumeTypeAccessV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VolumeTypeAccessV3Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

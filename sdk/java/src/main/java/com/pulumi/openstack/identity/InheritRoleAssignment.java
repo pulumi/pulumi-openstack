@@ -193,11 +193,18 @@ public class InheritRoleAssignment extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public InheritRoleAssignment(String name, InheritRoleAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:identity/inheritRoleAssignment:InheritRoleAssignment", name, args == null ? InheritRoleAssignmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:identity/inheritRoleAssignment:InheritRoleAssignment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private InheritRoleAssignment(String name, Output<String> id, @Nullable InheritRoleAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:identity/inheritRoleAssignment:InheritRoleAssignment", name, state, makeResourceOptions(options, id));
+    }
+
+    private static InheritRoleAssignmentArgs makeArgs(InheritRoleAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InheritRoleAssignmentArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

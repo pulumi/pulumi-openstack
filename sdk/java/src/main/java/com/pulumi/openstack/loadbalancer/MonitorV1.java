@@ -271,11 +271,18 @@ public class MonitorV1 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public MonitorV1(String name, MonitorV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:loadbalancer/monitorV1:MonitorV1", name, args == null ? MonitorV1Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:loadbalancer/monitorV1:MonitorV1", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private MonitorV1(String name, Output<String> id, @Nullable MonitorV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:loadbalancer/monitorV1:MonitorV1", name, state, makeResourceOptions(options, id));
+    }
+
+    private static MonitorV1Args makeArgs(MonitorV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MonitorV1Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -477,11 +477,18 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SecretV1(String name, @Nullable SecretV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:keymanager/secretV1:SecretV1", name, args == null ? SecretV1Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:keymanager/secretV1:SecretV1", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SecretV1(String name, Output<String> id, @Nullable SecretV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:keymanager/secretV1:SecretV1", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SecretV1Args makeArgs(@Nullable SecretV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SecretV1Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

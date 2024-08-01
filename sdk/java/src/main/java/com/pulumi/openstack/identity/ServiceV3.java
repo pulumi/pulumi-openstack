@@ -162,11 +162,18 @@ public class ServiceV3 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ServiceV3(String name, ServiceV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:identity/serviceV3:ServiceV3", name, args == null ? ServiceV3Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:identity/serviceV3:ServiceV3", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ServiceV3(String name, Output<String> id, @Nullable ServiceV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:identity/serviceV3:ServiceV3", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ServiceV3Args makeArgs(ServiceV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServiceV3Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

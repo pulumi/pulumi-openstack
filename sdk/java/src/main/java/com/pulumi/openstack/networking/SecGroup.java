@@ -185,11 +185,18 @@ public class SecGroup extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SecGroup(String name, @Nullable SecGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/secGroup:SecGroup", name, args == null ? SecGroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("openstack:networking/secGroup:SecGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SecGroup(String name, Output<String> id, @Nullable SecGroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:networking/secGroup:SecGroup", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SecGroupArgs makeArgs(@Nullable SecGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SecGroupArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
