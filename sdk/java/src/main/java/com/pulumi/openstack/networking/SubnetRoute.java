@@ -159,7 +159,7 @@ public class SubnetRoute extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SubnetRoute(String name) {
+    public SubnetRoute(java.lang.String name) {
         this(name, SubnetRouteArgs.Empty);
     }
     /**
@@ -167,7 +167,7 @@ public class SubnetRoute extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SubnetRoute(String name, SubnetRouteArgs args) {
+    public SubnetRoute(java.lang.String name, SubnetRouteArgs args) {
         this(name, args, null);
     }
     /**
@@ -176,12 +176,12 @@ public class SubnetRoute extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SubnetRoute(String name, SubnetRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/subnetRoute:SubnetRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public SubnetRoute(java.lang.String name, SubnetRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/subnetRoute:SubnetRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SubnetRoute(String name, Output<String> id, @Nullable SubnetRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/subnetRoute:SubnetRoute", name, state, makeResourceOptions(options, id));
+    private SubnetRoute(java.lang.String name, Output<java.lang.String> id, @Nullable SubnetRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/subnetRoute:SubnetRoute", name, state, makeResourceOptions(options, id), false);
     }
 
     private static SubnetRouteArgs makeArgs(SubnetRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -191,7 +191,7 @@ public class SubnetRoute extends com.pulumi.resources.CustomResource {
         return args == null ? SubnetRouteArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -207,7 +207,7 @@ public class SubnetRoute extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SubnetRoute get(String name, Output<String> id, @Nullable SubnetRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SubnetRoute get(java.lang.String name, Output<java.lang.String> id, @Nullable SubnetRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SubnetRoute(name, id, state, options);
     }
 }

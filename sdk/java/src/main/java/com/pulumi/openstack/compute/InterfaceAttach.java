@@ -275,7 +275,7 @@ public class InterfaceAttach extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InterfaceAttach(String name) {
+    public InterfaceAttach(java.lang.String name) {
         this(name, InterfaceAttachArgs.Empty);
     }
     /**
@@ -283,7 +283,7 @@ public class InterfaceAttach extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InterfaceAttach(String name, InterfaceAttachArgs args) {
+    public InterfaceAttach(java.lang.String name, InterfaceAttachArgs args) {
         this(name, args, null);
     }
     /**
@@ -292,12 +292,12 @@ public class InterfaceAttach extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InterfaceAttach(String name, InterfaceAttachArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:compute/interfaceAttach:InterfaceAttach", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public InterfaceAttach(java.lang.String name, InterfaceAttachArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:compute/interfaceAttach:InterfaceAttach", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InterfaceAttach(String name, Output<String> id, @Nullable InterfaceAttachState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:compute/interfaceAttach:InterfaceAttach", name, state, makeResourceOptions(options, id));
+    private InterfaceAttach(java.lang.String name, Output<java.lang.String> id, @Nullable InterfaceAttachState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:compute/interfaceAttach:InterfaceAttach", name, state, makeResourceOptions(options, id), false);
     }
 
     private static InterfaceAttachArgs makeArgs(InterfaceAttachArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -307,7 +307,7 @@ public class InterfaceAttach extends com.pulumi.resources.CustomResource {
         return args == null ? InterfaceAttachArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -323,7 +323,7 @@ public class InterfaceAttach extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InterfaceAttach get(String name, Output<String> id, @Nullable InterfaceAttachState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InterfaceAttach get(java.lang.String name, Output<java.lang.String> id, @Nullable InterfaceAttachState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InterfaceAttach(name, id, state, options);
     }
 }

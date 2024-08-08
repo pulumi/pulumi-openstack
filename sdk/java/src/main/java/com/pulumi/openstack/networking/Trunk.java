@@ -269,7 +269,7 @@ public class Trunk extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Trunk(String name) {
+    public Trunk(java.lang.String name) {
         this(name, TrunkArgs.Empty);
     }
     /**
@@ -277,7 +277,7 @@ public class Trunk extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Trunk(String name, TrunkArgs args) {
+    public Trunk(java.lang.String name, TrunkArgs args) {
         this(name, args, null);
     }
     /**
@@ -286,12 +286,12 @@ public class Trunk extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Trunk(String name, TrunkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/trunk:Trunk", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Trunk(java.lang.String name, TrunkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/trunk:Trunk", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Trunk(String name, Output<String> id, @Nullable TrunkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/trunk:Trunk", name, state, makeResourceOptions(options, id));
+    private Trunk(java.lang.String name, Output<java.lang.String> id, @Nullable TrunkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/trunk:Trunk", name, state, makeResourceOptions(options, id), false);
     }
 
     private static TrunkArgs makeArgs(TrunkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -301,7 +301,7 @@ public class Trunk extends com.pulumi.resources.CustomResource {
         return args == null ? TrunkArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -317,7 +317,7 @@ public class Trunk extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Trunk get(String name, Output<String> id, @Nullable TrunkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Trunk get(java.lang.String name, Output<java.lang.String> id, @Nullable TrunkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Trunk(name, id, state, options);
     }
 }

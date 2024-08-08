@@ -369,14 +369,14 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  configuration_id: Optional[pulumi.Input[str]] = None,
-                 databases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDatabaseArgs']]]]] = None,
-                 datastore: Optional[pulumi.Input[pulumi.InputType['InstanceDatastoreArgs']]] = None,
+                 databases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDatabaseArgs', 'InstanceDatabaseArgsDict']]]]] = None,
+                 datastore: Optional[pulumi.Input[Union['InstanceDatastoreArgs', 'InstanceDatastoreArgsDict']]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceUserArgs']]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceUserArgs', 'InstanceUserArgsDict']]]]] = None,
                  __props__=None):
         """
         Manages a V1 DB instance resource within OpenStack.
@@ -398,33 +398,33 @@ class Instance(pulumi.CustomResource):
             name="test",
             flavor_id="31792d21-c355-4587-9290-56c1ed0ca376",
             size=8,
-            networks=[openstack.database.InstanceNetworkArgs(
-                uuid="c0612505-caf2-4fb0-b7cb-56a0240a2b12",
-            )],
-            datastore=openstack.database.InstanceDatastoreArgs(
-                version="mysql-5.7",
-                type="mysql",
-            ))
+            networks=[{
+                "uuid": "c0612505-caf2-4fb0-b7cb-56a0240a2b12",
+            }],
+            datastore={
+                "version": "mysql-5.7",
+                "type": "mysql",
+            })
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] configuration_id: Configuration ID to be attached to the instance. Database instance
                will be rebooted when configuration is detached.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDatabaseArgs']]]] databases: An array of database name, charset and collate. The database
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDatabaseArgs', 'InstanceDatabaseArgsDict']]]] databases: An array of database name, charset and collate. The database
                object structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstanceDatastoreArgs']] datastore: An array of database engine type and version. The datastore
+        :param pulumi.Input[Union['InstanceDatastoreArgs', 'InstanceDatastoreArgsDict']] datastore: An array of database engine type and version. The datastore
                object structure is documented below. Changing this creates a new instance.
         :param pulumi.Input[str] flavor_id: The flavor ID of the desired flavor for the instance.
                Changing this creates new instance.
         :param pulumi.Input[str] name: A unique name for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: An array of one or more networks to attach to the
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]] networks: An array of one or more networks to attach to the
                instance. The network object structure is documented below. Changing this
                creates a new instance.
         :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
                creates a new instance.
         :param pulumi.Input[int] size: Specifies the volume size in GB. Changing this creates new instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceUserArgs']]]] users: An array of username, password, host and databases. The user
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceUserArgs', 'InstanceUserArgsDict']]]] users: An array of username, password, host and databases. The user
                object structure is documented below.
         """
         ...
@@ -453,13 +453,13 @@ class Instance(pulumi.CustomResource):
             name="test",
             flavor_id="31792d21-c355-4587-9290-56c1ed0ca376",
             size=8,
-            networks=[openstack.database.InstanceNetworkArgs(
-                uuid="c0612505-caf2-4fb0-b7cb-56a0240a2b12",
-            )],
-            datastore=openstack.database.InstanceDatastoreArgs(
-                version="mysql-5.7",
-                type="mysql",
-            ))
+            networks=[{
+                "uuid": "c0612505-caf2-4fb0-b7cb-56a0240a2b12",
+            }],
+            datastore={
+                "version": "mysql-5.7",
+                "type": "mysql",
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -478,14 +478,14 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  configuration_id: Optional[pulumi.Input[str]] = None,
-                 databases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDatabaseArgs']]]]] = None,
-                 datastore: Optional[pulumi.Input[pulumi.InputType['InstanceDatastoreArgs']]] = None,
+                 databases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDatabaseArgs', 'InstanceDatabaseArgsDict']]]]] = None,
+                 datastore: Optional[pulumi.Input[Union['InstanceDatastoreArgs', 'InstanceDatastoreArgsDict']]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceUserArgs']]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceUserArgs', 'InstanceUserArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -521,14 +521,14 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             configuration_id: Optional[pulumi.Input[str]] = None,
-            databases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDatabaseArgs']]]]] = None,
-            datastore: Optional[pulumi.Input[pulumi.InputType['InstanceDatastoreArgs']]] = None,
+            databases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDatabaseArgs', 'InstanceDatabaseArgsDict']]]]] = None,
+            datastore: Optional[pulumi.Input[Union['InstanceDatastoreArgs', 'InstanceDatastoreArgsDict']]] = None,
             flavor_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
+            networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[int]] = None,
-            users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceUserArgs']]]]] = None) -> 'Instance':
+            users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceUserArgs', 'InstanceUserArgsDict']]]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -539,20 +539,20 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: A list of IP addresses assigned to the instance.
         :param pulumi.Input[str] configuration_id: Configuration ID to be attached to the instance. Database instance
                will be rebooted when configuration is detached.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDatabaseArgs']]]] databases: An array of database name, charset and collate. The database
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDatabaseArgs', 'InstanceDatabaseArgsDict']]]] databases: An array of database name, charset and collate. The database
                object structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstanceDatastoreArgs']] datastore: An array of database engine type and version. The datastore
+        :param pulumi.Input[Union['InstanceDatastoreArgs', 'InstanceDatastoreArgsDict']] datastore: An array of database engine type and version. The datastore
                object structure is documented below. Changing this creates a new instance.
         :param pulumi.Input[str] flavor_id: The flavor ID of the desired flavor for the instance.
                Changing this creates new instance.
         :param pulumi.Input[str] name: A unique name for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: An array of one or more networks to attach to the
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]] networks: An array of one or more networks to attach to the
                instance. The network object structure is documented below. Changing this
                creates a new instance.
         :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
                creates a new instance.
         :param pulumi.Input[int] size: Specifies the volume size in GB. Changing this creates new instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceUserArgs']]]] users: An array of username, password, host and databases. The user
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceUserArgs', 'InstanceUserArgsDict']]]] users: An array of username, password, host and databases. The user
                object structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

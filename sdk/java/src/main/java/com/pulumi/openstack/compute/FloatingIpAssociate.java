@@ -218,7 +218,7 @@ public class FloatingIpAssociate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FloatingIpAssociate(String name) {
+    public FloatingIpAssociate(java.lang.String name) {
         this(name, FloatingIpAssociateArgs.Empty);
     }
     /**
@@ -226,7 +226,7 @@ public class FloatingIpAssociate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FloatingIpAssociate(String name, FloatingIpAssociateArgs args) {
+    public FloatingIpAssociate(java.lang.String name, FloatingIpAssociateArgs args) {
         this(name, args, null);
     }
     /**
@@ -235,12 +235,12 @@ public class FloatingIpAssociate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FloatingIpAssociate(String name, FloatingIpAssociateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:compute/floatingIpAssociate:FloatingIpAssociate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public FloatingIpAssociate(java.lang.String name, FloatingIpAssociateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:compute/floatingIpAssociate:FloatingIpAssociate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FloatingIpAssociate(String name, Output<String> id, @Nullable FloatingIpAssociateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:compute/floatingIpAssociate:FloatingIpAssociate", name, state, makeResourceOptions(options, id));
+    private FloatingIpAssociate(java.lang.String name, Output<java.lang.String> id, @Nullable FloatingIpAssociateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:compute/floatingIpAssociate:FloatingIpAssociate", name, state, makeResourceOptions(options, id), false);
     }
 
     private static FloatingIpAssociateArgs makeArgs(FloatingIpAssociateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -250,7 +250,7 @@ public class FloatingIpAssociate extends com.pulumi.resources.CustomResource {
         return args == null ? FloatingIpAssociateArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -266,7 +266,7 @@ public class FloatingIpAssociate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FloatingIpAssociate get(String name, Output<String> id, @Nullable FloatingIpAssociateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FloatingIpAssociate get(java.lang.String name, Output<java.lang.String> id, @Nullable FloatingIpAssociateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FloatingIpAssociate(name, id, state, options);
     }
 }

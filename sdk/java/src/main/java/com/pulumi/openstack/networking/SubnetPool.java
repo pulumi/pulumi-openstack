@@ -451,7 +451,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SubnetPool(String name) {
+    public SubnetPool(java.lang.String name) {
         this(name, SubnetPoolArgs.Empty);
     }
     /**
@@ -459,7 +459,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SubnetPool(String name, SubnetPoolArgs args) {
+    public SubnetPool(java.lang.String name, SubnetPoolArgs args) {
         this(name, args, null);
     }
     /**
@@ -468,12 +468,12 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SubnetPool(String name, SubnetPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/subnetPool:SubnetPool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public SubnetPool(java.lang.String name, SubnetPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/subnetPool:SubnetPool", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SubnetPool(String name, Output<String> id, @Nullable SubnetPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/subnetPool:SubnetPool", name, state, makeResourceOptions(options, id));
+    private SubnetPool(java.lang.String name, Output<java.lang.String> id, @Nullable SubnetPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/subnetPool:SubnetPool", name, state, makeResourceOptions(options, id), false);
     }
 
     private static SubnetPoolArgs makeArgs(SubnetPoolArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -483,7 +483,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
         return args == null ? SubnetPoolArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -499,7 +499,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SubnetPool get(String name, Output<String> id, @Nullable SubnetPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SubnetPool get(java.lang.String name, Output<java.lang.String> id, @Nullable SubnetPoolState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SubnetPool(name, id, state, options);
     }
 }

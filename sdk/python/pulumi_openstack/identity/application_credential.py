@@ -378,7 +378,7 @@ class ApplicationCredential(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationCredentialAccessRuleArgs']]]]] = None,
+                 access_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationCredentialAccessRuleArgs', 'ApplicationCredentialAccessRuleArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -449,16 +449,16 @@ class ApplicationCredential(pulumi.CustomResource):
             name="monitoring",
             expires_at="2019-02-13T12:12:12Z",
             access_rules=[
-                openstack.identity.ApplicationCredentialAccessRuleArgs(
-                    path="/v2.0/metrics",
-                    service="monitoring",
-                    method="GET",
-                ),
-                openstack.identity.ApplicationCredentialAccessRuleArgs(
-                    path="/v2.0/metrics",
-                    service="monitoring",
-                    method="PUT",
-                ),
+                {
+                    "path": "/v2.0/metrics",
+                    "service": "monitoring",
+                    "method": "GET",
+                },
+                {
+                    "path": "/v2.0/metrics",
+                    "service": "monitoring",
+                    "method": "PUT",
+                },
             ])
         ```
 
@@ -472,7 +472,7 @@ class ApplicationCredential(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationCredentialAccessRuleArgs']]]] access_rules: A collection of one or more access rules, which
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationCredentialAccessRuleArgs', 'ApplicationCredentialAccessRuleArgsDict']]]] access_rules: A collection of one or more access rules, which
                this application credential allows to follow. The structure is described
                below. Changing this creates a new application credential.
         :param pulumi.Input[str] description: A description of the application credential.
@@ -566,16 +566,16 @@ class ApplicationCredential(pulumi.CustomResource):
             name="monitoring",
             expires_at="2019-02-13T12:12:12Z",
             access_rules=[
-                openstack.identity.ApplicationCredentialAccessRuleArgs(
-                    path="/v2.0/metrics",
-                    service="monitoring",
-                    method="GET",
-                ),
-                openstack.identity.ApplicationCredentialAccessRuleArgs(
-                    path="/v2.0/metrics",
-                    service="monitoring",
-                    method="PUT",
-                ),
+                {
+                    "path": "/v2.0/metrics",
+                    "service": "monitoring",
+                    "method": "GET",
+                },
+                {
+                    "path": "/v2.0/metrics",
+                    "service": "monitoring",
+                    "method": "PUT",
+                },
             ])
         ```
 
@@ -602,7 +602,7 @@ class ApplicationCredential(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationCredentialAccessRuleArgs']]]]] = None,
+                 access_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationCredentialAccessRuleArgs', 'ApplicationCredentialAccessRuleArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  expires_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -640,7 +640,7 @@ class ApplicationCredential(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationCredentialAccessRuleArgs']]]]] = None,
+            access_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationCredentialAccessRuleArgs', 'ApplicationCredentialAccessRuleArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             expires_at: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -656,7 +656,7 @@ class ApplicationCredential(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationCredentialAccessRuleArgs']]]] access_rules: A collection of one or more access rules, which
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationCredentialAccessRuleArgs', 'ApplicationCredentialAccessRuleArgsDict']]]] access_rules: A collection of one or more access rules, which
                this application credential allows to follow. The structure is described
                below. Changing this creates a new application credential.
         :param pulumi.Input[str] description: A description of the application credential.

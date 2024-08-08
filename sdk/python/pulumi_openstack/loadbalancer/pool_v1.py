@@ -377,18 +377,18 @@ class PoolV1(pulumi.CustomResource):
             name="secgroup_1",
             description="Rules for secgroup_1",
             rules=[
-                openstack.compute.SecGroupRuleArgs(
-                    from_port=-1,
-                    to_port=-1,
-                    ip_protocol="icmp",
-                    cidr="0.0.0.0/0",
-                ),
-                openstack.compute.SecGroupRuleArgs(
-                    from_port=80,
-                    to_port=80,
-                    ip_protocol="tcp",
-                    cidr="0.0.0.0/0",
-                ),
+                {
+                    "from_port": -1,
+                    "to_port": -1,
+                    "ip_protocol": "icmp",
+                    "cidr": "0.0.0.0/0",
+                },
+                {
+                    "from_port": 80,
+                    "to_port": 80,
+                    "ip_protocol": "tcp",
+                    "cidr": "0.0.0.0/0",
+                },
             ])
         instance1 = openstack.compute.Instance("instance_1",
             name="instance_1",
@@ -396,18 +396,18 @@ class PoolV1(pulumi.CustomResource):
                 "default",
                 secgroup1.name,
             ],
-            networks=[openstack.compute.InstanceNetworkArgs(
-                uuid=network1.id,
-            )])
+            networks=[{
+                "uuid": network1.id,
+            }])
         instance2 = openstack.compute.Instance("instance_2",
             name="instance_2",
             security_groups=[
                 "default",
                 secgroup1.name,
             ],
-            networks=[openstack.compute.InstanceNetworkArgs(
-                uuid=network1.id,
-            )])
+            networks=[{
+                "uuid": network1.id,
+            }])
         monitor1 = openstack.loadbalancer.MonitorV1("monitor_1",
             type="TCP",
             delay=30,
@@ -508,18 +508,18 @@ class PoolV1(pulumi.CustomResource):
             name="secgroup_1",
             description="Rules for secgroup_1",
             rules=[
-                openstack.compute.SecGroupRuleArgs(
-                    from_port=-1,
-                    to_port=-1,
-                    ip_protocol="icmp",
-                    cidr="0.0.0.0/0",
-                ),
-                openstack.compute.SecGroupRuleArgs(
-                    from_port=80,
-                    to_port=80,
-                    ip_protocol="tcp",
-                    cidr="0.0.0.0/0",
-                ),
+                {
+                    "from_port": -1,
+                    "to_port": -1,
+                    "ip_protocol": "icmp",
+                    "cidr": "0.0.0.0/0",
+                },
+                {
+                    "from_port": 80,
+                    "to_port": 80,
+                    "ip_protocol": "tcp",
+                    "cidr": "0.0.0.0/0",
+                },
             ])
         instance1 = openstack.compute.Instance("instance_1",
             name="instance_1",
@@ -527,18 +527,18 @@ class PoolV1(pulumi.CustomResource):
                 "default",
                 secgroup1.name,
             ],
-            networks=[openstack.compute.InstanceNetworkArgs(
-                uuid=network1.id,
-            )])
+            networks=[{
+                "uuid": network1.id,
+            }])
         instance2 = openstack.compute.Instance("instance_2",
             name="instance_2",
             security_groups=[
                 "default",
                 secgroup1.name,
             ],
-            networks=[openstack.compute.InstanceNetworkArgs(
-                uuid=network1.id,
-            )])
+            networks=[{
+                "uuid": network1.id,
+            }])
         monitor1 = openstack.loadbalancer.MonitorV1("monitor_1",
             type="TCP",
             delay=30,
