@@ -180,7 +180,7 @@ public class MemberV1 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MemberV1(String name) {
+    public MemberV1(java.lang.String name) {
         this(name, MemberV1Args.Empty);
     }
     /**
@@ -188,7 +188,7 @@ public class MemberV1 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MemberV1(String name, MemberV1Args args) {
+    public MemberV1(java.lang.String name, MemberV1Args args) {
         this(name, args, null);
     }
     /**
@@ -197,12 +197,12 @@ public class MemberV1 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MemberV1(String name, MemberV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:loadbalancer/memberV1:MemberV1", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MemberV1(java.lang.String name, MemberV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:loadbalancer/memberV1:MemberV1", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MemberV1(String name, Output<String> id, @Nullable MemberV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:loadbalancer/memberV1:MemberV1", name, state, makeResourceOptions(options, id));
+    private MemberV1(java.lang.String name, Output<java.lang.String> id, @Nullable MemberV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:loadbalancer/memberV1:MemberV1", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MemberV1Args makeArgs(MemberV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -212,7 +212,7 @@ public class MemberV1 extends com.pulumi.resources.CustomResource {
         return args == null ? MemberV1Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -228,7 +228,7 @@ public class MemberV1 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MemberV1 get(String name, Output<String> id, @Nullable MemberV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MemberV1 get(java.lang.String name, Output<java.lang.String> id, @Nullable MemberV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MemberV1(name, id, state, options);
     }
 }

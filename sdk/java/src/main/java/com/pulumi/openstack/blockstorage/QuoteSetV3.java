@@ -208,7 +208,7 @@ public class QuoteSetV3 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public QuoteSetV3(String name) {
+    public QuoteSetV3(java.lang.String name) {
         this(name, QuoteSetV3Args.Empty);
     }
     /**
@@ -216,7 +216,7 @@ public class QuoteSetV3 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public QuoteSetV3(String name, QuoteSetV3Args args) {
+    public QuoteSetV3(java.lang.String name, QuoteSetV3Args args) {
         this(name, args, null);
     }
     /**
@@ -225,12 +225,12 @@ public class QuoteSetV3 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public QuoteSetV3(String name, QuoteSetV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:blockstorage/quoteSetV3:QuoteSetV3", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public QuoteSetV3(java.lang.String name, QuoteSetV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:blockstorage/quoteSetV3:QuoteSetV3", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private QuoteSetV3(String name, Output<String> id, @Nullable QuoteSetV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:blockstorage/quoteSetV3:QuoteSetV3", name, state, makeResourceOptions(options, id));
+    private QuoteSetV3(java.lang.String name, Output<java.lang.String> id, @Nullable QuoteSetV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:blockstorage/quoteSetV3:QuoteSetV3", name, state, makeResourceOptions(options, id), false);
     }
 
     private static QuoteSetV3Args makeArgs(QuoteSetV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -240,7 +240,7 @@ public class QuoteSetV3 extends com.pulumi.resources.CustomResource {
         return args == null ? QuoteSetV3Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -256,7 +256,7 @@ public class QuoteSetV3 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static QuoteSetV3 get(String name, Output<String> id, @Nullable QuoteSetV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static QuoteSetV3 get(java.lang.String name, Output<java.lang.String> id, @Nullable QuoteSetV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new QuoteSetV3(name, id, state, options);
     }
 }

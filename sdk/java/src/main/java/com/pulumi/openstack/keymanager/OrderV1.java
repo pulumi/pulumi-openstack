@@ -292,7 +292,7 @@ public class OrderV1 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public OrderV1(String name) {
+    public OrderV1(java.lang.String name) {
         this(name, OrderV1Args.Empty);
     }
     /**
@@ -300,7 +300,7 @@ public class OrderV1 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public OrderV1(String name, OrderV1Args args) {
+    public OrderV1(java.lang.String name, OrderV1Args args) {
         this(name, args, null);
     }
     /**
@@ -309,12 +309,12 @@ public class OrderV1 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public OrderV1(String name, OrderV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:keymanager/orderV1:OrderV1", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public OrderV1(java.lang.String name, OrderV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:keymanager/orderV1:OrderV1", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private OrderV1(String name, Output<String> id, @Nullable OrderV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:keymanager/orderV1:OrderV1", name, state, makeResourceOptions(options, id));
+    private OrderV1(java.lang.String name, Output<java.lang.String> id, @Nullable OrderV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:keymanager/orderV1:OrderV1", name, state, makeResourceOptions(options, id), false);
     }
 
     private static OrderV1Args makeArgs(OrderV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -324,7 +324,7 @@ public class OrderV1 extends com.pulumi.resources.CustomResource {
         return args == null ? OrderV1Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -340,7 +340,7 @@ public class OrderV1 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static OrderV1 get(String name, Output<String> id, @Nullable OrderV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static OrderV1 get(java.lang.String name, Output<java.lang.String> id, @Nullable OrderV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new OrderV1(name, id, state, options);
     }
 }

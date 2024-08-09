@@ -556,7 +556,7 @@ class SecretV1(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[pulumi.InputType['SecretV1AclArgs']]] = None,
+                 acl: Optional[pulumi.Input[Union['SecretV1AclArgs', 'SecretV1AclArgsDict']]] = None,
                  algorithm: Optional[pulumi.Input[str]] = None,
                  bit_length: Optional[pulumi.Input[int]] = None,
                  expiration: Optional[pulumi.Input[str]] = None,
@@ -626,15 +626,15 @@ class SecretV1(pulumi.CustomResource):
             payload=std.file(input="certificate.pem").result,
             secret_type="certificate",
             payload_content_type="text/plain",
-            acl=openstack.keymanager.SecretV1AclArgs(
-                read=openstack.keymanager.SecretV1AclReadArgs(
-                    project_access=False,
-                    users=[
+            acl={
+                "read": {
+                    "project_access": False,
+                    "users": [
                         "userid1",
                         "userid2",
                     ],
-                ),
-            ))
+                },
+            })
         ```
 
         ## Import
@@ -647,7 +647,7 @@ class SecretV1(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['SecretV1AclArgs']] acl: Allows to control an access to a secret. Currently only the
+        :param pulumi.Input[Union['SecretV1AclArgs', 'SecretV1AclArgsDict']] acl: Allows to control an access to a secret. Currently only the
                `read` operation is supported. If not specified, the secret is accessible
                project wide.
         :param pulumi.Input[str] algorithm: Metadata provided by a user or system for informational purposes.
@@ -729,15 +729,15 @@ class SecretV1(pulumi.CustomResource):
             payload=std.file(input="certificate.pem").result,
             secret_type="certificate",
             payload_content_type="text/plain",
-            acl=openstack.keymanager.SecretV1AclArgs(
-                read=openstack.keymanager.SecretV1AclReadArgs(
-                    project_access=False,
-                    users=[
+            acl={
+                "read": {
+                    "project_access": False,
+                    "users": [
                         "userid1",
                         "userid2",
                     ],
-                ),
-            ))
+                },
+            })
         ```
 
         ## Import
@@ -763,7 +763,7 @@ class SecretV1(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[pulumi.InputType['SecretV1AclArgs']]] = None,
+                 acl: Optional[pulumi.Input[Union['SecretV1AclArgs', 'SecretV1AclArgsDict']]] = None,
                  algorithm: Optional[pulumi.Input[str]] = None,
                  bit_length: Optional[pulumi.Input[int]] = None,
                  expiration: Optional[pulumi.Input[str]] = None,
@@ -815,7 +815,7 @@ class SecretV1(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl: Optional[pulumi.Input[pulumi.InputType['SecretV1AclArgs']]] = None,
+            acl: Optional[pulumi.Input[Union['SecretV1AclArgs', 'SecretV1AclArgsDict']]] = None,
             algorithm: Optional[pulumi.Input[str]] = None,
             all_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             bit_length: Optional[pulumi.Input[int]] = None,
@@ -841,7 +841,7 @@ class SecretV1(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['SecretV1AclArgs']] acl: Allows to control an access to a secret. Currently only the
+        :param pulumi.Input[Union['SecretV1AclArgs', 'SecretV1AclArgsDict']] acl: Allows to control an access to a secret. Currently only the
                `read` operation is supported. If not specified, the secret is accessible
                project wide.
         :param pulumi.Input[str] algorithm: Metadata provided by a user or system for informational purposes.

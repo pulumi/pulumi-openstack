@@ -219,7 +219,7 @@ public class QuotaV2 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public QuotaV2(String name) {
+    public QuotaV2(java.lang.String name) {
         this(name, QuotaV2Args.Empty);
     }
     /**
@@ -227,7 +227,7 @@ public class QuotaV2 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public QuotaV2(String name, QuotaV2Args args) {
+    public QuotaV2(java.lang.String name, QuotaV2Args args) {
         this(name, args, null);
     }
     /**
@@ -236,12 +236,12 @@ public class QuotaV2 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public QuotaV2(String name, QuotaV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/quotaV2:QuotaV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public QuotaV2(java.lang.String name, QuotaV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/quotaV2:QuotaV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private QuotaV2(String name, Output<String> id, @Nullable QuotaV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/quotaV2:QuotaV2", name, state, makeResourceOptions(options, id));
+    private QuotaV2(java.lang.String name, Output<java.lang.String> id, @Nullable QuotaV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/quotaV2:QuotaV2", name, state, makeResourceOptions(options, id), false);
     }
 
     private static QuotaV2Args makeArgs(QuotaV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -251,7 +251,7 @@ public class QuotaV2 extends com.pulumi.resources.CustomResource {
         return args == null ? QuotaV2Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -267,7 +267,7 @@ public class QuotaV2 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static QuotaV2 get(String name, Output<String> id, @Nullable QuotaV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static QuotaV2 get(java.lang.String name, Output<java.lang.String> id, @Nullable QuotaV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new QuotaV2(name, id, state, options);
     }
 }

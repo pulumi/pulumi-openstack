@@ -237,7 +237,7 @@ class ServerGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[pulumi.InputType['ServerGroupRulesArgs']]] = None,
+                 rules: Optional[pulumi.Input[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']]] = None,
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
@@ -258,12 +258,12 @@ class ServerGroup(pulumi.CustomResource):
             name="my-instance",
             image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
             flavor_id="3",
-            scheduler_hints=[openstack.compute.InstanceSchedulerHintArgs(
-                group=test_sg.id,
-            )],
-            networks=[openstack.compute.InstanceNetworkArgs(
-                name="my_network",
-            )])
+            scheduler_hints=[{
+                "group": test_sg.id,
+            }],
+            networks=[{
+                "name": "my_network",
+            }])
         ```
 
         ### Compute service API version 2.64 or above:
@@ -275,19 +275,19 @@ class ServerGroup(pulumi.CustomResource):
         test_sg = openstack.compute.ServerGroup("test-sg",
             name="my-sg",
             policies=["anti-affinity"],
-            rules=openstack.compute.ServerGroupRulesArgs(
-                max_server_per_host=3,
-            ))
+            rules={
+                "max_server_per_host": 3,
+            })
         test_instance = openstack.compute.Instance("test-instance",
             name="my-instance",
             image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
             flavor_id="3",
-            scheduler_hints=[openstack.compute.InstanceSchedulerHintArgs(
-                group=test_sg.id,
-            )],
-            networks=[openstack.compute.InstanceNetworkArgs(
-                name="my_network",
-            )])
+            scheduler_hints=[{
+                "group": test_sg.id,
+            }],
+            networks=[{
+                "name": "my_network",
+            }])
         ```
 
         ## Policies
@@ -326,7 +326,7 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
                If omitted, the `region` argument of the provider is used. Changing
                this creates a new server group.
-        :param pulumi.Input[pulumi.InputType['ServerGroupRulesArgs']] rules: The rules which are applied to specified `policy`. Currently,
+        :param pulumi.Input[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']] rules: The rules which are applied to specified `policy`. Currently,
                only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
@@ -354,12 +354,12 @@ class ServerGroup(pulumi.CustomResource):
             name="my-instance",
             image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
             flavor_id="3",
-            scheduler_hints=[openstack.compute.InstanceSchedulerHintArgs(
-                group=test_sg.id,
-            )],
-            networks=[openstack.compute.InstanceNetworkArgs(
-                name="my_network",
-            )])
+            scheduler_hints=[{
+                "group": test_sg.id,
+            }],
+            networks=[{
+                "name": "my_network",
+            }])
         ```
 
         ### Compute service API version 2.64 or above:
@@ -371,19 +371,19 @@ class ServerGroup(pulumi.CustomResource):
         test_sg = openstack.compute.ServerGroup("test-sg",
             name="my-sg",
             policies=["anti-affinity"],
-            rules=openstack.compute.ServerGroupRulesArgs(
-                max_server_per_host=3,
-            ))
+            rules={
+                "max_server_per_host": 3,
+            })
         test_instance = openstack.compute.Instance("test-instance",
             name="my-instance",
             image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
             flavor_id="3",
-            scheduler_hints=[openstack.compute.InstanceSchedulerHintArgs(
-                group=test_sg.id,
-            )],
-            networks=[openstack.compute.InstanceNetworkArgs(
-                name="my_network",
-            )])
+            scheduler_hints=[{
+                "group": test_sg.id,
+            }],
+            networks=[{
+                "name": "my_network",
+            }])
         ```
 
         ## Policies
@@ -430,7 +430,7 @@ class ServerGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[pulumi.InputType['ServerGroupRulesArgs']]] = None,
+                 rules: Optional[pulumi.Input[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']]] = None,
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -461,7 +461,7 @@ class ServerGroup(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[pulumi.InputType['ServerGroupRulesArgs']]] = None,
+            rules: Optional[pulumi.Input[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']]] = None,
             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'ServerGroup':
         """
         Get an existing ServerGroup resource's state with the given name, id, and optional extra
@@ -479,7 +479,7 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
                If omitted, the `region` argument of the provider is used. Changing
                this creates a new server group.
-        :param pulumi.Input[pulumi.InputType['ServerGroupRulesArgs']] rules: The rules which are applied to specified `policy`. Currently,
+        :param pulumi.Input[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']] rules: The rules which are applied to specified `policy`. Currently,
                only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """

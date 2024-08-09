@@ -618,7 +618,7 @@ class Volume(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeSchedulerHintArgs']]]]] = None,
+                 scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeSchedulerHintArgs', 'VolumeSchedulerHintArgsDict']]]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  source_replica: Optional[pulumi.Input[str]] = None,
@@ -673,7 +673,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to create the volume. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new volume.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeSchedulerHintArgs']]]] scheduler_hints: Provide the Cinder scheduler with hints on where
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeSchedulerHintArgs', 'VolumeSchedulerHintArgsDict']]]] scheduler_hints: Provide the Cinder scheduler with hints on where
                to instantiate a volume in the OpenStack cloud. The available hints are described below.
         :param pulumi.Input[int] size: The size of the volume to create (in gigabytes).
         :param pulumi.Input[str] snapshot_id: The snapshot ID from which to create the volume.
@@ -740,7 +740,7 @@ class Volume(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeSchedulerHintArgs']]]]] = None,
+                 scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeSchedulerHintArgs', 'VolumeSchedulerHintArgsDict']]]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  source_replica: Optional[pulumi.Input[str]] = None,
@@ -783,7 +783,7 @@ class Volume(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attachments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeAttachmentArgs']]]]] = None,
+            attachments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeAttachmentArgs', 'VolumeAttachmentArgsDict']]]]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             backup_id: Optional[pulumi.Input[str]] = None,
             consistency_group_id: Optional[pulumi.Input[str]] = None,
@@ -793,7 +793,7 @@ class Volume(pulumi.CustomResource):
             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeSchedulerHintArgs']]]]] = None,
+            scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeSchedulerHintArgs', 'VolumeSchedulerHintArgsDict']]]]] = None,
             size: Optional[pulumi.Input[int]] = None,
             snapshot_id: Optional[pulumi.Input[str]] = None,
             source_replica: Optional[pulumi.Input[str]] = None,
@@ -806,7 +806,7 @@ class Volume(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeAttachmentArgs']]]] attachments: If a volume is attached to an instance, this attribute will
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeAttachmentArgs', 'VolumeAttachmentArgsDict']]]] attachments: If a volume is attached to an instance, this attribute will
                display the Attachment ID, Instance ID, and the Device as the Instance
                sees it.
         :param pulumi.Input[str] availability_zone: The availability zone for the volume.
@@ -831,7 +831,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to create the volume. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new volume.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeSchedulerHintArgs']]]] scheduler_hints: Provide the Cinder scheduler with hints on where
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeSchedulerHintArgs', 'VolumeSchedulerHintArgsDict']]]] scheduler_hints: Provide the Cinder scheduler with hints on where
                to instantiate a volume in the OpenStack cloud. The available hints are described below.
         :param pulumi.Input[int] size: The size of the volume to create (in gigabytes).
         :param pulumi.Input[str] snapshot_id: The snapshot ID from which to create the volume.

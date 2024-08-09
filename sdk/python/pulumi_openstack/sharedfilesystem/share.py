@@ -748,7 +748,7 @@ class Share(pulumi.CustomResource):
             all_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            export_locations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShareExportLocationArgs']]]]] = None,
+            export_locations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShareExportLocationArgs', 'ShareExportLocationArgsDict']]]]] = None,
             has_replicas: Optional[pulumi.Input[bool]] = None,
             host: Optional[pulumi.Input[str]] = None,
             is_public: Optional[pulumi.Input[bool]] = None,
@@ -776,7 +776,7 @@ class Share(pulumi.CustomResource):
                new share.
         :param pulumi.Input[str] description: The human-readable description for the share.
                Changing this updates the description of the existing share.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShareExportLocationArgs']]]] export_locations: A list of export locations. For example, when a share server
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ShareExportLocationArgs', 'ShareExportLocationArgsDict']]]] export_locations: A list of export locations. For example, when a share server
                has more than one network interface, it can have multiple export locations.
         :param pulumi.Input[bool] has_replicas: Indicates whether a share has replicas or not.
         :param pulumi.Input[str] host: The share host name.

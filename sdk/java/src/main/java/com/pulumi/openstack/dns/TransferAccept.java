@@ -45,15 +45,15 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var exampleZone = new Zone("exampleZone", ZoneArgs.builder()
  *             .name("example.com.")
- *             .email("jdoe{@literal @}example.com")
+ *             .email("jdoe}{@literal @}{@code example.com")
  *             .description("An example zone")
  *             .ttl(3000)
  *             .type("PRIMARY")
@@ -69,8 +69,8 @@ import javax.annotation.Nullable;
  *             .key(request1.key())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -173,7 +173,7 @@ public class TransferAccept extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TransferAccept(String name) {
+    public TransferAccept(java.lang.String name) {
         this(name, TransferAcceptArgs.Empty);
     }
     /**
@@ -181,7 +181,7 @@ public class TransferAccept extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TransferAccept(String name, TransferAcceptArgs args) {
+    public TransferAccept(java.lang.String name, TransferAcceptArgs args) {
         this(name, args, null);
     }
     /**
@@ -190,12 +190,12 @@ public class TransferAccept extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TransferAccept(String name, TransferAcceptArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:dns/transferAccept:TransferAccept", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public TransferAccept(java.lang.String name, TransferAcceptArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:dns/transferAccept:TransferAccept", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TransferAccept(String name, Output<String> id, @Nullable TransferAcceptState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:dns/transferAccept:TransferAccept", name, state, makeResourceOptions(options, id));
+    private TransferAccept(java.lang.String name, Output<java.lang.String> id, @Nullable TransferAcceptState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:dns/transferAccept:TransferAccept", name, state, makeResourceOptions(options, id), false);
     }
 
     private static TransferAcceptArgs makeArgs(TransferAcceptArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -205,7 +205,7 @@ public class TransferAccept extends com.pulumi.resources.CustomResource {
         return args == null ? TransferAcceptArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -221,7 +221,7 @@ public class TransferAccept extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TransferAccept get(String name, Output<String> id, @Nullable TransferAcceptState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TransferAccept get(java.lang.String name, Output<java.lang.String> id, @Nullable TransferAcceptState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TransferAccept(name, id, state, options);
     }
 }

@@ -499,7 +499,7 @@ class User(pulumi.CustomResource):
                  ignore_lockout_failure_attempts: Optional[pulumi.Input[bool]] = None,
                  ignore_password_expiry: Optional[pulumi.Input[bool]] = None,
                  multi_factor_auth_enabled: Optional[pulumi.Input[bool]] = None,
-                 multi_factor_auth_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMultiFactorAuthRuleArgs']]]]] = None,
+                 multi_factor_auth_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserMultiFactorAuthRuleArgs', 'UserMultiFactorAuthRuleArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -529,15 +529,15 @@ class User(pulumi.CustomResource):
             ignore_change_password_upon_first_use=True,
             multi_factor_auth_enabled=True,
             multi_factor_auth_rules=[
-                openstack.identity.UserMultiFactorAuthRuleArgs(
-                    rules=[
+                {
+                    "rules": [
                         "password",
                         "totp",
                     ],
-                ),
-                openstack.identity.UserMultiFactorAuthRuleArgs(
-                    rules=["password"],
-                ),
+                },
+                {
+                    "rules": ["password"],
+                },
             ],
             extra={
                 "email": "user_1@foobar.com",
@@ -568,7 +568,7 @@ class User(pulumi.CustomResource):
                Valid values are `true` and `false`.
         :param pulumi.Input[bool] multi_factor_auth_enabled: Whether to enable multi-factor
                authentication. Valid values are `true` and `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMultiFactorAuthRuleArgs']]]] multi_factor_auth_rules: A multi-factor authentication rule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserMultiFactorAuthRuleArgs', 'UserMultiFactorAuthRuleArgsDict']]]] multi_factor_auth_rules: A multi-factor authentication rule.
                The structure is documented below. Please see the
                [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
                for more information on how to use mulit-factor rules.
@@ -609,15 +609,15 @@ class User(pulumi.CustomResource):
             ignore_change_password_upon_first_use=True,
             multi_factor_auth_enabled=True,
             multi_factor_auth_rules=[
-                openstack.identity.UserMultiFactorAuthRuleArgs(
-                    rules=[
+                {
+                    "rules": [
                         "password",
                         "totp",
                     ],
-                ),
-                openstack.identity.UserMultiFactorAuthRuleArgs(
-                    rules=["password"],
-                ),
+                },
+                {
+                    "rules": ["password"],
+                },
             ],
             extra={
                 "email": "user_1@foobar.com",
@@ -656,7 +656,7 @@ class User(pulumi.CustomResource):
                  ignore_lockout_failure_attempts: Optional[pulumi.Input[bool]] = None,
                  ignore_password_expiry: Optional[pulumi.Input[bool]] = None,
                  multi_factor_auth_enabled: Optional[pulumi.Input[bool]] = None,
-                 multi_factor_auth_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMultiFactorAuthRuleArgs']]]]] = None,
+                 multi_factor_auth_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserMultiFactorAuthRuleArgs', 'UserMultiFactorAuthRuleArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -703,7 +703,7 @@ class User(pulumi.CustomResource):
             ignore_lockout_failure_attempts: Optional[pulumi.Input[bool]] = None,
             ignore_password_expiry: Optional[pulumi.Input[bool]] = None,
             multi_factor_auth_enabled: Optional[pulumi.Input[bool]] = None,
-            multi_factor_auth_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMultiFactorAuthRuleArgs']]]]] = None,
+            multi_factor_auth_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserMultiFactorAuthRuleArgs', 'UserMultiFactorAuthRuleArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None) -> 'User':
@@ -728,7 +728,7 @@ class User(pulumi.CustomResource):
                Valid values are `true` and `false`.
         :param pulumi.Input[bool] multi_factor_auth_enabled: Whether to enable multi-factor
                authentication. Valid values are `true` and `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserMultiFactorAuthRuleArgs']]]] multi_factor_auth_rules: A multi-factor authentication rule.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserMultiFactorAuthRuleArgs', 'UserMultiFactorAuthRuleArgsDict']]]] multi_factor_auth_rules: A multi-factor authentication rule.
                The structure is documented below. Please see the
                [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
                for more information on how to use mulit-factor rules.

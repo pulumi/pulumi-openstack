@@ -706,7 +706,7 @@ class SiteConnection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 dpds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SiteConnectionDpdArgs']]]]] = None,
+                 dpds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SiteConnectionDpdArgs', 'SiteConnectionDpdArgsDict']]]]] = None,
                  ikepolicy_id: Optional[pulumi.Input[str]] = None,
                  initiator: Optional[pulumi.Input[str]] = None,
                  ipsecpolicy_id: Optional[pulumi.Input[str]] = None,
@@ -742,11 +742,11 @@ class SiteConnection(pulumi.CustomResource):
             peer_address="192.168.10.1",
             local_ep_group_id=group2["id"],
             peer_ep_group_id=group1["id"],
-            dpds=[openstack.vpnaas.SiteConnectionDpdArgs(
-                action="restart",
-                timeout=42,
-                interval=21,
-            )])
+            dpds=[{
+                "action": "restart",
+                "timeout": 42,
+                "interval": 21,
+            }])
         ```
 
         ## Import
@@ -763,7 +763,7 @@ class SiteConnection(pulumi.CustomResource):
                Changing this updates the administrative state of the existing connection.
         :param pulumi.Input[str] description: The human-readable description for the connection.
                Changing this updates the description of the existing connection.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SiteConnectionDpdArgs']]]] dpds: A dictionary with dead peer detection (DPD) protocol controls.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SiteConnectionDpdArgs', 'SiteConnectionDpdArgsDict']]]] dpds: A dictionary with dead peer detection (DPD) protocol controls.
         :param pulumi.Input[str] ikepolicy_id: The ID of the IKE policy. Changing this creates a new connection.
         :param pulumi.Input[str] initiator: A valid value is response-only or bi-directional. Default is bi-directional.
         :param pulumi.Input[str] ipsecpolicy_id: The ID of the IPsec policy. Changing this creates a new connection.
@@ -820,11 +820,11 @@ class SiteConnection(pulumi.CustomResource):
             peer_address="192.168.10.1",
             local_ep_group_id=group2["id"],
             peer_ep_group_id=group1["id"],
-            dpds=[openstack.vpnaas.SiteConnectionDpdArgs(
-                action="restart",
-                timeout=42,
-                interval=21,
-            )])
+            dpds=[{
+                "action": "restart",
+                "timeout": 42,
+                "interval": 21,
+            }])
         ```
 
         ## Import
@@ -852,7 +852,7 @@ class SiteConnection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 dpds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SiteConnectionDpdArgs']]]]] = None,
+                 dpds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SiteConnectionDpdArgs', 'SiteConnectionDpdArgsDict']]]]] = None,
                  ikepolicy_id: Optional[pulumi.Input[str]] = None,
                  initiator: Optional[pulumi.Input[str]] = None,
                  ipsecpolicy_id: Optional[pulumi.Input[str]] = None,
@@ -921,7 +921,7 @@ class SiteConnection(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_state_up: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            dpds: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SiteConnectionDpdArgs']]]]] = None,
+            dpds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SiteConnectionDpdArgs', 'SiteConnectionDpdArgsDict']]]]] = None,
             ikepolicy_id: Optional[pulumi.Input[str]] = None,
             initiator: Optional[pulumi.Input[str]] = None,
             ipsecpolicy_id: Optional[pulumi.Input[str]] = None,
@@ -949,7 +949,7 @@ class SiteConnection(pulumi.CustomResource):
                Changing this updates the administrative state of the existing connection.
         :param pulumi.Input[str] description: The human-readable description for the connection.
                Changing this updates the description of the existing connection.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SiteConnectionDpdArgs']]]] dpds: A dictionary with dead peer detection (DPD) protocol controls.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SiteConnectionDpdArgs', 'SiteConnectionDpdArgsDict']]]] dpds: A dictionary with dead peer detection (DPD) protocol controls.
         :param pulumi.Input[str] ikepolicy_id: The ID of the IKE policy. Changing this creates a new connection.
         :param pulumi.Input[str] initiator: A valid value is response-only or bi-directional. Default is bi-directional.
         :param pulumi.Input[str] ipsecpolicy_id: The ID of the IPsec policy. Changing this creates a new connection.
