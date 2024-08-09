@@ -337,7 +337,7 @@ public class ShareNetwork extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ShareNetwork(String name) {
+    public ShareNetwork(java.lang.String name) {
         this(name, ShareNetworkArgs.Empty);
     }
     /**
@@ -345,7 +345,7 @@ public class ShareNetwork extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ShareNetwork(String name, ShareNetworkArgs args) {
+    public ShareNetwork(java.lang.String name, ShareNetworkArgs args) {
         this(name, args, null);
     }
     /**
@@ -354,12 +354,12 @@ public class ShareNetwork extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ShareNetwork(String name, ShareNetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:sharedfilesystem/shareNetwork:ShareNetwork", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ShareNetwork(java.lang.String name, ShareNetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:sharedfilesystem/shareNetwork:ShareNetwork", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ShareNetwork(String name, Output<String> id, @Nullable ShareNetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:sharedfilesystem/shareNetwork:ShareNetwork", name, state, makeResourceOptions(options, id));
+    private ShareNetwork(java.lang.String name, Output<java.lang.String> id, @Nullable ShareNetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:sharedfilesystem/shareNetwork:ShareNetwork", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ShareNetworkArgs makeArgs(ShareNetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -369,7 +369,7 @@ public class ShareNetwork extends com.pulumi.resources.CustomResource {
         return args == null ? ShareNetworkArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -385,7 +385,7 @@ public class ShareNetwork extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ShareNetwork get(String name, Output<String> id, @Nullable ShareNetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ShareNetwork get(java.lang.String name, Output<java.lang.String> id, @Nullable ShareNetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ShareNetwork(name, id, state, options);
     }
 }

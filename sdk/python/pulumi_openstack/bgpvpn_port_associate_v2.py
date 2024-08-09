@@ -265,7 +265,7 @@ class BgpvpnPortAssociateV2(pulumi.CustomResource):
                  port_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BgpvpnPortAssociateV2RouteArgs']]]]] = None,
+                 routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BgpvpnPortAssociateV2RouteArgs', 'BgpvpnPortAssociateV2RouteArgsDict']]]]] = None,
                  __props__=None):
         """
         Manages a V2 BGP VPN port association resource within OpenStack.
@@ -280,14 +280,14 @@ class BgpvpnPortAssociateV2(pulumi.CustomResource):
             bgpvpn_id="19382ec5-8098-47d9-a9c6-6270c91103f4",
             port_id="b83a95b8-c2c8-4eac-9a9e-ddc85bd1266f",
             routes=[
-                openstack.BgpvpnPortAssociateV2RouteArgs(
-                    type="prefix",
-                    prefix="192.168.170.1/32",
-                ),
-                openstack.BgpvpnPortAssociateV2RouteArgs(
-                    type="bgpvpn",
-                    bgpvpn_id="35af1cc6-3d0f-4c5d-86f8-8cdb508d3f0c",
-                ),
+                {
+                    "type": "prefix",
+                    "prefix": "192.168.170.1/32",
+                },
+                {
+                    "type": "bgpvpn",
+                    "bgpvpn_id": "35af1cc6-3d0f-4c5d-86f8-8cdb508d3f0c",
+                },
             ])
         ```
 
@@ -319,7 +319,7 @@ class BgpvpnPortAssociateV2(pulumi.CustomResource):
                A Networking client is needed to create a BGP VPN port association. If
                omitted, the `region` argument of the provider is used. Changing this creates
                a new BGP VPN port association.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BgpvpnPortAssociateV2RouteArgs']]]] routes: A list of dictionaries containing the following keys:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BgpvpnPortAssociateV2RouteArgs', 'BgpvpnPortAssociateV2RouteArgsDict']]]] routes: A list of dictionaries containing the following keys:
         """
         ...
     @overload
@@ -340,14 +340,14 @@ class BgpvpnPortAssociateV2(pulumi.CustomResource):
             bgpvpn_id="19382ec5-8098-47d9-a9c6-6270c91103f4",
             port_id="b83a95b8-c2c8-4eac-9a9e-ddc85bd1266f",
             routes=[
-                openstack.BgpvpnPortAssociateV2RouteArgs(
-                    type="prefix",
-                    prefix="192.168.170.1/32",
-                ),
-                openstack.BgpvpnPortAssociateV2RouteArgs(
-                    type="bgpvpn",
-                    bgpvpn_id="35af1cc6-3d0f-4c5d-86f8-8cdb508d3f0c",
-                ),
+                {
+                    "type": "prefix",
+                    "prefix": "192.168.170.1/32",
+                },
+                {
+                    "type": "bgpvpn",
+                    "bgpvpn_id": "35af1cc6-3d0f-4c5d-86f8-8cdb508d3f0c",
+                },
             ])
         ```
 
@@ -383,7 +383,7 @@ class BgpvpnPortAssociateV2(pulumi.CustomResource):
                  port_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BgpvpnPortAssociateV2RouteArgs']]]]] = None,
+                 routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BgpvpnPortAssociateV2RouteArgs', 'BgpvpnPortAssociateV2RouteArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -418,7 +418,7 @@ class BgpvpnPortAssociateV2(pulumi.CustomResource):
             port_id: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BgpvpnPortAssociateV2RouteArgs']]]]] = None) -> 'BgpvpnPortAssociateV2':
+            routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BgpvpnPortAssociateV2RouteArgs', 'BgpvpnPortAssociateV2RouteArgsDict']]]]] = None) -> 'BgpvpnPortAssociateV2':
         """
         Get an existing BgpvpnPortAssociateV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -440,7 +440,7 @@ class BgpvpnPortAssociateV2(pulumi.CustomResource):
                A Networking client is needed to create a BGP VPN port association. If
                omitted, the `region` argument of the provider is used. Changing this creates
                a new BGP VPN port association.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BgpvpnPortAssociateV2RouteArgs']]]] routes: A list of dictionaries containing the following keys:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BgpvpnPortAssociateV2RouteArgs', 'BgpvpnPortAssociateV2RouteArgsDict']]]] routes: A list of dictionaries containing the following keys:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

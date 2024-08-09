@@ -144,7 +144,7 @@ public class BgpvpnNetworkAssociateV2 extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BgpvpnNetworkAssociateV2(String name) {
+    public BgpvpnNetworkAssociateV2(java.lang.String name) {
         this(name, BgpvpnNetworkAssociateV2Args.Empty);
     }
     /**
@@ -152,7 +152,7 @@ public class BgpvpnNetworkAssociateV2 extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BgpvpnNetworkAssociateV2(String name, BgpvpnNetworkAssociateV2Args args) {
+    public BgpvpnNetworkAssociateV2(java.lang.String name, BgpvpnNetworkAssociateV2Args args) {
         this(name, args, null);
     }
     /**
@@ -161,12 +161,12 @@ public class BgpvpnNetworkAssociateV2 extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BgpvpnNetworkAssociateV2(String name, BgpvpnNetworkAssociateV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public BgpvpnNetworkAssociateV2(java.lang.String name, BgpvpnNetworkAssociateV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BgpvpnNetworkAssociateV2(String name, Output<String> id, @Nullable BgpvpnNetworkAssociateV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2", name, state, makeResourceOptions(options, id));
+    private BgpvpnNetworkAssociateV2(java.lang.String name, Output<java.lang.String> id, @Nullable BgpvpnNetworkAssociateV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2", name, state, makeResourceOptions(options, id), false);
     }
 
     private static BgpvpnNetworkAssociateV2Args makeArgs(BgpvpnNetworkAssociateV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -176,7 +176,7 @@ public class BgpvpnNetworkAssociateV2 extends com.pulumi.resources.CustomResourc
         return args == null ? BgpvpnNetworkAssociateV2Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -192,7 +192,7 @@ public class BgpvpnNetworkAssociateV2 extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BgpvpnNetworkAssociateV2 get(String name, Output<String> id, @Nullable BgpvpnNetworkAssociateV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BgpvpnNetworkAssociateV2 get(java.lang.String name, Output<java.lang.String> id, @Nullable BgpvpnNetworkAssociateV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BgpvpnNetworkAssociateV2(name, id, state, options);
     }
 }

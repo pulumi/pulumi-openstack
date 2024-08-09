@@ -253,7 +253,7 @@ public class MonitorV1 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MonitorV1(String name) {
+    public MonitorV1(java.lang.String name) {
         this(name, MonitorV1Args.Empty);
     }
     /**
@@ -261,7 +261,7 @@ public class MonitorV1 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MonitorV1(String name, MonitorV1Args args) {
+    public MonitorV1(java.lang.String name, MonitorV1Args args) {
         this(name, args, null);
     }
     /**
@@ -270,12 +270,12 @@ public class MonitorV1 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MonitorV1(String name, MonitorV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:loadbalancer/monitorV1:MonitorV1", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MonitorV1(java.lang.String name, MonitorV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:loadbalancer/monitorV1:MonitorV1", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MonitorV1(String name, Output<String> id, @Nullable MonitorV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:loadbalancer/monitorV1:MonitorV1", name, state, makeResourceOptions(options, id));
+    private MonitorV1(java.lang.String name, Output<java.lang.String> id, @Nullable MonitorV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:loadbalancer/monitorV1:MonitorV1", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MonitorV1Args makeArgs(MonitorV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -285,7 +285,7 @@ public class MonitorV1 extends com.pulumi.resources.CustomResource {
         return args == null ? MonitorV1Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -301,7 +301,7 @@ public class MonitorV1 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MonitorV1 get(String name, Output<String> id, @Nullable MonitorV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MonitorV1 get(java.lang.String name, Output<java.lang.String> id, @Nullable MonitorV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MonitorV1(name, id, state, options);
     }
 }

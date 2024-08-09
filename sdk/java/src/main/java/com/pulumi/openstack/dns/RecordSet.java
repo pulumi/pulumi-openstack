@@ -45,15 +45,15 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var exampleZone = new Zone("exampleZone", ZoneArgs.builder()
  *             .name("example.com.")
- *             .email("email2{@literal @}example.com")
+ *             .email("email2}{@literal @}{@code example.com")
  *             .description("a zone")
  *             .ttl(6000)
  *             .type("PRIMARY")
@@ -68,8 +68,8 @@ import javax.annotation.Nullable;
  *             .records("10.0.0.1")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -251,7 +251,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RecordSet(String name) {
+    public RecordSet(java.lang.String name) {
         this(name, RecordSetArgs.Empty);
     }
     /**
@@ -259,7 +259,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RecordSet(String name, RecordSetArgs args) {
+    public RecordSet(java.lang.String name, RecordSetArgs args) {
         this(name, args, null);
     }
     /**
@@ -268,12 +268,12 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RecordSet(String name, RecordSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:dns/recordSet:RecordSet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public RecordSet(java.lang.String name, RecordSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:dns/recordSet:RecordSet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RecordSet(String name, Output<String> id, @Nullable RecordSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:dns/recordSet:RecordSet", name, state, makeResourceOptions(options, id));
+    private RecordSet(java.lang.String name, Output<java.lang.String> id, @Nullable RecordSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:dns/recordSet:RecordSet", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RecordSetArgs makeArgs(RecordSetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -283,7 +283,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
         return args == null ? RecordSetArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -299,7 +299,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RecordSet get(String name, Output<String> id, @Nullable RecordSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RecordSet get(java.lang.String name, Output<java.lang.String> id, @Nullable RecordSetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RecordSet(name, id, state, options);
     }
 }

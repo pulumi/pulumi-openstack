@@ -198,7 +198,7 @@ public class EndpointV3 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EndpointV3(String name) {
+    public EndpointV3(java.lang.String name) {
         this(name, EndpointV3Args.Empty);
     }
     /**
@@ -206,7 +206,7 @@ public class EndpointV3 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EndpointV3(String name, EndpointV3Args args) {
+    public EndpointV3(java.lang.String name, EndpointV3Args args) {
         this(name, args, null);
     }
     /**
@@ -215,12 +215,12 @@ public class EndpointV3 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EndpointV3(String name, EndpointV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:identity/endpointV3:EndpointV3", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public EndpointV3(java.lang.String name, EndpointV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:identity/endpointV3:EndpointV3", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EndpointV3(String name, Output<String> id, @Nullable EndpointV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:identity/endpointV3:EndpointV3", name, state, makeResourceOptions(options, id));
+    private EndpointV3(java.lang.String name, Output<java.lang.String> id, @Nullable EndpointV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:identity/endpointV3:EndpointV3", name, state, makeResourceOptions(options, id), false);
     }
 
     private static EndpointV3Args makeArgs(EndpointV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -230,7 +230,7 @@ public class EndpointV3 extends com.pulumi.resources.CustomResource {
         return args == null ? EndpointV3Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -246,7 +246,7 @@ public class EndpointV3 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EndpointV3 get(String name, Output<String> id, @Nullable EndpointV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EndpointV3 get(java.lang.String name, Output<java.lang.String> id, @Nullable EndpointV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EndpointV3(name, id, state, options);
     }
 }

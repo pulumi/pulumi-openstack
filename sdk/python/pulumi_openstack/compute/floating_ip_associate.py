@@ -236,12 +236,12 @@ class FloatingIpAssociate(pulumi.CustomResource):
             key_pair="my_key_pair_name",
             security_groups=["default"],
             networks=[
-                openstack.compute.InstanceNetworkArgs(
-                    name="my_network",
-                ),
-                openstack.compute.InstanceNetworkArgs(
-                    name="default",
-                ),
+                {
+                    "name": "my_network",
+                },
+                {
+                    "name": "default",
+                },
             ])
         fip1 = openstack.networking.FloatingIp("fip_1", pool="my_pool")
         fip1_floating_ip_associate = openstack.compute.FloatingIpAssociate("fip_1",
@@ -311,12 +311,12 @@ class FloatingIpAssociate(pulumi.CustomResource):
             key_pair="my_key_pair_name",
             security_groups=["default"],
             networks=[
-                openstack.compute.InstanceNetworkArgs(
-                    name="my_network",
-                ),
-                openstack.compute.InstanceNetworkArgs(
-                    name="default",
-                ),
+                {
+                    "name": "my_network",
+                },
+                {
+                    "name": "default",
+                },
             ])
         fip1 = openstack.networking.FloatingIp("fip_1", pool="my_pool")
         fip1_floating_ip_associate = openstack.compute.FloatingIpAssociate("fip_1",

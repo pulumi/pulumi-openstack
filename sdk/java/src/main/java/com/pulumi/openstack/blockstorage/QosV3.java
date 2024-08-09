@@ -141,7 +141,7 @@ public class QosV3 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public QosV3(String name) {
+    public QosV3(java.lang.String name) {
         this(name, QosV3Args.Empty);
     }
     /**
@@ -149,7 +149,7 @@ public class QosV3 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public QosV3(String name, @Nullable QosV3Args args) {
+    public QosV3(java.lang.String name, @Nullable QosV3Args args) {
         this(name, args, null);
     }
     /**
@@ -158,12 +158,12 @@ public class QosV3 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public QosV3(String name, @Nullable QosV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:blockstorage/qosV3:QosV3", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public QosV3(java.lang.String name, @Nullable QosV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:blockstorage/qosV3:QosV3", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private QosV3(String name, Output<String> id, @Nullable QosV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:blockstorage/qosV3:QosV3", name, state, makeResourceOptions(options, id));
+    private QosV3(java.lang.String name, Output<java.lang.String> id, @Nullable QosV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:blockstorage/qosV3:QosV3", name, state, makeResourceOptions(options, id), false);
     }
 
     private static QosV3Args makeArgs(@Nullable QosV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -173,7 +173,7 @@ public class QosV3 extends com.pulumi.resources.CustomResource {
         return args == null ? QosV3Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -189,7 +189,7 @@ public class QosV3 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static QosV3 get(String name, Output<String> id, @Nullable QosV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static QosV3 get(java.lang.String name, Output<java.lang.String> id, @Nullable QosV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new QosV3(name, id, state, options);
     }
 }

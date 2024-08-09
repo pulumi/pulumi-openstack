@@ -248,7 +248,7 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IkePolicy(String name) {
+    public IkePolicy(java.lang.String name) {
         this(name, IkePolicyArgs.Empty);
     }
     /**
@@ -256,7 +256,7 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IkePolicy(String name, @Nullable IkePolicyArgs args) {
+    public IkePolicy(java.lang.String name, @Nullable IkePolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -265,12 +265,12 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IkePolicy(String name, @Nullable IkePolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:vpnaas/ikePolicy:IkePolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public IkePolicy(java.lang.String name, @Nullable IkePolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:vpnaas/ikePolicy:IkePolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IkePolicy(String name, Output<String> id, @Nullable IkePolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:vpnaas/ikePolicy:IkePolicy", name, state, makeResourceOptions(options, id));
+    private IkePolicy(java.lang.String name, Output<java.lang.String> id, @Nullable IkePolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:vpnaas/ikePolicy:IkePolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static IkePolicyArgs makeArgs(@Nullable IkePolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -280,7 +280,7 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
         return args == null ? IkePolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -296,7 +296,7 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IkePolicy get(String name, Output<String> id, @Nullable IkePolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IkePolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable IkePolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IkePolicy(name, id, state, options);
     }
 }

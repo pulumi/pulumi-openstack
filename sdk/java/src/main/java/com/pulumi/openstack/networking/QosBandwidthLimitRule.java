@@ -161,7 +161,7 @@ public class QosBandwidthLimitRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public QosBandwidthLimitRule(String name) {
+    public QosBandwidthLimitRule(java.lang.String name) {
         this(name, QosBandwidthLimitRuleArgs.Empty);
     }
     /**
@@ -169,7 +169,7 @@ public class QosBandwidthLimitRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public QosBandwidthLimitRule(String name, QosBandwidthLimitRuleArgs args) {
+    public QosBandwidthLimitRule(java.lang.String name, QosBandwidthLimitRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -178,12 +178,12 @@ public class QosBandwidthLimitRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public QosBandwidthLimitRule(String name, QosBandwidthLimitRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public QosBandwidthLimitRule(java.lang.String name, QosBandwidthLimitRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private QosBandwidthLimitRule(String name, Output<String> id, @Nullable QosBandwidthLimitRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule", name, state, makeResourceOptions(options, id));
+    private QosBandwidthLimitRule(java.lang.String name, Output<java.lang.String> id, @Nullable QosBandwidthLimitRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule", name, state, makeResourceOptions(options, id), false);
     }
 
     private static QosBandwidthLimitRuleArgs makeArgs(QosBandwidthLimitRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -193,7 +193,7 @@ public class QosBandwidthLimitRule extends com.pulumi.resources.CustomResource {
         return args == null ? QosBandwidthLimitRuleArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -209,7 +209,7 @@ public class QosBandwidthLimitRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static QosBandwidthLimitRule get(String name, Output<String> id, @Nullable QosBandwidthLimitRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static QosBandwidthLimitRule get(java.lang.String name, Output<java.lang.String> id, @Nullable QosBandwidthLimitRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new QosBandwidthLimitRule(name, id, state, options);
     }
 }

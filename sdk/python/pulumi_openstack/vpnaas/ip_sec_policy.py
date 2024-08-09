@@ -434,7 +434,7 @@ class IpSecPolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  encapsulation_mode: Optional[pulumi.Input[str]] = None,
                  encryption_algorithm: Optional[pulumi.Input[str]] = None,
-                 lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpSecPolicyLifetimeArgs']]]]] = None,
+                 lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pfs: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -472,7 +472,7 @@ class IpSecPolicy(pulumi.CustomResource):
                Changing this updates the existing policy.
         :param pulumi.Input[str] encryption_algorithm: The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
                The default value is aes-128. Changing this updates the existing policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpSecPolicyLifetimeArgs']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[str] name: The name of the policy. Changing this updates the name of
                the existing policy.
         :param pulumi.Input[str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
@@ -532,7 +532,7 @@ class IpSecPolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  encapsulation_mode: Optional[pulumi.Input[str]] = None,
                  encryption_algorithm: Optional[pulumi.Input[str]] = None,
-                 lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpSecPolicyLifetimeArgs']]]]] = None,
+                 lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pfs: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -573,7 +573,7 @@ class IpSecPolicy(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             encapsulation_mode: Optional[pulumi.Input[str]] = None,
             encryption_algorithm: Optional[pulumi.Input[str]] = None,
-            lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpSecPolicyLifetimeArgs']]]]] = None,
+            lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             pfs: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -595,7 +595,7 @@ class IpSecPolicy(pulumi.CustomResource):
                Changing this updates the existing policy.
         :param pulumi.Input[str] encryption_algorithm: The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
                The default value is aes-128. Changing this updates the existing policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpSecPolicyLifetimeArgs']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[str] name: The name of the policy. Changing this updates the name of
                the existing policy.
         :param pulumi.Input[str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 

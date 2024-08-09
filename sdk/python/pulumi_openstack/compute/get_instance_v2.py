@@ -254,7 +254,7 @@ class AwaitableGetInstanceV2Result(GetInstanceV2Result):
 
 
 def get_instance_v2(id: Optional[str] = None,
-                    networks: Optional[Sequence[pulumi.InputType['GetInstanceV2NetworkArgs']]] = None,
+                    networks: Optional[Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict']]] = None,
                     region: Optional[str] = None,
                     user_data: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceV2Result:
@@ -272,7 +272,7 @@ def get_instance_v2(id: Optional[str] = None,
 
 
     :param str id: The UUID of the instance
-    :param Sequence[pulumi.InputType['GetInstanceV2NetworkArgs']] networks: An array of maps, detailed below.
+    :param Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict']] networks: An array of maps, detailed below.
     :param str user_data: The user data added when the server was created.
     """
     __args__ = dict()
@@ -307,7 +307,7 @@ def get_instance_v2(id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_instance_v2)
 def get_instance_v2_output(id: Optional[pulumi.Input[str]] = None,
-                           networks: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetInstanceV2NetworkArgs']]]]] = None,
+                           networks: Optional[pulumi.Input[Optional[Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict']]]]] = None,
                            region: Optional[pulumi.Input[Optional[str]]] = None,
                            user_data: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceV2Result]:
@@ -325,7 +325,7 @@ def get_instance_v2_output(id: Optional[pulumi.Input[str]] = None,
 
 
     :param str id: The UUID of the instance
-    :param Sequence[pulumi.InputType['GetInstanceV2NetworkArgs']] networks: An array of maps, detailed below.
+    :param Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict']] networks: An array of maps, detailed below.
     :param str user_data: The user data added when the server was created.
     """
     ...

@@ -336,7 +336,7 @@ public class LbLoadbalancerV2 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LbLoadbalancerV2(String name) {
+    public LbLoadbalancerV2(java.lang.String name) {
         this(name, LbLoadbalancerV2Args.Empty);
     }
     /**
@@ -344,7 +344,7 @@ public class LbLoadbalancerV2 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LbLoadbalancerV2(String name, @Nullable LbLoadbalancerV2Args args) {
+    public LbLoadbalancerV2(java.lang.String name, @Nullable LbLoadbalancerV2Args args) {
         this(name, args, null);
     }
     /**
@@ -353,12 +353,12 @@ public class LbLoadbalancerV2 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LbLoadbalancerV2(String name, @Nullable LbLoadbalancerV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:index/lbLoadbalancerV2:LbLoadbalancerV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public LbLoadbalancerV2(java.lang.String name, @Nullable LbLoadbalancerV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:index/lbLoadbalancerV2:LbLoadbalancerV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LbLoadbalancerV2(String name, Output<String> id, @Nullable LbLoadbalancerV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:index/lbLoadbalancerV2:LbLoadbalancerV2", name, state, makeResourceOptions(options, id));
+    private LbLoadbalancerV2(java.lang.String name, Output<java.lang.String> id, @Nullable LbLoadbalancerV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:index/lbLoadbalancerV2:LbLoadbalancerV2", name, state, makeResourceOptions(options, id), false);
     }
 
     private static LbLoadbalancerV2Args makeArgs(@Nullable LbLoadbalancerV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -368,7 +368,7 @@ public class LbLoadbalancerV2 extends com.pulumi.resources.CustomResource {
         return args == null ? LbLoadbalancerV2Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .aliases(List.of(
@@ -387,7 +387,7 @@ public class LbLoadbalancerV2 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LbLoadbalancerV2 get(String name, Output<String> id, @Nullable LbLoadbalancerV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LbLoadbalancerV2 get(java.lang.String name, Output<java.lang.String> id, @Nullable LbLoadbalancerV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LbLoadbalancerV2(name, id, state, options);
     }
 }

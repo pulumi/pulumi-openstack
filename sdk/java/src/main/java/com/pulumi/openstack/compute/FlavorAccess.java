@@ -138,7 +138,7 @@ public class FlavorAccess extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public FlavorAccess(String name) {
+    public FlavorAccess(java.lang.String name) {
         this(name, FlavorAccessArgs.Empty);
     }
     /**
@@ -146,7 +146,7 @@ public class FlavorAccess extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FlavorAccess(String name, FlavorAccessArgs args) {
+    public FlavorAccess(java.lang.String name, FlavorAccessArgs args) {
         this(name, args, null);
     }
     /**
@@ -155,12 +155,12 @@ public class FlavorAccess extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FlavorAccess(String name, FlavorAccessArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:compute/flavorAccess:FlavorAccess", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public FlavorAccess(java.lang.String name, FlavorAccessArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:compute/flavorAccess:FlavorAccess", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private FlavorAccess(String name, Output<String> id, @Nullable FlavorAccessState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:compute/flavorAccess:FlavorAccess", name, state, makeResourceOptions(options, id));
+    private FlavorAccess(java.lang.String name, Output<java.lang.String> id, @Nullable FlavorAccessState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:compute/flavorAccess:FlavorAccess", name, state, makeResourceOptions(options, id), false);
     }
 
     private static FlavorAccessArgs makeArgs(FlavorAccessArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -170,7 +170,7 @@ public class FlavorAccess extends com.pulumi.resources.CustomResource {
         return args == null ? FlavorAccessArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -186,7 +186,7 @@ public class FlavorAccess extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static FlavorAccess get(String name, Output<String> id, @Nullable FlavorAccessState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static FlavorAccess get(java.lang.String name, Output<java.lang.String> id, @Nullable FlavorAccessState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new FlavorAccess(name, id, state, options);
     }
 }

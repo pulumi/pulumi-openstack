@@ -196,7 +196,7 @@ class SecGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecGroupRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecGroupRuleArgs', 'SecGroupRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Manages a V2 security group resource within OpenStack.
@@ -217,18 +217,18 @@ class SecGroup(pulumi.CustomResource):
             name="my_secgroup",
             description="my security group",
             rules=[
-                openstack.compute.SecGroupRuleArgs(
-                    from_port=22,
-                    to_port=22,
-                    ip_protocol="tcp",
-                    cidr="0.0.0.0/0",
-                ),
-                openstack.compute.SecGroupRuleArgs(
-                    from_port=80,
-                    to_port=80,
-                    ip_protocol="tcp",
-                    cidr="0.0.0.0/0",
-                ),
+                {
+                    "from_port": 22,
+                    "to_port": 22,
+                    "ip_protocol": "tcp",
+                    "cidr": "0.0.0.0/0",
+                },
+                {
+                    "from_port": 80,
+                    "to_port": 80,
+                    "ip_protocol": "tcp",
+                    "cidr": "0.0.0.0/0",
+                },
             ])
         ```
 
@@ -268,7 +268,7 @@ class SecGroup(pulumi.CustomResource):
                A Compute client is needed to create a security group. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                security group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecGroupRuleArgs']]]] rules: A rule describing how the security group operates. The
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecGroupRuleArgs', 'SecGroupRuleArgsDict']]]] rules: A rule describing how the security group operates. The
                rule object structure is documented below. Changing this updates the
                security group rules. As shown in the example above, multiple rule blocks
                may be used.
@@ -298,18 +298,18 @@ class SecGroup(pulumi.CustomResource):
             name="my_secgroup",
             description="my security group",
             rules=[
-                openstack.compute.SecGroupRuleArgs(
-                    from_port=22,
-                    to_port=22,
-                    ip_protocol="tcp",
-                    cidr="0.0.0.0/0",
-                ),
-                openstack.compute.SecGroupRuleArgs(
-                    from_port=80,
-                    to_port=80,
-                    ip_protocol="tcp",
-                    cidr="0.0.0.0/0",
-                ),
+                {
+                    "from_port": 22,
+                    "to_port": 22,
+                    "ip_protocol": "tcp",
+                    "cidr": "0.0.0.0/0",
+                },
+                {
+                    "from_port": 80,
+                    "to_port": 80,
+                    "ip_protocol": "tcp",
+                    "cidr": "0.0.0.0/0",
+                },
             ])
         ```
 
@@ -357,7 +357,7 @@ class SecGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecGroupRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecGroupRuleArgs', 'SecGroupRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -386,7 +386,7 @@ class SecGroup(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecGroupRuleArgs']]]]] = None) -> 'SecGroup':
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecGroupRuleArgs', 'SecGroupRuleArgsDict']]]]] = None) -> 'SecGroup':
         """
         Get an existing SecGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -402,7 +402,7 @@ class SecGroup(pulumi.CustomResource):
                A Compute client is needed to create a security group. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                security group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecGroupRuleArgs']]]] rules: A rule describing how the security group operates. The
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecGroupRuleArgs', 'SecGroupRuleArgsDict']]]] rules: A rule describing how the security group operates. The
                rule object structure is documented below. Changing this updates the
                security group rules. As shown in the example above, multiple rule blocks
                may be used.

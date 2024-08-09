@@ -126,7 +126,7 @@ public class QosDscpMarkingRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public QosDscpMarkingRule(String name) {
+    public QosDscpMarkingRule(java.lang.String name) {
         this(name, QosDscpMarkingRuleArgs.Empty);
     }
     /**
@@ -134,7 +134,7 @@ public class QosDscpMarkingRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public QosDscpMarkingRule(String name, QosDscpMarkingRuleArgs args) {
+    public QosDscpMarkingRule(java.lang.String name, QosDscpMarkingRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -143,12 +143,12 @@ public class QosDscpMarkingRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public QosDscpMarkingRule(String name, QosDscpMarkingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public QosDscpMarkingRule(java.lang.String name, QosDscpMarkingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private QosDscpMarkingRule(String name, Output<String> id, @Nullable QosDscpMarkingRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule", name, state, makeResourceOptions(options, id));
+    private QosDscpMarkingRule(java.lang.String name, Output<java.lang.String> id, @Nullable QosDscpMarkingRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule", name, state, makeResourceOptions(options, id), false);
     }
 
     private static QosDscpMarkingRuleArgs makeArgs(QosDscpMarkingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -158,7 +158,7 @@ public class QosDscpMarkingRule extends com.pulumi.resources.CustomResource {
         return args == null ? QosDscpMarkingRuleArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -174,7 +174,7 @@ public class QosDscpMarkingRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static QosDscpMarkingRule get(String name, Output<String> id, @Nullable QosDscpMarkingRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static QosDscpMarkingRule get(java.lang.String name, Output<java.lang.String> id, @Nullable QosDscpMarkingRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new QosDscpMarkingRule(name, id, state, options);
     }
 }

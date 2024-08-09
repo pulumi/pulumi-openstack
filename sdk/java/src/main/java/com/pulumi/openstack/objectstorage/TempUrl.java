@@ -199,7 +199,7 @@ public class TempUrl extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TempUrl(String name) {
+    public TempUrl(java.lang.String name) {
         this(name, TempUrlArgs.Empty);
     }
     /**
@@ -207,7 +207,7 @@ public class TempUrl extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TempUrl(String name, TempUrlArgs args) {
+    public TempUrl(java.lang.String name, TempUrlArgs args) {
         this(name, args, null);
     }
     /**
@@ -216,12 +216,12 @@ public class TempUrl extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TempUrl(String name, TempUrlArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:objectstorage/tempUrl:TempUrl", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public TempUrl(java.lang.String name, TempUrlArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:objectstorage/tempUrl:TempUrl", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TempUrl(String name, Output<String> id, @Nullable TempUrlState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:objectstorage/tempUrl:TempUrl", name, state, makeResourceOptions(options, id));
+    private TempUrl(java.lang.String name, Output<java.lang.String> id, @Nullable TempUrlState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:objectstorage/tempUrl:TempUrl", name, state, makeResourceOptions(options, id), false);
     }
 
     private static TempUrlArgs makeArgs(TempUrlArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -231,7 +231,7 @@ public class TempUrl extends com.pulumi.resources.CustomResource {
         return args == null ? TempUrlArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -250,7 +250,7 @@ public class TempUrl extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TempUrl get(String name, Output<String> id, @Nullable TempUrlState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TempUrl get(java.lang.String name, Output<java.lang.String> id, @Nullable TempUrlState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TempUrl(name, id, state, options);
     }
 }

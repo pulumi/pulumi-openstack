@@ -248,7 +248,7 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IpSecPolicy(String name) {
+    public IpSecPolicy(java.lang.String name) {
         this(name, IpSecPolicyArgs.Empty);
     }
     /**
@@ -256,7 +256,7 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IpSecPolicy(String name, @Nullable IpSecPolicyArgs args) {
+    public IpSecPolicy(java.lang.String name, @Nullable IpSecPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -265,12 +265,12 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IpSecPolicy(String name, @Nullable IpSecPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:vpnaas/ipSecPolicy:IpSecPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public IpSecPolicy(java.lang.String name, @Nullable IpSecPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:vpnaas/ipSecPolicy:IpSecPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IpSecPolicy(String name, Output<String> id, @Nullable IpSecPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:vpnaas/ipSecPolicy:IpSecPolicy", name, state, makeResourceOptions(options, id));
+    private IpSecPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable IpSecPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:vpnaas/ipSecPolicy:IpSecPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static IpSecPolicyArgs makeArgs(@Nullable IpSecPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -280,7 +280,7 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
         return args == null ? IpSecPolicyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -296,7 +296,7 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IpSecPolicy get(String name, Output<String> id, @Nullable IpSecPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IpSecPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable IpSecPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IpSecPolicy(name, id, state, options);
     }
 }

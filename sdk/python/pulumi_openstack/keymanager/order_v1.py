@@ -284,7 +284,7 @@ class OrderV1(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 meta: Optional[pulumi.Input[pulumi.InputType['OrderV1MetaArgs']]] = None,
+                 meta: Optional[pulumi.Input[Union['OrderV1MetaArgs', 'OrderV1MetaArgsDict']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -301,12 +301,12 @@ class OrderV1(pulumi.CustomResource):
 
         order1 = openstack.keymanager.OrderV1("order_1",
             type="key",
-            meta=openstack.keymanager.OrderV1MetaArgs(
-                algorithm="aes",
-                bit_length=256,
-                name="mysecret",
-                mode="cbc",
-            ))
+            meta={
+                "algorithm": "aes",
+                "bit_length": 256,
+                "name": "mysecret",
+                "mode": "cbc",
+            })
         ```
 
         ### Asymmetric key pair order
@@ -317,11 +317,11 @@ class OrderV1(pulumi.CustomResource):
 
         order1 = openstack.keymanager.OrderV1("order_1",
             type="asymmetric",
-            meta=openstack.keymanager.OrderV1MetaArgs(
-                algorithm="rsa",
-                bit_length=4096,
-                name="mysecret",
-            ))
+            meta={
+                "algorithm": "rsa",
+                "bit_length": 4096,
+                "name": "mysecret",
+            })
         ```
 
         ## Import
@@ -334,7 +334,7 @@ class OrderV1(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['OrderV1MetaArgs']] meta: Dictionary containing the order metadata used to generate the order. The structure is described below.
+        :param pulumi.Input[Union['OrderV1MetaArgs', 'OrderV1MetaArgsDict']] meta: Dictionary containing the order metadata used to generate the order. The structure is described below.
         :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
                A KeyManager client is needed to create a order. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -360,12 +360,12 @@ class OrderV1(pulumi.CustomResource):
 
         order1 = openstack.keymanager.OrderV1("order_1",
             type="key",
-            meta=openstack.keymanager.OrderV1MetaArgs(
-                algorithm="aes",
-                bit_length=256,
-                name="mysecret",
-                mode="cbc",
-            ))
+            meta={
+                "algorithm": "aes",
+                "bit_length": 256,
+                "name": "mysecret",
+                "mode": "cbc",
+            })
         ```
 
         ### Asymmetric key pair order
@@ -376,11 +376,11 @@ class OrderV1(pulumi.CustomResource):
 
         order1 = openstack.keymanager.OrderV1("order_1",
             type="asymmetric",
-            meta=openstack.keymanager.OrderV1MetaArgs(
-                algorithm="rsa",
-                bit_length=4096,
-                name="mysecret",
-            ))
+            meta={
+                "algorithm": "rsa",
+                "bit_length": 4096,
+                "name": "mysecret",
+            })
         ```
 
         ## Import
@@ -406,7 +406,7 @@ class OrderV1(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 meta: Optional[pulumi.Input[pulumi.InputType['OrderV1MetaArgs']]] = None,
+                 meta: Optional[pulumi.Input[Union['OrderV1MetaArgs', 'OrderV1MetaArgsDict']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -447,7 +447,7 @@ class OrderV1(pulumi.CustomResource):
             container_ref: Optional[pulumi.Input[str]] = None,
             created: Optional[pulumi.Input[str]] = None,
             creator_id: Optional[pulumi.Input[str]] = None,
-            meta: Optional[pulumi.Input[pulumi.InputType['OrderV1MetaArgs']]] = None,
+            meta: Optional[pulumi.Input[Union['OrderV1MetaArgs', 'OrderV1MetaArgsDict']]] = None,
             order_ref: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             secret_ref: Optional[pulumi.Input[str]] = None,
@@ -466,7 +466,7 @@ class OrderV1(pulumi.CustomResource):
         :param pulumi.Input[str] container_ref: The container reference / where to find the container.
         :param pulumi.Input[str] created: The date the order was created.
         :param pulumi.Input[str] creator_id: The creator of the order.
-        :param pulumi.Input[pulumi.InputType['OrderV1MetaArgs']] meta: Dictionary containing the order metadata used to generate the order. The structure is described below.
+        :param pulumi.Input[Union['OrderV1MetaArgs', 'OrderV1MetaArgsDict']] meta: Dictionary containing the order metadata used to generate the order. The structure is described below.
         :param pulumi.Input[str] order_ref: The order reference / where to find the order.
         :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
                A KeyManager client is needed to create a order. If omitted, the

@@ -55,8 +55,8 @@ public final class ApplicationCredentialAccessRuleArgs extends com.pulumi.resour
     /**
      * The API path that the application credential is permitted
      * to access. May use named wildcards such as **{tag}** or the unnamed wildcard
-     * **\*** to match against any string in the path up to a **{@literal /}**, or the recursive
-     * wildcard **\*\*** to include **{@literal /}** in the matched path.
+     * **\*** to match against any string in the path up to a **&#47;**, or the recursive
+     * wildcard **\*\*** to include **&#47;** in the matched path.
      * 
      */
     @Import(name="path", required=true)
@@ -65,8 +65,8 @@ public final class ApplicationCredentialAccessRuleArgs extends com.pulumi.resour
     /**
      * @return The API path that the application credential is permitted
      * to access. May use named wildcards such as **{tag}** or the unnamed wildcard
-     * **\*** to match against any string in the path up to a **{@literal /}**, or the recursive
-     * wildcard **\*\*** to include **{@literal /}** in the matched path.
+     * **\*** to match against any string in the path up to a **&#47;**, or the recursive
+     * wildcard **\*\*** to include **&#47;** in the matched path.
      * 
      */
     public Output<String> path() {
@@ -174,8 +174,8 @@ public final class ApplicationCredentialAccessRuleArgs extends com.pulumi.resour
         /**
          * @param path The API path that the application credential is permitted
          * to access. May use named wildcards such as **{tag}** or the unnamed wildcard
-         * **\*** to match against any string in the path up to a **{@literal /}**, or the recursive
-         * wildcard **\*\*** to include **{@literal /}** in the matched path.
+         * **\*** to match against any string in the path up to a **&#47;**, or the recursive
+         * wildcard **\*\*** to include **&#47;** in the matched path.
          * 
          * @return builder
          * 
@@ -188,8 +188,8 @@ public final class ApplicationCredentialAccessRuleArgs extends com.pulumi.resour
         /**
          * @param path The API path that the application credential is permitted
          * to access. May use named wildcards such as **{tag}** or the unnamed wildcard
-         * **\*** to match against any string in the path up to a **{@literal /}**, or the recursive
-         * wildcard **\*\*** to include **{@literal /}** in the matched path.
+         * **\*** to match against any string in the path up to a **&#47;**, or the recursive
+         * wildcard **\*\*** to include **&#47;** in the matched path.
          * 
          * @return builder
          * 

@@ -694,7 +694,7 @@ class Network(pulumi.CustomResource):
                  port_security_enabled: Optional[pulumi.Input[bool]] = None,
                  qos_policy_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 segments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkSegmentArgs']]]]] = None,
+                 segments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict']]]]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
@@ -721,27 +721,27 @@ class Network(pulumi.CustomResource):
         secgroup1 = openstack.compute.SecGroup("secgroup_1",
             name="secgroup_1",
             description="a security group",
-            rules=[openstack.compute.SecGroupRuleArgs(
-                from_port=22,
-                to_port=22,
-                ip_protocol="tcp",
-                cidr="0.0.0.0/0",
-            )])
+            rules=[{
+                "from_port": 22,
+                "to_port": 22,
+                "ip_protocol": "tcp",
+                "cidr": "0.0.0.0/0",
+            }])
         port1 = openstack.networking.Port("port_1",
             name="port_1",
             network_id=network1.id,
             admin_state_up=True,
             security_group_ids=[secgroup1.id],
-            fixed_ips=[openstack.networking.PortFixedIpArgs(
-                subnet_id=subnet1.id,
-                ip_address="192.168.199.10",
-            )])
+            fixed_ips=[{
+                "subnet_id": subnet1.id,
+                "ip_address": "192.168.199.10",
+            }])
         instance1 = openstack.compute.Instance("instance_1",
             name="instance_1",
             security_groups=[secgroup1.name],
-            networks=[openstack.compute.InstanceNetworkArgs(
-                port=port1.id,
-            )])
+            networks=[{
+                "port": port1.id,
+            }])
         ```
 
         ## Import
@@ -785,7 +785,7 @@ class Network(pulumi.CustomResource):
                A Networking client is needed to create a Neutron network. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                network.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkSegmentArgs']]]] segments: An array of one or more provider segment objects.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict']]]] segments: An array of one or more provider segment objects.
                Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
                updating any provider related segments attributes. Check your plug-in whether
                it supports updating.
@@ -827,27 +827,27 @@ class Network(pulumi.CustomResource):
         secgroup1 = openstack.compute.SecGroup("secgroup_1",
             name="secgroup_1",
             description="a security group",
-            rules=[openstack.compute.SecGroupRuleArgs(
-                from_port=22,
-                to_port=22,
-                ip_protocol="tcp",
-                cidr="0.0.0.0/0",
-            )])
+            rules=[{
+                "from_port": 22,
+                "to_port": 22,
+                "ip_protocol": "tcp",
+                "cidr": "0.0.0.0/0",
+            }])
         port1 = openstack.networking.Port("port_1",
             name="port_1",
             network_id=network1.id,
             admin_state_up=True,
             security_group_ids=[secgroup1.id],
-            fixed_ips=[openstack.networking.PortFixedIpArgs(
-                subnet_id=subnet1.id,
-                ip_address="192.168.199.10",
-            )])
+            fixed_ips=[{
+                "subnet_id": subnet1.id,
+                "ip_address": "192.168.199.10",
+            }])
         instance1 = openstack.compute.Instance("instance_1",
             name="instance_1",
             security_groups=[secgroup1.name],
-            networks=[openstack.compute.InstanceNetworkArgs(
-                port=port1.id,
-            )])
+            networks=[{
+                "port": port1.id,
+            }])
         ```
 
         ## Import
@@ -883,7 +883,7 @@ class Network(pulumi.CustomResource):
                  port_security_enabled: Optional[pulumi.Input[bool]] = None,
                  qos_policy_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 segments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkSegmentArgs']]]]] = None,
+                 segments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict']]]]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
@@ -936,7 +936,7 @@ class Network(pulumi.CustomResource):
             port_security_enabled: Optional[pulumi.Input[bool]] = None,
             qos_policy_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            segments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkSegmentArgs']]]]] = None,
+            segments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict']]]]] = None,
             shared: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
@@ -982,7 +982,7 @@ class Network(pulumi.CustomResource):
                A Networking client is needed to create a Neutron network. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                network.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkSegmentArgs']]]] segments: An array of one or more provider segment objects.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict']]]] segments: An array of one or more provider segment objects.
                Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
                updating any provider related segments attributes. Check your plug-in whether
                it supports updating.

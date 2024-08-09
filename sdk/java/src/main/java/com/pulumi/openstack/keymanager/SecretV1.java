@@ -459,7 +459,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SecretV1(String name) {
+    public SecretV1(java.lang.String name) {
         this(name, SecretV1Args.Empty);
     }
     /**
@@ -467,7 +467,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SecretV1(String name, @Nullable SecretV1Args args) {
+    public SecretV1(java.lang.String name, @Nullable SecretV1Args args) {
         this(name, args, null);
     }
     /**
@@ -476,12 +476,12 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SecretV1(String name, @Nullable SecretV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:keymanager/secretV1:SecretV1", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public SecretV1(java.lang.String name, @Nullable SecretV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:keymanager/secretV1:SecretV1", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SecretV1(String name, Output<String> id, @Nullable SecretV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:keymanager/secretV1:SecretV1", name, state, makeResourceOptions(options, id));
+    private SecretV1(java.lang.String name, Output<java.lang.String> id, @Nullable SecretV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:keymanager/secretV1:SecretV1", name, state, makeResourceOptions(options, id), false);
     }
 
     private static SecretV1Args makeArgs(@Nullable SecretV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -491,7 +491,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
         return args == null ? SecretV1Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -510,7 +510,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SecretV1 get(String name, Output<String> id, @Nullable SecretV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SecretV1 get(java.lang.String name, Output<java.lang.String> id, @Nullable SecretV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SecretV1(name, id, state, options);
     }
 }

@@ -175,7 +175,7 @@ public class RouterRoute extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RouterRoute(String name) {
+    public RouterRoute(java.lang.String name) {
         this(name, RouterRouteArgs.Empty);
     }
     /**
@@ -183,7 +183,7 @@ public class RouterRoute extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RouterRoute(String name, RouterRouteArgs args) {
+    public RouterRoute(java.lang.String name, RouterRouteArgs args) {
         this(name, args, null);
     }
     /**
@@ -192,12 +192,12 @@ public class RouterRoute extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RouterRoute(String name, RouterRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/routerRoute:RouterRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public RouterRoute(java.lang.String name, RouterRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/routerRoute:RouterRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RouterRoute(String name, Output<String> id, @Nullable RouterRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/routerRoute:RouterRoute", name, state, makeResourceOptions(options, id));
+    private RouterRoute(java.lang.String name, Output<java.lang.String> id, @Nullable RouterRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/routerRoute:RouterRoute", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RouterRouteArgs makeArgs(RouterRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -207,7 +207,7 @@ public class RouterRoute extends com.pulumi.resources.CustomResource {
         return args == null ? RouterRouteArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -223,7 +223,7 @@ public class RouterRoute extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RouterRoute get(String name, Output<String> id, @Nullable RouterRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RouterRoute get(java.lang.String name, Output<java.lang.String> id, @Nullable RouterRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RouterRoute(name, id, state, options);
     }
 }

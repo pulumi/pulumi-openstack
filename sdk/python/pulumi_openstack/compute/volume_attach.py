@@ -277,7 +277,7 @@ class VolumeAttach(pulumi.CustomResource):
                  multiattach: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
-                 vendor_options: Optional[pulumi.Input[pulumi.InputType['VolumeAttachVendorOptionsArgs']]] = None,
+                 vendor_options: Optional[pulumi.Input[Union['VolumeAttachVendorOptionsArgs', 'VolumeAttachVendorOptionsArgsDict']]] = None,
                  volume_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -356,7 +356,7 @@ class VolumeAttach(pulumi.CustomResource):
         :param pulumi.Input[str] tag: Add a device role tag that is applied to the volume when
                attaching it to the VM. Changing this creates a new volume attachment with
                the new tag. Requires microversion >= 2.49.
-        :param pulumi.Input[pulumi.InputType['VolumeAttachVendorOptionsArgs']] vendor_options: Map of additional vendor-specific options.
+        :param pulumi.Input[Union['VolumeAttachVendorOptionsArgs', 'VolumeAttachVendorOptionsArgsDict']] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         :param pulumi.Input[str] volume_id: The ID of the Volume to attach to an Instance.
         """
@@ -451,7 +451,7 @@ class VolumeAttach(pulumi.CustomResource):
                  multiattach: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
-                 vendor_options: Optional[pulumi.Input[pulumi.InputType['VolumeAttachVendorOptionsArgs']]] = None,
+                 vendor_options: Optional[pulumi.Input[Union['VolumeAttachVendorOptionsArgs', 'VolumeAttachVendorOptionsArgsDict']]] = None,
                  volume_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -488,7 +488,7 @@ class VolumeAttach(pulumi.CustomResource):
             multiattach: Optional[pulumi.Input[bool]] = None,
             region: Optional[pulumi.Input[str]] = None,
             tag: Optional[pulumi.Input[str]] = None,
-            vendor_options: Optional[pulumi.Input[pulumi.InputType['VolumeAttachVendorOptionsArgs']]] = None,
+            vendor_options: Optional[pulumi.Input[Union['VolumeAttachVendorOptionsArgs', 'VolumeAttachVendorOptionsArgsDict']]] = None,
             volume_id: Optional[pulumi.Input[str]] = None) -> 'VolumeAttach':
         """
         Get an existing VolumeAttach resource's state with the given name, id, and optional extra
@@ -506,7 +506,7 @@ class VolumeAttach(pulumi.CustomResource):
         :param pulumi.Input[str] tag: Add a device role tag that is applied to the volume when
                attaching it to the VM. Changing this creates a new volume attachment with
                the new tag. Requires microversion >= 2.49.
-        :param pulumi.Input[pulumi.InputType['VolumeAttachVendorOptionsArgs']] vendor_options: Map of additional vendor-specific options.
+        :param pulumi.Input[Union['VolumeAttachVendorOptionsArgs', 'VolumeAttachVendorOptionsArgsDict']] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         :param pulumi.Input[str] volume_id: The ID of the Volume to attach to an Instance.
         """

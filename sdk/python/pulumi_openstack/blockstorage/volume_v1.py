@@ -563,7 +563,7 @@ class VolumeV1(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attachments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeV1AttachmentArgs']]]]] = None,
+            attachments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeV1AttachmentArgs', 'VolumeV1AttachmentArgsDict']]]]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
@@ -581,7 +581,7 @@ class VolumeV1(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeV1AttachmentArgs']]]] attachments: If a volume is attached to an instance, this attribute will
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeV1AttachmentArgs', 'VolumeV1AttachmentArgsDict']]]] attachments: If a volume is attached to an instance, this attribute will
                display the Attachment ID, Instance ID, and the Device as the Instance
                sees it.
         :param pulumi.Input[str] availability_zone: The availability zone for the volume.
