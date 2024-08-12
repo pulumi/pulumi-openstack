@@ -260,7 +260,7 @@ public class SecurityService extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SecurityService(String name) {
+    public SecurityService(java.lang.String name) {
         this(name, SecurityServiceArgs.Empty);
     }
     /**
@@ -268,7 +268,7 @@ public class SecurityService extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SecurityService(String name, SecurityServiceArgs args) {
+    public SecurityService(java.lang.String name, SecurityServiceArgs args) {
         this(name, args, null);
     }
     /**
@@ -277,12 +277,12 @@ public class SecurityService extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SecurityService(String name, SecurityServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:sharedfilesystem/securityService:SecurityService", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public SecurityService(java.lang.String name, SecurityServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:sharedfilesystem/securityService:SecurityService", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SecurityService(String name, Output<String> id, @Nullable SecurityServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:sharedfilesystem/securityService:SecurityService", name, state, makeResourceOptions(options, id));
+    private SecurityService(java.lang.String name, Output<java.lang.String> id, @Nullable SecurityServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:sharedfilesystem/securityService:SecurityService", name, state, makeResourceOptions(options, id), false);
     }
 
     private static SecurityServiceArgs makeArgs(SecurityServiceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -292,7 +292,7 @@ public class SecurityService extends com.pulumi.resources.CustomResource {
         return args == null ? SecurityServiceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -311,7 +311,7 @@ public class SecurityService extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SecurityService get(String name, Output<String> id, @Nullable SecurityServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SecurityService get(java.lang.String name, Output<java.lang.String> id, @Nullable SecurityServiceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SecurityService(name, id, state, options);
     }
 }

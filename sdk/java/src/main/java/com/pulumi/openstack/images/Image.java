@@ -567,7 +567,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Image(String name) {
+    public Image(java.lang.String name) {
         this(name, ImageArgs.Empty);
     }
     /**
@@ -575,7 +575,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Image(String name, ImageArgs args) {
+    public Image(java.lang.String name, ImageArgs args) {
         this(name, args, null);
     }
     /**
@@ -584,12 +584,12 @@ public class Image extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Image(String name, ImageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:images/image:Image", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Image(java.lang.String name, ImageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:images/image:Image", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Image(String name, Output<String> id, @Nullable ImageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:images/image:Image", name, state, makeResourceOptions(options, id));
+    private Image(java.lang.String name, Output<java.lang.String> id, @Nullable ImageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:images/image:Image", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ImageArgs makeArgs(ImageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -599,7 +599,7 @@ public class Image extends com.pulumi.resources.CustomResource {
         return args == null ? ImageArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -618,7 +618,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Image get(String name, Output<String> id, @Nullable ImageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Image get(java.lang.String name, Output<java.lang.String> id, @Nullable ImageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Image(name, id, state, options);
     }
 }

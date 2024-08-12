@@ -197,7 +197,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PortForwardingV2(String name) {
+    public PortForwardingV2(java.lang.String name) {
         this(name, PortForwardingV2Args.Empty);
     }
     /**
@@ -205,7 +205,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PortForwardingV2(String name, PortForwardingV2Args args) {
+    public PortForwardingV2(java.lang.String name, PortForwardingV2Args args) {
         this(name, args, null);
     }
     /**
@@ -214,12 +214,12 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PortForwardingV2(String name, PortForwardingV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/portForwardingV2:PortForwardingV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public PortForwardingV2(java.lang.String name, PortForwardingV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/portForwardingV2:PortForwardingV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PortForwardingV2(String name, Output<String> id, @Nullable PortForwardingV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/portForwardingV2:PortForwardingV2", name, state, makeResourceOptions(options, id));
+    private PortForwardingV2(java.lang.String name, Output<java.lang.String> id, @Nullable PortForwardingV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/portForwardingV2:PortForwardingV2", name, state, makeResourceOptions(options, id), false);
     }
 
     private static PortForwardingV2Args makeArgs(PortForwardingV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -229,7 +229,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
         return args == null ? PortForwardingV2Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -245,7 +245,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PortForwardingV2 get(String name, Output<String> id, @Nullable PortForwardingV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PortForwardingV2 get(java.lang.String name, Output<java.lang.String> id, @Nullable PortForwardingV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PortForwardingV2(name, id, state, options);
     }
 }

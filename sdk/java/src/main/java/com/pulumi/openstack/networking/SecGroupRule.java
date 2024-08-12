@@ -315,7 +315,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SecGroupRule(String name) {
+    public SecGroupRule(java.lang.String name) {
         this(name, SecGroupRuleArgs.Empty);
     }
     /**
@@ -323,7 +323,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SecGroupRule(String name, SecGroupRuleArgs args) {
+    public SecGroupRule(java.lang.String name, SecGroupRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -332,12 +332,12 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SecGroupRule(String name, SecGroupRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/secGroupRule:SecGroupRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public SecGroupRule(java.lang.String name, SecGroupRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/secGroupRule:SecGroupRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SecGroupRule(String name, Output<String> id, @Nullable SecGroupRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/secGroupRule:SecGroupRule", name, state, makeResourceOptions(options, id));
+    private SecGroupRule(java.lang.String name, Output<java.lang.String> id, @Nullable SecGroupRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/secGroupRule:SecGroupRule", name, state, makeResourceOptions(options, id), false);
     }
 
     private static SecGroupRuleArgs makeArgs(SecGroupRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -347,7 +347,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
         return args == null ? SecGroupRuleArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -363,7 +363,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SecGroupRule get(String name, Output<String> id, @Nullable SecGroupRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SecGroupRule get(java.lang.String name, Output<java.lang.String> id, @Nullable SecGroupRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SecGroupRule(name, id, state, options);
     }
 }

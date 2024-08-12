@@ -908,14 +908,14 @@ class Port(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
-                 allowed_address_pairs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortAllowedAddressPairArgs']]]]] = None,
-                 binding: Optional[pulumi.Input[pulumi.InputType['PortBindingArgs']]] = None,
+                 allowed_address_pairs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortAllowedAddressPairArgs', 'PortAllowedAddressPairArgsDict']]]]] = None,
+                 binding: Optional[pulumi.Input[Union['PortBindingArgs', 'PortBindingArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  device_id: Optional[pulumi.Input[str]] = None,
                  device_owner: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
-                 extra_dhcp_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortExtraDhcpOptionArgs']]]]] = None,
-                 fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortFixedIpArgs']]]]] = None,
+                 extra_dhcp_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortExtraDhcpOptionArgs', 'PortExtraDhcpOptionArgsDict']]]]] = None,
+                 fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortFixedIpArgs', 'PortFixedIpArgsDict']]]]] = None,
                  mac_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
@@ -972,9 +972,9 @@ class Port(pulumi.CustomResource):
             name="port_1",
             network_id=network1.id,
             admin_state_up=True,
-            fixed_ips=[openstack.networking.PortFixedIpArgs(
-                subnet_id=subnet1.id,
-            )])
+            fixed_ips=[{
+                "subnet_id": subnet1.id,
+            }])
         ```
 
         ### Port with physical binding information
@@ -992,10 +992,10 @@ class Port(pulumi.CustomResource):
             device_id="cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
             device_owner="baremetal:none",
             admin_state_up=True,
-            binding=openstack.networking.PortBindingArgs(
-                host_id="b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
-                vnic_type="baremetal",
-                profile=\"\"\"{
+            binding={
+                "host_id": "b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
+                "vnic_type": "baremetal",
+                "profile": \"\"\"{
           "local_link_information": [
             {
               "switch_info": "info1",
@@ -1011,7 +1011,7 @@ class Port(pulumi.CustomResource):
           "vlan_type": "allowed"
         }
         \"\"\",
-            ))
+            })
         ```
 
         ## Notes
@@ -1035,10 +1035,10 @@ class Port(pulumi.CustomResource):
         :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the port
                (must be `true` or `false` if provided). Changing this updates the
                `admin_state_up` of an existing port.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortAllowedAddressPairArgs']]]] allowed_address_pairs: An IP/MAC Address pair of additional IP
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PortAllowedAddressPairArgs', 'PortAllowedAddressPairArgsDict']]]] allowed_address_pairs: An IP/MAC Address pair of additional IP
                addresses that can be active on this port. The structure is described
                below.
-        :param pulumi.Input[pulumi.InputType['PortBindingArgs']] binding: The port binding allows to specify binding information
+        :param pulumi.Input[Union['PortBindingArgs', 'PortBindingArgsDict']] binding: The port binding allows to specify binding information
                for the port. The structure is described below.
         :param pulumi.Input[str] description: Human-readable description of the port. Changing
                this updates the `description` of an existing port.
@@ -1048,10 +1048,10 @@ class Port(pulumi.CustomResource):
                a new port.
         :param pulumi.Input[str] dns_name: The port DNS name. Available, when Neutron DNS extension
                is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortExtraDhcpOptionArgs']]]] extra_dhcp_options: An extra DHCP option that needs to be configured
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PortExtraDhcpOptionArgs', 'PortExtraDhcpOptionArgsDict']]]] extra_dhcp_options: An extra DHCP option that needs to be configured
                on the port. The structure is described below. Can be specified multiple
                times.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortFixedIpArgs']]]] fixed_ips: An array of desired IPs for
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PortFixedIpArgs', 'PortFixedIpArgsDict']]]] fixed_ips: An array of desired IPs for
                this port. The structure is described below.
         :param pulumi.Input[str] mac_address: Specify a specific MAC address for the port. Changing
                this creates a new port.
@@ -1136,9 +1136,9 @@ class Port(pulumi.CustomResource):
             name="port_1",
             network_id=network1.id,
             admin_state_up=True,
-            fixed_ips=[openstack.networking.PortFixedIpArgs(
-                subnet_id=subnet1.id,
-            )])
+            fixed_ips=[{
+                "subnet_id": subnet1.id,
+            }])
         ```
 
         ### Port with physical binding information
@@ -1156,10 +1156,10 @@ class Port(pulumi.CustomResource):
             device_id="cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
             device_owner="baremetal:none",
             admin_state_up=True,
-            binding=openstack.networking.PortBindingArgs(
-                host_id="b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
-                vnic_type="baremetal",
-                profile=\"\"\"{
+            binding={
+                "host_id": "b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
+                "vnic_type": "baremetal",
+                "profile": \"\"\"{
           "local_link_information": [
             {
               "switch_info": "info1",
@@ -1175,7 +1175,7 @@ class Port(pulumi.CustomResource):
           "vlan_type": "allowed"
         }
         \"\"\",
-            ))
+            })
         ```
 
         ## Notes
@@ -1210,14 +1210,14 @@ class Port(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
-                 allowed_address_pairs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortAllowedAddressPairArgs']]]]] = None,
-                 binding: Optional[pulumi.Input[pulumi.InputType['PortBindingArgs']]] = None,
+                 allowed_address_pairs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortAllowedAddressPairArgs', 'PortAllowedAddressPairArgsDict']]]]] = None,
+                 binding: Optional[pulumi.Input[Union['PortBindingArgs', 'PortBindingArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  device_id: Optional[pulumi.Input[str]] = None,
                  device_owner: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
-                 extra_dhcp_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortExtraDhcpOptionArgs']]]]] = None,
-                 fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortFixedIpArgs']]]]] = None,
+                 extra_dhcp_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortExtraDhcpOptionArgs', 'PortExtraDhcpOptionArgsDict']]]]] = None,
+                 fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortFixedIpArgs', 'PortFixedIpArgsDict']]]]] = None,
                  mac_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_id: Optional[pulumi.Input[str]] = None,
@@ -1280,15 +1280,15 @@ class Port(pulumi.CustomResource):
             all_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             all_security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            allowed_address_pairs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortAllowedAddressPairArgs']]]]] = None,
-            binding: Optional[pulumi.Input[pulumi.InputType['PortBindingArgs']]] = None,
+            allowed_address_pairs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortAllowedAddressPairArgs', 'PortAllowedAddressPairArgsDict']]]]] = None,
+            binding: Optional[pulumi.Input[Union['PortBindingArgs', 'PortBindingArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             device_id: Optional[pulumi.Input[str]] = None,
             device_owner: Optional[pulumi.Input[str]] = None,
             dns_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
             dns_name: Optional[pulumi.Input[str]] = None,
-            extra_dhcp_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortExtraDhcpOptionArgs']]]]] = None,
-            fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortFixedIpArgs']]]]] = None,
+            extra_dhcp_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortExtraDhcpOptionArgs', 'PortExtraDhcpOptionArgsDict']]]]] = None,
+            fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortFixedIpArgs', 'PortFixedIpArgsDict']]]]] = None,
             mac_address: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_id: Optional[pulumi.Input[str]] = None,
@@ -1317,10 +1317,10 @@ class Port(pulumi.CustomResource):
                which have been explicitly and implicitly added.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] all_tags: The collection of tags assigned on the port, which have been
                explicitly and implicitly added.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortAllowedAddressPairArgs']]]] allowed_address_pairs: An IP/MAC Address pair of additional IP
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PortAllowedAddressPairArgs', 'PortAllowedAddressPairArgsDict']]]] allowed_address_pairs: An IP/MAC Address pair of additional IP
                addresses that can be active on this port. The structure is described
                below.
-        :param pulumi.Input[pulumi.InputType['PortBindingArgs']] binding: The port binding allows to specify binding information
+        :param pulumi.Input[Union['PortBindingArgs', 'PortBindingArgsDict']] binding: The port binding allows to specify binding information
                for the port. The structure is described below.
         :param pulumi.Input[str] description: Human-readable description of the port. Changing
                this updates the `description` of an existing port.
@@ -1331,10 +1331,10 @@ class Port(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] dns_assignments: The list of maps representing port DNS assignments.
         :param pulumi.Input[str] dns_name: The port DNS name. Available, when Neutron DNS extension
                is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortExtraDhcpOptionArgs']]]] extra_dhcp_options: An extra DHCP option that needs to be configured
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PortExtraDhcpOptionArgs', 'PortExtraDhcpOptionArgsDict']]]] extra_dhcp_options: An extra DHCP option that needs to be configured
                on the port. The structure is described below. Can be specified multiple
                times.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortFixedIpArgs']]]] fixed_ips: An array of desired IPs for
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PortFixedIpArgs', 'PortFixedIpArgsDict']]]] fixed_ips: An array of desired IPs for
                this port. The structure is described below.
         :param pulumi.Input[str] mac_address: Specify a specific MAC address for the port. Changing
                this creates a new port.

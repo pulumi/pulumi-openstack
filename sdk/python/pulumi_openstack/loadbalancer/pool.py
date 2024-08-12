@@ -446,7 +446,7 @@ class Pool(pulumi.CustomResource):
                  listener_id: Optional[pulumi.Input[str]] = None,
                  loadbalancer_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 persistence: Optional[pulumi.Input[pulumi.InputType['PoolPersistenceArgs']]] = None,
+                 persistence: Optional[pulumi.Input[Union['PoolPersistenceArgs', 'PoolPersistenceArgsDict']]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -468,10 +468,10 @@ class Pool(pulumi.CustomResource):
             protocol="HTTP",
             lb_method="ROUND_ROBIN",
             listener_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
-            persistence=openstack.loadbalancer.PoolPersistenceArgs(
-                type="APP_COOKIE",
-                cookie_name="testCookie",
-            ))
+            persistence={
+                "type": "APP_COOKIE",
+                "cookie_name": "testCookie",
+            })
         ```
 
         ## Import
@@ -497,7 +497,7 @@ class Pool(pulumi.CustomResource):
                pool. Changing this creates a new pool.
                Note:  One of LoadbalancerID or ListenerID must be provided.
         :param pulumi.Input[str] name: Human-readable name for the pool.
-        :param pulumi.Input[pulumi.InputType['PoolPersistenceArgs']] persistence: Omit this field to prevent session persistence.  Indicates
+        :param pulumi.Input[Union['PoolPersistenceArgs', 'PoolPersistenceArgsDict']] persistence: Omit this field to prevent session persistence.  Indicates
                whether connections in the same session will be processed by the same Pool
                member or not. Changing this creates a new pool.
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY,
@@ -533,10 +533,10 @@ class Pool(pulumi.CustomResource):
             protocol="HTTP",
             lb_method="ROUND_ROBIN",
             listener_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
-            persistence=openstack.loadbalancer.PoolPersistenceArgs(
-                type="APP_COOKIE",
-                cookie_name="testCookie",
-            ))
+            persistence={
+                "type": "APP_COOKIE",
+                "cookie_name": "testCookie",
+            })
         ```
 
         ## Import
@@ -568,7 +568,7 @@ class Pool(pulumi.CustomResource):
                  listener_id: Optional[pulumi.Input[str]] = None,
                  loadbalancer_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 persistence: Optional[pulumi.Input[pulumi.InputType['PoolPersistenceArgs']]] = None,
+                 persistence: Optional[pulumi.Input[Union['PoolPersistenceArgs', 'PoolPersistenceArgsDict']]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -613,7 +613,7 @@ class Pool(pulumi.CustomResource):
             listener_id: Optional[pulumi.Input[str]] = None,
             loadbalancer_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            persistence: Optional[pulumi.Input[pulumi.InputType['PoolPersistenceArgs']]] = None,
+            persistence: Optional[pulumi.Input[Union['PoolPersistenceArgs', 'PoolPersistenceArgsDict']]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -638,7 +638,7 @@ class Pool(pulumi.CustomResource):
                pool. Changing this creates a new pool.
                Note:  One of LoadbalancerID or ListenerID must be provided.
         :param pulumi.Input[str] name: Human-readable name for the pool.
-        :param pulumi.Input[pulumi.InputType['PoolPersistenceArgs']] persistence: Omit this field to prevent session persistence.  Indicates
+        :param pulumi.Input[Union['PoolPersistenceArgs', 'PoolPersistenceArgsDict']] persistence: Omit this field to prevent session persistence.  Indicates
                whether connections in the same session will be processed by the same Pool
                member or not. Changing this creates a new pool.
         :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY,

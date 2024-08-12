@@ -347,7 +347,7 @@ public class ApplicationCredential extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ApplicationCredential(String name) {
+    public ApplicationCredential(java.lang.String name) {
         this(name, ApplicationCredentialArgs.Empty);
     }
     /**
@@ -355,7 +355,7 @@ public class ApplicationCredential extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ApplicationCredential(String name, @Nullable ApplicationCredentialArgs args) {
+    public ApplicationCredential(java.lang.String name, @Nullable ApplicationCredentialArgs args) {
         this(name, args, null);
     }
     /**
@@ -364,12 +364,12 @@ public class ApplicationCredential extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ApplicationCredential(String name, @Nullable ApplicationCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:identity/applicationCredential:ApplicationCredential", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ApplicationCredential(java.lang.String name, @Nullable ApplicationCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:identity/applicationCredential:ApplicationCredential", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ApplicationCredential(String name, Output<String> id, @Nullable ApplicationCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:identity/applicationCredential:ApplicationCredential", name, state, makeResourceOptions(options, id));
+    private ApplicationCredential(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:identity/applicationCredential:ApplicationCredential", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ApplicationCredentialArgs makeArgs(@Nullable ApplicationCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -379,7 +379,7 @@ public class ApplicationCredential extends com.pulumi.resources.CustomResource {
         return args == null ? ApplicationCredentialArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -398,7 +398,7 @@ public class ApplicationCredential extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ApplicationCredential get(String name, Output<String> id, @Nullable ApplicationCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ApplicationCredential get(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ApplicationCredential(name, id, state, options);
     }
 }
