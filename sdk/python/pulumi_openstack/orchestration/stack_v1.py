@@ -649,7 +649,7 @@ class StackV1(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 stack_outputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackV1StackOutputArgs']]]]] = None,
+                 stack_outputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict']]]]] = None,
                  capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -712,7 +712,7 @@ class StackV1(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackV1StackOutputArgs']]]] stack_outputs: A list of stack outputs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict']]]] stack_outputs: A list of stack outputs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: List of stack capabilities for stack.
         :param pulumi.Input[str] creation_time: The date and time when the resource was created. The date
                and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
@@ -812,7 +812,7 @@ class StackV1(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 stack_outputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackV1StackOutputArgs']]]]] = None,
+                 stack_outputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict']]]]] = None,
                  capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -867,7 +867,7 @@ class StackV1(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            stack_outputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackV1StackOutputArgs']]]]] = None,
+            stack_outputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict']]]]] = None,
             capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             creation_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -891,7 +891,7 @@ class StackV1(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackV1StackOutputArgs']]]] stack_outputs: A list of stack outputs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict']]]] stack_outputs: A list of stack outputs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: List of stack capabilities for stack.
         :param pulumi.Input[str] creation_time: The date and time when the resource was created. The date
                and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm

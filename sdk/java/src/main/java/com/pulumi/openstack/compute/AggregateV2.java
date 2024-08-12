@@ -207,7 +207,7 @@ public class AggregateV2 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AggregateV2(String name) {
+    public AggregateV2(java.lang.String name) {
         this(name, AggregateV2Args.Empty);
     }
     /**
@@ -215,7 +215,7 @@ public class AggregateV2 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AggregateV2(String name, @Nullable AggregateV2Args args) {
+    public AggregateV2(java.lang.String name, @Nullable AggregateV2Args args) {
         this(name, args, null);
     }
     /**
@@ -224,12 +224,12 @@ public class AggregateV2 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AggregateV2(String name, @Nullable AggregateV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:compute/aggregateV2:AggregateV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AggregateV2(java.lang.String name, @Nullable AggregateV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:compute/aggregateV2:AggregateV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AggregateV2(String name, Output<String> id, @Nullable AggregateV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:compute/aggregateV2:AggregateV2", name, state, makeResourceOptions(options, id));
+    private AggregateV2(java.lang.String name, Output<java.lang.String> id, @Nullable AggregateV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:compute/aggregateV2:AggregateV2", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AggregateV2Args makeArgs(@Nullable AggregateV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -239,7 +239,7 @@ public class AggregateV2 extends com.pulumi.resources.CustomResource {
         return args == null ? AggregateV2Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -255,7 +255,7 @@ public class AggregateV2 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AggregateV2 get(String name, Output<String> id, @Nullable AggregateV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AggregateV2 get(java.lang.String name, Output<java.lang.String> id, @Nullable AggregateV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AggregateV2(name, id, state, options);
     }
 }

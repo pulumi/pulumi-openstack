@@ -143,7 +143,7 @@ public class QosMinimumBandwidthRule extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public QosMinimumBandwidthRule(String name) {
+    public QosMinimumBandwidthRule(java.lang.String name) {
         this(name, QosMinimumBandwidthRuleArgs.Empty);
     }
     /**
@@ -151,7 +151,7 @@ public class QosMinimumBandwidthRule extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public QosMinimumBandwidthRule(String name, QosMinimumBandwidthRuleArgs args) {
+    public QosMinimumBandwidthRule(java.lang.String name, QosMinimumBandwidthRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -160,12 +160,12 @@ public class QosMinimumBandwidthRule extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public QosMinimumBandwidthRule(String name, QosMinimumBandwidthRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public QosMinimumBandwidthRule(java.lang.String name, QosMinimumBandwidthRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private QosMinimumBandwidthRule(String name, Output<String> id, @Nullable QosMinimumBandwidthRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule", name, state, makeResourceOptions(options, id));
+    private QosMinimumBandwidthRule(java.lang.String name, Output<java.lang.String> id, @Nullable QosMinimumBandwidthRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule", name, state, makeResourceOptions(options, id), false);
     }
 
     private static QosMinimumBandwidthRuleArgs makeArgs(QosMinimumBandwidthRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -175,7 +175,7 @@ public class QosMinimumBandwidthRule extends com.pulumi.resources.CustomResource
         return args == null ? QosMinimumBandwidthRuleArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -191,7 +191,7 @@ public class QosMinimumBandwidthRule extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static QosMinimumBandwidthRule get(String name, Output<String> id, @Nullable QosMinimumBandwidthRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static QosMinimumBandwidthRule get(java.lang.String name, Output<java.lang.String> id, @Nullable QosMinimumBandwidthRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new QosMinimumBandwidthRule(name, id, state, options);
     }
 }

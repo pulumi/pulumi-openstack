@@ -244,7 +244,7 @@ public class ImageAccess extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ImageAccess(String name) {
+    public ImageAccess(java.lang.String name) {
         this(name, ImageAccessArgs.Empty);
     }
     /**
@@ -252,7 +252,7 @@ public class ImageAccess extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ImageAccess(String name, ImageAccessArgs args) {
+    public ImageAccess(java.lang.String name, ImageAccessArgs args) {
         this(name, args, null);
     }
     /**
@@ -261,12 +261,12 @@ public class ImageAccess extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ImageAccess(String name, ImageAccessArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:images/imageAccess:ImageAccess", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ImageAccess(java.lang.String name, ImageAccessArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:images/imageAccess:ImageAccess", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ImageAccess(String name, Output<String> id, @Nullable ImageAccessState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:images/imageAccess:ImageAccess", name, state, makeResourceOptions(options, id));
+    private ImageAccess(java.lang.String name, Output<java.lang.String> id, @Nullable ImageAccessState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:images/imageAccess:ImageAccess", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ImageAccessArgs makeArgs(ImageAccessArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -276,7 +276,7 @@ public class ImageAccess extends com.pulumi.resources.CustomResource {
         return args == null ? ImageAccessArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -292,7 +292,7 @@ public class ImageAccess extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ImageAccess get(String name, Output<String> id, @Nullable ImageAccessState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ImageAccess get(java.lang.String name, Output<java.lang.String> id, @Nullable ImageAccessState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ImageAccess(name, id, state, options);
     }
 }

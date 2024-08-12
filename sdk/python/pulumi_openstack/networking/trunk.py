@@ -356,7 +356,7 @@ class Trunk(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  port_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 sub_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrunkSubPortArgs']]]]] = None,
+                 sub_ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrunkSubPortArgs', 'TrunkSubPortArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -393,17 +393,17 @@ class Trunk(pulumi.CustomResource):
             name="trunk_1",
             admin_state_up=True,
             port_id=parent_port1.id,
-            sub_ports=[openstack.networking.TrunkSubPortArgs(
-                port_id=subport1.id,
-                segmentation_id=1,
-                segmentation_type="vlan",
-            )])
+            sub_ports=[{
+                "port_id": subport1.id,
+                "segmentation_id": 1,
+                "segmentation_type": "vlan",
+            }])
         instance1 = openstack.compute.Instance("instance_1",
             name="instance_1",
             security_groups=["default"],
-            networks=[openstack.compute.InstanceNetworkArgs(
-                port=trunk1.port_id,
-            )])
+            networks=[{
+                "port": trunk1.port_id,
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -422,7 +422,7 @@ class Trunk(pulumi.CustomResource):
                A networking client is needed to create a trunk. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                trunk.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrunkSubPortArgs']]]] sub_ports: The set of ports that will be made subports of the trunk.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrunkSubPortArgs', 'TrunkSubPortArgsDict']]]] sub_ports: The set of ports that will be made subports of the trunk.
                The structure of each subport is described below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the port.
         :param pulumi.Input[str] tenant_id: The owner of the Trunk. Required if admin wants
@@ -467,17 +467,17 @@ class Trunk(pulumi.CustomResource):
             name="trunk_1",
             admin_state_up=True,
             port_id=parent_port1.id,
-            sub_ports=[openstack.networking.TrunkSubPortArgs(
-                port_id=subport1.id,
-                segmentation_id=1,
-                segmentation_type="vlan",
-            )])
+            sub_ports=[{
+                "port_id": subport1.id,
+                "segmentation_id": 1,
+                "segmentation_type": "vlan",
+            }])
         instance1 = openstack.compute.Instance("instance_1",
             name="instance_1",
             security_groups=["default"],
-            networks=[openstack.compute.InstanceNetworkArgs(
-                port=trunk1.port_id,
-            )])
+            networks=[{
+                "port": trunk1.port_id,
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -500,7 +500,7 @@ class Trunk(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  port_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 sub_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrunkSubPortArgs']]]]] = None,
+                 sub_ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrunkSubPortArgs', 'TrunkSubPortArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -539,7 +539,7 @@ class Trunk(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             port_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            sub_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrunkSubPortArgs']]]]] = None,
+            sub_ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TrunkSubPortArgs', 'TrunkSubPortArgsDict']]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None) -> 'Trunk':
         """
@@ -565,7 +565,7 @@ class Trunk(pulumi.CustomResource):
                A networking client is needed to create a trunk. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                trunk.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrunkSubPortArgs']]]] sub_ports: The set of ports that will be made subports of the trunk.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TrunkSubPortArgs', 'TrunkSubPortArgsDict']]]] sub_ports: The set of ports that will be made subports of the trunk.
                The structure of each subport is described below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the port.
         :param pulumi.Input[str] tenant_id: The owner of the Trunk. Required if admin wants

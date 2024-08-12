@@ -133,7 +133,7 @@ public class VolumeTypeAccessV3 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VolumeTypeAccessV3(String name) {
+    public VolumeTypeAccessV3(java.lang.String name) {
         this(name, VolumeTypeAccessV3Args.Empty);
     }
     /**
@@ -141,7 +141,7 @@ public class VolumeTypeAccessV3 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VolumeTypeAccessV3(String name, VolumeTypeAccessV3Args args) {
+    public VolumeTypeAccessV3(java.lang.String name, VolumeTypeAccessV3Args args) {
         this(name, args, null);
     }
     /**
@@ -150,12 +150,12 @@ public class VolumeTypeAccessV3 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VolumeTypeAccessV3(String name, VolumeTypeAccessV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public VolumeTypeAccessV3(java.lang.String name, VolumeTypeAccessV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VolumeTypeAccessV3(String name, Output<String> id, @Nullable VolumeTypeAccessV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3", name, state, makeResourceOptions(options, id));
+    private VolumeTypeAccessV3(java.lang.String name, Output<java.lang.String> id, @Nullable VolumeTypeAccessV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3", name, state, makeResourceOptions(options, id), false);
     }
 
     private static VolumeTypeAccessV3Args makeArgs(VolumeTypeAccessV3Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -165,7 +165,7 @@ public class VolumeTypeAccessV3 extends com.pulumi.resources.CustomResource {
         return args == null ? VolumeTypeAccessV3Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -181,7 +181,7 @@ public class VolumeTypeAccessV3 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VolumeTypeAccessV3 get(String name, Output<String> id, @Nullable VolumeTypeAccessV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VolumeTypeAccessV3 get(java.lang.String name, Output<java.lang.String> id, @Nullable VolumeTypeAccessV3State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VolumeTypeAccessV3(name, id, state, options);
     }
 }

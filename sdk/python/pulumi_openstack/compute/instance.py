@@ -1129,7 +1129,7 @@ class Instance(pulumi.CustomResource):
                  admin_pass: Optional[pulumi.Input[str]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  availability_zone_hints: Optional[pulumi.Input[str]] = None,
-                 block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBlockDeviceArgs']]]]] = None,
+                 block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBlockDeviceArgs', 'InstanceBlockDeviceArgsDict']]]]] = None,
                  config_drive: Optional[pulumi.Input[bool]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  flavor_name: Optional[pulumi.Input[str]] = None,
@@ -1140,16 +1140,16 @@ class Instance(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_mode: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
-                 personalities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePersonalityArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
+                 personalities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePersonalityArgs', 'InstancePersonalityArgsDict']]]]] = None,
                  power_state: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceSchedulerHintArgs']]]]] = None,
+                 scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceSchedulerHintArgs', 'InstanceSchedulerHintArgsDict']]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  stop_before_destroy: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
-                 vendor_options: Optional[pulumi.Input[pulumi.InputType['InstanceVendorOptionsArgs']]] = None,
+                 vendor_options: Optional[pulumi.Input[Union['InstanceVendorOptionsArgs', 'InstanceVendorOptionsArgsDict']]] = None,
                  __props__=None):
         """
         Create a Instance resource with the given unique name, props, and options.
@@ -1168,7 +1168,7 @@ class Instance(pulumi.CustomResource):
                [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
                host or node. Conflicts with `availability_zone`. Changing this creates a
                new server.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBlockDeviceArgs']]]] block_devices: Configuration of block devices. The block_device
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBlockDeviceArgs', 'InstanceBlockDeviceArgsDict']]]] block_devices: Configuration of block devices. The block_device
                structure is documented below. Changing this creates a new server.
                You can specify multiple block devices which will create an instance with
                multiple disks. This configuration is very flexible, so please see the
@@ -1199,10 +1199,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] network_mode: Special string for `network` option to create
                the server. `network_mode` can be `"auto"` or `"none"`.
                Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: An array of one or more networks to attach to the
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]] networks: An array of one or more networks to attach to the
                instance. The network object structure is documented below. Changing this
                creates a new server.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePersonalityArgs']]]] personalities: Customize the personality of an instance by
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstancePersonalityArgs', 'InstancePersonalityArgsDict']]]] personalities: Customize the personality of an instance by
                defining one or more files and their contents. The personality structure
                is described below. Changing this rebuilds the existing server.
         :param pulumi.Input[str] power_state: Provide the VM state. Only 'active', 'shutoff'
@@ -1213,7 +1213,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to create the server instance. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new server.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceSchedulerHintArgs']]]] scheduler_hints: Provide the Nova scheduler with hints on how
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceSchedulerHintArgs', 'InstanceSchedulerHintArgsDict']]]] scheduler_hints: Provide the Nova scheduler with hints on how
                the instance should be launched. The available hints are described below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: An array of one or more security group names
                to associate with the server. Changing this results in adding/removing
@@ -1228,7 +1228,7 @@ class Instance(pulumi.CustomResource):
                updates the existing instance tags.
         :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
                Changing this creates a new server.
-        :param pulumi.Input[pulumi.InputType['InstanceVendorOptionsArgs']] vendor_options: Map of additional vendor-specific options.
+        :param pulumi.Input[Union['InstanceVendorOptionsArgs', 'InstanceVendorOptionsArgsDict']] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         """
         ...
@@ -1259,7 +1259,7 @@ class Instance(pulumi.CustomResource):
                  admin_pass: Optional[pulumi.Input[str]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  availability_zone_hints: Optional[pulumi.Input[str]] = None,
-                 block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBlockDeviceArgs']]]]] = None,
+                 block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBlockDeviceArgs', 'InstanceBlockDeviceArgsDict']]]]] = None,
                  config_drive: Optional[pulumi.Input[bool]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  flavor_name: Optional[pulumi.Input[str]] = None,
@@ -1270,16 +1270,16 @@ class Instance(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_mode: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
-                 personalities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePersonalityArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
+                 personalities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePersonalityArgs', 'InstancePersonalityArgsDict']]]]] = None,
                  power_state: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceSchedulerHintArgs']]]]] = None,
+                 scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceSchedulerHintArgs', 'InstanceSchedulerHintArgsDict']]]]] = None,
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  stop_before_destroy: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
-                 vendor_options: Optional[pulumi.Input[pulumi.InputType['InstanceVendorOptionsArgs']]] = None,
+                 vendor_options: Optional[pulumi.Input[Union['InstanceVendorOptionsArgs', 'InstanceVendorOptionsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1338,7 +1338,7 @@ class Instance(pulumi.CustomResource):
             all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             availability_zone_hints: Optional[pulumi.Input[str]] = None,
-            block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBlockDeviceArgs']]]]] = None,
+            block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBlockDeviceArgs', 'InstanceBlockDeviceArgsDict']]]]] = None,
             config_drive: Optional[pulumi.Input[bool]] = None,
             created: Optional[pulumi.Input[str]] = None,
             flavor_id: Optional[pulumi.Input[str]] = None,
@@ -1350,17 +1350,17 @@ class Instance(pulumi.CustomResource):
             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_mode: Optional[pulumi.Input[str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]]] = None,
-            personalities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePersonalityArgs']]]]] = None,
+            networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
+            personalities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePersonalityArgs', 'InstancePersonalityArgsDict']]]]] = None,
             power_state: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceSchedulerHintArgs']]]]] = None,
+            scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceSchedulerHintArgs', 'InstanceSchedulerHintArgsDict']]]]] = None,
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             stop_before_destroy: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             updated: Optional[pulumi.Input[str]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
-            vendor_options: Optional[pulumi.Input[pulumi.InputType['InstanceVendorOptionsArgs']]] = None) -> 'Instance':
+            vendor_options: Optional[pulumi.Input[Union['InstanceVendorOptionsArgs', 'InstanceVendorOptionsArgsDict']]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1383,7 +1383,7 @@ class Instance(pulumi.CustomResource):
                [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
                host or node. Conflicts with `availability_zone`. Changing this creates a
                new server.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBlockDeviceArgs']]]] block_devices: Configuration of block devices. The block_device
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBlockDeviceArgs', 'InstanceBlockDeviceArgsDict']]]] block_devices: Configuration of block devices. The block_device
                structure is documented below. Changing this creates a new server.
                You can specify multiple block devices which will create an instance with
                multiple disks. This configuration is very flexible, so please see the
@@ -1415,10 +1415,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] network_mode: Special string for `network` option to create
                the server. `network_mode` can be `"auto"` or `"none"`.
                Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: An array of one or more networks to attach to the
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]] networks: An array of one or more networks to attach to the
                instance. The network object structure is documented below. Changing this
                creates a new server.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePersonalityArgs']]]] personalities: Customize the personality of an instance by
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstancePersonalityArgs', 'InstancePersonalityArgsDict']]]] personalities: Customize the personality of an instance by
                defining one or more files and their contents. The personality structure
                is described below. Changing this rebuilds the existing server.
         :param pulumi.Input[str] power_state: Provide the VM state. Only 'active', 'shutoff'
@@ -1429,7 +1429,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to create the server instance. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new server.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceSchedulerHintArgs']]]] scheduler_hints: Provide the Nova scheduler with hints on how
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceSchedulerHintArgs', 'InstanceSchedulerHintArgsDict']]]] scheduler_hints: Provide the Nova scheduler with hints on how
                the instance should be launched. The available hints are described below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: An array of one or more security group names
                to associate with the server. Changing this results in adding/removing
@@ -1445,7 +1445,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] updated: The time when the instance was last updated.
         :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
                Changing this creates a new server.
-        :param pulumi.Input[pulumi.InputType['InstanceVendorOptionsArgs']] vendor_options: Map of additional vendor-specific options.
+        :param pulumi.Input[Union['InstanceVendorOptionsArgs', 'InstanceVendorOptionsArgsDict']] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

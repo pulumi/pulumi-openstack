@@ -303,7 +303,7 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public VolumeV2(String name) {
+    public VolumeV2(java.lang.String name) {
         this(name, VolumeV2Args.Empty);
     }
     /**
@@ -311,7 +311,7 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public VolumeV2(String name, VolumeV2Args args) {
+    public VolumeV2(java.lang.String name, VolumeV2Args args) {
         this(name, args, null);
     }
     /**
@@ -320,12 +320,12 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public VolumeV2(String name, VolumeV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:blockstorage/volumeV2:VolumeV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public VolumeV2(java.lang.String name, VolumeV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:blockstorage/volumeV2:VolumeV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private VolumeV2(String name, Output<String> id, @Nullable VolumeV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:blockstorage/volumeV2:VolumeV2", name, state, makeResourceOptions(options, id));
+    private VolumeV2(java.lang.String name, Output<java.lang.String> id, @Nullable VolumeV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:blockstorage/volumeV2:VolumeV2", name, state, makeResourceOptions(options, id), false);
     }
 
     private static VolumeV2Args makeArgs(VolumeV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -335,7 +335,7 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
         return args == null ? VolumeV2Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -351,7 +351,7 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static VolumeV2 get(String name, Output<String> id, @Nullable VolumeV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static VolumeV2 get(java.lang.String name, Output<java.lang.String> id, @Nullable VolumeV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new VolumeV2(name, id, state, options);
     }
 }

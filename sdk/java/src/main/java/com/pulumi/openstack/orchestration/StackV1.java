@@ -367,7 +367,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public StackV1(String name) {
+    public StackV1(java.lang.String name) {
         this(name, StackV1Args.Empty);
     }
     /**
@@ -375,7 +375,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public StackV1(String name, StackV1Args args) {
+    public StackV1(java.lang.String name, StackV1Args args) {
         this(name, args, null);
     }
     /**
@@ -384,12 +384,12 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public StackV1(String name, StackV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:orchestration/stackV1:StackV1", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public StackV1(java.lang.String name, StackV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:orchestration/stackV1:StackV1", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private StackV1(String name, Output<String> id, @Nullable StackV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:orchestration/stackV1:StackV1", name, state, makeResourceOptions(options, id));
+    private StackV1(java.lang.String name, Output<java.lang.String> id, @Nullable StackV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:orchestration/stackV1:StackV1", name, state, makeResourceOptions(options, id), false);
     }
 
     private static StackV1Args makeArgs(StackV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -399,7 +399,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
         return args == null ? StackV1Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -415,7 +415,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static StackV1 get(String name, Output<String> id, @Nullable StackV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static StackV1 get(java.lang.String name, Output<java.lang.String> id, @Nullable StackV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new StackV1(name, id, state, options);
     }
 }

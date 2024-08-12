@@ -167,8 +167,8 @@ import (
 //			_, err = objectstorage.NewContainer(ctx, "container_1", &objectstorage.ContainerArgs{
 //				Region:         pulumi.String("RegionOne"),
 //				Name:           pulumi.String("tf-test-container-1"),
-//				ContainerRead:  pulumi.String(fmt.Sprintf(".r:-%v", username)),
-//				ContainerWrite: pulumi.String(fmt.Sprintf("%v:%v", current.ProjectId, username)),
+//				ContainerRead:  pulumi.Sprintf(".r:-%v", username),
+//				ContainerWrite: pulumi.Sprintf("%v:%v", current.ProjectId, username),
 //			})
 //			if err != nil {
 //				return err

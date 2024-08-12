@@ -373,7 +373,7 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ContainerV1(String name) {
+    public ContainerV1(java.lang.String name) {
         this(name, ContainerV1Args.Empty);
     }
     /**
@@ -381,7 +381,7 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ContainerV1(String name, ContainerV1Args args) {
+    public ContainerV1(java.lang.String name, ContainerV1Args args) {
         this(name, args, null);
     }
     /**
@@ -390,12 +390,12 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ContainerV1(String name, ContainerV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:keymanager/containerV1:ContainerV1", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ContainerV1(java.lang.String name, ContainerV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:keymanager/containerV1:ContainerV1", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ContainerV1(String name, Output<String> id, @Nullable ContainerV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("openstack:keymanager/containerV1:ContainerV1", name, state, makeResourceOptions(options, id));
+    private ContainerV1(java.lang.String name, Output<java.lang.String> id, @Nullable ContainerV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("openstack:keymanager/containerV1:ContainerV1", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ContainerV1Args makeArgs(ContainerV1Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -405,7 +405,7 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
         return args == null ? ContainerV1Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -421,7 +421,7 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ContainerV1 get(String name, Output<String> id, @Nullable ContainerV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ContainerV1 get(java.lang.String name, Output<java.lang.String> id, @Nullable ContainerV1State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ContainerV1(name, id, state, options);
     }
 }
