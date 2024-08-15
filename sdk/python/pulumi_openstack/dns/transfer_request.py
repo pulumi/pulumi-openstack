@@ -20,7 +20,7 @@ class TransferRequestArgs:
                  key: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  target_project_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a TransferRequest resource.
         :param pulumi.Input[str] zone_id: The ID of the zone for which to create the transfer
@@ -34,7 +34,7 @@ class TransferRequestArgs:
                create one. If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS zone.
         :param pulumi.Input[str] target_project_id: The target Project ID to transfer to.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options. Changing this creates a
                new transfer request.
         """
         pulumi.set(__self__, "zone_id", zone_id)
@@ -128,7 +128,7 @@ class TransferRequestArgs:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options. Changing this creates a
         new transfer request.
@@ -136,7 +136,7 @@ class TransferRequestArgs:
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -148,7 +148,7 @@ class _TransferRequestState:
                  key: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  target_project_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TransferRequest resources.
@@ -161,7 +161,7 @@ class _TransferRequestState:
                create one. If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS zone.
         :param pulumi.Input[str] target_project_id: The target Project ID to transfer to.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options. Changing this creates a
                new transfer request.
         :param pulumi.Input[str] zone_id: The ID of the zone for which to create the transfer
                request.
@@ -245,7 +245,7 @@ class _TransferRequestState:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options. Changing this creates a
         new transfer request.
@@ -253,7 +253,7 @@ class _TransferRequestState:
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
     @property
@@ -280,7 +280,7 @@ class TransferRequest(pulumi.CustomResource):
                  key: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  target_project_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -324,7 +324,7 @@ class TransferRequest(pulumi.CustomResource):
                create one. If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS zone.
         :param pulumi.Input[str] target_project_id: The target Project ID to transfer to.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options. Changing this creates a
                new transfer request.
         :param pulumi.Input[str] zone_id: The ID of the zone for which to create the transfer
                request.
@@ -385,7 +385,7 @@ class TransferRequest(pulumi.CustomResource):
                  key: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  target_project_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -420,7 +420,7 @@ class TransferRequest(pulumi.CustomResource):
             key: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             target_project_id: Optional[pulumi.Input[str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'TransferRequest':
         """
         Get an existing TransferRequest resource's state with the given name, id, and optional extra
@@ -438,7 +438,7 @@ class TransferRequest(pulumi.CustomResource):
                create one. If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS zone.
         :param pulumi.Input[str] target_project_id: The target Project ID to transfer to.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options. Changing this creates a
                new transfer request.
         :param pulumi.Input[str] zone_id: The ID of the zone for which to create the transfer
                request.
@@ -500,7 +500,7 @@ class TransferRequest(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of additional options. Changing this creates a
         new transfer request.

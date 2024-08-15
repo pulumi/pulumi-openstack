@@ -103,7 +103,7 @@ export class User extends pulumi.CustomResource {
     /**
      * Free-form key/value pairs of extra information.
      */
-    public readonly extra!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly extra!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * User will not have to
      * change their password upon first use. Valid values are `true` and `false`.
@@ -219,7 +219,7 @@ export interface UserState {
     /**
      * Free-form key/value pairs of extra information.
      */
-    extra?: pulumi.Input<{[key: string]: any}>;
+    extra?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * User will not have to
      * change their password upon first use. Valid values are `true` and `false`.
@@ -287,7 +287,7 @@ export interface UserArgs {
     /**
      * Free-form key/value pairs of extra information.
      */
-    extra?: pulumi.Input<{[key: string]: any}>;
+    extra?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * User will not have to
      * change their password upon first use. Valid values are `true` and `false`.

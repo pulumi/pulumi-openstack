@@ -166,10 +166,10 @@ Object.defineProperty(exports, "enableLogging", {
 /**
  * A map of services with an endpoint to override what was from the Keystone catalog
  */
-export declare const endpointOverrides: {[key: string]: any} | undefined;
+export declare const endpointOverrides: {[key: string]: string} | undefined;
 Object.defineProperty(exports, "endpointOverrides", {
     get() {
-        return __config.getObject<{[key: string]: any}>("endpointOverrides");
+        return __config.getObject<{[key: string]: string}>("endpointOverrides");
     },
     enumerable: true,
 });

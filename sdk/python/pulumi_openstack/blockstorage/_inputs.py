@@ -61,13 +61,13 @@ class VolumeAttachmentArgs:
 @pulumi.input_type
 class VolumeSchedulerHintArgs:
     def __init__(__self__, *,
-                 additional_properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 additional_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  different_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  local_to_instance: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None,
                  same_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] additional_properties: Arbitrary key/value pairs of additional
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_properties: Arbitrary key/value pairs of additional
                properties to pass to the scheduler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] different_hosts: The volume should be scheduled on a 
                different host from the set of volumes specified in the list provided.
@@ -99,7 +99,7 @@ class VolumeSchedulerHintArgs:
 
     @property
     @pulumi.getter(name="additionalProperties")
-    def additional_properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def additional_properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Arbitrary key/value pairs of additional
         properties to pass to the scheduler.
@@ -107,7 +107,7 @@ class VolumeSchedulerHintArgs:
         return pulumi.get(self, "additional_properties")
 
     @additional_properties.setter
-    def additional_properties(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def additional_properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "additional_properties", value)
 
     @property
@@ -256,13 +256,13 @@ class VolumeV2AttachmentArgs:
 @pulumi.input_type
 class VolumeV2SchedulerHintArgs:
     def __init__(__self__, *,
-                 additional_properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 additional_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  different_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  local_to_instance: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None,
                  same_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] additional_properties: Arbitrary key/value pairs of additional
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_properties: Arbitrary key/value pairs of additional
                properties to pass to the scheduler.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] different_hosts: The volume should be scheduled on a 
                different host from the set of volumes specified in the list provided.
@@ -294,7 +294,7 @@ class VolumeV2SchedulerHintArgs:
 
     @property
     @pulumi.getter(name="additionalProperties")
-    def additional_properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def additional_properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Arbitrary key/value pairs of additional
         properties to pass to the scheduler.
@@ -302,7 +302,7 @@ class VolumeV2SchedulerHintArgs:
         return pulumi.get(self, "additional_properties")
 
     @additional_properties.setter
-    def additional_properties(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def additional_properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "additional_properties", value)
 
     @property

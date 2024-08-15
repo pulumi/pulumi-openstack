@@ -156,7 +156,7 @@ export class SiteConnection extends pulumi.CustomResource {
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the VPN service. Changing this creates a new connection.
      */
@@ -331,7 +331,7 @@ export interface SiteConnectionState {
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the VPN service. Changing this creates a new connection.
      */
@@ -430,7 +430,7 @@ export interface SiteConnectionArgs {
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the VPN service. Changing this creates a new connection.
      */

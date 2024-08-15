@@ -97,7 +97,7 @@ export class QuoteSetV3 extends pulumi.CustomResource {
      * volumes types. Possible keys are `snapshots_<volume_type_name>`,
      * `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
      */
-    public readonly volumeTypeQuota!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly volumeTypeQuota!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Quota value for volumes. Changing this updates the
      * existing quotaset.
@@ -198,7 +198,7 @@ export interface QuoteSetV3State {
      * volumes types. Possible keys are `snapshots_<volume_type_name>`,
      * `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
      */
-    volumeTypeQuota?: pulumi.Input<{[key: string]: any}>;
+    volumeTypeQuota?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Quota value for volumes. Changing this updates the
      * existing quotaset.
@@ -256,7 +256,7 @@ export interface QuoteSetV3Args {
      * volumes types. Possible keys are `snapshots_<volume_type_name>`,
      * `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
      */
-    volumeTypeQuota?: pulumi.Input<{[key: string]: any}>;
+    volumeTypeQuota?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Quota value for volumes. Changing this updates the
      * existing quotaset.

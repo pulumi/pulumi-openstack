@@ -32,8 +32,8 @@ import (
 //			_, err := objectstorage.NewContainer(ctx, "container_1", &objectstorage.ContainerArgs{
 //				Region: pulumi.String("RegionOne"),
 //				Name:   pulumi.String("tf-test-container-1"),
-//				Metadata: pulumi.Map{
-//					"test": pulumi.Any("true"),
+//				Metadata: pulumi.StringMap{
+//					"test": pulumi.String("true"),
 //				},
 //				ContentType: pulumi.String("application/json"),
 //				Versioning:  pulumi.Bool(true),
@@ -64,8 +64,8 @@ import (
 //			_, err := objectstorage.NewContainer(ctx, "container_1", &objectstorage.ContainerArgs{
 //				Region: pulumi.String("RegionOne"),
 //				Name:   pulumi.String("tf-test-container-1"),
-//				Metadata: pulumi.Map{
-//					"test": pulumi.Any("true"),
+//				Metadata: pulumi.StringMap{
+//					"test": pulumi.String("true"),
 //				},
 //				ContentType: pulumi.String("application/json"),
 //				VersioningLegacy: &objectstorage.ContainerVersioningLegacyArgs{
@@ -219,7 +219,7 @@ type Container struct {
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// Custom key/value pairs to associate with the container.
 	// Changing this updates the existing container metadata.
-	Metadata pulumi.MapOutput `pulumi:"metadata"`
+	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// A unique name for the container. Changing this creates a
 	// new container.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -294,7 +294,7 @@ type containerState struct {
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Custom key/value pairs to associate with the container.
 	// Changing this updates the existing container metadata.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// A unique name for the container. Changing this creates a
 	// new container.
 	Name *string `pulumi:"name"`
@@ -340,7 +340,7 @@ type ContainerState struct {
 	ForceDestroy pulumi.BoolPtrInput
 	// Custom key/value pairs to associate with the container.
 	// Changing this updates the existing container metadata.
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// A unique name for the container. Changing this creates a
 	// new container.
 	Name pulumi.StringPtrInput
@@ -390,7 +390,7 @@ type containerArgs struct {
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Custom key/value pairs to associate with the container.
 	// Changing this updates the existing container metadata.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// A unique name for the container. Changing this creates a
 	// new container.
 	Name *string `pulumi:"name"`
@@ -437,7 +437,7 @@ type ContainerArgs struct {
 	ForceDestroy pulumi.BoolPtrInput
 	// Custom key/value pairs to associate with the container.
 	// Changing this updates the existing container metadata.
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// A unique name for the container. Changing this creates a
 	// new container.
 	Name pulumi.StringPtrInput
@@ -587,8 +587,8 @@ func (o ContainerOutput) ForceDestroy() pulumi.BoolPtrOutput {
 
 // Custom key/value pairs to associate with the container.
 // Changing this updates the existing container metadata.
-func (o ContainerOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v *Container) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+func (o ContainerOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Container) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // A unique name for the container. Changing this creates a

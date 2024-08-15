@@ -12,7 +12,6 @@ import com.pulumi.openstack.containerinfra.ClusterTemplateArgs;
 import com.pulumi.openstack.containerinfra.inputs.ClusterTemplateState;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -439,8 +438,8 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * existing cluster template.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> labels;
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return The list of key value pairs representing additional
@@ -448,7 +447,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * existing cluster template.
      * 
      */
-    public Output<Optional<Map<String,Object>>> labels() {
+    public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
     }
     /**

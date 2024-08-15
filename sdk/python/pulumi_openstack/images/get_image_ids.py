@@ -124,7 +124,7 @@ class GetImageIdsResult:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[Mapping[str, Any]]:
+    def properties(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "properties")
 
     @property
@@ -195,7 +195,7 @@ def get_image_ids(container_format: Optional[str] = None,
                   name: Optional[str] = None,
                   name_regex: Optional[str] = None,
                   owner: Optional[str] = None,
-                  properties: Optional[Mapping[str, Any]] = None,
+                  properties: Optional[Mapping[str, str]] = None,
                   region: Optional[str] = None,
                   size_max: Optional[int] = None,
                   size_min: Optional[int] = None,
@@ -234,7 +234,7 @@ def get_image_ids(container_format: Optional[str] = None,
            `name_regex` filtering does by client on the result of OpenStack search
            query.
     :param str owner: The owner (UUID) of the image.
-    :param Mapping[str, Any] properties: a map of key/value pairs to match an image with.
+    :param Mapping[str, str] properties: a map of key/value pairs to match an image with.
            All specified properties must be matched. Unlike other options filtering by
            `properties` does by client on the result of OpenStack search query.
     :param str region: The region in which to obtain the V2 Glance client. A
@@ -300,7 +300,7 @@ def get_image_ids_output(container_format: Optional[pulumi.Input[Optional[str]]]
                          name: Optional[pulumi.Input[Optional[str]]] = None,
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                          owner: Optional[pulumi.Input[Optional[str]]] = None,
-                         properties: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         properties: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
                          size_max: Optional[pulumi.Input[Optional[int]]] = None,
                          size_min: Optional[pulumi.Input[Optional[int]]] = None,
@@ -339,7 +339,7 @@ def get_image_ids_output(container_format: Optional[pulumi.Input[Optional[str]]]
            `name_regex` filtering does by client on the result of OpenStack search
            query.
     :param str owner: The owner (UUID) of the image.
-    :param Mapping[str, Any] properties: a map of key/value pairs to match an image with.
+    :param Mapping[str, str] properties: a map of key/value pairs to match an image with.
            All specified properties must be matched. Unlike other options filtering by
            `properties` does by client on the result of OpenStack search query.
     :param str region: The region in which to obtain the V2 Glance client. A

@@ -26,7 +26,7 @@ class FloatingIpArgs:
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a FloatingIp resource.
         :param pulumi.Input[str] pool: The name of the pool from which to obtain the floating
@@ -64,7 +64,7 @@ class FloatingIpArgs:
                IP, if you specify this together with a port_id, make sure the target port
                belongs to the same tenant. Changing this creates a new floating IP (which
                may or may not have a different address)
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         pulumi.set(__self__, "pool", pool)
         if address is not None:
@@ -261,14 +261,14 @@ class FloatingIpArgs:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -288,7 +288,7 @@ class _FloatingIpState:
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering FloatingIp resources.
         :param pulumi.Input[str] address: The actual/specific floating IP to obtain. By default,
@@ -328,7 +328,7 @@ class _FloatingIpState:
                IP, if you specify this together with a port_id, make sure the target port
                belongs to the same tenant. Changing this creates a new floating IP (which
                may or may not have a different address)
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -541,14 +541,14 @@ class _FloatingIpState:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -569,7 +569,7 @@ class FloatingIp(pulumi.CustomResource):
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         ## Import
@@ -617,7 +617,7 @@ class FloatingIp(pulumi.CustomResource):
                IP, if you specify this together with a port_id, make sure the target port
                belongs to the same tenant. Changing this creates a new floating IP (which
                may or may not have a different address)
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         ...
     @overload
@@ -661,7 +661,7 @@ class FloatingIp(pulumi.CustomResource):
                  subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -710,7 +710,7 @@ class FloatingIp(pulumi.CustomResource):
             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'FloatingIp':
+            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'FloatingIp':
         """
         Get an existing FloatingIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -755,7 +755,7 @@ class FloatingIp(pulumi.CustomResource):
                IP, if you specify this together with a port_id, make sure the target port
                belongs to the same tenant. Changing this creates a new floating IP (which
                may or may not have a different address)
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -907,7 +907,7 @@ class FloatingIp(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of additional options.
         """

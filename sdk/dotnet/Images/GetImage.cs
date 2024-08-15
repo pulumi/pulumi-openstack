@@ -128,7 +128,7 @@ namespace Pulumi.OpenStack.Images
         public string? Owner { get; set; }
 
         [Input("properties")]
-        private Dictionary<string, object>? _properties;
+        private Dictionary<string, string>? _properties;
 
         /// <summary>
         /// a map of key/value pairs to match an image with.
@@ -137,9 +137,9 @@ namespace Pulumi.OpenStack.Images
         /// Filtering is applied if server responce contains at least 2 images. In case
         /// there is only one image the `properties` ignores.
         /// </summary>
-        public Dictionary<string, object> Properties
+        public Dictionary<string, string> Properties
         {
-            get => _properties ?? (_properties = new Dictionary<string, object>());
+            get => _properties ?? (_properties = new Dictionary<string, string>());
             set => _properties = value;
         }
 
@@ -262,7 +262,7 @@ namespace Pulumi.OpenStack.Images
         public Input<string>? Owner { get; set; }
 
         [Input("properties")]
-        private InputMap<object>? _properties;
+        private InputMap<string>? _properties;
 
         /// <summary>
         /// a map of key/value pairs to match an image with.
@@ -271,9 +271,9 @@ namespace Pulumi.OpenStack.Images
         /// Filtering is applied if server responce contains at least 2 images. In case
         /// there is only one image the `properties` ignores.
         /// </summary>
-        public InputMap<object> Properties
+        public InputMap<string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<object>());
+            get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 
@@ -375,7 +375,7 @@ namespace Pulumi.OpenStack.Images
         /// meaningfully define the image properties and tags. See
         /// https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Metadata;
+        public readonly ImmutableDictionary<string, string> Metadata;
         /// <summary>
         /// The minimum amount of disk space required to use the image.
         /// </summary>
@@ -391,7 +391,7 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// Freeform information about the image.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Properties;
+        public readonly ImmutableDictionary<string, string>? Properties;
         /// <summary>
         /// Whether or not the image is protected.
         /// </summary>
@@ -437,7 +437,7 @@ namespace Pulumi.OpenStack.Images
 
             string? memberStatus,
 
-            ImmutableDictionary<string, object> metadata,
+            ImmutableDictionary<string, string> metadata,
 
             int minDiskGb,
 
@@ -451,7 +451,7 @@ namespace Pulumi.OpenStack.Images
 
             string? owner,
 
-            ImmutableDictionary<string, object>? properties,
+            ImmutableDictionary<string, string>? properties,
 
             bool @protected,
 

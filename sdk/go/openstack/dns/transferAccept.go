@@ -83,7 +83,7 @@ type TransferAccept struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Map of additional options. Changing this creates a
 	// new transfer accept.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 	// The ID of the zone transfer request.
 	ZoneTransferRequestId pulumi.StringOutput `pulumi:"zoneTransferRequestId"`
 }
@@ -137,7 +137,7 @@ type transferAcceptState struct {
 	Region *string `pulumi:"region"`
 	// Map of additional options. Changing this creates a
 	// new transfer accept.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 	// The ID of the zone transfer request.
 	ZoneTransferRequestId *string `pulumi:"zoneTransferRequestId"`
 }
@@ -156,7 +156,7 @@ type TransferAcceptState struct {
 	Region pulumi.StringPtrInput
 	// Map of additional options. Changing this creates a
 	// new transfer accept.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 	// The ID of the zone transfer request.
 	ZoneTransferRequestId pulumi.StringPtrInput
 }
@@ -179,7 +179,7 @@ type transferAcceptArgs struct {
 	Region *string `pulumi:"region"`
 	// Map of additional options. Changing this creates a
 	// new transfer accept.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 	// The ID of the zone transfer request.
 	ZoneTransferRequestId string `pulumi:"zoneTransferRequestId"`
 }
@@ -199,7 +199,7 @@ type TransferAcceptArgs struct {
 	Region pulumi.StringPtrInput
 	// Map of additional options. Changing this creates a
 	// new transfer accept.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 	// The ID of the zone transfer request.
 	ZoneTransferRequestId pulumi.StringInput
 }
@@ -313,8 +313,8 @@ func (o TransferAcceptOutput) Region() pulumi.StringOutput {
 
 // Map of additional options. Changing this creates a
 // new transfer accept.
-func (o TransferAcceptOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *TransferAccept) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o TransferAcceptOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TransferAccept) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 // The ID of the zone transfer request.

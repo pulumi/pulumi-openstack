@@ -103,7 +103,7 @@ export class VolumeAttach extends pulumi.CustomResource {
      * information. You will want to pass this information to a provisioner
      * script to finalize the connection. See below for more information.
      */
-    public /*out*/ readonly data!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly data!: pulumi.Output<{[key: string]: string}>;
     /**
      * The device to tell the Block Storage service this
      * volume will be attached as. This is purely for informational purposes.
@@ -237,7 +237,7 @@ export interface VolumeAttachState {
      * information. You will want to pass this information to a provisioner
      * script to finalize the connection. See below for more information.
      */
-    data?: pulumi.Input<{[key: string]: any}>;
+    data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The device to tell the Block Storage service this
      * volume will be attached as. This is purely for informational purposes.

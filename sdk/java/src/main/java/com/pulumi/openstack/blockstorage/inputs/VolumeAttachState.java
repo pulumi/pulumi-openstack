@@ -6,7 +6,6 @@ package com.pulumi.openstack.blockstorage.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +44,7 @@ public final class VolumeAttachState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="data")
-    private @Nullable Output<Map<String,Object>> data;
+    private @Nullable Output<Map<String,String>> data;
 
     /**
      * @return This is a map of key/value pairs that contain the connection
@@ -53,7 +52,7 @@ public final class VolumeAttachState extends com.pulumi.resources.ResourceArgs {
      * script to finalize the connection. See below for more information.
      * 
      */
-    public Optional<Output<Map<String,Object>>> data() {
+    public Optional<Output<Map<String,String>>> data() {
         return Optional.ofNullable(this.data);
     }
 
@@ -335,7 +334,7 @@ public final class VolumeAttachState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder data(@Nullable Output<Map<String,Object>> data) {
+        public Builder data(@Nullable Output<Map<String,String>> data) {
             $.data = data;
             return this;
         }
@@ -348,7 +347,7 @@ public final class VolumeAttachState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder data(Map<String,Object> data) {
+        public Builder data(Map<String,String> data) {
             return data(Output.of(data));
         }
 

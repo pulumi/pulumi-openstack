@@ -74,7 +74,7 @@ namespace Pulumi.OpenStack.Compute
         /// Key/Value pairs of metadata for the flavor.
         /// </summary>
         [Output("extraSpecs")]
-        public Output<ImmutableDictionary<string, object>> ExtraSpecs { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> ExtraSpecs { get; private set; } = null!;
 
         /// <summary>
         /// Unique ID (integer or UUID) of flavor to create. Changing
@@ -202,14 +202,14 @@ namespace Pulumi.OpenStack.Compute
         public Input<int>? Ephemeral { get; set; }
 
         [Input("extraSpecs")]
-        private InputMap<object>? _extraSpecs;
+        private InputMap<string>? _extraSpecs;
 
         /// <summary>
         /// Key/Value pairs of metadata for the flavor.
         /// </summary>
-        public InputMap<object> ExtraSpecs
+        public InputMap<string> ExtraSpecs
         {
-            get => _extraSpecs ?? (_extraSpecs = new InputMap<object>());
+            get => _extraSpecs ?? (_extraSpecs = new InputMap<string>());
             set => _extraSpecs = value;
         }
 
@@ -301,14 +301,14 @@ namespace Pulumi.OpenStack.Compute
         public Input<int>? Ephemeral { get; set; }
 
         [Input("extraSpecs")]
-        private InputMap<object>? _extraSpecs;
+        private InputMap<string>? _extraSpecs;
 
         /// <summary>
         /// Key/Value pairs of metadata for the flavor.
         /// </summary>
-        public InputMap<object> ExtraSpecs
+        public InputMap<string> ExtraSpecs
         {
-            get => _extraSpecs ?? (_extraSpecs = new InputMap<object>());
+            get => _extraSpecs ?? (_extraSpecs = new InputMap<string>());
             set => _extraSpecs = value;
         }
 

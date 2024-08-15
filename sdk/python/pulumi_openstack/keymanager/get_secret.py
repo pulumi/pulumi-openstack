@@ -127,7 +127,7 @@ class GetSecretResult:
 
     @property
     @pulumi.getter(name="contentTypes")
-    def content_types(self) -> Mapping[str, Any]:
+    def content_types(self) -> Mapping[str, str]:
         """
         The map of the content types, assigned on the secret.
         """
@@ -183,7 +183,7 @@ class GetSecretResult:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, Any]:
+    def metadata(self) -> Mapping[str, str]:
         """
         The map of metadata, assigned on the secret, which has been
         explicitly and implicitly added.

@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -133,7 +132,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="insertHeaders")
-    private @Nullable Output<Map<String,Object>> insertHeaders;
+    private @Nullable Output<Map<String,String>> insertHeaders;
 
     /**
      * @return The list of key value pairs representing headers to insert
@@ -141,7 +140,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
      * existing listener.
      * 
      */
-    public Optional<Output<Map<String,Object>>> insertHeaders() {
+    public Optional<Output<Map<String,String>>> insertHeaders() {
         return Optional.ofNullable(this.insertHeaders);
     }
 
@@ -560,7 +559,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder insertHeaders(@Nullable Output<Map<String,Object>> insertHeaders) {
+        public Builder insertHeaders(@Nullable Output<Map<String,String>> insertHeaders) {
             $.insertHeaders = insertHeaders;
             return this;
         }
@@ -573,7 +572,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder insertHeaders(Map<String,Object> insertHeaders) {
+        public Builder insertHeaders(Map<String,String> insertHeaders) {
             return insertHeaders(Output.of(insertHeaders));
         }
 

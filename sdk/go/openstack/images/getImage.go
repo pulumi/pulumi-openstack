@@ -81,7 +81,7 @@ type LookupImageArgs struct {
 	// `properties` does by client on the result of OpenStack search query.
 	// Filtering is applied if server responce contains at least 2 images. In case
 	// there is only one image the `properties` ignores.
-	Properties map[string]interface{} `pulumi:"properties"`
+	Properties map[string]string `pulumi:"properties"`
 	// The region in which to obtain the V2 Glance client. A
 	// Glance client is needed to create an Image that can be used with a compute
 	// instance. If omitted, the `region` argument of the provider is used.
@@ -126,7 +126,7 @@ type LookupImageResult struct {
 	// The metadata associated with the image. Image metadata allow for
 	// meaningfully define the image properties and tags. See
 	// https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// The minimum amount of disk space required to use the image.
 	MinDiskGb int `pulumi:"minDiskGb"`
 	// The minimum amount of ram required to use the image.
@@ -136,7 +136,7 @@ type LookupImageResult struct {
 	NameRegex  *string `pulumi:"nameRegex"`
 	Owner      *string `pulumi:"owner"`
 	// Freeform information about the image.
-	Properties map[string]interface{} `pulumi:"properties"`
+	Properties map[string]string `pulumi:"properties"`
 	// Whether or not the image is protected.
 	Protected bool   `pulumi:"protected"`
 	Region    string `pulumi:"region"`
@@ -197,7 +197,7 @@ type LookupImageOutputArgs struct {
 	// `properties` does by client on the result of OpenStack search query.
 	// Filtering is applied if server responce contains at least 2 images. In case
 	// there is only one image the `properties` ignores.
-	Properties pulumi.MapInput `pulumi:"properties"`
+	Properties pulumi.StringMapInput `pulumi:"properties"`
 	// The region in which to obtain the V2 Glance client. A
 	// Glance client is needed to create an Image that can be used with a compute
 	// instance. If omitted, the `region` argument of the provider is used.
@@ -283,8 +283,8 @@ func (o LookupImageResultOutput) MemberStatus() pulumi.StringPtrOutput {
 // The metadata associated with the image. Image metadata allow for
 // meaningfully define the image properties and tags. See
 // https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
-func (o LookupImageResultOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupImageResult) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+func (o LookupImageResultOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupImageResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // The minimum amount of disk space required to use the image.
@@ -314,8 +314,8 @@ func (o LookupImageResultOutput) Owner() pulumi.StringPtrOutput {
 }
 
 // Freeform information about the image.
-func (o LookupImageResultOutput) Properties() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupImageResult) map[string]interface{} { return v.Properties }).(pulumi.MapOutput)
+func (o LookupImageResultOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupImageResult) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
 // Whether or not the image is protected.

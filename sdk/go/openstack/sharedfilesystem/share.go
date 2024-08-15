@@ -82,7 +82,7 @@ type Share struct {
 
 	// The map of metadata, assigned on the share, which has been
 	// explicitly and implicitly added.
-	AllMetadata pulumi.MapOutput `pulumi:"allMetadata"`
+	AllMetadata pulumi.StringMapOutput `pulumi:"allMetadata"`
 	// The share availability zone. Changing this creates a
 	// new share.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
@@ -102,7 +102,7 @@ type Share struct {
 	IsPublic pulumi.BoolPtrOutput `pulumi:"isPublic"`
 	// One or more metadata key and value pairs as a dictionary of
 	// strings.
-	Metadata pulumi.MapOutput `pulumi:"metadata"`
+	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The name of the share. Changing this updates the name
 	// of the existing share.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -172,7 +172,7 @@ func GetShare(ctx *pulumi.Context,
 type shareState struct {
 	// The map of metadata, assigned on the share, which has been
 	// explicitly and implicitly added.
-	AllMetadata map[string]interface{} `pulumi:"allMetadata"`
+	AllMetadata map[string]string `pulumi:"allMetadata"`
 	// The share availability zone. Changing this creates a
 	// new share.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
@@ -192,7 +192,7 @@ type shareState struct {
 	IsPublic *bool `pulumi:"isPublic"`
 	// One or more metadata key and value pairs as a dictionary of
 	// strings.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the share. Changing this updates the name
 	// of the existing share.
 	Name *string `pulumi:"name"`
@@ -227,7 +227,7 @@ type shareState struct {
 type ShareState struct {
 	// The map of metadata, assigned on the share, which has been
 	// explicitly and implicitly added.
-	AllMetadata pulumi.MapInput
+	AllMetadata pulumi.StringMapInput
 	// The share availability zone. Changing this creates a
 	// new share.
 	AvailabilityZone pulumi.StringPtrInput
@@ -247,7 +247,7 @@ type ShareState struct {
 	IsPublic pulumi.BoolPtrInput
 	// One or more metadata key and value pairs as a dictionary of
 	// strings.
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// The name of the share. Changing this updates the name
 	// of the existing share.
 	Name pulumi.StringPtrInput
@@ -296,7 +296,7 @@ type shareArgs struct {
 	IsPublic *bool `pulumi:"isPublic"`
 	// One or more metadata key and value pairs as a dictionary of
 	// strings.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the share. Changing this updates the name
 	// of the existing share.
 	Name *string `pulumi:"name"`
@@ -336,7 +336,7 @@ type ShareArgs struct {
 	IsPublic pulumi.BoolPtrInput
 	// One or more metadata key and value pairs as a dictionary of
 	// strings.
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// The name of the share. Changing this updates the name
 	// of the existing share.
 	Name pulumi.StringPtrInput
@@ -451,8 +451,8 @@ func (o ShareOutput) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 
 // The map of metadata, assigned on the share, which has been
 // explicitly and implicitly added.
-func (o ShareOutput) AllMetadata() pulumi.MapOutput {
-	return o.ApplyT(func(v *Share) pulumi.MapOutput { return v.AllMetadata }).(pulumi.MapOutput)
+func (o ShareOutput) AllMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringMapOutput { return v.AllMetadata }).(pulumi.StringMapOutput)
 }
 
 // The share availability zone. Changing this creates a
@@ -492,8 +492,8 @@ func (o ShareOutput) IsPublic() pulumi.BoolPtrOutput {
 
 // One or more metadata key and value pairs as a dictionary of
 // strings.
-func (o ShareOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v *Share) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+func (o ShareOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // The name of the share. Changing this updates the name

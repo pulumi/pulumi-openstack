@@ -26,7 +26,7 @@ class RuleArgs:
                  source_ip_address: Optional[pulumi.Input[str]] = None,
                  source_port: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Rule resource.
         :param pulumi.Input[str] action: Action to be taken ( must be "allow" or "deny") when the
@@ -63,7 +63,7 @@ class RuleArgs:
         :param pulumi.Input[str] tenant_id: The owner of the firewall rule. Required if admin
                wants to create a firewall rule for another tenant. Changing this creates a
                new firewall rule.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "protocol", protocol)
@@ -258,14 +258,14 @@ class RuleArgs:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -284,7 +284,7 @@ class _RuleState:
                  source_ip_address: Optional[pulumi.Input[str]] = None,
                  source_port: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
         :param pulumi.Input[str] action: Action to be taken ( must be "allow" or "deny") when the
@@ -321,7 +321,7 @@ class _RuleState:
         :param pulumi.Input[str] tenant_id: The owner of the firewall rule. Required if admin
                wants to create a firewall rule for another tenant. Changing this creates a
                new firewall rule.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -518,14 +518,14 @@ class _RuleState:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -546,7 +546,7 @@ class Rule(pulumi.CustomResource):
                  source_ip_address: Optional[pulumi.Input[str]] = None,
                  source_port: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Manages a v1 firewall rule resource within OpenStack.
@@ -610,7 +610,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: The owner of the firewall rule. Required if admin
                wants to create a firewall rule for another tenant. Changing this creates a
                new firewall rule.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         ...
     @overload
@@ -671,7 +671,7 @@ class Rule(pulumi.CustomResource):
                  source_ip_address: Optional[pulumi.Input[str]] = None,
                  source_port: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -720,7 +720,7 @@ class Rule(pulumi.CustomResource):
             source_ip_address: Optional[pulumi.Input[str]] = None,
             source_port: Optional[pulumi.Input[str]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Rule':
+            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Rule':
         """
         Get an existing Rule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -762,7 +762,7 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[str] tenant_id: The owner of the firewall rule. Required if admin
                wants to create a firewall rule for another tenant. Changing this creates a
                new firewall rule.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -903,7 +903,7 @@ class Rule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of additional options.
         """

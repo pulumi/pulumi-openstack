@@ -93,7 +93,7 @@ class GetVolumeV3Result:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, Any]:
+    def metadata(self) -> Mapping[str, str]:
         """
         See Argument Reference above.
         """
@@ -169,7 +169,7 @@ class AwaitableGetVolumeV3Result(GetVolumeV3Result):
 
 def get_volume_v3(bootable: Optional[str] = None,
                   host: Optional[str] = None,
-                  metadata: Optional[Mapping[str, Any]] = None,
+                  metadata: Optional[Mapping[str, str]] = None,
                   name: Optional[str] = None,
                   region: Optional[str] = None,
                   status: Optional[str] = None,
@@ -190,7 +190,7 @@ def get_volume_v3(bootable: Optional[str] = None,
 
     :param str bootable: Indicates if the volume is bootable.
     :param str host: The OpenStack host on which the volume is located.
-    :param Mapping[str, Any] metadata: Metadata key/value pairs associated with the volume.
+    :param Mapping[str, str] metadata: Metadata key/value pairs associated with the volume.
     :param str name: The name of the volume.
     :param str region: The region in which to obtain the V3 Block Storage
            client. If omitted, the `region` argument of the provider is used.
@@ -225,7 +225,7 @@ def get_volume_v3(bootable: Optional[str] = None,
 @_utilities.lift_output_func(get_volume_v3)
 def get_volume_v3_output(bootable: Optional[pulumi.Input[Optional[str]]] = None,
                          host: Optional[pulumi.Input[Optional[str]]] = None,
-                         metadata: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                         metadata: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          name: Optional[pulumi.Input[Optional[str]]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
                          status: Optional[pulumi.Input[Optional[str]]] = None,
@@ -246,7 +246,7 @@ def get_volume_v3_output(bootable: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str bootable: Indicates if the volume is bootable.
     :param str host: The OpenStack host on which the volume is located.
-    :param Mapping[str, Any] metadata: Metadata key/value pairs associated with the volume.
+    :param Mapping[str, str] metadata: Metadata key/value pairs associated with the volume.
     :param str name: The name of the volume.
     :param str region: The region in which to obtain the V3 Block Storage
            client. If omitted, the `region` argument of the provider is used.

@@ -114,7 +114,7 @@ type Firewall struct {
 	// firewall.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 }
 
 // NewFirewall registers a new resource with the given unique name, arguments, and options.
@@ -181,7 +181,7 @@ type firewallState struct {
 	// firewall.
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 type FirewallState struct {
@@ -216,7 +216,7 @@ type FirewallState struct {
 	// firewall.
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (FirewallState) ElementType() reflect.Type {
@@ -255,7 +255,7 @@ type firewallArgs struct {
 	// firewall.
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 // The set of arguments for constructing a Firewall resource.
@@ -291,7 +291,7 @@ type FirewallArgs struct {
 	// firewall.
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (FirewallArgs) ElementType() reflect.Type {
@@ -436,8 +436,8 @@ func (o FirewallOutput) TenantId() pulumi.StringOutput {
 }
 
 // Map of additional options.
-func (o FirewallOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *Firewall) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o FirewallOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 type FirewallArrayOutput struct{ *pulumi.OutputState }

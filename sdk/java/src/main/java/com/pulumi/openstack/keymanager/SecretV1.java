@@ -12,7 +12,6 @@ import com.pulumi.openstack.keymanager.SecretV1Args;
 import com.pulumi.openstack.keymanager.inputs.SecretV1State;
 import com.pulumi.openstack.keymanager.outputs.SecretV1Acl;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -211,15 +210,15 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * explicitly and implicitly added.
      * 
      */
-    @Export(name="allMetadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> allMetadata;
+    @Export(name="allMetadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> allMetadata;
 
     /**
      * @return The map of metadata, assigned on the secret, which has been
      * explicitly and implicitly added.
      * 
      */
-    public Output<Map<String,Object>> allMetadata() {
+    public Output<Map<String,String>> allMetadata() {
         return this.allMetadata;
     }
     /**
@@ -240,14 +239,14 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * The map of the content types, assigned on the secret.
      * 
      */
-    @Export(name="contentTypes", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> contentTypes;
+    @Export(name="contentTypes", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> contentTypes;
 
     /**
      * @return The map of the content types, assigned on the secret.
      * 
      */
-    public Output<Map<String,Object>> contentTypes() {
+    public Output<Map<String,String>> contentTypes() {
         return this.contentTypes;
     }
     /**
@@ -296,14 +295,14 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * Additional Metadata for the secret.
      * 
      */
-    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> metadata;
+    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
      * @return Additional Metadata for the secret.
      * 
      */
-    public Output<Optional<Map<String,Object>>> metadata() {
+    public Output<Optional<Map<String,String>>> metadata() {
         return Codegen.optional(this.metadata);
     }
     /**

@@ -5,7 +5,6 @@ package com.pulumi.openstack.dns.inputs;
 
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -40,13 +39,13 @@ public final class GetDnsZonePlainArgs extends com.pulumi.resources.InvokeArgs {
      * 
      */
     @Import(name="attributes")
-    private @Nullable Map<String,Object> attributes;
+    private @Nullable Map<String,String> attributes;
 
     /**
      * @return Attributes of the DNS Service scheduler.
      * 
      */
-    public Optional<Map<String,Object>> attributes() {
+    public Optional<Map<String,String>> attributes() {
         return Optional.ofNullable(this.attributes);
     }
 
@@ -339,7 +338,7 @@ public final class GetDnsZonePlainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder attributes(@Nullable Map<String,Object> attributes) {
+        public Builder attributes(@Nullable Map<String,String> attributes) {
             $.attributes = attributes;
             return this;
         }

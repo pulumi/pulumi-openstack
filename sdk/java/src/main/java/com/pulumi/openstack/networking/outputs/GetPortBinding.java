@@ -5,7 +5,6 @@ package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -27,7 +26,7 @@ public final class GetPortBinding {
      * specific binding.
      * 
      */
-    private Map<String,Object> vifDetails;
+    private Map<String,String> vifDetails;
     /**
      * @return The VNIC type of the port binding.
      * 
@@ -59,7 +58,7 @@ public final class GetPortBinding {
      * specific binding.
      * 
      */
-    public Map<String,Object> vifDetails() {
+    public Map<String,String> vifDetails() {
         return this.vifDetails;
     }
     /**
@@ -88,7 +87,7 @@ public final class GetPortBinding {
     public static final class Builder {
         private String hostId;
         private String profile;
-        private Map<String,Object> vifDetails;
+        private Map<String,String> vifDetails;
         private String vifType;
         private String vnicType;
         public Builder() {}
@@ -118,7 +117,7 @@ public final class GetPortBinding {
             return this;
         }
         @CustomType.Setter
-        public Builder vifDetails(Map<String,Object> vifDetails) {
+        public Builder vifDetails(Map<String,String> vifDetails) {
             if (vifDetails == null) {
               throw new MissingRequiredPropertyException("GetPortBinding", "vifDetails");
             }

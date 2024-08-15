@@ -84,7 +84,7 @@ class GetDnsZoneResult:
 
     @property
     @pulumi.getter
-    def attributes(self) -> Mapping[str, Any]:
+    def attributes(self) -> Mapping[str, str]:
         """
         Attributes of the DNS Service scheduler.
         """
@@ -246,7 +246,7 @@ class AwaitableGetDnsZoneResult(GetDnsZoneResult):
 
 
 def get_dns_zone(all_projects: Optional[str] = None,
-                 attributes: Optional[Mapping[str, Any]] = None,
+                 attributes: Optional[Mapping[str, str]] = None,
                  created_at: Optional[str] = None,
                  description: Optional[str] = None,
                  email: Optional[str] = None,
@@ -278,7 +278,7 @@ def get_dns_zone(all_projects: Optional[str] = None,
 
     :param str all_projects: Try to obtain zone ID by listing all projects
            (requires admin role by default, depends on your policy configuration)
-    :param Mapping[str, Any] attributes: Attributes of the DNS Service scheduler.
+    :param Mapping[str, str] attributes: Attributes of the DNS Service scheduler.
     :param str created_at: The time the zone was created.
     :param str description: A description of the zone.
     :param str email: The email contact for the zone record.
@@ -342,7 +342,7 @@ def get_dns_zone(all_projects: Optional[str] = None,
 
 @_utilities.lift_output_func(get_dns_zone)
 def get_dns_zone_output(all_projects: Optional[pulumi.Input[Optional[str]]] = None,
-                        attributes: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                        attributes: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                         created_at: Optional[pulumi.Input[Optional[str]]] = None,
                         description: Optional[pulumi.Input[Optional[str]]] = None,
                         email: Optional[pulumi.Input[Optional[str]]] = None,
@@ -374,7 +374,7 @@ def get_dns_zone_output(all_projects: Optional[pulumi.Input[Optional[str]]] = No
 
     :param str all_projects: Try to obtain zone ID by listing all projects
            (requires admin role by default, depends on your policy configuration)
-    :param Mapping[str, Any] attributes: Attributes of the DNS Service scheduler.
+    :param Mapping[str, str] attributes: Attributes of the DNS Service scheduler.
     :param str created_at: The time the zone was created.
     :param str description: A description of the zone.
     :param str email: The email contact for the zone record.

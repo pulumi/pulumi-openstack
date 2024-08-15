@@ -407,7 +407,7 @@ class InstanceSchedulerHint(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 additional_properties: Optional[Mapping[str, Any]] = None,
+                 additional_properties: Optional[Mapping[str, str]] = None,
                  build_near_host_ip: Optional[str] = None,
                  different_cells: Optional[Sequence[str]] = None,
                  different_hosts: Optional[Sequence[str]] = None,
@@ -416,7 +416,7 @@ class InstanceSchedulerHint(dict):
                  same_hosts: Optional[Sequence[str]] = None,
                  target_cell: Optional[str] = None):
         """
-        :param Mapping[str, Any] additional_properties: Arbitrary key/value pairs of additional
+        :param Mapping[str, str] additional_properties: Arbitrary key/value pairs of additional
                properties to pass to the scheduler.
         :param str build_near_host_ip: An IP Address in CIDR form. The instance
                will be placed on a compute node that is in the same subnet.
@@ -459,7 +459,7 @@ class InstanceSchedulerHint(dict):
 
     @property
     @pulumi.getter(name="additionalProperties")
-    def additional_properties(self) -> Optional[Mapping[str, Any]]:
+    def additional_properties(self) -> Optional[Mapping[str, str]]:
         """
         Arbitrary key/value pairs of additional
         properties to pass to the scheduler.

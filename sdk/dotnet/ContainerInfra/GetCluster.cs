@@ -167,7 +167,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// The list of key value pairs representing additional properties of
         /// the cluster.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// IP addresses of the master node of the cluster.
         /// </summary>
@@ -245,7 +245,7 @@ namespace Pulumi.OpenStack.ContainerInfra
 
             ImmutableDictionary<string, string> kubeconfig,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             ImmutableArray<string> masterAddresses,
 

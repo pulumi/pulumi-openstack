@@ -23,7 +23,7 @@ class ListenerArgs:
                  default_pool_id: Optional[pulumi.Input[str]] = None,
                  default_tls_container_ref: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 insert_headers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 insert_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  sni_container_refs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -57,7 +57,7 @@ class ListenerArgs:
                [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
                for more information.
         :param pulumi.Input[str] description: Human-readable description for the Listener.
-        :param pulumi.Input[Mapping[str, Any]] insert_headers: The list of key value pairs representing headers to insert
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] insert_headers: The list of key value pairs representing headers to insert
                into the request before it is sent to the backend members. Changing this updates the headers of the
                existing listener.
         :param pulumi.Input[str] name: Human-readable name for the Listener. Does not have
@@ -240,7 +240,7 @@ class ListenerArgs:
 
     @property
     @pulumi.getter(name="insertHeaders")
-    def insert_headers(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def insert_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of key value pairs representing headers to insert
         into the request before it is sent to the backend members. Changing this updates the headers of the
@@ -249,7 +249,7 @@ class ListenerArgs:
         return pulumi.get(self, "insert_headers")
 
     @insert_headers.setter
-    def insert_headers(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def insert_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "insert_headers", value)
 
     @property
@@ -381,7 +381,7 @@ class _ListenerState:
                  default_pool_id: Optional[pulumi.Input[str]] = None,
                  default_tls_container_ref: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 insert_headers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 insert_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  loadbalancer_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -410,7 +410,7 @@ class _ListenerState:
                [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
                for more information.
         :param pulumi.Input[str] description: Human-readable description for the Listener.
-        :param pulumi.Input[Mapping[str, Any]] insert_headers: The list of key value pairs representing headers to insert
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] insert_headers: The list of key value pairs representing headers to insert
                into the request before it is sent to the backend members. Changing this updates the headers of the
                existing listener.
         :param pulumi.Input[str] loadbalancer_id: The load balancer on which to provision this
@@ -563,7 +563,7 @@ class _ListenerState:
 
     @property
     @pulumi.getter(name="insertHeaders")
-    def insert_headers(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def insert_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of key value pairs representing headers to insert
         into the request before it is sent to the backend members. Changing this updates the headers of the
@@ -572,7 +572,7 @@ class _ListenerState:
         return pulumi.get(self, "insert_headers")
 
     @insert_headers.setter
-    def insert_headers(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def insert_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "insert_headers", value)
 
     @property
@@ -747,7 +747,7 @@ class Listener(pulumi.CustomResource):
                  default_pool_id: Optional[pulumi.Input[str]] = None,
                  default_tls_container_ref: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 insert_headers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 insert_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  loadbalancer_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -806,7 +806,7 @@ class Listener(pulumi.CustomResource):
                [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
                for more information.
         :param pulumi.Input[str] description: Human-readable description for the Listener.
-        :param pulumi.Input[Mapping[str, Any]] insert_headers: The list of key value pairs representing headers to insert
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] insert_headers: The list of key value pairs representing headers to insert
                into the request before it is sent to the backend members. Changing this updates the headers of the
                existing listener.
         :param pulumi.Input[str] loadbalancer_id: The load balancer on which to provision this
@@ -894,7 +894,7 @@ class Listener(pulumi.CustomResource):
                  default_pool_id: Optional[pulumi.Input[str]] = None,
                  default_tls_container_ref: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 insert_headers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 insert_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  loadbalancer_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -957,7 +957,7 @@ class Listener(pulumi.CustomResource):
             default_pool_id: Optional[pulumi.Input[str]] = None,
             default_tls_container_ref: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            insert_headers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            insert_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             loadbalancer_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
@@ -991,7 +991,7 @@ class Listener(pulumi.CustomResource):
                [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
                for more information.
         :param pulumi.Input[str] description: Human-readable description for the Listener.
-        :param pulumi.Input[Mapping[str, Any]] insert_headers: The list of key value pairs representing headers to insert
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] insert_headers: The list of key value pairs representing headers to insert
                into the request before it is sent to the backend members. Changing this updates the headers of the
                existing listener.
         :param pulumi.Input[str] loadbalancer_id: The load balancer on which to provision this
@@ -1106,7 +1106,7 @@ class Listener(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="insertHeaders")
-    def insert_headers(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def insert_headers(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The list of key value pairs representing headers to insert
         into the request before it is sent to the backend members. Changing this updates the headers of the

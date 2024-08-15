@@ -155,8 +155,8 @@ type providerArgs struct {
 	// Outputs very verbose logs with all calls made to and responses from OpenStack
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// A map of services with an endpoint to override what was from the Keystone catalog
-	EndpointOverrides map[string]interface{} `pulumi:"endpointOverrides"`
-	EndpointType      *string                `pulumi:"endpointType"`
+	EndpointOverrides map[string]string `pulumi:"endpointOverrides"`
+	EndpointType      *string           `pulumi:"endpointType"`
 	// Trust self-signed certificates.
 	Insecure *bool `pulumi:"insecure"`
 	// A client private key to authenticate with.
@@ -224,7 +224,7 @@ type ProviderArgs struct {
 	// Outputs very verbose logs with all calls made to and responses from OpenStack
 	EnableLogging pulumi.BoolPtrInput
 	// A map of services with an endpoint to override what was from the Keystone catalog
-	EndpointOverrides pulumi.MapInput
+	EndpointOverrides pulumi.StringMapInput
 	EndpointType      pulumi.StringPtrInput
 	// Trust self-signed certificates.
 	Insecure pulumi.BoolPtrInput

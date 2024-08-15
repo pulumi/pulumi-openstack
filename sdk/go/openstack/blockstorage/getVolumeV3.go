@@ -55,7 +55,7 @@ type GetVolumeV3Args struct {
 	// The OpenStack host on which the volume is located.
 	Host *string `pulumi:"host"`
 	// Metadata key/value pairs associated with the volume.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the volume.
 	Name *string `pulumi:"name"`
 	// The region in which to obtain the V3 Block Storage
@@ -80,7 +80,7 @@ type GetVolumeV3Result struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// See Argument Reference above.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// See Argument Reference above.
 	Name string `pulumi:"name"`
 	// See Argument Reference above.
@@ -115,7 +115,7 @@ type GetVolumeV3OutputArgs struct {
 	// The OpenStack host on which the volume is located.
 	Host pulumi.StringPtrInput `pulumi:"host"`
 	// Metadata key/value pairs associated with the volume.
-	Metadata pulumi.MapInput `pulumi:"metadata"`
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// The name of the volume.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The region in which to obtain the V3 Block Storage
@@ -169,8 +169,8 @@ func (o GetVolumeV3ResultOutput) Id() pulumi.StringOutput {
 }
 
 // See Argument Reference above.
-func (o GetVolumeV3ResultOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v GetVolumeV3Result) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+func (o GetVolumeV3ResultOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetVolumeV3Result) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // See Argument Reference above.

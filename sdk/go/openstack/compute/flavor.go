@@ -33,9 +33,9 @@ import (
 //				Ram:   pulumi.Int(8096),
 //				Vcpus: pulumi.Int(2),
 //				Disk:  pulumi.Int(20),
-//				ExtraSpecs: pulumi.Map{
-//					"hw:cpu_policy":        pulumi.Any("CPU-POLICY"),
-//					"hw:cpu_thread_policy": pulumi.Any("CPU-THREAD-POLICY"),
+//				ExtraSpecs: pulumi.StringMap{
+//					"hw:cpu_policy":        pulumi.String("CPU-POLICY"),
+//					"hw:cpu_thread_policy": pulumi.String("CPU-THREAD-POLICY"),
 //				},
 //			})
 //			if err != nil {
@@ -67,7 +67,7 @@ type Flavor struct {
 	// the default is 0. Changing this creates a new flavor.
 	Ephemeral pulumi.IntPtrOutput `pulumi:"ephemeral"`
 	// Key/Value pairs of metadata for the flavor.
-	ExtraSpecs pulumi.MapOutput `pulumi:"extraSpecs"`
+	ExtraSpecs pulumi.StringMapOutput `pulumi:"extraSpecs"`
 	// Unique ID (integer or UUID) of flavor to create. Changing
 	// this creates a new flavor.
 	FlavorId pulumi.StringOutput `pulumi:"flavorId"`
@@ -145,7 +145,7 @@ type flavorState struct {
 	// the default is 0. Changing this creates a new flavor.
 	Ephemeral *int `pulumi:"ephemeral"`
 	// Key/Value pairs of metadata for the flavor.
-	ExtraSpecs map[string]interface{} `pulumi:"extraSpecs"`
+	ExtraSpecs map[string]string `pulumi:"extraSpecs"`
 	// Unique ID (integer or UUID) of flavor to create. Changing
 	// this creates a new flavor.
 	FlavorId *string `pulumi:"flavorId"`
@@ -185,7 +185,7 @@ type FlavorState struct {
 	// the default is 0. Changing this creates a new flavor.
 	Ephemeral pulumi.IntPtrInput
 	// Key/Value pairs of metadata for the flavor.
-	ExtraSpecs pulumi.MapInput
+	ExtraSpecs pulumi.StringMapInput
 	// Unique ID (integer or UUID) of flavor to create. Changing
 	// this creates a new flavor.
 	FlavorId pulumi.StringPtrInput
@@ -229,7 +229,7 @@ type flavorArgs struct {
 	// the default is 0. Changing this creates a new flavor.
 	Ephemeral *int `pulumi:"ephemeral"`
 	// Key/Value pairs of metadata for the flavor.
-	ExtraSpecs map[string]interface{} `pulumi:"extraSpecs"`
+	ExtraSpecs map[string]string `pulumi:"extraSpecs"`
 	// Unique ID (integer or UUID) of flavor to create. Changing
 	// this creates a new flavor.
 	FlavorId *string `pulumi:"flavorId"`
@@ -270,7 +270,7 @@ type FlavorArgs struct {
 	// the default is 0. Changing this creates a new flavor.
 	Ephemeral pulumi.IntPtrInput
 	// Key/Value pairs of metadata for the flavor.
-	ExtraSpecs pulumi.MapInput
+	ExtraSpecs pulumi.StringMapInput
 	// Unique ID (integer or UUID) of flavor to create. Changing
 	// this creates a new flavor.
 	FlavorId pulumi.StringPtrInput
@@ -405,8 +405,8 @@ func (o FlavorOutput) Ephemeral() pulumi.IntPtrOutput {
 }
 
 // Key/Value pairs of metadata for the flavor.
-func (o FlavorOutput) ExtraSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *Flavor) pulumi.MapOutput { return v.ExtraSpecs }).(pulumi.MapOutput)
+func (o FlavorOutput) ExtraSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Flavor) pulumi.StringMapOutput { return v.ExtraSpecs }).(pulumi.StringMapOutput)
 }
 
 // Unique ID (integer or UUID) of flavor to create. Changing

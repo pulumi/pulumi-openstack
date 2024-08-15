@@ -26,7 +26,7 @@ class IkePolicyArgs:
                  phase1_negotiation_mode: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a IkePolicy resource.
         :param pulumi.Input[str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
@@ -50,7 +50,7 @@ class IkePolicyArgs:
                service.
         :param pulumi.Input[str] tenant_id: The owner of the policy. Required if admin wants to
                create a service for another policy. Changing this creates a new policy.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         if auth_algorithm is not None:
             pulumi.set(__self__, "auth_algorithm", auth_algorithm)
@@ -208,14 +208,14 @@ class IkePolicyArgs:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -232,7 +232,7 @@ class _IkePolicyState:
                  phase1_negotiation_mode: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering IkePolicy resources.
         :param pulumi.Input[str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
@@ -256,7 +256,7 @@ class _IkePolicyState:
                service.
         :param pulumi.Input[str] tenant_id: The owner of the policy. Required if admin wants to
                create a service for another policy. Changing this creates a new policy.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         if auth_algorithm is not None:
             pulumi.set(__self__, "auth_algorithm", auth_algorithm)
@@ -414,14 +414,14 @@ class _IkePolicyState:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -440,7 +440,7 @@ class IkePolicy(pulumi.CustomResource):
                  phase1_negotiation_mode: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Manages a V2 Neutron IKE policy resource within OpenStack.
@@ -485,7 +485,7 @@ class IkePolicy(pulumi.CustomResource):
                service.
         :param pulumi.Input[str] tenant_id: The owner of the policy. Required if admin wants to
                create a service for another policy. Changing this creates a new policy.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         ...
     @overload
@@ -538,7 +538,7 @@ class IkePolicy(pulumi.CustomResource):
                  phase1_negotiation_mode: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -579,7 +579,7 @@ class IkePolicy(pulumi.CustomResource):
             phase1_negotiation_mode: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'IkePolicy':
+            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'IkePolicy':
         """
         Get an existing IkePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -608,7 +608,7 @@ class IkePolicy(pulumi.CustomResource):
                service.
         :param pulumi.Input[str] tenant_id: The owner of the policy. Required if admin wants to
                create a service for another policy. Changing this creates a new policy.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -720,7 +720,7 @@ class IkePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of additional options.
         """

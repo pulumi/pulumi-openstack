@@ -223,7 +223,7 @@ namespace Pulumi.OpenStack.Networking
         /// The list of maps representing port DNS assignments.
         /// </summary>
         [Output("dnsAssignments")]
-        public Output<ImmutableArray<ImmutableDictionary<string, object>>> DnsAssignments { get; private set; } = null!;
+        public Output<ImmutableArray<ImmutableDictionary<string, string>>> DnsAssignments { get; private set; } = null!;
 
         /// <summary>
         /// The port DNS name. Available, when Neutron DNS extension
@@ -338,7 +338,7 @@ namespace Pulumi.OpenStack.Networking
         /// Map of additional options.
         /// </summary>
         [Output("valueSpecs")]
-        public Output<ImmutableDictionary<string, object>?> ValueSpecs { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> ValueSpecs { get; private set; } = null!;
 
 
         /// <summary>
@@ -570,14 +570,14 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? TenantId { get; set; }
 
         [Input("valueSpecs")]
-        private InputMap<object>? _valueSpecs;
+        private InputMap<string>? _valueSpecs;
 
         /// <summary>
         /// Map of additional options.
         /// </summary>
-        public InputMap<object> ValueSpecs
+        public InputMap<string> ValueSpecs
         {
-            get => _valueSpecs ?? (_valueSpecs = new InputMap<object>());
+            get => _valueSpecs ?? (_valueSpecs = new InputMap<string>());
             set => _valueSpecs = value;
         }
 
@@ -679,14 +679,14 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? DeviceOwner { get; set; }
 
         [Input("dnsAssignments")]
-        private InputList<ImmutableDictionary<string, object>>? _dnsAssignments;
+        private InputList<ImmutableDictionary<string, string>>? _dnsAssignments;
 
         /// <summary>
         /// The list of maps representing port DNS assignments.
         /// </summary>
-        public InputList<ImmutableDictionary<string, object>> DnsAssignments
+        public InputList<ImmutableDictionary<string, string>> DnsAssignments
         {
-            get => _dnsAssignments ?? (_dnsAssignments = new InputList<ImmutableDictionary<string, object>>());
+            get => _dnsAssignments ?? (_dnsAssignments = new InputList<ImmutableDictionary<string, string>>());
             set => _dnsAssignments = value;
         }
 
@@ -824,14 +824,14 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? TenantId { get; set; }
 
         [Input("valueSpecs")]
-        private InputMap<object>? _valueSpecs;
+        private InputMap<string>? _valueSpecs;
 
         /// <summary>
         /// Map of additional options.
         /// </summary>
-        public InputMap<object> ValueSpecs
+        public InputMap<string> ValueSpecs
         {
-            get => _valueSpecs ?? (_valueSpecs = new InputMap<object>());
+            get => _valueSpecs ?? (_valueSpecs = new InputMap<string>());
             set => _valueSpecs = value;
         }
 

@@ -17,7 +17,7 @@ class QosV3Args:
                  consumer: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a QosV3 resource.
         :param pulumi.Input[str] consumer: The consumer of qos. Can be one of `front-end`,
@@ -27,7 +27,7 @@ class QosV3Args:
         :param pulumi.Input[str] region: The region in which to create the qos. If omitted,
                the `region` argument of the provider is used. Changing this creates
                a new qos.
-        :param pulumi.Input[Mapping[str, Any]] specs: Key/Value pairs of specs for the qos.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] specs: Key/Value pairs of specs for the qos.
         """
         if consumer is not None:
             pulumi.set(__self__, "consumer", consumer)
@@ -80,14 +80,14 @@ class QosV3Args:
 
     @property
     @pulumi.getter
-    def specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Key/Value pairs of specs for the qos.
         """
         return pulumi.get(self, "specs")
 
     @specs.setter
-    def specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "specs", value)
 
 
@@ -97,7 +97,7 @@ class _QosV3State:
                  consumer: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering QosV3 resources.
         :param pulumi.Input[str] consumer: The consumer of qos. Can be one of `front-end`,
@@ -107,7 +107,7 @@ class _QosV3State:
         :param pulumi.Input[str] region: The region in which to create the qos. If omitted,
                the `region` argument of the provider is used. Changing this creates
                a new qos.
-        :param pulumi.Input[Mapping[str, Any]] specs: Key/Value pairs of specs for the qos.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] specs: Key/Value pairs of specs for the qos.
         """
         if consumer is not None:
             pulumi.set(__self__, "consumer", consumer)
@@ -160,14 +160,14 @@ class _QosV3State:
 
     @property
     @pulumi.getter
-    def specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Key/Value pairs of specs for the qos.
         """
         return pulumi.get(self, "specs")
 
     @specs.setter
-    def specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "specs", value)
 
 
@@ -179,7 +179,7 @@ class QosV3(pulumi.CustomResource):
                  consumer: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Manages a V3 block storage Quality-Of-Servirce (qos) resource within OpenStack.
@@ -218,7 +218,7 @@ class QosV3(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to create the qos. If omitted,
                the `region` argument of the provider is used. Changing this creates
                a new qos.
-        :param pulumi.Input[Mapping[str, Any]] specs: Key/Value pairs of specs for the qos.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] specs: Key/Value pairs of specs for the qos.
         """
         ...
     @overload
@@ -272,7 +272,7 @@ class QosV3(pulumi.CustomResource):
                  consumer: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -299,7 +299,7 @@ class QosV3(pulumi.CustomResource):
             consumer: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'QosV3':
+            specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'QosV3':
         """
         Get an existing QosV3 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -314,7 +314,7 @@ class QosV3(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to create the qos. If omitted,
                the `region` argument of the provider is used. Changing this creates
                a new qos.
-        :param pulumi.Input[Mapping[str, Any]] specs: Key/Value pairs of specs for the qos.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] specs: Key/Value pairs of specs for the qos.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -356,7 +356,7 @@ class QosV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def specs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Key/Value pairs of specs for the qos.
         """

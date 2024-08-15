@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.openstack.networking.inputs.RouterExternalFixedIpArgs;
 import com.pulumi.openstack.networking.inputs.RouterVendorOptionsArgs;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -258,13 +257,13 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="valueSpecs")
-    private @Nullable Output<Map<String,Object>> valueSpecs;
+    private @Nullable Output<Map<String,String>> valueSpecs;
 
     /**
      * @return Map of additional driver-specific options.
      * 
      */
-    public Optional<Output<Map<String,Object>>> valueSpecs() {
+    public Optional<Output<Map<String,String>>> valueSpecs() {
         return Optional.ofNullable(this.valueSpecs);
     }
 
@@ -682,7 +681,7 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder valueSpecs(@Nullable Output<Map<String,Object>> valueSpecs) {
+        public Builder valueSpecs(@Nullable Output<Map<String,String>> valueSpecs) {
             $.valueSpecs = valueSpecs;
             return this;
         }
@@ -693,7 +692,7 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder valueSpecs(Map<String,Object> valueSpecs) {
+        public Builder valueSpecs(Map<String,String> valueSpecs) {
             return valueSpecs(Output.of(valueSpecs));
         }
 

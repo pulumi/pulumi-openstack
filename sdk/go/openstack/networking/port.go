@@ -212,7 +212,7 @@ type Port struct {
 	// a new port.
 	DeviceOwner pulumi.StringOutput `pulumi:"deviceOwner"`
 	// The list of maps representing port DNS assignments.
-	DnsAssignments pulumi.MapArrayOutput `pulumi:"dnsAssignments"`
+	DnsAssignments pulumi.StringMapArrayOutput `pulumi:"dnsAssignments"`
 	// The port DNS name. Available, when Neutron DNS extension
 	// is enabled.
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
@@ -267,7 +267,7 @@ type Port struct {
 	// to create a port for another tenant. Changing this creates a new port.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 }
 
 // NewPort registers a new resource with the given unique name, arguments, and options.
@@ -333,7 +333,7 @@ type portState struct {
 	// a new port.
 	DeviceOwner *string `pulumi:"deviceOwner"`
 	// The list of maps representing port DNS assignments.
-	DnsAssignments []map[string]interface{} `pulumi:"dnsAssignments"`
+	DnsAssignments []map[string]string `pulumi:"dnsAssignments"`
 	// The port DNS name. Available, when Neutron DNS extension
 	// is enabled.
 	DnsName *string `pulumi:"dnsName"`
@@ -388,7 +388,7 @@ type portState struct {
 	// to create a port for another tenant. Changing this creates a new port.
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 type PortState struct {
@@ -422,7 +422,7 @@ type PortState struct {
 	// a new port.
 	DeviceOwner pulumi.StringPtrInput
 	// The list of maps representing port DNS assignments.
-	DnsAssignments pulumi.MapArrayInput
+	DnsAssignments pulumi.StringMapArrayInput
 	// The port DNS name. Available, when Neutron DNS extension
 	// is enabled.
 	DnsName pulumi.StringPtrInput
@@ -477,7 +477,7 @@ type PortState struct {
 	// to create a port for another tenant. Changing this creates a new port.
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (PortState) ElementType() reflect.Type {
@@ -559,7 +559,7 @@ type portArgs struct {
 	// to create a port for another tenant. Changing this creates a new port.
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 // The set of arguments for constructing a Port resource.
@@ -638,7 +638,7 @@ type PortArgs struct {
 	// to create a port for another tenant. Changing this creates a new port.
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (PortArgs) ElementType() reflect.Type {
@@ -785,8 +785,8 @@ func (o PortOutput) DeviceOwner() pulumi.StringOutput {
 }
 
 // The list of maps representing port DNS assignments.
-func (o PortOutput) DnsAssignments() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v *Port) pulumi.MapArrayOutput { return v.DnsAssignments }).(pulumi.MapArrayOutput)
+func (o PortOutput) DnsAssignments() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringMapArrayOutput { return v.DnsAssignments }).(pulumi.StringMapArrayOutput)
 }
 
 // The port DNS name. Available, when Neutron DNS extension
@@ -885,8 +885,8 @@ func (o PortOutput) TenantId() pulumi.StringOutput {
 }
 
 // Map of additional options.
-func (o PortOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *Port) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o PortOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 type PortArrayOutput struct{ *pulumi.OutputState }

@@ -17,7 +17,7 @@ namespace Pulumi.OpenStack.BlockStorage.Outputs
         /// Arbitrary key/value pairs of additional
         /// properties to pass to the scheduler.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? AdditionalProperties;
+        public readonly ImmutableDictionary<string, string>? AdditionalProperties;
         /// <summary>
         /// The volume should be scheduled on a 
         /// different host from the set of volumes specified in the list provided.
@@ -49,7 +49,7 @@ namespace Pulumi.OpenStack.BlockStorage.Outputs
 
         [OutputConstructor]
         private VolumeV2SchedulerHint(
-            ImmutableDictionary<string, object>? additionalProperties,
+            ImmutableDictionary<string, string>? additionalProperties,
 
             ImmutableArray<string> differentHosts,
 

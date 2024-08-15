@@ -99,7 +99,7 @@ export class Listener extends pulumi.CustomResource {
      * into the request before it is sent to the backend members. Changing this updates the headers of the
      * existing listener.
      */
-    public readonly insertHeaders!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly insertHeaders!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The load balancer on which to provision this
      * Listener. Changing this creates a new Listener.
@@ -274,7 +274,7 @@ export interface ListenerState {
      * into the request before it is sent to the backend members. Changing this updates the headers of the
      * existing listener.
      */
-    insertHeaders?: pulumi.Input<{[key: string]: any}>;
+    insertHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The load balancer on which to provision this
      * Listener. Changing this creates a new Listener.
@@ -382,7 +382,7 @@ export interface ListenerArgs {
      * into the request before it is sent to the backend members. Changing this updates the headers of the
      * existing listener.
      */
-    insertHeaders?: pulumi.Input<{[key: string]: any}>;
+    insertHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The load balancer on which to provision this
      * Listener. Changing this creates a new Listener.

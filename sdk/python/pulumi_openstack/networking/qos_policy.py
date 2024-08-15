@@ -21,7 +21,7 @@ class QosPolicyArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a QosPolicy resource.
         :param pulumi.Input[str] description: The human-readable description for the QoS policy.
@@ -41,7 +41,7 @@ class QosPolicyArgs:
                all projects. Changing this updates the shared status of the existing
                QoS policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the QoS policy.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -156,14 +156,14 @@ class QosPolicyArgs:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -181,7 +181,7 @@ class _QosPolicyState:
                  shared: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering QosPolicy resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] all_tags: The collection of tags assigned on the QoS policy, which have been
@@ -206,7 +206,7 @@ class _QosPolicyState:
                QoS policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the QoS policy.
         :param pulumi.Input[str] updated_at: The time at which QoS policy was created.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         if all_tags is not None:
             pulumi.set(__self__, "all_tags", all_tags)
@@ -378,14 +378,14 @@ class _QosPolicyState:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -401,7 +401,7 @@ class QosPolicy(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Manages a V2 Neutron QoS policy resource within OpenStack.
@@ -446,7 +446,7 @@ class QosPolicy(pulumi.CustomResource):
                all projects. Changing this updates the shared status of the existing
                QoS policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the QoS policy.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         ...
     @overload
@@ -500,7 +500,7 @@ class QosPolicy(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -543,7 +543,7 @@ class QosPolicy(pulumi.CustomResource):
             shared: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'QosPolicy':
+            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'QosPolicy':
         """
         Get an existing QosPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -573,7 +573,7 @@ class QosPolicy(pulumi.CustomResource):
                QoS policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the QoS policy.
         :param pulumi.Input[str] updated_at: The time at which QoS policy was created.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -694,7 +694,7 @@ class QosPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of additional options.
         """

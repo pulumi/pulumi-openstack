@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * const stack1 = new openstack.orchestration.StackV1("stack_1", {
  *     name: "stack_1",
  *     parameters: {
- *         length: 4,
+ *         length: "4",
  *     },
  *     templateOpts: {
  *         Bin: `heat_template_version: 2013-05-23
@@ -109,7 +109,7 @@ export class StackV1 extends pulumi.CustomResource {
      * Allowed keys: Bin, URL, Files. Changing this updates the existing stack
      * Environment Opts.
      */
-    public readonly environmentOpts!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly environmentOpts!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A unique name for the stack. It must start with an
      * alphabetic character. Changing this updates the stack's name.
@@ -123,7 +123,7 @@ export class StackV1 extends pulumi.CustomResource {
      * User-defined key/value pairs as parameters to pass
      * to the template. Changing this updates the existing stack parameters.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly parameters!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The region in which to create the stack. If
      * omitted, the `region` argument of the provider is used. Changing this
@@ -152,7 +152,7 @@ export class StackV1 extends pulumi.CustomResource {
      * Allowed keys: Bin, URL, Files. Changing this updates the existing stack
      * Template Opts.
      */
-    public readonly templateOpts!: pulumi.Output<{[key: string]: any}>;
+    public readonly templateOpts!: pulumi.Output<{[key: string]: string}>;
     /**
      * The timeout for stack action in minutes.
      */
@@ -258,7 +258,7 @@ export interface StackV1State {
      * Allowed keys: Bin, URL, Files. Changing this updates the existing stack
      * Environment Opts.
      */
-    environmentOpts?: pulumi.Input<{[key: string]: any}>;
+    environmentOpts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A unique name for the stack. It must start with an
      * alphabetic character. Changing this updates the stack's name.
@@ -272,7 +272,7 @@ export interface StackV1State {
      * User-defined key/value pairs as parameters to pass
      * to the template. Changing this updates the existing stack parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region in which to create the stack. If
      * omitted, the `region` argument of the provider is used. Changing this
@@ -301,7 +301,7 @@ export interface StackV1State {
      * Allowed keys: Bin, URL, Files. Changing this updates the existing stack
      * Template Opts.
      */
-    templateOpts?: pulumi.Input<{[key: string]: any}>;
+    templateOpts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The timeout for stack action in minutes.
      */
@@ -350,7 +350,7 @@ export interface StackV1Args {
      * Allowed keys: Bin, URL, Files. Changing this updates the existing stack
      * Environment Opts.
      */
-    environmentOpts?: pulumi.Input<{[key: string]: any}>;
+    environmentOpts?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A unique name for the stack. It must start with an
      * alphabetic character. Changing this updates the stack's name.
@@ -364,7 +364,7 @@ export interface StackV1Args {
      * User-defined key/value pairs as parameters to pass
      * to the template. Changing this updates the existing stack parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: any}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region in which to create the stack. If
      * omitted, the `region` argument of the provider is used. Changing this
@@ -393,7 +393,7 @@ export interface StackV1Args {
      * Allowed keys: Bin, URL, Files. Changing this updates the existing stack
      * Template Opts.
      */
-    templateOpts: pulumi.Input<{[key: string]: any}>;
+    templateOpts: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The timeout for stack action in minutes.
      */

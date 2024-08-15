@@ -7,7 +7,6 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -119,8 +118,8 @@ public final class Config {
  * A map of services with an endpoint to override what was from the Keystone catalog
  * 
  */
-    public Optional<Map<String,Object>> endpointOverrides() {
-        return Codegen.objectProp("endpointOverrides", TypeShape.<Map<String,Object>>builder(Map.class).addParameter(String.class).addParameter(Object.class).build()).config(config).get();
+    public Optional<Map<String,String>> endpointOverrides() {
+        return Codegen.objectProp("endpointOverrides", TypeShape.<Map<String,String>>builder(Map.class).addParameter(String.class).addParameter(String.class).build()).config(config).get();
     }
     public Optional<String> endpointType() {
         return Codegen.stringProp("endpointType").config(config).env("OS_ENDPOINT_TYPE").get();

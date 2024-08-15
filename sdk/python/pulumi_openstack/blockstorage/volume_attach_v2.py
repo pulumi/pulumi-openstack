@@ -229,7 +229,7 @@ class VolumeAttachV2Args:
 class _VolumeAttachV2State:
     def __init__(__self__, *,
                  attach_mode: Optional[pulumi.Input[str]] = None,
-                 data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  device: Optional[pulumi.Input[str]] = None,
                  driver_volume_type: Optional[pulumi.Input[str]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
@@ -248,7 +248,7 @@ class _VolumeAttachV2State:
         :param pulumi.Input[str] attach_mode: Specify whether to attach the volume as Read-Only
                (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
                If left unspecified, the Block Storage API will apply a default of `rw`.
-        :param pulumi.Input[Mapping[str, Any]] data: This is a map of key/value pairs that contain the connection
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] data: This is a map of key/value pairs that contain the connection
                information. You will want to pass this information to a provisioner
                script to finalize the connection. See below for more information.
         :param pulumi.Input[str] device: The device to tell the Block Storage service this
@@ -318,7 +318,7 @@ class _VolumeAttachV2State:
 
     @property
     @pulumi.getter
-    def data(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         This is a map of key/value pairs that contain the connection
         information. You will want to pass this information to a provisioner
@@ -327,7 +327,7 @@ class _VolumeAttachV2State:
         return pulumi.get(self, "data")
 
     @data.setter
-    def data(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "data", value)
 
     @property
@@ -724,7 +724,7 @@ class VolumeAttachV2(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             attach_mode: Optional[pulumi.Input[str]] = None,
-            data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             device: Optional[pulumi.Input[str]] = None,
             driver_volume_type: Optional[pulumi.Input[str]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
@@ -748,7 +748,7 @@ class VolumeAttachV2(pulumi.CustomResource):
         :param pulumi.Input[str] attach_mode: Specify whether to attach the volume as Read-Only
                (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
                If left unspecified, the Block Storage API will apply a default of `rw`.
-        :param pulumi.Input[Mapping[str, Any]] data: This is a map of key/value pairs that contain the connection
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] data: This is a map of key/value pairs that contain the connection
                information. You will want to pass this information to a provisioner
                script to finalize the connection. See below for more information.
         :param pulumi.Input[str] device: The device to tell the Block Storage service this
@@ -804,7 +804,7 @@ class VolumeAttachV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def data(self) -> pulumi.Output[Mapping[str, Any]]:
+    def data(self) -> pulumi.Output[Mapping[str, str]]:
         """
         This is a map of key/value pairs that contain the connection
         information. You will want to pass this information to a provisioner

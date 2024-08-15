@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -30,7 +29,7 @@ public final class GetSnapshotV3Result {
      * @return The snapshot&#39;s metadata.
      * 
      */
-    private Map<String,Object> metadata;
+    private Map<String,String> metadata;
     private @Nullable Boolean mostRecent;
     /**
      * @return See Argument Reference above.
@@ -77,7 +76,7 @@ public final class GetSnapshotV3Result {
      * @return The snapshot&#39;s metadata.
      * 
      */
-    public Map<String,Object> metadata() {
+    public Map<String,String> metadata() {
         return this.metadata;
     }
     public Optional<Boolean> mostRecent() {
@@ -130,7 +129,7 @@ public final class GetSnapshotV3Result {
     public static final class Builder {
         private String description;
         private String id;
-        private Map<String,Object> metadata;
+        private Map<String,String> metadata;
         private @Nullable Boolean mostRecent;
         private String name;
         private String region;
@@ -168,7 +167,7 @@ public final class GetSnapshotV3Result {
             return this;
         }
         @CustomType.Setter
-        public Builder metadata(Map<String,Object> metadata) {
+        public Builder metadata(Map<String,String> metadata) {
             if (metadata == null) {
               throw new MissingRequiredPropertyException("GetSnapshotV3Result", "metadata");
             }

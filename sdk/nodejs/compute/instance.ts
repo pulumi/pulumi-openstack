@@ -47,7 +47,7 @@ export class Instance extends pulumi.CustomResource {
      * Changing this changes the root password on the existing server.
      */
     public readonly adminPass!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly allMetadata!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly allMetadata!: pulumi.Output<{[key: string]: string}>;
     /**
      * The collection of tags assigned on the instance, which have
      * been explicitly and implicitly added.
@@ -125,7 +125,7 @@ export class Instance extends pulumi.CustomResource {
      * Metadata key/value pairs to make available from
      * within the instance. Changing this updates the existing server metadata.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A unique name for the resource.
      */
@@ -302,7 +302,7 @@ export interface InstanceState {
      * Changing this changes the root password on the existing server.
      */
     adminPass?: pulumi.Input<string>;
-    allMetadata?: pulumi.Input<{[key: string]: any}>;
+    allMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The collection of tags assigned on the instance, which have
      * been explicitly and implicitly added.
@@ -380,7 +380,7 @@ export interface InstanceState {
      * Metadata key/value pairs to make available from
      * within the instance. Changing this updates the existing server metadata.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A unique name for the resource.
      */
@@ -543,7 +543,7 @@ export interface InstanceArgs {
      * Metadata key/value pairs to make available from
      * within the instance. Changing this updates the existing server metadata.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A unique name for the resource.
      */

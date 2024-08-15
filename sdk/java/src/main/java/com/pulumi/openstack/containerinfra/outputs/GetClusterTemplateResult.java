@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -121,7 +120,7 @@ public final class GetClusterTemplateResult {
      * of the cluster template.
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     /**
      * @return The flavor for the master nodes.
      * 
@@ -343,7 +342,7 @@ public final class GetClusterTemplateResult {
      * of the cluster template.
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     /**
@@ -477,7 +476,7 @@ public final class GetClusterTemplateResult {
         private String image;
         private String insecureRegistry;
         private String keypairId;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private String masterFlavor;
         private Boolean masterLbEnabled;
         private String name;
@@ -684,7 +683,7 @@ public final class GetClusterTemplateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetClusterTemplateResult", "labels");
             }

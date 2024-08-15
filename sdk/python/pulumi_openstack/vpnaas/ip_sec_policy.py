@@ -26,7 +26,7 @@ class IpSecPolicyArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  transform_protocol: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a IpSecPolicy resource.
         :param pulumi.Input[str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
@@ -50,7 +50,7 @@ class IpSecPolicyArgs:
                create a policy for another project. Changing this creates a new policy.
         :param pulumi.Input[str] transform_protocol: The transform protocol. Valid values are esp, ah and ah-esp.
                Changing this updates the existing policy. Default is ESP.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         if auth_algorithm is not None:
             pulumi.set(__self__, "auth_algorithm", auth_algorithm)
@@ -208,14 +208,14 @@ class IpSecPolicyArgs:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -232,7 +232,7 @@ class _IpSecPolicyState:
                  region: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  transform_protocol: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering IpSecPolicy resources.
         :param pulumi.Input[str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
@@ -256,7 +256,7 @@ class _IpSecPolicyState:
                create a policy for another project. Changing this creates a new policy.
         :param pulumi.Input[str] transform_protocol: The transform protocol. Valid values are esp, ah and ah-esp.
                Changing this updates the existing policy. Default is ESP.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         if auth_algorithm is not None:
             pulumi.set(__self__, "auth_algorithm", auth_algorithm)
@@ -414,14 +414,14 @@ class _IpSecPolicyState:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -440,7 +440,7 @@ class IpSecPolicy(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  transform_protocol: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Manages a V2 Neutron IPSec policy resource within OpenStack.
@@ -485,7 +485,7 @@ class IpSecPolicy(pulumi.CustomResource):
                create a policy for another project. Changing this creates a new policy.
         :param pulumi.Input[str] transform_protocol: The transform protocol. Valid values are esp, ah and ah-esp.
                Changing this updates the existing policy. Default is ESP.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         ...
     @overload
@@ -538,7 +538,7 @@ class IpSecPolicy(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  transform_protocol: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -579,7 +579,7 @@ class IpSecPolicy(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
             transform_protocol: Optional[pulumi.Input[str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'IpSecPolicy':
+            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'IpSecPolicy':
         """
         Get an existing IpSecPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -608,7 +608,7 @@ class IpSecPolicy(pulumi.CustomResource):
                create a policy for another project. Changing this creates a new policy.
         :param pulumi.Input[str] transform_protocol: The transform protocol. Valid values are esp, ah and ah-esp.
                Changing this updates the existing policy. Default is ESP.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -720,7 +720,7 @@ class IpSecPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of additional options.
         """

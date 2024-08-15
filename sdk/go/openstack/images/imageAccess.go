@@ -40,8 +40,8 @@ import (
 //				ContainerFormat: pulumi.String("bare"),
 //				DiskFormat:      pulumi.String("qcow2"),
 //				Visibility:      pulumi.String("shared"),
-//				Properties: pulumi.Map{
-//					"key": pulumi.Any("value"),
+//				Properties: pulumi.StringMap{
+//					"key": pulumi.String("value"),
 //				},
 //			})
 //			if err != nil {
@@ -83,8 +83,8 @@ import (
 //				ContainerFormat: pulumi.String("bare"),
 //				DiskFormat:      pulumi.String("qcow2"),
 //				Visibility:      pulumi.String("shared"),
-//				Properties: pulumi.Map{
-//					"key": pulumi.Any("value"),
+//				Properties: pulumi.StringMap{
+//					"key": pulumi.String("value"),
 //				},
 //			})
 //			if err != nil {

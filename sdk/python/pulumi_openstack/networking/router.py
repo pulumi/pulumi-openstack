@@ -28,7 +28,7 @@ class RouterArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vendor_options: Optional[pulumi.Input['RouterVendorOptionsArgs']] = None):
         """
         The set of arguments for constructing a Router resource.
@@ -70,7 +70,7 @@ class RouterArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the router.
         :param pulumi.Input[str] tenant_id: The owner of the floating IP. Required if admin wants
                to create a router for another tenant. Changing this creates a new router.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional driver-specific options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional driver-specific options.
         :param pulumi.Input['RouterVendorOptionsArgs'] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         """
@@ -275,14 +275,14 @@ class RouterArgs:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional driver-specific options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
     @property
@@ -315,7 +315,7 @@ class _RouterState:
                  region: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vendor_options: Optional[pulumi.Input['RouterVendorOptionsArgs']] = None):
         """
         Input properties used for looking up and filtering Router resources.
@@ -359,7 +359,7 @@ class _RouterState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the router.
         :param pulumi.Input[str] tenant_id: The owner of the floating IP. Required if admin wants
                to create a router for another tenant. Changing this creates a new router.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional driver-specific options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional driver-specific options.
         :param pulumi.Input['RouterVendorOptionsArgs'] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         """
@@ -579,14 +579,14 @@ class _RouterState:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional driver-specific options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
     @property
@@ -620,7 +620,7 @@ class Router(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vendor_options: Optional[pulumi.Input[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict']]] = None,
                  __props__=None):
         """
@@ -686,7 +686,7 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the router.
         :param pulumi.Input[str] tenant_id: The owner of the floating IP. Required if admin wants
                to create a router for another tenant. Changing this creates a new router.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional driver-specific options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional driver-specific options.
         :param pulumi.Input[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict']] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         """
@@ -746,7 +746,7 @@ class Router(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vendor_options: Optional[pulumi.Input[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -795,7 +795,7 @@ class Router(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vendor_options: Optional[pulumi.Input[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict']]] = None) -> 'Router':
         """
         Get an existing Router resource's state with the given name, id, and optional extra
@@ -844,7 +844,7 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the router.
         :param pulumi.Input[str] tenant_id: The owner of the floating IP. Required if admin wants
                to create a router for another tenant. Changing this creates a new router.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional driver-specific options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional driver-specific options.
         :param pulumi.Input[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict']] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         """
@@ -1002,7 +1002,7 @@ class Router(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of additional driver-specific options.
         """

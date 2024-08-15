@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.openstack.orchestration.inputs.StackV1StackOutputArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -114,7 +113,7 @@ public final class StackV1State extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="environmentOpts")
-    private @Nullable Output<Map<String,Object>> environmentOpts;
+    private @Nullable Output<Map<String,String>> environmentOpts;
 
     /**
      * @return Environment key/value pairs to associate with
@@ -123,7 +122,7 @@ public final class StackV1State extends com.pulumi.resources.ResourceArgs {
      * Environment Opts.
      * 
      */
-    public Optional<Output<Map<String,Object>>> environmentOpts() {
+    public Optional<Output<Map<String,String>>> environmentOpts() {
         return Optional.ofNullable(this.environmentOpts);
     }
 
@@ -165,14 +164,14 @@ public final class StackV1State extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="parameters")
-    private @Nullable Output<Map<String,Object>> parameters;
+    private @Nullable Output<Map<String,String>> parameters;
 
     /**
      * @return User-defined key/value pairs as parameters to pass
      * to the template. Changing this updates the existing stack parameters.
      * 
      */
-    public Optional<Output<Map<String,Object>>> parameters() {
+    public Optional<Output<Map<String,String>>> parameters() {
         return Optional.ofNullable(this.parameters);
     }
 
@@ -263,7 +262,7 @@ public final class StackV1State extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="templateOpts")
-    private @Nullable Output<Map<String,Object>> templateOpts;
+    private @Nullable Output<Map<String,String>> templateOpts;
 
     /**
      * @return Template key/value pairs to associate with the
@@ -272,7 +271,7 @@ public final class StackV1State extends com.pulumi.resources.ResourceArgs {
      * Template Opts.
      * 
      */
-    public Optional<Output<Map<String,Object>>> templateOpts() {
+    public Optional<Output<Map<String,String>>> templateOpts() {
         return Optional.ofNullable(this.templateOpts);
     }
 
@@ -496,7 +495,7 @@ public final class StackV1State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder environmentOpts(@Nullable Output<Map<String,Object>> environmentOpts) {
+        public Builder environmentOpts(@Nullable Output<Map<String,String>> environmentOpts) {
             $.environmentOpts = environmentOpts;
             return this;
         }
@@ -510,7 +509,7 @@ public final class StackV1State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder environmentOpts(Map<String,Object> environmentOpts) {
+        public Builder environmentOpts(Map<String,String> environmentOpts) {
             return environmentOpts(Output.of(environmentOpts));
         }
 
@@ -575,7 +574,7 @@ public final class StackV1State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder parameters(@Nullable Output<Map<String,Object>> parameters) {
+        public Builder parameters(@Nullable Output<Map<String,String>> parameters) {
             $.parameters = parameters;
             return this;
         }
@@ -587,7 +586,7 @@ public final class StackV1State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder parameters(Map<String,Object> parameters) {
+        public Builder parameters(Map<String,String> parameters) {
             return parameters(Output.of(parameters));
         }
 
@@ -719,7 +718,7 @@ public final class StackV1State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder templateOpts(@Nullable Output<Map<String,Object>> templateOpts) {
+        public Builder templateOpts(@Nullable Output<Map<String,String>> templateOpts) {
             $.templateOpts = templateOpts;
             return this;
         }
@@ -733,7 +732,7 @@ public final class StackV1State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder templateOpts(Map<String,Object> templateOpts) {
+        public Builder templateOpts(Map<String,String> templateOpts) {
             return templateOpts(Output.of(templateOpts));
         }
 

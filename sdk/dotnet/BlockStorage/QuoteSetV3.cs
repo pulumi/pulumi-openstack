@@ -94,7 +94,7 @@ namespace Pulumi.OpenStack.BlockStorage
         /// `volumes_&lt;volume_type_name&gt;` and `gigabytes_&lt;volume_type_name&gt;`.
         /// </summary>
         [Output("volumeTypeQuota")]
-        public Output<ImmutableDictionary<string, object>?> VolumeTypeQuota { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> VolumeTypeQuota { get; private set; } = null!;
 
         /// <summary>
         /// Quota value for volumes. Changing this updates the
@@ -207,16 +207,16 @@ namespace Pulumi.OpenStack.BlockStorage
         public Input<int>? Snapshots { get; set; }
 
         [Input("volumeTypeQuota")]
-        private InputMap<object>? _volumeTypeQuota;
+        private InputMap<string>? _volumeTypeQuota;
 
         /// <summary>
         /// Key/Value pairs for setting quota for
         /// volumes types. Possible keys are `snapshots_&lt;volume_type_name&gt;`,
         /// `volumes_&lt;volume_type_name&gt;` and `gigabytes_&lt;volume_type_name&gt;`.
         /// </summary>
-        public InputMap<object> VolumeTypeQuota
+        public InputMap<string> VolumeTypeQuota
         {
-            get => _volumeTypeQuota ?? (_volumeTypeQuota = new InputMap<object>());
+            get => _volumeTypeQuota ?? (_volumeTypeQuota = new InputMap<string>());
             set => _volumeTypeQuota = value;
         }
 
@@ -293,16 +293,16 @@ namespace Pulumi.OpenStack.BlockStorage
         public Input<int>? Snapshots { get; set; }
 
         [Input("volumeTypeQuota")]
-        private InputMap<object>? _volumeTypeQuota;
+        private InputMap<string>? _volumeTypeQuota;
 
         /// <summary>
         /// Key/Value pairs for setting quota for
         /// volumes types. Possible keys are `snapshots_&lt;volume_type_name&gt;`,
         /// `volumes_&lt;volume_type_name&gt;` and `gigabytes_&lt;volume_type_name&gt;`.
         /// </summary>
-        public InputMap<object> VolumeTypeQuota
+        public InputMap<string> VolumeTypeQuota
         {
-            get => _volumeTypeQuota ?? (_volumeTypeQuota = new InputMap<object>());
+            get => _volumeTypeQuota ?? (_volumeTypeQuota = new InputMap<string>());
             set => _volumeTypeQuota = value;
         }
 

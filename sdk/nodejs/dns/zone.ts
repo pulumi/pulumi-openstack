@@ -68,7 +68,7 @@ export class Zone extends pulumi.CustomResource {
      * Attributes for the DNS Service scheduler.
      * Changing this creates a new zone.
      */
-    public readonly attributes!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly attributes!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A description of the zone.
      */
@@ -119,7 +119,7 @@ export class Zone extends pulumi.CustomResource {
      * Map of additional options. Changing this creates a
      * new zone.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Zone resource with the given unique name, arguments, and options.
@@ -172,7 +172,7 @@ export interface ZoneState {
      * Attributes for the DNS Service scheduler.
      * Changing this creates a new zone.
      */
-    attributes?: pulumi.Input<{[key: string]: any}>;
+    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A description of the zone.
      */
@@ -223,7 +223,7 @@ export interface ZoneState {
      * Map of additional options. Changing this creates a
      * new zone.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -234,7 +234,7 @@ export interface ZoneArgs {
      * Attributes for the DNS Service scheduler.
      * Changing this creates a new zone.
      */
-    attributes?: pulumi.Input<{[key: string]: any}>;
+    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A description of the zone.
      */
@@ -285,5 +285,5 @@ export interface ZoneArgs {
      * Map of additional options. Changing this creates a
      * new zone.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

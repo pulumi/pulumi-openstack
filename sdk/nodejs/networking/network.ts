@@ -188,7 +188,7 @@ export class Network extends pulumi.CustomResource {
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Network resource with the given unique name, arguments, and options.
@@ -347,7 +347,7 @@ export interface NetworkState {
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -447,5 +447,5 @@ export interface NetworkArgs {
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

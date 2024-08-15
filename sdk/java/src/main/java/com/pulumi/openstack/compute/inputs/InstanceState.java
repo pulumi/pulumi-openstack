@@ -11,7 +11,6 @@ import com.pulumi.openstack.compute.inputs.InstancePersonalityArgs;
 import com.pulumi.openstack.compute.inputs.InstanceSchedulerHintArgs;
 import com.pulumi.openstack.compute.inputs.InstanceVendorOptionsArgs;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -72,9 +71,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     @Import(name="allMetadata")
-    private @Nullable Output<Map<String,Object>> allMetadata;
+    private @Nullable Output<Map<String,String>> allMetadata;
 
-    public Optional<Output<Map<String,Object>>> allMetadata() {
+    public Optional<Output<Map<String,String>>> allMetadata() {
         return Optional.ofNullable(this.allMetadata);
     }
 
@@ -314,14 +313,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="metadata")
-    private @Nullable Output<Map<String,Object>> metadata;
+    private @Nullable Output<Map<String,String>> metadata;
 
     /**
      * @return Metadata key/value pairs to make available from
      * within the instance. Changing this updates the existing server metadata.
      * 
      */
-    public Optional<Output<Map<String,Object>>> metadata() {
+    public Optional<Output<Map<String,String>>> metadata() {
         return Optional.ofNullable(this.metadata);
     }
 
@@ -684,12 +683,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return adminPass(Output.of(adminPass));
         }
 
-        public Builder allMetadata(@Nullable Output<Map<String,Object>> allMetadata) {
+        public Builder allMetadata(@Nullable Output<Map<String,String>> allMetadata) {
             $.allMetadata = allMetadata;
             return this;
         }
 
-        public Builder allMetadata(Map<String,Object> allMetadata) {
+        public Builder allMetadata(Map<String,String> allMetadata) {
             return allMetadata(Output.of(allMetadata));
         }
 
@@ -1028,7 +1027,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder metadata(@Nullable Output<Map<String,Object>> metadata) {
+        public Builder metadata(@Nullable Output<Map<String,String>> metadata) {
             $.metadata = metadata;
             return this;
         }
@@ -1040,7 +1039,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder metadata(Map<String,Object> metadata) {
+        public Builder metadata(Map<String,String> metadata) {
             return metadata(Output.of(metadata));
         }
 

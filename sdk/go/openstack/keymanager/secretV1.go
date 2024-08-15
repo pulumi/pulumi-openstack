@@ -35,8 +35,8 @@ import (
 //				Payload:            pulumi.String("foobar"),
 //				PayloadContentType: pulumi.String("text/plain"),
 //				SecretType:         pulumi.String("passphrase"),
-//				Metadata: pulumi.Map{
-//					"key": pulumi.Any("foo"),
+//				Metadata: pulumi.StringMap{
+//					"key": pulumi.String("foo"),
 //				},
 //			})
 //			if err != nil {
@@ -156,11 +156,11 @@ type SecretV1 struct {
 	Algorithm pulumi.StringOutput `pulumi:"algorithm"`
 	// The map of metadata, assigned on the secret, which has been
 	// explicitly and implicitly added.
-	AllMetadata pulumi.MapOutput `pulumi:"allMetadata"`
+	AllMetadata pulumi.StringMapOutput `pulumi:"allMetadata"`
 	// Metadata provided by a user or system for informational purposes.
 	BitLength pulumi.IntOutput `pulumi:"bitLength"`
 	// The map of the content types, assigned on the secret.
-	ContentTypes pulumi.MapOutput `pulumi:"contentTypes"`
+	ContentTypes pulumi.StringMapOutput `pulumi:"contentTypes"`
 	// The date the secret was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The creator of the secret.
@@ -168,7 +168,7 @@ type SecretV1 struct {
 	// The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
 	Expiration pulumi.StringPtrOutput `pulumi:"expiration"`
 	// Additional Metadata for the secret.
-	Metadata pulumi.MapOutput `pulumi:"metadata"`
+	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// Metadata provided by a user or system for informational purposes.
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// Human-readable name for the Secret. Does not have
@@ -240,11 +240,11 @@ type secretV1State struct {
 	Algorithm *string `pulumi:"algorithm"`
 	// The map of metadata, assigned on the secret, which has been
 	// explicitly and implicitly added.
-	AllMetadata map[string]interface{} `pulumi:"allMetadata"`
+	AllMetadata map[string]string `pulumi:"allMetadata"`
 	// Metadata provided by a user or system for informational purposes.
 	BitLength *int `pulumi:"bitLength"`
 	// The map of the content types, assigned on the secret.
-	ContentTypes map[string]interface{} `pulumi:"contentTypes"`
+	ContentTypes map[string]string `pulumi:"contentTypes"`
 	// The date the secret was created.
 	CreatedAt *string `pulumi:"createdAt"`
 	// The creator of the secret.
@@ -252,7 +252,7 @@ type secretV1State struct {
 	// The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
 	Expiration *string `pulumi:"expiration"`
 	// Additional Metadata for the secret.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// Metadata provided by a user or system for informational purposes.
 	Mode *string `pulumi:"mode"`
 	// Human-readable name for the Secret. Does not have
@@ -288,11 +288,11 @@ type SecretV1State struct {
 	Algorithm pulumi.StringPtrInput
 	// The map of metadata, assigned on the secret, which has been
 	// explicitly and implicitly added.
-	AllMetadata pulumi.MapInput
+	AllMetadata pulumi.StringMapInput
 	// Metadata provided by a user or system for informational purposes.
 	BitLength pulumi.IntPtrInput
 	// The map of the content types, assigned on the secret.
-	ContentTypes pulumi.MapInput
+	ContentTypes pulumi.StringMapInput
 	// The date the secret was created.
 	CreatedAt pulumi.StringPtrInput
 	// The creator of the secret.
@@ -300,7 +300,7 @@ type SecretV1State struct {
 	// The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
 	Expiration pulumi.StringPtrInput
 	// Additional Metadata for the secret.
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// Metadata provided by a user or system for informational purposes.
 	Mode pulumi.StringPtrInput
 	// Human-readable name for the Secret. Does not have
@@ -343,7 +343,7 @@ type secretV1Args struct {
 	// The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
 	Expiration *string `pulumi:"expiration"`
 	// Additional Metadata for the secret.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// Metadata provided by a user or system for informational purposes.
 	Mode *string `pulumi:"mode"`
 	// Human-readable name for the Secret. Does not have
@@ -377,7 +377,7 @@ type SecretV1Args struct {
 	// The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
 	Expiration pulumi.StringPtrInput
 	// Additional Metadata for the secret.
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// Metadata provided by a user or system for informational purposes.
 	Mode pulumi.StringPtrInput
 	// Human-readable name for the Secret. Does not have
@@ -499,8 +499,8 @@ func (o SecretV1Output) Algorithm() pulumi.StringOutput {
 
 // The map of metadata, assigned on the secret, which has been
 // explicitly and implicitly added.
-func (o SecretV1Output) AllMetadata() pulumi.MapOutput {
-	return o.ApplyT(func(v *SecretV1) pulumi.MapOutput { return v.AllMetadata }).(pulumi.MapOutput)
+func (o SecretV1Output) AllMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.StringMapOutput { return v.AllMetadata }).(pulumi.StringMapOutput)
 }
 
 // Metadata provided by a user or system for informational purposes.
@@ -509,8 +509,8 @@ func (o SecretV1Output) BitLength() pulumi.IntOutput {
 }
 
 // The map of the content types, assigned on the secret.
-func (o SecretV1Output) ContentTypes() pulumi.MapOutput {
-	return o.ApplyT(func(v *SecretV1) pulumi.MapOutput { return v.ContentTypes }).(pulumi.MapOutput)
+func (o SecretV1Output) ContentTypes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.StringMapOutput { return v.ContentTypes }).(pulumi.StringMapOutput)
 }
 
 // The date the secret was created.
@@ -529,8 +529,8 @@ func (o SecretV1Output) Expiration() pulumi.StringPtrOutput {
 }
 
 // Additional Metadata for the secret.
-func (o SecretV1Output) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v *SecretV1) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+func (o SecretV1Output) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // Metadata provided by a user or system for informational purposes.

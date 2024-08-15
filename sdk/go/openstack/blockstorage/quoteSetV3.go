@@ -62,7 +62,7 @@ type QuoteSetV3 struct {
 	// Key/Value pairs for setting quota for
 	// volumes types. Possible keys are `snapshots_<volume_type_name>`,
 	// `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
-	VolumeTypeQuota pulumi.MapOutput `pulumi:"volumeTypeQuota"`
+	VolumeTypeQuota pulumi.StringMapOutput `pulumi:"volumeTypeQuota"`
 	// Quota value for volumes. Changing this updates the
 	// existing quotaset.
 	Volumes pulumi.IntOutput `pulumi:"volumes"`
@@ -129,7 +129,7 @@ type quoteSetV3State struct {
 	// Key/Value pairs for setting quota for
 	// volumes types. Possible keys are `snapshots_<volume_type_name>`,
 	// `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
-	VolumeTypeQuota map[string]interface{} `pulumi:"volumeTypeQuota"`
+	VolumeTypeQuota map[string]string `pulumi:"volumeTypeQuota"`
 	// Quota value for volumes. Changing this updates the
 	// existing quotaset.
 	Volumes *int `pulumi:"volumes"`
@@ -164,7 +164,7 @@ type QuoteSetV3State struct {
 	// Key/Value pairs for setting quota for
 	// volumes types. Possible keys are `snapshots_<volume_type_name>`,
 	// `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
-	VolumeTypeQuota pulumi.MapInput
+	VolumeTypeQuota pulumi.StringMapInput
 	// Quota value for volumes. Changing this updates the
 	// existing quotaset.
 	Volumes pulumi.IntPtrInput
@@ -203,7 +203,7 @@ type quoteSetV3Args struct {
 	// Key/Value pairs for setting quota for
 	// volumes types. Possible keys are `snapshots_<volume_type_name>`,
 	// `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
-	VolumeTypeQuota map[string]interface{} `pulumi:"volumeTypeQuota"`
+	VolumeTypeQuota map[string]string `pulumi:"volumeTypeQuota"`
 	// Quota value for volumes. Changing this updates the
 	// existing quotaset.
 	Volumes *int `pulumi:"volumes"`
@@ -239,7 +239,7 @@ type QuoteSetV3Args struct {
 	// Key/Value pairs for setting quota for
 	// volumes types. Possible keys are `snapshots_<volume_type_name>`,
 	// `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
-	VolumeTypeQuota pulumi.MapInput
+	VolumeTypeQuota pulumi.StringMapInput
 	// Quota value for volumes. Changing this updates the
 	// existing quotaset.
 	Volumes pulumi.IntPtrInput
@@ -384,8 +384,8 @@ func (o QuoteSetV3Output) Snapshots() pulumi.IntOutput {
 // Key/Value pairs for setting quota for
 // volumes types. Possible keys are `snapshots_<volume_type_name>`,
 // `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
-func (o QuoteSetV3Output) VolumeTypeQuota() pulumi.MapOutput {
-	return o.ApplyT(func(v *QuoteSetV3) pulumi.MapOutput { return v.VolumeTypeQuota }).(pulumi.MapOutput)
+func (o QuoteSetV3Output) VolumeTypeQuota() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *QuoteSetV3) pulumi.StringMapOutput { return v.VolumeTypeQuota }).(pulumi.StringMapOutput)
 }
 
 // Quota value for volumes. Changing this updates the

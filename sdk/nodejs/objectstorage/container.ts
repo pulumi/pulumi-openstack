@@ -174,7 +174,7 @@ export class Container extends pulumi.CustomResource {
      * Custom key/value pairs to associate with the container.
      * Changing this updates the existing container metadata.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A unique name for the container. Changing this creates a
      * new container.
@@ -291,7 +291,7 @@ export interface ContainerState {
      * Custom key/value pairs to associate with the container.
      * Changing this updates the existing container metadata.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A unique name for the container. Changing this creates a
      * new container.
@@ -364,7 +364,7 @@ export interface ContainerArgs {
      * Custom key/value pairs to associate with the container.
      * Changing this updates the existing container metadata.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A unique name for the container. Changing this creates a
      * new container.

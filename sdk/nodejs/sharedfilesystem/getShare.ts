@@ -59,7 +59,7 @@ export interface GetShareArgs {
      * One or more metadata key and value pairs as a dictionary of
      * strings.
      */
-    metadata?: {[key: string]: any};
+    metadata?: {[key: string]: string};
     /**
      * The name of the share.
      */
@@ -119,7 +119,7 @@ export interface GetShareResult {
     /**
      * See Argument Reference above.
      */
-    readonly metadata: {[key: string]: any};
+    readonly metadata: {[key: string]: string};
     /**
      * See Argument Reference above.
      */
@@ -193,7 +193,7 @@ export interface GetShareOutputArgs {
      * One or more metadata key and value pairs as a dictionary of
      * strings.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the share.
      */

@@ -56,7 +56,7 @@ namespace Pulumi.OpenStack.Dns
         /// Changing this creates a new zone.
         /// </summary>
         [Output("attributes")]
-        public Output<ImmutableDictionary<string, object>?> Attributes { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Attributes { get; private set; } = null!;
 
         /// <summary>
         /// A description of the zone.
@@ -127,7 +127,7 @@ namespace Pulumi.OpenStack.Dns
         /// new zone.
         /// </summary>
         [Output("valueSpecs")]
-        public Output<ImmutableDictionary<string, object>?> ValueSpecs { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> ValueSpecs { get; private set; } = null!;
 
 
         /// <summary>
@@ -176,15 +176,15 @@ namespace Pulumi.OpenStack.Dns
     public sealed class ZoneArgs : global::Pulumi.ResourceArgs
     {
         [Input("attributes")]
-        private InputMap<object>? _attributes;
+        private InputMap<string>? _attributes;
 
         /// <summary>
         /// Attributes for the DNS Service scheduler.
         /// Changing this creates a new zone.
         /// </summary>
-        public InputMap<object> Attributes
+        public InputMap<string> Attributes
         {
-            get => _attributes ?? (_attributes = new InputMap<object>());
+            get => _attributes ?? (_attributes = new InputMap<string>());
             set => _attributes = value;
         }
 
@@ -259,15 +259,15 @@ namespace Pulumi.OpenStack.Dns
         public Input<string>? Type { get; set; }
 
         [Input("valueSpecs")]
-        private InputMap<object>? _valueSpecs;
+        private InputMap<string>? _valueSpecs;
 
         /// <summary>
         /// Map of additional options. Changing this creates a
         /// new zone.
         /// </summary>
-        public InputMap<object> ValueSpecs
+        public InputMap<string> ValueSpecs
         {
-            get => _valueSpecs ?? (_valueSpecs = new InputMap<object>());
+            get => _valueSpecs ?? (_valueSpecs = new InputMap<string>());
             set => _valueSpecs = value;
         }
 
@@ -280,15 +280,15 @@ namespace Pulumi.OpenStack.Dns
     public sealed class ZoneState : global::Pulumi.ResourceArgs
     {
         [Input("attributes")]
-        private InputMap<object>? _attributes;
+        private InputMap<string>? _attributes;
 
         /// <summary>
         /// Attributes for the DNS Service scheduler.
         /// Changing this creates a new zone.
         /// </summary>
-        public InputMap<object> Attributes
+        public InputMap<string> Attributes
         {
-            get => _attributes ?? (_attributes = new InputMap<object>());
+            get => _attributes ?? (_attributes = new InputMap<string>());
             set => _attributes = value;
         }
 
@@ -363,15 +363,15 @@ namespace Pulumi.OpenStack.Dns
         public Input<string>? Type { get; set; }
 
         [Input("valueSpecs")]
-        private InputMap<object>? _valueSpecs;
+        private InputMap<string>? _valueSpecs;
 
         /// <summary>
         /// Map of additional options. Changing this creates a
         /// new zone.
         /// </summary>
-        public InputMap<object> ValueSpecs
+        public InputMap<string> ValueSpecs
         {
-            get => _valueSpecs ?? (_valueSpecs = new InputMap<object>());
+            get => _valueSpecs ?? (_valueSpecs = new InputMap<string>());
             set => _valueSpecs = value;
         }
 

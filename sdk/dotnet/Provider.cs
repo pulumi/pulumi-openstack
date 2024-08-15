@@ -272,14 +272,14 @@ namespace Pulumi.OpenStack
         public Input<bool>? EnableLogging { get; set; }
 
         [Input("endpointOverrides", json: true)]
-        private InputMap<object>? _endpointOverrides;
+        private InputMap<string>? _endpointOverrides;
 
         /// <summary>
         /// A map of services with an endpoint to override what was from the Keystone catalog
         /// </summary>
-        public InputMap<object> EndpointOverrides
+        public InputMap<string> EndpointOverrides
         {
-            get => _endpointOverrides ?? (_endpointOverrides = new InputMap<object>());
+            get => _endpointOverrides ?? (_endpointOverrides = new InputMap<string>());
             set => _endpointOverrides = value;
         }
 

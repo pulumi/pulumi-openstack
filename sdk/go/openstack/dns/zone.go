@@ -61,7 +61,7 @@ type Zone struct {
 
 	// Attributes for the DNS Service scheduler.
 	// Changing this creates a new zone.
-	Attributes pulumi.MapOutput `pulumi:"attributes"`
+	Attributes pulumi.StringMapOutput `pulumi:"attributes"`
 	// A description of the zone.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disable wait for zone to reach ACTIVE
@@ -92,7 +92,7 @@ type Zone struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Map of additional options. Changing this creates a
 	// new zone.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 }
 
 // NewZone registers a new resource with the given unique name, arguments, and options.
@@ -127,7 +127,7 @@ func GetZone(ctx *pulumi.Context,
 type zoneState struct {
 	// Attributes for the DNS Service scheduler.
 	// Changing this creates a new zone.
-	Attributes map[string]interface{} `pulumi:"attributes"`
+	Attributes map[string]string `pulumi:"attributes"`
 	// A description of the zone.
 	Description *string `pulumi:"description"`
 	// Disable wait for zone to reach ACTIVE
@@ -158,13 +158,13 @@ type zoneState struct {
 	Type *string `pulumi:"type"`
 	// Map of additional options. Changing this creates a
 	// new zone.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 type ZoneState struct {
 	// Attributes for the DNS Service scheduler.
 	// Changing this creates a new zone.
-	Attributes pulumi.MapInput
+	Attributes pulumi.StringMapInput
 	// A description of the zone.
 	Description pulumi.StringPtrInput
 	// Disable wait for zone to reach ACTIVE
@@ -195,7 +195,7 @@ type ZoneState struct {
 	Type pulumi.StringPtrInput
 	// Map of additional options. Changing this creates a
 	// new zone.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (ZoneState) ElementType() reflect.Type {
@@ -205,7 +205,7 @@ func (ZoneState) ElementType() reflect.Type {
 type zoneArgs struct {
 	// Attributes for the DNS Service scheduler.
 	// Changing this creates a new zone.
-	Attributes map[string]interface{} `pulumi:"attributes"`
+	Attributes map[string]string `pulumi:"attributes"`
 	// A description of the zone.
 	Description *string `pulumi:"description"`
 	// Disable wait for zone to reach ACTIVE
@@ -236,14 +236,14 @@ type zoneArgs struct {
 	Type *string `pulumi:"type"`
 	// Map of additional options. Changing this creates a
 	// new zone.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 // The set of arguments for constructing a Zone resource.
 type ZoneArgs struct {
 	// Attributes for the DNS Service scheduler.
 	// Changing this creates a new zone.
-	Attributes pulumi.MapInput
+	Attributes pulumi.StringMapInput
 	// A description of the zone.
 	Description pulumi.StringPtrInput
 	// Disable wait for zone to reach ACTIVE
@@ -274,7 +274,7 @@ type ZoneArgs struct {
 	Type pulumi.StringPtrInput
 	// Map of additional options. Changing this creates a
 	// new zone.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (ZoneArgs) ElementType() reflect.Type {
@@ -366,8 +366,8 @@ func (o ZoneOutput) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 
 // Attributes for the DNS Service scheduler.
 // Changing this creates a new zone.
-func (o ZoneOutput) Attributes() pulumi.MapOutput {
-	return o.ApplyT(func(v *Zone) pulumi.MapOutput { return v.Attributes }).(pulumi.MapOutput)
+func (o ZoneOutput) Attributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringMapOutput { return v.Attributes }).(pulumi.StringMapOutput)
 }
 
 // A description of the zone.
@@ -427,8 +427,8 @@ func (o ZoneOutput) Type() pulumi.StringOutput {
 
 // Map of additional options. Changing this creates a
 // new zone.
-func (o ZoneOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *Zone) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o ZoneOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 type ZoneArrayOutput struct{ *pulumi.OutputState }

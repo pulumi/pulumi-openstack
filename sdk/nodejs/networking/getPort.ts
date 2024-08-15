@@ -160,7 +160,7 @@ export interface GetPortResult {
     /**
      * The list of maps representing port DNS assignments.
      */
-    readonly dnsAssignments: {[key: string]: any}[];
+    readonly dnsAssignments: {[key: string]: string}[];
     /**
      * See Argument Reference above.
      */

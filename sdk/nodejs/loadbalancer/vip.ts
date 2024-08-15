@@ -95,7 +95,7 @@ export class Vip extends pulumi.CustomResource {
      * The persistence object structure is documented below. Changing this updates
      * the persistence of the existing vip.
      */
-    public readonly persistence!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly persistence!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the pool with which the vip is associated.
      * Changing this updates the poolId of the existing vip.
@@ -237,7 +237,7 @@ export interface VipState {
      * The persistence object structure is documented below. Changing this updates
      * the persistence of the existing vip.
      */
-    persistence?: pulumi.Input<{[key: string]: any}>;
+    persistence?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the pool with which the vip is associated.
      * Changing this updates the poolId of the existing vip.
@@ -319,7 +319,7 @@ export interface VipArgs {
      * The persistence object structure is documented below. Changing this updates
      * the persistence of the existing vip.
      */
-    persistence?: pulumi.Input<{[key: string]: any}>;
+    persistence?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the pool with which the vip is associated.
      * Changing this updates the poolId of the existing vip.

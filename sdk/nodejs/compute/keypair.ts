@@ -101,7 +101,7 @@ export class Keypair extends pulumi.CustomResource {
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Keypair resource with the given unique name, arguments, and options.
@@ -181,7 +181,7 @@ export interface KeypairState {
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -217,5 +217,5 @@ export interface KeypairArgs {
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

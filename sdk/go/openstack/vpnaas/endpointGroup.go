@@ -75,7 +75,7 @@ type EndpointGroup struct {
 	// Changing this creates a new group.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Map of additional options.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 }
 
 // NewEndpointGroup registers a new resource with the given unique name, arguments, and options.
@@ -129,7 +129,7 @@ type endpointGroupState struct {
 	// Changing this creates a new group.
 	Type *string `pulumi:"type"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 type EndpointGroupState struct {
@@ -154,7 +154,7 @@ type EndpointGroupState struct {
 	// Changing this creates a new group.
 	Type pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (EndpointGroupState) ElementType() reflect.Type {
@@ -183,7 +183,7 @@ type endpointGroupArgs struct {
 	// Changing this creates a new group.
 	Type *string `pulumi:"type"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 // The set of arguments for constructing a EndpointGroup resource.
@@ -209,7 +209,7 @@ type EndpointGroupArgs struct {
 	// Changing this creates a new group.
 	Type pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (EndpointGroupArgs) ElementType() reflect.Type {
@@ -338,8 +338,8 @@ func (o EndpointGroupOutput) Type() pulumi.StringOutput {
 }
 
 // Map of additional options.
-func (o EndpointGroupOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *EndpointGroup) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o EndpointGroupOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 type EndpointGroupArrayOutput struct{ *pulumi.OutputState }

@@ -146,7 +146,7 @@ namespace Pulumi.OpenStack.BlockStorage
         /// <summary>
         /// Map with gigabytes_{volume_type}, snapshots_{volume_type}, volumes_{volume_type} for each volume type.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> VolumeTypeQuota;
+        public readonly ImmutableDictionary<string, string> VolumeTypeQuota;
         /// <summary>
         /// The number of volumes that are allowed.
         /// </summary>
@@ -172,7 +172,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
             int snapshots,
 
-            ImmutableDictionary<string, object> volumeTypeQuota,
+            ImmutableDictionary<string, string> volumeTypeQuota,
 
             int volumes)
         {

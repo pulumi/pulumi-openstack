@@ -13,7 +13,6 @@ import com.pulumi.openstack.compute.inputs.FlavorState;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -127,14 +126,14 @@ public class Flavor extends com.pulumi.resources.CustomResource {
      * Key/Value pairs of metadata for the flavor.
      * 
      */
-    @Export(name="extraSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> extraSpecs;
+    @Export(name="extraSpecs", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> extraSpecs;
 
     /**
      * @return Key/Value pairs of metadata for the flavor.
      * 
      */
-    public Output<Map<String,Object>> extraSpecs() {
+    public Output<Map<String,String>> extraSpecs() {
         return this.extraSpecs;
     }
     /**

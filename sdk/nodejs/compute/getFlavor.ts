@@ -106,7 +106,7 @@ export interface GetFlavorResult {
     /**
      * Key/Value pairs of metadata for the flavor.
      */
-    readonly extraSpecs: {[key: string]: any};
+    readonly extraSpecs: {[key: string]: string};
     readonly flavorId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.

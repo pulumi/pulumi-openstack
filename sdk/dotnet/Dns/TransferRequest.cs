@@ -90,7 +90,7 @@ namespace Pulumi.OpenStack.Dns
         /// new transfer request.
         /// </summary>
         [Output("valueSpecs")]
-        public Output<ImmutableDictionary<string, object>?> ValueSpecs { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> ValueSpecs { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the zone for which to create the transfer
@@ -178,15 +178,15 @@ namespace Pulumi.OpenStack.Dns
         public Input<string>? TargetProjectId { get; set; }
 
         [Input("valueSpecs")]
-        private InputMap<object>? _valueSpecs;
+        private InputMap<string>? _valueSpecs;
 
         /// <summary>
         /// Map of additional options. Changing this creates a
         /// new transfer request.
         /// </summary>
-        public InputMap<object> ValueSpecs
+        public InputMap<string> ValueSpecs
         {
-            get => _valueSpecs ?? (_valueSpecs = new InputMap<object>());
+            get => _valueSpecs ?? (_valueSpecs = new InputMap<string>());
             set => _valueSpecs = value;
         }
 
@@ -238,15 +238,15 @@ namespace Pulumi.OpenStack.Dns
         public Input<string>? TargetProjectId { get; set; }
 
         [Input("valueSpecs")]
-        private InputMap<object>? _valueSpecs;
+        private InputMap<string>? _valueSpecs;
 
         /// <summary>
         /// Map of additional options. Changing this creates a
         /// new transfer request.
         /// </summary>
-        public InputMap<object> ValueSpecs
+        public InputMap<string> ValueSpecs
         {
-            get => _valueSpecs ?? (_valueSpecs = new InputMap<object>());
+            get => _valueSpecs ?? (_valueSpecs = new InputMap<string>());
             set => _valueSpecs = value;
         }
 

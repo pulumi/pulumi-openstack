@@ -115,7 +115,7 @@ class GetNodeGroupResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Mapping[str, Any]:
+    def labels(self) -> Mapping[str, str]:
         """
         The list of key value pairs representing additional properties of
         the node group.

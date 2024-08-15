@@ -85,7 +85,7 @@ export interface GetQuotasetV3Result {
     /**
      * Map with gigabytes_{volume_type}, snapshots_{volume_type}, volumes_{volume_type} for each volume type.
      */
-    readonly volumeTypeQuota: {[key: string]: any};
+    readonly volumeTypeQuota: {[key: string]: string};
     /**
      * The number of volumes that are allowed.
      */

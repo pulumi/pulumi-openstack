@@ -155,7 +155,7 @@ export class Cluster extends pulumi.CustomResource {
      * The list of key value pairs representing additional
      * properties of the cluster. Changing this creates a new cluster.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public /*out*/ readonly masterAddresses!: pulumi.Output<string[]>;
     /**
      * The number of master nodes for the cluster.
@@ -344,7 +344,7 @@ export interface ClusterState {
      * The list of key value pairs representing additional
      * properties of the cluster. Changing this creates a new cluster.
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     masterAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The number of master nodes for the cluster.
@@ -449,7 +449,7 @@ export interface ClusterArgs {
      * The list of key value pairs representing additional
      * properties of the cluster. Changing this creates a new cluster.
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The number of master nodes for the cluster.
      * Changing this creates a new cluster.

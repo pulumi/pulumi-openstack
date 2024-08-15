@@ -86,7 +86,7 @@ type QosPolicy struct {
 	// The time at which QoS policy was created.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// Map of additional options.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 }
 
 // NewQosPolicy registers a new resource with the given unique name, arguments, and options.
@@ -153,7 +153,7 @@ type qosPolicyState struct {
 	// The time at which QoS policy was created.
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 type QosPolicyState struct {
@@ -191,7 +191,7 @@ type QosPolicyState struct {
 	// The time at which QoS policy was created.
 	UpdatedAt pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (QosPolicyState) ElementType() reflect.Type {
@@ -224,7 +224,7 @@ type qosPolicyArgs struct {
 	// A set of string tags for the QoS policy.
 	Tags []string `pulumi:"tags"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 // The set of arguments for constructing a QosPolicy resource.
@@ -254,7 +254,7 @@ type QosPolicyArgs struct {
 	// A set of string tags for the QoS policy.
 	Tags pulumi.StringArrayInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (QosPolicyArgs) ElementType() reflect.Type {
@@ -411,8 +411,8 @@ func (o QosPolicyOutput) UpdatedAt() pulumi.StringOutput {
 }
 
 // Map of additional options.
-func (o QosPolicyOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *QosPolicy) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o QosPolicyOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 type QosPolicyArrayOutput struct{ *pulumi.OutputState }

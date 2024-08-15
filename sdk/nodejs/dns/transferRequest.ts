@@ -90,7 +90,7 @@ export class TransferRequest extends pulumi.CustomResource {
      * Map of additional options. Changing this creates a
      * new transfer request.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the zone for which to create the transfer
      * request.
@@ -165,7 +165,7 @@ export interface TransferRequestState {
      * Map of additional options. Changing this creates a
      * new transfer request.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the zone for which to create the transfer
      * request.
@@ -203,7 +203,7 @@ export interface TransferRequestArgs {
      * Map of additional options. Changing this creates a
      * new transfer request.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the zone for which to create the transfer
      * request.

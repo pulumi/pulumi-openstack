@@ -125,7 +125,7 @@ namespace Pulumi.OpenStack.Networking
         /// Map of additional options.
         /// </summary>
         [Output("valueSpecs")]
-        public Output<ImmutableDictionary<string, object>?> ValueSpecs { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> ValueSpecs { get; private set; } = null!;
 
 
         /// <summary>
@@ -232,14 +232,14 @@ namespace Pulumi.OpenStack.Networking
         }
 
         [Input("valueSpecs")]
-        private InputMap<object>? _valueSpecs;
+        private InputMap<string>? _valueSpecs;
 
         /// <summary>
         /// Map of additional options.
         /// </summary>
-        public InputMap<object> ValueSpecs
+        public InputMap<string> ValueSpecs
         {
-            get => _valueSpecs ?? (_valueSpecs = new InputMap<object>());
+            get => _valueSpecs ?? (_valueSpecs = new InputMap<string>());
             set => _valueSpecs = value;
         }
 
@@ -341,14 +341,14 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? UpdatedAt { get; set; }
 
         [Input("valueSpecs")]
-        private InputMap<object>? _valueSpecs;
+        private InputMap<string>? _valueSpecs;
 
         /// <summary>
         /// Map of additional options.
         /// </summary>
-        public InputMap<object> ValueSpecs
+        public InputMap<string> ValueSpecs
         {
-            get => _valueSpecs ?? (_valueSpecs = new InputMap<object>());
+            get => _valueSpecs ?? (_valueSpecs = new InputMap<string>());
             set => _valueSpecs = value;
         }
 

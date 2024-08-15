@@ -94,7 +94,7 @@ export interface GetInstanceV2Result {
     /**
      * A set of key/value pairs made available to the server.
      */
-    readonly metadata: {[key: string]: any};
+    readonly metadata: {[key: string]: string};
     /**
      * The name of the network
      */

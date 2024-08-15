@@ -6,7 +6,6 @@ package com.pulumi.openstack.dns.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -79,14 +78,14 @@ public final class TransferAcceptState extends com.pulumi.resources.ResourceArgs
      * 
      */
     @Import(name="valueSpecs")
-    private @Nullable Output<Map<String,Object>> valueSpecs;
+    private @Nullable Output<Map<String,String>> valueSpecs;
 
     /**
      * @return Map of additional options. Changing this creates a
      * new transfer accept.
      * 
      */
-    public Optional<Output<Map<String,Object>>> valueSpecs() {
+    public Optional<Output<Map<String,String>>> valueSpecs() {
         return Optional.ofNullable(this.valueSpecs);
     }
 
@@ -213,7 +212,7 @@ public final class TransferAcceptState extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder valueSpecs(@Nullable Output<Map<String,Object>> valueSpecs) {
+        public Builder valueSpecs(@Nullable Output<Map<String,String>> valueSpecs) {
             $.valueSpecs = valueSpecs;
             return this;
         }
@@ -225,7 +224,7 @@ public final class TransferAcceptState extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder valueSpecs(Map<String,Object> valueSpecs) {
+        public Builder valueSpecs(Map<String,String> valueSpecs) {
             return valueSpecs(Output.of(valueSpecs));
         }
 

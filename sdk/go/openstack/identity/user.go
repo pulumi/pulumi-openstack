@@ -60,8 +60,8 @@ import (
 //						},
 //					},
 //				},
-//				Extra: pulumi.Map{
-//					"email": pulumi.Any("user_1@foobar.com"),
+//				Extra: pulumi.StringMap{
+//					"email": pulumi.String("user_1@foobar.com"),
 //				},
 //			})
 //			if err != nil {
@@ -93,7 +93,7 @@ type User struct {
 	// values are `true` and `false`.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Free-form key/value pairs of extra information.
-	Extra pulumi.MapOutput `pulumi:"extra"`
+	Extra pulumi.StringMapOutput `pulumi:"extra"`
 	// User will not have to
 	// change their password upon first use. Valid values are `true` and `false`.
 	IgnoreChangePasswordUponFirstUse pulumi.BoolPtrOutput `pulumi:"ignoreChangePasswordUponFirstUse"`
@@ -168,7 +168,7 @@ type userState struct {
 	// values are `true` and `false`.
 	Enabled *bool `pulumi:"enabled"`
 	// Free-form key/value pairs of extra information.
-	Extra map[string]interface{} `pulumi:"extra"`
+	Extra map[string]string `pulumi:"extra"`
 	// User will not have to
 	// change their password upon first use. Valid values are `true` and `false`.
 	IgnoreChangePasswordUponFirstUse *bool `pulumi:"ignoreChangePasswordUponFirstUse"`
@@ -207,7 +207,7 @@ type UserState struct {
 	// values are `true` and `false`.
 	Enabled pulumi.BoolPtrInput
 	// Free-form key/value pairs of extra information.
-	Extra pulumi.MapInput
+	Extra pulumi.StringMapInput
 	// User will not have to
 	// change their password upon first use. Valid values are `true` and `false`.
 	IgnoreChangePasswordUponFirstUse pulumi.BoolPtrInput
@@ -250,7 +250,7 @@ type userArgs struct {
 	// values are `true` and `false`.
 	Enabled *bool `pulumi:"enabled"`
 	// Free-form key/value pairs of extra information.
-	Extra map[string]interface{} `pulumi:"extra"`
+	Extra map[string]string `pulumi:"extra"`
 	// User will not have to
 	// change their password upon first use. Valid values are `true` and `false`.
 	IgnoreChangePasswordUponFirstUse *bool `pulumi:"ignoreChangePasswordUponFirstUse"`
@@ -290,7 +290,7 @@ type UserArgs struct {
 	// values are `true` and `false`.
 	Enabled pulumi.BoolPtrInput
 	// Free-form key/value pairs of extra information.
-	Extra pulumi.MapInput
+	Extra pulumi.StringMapInput
 	// User will not have to
 	// change their password upon first use. Valid values are `true` and `false`.
 	IgnoreChangePasswordUponFirstUse pulumi.BoolPtrInput
@@ -427,8 +427,8 @@ func (o UserOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // Free-form key/value pairs of extra information.
-func (o UserOutput) Extra() pulumi.MapOutput {
-	return o.ApplyT(func(v *User) pulumi.MapOutput { return v.Extra }).(pulumi.MapOutput)
+func (o UserOutput) Extra() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *User) pulumi.StringMapOutput { return v.Extra }).(pulumi.StringMapOutput)
 }
 
 // User will not have to

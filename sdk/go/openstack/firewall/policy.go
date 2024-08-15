@@ -104,7 +104,7 @@ type Policy struct {
 	Shared   pulumi.BoolPtrOutput `pulumi:"shared"`
 	TenantId pulumi.StringOutput  `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 }
 
 // NewPolicy registers a new resource with the given unique name, arguments, and options.
@@ -166,7 +166,7 @@ type policyState struct {
 	Shared   *bool   `pulumi:"shared"`
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 type PolicyState struct {
@@ -199,7 +199,7 @@ type PolicyState struct {
 	Shared   pulumi.BoolPtrInput
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (PolicyState) ElementType() reflect.Type {
@@ -236,7 +236,7 @@ type policyArgs struct {
 	Shared   *bool   `pulumi:"shared"`
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 // The set of arguments for constructing a Policy resource.
@@ -270,7 +270,7 @@ type PolicyArgs struct {
 	Shared   pulumi.BoolPtrInput
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (PolicyArgs) ElementType() reflect.Type {
@@ -410,8 +410,8 @@ func (o PolicyOutput) TenantId() pulumi.StringOutput {
 }
 
 // Map of additional options.
-func (o PolicyOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *Policy) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o PolicyOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 type PolicyArrayOutput struct{ *pulumi.OutputState }

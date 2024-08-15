@@ -31,7 +31,7 @@ class ClusterTemplateArgs:
                  https_proxy: Optional[pulumi.Input[str]] = None,
                  insecure_registry: Optional[pulumi.Input[str]] = None,
                  keypair_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  master_flavor: Optional[pulumi.Input[str]] = None,
                  master_lb_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -94,7 +94,7 @@ class ClusterTemplateArgs:
                existing cluster template.
         :param pulumi.Input[str] keypair_id: The name of the Compute service SSH keypair.
                Changing this updates the keypair of the existing cluster template.
-        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of key value pairs representing additional
                properties of the cluster template. Changing this updates the labels of the
                existing cluster template.
         :param pulumi.Input[str] master_flavor: The flavor for the master nodes. Can be set via
@@ -424,7 +424,7 @@ class ClusterTemplateArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of key value pairs representing additional
         properties of the cluster template. Changing this updates the labels of the
@@ -433,7 +433,7 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -610,7 +610,7 @@ class _ClusterTemplateState:
                  image: Optional[pulumi.Input[str]] = None,
                  insecure_registry: Optional[pulumi.Input[str]] = None,
                  keypair_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  master_flavor: Optional[pulumi.Input[str]] = None,
                  master_lb_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -676,7 +676,7 @@ class _ClusterTemplateState:
                existing cluster template.
         :param pulumi.Input[str] keypair_id: The name of the Compute service SSH keypair.
                Changing this updates the keypair of the existing cluster template.
-        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of key value pairs representing additional
                properties of the cluster template. Changing this updates the labels of the
                existing cluster template.
         :param pulumi.Input[str] master_flavor: The flavor for the master nodes. Can be set via
@@ -1031,7 +1031,7 @@ class _ClusterTemplateState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of key value pairs representing additional
         properties of the cluster template. Changing this updates the labels of the
@@ -1040,7 +1040,7 @@ class _ClusterTemplateState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -1255,7 +1255,7 @@ class ClusterTemplate(pulumi.CustomResource):
                  image: Optional[pulumi.Input[str]] = None,
                  insecure_registry: Optional[pulumi.Input[str]] = None,
                  keypair_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  master_flavor: Optional[pulumi.Input[str]] = None,
                  master_lb_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1398,7 +1398,7 @@ class ClusterTemplate(pulumi.CustomResource):
                existing cluster template.
         :param pulumi.Input[str] keypair_id: The name of the Compute service SSH keypair.
                Changing this updates the keypair of the existing cluster template.
-        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of key value pairs representing additional
                properties of the cluster template. Changing this updates the labels of the
                existing cluster template.
         :param pulumi.Input[str] master_flavor: The flavor for the master nodes. Can be set via
@@ -1550,7 +1550,7 @@ class ClusterTemplate(pulumi.CustomResource):
                  image: Optional[pulumi.Input[str]] = None,
                  insecure_registry: Optional[pulumi.Input[str]] = None,
                  keypair_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  master_flavor: Optional[pulumi.Input[str]] = None,
                  master_lb_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1636,7 +1636,7 @@ class ClusterTemplate(pulumi.CustomResource):
             image: Optional[pulumi.Input[str]] = None,
             insecure_registry: Optional[pulumi.Input[str]] = None,
             keypair_id: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             master_flavor: Optional[pulumi.Input[str]] = None,
             master_lb_enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1707,7 +1707,7 @@ class ClusterTemplate(pulumi.CustomResource):
                existing cluster template.
         :param pulumi.Input[str] keypair_id: The name of the Compute service SSH keypair.
                Changing this updates the keypair of the existing cluster template.
-        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of key value pairs representing additional
                properties of the cluster template. Changing this updates the labels of the
                existing cluster template.
         :param pulumi.Input[str] master_flavor: The flavor for the master nodes. Can be set via
@@ -1962,7 +1962,7 @@ class ClusterTemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The list of key value pairs representing additional
         properties of the cluster template. Changing this updates the labels of the

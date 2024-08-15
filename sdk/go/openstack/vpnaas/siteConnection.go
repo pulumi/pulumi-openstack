@@ -116,7 +116,7 @@ type SiteConnection struct {
 	// create a connection for another project. Changing this creates a new connection.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 	// The ID of the VPN service. Changing this creates a new connection.
 	VpnserviceId pulumi.StringOutput `pulumi:"vpnserviceId"`
 }
@@ -221,7 +221,7 @@ type siteConnectionState struct {
 	// create a connection for another project. Changing this creates a new connection.
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 	// The ID of the VPN service. Changing this creates a new connection.
 	VpnserviceId *string `pulumi:"vpnserviceId"`
 }
@@ -279,7 +279,7 @@ type SiteConnectionState struct {
 	// create a connection for another project. Changing this creates a new connection.
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 	// The ID of the VPN service. Changing this creates a new connection.
 	VpnserviceId pulumi.StringPtrInput
 }
@@ -341,7 +341,7 @@ type siteConnectionArgs struct {
 	// create a connection for another project. Changing this creates a new connection.
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 	// The ID of the VPN service. Changing this creates a new connection.
 	VpnserviceId string `pulumi:"vpnserviceId"`
 }
@@ -400,7 +400,7 @@ type SiteConnectionArgs struct {
 	// create a connection for another project. Changing this creates a new connection.
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 	// The ID of the VPN service. Changing this creates a new connection.
 	VpnserviceId pulumi.StringInput
 }
@@ -595,8 +595,8 @@ func (o SiteConnectionOutput) TenantId() pulumi.StringOutput {
 }
 
 // Map of additional options.
-func (o SiteConnectionOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *SiteConnection) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o SiteConnectionOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 // The ID of the VPN service. Changing this creates a new connection.

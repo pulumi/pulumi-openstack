@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -56,7 +55,7 @@ public final class GetImageResult {
      * https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      * 
      */
-    private Map<String,Object> metadata;
+    private Map<String,String> metadata;
     /**
      * @return The minimum amount of disk space required to use the image.
      * 
@@ -75,7 +74,7 @@ public final class GetImageResult {
      * @return Freeform information about the image.
      * 
      */
-    private @Nullable Map<String,Object> properties;
+    private @Nullable Map<String,String> properties;
     /**
      * @return Whether or not the image is protected.
      * 
@@ -164,7 +163,7 @@ public final class GetImageResult {
      * https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      * 
      */
-    public Map<String,Object> metadata() {
+    public Map<String,String> metadata() {
         return this.metadata;
     }
     /**
@@ -197,7 +196,7 @@ public final class GetImageResult {
      * @return Freeform information about the image.
      * 
      */
-    public Map<String,Object> properties() {
+    public Map<String,String> properties() {
         return this.properties == null ? Map.of() : this.properties;
     }
     /**
@@ -271,14 +270,14 @@ public final class GetImageResult {
         private @Nullable Boolean hidden;
         private String id;
         private @Nullable String memberStatus;
-        private Map<String,Object> metadata;
+        private Map<String,String> metadata;
         private Integer minDiskGb;
         private Integer minRamMb;
         private @Nullable Boolean mostRecent;
         private @Nullable String name;
         private @Nullable String nameRegex;
         private @Nullable String owner;
-        private @Nullable Map<String,Object> properties;
+        private @Nullable Map<String,String> properties;
         private Boolean protected_;
         private String region;
         private String schema;
@@ -379,7 +378,7 @@ public final class GetImageResult {
             return this;
         }
         @CustomType.Setter
-        public Builder metadata(Map<String,Object> metadata) {
+        public Builder metadata(Map<String,String> metadata) {
             if (metadata == null) {
               throw new MissingRequiredPropertyException("GetImageResult", "metadata");
             }
@@ -427,7 +426,7 @@ public final class GetImageResult {
             return this;
         }
         @CustomType.Setter
-        public Builder properties(@Nullable Map<String,Object> properties) {
+        public Builder properties(@Nullable Map<String,String> properties) {
 
             this.properties = properties;
             return this;

@@ -86,7 +86,7 @@ export class VolumeTypeV3 extends pulumi.CustomResource {
     /**
      * Key/Value pairs of metadata for the volume type.
      */
-    public readonly extraSpecs!: pulumi.Output<{[key: string]: any}>;
+    public readonly extraSpecs!: pulumi.Output<{[key: string]: string}>;
     /**
      * Whether the volume type is public. Changing
      * this updates the `isPublic` of an existing volume type.
@@ -147,7 +147,7 @@ export interface VolumeTypeV3State {
     /**
      * Key/Value pairs of metadata for the volume type.
      */
-    extraSpecs?: pulumi.Input<{[key: string]: any}>;
+    extraSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Whether the volume type is public. Changing
      * this updates the `isPublic` of an existing volume type.
@@ -178,7 +178,7 @@ export interface VolumeTypeV3Args {
     /**
      * Key/Value pairs of metadata for the volume type.
      */
-    extraSpecs?: pulumi.Input<{[key: string]: any}>;
+    extraSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Whether the volume type is public. Changing
      * this updates the `isPublic` of an existing volume type.

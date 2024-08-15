@@ -90,7 +90,7 @@ type NodeGroup struct {
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// The list of key value pairs representing additional
 	// properties of the node group. Changing this creates a new node group.
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The maximum number of nodes for the node group.
 	// Changing this update the maximum number of nodes of the node group.
 	MaxNodeCount pulumi.IntPtrOutput `pulumi:"maxNodeCount"`
@@ -171,7 +171,7 @@ type nodeGroupState struct {
 	ImageId *string `pulumi:"imageId"`
 	// The list of key value pairs representing additional
 	// properties of the node group. Changing this creates a new node group.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The maximum number of nodes for the node group.
 	// Changing this update the maximum number of nodes of the node group.
 	MaxNodeCount *int `pulumi:"maxNodeCount"`
@@ -220,7 +220,7 @@ type NodeGroupState struct {
 	ImageId pulumi.StringPtrInput
 	// The list of key value pairs representing additional
 	// properties of the node group. Changing this creates a new node group.
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The maximum number of nodes for the node group.
 	// Changing this update the maximum number of nodes of the node group.
 	MaxNodeCount pulumi.IntPtrInput
@@ -272,7 +272,7 @@ type nodeGroupArgs struct {
 	ImageId *string `pulumi:"imageId"`
 	// The list of key value pairs representing additional
 	// properties of the node group. Changing this creates a new node group.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The maximum number of nodes for the node group.
 	// Changing this update the maximum number of nodes of the node group.
 	MaxNodeCount *int `pulumi:"maxNodeCount"`
@@ -316,7 +316,7 @@ type NodeGroupArgs struct {
 	ImageId pulumi.StringPtrInput
 	// The list of key value pairs representing additional
 	// properties of the node group. Changing this creates a new node group.
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The maximum number of nodes for the node group.
 	// Changing this update the maximum number of nodes of the node group.
 	MaxNodeCount pulumi.IntPtrInput
@@ -461,8 +461,8 @@ func (o NodeGroupOutput) ImageId() pulumi.StringOutput {
 
 // The list of key value pairs representing additional
 // properties of the node group. Changing this creates a new node group.
-func (o NodeGroupOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *NodeGroup) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o NodeGroupOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The maximum number of nodes for the node group.

@@ -88,7 +88,7 @@ export interface GetImageIdsArgs {
      * All specified properties must be matched. Unlike other options filtering by
      * `properties` does by client on the result of OpenStack search query.
      */
-    properties?: {[key: string]: any};
+    properties?: {[key: string]: string};
     /**
      * The region in which to obtain the V2 Glance client. A
      * Glance client is needed to create an Image that can be used with a compute
@@ -143,7 +143,7 @@ export interface GetImageIdsResult {
     readonly name?: string;
     readonly nameRegex?: string;
     readonly owner?: string;
-    readonly properties?: {[key: string]: any};
+    readonly properties?: {[key: string]: string};
     readonly region: string;
     readonly sizeMax?: number;
     readonly sizeMin?: number;
@@ -217,7 +217,7 @@ export interface GetImageIdsOutputArgs {
      * All specified properties must be matched. Unlike other options filtering by
      * `properties` does by client on the result of OpenStack search query.
      */
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region in which to obtain the V2 Glance client. A
      * Glance client is needed to create an Image that can be used with a compute

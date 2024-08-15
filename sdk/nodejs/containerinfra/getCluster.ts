@@ -105,7 +105,7 @@ export interface GetClusterResult {
      * The list of key value pairs representing additional properties of
      * the cluster.
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     /**
      * IP addresses of the master node of the cluster.
      */

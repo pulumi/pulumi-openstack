@@ -6,7 +6,6 @@ package com.pulumi.openstack.blockstorage.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -40,13 +39,13 @@ public final class VolumeTypeV3State extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="extraSpecs")
-    private @Nullable Output<Map<String,Object>> extraSpecs;
+    private @Nullable Output<Map<String,String>> extraSpecs;
 
     /**
      * @return Key/Value pairs of metadata for the volume type.
      * 
      */
-    public Optional<Output<Map<String,Object>>> extraSpecs() {
+    public Optional<Output<Map<String,String>>> extraSpecs() {
         return Optional.ofNullable(this.extraSpecs);
     }
 
@@ -160,7 +159,7 @@ public final class VolumeTypeV3State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder extraSpecs(@Nullable Output<Map<String,Object>> extraSpecs) {
+        public Builder extraSpecs(@Nullable Output<Map<String,String>> extraSpecs) {
             $.extraSpecs = extraSpecs;
             return this;
         }
@@ -171,7 +170,7 @@ public final class VolumeTypeV3State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder extraSpecs(Map<String,Object> extraSpecs) {
+        public Builder extraSpecs(Map<String,String> extraSpecs) {
             return extraSpecs(Output.of(extraSpecs));
         }
 

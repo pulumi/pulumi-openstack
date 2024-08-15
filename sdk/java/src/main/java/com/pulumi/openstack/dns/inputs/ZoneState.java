@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -26,14 +25,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="attributes")
-    private @Nullable Output<Map<String,Object>> attributes;
+    private @Nullable Output<Map<String,String>> attributes;
 
     /**
      * @return Attributes for the DNS Service scheduler.
      * Changing this creates a new zone.
      * 
      */
-    public Optional<Output<Map<String,Object>>> attributes() {
+    public Optional<Output<Map<String,String>>> attributes() {
         return Optional.ofNullable(this.attributes);
     }
 
@@ -198,14 +197,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="valueSpecs")
-    private @Nullable Output<Map<String,Object>> valueSpecs;
+    private @Nullable Output<Map<String,String>> valueSpecs;
 
     /**
      * @return Map of additional options. Changing this creates a
      * new zone.
      * 
      */
-    public Optional<Output<Map<String,Object>>> valueSpecs() {
+    public Optional<Output<Map<String,String>>> valueSpecs() {
         return Optional.ofNullable(this.valueSpecs);
     }
 
@@ -250,7 +249,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder attributes(@Nullable Output<Map<String,Object>> attributes) {
+        public Builder attributes(@Nullable Output<Map<String,String>> attributes) {
             $.attributes = attributes;
             return this;
         }
@@ -262,7 +261,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder attributes(Map<String,Object> attributes) {
+        public Builder attributes(Map<String,String> attributes) {
             return attributes(Output.of(attributes));
         }
 
@@ -493,7 +492,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder valueSpecs(@Nullable Output<Map<String,Object>> valueSpecs) {
+        public Builder valueSpecs(@Nullable Output<Map<String,String>> valueSpecs) {
             $.valueSpecs = valueSpecs;
             return this;
         }
@@ -505,7 +504,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder valueSpecs(Map<String,Object> valueSpecs) {
+        public Builder valueSpecs(Map<String,String> valueSpecs) {
             return valueSpecs(Output.of(valueSpecs));
         }
 

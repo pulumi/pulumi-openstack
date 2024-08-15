@@ -151,7 +151,7 @@ export class Image extends pulumi.CustomResource {
      * Image metadata allow for meaningfully define the image properties
      * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      */
-    public /*out*/ readonly metadata!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly metadata!: pulumi.Output<{[key: string]: string}>;
     /**
      * Amount of disk space (in GB) required to boot
      * image. Defaults to 0.
@@ -175,7 +175,7 @@ export class Image extends pulumi.CustomResource {
      * information about an image. See the "Notes" section for further information
      * about properties.
      */
-    public readonly properties!: pulumi.Output<{[key: string]: any}>;
+    public readonly properties!: pulumi.Output<{[key: string]: string}>;
     /**
      * If true, image will not be deletable. Defaults to
      * false.
@@ -392,7 +392,7 @@ export interface ImageState {
      * Image metadata allow for meaningfully define the image properties
      * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Amount of disk space (in GB) required to boot
      * image. Defaults to 0.
@@ -416,7 +416,7 @@ export interface ImageState {
      * information about an image. See the "Notes" section for further information
      * about properties.
      */
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * If true, image will not be deletable. Defaults to
      * false.
@@ -547,7 +547,7 @@ export interface ImageArgs {
      * information about an image. See the "Notes" section for further information
      * about properties.
      */
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * If true, image will not be deletable. Defaults to
      * false.

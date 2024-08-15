@@ -192,7 +192,7 @@ export class Port extends pulumi.CustomResource {
     /**
      * The list of maps representing port DNS assignments.
      */
-    public /*out*/ readonly dnsAssignments!: pulumi.Output<{[key: string]: any}[]>;
+    public /*out*/ readonly dnsAssignments!: pulumi.Output<{[key: string]: string}[]>;
     /**
      * The port DNS name. Available, when Neutron DNS extension
      * is enabled.
@@ -277,7 +277,7 @@ export class Port extends pulumi.CustomResource {
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Port resource with the given unique name, arguments, and options.
@@ -407,7 +407,7 @@ export interface PortState {
     /**
      * The list of maps representing port DNS assignments.
      */
-    dnsAssignments?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+    dnsAssignments?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     /**
      * The port DNS name. Available, when Neutron DNS extension
      * is enabled.
@@ -492,7 +492,7 @@ export interface PortState {
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -615,5 +615,5 @@ export interface PortArgs {
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

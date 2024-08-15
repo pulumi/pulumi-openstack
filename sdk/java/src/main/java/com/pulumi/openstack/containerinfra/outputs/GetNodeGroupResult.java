@@ -6,7 +6,6 @@ package com.pulumi.openstack.containerinfra.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -44,7 +43,7 @@ public final class GetNodeGroupResult {
      * the node group.
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     /**
      * @return The maximum number of nodes for the node group.
      * 
@@ -130,7 +129,7 @@ public final class GetNodeGroupResult {
      * the node group.
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     /**
@@ -205,7 +204,7 @@ public final class GetNodeGroupResult {
         private String flavor;
         private String id;
         private String image;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private Integer maxNodeCount;
         private Integer minNodeCount;
         private String name;
@@ -283,7 +282,7 @@ public final class GetNodeGroupResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetNodeGroupResult", "labels");
             }

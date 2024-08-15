@@ -72,7 +72,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// explicitly and implicitly added.
         /// </summary>
         [Output("allMetadata")]
-        public Output<ImmutableDictionary<string, object>> AllMetadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> AllMetadata { get; private set; } = null!;
 
         /// <summary>
         /// The share availability zone. Changing this creates a
@@ -120,7 +120,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// strings.
         /// </summary>
         [Output("metadata")]
-        public Output<ImmutableDictionary<string, object>?> Metadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// The name of the share. Changing this updates the name
@@ -260,15 +260,15 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public Input<bool>? IsPublic { get; set; }
 
         [Input("metadata")]
-        private InputMap<object>? _metadata;
+        private InputMap<string>? _metadata;
 
         /// <summary>
         /// One or more metadata key and value pairs as a dictionary of
         /// strings.
         /// </summary>
-        public InputMap<object> Metadata
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 
@@ -332,15 +332,15 @@ namespace Pulumi.OpenStack.SharedFileSystem
     public sealed class ShareState : global::Pulumi.ResourceArgs
     {
         [Input("allMetadata")]
-        private InputMap<object>? _allMetadata;
+        private InputMap<string>? _allMetadata;
 
         /// <summary>
         /// The map of metadata, assigned on the share, which has been
         /// explicitly and implicitly added.
         /// </summary>
-        public InputMap<object> AllMetadata
+        public InputMap<string> AllMetadata
         {
-            get => _allMetadata ?? (_allMetadata = new InputMap<object>());
+            get => _allMetadata ?? (_allMetadata = new InputMap<string>());
             set => _allMetadata = value;
         }
 
@@ -392,15 +392,15 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public Input<bool>? IsPublic { get; set; }
 
         [Input("metadata")]
-        private InputMap<object>? _metadata;
+        private InputMap<string>? _metadata;
 
         /// <summary>
         /// One or more metadata key and value pairs as a dictionary of
         /// strings.
         /// </summary>
-        public InputMap<object> Metadata
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 

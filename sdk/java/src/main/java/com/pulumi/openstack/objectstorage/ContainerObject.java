@@ -12,7 +12,6 @@ import com.pulumi.openstack.objectstorage.ContainerObjectArgs;
 import com.pulumi.openstack.objectstorage.inputs.ContainerObjectState;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -362,10 +361,10 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
     public Output<String> lastModified() {
         return this.lastModified;
     }
-    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> metadata;
+    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> metadata;
 
-    public Output<Optional<Map<String,Object>>> metadata() {
+    public Output<Optional<Map<String,String>>> metadata() {
         return Codegen.optional(this.metadata);
     }
     /**

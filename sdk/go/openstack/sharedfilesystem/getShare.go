@@ -60,7 +60,7 @@ type LookupShareArgs struct {
 	IsPublic *bool `pulumi:"isPublic"`
 	// One or more metadata key and value pairs as a dictionary of
 	// strings.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the share.
 	Name *string `pulumi:"name"`
 	// The region in which to obtain the V2 Shared File System client.
@@ -94,7 +94,7 @@ type LookupShareResult struct {
 	// See Argument Reference above.
 	IsPublic bool `pulumi:"isPublic"`
 	// See Argument Reference above.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// See Argument Reference above.
 	Name string `pulumi:"name"`
 	// See Argument Reference above.
@@ -138,7 +138,7 @@ type LookupShareOutputArgs struct {
 	IsPublic pulumi.BoolPtrInput `pulumi:"isPublic"`
 	// One or more metadata key and value pairs as a dictionary of
 	// strings.
-	Metadata pulumi.MapInput `pulumi:"metadata"`
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// The name of the share.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The region in which to obtain the V2 Shared File System client.
@@ -207,8 +207,8 @@ func (o LookupShareResultOutput) IsPublic() pulumi.BoolOutput {
 }
 
 // See Argument Reference above.
-func (o LookupShareResultOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupShareResult) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+func (o LookupShareResultOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupShareResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // See Argument Reference above.

@@ -96,7 +96,7 @@ type RecordSet struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Map of additional options. Changing this creates a
 	// new record set.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 	// The ID of the zone in which to create the record set.
 	// Changing this creates a new DNS  record set.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -164,7 +164,7 @@ type recordSetState struct {
 	Type *string `pulumi:"type"`
 	// Map of additional options. Changing this creates a
 	// new record set.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 	// The ID of the zone in which to create the record set.
 	// Changing this creates a new DNS  record set.
 	ZoneId *string `pulumi:"zoneId"`
@@ -197,7 +197,7 @@ type RecordSetState struct {
 	Type pulumi.StringPtrInput
 	// Map of additional options. Changing this creates a
 	// new record set.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 	// The ID of the zone in which to create the record set.
 	// Changing this creates a new DNS  record set.
 	ZoneId pulumi.StringPtrInput
@@ -234,7 +234,7 @@ type recordSetArgs struct {
 	Type *string `pulumi:"type"`
 	// Map of additional options. Changing this creates a
 	// new record set.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 	// The ID of the zone in which to create the record set.
 	// Changing this creates a new DNS  record set.
 	ZoneId string `pulumi:"zoneId"`
@@ -268,7 +268,7 @@ type RecordSetArgs struct {
 	Type pulumi.StringPtrInput
 	// Map of additional options. Changing this creates a
 	// new record set.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 	// The ID of the zone in which to create the record set.
 	// Changing this creates a new DNS  record set.
 	ZoneId pulumi.StringInput
@@ -411,8 +411,8 @@ func (o RecordSetOutput) Type() pulumi.StringOutput {
 
 // Map of additional options. Changing this creates a
 // new record set.
-func (o RecordSetOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *RecordSet) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o RecordSetOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RecordSet) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 // The ID of the zone in which to create the record set.
