@@ -22,7 +22,7 @@ class QuoteSetV2Args:
                  per_volume_gigabytes: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  snapshots: Optional[pulumi.Input[int]] = None,
-                 volume_type_quota: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 volume_type_quota: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  volumes: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a QuoteSetV2 resource.
@@ -43,7 +43,7 @@ class QuoteSetV2Args:
                creates a new quotaset.
         :param pulumi.Input[int] snapshots: Quota value for snapshots. Changing this updates the
                existing quotaset.
-        :param pulumi.Input[Mapping[str, Any]] volume_type_quota: Key/Value pairs for setting quota for
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] volume_type_quota: Key/Value pairs for setting quota for
                volumes types. Possible keys are `snapshots_<volume_type_name>`,
                `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
         :param pulumi.Input[int] volumes: Quota value for volumes. Changing this updates the
@@ -176,7 +176,7 @@ class QuoteSetV2Args:
 
     @property
     @pulumi.getter(name="volumeTypeQuota")
-    def volume_type_quota(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def volume_type_quota(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Key/Value pairs for setting quota for
         volumes types. Possible keys are `snapshots_<volume_type_name>`,
@@ -185,7 +185,7 @@ class QuoteSetV2Args:
         return pulumi.get(self, "volume_type_quota")
 
     @volume_type_quota.setter
-    def volume_type_quota(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def volume_type_quota(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "volume_type_quota", value)
 
     @property
@@ -213,7 +213,7 @@ class _QuoteSetV2State:
                  project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  snapshots: Optional[pulumi.Input[int]] = None,
-                 volume_type_quota: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 volume_type_quota: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  volumes: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering QuoteSetV2 resources.
@@ -234,7 +234,7 @@ class _QuoteSetV2State:
                creates a new quotaset.
         :param pulumi.Input[int] snapshots: Quota value for snapshots. Changing this updates the
                existing quotaset.
-        :param pulumi.Input[Mapping[str, Any]] volume_type_quota: Key/Value pairs for setting quota for
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] volume_type_quota: Key/Value pairs for setting quota for
                volumes types. Possible keys are `snapshots_<volume_type_name>`,
                `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
         :param pulumi.Input[int] volumes: Quota value for volumes. Changing this updates the
@@ -368,7 +368,7 @@ class _QuoteSetV2State:
 
     @property
     @pulumi.getter(name="volumeTypeQuota")
-    def volume_type_quota(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def volume_type_quota(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Key/Value pairs for setting quota for
         volumes types. Possible keys are `snapshots_<volume_type_name>`,
@@ -377,7 +377,7 @@ class _QuoteSetV2State:
         return pulumi.get(self, "volume_type_quota")
 
     @volume_type_quota.setter
-    def volume_type_quota(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def volume_type_quota(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "volume_type_quota", value)
 
     @property
@@ -407,7 +407,7 @@ class QuoteSetV2(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  snapshots: Optional[pulumi.Input[int]] = None,
-                 volume_type_quota: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 volume_type_quota: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  volumes: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -448,7 +448,7 @@ class QuoteSetV2(pulumi.CustomResource):
                creates a new quotaset.
         :param pulumi.Input[int] snapshots: Quota value for snapshots. Changing this updates the
                existing quotaset.
-        :param pulumi.Input[Mapping[str, Any]] volume_type_quota: Key/Value pairs for setting quota for
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] volume_type_quota: Key/Value pairs for setting quota for
                volumes types. Possible keys are `snapshots_<volume_type_name>`,
                `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
         :param pulumi.Input[int] volumes: Quota value for volumes. Changing this updates the
@@ -502,7 +502,7 @@ class QuoteSetV2(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  snapshots: Optional[pulumi.Input[int]] = None,
-                 volume_type_quota: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 volume_type_quota: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  volumes: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -543,7 +543,7 @@ class QuoteSetV2(pulumi.CustomResource):
             project_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             snapshots: Optional[pulumi.Input[int]] = None,
-            volume_type_quota: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            volume_type_quota: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             volumes: Optional[pulumi.Input[int]] = None) -> 'QuoteSetV2':
         """
         Get an existing QuoteSetV2 resource's state with the given name, id, and optional extra
@@ -569,7 +569,7 @@ class QuoteSetV2(pulumi.CustomResource):
                creates a new quotaset.
         :param pulumi.Input[int] snapshots: Quota value for snapshots. Changing this updates the
                existing quotaset.
-        :param pulumi.Input[Mapping[str, Any]] volume_type_quota: Key/Value pairs for setting quota for
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] volume_type_quota: Key/Value pairs for setting quota for
                volumes types. Possible keys are `snapshots_<volume_type_name>`,
                `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
         :param pulumi.Input[int] volumes: Quota value for volumes. Changing this updates the
@@ -666,7 +666,7 @@ class QuoteSetV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="volumeTypeQuota")
-    def volume_type_quota(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def volume_type_quota(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Key/Value pairs for setting quota for
         volumes types. Possible keys are `snapshots_<volume_type_name>`,

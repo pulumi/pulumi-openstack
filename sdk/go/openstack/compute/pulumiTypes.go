@@ -532,7 +532,7 @@ func (o InstancePersonalityArrayOutput) Index(i pulumi.IntInput) InstancePersona
 type InstanceSchedulerHint struct {
 	// Arbitrary key/value pairs of additional
 	// properties to pass to the scheduler.
-	AdditionalProperties map[string]interface{} `pulumi:"additionalProperties"`
+	AdditionalProperties map[string]string `pulumi:"additionalProperties"`
 	// An IP Address in CIDR form. The instance
 	// will be placed on a compute node that is in the same subnet.
 	BuildNearHostIp *string `pulumi:"buildNearHostIp"`
@@ -573,7 +573,7 @@ type InstanceSchedulerHintInput interface {
 type InstanceSchedulerHintArgs struct {
 	// Arbitrary key/value pairs of additional
 	// properties to pass to the scheduler.
-	AdditionalProperties pulumi.MapInput `pulumi:"additionalProperties"`
+	AdditionalProperties pulumi.StringMapInput `pulumi:"additionalProperties"`
 	// An IP Address in CIDR form. The instance
 	// will be placed on a compute node that is in the same subnet.
 	BuildNearHostIp pulumi.StringPtrInput `pulumi:"buildNearHostIp"`
@@ -653,8 +653,8 @@ func (o InstanceSchedulerHintOutput) ToInstanceSchedulerHintOutputWithContext(ct
 
 // Arbitrary key/value pairs of additional
 // properties to pass to the scheduler.
-func (o InstanceSchedulerHintOutput) AdditionalProperties() pulumi.MapOutput {
-	return o.ApplyT(func(v InstanceSchedulerHint) map[string]interface{} { return v.AdditionalProperties }).(pulumi.MapOutput)
+func (o InstanceSchedulerHintOutput) AdditionalProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InstanceSchedulerHint) map[string]string { return v.AdditionalProperties }).(pulumi.StringMapOutput)
 }
 
 // An IP Address in CIDR form. The instance

@@ -86,8 +86,8 @@ type LookupFlavorResult struct {
 	Description *string `pulumi:"description"`
 	Disk        *int    `pulumi:"disk"`
 	// Key/Value pairs of metadata for the flavor.
-	ExtraSpecs map[string]interface{} `pulumi:"extraSpecs"`
-	FlavorId   *string                `pulumi:"flavorId"`
+	ExtraSpecs map[string]string `pulumi:"extraSpecs"`
+	FlavorId   *string           `pulumi:"flavorId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string   `pulumi:"id"`
 	IsPublic   *bool    `pulumi:"isPublic"`
@@ -174,8 +174,8 @@ func (o LookupFlavorResultOutput) Disk() pulumi.IntPtrOutput {
 }
 
 // Key/Value pairs of metadata for the flavor.
-func (o LookupFlavorResultOutput) ExtraSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupFlavorResult) map[string]interface{} { return v.ExtraSpecs }).(pulumi.MapOutput)
+func (o LookupFlavorResultOutput) ExtraSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupFlavorResult) map[string]string { return v.ExtraSpecs }).(pulumi.StringMapOutput)
 }
 
 func (o LookupFlavorResultOutput) FlavorId() pulumi.StringPtrOutput {

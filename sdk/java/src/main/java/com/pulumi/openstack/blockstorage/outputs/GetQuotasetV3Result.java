@@ -6,7 +6,6 @@ package com.pulumi.openstack.blockstorage.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -62,7 +61,7 @@ public final class GetQuotasetV3Result {
      * @return Map with gigabytes_{volume_type}, snapshots_{volume_type}, volumes_{volume_type} for each volume type.
      * 
      */
-    private Map<String,Object> volumeTypeQuota;
+    private Map<String,String> volumeTypeQuota;
     /**
      * @return The number of volumes that are allowed.
      * 
@@ -137,7 +136,7 @@ public final class GetQuotasetV3Result {
      * @return Map with gigabytes_{volume_type}, snapshots_{volume_type}, volumes_{volume_type} for each volume type.
      * 
      */
-    public Map<String,Object> volumeTypeQuota() {
+    public Map<String,String> volumeTypeQuota() {
         return this.volumeTypeQuota;
     }
     /**
@@ -166,7 +165,7 @@ public final class GetQuotasetV3Result {
         private String projectId;
         private String region;
         private Integer snapshots;
-        private Map<String,Object> volumeTypeQuota;
+        private Map<String,String> volumeTypeQuota;
         private Integer volumes;
         public Builder() {}
         public Builder(GetQuotasetV3Result defaults) {
@@ -257,7 +256,7 @@ public final class GetQuotasetV3Result {
             return this;
         }
         @CustomType.Setter
-        public Builder volumeTypeQuota(Map<String,Object> volumeTypeQuota) {
+        public Builder volumeTypeQuota(Map<String,String> volumeTypeQuota) {
             if (volumeTypeQuota == null) {
               throw new MissingRequiredPropertyException("GetQuotasetV3Result", "volumeTypeQuota");
             }

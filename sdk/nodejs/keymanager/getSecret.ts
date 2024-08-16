@@ -138,7 +138,7 @@ export interface GetSecretResult {
     /**
      * The map of the content types, assigned on the secret.
      */
-    readonly contentTypes: {[key: string]: any};
+    readonly contentTypes: {[key: string]: string};
     /**
      * The date the secret ACL was created.
      */
@@ -167,7 +167,7 @@ export interface GetSecretResult {
      * The map of metadata, assigned on the secret, which has been
      * explicitly and implicitly added.
      */
-    readonly metadata: {[key: string]: any};
+    readonly metadata: {[key: string]: string};
     /**
      * See Argument Reference above.
      */

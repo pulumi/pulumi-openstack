@@ -240,7 +240,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// Key/Value pairs of metadata for the flavor.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> ExtraSpecs;
+        public readonly ImmutableDictionary<string, string> ExtraSpecs;
         public readonly string? FlavorId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -262,7 +262,7 @@ namespace Pulumi.OpenStack.Compute
 
             int? disk,
 
-            ImmutableDictionary<string, object> extraSpecs,
+            ImmutableDictionary<string, string> extraSpecs,
 
             string? flavorId,
 

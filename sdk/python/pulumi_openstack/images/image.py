@@ -27,7 +27,7 @@ class ImageArgs:
                  min_disk_gb: Optional[pulumi.Input[int]] = None,
                  min_ram_mb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  protected: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -65,7 +65,7 @@ class ImageArgs:
         :param pulumi.Input[int] min_ram_mb: Amount of ram (in MB) required to boot image.
                Defauts to 0.
         :param pulumi.Input[str] name: The name of the image.
-        :param pulumi.Input[Mapping[str, Any]] properties: A map of key/value pairs to set freeform
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A map of key/value pairs to set freeform
                information about an image. See the "Notes" section for further information
                about properties.
         :param pulumi.Input[bool] protected: If true, image will not be deletable. Defaults to
@@ -297,7 +297,7 @@ class ImageArgs:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map of key/value pairs to set freeform
         information about an image. See the "Notes" section for further information
@@ -306,7 +306,7 @@ class ImageArgs:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "properties", value)
 
     @property
@@ -409,12 +409,12 @@ class _ImageState:
                  image_source_url: Optional[pulumi.Input[str]] = None,
                  image_source_username: Optional[pulumi.Input[str]] = None,
                  local_file_path: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  min_disk_gb: Optional[pulumi.Input[int]] = None,
                  min_ram_mb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  protected: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
@@ -456,7 +456,7 @@ class _ImageState:
         :param pulumi.Input[str] local_file_path: This is the filepath of the raw image file
                that will be uploaded to Glance. Conflicts with `image_source_url` and
                `web_download`.
-        :param pulumi.Input[Mapping[str, Any]] metadata: The metadata associated with the image.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata associated with the image.
                Image metadata allow for meaningfully define the image properties
                and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
         :param pulumi.Input[int] min_disk_gb: Amount of disk space (in GB) required to boot
@@ -465,7 +465,7 @@ class _ImageState:
                Defauts to 0.
         :param pulumi.Input[str] name: The name of the image.
         :param pulumi.Input[str] owner: The id of the openstack user who owns the image.
-        :param pulumi.Input[Mapping[str, Any]] properties: A map of key/value pairs to set freeform
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A map of key/value pairs to set freeform
                information about an image. See the "Notes" section for further information
                about properties.
         :param pulumi.Input[bool] protected: If true, image will not be deletable. Defaults to
@@ -723,7 +723,7 @@ class _ImageState:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The metadata associated with the image.
         Image metadata allow for meaningfully define the image properties
@@ -732,7 +732,7 @@ class _ImageState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -787,7 +787,7 @@ class _ImageState:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map of key/value pairs to set freeform
         information about an image. See the "Notes" section for further information
@@ -796,7 +796,7 @@ class _ImageState:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "properties", value)
 
     @property
@@ -951,7 +951,7 @@ class Image(pulumi.CustomResource):
                  min_disk_gb: Optional[pulumi.Input[int]] = None,
                  min_ram_mb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  protected: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1037,7 +1037,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[int] min_ram_mb: Amount of ram (in MB) required to boot image.
                Defauts to 0.
         :param pulumi.Input[str] name: The name of the image.
-        :param pulumi.Input[Mapping[str, Any]] properties: A map of key/value pairs to set freeform
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A map of key/value pairs to set freeform
                information about an image. See the "Notes" section for further information
                about properties.
         :param pulumi.Input[bool] protected: If true, image will not be deletable. Defaults to
@@ -1139,7 +1139,7 @@ class Image(pulumi.CustomResource):
                  min_disk_gb: Optional[pulumi.Input[int]] = None,
                  min_ram_mb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  protected: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1213,12 +1213,12 @@ class Image(pulumi.CustomResource):
             image_source_url: Optional[pulumi.Input[str]] = None,
             image_source_username: Optional[pulumi.Input[str]] = None,
             local_file_path: Optional[pulumi.Input[str]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             min_disk_gb: Optional[pulumi.Input[int]] = None,
             min_ram_mb: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             owner: Optional[pulumi.Input[str]] = None,
-            properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             protected: Optional[pulumi.Input[bool]] = None,
             region: Optional[pulumi.Input[str]] = None,
             schema: Optional[pulumi.Input[str]] = None,
@@ -1265,7 +1265,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] local_file_path: This is the filepath of the raw image file
                that will be uploaded to Glance. Conflicts with `image_source_url` and
                `web_download`.
-        :param pulumi.Input[Mapping[str, Any]] metadata: The metadata associated with the image.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata associated with the image.
                Image metadata allow for meaningfully define the image properties
                and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
         :param pulumi.Input[int] min_disk_gb: Amount of disk space (in GB) required to boot
@@ -1274,7 +1274,7 @@ class Image(pulumi.CustomResource):
                Defauts to 0.
         :param pulumi.Input[str] name: The name of the image.
         :param pulumi.Input[str] owner: The id of the openstack user who owns the image.
-        :param pulumi.Input[Mapping[str, Any]] properties: A map of key/value pairs to set freeform
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A map of key/value pairs to set freeform
                information about an image. See the "Notes" section for further information
                about properties.
         :param pulumi.Input[bool] protected: If true, image will not be deletable. Defaults to
@@ -1456,7 +1456,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Mapping[str, Any]]:
+    def metadata(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The metadata associated with the image.
         Image metadata allow for meaningfully define the image properties
@@ -1500,7 +1500,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def properties(self) -> pulumi.Output[Mapping[str, Any]]:
+    def properties(self) -> pulumi.Output[Mapping[str, str]]:
         """
         A map of key/value pairs to set freeform
         information about an image. See the "Notes" section for further information

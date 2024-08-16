@@ -53,7 +53,7 @@ type LookupVolumeV2Args struct {
 	// Indicates if the volume is bootable.
 	Bootable *string `pulumi:"bootable"`
 	// Metadata key/value pairs associated with the volume.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the volume.
 	Name *string `pulumi:"name"`
 	// The region in which to obtain the V2 Block Storage
@@ -72,7 +72,7 @@ type LookupVolumeV2Result struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// See Argument Reference above.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// See Argument Reference above.
 	Name string `pulumi:"name"`
 	// See Argument Reference above.
@@ -105,7 +105,7 @@ type LookupVolumeV2OutputArgs struct {
 	// Indicates if the volume is bootable.
 	Bootable pulumi.StringPtrInput `pulumi:"bootable"`
 	// Metadata key/value pairs associated with the volume.
-	Metadata pulumi.MapInput `pulumi:"metadata"`
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// The name of the volume.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The region in which to obtain the V2 Block Storage
@@ -147,8 +147,8 @@ func (o LookupVolumeV2ResultOutput) Id() pulumi.StringOutput {
 }
 
 // See Argument Reference above.
-func (o LookupVolumeV2ResultOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupVolumeV2Result) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+func (o LookupVolumeV2ResultOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupVolumeV2Result) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // See Argument Reference above.

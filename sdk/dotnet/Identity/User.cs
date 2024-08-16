@@ -109,7 +109,7 @@ namespace Pulumi.OpenStack.Identity
         /// Free-form key/value pairs of extra information.
         /// </summary>
         [Output("extra")]
-        public Output<ImmutableDictionary<string, object>?> Extra { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Extra { get; private set; } = null!;
 
         /// <summary>
         /// User will not have to
@@ -244,14 +244,14 @@ namespace Pulumi.OpenStack.Identity
         public Input<bool>? Enabled { get; set; }
 
         [Input("extra")]
-        private InputMap<object>? _extra;
+        private InputMap<string>? _extra;
 
         /// <summary>
         /// Free-form key/value pairs of extra information.
         /// </summary>
-        public InputMap<object> Extra
+        public InputMap<string> Extra
         {
-            get => _extra ?? (_extra = new InputMap<object>());
+            get => _extra ?? (_extra = new InputMap<string>());
             set => _extra = value;
         }
 
@@ -362,14 +362,14 @@ namespace Pulumi.OpenStack.Identity
         public Input<bool>? Enabled { get; set; }
 
         [Input("extra")]
-        private InputMap<object>? _extra;
+        private InputMap<string>? _extra;
 
         /// <summary>
         /// Free-form key/value pairs of extra information.
         /// </summary>
-        public InputMap<object> Extra
+        public InputMap<string> Extra
         {
-            get => _extra ?? (_extra = new InputMap<object>());
+            get => _extra ?? (_extra = new InputMap<string>());
             set => _extra = value;
         }
 

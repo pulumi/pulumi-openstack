@@ -131,7 +131,7 @@ type Cluster struct {
 	Kubeconfig pulumi.StringMapOutput `pulumi:"kubeconfig"`
 	// The list of key value pairs representing additional
 	// properties of the cluster. Changing this creates a new cluster.
-	Labels          pulumi.MapOutput         `pulumi:"labels"`
+	Labels          pulumi.StringMapOutput   `pulumi:"labels"`
 	MasterAddresses pulumi.StringArrayOutput `pulumi:"masterAddresses"`
 	// The number of master nodes for the cluster.
 	// Changing this creates a new cluster.
@@ -238,8 +238,8 @@ type clusterState struct {
 	Kubeconfig map[string]string `pulumi:"kubeconfig"`
 	// The list of key value pairs representing additional
 	// properties of the cluster. Changing this creates a new cluster.
-	Labels          map[string]interface{} `pulumi:"labels"`
-	MasterAddresses []string               `pulumi:"masterAddresses"`
+	Labels          map[string]string `pulumi:"labels"`
+	MasterAddresses []string          `pulumi:"masterAddresses"`
 	// The number of master nodes for the cluster.
 	// Changing this creates a new cluster.
 	MasterCount *int `pulumi:"masterCount"`
@@ -309,7 +309,7 @@ type ClusterState struct {
 	Kubeconfig pulumi.StringMapInput
 	// The list of key value pairs representing additional
 	// properties of the cluster. Changing this creates a new cluster.
-	Labels          pulumi.MapInput
+	Labels          pulumi.StringMapInput
 	MasterAddresses pulumi.StringArrayInput
 	// The number of master nodes for the cluster.
 	// Changing this creates a new cluster.
@@ -379,7 +379,7 @@ type clusterArgs struct {
 	Keypair *string `pulumi:"keypair"`
 	// The list of key value pairs representing additional
 	// properties of the cluster. Changing this creates a new cluster.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The number of master nodes for the cluster.
 	// Changing this creates a new cluster.
 	MasterCount *int `pulumi:"masterCount"`
@@ -434,7 +434,7 @@ type ClusterArgs struct {
 	Keypair pulumi.StringPtrInput
 	// The list of key value pairs representing additional
 	// properties of the cluster. Changing this creates a new cluster.
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The number of master nodes for the cluster.
 	// Changing this creates a new cluster.
 	MasterCount pulumi.IntPtrInput
@@ -621,8 +621,8 @@ func (o ClusterOutput) Kubeconfig() pulumi.StringMapOutput {
 
 // The list of key value pairs representing additional
 // properties of the cluster. Changing this creates a new cluster.
-func (o ClusterOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o ClusterOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o ClusterOutput) MasterAddresses() pulumi.StringArrayOutput {

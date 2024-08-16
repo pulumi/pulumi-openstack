@@ -105,7 +105,7 @@ type Router struct {
 	// to create a router for another tenant. Changing this creates a new router.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// Map of additional driver-specific options.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions RouterVendorOptionsPtrOutput `pulumi:"vendorOptions"`
@@ -195,7 +195,7 @@ type routerState struct {
 	// to create a router for another tenant. Changing this creates a new router.
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional driver-specific options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions *RouterVendorOptions `pulumi:"vendorOptions"`
@@ -256,7 +256,7 @@ type RouterState struct {
 	// to create a router for another tenant. Changing this creates a new router.
 	TenantId pulumi.StringPtrInput
 	// Map of additional driver-specific options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions RouterVendorOptionsPtrInput
@@ -318,7 +318,7 @@ type routerArgs struct {
 	// to create a router for another tenant. Changing this creates a new router.
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional driver-specific options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions *RouterVendorOptions `pulumi:"vendorOptions"`
@@ -377,7 +377,7 @@ type RouterArgs struct {
 	// to create a router for another tenant. Changing this creates a new router.
 	TenantId pulumi.StringPtrInput
 	// Map of additional driver-specific options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions RouterVendorOptionsPtrInput
@@ -563,8 +563,8 @@ func (o RouterOutput) TenantId() pulumi.StringOutput {
 }
 
 // Map of additional driver-specific options.
-func (o RouterOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *Router) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o RouterOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 // Map of additional vendor-specific options.

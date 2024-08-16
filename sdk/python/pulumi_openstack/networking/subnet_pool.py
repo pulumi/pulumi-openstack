@@ -28,7 +28,7 @@ class SubnetPoolArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a SubnetPool resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] prefixes: A list of subnet prefixes to assign to the subnetpool.
@@ -71,7 +71,7 @@ class SubnetPoolArgs:
                all projects. Changing this updates the shared status of the existing
                subnetpool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the subnetpool.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         pulumi.set(__self__, "prefixes", prefixes)
         if address_scope_id is not None:
@@ -299,14 +299,14 @@ class SubnetPoolArgs:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -331,7 +331,7 @@ class _SubnetPoolState:
                  shared: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering SubnetPool resources.
         :param pulumi.Input[str] address_scope_id: The Neutron address scope to assign to the
@@ -379,7 +379,7 @@ class _SubnetPoolState:
                subnetpool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the subnetpool.
         :param pulumi.Input[str] updated_at: The time at which subnetpool was created.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         if address_scope_id is not None:
             pulumi.set(__self__, "address_scope_id", address_scope_id)
@@ -665,14 +665,14 @@ class _SubnetPoolState:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -695,7 +695,7 @@ class SubnetPool(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Manages a V2 Neutron subnetpool resource within OpenStack.
@@ -786,7 +786,7 @@ class SubnetPool(pulumi.CustomResource):
                all projects. Changing this updates the shared status of the existing
                subnetpool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the subnetpool.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         ...
     @overload
@@ -870,7 +870,7 @@ class SubnetPool(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -929,7 +929,7 @@ class SubnetPool(pulumi.CustomResource):
             shared: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'SubnetPool':
+            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'SubnetPool':
         """
         Get an existing SubnetPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -982,7 +982,7 @@ class SubnetPool(pulumi.CustomResource):
                subnetpool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the subnetpool.
         :param pulumi.Input[str] updated_at: The time at which subnetpool was created.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1182,7 +1182,7 @@ class SubnetPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of additional options.
         """

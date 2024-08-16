@@ -21,7 +21,7 @@ class ShareArgs:
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  share_network_id: Optional[pulumi.Input[str]] = None,
@@ -40,7 +40,7 @@ class ShareArgs:
         :param pulumi.Input[bool] is_public: The level of visibility for the share. Set to true to make
                share public. Set to false to make it private. Default value is false. Changing this
                updates the existing share.
-        :param pulumi.Input[Mapping[str, Any]] metadata: One or more metadata key and value pairs as a dictionary of
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: One or more metadata key and value pairs as a dictionary of
                strings.
         :param pulumi.Input[str] name: The name of the share. Changing this updates the name
                of the existing share.
@@ -144,7 +144,7 @@ class ShareArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         One or more metadata key and value pairs as a dictionary of
         strings.
@@ -152,7 +152,7 @@ class ShareArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -226,14 +226,14 @@ class ShareArgs:
 @pulumi.input_type
 class _ShareState:
     def __init__(__self__, *,
-                 all_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 all_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  export_locations: Optional[pulumi.Input[Sequence[pulumi.Input['ShareExportLocationArgs']]]] = None,
                  has_replicas: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -246,7 +246,7 @@ class _ShareState:
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Share resources.
-        :param pulumi.Input[Mapping[str, Any]] all_metadata: The map of metadata, assigned on the share, which has been
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] all_metadata: The map of metadata, assigned on the share, which has been
                explicitly and implicitly added.
         :param pulumi.Input[str] availability_zone: The share availability zone. Changing this creates a
                new share.
@@ -259,7 +259,7 @@ class _ShareState:
         :param pulumi.Input[bool] is_public: The level of visibility for the share. Set to true to make
                share public. Set to false to make it private. Default value is false. Changing this
                updates the existing share.
-        :param pulumi.Input[Mapping[str, Any]] metadata: One or more metadata key and value pairs as a dictionary of
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: One or more metadata key and value pairs as a dictionary of
                strings.
         :param pulumi.Input[str] name: The name of the share. Changing this updates the name
                of the existing share.
@@ -320,7 +320,7 @@ class _ShareState:
 
     @property
     @pulumi.getter(name="allMetadata")
-    def all_metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def all_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The map of metadata, assigned on the share, which has been
         explicitly and implicitly added.
@@ -328,7 +328,7 @@ class _ShareState:
         return pulumi.get(self, "all_metadata")
 
     @all_metadata.setter
-    def all_metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def all_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "all_metadata", value)
 
     @property
@@ -410,7 +410,7 @@ class _ShareState:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         One or more metadata key and value pairs as a dictionary of
         strings.
@@ -418,7 +418,7 @@ class _ShareState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -559,7 +559,7 @@ class Share(pulumi.CustomResource):
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  share_network_id: Optional[pulumi.Input[str]] = None,
@@ -615,7 +615,7 @@ class Share(pulumi.CustomResource):
         :param pulumi.Input[bool] is_public: The level of visibility for the share. Set to true to make
                share public. Set to false to make it private. Default value is false. Changing this
                updates the existing share.
-        :param pulumi.Input[Mapping[str, Any]] metadata: One or more metadata key and value pairs as a dictionary of
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: One or more metadata key and value pairs as a dictionary of
                strings.
         :param pulumi.Input[str] name: The name of the share. Changing this updates the name
                of the existing share.
@@ -696,7 +696,7 @@ class Share(pulumi.CustomResource):
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  share_network_id: Optional[pulumi.Input[str]] = None,
@@ -745,14 +745,14 @@ class Share(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            all_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            all_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             export_locations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShareExportLocationArgs', 'ShareExportLocationArgsDict']]]]] = None,
             has_replicas: Optional[pulumi.Input[bool]] = None,
             host: Optional[pulumi.Input[str]] = None,
             is_public: Optional[pulumi.Input[bool]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -770,7 +770,7 @@ class Share(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] all_metadata: The map of metadata, assigned on the share, which has been
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] all_metadata: The map of metadata, assigned on the share, which has been
                explicitly and implicitly added.
         :param pulumi.Input[str] availability_zone: The share availability zone. Changing this creates a
                new share.
@@ -783,7 +783,7 @@ class Share(pulumi.CustomResource):
         :param pulumi.Input[bool] is_public: The level of visibility for the share. Set to true to make
                share public. Set to false to make it private. Default value is false. Changing this
                updates the existing share.
-        :param pulumi.Input[Mapping[str, Any]] metadata: One or more metadata key and value pairs as a dictionary of
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: One or more metadata key and value pairs as a dictionary of
                strings.
         :param pulumi.Input[str] name: The name of the share. Changing this updates the name
                of the existing share.
@@ -831,7 +831,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allMetadata")
-    def all_metadata(self) -> pulumi.Output[Mapping[str, Any]]:
+    def all_metadata(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The map of metadata, assigned on the share, which has been
         explicitly and implicitly added.
@@ -893,7 +893,7 @@ class Share(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         One or more metadata key and value pairs as a dictionary of
         strings.

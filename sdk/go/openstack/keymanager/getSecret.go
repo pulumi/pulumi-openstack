@@ -129,7 +129,7 @@ type GetSecretResult struct {
 	// See Argument Reference above.
 	BitLength *int `pulumi:"bitLength"`
 	// The map of the content types, assigned on the secret.
-	ContentTypes map[string]interface{} `pulumi:"contentTypes"`
+	ContentTypes map[string]string `pulumi:"contentTypes"`
 	// The date the secret ACL was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// See Argument Reference above.
@@ -144,7 +144,7 @@ type GetSecretResult struct {
 	Id string `pulumi:"id"`
 	// The map of metadata, assigned on the secret, which has been
 	// explicitly and implicitly added.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// See Argument Reference above.
 	Mode *string `pulumi:"mode"`
 	// See Argument Reference above.
@@ -256,8 +256,8 @@ func (o GetSecretResultOutput) BitLength() pulumi.IntPtrOutput {
 }
 
 // The map of the content types, assigned on the secret.
-func (o GetSecretResultOutput) ContentTypes() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSecretResult) map[string]interface{} { return v.ContentTypes }).(pulumi.MapOutput)
+func (o GetSecretResultOutput) ContentTypes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretResult) map[string]string { return v.ContentTypes }).(pulumi.StringMapOutput)
 }
 
 // The date the secret ACL was created.
@@ -292,8 +292,8 @@ func (o GetSecretResultOutput) Id() pulumi.StringOutput {
 
 // The map of metadata, assigned on the secret, which has been
 // explicitly and implicitly added.
-func (o GetSecretResultOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSecretResult) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+func (o GetSecretResultOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // See Argument Reference above.

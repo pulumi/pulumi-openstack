@@ -119,14 +119,14 @@ class PortBindingArgs:
     def __init__(__self__, *,
                  host_id: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
-                 vif_details: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vif_details: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vif_type: Optional[pulumi.Input[str]] = None,
                  vnic_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] host_id: The ID of the host to allocate port on.
         :param pulumi.Input[str] profile: Custom data to be passed as `binding:profile`. Data
                must be passed as JSON.
-        :param pulumi.Input[Mapping[str, Any]] vif_details: A map of JSON strings containing additional
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vif_details: A map of JSON strings containing additional
                details for this specific binding.
         :param pulumi.Input[str] vif_type: The VNIC type of the port binding.
         :param pulumi.Input[str] vnic_type: VNIC type for the port. Can either be `direct`,
@@ -171,7 +171,7 @@ class PortBindingArgs:
 
     @property
     @pulumi.getter(name="vifDetails")
-    def vif_details(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def vif_details(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map of JSON strings containing additional
         details for this specific binding.
@@ -179,7 +179,7 @@ class PortBindingArgs:
         return pulumi.get(self, "vif_details")
 
     @vif_details.setter
-    def vif_details(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def vif_details(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "vif_details", value)
 
     @property

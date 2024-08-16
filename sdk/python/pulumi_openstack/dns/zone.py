@@ -14,7 +14,7 @@ __all__ = ['ZoneArgs', 'Zone']
 @pulumi.input_type
 class ZoneArgs:
     def __init__(__self__, *,
-                 attributes: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_status_check: Optional[pulumi.Input[bool]] = None,
                  email: Optional[pulumi.Input[str]] = None,
@@ -24,10 +24,10 @@ class ZoneArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Zone resource.
-        :param pulumi.Input[Mapping[str, Any]] attributes: Attributes for the DNS Service scheduler.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attributes: Attributes for the DNS Service scheduler.
                Changing this creates a new zone.
         :param pulumi.Input[str] description: A description of the zone.
         :param pulumi.Input[bool] disable_status_check: Disable wait for zone to reach ACTIVE
@@ -48,7 +48,7 @@ class ZoneArgs:
         :param pulumi.Input[int] ttl: The time to live (TTL) of the zone.
         :param pulumi.Input[str] type: The type of zone. Can either be `PRIMARY` or `SECONDARY`.
                Changing this creates a new zone.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options. Changing this creates a
                new zone.
         """
         if attributes is not None:
@@ -76,7 +76,7 @@ class ZoneArgs:
 
     @property
     @pulumi.getter
-    def attributes(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Attributes for the DNS Service scheduler.
         Changing this creates a new zone.
@@ -84,7 +84,7 @@ class ZoneArgs:
         return pulumi.get(self, "attributes")
 
     @attributes.setter
-    def attributes(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "attributes", value)
 
     @property
@@ -207,7 +207,7 @@ class ZoneArgs:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options. Changing this creates a
         new zone.
@@ -215,14 +215,14 @@ class ZoneArgs:
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
 @pulumi.input_type
 class _ZoneState:
     def __init__(__self__, *,
-                 attributes: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_status_check: Optional[pulumi.Input[bool]] = None,
                  email: Optional[pulumi.Input[str]] = None,
@@ -232,10 +232,10 @@ class _ZoneState:
                  region: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Zone resources.
-        :param pulumi.Input[Mapping[str, Any]] attributes: Attributes for the DNS Service scheduler.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attributes: Attributes for the DNS Service scheduler.
                Changing this creates a new zone.
         :param pulumi.Input[str] description: A description of the zone.
         :param pulumi.Input[bool] disable_status_check: Disable wait for zone to reach ACTIVE
@@ -256,7 +256,7 @@ class _ZoneState:
         :param pulumi.Input[int] ttl: The time to live (TTL) of the zone.
         :param pulumi.Input[str] type: The type of zone. Can either be `PRIMARY` or `SECONDARY`.
                Changing this creates a new zone.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options. Changing this creates a
                new zone.
         """
         if attributes is not None:
@@ -284,7 +284,7 @@ class _ZoneState:
 
     @property
     @pulumi.getter
-    def attributes(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Attributes for the DNS Service scheduler.
         Changing this creates a new zone.
@@ -292,7 +292,7 @@ class _ZoneState:
         return pulumi.get(self, "attributes")
 
     @attributes.setter
-    def attributes(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "attributes", value)
 
     @property
@@ -415,7 +415,7 @@ class _ZoneState:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options. Changing this creates a
         new zone.
@@ -423,7 +423,7 @@ class _ZoneState:
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -432,7 +432,7 @@ class Zone(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attributes: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_status_check: Optional[pulumi.Input[bool]] = None,
                  email: Optional[pulumi.Input[str]] = None,
@@ -442,7 +442,7 @@ class Zone(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Manages a DNS zone in the OpenStack DNS Service.
@@ -477,7 +477,7 @@ class Zone(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] attributes: Attributes for the DNS Service scheduler.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attributes: Attributes for the DNS Service scheduler.
                Changing this creates a new zone.
         :param pulumi.Input[str] description: A description of the zone.
         :param pulumi.Input[bool] disable_status_check: Disable wait for zone to reach ACTIVE
@@ -498,7 +498,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[int] ttl: The time to live (TTL) of the zone.
         :param pulumi.Input[str] type: The type of zone. Can either be `PRIMARY` or `SECONDARY`.
                Changing this creates a new zone.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options. Changing this creates a
                new zone.
         """
         ...
@@ -553,7 +553,7 @@ class Zone(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attributes: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_status_check: Optional[pulumi.Input[bool]] = None,
                  email: Optional[pulumi.Input[str]] = None,
@@ -563,7 +563,7 @@ class Zone(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -594,7 +594,7 @@ class Zone(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attributes: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disable_status_check: Optional[pulumi.Input[bool]] = None,
             email: Optional[pulumi.Input[str]] = None,
@@ -604,7 +604,7 @@ class Zone(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             ttl: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Zone':
+            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Zone':
         """
         Get an existing Zone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -612,7 +612,7 @@ class Zone(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] attributes: Attributes for the DNS Service scheduler.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attributes: Attributes for the DNS Service scheduler.
                Changing this creates a new zone.
         :param pulumi.Input[str] description: A description of the zone.
         :param pulumi.Input[bool] disable_status_check: Disable wait for zone to reach ACTIVE
@@ -633,7 +633,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[int] ttl: The time to live (TTL) of the zone.
         :param pulumi.Input[str] type: The type of zone. Can either be `PRIMARY` or `SECONDARY`.
                Changing this creates a new zone.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options. Changing this creates a
                new zone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -655,7 +655,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def attributes(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Attributes for the DNS Service scheduler.
         Changing this creates a new zone.
@@ -746,7 +746,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of additional options. Changing this creates a
         new zone.

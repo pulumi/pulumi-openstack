@@ -43,7 +43,7 @@ export interface GetVolumeV2Args {
     /**
      * Metadata key/value pairs associated with the volume.
      */
-    metadata?: {[key: string]: any};
+    metadata?: {[key: string]: string};
     /**
      * The name of the volume.
      */
@@ -78,7 +78,7 @@ export interface GetVolumeV2Result {
     /**
      * See Argument Reference above.
      */
-    readonly metadata: {[key: string]: any};
+    readonly metadata: {[key: string]: string};
     /**
      * See Argument Reference above.
      */
@@ -133,7 +133,7 @@ export interface GetVolumeV2OutputArgs {
     /**
      * Metadata key/value pairs associated with the volume.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the volume.
      */

@@ -34,7 +34,7 @@ class SiteConnectionArgs:
                  peer_ep_group_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a SiteConnection resource.
         :param pulumi.Input[str] ikepolicy_id: The ID of the IKE policy. Changing this creates a new connection.
@@ -72,7 +72,7 @@ class SiteConnectionArgs:
                site connection.
         :param pulumi.Input[str] tenant_id: The owner of the connection. Required if admin wants to
                create a connection for another project. Changing this creates a new connection.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         pulumi.set(__self__, "ikepolicy_id", ikepolicy_id)
         pulumi.set(__self__, "ipsecpolicy_id", ipsecpolicy_id)
@@ -342,14 +342,14 @@ class SiteConnectionArgs:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -373,7 +373,7 @@ class _SiteConnectionState:
                  psk: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpnservice_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SiteConnection resources.
@@ -411,7 +411,7 @@ class _SiteConnectionState:
                site connection.
         :param pulumi.Input[str] tenant_id: The owner of the connection. Required if admin wants to
                create a connection for another project. Changing this creates a new connection.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         :param pulumi.Input[str] vpnservice_id: The ID of the VPN service. Changing this creates a new connection.
         """
         if admin_state_up is not None:
@@ -676,14 +676,14 @@ class _SiteConnectionState:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
     @property
@@ -721,7 +721,7 @@ class SiteConnection(pulumi.CustomResource):
                  psk: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpnservice_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -793,7 +793,7 @@ class SiteConnection(pulumi.CustomResource):
                site connection.
         :param pulumi.Input[str] tenant_id: The owner of the connection. Required if admin wants to
                create a connection for another project. Changing this creates a new connection.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         :param pulumi.Input[str] vpnservice_id: The ID of the VPN service. Changing this creates a new connection.
         """
         ...
@@ -867,7 +867,7 @@ class SiteConnection(pulumi.CustomResource):
                  psk: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpnservice_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -936,7 +936,7 @@ class SiteConnection(pulumi.CustomResource):
             psk: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpnservice_id: Optional[pulumi.Input[str]] = None) -> 'SiteConnection':
         """
         Get an existing SiteConnection resource's state with the given name, id, and optional extra
@@ -979,7 +979,7 @@ class SiteConnection(pulumi.CustomResource):
                site connection.
         :param pulumi.Input[str] tenant_id: The owner of the connection. Required if admin wants to
                create a connection for another project. Changing this creates a new connection.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         :param pulumi.Input[str] vpnservice_id: The ID of the VPN service. Changing this creates a new connection.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1162,7 +1162,7 @@ class SiteConnection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of additional options.
         """

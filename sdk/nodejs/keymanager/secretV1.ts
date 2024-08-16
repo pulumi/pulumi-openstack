@@ -131,7 +131,7 @@ export class SecretV1 extends pulumi.CustomResource {
      * The map of metadata, assigned on the secret, which has been
      * explicitly and implicitly added.
      */
-    public /*out*/ readonly allMetadata!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly allMetadata!: pulumi.Output<{[key: string]: string}>;
     /**
      * Metadata provided by a user or system for informational purposes.
      */
@@ -139,7 +139,7 @@ export class SecretV1 extends pulumi.CustomResource {
     /**
      * The map of the content types, assigned on the secret.
      */
-    public /*out*/ readonly contentTypes!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly contentTypes!: pulumi.Output<{[key: string]: string}>;
     /**
      * The date the secret was created.
      */
@@ -155,7 +155,7 @@ export class SecretV1 extends pulumi.CustomResource {
     /**
      * Additional Metadata for the secret.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Metadata provided by a user or system for informational purposes.
      */
@@ -280,7 +280,7 @@ export interface SecretV1State {
      * The map of metadata, assigned on the secret, which has been
      * explicitly and implicitly added.
      */
-    allMetadata?: pulumi.Input<{[key: string]: any}>;
+    allMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Metadata provided by a user or system for informational purposes.
      */
@@ -288,7 +288,7 @@ export interface SecretV1State {
     /**
      * The map of the content types, assigned on the secret.
      */
-    contentTypes?: pulumi.Input<{[key: string]: any}>;
+    contentTypes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The date the secret was created.
      */
@@ -304,7 +304,7 @@ export interface SecretV1State {
     /**
      * Additional Metadata for the secret.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Metadata provided by a user or system for informational purposes.
      */
@@ -376,7 +376,7 @@ export interface SecretV1Args {
     /**
      * Additional Metadata for the secret.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Metadata provided by a user or system for informational purposes.
      */

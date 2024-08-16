@@ -73,7 +73,7 @@ type FloatingIp struct {
 	// may or may not have a different address)
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 }
 
 // NewFloatingIp registers a new resource with the given unique name, arguments, and options.
@@ -160,7 +160,7 @@ type floatingIpState struct {
 	// may or may not have a different address)
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 type FloatingIpState struct {
@@ -215,7 +215,7 @@ type FloatingIpState struct {
 	// may or may not have a different address)
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (FloatingIpState) ElementType() reflect.Type {
@@ -271,7 +271,7 @@ type floatingIpArgs struct {
 	// may or may not have a different address)
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 // The set of arguments for constructing a FloatingIp resource.
@@ -324,7 +324,7 @@ type FloatingIpArgs struct {
 	// may or may not have a different address)
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (FloatingIpArgs) ElementType() reflect.Type {
@@ -504,8 +504,8 @@ func (o FloatingIpOutput) TenantId() pulumi.StringOutput {
 }
 
 // Map of additional options.
-func (o FloatingIpOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *FloatingIp) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o FloatingIpOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *FloatingIp) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 type FloatingIpArrayOutput struct{ *pulumi.OutputState }

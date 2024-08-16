@@ -24,7 +24,7 @@ class VipArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  floating_ip: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 persistence: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 persistence: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
@@ -53,7 +53,7 @@ class VipArgs:
                with the vip. The Floating IP must be provisioned already.
         :param pulumi.Input[str] name: The name of the vip. Changing this updates the name of
                the existing vip.
-        :param pulumi.Input[Mapping[str, Any]] persistence: Omit this field to prevent session persistence.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] persistence: Omit this field to prevent session persistence.
                The persistence object structure is documented below. Changing this updates
                the persistence of the existing vip.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
@@ -222,7 +222,7 @@ class VipArgs:
 
     @property
     @pulumi.getter
-    def persistence(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def persistence(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Omit this field to prevent session persistence.
         The persistence object structure is documented below. Changing this updates
@@ -231,7 +231,7 @@ class VipArgs:
         return pulumi.get(self, "persistence")
 
     @persistence.setter
-    def persistence(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def persistence(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "persistence", value)
 
     @property
@@ -272,7 +272,7 @@ class _VipState:
                  description: Optional[pulumi.Input[str]] = None,
                  floating_ip: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 persistence: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 persistence: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  port_id: Optional[pulumi.Input[str]] = None,
@@ -296,7 +296,7 @@ class _VipState:
                with the vip. The Floating IP must be provisioned already.
         :param pulumi.Input[str] name: The name of the vip. Changing this updates the name of
                the existing vip.
-        :param pulumi.Input[Mapping[str, Any]] persistence: Omit this field to prevent session persistence.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] persistence: Omit this field to prevent session persistence.
                The persistence object structure is documented below. Changing this updates
                the persistence of the existing vip.
         :param pulumi.Input[str] pool_id: The ID of the pool with which the vip is associated.
@@ -428,7 +428,7 @@ class _VipState:
 
     @property
     @pulumi.getter
-    def persistence(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def persistence(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Omit this field to prevent session persistence.
         The persistence object structure is documented below. Changing this updates
@@ -437,7 +437,7 @@ class _VipState:
         return pulumi.get(self, "persistence")
 
     @persistence.setter
-    def persistence(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def persistence(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "persistence", value)
 
     @property
@@ -546,7 +546,7 @@ class Vip(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  floating_ip: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 persistence: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 persistence: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -595,7 +595,7 @@ class Vip(pulumi.CustomResource):
                with the vip. The Floating IP must be provisioned already.
         :param pulumi.Input[str] name: The name of the vip. Changing this updates the name of
                the existing vip.
-        :param pulumi.Input[Mapping[str, Any]] persistence: Omit this field to prevent session persistence.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] persistence: Omit this field to prevent session persistence.
                The persistence object structure is documented below. Changing this updates
                the persistence of the existing vip.
         :param pulumi.Input[str] pool_id: The ID of the pool with which the vip is associated.
@@ -667,7 +667,7 @@ class Vip(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  floating_ip: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 persistence: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 persistence: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  pool_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -721,7 +721,7 @@ class Vip(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             floating_ip: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            persistence: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            persistence: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             pool_id: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[int]] = None,
             port_id: Optional[pulumi.Input[str]] = None,
@@ -750,7 +750,7 @@ class Vip(pulumi.CustomResource):
                with the vip. The Floating IP must be provisioned already.
         :param pulumi.Input[str] name: The name of the vip. Changing this updates the name of
                the existing vip.
-        :param pulumi.Input[Mapping[str, Any]] persistence: Omit this field to prevent session persistence.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] persistence: Omit this field to prevent session persistence.
                The persistence object structure is documented below. Changing this updates
                the persistence of the existing vip.
         :param pulumi.Input[str] pool_id: The ID of the pool with which the vip is associated.
@@ -849,7 +849,7 @@ class Vip(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def persistence(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def persistence(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Omit this field to prevent session persistence.
         The persistence object structure is documented below. Changing this updates

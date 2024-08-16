@@ -18,7 +18,7 @@ class NodeGroupArgs:
                  docker_volume_size: Optional[pulumi.Input[int]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  max_node_count: Optional[pulumi.Input[int]] = None,
                  merge_labels: Optional[pulumi.Input[bool]] = None,
                  min_node_count: Optional[pulumi.Input[int]] = None,
@@ -38,7 +38,7 @@ class NodeGroupArgs:
         :param pulumi.Input[str] image_id: The reference to an image that is used for nodes of the
                node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
                Changing this updates the image attribute of the existing node group.
-        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of key value pairs representing additional
                properties of the node group. Changing this creates a new node group.
         :param pulumi.Input[int] max_node_count: The maximum number of nodes for the node group.
                Changing this update the maximum number of nodes of the node group.
@@ -137,7 +137,7 @@ class NodeGroupArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of key value pairs representing additional
         properties of the node group. Changing this creates a new node group.
@@ -145,7 +145,7 @@ class NodeGroupArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -250,7 +250,7 @@ class _NodeGroupState:
                  docker_volume_size: Optional[pulumi.Input[int]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  max_node_count: Optional[pulumi.Input[int]] = None,
                  merge_labels: Optional[pulumi.Input[bool]] = None,
                  min_node_count: Optional[pulumi.Input[int]] = None,
@@ -272,7 +272,7 @@ class _NodeGroupState:
         :param pulumi.Input[str] image_id: The reference to an image that is used for nodes of the
                node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
                Changing this updates the image attribute of the existing node group.
-        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of key value pairs representing additional
                properties of the node group. Changing this creates a new node group.
         :param pulumi.Input[int] max_node_count: The maximum number of nodes for the node group.
                Changing this update the maximum number of nodes of the node group.
@@ -390,7 +390,7 @@ class _NodeGroupState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of key value pairs representing additional
         properties of the node group. Changing this creates a new node group.
@@ -398,7 +398,7 @@ class _NodeGroupState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -527,7 +527,7 @@ class NodeGroup(pulumi.CustomResource):
                  docker_volume_size: Optional[pulumi.Input[int]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  max_node_count: Optional[pulumi.Input[int]] = None,
                  merge_labels: Optional[pulumi.Input[bool]] = None,
                  min_node_count: Optional[pulumi.Input[int]] = None,
@@ -592,7 +592,7 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] image_id: The reference to an image that is used for nodes of the
                node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
                Changing this updates the image attribute of the existing node group.
-        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of key value pairs representing additional
                properties of the node group. Changing this creates a new node group.
         :param pulumi.Input[int] max_node_count: The maximum number of nodes for the node group.
                Changing this update the maximum number of nodes of the node group.
@@ -680,7 +680,7 @@ class NodeGroup(pulumi.CustomResource):
                  docker_volume_size: Optional[pulumi.Input[int]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  max_node_count: Optional[pulumi.Input[int]] = None,
                  merge_labels: Optional[pulumi.Input[bool]] = None,
                  min_node_count: Optional[pulumi.Input[int]] = None,
@@ -729,7 +729,7 @@ class NodeGroup(pulumi.CustomResource):
             docker_volume_size: Optional[pulumi.Input[int]] = None,
             flavor_id: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             max_node_count: Optional[pulumi.Input[int]] = None,
             merge_labels: Optional[pulumi.Input[bool]] = None,
             min_node_count: Optional[pulumi.Input[int]] = None,
@@ -756,7 +756,7 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] image_id: The reference to an image that is used for nodes of the
                node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
                Changing this updates the image attribute of the existing node group.
-        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of key value pairs representing additional
                properties of the node group. Changing this creates a new node group.
         :param pulumi.Input[int] max_node_count: The maximum number of nodes for the node group.
                Changing this update the maximum number of nodes of the node group.
@@ -844,7 +844,7 @@ class NodeGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The list of key value pairs representing additional
         properties of the node group. Changing this creates a new node group.

@@ -6,7 +6,6 @@ package com.pulumi.openstack.dns.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +20,7 @@ public final class GetDnsZoneResult {
      * @return Attributes of the DNS Service scheduler.
      * 
      */
-    private Map<String,Object> attributes;
+    private Map<String,String> attributes;
     /**
      * @return The time the zone was created.
      * 
@@ -111,7 +110,7 @@ public final class GetDnsZoneResult {
      * @return Attributes of the DNS Service scheduler.
      * 
      */
-    public Map<String,Object> attributes() {
+    public Map<String,String> attributes() {
         return this.attributes;
     }
     /**
@@ -237,7 +236,7 @@ public final class GetDnsZoneResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String allProjects;
-        private Map<String,Object> attributes;
+        private Map<String,String> attributes;
         private String createdAt;
         private @Nullable String description;
         private @Nullable String email;
@@ -284,7 +283,7 @@ public final class GetDnsZoneResult {
             return this;
         }
         @CustomType.Setter
-        public Builder attributes(Map<String,Object> attributes) {
+        public Builder attributes(Map<String,String> attributes) {
             if (attributes == null) {
               throw new MissingRequiredPropertyException("GetDnsZoneResult", "attributes");
             }

@@ -161,7 +161,7 @@ class GetInstanceV2Result:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, Any]:
+    def metadata(self) -> Mapping[str, str]:
         """
         A set of key/value pairs made available to the server.
         """

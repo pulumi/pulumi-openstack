@@ -296,7 +296,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// <summary>
         /// The map of the content types, assigned on the secret.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> ContentTypes;
+        public readonly ImmutableDictionary<string, string> ContentTypes;
         /// <summary>
         /// The date the secret ACL was created.
         /// </summary>
@@ -325,7 +325,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// The map of metadata, assigned on the secret, which has been
         /// explicitly and implicitly added.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Metadata;
+        public readonly ImmutableDictionary<string, string> Metadata;
         /// <summary>
         /// See Argument Reference above.
         /// </summary>
@@ -381,7 +381,7 @@ namespace Pulumi.OpenStack.KeyManager
 
             int? bitLength,
 
-            ImmutableDictionary<string, object> contentTypes,
+            ImmutableDictionary<string, string> contentTypes,
 
             string createdAt,
 
@@ -395,7 +395,7 @@ namespace Pulumi.OpenStack.KeyManager
 
             string id,
 
-            ImmutableDictionary<string, object> metadata,
+            ImmutableDictionary<string, string> metadata,
 
             string? mode,
 

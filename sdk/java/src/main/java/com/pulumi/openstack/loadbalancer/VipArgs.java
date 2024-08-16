@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -133,7 +132,7 @@ public final class VipArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="persistence")
-    private @Nullable Output<Map<String,Object>> persistence;
+    private @Nullable Output<Map<String,String>> persistence;
 
     /**
      * @return Omit this field to prevent session persistence.
@@ -141,7 +140,7 @@ public final class VipArgs extends com.pulumi.resources.ResourceArgs {
      * the persistence of the existing vip.
      * 
      */
-    public Optional<Output<Map<String,Object>>> persistence() {
+    public Optional<Output<Map<String,String>>> persistence() {
         return Optional.ofNullable(this.persistence);
     }
 
@@ -441,7 +440,7 @@ public final class VipArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder persistence(@Nullable Output<Map<String,Object>> persistence) {
+        public Builder persistence(@Nullable Output<Map<String,String>> persistence) {
             $.persistence = persistence;
             return this;
         }
@@ -454,7 +453,7 @@ public final class VipArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder persistence(Map<String,Object> persistence) {
+        public Builder persistence(Map<String,String> persistence) {
             return persistence(Output.of(persistence));
         }
 

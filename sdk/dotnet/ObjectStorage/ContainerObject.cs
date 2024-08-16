@@ -13,95 +13,6 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// Manages a V1 container object resource within OpenStack.
     /// 
     /// ## Example Usage
-    /// 
-    /// ### Example with simple content
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var container1 = new OpenStack.ObjectStorage.Container("container_1", new()
-    ///     {
-    ///         Region = "RegionOne",
-    ///         Name = "tf-test-container-1",
-    ///         Metadata = new[]
-    ///         {
-    ///             new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 ["test"] = "true",
-    ///             },
-    ///         },
-    ///         ContentType = "application/json",
-    ///     });
-    /// 
-    ///     var doc1 = new OpenStack.ObjectStorage.ContainerObject("doc_1", new()
-    ///     {
-    ///         Region = "RegionOne",
-    ///         ContainerName = container1.Name,
-    ///         Name = "test/default.json",
-    ///         Metadata = new[]
-    ///         {
-    ///             new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 ["test"] = "true",
-    ///             },
-    ///         },
-    ///         ContentType = "application/json",
-    ///         Content = @"               {
-    ///                  ""foo"" : ""bar""
-    ///                }
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Example with content from file
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var container1 = new OpenStack.ObjectStorage.Container("container_1", new()
-    ///     {
-    ///         Region = "RegionOne",
-    ///         Name = "tf-test-container-1",
-    ///         Metadata = new[]
-    ///         {
-    ///             new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 ["test"] = "true",
-    ///             },
-    ///         },
-    ///         ContentType = "application/json",
-    ///     });
-    /// 
-    ///     var doc1 = new OpenStack.ObjectStorage.ContainerObject("doc_1", new()
-    ///     {
-    ///         Region = "RegionOne",
-    ///         ContainerName = container1.Name,
-    ///         Name = "test/default.json",
-    ///         Metadata = new[]
-    ///         {
-    ///             new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 ["test"] = "true",
-    ///             },
-    ///         },
-    ///         ContentType = "application/json",
-    ///         Source = "./default.json",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [OpenStackResourceType("openstack:objectstorage/containerObject:ContainerObject")]
     public partial class ContainerObject : global::Pulumi.CustomResource
@@ -211,7 +122,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Output<string> LastModified { get; private set; } = null!;
 
         [Output("metadata")]
-        public Output<ImmutableDictionary<string, object>?> Metadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// A unique name for the object.
@@ -376,10 +287,10 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? Etag { get; set; }
 
         [Input("metadata")]
-        private InputMap<object>? _metadata;
-        public InputMap<object> Metadata
+        private InputMap<string>? _metadata;
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 
@@ -527,10 +438,10 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? LastModified { get; set; }
 
         [Input("metadata")]
-        private InputMap<object>? _metadata;
-        public InputMap<object> Metadata
+        private InputMap<string>? _metadata;
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 

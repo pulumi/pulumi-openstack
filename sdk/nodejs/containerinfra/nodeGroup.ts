@@ -104,7 +104,7 @@ export class NodeGroup extends pulumi.CustomResource {
      * The list of key value pairs representing additional
      * properties of the node group. Changing this creates a new node group.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any}>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The maximum number of nodes for the node group.
      * Changing this update the maximum number of nodes of the node group.
@@ -235,7 +235,7 @@ export interface NodeGroupState {
      * The list of key value pairs representing additional
      * properties of the node group. Changing this creates a new node group.
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The maximum number of nodes for the node group.
      * Changing this update the maximum number of nodes of the node group.
@@ -312,7 +312,7 @@ export interface NodeGroupArgs {
      * The list of key value pairs representing additional
      * properties of the node group. Changing this creates a new node group.
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The maximum number of nodes for the node group.
      * Changing this update the maximum number of nodes of the node group.

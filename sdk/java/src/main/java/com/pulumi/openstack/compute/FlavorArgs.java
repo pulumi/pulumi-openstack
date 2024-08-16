@@ -9,7 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -77,13 +76,13 @@ public final class FlavorArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="extraSpecs")
-    private @Nullable Output<Map<String,Object>> extraSpecs;
+    private @Nullable Output<Map<String,String>> extraSpecs;
 
     /**
      * @return Key/Value pairs of metadata for the flavor.
      * 
      */
-    public Optional<Output<Map<String,Object>>> extraSpecs() {
+    public Optional<Output<Map<String,String>>> extraSpecs() {
         return Optional.ofNullable(this.extraSpecs);
     }
 
@@ -337,7 +336,7 @@ public final class FlavorArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder extraSpecs(@Nullable Output<Map<String,Object>> extraSpecs) {
+        public Builder extraSpecs(@Nullable Output<Map<String,String>> extraSpecs) {
             $.extraSpecs = extraSpecs;
             return this;
         }
@@ -348,7 +347,7 @@ public final class FlavorArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder extraSpecs(Map<String,Object> extraSpecs) {
+        public Builder extraSpecs(Map<String,String> extraSpecs) {
             return extraSpecs(Output.of(extraSpecs));
         }
 

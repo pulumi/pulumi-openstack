@@ -102,7 +102,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// properties of the node group. Changing this creates a new node group.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The maximum number of nodes for the node group.
@@ -243,15 +243,15 @@ namespace Pulumi.OpenStack.ContainerInfra
         public Input<string>? ImageId { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// The list of key value pairs representing additional
         /// properties of the node group. Changing this creates a new node group.
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -348,15 +348,15 @@ namespace Pulumi.OpenStack.ContainerInfra
         public Input<string>? ImageId { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// The list of key value pairs representing additional
         /// properties of the node group. Changing this creates a new node group.
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 

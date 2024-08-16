@@ -198,7 +198,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// The list of key value pairs representing additional properties
         /// of the cluster template.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// The flavor for the master nodes.
         /// </summary>
@@ -300,7 +300,7 @@ namespace Pulumi.OpenStack.ContainerInfra
 
             string keypairId,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             string masterFlavor,
 

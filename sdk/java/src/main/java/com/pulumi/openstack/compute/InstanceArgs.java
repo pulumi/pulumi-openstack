@@ -11,7 +11,6 @@ import com.pulumi.openstack.compute.inputs.InstancePersonalityArgs;
 import com.pulumi.openstack.compute.inputs.InstanceSchedulerHintArgs;
 import com.pulumi.openstack.compute.inputs.InstanceVendorOptionsArgs;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -275,14 +274,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="metadata")
-    private @Nullable Output<Map<String,Object>> metadata;
+    private @Nullable Output<Map<String,String>> metadata;
 
     /**
      * @return Metadata key/value pairs to make available from
      * within the instance. Changing this updates the existing server metadata.
      * 
      */
-    public Optional<Output<Map<String,Object>>> metadata() {
+    public Optional<Output<Map<String,String>>> metadata() {
         return Optional.ofNullable(this.metadata);
     }
 
@@ -906,7 +905,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder metadata(@Nullable Output<Map<String,Object>> metadata) {
+        public Builder metadata(@Nullable Output<Map<String,String>> metadata) {
             $.metadata = metadata;
             return this;
         }
@@ -918,7 +917,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder metadata(Map<String,Object> metadata) {
+        public Builder metadata(Map<String,String> metadata) {
             return metadata(Output.of(metadata));
         }
 

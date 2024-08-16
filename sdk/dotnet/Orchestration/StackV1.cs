@@ -27,7 +27,7 @@ namespace Pulumi.OpenStack.Orchestration
     ///         Name = "stack_1",
     ///         Parameters = 
     ///         {
-    ///             { "length", 4 },
+    ///             { "length", "4" },
     ///         },
     ///         TemplateOpts = 
     ///         {
@@ -109,7 +109,7 @@ namespace Pulumi.OpenStack.Orchestration
         /// Environment Opts.
         /// </summary>
         [Output("environmentOpts")]
-        public Output<ImmutableDictionary<string, object>?> EnvironmentOpts { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> EnvironmentOpts { get; private set; } = null!;
 
         /// <summary>
         /// A unique name for the stack. It must start with an
@@ -129,7 +129,7 @@ namespace Pulumi.OpenStack.Orchestration
         /// to the template. Changing this updates the existing stack parameters.
         /// </summary>
         [Output("parameters")]
-        public Output<ImmutableDictionary<string, object>?> Parameters { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Parameters { get; private set; } = null!;
 
         /// <summary>
         /// The region in which to create the stack. If
@@ -170,7 +170,7 @@ namespace Pulumi.OpenStack.Orchestration
         /// Template Opts.
         /// </summary>
         [Output("templateOpts")]
-        public Output<ImmutableDictionary<string, object>> TemplateOpts { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> TemplateOpts { get; private set; } = null!;
 
         /// <summary>
         /// The timeout for stack action in minutes.
@@ -281,7 +281,7 @@ namespace Pulumi.OpenStack.Orchestration
         public Input<bool>? DisableRollback { get; set; }
 
         [Input("environmentOpts")]
-        private InputMap<object>? _environmentOpts;
+        private InputMap<string>? _environmentOpts;
 
         /// <summary>
         /// Environment key/value pairs to associate with
@@ -289,9 +289,9 @@ namespace Pulumi.OpenStack.Orchestration
         /// Allowed keys: Bin, URL, Files. Changing this updates the existing stack
         /// Environment Opts.
         /// </summary>
-        public InputMap<object> EnvironmentOpts
+        public InputMap<string> EnvironmentOpts
         {
-            get => _environmentOpts ?? (_environmentOpts = new InputMap<object>());
+            get => _environmentOpts ?? (_environmentOpts = new InputMap<string>());
             set => _environmentOpts = value;
         }
 
@@ -315,15 +315,15 @@ namespace Pulumi.OpenStack.Orchestration
         }
 
         [Input("parameters")]
-        private InputMap<object>? _parameters;
+        private InputMap<string>? _parameters;
 
         /// <summary>
         /// User-defined key/value pairs as parameters to pass
         /// to the template. Changing this updates the existing stack parameters.
         /// </summary>
-        public InputMap<object> Parameters
+        public InputMap<string> Parameters
         {
-            get => _parameters ?? (_parameters = new InputMap<object>());
+            get => _parameters ?? (_parameters = new InputMap<string>());
             set => _parameters = value;
         }
 
@@ -366,7 +366,7 @@ namespace Pulumi.OpenStack.Orchestration
         public Input<string>? TemplateDescription { get; set; }
 
         [Input("templateOpts", required: true)]
-        private InputMap<object>? _templateOpts;
+        private InputMap<string>? _templateOpts;
 
         /// <summary>
         /// Template key/value pairs to associate with the
@@ -374,9 +374,9 @@ namespace Pulumi.OpenStack.Orchestration
         /// Allowed keys: Bin, URL, Files. Changing this updates the existing stack
         /// Template Opts.
         /// </summary>
-        public InputMap<object> TemplateOpts
+        public InputMap<string> TemplateOpts
         {
-            get => _templateOpts ?? (_templateOpts = new InputMap<object>());
+            get => _templateOpts ?? (_templateOpts = new InputMap<string>());
             set => _templateOpts = value;
         }
 
@@ -451,7 +451,7 @@ namespace Pulumi.OpenStack.Orchestration
         public Input<bool>? DisableRollback { get; set; }
 
         [Input("environmentOpts")]
-        private InputMap<object>? _environmentOpts;
+        private InputMap<string>? _environmentOpts;
 
         /// <summary>
         /// Environment key/value pairs to associate with
@@ -459,9 +459,9 @@ namespace Pulumi.OpenStack.Orchestration
         /// Allowed keys: Bin, URL, Files. Changing this updates the existing stack
         /// Environment Opts.
         /// </summary>
-        public InputMap<object> EnvironmentOpts
+        public InputMap<string> EnvironmentOpts
         {
-            get => _environmentOpts ?? (_environmentOpts = new InputMap<object>());
+            get => _environmentOpts ?? (_environmentOpts = new InputMap<string>());
             set => _environmentOpts = value;
         }
 
@@ -485,15 +485,15 @@ namespace Pulumi.OpenStack.Orchestration
         }
 
         [Input("parameters")]
-        private InputMap<object>? _parameters;
+        private InputMap<string>? _parameters;
 
         /// <summary>
         /// User-defined key/value pairs as parameters to pass
         /// to the template. Changing this updates the existing stack parameters.
         /// </summary>
-        public InputMap<object> Parameters
+        public InputMap<string> Parameters
         {
-            get => _parameters ?? (_parameters = new InputMap<object>());
+            get => _parameters ?? (_parameters = new InputMap<string>());
             set => _parameters = value;
         }
 
@@ -536,7 +536,7 @@ namespace Pulumi.OpenStack.Orchestration
         public Input<string>? TemplateDescription { get; set; }
 
         [Input("templateOpts")]
-        private InputMap<object>? _templateOpts;
+        private InputMap<string>? _templateOpts;
 
         /// <summary>
         /// Template key/value pairs to associate with the
@@ -544,9 +544,9 @@ namespace Pulumi.OpenStack.Orchestration
         /// Allowed keys: Bin, URL, Files. Changing this updates the existing stack
         /// Template Opts.
         /// </summary>
-        public InputMap<object> TemplateOpts
+        public InputMap<string> TemplateOpts
         {
-            get => _templateOpts ?? (_templateOpts = new InputMap<object>());
+            get => _templateOpts ?? (_templateOpts = new InputMap<string>());
             set => _templateOpts = value;
         }
 

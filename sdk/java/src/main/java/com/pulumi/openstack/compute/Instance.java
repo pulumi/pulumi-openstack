@@ -16,7 +16,6 @@ import com.pulumi.openstack.compute.outputs.InstancePersonality;
 import com.pulumi.openstack.compute.outputs.InstanceSchedulerHint;
 import com.pulumi.openstack.compute.outputs.InstanceVendorOptions;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -69,10 +68,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> adminPass() {
         return Codegen.optional(this.adminPass);
     }
-    @Export(name="allMetadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> allMetadata;
+    @Export(name="allMetadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> allMetadata;
 
-    public Output<Map<String,Object>> allMetadata() {
+    public Output<Map<String,String>> allMetadata() {
         return this.allMetadata;
     }
     /**
@@ -298,15 +297,15 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * within the instance. Changing this updates the existing server metadata.
      * 
      */
-    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> metadata;
+    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
      * @return Metadata key/value pairs to make available from
      * within the instance. Changing this updates the existing server metadata.
      * 
      */
-    public Output<Optional<Map<String,Object>>> metadata() {
+    public Output<Optional<Map<String,String>>> metadata() {
         return Codegen.optional(this.metadata);
     }
     /**

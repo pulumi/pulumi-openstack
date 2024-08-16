@@ -20,7 +20,7 @@ class ServerGroupArgs:
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input['ServerGroupRulesArgs']] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ServerGroup resource.
         :param pulumi.Input[str] name: A unique name for the server group. Changing this creates
@@ -33,7 +33,7 @@ class ServerGroupArgs:
                this creates a new server group.
         :param pulumi.Input['ServerGroupRulesArgs'] rules: The rules which are applied to specified `policy`. Currently,
                only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -102,14 +102,14 @@ class ServerGroupArgs:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -121,7 +121,7 @@ class _ServerGroupState:
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input['ServerGroupRulesArgs']] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ServerGroup resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: The instances that are part of this server group.
@@ -135,7 +135,7 @@ class _ServerGroupState:
                this creates a new server group.
         :param pulumi.Input['ServerGroupRulesArgs'] rules: The rules which are applied to specified `policy`. Currently,
                only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         if members is not None:
             pulumi.set(__self__, "members", members)
@@ -218,14 +218,14 @@ class _ServerGroupState:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -238,7 +238,7 @@ class ServerGroup(pulumi.CustomResource):
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Manages a V2 Server Group resource within OpenStack.
@@ -328,7 +328,7 @@ class ServerGroup(pulumi.CustomResource):
                this creates a new server group.
         :param pulumi.Input[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']] rules: The rules which are applied to specified `policy`. Currently,
                only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         ...
     @overload
@@ -431,7 +431,7 @@ class ServerGroup(pulumi.CustomResource):
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -462,7 +462,7 @@ class ServerGroup(pulumi.CustomResource):
             policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             rules: Optional[pulumi.Input[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'ServerGroup':
+            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'ServerGroup':
         """
         Get an existing ServerGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -481,7 +481,7 @@ class ServerGroup(pulumi.CustomResource):
                this creates a new server group.
         :param pulumi.Input[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']] rules: The rules which are applied to specified `policy`. Currently,
                only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -543,7 +543,7 @@ class ServerGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of additional options.
         """

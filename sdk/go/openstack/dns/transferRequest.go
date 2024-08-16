@@ -79,7 +79,7 @@ type TransferRequest struct {
 	TargetProjectId pulumi.StringOutput `pulumi:"targetProjectId"`
 	// Map of additional options. Changing this creates a
 	// new transfer request.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 	// The ID of the zone for which to create the transfer
 	// request.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -134,7 +134,7 @@ type transferRequestState struct {
 	TargetProjectId *string `pulumi:"targetProjectId"`
 	// Map of additional options. Changing this creates a
 	// new transfer request.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 	// The ID of the zone for which to create the transfer
 	// request.
 	ZoneId *string `pulumi:"zoneId"`
@@ -157,7 +157,7 @@ type TransferRequestState struct {
 	TargetProjectId pulumi.StringPtrInput
 	// Map of additional options. Changing this creates a
 	// new transfer request.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 	// The ID of the zone for which to create the transfer
 	// request.
 	ZoneId pulumi.StringPtrInput
@@ -184,7 +184,7 @@ type transferRequestArgs struct {
 	TargetProjectId *string `pulumi:"targetProjectId"`
 	// Map of additional options. Changing this creates a
 	// new transfer request.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 	// The ID of the zone for which to create the transfer
 	// request.
 	ZoneId string `pulumi:"zoneId"`
@@ -208,7 +208,7 @@ type TransferRequestArgs struct {
 	TargetProjectId pulumi.StringPtrInput
 	// Map of additional options. Changing this creates a
 	// new transfer request.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 	// The ID of the zone for which to create the transfer
 	// request.
 	ZoneId pulumi.StringInput
@@ -332,8 +332,8 @@ func (o TransferRequestOutput) TargetProjectId() pulumi.StringOutput {
 
 // Map of additional options. Changing this creates a
 // new transfer request.
-func (o TransferRequestOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *TransferRequest) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o TransferRequestOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TransferRequest) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 // The ID of the zone for which to create the transfer

@@ -70,14 +70,14 @@ namespace Pulumi.OpenStack.BlockStorage
         public string? Bootable { get; set; }
 
         [Input("metadata")]
-        private Dictionary<string, object>? _metadata;
+        private Dictionary<string, string>? _metadata;
 
         /// <summary>
         /// Metadata key/value pairs associated with the volume.
         /// </summary>
-        public Dictionary<string, object> Metadata
+        public Dictionary<string, string> Metadata
         {
-            get => _metadata ?? (_metadata = new Dictionary<string, object>());
+            get => _metadata ?? (_metadata = new Dictionary<string, string>());
             set => _metadata = value;
         }
 
@@ -121,14 +121,14 @@ namespace Pulumi.OpenStack.BlockStorage
         public Input<string>? Bootable { get; set; }
 
         [Input("metadata")]
-        private InputMap<object>? _metadata;
+        private InputMap<string>? _metadata;
 
         /// <summary>
         /// Metadata key/value pairs associated with the volume.
         /// </summary>
-        public InputMap<object> Metadata
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 
@@ -178,7 +178,7 @@ namespace Pulumi.OpenStack.BlockStorage
         /// <summary>
         /// See Argument Reference above.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Metadata;
+        public readonly ImmutableDictionary<string, string> Metadata;
         /// <summary>
         /// See Argument Reference above.
         /// </summary>
@@ -210,7 +210,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
             string id,
 
-            ImmutableDictionary<string, object> metadata,
+            ImmutableDictionary<string, string> metadata,
 
             string name,
 

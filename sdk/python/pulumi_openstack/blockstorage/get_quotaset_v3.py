@@ -130,7 +130,7 @@ class GetQuotasetV3Result:
 
     @property
     @pulumi.getter(name="volumeTypeQuota")
-    def volume_type_quota(self) -> Mapping[str, Any]:
+    def volume_type_quota(self) -> Mapping[str, str]:
         """
         Map with gigabytes_{volume_type}, snapshots_{volume_type}, volumes_{volume_type} for each volume type.
         """

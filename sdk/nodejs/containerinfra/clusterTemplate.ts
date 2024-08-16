@@ -218,7 +218,7 @@ export class ClusterTemplate extends pulumi.CustomResource {
      * properties of the cluster template. Changing this updates the labels of the
      * existing cluster template.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The flavor for the master nodes. Can be set via
      * the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
@@ -500,7 +500,7 @@ export interface ClusterTemplateState {
      * properties of the cluster template. Changing this updates the labels of the
      * existing cluster template.
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The flavor for the master nodes. Can be set via
      * the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
@@ -689,7 +689,7 @@ export interface ClusterTemplateArgs {
      * properties of the cluster template. Changing this updates the labels of the
      * existing cluster template.
      */
-    labels?: pulumi.Input<{[key: string]: any}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The flavor for the master nodes. Can be set via
      * the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates

@@ -4,7 +4,6 @@
 package com.pulumi.openstack.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +18,7 @@ public final class InstanceSchedulerHint {
      * properties to pass to the scheduler.
      * 
      */
-    private @Nullable Map<String,Object> additionalProperties;
+    private @Nullable Map<String,String> additionalProperties;
     /**
      * @return An IP Address in CIDR form. The instance
      * will be placed on a compute node that is in the same subnet.
@@ -72,7 +71,7 @@ public final class InstanceSchedulerHint {
      * properties to pass to the scheduler.
      * 
      */
-    public Map<String,Object> additionalProperties() {
+    public Map<String,String> additionalProperties() {
         return this.additionalProperties == null ? Map.of() : this.additionalProperties;
     }
     /**
@@ -144,7 +143,7 @@ public final class InstanceSchedulerHint {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,Object> additionalProperties;
+        private @Nullable Map<String,String> additionalProperties;
         private @Nullable String buildNearHostIp;
         private @Nullable List<String> differentCells;
         private @Nullable List<String> differentHosts;
@@ -166,7 +165,7 @@ public final class InstanceSchedulerHint {
         }
 
         @CustomType.Setter
-        public Builder additionalProperties(@Nullable Map<String,Object> additionalProperties) {
+        public Builder additionalProperties(@Nullable Map<String,String> additionalProperties) {
 
             this.additionalProperties = additionalProperties;
             return this;

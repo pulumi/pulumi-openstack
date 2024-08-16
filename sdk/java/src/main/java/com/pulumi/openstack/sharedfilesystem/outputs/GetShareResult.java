@@ -8,7 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.sharedfilesystem.outputs.GetShareExportLocation;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -54,7 +53,7 @@ public final class GetShareResult {
      * @return See Argument Reference above.
      * 
      */
-    private Map<String,Object> metadata;
+    private Map<String,String> metadata;
     /**
      * @return See Argument Reference above.
      * 
@@ -145,7 +144,7 @@ public final class GetShareResult {
      * @return See Argument Reference above.
      * 
      */
-    public Map<String,Object> metadata() {
+    public Map<String,String> metadata() {
         return this.metadata;
     }
     /**
@@ -220,7 +219,7 @@ public final class GetShareResult {
         private List<GetShareExportLocation> exportLocations;
         private String id;
         private Boolean isPublic;
-        private Map<String,Object> metadata;
+        private Map<String,String> metadata;
         private String name;
         private String projectId;
         private String region;
@@ -299,7 +298,7 @@ public final class GetShareResult {
             return this;
         }
         @CustomType.Setter
-        public Builder metadata(Map<String,Object> metadata) {
+        public Builder metadata(Map<String,String> metadata) {
             if (metadata == null) {
               throw new MissingRequiredPropertyException("GetShareResult", "metadata");
             }

@@ -30,11 +30,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := orchestration.NewStackV1(ctx, "stack_1", &orchestration.StackV1Args{
 //				Name: pulumi.String("stack_1"),
-//				Parameters: pulumi.Map{
-//					"length": pulumi.Any(4),
+//				Parameters: pulumi.StringMap{
+//					"length": pulumi.String("4"),
 //				},
-//				TemplateOpts: pulumi.Map{
-//					"Bin": pulumi.Any(`heat_template_version: 2013-05-23
+//				TemplateOpts: pulumi.StringMap{
+//					"Bin": pulumi.String(`heat_template_version: 2013-05-23
 //
 // parameters:
 //
@@ -53,8 +53,8 @@ import (
 // `),
 //
 //				},
-//				EnvironmentOpts: pulumi.Map{
-//					"Bin": pulumi.Any("\n"),
+//				EnvironmentOpts: pulumi.StringMap{
+//					"Bin": pulumi.String("\n"),
 //				},
 //				DisableRollback: pulumi.Bool(true),
 //				Timeout:         pulumi.Int(30),
@@ -97,7 +97,7 @@ type StackV1 struct {
 	// the stack which contains details for the environment of the stack.
 	// Allowed keys: Bin, URL, Files. Changing this updates the existing stack
 	// Environment Opts.
-	EnvironmentOpts pulumi.MapOutput `pulumi:"environmentOpts"`
+	EnvironmentOpts pulumi.StringMapOutput `pulumi:"environmentOpts"`
 	// A unique name for the stack. It must start with an
 	// alphabetic character. Changing this updates the stack's name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -105,7 +105,7 @@ type StackV1 struct {
 	NotificationTopics pulumi.StringArrayOutput `pulumi:"notificationTopics"`
 	// User-defined key/value pairs as parameters to pass
 	// to the template. Changing this updates the existing stack parameters.
-	Parameters pulumi.MapOutput `pulumi:"parameters"`
+	Parameters pulumi.StringMapOutput `pulumi:"parameters"`
 	// The region in which to create the stack. If
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new stack.
@@ -122,7 +122,7 @@ type StackV1 struct {
 	// stack which contains either the template file or url.
 	// Allowed keys: Bin, URL, Files. Changing this updates the existing stack
 	// Template Opts.
-	TemplateOpts pulumi.MapOutput `pulumi:"templateOpts"`
+	TemplateOpts pulumi.StringMapOutput `pulumi:"templateOpts"`
 	// The timeout for stack action in minutes.
 	Timeout pulumi.IntOutput `pulumi:"timeout"`
 	// The date and time when the resource was updated. The date
@@ -184,7 +184,7 @@ type stackV1State struct {
 	// the stack which contains details for the environment of the stack.
 	// Allowed keys: Bin, URL, Files. Changing this updates the existing stack
 	// Environment Opts.
-	EnvironmentOpts map[string]interface{} `pulumi:"environmentOpts"`
+	EnvironmentOpts map[string]string `pulumi:"environmentOpts"`
 	// A unique name for the stack. It must start with an
 	// alphabetic character. Changing this updates the stack's name.
 	Name *string `pulumi:"name"`
@@ -192,7 +192,7 @@ type stackV1State struct {
 	NotificationTopics []string `pulumi:"notificationTopics"`
 	// User-defined key/value pairs as parameters to pass
 	// to the template. Changing this updates the existing stack parameters.
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters map[string]string `pulumi:"parameters"`
 	// The region in which to create the stack. If
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new stack.
@@ -209,7 +209,7 @@ type stackV1State struct {
 	// stack which contains either the template file or url.
 	// Allowed keys: Bin, URL, Files. Changing this updates the existing stack
 	// Template Opts.
-	TemplateOpts map[string]interface{} `pulumi:"templateOpts"`
+	TemplateOpts map[string]string `pulumi:"templateOpts"`
 	// The timeout for stack action in minutes.
 	Timeout *int `pulumi:"timeout"`
 	// The date and time when the resource was updated. The date
@@ -239,7 +239,7 @@ type StackV1State struct {
 	// the stack which contains details for the environment of the stack.
 	// Allowed keys: Bin, URL, Files. Changing this updates the existing stack
 	// Environment Opts.
-	EnvironmentOpts pulumi.MapInput
+	EnvironmentOpts pulumi.StringMapInput
 	// A unique name for the stack. It must start with an
 	// alphabetic character. Changing this updates the stack's name.
 	Name pulumi.StringPtrInput
@@ -247,7 +247,7 @@ type StackV1State struct {
 	NotificationTopics pulumi.StringArrayInput
 	// User-defined key/value pairs as parameters to pass
 	// to the template. Changing this updates the existing stack parameters.
-	Parameters pulumi.MapInput
+	Parameters pulumi.StringMapInput
 	// The region in which to create the stack. If
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new stack.
@@ -264,7 +264,7 @@ type StackV1State struct {
 	// stack which contains either the template file or url.
 	// Allowed keys: Bin, URL, Files. Changing this updates the existing stack
 	// Template Opts.
-	TemplateOpts pulumi.MapInput
+	TemplateOpts pulumi.StringMapInput
 	// The timeout for stack action in minutes.
 	Timeout pulumi.IntPtrInput
 	// The date and time when the resource was updated. The date
@@ -298,7 +298,7 @@ type stackV1Args struct {
 	// the stack which contains details for the environment of the stack.
 	// Allowed keys: Bin, URL, Files. Changing this updates the existing stack
 	// Environment Opts.
-	EnvironmentOpts map[string]interface{} `pulumi:"environmentOpts"`
+	EnvironmentOpts map[string]string `pulumi:"environmentOpts"`
 	// A unique name for the stack. It must start with an
 	// alphabetic character. Changing this updates the stack's name.
 	Name *string `pulumi:"name"`
@@ -306,7 +306,7 @@ type stackV1Args struct {
 	NotificationTopics []string `pulumi:"notificationTopics"`
 	// User-defined key/value pairs as parameters to pass
 	// to the template. Changing this updates the existing stack parameters.
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters map[string]string `pulumi:"parameters"`
 	// The region in which to create the stack. If
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new stack.
@@ -323,7 +323,7 @@ type stackV1Args struct {
 	// stack which contains either the template file or url.
 	// Allowed keys: Bin, URL, Files. Changing this updates the existing stack
 	// Template Opts.
-	TemplateOpts map[string]interface{} `pulumi:"templateOpts"`
+	TemplateOpts map[string]string `pulumi:"templateOpts"`
 	// The timeout for stack action in minutes.
 	Timeout *int `pulumi:"timeout"`
 	// The date and time when the resource was updated. The date
@@ -354,7 +354,7 @@ type StackV1Args struct {
 	// the stack which contains details for the environment of the stack.
 	// Allowed keys: Bin, URL, Files. Changing this updates the existing stack
 	// Environment Opts.
-	EnvironmentOpts pulumi.MapInput
+	EnvironmentOpts pulumi.StringMapInput
 	// A unique name for the stack. It must start with an
 	// alphabetic character. Changing this updates the stack's name.
 	Name pulumi.StringPtrInput
@@ -362,7 +362,7 @@ type StackV1Args struct {
 	NotificationTopics pulumi.StringArrayInput
 	// User-defined key/value pairs as parameters to pass
 	// to the template. Changing this updates the existing stack parameters.
-	Parameters pulumi.MapInput
+	Parameters pulumi.StringMapInput
 	// The region in which to create the stack. If
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new stack.
@@ -379,7 +379,7 @@ type StackV1Args struct {
 	// stack which contains either the template file or url.
 	// Allowed keys: Bin, URL, Files. Changing this updates the existing stack
 	// Template Opts.
-	TemplateOpts pulumi.MapInput
+	TemplateOpts pulumi.StringMapInput
 	// The timeout for stack action in minutes.
 	Timeout pulumi.IntPtrInput
 	// The date and time when the resource was updated. The date
@@ -510,8 +510,8 @@ func (o StackV1Output) DisableRollback() pulumi.BoolOutput {
 // the stack which contains details for the environment of the stack.
 // Allowed keys: Bin, URL, Files. Changing this updates the existing stack
 // Environment Opts.
-func (o StackV1Output) EnvironmentOpts() pulumi.MapOutput {
-	return o.ApplyT(func(v *StackV1) pulumi.MapOutput { return v.EnvironmentOpts }).(pulumi.MapOutput)
+func (o StackV1Output) EnvironmentOpts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.StringMapOutput { return v.EnvironmentOpts }).(pulumi.StringMapOutput)
 }
 
 // A unique name for the stack. It must start with an
@@ -527,8 +527,8 @@ func (o StackV1Output) NotificationTopics() pulumi.StringArrayOutput {
 
 // User-defined key/value pairs as parameters to pass
 // to the template. Changing this updates the existing stack parameters.
-func (o StackV1Output) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *StackV1) pulumi.MapOutput { return v.Parameters }).(pulumi.MapOutput)
+func (o StackV1Output) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.StringMapOutput { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
 // The region in which to create the stack. If
@@ -562,8 +562,8 @@ func (o StackV1Output) TemplateDescription() pulumi.StringOutput {
 // stack which contains either the template file or url.
 // Allowed keys: Bin, URL, Files. Changing this updates the existing stack
 // Template Opts.
-func (o StackV1Output) TemplateOpts() pulumi.MapOutput {
-	return o.ApplyT(func(v *StackV1) pulumi.MapOutput { return v.TemplateOpts }).(pulumi.MapOutput)
+func (o StackV1Output) TemplateOpts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.StringMapOutput { return v.TemplateOpts }).(pulumi.StringMapOutput)
 }
 
 // The timeout for stack action in minutes.

@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.openstack.identity.inputs.UserMultiFactorAuthRuleArgs;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -87,13 +86,13 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="extra")
-    private @Nullable Output<Map<String,Object>> extra;
+    private @Nullable Output<Map<String,String>> extra;
 
     /**
      * @return Free-form key/value pairs of extra information.
      * 
      */
-    public Optional<Output<Map<String,Object>>> extra() {
+    public Optional<Output<Map<String,String>>> extra() {
         return Optional.ofNullable(this.extra);
     }
 
@@ -363,7 +362,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder extra(@Nullable Output<Map<String,Object>> extra) {
+        public Builder extra(@Nullable Output<Map<String,String>> extra) {
             $.extra = extra;
             return this;
         }
@@ -374,7 +373,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder extra(Map<String,Object> extra) {
+        public Builder extra(Map<String,String> extra) {
             return extra(Output.of(extra));
         }
 

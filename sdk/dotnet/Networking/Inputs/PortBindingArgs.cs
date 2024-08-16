@@ -26,15 +26,15 @@ namespace Pulumi.OpenStack.Networking.Inputs
         public Input<string>? Profile { get; set; }
 
         [Input("vifDetails")]
-        private InputMap<object>? _vifDetails;
+        private InputMap<string>? _vifDetails;
 
         /// <summary>
         /// A map of JSON strings containing additional
         /// details for this specific binding.
         /// </summary>
-        public InputMap<object> VifDetails
+        public InputMap<string> VifDetails
         {
-            get => _vifDetails ?? (_vifDetails = new InputMap<object>());
+            get => _vifDetails ?? (_vifDetails = new InputMap<string>());
             set => _vifDetails = value;
         }
 

@@ -5,7 +5,6 @@ package com.pulumi.openstack.blockstorage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -75,13 +74,13 @@ public final class QosV3Args extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="specs")
-    private @Nullable Output<Map<String,Object>> specs;
+    private @Nullable Output<Map<String,String>> specs;
 
     /**
      * @return Key/Value pairs of specs for the qos.
      * 
      */
-    public Optional<Output<Map<String,Object>>> specs() {
+    public Optional<Output<Map<String,String>>> specs() {
         return Optional.ofNullable(this.specs);
     }
 
@@ -189,7 +188,7 @@ public final class QosV3Args extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder specs(@Nullable Output<Map<String,Object>> specs) {
+        public Builder specs(@Nullable Output<Map<String,String>> specs) {
             $.specs = specs;
             return this;
         }
@@ -200,7 +199,7 @@ public final class QosV3Args extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder specs(Map<String,Object> specs) {
+        public Builder specs(Map<String,String> specs) {
             return specs(Output.of(specs));
         }
 

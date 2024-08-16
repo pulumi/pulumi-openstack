@@ -110,7 +110,7 @@ type LookupPortResult struct {
 	// See Argument Reference above.
 	DeviceOwner *string `pulumi:"deviceOwner"`
 	// The list of maps representing port DNS assignments.
-	DnsAssignments []map[string]interface{} `pulumi:"dnsAssignments"`
+	DnsAssignments []map[string]string `pulumi:"dnsAssignments"`
 	// See Argument Reference above.
 	DnsName *string `pulumi:"dnsName"`
 	// An extra DHCP option configured on the port.
@@ -256,8 +256,8 @@ func (o LookupPortResultOutput) DeviceOwner() pulumi.StringPtrOutput {
 }
 
 // The list of maps representing port DNS assignments.
-func (o LookupPortResultOutput) DnsAssignments() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v LookupPortResult) []map[string]interface{} { return v.DnsAssignments }).(pulumi.MapArrayOutput)
+func (o LookupPortResultOutput) DnsAssignments() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v LookupPortResult) []map[string]string { return v.DnsAssignments }).(pulumi.StringMapArrayOutput)
 }
 
 // See Argument Reference above.

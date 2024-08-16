@@ -5,7 +5,6 @@ package com.pulumi.openstack.sharedfilesystem.inputs;
 
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -72,14 +71,14 @@ public final class GetSharePlainArgs extends com.pulumi.resources.InvokeArgs {
      * 
      */
     @Import(name="metadata")
-    private @Nullable Map<String,Object> metadata;
+    private @Nullable Map<String,String> metadata;
 
     /**
      * @return One or more metadata key and value pairs as a dictionary of
      * strings.
      * 
      */
-    public Optional<Map<String,Object>> metadata() {
+    public Optional<Map<String,String>> metadata() {
         return Optional.ofNullable(this.metadata);
     }
 
@@ -240,7 +239,7 @@ public final class GetSharePlainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder metadata(@Nullable Map<String,Object> metadata) {
+        public Builder metadata(@Nullable Map<String,String> metadata) {
             $.metadata = metadata;
             return this;
         }

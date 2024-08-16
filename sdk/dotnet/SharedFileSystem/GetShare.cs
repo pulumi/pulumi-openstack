@@ -84,15 +84,15 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public bool? IsPublic { get; set; }
 
         [Input("metadata")]
-        private Dictionary<string, object>? _metadata;
+        private Dictionary<string, string>? _metadata;
 
         /// <summary>
         /// One or more metadata key and value pairs as a dictionary of
         /// strings.
         /// </summary>
-        public Dictionary<string, object> Metadata
+        public Dictionary<string, string> Metadata
         {
-            get => _metadata ?? (_metadata = new Dictionary<string, object>());
+            get => _metadata ?? (_metadata = new Dictionary<string, string>());
             set => _metadata = value;
         }
 
@@ -159,15 +159,15 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public Input<bool>? IsPublic { get; set; }
 
         [Input("metadata")]
-        private InputMap<object>? _metadata;
+        private InputMap<string>? _metadata;
 
         /// <summary>
         /// One or more metadata key and value pairs as a dictionary of
         /// strings.
         /// </summary>
-        public InputMap<object> Metadata
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 
@@ -244,7 +244,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// <summary>
         /// See Argument Reference above.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Metadata;
+        public readonly ImmutableDictionary<string, string> Metadata;
         /// <summary>
         /// See Argument Reference above.
         /// </summary>
@@ -292,7 +292,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
 
             bool isPublic,
 
-            ImmutableDictionary<string, object> metadata,
+            ImmutableDictionary<string, string> metadata,
 
             string name,
 

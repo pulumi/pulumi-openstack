@@ -102,7 +102,7 @@ type Rule struct {
 	// new firewall rule.
 	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 }
 
 // NewRule registers a new resource with the given unique name, arguments, and options.
@@ -188,7 +188,7 @@ type ruleState struct {
 	// new firewall rule.
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 type RuleState struct {
@@ -239,7 +239,7 @@ type RuleState struct {
 	// new firewall rule.
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (RuleState) ElementType() reflect.Type {
@@ -294,7 +294,7 @@ type ruleArgs struct {
 	// new firewall rule.
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 // The set of arguments for constructing a Rule resource.
@@ -346,7 +346,7 @@ type RuleArgs struct {
 	// new firewall rule.
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (RuleArgs) ElementType() reflect.Type {
@@ -519,8 +519,8 @@ func (o RuleOutput) TenantId() pulumi.StringPtrOutput {
 }
 
 // Map of additional options.
-func (o RuleOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *Rule) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o RuleOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 type RuleArrayOutput struct{ *pulumi.OutputState }

@@ -75,7 +75,7 @@ export interface GetSnapshotV2Result {
     /**
      * The snapshot's metadata.
      */
-    readonly metadata: {[key: string]: any};
+    readonly metadata: {[key: string]: string};
     readonly mostRecent?: boolean;
     /**
      * See Argument Reference above.

@@ -81,7 +81,7 @@ type IpSecPolicy struct {
 	// Changing this updates the existing policy. Default is ESP.
 	TransformProtocol pulumi.StringOutput `pulumi:"transformProtocol"`
 	// Map of additional options.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 }
 
 // NewIpSecPolicy registers a new resource with the given unique name, arguments, and options.
@@ -146,7 +146,7 @@ type ipSecPolicyState struct {
 	// Changing this updates the existing policy. Default is ESP.
 	TransformProtocol *string `pulumi:"transformProtocol"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 type IpSecPolicyState struct {
@@ -182,7 +182,7 @@ type IpSecPolicyState struct {
 	// Changing this updates the existing policy. Default is ESP.
 	TransformProtocol pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (IpSecPolicyState) ElementType() reflect.Type {
@@ -222,7 +222,7 @@ type ipSecPolicyArgs struct {
 	// Changing this updates the existing policy. Default is ESP.
 	TransformProtocol *string `pulumi:"transformProtocol"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 // The set of arguments for constructing a IpSecPolicy resource.
@@ -259,7 +259,7 @@ type IpSecPolicyArgs struct {
 	// Changing this updates the existing policy. Default is ESP.
 	TransformProtocol pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (IpSecPolicyArgs) ElementType() reflect.Type {
@@ -411,8 +411,8 @@ func (o IpSecPolicyOutput) TransformProtocol() pulumi.StringOutput {
 }
 
 // Map of additional options.
-func (o IpSecPolicyOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *IpSecPolicy) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o IpSecPolicyOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 type IpSecPolicyArrayOutput struct{ *pulumi.OutputState }

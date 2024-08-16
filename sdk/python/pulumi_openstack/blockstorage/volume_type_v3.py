@@ -15,7 +15,7 @@ __all__ = ['VolumeTypeV3Args', 'VolumeTypeV3']
 class VolumeTypeV3Args:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
-                 extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
@@ -23,7 +23,7 @@ class VolumeTypeV3Args:
         The set of arguments for constructing a VolumeTypeV3 resource.
         :param pulumi.Input[str] description: Human-readable description of the port. Changing
                this updates the `description` of an existing volume type.
-        :param pulumi.Input[Mapping[str, Any]] extra_specs: Key/Value pairs of metadata for the volume type.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_specs: Key/Value pairs of metadata for the volume type.
         :param pulumi.Input[bool] is_public: Whether the volume type is public. Changing
                this updates the `is_public` of an existing volume type.
         :param pulumi.Input[str] name: Name of the volume type.  Changing this
@@ -58,14 +58,14 @@ class VolumeTypeV3Args:
 
     @property
     @pulumi.getter(name="extraSpecs")
-    def extra_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Key/Value pairs of metadata for the volume type.
         """
         return pulumi.get(self, "extra_specs")
 
     @extra_specs.setter
-    def extra_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_specs", value)
 
     @property
@@ -113,7 +113,7 @@ class VolumeTypeV3Args:
 class _VolumeTypeV3State:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
-                 extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
@@ -121,7 +121,7 @@ class _VolumeTypeV3State:
         Input properties used for looking up and filtering VolumeTypeV3 resources.
         :param pulumi.Input[str] description: Human-readable description of the port. Changing
                this updates the `description` of an existing volume type.
-        :param pulumi.Input[Mapping[str, Any]] extra_specs: Key/Value pairs of metadata for the volume type.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_specs: Key/Value pairs of metadata for the volume type.
         :param pulumi.Input[bool] is_public: Whether the volume type is public. Changing
                this updates the `is_public` of an existing volume type.
         :param pulumi.Input[str] name: Name of the volume type.  Changing this
@@ -156,14 +156,14 @@ class _VolumeTypeV3State:
 
     @property
     @pulumi.getter(name="extraSpecs")
-    def extra_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Key/Value pairs of metadata for the volume type.
         """
         return pulumi.get(self, "extra_specs")
 
     @extra_specs.setter
-    def extra_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_specs", value)
 
     @property
@@ -213,7 +213,7 @@ class VolumeTypeV3(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -266,7 +266,7 @@ class VolumeTypeV3(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Human-readable description of the port. Changing
                this updates the `description` of an existing volume type.
-        :param pulumi.Input[Mapping[str, Any]] extra_specs: Key/Value pairs of metadata for the volume type.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_specs: Key/Value pairs of metadata for the volume type.
         :param pulumi.Input[bool] is_public: Whether the volume type is public. Changing
                this updates the `is_public` of an existing volume type.
         :param pulumi.Input[str] name: Name of the volume type.  Changing this
@@ -341,7 +341,7 @@ class VolumeTypeV3(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -370,7 +370,7 @@ class VolumeTypeV3(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            extra_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             is_public: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None) -> 'VolumeTypeV3':
@@ -383,7 +383,7 @@ class VolumeTypeV3(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Human-readable description of the port. Changing
                this updates the `description` of an existing volume type.
-        :param pulumi.Input[Mapping[str, Any]] extra_specs: Key/Value pairs of metadata for the volume type.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_specs: Key/Value pairs of metadata for the volume type.
         :param pulumi.Input[bool] is_public: Whether the volume type is public. Changing
                this updates the `is_public` of an existing volume type.
         :param pulumi.Input[str] name: Name of the volume type.  Changing this
@@ -414,7 +414,7 @@ class VolumeTypeV3(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="extraSpecs")
-    def extra_specs(self) -> pulumi.Output[Mapping[str, Any]]:
+    def extra_specs(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Key/Value pairs of metadata for the volume type.
         """

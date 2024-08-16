@@ -140,7 +140,7 @@ export class Router extends pulumi.CustomResource {
     /**
      * Map of additional driver-specific options.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Map of additional vendor-specific options.
      * Supported options are described below.
@@ -284,7 +284,7 @@ export interface RouterState {
     /**
      * Map of additional driver-specific options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map of additional vendor-specific options.
      * Supported options are described below.
@@ -373,7 +373,7 @@ export interface RouterArgs {
     /**
      * Map of additional driver-specific options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map of additional vendor-specific options.
      * Supported options are described below.

@@ -11,7 +11,6 @@ import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.blockstorage.VolumeTypeV3Args;
 import com.pulumi.openstack.blockstorage.inputs.VolumeTypeV3State;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import javax.annotation.Nullable;
@@ -131,14 +130,14 @@ public class VolumeTypeV3 extends com.pulumi.resources.CustomResource {
      * Key/Value pairs of metadata for the volume type.
      * 
      */
-    @Export(name="extraSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> extraSpecs;
+    @Export(name="extraSpecs", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> extraSpecs;
 
     /**
      * @return Key/Value pairs of metadata for the volume type.
      * 
      */
-    public Output<Map<String,Object>> extraSpecs() {
+    public Output<Map<String,String>> extraSpecs() {
         return this.extraSpecs;
     }
     /**

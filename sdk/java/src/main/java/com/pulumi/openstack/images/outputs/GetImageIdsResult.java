@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +29,7 @@ public final class GetImageIdsResult {
     private @Nullable String name;
     private @Nullable String nameRegex;
     private @Nullable String owner;
-    private @Nullable Map<String,Object> properties;
+    private @Nullable Map<String,String> properties;
     private String region;
     private @Nullable Integer sizeMax;
     private @Nullable Integer sizeMin;
@@ -71,7 +70,7 @@ public final class GetImageIdsResult {
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
     }
-    public Map<String,Object> properties() {
+    public Map<String,String> properties() {
         return this.properties == null ? Map.of() : this.properties;
     }
     public String region() {
@@ -114,7 +113,7 @@ public final class GetImageIdsResult {
         private @Nullable String name;
         private @Nullable String nameRegex;
         private @Nullable String owner;
-        private @Nullable Map<String,Object> properties;
+        private @Nullable Map<String,String> properties;
         private String region;
         private @Nullable Integer sizeMax;
         private @Nullable Integer sizeMin;
@@ -206,7 +205,7 @@ public final class GetImageIdsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder properties(@Nullable Map<String,Object> properties) {
+        public Builder properties(@Nullable Map<String,String> properties) {
 
             this.properties = properties;
             return this;

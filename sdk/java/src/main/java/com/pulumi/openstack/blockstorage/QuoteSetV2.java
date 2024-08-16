@@ -11,7 +11,6 @@ import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.blockstorage.QuoteSetV2Args;
 import com.pulumi.openstack.blockstorage.inputs.QuoteSetV2State;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -175,8 +174,8 @@ public class QuoteSetV2 extends com.pulumi.resources.CustomResource {
      * `volumes_&lt;volume_type_name&gt;` and `gigabytes_&lt;volume_type_name&gt;`.
      * 
      */
-    @Export(name="volumeTypeQuota", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> volumeTypeQuota;
+    @Export(name="volumeTypeQuota", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> volumeTypeQuota;
 
     /**
      * @return Key/Value pairs for setting quota for
@@ -184,7 +183,7 @@ public class QuoteSetV2 extends com.pulumi.resources.CustomResource {
      * `volumes_&lt;volume_type_name&gt;` and `gigabytes_&lt;volume_type_name&gt;`.
      * 
      */
-    public Output<Optional<Map<String,Object>>> volumeTypeQuota() {
+    public Output<Optional<Map<String,String>>> volumeTypeQuota() {
         return Codegen.optional(this.volumeTypeQuota);
     }
     /**

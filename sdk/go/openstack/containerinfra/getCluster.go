@@ -90,7 +90,7 @@ type LookupClusterResult struct {
 	Kubeconfig map[string]string `pulumi:"kubeconfig"`
 	// The list of key value pairs representing additional properties of
 	// the cluster.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// IP addresses of the master node of the cluster.
 	MasterAddresses []string `pulumi:"masterAddresses"`
 	// The number of master nodes for the cluster.
@@ -232,8 +232,8 @@ func (o LookupClusterResultOutput) Kubeconfig() pulumi.StringMapOutput {
 
 // The list of key value pairs representing additional properties of
 // the cluster.
-func (o LookupClusterResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupClusterResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupClusterResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // IP addresses of the master node of the cluster.

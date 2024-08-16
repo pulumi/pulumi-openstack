@@ -90,13 +90,13 @@ class VolumeSchedulerHint(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 additional_properties: Optional[Mapping[str, Any]] = None,
+                 additional_properties: Optional[Mapping[str, str]] = None,
                  different_hosts: Optional[Sequence[str]] = None,
                  local_to_instance: Optional[str] = None,
                  query: Optional[str] = None,
                  same_hosts: Optional[Sequence[str]] = None):
         """
-        :param Mapping[str, Any] additional_properties: Arbitrary key/value pairs of additional
+        :param Mapping[str, str] additional_properties: Arbitrary key/value pairs of additional
                properties to pass to the scheduler.
         :param Sequence[str] different_hosts: The volume should be scheduled on a 
                different host from the set of volumes specified in the list provided.
@@ -128,7 +128,7 @@ class VolumeSchedulerHint(dict):
 
     @property
     @pulumi.getter(name="additionalProperties")
-    def additional_properties(self) -> Optional[Mapping[str, Any]]:
+    def additional_properties(self) -> Optional[Mapping[str, str]]:
         """
         Arbitrary key/value pairs of additional
         properties to pass to the scheduler.
@@ -298,13 +298,13 @@ class VolumeV2SchedulerHint(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 additional_properties: Optional[Mapping[str, Any]] = None,
+                 additional_properties: Optional[Mapping[str, str]] = None,
                  different_hosts: Optional[Sequence[str]] = None,
                  local_to_instance: Optional[str] = None,
                  query: Optional[str] = None,
                  same_hosts: Optional[Sequence[str]] = None):
         """
-        :param Mapping[str, Any] additional_properties: Arbitrary key/value pairs of additional
+        :param Mapping[str, str] additional_properties: Arbitrary key/value pairs of additional
                properties to pass to the scheduler.
         :param Sequence[str] different_hosts: The volume should be scheduled on a 
                different host from the set of volumes specified in the list provided.
@@ -336,7 +336,7 @@ class VolumeV2SchedulerHint(dict):
 
     @property
     @pulumi.getter(name="additionalProperties")
-    def additional_properties(self) -> Optional[Mapping[str, Any]]:
+    def additional_properties(self) -> Optional[Mapping[str, str]]:
         """
         Arbitrary key/value pairs of additional
         properties to pass to the scheduler.

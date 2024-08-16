@@ -36,7 +36,7 @@ class PortArgs:
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Port resource.
         :param pulumi.Input[str] network_id: The ID of the network to attach the port to. Changing
@@ -92,7 +92,7 @@ class PortArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the port.
         :param pulumi.Input[str] tenant_id: The owner of the port. Required if admin wants
                to create a port for another tenant. Changing this creates a new port.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         pulumi.set(__self__, "network_id", network_id)
         if admin_state_up is not None:
@@ -411,14 +411,14 @@ class PortArgs:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -434,7 +434,7 @@ class _PortState:
                  description: Optional[pulumi.Input[str]] = None,
                  device_id: Optional[pulumi.Input[str]] = None,
                  device_owner: Optional[pulumi.Input[str]] = None,
-                 dns_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
+                 dns_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
                  extra_dhcp_options: Optional[pulumi.Input[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]]] = None,
                  fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input['PortFixedIpArgs']]]] = None,
@@ -449,7 +449,7 @@ class _PortState:
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Port resources.
         :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the port
@@ -472,7 +472,7 @@ class _PortState:
                creates a new port.
         :param pulumi.Input[str] device_owner: The device owner of the port. Changing this creates
                a new port.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] dns_assignments: The list of maps representing port DNS assignments.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] dns_assignments: The list of maps representing port DNS assignments.
         :param pulumi.Input[str] dns_name: The port DNS name. Available, when Neutron DNS extension
                is enabled.
         :param pulumi.Input[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]] extra_dhcp_options: An extra DHCP option that needs to be configured
@@ -512,7 +512,7 @@ class _PortState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the port.
         :param pulumi.Input[str] tenant_id: The owner of the port. Required if admin wants
                to create a port for another tenant. Changing this creates a new port.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         if admin_state_up is not None:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
@@ -686,14 +686,14 @@ class _PortState:
 
     @property
     @pulumi.getter(name="dnsAssignments")
-    def dns_assignments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+    def dns_assignments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
         """
         The list of maps representing port DNS assignments.
         """
         return pulumi.get(self, "dns_assignments")
 
     @dns_assignments.setter
-    def dns_assignments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
+    def dns_assignments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
         pulumi.set(self, "dns_assignments", value)
 
     @property
@@ -891,14 +891,14 @@ class _PortState:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -927,7 +927,7 @@ class Port(pulumi.CustomResource):
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Manages a V2 port resource within OpenStack.
@@ -1085,7 +1085,7 @@ class Port(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the port.
         :param pulumi.Input[str] tenant_id: The owner of the port. Required if admin wants
                to create a port for another tenant. Changing this creates a new port.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         ...
     @overload
@@ -1229,7 +1229,7 @@ class Port(pulumi.CustomResource):
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1285,7 +1285,7 @@ class Port(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             device_id: Optional[pulumi.Input[str]] = None,
             device_owner: Optional[pulumi.Input[str]] = None,
-            dns_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
+            dns_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
             dns_name: Optional[pulumi.Input[str]] = None,
             extra_dhcp_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortExtraDhcpOptionArgs', 'PortExtraDhcpOptionArgsDict']]]]] = None,
             fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortFixedIpArgs', 'PortFixedIpArgsDict']]]]] = None,
@@ -1300,7 +1300,7 @@ class Port(pulumi.CustomResource):
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Port':
+            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Port':
         """
         Get an existing Port resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1328,7 +1328,7 @@ class Port(pulumi.CustomResource):
                creates a new port.
         :param pulumi.Input[str] device_owner: The device owner of the port. Changing this creates
                a new port.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] dns_assignments: The list of maps representing port DNS assignments.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] dns_assignments: The list of maps representing port DNS assignments.
         :param pulumi.Input[str] dns_name: The port DNS name. Available, when Neutron DNS extension
                is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PortExtraDhcpOptionArgs', 'PortExtraDhcpOptionArgsDict']]]] extra_dhcp_options: An extra DHCP option that needs to be configured
@@ -1368,7 +1368,7 @@ class Port(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the port.
         :param pulumi.Input[str] tenant_id: The owner of the port. Required if admin wants
                to create a port for another tenant. Changing this creates a new port.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1486,7 +1486,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnsAssignments")
-    def dns_assignments(self) -> pulumi.Output[Sequence[Mapping[str, Any]]]:
+    def dns_assignments(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
         """
         The list of maps representing port DNS assignments.
         """
@@ -1631,7 +1631,7 @@ class Port(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of additional options.
         """

@@ -29,7 +29,7 @@ class InstanceArgs:
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
                  key_pair: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_mode: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
@@ -82,7 +82,7 @@ class InstanceArgs:
         :param pulumi.Input[str] key_pair: The name of a key pair to put on the server. The key
                pair must already be created and associated with the tenant's account.
                Changing this creates a new server.
-        :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Changing this updates the existing server metadata.
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] network_mode: Special string for `network` option to create
@@ -356,7 +356,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Metadata key/value pairs to make available from
         within the instance. Changing this updates the existing server metadata.
@@ -364,7 +364,7 @@ class InstanceArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -541,7 +541,7 @@ class _InstanceState:
                  access_ip_v4: Optional[pulumi.Input[str]] = None,
                  access_ip_v6: Optional[pulumi.Input[str]] = None,
                  admin_pass: Optional[pulumi.Input[str]] = None,
-                 all_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 all_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  availability_zone_hints: Optional[pulumi.Input[str]] = None,
@@ -554,7 +554,7 @@ class _InstanceState:
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
                  key_pair: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_mode: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
@@ -611,7 +611,7 @@ class _InstanceState:
         :param pulumi.Input[str] key_pair: The name of a key pair to put on the server. The key
                pair must already be created and associated with the tenant's account.
                Changing this creates a new server.
-        :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Changing this updates the existing server metadata.
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] network_mode: Special string for `network` option to create
@@ -750,11 +750,11 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="allMetadata")
-    def all_metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def all_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "all_metadata")
 
     @all_metadata.setter
-    def all_metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def all_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "all_metadata", value)
 
     @property
@@ -928,7 +928,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Metadata key/value pairs to make available from
         within the instance. Changing this updates the existing server metadata.
@@ -936,7 +936,7 @@ class _InstanceState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -1137,7 +1137,7 @@ class Instance(pulumi.CustomResource):
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
                  key_pair: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_mode: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
@@ -1193,7 +1193,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] key_pair: The name of a key pair to put on the server. The key
                pair must already be created and associated with the tenant's account.
                Changing this creates a new server.
-        :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Changing this updates the existing server metadata.
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] network_mode: Special string for `network` option to create
@@ -1267,7 +1267,7 @@ class Instance(pulumi.CustomResource):
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
                  key_pair: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_mode: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
@@ -1334,7 +1334,7 @@ class Instance(pulumi.CustomResource):
             access_ip_v4: Optional[pulumi.Input[str]] = None,
             access_ip_v6: Optional[pulumi.Input[str]] = None,
             admin_pass: Optional[pulumi.Input[str]] = None,
-            all_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            all_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             availability_zone_hints: Optional[pulumi.Input[str]] = None,
@@ -1347,7 +1347,7 @@ class Instance(pulumi.CustomResource):
             image_id: Optional[pulumi.Input[str]] = None,
             image_name: Optional[pulumi.Input[str]] = None,
             key_pair: Optional[pulumi.Input[str]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_mode: Optional[pulumi.Input[str]] = None,
             networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
@@ -1409,7 +1409,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] key_pair: The name of a key pair to put on the server. The key
                pair must already be created and associated with the tenant's account.
                Changing this creates a new server.
-        :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Changing this updates the existing server metadata.
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] network_mode: Special string for `network` option to create
@@ -1511,7 +1511,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allMetadata")
-    def all_metadata(self) -> pulumi.Output[Mapping[str, Any]]:
+    def all_metadata(self) -> pulumi.Output[Mapping[str, str]]:
         return pulumi.get(self, "all_metadata")
 
     @property
@@ -1637,7 +1637,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Metadata key/value pairs to make available from
         within the instance. Changing this updates the existing server metadata.

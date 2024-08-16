@@ -165,7 +165,7 @@ class GetImageResult:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, Any]:
+    def metadata(self) -> Mapping[str, str]:
         """
         The metadata associated with the image. Image metadata allow for
         meaningfully define the image properties and tags. See
@@ -211,7 +211,7 @@ class GetImageResult:
 
     @property
     @pulumi.getter
-    def properties(self) -> Optional[Mapping[str, Any]]:
+    def properties(self) -> Optional[Mapping[str, str]]:
         """
         Freeform information about the image.
         """
@@ -331,7 +331,7 @@ def get_image(container_format: Optional[str] = None,
               name: Optional[str] = None,
               name_regex: Optional[str] = None,
               owner: Optional[str] = None,
-              properties: Optional[Mapping[str, Any]] = None,
+              properties: Optional[Mapping[str, str]] = None,
               region: Optional[str] = None,
               size_max: Optional[int] = None,
               size_min: Optional[int] = None,
@@ -371,7 +371,7 @@ def get_image(container_format: Optional[str] = None,
            `name_regex` filtering does by client on the result of OpenStack search
            query.
     :param str owner: The owner (UUID) of the image.
-    :param Mapping[str, Any] properties: a map of key/value pairs to match an image with.
+    :param Mapping[str, str] properties: a map of key/value pairs to match an image with.
            All specified properties must be matched. Unlike other options filtering by
            `properties` does by client on the result of OpenStack search query.
            Filtering is applied if server responce contains at least 2 images. In case
@@ -451,7 +451,7 @@ def get_image_output(container_format: Optional[pulumi.Input[Optional[str]]] = N
                      name: Optional[pulumi.Input[Optional[str]]] = None,
                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                      owner: Optional[pulumi.Input[Optional[str]]] = None,
-                     properties: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                     properties: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                      region: Optional[pulumi.Input[Optional[str]]] = None,
                      size_max: Optional[pulumi.Input[Optional[int]]] = None,
                      size_min: Optional[pulumi.Input[Optional[int]]] = None,
@@ -491,7 +491,7 @@ def get_image_output(container_format: Optional[pulumi.Input[Optional[str]]] = N
            `name_regex` filtering does by client on the result of OpenStack search
            query.
     :param str owner: The owner (UUID) of the image.
-    :param Mapping[str, Any] properties: a map of key/value pairs to match an image with.
+    :param Mapping[str, str] properties: a map of key/value pairs to match an image with.
            All specified properties must be matched. Unlike other options filtering by
            `properties` does by client on the result of OpenStack search query.
            Filtering is applied if server responce contains at least 2 images. In case

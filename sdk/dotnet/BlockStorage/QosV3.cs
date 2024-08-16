@@ -75,7 +75,7 @@ namespace Pulumi.OpenStack.BlockStorage
         /// Key/Value pairs of specs for the qos.
         /// </summary>
         [Output("specs")]
-        public Output<ImmutableDictionary<string, object>?> Specs { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Specs { get; private set; } = null!;
 
 
         /// <summary>
@@ -146,14 +146,14 @@ namespace Pulumi.OpenStack.BlockStorage
         public Input<string>? Region { get; set; }
 
         [Input("specs")]
-        private InputMap<object>? _specs;
+        private InputMap<string>? _specs;
 
         /// <summary>
         /// Key/Value pairs of specs for the qos.
         /// </summary>
-        public InputMap<object> Specs
+        public InputMap<string> Specs
         {
-            get => _specs ?? (_specs = new InputMap<object>());
+            get => _specs ?? (_specs = new InputMap<string>());
             set => _specs = value;
         }
 
@@ -188,14 +188,14 @@ namespace Pulumi.OpenStack.BlockStorage
         public Input<string>? Region { get; set; }
 
         [Input("specs")]
-        private InputMap<object>? _specs;
+        private InputMap<string>? _specs;
 
         /// <summary>
         /// Key/Value pairs of specs for the qos.
         /// </summary>
-        public InputMap<object> Specs
+        public InputMap<string> Specs
         {
-            get => _specs ?? (_specs = new InputMap<object>());
+            get => _specs ?? (_specs = new InputMap<string>());
             set => _specs = value;
         }
 

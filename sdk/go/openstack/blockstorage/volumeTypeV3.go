@@ -34,9 +34,9 @@ import (
 //			_, err := blockstorage.NewVolumeTypeV3(ctx, "volume_type_1", &blockstorage.VolumeTypeV3Args{
 //				Name:        pulumi.String("volume_type_1"),
 //				Description: pulumi.String("Volume type 1"),
-//				ExtraSpecs: pulumi.Map{
-//					"capabilities":        pulumi.Any("gpu"),
-//					"volume_backend_name": pulumi.Any("ssd"),
+//				ExtraSpecs: pulumi.StringMap{
+//					"capabilities":        pulumi.String("gpu"),
+//					"volume_backend_name": pulumi.String("ssd"),
 //				},
 //			})
 //			if err != nil {
@@ -65,8 +65,8 @@ import (
 //			_, err := blockstorage.NewVolumeTypeV3(ctx, "multiattach", &blockstorage.VolumeTypeV3Args{
 //				Name:        pulumi.String("multiattach"),
 //				Description: pulumi.String("Multiattach-enabled volume type"),
-//				ExtraSpecs: pulumi.Map{
-//					"multiattach": pulumi.Any("<is> True"),
+//				ExtraSpecs: pulumi.StringMap{
+//					"multiattach": pulumi.String("<is> True"),
 //				},
 //			})
 //			if err != nil {
@@ -92,7 +92,7 @@ type VolumeTypeV3 struct {
 	// this updates the `description` of an existing volume type.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Key/Value pairs of metadata for the volume type.
-	ExtraSpecs pulumi.MapOutput `pulumi:"extraSpecs"`
+	ExtraSpecs pulumi.StringMapOutput `pulumi:"extraSpecs"`
 	// Whether the volume type is public. Changing
 	// this updates the `isPublic` of an existing volume type.
 	IsPublic pulumi.BoolOutput `pulumi:"isPublic"`
@@ -139,7 +139,7 @@ type volumeTypeV3State struct {
 	// this updates the `description` of an existing volume type.
 	Description *string `pulumi:"description"`
 	// Key/Value pairs of metadata for the volume type.
-	ExtraSpecs map[string]interface{} `pulumi:"extraSpecs"`
+	ExtraSpecs map[string]string `pulumi:"extraSpecs"`
 	// Whether the volume type is public. Changing
 	// this updates the `isPublic` of an existing volume type.
 	IsPublic *bool `pulumi:"isPublic"`
@@ -157,7 +157,7 @@ type VolumeTypeV3State struct {
 	// this updates the `description` of an existing volume type.
 	Description pulumi.StringPtrInput
 	// Key/Value pairs of metadata for the volume type.
-	ExtraSpecs pulumi.MapInput
+	ExtraSpecs pulumi.StringMapInput
 	// Whether the volume type is public. Changing
 	// this updates the `isPublic` of an existing volume type.
 	IsPublic pulumi.BoolPtrInput
@@ -179,7 +179,7 @@ type volumeTypeV3Args struct {
 	// this updates the `description` of an existing volume type.
 	Description *string `pulumi:"description"`
 	// Key/Value pairs of metadata for the volume type.
-	ExtraSpecs map[string]interface{} `pulumi:"extraSpecs"`
+	ExtraSpecs map[string]string `pulumi:"extraSpecs"`
 	// Whether the volume type is public. Changing
 	// this updates the `isPublic` of an existing volume type.
 	IsPublic *bool `pulumi:"isPublic"`
@@ -198,7 +198,7 @@ type VolumeTypeV3Args struct {
 	// this updates the `description` of an existing volume type.
 	Description pulumi.StringPtrInput
 	// Key/Value pairs of metadata for the volume type.
-	ExtraSpecs pulumi.MapInput
+	ExtraSpecs pulumi.StringMapInput
 	// Whether the volume type is public. Changing
 	// this updates the `isPublic` of an existing volume type.
 	IsPublic pulumi.BoolPtrInput
@@ -305,8 +305,8 @@ func (o VolumeTypeV3Output) Description() pulumi.StringOutput {
 }
 
 // Key/Value pairs of metadata for the volume type.
-func (o VolumeTypeV3Output) ExtraSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *VolumeTypeV3) pulumi.MapOutput { return v.ExtraSpecs }).(pulumi.MapOutput)
+func (o VolumeTypeV3Output) ExtraSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VolumeTypeV3) pulumi.StringMapOutput { return v.ExtraSpecs }).(pulumi.StringMapOutput)
 }
 
 // Whether the volume type is public. Changing

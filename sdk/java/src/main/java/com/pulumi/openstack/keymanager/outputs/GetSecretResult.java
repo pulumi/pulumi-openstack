@@ -8,7 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.keymanager.outputs.GetSecretAcl;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +41,7 @@ public final class GetSecretResult {
      * @return The map of the content types, assigned on the secret.
      * 
      */
-    private Map<String,Object> contentTypes;
+    private Map<String,String> contentTypes;
     /**
      * @return The date the secret ACL was created.
      * 
@@ -78,7 +77,7 @@ public final class GetSecretResult {
      * explicitly and implicitly added.
      * 
      */
-    private Map<String,Object> metadata;
+    private Map<String,String> metadata;
     /**
      * @return See Argument Reference above.
      * 
@@ -168,7 +167,7 @@ public final class GetSecretResult {
      * @return The map of the content types, assigned on the secret.
      * 
      */
-    public Map<String,Object> contentTypes() {
+    public Map<String,String> contentTypes() {
         return this.contentTypes;
     }
     /**
@@ -218,7 +217,7 @@ public final class GetSecretResult {
      * explicitly and implicitly added.
      * 
      */
-    public Map<String,Object> metadata() {
+    public Map<String,String> metadata() {
         return this.metadata;
     }
     /**
@@ -312,14 +311,14 @@ public final class GetSecretResult {
         private List<GetSecretAcl> acls;
         private @Nullable String algorithm;
         private @Nullable Integer bitLength;
-        private Map<String,Object> contentTypes;
+        private Map<String,String> contentTypes;
         private String createdAt;
         private @Nullable String createdAtFilter;
         private String creatorId;
         private String expiration;
         private @Nullable String expirationFilter;
         private String id;
-        private Map<String,Object> metadata;
+        private Map<String,String> metadata;
         private @Nullable String mode;
         private @Nullable String name;
         private String payload;
@@ -389,7 +388,7 @@ public final class GetSecretResult {
             return this;
         }
         @CustomType.Setter
-        public Builder contentTypes(Map<String,Object> contentTypes) {
+        public Builder contentTypes(Map<String,String> contentTypes) {
             if (contentTypes == null) {
               throw new MissingRequiredPropertyException("GetSecretResult", "contentTypes");
             }
@@ -441,7 +440,7 @@ public final class GetSecretResult {
             return this;
         }
         @CustomType.Setter
-        public Builder metadata(Map<String,Object> metadata) {
+        public Builder metadata(Map<String,String> metadata) {
             if (metadata == null) {
               throw new MissingRequiredPropertyException("GetSecretResult", "metadata");
             }

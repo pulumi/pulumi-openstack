@@ -37,8 +37,8 @@ import (
 //				ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
 //				ContainerFormat: pulumi.String("bare"),
 //				DiskFormat:      pulumi.String("qcow2"),
-//				Properties: pulumi.Map{
-//					"key": pulumi.Any("value"),
+//				Properties: pulumi.StringMap{
+//					"key": pulumi.String("value"),
 //				},
 //			})
 //			if err != nil {
@@ -121,7 +121,7 @@ type Image struct {
 	// The metadata associated with the image.
 	// Image metadata allow for meaningfully define the image properties
 	// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
-	Metadata pulumi.MapOutput `pulumi:"metadata"`
+	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// Amount of disk space (in GB) required to boot
 	// image. Defaults to 0.
 	MinDiskGb pulumi.IntPtrOutput `pulumi:"minDiskGb"`
@@ -135,7 +135,7 @@ type Image struct {
 	// A map of key/value pairs to set freeform
 	// information about an image. See the "Notes" section for further information
 	// about properties.
-	Properties pulumi.MapOutput `pulumi:"properties"`
+	Properties pulumi.StringMapOutput `pulumi:"properties"`
 	// If true, image will not be deletable. Defaults to
 	// false.
 	Protected pulumi.BoolPtrOutput `pulumi:"protected"`
@@ -259,7 +259,7 @@ type imageState struct {
 	// The metadata associated with the image.
 	// Image metadata allow for meaningfully define the image properties
 	// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// Amount of disk space (in GB) required to boot
 	// image. Defaults to 0.
 	MinDiskGb *int `pulumi:"minDiskGb"`
@@ -273,7 +273,7 @@ type imageState struct {
 	// A map of key/value pairs to set freeform
 	// information about an image. See the "Notes" section for further information
 	// about properties.
-	Properties map[string]interface{} `pulumi:"properties"`
+	Properties map[string]string `pulumi:"properties"`
 	// If true, image will not be deletable. Defaults to
 	// false.
 	Protected *bool `pulumi:"protected"`
@@ -355,7 +355,7 @@ type ImageState struct {
 	// The metadata associated with the image.
 	// Image metadata allow for meaningfully define the image properties
 	// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// Amount of disk space (in GB) required to boot
 	// image. Defaults to 0.
 	MinDiskGb pulumi.IntPtrInput
@@ -369,7 +369,7 @@ type ImageState struct {
 	// A map of key/value pairs to set freeform
 	// information about an image. See the "Notes" section for further information
 	// about properties.
-	Properties pulumi.MapInput
+	Properties pulumi.StringMapInput
 	// If true, image will not be deletable. Defaults to
 	// false.
 	Protected pulumi.BoolPtrInput
@@ -455,7 +455,7 @@ type imageArgs struct {
 	// A map of key/value pairs to set freeform
 	// information about an image. See the "Notes" section for further information
 	// about properties.
-	Properties map[string]interface{} `pulumi:"properties"`
+	Properties map[string]string `pulumi:"properties"`
 	// If true, image will not be deletable. Defaults to
 	// false.
 	Protected *bool `pulumi:"protected"`
@@ -528,7 +528,7 @@ type ImageArgs struct {
 	// A map of key/value pairs to set freeform
 	// information about an image. See the "Notes" section for further information
 	// about properties.
-	Properties pulumi.MapInput
+	Properties pulumi.StringMapInput
 	// If true, image will not be deletable. Defaults to
 	// false.
 	Protected pulumi.BoolPtrInput
@@ -725,8 +725,8 @@ func (o ImageOutput) LocalFilePath() pulumi.StringPtrOutput {
 // The metadata associated with the image.
 // Image metadata allow for meaningfully define the image properties
 // and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
-func (o ImageOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v *Image) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+func (o ImageOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // Amount of disk space (in GB) required to boot
@@ -754,8 +754,8 @@ func (o ImageOutput) Owner() pulumi.StringOutput {
 // A map of key/value pairs to set freeform
 // information about an image. See the "Notes" section for further information
 // about properties.
-func (o ImageOutput) Properties() pulumi.MapOutput {
-	return o.ApplyT(func(v *Image) pulumi.MapOutput { return v.Properties }).(pulumi.MapOutput)
+func (o ImageOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
 }
 
 // If true, image will not be deletable. Defaults to

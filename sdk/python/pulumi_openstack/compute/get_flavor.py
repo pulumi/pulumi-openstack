@@ -77,7 +77,7 @@ class GetFlavorResult:
 
     @property
     @pulumi.getter(name="extraSpecs")
-    def extra_specs(self) -> Mapping[str, Any]:
+    def extra_specs(self) -> Mapping[str, str]:
         """
         Key/Value pairs of metadata for the flavor.
         """

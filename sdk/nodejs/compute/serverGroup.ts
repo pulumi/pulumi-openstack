@@ -143,7 +143,7 @@ export class ServerGroup extends pulumi.CustomResource {
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a ServerGroup resource with the given unique name, arguments, and options.
@@ -211,7 +211,7 @@ export interface ServerGroupState {
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -243,5 +243,5 @@ export interface ServerGroupArgs {
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

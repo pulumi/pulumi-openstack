@@ -11,7 +11,6 @@ import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.blockstorage.VolumeAttachArgs;
 import com.pulumi.openstack.blockstorage.inputs.VolumeAttachState;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -132,8 +131,8 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * script to finalize the connection. See below for more information.
      * 
      */
-    @Export(name="data", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> data;
+    @Export(name="data", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> data;
 
     /**
      * @return This is a map of key/value pairs that contain the connection
@@ -141,7 +140,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * script to finalize the connection. See below for more information.
      * 
      */
-    public Output<Map<String,Object>> data() {
+    public Output<Map<String,String>> data() {
         return this.data;
     }
     /**

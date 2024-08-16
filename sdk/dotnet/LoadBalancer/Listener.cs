@@ -100,7 +100,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// existing listener.
         /// </summary>
         [Output("insertHeaders")]
-        public Output<ImmutableDictionary<string, object>?> InsertHeaders { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> InsertHeaders { get; private set; } = null!;
 
         /// <summary>
         /// The load balancer on which to provision this
@@ -287,16 +287,16 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<string>? Description { get; set; }
 
         [Input("insertHeaders")]
-        private InputMap<object>? _insertHeaders;
+        private InputMap<string>? _insertHeaders;
 
         /// <summary>
         /// The list of key value pairs representing headers to insert
         /// into the request before it is sent to the backend members. Changing this updates the headers of the
         /// existing listener.
         /// </summary>
-        public InputMap<object> InsertHeaders
+        public InputMap<string> InsertHeaders
         {
-            get => _insertHeaders ?? (_insertHeaders = new InputMap<object>());
+            get => _insertHeaders ?? (_insertHeaders = new InputMap<string>());
             set => _insertHeaders = value;
         }
 
@@ -459,16 +459,16 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<string>? Description { get; set; }
 
         [Input("insertHeaders")]
-        private InputMap<object>? _insertHeaders;
+        private InputMap<string>? _insertHeaders;
 
         /// <summary>
         /// The list of key value pairs representing headers to insert
         /// into the request before it is sent to the backend members. Changing this updates the headers of the
         /// existing listener.
         /// </summary>
-        public InputMap<object> InsertHeaders
+        public InputMap<string> InsertHeaders
         {
-            get => _insertHeaders ?? (_insertHeaders = new InputMap<object>());
+            get => _insertHeaders ?? (_insertHeaders = new InputMap<string>());
             set => _insertHeaders = value;
         }
 

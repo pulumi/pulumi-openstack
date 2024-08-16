@@ -21,7 +21,7 @@ class PolicyArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Policy resource.
         :param pulumi.Input[bool] audited: Audit status of the firewall policy
@@ -45,7 +45,7 @@ class PolicyArgs:
                can be used in, firewalls in other tenants. Changing this updates the
                `shared` status of an existing firewall policy. Only administrative users
                can specify if the policy should be shared.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         if audited is not None:
             pulumi.set(__self__, "audited", audited)
@@ -162,14 +162,14 @@ class PolicyArgs:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -183,7 +183,7 @@ class _PolicyState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
         :param pulumi.Input[bool] audited: Audit status of the firewall policy
@@ -207,7 +207,7 @@ class _PolicyState:
                can be used in, firewalls in other tenants. Changing this updates the
                `shared` status of an existing firewall policy. Only administrative users
                can specify if the policy should be shared.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         if audited is not None:
             pulumi.set(__self__, "audited", audited)
@@ -324,14 +324,14 @@ class _PolicyState:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -347,7 +347,7 @@ class Policy(pulumi.CustomResource):
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Manages a v1 firewall policy resource within OpenStack.
@@ -411,7 +411,7 @@ class Policy(pulumi.CustomResource):
                can be used in, firewalls in other tenants. Changing this updates the
                `shared` status of an existing firewall policy. Only administrative users
                can specify if the policy should be shared.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         ...
     @overload
@@ -480,7 +480,7 @@ class Policy(pulumi.CustomResource):
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -515,7 +515,7 @@ class Policy(pulumi.CustomResource):
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             shared: Optional[pulumi.Input[bool]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Policy':
+            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -544,7 +544,7 @@ class Policy(pulumi.CustomResource):
                can be used in, firewalls in other tenants. Changing this updates the
                `shared` status of an existing firewall policy. Only administrative users
                can specify if the policy should be shared.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -630,7 +630,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of additional options.
         """

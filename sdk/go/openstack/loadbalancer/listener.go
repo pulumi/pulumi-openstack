@@ -35,8 +35,8 @@ import (
 //				Protocol:       pulumi.String("HTTP"),
 //				ProtocolPort:   pulumi.Int(8080),
 //				LoadbalancerId: pulumi.String("d9415786-5f1a-428b-b35f-2f1523e146d2"),
-//				InsertHeaders: pulumi.Map{
-//					"X-Forwarded-For": pulumi.Any("true"),
+//				InsertHeaders: pulumi.StringMap{
+//					"X-Forwarded-For": pulumi.String("true"),
 //				},
 //			})
 //			if err != nil {
@@ -81,7 +81,7 @@ type Listener struct {
 	// The list of key value pairs representing headers to insert
 	// into the request before it is sent to the backend members. Changing this updates the headers of the
 	// existing listener.
-	InsertHeaders pulumi.MapOutput `pulumi:"insertHeaders"`
+	InsertHeaders pulumi.StringMapOutput `pulumi:"insertHeaders"`
 	// The load balancer on which to provision this
 	// Listener. Changing this creates a new Listener.
 	LoadbalancerId pulumi.StringOutput `pulumi:"loadbalancerId"`
@@ -186,7 +186,7 @@ type listenerState struct {
 	// The list of key value pairs representing headers to insert
 	// into the request before it is sent to the backend members. Changing this updates the headers of the
 	// existing listener.
-	InsertHeaders map[string]interface{} `pulumi:"insertHeaders"`
+	InsertHeaders map[string]string `pulumi:"insertHeaders"`
 	// The load balancer on which to provision this
 	// Listener. Changing this creates a new Listener.
 	LoadbalancerId *string `pulumi:"loadbalancerId"`
@@ -253,7 +253,7 @@ type ListenerState struct {
 	// The list of key value pairs representing headers to insert
 	// into the request before it is sent to the backend members. Changing this updates the headers of the
 	// existing listener.
-	InsertHeaders pulumi.MapInput
+	InsertHeaders pulumi.StringMapInput
 	// The load balancer on which to provision this
 	// Listener. Changing this creates a new Listener.
 	LoadbalancerId pulumi.StringPtrInput
@@ -324,7 +324,7 @@ type listenerArgs struct {
 	// The list of key value pairs representing headers to insert
 	// into the request before it is sent to the backend members. Changing this updates the headers of the
 	// existing listener.
-	InsertHeaders map[string]interface{} `pulumi:"insertHeaders"`
+	InsertHeaders map[string]string `pulumi:"insertHeaders"`
 	// The load balancer on which to provision this
 	// Listener. Changing this creates a new Listener.
 	LoadbalancerId string `pulumi:"loadbalancerId"`
@@ -392,7 +392,7 @@ type ListenerArgs struct {
 	// The list of key value pairs representing headers to insert
 	// into the request before it is sent to the backend members. Changing this updates the headers of the
 	// existing listener.
-	InsertHeaders pulumi.MapInput
+	InsertHeaders pulumi.StringMapInput
 	// The load balancer on which to provision this
 	// Listener. Changing this creates a new Listener.
 	LoadbalancerId pulumi.StringInput
@@ -563,8 +563,8 @@ func (o ListenerOutput) Description() pulumi.StringPtrOutput {
 // The list of key value pairs representing headers to insert
 // into the request before it is sent to the backend members. Changing this updates the headers of the
 // existing listener.
-func (o ListenerOutput) InsertHeaders() pulumi.MapOutput {
-	return o.ApplyT(func(v *Listener) pulumi.MapOutput { return v.InsertHeaders }).(pulumi.MapOutput)
+func (o ListenerOutput) InsertHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringMapOutput { return v.InsertHeaders }).(pulumi.StringMapOutput)
 }
 
 // The load balancer on which to provision this

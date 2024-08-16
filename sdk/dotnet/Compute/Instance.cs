@@ -32,7 +32,7 @@ namespace Pulumi.OpenStack.Compute
         public Output<string?> AdminPass { get; private set; } = null!;
 
         [Output("allMetadata")]
-        public Output<ImmutableDictionary<string, object>> AllMetadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> AllMetadata { get; private set; } = null!;
 
         /// <summary>
         /// The collection of tags assigned on the instance, which have
@@ -136,7 +136,7 @@ namespace Pulumi.OpenStack.Compute
         /// within the instance. Changing this updates the existing server metadata.
         /// </summary>
         [Output("metadata")]
-        public Output<ImmutableDictionary<string, object>?> Metadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// A unique name for the resource.
@@ -409,15 +409,15 @@ namespace Pulumi.OpenStack.Compute
         public Input<string>? KeyPair { get; set; }
 
         [Input("metadata")]
-        private InputMap<object>? _metadata;
+        private InputMap<string>? _metadata;
 
         /// <summary>
         /// Metadata key/value pairs to make available from
         /// within the instance. Changing this updates the existing server metadata.
         /// </summary>
-        public InputMap<object> Metadata
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 
@@ -584,10 +584,10 @@ namespace Pulumi.OpenStack.Compute
         }
 
         [Input("allMetadata")]
-        private InputMap<object>? _allMetadata;
-        public InputMap<object> AllMetadata
+        private InputMap<string>? _allMetadata;
+        public InputMap<string> AllMetadata
         {
-            get => _allMetadata ?? (_allMetadata = new InputMap<object>());
+            get => _allMetadata ?? (_allMetadata = new InputMap<string>());
             set => _allMetadata = value;
         }
 
@@ -701,15 +701,15 @@ namespace Pulumi.OpenStack.Compute
         public Input<string>? KeyPair { get; set; }
 
         [Input("metadata")]
-        private InputMap<object>? _metadata;
+        private InputMap<string>? _metadata;
 
         /// <summary>
         /// Metadata key/value pairs to make available from
         /// within the instance. Changing this updates the existing server metadata.
         /// </summary>
-        public InputMap<object> Metadata
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 

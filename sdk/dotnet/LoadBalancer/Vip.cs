@@ -95,7 +95,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// the persistence of the existing vip.
         /// </summary>
         [Output("persistence")]
-        public Output<ImmutableDictionary<string, object>?> Persistence { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Persistence { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the pool with which the vip is associated.
@@ -240,16 +240,16 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<string>? Name { get; set; }
 
         [Input("persistence")]
-        private InputMap<object>? _persistence;
+        private InputMap<string>? _persistence;
 
         /// <summary>
         /// Omit this field to prevent session persistence.
         /// The persistence object structure is documented below. Changing this updates
         /// the persistence of the existing vip.
         /// </summary>
-        public InputMap<object> Persistence
+        public InputMap<string> Persistence
         {
-            get => _persistence ?? (_persistence = new InputMap<object>());
+            get => _persistence ?? (_persistence = new InputMap<string>());
             set => _persistence = value;
         }
 
@@ -352,16 +352,16 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<string>? Name { get; set; }
 
         [Input("persistence")]
-        private InputMap<object>? _persistence;
+        private InputMap<string>? _persistence;
 
         /// <summary>
         /// Omit this field to prevent session persistence.
         /// The persistence object structure is documented below. Changing this updates
         /// the persistence of the existing vip.
         /// </summary>
-        public InputMap<object> Persistence
+        public InputMap<string> Persistence
         {
-            get => _persistence ?? (_persistence = new InputMap<object>());
+            get => _persistence ?? (_persistence = new InputMap<string>());
             set => _persistence = value;
         }
 

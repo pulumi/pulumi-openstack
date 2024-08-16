@@ -157,7 +157,7 @@ type ServerGroup struct {
 	// only the `maxServerPerHost` rule is supported for the `anti-affinity` policy.
 	Rules ServerGroupRulesOutput `pulumi:"rules"`
 	// Map of additional options.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 }
 
 // NewServerGroup registers a new resource with the given unique name, arguments, and options.
@@ -207,7 +207,7 @@ type serverGroupState struct {
 	// only the `maxServerPerHost` rule is supported for the `anti-affinity` policy.
 	Rules *ServerGroupRules `pulumi:"rules"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 type ServerGroupState struct {
@@ -228,7 +228,7 @@ type ServerGroupState struct {
 	// only the `maxServerPerHost` rule is supported for the `anti-affinity` policy.
 	Rules ServerGroupRulesPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (ServerGroupState) ElementType() reflect.Type {
@@ -251,7 +251,7 @@ type serverGroupArgs struct {
 	// only the `maxServerPerHost` rule is supported for the `anti-affinity` policy.
 	Rules *ServerGroupRules `pulumi:"rules"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 // The set of arguments for constructing a ServerGroup resource.
@@ -271,7 +271,7 @@ type ServerGroupArgs struct {
 	// only the `maxServerPerHost` rule is supported for the `anti-affinity` policy.
 	Rules ServerGroupRulesPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (ServerGroupArgs) ElementType() reflect.Type {
@@ -393,8 +393,8 @@ func (o ServerGroupOutput) Rules() ServerGroupRulesOutput {
 }
 
 // Map of additional options.
-func (o ServerGroupOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *ServerGroup) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o ServerGroupOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 type ServerGroupArrayOutput struct{ *pulumi.OutputState }

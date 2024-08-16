@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -87,7 +86,7 @@ public final class GetClusterResult {
      * the cluster.
      * 
      */
-    private Map<String,Object> labels;
+    private Map<String,String> labels;
     /**
      * @return IP addresses of the master node of the cluster.
      * 
@@ -247,7 +246,7 @@ public final class GetClusterResult {
      * the cluster.
      * 
      */
-    public Map<String,Object> labels() {
+    public Map<String,String> labels() {
         return this.labels;
     }
     /**
@@ -352,7 +351,7 @@ public final class GetClusterResult {
         private String id;
         private String keypair;
         private Map<String,String> kubeconfig;
-        private Map<String,Object> labels;
+        private Map<String,String> labels;
         private List<String> masterAddresses;
         private Integer masterCount;
         private String masterFlavor;
@@ -517,7 +516,7 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,Object> labels) {
+        public Builder labels(Map<String,String> labels) {
             if (labels == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "labels");
             }

@@ -77,7 +77,7 @@ type GetImageIdsArgs struct {
 	// a map of key/value pairs to match an image with.
 	// All specified properties must be matched. Unlike other options filtering by
 	// `properties` does by client on the result of OpenStack search query.
-	Properties map[string]interface{} `pulumi:"properties"`
+	Properties map[string]string `pulumi:"properties"`
 	// The region in which to obtain the V2 Glance client. A
 	// Glance client is needed to create an Image that can be used with a compute
 	// instance. If omitted, the `region` argument of the provider is used.
@@ -108,20 +108,20 @@ type GetImageIdsResult struct {
 	DiskFormat      *string `pulumi:"diskFormat"`
 	Hidden          *bool   `pulumi:"hidden"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string                 `pulumi:"id"`
-	Ids          []string               `pulumi:"ids"`
-	MemberStatus *string                `pulumi:"memberStatus"`
-	Name         *string                `pulumi:"name"`
-	NameRegex    *string                `pulumi:"nameRegex"`
-	Owner        *string                `pulumi:"owner"`
-	Properties   map[string]interface{} `pulumi:"properties"`
-	Region       string                 `pulumi:"region"`
-	SizeMax      *int                   `pulumi:"sizeMax"`
-	SizeMin      *int                   `pulumi:"sizeMin"`
-	Sort         *string                `pulumi:"sort"`
-	Tag          *string                `pulumi:"tag"`
-	Tags         []string               `pulumi:"tags"`
-	Visibility   *string                `pulumi:"visibility"`
+	Id           string            `pulumi:"id"`
+	Ids          []string          `pulumi:"ids"`
+	MemberStatus *string           `pulumi:"memberStatus"`
+	Name         *string           `pulumi:"name"`
+	NameRegex    *string           `pulumi:"nameRegex"`
+	Owner        *string           `pulumi:"owner"`
+	Properties   map[string]string `pulumi:"properties"`
+	Region       string            `pulumi:"region"`
+	SizeMax      *int              `pulumi:"sizeMax"`
+	SizeMin      *int              `pulumi:"sizeMin"`
+	Sort         *string           `pulumi:"sort"`
+	Tag          *string           `pulumi:"tag"`
+	Tags         []string          `pulumi:"tags"`
+	Visibility   *string           `pulumi:"visibility"`
 }
 
 func GetImageIdsOutput(ctx *pulumi.Context, args GetImageIdsOutputArgs, opts ...pulumi.InvokeOption) GetImageIdsResultOutput {
@@ -161,7 +161,7 @@ type GetImageIdsOutputArgs struct {
 	// a map of key/value pairs to match an image with.
 	// All specified properties must be matched. Unlike other options filtering by
 	// `properties` does by client on the result of OpenStack search query.
-	Properties pulumi.MapInput `pulumi:"properties"`
+	Properties pulumi.StringMapInput `pulumi:"properties"`
 	// The region in which to obtain the V2 Glance client. A
 	// Glance client is needed to create an Image that can be used with a compute
 	// instance. If omitted, the `region` argument of the provider is used.
@@ -242,8 +242,8 @@ func (o GetImageIdsResultOutput) Owner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImageIdsResult) *string { return v.Owner }).(pulumi.StringPtrOutput)
 }
 
-func (o GetImageIdsResultOutput) Properties() pulumi.MapOutput {
-	return o.ApplyT(func(v GetImageIdsResult) map[string]interface{} { return v.Properties }).(pulumi.MapOutput)
+func (o GetImageIdsResultOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetImageIdsResult) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
 
 func (o GetImageIdsResultOutput) Region() pulumi.StringOutput {

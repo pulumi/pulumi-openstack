@@ -71,14 +71,14 @@ namespace Pulumi.OpenStack.Dns
         public string? AllProjects { get; set; }
 
         [Input("attributes")]
-        private Dictionary<string, object>? _attributes;
+        private Dictionary<string, string>? _attributes;
 
         /// <summary>
         /// Attributes of the DNS Service scheduler.
         /// </summary>
-        public Dictionary<string, object> Attributes
+        public Dictionary<string, string> Attributes
         {
-            get => _attributes ?? (_attributes = new Dictionary<string, object>());
+            get => _attributes ?? (_attributes = new Dictionary<string, string>());
             set => _attributes = value;
         }
 
@@ -197,14 +197,14 @@ namespace Pulumi.OpenStack.Dns
         public Input<string>? AllProjects { get; set; }
 
         [Input("attributes")]
-        private InputMap<object>? _attributes;
+        private InputMap<string>? _attributes;
 
         /// <summary>
         /// Attributes of the DNS Service scheduler.
         /// </summary>
-        public InputMap<object> Attributes
+        public InputMap<string> Attributes
         {
-            get => _attributes ?? (_attributes = new InputMap<object>());
+            get => _attributes ?? (_attributes = new InputMap<string>());
             set => _attributes = value;
         }
 
@@ -321,7 +321,7 @@ namespace Pulumi.OpenStack.Dns
         /// <summary>
         /// Attributes of the DNS Service scheduler.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Attributes;
+        public readonly ImmutableDictionary<string, string> Attributes;
         /// <summary>
         /// The time the zone was created.
         /// </summary>
@@ -391,7 +391,7 @@ namespace Pulumi.OpenStack.Dns
         private GetDnsZoneResult(
             string? allProjects,
 
-            ImmutableDictionary<string, object> attributes,
+            ImmutableDictionary<string, string> attributes,
 
             string createdAt,
 

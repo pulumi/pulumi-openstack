@@ -10,7 +10,6 @@ import com.pulumi.openstack.networking.inputs.PortBindingArgs;
 import com.pulumi.openstack.networking.inputs.PortExtraDhcpOptionArgs;
 import com.pulumi.openstack.networking.inputs.PortFixedIpArgs;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -185,13 +184,13 @@ public final class PortState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="dnsAssignments")
-    private @Nullable Output<List<Map<String,Object>>> dnsAssignments;
+    private @Nullable Output<List<Map<String,String>>> dnsAssignments;
 
     /**
      * @return The list of maps representing port DNS assignments.
      * 
      */
-    public Optional<Output<List<Map<String,Object>>>> dnsAssignments() {
+    public Optional<Output<List<Map<String,String>>>> dnsAssignments() {
         return Optional.ofNullable(this.dnsAssignments);
     }
 
@@ -460,13 +459,13 @@ public final class PortState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="valueSpecs")
-    private @Nullable Output<Map<String,Object>> valueSpecs;
+    private @Nullable Output<Map<String,String>> valueSpecs;
 
     /**
      * @return Map of additional options.
      * 
      */
-    public Optional<Output<Map<String,Object>>> valueSpecs() {
+    public Optional<Output<Map<String,String>>> valueSpecs() {
         return Optional.ofNullable(this.valueSpecs);
     }
 
@@ -780,7 +779,7 @@ public final class PortState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder dnsAssignments(@Nullable Output<List<Map<String,Object>>> dnsAssignments) {
+        public Builder dnsAssignments(@Nullable Output<List<Map<String,String>>> dnsAssignments) {
             $.dnsAssignments = dnsAssignments;
             return this;
         }
@@ -791,7 +790,7 @@ public final class PortState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder dnsAssignments(List<Map<String,Object>> dnsAssignments) {
+        public Builder dnsAssignments(List<Map<String,String>> dnsAssignments) {
             return dnsAssignments(Output.of(dnsAssignments));
         }
 
@@ -801,7 +800,7 @@ public final class PortState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder dnsAssignments(Map<String,Object>... dnsAssignments) {
+        public Builder dnsAssignments(Map<String,String>... dnsAssignments) {
             return dnsAssignments(List.of(dnsAssignments));
         }
 
@@ -1201,7 +1200,7 @@ public final class PortState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder valueSpecs(@Nullable Output<Map<String,Object>> valueSpecs) {
+        public Builder valueSpecs(@Nullable Output<Map<String,String>> valueSpecs) {
             $.valueSpecs = valueSpecs;
             return this;
         }
@@ -1212,7 +1211,7 @@ public final class PortState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder valueSpecs(Map<String,Object> valueSpecs) {
+        public Builder valueSpecs(Map<String,String> valueSpecs) {
             return valueSpecs(Output.of(valueSpecs));
         }
 

@@ -173,7 +173,7 @@ class GetPortResult:
 
     @property
     @pulumi.getter(name="dnsAssignments")
-    def dns_assignments(self) -> Sequence[Mapping[str, Any]]:
+    def dns_assignments(self) -> Sequence[Mapping[str, str]]:
         """
         The list of maps representing port DNS assignments.
         """

@@ -205,7 +205,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         /// Changing this updates the existing container metadata.
         /// </summary>
         [Output("metadata")]
-        public Output<ImmutableDictionary<string, object>?> Metadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// A unique name for the container. Changing this creates a
@@ -336,15 +336,15 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<bool>? ForceDestroy { get; set; }
 
         [Input("metadata")]
-        private InputMap<object>? _metadata;
+        private InputMap<string>? _metadata;
 
         /// <summary>
         /// Custom key/value pairs to associate with the container.
         /// Changing this updates the existing container metadata.
         /// </summary>
-        public InputMap<object> Metadata
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 
@@ -439,15 +439,15 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<bool>? ForceDestroy { get; set; }
 
         [Input("metadata")]
-        private InputMap<object>? _metadata;
+        private InputMap<string>? _metadata;
 
         /// <summary>
         /// Custom key/value pairs to associate with the container.
         /// Changing this updates the existing container metadata.
         /// </summary>
-        public InputMap<object> Metadata
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 
