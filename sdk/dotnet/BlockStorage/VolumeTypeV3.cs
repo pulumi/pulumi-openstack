@@ -85,7 +85,7 @@ namespace Pulumi.OpenStack.BlockStorage
         /// Key/Value pairs of metadata for the volume type.
         /// </summary>
         [Output("extraSpecs")]
-        public Output<ImmutableDictionary<string, object>> ExtraSpecs { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> ExtraSpecs { get; private set; } = null!;
 
         /// <summary>
         /// Whether the volume type is public. Changing
@@ -163,14 +163,14 @@ namespace Pulumi.OpenStack.BlockStorage
         public Input<string>? Description { get; set; }
 
         [Input("extraSpecs")]
-        private InputMap<object>? _extraSpecs;
+        private InputMap<string>? _extraSpecs;
 
         /// <summary>
         /// Key/Value pairs of metadata for the volume type.
         /// </summary>
-        public InputMap<object> ExtraSpecs
+        public InputMap<string> ExtraSpecs
         {
-            get => _extraSpecs ?? (_extraSpecs = new InputMap<object>());
+            get => _extraSpecs ?? (_extraSpecs = new InputMap<string>());
             set => _extraSpecs = value;
         }
 
@@ -212,14 +212,14 @@ namespace Pulumi.OpenStack.BlockStorage
         public Input<string>? Description { get; set; }
 
         [Input("extraSpecs")]
-        private InputMap<object>? _extraSpecs;
+        private InputMap<string>? _extraSpecs;
 
         /// <summary>
         /// Key/Value pairs of metadata for the volume type.
         /// </summary>
-        public InputMap<object> ExtraSpecs
+        public InputMap<string> ExtraSpecs
         {
-            get => _extraSpecs ?? (_extraSpecs = new InputMap<object>());
+            get => _extraSpecs ?? (_extraSpecs = new InputMap<string>());
             set => _extraSpecs = value;
         }
 

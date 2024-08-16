@@ -47,7 +47,7 @@ export namespace blockstorage {
          * Arbitrary key/value pairs of additional
          * properties to pass to the scheduler.
          */
-        additionalProperties?: {[key: string]: any};
+        additionalProperties?: {[key: string]: string};
         /**
          * The volume should be scheduled on a 
          * different host from the set of volumes specified in the list provided.
@@ -95,7 +95,7 @@ export namespace blockstorage {
          * Arbitrary key/value pairs of additional
          * properties to pass to the scheduler.
          */
-        additionalProperties?: {[key: string]: any};
+        additionalProperties?: {[key: string]: string};
         /**
          * The volume should be scheduled on a 
          * different host from the set of volumes specified in the list provided.
@@ -270,7 +270,7 @@ export namespace compute {
          * Arbitrary key/value pairs of additional
          * properties to pass to the scheduler.
          */
-        additionalProperties?: {[key: string]: any};
+        additionalProperties?: {[key: string]: string};
         /**
          * An IP Address in CIDR form. The instance
          * will be placed on a compute node that is in the same subnet.
@@ -856,7 +856,7 @@ export namespace networking {
          * A map of JSON strings containing additional details for this
          * specific binding.
          */
-        vifDetails: {[key: string]: any};
+        vifDetails: {[key: string]: string};
         /**
          * The VNIC type of the port binding.
          */
@@ -958,7 +958,7 @@ export namespace networking {
          * A map of JSON strings containing additional
          * details for this specific binding.
          */
-        vifDetails: {[key: string]: any};
+        vifDetails: {[key: string]: string};
         /**
          * The VNIC type of the port binding.
          */

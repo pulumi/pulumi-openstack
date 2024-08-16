@@ -243,7 +243,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// existing cluster template.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>?> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The flavor for the master nodes. Can be set via
@@ -531,16 +531,16 @@ namespace Pulumi.OpenStack.ContainerInfra
         public Input<string>? KeypairId { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// The list of key value pairs representing additional
         /// properties of the cluster template. Changing this updates the labels of the
         /// existing cluster template.
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -776,16 +776,16 @@ namespace Pulumi.OpenStack.ContainerInfra
         public Input<string>? KeypairId { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// The list of key value pairs representing additional
         /// properties of the cluster template. Changing this updates the labels of the
         /// existing cluster template.
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 

@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -248,7 +247,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="metadata")
-    private @Nullable Output<Map<String,Object>> metadata;
+    private @Nullable Output<Map<String,String>> metadata;
 
     /**
      * @return The metadata associated with the image.
@@ -256,7 +255,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
      * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      * 
      */
-    public Optional<Output<Map<String,Object>>> metadata() {
+    public Optional<Output<Map<String,String>>> metadata() {
         return Optional.ofNullable(this.metadata);
     }
 
@@ -331,7 +330,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="properties")
-    private @Nullable Output<Map<String,Object>> properties;
+    private @Nullable Output<Map<String,String>> properties;
 
     /**
      * @return A map of key/value pairs to set freeform
@@ -339,7 +338,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
      * about properties.
      * 
      */
-    public Optional<Output<Map<String,Object>>> properties() {
+    public Optional<Output<Map<String,String>>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -874,7 +873,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder metadata(@Nullable Output<Map<String,Object>> metadata) {
+        public Builder metadata(@Nullable Output<Map<String,String>> metadata) {
             $.metadata = metadata;
             return this;
         }
@@ -887,7 +886,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder metadata(Map<String,Object> metadata) {
+        public Builder metadata(Map<String,String> metadata) {
             return metadata(Output.of(metadata));
         }
 
@@ -987,7 +986,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder properties(@Nullable Output<Map<String,Object>> properties) {
+        public Builder properties(@Nullable Output<Map<String,String>> properties) {
             $.properties = properties;
             return this;
         }
@@ -1000,7 +999,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder properties(Map<String,Object> properties) {
+        public Builder properties(Map<String,String> properties) {
             return properties(Output.of(properties));
         }
 

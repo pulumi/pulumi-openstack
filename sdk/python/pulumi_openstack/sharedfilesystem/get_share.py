@@ -121,7 +121,7 @@ class GetShareResult:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, Any]:
+    def metadata(self) -> Mapping[str, str]:
         """
         See Argument Reference above.
         """
@@ -218,7 +218,7 @@ class AwaitableGetShareResult(GetShareResult):
 def get_share(description: Optional[str] = None,
               export_location_path: Optional[str] = None,
               is_public: Optional[bool] = None,
-              metadata: Optional[Mapping[str, Any]] = None,
+              metadata: Optional[Mapping[str, str]] = None,
               name: Optional[str] = None,
               region: Optional[str] = None,
               share_network_id: Optional[str] = None,
@@ -243,7 +243,7 @@ def get_share(description: Optional[str] = None,
            since Manila API version 2.35.
     :param bool is_public: The level of visibility for the share.
            length.
-    :param Mapping[str, Any] metadata: One or more metadata key and value pairs as a dictionary of
+    :param Mapping[str, str] metadata: One or more metadata key and value pairs as a dictionary of
            strings.
     :param str name: The name of the share.
     :param str region: The region in which to obtain the V2 Shared File System client.
@@ -290,7 +290,7 @@ def get_share(description: Optional[str] = None,
 def get_share_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                      export_location_path: Optional[pulumi.Input[Optional[str]]] = None,
                      is_public: Optional[pulumi.Input[Optional[bool]]] = None,
-                     metadata: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                     metadata: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                      name: Optional[pulumi.Input[Optional[str]]] = None,
                      region: Optional[pulumi.Input[Optional[str]]] = None,
                      share_network_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -315,7 +315,7 @@ def get_share_output(description: Optional[pulumi.Input[Optional[str]]] = None,
            since Manila API version 2.35.
     :param bool is_public: The level of visibility for the share.
            length.
-    :param Mapping[str, Any] metadata: One or more metadata key and value pairs as a dictionary of
+    :param Mapping[str, str] metadata: One or more metadata key and value pairs as a dictionary of
            strings.
     :param str name: The name of the share.
     :param str region: The region in which to obtain the V2 Shared File System client.

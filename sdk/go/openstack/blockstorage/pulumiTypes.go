@@ -122,7 +122,7 @@ func (o VolumeAttachmentArrayOutput) Index(i pulumi.IntInput) VolumeAttachmentOu
 type VolumeSchedulerHint struct {
 	// Arbitrary key/value pairs of additional
 	// properties to pass to the scheduler.
-	AdditionalProperties map[string]interface{} `pulumi:"additionalProperties"`
+	AdditionalProperties map[string]string `pulumi:"additionalProperties"`
 	// The volume should be scheduled on a
 	// different host from the set of volumes specified in the list provided.
 	DifferentHosts []string `pulumi:"differentHosts"`
@@ -155,7 +155,7 @@ type VolumeSchedulerHintInput interface {
 type VolumeSchedulerHintArgs struct {
 	// Arbitrary key/value pairs of additional
 	// properties to pass to the scheduler.
-	AdditionalProperties pulumi.MapInput `pulumi:"additionalProperties"`
+	AdditionalProperties pulumi.StringMapInput `pulumi:"additionalProperties"`
 	// The volume should be scheduled on a
 	// different host from the set of volumes specified in the list provided.
 	DifferentHosts pulumi.StringArrayInput `pulumi:"differentHosts"`
@@ -227,8 +227,8 @@ func (o VolumeSchedulerHintOutput) ToVolumeSchedulerHintOutputWithContext(ctx co
 
 // Arbitrary key/value pairs of additional
 // properties to pass to the scheduler.
-func (o VolumeSchedulerHintOutput) AdditionalProperties() pulumi.MapOutput {
-	return o.ApplyT(func(v VolumeSchedulerHint) map[string]interface{} { return v.AdditionalProperties }).(pulumi.MapOutput)
+func (o VolumeSchedulerHintOutput) AdditionalProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VolumeSchedulerHint) map[string]string { return v.AdditionalProperties }).(pulumi.StringMapOutput)
 }
 
 // The volume should be scheduled on a
@@ -494,7 +494,7 @@ func (o VolumeV2AttachmentArrayOutput) Index(i pulumi.IntInput) VolumeV2Attachme
 type VolumeV2SchedulerHint struct {
 	// Arbitrary key/value pairs of additional
 	// properties to pass to the scheduler.
-	AdditionalProperties map[string]interface{} `pulumi:"additionalProperties"`
+	AdditionalProperties map[string]string `pulumi:"additionalProperties"`
 	// The volume should be scheduled on a
 	// different host from the set of volumes specified in the list provided.
 	DifferentHosts []string `pulumi:"differentHosts"`
@@ -527,7 +527,7 @@ type VolumeV2SchedulerHintInput interface {
 type VolumeV2SchedulerHintArgs struct {
 	// Arbitrary key/value pairs of additional
 	// properties to pass to the scheduler.
-	AdditionalProperties pulumi.MapInput `pulumi:"additionalProperties"`
+	AdditionalProperties pulumi.StringMapInput `pulumi:"additionalProperties"`
 	// The volume should be scheduled on a
 	// different host from the set of volumes specified in the list provided.
 	DifferentHosts pulumi.StringArrayInput `pulumi:"differentHosts"`
@@ -599,8 +599,8 @@ func (o VolumeV2SchedulerHintOutput) ToVolumeV2SchedulerHintOutputWithContext(ct
 
 // Arbitrary key/value pairs of additional
 // properties to pass to the scheduler.
-func (o VolumeV2SchedulerHintOutput) AdditionalProperties() pulumi.MapOutput {
-	return o.ApplyT(func(v VolumeV2SchedulerHint) map[string]interface{} { return v.AdditionalProperties }).(pulumi.MapOutput)
+func (o VolumeV2SchedulerHintOutput) AdditionalProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VolumeV2SchedulerHint) map[string]string { return v.AdditionalProperties }).(pulumi.StringMapOutput)
 }
 
 // The volume should be scheduled on a

@@ -95,7 +95,7 @@ namespace Pulumi.OpenStack.BlockStorage
         /// script to finalize the connection. See below for more information.
         /// </summary>
         [Output("data")]
-        public Output<ImmutableDictionary<string, object>> Data { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Data { get; private set; } = null!;
 
         /// <summary>
         /// The device to tell the Block Storage service this
@@ -334,19 +334,19 @@ namespace Pulumi.OpenStack.BlockStorage
         public Input<string>? AttachMode { get; set; }
 
         [Input("data")]
-        private InputMap<object>? _data;
+        private InputMap<string>? _data;
 
         /// <summary>
         /// This is a map of key/value pairs that contain the connection
         /// information. You will want to pass this information to a provisioner
         /// script to finalize the connection. See below for more information.
         /// </summary>
-        public InputMap<object> Data
+        public InputMap<string> Data
         {
-            get => _data ?? (_data = new InputMap<object>());
+            get => _data ?? (_data = new InputMap<string>());
             set
             {
-                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _data = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }

@@ -84,7 +84,7 @@ export class VolumeV1 extends pulumi.CustomResource {
      * Metadata key/value pairs to associate with the volume.
      * Changing this updates the existing volume metadata.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: any}>;
+    public readonly metadata!: pulumi.Output<{[key: string]: string}>;
     /**
      * A unique name for the volume. Changing this updates the
      * volume's name.
@@ -192,7 +192,7 @@ export interface VolumeV1State {
      * Metadata key/value pairs to associate with the volume.
      * Changing this updates the existing volume metadata.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A unique name for the volume. Changing this updates the
      * volume's name.
@@ -249,7 +249,7 @@ export interface VolumeV1Args {
      * Metadata key/value pairs to associate with the volume.
      * Changing this updates the existing volume metadata.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A unique name for the volume. Changing this updates the
      * volume's name.

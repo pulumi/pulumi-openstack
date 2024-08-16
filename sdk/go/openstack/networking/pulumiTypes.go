@@ -242,7 +242,7 @@ type PortBinding struct {
 	Profile *string `pulumi:"profile"`
 	// A map of JSON strings containing additional
 	// details for this specific binding.
-	VifDetails map[string]interface{} `pulumi:"vifDetails"`
+	VifDetails map[string]string `pulumi:"vifDetails"`
 	// The VNIC type of the port binding.
 	VifType *string `pulumi:"vifType"`
 	// VNIC type for the port. Can either be `direct`,
@@ -270,7 +270,7 @@ type PortBindingArgs struct {
 	Profile pulumi.StringPtrInput `pulumi:"profile"`
 	// A map of JSON strings containing additional
 	// details for this specific binding.
-	VifDetails pulumi.MapInput `pulumi:"vifDetails"`
+	VifDetails pulumi.StringMapInput `pulumi:"vifDetails"`
 	// The VNIC type of the port binding.
 	VifType pulumi.StringPtrInput `pulumi:"vifType"`
 	// VNIC type for the port. Can either be `direct`,
@@ -369,8 +369,8 @@ func (o PortBindingOutput) Profile() pulumi.StringPtrOutput {
 
 // A map of JSON strings containing additional
 // details for this specific binding.
-func (o PortBindingOutput) VifDetails() pulumi.MapOutput {
-	return o.ApplyT(func(v PortBinding) map[string]interface{} { return v.VifDetails }).(pulumi.MapOutput)
+func (o PortBindingOutput) VifDetails() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PortBinding) map[string]string { return v.VifDetails }).(pulumi.StringMapOutput)
 }
 
 // The VNIC type of the port binding.
@@ -432,13 +432,13 @@ func (o PortBindingPtrOutput) Profile() pulumi.StringPtrOutput {
 
 // A map of JSON strings containing additional
 // details for this specific binding.
-func (o PortBindingPtrOutput) VifDetails() pulumi.MapOutput {
-	return o.ApplyT(func(v *PortBinding) map[string]interface{} {
+func (o PortBindingPtrOutput) VifDetails() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PortBinding) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.VifDetails
-	}).(pulumi.MapOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 // The VNIC type of the port binding.
@@ -1386,7 +1386,7 @@ type GetPortBinding struct {
 	Profile string `pulumi:"profile"`
 	// A map of JSON strings containing additional details for this
 	// specific binding.
-	VifDetails map[string]interface{} `pulumi:"vifDetails"`
+	VifDetails map[string]string `pulumi:"vifDetails"`
 	// The VNIC type of the port binding.
 	VifType string `pulumi:"vifType"`
 	// VNIC type for the port.
@@ -1411,7 +1411,7 @@ type GetPortBindingArgs struct {
 	Profile pulumi.StringInput `pulumi:"profile"`
 	// A map of JSON strings containing additional details for this
 	// specific binding.
-	VifDetails pulumi.MapInput `pulumi:"vifDetails"`
+	VifDetails pulumi.StringMapInput `pulumi:"vifDetails"`
 	// The VNIC type of the port binding.
 	VifType pulumi.StringInput `pulumi:"vifType"`
 	// VNIC type for the port.
@@ -1481,8 +1481,8 @@ func (o GetPortBindingOutput) Profile() pulumi.StringOutput {
 
 // A map of JSON strings containing additional details for this
 // specific binding.
-func (o GetPortBindingOutput) VifDetails() pulumi.MapOutput {
-	return o.ApplyT(func(v GetPortBinding) map[string]interface{} { return v.VifDetails }).(pulumi.MapOutput)
+func (o GetPortBindingOutput) VifDetails() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPortBinding) map[string]string { return v.VifDetails }).(pulumi.StringMapOutput)
 }
 
 // The VNIC type of the port binding.

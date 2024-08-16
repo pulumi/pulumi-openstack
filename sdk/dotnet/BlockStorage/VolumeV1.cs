@@ -78,7 +78,7 @@ namespace Pulumi.OpenStack.BlockStorage
         /// Changing this updates the existing volume metadata.
         /// </summary>
         [Output("metadata")]
-        public Output<ImmutableDictionary<string, object>> Metadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// A unique name for the volume. Changing this updates the
@@ -191,15 +191,15 @@ namespace Pulumi.OpenStack.BlockStorage
         public Input<string>? ImageId { get; set; }
 
         [Input("metadata")]
-        private InputMap<object>? _metadata;
+        private InputMap<string>? _metadata;
 
         /// <summary>
         /// Metadata key/value pairs to associate with the volume.
         /// Changing this updates the existing volume metadata.
         /// </summary>
-        public InputMap<object> Metadata
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 
@@ -290,15 +290,15 @@ namespace Pulumi.OpenStack.BlockStorage
         public Input<string>? ImageId { get; set; }
 
         [Input("metadata")]
-        private InputMap<object>? _metadata;
+        private InputMap<string>? _metadata;
 
         /// <summary>
         /// Metadata key/value pairs to associate with the volume.
         /// Changing this updates the existing volume metadata.
         /// </summary>
-        public InputMap<object> Metadata
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 

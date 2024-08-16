@@ -406,7 +406,7 @@ class InstancePersonalityArgs:
 @pulumi.input_type
 class InstanceSchedulerHintArgs:
     def __init__(__self__, *,
-                 additional_properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 additional_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  build_near_host_ip: Optional[pulumi.Input[str]] = None,
                  different_cells: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  different_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -415,7 +415,7 @@ class InstanceSchedulerHintArgs:
                  same_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_cell: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Mapping[str, Any]] additional_properties: Arbitrary key/value pairs of additional
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_properties: Arbitrary key/value pairs of additional
                properties to pass to the scheduler.
         :param pulumi.Input[str] build_near_host_ip: An IP Address in CIDR form. The instance
                will be placed on a compute node that is in the same subnet.
@@ -458,7 +458,7 @@ class InstanceSchedulerHintArgs:
 
     @property
     @pulumi.getter(name="additionalProperties")
-    def additional_properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def additional_properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Arbitrary key/value pairs of additional
         properties to pass to the scheduler.
@@ -466,7 +466,7 @@ class InstanceSchedulerHintArgs:
         return pulumi.get(self, "additional_properties")
 
     @additional_properties.setter
-    def additional_properties(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def additional_properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "additional_properties", value)
 
     @property

@@ -98,7 +98,7 @@ type VolumeAttachV2 struct {
 	// This is a map of key/value pairs that contain the connection
 	// information. You will want to pass this information to a provisioner
 	// script to finalize the connection. See below for more information.
-	Data pulumi.MapOutput `pulumi:"data"`
+	Data pulumi.StringMapOutput `pulumi:"data"`
 	// The device to tell the Block Storage service this
 	// volume will be attached as. This is purely for informational purposes.
 	// You can specify `auto` or a device such as `/dev/vdc`.
@@ -180,7 +180,7 @@ type volumeAttachV2State struct {
 	// This is a map of key/value pairs that contain the connection
 	// information. You will want to pass this information to a provisioner
 	// script to finalize the connection. See below for more information.
-	Data map[string]interface{} `pulumi:"data"`
+	Data map[string]string `pulumi:"data"`
 	// The device to tell the Block Storage service this
 	// volume will be attached as. This is purely for informational purposes.
 	// You can specify `auto` or a device such as `/dev/vdc`.
@@ -223,7 +223,7 @@ type VolumeAttachV2State struct {
 	// This is a map of key/value pairs that contain the connection
 	// information. You will want to pass this information to a provisioner
 	// script to finalize the connection. See below for more information.
-	Data pulumi.MapInput
+	Data pulumi.StringMapInput
 	// The device to tell the Block Storage service this
 	// volume will be attached as. This is purely for informational purposes.
 	// You can specify `auto` or a device such as `/dev/vdc`.
@@ -430,8 +430,8 @@ func (o VolumeAttachV2Output) AttachMode() pulumi.StringPtrOutput {
 // This is a map of key/value pairs that contain the connection
 // information. You will want to pass this information to a provisioner
 // script to finalize the connection. See below for more information.
-func (o VolumeAttachV2Output) Data() pulumi.MapOutput {
-	return o.ApplyT(func(v *VolumeAttachV2) pulumi.MapOutput { return v.Data }).(pulumi.MapOutput)
+func (o VolumeAttachV2Output) Data() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VolumeAttachV2) pulumi.StringMapOutput { return v.Data }).(pulumi.StringMapOutput)
 }
 
 // The device to tell the Block Storage service this

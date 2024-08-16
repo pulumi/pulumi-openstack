@@ -99,7 +99,7 @@ type Keypair struct {
 	// 2.10 (Liberty) or later.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 	// Map of additional options.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 }
 
 // NewKeypair registers a new resource with the given unique name, arguments, and options.
@@ -159,7 +159,7 @@ type keypairState struct {
 	// 2.10 (Liberty) or later.
 	UserId *string `pulumi:"userId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 type KeypairState struct {
@@ -186,7 +186,7 @@ type KeypairState struct {
 	// 2.10 (Liberty) or later.
 	UserId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (KeypairState) ElementType() reflect.Type {
@@ -213,7 +213,7 @@ type keypairArgs struct {
 	// 2.10 (Liberty) or later.
 	UserId *string `pulumi:"userId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 // The set of arguments for constructing a Keypair resource.
@@ -237,7 +237,7 @@ type KeypairArgs struct {
 	// 2.10 (Liberty) or later.
 	UserId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (KeypairArgs) ElementType() reflect.Type {
@@ -368,8 +368,8 @@ func (o KeypairOutput) UserId() pulumi.StringOutput {
 }
 
 // Map of additional options.
-func (o KeypairOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *Keypair) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o KeypairOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Keypair) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 type KeypairArrayOutput struct{ *pulumi.OutputState }

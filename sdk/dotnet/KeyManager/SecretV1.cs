@@ -141,7 +141,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// explicitly and implicitly added.
         /// </summary>
         [Output("allMetadata")]
-        public Output<ImmutableDictionary<string, object>> AllMetadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> AllMetadata { get; private set; } = null!;
 
         /// <summary>
         /// Metadata provided by a user or system for informational purposes.
@@ -153,7 +153,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// The map of the content types, assigned on the secret.
         /// </summary>
         [Output("contentTypes")]
-        public Output<ImmutableDictionary<string, object>> ContentTypes { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> ContentTypes { get; private set; } = null!;
 
         /// <summary>
         /// The date the secret was created.
@@ -177,7 +177,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// Additional Metadata for the secret.
         /// </summary>
         [Output("metadata")]
-        public Output<ImmutableDictionary<string, object>?> Metadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Metadata provided by a user or system for informational purposes.
@@ -320,14 +320,14 @@ namespace Pulumi.OpenStack.KeyManager
         public Input<string>? Expiration { get; set; }
 
         [Input("metadata")]
-        private InputMap<object>? _metadata;
+        private InputMap<string>? _metadata;
 
         /// <summary>
         /// Additional Metadata for the secret.
         /// </summary>
-        public InputMap<object> Metadata
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 
@@ -410,15 +410,15 @@ namespace Pulumi.OpenStack.KeyManager
         public Input<string>? Algorithm { get; set; }
 
         [Input("allMetadata")]
-        private InputMap<object>? _allMetadata;
+        private InputMap<string>? _allMetadata;
 
         /// <summary>
         /// The map of metadata, assigned on the secret, which has been
         /// explicitly and implicitly added.
         /// </summary>
-        public InputMap<object> AllMetadata
+        public InputMap<string> AllMetadata
         {
-            get => _allMetadata ?? (_allMetadata = new InputMap<object>());
+            get => _allMetadata ?? (_allMetadata = new InputMap<string>());
             set => _allMetadata = value;
         }
 
@@ -429,14 +429,14 @@ namespace Pulumi.OpenStack.KeyManager
         public Input<int>? BitLength { get; set; }
 
         [Input("contentTypes")]
-        private InputMap<object>? _contentTypes;
+        private InputMap<string>? _contentTypes;
 
         /// <summary>
         /// The map of the content types, assigned on the secret.
         /// </summary>
-        public InputMap<object> ContentTypes
+        public InputMap<string> ContentTypes
         {
-            get => _contentTypes ?? (_contentTypes = new InputMap<object>());
+            get => _contentTypes ?? (_contentTypes = new InputMap<string>());
             set => _contentTypes = value;
         }
 
@@ -459,14 +459,14 @@ namespace Pulumi.OpenStack.KeyManager
         public Input<string>? Expiration { get; set; }
 
         [Input("metadata")]
-        private InputMap<object>? _metadata;
+        private InputMap<string>? _metadata;
 
         /// <summary>
         /// Additional Metadata for the secret.
         /// </summary>
-        public InputMap<object> Metadata
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 

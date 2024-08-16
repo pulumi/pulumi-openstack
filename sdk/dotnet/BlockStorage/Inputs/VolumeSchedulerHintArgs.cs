@@ -13,15 +13,15 @@ namespace Pulumi.OpenStack.BlockStorage.Inputs
     public sealed class VolumeSchedulerHintArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalProperties")]
-        private InputMap<object>? _additionalProperties;
+        private InputMap<string>? _additionalProperties;
 
         /// <summary>
         /// Arbitrary key/value pairs of additional
         /// properties to pass to the scheduler.
         /// </summary>
-        public InputMap<object> AdditionalProperties
+        public InputMap<string> AdditionalProperties
         {
-            get => _additionalProperties ?? (_additionalProperties = new InputMap<object>());
+            get => _additionalProperties ?? (_additionalProperties = new InputMap<string>());
             set => _additionalProperties = value;
         }
 

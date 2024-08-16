@@ -9,7 +9,6 @@ import com.pulumi.openstack.networking.outputs.GetPortAllowedAddressPair;
 import com.pulumi.openstack.networking.outputs.GetPortBinding;
 import com.pulumi.openstack.networking.outputs.GetPortExtraDhcpOption;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -71,7 +70,7 @@ public final class GetPortResult {
      * @return The list of maps representing port DNS assignments.
      * 
      */
-    private List<Map<String,Object>> dnsAssignments;
+    private List<Map<String,String>> dnsAssignments;
     /**
      * @return See Argument Reference above.
      * 
@@ -195,7 +194,7 @@ public final class GetPortResult {
      * @return The list of maps representing port DNS assignments.
      * 
      */
-    public List<Map<String,Object>> dnsAssignments() {
+    public List<Map<String,String>> dnsAssignments() {
         return this.dnsAssignments;
     }
     /**
@@ -296,7 +295,7 @@ public final class GetPortResult {
         private @Nullable String description;
         private @Nullable String deviceId;
         private @Nullable String deviceOwner;
-        private List<Map<String,Object>> dnsAssignments;
+        private List<Map<String,String>> dnsAssignments;
         private @Nullable String dnsName;
         private List<GetPortExtraDhcpOption> extraDhcpOptions;
         private @Nullable String fixedIp;
@@ -420,7 +419,7 @@ public final class GetPortResult {
             return this;
         }
         @CustomType.Setter
-        public Builder dnsAssignments(List<Map<String,Object>> dnsAssignments) {
+        public Builder dnsAssignments(List<Map<String,String>> dnsAssignments) {
             if (dnsAssignments == null) {
               throw new MissingRequiredPropertyException("GetPortResult", "dnsAssignments");
             }

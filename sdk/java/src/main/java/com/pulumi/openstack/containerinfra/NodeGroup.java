@@ -12,7 +12,6 @@ import com.pulumi.openstack.containerinfra.NodeGroupArgs;
 import com.pulumi.openstack.containerinfra.inputs.NodeGroupState;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -169,15 +168,15 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * properties of the node group. Changing this creates a new node group.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> labels;
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> labels;
 
     /**
      * @return The list of key value pairs representing additional
      * properties of the node group. Changing this creates a new node group.
      * 
      */
-    public Output<Map<String,Object>> labels() {
+    public Output<Map<String,String>> labels() {
         return this.labels;
     }
     /**

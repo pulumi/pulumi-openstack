@@ -36,8 +36,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			container1, err := objectstorage.NewContainer(ctx, "container_1", &objectstorage.ContainerArgs{
 //				Name: pulumi.String("test"),
-//				Metadata: pulumi.Map{
-//					"Temp-URL-Key": pulumi.Any("testkey"),
+//				Metadata: pulumi.StringMap{
+//					"Temp-URL-Key": pulumi.String("testkey"),
 //				},
 //			})
 //			if err != nil {

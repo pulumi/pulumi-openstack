@@ -23,7 +23,7 @@ class VolumeArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  enable_online_resize: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]] = None,
@@ -49,7 +49,7 @@ class VolumeArgs:
         :param pulumi.Input[str] image_id: The image ID from which to create the volume.
                Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
                creates a new volume.
-        :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to associate with the volume.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to associate with the volume.
                Changing this updates the existing volume metadata.
         :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
                volume's name.
@@ -193,7 +193,7 @@ class VolumeArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Metadata key/value pairs to associate with the volume.
         Changing this updates the existing volume metadata.
@@ -201,7 +201,7 @@ class VolumeArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -308,7 +308,7 @@ class _VolumeState:
                  description: Optional[pulumi.Input[str]] = None,
                  enable_online_resize: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]] = None,
@@ -337,7 +337,7 @@ class _VolumeState:
         :param pulumi.Input[str] image_id: The image ID from which to create the volume.
                Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
                creates a new volume.
-        :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to associate with the volume.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to associate with the volume.
                Changing this updates the existing volume metadata.
         :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
                volume's name.
@@ -487,7 +487,7 @@ class _VolumeState:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Metadata key/value pairs to associate with the volume.
         Changing this updates the existing volume metadata.
@@ -495,7 +495,7 @@ class _VolumeState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -615,7 +615,7 @@ class Volume(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_online_resize: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeSchedulerHintArgs', 'VolumeSchedulerHintArgsDict']]]]] = None,
@@ -666,7 +666,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] image_id: The image ID from which to create the volume.
                Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
                creates a new volume.
-        :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to associate with the volume.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to associate with the volume.
                Changing this updates the existing volume metadata.
         :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
                volume's name.
@@ -737,7 +737,7 @@ class Volume(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_online_resize: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeSchedulerHintArgs', 'VolumeSchedulerHintArgsDict']]]]] = None,
@@ -790,7 +790,7 @@ class Volume(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             enable_online_resize: Optional[pulumi.Input[bool]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeSchedulerHintArgs', 'VolumeSchedulerHintArgsDict']]]]] = None,
@@ -824,7 +824,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] image_id: The image ID from which to create the volume.
                Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
                creates a new volume.
-        :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to associate with the volume.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to associate with the volume.
                Changing this updates the existing volume metadata.
         :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
                volume's name.
@@ -935,7 +935,7 @@ class Volume(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Mapping[str, Any]]:
+    def metadata(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Metadata key/value pairs to associate with the volume.
         Changing this updates the existing volume metadata.

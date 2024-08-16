@@ -12,7 +12,6 @@ import com.pulumi.openstack.loadbalancer.VipArgs;
 import com.pulumi.openstack.loadbalancer.inputs.VipState;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -177,8 +176,8 @@ public class Vip extends com.pulumi.resources.CustomResource {
      * the persistence of the existing vip.
      * 
      */
-    @Export(name="persistence", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> persistence;
+    @Export(name="persistence", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> persistence;
 
     /**
      * @return Omit this field to prevent session persistence.
@@ -186,7 +185,7 @@ public class Vip extends com.pulumi.resources.CustomResource {
      * the persistence of the existing vip.
      * 
      */
-    public Output<Optional<Map<String,Object>>> persistence() {
+    public Output<Optional<Map<String,String>>> persistence() {
         return Codegen.optional(this.persistence);
     }
     /**

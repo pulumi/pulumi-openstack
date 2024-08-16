@@ -55,7 +55,7 @@ export interface GetDnsZoneArgs {
     /**
      * Attributes of the DNS Service scheduler.
      */
-    attributes?: {[key: string]: any};
+    attributes?: {[key: string]: string};
     /**
      * The time the zone was created.
      */
@@ -129,7 +129,7 @@ export interface GetDnsZoneResult {
     /**
      * Attributes of the DNS Service scheduler.
      */
-    readonly attributes: {[key: string]: any};
+    readonly attributes: {[key: string]: string};
     /**
      * The time the zone was created.
      */
@@ -225,7 +225,7 @@ export interface GetDnsZoneOutputArgs {
     /**
      * Attributes of the DNS Service scheduler.
      */
-    attributes?: pulumi.Input<{[key: string]: any}>;
+    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The time the zone was created.
      */

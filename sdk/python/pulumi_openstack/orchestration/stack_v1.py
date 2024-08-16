@@ -16,16 +16,16 @@ __all__ = ['StackV1Args', 'StackV1']
 @pulumi.input_type
 class StackV1Args:
     def __init__(__self__, *,
-                 template_opts: pulumi.Input[Mapping[str, Any]],
+                 template_opts: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  stack_outputs: Optional[pulumi.Input[Sequence[pulumi.Input['StackV1StackOutputArgs']]]] = None,
                  capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_rollback: Optional[pulumi.Input[bool]] = None,
-                 environment_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  status_reason: Optional[pulumi.Input[str]] = None,
@@ -35,7 +35,7 @@ class StackV1Args:
                  updated_time: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a StackV1 resource.
-        :param pulumi.Input[Mapping[str, Any]] template_opts: Template key/value pairs to associate with the
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] template_opts: Template key/value pairs to associate with the
                stack which contains either the template file or url.
                Allowed keys: Bin, URL, Files. Changing this updates the existing stack
                Template Opts.
@@ -49,14 +49,14 @@ class StackV1Args:
         :param pulumi.Input[bool] disable_rollback: Enables or disables deletion of all stack
                resources when a stack creation fails. Default is true, meaning all
                resources are not deleted when stack creation fails.
-        :param pulumi.Input[Mapping[str, Any]] environment_opts: Environment key/value pairs to associate with
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_opts: Environment key/value pairs to associate with
                the stack which contains details for the environment of the stack.
                Allowed keys: Bin, URL, Files. Changing this updates the existing stack
                Environment Opts.
         :param pulumi.Input[str] name: A unique name for the stack. It must start with an
                alphabetic character. Changing this updates the stack's name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_topics: List of notification topics for stack.
-        :param pulumi.Input[Mapping[str, Any]] parameters: User-defined key/value pairs as parameters to pass
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: User-defined key/value pairs as parameters to pass
                to the template. Changing this updates the existing stack parameters.
         :param pulumi.Input[str] region: The region in which to create the stack. If
                omitted, the `region` argument of the provider is used. Changing this
@@ -107,7 +107,7 @@ class StackV1Args:
 
     @property
     @pulumi.getter(name="templateOpts")
-    def template_opts(self) -> pulumi.Input[Mapping[str, Any]]:
+    def template_opts(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
         """
         Template key/value pairs to associate with the
         stack which contains either the template file or url.
@@ -117,7 +117,7 @@ class StackV1Args:
         return pulumi.get(self, "template_opts")
 
     @template_opts.setter
-    def template_opts(self, value: pulumi.Input[Mapping[str, Any]]):
+    def template_opts(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(self, "template_opts", value)
 
     @property
@@ -187,7 +187,7 @@ class StackV1Args:
 
     @property
     @pulumi.getter(name="environmentOpts")
-    def environment_opts(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def environment_opts(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Environment key/value pairs to associate with
         the stack which contains details for the environment of the stack.
@@ -197,7 +197,7 @@ class StackV1Args:
         return pulumi.get(self, "environment_opts")
 
     @environment_opts.setter
-    def environment_opts(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def environment_opts(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "environment_opts", value)
 
     @property
@@ -227,7 +227,7 @@ class StackV1Args:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User-defined key/value pairs as parameters to pass
         to the template. Changing this updates the existing stack parameters.
@@ -235,7 +235,7 @@ class StackV1Args:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -336,16 +336,16 @@ class _StackV1State:
                  creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_rollback: Optional[pulumi.Input[bool]] = None,
-                 environment_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  status_reason: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_description: Optional[pulumi.Input[str]] = None,
-                 template_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 template_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  updated_time: Optional[pulumi.Input[str]] = None):
         """
@@ -360,14 +360,14 @@ class _StackV1State:
         :param pulumi.Input[bool] disable_rollback: Enables or disables deletion of all stack
                resources when a stack creation fails. Default is true, meaning all
                resources are not deleted when stack creation fails.
-        :param pulumi.Input[Mapping[str, Any]] environment_opts: Environment key/value pairs to associate with
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_opts: Environment key/value pairs to associate with
                the stack which contains details for the environment of the stack.
                Allowed keys: Bin, URL, Files. Changing this updates the existing stack
                Environment Opts.
         :param pulumi.Input[str] name: A unique name for the stack. It must start with an
                alphabetic character. Changing this updates the stack's name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_topics: List of notification topics for stack.
-        :param pulumi.Input[Mapping[str, Any]] parameters: User-defined key/value pairs as parameters to pass
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: User-defined key/value pairs as parameters to pass
                to the template. Changing this updates the existing stack parameters.
         :param pulumi.Input[str] region: The region in which to create the stack. If
                omitted, the `region` argument of the provider is used. Changing this
@@ -376,7 +376,7 @@ class _StackV1State:
         :param pulumi.Input[str] status_reason: The reason for the current status of the stack.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to assosciate with the Stack
         :param pulumi.Input[str] template_description: The description of the stack template.
-        :param pulumi.Input[Mapping[str, Any]] template_opts: Template key/value pairs to associate with the
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] template_opts: Template key/value pairs to associate with the
                stack which contains either the template file or url.
                Allowed keys: Bin, URL, Files. Changing this updates the existing stack
                Template Opts.
@@ -488,7 +488,7 @@ class _StackV1State:
 
     @property
     @pulumi.getter(name="environmentOpts")
-    def environment_opts(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def environment_opts(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Environment key/value pairs to associate with
         the stack which contains details for the environment of the stack.
@@ -498,7 +498,7 @@ class _StackV1State:
         return pulumi.get(self, "environment_opts")
 
     @environment_opts.setter
-    def environment_opts(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def environment_opts(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "environment_opts", value)
 
     @property
@@ -528,7 +528,7 @@ class _StackV1State:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User-defined key/value pairs as parameters to pass
         to the template. Changing this updates the existing stack parameters.
@@ -536,7 +536,7 @@ class _StackV1State:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -603,7 +603,7 @@ class _StackV1State:
 
     @property
     @pulumi.getter(name="templateOpts")
-    def template_opts(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def template_opts(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Template key/value pairs to associate with the
         stack which contains either the template file or url.
@@ -613,7 +613,7 @@ class _StackV1State:
         return pulumi.get(self, "template_opts")
 
     @template_opts.setter
-    def template_opts(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def template_opts(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "template_opts", value)
 
     @property
@@ -654,16 +654,16 @@ class StackV1(pulumi.CustomResource):
                  creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_rollback: Optional[pulumi.Input[bool]] = None,
-                 environment_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  status_reason: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_description: Optional[pulumi.Input[str]] = None,
-                 template_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 template_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  updated_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -679,7 +679,7 @@ class StackV1(pulumi.CustomResource):
         stack1 = openstack.orchestration.StackV1("stack_1",
             name="stack_1",
             parameters={
-                "length": 4,
+                "length": "4",
             },
             template_opts={
                 "Bin": \"\"\"heat_template_version: 2013-05-23
@@ -722,14 +722,14 @@ class StackV1(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_rollback: Enables or disables deletion of all stack
                resources when a stack creation fails. Default is true, meaning all
                resources are not deleted when stack creation fails.
-        :param pulumi.Input[Mapping[str, Any]] environment_opts: Environment key/value pairs to associate with
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_opts: Environment key/value pairs to associate with
                the stack which contains details for the environment of the stack.
                Allowed keys: Bin, URL, Files. Changing this updates the existing stack
                Environment Opts.
         :param pulumi.Input[str] name: A unique name for the stack. It must start with an
                alphabetic character. Changing this updates the stack's name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_topics: List of notification topics for stack.
-        :param pulumi.Input[Mapping[str, Any]] parameters: User-defined key/value pairs as parameters to pass
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: User-defined key/value pairs as parameters to pass
                to the template. Changing this updates the existing stack parameters.
         :param pulumi.Input[str] region: The region in which to create the stack. If
                omitted, the `region` argument of the provider is used. Changing this
@@ -738,7 +738,7 @@ class StackV1(pulumi.CustomResource):
         :param pulumi.Input[str] status_reason: The reason for the current status of the stack.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to assosciate with the Stack
         :param pulumi.Input[str] template_description: The description of the stack template.
-        :param pulumi.Input[Mapping[str, Any]] template_opts: Template key/value pairs to associate with the
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] template_opts: Template key/value pairs to associate with the
                stack which contains either the template file or url.
                Allowed keys: Bin, URL, Files. Changing this updates the existing stack
                Template Opts.
@@ -766,7 +766,7 @@ class StackV1(pulumi.CustomResource):
         stack1 = openstack.orchestration.StackV1("stack_1",
             name="stack_1",
             parameters={
-                "length": 4,
+                "length": "4",
             },
             template_opts={
                 "Bin": \"\"\"heat_template_version: 2013-05-23
@@ -817,16 +817,16 @@ class StackV1(pulumi.CustomResource):
                  creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_rollback: Optional[pulumi.Input[bool]] = None,
-                 environment_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 environment_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  status_reason: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_description: Optional[pulumi.Input[str]] = None,
-                 template_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 template_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  updated_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -872,16 +872,16 @@ class StackV1(pulumi.CustomResource):
             creation_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disable_rollback: Optional[pulumi.Input[bool]] = None,
-            environment_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            environment_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notification_topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             status_reason: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template_description: Optional[pulumi.Input[str]] = None,
-            template_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            template_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             timeout: Optional[pulumi.Input[int]] = None,
             updated_time: Optional[pulumi.Input[str]] = None) -> 'StackV1':
         """
@@ -901,14 +901,14 @@ class StackV1(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_rollback: Enables or disables deletion of all stack
                resources when a stack creation fails. Default is true, meaning all
                resources are not deleted when stack creation fails.
-        :param pulumi.Input[Mapping[str, Any]] environment_opts: Environment key/value pairs to associate with
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_opts: Environment key/value pairs to associate with
                the stack which contains details for the environment of the stack.
                Allowed keys: Bin, URL, Files. Changing this updates the existing stack
                Environment Opts.
         :param pulumi.Input[str] name: A unique name for the stack. It must start with an
                alphabetic character. Changing this updates the stack's name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_topics: List of notification topics for stack.
-        :param pulumi.Input[Mapping[str, Any]] parameters: User-defined key/value pairs as parameters to pass
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: User-defined key/value pairs as parameters to pass
                to the template. Changing this updates the existing stack parameters.
         :param pulumi.Input[str] region: The region in which to create the stack. If
                omitted, the `region` argument of the provider is used. Changing this
@@ -917,7 +917,7 @@ class StackV1(pulumi.CustomResource):
         :param pulumi.Input[str] status_reason: The reason for the current status of the stack.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to assosciate with the Stack
         :param pulumi.Input[str] template_description: The description of the stack template.
-        :param pulumi.Input[Mapping[str, Any]] template_opts: Template key/value pairs to associate with the
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] template_opts: Template key/value pairs to associate with the
                stack which contains either the template file or url.
                Allowed keys: Bin, URL, Files. Changing this updates the existing stack
                Template Opts.
@@ -997,7 +997,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="environmentOpts")
-    def environment_opts(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def environment_opts(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Environment key/value pairs to associate with
         the stack which contains details for the environment of the stack.
@@ -1025,7 +1025,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def parameters(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def parameters(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         User-defined key/value pairs as parameters to pass
         to the template. Changing this updates the existing stack parameters.
@@ -1076,7 +1076,7 @@ class StackV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="templateOpts")
-    def template_opts(self) -> pulumi.Output[Mapping[str, Any]]:
+    def template_opts(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Template key/value pairs to associate with the
         stack which contains either the template file or url.

@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -164,7 +163,7 @@ public final class QuoteSetV2Args extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="volumeTypeQuota")
-    private @Nullable Output<Map<String,Object>> volumeTypeQuota;
+    private @Nullable Output<Map<String,String>> volumeTypeQuota;
 
     /**
      * @return Key/Value pairs for setting quota for
@@ -172,7 +171,7 @@ public final class QuoteSetV2Args extends com.pulumi.resources.ResourceArgs {
      * `volumes_&lt;volume_type_name&gt;` and `gigabytes_&lt;volume_type_name&gt;`.
      * 
      */
-    public Optional<Output<Map<String,Object>>> volumeTypeQuota() {
+    public Optional<Output<Map<String,String>>> volumeTypeQuota() {
         return Optional.ofNullable(this.volumeTypeQuota);
     }
 
@@ -420,7 +419,7 @@ public final class QuoteSetV2Args extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder volumeTypeQuota(@Nullable Output<Map<String,Object>> volumeTypeQuota) {
+        public Builder volumeTypeQuota(@Nullable Output<Map<String,String>> volumeTypeQuota) {
             $.volumeTypeQuota = volumeTypeQuota;
             return this;
         }
@@ -433,7 +432,7 @@ public final class QuoteSetV2Args extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder volumeTypeQuota(Map<String,Object> volumeTypeQuota) {
+        public Builder volumeTypeQuota(Map<String,String> volumeTypeQuota) {
             return volumeTypeQuota(Output.of(volumeTypeQuota));
         }
 

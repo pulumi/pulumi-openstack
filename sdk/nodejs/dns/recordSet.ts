@@ -113,7 +113,7 @@ export class RecordSet extends pulumi.CustomResource {
      * Map of additional options. Changing this creates a
      * new record set.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the zone in which to create the record set.
      * Changing this creates a new DNS  record set.
@@ -215,7 +215,7 @@ export interface RecordSetState {
      * Map of additional options. Changing this creates a
      * new record set.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the zone in which to create the record set.
      * Changing this creates a new DNS  record set.
@@ -271,7 +271,7 @@ export interface RecordSetArgs {
      * Map of additional options. Changing this creates a
      * new record set.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the zone in which to create the record set.
      * Changing this creates a new DNS  record set.

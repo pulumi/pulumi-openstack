@@ -23,7 +23,7 @@ class ClusterArgs:
                  flavor: Optional[pulumi.Input[str]] = None,
                  floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  keypair: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  master_count: Optional[pulumi.Input[int]] = None,
                  master_flavor: Optional[pulumi.Input[str]] = None,
                  merge_labels: Optional[pulumi.Input[bool]] = None,
@@ -51,7 +51,7 @@ class ClusterArgs:
                created for every cluster node. Changing this creates a new cluster.
         :param pulumi.Input[str] keypair: The name of the Compute service SSH keypair. Changing
                this creates a new cluster.
-        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of key value pairs representing additional
                properties of the cluster. Changing this creates a new cluster.
         :param pulumi.Input[int] master_count: The number of master nodes for the cluster.
                Changing this creates a new cluster.
@@ -220,7 +220,7 @@ class ClusterArgs:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of key value pairs representing additional
         properties of the cluster. Changing this creates a new cluster.
@@ -228,7 +228,7 @@ class ClusterArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -329,7 +329,7 @@ class _ClusterState:
                  floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  keypair: Optional[pulumi.Input[str]] = None,
                  kubeconfig: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  master_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  master_count: Optional[pulumi.Input[int]] = None,
                  master_flavor: Optional[pulumi.Input[str]] = None,
@@ -363,7 +363,7 @@ class _ClusterState:
                created for every cluster node. Changing this creates a new cluster.
         :param pulumi.Input[str] keypair: The name of the Compute service SSH keypair. Changing
                this creates a new cluster.
-        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of key value pairs representing additional
                properties of the cluster. Changing this creates a new cluster.
         :param pulumi.Input[int] master_count: The number of master nodes for the cluster.
                Changing this creates a new cluster.
@@ -606,7 +606,7 @@ class _ClusterState:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of key value pairs representing additional
         properties of the cluster. Changing this creates a new cluster.
@@ -614,7 +614,7 @@ class _ClusterState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
     @property
@@ -776,7 +776,7 @@ class Cluster(pulumi.CustomResource):
                  flavor: Optional[pulumi.Input[str]] = None,
                  floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  keypair: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  master_count: Optional[pulumi.Input[int]] = None,
                  master_flavor: Optional[pulumi.Input[str]] = None,
                  merge_labels: Optional[pulumi.Input[bool]] = None,
@@ -872,7 +872,7 @@ class Cluster(pulumi.CustomResource):
                created for every cluster node. Changing this creates a new cluster.
         :param pulumi.Input[str] keypair: The name of the Compute service SSH keypair. Changing
                this creates a new cluster.
-        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of key value pairs representing additional
                properties of the cluster. Changing this creates a new cluster.
         :param pulumi.Input[int] master_count: The number of master nodes for the cluster.
                Changing this creates a new cluster.
@@ -986,7 +986,7 @@ class Cluster(pulumi.CustomResource):
                  flavor: Optional[pulumi.Input[str]] = None,
                  floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  keypair: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  master_count: Optional[pulumi.Input[int]] = None,
                  master_flavor: Optional[pulumi.Input[str]] = None,
                  merge_labels: Optional[pulumi.Input[bool]] = None,
@@ -1057,7 +1057,7 @@ class Cluster(pulumi.CustomResource):
             floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
             keypair: Optional[pulumi.Input[str]] = None,
             kubeconfig: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             master_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             master_count: Optional[pulumi.Input[int]] = None,
             master_flavor: Optional[pulumi.Input[str]] = None,
@@ -1096,7 +1096,7 @@ class Cluster(pulumi.CustomResource):
                created for every cluster node. Changing this creates a new cluster.
         :param pulumi.Input[str] keypair: The name of the Compute service SSH keypair. Changing
                this creates a new cluster.
-        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of key value pairs representing additional
                properties of the cluster. Changing this creates a new cluster.
         :param pulumi.Input[int] master_count: The number of master nodes for the cluster.
                Changing this creates a new cluster.
@@ -1261,7 +1261,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         The list of key value pairs representing additional
         properties of the cluster. Changing this creates a new cluster.

@@ -12,7 +12,6 @@ import com.pulumi.openstack.loadbalancer.ListenerArgs;
 import com.pulumi.openstack.loadbalancer.inputs.ListenerState;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -180,8 +179,8 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * existing listener.
      * 
      */
-    @Export(name="insertHeaders", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> insertHeaders;
+    @Export(name="insertHeaders", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> insertHeaders;
 
     /**
      * @return The list of key value pairs representing headers to insert
@@ -189,7 +188,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * existing listener.
      * 
      */
-    public Output<Optional<Map<String,Object>>> insertHeaders() {
+    public Output<Optional<Map<String,String>>> insertHeaders() {
         return Codegen.optional(this.insertHeaders);
     }
     /**

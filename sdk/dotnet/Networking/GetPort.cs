@@ -339,7 +339,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The list of maps representing port DNS assignments.
         /// </summary>
-        public readonly ImmutableArray<ImmutableDictionary<string, object>> DnsAssignments;
+        public readonly ImmutableArray<ImmutableDictionary<string, string>> DnsAssignments;
         /// <summary>
         /// See Argument Reference above.
         /// </summary>
@@ -403,7 +403,7 @@ namespace Pulumi.OpenStack.Networking
 
             string? deviceOwner,
 
-            ImmutableArray<ImmutableDictionary<string, object>> dnsAssignments,
+            ImmutableArray<ImmutableDictionary<string, string>> dnsAssignments,
 
             string? dnsName,
 

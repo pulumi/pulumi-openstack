@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.openstack.sharedfilesystem.inputs.ShareExportLocationArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -27,14 +26,14 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="allMetadata")
-    private @Nullable Output<Map<String,Object>> allMetadata;
+    private @Nullable Output<Map<String,String>> allMetadata;
 
     /**
      * @return The map of metadata, assigned on the share, which has been
      * explicitly and implicitly added.
      * 
      */
-    public Optional<Output<Map<String,Object>>> allMetadata() {
+    public Optional<Output<Map<String,String>>> allMetadata() {
         return Optional.ofNullable(this.allMetadata);
     }
 
@@ -144,14 +143,14 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="metadata")
-    private @Nullable Output<Map<String,Object>> metadata;
+    private @Nullable Output<Map<String,String>> metadata;
 
     /**
      * @return One or more metadata key and value pairs as a dictionary of
      * strings.
      * 
      */
-    public Optional<Output<Map<String,Object>>> metadata() {
+    public Optional<Output<Map<String,String>>> metadata() {
         return Optional.ofNullable(this.metadata);
     }
 
@@ -371,7 +370,7 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder allMetadata(@Nullable Output<Map<String,Object>> allMetadata) {
+        public Builder allMetadata(@Nullable Output<Map<String,String>> allMetadata) {
             $.allMetadata = allMetadata;
             return this;
         }
@@ -383,7 +382,7 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder allMetadata(Map<String,Object> allMetadata) {
+        public Builder allMetadata(Map<String,String> allMetadata) {
             return allMetadata(Output.of(allMetadata));
         }
 
@@ -541,7 +540,7 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder metadata(@Nullable Output<Map<String,Object>> metadata) {
+        public Builder metadata(@Nullable Output<Map<String,String>> metadata) {
             $.metadata = metadata;
             return this;
         }
@@ -553,7 +552,7 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder metadata(Map<String,Object> metadata) {
+        public Builder metadata(Map<String,String> metadata) {
             return metadata(Output.of(metadata));
         }
 

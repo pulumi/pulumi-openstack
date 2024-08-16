@@ -6,7 +6,6 @@ package com.pulumi.openstack.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.compute.outputs.GetInstanceV2Network;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -64,7 +63,7 @@ public final class GetInstanceV2Result {
      * @return A set of key/value pairs made available to the server.
      * 
      */
-    private Map<String,Object> metadata;
+    private Map<String,String> metadata;
     /**
      * @return The name of the network
      * 
@@ -169,7 +168,7 @@ public final class GetInstanceV2Result {
      * @return A set of key/value pairs made available to the server.
      * 
      */
-    public Map<String,Object> metadata() {
+    public Map<String,String> metadata() {
         return this.metadata;
     }
     /**
@@ -240,7 +239,7 @@ public final class GetInstanceV2Result {
         private String imageId;
         private String imageName;
         private String keyPair;
-        private Map<String,Object> metadata;
+        private Map<String,String> metadata;
         private String name;
         private List<GetInstanceV2Network> networks;
         private String powerState;
@@ -354,7 +353,7 @@ public final class GetInstanceV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder metadata(Map<String,Object> metadata) {
+        public Builder metadata(Map<String,String> metadata) {
             if (metadata == null) {
               throw new MissingRequiredPropertyException("GetInstanceV2Result", "metadata");
             }

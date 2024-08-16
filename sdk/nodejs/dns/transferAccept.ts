@@ -89,7 +89,7 @@ export class TransferAccept extends pulumi.CustomResource {
      * Map of additional options. Changing this creates a
      * new transfer accept.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the zone transfer request.
      */
@@ -157,7 +157,7 @@ export interface TransferAcceptState {
      * Map of additional options. Changing this creates a
      * new transfer accept.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the zone transfer request.
      */
@@ -189,7 +189,7 @@ export interface TransferAcceptArgs {
      * Map of additional options. Changing this creates a
      * new transfer accept.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: any}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the zone transfer request.
      */

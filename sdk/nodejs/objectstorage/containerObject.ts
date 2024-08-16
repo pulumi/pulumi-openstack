@@ -8,61 +8,6 @@ import * as utilities from "../utilities";
  * Manages a V1 container object resource within OpenStack.
  *
  * ## Example Usage
- *
- * ### Example with simple content
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const container1 = new openstack.objectstorage.Container("container_1", {
- *     region: "RegionOne",
- *     name: "tf-test-container-1",
- *     metadata: [{
- *         test: "true",
- *     }],
- *     contentType: "application/json",
- * });
- * const doc1 = new openstack.objectstorage.ContainerObject("doc_1", {
- *     region: "RegionOne",
- *     containerName: container1.name,
- *     name: "test/default.json",
- *     metadata: [{
- *         test: "true",
- *     }],
- *     contentType: "application/json",
- *     content: `               {
- *                  "foo" : "bar"
- *                }
- * `,
- * });
- * ```
- *
- * ### Example with content from file
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const container1 = new openstack.objectstorage.Container("container_1", {
- *     region: "RegionOne",
- *     name: "tf-test-container-1",
- *     metadata: [{
- *         test: "true",
- *     }],
- *     contentType: "application/json",
- * });
- * const doc1 = new openstack.objectstorage.ContainerObject("doc_1", {
- *     region: "RegionOne",
- *     containerName: container1.name,
- *     name: "test/default.json",
- *     metadata: [{
- *         test: "true",
- *     }],
- *     contentType: "application/json",
- *     source: "./default.json",
- * });
- * ```
  */
 export class ContainerObject extends pulumi.CustomResource {
     /**
@@ -170,7 +115,7 @@ export class ContainerObject extends pulumi.CustomResource {
      * example, the offset value is -05:00.
      */
     public /*out*/ readonly lastModified!: pulumi.Output<string>;
-    public readonly metadata!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A unique name for the object.
      */
@@ -344,7 +289,7 @@ export interface ContainerObjectState {
      * example, the offset value is -05:00.
      */
     lastModified?: pulumi.Input<string>;
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A unique name for the object.
      */
@@ -437,7 +382,7 @@ export interface ContainerObjectArgs {
      * Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
      */
     etag?: pulumi.Input<string>;
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A unique name for the object.
      */

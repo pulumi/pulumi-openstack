@@ -12,7 +12,6 @@ import com.pulumi.openstack.images.ImageArgs;
 import com.pulumi.openstack.images.inputs.ImageState;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -306,8 +305,8 @@ public class Image extends com.pulumi.resources.CustomResource {
      * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      * 
      */
-    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> metadata;
+    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> metadata;
 
     /**
      * @return The metadata associated with the image.
@@ -315,7 +314,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      * 
      */
-    public Output<Map<String,Object>> metadata() {
+    public Output<Map<String,String>> metadata() {
         return this.metadata;
     }
     /**
@@ -384,8 +383,8 @@ public class Image extends com.pulumi.resources.CustomResource {
      * about properties.
      * 
      */
-    @Export(name="properties", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> properties;
+    @Export(name="properties", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> properties;
 
     /**
      * @return A map of key/value pairs to set freeform
@@ -393,7 +392,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * about properties.
      * 
      */
-    public Output<Map<String,Object>> properties() {
+    public Output<Map<String,String>> properties() {
         return this.properties;
     }
     /**

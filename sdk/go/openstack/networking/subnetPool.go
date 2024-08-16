@@ -166,7 +166,7 @@ type SubnetPool struct {
 	// The time at which subnetpool was created.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// Map of additional options.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 }
 
 // NewSubnetPool registers a new resource with the given unique name, arguments, and options.
@@ -266,7 +266,7 @@ type subnetPoolState struct {
 	// The time at which subnetpool was created.
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 type SubnetPoolState struct {
@@ -334,7 +334,7 @@ type SubnetPoolState struct {
 	// The time at which subnetpool was created.
 	UpdatedAt pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (SubnetPoolState) ElementType() reflect.Type {
@@ -397,7 +397,7 @@ type subnetPoolArgs struct {
 	// A set of string tags for the subnetpool.
 	Tags []string `pulumi:"tags"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 // The set of arguments for constructing a SubnetPool resource.
@@ -457,7 +457,7 @@ type SubnetPoolArgs struct {
 	// A set of string tags for the subnetpool.
 	Tags pulumi.StringArrayInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (SubnetPoolArgs) ElementType() reflect.Type {
@@ -665,8 +665,8 @@ func (o SubnetPoolOutput) UpdatedAt() pulumi.StringOutput {
 }
 
 // Map of additional options.
-func (o SubnetPoolOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *SubnetPool) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o SubnetPoolOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 type SubnetPoolArrayOutput struct{ *pulumi.OutputState }

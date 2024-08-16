@@ -11,7 +11,6 @@ import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.dns.TransferAcceptArgs;
 import com.pulumi.openstack.dns.inputs.TransferAcceptState;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -143,15 +142,15 @@ public class TransferAccept extends com.pulumi.resources.CustomResource {
      * new transfer accept.
      * 
      */
-    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> valueSpecs;
+    @Export(name="valueSpecs", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> valueSpecs;
 
     /**
      * @return Map of additional options. Changing this creates a
      * new transfer accept.
      * 
      */
-    public Output<Optional<Map<String,Object>>> valueSpecs() {
+    public Output<Optional<Map<String,String>>> valueSpecs() {
         return Codegen.optional(this.valueSpecs);
     }
     /**

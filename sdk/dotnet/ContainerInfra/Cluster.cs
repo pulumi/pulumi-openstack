@@ -171,7 +171,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// properties of the cluster. Changing this creates a new cluster.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         [Output("masterAddresses")]
         public Output<ImmutableArray<string>> MasterAddresses { get; private set; } = null!;
@@ -360,15 +360,15 @@ namespace Pulumi.OpenStack.ContainerInfra
         public Input<string>? Keypair { get; set; }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// The list of key value pairs representing additional
         /// properties of the cluster. Changing this creates a new cluster.
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
@@ -513,15 +513,15 @@ namespace Pulumi.OpenStack.ContainerInfra
         }
 
         [Input("labels")]
-        private InputMap<object>? _labels;
+        private InputMap<string>? _labels;
 
         /// <summary>
         /// The list of key value pairs representing additional
         /// properties of the cluster. Changing this creates a new cluster.
         /// </summary>
-        public InputMap<object> Labels
+        public InputMap<string> Labels
         {
-            get => _labels ?? (_labels = new InputMap<object>());
+            get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 

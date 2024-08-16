@@ -123,16 +123,16 @@ namespace Pulumi.OpenStack.Images
         public string? Owner { get; set; }
 
         [Input("properties")]
-        private Dictionary<string, object>? _properties;
+        private Dictionary<string, string>? _properties;
 
         /// <summary>
         /// a map of key/value pairs to match an image with.
         /// All specified properties must be matched. Unlike other options filtering by
         /// `properties` does by client on the result of OpenStack search query.
         /// </summary>
-        public Dictionary<string, object> Properties
+        public Dictionary<string, string> Properties
         {
-            get => _properties ?? (_properties = new Dictionary<string, object>());
+            get => _properties ?? (_properties = new Dictionary<string, string>());
             set => _properties = value;
         }
 
@@ -248,16 +248,16 @@ namespace Pulumi.OpenStack.Images
         public Input<string>? Owner { get; set; }
 
         [Input("properties")]
-        private InputMap<object>? _properties;
+        private InputMap<string>? _properties;
 
         /// <summary>
         /// a map of key/value pairs to match an image with.
         /// All specified properties must be matched. Unlike other options filtering by
         /// `properties` does by client on the result of OpenStack search query.
         /// </summary>
-        public InputMap<object> Properties
+        public InputMap<string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<object>());
+            get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 
@@ -339,7 +339,7 @@ namespace Pulumi.OpenStack.Images
         public readonly string? Name;
         public readonly string? NameRegex;
         public readonly string? Owner;
-        public readonly ImmutableDictionary<string, object>? Properties;
+        public readonly ImmutableDictionary<string, string>? Properties;
         public readonly string Region;
         public readonly int? SizeMax;
         public readonly int? SizeMin;
@@ -368,7 +368,7 @@ namespace Pulumi.OpenStack.Images
 
             string? owner,
 
-            ImmutableDictionary<string, object>? properties,
+            ImmutableDictionary<string, string>? properties,
 
             string region,
 

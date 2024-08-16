@@ -8,7 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -23,7 +22,7 @@ public final class GetFlavorResult {
      * @return Key/Value pairs of metadata for the flavor.
      * 
      */
-    private Map<String,Object> extraSpecs;
+    private Map<String,String> extraSpecs;
     private @Nullable String flavorId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -51,7 +50,7 @@ public final class GetFlavorResult {
      * @return Key/Value pairs of metadata for the flavor.
      * 
      */
-    public Map<String,Object> extraSpecs() {
+    public Map<String,String> extraSpecs() {
         return this.extraSpecs;
     }
     public Optional<String> flavorId() {
@@ -103,7 +102,7 @@ public final class GetFlavorResult {
     public static final class Builder {
         private @Nullable String description;
         private @Nullable Integer disk;
-        private Map<String,Object> extraSpecs;
+        private Map<String,String> extraSpecs;
         private @Nullable String flavorId;
         private String id;
         private @Nullable Boolean isPublic;
@@ -147,7 +146,7 @@ public final class GetFlavorResult {
             return this;
         }
         @CustomType.Setter
-        public Builder extraSpecs(Map<String,Object> extraSpecs) {
+        public Builder extraSpecs(Map<String,String> extraSpecs) {
             if (extraSpecs == null) {
               throw new MissingRequiredPropertyException("GetFlavorResult", "extraSpecs");
             }

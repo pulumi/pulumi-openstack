@@ -81,7 +81,7 @@ type GetInstanceV2Result struct {
 	// The name of the key pair assigned to this server.
 	KeyPair string `pulumi:"keyPair"`
 	// A set of key/value pairs made available to the server.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the network
 	Name string `pulumi:"name"`
 	// An array of maps, detailed below.
@@ -191,8 +191,8 @@ func (o GetInstanceV2ResultOutput) KeyPair() pulumi.StringOutput {
 }
 
 // A set of key/value pairs made available to the server.
-func (o GetInstanceV2ResultOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v GetInstanceV2Result) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+func (o GetInstanceV2ResultOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstanceV2Result) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // The name of the network

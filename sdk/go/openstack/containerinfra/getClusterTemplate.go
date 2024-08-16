@@ -108,7 +108,7 @@ type LookupClusterTemplateResult struct {
 	KeypairId string `pulumi:"keypairId"`
 	// The list of key value pairs representing additional properties
 	// of the cluster template.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The flavor for the master nodes.
 	MasterFlavor string `pulumi:"masterFlavor"`
 	// Indicates whether created cluster should has a
@@ -289,8 +289,8 @@ func (o LookupClusterTemplateResultOutput) KeypairId() pulumi.StringOutput {
 
 // The list of key value pairs representing additional properties
 // of the cluster template.
-func (o LookupClusterTemplateResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupClusterTemplateResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupClusterTemplateResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The flavor for the master nodes.

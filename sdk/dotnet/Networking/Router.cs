@@ -152,7 +152,7 @@ namespace Pulumi.OpenStack.Networking
         /// Map of additional driver-specific options.
         /// </summary>
         [Output("valueSpecs")]
-        public Output<ImmutableDictionary<string, object>?> ValueSpecs { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> ValueSpecs { get; private set; } = null!;
 
         /// <summary>
         /// Map of additional vendor-specific options.
@@ -330,14 +330,14 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? TenantId { get; set; }
 
         [Input("valueSpecs")]
-        private InputMap<object>? _valueSpecs;
+        private InputMap<string>? _valueSpecs;
 
         /// <summary>
         /// Map of additional driver-specific options.
         /// </summary>
-        public InputMap<object> ValueSpecs
+        public InputMap<string> ValueSpecs
         {
-            get => _valueSpecs ?? (_valueSpecs = new InputMap<object>());
+            get => _valueSpecs ?? (_valueSpecs = new InputMap<string>());
             set => _valueSpecs = value;
         }
 
@@ -492,14 +492,14 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? TenantId { get; set; }
 
         [Input("valueSpecs")]
-        private InputMap<object>? _valueSpecs;
+        private InputMap<string>? _valueSpecs;
 
         /// <summary>
         /// Map of additional driver-specific options.
         /// </summary>
-        public InputMap<object> ValueSpecs
+        public InputMap<string> ValueSpecs
         {
-            get => _valueSpecs ?? (_valueSpecs = new InputMap<object>());
+            get => _valueSpecs ?? (_valueSpecs = new InputMap<string>());
             set => _valueSpecs = value;
         }
 

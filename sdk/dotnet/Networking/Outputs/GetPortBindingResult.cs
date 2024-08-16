@@ -25,7 +25,7 @@ namespace Pulumi.OpenStack.Networking.Outputs
         /// A map of JSON strings containing additional details for this
         /// specific binding.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> VifDetails;
+        public readonly ImmutableDictionary<string, string> VifDetails;
         /// <summary>
         /// The VNIC type of the port binding.
         /// </summary>
@@ -41,7 +41,7 @@ namespace Pulumi.OpenStack.Networking.Outputs
 
             string profile,
 
-            ImmutableDictionary<string, object> vifDetails,
+            ImmutableDictionary<string, string> vifDetails,
 
             string vifType,
 

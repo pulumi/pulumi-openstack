@@ -12,7 +12,6 @@ import com.pulumi.openstack.objectstorage.ContainerArgs;
 import com.pulumi.openstack.objectstorage.inputs.ContainerState;
 import com.pulumi.openstack.objectstorage.outputs.ContainerVersioningLegacy;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -349,15 +348,15 @@ public class Container extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing container metadata.
      * 
      */
-    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> metadata;
+    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
      * @return Custom key/value pairs to associate with the container.
      * Changing this updates the existing container metadata.
      * 
      */
-    public Output<Optional<Map<String,Object>>> metadata() {
+    public Output<Optional<Map<String,String>>> metadata() {
         return Codegen.optional(this.metadata);
     }
     /**

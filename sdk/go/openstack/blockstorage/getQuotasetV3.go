@@ -78,7 +78,7 @@ type GetQuotasetV3Result struct {
 	// The number of snapshots that are allowed.
 	Snapshots int `pulumi:"snapshots"`
 	// Map with gigabytes_{volume_type}, snapshots_{volume_type}, volumes_{volume_type} for each volume type.
-	VolumeTypeQuota map[string]interface{} `pulumi:"volumeTypeQuota"`
+	VolumeTypeQuota map[string]string `pulumi:"volumeTypeQuota"`
 	// The number of volumes that are allowed.
 	Volumes int `pulumi:"volumes"`
 }
@@ -170,8 +170,8 @@ func (o GetQuotasetV3ResultOutput) Snapshots() pulumi.IntOutput {
 }
 
 // Map with gigabytes_{volume_type}, snapshots_{volume_type}, volumes_{volume_type} for each volume type.
-func (o GetQuotasetV3ResultOutput) VolumeTypeQuota() pulumi.MapOutput {
-	return o.ApplyT(func(v GetQuotasetV3Result) map[string]interface{} { return v.VolumeTypeQuota }).(pulumi.MapOutput)
+func (o GetQuotasetV3ResultOutput) VolumeTypeQuota() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetQuotasetV3Result) map[string]string { return v.VolumeTypeQuota }).(pulumi.StringMapOutput)
 }
 
 // The number of volumes that are allowed.

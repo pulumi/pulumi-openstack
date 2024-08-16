@@ -17,7 +17,7 @@ namespace Pulumi.OpenStack.Compute.Outputs
         /// Arbitrary key/value pairs of additional
         /// properties to pass to the scheduler.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? AdditionalProperties;
+        public readonly ImmutableDictionary<string, string>? AdditionalProperties;
         /// <summary>
         /// An IP Address in CIDR form. The instance
         /// will be placed on a compute node that is in the same subnet.
@@ -63,7 +63,7 @@ namespace Pulumi.OpenStack.Compute.Outputs
 
         [OutputConstructor]
         private InstanceSchedulerHint(
-            ImmutableDictionary<string, object>? additionalProperties,
+            ImmutableDictionary<string, string>? additionalProperties,
 
             string? buildNearHostIp,
 

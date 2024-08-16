@@ -80,7 +80,7 @@ export class QosV3 extends pulumi.CustomResource {
     /**
      * Key/Value pairs of specs for the qos.
      */
-    public readonly specs!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly specs!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a QosV3 resource with the given unique name, arguments, and options.
@@ -134,7 +134,7 @@ export interface QosV3State {
     /**
      * Key/Value pairs of specs for the qos.
      */
-    specs?: pulumi.Input<{[key: string]: any}>;
+    specs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -160,5 +160,5 @@ export interface QosV3Args {
     /**
      * Key/Value pairs of specs for the qos.
      */
-    specs?: pulumi.Input<{[key: string]: any}>;
+    specs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

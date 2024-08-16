@@ -23,7 +23,7 @@ class RecordSetArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a RecordSet resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records.
@@ -44,7 +44,7 @@ class RecordSetArgs:
         :param pulumi.Input[int] ttl: The time to live (TTL) of the record set.
         :param pulumi.Input[str] type: The type of record set. Examples: "A", "MX".
                Changing this creates a new DNS  record set.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options. Changing this creates a
                new record set.
         """
         pulumi.set(__self__, "records", records)
@@ -185,7 +185,7 @@ class RecordSetArgs:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options. Changing this creates a
         new record set.
@@ -193,7 +193,7 @@ class RecordSetArgs:
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -208,7 +208,7 @@ class _RecordSetState:
                  region: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RecordSet resources.
@@ -228,7 +228,7 @@ class _RecordSetState:
         :param pulumi.Input[int] ttl: The time to live (TTL) of the record set.
         :param pulumi.Input[str] type: The type of record set. Examples: "A", "MX".
                Changing this creates a new DNS  record set.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options. Changing this creates a
                new record set.
         :param pulumi.Input[str] zone_id: The ID of the zone in which to create the record set.
                Changing this creates a new DNS  record set.
@@ -360,7 +360,7 @@ class _RecordSetState:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options. Changing this creates a
         new record set.
@@ -368,7 +368,7 @@ class _RecordSetState:
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
     @property
@@ -398,7 +398,7 @@ class RecordSet(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -454,7 +454,7 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[int] ttl: The time to live (TTL) of the record set.
         :param pulumi.Input[str] type: The type of record set. Examples: "A", "MX".
                Changing this creates a new DNS  record set.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options. Changing this creates a
                new record set.
         :param pulumi.Input[str] zone_id: The ID of the zone in which to create the record set.
                Changing this creates a new DNS  record set.
@@ -523,7 +523,7 @@ class RecordSet(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -566,7 +566,7 @@ class RecordSet(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             ttl: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'RecordSet':
         """
         Get an existing RecordSet resource's state with the given name, id, and optional extra
@@ -591,7 +591,7 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[int] ttl: The time to live (TTL) of the record set.
         :param pulumi.Input[str] type: The type of record set. Examples: "A", "MX".
                Changing this creates a new DNS  record set.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options. Changing this creates a
                new record set.
         :param pulumi.Input[str] zone_id: The ID of the zone in which to create the record set.
                Changing this creates a new DNS  record set.
@@ -686,7 +686,7 @@ class RecordSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of additional options. Changing this creates a
         new record set.

@@ -170,7 +170,7 @@ type Network struct {
 	// network.
 	TransparentVlan pulumi.BoolOutput `pulumi:"transparentVlan"`
 	// Map of additional options.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 }
 
 // NewNetwork registers a new resource with the given unique name, arguments, and options.
@@ -267,7 +267,7 @@ type networkState struct {
 	// network.
 	TransparentVlan *bool `pulumi:"transparentVlan"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 type NetworkState struct {
@@ -335,7 +335,7 @@ type NetworkState struct {
 	// network.
 	TransparentVlan pulumi.BoolPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (NetworkState) ElementType() reflect.Type {
@@ -404,7 +404,7 @@ type networkArgs struct {
 	// network.
 	TransparentVlan *bool `pulumi:"transparentVlan"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 // The set of arguments for constructing a Network resource.
@@ -470,7 +470,7 @@ type NetworkArgs struct {
 	// network.
 	TransparentVlan pulumi.BoolPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (NetworkArgs) ElementType() reflect.Type {
@@ -672,8 +672,8 @@ func (o NetworkOutput) TransparentVlan() pulumi.BoolOutput {
 }
 
 // Map of additional options.
-func (o NetworkOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *Network) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o NetworkOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 type NetworkArrayOutput struct{ *pulumi.OutputState }

@@ -80,7 +80,7 @@ export class Share extends pulumi.CustomResource {
      * The map of metadata, assigned on the share, which has been
      * explicitly and implicitly added.
      */
-    public /*out*/ readonly allMetadata!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly allMetadata!: pulumi.Output<{[key: string]: string}>;
     /**
      * The share availability zone. Changing this creates a
      * new share.
@@ -114,7 +114,7 @@ export class Share extends pulumi.CustomResource {
      * One or more metadata key and value pairs as a dictionary of
      * strings.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the share. Changing this updates the name
      * of the existing share.
@@ -236,7 +236,7 @@ export interface ShareState {
      * The map of metadata, assigned on the share, which has been
      * explicitly and implicitly added.
      */
-    allMetadata?: pulumi.Input<{[key: string]: any}>;
+    allMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The share availability zone. Changing this creates a
      * new share.
@@ -270,7 +270,7 @@ export interface ShareState {
      * One or more metadata key and value pairs as a dictionary of
      * strings.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the share. Changing this updates the name
      * of the existing share.
@@ -346,7 +346,7 @@ export interface ShareArgs {
      * One or more metadata key and value pairs as a dictionary of
      * strings.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the share. Changing this updates the name
      * of the existing share.

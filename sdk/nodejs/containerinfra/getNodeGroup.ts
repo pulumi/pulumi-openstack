@@ -78,7 +78,7 @@ export interface GetNodeGroupResult {
      * The list of key value pairs representing additional properties of
      * the node group.
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     /**
      * The maximum number of nodes for the node group.
      */

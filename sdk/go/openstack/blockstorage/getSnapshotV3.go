@@ -72,8 +72,8 @@ type GetSnapshotV3Result struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The snapshot's metadata.
-	Metadata   map[string]interface{} `pulumi:"metadata"`
-	MostRecent *bool                  `pulumi:"mostRecent"`
+	Metadata   map[string]string `pulumi:"metadata"`
+	MostRecent *bool             `pulumi:"mostRecent"`
 	// See Argument Reference above.
 	Name string `pulumi:"name"`
 	// See Argument Reference above.
@@ -145,8 +145,8 @@ func (o GetSnapshotV3ResultOutput) Id() pulumi.StringOutput {
 }
 
 // The snapshot's metadata.
-func (o GetSnapshotV3ResultOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v GetSnapshotV3Result) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+func (o GetSnapshotV3ResultOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSnapshotV3Result) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 func (o GetSnapshotV3ResultOutput) MostRecent() pulumi.BoolPtrOutput {

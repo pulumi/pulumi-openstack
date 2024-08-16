@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.openstack.keymanager.inputs.SecretV1AclArgs;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -59,14 +58,14 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="allMetadata")
-    private @Nullable Output<Map<String,Object>> allMetadata;
+    private @Nullable Output<Map<String,String>> allMetadata;
 
     /**
      * @return The map of metadata, assigned on the secret, which has been
      * explicitly and implicitly added.
      * 
      */
-    public Optional<Output<Map<String,Object>>> allMetadata() {
+    public Optional<Output<Map<String,String>>> allMetadata() {
         return Optional.ofNullable(this.allMetadata);
     }
 
@@ -90,13 +89,13 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="contentTypes")
-    private @Nullable Output<Map<String,Object>> contentTypes;
+    private @Nullable Output<Map<String,String>> contentTypes;
 
     /**
      * @return The map of the content types, assigned on the secret.
      * 
      */
-    public Optional<Output<Map<String,Object>>> contentTypes() {
+    public Optional<Output<Map<String,String>>> contentTypes() {
         return Optional.ofNullable(this.contentTypes);
     }
 
@@ -150,13 +149,13 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="metadata")
-    private @Nullable Output<Map<String,Object>> metadata;
+    private @Nullable Output<Map<String,String>> metadata;
 
     /**
      * @return Additional Metadata for the secret.
      * 
      */
-    public Optional<Output<Map<String,Object>>> metadata() {
+    public Optional<Output<Map<String,String>>> metadata() {
         return Optional.ofNullable(this.metadata);
     }
 
@@ -413,7 +412,7 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder allMetadata(@Nullable Output<Map<String,Object>> allMetadata) {
+        public Builder allMetadata(@Nullable Output<Map<String,String>> allMetadata) {
             $.allMetadata = allMetadata;
             return this;
         }
@@ -425,7 +424,7 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder allMetadata(Map<String,Object> allMetadata) {
+        public Builder allMetadata(Map<String,String> allMetadata) {
             return allMetadata(Output.of(allMetadata));
         }
 
@@ -456,7 +455,7 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder contentTypes(@Nullable Output<Map<String,Object>> contentTypes) {
+        public Builder contentTypes(@Nullable Output<Map<String,String>> contentTypes) {
             $.contentTypes = contentTypes;
             return this;
         }
@@ -467,7 +466,7 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder contentTypes(Map<String,Object> contentTypes) {
+        public Builder contentTypes(Map<String,String> contentTypes) {
             return contentTypes(Output.of(contentTypes));
         }
 
@@ -540,7 +539,7 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder metadata(@Nullable Output<Map<String,Object>> metadata) {
+        public Builder metadata(@Nullable Output<Map<String,String>> metadata) {
             $.metadata = metadata;
             return this;
         }
@@ -551,7 +550,7 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder metadata(Map<String,Object> metadata) {
+        public Builder metadata(Map<String,String> metadata) {
             return metadata(Output.of(metadata));
         }
 

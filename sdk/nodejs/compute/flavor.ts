@@ -79,7 +79,7 @@ export class Flavor extends pulumi.CustomResource {
     /**
      * Key/Value pairs of metadata for the flavor.
      */
-    public readonly extraSpecs!: pulumi.Output<{[key: string]: any}>;
+    public readonly extraSpecs!: pulumi.Output<{[key: string]: string}>;
     /**
      * Unique ID (integer or UUID) of flavor to create. Changing
      * this creates a new flavor.
@@ -199,7 +199,7 @@ export interface FlavorState {
     /**
      * Key/Value pairs of metadata for the flavor.
      */
-    extraSpecs?: pulumi.Input<{[key: string]: any}>;
+    extraSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Unique ID (integer or UUID) of flavor to create. Changing
      * this creates a new flavor.
@@ -266,7 +266,7 @@ export interface FlavorArgs {
     /**
      * Key/Value pairs of metadata for the flavor.
      */
-    extraSpecs?: pulumi.Input<{[key: string]: any}>;
+    extraSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Unique ID (integer or UUID) of flavor to create. Changing
      * this creates a new flavor.

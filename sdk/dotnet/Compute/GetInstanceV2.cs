@@ -175,7 +175,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// A set of key/value pairs made available to the server.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Metadata;
+        public readonly ImmutableDictionary<string, string> Metadata;
         /// <summary>
         /// The name of the network
         /// </summary>
@@ -225,7 +225,7 @@ namespace Pulumi.OpenStack.Compute
 
             string keyPair,
 
-            ImmutableDictionary<string, object> metadata,
+            ImmutableDictionary<string, string> metadata,
 
             string name,
 

@@ -21,7 +21,7 @@ type Instance struct {
 	// The administrative password to assign to the server.
 	// Changing this changes the root password on the existing server.
 	AdminPass   pulumi.StringPtrOutput `pulumi:"adminPass"`
-	AllMetadata pulumi.MapOutput       `pulumi:"allMetadata"`
+	AllMetadata pulumi.StringMapOutput `pulumi:"allMetadata"`
 	// The collection of tags assigned on the instance, which have
 	// been explicitly and implicitly added.
 	AllTags pulumi.StringArrayOutput `pulumi:"allTags"`
@@ -73,7 +73,7 @@ type Instance struct {
 	KeyPair pulumi.StringPtrOutput `pulumi:"keyPair"`
 	// Metadata key/value pairs to make available from
 	// within the instance. Changing this updates the existing server metadata.
-	Metadata pulumi.MapOutput `pulumi:"metadata"`
+	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// A unique name for the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Special string for `network` option to create
@@ -168,8 +168,8 @@ type instanceState struct {
 	AccessIpV6 *string `pulumi:"accessIpV6"`
 	// The administrative password to assign to the server.
 	// Changing this changes the root password on the existing server.
-	AdminPass   *string                `pulumi:"adminPass"`
-	AllMetadata map[string]interface{} `pulumi:"allMetadata"`
+	AdminPass   *string           `pulumi:"adminPass"`
+	AllMetadata map[string]string `pulumi:"allMetadata"`
 	// The collection of tags assigned on the instance, which have
 	// been explicitly and implicitly added.
 	AllTags []string `pulumi:"allTags"`
@@ -221,7 +221,7 @@ type instanceState struct {
 	KeyPair *string `pulumi:"keyPair"`
 	// Metadata key/value pairs to make available from
 	// within the instance. Changing this updates the existing server metadata.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// A unique name for the resource.
 	Name *string `pulumi:"name"`
 	// Special string for `network` option to create
@@ -281,7 +281,7 @@ type InstanceState struct {
 	// The administrative password to assign to the server.
 	// Changing this changes the root password on the existing server.
 	AdminPass   pulumi.StringPtrInput
-	AllMetadata pulumi.MapInput
+	AllMetadata pulumi.StringMapInput
 	// The collection of tags assigned on the instance, which have
 	// been explicitly and implicitly added.
 	AllTags pulumi.StringArrayInput
@@ -333,7 +333,7 @@ type InstanceState struct {
 	KeyPair pulumi.StringPtrInput
 	// Metadata key/value pairs to make available from
 	// within the instance. Changing this updates the existing server metadata.
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// A unique name for the resource.
 	Name pulumi.StringPtrInput
 	// Special string for `network` option to create
@@ -443,7 +443,7 @@ type instanceArgs struct {
 	KeyPair *string `pulumi:"keyPair"`
 	// Metadata key/value pairs to make available from
 	// within the instance. Changing this updates the existing server metadata.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// A unique name for the resource.
 	Name *string `pulumi:"name"`
 	// Special string for `network` option to create
@@ -548,7 +548,7 @@ type InstanceArgs struct {
 	KeyPair pulumi.StringPtrInput
 	// Metadata key/value pairs to make available from
 	// within the instance. Changing this updates the existing server metadata.
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// A unique name for the resource.
 	Name pulumi.StringPtrInput
 	// Special string for `network` option to create
@@ -701,8 +701,8 @@ func (o InstanceOutput) AdminPass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.AdminPass }).(pulumi.StringPtrOutput)
 }
 
-func (o InstanceOutput) AllMetadata() pulumi.MapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.AllMetadata }).(pulumi.MapOutput)
+func (o InstanceOutput) AllMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.AllMetadata }).(pulumi.StringMapOutput)
 }
 
 // The collection of tags assigned on the instance, which have
@@ -792,8 +792,8 @@ func (o InstanceOutput) KeyPair() pulumi.StringPtrOutput {
 
 // Metadata key/value pairs to make available from
 // within the instance. Changing this updates the existing server metadata.
-func (o InstanceOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+func (o InstanceOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // A unique name for the resource.

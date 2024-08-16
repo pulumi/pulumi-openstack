@@ -28,7 +28,7 @@ class ProviderArgs:
                  domain_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
-                 endpoint_overrides: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 endpoint_overrides: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -64,7 +64,7 @@ class ProviderArgs:
         :param pulumi.Input[str] domain_id: The ID of the Domain to scope to (Identity v3).
         :param pulumi.Input[str] domain_name: The name of the Domain to scope to (Identity v3).
         :param pulumi.Input[bool] enable_logging: Outputs very verbose logs with all calls made to and responses from OpenStack
-        :param pulumi.Input[Mapping[str, Any]] endpoint_overrides: A map of services with an endpoint to override what was from the Keystone catalog
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] endpoint_overrides: A map of services with an endpoint to override what was from the Keystone catalog
         :param pulumi.Input[bool] insecure: Trust self-signed certificates.
         :param pulumi.Input[str] key: A client private key to authenticate with.
         :param pulumi.Input[int] max_retries: How many times HTTP connection should be retried until giving up.
@@ -333,14 +333,14 @@ class ProviderArgs:
 
     @property
     @pulumi.getter(name="endpointOverrides")
-    def endpoint_overrides(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def endpoint_overrides(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map of services with an endpoint to override what was from the Keystone catalog
         """
         return pulumi.get(self, "endpoint_overrides")
 
     @endpoint_overrides.setter
-    def endpoint_overrides(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def endpoint_overrides(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "endpoint_overrides", value)
 
     @property
@@ -564,7 +564,7 @@ class Provider(pulumi.ProviderResource):
                  domain_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
-                 endpoint_overrides: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 endpoint_overrides: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -607,7 +607,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] domain_id: The ID of the Domain to scope to (Identity v3).
         :param pulumi.Input[str] domain_name: The name of the Domain to scope to (Identity v3).
         :param pulumi.Input[bool] enable_logging: Outputs very verbose logs with all calls made to and responses from OpenStack
-        :param pulumi.Input[Mapping[str, Any]] endpoint_overrides: A map of services with an endpoint to override what was from the Keystone catalog
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] endpoint_overrides: A map of services with an endpoint to override what was from the Keystone catalog
         :param pulumi.Input[bool] insecure: Trust self-signed certificates.
         :param pulumi.Input[str] key: A client private key to authenticate with.
         :param pulumi.Input[int] max_retries: How many times HTTP connection should be retried until giving up.
@@ -666,7 +666,7 @@ class Provider(pulumi.ProviderResource):
                  domain_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
-                 endpoint_overrides: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 endpoint_overrides: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,

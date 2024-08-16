@@ -12,7 +12,6 @@ import com.pulumi.openstack.containerinfra.ClusterArgs;
 import com.pulumi.openstack.containerinfra.inputs.ClusterState;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -295,15 +294,15 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * properties of the cluster. Changing this creates a new cluster.
      * 
      */
-    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> labels;
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> labels;
 
     /**
      * @return The list of key value pairs representing additional
      * properties of the cluster. Changing this creates a new cluster.
      * 
      */
-    public Output<Map<String,Object>> labels() {
+    public Output<Map<String,String>> labels() {
         return this.labels;
     }
     @Export(name="masterAddresses", refs={List.class,String.class}, tree="[0,1]")

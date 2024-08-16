@@ -44,11 +44,11 @@ import (
 //				ServerType:          pulumi.String("vm"),
 //				MasterLbEnabled:     pulumi.Bool(true),
 //				FloatingIpEnabled:   pulumi.Bool(false),
-//				Labels: pulumi.Map{
-//					"kube_tag":                         pulumi.Any("1.11.1"),
-//					"kube_dashboard_enabled":           pulumi.Any("true"),
-//					"prometheus_monitoring":            pulumi.Any("true"),
-//					"influx_grafana_dashboard_enabled": pulumi.Any("true"),
+//				Labels: pulumi.StringMap{
+//					"kube_tag":                         pulumi.String("1.11.1"),
+//					"kube_dashboard_enabled":           pulumi.String("true"),
+//					"prometheus_monitoring":            pulumi.String("true"),
+//					"influx_grafana_dashboard_enabled": pulumi.String("true"),
 //				},
 //			})
 //			if err != nil {
@@ -178,7 +178,7 @@ type ClusterTemplate struct {
 	// The list of key value pairs representing additional
 	// properties of the cluster template. Changing this updates the labels of the
 	// existing cluster template.
-	Labels pulumi.MapOutput `pulumi:"labels"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The flavor for the master nodes. Can be set via
 	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
 	// the master flavor of the existing cluster template.
@@ -338,7 +338,7 @@ type clusterTemplateState struct {
 	// The list of key value pairs representing additional
 	// properties of the cluster template. Changing this updates the labels of the
 	// existing cluster template.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The flavor for the master nodes. Can be set via
 	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
 	// the master flavor of the existing cluster template.
@@ -463,7 +463,7 @@ type ClusterTemplateState struct {
 	// The list of key value pairs representing additional
 	// properties of the cluster template. Changing this updates the labels of the
 	// existing cluster template.
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The flavor for the master nodes. Can be set via
 	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
 	// the master flavor of the existing cluster template.
@@ -591,7 +591,7 @@ type clusterTemplateArgs struct {
 	// The list of key value pairs representing additional
 	// properties of the cluster template. Changing this updates the labels of the
 	// existing cluster template.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The flavor for the master nodes. Can be set via
 	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
 	// the master flavor of the existing cluster template.
@@ -707,7 +707,7 @@ type ClusterTemplateArgs struct {
 	// The list of key value pairs representing additional
 	// properties of the cluster template. Changing this updates the labels of the
 	// existing cluster template.
-	Labels pulumi.MapInput
+	Labels pulumi.StringMapInput
 	// The flavor for the master nodes. Can be set via
 	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
 	// the master flavor of the existing cluster template.
@@ -963,8 +963,8 @@ func (o ClusterTemplateOutput) KeypairId() pulumi.StringPtrOutput {
 // The list of key value pairs representing additional
 // properties of the cluster template. Changing this updates the labels of the
 // existing cluster template.
-func (o ClusterTemplateOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v *ClusterTemplate) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+func (o ClusterTemplateOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The flavor for the master nodes. Can be set via

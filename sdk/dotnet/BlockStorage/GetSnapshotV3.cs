@@ -158,7 +158,7 @@ namespace Pulumi.OpenStack.BlockStorage
         /// <summary>
         /// The snapshot's metadata.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Metadata;
+        public readonly ImmutableDictionary<string, string> Metadata;
         public readonly bool? MostRecent;
         /// <summary>
         /// See Argument Reference above.
@@ -187,7 +187,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
             string id,
 
-            ImmutableDictionary<string, object> metadata,
+            ImmutableDictionary<string, string> metadata,
 
             bool? mostRecent,
 

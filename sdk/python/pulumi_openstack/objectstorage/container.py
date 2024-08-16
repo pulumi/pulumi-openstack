@@ -22,7 +22,7 @@ class ContainerArgs:
                  container_write: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  storage_policy: Optional[pulumi.Input[str]] = None,
@@ -43,7 +43,7 @@ class ContainerArgs:
         :param pulumi.Input[str] content_type: The MIME type for the container. Changing this
                updates the MIME type.
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
-        :param pulumi.Input[Mapping[str, Any]] metadata: Custom key/value pairs to associate with the container.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom key/value pairs to associate with the container.
                Changing this updates the existing container metadata.
         :param pulumi.Input[str] name: A unique name for the container. Changing this creates a
                new container.
@@ -169,7 +169,7 @@ class ContainerArgs:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Custom key/value pairs to associate with the container.
         Changing this updates the existing container metadata.
@@ -177,7 +177,7 @@ class ContainerArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -260,7 +260,7 @@ class _ContainerState:
                  container_write: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  storage_policy: Optional[pulumi.Input[str]] = None,
@@ -281,7 +281,7 @@ class _ContainerState:
         :param pulumi.Input[str] content_type: The MIME type for the container. Changing this
                updates the MIME type.
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
-        :param pulumi.Input[Mapping[str, Any]] metadata: Custom key/value pairs to associate with the container.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom key/value pairs to associate with the container.
                Changing this updates the existing container metadata.
         :param pulumi.Input[str] name: A unique name for the container. Changing this creates a
                new container.
@@ -407,7 +407,7 @@ class _ContainerState:
 
     @property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Custom key/value pairs to associate with the container.
         Changing this updates the existing container metadata.
@@ -415,7 +415,7 @@ class _ContainerState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
 
     @property
@@ -500,7 +500,7 @@ class Container(pulumi.CustomResource):
                  container_write: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  storage_policy: Optional[pulumi.Input[str]] = None,
@@ -620,7 +620,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[str] content_type: The MIME type for the container. Changing this
                updates the MIME type.
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
-        :param pulumi.Input[Mapping[str, Any]] metadata: Custom key/value pairs to associate with the container.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom key/value pairs to associate with the container.
                Changing this updates the existing container metadata.
         :param pulumi.Input[str] name: A unique name for the container. Changing this creates a
                new container.
@@ -762,7 +762,7 @@ class Container(pulumi.CustomResource):
                  container_write: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  storage_policy: Optional[pulumi.Input[str]] = None,
@@ -805,7 +805,7 @@ class Container(pulumi.CustomResource):
             container_write: Optional[pulumi.Input[str]] = None,
             content_type: Optional[pulumi.Input[str]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             storage_policy: Optional[pulumi.Input[str]] = None,
@@ -831,7 +831,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[str] content_type: The MIME type for the container. Changing this
                updates the MIME type.
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
-        :param pulumi.Input[Mapping[str, Any]] metadata: Custom key/value pairs to associate with the container.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom key/value pairs to associate with the container.
                Changing this updates the existing container metadata.
         :param pulumi.Input[str] name: A unique name for the container. Changing this creates a
                new container.
@@ -923,7 +923,7 @@ class Container(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Custom key/value pairs to associate with the container.
         Changing this updates the existing container metadata.

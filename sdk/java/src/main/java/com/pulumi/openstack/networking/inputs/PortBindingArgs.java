@@ -5,7 +5,6 @@ package com.pulumi.openstack.networking.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -55,14 +54,14 @@ public final class PortBindingArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="vifDetails")
-    private @Nullable Output<Map<String,Object>> vifDetails;
+    private @Nullable Output<Map<String,String>> vifDetails;
 
     /**
      * @return A map of JSON strings containing additional
      * details for this specific binding.
      * 
      */
-    public Optional<Output<Map<String,Object>>> vifDetails() {
+    public Optional<Output<Map<String,String>>> vifDetails() {
         return Optional.ofNullable(this.vifDetails);
     }
 
@@ -179,7 +178,7 @@ public final class PortBindingArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder vifDetails(@Nullable Output<Map<String,Object>> vifDetails) {
+        public Builder vifDetails(@Nullable Output<Map<String,String>> vifDetails) {
             $.vifDetails = vifDetails;
             return this;
         }
@@ -191,7 +190,7 @@ public final class PortBindingArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder vifDetails(Map<String,Object> vifDetails) {
+        public Builder vifDetails(Map<String,String> vifDetails) {
             return vifDetails(Output.of(vifDetails));
         }
 

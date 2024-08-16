@@ -18,7 +18,7 @@ class TransferAcceptArgs:
                  zone_transfer_request_id: pulumi.Input[str],
                  disable_status_check: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a TransferAccept resource.
         :param pulumi.Input[str] key: The transfer key.
@@ -30,7 +30,7 @@ class TransferAcceptArgs:
                Keypairs are associated with accounts, but a Compute client is needed to
                create one. If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS zone.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options. Changing this creates a
                new transfer accept.
         """
         pulumi.set(__self__, "key", key)
@@ -97,7 +97,7 @@ class TransferAcceptArgs:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options. Changing this creates a
         new transfer accept.
@@ -105,7 +105,7 @@ class TransferAcceptArgs:
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -115,7 +115,7 @@ class _TransferAcceptState:
                  disable_status_check: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_transfer_request_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TransferAccept resources.
@@ -127,7 +127,7 @@ class _TransferAcceptState:
                Keypairs are associated with accounts, but a Compute client is needed to
                create one. If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS zone.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options. Changing this creates a
                new transfer accept.
         :param pulumi.Input[str] zone_transfer_request_id: The ID of the zone transfer request.
         """
@@ -185,7 +185,7 @@ class _TransferAcceptState:
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Map of additional options. Changing this creates a
         new transfer accept.
@@ -193,7 +193,7 @@ class _TransferAcceptState:
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "value_specs", value)
 
     @property
@@ -217,7 +217,7 @@ class TransferAccept(pulumi.CustomResource):
                  disable_status_check: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_transfer_request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -263,7 +263,7 @@ class TransferAccept(pulumi.CustomResource):
                Keypairs are associated with accounts, but a Compute client is needed to
                create one. If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS zone.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options. Changing this creates a
                new transfer accept.
         :param pulumi.Input[str] zone_transfer_request_id: The ID of the zone transfer request.
         """
@@ -324,7 +324,7 @@ class TransferAccept(pulumi.CustomResource):
                  disable_status_check: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_transfer_request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -357,7 +357,7 @@ class TransferAccept(pulumi.CustomResource):
             disable_status_check: Optional[pulumi.Input[bool]] = None,
             key: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             zone_transfer_request_id: Optional[pulumi.Input[str]] = None) -> 'TransferAccept':
         """
         Get an existing TransferAccept resource's state with the given name, id, and optional extra
@@ -374,7 +374,7 @@ class TransferAccept(pulumi.CustomResource):
                Keypairs are associated with accounts, but a Compute client is needed to
                create one. If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS zone.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options. Changing this creates a
                new transfer accept.
         :param pulumi.Input[str] zone_transfer_request_id: The ID of the zone transfer request.
         """
@@ -420,7 +420,7 @@ class TransferAccept(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def value_specs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Map of additional options. Changing this creates a
         new transfer accept.

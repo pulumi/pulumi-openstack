@@ -80,7 +80,7 @@ type Service struct {
 	// create a service for another project. Changing this creates a new service.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 }
 
 // NewService registers a new resource with the given unique name, arguments, and options.
@@ -144,7 +144,7 @@ type serviceState struct {
 	// create a service for another project. Changing this creates a new service.
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 type ServiceState struct {
@@ -176,7 +176,7 @@ type ServiceState struct {
 	// create a service for another project. Changing this creates a new service.
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (ServiceState) ElementType() reflect.Type {
@@ -206,7 +206,7 @@ type serviceArgs struct {
 	// create a service for another project. Changing this creates a new service.
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 // The set of arguments for constructing a Service resource.
@@ -233,7 +233,7 @@ type ServiceArgs struct {
 	// create a service for another project. Changing this creates a new service.
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (ServiceArgs) ElementType() reflect.Type {
@@ -381,8 +381,8 @@ func (o ServiceOutput) TenantId() pulumi.StringOutput {
 }
 
 // Map of additional options.
-func (o ServiceOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *Service) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o ServiceOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 type ServiceArrayOutput struct{ *pulumi.OutputState }

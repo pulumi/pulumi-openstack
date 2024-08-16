@@ -13,7 +13,6 @@ import com.pulumi.openstack.orchestration.inputs.StackV1State;
 import com.pulumi.openstack.orchestration.outputs.StackV1StackOutput;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -175,8 +174,8 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * Environment Opts.
      * 
      */
-    @Export(name="environmentOpts", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> environmentOpts;
+    @Export(name="environmentOpts", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> environmentOpts;
 
     /**
      * @return Environment key/value pairs to associate with
@@ -185,7 +184,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * Environment Opts.
      * 
      */
-    public Output<Optional<Map<String,Object>>> environmentOpts() {
+    public Output<Optional<Map<String,String>>> environmentOpts() {
         return Codegen.optional(this.environmentOpts);
     }
     /**
@@ -223,15 +222,15 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * to the template. Changing this updates the existing stack parameters.
      * 
      */
-    @Export(name="parameters", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> parameters;
+    @Export(name="parameters", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> parameters;
 
     /**
      * @return User-defined key/value pairs as parameters to pass
      * to the template. Changing this updates the existing stack parameters.
      * 
      */
-    public Output<Optional<Map<String,Object>>> parameters() {
+    public Output<Optional<Map<String,String>>> parameters() {
         return Codegen.optional(this.parameters);
     }
     /**
@@ -315,8 +314,8 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * Template Opts.
      * 
      */
-    @Export(name="templateOpts", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> templateOpts;
+    @Export(name="templateOpts", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> templateOpts;
 
     /**
      * @return Template key/value pairs to associate with the
@@ -325,7 +324,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * Template Opts.
      * 
      */
-    public Output<Map<String,Object>> templateOpts() {
+    public Output<Map<String,String>> templateOpts() {
         return this.templateOpts;
     }
     /**

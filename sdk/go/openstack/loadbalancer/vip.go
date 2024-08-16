@@ -77,7 +77,7 @@ type Vip struct {
 	// Omit this field to prevent session persistence.
 	// The persistence object structure is documented below. Changing this updates
 	// the persistence of the existing vip.
-	Persistence pulumi.MapOutput `pulumi:"persistence"`
+	Persistence pulumi.StringMapOutput `pulumi:"persistence"`
 	// The ID of the pool with which the vip is associated.
 	// Changing this updates the poolId of the existing vip.
 	PoolId pulumi.StringOutput `pulumi:"poolId"`
@@ -169,7 +169,7 @@ type vipState struct {
 	// Omit this field to prevent session persistence.
 	// The persistence object structure is documented below. Changing this updates
 	// the persistence of the existing vip.
-	Persistence map[string]interface{} `pulumi:"persistence"`
+	Persistence map[string]string `pulumi:"persistence"`
 	// The ID of the pool with which the vip is associated.
 	// Changing this updates the poolId of the existing vip.
 	PoolId *string `pulumi:"poolId"`
@@ -220,7 +220,7 @@ type VipState struct {
 	// Omit this field to prevent session persistence.
 	// The persistence object structure is documented below. Changing this updates
 	// the persistence of the existing vip.
-	Persistence pulumi.MapInput
+	Persistence pulumi.StringMapInput
 	// The ID of the pool with which the vip is associated.
 	// Changing this updates the poolId of the existing vip.
 	PoolId pulumi.StringPtrInput
@@ -275,7 +275,7 @@ type vipArgs struct {
 	// Omit this field to prevent session persistence.
 	// The persistence object structure is documented below. Changing this updates
 	// the persistence of the existing vip.
-	Persistence map[string]interface{} `pulumi:"persistence"`
+	Persistence map[string]string `pulumi:"persistence"`
 	// The ID of the pool with which the vip is associated.
 	// Changing this updates the poolId of the existing vip.
 	PoolId string `pulumi:"poolId"`
@@ -325,7 +325,7 @@ type VipArgs struct {
 	// Omit this field to prevent session persistence.
 	// The persistence object structure is documented below. Changing this updates
 	// the persistence of the existing vip.
-	Persistence pulumi.MapInput
+	Persistence pulumi.StringMapInput
 	// The ID of the pool with which the vip is associated.
 	// Changing this updates the poolId of the existing vip.
 	PoolId pulumi.StringInput
@@ -478,8 +478,8 @@ func (o VipOutput) Name() pulumi.StringOutput {
 // Omit this field to prevent session persistence.
 // The persistence object structure is documented below. Changing this updates
 // the persistence of the existing vip.
-func (o VipOutput) Persistence() pulumi.MapOutput {
-	return o.ApplyT(func(v *Vip) pulumi.MapOutput { return v.Persistence }).(pulumi.MapOutput)
+func (o VipOutput) Persistence() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Vip) pulumi.StringMapOutput { return v.Persistence }).(pulumi.StringMapOutput)
 }
 
 // The ID of the pool with which the vip is associated.

@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -239,13 +238,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="endpointOverrides", json=true)
-    private @Nullable Output<Map<String,Object>> endpointOverrides;
+    private @Nullable Output<Map<String,String>> endpointOverrides;
 
     /**
      * @return A map of services with an endpoint to override what was from the Keystone catalog
      * 
      */
-    public Optional<Output<Map<String,Object>>> endpointOverrides() {
+    public Optional<Output<Map<String,String>>> endpointOverrides() {
         return Optional.ofNullable(this.endpointOverrides);
     }
 
@@ -855,7 +854,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder endpointOverrides(@Nullable Output<Map<String,Object>> endpointOverrides) {
+        public Builder endpointOverrides(@Nullable Output<Map<String,String>> endpointOverrides) {
             $.endpointOverrides = endpointOverrides;
             return this;
         }
@@ -866,7 +865,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder endpointOverrides(Map<String,Object> endpointOverrides) {
+        public Builder endpointOverrides(Map<String,String> endpointOverrides) {
             return endpointOverrides(Output.of(endpointOverrides));
         }
 

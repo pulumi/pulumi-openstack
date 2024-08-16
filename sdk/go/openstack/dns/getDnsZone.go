@@ -54,7 +54,7 @@ type GetDnsZoneArgs struct {
 	// (requires admin role by default, depends on your policy configuration)
 	AllProjects *string `pulumi:"allProjects"`
 	// Attributes of the DNS Service scheduler.
-	Attributes map[string]interface{} `pulumi:"attributes"`
+	Attributes map[string]string `pulumi:"attributes"`
 	// The time the zone was created.
 	CreatedAt *string `pulumi:"createdAt"`
 	// A description of the zone.
@@ -94,7 +94,7 @@ type GetDnsZoneArgs struct {
 type GetDnsZoneResult struct {
 	AllProjects *string `pulumi:"allProjects"`
 	// Attributes of the DNS Service scheduler.
-	Attributes map[string]interface{} `pulumi:"attributes"`
+	Attributes map[string]string `pulumi:"attributes"`
 	// The time the zone was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// See Argument Reference above.
@@ -148,7 +148,7 @@ type GetDnsZoneOutputArgs struct {
 	// (requires admin role by default, depends on your policy configuration)
 	AllProjects pulumi.StringPtrInput `pulumi:"allProjects"`
 	// Attributes of the DNS Service scheduler.
-	Attributes pulumi.MapInput `pulumi:"attributes"`
+	Attributes pulumi.StringMapInput `pulumi:"attributes"`
 	// The time the zone was created.
 	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
 	// A description of the zone.
@@ -208,8 +208,8 @@ func (o GetDnsZoneResultOutput) AllProjects() pulumi.StringPtrOutput {
 }
 
 // Attributes of the DNS Service scheduler.
-func (o GetDnsZoneResultOutput) Attributes() pulumi.MapOutput {
-	return o.ApplyT(func(v GetDnsZoneResult) map[string]interface{} { return v.Attributes }).(pulumi.MapOutput)
+func (o GetDnsZoneResultOutput) Attributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDnsZoneResult) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
 }
 
 // The time the zone was created.

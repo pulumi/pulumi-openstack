@@ -19,7 +19,7 @@ class FlavorArgs:
                  vcpus: pulumi.Input[int],
                  description: Optional[pulumi.Input[str]] = None,
                  ephemeral: Optional[pulumi.Input[int]] = None,
-                 extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -38,7 +38,7 @@ class FlavorArgs:
                updates the description of the flavor. Requires microversion >= 2.55.
         :param pulumi.Input[int] ephemeral: The amount of ephemeral in GiB. If unspecified,
                the default is 0. Changing this creates a new flavor.
-        :param pulumi.Input[Mapping[str, Any]] extra_specs: Key/Value pairs of metadata for the flavor.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_specs: Key/Value pairs of metadata for the flavor.
         :param pulumi.Input[str] flavor_id: Unique ID (integer or UUID) of flavor to create. Changing
                this creates a new flavor.
         :param pulumi.Input[bool] is_public: Whether the flavor is public. Changing this creates
@@ -143,14 +143,14 @@ class FlavorArgs:
 
     @property
     @pulumi.getter(name="extraSpecs")
-    def extra_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Key/Value pairs of metadata for the flavor.
         """
         return pulumi.get(self, "extra_specs")
 
     @extra_specs.setter
-    def extra_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_specs", value)
 
     @property
@@ -240,7 +240,7 @@ class _FlavorState:
                  description: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input[int]] = None,
                  ephemeral: Optional[pulumi.Input[int]] = None,
-                 extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -257,7 +257,7 @@ class _FlavorState:
                (/) partition. Changing this creates a new flavor.
         :param pulumi.Input[int] ephemeral: The amount of ephemeral in GiB. If unspecified,
                the default is 0. Changing this creates a new flavor.
-        :param pulumi.Input[Mapping[str, Any]] extra_specs: Key/Value pairs of metadata for the flavor.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_specs: Key/Value pairs of metadata for the flavor.
         :param pulumi.Input[str] flavor_id: Unique ID (integer or UUID) of flavor to create. Changing
                this creates a new flavor.
         :param pulumi.Input[bool] is_public: Whether the flavor is public. Changing this creates
@@ -343,14 +343,14 @@ class _FlavorState:
 
     @property
     @pulumi.getter(name="extraSpecs")
-    def extra_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Key/Value pairs of metadata for the flavor.
         """
         return pulumi.get(self, "extra_specs")
 
     @extra_specs.setter
-    def extra_specs(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra_specs", value)
 
     @property
@@ -468,7 +468,7 @@ class Flavor(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input[int]] = None,
                  ephemeral: Optional[pulumi.Input[int]] = None,
-                 extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -514,7 +514,7 @@ class Flavor(pulumi.CustomResource):
                (/) partition. Changing this creates a new flavor.
         :param pulumi.Input[int] ephemeral: The amount of ephemeral in GiB. If unspecified,
                the default is 0. Changing this creates a new flavor.
-        :param pulumi.Input[Mapping[str, Any]] extra_specs: Key/Value pairs of metadata for the flavor.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_specs: Key/Value pairs of metadata for the flavor.
         :param pulumi.Input[str] flavor_id: Unique ID (integer or UUID) of flavor to create. Changing
                this creates a new flavor.
         :param pulumi.Input[bool] is_public: Whether the flavor is public. Changing this creates
@@ -586,7 +586,7 @@ class Flavor(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input[int]] = None,
                  ephemeral: Optional[pulumi.Input[int]] = None,
-                 extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  is_public: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -635,7 +635,7 @@ class Flavor(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             disk: Optional[pulumi.Input[int]] = None,
             ephemeral: Optional[pulumi.Input[int]] = None,
-            extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            extra_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             flavor_id: Optional[pulumi.Input[str]] = None,
             is_public: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -657,7 +657,7 @@ class Flavor(pulumi.CustomResource):
                (/) partition. Changing this creates a new flavor.
         :param pulumi.Input[int] ephemeral: The amount of ephemeral in GiB. If unspecified,
                the default is 0. Changing this creates a new flavor.
-        :param pulumi.Input[Mapping[str, Any]] extra_specs: Key/Value pairs of metadata for the flavor.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_specs: Key/Value pairs of metadata for the flavor.
         :param pulumi.Input[str] flavor_id: Unique ID (integer or UUID) of flavor to create. Changing
                this creates a new flavor.
         :param pulumi.Input[bool] is_public: Whether the flavor is public. Changing this creates
@@ -724,7 +724,7 @@ class Flavor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="extraSpecs")
-    def extra_specs(self) -> pulumi.Output[Mapping[str, Any]]:
+    def extra_specs(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Key/Value pairs of metadata for the flavor.
         """

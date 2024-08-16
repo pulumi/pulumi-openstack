@@ -5,7 +5,6 @@ package com.pulumi.openstack.blockstorage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -24,14 +23,14 @@ public final class VolumeSchedulerHintArgs extends com.pulumi.resources.Resource
      * 
      */
     @Import(name="additionalProperties")
-    private @Nullable Output<Map<String,Object>> additionalProperties;
+    private @Nullable Output<Map<String,String>> additionalProperties;
 
     /**
      * @return Arbitrary key/value pairs of additional
      * properties to pass to the scheduler.
      * 
      */
-    public Optional<Output<Map<String,Object>>> additionalProperties() {
+    public Optional<Output<Map<String,String>>> additionalProperties() {
         return Optional.ofNullable(this.additionalProperties);
     }
 
@@ -146,7 +145,7 @@ public final class VolumeSchedulerHintArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder additionalProperties(@Nullable Output<Map<String,Object>> additionalProperties) {
+        public Builder additionalProperties(@Nullable Output<Map<String,String>> additionalProperties) {
             $.additionalProperties = additionalProperties;
             return this;
         }
@@ -158,7 +157,7 @@ public final class VolumeSchedulerHintArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder additionalProperties(Map<String,Object> additionalProperties) {
+        public Builder additionalProperties(Map<String,String> additionalProperties) {
             return additionalProperties(Output.of(additionalProperties));
         }
 

@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.blockstorage.outputs.GetVolumeV3Attachment;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +40,7 @@ public final class GetVolumeV3Result {
      * @return See Argument Reference above.
      * 
      */
-    private Map<String,Object> metadata;
+    private Map<String,String> metadata;
     /**
      * @return See Argument Reference above.
      * 
@@ -108,7 +107,7 @@ public final class GetVolumeV3Result {
      * @return See Argument Reference above.
      * 
      */
-    public Map<String,Object> metadata() {
+    public Map<String,String> metadata() {
         return this.metadata;
     }
     /**
@@ -167,7 +166,7 @@ public final class GetVolumeV3Result {
         private String bootable;
         private String host;
         private String id;
-        private Map<String,Object> metadata;
+        private Map<String,String> metadata;
         private String name;
         private String region;
         private Integer size;
@@ -226,7 +225,7 @@ public final class GetVolumeV3Result {
             return this;
         }
         @CustomType.Setter
-        public Builder metadata(Map<String,Object> metadata) {
+        public Builder metadata(Map<String,String> metadata) {
             if (metadata == null) {
               throw new MissingRequiredPropertyException("GetVolumeV3Result", "metadata");
             }

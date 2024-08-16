@@ -15,102 +15,6 @@ import (
 // Manages a V1 container object resource within OpenStack.
 //
 // ## Example Usage
-//
-// ### Example with simple content
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/objectstorage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			container1, err := objectstorage.NewContainer(ctx, "container_1", &objectstorage.ContainerArgs{
-//				Region: pulumi.String("RegionOne"),
-//				Name:   pulumi.String("tf-test-container-1"),
-//				Metadata: pulumi.Map{
-//					pulumi.Any(map[string]interface{}{
-//						"test": "true",
-//					}),
-//				},
-//				ContentType: pulumi.String("application/json"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = objectstorage.NewContainerObject(ctx, "doc_1", &objectstorage.ContainerObjectArgs{
-//				Region:        pulumi.String("RegionOne"),
-//				ContainerName: container1.Name,
-//				Name:          pulumi.String("test/default.json"),
-//				Metadata: pulumi.Map{
-//					pulumi.Any(map[string]interface{}{
-//						"test": "true",
-//					}),
-//				},
-//				ContentType: pulumi.String("application/json"),
-//				Content:     pulumi.String("               {\n                 \"foo\" : \"bar\"\n               }\n"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Example with content from file
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/objectstorage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			container1, err := objectstorage.NewContainer(ctx, "container_1", &objectstorage.ContainerArgs{
-//				Region: pulumi.String("RegionOne"),
-//				Name:   pulumi.String("tf-test-container-1"),
-//				Metadata: pulumi.Map{
-//					pulumi.Any(map[string]interface{}{
-//						"test": "true",
-//					}),
-//				},
-//				ContentType: pulumi.String("application/json"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = objectstorage.NewContainerObject(ctx, "doc_1", &objectstorage.ContainerObjectArgs{
-//				Region:        pulumi.String("RegionOne"),
-//				ContainerName: container1.Name,
-//				Name:          pulumi.String("test/default.json"),
-//				Metadata: pulumi.Map{
-//					pulumi.Any(map[string]interface{}{
-//						"test": "true",
-//					}),
-//				},
-//				ContentType: pulumi.String("application/json"),
-//				Source:      pulumi.String("./default.json"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type ContainerObject struct {
 	pulumi.CustomResourceState
 
@@ -165,8 +69,8 @@ type ContainerObject struct {
 	// For example, 2015-08-27T09:49:58-05:00.
 	// The ±hh:mm value, if included, is the time zone as an offset from UTC. In the previous
 	// example, the offset value is -05:00.
-	LastModified pulumi.StringOutput `pulumi:"lastModified"`
-	Metadata     pulumi.MapOutput    `pulumi:"metadata"`
+	LastModified pulumi.StringOutput    `pulumi:"lastModified"`
+	Metadata     pulumi.StringMapOutput `pulumi:"metadata"`
 	// A unique name for the object.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A string set to specify that this is a dynamic large
@@ -271,8 +175,8 @@ type containerObjectState struct {
 	// For example, 2015-08-27T09:49:58-05:00.
 	// The ±hh:mm value, if included, is the time zone as an offset from UTC. In the previous
 	// example, the offset value is -05:00.
-	LastModified *string                `pulumi:"lastModified"`
-	Metadata     map[string]interface{} `pulumi:"metadata"`
+	LastModified *string           `pulumi:"lastModified"`
+	Metadata     map[string]string `pulumi:"metadata"`
 	// A unique name for the object.
 	Name *string `pulumi:"name"`
 	// A string set to specify that this is a dynamic large
@@ -346,7 +250,7 @@ type ContainerObjectState struct {
 	// The ±hh:mm value, if included, is the time zone as an offset from UTC. In the previous
 	// example, the offset value is -05:00.
 	LastModified pulumi.StringPtrInput
-	Metadata     pulumi.MapInput
+	Metadata     pulumi.StringMapInput
 	// A unique name for the object.
 	Name pulumi.StringPtrInput
 	// A string set to specify that this is a dynamic large
@@ -409,8 +313,8 @@ type containerObjectArgs struct {
 	// header, if present.
 	DetectContentType *bool `pulumi:"detectContentType"`
 	// Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
-	Etag     *string                `pulumi:"etag"`
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Etag     *string           `pulumi:"etag"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// A unique name for the object.
 	Name *string `pulumi:"name"`
 	// A string set to specify that this is a dynamic large
@@ -468,7 +372,7 @@ type ContainerObjectArgs struct {
 	DetectContentType pulumi.BoolPtrInput
 	// Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
 	Etag     pulumi.StringPtrInput
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// A unique name for the object.
 	Name pulumi.StringPtrInput
 	// A string set to specify that this is a dynamic large
@@ -664,8 +568,8 @@ func (o ContainerObjectOutput) LastModified() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerObject) pulumi.StringOutput { return v.LastModified }).(pulumi.StringOutput)
 }
 
-func (o ContainerObjectOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v *ContainerObject) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+func (o ContainerObjectOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ContainerObject) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // A unique name for the object.

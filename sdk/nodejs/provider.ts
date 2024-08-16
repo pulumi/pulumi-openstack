@@ -231,7 +231,7 @@ export interface ProviderArgs {
     /**
      * A map of services with an endpoint to override what was from the Keystone catalog
      */
-    endpointOverrides?: pulumi.Input<{[key: string]: any}>;
+    endpointOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     endpointType?: pulumi.Input<string>;
     /**
      * Trust self-signed certificates.

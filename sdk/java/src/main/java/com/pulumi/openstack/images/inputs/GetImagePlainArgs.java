@@ -6,7 +6,6 @@ package com.pulumi.openstack.images.inputs;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -160,7 +159,7 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
      * 
      */
     @Import(name="properties")
-    private @Nullable Map<String,Object> properties;
+    private @Nullable Map<String,String> properties;
 
     /**
      * @return a map of key/value pairs to match an image with.
@@ -170,7 +169,7 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
      * there is only one image the `properties` ignores.
      * 
      */
-    public Optional<Map<String,Object>> properties() {
+    public Optional<Map<String,String>> properties() {
         return Optional.ofNullable(this.properties);
     }
 
@@ -438,7 +437,7 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder properties(@Nullable Map<String,Object> properties) {
+        public Builder properties(@Nullable Map<String,String> properties) {
             $.properties = properties;
             return this;
         }

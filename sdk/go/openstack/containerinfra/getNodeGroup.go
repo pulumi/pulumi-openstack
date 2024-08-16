@@ -76,7 +76,7 @@ type LookupNodeGroupResult struct {
 	Image string `pulumi:"image"`
 	// The list of key value pairs representing additional properties of
 	// the node group.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels map[string]string `pulumi:"labels"`
 	// The maximum number of nodes for the node group.
 	MaxNodeCount int `pulumi:"maxNodeCount"`
 	// The minimum number of nodes for the node group.
@@ -170,8 +170,8 @@ func (o LookupNodeGroupResultOutput) Image() pulumi.StringOutput {
 
 // The list of key value pairs representing additional properties of
 // the node group.
-func (o LookupNodeGroupResultOutput) Labels() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupNodeGroupResult) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+func (o LookupNodeGroupResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNodeGroupResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The maximum number of nodes for the node group.

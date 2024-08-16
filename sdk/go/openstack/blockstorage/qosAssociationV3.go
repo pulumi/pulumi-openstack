@@ -33,8 +33,8 @@ import (
 //			qos, err := blockstorage.NewQosV3(ctx, "qos", &blockstorage.QosV3Args{
 //				Name:     pulumi.String("%s"),
 //				Consumer: pulumi.String("front-end"),
-//				Specs: pulumi.Map{
-//					"read_iops_sec": pulumi.Any("20000"),
+//				Specs: pulumi.StringMap{
+//					"read_iops_sec": pulumi.String("20000"),
 //				},
 //			})
 //			if err != nil {

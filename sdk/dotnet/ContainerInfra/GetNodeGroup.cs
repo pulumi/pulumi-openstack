@@ -148,7 +148,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// The list of key value pairs representing additional properties of
         /// the node group.
         /// </summary>
-        public readonly ImmutableDictionary<string, object> Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// The maximum number of nodes for the node group.
         /// </summary>
@@ -196,7 +196,7 @@ namespace Pulumi.OpenStack.ContainerInfra
 
             string image,
 
-            ImmutableDictionary<string, object> labels,
+            ImmutableDictionary<string, string> labels,
 
             int maxNodeCount,
 

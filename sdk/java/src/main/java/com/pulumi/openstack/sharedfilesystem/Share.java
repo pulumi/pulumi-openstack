@@ -13,7 +13,6 @@ import com.pulumi.openstack.sharedfilesystem.inputs.ShareState;
 import com.pulumi.openstack.sharedfilesystem.outputs.ShareExportLocation;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -103,15 +102,15 @@ public class Share extends com.pulumi.resources.CustomResource {
      * explicitly and implicitly added.
      * 
      */
-    @Export(name="allMetadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> allMetadata;
+    @Export(name="allMetadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> allMetadata;
 
     /**
      * @return The map of metadata, assigned on the share, which has been
      * explicitly and implicitly added.
      * 
      */
-    public Output<Map<String,Object>> allMetadata() {
+    public Output<Map<String,String>> allMetadata() {
         return this.allMetadata;
     }
     /**
@@ -213,15 +212,15 @@ public class Share extends com.pulumi.resources.CustomResource {
      * strings.
      * 
      */
-    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> metadata;
+    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
      * @return One or more metadata key and value pairs as a dictionary of
      * strings.
      * 
      */
-    public Output<Optional<Map<String,Object>>> metadata() {
+    public Output<Optional<Map<String,String>>> metadata() {
         return Codegen.optional(this.metadata);
     }
     /**

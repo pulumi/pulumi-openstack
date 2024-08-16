@@ -166,7 +166,7 @@ namespace Pulumi.OpenStack.Images
         /// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
         /// </summary>
         [Output("metadata")]
-        public Output<ImmutableDictionary<string, object>> Metadata { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Amount of disk space (in GB) required to boot
@@ -200,7 +200,7 @@ namespace Pulumi.OpenStack.Images
         /// about properties.
         /// </summary>
         [Output("properties")]
-        public Output<ImmutableDictionary<string, object>> Properties { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Properties { get; private set; } = null!;
 
         /// <summary>
         /// If true, image will not be deletable. Defaults to
@@ -428,16 +428,16 @@ namespace Pulumi.OpenStack.Images
         public Input<string>? Name { get; set; }
 
         [Input("properties")]
-        private InputMap<object>? _properties;
+        private InputMap<string>? _properties;
 
         /// <summary>
         /// A map of key/value pairs to set freeform
         /// information about an image. See the "Notes" section for further information
         /// about properties.
         /// </summary>
-        public InputMap<object> Properties
+        public InputMap<string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<object>());
+            get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 
@@ -605,16 +605,16 @@ namespace Pulumi.OpenStack.Images
         public Input<string>? LocalFilePath { get; set; }
 
         [Input("metadata")]
-        private InputMap<object>? _metadata;
+        private InputMap<string>? _metadata;
 
         /// <summary>
         /// The metadata associated with the image.
         /// Image metadata allow for meaningfully define the image properties
         /// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
         /// </summary>
-        public InputMap<object> Metadata
+        public InputMap<string> Metadata
         {
-            get => _metadata ?? (_metadata = new InputMap<object>());
+            get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 
@@ -645,16 +645,16 @@ namespace Pulumi.OpenStack.Images
         public Input<string>? Owner { get; set; }
 
         [Input("properties")]
-        private InputMap<object>? _properties;
+        private InputMap<string>? _properties;
 
         /// <summary>
         /// A map of key/value pairs to set freeform
         /// information about an image. See the "Notes" section for further information
         /// about properties.
         /// </summary>
-        public InputMap<object> Properties
+        public InputMap<string> Properties
         {
-            get => _properties ?? (_properties = new InputMap<object>());
+            get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
 

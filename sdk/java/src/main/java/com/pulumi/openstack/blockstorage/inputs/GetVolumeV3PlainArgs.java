@@ -4,7 +4,6 @@
 package com.pulumi.openstack.blockstorage.inputs;
 
 import com.pulumi.core.annotations.Import;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -51,13 +50,13 @@ public final class GetVolumeV3PlainArgs extends com.pulumi.resources.InvokeArgs 
      * 
      */
     @Import(name="metadata")
-    private @Nullable Map<String,Object> metadata;
+    private @Nullable Map<String,String> metadata;
 
     /**
      * @return Metadata key/value pairs associated with the volume.
      * 
      */
-    public Optional<Map<String,Object>> metadata() {
+    public Optional<Map<String,String>> metadata() {
         return Optional.ofNullable(this.metadata);
     }
 
@@ -181,7 +180,7 @@ public final class GetVolumeV3PlainArgs extends com.pulumi.resources.InvokeArgs 
          * @return builder
          * 
          */
-        public Builder metadata(@Nullable Map<String,Object> metadata) {
+        public Builder metadata(@Nullable Map<String,String> metadata) {
             $.metadata = metadata;
             return this;
         }

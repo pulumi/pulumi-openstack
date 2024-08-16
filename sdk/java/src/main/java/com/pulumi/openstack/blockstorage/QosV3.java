@@ -10,7 +10,6 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.blockstorage.QosV3Args;
 import com.pulumi.openstack.blockstorage.inputs.QosV3State;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -126,14 +125,14 @@ public class QosV3 extends com.pulumi.resources.CustomResource {
      * Key/Value pairs of specs for the qos.
      * 
      */
-    @Export(name="specs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> specs;
+    @Export(name="specs", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> specs;
 
     /**
      * @return Key/Value pairs of specs for the qos.
      * 
      */
-    public Output<Optional<Map<String,Object>>> specs() {
+    public Output<Optional<Map<String,String>>> specs() {
         return Codegen.optional(this.specs);
     }
 

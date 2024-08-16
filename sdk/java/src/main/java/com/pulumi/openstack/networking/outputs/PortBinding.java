@@ -4,7 +4,6 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -29,7 +28,7 @@ public final class PortBinding {
      * details for this specific binding.
      * 
      */
-    private @Nullable Map<String,Object> vifDetails;
+    private @Nullable Map<String,String> vifDetails;
     /**
      * @return The VNIC type of the port binding.
      * 
@@ -64,7 +63,7 @@ public final class PortBinding {
      * details for this specific binding.
      * 
      */
-    public Map<String,Object> vifDetails() {
+    public Map<String,String> vifDetails() {
         return this.vifDetails == null ? Map.of() : this.vifDetails;
     }
     /**
@@ -95,7 +94,7 @@ public final class PortBinding {
     public static final class Builder {
         private @Nullable String hostId;
         private @Nullable String profile;
-        private @Nullable Map<String,Object> vifDetails;
+        private @Nullable Map<String,String> vifDetails;
         private @Nullable String vifType;
         private @Nullable String vnicType;
         public Builder() {}
@@ -121,7 +120,7 @@ public final class PortBinding {
             return this;
         }
         @CustomType.Setter
-        public Builder vifDetails(@Nullable Map<String,Object> vifDetails) {
+        public Builder vifDetails(@Nullable Map<String,String> vifDetails) {
 
             this.vifDetails = vifDetails;
             return this;

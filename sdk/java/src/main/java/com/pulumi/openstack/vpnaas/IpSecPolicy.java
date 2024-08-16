@@ -11,7 +11,6 @@ import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.vpnaas.IpSecPolicyArgs;
 import com.pulumi.openstack.vpnaas.inputs.IpSecPolicyState;
 import com.pulumi.openstack.vpnaas.outputs.IpSecPolicyLifetime;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -233,14 +232,14 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
      * Map of additional options.
      * 
      */
-    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> valueSpecs;
+    @Export(name="valueSpecs", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> valueSpecs;
 
     /**
      * @return Map of additional options.
      * 
      */
-    public Output<Optional<Map<String,Object>>> valueSpecs() {
+    public Output<Optional<Map<String,String>>> valueSpecs() {
         return Codegen.optional(this.valueSpecs);
     }
 

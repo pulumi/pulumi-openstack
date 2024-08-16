@@ -71,7 +71,7 @@ type VolumeV2 struct {
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
 	// Metadata key/value pairs to associate with the volume.
 	// Changing this updates the existing volume metadata.
-	Metadata pulumi.MapOutput `pulumi:"metadata"`
+	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// A unique name for the volume. Changing this updates the
 	// volume's name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -149,7 +149,7 @@ type volumeV2State struct {
 	ImageId *string `pulumi:"imageId"`
 	// Metadata key/value pairs to associate with the volume.
 	// Changing this updates the existing volume metadata.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// A unique name for the volume. Changing this updates the
 	// volume's name.
 	Name *string `pulumi:"name"`
@@ -195,7 +195,7 @@ type VolumeV2State struct {
 	ImageId pulumi.StringPtrInput
 	// Metadata key/value pairs to associate with the volume.
 	// Changing this updates the existing volume metadata.
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// A unique name for the volume. Changing this updates the
 	// volume's name.
 	Name pulumi.StringPtrInput
@@ -241,7 +241,7 @@ type volumeV2Args struct {
 	ImageId *string `pulumi:"imageId"`
 	// Metadata key/value pairs to associate with the volume.
 	// Changing this updates the existing volume metadata.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata map[string]string `pulumi:"metadata"`
 	// A unique name for the volume. Changing this updates the
 	// volume's name.
 	Name *string `pulumi:"name"`
@@ -284,7 +284,7 @@ type VolumeV2Args struct {
 	ImageId pulumi.StringPtrInput
 	// Metadata key/value pairs to associate with the volume.
 	// Changing this updates the existing volume metadata.
-	Metadata pulumi.MapInput
+	Metadata pulumi.StringMapInput
 	// A unique name for the volume. Changing this updates the
 	// volume's name.
 	Name pulumi.StringPtrInput
@@ -431,8 +431,8 @@ func (o VolumeV2Output) ImageId() pulumi.StringPtrOutput {
 
 // Metadata key/value pairs to associate with the volume.
 // Changing this updates the existing volume metadata.
-func (o VolumeV2Output) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v *VolumeV2) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+func (o VolumeV2Output) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VolumeV2) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // A unique name for the volume. Changing this updates the

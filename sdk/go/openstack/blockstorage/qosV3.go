@@ -32,9 +32,9 @@ import (
 //			_, err := blockstorage.NewQosV3(ctx, "qos", &blockstorage.QosV3Args{
 //				Name:     pulumi.String("foo"),
 //				Consumer: pulumi.String("back-end"),
-//				Specs: pulumi.Map{
-//					"read_iops_sec":  pulumi.Any("40000"),
-//					"write_iops_sec": pulumi.Any("40000"),
+//				Specs: pulumi.StringMap{
+//					"read_iops_sec":  pulumi.String("40000"),
+//					"write_iops_sec": pulumi.String("40000"),
 //				},
 //			})
 //			if err != nil {
@@ -67,7 +67,7 @@ type QosV3 struct {
 	// a new qos.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Key/Value pairs of specs for the qos.
-	Specs pulumi.MapOutput `pulumi:"specs"`
+	Specs pulumi.StringMapOutput `pulumi:"specs"`
 }
 
 // NewQosV3 registers a new resource with the given unique name, arguments, and options.
@@ -111,7 +111,7 @@ type qosV3State struct {
 	// a new qos.
 	Region *string `pulumi:"region"`
 	// Key/Value pairs of specs for the qos.
-	Specs map[string]interface{} `pulumi:"specs"`
+	Specs map[string]string `pulumi:"specs"`
 }
 
 type QosV3State struct {
@@ -126,7 +126,7 @@ type QosV3State struct {
 	// a new qos.
 	Region pulumi.StringPtrInput
 	// Key/Value pairs of specs for the qos.
-	Specs pulumi.MapInput
+	Specs pulumi.StringMapInput
 }
 
 func (QosV3State) ElementType() reflect.Type {
@@ -145,7 +145,7 @@ type qosV3Args struct {
 	// a new qos.
 	Region *string `pulumi:"region"`
 	// Key/Value pairs of specs for the qos.
-	Specs map[string]interface{} `pulumi:"specs"`
+	Specs map[string]string `pulumi:"specs"`
 }
 
 // The set of arguments for constructing a QosV3 resource.
@@ -161,7 +161,7 @@ type QosV3Args struct {
 	// a new qos.
 	Region pulumi.StringPtrInput
 	// Key/Value pairs of specs for the qos.
-	Specs pulumi.MapInput
+	Specs pulumi.StringMapInput
 }
 
 func (QosV3Args) ElementType() reflect.Type {
@@ -271,8 +271,8 @@ func (o QosV3Output) Region() pulumi.StringOutput {
 }
 
 // Key/Value pairs of specs for the qos.
-func (o QosV3Output) Specs() pulumi.MapOutput {
-	return o.ApplyT(func(v *QosV3) pulumi.MapOutput { return v.Specs }).(pulumi.MapOutput)
+func (o QosV3Output) Specs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *QosV3) pulumi.StringMapOutput { return v.Specs }).(pulumi.StringMapOutput)
 }
 
 type QosV3ArrayOutput struct{ *pulumi.OutputState }

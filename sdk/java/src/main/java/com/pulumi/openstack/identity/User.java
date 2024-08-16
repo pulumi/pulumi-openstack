@@ -12,7 +12,6 @@ import com.pulumi.openstack.identity.UserArgs;
 import com.pulumi.openstack.identity.inputs.UserState;
 import com.pulumi.openstack.identity.outputs.UserMultiFactorAuthRule;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -159,14 +158,14 @@ public class User extends com.pulumi.resources.CustomResource {
      * Free-form key/value pairs of extra information.
      * 
      */
-    @Export(name="extra", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> extra;
+    @Export(name="extra", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> extra;
 
     /**
      * @return Free-form key/value pairs of extra information.
      * 
      */
-    public Output<Optional<Map<String,Object>>> extra() {
+    public Output<Optional<Map<String,String>>> extra() {
         return Codegen.optional(this.extra);
     }
     /**

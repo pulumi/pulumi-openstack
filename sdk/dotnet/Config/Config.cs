@@ -174,11 +174,11 @@ namespace Pulumi.OpenStack
             set => _enableLogging.Set(value);
         }
 
-        private static readonly __Value<ImmutableDictionary<string, object>?> _endpointOverrides = new __Value<ImmutableDictionary<string, object>?>(() => __config.GetObject<ImmutableDictionary<string, object>>("endpointOverrides"));
+        private static readonly __Value<ImmutableDictionary<string, string>?> _endpointOverrides = new __Value<ImmutableDictionary<string, string>?>(() => __config.GetObject<ImmutableDictionary<string, string>>("endpointOverrides"));
         /// <summary>
         /// A map of services with an endpoint to override what was from the Keystone catalog
         /// </summary>
-        public static ImmutableDictionary<string, object>? EndpointOverrides
+        public static ImmutableDictionary<string, string>? EndpointOverrides
         {
             get => _endpointOverrides.Get();
             set => _endpointOverrides.Set(value);

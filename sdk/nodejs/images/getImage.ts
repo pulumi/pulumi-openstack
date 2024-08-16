@@ -95,7 +95,7 @@ export interface GetImageArgs {
      * Filtering is applied if server responce contains at least 2 images. In case
      * there is only one image the `properties` ignores.
      */
-    properties?: {[key: string]: any};
+    properties?: {[key: string]: string};
     /**
      * The region in which to obtain the V2 Glance client. A
      * Glance client is needed to create an Image that can be used with a compute
@@ -170,7 +170,7 @@ export interface GetImageResult {
      * meaningfully define the image properties and tags. See
      * https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      */
-    readonly metadata: {[key: string]: any};
+    readonly metadata: {[key: string]: string};
     /**
      * The minimum amount of disk space required to use the image.
      */
@@ -186,7 +186,7 @@ export interface GetImageResult {
     /**
      * Freeform information about the image.
      */
-    readonly properties?: {[key: string]: any};
+    readonly properties?: {[key: string]: string};
     /**
      * Whether or not the image is protected.
      */
@@ -285,7 +285,7 @@ export interface GetImageOutputArgs {
      * Filtering is applied if server responce contains at least 2 images. In case
      * there is only one image the `properties` ignores.
      */
-    properties?: pulumi.Input<{[key: string]: any}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The region in which to obtain the V2 Glance client. A
      * Glance client is needed to create an Image that can be used with a compute

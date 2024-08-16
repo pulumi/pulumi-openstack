@@ -81,7 +81,7 @@ type IkePolicy struct {
 	// create a service for another policy. Changing this creates a new policy.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 }
 
 // NewIkePolicy registers a new resource with the given unique name, arguments, and options.
@@ -146,7 +146,7 @@ type ikePolicyState struct {
 	// create a service for another policy. Changing this creates a new policy.
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 type IkePolicyState struct {
@@ -182,7 +182,7 @@ type IkePolicyState struct {
 	// create a service for another policy. Changing this creates a new policy.
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (IkePolicyState) ElementType() reflect.Type {
@@ -222,7 +222,7 @@ type ikePolicyArgs struct {
 	// create a service for another policy. Changing this creates a new policy.
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 // The set of arguments for constructing a IkePolicy resource.
@@ -259,7 +259,7 @@ type IkePolicyArgs struct {
 	// create a service for another policy. Changing this creates a new policy.
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (IkePolicyArgs) ElementType() reflect.Type {
@@ -411,8 +411,8 @@ func (o IkePolicyOutput) TenantId() pulumi.StringOutput {
 }
 
 // Map of additional options.
-func (o IkePolicyOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *IkePolicy) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o IkePolicyOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *IkePolicy) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 type IkePolicyArrayOutput struct{ *pulumi.OutputState }

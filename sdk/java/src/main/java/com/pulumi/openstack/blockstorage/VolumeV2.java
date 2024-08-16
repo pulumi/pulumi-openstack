@@ -13,7 +13,6 @@ import com.pulumi.openstack.blockstorage.inputs.VolumeV2State;
 import com.pulumi.openstack.blockstorage.outputs.VolumeV2Attachment;
 import com.pulumi.openstack.blockstorage.outputs.VolumeV2SchedulerHint;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -159,15 +158,15 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing volume metadata.
      * 
      */
-    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> metadata;
+    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> metadata;
 
     /**
      * @return Metadata key/value pairs to associate with the volume.
      * Changing this updates the existing volume metadata.
      * 
      */
-    public Output<Map<String,Object>> metadata() {
+    public Output<Map<String,String>> metadata() {
         return this.metadata;
     }
     /**

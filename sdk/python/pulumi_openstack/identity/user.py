@@ -20,7 +20,7 @@ class UserArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  domain_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 extra: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ignore_change_password_upon_first_use: Optional[pulumi.Input[bool]] = None,
                  ignore_lockout_failure_attempts: Optional[pulumi.Input[bool]] = None,
                  ignore_password_expiry: Optional[pulumi.Input[bool]] = None,
@@ -36,7 +36,7 @@ class UserArgs:
         :param pulumi.Input[str] domain_id: The domain this user belongs to.
         :param pulumi.Input[bool] enabled: Whether the user is enabled or disabled. Valid
                values are `true` and `false`.
-        :param pulumi.Input[Mapping[str, Any]] extra: Free-form key/value pairs of extra information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra: Free-form key/value pairs of extra information.
         :param pulumi.Input[bool] ignore_change_password_upon_first_use: User will not have to
                change their password upon first use. Valid values are `true` and `false`.
         :param pulumi.Input[bool] ignore_lockout_failure_attempts: User will not have a failure
@@ -133,14 +133,14 @@ class UserArgs:
 
     @property
     @pulumi.getter
-    def extra(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Free-form key/value pairs of extra information.
         """
         return pulumi.get(self, "extra")
 
     @extra.setter
-    def extra(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra", value)
 
     @property
@@ -256,7 +256,7 @@ class _UserState:
                  description: Optional[pulumi.Input[str]] = None,
                  domain_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 extra: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ignore_change_password_upon_first_use: Optional[pulumi.Input[bool]] = None,
                  ignore_lockout_failure_attempts: Optional[pulumi.Input[bool]] = None,
                  ignore_password_expiry: Optional[pulumi.Input[bool]] = None,
@@ -272,7 +272,7 @@ class _UserState:
         :param pulumi.Input[str] domain_id: The domain this user belongs to.
         :param pulumi.Input[bool] enabled: Whether the user is enabled or disabled. Valid
                values are `true` and `false`.
-        :param pulumi.Input[Mapping[str, Any]] extra: Free-form key/value pairs of extra information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra: Free-form key/value pairs of extra information.
         :param pulumi.Input[bool] ignore_change_password_upon_first_use: User will not have to
                change their password upon first use. Valid values are `true` and `false`.
         :param pulumi.Input[bool] ignore_lockout_failure_attempts: User will not have a failure
@@ -369,14 +369,14 @@ class _UserState:
 
     @property
     @pulumi.getter
-    def extra(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def extra(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Free-form key/value pairs of extra information.
         """
         return pulumi.get(self, "extra")
 
     @extra.setter
-    def extra(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def extra(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "extra", value)
 
     @property
@@ -494,7 +494,7 @@ class User(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  domain_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 extra: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ignore_change_password_upon_first_use: Optional[pulumi.Input[bool]] = None,
                  ignore_lockout_failure_attempts: Optional[pulumi.Input[bool]] = None,
                  ignore_password_expiry: Optional[pulumi.Input[bool]] = None,
@@ -559,7 +559,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] domain_id: The domain this user belongs to.
         :param pulumi.Input[bool] enabled: Whether the user is enabled or disabled. Valid
                values are `true` and `false`.
-        :param pulumi.Input[Mapping[str, Any]] extra: Free-form key/value pairs of extra information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra: Free-form key/value pairs of extra information.
         :param pulumi.Input[bool] ignore_change_password_upon_first_use: User will not have to
                change their password upon first use. Valid values are `true` and `false`.
         :param pulumi.Input[bool] ignore_lockout_failure_attempts: User will not have a failure
@@ -651,7 +651,7 @@ class User(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  domain_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 extra: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 extra: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ignore_change_password_upon_first_use: Optional[pulumi.Input[bool]] = None,
                  ignore_lockout_failure_attempts: Optional[pulumi.Input[bool]] = None,
                  ignore_password_expiry: Optional[pulumi.Input[bool]] = None,
@@ -698,7 +698,7 @@ class User(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             domain_id: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            extra: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            extra: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ignore_change_password_upon_first_use: Optional[pulumi.Input[bool]] = None,
             ignore_lockout_failure_attempts: Optional[pulumi.Input[bool]] = None,
             ignore_password_expiry: Optional[pulumi.Input[bool]] = None,
@@ -719,7 +719,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] domain_id: The domain this user belongs to.
         :param pulumi.Input[bool] enabled: Whether the user is enabled or disabled. Valid
                values are `true` and `false`.
-        :param pulumi.Input[Mapping[str, Any]] extra: Free-form key/value pairs of extra information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra: Free-form key/value pairs of extra information.
         :param pulumi.Input[bool] ignore_change_password_upon_first_use: User will not have to
                change their password upon first use. Valid values are `true` and `false`.
         :param pulumi.Input[bool] ignore_lockout_failure_attempts: User will not have a failure
@@ -792,7 +792,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def extra(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def extra(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Free-form key/value pairs of extra information.
         """

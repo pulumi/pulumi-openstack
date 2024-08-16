@@ -15,7 +15,6 @@ import com.pulumi.openstack.networking.outputs.PortBinding;
 import com.pulumi.openstack.networking.outputs.PortExtraDhcpOption;
 import com.pulumi.openstack.networking.outputs.PortFixedIp;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -372,14 +371,14 @@ public class Port extends com.pulumi.resources.CustomResource {
      * The list of maps representing port DNS assignments.
      * 
      */
-    @Export(name="dnsAssignments", refs={List.class,Map.class,String.class,Object.class}, tree="[0,[1,2,3]]")
-    private Output<List<Map<String,Object>>> dnsAssignments;
+    @Export(name="dnsAssignments", refs={List.class,Map.class,String.class}, tree="[0,[1,2,2]]")
+    private Output<List<Map<String,String>>> dnsAssignments;
 
     /**
      * @return The list of maps representing port DNS assignments.
      * 
      */
-    public Output<List<Map<String,Object>>> dnsAssignments() {
+    public Output<List<Map<String,String>>> dnsAssignments() {
         return this.dnsAssignments;
     }
     /**
@@ -632,14 +631,14 @@ public class Port extends com.pulumi.resources.CustomResource {
      * Map of additional options.
      * 
      */
-    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> valueSpecs;
+    @Export(name="valueSpecs", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> valueSpecs;
 
     /**
      * @return Map of additional options.
      * 
      */
-    public Output<Optional<Map<String,Object>>> valueSpecs() {
+    public Output<Optional<Map<String,String>>> valueSpecs() {
         return Codegen.optional(this.valueSpecs);
     }
 

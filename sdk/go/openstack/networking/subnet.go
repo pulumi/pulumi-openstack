@@ -130,7 +130,7 @@ type Subnet struct {
 	// create a subnet for another tenant. Changing this creates a new subnet.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
+	ValueSpecs pulumi.StringMapOutput `pulumi:"valueSpecs"`
 }
 
 // NewSubnet registers a new resource with the given unique name, arguments, and options.
@@ -238,7 +238,7 @@ type subnetState struct {
 	// create a subnet for another tenant. Changing this creates a new subnet.
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 type SubnetState struct {
@@ -314,7 +314,7 @@ type SubnetState struct {
 	// create a subnet for another tenant. Changing this creates a new subnet.
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (SubnetState) ElementType() reflect.Type {
@@ -391,7 +391,7 @@ type subnetArgs struct {
 	// create a subnet for another tenant. Changing this creates a new subnet.
 	TenantId *string `pulumi:"tenantId"`
 	// Map of additional options.
-	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
+	ValueSpecs map[string]string `pulumi:"valueSpecs"`
 }
 
 // The set of arguments for constructing a Subnet resource.
@@ -465,7 +465,7 @@ type SubnetArgs struct {
 	// create a subnet for another tenant. Changing this creates a new subnet.
 	TenantId pulumi.StringPtrInput
 	// Map of additional options.
-	ValueSpecs pulumi.MapInput
+	ValueSpecs pulumi.StringMapInput
 }
 
 func (SubnetArgs) ElementType() reflect.Type {
@@ -687,8 +687,8 @@ func (o SubnetOutput) TenantId() pulumi.StringOutput {
 }
 
 // Map of additional options.
-func (o SubnetOutput) ValueSpecs() pulumi.MapOutput {
-	return o.ApplyT(func(v *Subnet) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+func (o SubnetOutput) ValueSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringMapOutput { return v.ValueSpecs }).(pulumi.StringMapOutput)
 }
 
 type SubnetArrayOutput struct{ *pulumi.OutputState }

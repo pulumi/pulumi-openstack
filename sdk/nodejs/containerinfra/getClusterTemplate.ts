@@ -135,7 +135,7 @@ export interface GetClusterTemplateResult {
      * The list of key value pairs representing additional properties
      * of the cluster template.
      */
-    readonly labels: {[key: string]: any};
+    readonly labels: {[key: string]: string};
     /**
      * The flavor for the master nodes.
      */

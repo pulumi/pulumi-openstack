@@ -170,14 +170,14 @@ class PortBinding(dict):
     def __init__(__self__, *,
                  host_id: Optional[str] = None,
                  profile: Optional[str] = None,
-                 vif_details: Optional[Mapping[str, Any]] = None,
+                 vif_details: Optional[Mapping[str, str]] = None,
                  vif_type: Optional[str] = None,
                  vnic_type: Optional[str] = None):
         """
         :param str host_id: The ID of the host to allocate port on.
         :param str profile: Custom data to be passed as `binding:profile`. Data
                must be passed as JSON.
-        :param Mapping[str, Any] vif_details: A map of JSON strings containing additional
+        :param Mapping[str, str] vif_details: A map of JSON strings containing additional
                details for this specific binding.
         :param str vif_type: The VNIC type of the port binding.
         :param str vnic_type: VNIC type for the port. Can either be `direct`,
@@ -214,7 +214,7 @@ class PortBinding(dict):
 
     @property
     @pulumi.getter(name="vifDetails")
-    def vif_details(self) -> Optional[Mapping[str, Any]]:
+    def vif_details(self) -> Optional[Mapping[str, str]]:
         """
         A map of JSON strings containing additional
         details for this specific binding.
@@ -596,13 +596,13 @@ class GetPortBindingResult(dict):
     def __init__(__self__, *,
                  host_id: str,
                  profile: str,
-                 vif_details: Mapping[str, Any],
+                 vif_details: Mapping[str, str],
                  vif_type: str,
                  vnic_type: str):
         """
         :param str host_id: The ID of the host, which has the allocatee port.
         :param str profile: A JSON string containing the binding profile information.
-        :param Mapping[str, Any] vif_details: A map of JSON strings containing additional details for this
+        :param Mapping[str, str] vif_details: A map of JSON strings containing additional details for this
                specific binding.
         :param str vif_type: The VNIC type of the port binding.
         :param str vnic_type: VNIC type for the port.
@@ -631,7 +631,7 @@ class GetPortBindingResult(dict):
 
     @property
     @pulumi.getter(name="vifDetails")
-    def vif_details(self) -> Mapping[str, Any]:
+    def vif_details(self) -> Mapping[str, str]:
         """
         A map of JSON strings containing additional details for this
         specific binding.
