@@ -12,7 +12,7 @@ namespace Pulumi.OpenStack.Identity
     /// <summary>
     /// Manages a V3 Role assignment within OpenStack Keystone.
     /// 
-    /// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+    /// &gt; **Note:** You *must* have admin privileges in your OpenStack cloud to use
     /// this resource.
     /// 
     /// ## Example Usage

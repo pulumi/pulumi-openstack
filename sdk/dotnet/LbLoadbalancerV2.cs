@@ -144,7 +144,7 @@ namespace Pulumi.OpenStack
         public Output<string> VipPortId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the QoS Policy which will 
+        /// The ID of the QoS Policy which will
         /// be applied to the Virtual IP (VIP).
         /// </summary>
         [Output("vipQosPolicyId")]
@@ -322,7 +322,7 @@ namespace Pulumi.OpenStack
         public Input<string>? VipPortId { get; set; }
 
         /// <summary>
-        /// The ID of the QoS Policy which will 
+        /// The ID of the QoS Policy which will
         /// be applied to the Virtual IP (VIP).
         /// </summary>
         [Input("vipQosPolicyId")]
@@ -458,7 +458,7 @@ namespace Pulumi.OpenStack
         public Input<string>? VipPortId { get; set; }
 
         /// <summary>
-        /// The ID of the QoS Policy which will 
+        /// The ID of the QoS Policy which will
         /// be applied to the Virtual IP (VIP).
         /// </summary>
         [Input("vipQosPolicyId")]

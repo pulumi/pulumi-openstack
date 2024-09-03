@@ -83,7 +83,7 @@ namespace Pulumi.OpenStack.VPNaaS
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
+        /// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
         /// is group5. Changing this updates the existing policy.
         /// </summary>
         [Output("pfs")]
@@ -212,7 +212,7 @@ namespace Pulumi.OpenStack.VPNaaS
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
+        /// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
         /// is group5. Changing this updates the existing policy.
         /// </summary>
         [Input("pfs")]
@@ -309,7 +309,7 @@ namespace Pulumi.OpenStack.VPNaaS
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
+        /// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
         /// is group5. Changing this updates the existing policy.
         /// </summary>
         [Input("pfs")]

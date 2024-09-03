@@ -302,7 +302,7 @@ public class Image extends com.pulumi.resources.CustomResource {
     /**
      * The metadata associated with the image.
      * Image metadata allow for meaningfully define the image properties
-     * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+     * and tags. See &lt;https://docs.openstack.org/glance/latest/user/metadefs-concepts.html&gt;.
      * 
      */
     @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -311,7 +311,7 @@ public class Image extends com.pulumi.resources.CustomResource {
     /**
      * @return The metadata associated with the image.
      * Image metadata allow for meaningfully define the image properties
-     * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+     * and tags. See &lt;https://docs.openstack.org/glance/latest/user/metadefs-concepts.html&gt;.
      * 
      */
     public Output<Map<String,String>> metadata() {

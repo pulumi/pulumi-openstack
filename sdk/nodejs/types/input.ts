@@ -42,12 +42,12 @@ export namespace blockstorage {
          */
         additionalProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * The volume should be scheduled on a 
+         * The volume should be scheduled on a
          * different host from the set of volumes specified in the list provided.
          */
         differentHosts?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * An instance UUID. The volume should be 
+         * An instance UUID. The volume should be
          * scheduled on the same host as the instance.
          */
         localToInstance?: pulumi.Input<string>;
@@ -90,12 +90,12 @@ export namespace blockstorage {
          */
         additionalProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * The volume should be scheduled on a 
+         * The volume should be scheduled on a
          * different host from the set of volumes specified in the list provided.
          */
         differentHosts?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * An instance UUID. The volume should be 
+         * An instance UUID. The volume should be
          * scheduled on the same host as the instance.
          */
         localToInstance?: pulumi.Input<string>;
@@ -669,12 +669,12 @@ export namespace loadbalancer {
          */
         id?: pulumi.Input<string>;
         /**
-         * An alternate IP address used for health 
+         * An alternate IP address used for health
          * monitoring a backend member.
          */
         monitorAddress?: pulumi.Input<string>;
         /**
-         * An alternate protocol port used for health 
+         * An alternate protocol port used for health
          * monitoring a backend member.
          */
         monitorPort?: pulumi.Input<number>;

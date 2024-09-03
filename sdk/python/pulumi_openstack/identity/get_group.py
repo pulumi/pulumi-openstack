@@ -99,7 +99,7 @@ def get_group(domain_id: Optional[str] = None,
     """
     Use this data source to get the ID of an OpenStack group.
 
-    > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+    > **Note:** You *must* have admin privileges in your OpenStack cloud to use
     this resource.
 
     ## Example Usage
@@ -140,7 +140,7 @@ def get_group_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
     """
     Use this data source to get the ID of an OpenStack group.
 
-    > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+    > **Note:** You *must* have admin privileges in your OpenStack cloud to use
     this resource.
 
     ## Example Usage

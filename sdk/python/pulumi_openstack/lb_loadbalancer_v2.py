@@ -65,7 +65,7 @@ class LbLoadbalancerV2Args:
         :param pulumi.Input[str] vip_port_id: The port UUID that the loadbalancer will use.
                Changing this creates a new loadbalancer. Exactly one of
                `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
-        :param pulumi.Input[str] vip_qos_policy_id: The ID of the QoS Policy which will 
+        :param pulumi.Input[str] vip_qos_policy_id: The ID of the QoS Policy which will
                be applied to the Virtual IP (VIP).
         :param pulumi.Input[str] vip_subnet_id: The subnet on which to allocate the
                Loadbalancer's address. A tenant can only create Loadbalancers on networks
@@ -285,7 +285,7 @@ class LbLoadbalancerV2Args:
     @pulumi.getter(name="vipQosPolicyId")
     def vip_qos_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the QoS Policy which will 
+        The ID of the QoS Policy which will
         be applied to the Virtual IP (VIP).
         """
         return pulumi.get(self, "vip_qos_policy_id")
@@ -365,7 +365,7 @@ class _LbLoadbalancerV2State:
         :param pulumi.Input[str] vip_port_id: The port UUID that the loadbalancer will use.
                Changing this creates a new loadbalancer. Exactly one of
                `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
-        :param pulumi.Input[str] vip_qos_policy_id: The ID of the QoS Policy which will 
+        :param pulumi.Input[str] vip_qos_policy_id: The ID of the QoS Policy which will
                be applied to the Virtual IP (VIP).
         :param pulumi.Input[str] vip_subnet_id: The subnet on which to allocate the
                Loadbalancer's address. A tenant can only create Loadbalancers on networks
@@ -585,7 +585,7 @@ class _LbLoadbalancerV2State:
     @pulumi.getter(name="vipQosPolicyId")
     def vip_qos_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the QoS Policy which will 
+        The ID of the QoS Policy which will
         be applied to the Virtual IP (VIP).
         """
         return pulumi.get(self, "vip_qos_policy_id")
@@ -691,7 +691,7 @@ class LbLoadbalancerV2(pulumi.CustomResource):
         :param pulumi.Input[str] vip_port_id: The port UUID that the loadbalancer will use.
                Changing this creates a new loadbalancer. Exactly one of
                `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
-        :param pulumi.Input[str] vip_qos_policy_id: The ID of the QoS Policy which will 
+        :param pulumi.Input[str] vip_qos_policy_id: The ID of the QoS Policy which will
                be applied to the Virtual IP (VIP).
         :param pulumi.Input[str] vip_subnet_id: The subnet on which to allocate the
                Loadbalancer's address. A tenant can only create Loadbalancers on networks
@@ -850,7 +850,7 @@ class LbLoadbalancerV2(pulumi.CustomResource):
         :param pulumi.Input[str] vip_port_id: The port UUID that the loadbalancer will use.
                Changing this creates a new loadbalancer. Exactly one of
                `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
-        :param pulumi.Input[str] vip_qos_policy_id: The ID of the QoS Policy which will 
+        :param pulumi.Input[str] vip_qos_policy_id: The ID of the QoS Policy which will
                be applied to the Virtual IP (VIP).
         :param pulumi.Input[str] vip_subnet_id: The subnet on which to allocate the
                Loadbalancer's address. A tenant can only create Loadbalancers on networks
@@ -1008,7 +1008,7 @@ class LbLoadbalancerV2(pulumi.CustomResource):
     @pulumi.getter(name="vipQosPolicyId")
     def vip_qos_policy_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the QoS Policy which will 
+        The ID of the QoS Policy which will
         be applied to the Virtual IP (VIP).
         """
         return pulumi.get(self, "vip_qos_policy_id")

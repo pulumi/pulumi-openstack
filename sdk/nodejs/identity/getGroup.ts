@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get the ID of an OpenStack group.
  *
- * > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+ * > **Note:** You *must* have admin privileges in your OpenStack cloud to use
  * this resource.
  *
  * ## Example Usage
@@ -78,7 +78,7 @@ export interface GetGroupResult {
 /**
  * Use this data source to get the ID of an OpenStack group.
  *
- * > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+ * > **Note:** You *must* have admin privileges in your OpenStack cloud to use
  * this resource.
  *
  * ## Example Usage

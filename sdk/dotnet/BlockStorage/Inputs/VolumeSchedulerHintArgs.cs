@@ -29,7 +29,7 @@ namespace Pulumi.OpenStack.BlockStorage.Inputs
         private InputList<string>? _differentHosts;
 
         /// <summary>
-        /// The volume should be scheduled on a 
+        /// The volume should be scheduled on a
         /// different host from the set of volumes specified in the list provided.
         /// </summary>
         public InputList<string> DifferentHosts
@@ -39,7 +39,7 @@ namespace Pulumi.OpenStack.BlockStorage.Inputs
         }
 
         /// <summary>
-        /// An instance UUID. The volume should be 
+        /// An instance UUID. The volume should be
         /// scheduled on the same host as the instance.
         /// </summary>
         [Input("localToInstance")]

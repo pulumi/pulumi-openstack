@@ -170,15 +170,15 @@ type InterfaceAttach struct {
 	pulumi.CustomResourceState
 
 	// An IP address to assosciate with the port.
-	// _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+	// *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
 	FixedIp pulumi.StringOutput `pulumi:"fixedIp"`
 	// The ID of the Instance to attach the Port or Network to.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The ID of the Network to attach to an Instance. A port will be created automatically.
-	// _NOTE_: This option and `portId` are mutually exclusive.
+	// *NOTE*: This option and `portId` are mutually exclusive.
 	NetworkId pulumi.StringOutput `pulumi:"networkId"`
 	// The ID of the Port to attach to an Instance.
-	// _NOTE_: This option and `networkId` are mutually exclusive.
+	// *NOTE*: This option and `networkId` are mutually exclusive.
 	PortId pulumi.StringOutput `pulumi:"portId"`
 	// The region in which to create the interface attachment.
 	// If omitted, the `region` argument of the provider is used. Changing this
@@ -220,15 +220,15 @@ func GetInterfaceAttach(ctx *pulumi.Context,
 // Input properties used for looking up and filtering InterfaceAttach resources.
 type interfaceAttachState struct {
 	// An IP address to assosciate with the port.
-	// _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+	// *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
 	FixedIp *string `pulumi:"fixedIp"`
 	// The ID of the Instance to attach the Port or Network to.
 	InstanceId *string `pulumi:"instanceId"`
 	// The ID of the Network to attach to an Instance. A port will be created automatically.
-	// _NOTE_: This option and `portId` are mutually exclusive.
+	// *NOTE*: This option and `portId` are mutually exclusive.
 	NetworkId *string `pulumi:"networkId"`
 	// The ID of the Port to attach to an Instance.
-	// _NOTE_: This option and `networkId` are mutually exclusive.
+	// *NOTE*: This option and `networkId` are mutually exclusive.
 	PortId *string `pulumi:"portId"`
 	// The region in which to create the interface attachment.
 	// If omitted, the `region` argument of the provider is used. Changing this
@@ -238,15 +238,15 @@ type interfaceAttachState struct {
 
 type InterfaceAttachState struct {
 	// An IP address to assosciate with the port.
-	// _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+	// *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
 	FixedIp pulumi.StringPtrInput
 	// The ID of the Instance to attach the Port or Network to.
 	InstanceId pulumi.StringPtrInput
 	// The ID of the Network to attach to an Instance. A port will be created automatically.
-	// _NOTE_: This option and `portId` are mutually exclusive.
+	// *NOTE*: This option and `portId` are mutually exclusive.
 	NetworkId pulumi.StringPtrInput
 	// The ID of the Port to attach to an Instance.
-	// _NOTE_: This option and `networkId` are mutually exclusive.
+	// *NOTE*: This option and `networkId` are mutually exclusive.
 	PortId pulumi.StringPtrInput
 	// The region in which to create the interface attachment.
 	// If omitted, the `region` argument of the provider is used. Changing this
@@ -260,15 +260,15 @@ func (InterfaceAttachState) ElementType() reflect.Type {
 
 type interfaceAttachArgs struct {
 	// An IP address to assosciate with the port.
-	// _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+	// *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
 	FixedIp *string `pulumi:"fixedIp"`
 	// The ID of the Instance to attach the Port or Network to.
 	InstanceId string `pulumi:"instanceId"`
 	// The ID of the Network to attach to an Instance. A port will be created automatically.
-	// _NOTE_: This option and `portId` are mutually exclusive.
+	// *NOTE*: This option and `portId` are mutually exclusive.
 	NetworkId *string `pulumi:"networkId"`
 	// The ID of the Port to attach to an Instance.
-	// _NOTE_: This option and `networkId` are mutually exclusive.
+	// *NOTE*: This option and `networkId` are mutually exclusive.
 	PortId *string `pulumi:"portId"`
 	// The region in which to create the interface attachment.
 	// If omitted, the `region` argument of the provider is used. Changing this
@@ -279,15 +279,15 @@ type interfaceAttachArgs struct {
 // The set of arguments for constructing a InterfaceAttach resource.
 type InterfaceAttachArgs struct {
 	// An IP address to assosciate with the port.
-	// _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+	// *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
 	FixedIp pulumi.StringPtrInput
 	// The ID of the Instance to attach the Port or Network to.
 	InstanceId pulumi.StringInput
 	// The ID of the Network to attach to an Instance. A port will be created automatically.
-	// _NOTE_: This option and `portId` are mutually exclusive.
+	// *NOTE*: This option and `portId` are mutually exclusive.
 	NetworkId pulumi.StringPtrInput
 	// The ID of the Port to attach to an Instance.
-	// _NOTE_: This option and `networkId` are mutually exclusive.
+	// *NOTE*: This option and `networkId` are mutually exclusive.
 	PortId pulumi.StringPtrInput
 	// The region in which to create the interface attachment.
 	// If omitted, the `region` argument of the provider is used. Changing this
@@ -383,7 +383,7 @@ func (o InterfaceAttachOutput) ToInterfaceAttachOutputWithContext(ctx context.Co
 }
 
 // An IP address to assosciate with the port.
-// _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+// *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
 func (o InterfaceAttachOutput) FixedIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterfaceAttach) pulumi.StringOutput { return v.FixedIp }).(pulumi.StringOutput)
 }
@@ -394,13 +394,13 @@ func (o InterfaceAttachOutput) InstanceId() pulumi.StringOutput {
 }
 
 // The ID of the Network to attach to an Instance. A port will be created automatically.
-// _NOTE_: This option and `portId` are mutually exclusive.
+// *NOTE*: This option and `portId` are mutually exclusive.
 func (o InterfaceAttachOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterfaceAttach) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
 }
 
 // The ID of the Port to attach to an Instance.
-// _NOTE_: This option and `networkId` are mutually exclusive.
+// *NOTE*: This option and `networkId` are mutually exclusive.
 func (o InterfaceAttachOutput) PortId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterfaceAttach) pulumi.StringOutput { return v.PortId }).(pulumi.StringOutput)
 }

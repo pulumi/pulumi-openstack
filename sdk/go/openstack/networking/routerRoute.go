@@ -75,8 +75,8 @@ import (
 //
 // ## Notes
 //
-// The `nextHop` IP address must be directly reachable from the router at the “networking.RouterRoute“
-// resource creation time.  You can ensure that by explicitly specifying a dependency on the “networking.RouterInterface“
+// The `nextHop` IP address must be directly reachable from the router at the `networking.RouterRoute`
+// resource creation time.  You can ensure that by explicitly specifying a dependency on the `networking.RouterInterface`
 // resource that connects the next hop to the router, as in the example above.
 //
 // ## Import

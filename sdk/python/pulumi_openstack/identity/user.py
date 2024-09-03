@@ -511,7 +511,7 @@ class User(pulumi.CustomResource):
         raw state as plain-text. Read more about sensitive data in
         state.
 
-        > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+        > **Note:** You *must* have admin privileges in your OpenStack cloud to use
         this resource.
 
         ## Example Usage
@@ -591,7 +591,7 @@ class User(pulumi.CustomResource):
         raw state as plain-text. Read more about sensitive data in
         state.
 
-        > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+        > **Note:** You *must* have admin privileges in your OpenStack cloud to use
         this resource.
 
         ## Example Usage

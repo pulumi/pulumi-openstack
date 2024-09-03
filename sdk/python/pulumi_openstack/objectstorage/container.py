@@ -50,7 +50,7 @@ class ContainerArgs:
         :param pulumi.Input[str] region: The region in which to create the container. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new container.
-        :param pulumi.Input[str] storage_policy: The storage policy to be used for the container. 
+        :param pulumi.Input[str] storage_policy: The storage policy to be used for the container.
                Changing this creates a new container.
         :param pulumi.Input[bool] versioning: A boolean that can enable or disable object
                versioning. The default value is `false`. To use this feature, your Swift
@@ -211,7 +211,7 @@ class ContainerArgs:
     @pulumi.getter(name="storagePolicy")
     def storage_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The storage policy to be used for the container. 
+        The storage policy to be used for the container.
         Changing this creates a new container.
         """
         return pulumi.get(self, "storage_policy")
@@ -288,7 +288,7 @@ class _ContainerState:
         :param pulumi.Input[str] region: The region in which to create the container. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new container.
-        :param pulumi.Input[str] storage_policy: The storage policy to be used for the container. 
+        :param pulumi.Input[str] storage_policy: The storage policy to be used for the container.
                Changing this creates a new container.
         :param pulumi.Input[bool] versioning: A boolean that can enable or disable object
                versioning. The default value is `false`. To use this feature, your Swift
@@ -449,7 +449,7 @@ class _ContainerState:
     @pulumi.getter(name="storagePolicy")
     def storage_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The storage policy to be used for the container. 
+        The storage policy to be used for the container.
         Changing this creates a new container.
         """
         return pulumi.get(self, "storage_policy")
@@ -627,7 +627,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to create the container. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new container.
-        :param pulumi.Input[str] storage_policy: The storage policy to be used for the container. 
+        :param pulumi.Input[str] storage_policy: The storage policy to be used for the container.
                Changing this creates a new container.
         :param pulumi.Input[bool] versioning: A boolean that can enable or disable object
                versioning. The default value is `false`. To use this feature, your Swift
@@ -838,7 +838,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which to create the container. If
                omitted, the `region` argument of the provider is used. Changing this
                creates a new container.
-        :param pulumi.Input[str] storage_policy: The storage policy to be used for the container. 
+        :param pulumi.Input[str] storage_policy: The storage policy to be used for the container.
                Changing this creates a new container.
         :param pulumi.Input[bool] versioning: A boolean that can enable or disable object
                versioning. The default value is `false`. To use this feature, your Swift
@@ -953,7 +953,7 @@ class Container(pulumi.CustomResource):
     @pulumi.getter(name="storagePolicy")
     def storage_policy(self) -> pulumi.Output[str]:
         """
-        The storage policy to be used for the container. 
+        The storage policy to be used for the container.
         Changing this creates a new container.
         """
         return pulumi.get(self, "storage_policy")

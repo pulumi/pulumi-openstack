@@ -84,7 +84,7 @@ export class IpSecPolicy extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
+     * The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
      * is group5. Changing this updates the existing policy.
      */
     public readonly pfs!: pulumi.Output<string>;
@@ -187,7 +187,7 @@ export interface IpSecPolicyState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
+     * The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
      * is group5. Changing this updates the existing policy.
      */
     pfs?: pulumi.Input<string>;
@@ -248,7 +248,7 @@ export interface IpSecPolicyArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
+     * The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
      * is group5. Changing this updates the existing policy.
      */
     pfs?: pulumi.Input<string>;

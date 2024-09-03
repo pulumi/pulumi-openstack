@@ -16,7 +16,7 @@ namespace Pulumi.OpenStack.Identity
     /// raw state as plain-text. Read more about sensitive data in
     /// state.
     /// 
-    /// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+    /// &gt; **Note:** You *must* have admin privileges in your OpenStack cloud to use
     /// this resource.
     /// 
     /// ## Example Usage

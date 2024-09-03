@@ -70,11 +70,11 @@ type SecGroupRule struct {
 
 	// A description of the rule. Changing this creates a new security group rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The direction of the rule, valid values are __ingress__
-	// or __egress__. Changing this creates a new security group rule.
+	// The direction of the rule, valid values are **ingress**
+	// or **egress**. Changing this creates a new security group rule.
 	Direction pulumi.StringOutput `pulumi:"direction"`
-	// The layer 3 protocol type, valid values are __IPv4__
-	// or __IPv6__. Changing this creates a new security group rule.
+	// The layer 3 protocol type, valid values are **IPv4**
+	// or **IPv6**. Changing this creates a new security group rule.
 	Ethertype pulumi.StringOutput `pulumi:"ethertype"`
 	// The higher part of the allowed port range, valid
 	// integer value needs to be between 1 and 65535. Changing this creates a new
@@ -85,27 +85,27 @@ type SecGroupRule struct {
 	// security group rule.
 	PortRangeMin pulumi.IntOutput `pulumi:"portRangeMin"`
 	// The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-	// * __tcp__
-	// * __udp__
-	// * __icmp__
-	// * __ah__
-	// * __dccp__
-	// * __egp__
-	// * __esp__
-	// * __gre__
-	// * __igmp__
-	// * __ipv6-encap__
-	// * __ipv6-frag__
-	// * __ipv6-icmp__
-	// * __ipv6-nonxt__
-	// * __ipv6-opts__
-	// * __ipv6-route__
-	// * __ospf__
-	// * __pgm__
-	// * __rsvp__
-	// * __sctp__
-	// * __udplite__
-	// * __vrrp__
+	// * **tcp**
+	// * **udp**
+	// * **icmp**
+	// * **ah**
+	// * **dccp**
+	// * **egp**
+	// * **esp**
+	// * **gre**
+	// * **igmp**
+	// * **ipv6-encap**
+	// * **ipv6-frag**
+	// * **ipv6-icmp**
+	// * **ipv6-nonxt**
+	// * **ipv6-opts**
+	// * **ipv6-route**
+	// * **ospf**
+	// * **pgm**
+	// * **rsvp**
+	// * **sctp**
+	// * **udplite**
+	// * **vrrp**
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a port. If omitted, the
@@ -170,11 +170,11 @@ func GetSecGroupRule(ctx *pulumi.Context,
 type secGroupRuleState struct {
 	// A description of the rule. Changing this creates a new security group rule.
 	Description *string `pulumi:"description"`
-	// The direction of the rule, valid values are __ingress__
-	// or __egress__. Changing this creates a new security group rule.
+	// The direction of the rule, valid values are **ingress**
+	// or **egress**. Changing this creates a new security group rule.
 	Direction *string `pulumi:"direction"`
-	// The layer 3 protocol type, valid values are __IPv4__
-	// or __IPv6__. Changing this creates a new security group rule.
+	// The layer 3 protocol type, valid values are **IPv4**
+	// or **IPv6**. Changing this creates a new security group rule.
 	Ethertype *string `pulumi:"ethertype"`
 	// The higher part of the allowed port range, valid
 	// integer value needs to be between 1 and 65535. Changing this creates a new
@@ -185,27 +185,27 @@ type secGroupRuleState struct {
 	// security group rule.
 	PortRangeMin *int `pulumi:"portRangeMin"`
 	// The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-	// * __tcp__
-	// * __udp__
-	// * __icmp__
-	// * __ah__
-	// * __dccp__
-	// * __egp__
-	// * __esp__
-	// * __gre__
-	// * __igmp__
-	// * __ipv6-encap__
-	// * __ipv6-frag__
-	// * __ipv6-icmp__
-	// * __ipv6-nonxt__
-	// * __ipv6-opts__
-	// * __ipv6-route__
-	// * __ospf__
-	// * __pgm__
-	// * __rsvp__
-	// * __sctp__
-	// * __udplite__
-	// * __vrrp__
+	// * **tcp**
+	// * **udp**
+	// * **icmp**
+	// * **ah**
+	// * **dccp**
+	// * **egp**
+	// * **esp**
+	// * **gre**
+	// * **igmp**
+	// * **ipv6-encap**
+	// * **ipv6-frag**
+	// * **ipv6-icmp**
+	// * **ipv6-nonxt**
+	// * **ipv6-opts**
+	// * **ipv6-route**
+	// * **ospf**
+	// * **pgm**
+	// * **rsvp**
+	// * **sctp**
+	// * **udplite**
+	// * **vrrp**
 	Protocol *string `pulumi:"protocol"`
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a port. If omitted, the
@@ -232,11 +232,11 @@ type secGroupRuleState struct {
 type SecGroupRuleState struct {
 	// A description of the rule. Changing this creates a new security group rule.
 	Description pulumi.StringPtrInput
-	// The direction of the rule, valid values are __ingress__
-	// or __egress__. Changing this creates a new security group rule.
+	// The direction of the rule, valid values are **ingress**
+	// or **egress**. Changing this creates a new security group rule.
 	Direction pulumi.StringPtrInput
-	// The layer 3 protocol type, valid values are __IPv4__
-	// or __IPv6__. Changing this creates a new security group rule.
+	// The layer 3 protocol type, valid values are **IPv4**
+	// or **IPv6**. Changing this creates a new security group rule.
 	Ethertype pulumi.StringPtrInput
 	// The higher part of the allowed port range, valid
 	// integer value needs to be between 1 and 65535. Changing this creates a new
@@ -247,27 +247,27 @@ type SecGroupRuleState struct {
 	// security group rule.
 	PortRangeMin pulumi.IntPtrInput
 	// The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-	// * __tcp__
-	// * __udp__
-	// * __icmp__
-	// * __ah__
-	// * __dccp__
-	// * __egp__
-	// * __esp__
-	// * __gre__
-	// * __igmp__
-	// * __ipv6-encap__
-	// * __ipv6-frag__
-	// * __ipv6-icmp__
-	// * __ipv6-nonxt__
-	// * __ipv6-opts__
-	// * __ipv6-route__
-	// * __ospf__
-	// * __pgm__
-	// * __rsvp__
-	// * __sctp__
-	// * __udplite__
-	// * __vrrp__
+	// * **tcp**
+	// * **udp**
+	// * **icmp**
+	// * **ah**
+	// * **dccp**
+	// * **egp**
+	// * **esp**
+	// * **gre**
+	// * **igmp**
+	// * **ipv6-encap**
+	// * **ipv6-frag**
+	// * **ipv6-icmp**
+	// * **ipv6-nonxt**
+	// * **ipv6-opts**
+	// * **ipv6-route**
+	// * **ospf**
+	// * **pgm**
+	// * **rsvp**
+	// * **sctp**
+	// * **udplite**
+	// * **vrrp**
 	Protocol pulumi.StringPtrInput
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a port. If omitted, the
@@ -298,11 +298,11 @@ func (SecGroupRuleState) ElementType() reflect.Type {
 type secGroupRuleArgs struct {
 	// A description of the rule. Changing this creates a new security group rule.
 	Description *string `pulumi:"description"`
-	// The direction of the rule, valid values are __ingress__
-	// or __egress__. Changing this creates a new security group rule.
+	// The direction of the rule, valid values are **ingress**
+	// or **egress**. Changing this creates a new security group rule.
 	Direction string `pulumi:"direction"`
-	// The layer 3 protocol type, valid values are __IPv4__
-	// or __IPv6__. Changing this creates a new security group rule.
+	// The layer 3 protocol type, valid values are **IPv4**
+	// or **IPv6**. Changing this creates a new security group rule.
 	Ethertype string `pulumi:"ethertype"`
 	// The higher part of the allowed port range, valid
 	// integer value needs to be between 1 and 65535. Changing this creates a new
@@ -313,27 +313,27 @@ type secGroupRuleArgs struct {
 	// security group rule.
 	PortRangeMin *int `pulumi:"portRangeMin"`
 	// The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-	// * __tcp__
-	// * __udp__
-	// * __icmp__
-	// * __ah__
-	// * __dccp__
-	// * __egp__
-	// * __esp__
-	// * __gre__
-	// * __igmp__
-	// * __ipv6-encap__
-	// * __ipv6-frag__
-	// * __ipv6-icmp__
-	// * __ipv6-nonxt__
-	// * __ipv6-opts__
-	// * __ipv6-route__
-	// * __ospf__
-	// * __pgm__
-	// * __rsvp__
-	// * __sctp__
-	// * __udplite__
-	// * __vrrp__
+	// * **tcp**
+	// * **udp**
+	// * **icmp**
+	// * **ah**
+	// * **dccp**
+	// * **egp**
+	// * **esp**
+	// * **gre**
+	// * **igmp**
+	// * **ipv6-encap**
+	// * **ipv6-frag**
+	// * **ipv6-icmp**
+	// * **ipv6-nonxt**
+	// * **ipv6-opts**
+	// * **ipv6-route**
+	// * **ospf**
+	// * **pgm**
+	// * **rsvp**
+	// * **sctp**
+	// * **udplite**
+	// * **vrrp**
 	Protocol *string `pulumi:"protocol"`
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a port. If omitted, the
@@ -361,11 +361,11 @@ type secGroupRuleArgs struct {
 type SecGroupRuleArgs struct {
 	// A description of the rule. Changing this creates a new security group rule.
 	Description pulumi.StringPtrInput
-	// The direction of the rule, valid values are __ingress__
-	// or __egress__. Changing this creates a new security group rule.
+	// The direction of the rule, valid values are **ingress**
+	// or **egress**. Changing this creates a new security group rule.
 	Direction pulumi.StringInput
-	// The layer 3 protocol type, valid values are __IPv4__
-	// or __IPv6__. Changing this creates a new security group rule.
+	// The layer 3 protocol type, valid values are **IPv4**
+	// or **IPv6**. Changing this creates a new security group rule.
 	Ethertype pulumi.StringInput
 	// The higher part of the allowed port range, valid
 	// integer value needs to be between 1 and 65535. Changing this creates a new
@@ -376,27 +376,27 @@ type SecGroupRuleArgs struct {
 	// security group rule.
 	PortRangeMin pulumi.IntPtrInput
 	// The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-	// * __tcp__
-	// * __udp__
-	// * __icmp__
-	// * __ah__
-	// * __dccp__
-	// * __egp__
-	// * __esp__
-	// * __gre__
-	// * __igmp__
-	// * __ipv6-encap__
-	// * __ipv6-frag__
-	// * __ipv6-icmp__
-	// * __ipv6-nonxt__
-	// * __ipv6-opts__
-	// * __ipv6-route__
-	// * __ospf__
-	// * __pgm__
-	// * __rsvp__
-	// * __sctp__
-	// * __udplite__
-	// * __vrrp__
+	// * **tcp**
+	// * **udp**
+	// * **icmp**
+	// * **ah**
+	// * **dccp**
+	// * **egp**
+	// * **esp**
+	// * **gre**
+	// * **igmp**
+	// * **ipv6-encap**
+	// * **ipv6-frag**
+	// * **ipv6-icmp**
+	// * **ipv6-nonxt**
+	// * **ipv6-opts**
+	// * **ipv6-route**
+	// * **ospf**
+	// * **pgm**
+	// * **rsvp**
+	// * **sctp**
+	// * **udplite**
+	// * **vrrp**
 	Protocol pulumi.StringPtrInput
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a port. If omitted, the
@@ -512,14 +512,14 @@ func (o SecGroupRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecGroupRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The direction of the rule, valid values are __ingress__
-// or __egress__. Changing this creates a new security group rule.
+// The direction of the rule, valid values are **ingress**
+// or **egress**. Changing this creates a new security group rule.
 func (o SecGroupRuleOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecGroupRule) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
 }
 
-// The layer 3 protocol type, valid values are __IPv4__
-// or __IPv6__. Changing this creates a new security group rule.
+// The layer 3 protocol type, valid values are **IPv4**
+// or **IPv6**. Changing this creates a new security group rule.
 func (o SecGroupRuleOutput) Ethertype() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecGroupRule) pulumi.StringOutput { return v.Ethertype }).(pulumi.StringOutput)
 }
@@ -539,27 +539,27 @@ func (o SecGroupRuleOutput) PortRangeMin() pulumi.IntOutput {
 }
 
 // The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-// * __tcp__
-// * __udp__
-// * __icmp__
-// * __ah__
-// * __dccp__
-// * __egp__
-// * __esp__
-// * __gre__
-// * __igmp__
-// * __ipv6-encap__
-// * __ipv6-frag__
-// * __ipv6-icmp__
-// * __ipv6-nonxt__
-// * __ipv6-opts__
-// * __ipv6-route__
-// * __ospf__
-// * __pgm__
-// * __rsvp__
-// * __sctp__
-// * __udplite__
-// * __vrrp__
+// * **tcp**
+// * **udp**
+// * **icmp**
+// * **ah**
+// * **dccp**
+// * **egp**
+// * **esp**
+// * **gre**
+// * **igmp**
+// * **ipv6-encap**
+// * **ipv6-frag**
+// * **ipv6-icmp**
+// * **ipv6-nonxt**
+// * **ipv6-opts**
+// * **ipv6-route**
+// * **ospf**
+// * **pgm**
+// * **rsvp**
+// * **sctp**
+// * **udplite**
+// * **vrrp**
 func (o SecGroupRuleOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecGroupRule) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }

@@ -132,7 +132,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly vipPortId!: pulumi.Output<string>;
     /**
-     * The ID of the QoS Policy which will 
+     * The ID of the QoS Policy which will
      * be applied to the Virtual IP (VIP).
      */
     public readonly vipQosPolicyId!: pulumi.Output<string | undefined>;
@@ -277,7 +277,7 @@ export interface LoadBalancerState {
      */
     vipPortId?: pulumi.Input<string>;
     /**
-     * The ID of the QoS Policy which will 
+     * The ID of the QoS Policy which will
      * be applied to the Virtual IP (VIP).
      */
     vipQosPolicyId?: pulumi.Input<string>;
@@ -369,7 +369,7 @@ export interface LoadBalancerArgs {
      */
     vipPortId?: pulumi.Input<string>;
     /**
-     * The ID of the QoS Policy which will 
+     * The ID of the QoS Policy which will
      * be applied to the Virtual IP (VIP).
      */
     vipQosPolicyId?: pulumi.Input<string>;

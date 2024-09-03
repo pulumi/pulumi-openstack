@@ -223,7 +223,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The storage policy to be used for the container. 
+        /// The storage policy to be used for the container.
         /// Changing this creates a new container.
         /// </summary>
         [Output("storagePolicy")]
@@ -364,7 +364,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The storage policy to be used for the container. 
+        /// The storage policy to be used for the container.
         /// Changing this creates a new container.
         /// </summary>
         [Input("storagePolicy")]
@@ -467,7 +467,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The storage policy to be used for the container. 
+        /// The storage policy to be used for the container.
         /// Changing this creates a new container.
         /// </summary>
         [Input("storagePolicy")]

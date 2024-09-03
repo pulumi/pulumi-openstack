@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 /**
  * Manages a V3 Role resource within OpenStack Keystone.
  * 
- * &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+ * &gt; **Note:** You *must* have admin privileges in your OpenStack cloud to use
  * this resource.
  * 
  * ## Example Usage

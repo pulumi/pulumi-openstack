@@ -59,7 +59,7 @@ namespace Pulumi.OpenStack.Networking
         public Output<ImmutableArray<string>> AllTags { get; private set; } = null!;
 
         /// <summary>
-        /// An availability zone is used to make 
+        /// An availability zone is used to make
         /// network resources highly available. Used for resources with high availability
         /// so that they are scheduled on different availability zones. Changing this
         /// creates a new router.
@@ -219,7 +219,7 @@ namespace Pulumi.OpenStack.Networking
         private InputList<string>? _availabilityZoneHints;
 
         /// <summary>
-        /// An availability zone is used to make 
+        /// An availability zone is used to make
         /// network resources highly available. Used for resources with high availability
         /// so that they are scheduled on different availability zones. Changing this
         /// creates a new router.
@@ -381,7 +381,7 @@ namespace Pulumi.OpenStack.Networking
         private InputList<string>? _availabilityZoneHints;
 
         /// <summary>
-        /// An availability zone is used to make 
+        /// An availability zone is used to make
         /// network resources highly available. Used for resources with high availability
         /// so that they are scheduled on different availability zones. Changing this
         /// creates a new router.

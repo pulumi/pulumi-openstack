@@ -125,7 +125,7 @@ type LookupImageResult struct {
 	MemberStatus *string `pulumi:"memberStatus"`
 	// The metadata associated with the image. Image metadata allow for
 	// meaningfully define the image properties and tags. See
-	// https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+	// <https://docs.openstack.org/glance/latest/user/metadefs-concepts.html>.
 	Metadata map[string]string `pulumi:"metadata"`
 	// The minimum amount of disk space required to use the image.
 	MinDiskGb int `pulumi:"minDiskGb"`
@@ -282,7 +282,7 @@ func (o LookupImageResultOutput) MemberStatus() pulumi.StringPtrOutput {
 
 // The metadata associated with the image. Image metadata allow for
 // meaningfully define the image properties and tags. See
-// https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+// <https://docs.openstack.org/glance/latest/user/metadefs-concepts.html>.
 func (o LookupImageResultOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupImageResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }

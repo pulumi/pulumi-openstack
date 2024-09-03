@@ -72,7 +72,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Output<string> ExpectedCodes { get; private set; } = null!;
 
         /// <summary>
-        /// Required for HTTP(S) types. The HTTP method that 
+        /// Required for HTTP(S) types. The HTTP method that
         /// the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
         /// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
         /// </summary>
@@ -88,7 +88,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Output<int> MaxRetries { get; private set; } = null!;
 
         /// <summary>
-        /// Number of permissible ping failures before 
+        /// Number of permissible ping failures before
         /// changing the member's status to ERROR. Must be a number between 1 and 10.
         /// The default is 3. Changing this updates the max_retries_down of the
         /// existing monitor.
@@ -216,7 +216,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<string>? ExpectedCodes { get; set; }
 
         /// <summary>
-        /// Required for HTTP(S) types. The HTTP method that 
+        /// Required for HTTP(S) types. The HTTP method that
         /// the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
         /// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
         /// </summary>
@@ -232,7 +232,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<int> MaxRetries { get; set; } = null!;
 
         /// <summary>
-        /// Number of permissible ping failures before 
+        /// Number of permissible ping failures before
         /// changing the member's status to ERROR. Must be a number between 1 and 10.
         /// The default is 3. Changing this updates the max_retries_down of the
         /// existing monitor.
@@ -322,7 +322,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<string>? ExpectedCodes { get; set; }
 
         /// <summary>
-        /// Required for HTTP(S) types. The HTTP method that 
+        /// Required for HTTP(S) types. The HTTP method that
         /// the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
         /// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
         /// </summary>
@@ -338,7 +338,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<int>? MaxRetries { get; set; }
 
         /// <summary>
-        /// Number of permissible ping failures before 
+        /// Number of permissible ping failures before
         /// changing the member's status to ERROR. Must be a number between 1 and 10.
         /// The default is 3. Changing this updates the max_retries_down of the
         /// existing monitor.

@@ -61,9 +61,9 @@ class MembersMember(dict):
         :param bool backup: A bool that indicates whether the member is
                backup. **Requires octavia minor version 2.1 or later**.
         :param str id: The unique ID for the members.
-        :param str monitor_address: An alternate IP address used for health 
+        :param str monitor_address: An alternate IP address used for health
                monitoring a backend member.
-        :param int monitor_port: An alternate protocol port used for health 
+        :param int monitor_port: An alternate protocol port used for health
                monitoring a backend member.
         :param str name: Human-readable name for the member.
         :param str subnet_id: The subnet in which to access the member.
@@ -138,7 +138,7 @@ class MembersMember(dict):
     @pulumi.getter(name="monitorAddress")
     def monitor_address(self) -> Optional[str]:
         """
-        An alternate IP address used for health 
+        An alternate IP address used for health
         monitoring a backend member.
         """
         return pulumi.get(self, "monitor_address")
@@ -147,7 +147,7 @@ class MembersMember(dict):
     @pulumi.getter(name="monitorPort")
     def monitor_port(self) -> Optional[int]:
         """
-        An alternate protocol port used for health 
+        An alternate protocol port used for health
         monitoring a backend member.
         """
         return pulumi.get(self, "monitor_port")

@@ -120,7 +120,7 @@ type Image struct {
 	LocalFilePath pulumi.StringPtrOutput `pulumi:"localFilePath"`
 	// The metadata associated with the image.
 	// Image metadata allow for meaningfully define the image properties
-	// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+	// and tags. See <https://docs.openstack.org/glance/latest/user/metadefs-concepts.html>.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// Amount of disk space (in GB) required to boot
 	// image. Defaults to 0.
@@ -258,7 +258,7 @@ type imageState struct {
 	LocalFilePath *string `pulumi:"localFilePath"`
 	// The metadata associated with the image.
 	// Image metadata allow for meaningfully define the image properties
-	// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+	// and tags. See <https://docs.openstack.org/glance/latest/user/metadefs-concepts.html>.
 	Metadata map[string]string `pulumi:"metadata"`
 	// Amount of disk space (in GB) required to boot
 	// image. Defaults to 0.
@@ -354,7 +354,7 @@ type ImageState struct {
 	LocalFilePath pulumi.StringPtrInput
 	// The metadata associated with the image.
 	// Image metadata allow for meaningfully define the image properties
-	// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+	// and tags. See <https://docs.openstack.org/glance/latest/user/metadefs-concepts.html>.
 	Metadata pulumi.StringMapInput
 	// Amount of disk space (in GB) required to boot
 	// image. Defaults to 0.
@@ -724,7 +724,7 @@ func (o ImageOutput) LocalFilePath() pulumi.StringPtrOutput {
 
 // The metadata associated with the image.
 // Image metadata allow for meaningfully define the image properties
-// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+// and tags. See <https://docs.openstack.org/glance/latest/user/metadefs-concepts.html>.
 func (o ImageOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }

@@ -35,7 +35,7 @@ class RouterArgs:
         :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the router
                (must be "true" or "false" if provided). Changing this updates the
                `admin_state_up` of an existing router.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make
                network resources highly available. Used for resources with high availability
                so that they are scheduled on different availability zones. Changing this
                creates a new router.
@@ -121,7 +121,7 @@ class RouterArgs:
     @pulumi.getter(name="availabilityZoneHints")
     def availability_zone_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        An availability zone is used to make 
+        An availability zone is used to make
         network resources highly available. Used for resources with high availability
         so that they are scheduled on different availability zones. Changing this
         creates a new router.
@@ -324,7 +324,7 @@ class _RouterState:
                `admin_state_up` of an existing router.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] all_tags: The collection of tags assigned on the router, which have been
                explicitly and implicitly added.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make
                network resources highly available. Used for resources with high availability
                so that they are scheduled on different availability zones. Changing this
                creates a new router.
@@ -425,7 +425,7 @@ class _RouterState:
     @pulumi.getter(name="availabilityZoneHints")
     def availability_zone_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        An availability zone is used to make 
+        An availability zone is used to make
         network resources highly available. Used for resources with high availability
         so that they are scheduled on different availability zones. Changing this
         creates a new router.
@@ -651,7 +651,7 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the router
                (must be "true" or "false" if provided). Changing this updates the
                `admin_state_up` of an existing router.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make
                network resources highly available. Used for resources with high availability
                so that they are scheduled on different availability zones. Changing this
                creates a new router.
@@ -809,7 +809,7 @@ class Router(pulumi.CustomResource):
                `admin_state_up` of an existing router.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] all_tags: The collection of tags assigned on the router, which have been
                explicitly and implicitly added.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make
                network resources highly available. Used for resources with high availability
                so that they are scheduled on different availability zones. Changing this
                creates a new router.
@@ -892,7 +892,7 @@ class Router(pulumi.CustomResource):
     @pulumi.getter(name="availabilityZoneHints")
     def availability_zone_hints(self) -> pulumi.Output[Sequence[str]]:
         """
-        An availability zone is used to make 
+        An availability zone is used to make
         network resources highly available. Used for resources with high availability
         so that they are scheduled on different availability zones. Changing this
         creates a new router.

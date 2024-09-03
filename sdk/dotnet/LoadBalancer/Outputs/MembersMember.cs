@@ -33,12 +33,12 @@ namespace Pulumi.OpenStack.LoadBalancer.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// An alternate IP address used for health 
+        /// An alternate IP address used for health
         /// monitoring a backend member.
         /// </summary>
         public readonly string? MonitorAddress;
         /// <summary>
-        /// An alternate protocol port used for health 
+        /// An alternate protocol port used for health
         /// monitoring a backend member.
         /// </summary>
         public readonly int? MonitorPort;
