@@ -32,16 +32,16 @@ public final class SecGroupRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The direction of the rule, valid values are __ingress__
-     * or __egress__. Changing this creates a new security group rule.
+     * The direction of the rule, valid values are **ingress**
+     * or **egress**. Changing this creates a new security group rule.
      * 
      */
     @Import(name="direction")
     private @Nullable Output<String> direction;
 
     /**
-     * @return The direction of the rule, valid values are __ingress__
-     * or __egress__. Changing this creates a new security group rule.
+     * @return The direction of the rule, valid values are **ingress**
+     * or **egress**. Changing this creates a new security group rule.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -49,16 +49,16 @@ public final class SecGroupRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The layer 3 protocol type, valid values are __IPv4__
-     * or __IPv6__. Changing this creates a new security group rule.
+     * The layer 3 protocol type, valid values are **IPv4**
+     * or **IPv6**. Changing this creates a new security group rule.
      * 
      */
     @Import(name="ethertype")
     private @Nullable Output<String> ethertype;
 
     /**
-     * @return The layer 3 protocol type, valid values are __IPv4__
-     * or __IPv6__. Changing this creates a new security group rule.
+     * @return The layer 3 protocol type, valid values are **IPv4**
+     * or **IPv6**. Changing this creates a new security group rule.
      * 
      */
     public Optional<Output<String>> ethertype() {
@@ -105,27 +105,27 @@ public final class SecGroupRuleState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-     * * __tcp__
-     * * __udp__
-     * * __icmp__
-     * * __ah__
-     * * __dccp__
-     * * __egp__
-     * * __esp__
-     * * __gre__
-     * * __igmp__
-     * * __ipv6-encap__
-     * * __ipv6-frag__
-     * * __ipv6-icmp__
-     * * __ipv6-nonxt__
-     * * __ipv6-opts__
-     * * __ipv6-route__
-     * * __ospf__
-     * * __pgm__
-     * * __rsvp__
-     * * __sctp__
-     * * __udplite__
-     * * __vrrp__
+     * * **tcp**
+     * * **udp**
+     * * **icmp**
+     * * **ah**
+     * * **dccp**
+     * * **egp**
+     * * **esp**
+     * * **gre**
+     * * **igmp**
+     * * **ipv6-encap**
+     * * **ipv6-frag**
+     * * **ipv6-icmp**
+     * * **ipv6-nonxt**
+     * * **ipv6-opts**
+     * * **ipv6-route**
+     * * **ospf**
+     * * **pgm**
+     * * **rsvp**
+     * * **sctp**
+     * * **udplite**
+     * * **vrrp**
      * 
      */
     @Import(name="protocol")
@@ -133,27 +133,27 @@ public final class SecGroupRuleState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-     * * __tcp__
-     * * __udp__
-     * * __icmp__
-     * * __ah__
-     * * __dccp__
-     * * __egp__
-     * * __esp__
-     * * __gre__
-     * * __igmp__
-     * * __ipv6-encap__
-     * * __ipv6-frag__
-     * * __ipv6-icmp__
-     * * __ipv6-nonxt__
-     * * __ipv6-opts__
-     * * __ipv6-route__
-     * * __ospf__
-     * * __pgm__
-     * * __rsvp__
-     * * __sctp__
-     * * __udplite__
-     * * __vrrp__
+     * * **tcp**
+     * * **udp**
+     * * **icmp**
+     * * **ah**
+     * * **dccp**
+     * * **egp**
+     * * **esp**
+     * * **gre**
+     * * **igmp**
+     * * **ipv6-encap**
+     * * **ipv6-frag**
+     * * **ipv6-icmp**
+     * * **ipv6-nonxt**
+     * * **ipv6-opts**
+     * * **ipv6-route**
+     * * **ospf**
+     * * **pgm**
+     * * **rsvp**
+     * * **sctp**
+     * * **udplite**
+     * * **vrrp**
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -311,8 +311,8 @@ public final class SecGroupRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param direction The direction of the rule, valid values are __ingress__
-         * or __egress__. Changing this creates a new security group rule.
+         * @param direction The direction of the rule, valid values are **ingress**
+         * or **egress**. Changing this creates a new security group rule.
          * 
          * @return builder
          * 
@@ -323,8 +323,8 @@ public final class SecGroupRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param direction The direction of the rule, valid values are __ingress__
-         * or __egress__. Changing this creates a new security group rule.
+         * @param direction The direction of the rule, valid values are **ingress**
+         * or **egress**. Changing this creates a new security group rule.
          * 
          * @return builder
          * 
@@ -334,8 +334,8 @@ public final class SecGroupRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ethertype The layer 3 protocol type, valid values are __IPv4__
-         * or __IPv6__. Changing this creates a new security group rule.
+         * @param ethertype The layer 3 protocol type, valid values are **IPv4**
+         * or **IPv6**. Changing this creates a new security group rule.
          * 
          * @return builder
          * 
@@ -346,8 +346,8 @@ public final class SecGroupRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ethertype The layer 3 protocol type, valid values are __IPv4__
-         * or __IPv6__. Changing this creates a new security group rule.
+         * @param ethertype The layer 3 protocol type, valid values are **IPv4**
+         * or **IPv6**. Changing this creates a new security group rule.
          * 
          * @return builder
          * 
@@ -408,27 +408,27 @@ public final class SecGroupRuleState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocol The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-         * * __tcp__
-         * * __udp__
-         * * __icmp__
-         * * __ah__
-         * * __dccp__
-         * * __egp__
-         * * __esp__
-         * * __gre__
-         * * __igmp__
-         * * __ipv6-encap__
-         * * __ipv6-frag__
-         * * __ipv6-icmp__
-         * * __ipv6-nonxt__
-         * * __ipv6-opts__
-         * * __ipv6-route__
-         * * __ospf__
-         * * __pgm__
-         * * __rsvp__
-         * * __sctp__
-         * * __udplite__
-         * * __vrrp__
+         * * **tcp**
+         * * **udp**
+         * * **icmp**
+         * * **ah**
+         * * **dccp**
+         * * **egp**
+         * * **esp**
+         * * **gre**
+         * * **igmp**
+         * * **ipv6-encap**
+         * * **ipv6-frag**
+         * * **ipv6-icmp**
+         * * **ipv6-nonxt**
+         * * **ipv6-opts**
+         * * **ipv6-route**
+         * * **ospf**
+         * * **pgm**
+         * * **rsvp**
+         * * **sctp**
+         * * **udplite**
+         * * **vrrp**
          * 
          * @return builder
          * 
@@ -440,27 +440,27 @@ public final class SecGroupRuleState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocol The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-         * * __tcp__
-         * * __udp__
-         * * __icmp__
-         * * __ah__
-         * * __dccp__
-         * * __egp__
-         * * __esp__
-         * * __gre__
-         * * __igmp__
-         * * __ipv6-encap__
-         * * __ipv6-frag__
-         * * __ipv6-icmp__
-         * * __ipv6-nonxt__
-         * * __ipv6-opts__
-         * * __ipv6-route__
-         * * __ospf__
-         * * __pgm__
-         * * __rsvp__
-         * * __sctp__
-         * * __udplite__
-         * * __vrrp__
+         * * **tcp**
+         * * **udp**
+         * * **icmp**
+         * * **ah**
+         * * **dccp**
+         * * **egp**
+         * * **esp**
+         * * **gre**
+         * * **igmp**
+         * * **ipv6-encap**
+         * * **ipv6-frag**
+         * * **ipv6-icmp**
+         * * **ipv6-nonxt**
+         * * **ipv6-opts**
+         * * **ipv6-route**
+         * * **ospf**
+         * * **pgm**
+         * * **rsvp**
+         * * **sctp**
+         * * **udplite**
+         * * **vrrp**
          * 
          * @return builder
          * 

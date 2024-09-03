@@ -68,7 +68,7 @@ export class Member extends pulumi.CustomResource {
      */
     public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
-     * Boolean that indicates whether that member works as a backup or not. Available 
+     * Boolean that indicates whether that member works as a backup or not. Available
      * only for Octavia >= 2.1.
      */
     public readonly backup!: pulumi.Output<boolean | undefined>;
@@ -197,7 +197,7 @@ export interface MemberState {
      */
     adminStateUp?: pulumi.Input<boolean>;
     /**
-     * Boolean that indicates whether that member works as a backup or not. Available 
+     * Boolean that indicates whether that member works as a backup or not. Available
      * only for Octavia >= 2.1.
      */
     backup?: pulumi.Input<boolean>;
@@ -271,7 +271,7 @@ export interface MemberArgs {
      */
     adminStateUp?: pulumi.Input<boolean>;
     /**
-     * Boolean that indicates whether that member works as a backup or not. Available 
+     * Boolean that indicates whether that member works as a backup or not. Available
      * only for Octavia >= 2.1.
      */
     backup?: pulumi.Input<boolean>;

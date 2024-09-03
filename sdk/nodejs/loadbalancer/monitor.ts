@@ -79,7 +79,7 @@ export class Monitor extends pulumi.CustomResource {
      */
     public readonly expectedCodes!: pulumi.Output<string>;
     /**
-     * Required for HTTP(S) types. The HTTP method that 
+     * Required for HTTP(S) types. The HTTP method that
      * the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
      * OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
      */
@@ -91,7 +91,7 @@ export class Monitor extends pulumi.CustomResource {
      */
     public readonly maxRetries!: pulumi.Output<number>;
     /**
-     * Number of permissible ping failures before 
+     * Number of permissible ping failures before
      * changing the member's status to ERROR. Must be a number between 1 and 10.
      * The default is 3. Changing this updates the maxRetriesDown of the
      * existing monitor.
@@ -218,7 +218,7 @@ export interface MonitorState {
      */
     expectedCodes?: pulumi.Input<string>;
     /**
-     * Required for HTTP(S) types. The HTTP method that 
+     * Required for HTTP(S) types. The HTTP method that
      * the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
      * OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
      */
@@ -230,7 +230,7 @@ export interface MonitorState {
      */
     maxRetries?: pulumi.Input<number>;
     /**
-     * Number of permissible ping failures before 
+     * Number of permissible ping failures before
      * changing the member's status to ERROR. Must be a number between 1 and 10.
      * The default is 3. Changing this updates the maxRetriesDown of the
      * existing monitor.
@@ -296,7 +296,7 @@ export interface MonitorArgs {
      */
     expectedCodes?: pulumi.Input<string>;
     /**
-     * Required for HTTP(S) types. The HTTP method that 
+     * Required for HTTP(S) types. The HTTP method that
      * the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
      * OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
      */
@@ -308,7 +308,7 @@ export interface MonitorArgs {
      */
     maxRetries: pulumi.Input<number>;
     /**
-     * Number of permissible ping failures before 
+     * Number of permissible ping failures before
      * changing the member's status to ERROR. Must be a number between 1 and 10.
      * The default is 3. Changing this updates the maxRetriesDown of the
      * existing monitor.

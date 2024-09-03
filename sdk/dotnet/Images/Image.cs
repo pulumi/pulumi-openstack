@@ -163,7 +163,7 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// The metadata associated with the image.
         /// Image metadata allow for meaningfully define the image properties
-        /// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+        /// and tags. See &lt;https://docs.openstack.org/glance/latest/user/metadefs-concepts.html&gt;.
         /// </summary>
         [Output("metadata")]
         public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
@@ -610,7 +610,7 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// The metadata associated with the image.
         /// Image metadata allow for meaningfully define the image properties
-        /// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+        /// and tags. See &lt;https://docs.openstack.org/glance/latest/user/metadefs-concepts.html&gt;.
         /// </summary>
         public InputMap<string> Metadata
         {

@@ -176,7 +176,7 @@ class GroupV3(pulumi.CustomResource):
         """
         Manages a V3 group resource within OpenStack Keystone.
 
-        > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+        > **Note:** You *must* have admin privileges in your OpenStack cloud to use
         this resource.
 
         ## Example Usage
@@ -216,7 +216,7 @@ class GroupV3(pulumi.CustomResource):
         """
         Manages a V3 group resource within OpenStack Keystone.
 
-        > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+        > **Note:** You *must* have admin privileges in your OpenStack cloud to use
         this resource.
 
         ## Example Usage

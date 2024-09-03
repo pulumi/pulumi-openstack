@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * raw state as plain-text. Read more about sensitive data in
  * state.
  *
- * > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+ * > **Note:** You *must* have admin privileges in your OpenStack cloud to use
  * this resource.
  *
  * ## Example Usage

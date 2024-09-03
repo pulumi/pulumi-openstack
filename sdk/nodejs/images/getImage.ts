@@ -168,7 +168,7 @@ export interface GetImageResult {
     /**
      * The metadata associated with the image. Image metadata allow for
      * meaningfully define the image properties and tags. See
-     * https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+     * <https://docs.openstack.org/glance/latest/user/metadefs-concepts.html>.
      */
     readonly metadata: {[key: string]: string};
     /**

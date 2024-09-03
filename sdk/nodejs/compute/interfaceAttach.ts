@@ -115,7 +115,7 @@ export class InterfaceAttach extends pulumi.CustomResource {
 
     /**
      * An IP address to assosciate with the port.
-     * _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+     * *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
      */
     public readonly fixedIp!: pulumi.Output<string>;
     /**
@@ -124,12 +124,12 @@ export class InterfaceAttach extends pulumi.CustomResource {
     public readonly instanceId!: pulumi.Output<string>;
     /**
      * The ID of the Network to attach to an Instance. A port will be created automatically.
-     * _NOTE_: This option and `portId` are mutually exclusive.
+     * *NOTE*: This option and `portId` are mutually exclusive.
      */
     public readonly networkId!: pulumi.Output<string>;
     /**
      * The ID of the Port to attach to an Instance.
-     * _NOTE_: This option and `networkId` are mutually exclusive.
+     * *NOTE*: This option and `networkId` are mutually exclusive.
      */
     public readonly portId!: pulumi.Output<string>;
     /**
@@ -179,7 +179,7 @@ export class InterfaceAttach extends pulumi.CustomResource {
 export interface InterfaceAttachState {
     /**
      * An IP address to assosciate with the port.
-     * _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+     * *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
      */
     fixedIp?: pulumi.Input<string>;
     /**
@@ -188,12 +188,12 @@ export interface InterfaceAttachState {
     instanceId?: pulumi.Input<string>;
     /**
      * The ID of the Network to attach to an Instance. A port will be created automatically.
-     * _NOTE_: This option and `portId` are mutually exclusive.
+     * *NOTE*: This option and `portId` are mutually exclusive.
      */
     networkId?: pulumi.Input<string>;
     /**
      * The ID of the Port to attach to an Instance.
-     * _NOTE_: This option and `networkId` are mutually exclusive.
+     * *NOTE*: This option and `networkId` are mutually exclusive.
      */
     portId?: pulumi.Input<string>;
     /**
@@ -210,7 +210,7 @@ export interface InterfaceAttachState {
 export interface InterfaceAttachArgs {
     /**
      * An IP address to assosciate with the port.
-     * _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+     * *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
      */
     fixedIp?: pulumi.Input<string>;
     /**
@@ -219,12 +219,12 @@ export interface InterfaceAttachArgs {
     instanceId: pulumi.Input<string>;
     /**
      * The ID of the Network to attach to an Instance. A port will be created automatically.
-     * _NOTE_: This option and `portId` are mutually exclusive.
+     * *NOTE*: This option and `portId` are mutually exclusive.
      */
     networkId?: pulumi.Input<string>;
     /**
      * The ID of the Port to attach to an Instance.
-     * _NOTE_: This option and `networkId` are mutually exclusive.
+     * *NOTE*: This option and `networkId` are mutually exclusive.
      */
     portId?: pulumi.Input<string>;
     /**

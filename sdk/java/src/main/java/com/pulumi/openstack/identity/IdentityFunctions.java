@@ -311,7 +311,7 @@ public final class IdentityFunctions {
     /**
      * Use this data source to get the ID of an OpenStack group.
      * 
-     * &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+     * &gt; **Note:** You *must* have admin privileges in your OpenStack cloud to use
      * this resource.
      * 
      * ## Example Usage
@@ -356,7 +356,7 @@ public final class IdentityFunctions {
     /**
      * Use this data source to get the ID of an OpenStack group.
      * 
-     * &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+     * &gt; **Note:** You *must* have admin privileges in your OpenStack cloud to use
      * this resource.
      * 
      * ## Example Usage
@@ -401,7 +401,7 @@ public final class IdentityFunctions {
     /**
      * Use this data source to get the ID of an OpenStack group.
      * 
-     * &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+     * &gt; **Note:** You *must* have admin privileges in your OpenStack cloud to use
      * this resource.
      * 
      * ## Example Usage
@@ -446,7 +446,7 @@ public final class IdentityFunctions {
     /**
      * Use this data source to get the ID of an OpenStack group.
      * 
-     * &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+     * &gt; **Note:** You *must* have admin privileges in your OpenStack cloud to use
      * this resource.
      * 
      * ## Example Usage

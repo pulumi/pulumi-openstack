@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 /**
  * Manages a user membership to group V3 resource within OpenStack.
  * 
- * &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+ * &gt; **Note:** You *must* have admin privileges in your OpenStack cloud to use
  * this resource.
  * 
  * ***

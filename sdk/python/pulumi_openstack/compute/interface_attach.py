@@ -23,11 +23,11 @@ class InterfaceAttachArgs:
         The set of arguments for constructing a InterfaceAttach resource.
         :param pulumi.Input[str] instance_id: The ID of the Instance to attach the Port or Network to.
         :param pulumi.Input[str] fixed_ip: An IP address to assosciate with the port.
-               _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+               *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
         :param pulumi.Input[str] network_id: The ID of the Network to attach to an Instance. A port will be created automatically.
-               _NOTE_: This option and `port_id` are mutually exclusive.
+               *NOTE*: This option and `port_id` are mutually exclusive.
         :param pulumi.Input[str] port_id: The ID of the Port to attach to an Instance.
-               _NOTE_: This option and `network_id` are mutually exclusive.
+               *NOTE*: This option and `network_id` are mutually exclusive.
         :param pulumi.Input[str] region: The region in which to create the interface attachment.
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new attachment.
@@ -59,7 +59,7 @@ class InterfaceAttachArgs:
     def fixed_ip(self) -> Optional[pulumi.Input[str]]:
         """
         An IP address to assosciate with the port.
-        _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+        *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
         """
         return pulumi.get(self, "fixed_ip")
 
@@ -72,7 +72,7 @@ class InterfaceAttachArgs:
     def network_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the Network to attach to an Instance. A port will be created automatically.
-        _NOTE_: This option and `port_id` are mutually exclusive.
+        *NOTE*: This option and `port_id` are mutually exclusive.
         """
         return pulumi.get(self, "network_id")
 
@@ -85,7 +85,7 @@ class InterfaceAttachArgs:
     def port_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the Port to attach to an Instance.
-        _NOTE_: This option and `network_id` are mutually exclusive.
+        *NOTE*: This option and `network_id` are mutually exclusive.
         """
         return pulumi.get(self, "port_id")
 
@@ -119,12 +119,12 @@ class _InterfaceAttachState:
         """
         Input properties used for looking up and filtering InterfaceAttach resources.
         :param pulumi.Input[str] fixed_ip: An IP address to assosciate with the port.
-               _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+               *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
         :param pulumi.Input[str] instance_id: The ID of the Instance to attach the Port or Network to.
         :param pulumi.Input[str] network_id: The ID of the Network to attach to an Instance. A port will be created automatically.
-               _NOTE_: This option and `port_id` are mutually exclusive.
+               *NOTE*: This option and `port_id` are mutually exclusive.
         :param pulumi.Input[str] port_id: The ID of the Port to attach to an Instance.
-               _NOTE_: This option and `network_id` are mutually exclusive.
+               *NOTE*: This option and `network_id` are mutually exclusive.
         :param pulumi.Input[str] region: The region in which to create the interface attachment.
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new attachment.
@@ -145,7 +145,7 @@ class _InterfaceAttachState:
     def fixed_ip(self) -> Optional[pulumi.Input[str]]:
         """
         An IP address to assosciate with the port.
-        _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+        *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
         """
         return pulumi.get(self, "fixed_ip")
 
@@ -170,7 +170,7 @@ class _InterfaceAttachState:
     def network_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the Network to attach to an Instance. A port will be created automatically.
-        _NOTE_: This option and `port_id` are mutually exclusive.
+        *NOTE*: This option and `port_id` are mutually exclusive.
         """
         return pulumi.get(self, "network_id")
 
@@ -183,7 +183,7 @@ class _InterfaceAttachState:
     def port_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the Port to attach to an Instance.
-        _NOTE_: This option and `network_id` are mutually exclusive.
+        *NOTE*: This option and `network_id` are mutually exclusive.
         """
         return pulumi.get(self, "port_id")
 
@@ -291,12 +291,12 @@ class InterfaceAttach(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] fixed_ip: An IP address to assosciate with the port.
-               _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+               *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
         :param pulumi.Input[str] instance_id: The ID of the Instance to attach the Port or Network to.
         :param pulumi.Input[str] network_id: The ID of the Network to attach to an Instance. A port will be created automatically.
-               _NOTE_: This option and `port_id` are mutually exclusive.
+               *NOTE*: This option and `port_id` are mutually exclusive.
         :param pulumi.Input[str] port_id: The ID of the Port to attach to an Instance.
-               _NOTE_: This option and `network_id` are mutually exclusive.
+               *NOTE*: This option and `network_id` are mutually exclusive.
         :param pulumi.Input[str] region: The region in which to create the interface attachment.
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new attachment.
@@ -437,12 +437,12 @@ class InterfaceAttach(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] fixed_ip: An IP address to assosciate with the port.
-               _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+               *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
         :param pulumi.Input[str] instance_id: The ID of the Instance to attach the Port or Network to.
         :param pulumi.Input[str] network_id: The ID of the Network to attach to an Instance. A port will be created automatically.
-               _NOTE_: This option and `port_id` are mutually exclusive.
+               *NOTE*: This option and `port_id` are mutually exclusive.
         :param pulumi.Input[str] port_id: The ID of the Port to attach to an Instance.
-               _NOTE_: This option and `network_id` are mutually exclusive.
+               *NOTE*: This option and `network_id` are mutually exclusive.
         :param pulumi.Input[str] region: The region in which to create the interface attachment.
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new attachment.
@@ -463,7 +463,7 @@ class InterfaceAttach(pulumi.CustomResource):
     def fixed_ip(self) -> pulumi.Output[str]:
         """
         An IP address to assosciate with the port.
-        _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+        *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
         """
         return pulumi.get(self, "fixed_ip")
 
@@ -480,7 +480,7 @@ class InterfaceAttach(pulumi.CustomResource):
     def network_id(self) -> pulumi.Output[str]:
         """
         The ID of the Network to attach to an Instance. A port will be created automatically.
-        _NOTE_: This option and `port_id` are mutually exclusive.
+        *NOTE*: This option and `port_id` are mutually exclusive.
         """
         return pulumi.get(self, "network_id")
 
@@ -489,7 +489,7 @@ class InterfaceAttach(pulumi.CustomResource):
     def port_id(self) -> pulumi.Output[str]:
         """
         The ID of the Port to attach to an Instance.
-        _NOTE_: This option and `network_id` are mutually exclusive.
+        *NOTE*: This option and `network_id` are mutually exclusive.
         """
         return pulumi.get(self, "port_id")
 

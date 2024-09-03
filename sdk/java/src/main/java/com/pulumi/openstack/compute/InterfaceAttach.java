@@ -192,7 +192,7 @@ import javax.annotation.Nullable;
 public class InterfaceAttach extends com.pulumi.resources.CustomResource {
     /**
      * An IP address to assosciate with the port.
-     * _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+     * *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
      * 
      */
     @Export(name="fixedIp", refs={String.class}, tree="[0]")
@@ -200,7 +200,7 @@ public class InterfaceAttach extends com.pulumi.resources.CustomResource {
 
     /**
      * @return An IP address to assosciate with the port.
-     * _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+     * *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
      * 
      */
     public Output<String> fixedIp() {
@@ -222,7 +222,7 @@ public class InterfaceAttach extends com.pulumi.resources.CustomResource {
     }
     /**
      * The ID of the Network to attach to an Instance. A port will be created automatically.
-     * _NOTE_: This option and `port_id` are mutually exclusive.
+     * *NOTE*: This option and `port_id` are mutually exclusive.
      * 
      */
     @Export(name="networkId", refs={String.class}, tree="[0]")
@@ -230,7 +230,7 @@ public class InterfaceAttach extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID of the Network to attach to an Instance. A port will be created automatically.
-     * _NOTE_: This option and `port_id` are mutually exclusive.
+     * *NOTE*: This option and `port_id` are mutually exclusive.
      * 
      */
     public Output<String> networkId() {
@@ -238,7 +238,7 @@ public class InterfaceAttach extends com.pulumi.resources.CustomResource {
     }
     /**
      * The ID of the Port to attach to an Instance.
-     * _NOTE_: This option and `network_id` are mutually exclusive.
+     * *NOTE*: This option and `network_id` are mutually exclusive.
      * 
      */
     @Export(name="portId", refs={String.class}, tree="[0]")
@@ -246,7 +246,7 @@ public class InterfaceAttach extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID of the Port to attach to an Instance.
-     * _NOTE_: This option and `network_id` are mutually exclusive.
+     * *NOTE*: This option and `network_id` are mutually exclusive.
      * 
      */
     public Output<String> portId() {

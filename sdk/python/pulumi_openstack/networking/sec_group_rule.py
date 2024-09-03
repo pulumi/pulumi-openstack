@@ -27,10 +27,10 @@ class SecGroupRuleArgs:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SecGroupRule resource.
-        :param pulumi.Input[str] direction: The direction of the rule, valid values are __ingress__
-               or __egress__. Changing this creates a new security group rule.
-        :param pulumi.Input[str] ethertype: The layer 3 protocol type, valid values are __IPv4__
-               or __IPv6__. Changing this creates a new security group rule.
+        :param pulumi.Input[str] direction: The direction of the rule, valid values are **ingress**
+               or **egress**. Changing this creates a new security group rule.
+        :param pulumi.Input[str] ethertype: The layer 3 protocol type, valid values are **IPv4**
+               or **IPv6**. Changing this creates a new security group rule.
         :param pulumi.Input[str] security_group_id: The security group id the rule should belong
                to, the value needs to be an Openstack ID of a security group in the same
                tenant. Changing this creates a new security group rule.
@@ -42,27 +42,27 @@ class SecGroupRuleArgs:
                integer value needs to be between 1 and 65535. Changing this creates a new
                security group rule.
         :param pulumi.Input[str] protocol: The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-               * __tcp__
-               * __udp__
-               * __icmp__
-               * __ah__
-               * __dccp__
-               * __egp__
-               * __esp__
-               * __gre__
-               * __igmp__
-               * __ipv6-encap__
-               * __ipv6-frag__
-               * __ipv6-icmp__
-               * __ipv6-nonxt__
-               * __ipv6-opts__
-               * __ipv6-route__
-               * __ospf__
-               * __pgm__
-               * __rsvp__
-               * __sctp__
-               * __udplite__
-               * __vrrp__
+               * **tcp**
+               * **udp**
+               * **icmp**
+               * **ah**
+               * **dccp**
+               * **egp**
+               * **esp**
+               * **gre**
+               * **igmp**
+               * **ipv6-encap**
+               * **ipv6-frag**
+               * **ipv6-icmp**
+               * **ipv6-nonxt**
+               * **ipv6-opts**
+               * **ipv6-route**
+               * **ospf**
+               * **pgm**
+               * **rsvp**
+               * **sctp**
+               * **udplite**
+               * **vrrp**
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -100,8 +100,8 @@ class SecGroupRuleArgs:
     @pulumi.getter
     def direction(self) -> pulumi.Input[str]:
         """
-        The direction of the rule, valid values are __ingress__
-        or __egress__. Changing this creates a new security group rule.
+        The direction of the rule, valid values are **ingress**
+        or **egress**. Changing this creates a new security group rule.
         """
         return pulumi.get(self, "direction")
 
@@ -113,8 +113,8 @@ class SecGroupRuleArgs:
     @pulumi.getter
     def ethertype(self) -> pulumi.Input[str]:
         """
-        The layer 3 protocol type, valid values are __IPv4__
-        or __IPv6__. Changing this creates a new security group rule.
+        The layer 3 protocol type, valid values are **IPv4**
+        or **IPv6**. Changing this creates a new security group rule.
         """
         return pulumi.get(self, "ethertype")
 
@@ -181,27 +181,27 @@ class SecGroupRuleArgs:
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
         The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-        * __tcp__
-        * __udp__
-        * __icmp__
-        * __ah__
-        * __dccp__
-        * __egp__
-        * __esp__
-        * __gre__
-        * __igmp__
-        * __ipv6-encap__
-        * __ipv6-frag__
-        * __ipv6-icmp__
-        * __ipv6-nonxt__
-        * __ipv6-opts__
-        * __ipv6-route__
-        * __ospf__
-        * __pgm__
-        * __rsvp__
-        * __sctp__
-        * __udplite__
-        * __vrrp__
+        * **tcp**
+        * **udp**
+        * **icmp**
+        * **ah**
+        * **dccp**
+        * **egp**
+        * **esp**
+        * **gre**
+        * **igmp**
+        * **ipv6-encap**
+        * **ipv6-frag**
+        * **ipv6-icmp**
+        * **ipv6-nonxt**
+        * **ipv6-opts**
+        * **ipv6-route**
+        * **ospf**
+        * **pgm**
+        * **rsvp**
+        * **sctp**
+        * **udplite**
+        * **vrrp**
         """
         return pulumi.get(self, "protocol")
 
@@ -283,10 +283,10 @@ class _SecGroupRuleState:
         """
         Input properties used for looking up and filtering SecGroupRule resources.
         :param pulumi.Input[str] description: A description of the rule. Changing this creates a new security group rule.
-        :param pulumi.Input[str] direction: The direction of the rule, valid values are __ingress__
-               or __egress__. Changing this creates a new security group rule.
-        :param pulumi.Input[str] ethertype: The layer 3 protocol type, valid values are __IPv4__
-               or __IPv6__. Changing this creates a new security group rule.
+        :param pulumi.Input[str] direction: The direction of the rule, valid values are **ingress**
+               or **egress**. Changing this creates a new security group rule.
+        :param pulumi.Input[str] ethertype: The layer 3 protocol type, valid values are **IPv4**
+               or **IPv6**. Changing this creates a new security group rule.
         :param pulumi.Input[int] port_range_max: The higher part of the allowed port range, valid
                integer value needs to be between 1 and 65535. Changing this creates a new
                security group rule.
@@ -294,27 +294,27 @@ class _SecGroupRuleState:
                integer value needs to be between 1 and 65535. Changing this creates a new
                security group rule.
         :param pulumi.Input[str] protocol: The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-               * __tcp__
-               * __udp__
-               * __icmp__
-               * __ah__
-               * __dccp__
-               * __egp__
-               * __esp__
-               * __gre__
-               * __igmp__
-               * __ipv6-encap__
-               * __ipv6-frag__
-               * __ipv6-icmp__
-               * __ipv6-nonxt__
-               * __ipv6-opts__
-               * __ipv6-route__
-               * __ospf__
-               * __pgm__
-               * __rsvp__
-               * __sctp__
-               * __udplite__
-               * __vrrp__
+               * **tcp**
+               * **udp**
+               * **icmp**
+               * **ah**
+               * **dccp**
+               * **egp**
+               * **esp**
+               * **gre**
+               * **igmp**
+               * **ipv6-encap**
+               * **ipv6-frag**
+               * **ipv6-icmp**
+               * **ipv6-nonxt**
+               * **ipv6-opts**
+               * **ipv6-route**
+               * **ospf**
+               * **pgm**
+               * **rsvp**
+               * **sctp**
+               * **udplite**
+               * **vrrp**
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -370,8 +370,8 @@ class _SecGroupRuleState:
     @pulumi.getter
     def direction(self) -> Optional[pulumi.Input[str]]:
         """
-        The direction of the rule, valid values are __ingress__
-        or __egress__. Changing this creates a new security group rule.
+        The direction of the rule, valid values are **ingress**
+        or **egress**. Changing this creates a new security group rule.
         """
         return pulumi.get(self, "direction")
 
@@ -383,8 +383,8 @@ class _SecGroupRuleState:
     @pulumi.getter
     def ethertype(self) -> Optional[pulumi.Input[str]]:
         """
-        The layer 3 protocol type, valid values are __IPv4__
-        or __IPv6__. Changing this creates a new security group rule.
+        The layer 3 protocol type, valid values are **IPv4**
+        or **IPv6**. Changing this creates a new security group rule.
         """
         return pulumi.get(self, "ethertype")
 
@@ -425,27 +425,27 @@ class _SecGroupRuleState:
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
         The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-        * __tcp__
-        * __udp__
-        * __icmp__
-        * __ah__
-        * __dccp__
-        * __egp__
-        * __esp__
-        * __gre__
-        * __igmp__
-        * __ipv6-encap__
-        * __ipv6-frag__
-        * __ipv6-icmp__
-        * __ipv6-nonxt__
-        * __ipv6-opts__
-        * __ipv6-route__
-        * __ospf__
-        * __pgm__
-        * __rsvp__
-        * __sctp__
-        * __udplite__
-        * __vrrp__
+        * **tcp**
+        * **udp**
+        * **icmp**
+        * **ah**
+        * **dccp**
+        * **egp**
+        * **esp**
+        * **gre**
+        * **igmp**
+        * **ipv6-encap**
+        * **ipv6-frag**
+        * **ipv6-icmp**
+        * **ipv6-nonxt**
+        * **ipv6-opts**
+        * **ipv6-route**
+        * **ospf**
+        * **pgm**
+        * **rsvp**
+        * **sctp**
+        * **udplite**
+        * **vrrp**
         """
         return pulumi.get(self, "protocol")
 
@@ -579,10 +579,10 @@ class SecGroupRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the rule. Changing this creates a new security group rule.
-        :param pulumi.Input[str] direction: The direction of the rule, valid values are __ingress__
-               or __egress__. Changing this creates a new security group rule.
-        :param pulumi.Input[str] ethertype: The layer 3 protocol type, valid values are __IPv4__
-               or __IPv6__. Changing this creates a new security group rule.
+        :param pulumi.Input[str] direction: The direction of the rule, valid values are **ingress**
+               or **egress**. Changing this creates a new security group rule.
+        :param pulumi.Input[str] ethertype: The layer 3 protocol type, valid values are **IPv4**
+               or **IPv6**. Changing this creates a new security group rule.
         :param pulumi.Input[int] port_range_max: The higher part of the allowed port range, valid
                integer value needs to be between 1 and 65535. Changing this creates a new
                security group rule.
@@ -590,27 +590,27 @@ class SecGroupRule(pulumi.CustomResource):
                integer value needs to be between 1 and 65535. Changing this creates a new
                security group rule.
         :param pulumi.Input[str] protocol: The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-               * __tcp__
-               * __udp__
-               * __icmp__
-               * __ah__
-               * __dccp__
-               * __egp__
-               * __esp__
-               * __gre__
-               * __igmp__
-               * __ipv6-encap__
-               * __ipv6-frag__
-               * __ipv6-icmp__
-               * __ipv6-nonxt__
-               * __ipv6-opts__
-               * __ipv6-route__
-               * __ospf__
-               * __pgm__
-               * __rsvp__
-               * __sctp__
-               * __udplite__
-               * __vrrp__
+               * **tcp**
+               * **udp**
+               * **icmp**
+               * **ah**
+               * **dccp**
+               * **egp**
+               * **esp**
+               * **gre**
+               * **igmp**
+               * **ipv6-encap**
+               * **ipv6-frag**
+               * **ipv6-icmp**
+               * **ipv6-nonxt**
+               * **ipv6-opts**
+               * **ipv6-route**
+               * **ospf**
+               * **pgm**
+               * **rsvp**
+               * **sctp**
+               * **udplite**
+               * **vrrp**
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -749,10 +749,10 @@ class SecGroupRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the rule. Changing this creates a new security group rule.
-        :param pulumi.Input[str] direction: The direction of the rule, valid values are __ingress__
-               or __egress__. Changing this creates a new security group rule.
-        :param pulumi.Input[str] ethertype: The layer 3 protocol type, valid values are __IPv4__
-               or __IPv6__. Changing this creates a new security group rule.
+        :param pulumi.Input[str] direction: The direction of the rule, valid values are **ingress**
+               or **egress**. Changing this creates a new security group rule.
+        :param pulumi.Input[str] ethertype: The layer 3 protocol type, valid values are **IPv4**
+               or **IPv6**. Changing this creates a new security group rule.
         :param pulumi.Input[int] port_range_max: The higher part of the allowed port range, valid
                integer value needs to be between 1 and 65535. Changing this creates a new
                security group rule.
@@ -760,27 +760,27 @@ class SecGroupRule(pulumi.CustomResource):
                integer value needs to be between 1 and 65535. Changing this creates a new
                security group rule.
         :param pulumi.Input[str] protocol: The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-               * __tcp__
-               * __udp__
-               * __icmp__
-               * __ah__
-               * __dccp__
-               * __egp__
-               * __esp__
-               * __gre__
-               * __igmp__
-               * __ipv6-encap__
-               * __ipv6-frag__
-               * __ipv6-icmp__
-               * __ipv6-nonxt__
-               * __ipv6-opts__
-               * __ipv6-route__
-               * __ospf__
-               * __pgm__
-               * __rsvp__
-               * __sctp__
-               * __udplite__
-               * __vrrp__
+               * **tcp**
+               * **udp**
+               * **icmp**
+               * **ah**
+               * **dccp**
+               * **egp**
+               * **esp**
+               * **gre**
+               * **igmp**
+               * **ipv6-encap**
+               * **ipv6-frag**
+               * **ipv6-icmp**
+               * **ipv6-nonxt**
+               * **ipv6-opts**
+               * **ipv6-route**
+               * **ospf**
+               * **pgm**
+               * **rsvp**
+               * **sctp**
+               * **udplite**
+               * **vrrp**
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -826,8 +826,8 @@ class SecGroupRule(pulumi.CustomResource):
     @pulumi.getter
     def direction(self) -> pulumi.Output[str]:
         """
-        The direction of the rule, valid values are __ingress__
-        or __egress__. Changing this creates a new security group rule.
+        The direction of the rule, valid values are **ingress**
+        or **egress**. Changing this creates a new security group rule.
         """
         return pulumi.get(self, "direction")
 
@@ -835,8 +835,8 @@ class SecGroupRule(pulumi.CustomResource):
     @pulumi.getter
     def ethertype(self) -> pulumi.Output[str]:
         """
-        The layer 3 protocol type, valid values are __IPv4__
-        or __IPv6__. Changing this creates a new security group rule.
+        The layer 3 protocol type, valid values are **IPv4**
+        or **IPv6**. Changing this creates a new security group rule.
         """
         return pulumi.get(self, "ethertype")
 
@@ -865,27 +865,27 @@ class SecGroupRule(pulumi.CustomResource):
     def protocol(self) -> pulumi.Output[str]:
         """
         The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-        * __tcp__
-        * __udp__
-        * __icmp__
-        * __ah__
-        * __dccp__
-        * __egp__
-        * __esp__
-        * __gre__
-        * __igmp__
-        * __ipv6-encap__
-        * __ipv6-frag__
-        * __ipv6-icmp__
-        * __ipv6-nonxt__
-        * __ipv6-opts__
-        * __ipv6-route__
-        * __ospf__
-        * __pgm__
-        * __rsvp__
-        * __sctp__
-        * __udplite__
-        * __vrrp__
+        * **tcp**
+        * **udp**
+        * **icmp**
+        * **ah**
+        * **dccp**
+        * **egp**
+        * **esp**
+        * **gre**
+        * **igmp**
+        * **ipv6-encap**
+        * **ipv6-frag**
+        * **ipv6-icmp**
+        * **ipv6-nonxt**
+        * **ipv6-opts**
+        * **ipv6-route**
+        * **ospf**
+        * **pgm**
+        * **rsvp**
+        * **sctp**
+        * **udplite**
+        * **vrrp**
         """
         return pulumi.get(self, "protocol")
 

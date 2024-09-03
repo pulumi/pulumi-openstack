@@ -36,9 +36,9 @@ class MembersMemberArgs:
         :param pulumi.Input[bool] backup: A bool that indicates whether the member is
                backup. **Requires octavia minor version 2.1 or later**.
         :param pulumi.Input[str] id: The unique ID for the members.
-        :param pulumi.Input[str] monitor_address: An alternate IP address used for health 
+        :param pulumi.Input[str] monitor_address: An alternate IP address used for health
                monitoring a backend member.
-        :param pulumi.Input[int] monitor_port: An alternate protocol port used for health 
+        :param pulumi.Input[int] monitor_port: An alternate protocol port used for health
                monitoring a backend member.
         :param pulumi.Input[str] name: Human-readable name for the member.
         :param pulumi.Input[str] subnet_id: The subnet in which to access the member.
@@ -133,7 +133,7 @@ class MembersMemberArgs:
     @pulumi.getter(name="monitorAddress")
     def monitor_address(self) -> Optional[pulumi.Input[str]]:
         """
-        An alternate IP address used for health 
+        An alternate IP address used for health
         monitoring a backend member.
         """
         return pulumi.get(self, "monitor_address")
@@ -146,7 +146,7 @@ class MembersMemberArgs:
     @pulumi.getter(name="monitorPort")
     def monitor_port(self) -> Optional[pulumi.Input[int]]:
         """
-        An alternate protocol port used for health 
+        An alternate protocol port used for health
         monitoring a backend member.
         """
         return pulumi.get(self, "monitor_port")

@@ -139,7 +139,7 @@ namespace Pulumi.OpenStack.Compute
     {
         /// <summary>
         /// An IP address to assosciate with the port.
-        /// _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+        /// *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
         /// </summary>
         [Output("fixedIp")]
         public Output<string> FixedIp { get; private set; } = null!;
@@ -152,14 +152,14 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The ID of the Network to attach to an Instance. A port will be created automatically.
-        /// _NOTE_: This option and `port_id` are mutually exclusive.
+        /// *NOTE*: This option and `port_id` are mutually exclusive.
         /// </summary>
         [Output("networkId")]
         public Output<string> NetworkId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the Port to attach to an Instance.
-        /// _NOTE_: This option and `network_id` are mutually exclusive.
+        /// *NOTE*: This option and `network_id` are mutually exclusive.
         /// </summary>
         [Output("portId")]
         public Output<string> PortId { get; private set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.OpenStack.Compute
     {
         /// <summary>
         /// An IP address to assosciate with the port.
-        /// _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+        /// *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
         /// </summary>
         [Input("fixedIp")]
         public Input<string>? FixedIp { get; set; }
@@ -233,14 +233,14 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The ID of the Network to attach to an Instance. A port will be created automatically.
-        /// _NOTE_: This option and `port_id` are mutually exclusive.
+        /// *NOTE*: This option and `port_id` are mutually exclusive.
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
         /// The ID of the Port to attach to an Instance.
-        /// _NOTE_: This option and `network_id` are mutually exclusive.
+        /// *NOTE*: This option and `network_id` are mutually exclusive.
         /// </summary>
         [Input("portId")]
         public Input<string>? PortId { get; set; }
@@ -263,7 +263,7 @@ namespace Pulumi.OpenStack.Compute
     {
         /// <summary>
         /// An IP address to assosciate with the port.
-        /// _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
+        /// *NOTE*: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
         /// </summary>
         [Input("fixedIp")]
         public Input<string>? FixedIp { get; set; }
@@ -276,14 +276,14 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The ID of the Network to attach to an Instance. A port will be created automatically.
-        /// _NOTE_: This option and `port_id` are mutually exclusive.
+        /// *NOTE*: This option and `port_id` are mutually exclusive.
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
         /// The ID of the Port to attach to an Instance.
-        /// _NOTE_: This option and `network_id` are mutually exclusive.
+        /// *NOTE*: This option and `network_id` are mutually exclusive.
         /// </summary>
         [Input("portId")]
         public Input<string>? PortId { get; set; }

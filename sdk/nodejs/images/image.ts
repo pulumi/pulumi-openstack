@@ -149,7 +149,7 @@ export class Image extends pulumi.CustomResource {
     /**
      * The metadata associated with the image.
      * Image metadata allow for meaningfully define the image properties
-     * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+     * and tags. See <https://docs.openstack.org/glance/latest/user/metadefs-concepts.html>.
      */
     public /*out*/ readonly metadata!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -390,7 +390,7 @@ export interface ImageState {
     /**
      * The metadata associated with the image.
      * Image metadata allow for meaningfully define the image properties
-     * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+     * and tags. See <https://docs.openstack.org/glance/latest/user/metadefs-concepts.html>.
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

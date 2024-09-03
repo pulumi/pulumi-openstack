@@ -187,7 +187,7 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * The storage policy to be used for the container. 
+     * The storage policy to be used for the container.
      * Changing this creates a new container.
      */
     public readonly storagePolicy!: pulumi.Output<string>;
@@ -304,7 +304,7 @@ export interface ContainerState {
      */
     region?: pulumi.Input<string>;
     /**
-     * The storage policy to be used for the container. 
+     * The storage policy to be used for the container.
      * Changing this creates a new container.
      */
     storagePolicy?: pulumi.Input<string>;
@@ -377,7 +377,7 @@ export interface ContainerArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * The storage policy to be used for the container. 
+     * The storage policy to be used for the container.
      * Changing this creates a new container.
      */
     storagePolicy?: pulumi.Input<string>;

@@ -458,7 +458,7 @@ class _ImageState:
                `web_download`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata associated with the image.
                Image metadata allow for meaningfully define the image properties
-               and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+               and tags. See <https://docs.openstack.org/glance/latest/user/metadefs-concepts.html>.
         :param pulumi.Input[int] min_disk_gb: Amount of disk space (in GB) required to boot
                image. Defaults to 0.
         :param pulumi.Input[int] min_ram_mb: Amount of ram (in MB) required to boot image.
@@ -727,7 +727,7 @@ class _ImageState:
         """
         The metadata associated with the image.
         Image metadata allow for meaningfully define the image properties
-        and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+        and tags. See <https://docs.openstack.org/glance/latest/user/metadefs-concepts.html>.
         """
         return pulumi.get(self, "metadata")
 
@@ -1267,7 +1267,7 @@ class Image(pulumi.CustomResource):
                `web_download`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata associated with the image.
                Image metadata allow for meaningfully define the image properties
-               and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+               and tags. See <https://docs.openstack.org/glance/latest/user/metadefs-concepts.html>.
         :param pulumi.Input[int] min_disk_gb: Amount of disk space (in GB) required to boot
                image. Defaults to 0.
         :param pulumi.Input[int] min_ram_mb: Amount of ram (in MB) required to boot image.
@@ -1460,7 +1460,7 @@ class Image(pulumi.CustomResource):
         """
         The metadata associated with the image.
         Image metadata allow for meaningfully define the image properties
-        and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+        and tags. See <https://docs.openstack.org/glance/latest/user/metadefs-concepts.html>.
         """
         return pulumi.get(self, "metadata")
 

@@ -19,12 +19,12 @@ namespace Pulumi.OpenStack.BlockStorage.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? AdditionalProperties;
         /// <summary>
-        /// The volume should be scheduled on a 
+        /// The volume should be scheduled on a
         /// different host from the set of volumes specified in the list provided.
         /// </summary>
         public readonly ImmutableArray<string> DifferentHosts;
         /// <summary>
-        /// An instance UUID. The volume should be 
+        /// An instance UUID. The volume should be
         /// scheduled on the same host as the instance.
         /// </summary>
         public readonly string? LocalToInstance;

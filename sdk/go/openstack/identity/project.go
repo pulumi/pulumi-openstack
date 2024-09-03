@@ -13,7 +13,7 @@ import (
 
 // Manages a V3 Project resource within OpenStack Keystone.
 //
-// > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+// > **Note:** You *must* have admin privileges in your OpenStack cloud to use
 // this resource.
 //
 // ## Example Usage

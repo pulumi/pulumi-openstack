@@ -40,7 +40,7 @@ class IpSecPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['IpSecPolicyLifetimeArgs']]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[str] name: The name of the policy. Changing this updates the name of
                the existing policy.
-        :param pulumi.Input[str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
+        :param pulumi.Input[str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
                is group5. Changing this updates the existing policy.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an IPSec policy. If omitted, the
@@ -156,7 +156,7 @@ class IpSecPolicyArgs:
     @pulumi.getter
     def pfs(self) -> Optional[pulumi.Input[str]]:
         """
-        The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
+        The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
         is group5. Changing this updates the existing policy.
         """
         return pulumi.get(self, "pfs")
@@ -246,7 +246,7 @@ class _IpSecPolicyState:
         :param pulumi.Input[Sequence[pulumi.Input['IpSecPolicyLifetimeArgs']]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[str] name: The name of the policy. Changing this updates the name of
                the existing policy.
-        :param pulumi.Input[str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
+        :param pulumi.Input[str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
                is group5. Changing this updates the existing policy.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an IPSec policy. If omitted, the
@@ -362,7 +362,7 @@ class _IpSecPolicyState:
     @pulumi.getter
     def pfs(self) -> Optional[pulumi.Input[str]]:
         """
-        The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
+        The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
         is group5. Changing this updates the existing policy.
         """
         return pulumi.get(self, "pfs")
@@ -475,7 +475,7 @@ class IpSecPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[str] name: The name of the policy. Changing this updates the name of
                the existing policy.
-        :param pulumi.Input[str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
+        :param pulumi.Input[str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
                is group5. Changing this updates the existing policy.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an IPSec policy. If omitted, the
@@ -598,7 +598,7 @@ class IpSecPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[str] name: The name of the policy. Changing this updates the name of
                the existing policy.
-        :param pulumi.Input[str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
+        :param pulumi.Input[str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
                is group5. Changing this updates the existing policy.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an IPSec policy. If omitted, the
@@ -684,7 +684,7 @@ class IpSecPolicy(pulumi.CustomResource):
     @pulumi.getter
     def pfs(self) -> pulumi.Output[str]:
         """
-        The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
+        The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
         is group5. Changing this updates the existing policy.
         """
         return pulumi.get(self, "pfs")

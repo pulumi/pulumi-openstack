@@ -373,7 +373,7 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// The metadata associated with the image. Image metadata allow for
         /// meaningfully define the image properties and tags. See
-        /// https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+        /// &lt;https://docs.openstack.org/glance/latest/user/metadefs-concepts.html&gt;.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Metadata;
         /// <summary>

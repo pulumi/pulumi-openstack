@@ -117,9 +117,7 @@ public final class L7PolicyV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Integer. Requests matching this policy will be\
-     * redirected to the specified URL or Prefix URL with the HTTP response code.
-     * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+     * Integer. Requests matching this policy will beredirected to the specified URL or Prefix URL with the HTTP response code.Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
      * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
      * 
      */
@@ -127,9 +125,7 @@ public final class L7PolicyV2Args extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> redirectHttpCode;
 
     /**
-     * @return Integer. Requests matching this policy will be\
-     * redirected to the specified URL or Prefix URL with the HTTP response code.
-     * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+     * @return Integer. Requests matching this policy will beredirected to the specified URL or Prefix URL with the HTTP response code.Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
      * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
      * 
      */
@@ -398,9 +394,7 @@ public final class L7PolicyV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redirectHttpCode Integer. Requests matching this policy will be\
-         * redirected to the specified URL or Prefix URL with the HTTP response code.
-         * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+         * @param redirectHttpCode Integer. Requests matching this policy will beredirected to the specified URL or Prefix URL with the HTTP response code.Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
          * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
          * 
          * @return builder
@@ -412,9 +406,7 @@ public final class L7PolicyV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redirectHttpCode Integer. Requests matching this policy will be\
-         * redirected to the specified URL or Prefix URL with the HTTP response code.
-         * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+         * @param redirectHttpCode Integer. Requests matching this policy will beredirected to the specified URL or Prefix URL with the HTTP response code.Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
          * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
          * 
          * @return builder

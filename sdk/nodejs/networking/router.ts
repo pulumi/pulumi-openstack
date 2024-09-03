@@ -70,7 +70,7 @@ export class Router extends pulumi.CustomResource {
      */
     public /*out*/ readonly allTags!: pulumi.Output<string[]>;
     /**
-     * An availability zone is used to make 
+     * An availability zone is used to make
      * network resources highly available. Used for resources with high availability
      * so that they are scheduled on different availability zones. Changing this
      * creates a new router.
@@ -214,7 +214,7 @@ export interface RouterState {
      */
     allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * An availability zone is used to make 
+     * An availability zone is used to make
      * network resources highly available. Used for resources with high availability
      * so that they are scheduled on different availability zones. Changing this
      * creates a new router.
@@ -303,7 +303,7 @@ export interface RouterArgs {
      */
     adminStateUp?: pulumi.Input<boolean>;
     /**
-     * An availability zone is used to make 
+     * An availability zone is used to make
      * network resources highly available. Used for resources with high availability
      * so that they are scheduled on different availability zones. Changing this
      * creates a new router.

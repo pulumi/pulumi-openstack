@@ -114,9 +114,7 @@ type L7PolicyV2 struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The position of this policy on the listener. Positions start at 1.
 	Position pulumi.IntOutput `pulumi:"position"`
-	// Integer. Requests matching this policy will be\
-	// redirected to the specified URL or Prefix URL with the HTTP response code.
-	// Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+	// Integer. Requests matching this policy will beredirected to the specified URL or Prefix URL with the HTTP response code.Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
 	// 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
 	RedirectHttpCode pulumi.IntOutput `pulumi:"redirectHttpCode"`
 	// Requests matching this policy will be redirected to the
@@ -191,9 +189,7 @@ type l7policyV2State struct {
 	Name *string `pulumi:"name"`
 	// The position of this policy on the listener. Positions start at 1.
 	Position *int `pulumi:"position"`
-	// Integer. Requests matching this policy will be\
-	// redirected to the specified URL or Prefix URL with the HTTP response code.
-	// Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+	// Integer. Requests matching this policy will beredirected to the specified URL or Prefix URL with the HTTP response code.Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
 	// 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
 	RedirectHttpCode *int `pulumi:"redirectHttpCode"`
 	// Requests matching this policy will be redirected to the
@@ -233,9 +229,7 @@ type L7PolicyV2State struct {
 	Name pulumi.StringPtrInput
 	// The position of this policy on the listener. Positions start at 1.
 	Position pulumi.IntPtrInput
-	// Integer. Requests matching this policy will be\
-	// redirected to the specified URL or Prefix URL with the HTTP response code.
-	// Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+	// Integer. Requests matching this policy will beredirected to the specified URL or Prefix URL with the HTTP response code.Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
 	// 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
 	RedirectHttpCode pulumi.IntPtrInput
 	// Requests matching this policy will be redirected to the
@@ -279,9 +273,7 @@ type l7policyV2Args struct {
 	Name *string `pulumi:"name"`
 	// The position of this policy on the listener. Positions start at 1.
 	Position *int `pulumi:"position"`
-	// Integer. Requests matching this policy will be\
-	// redirected to the specified URL or Prefix URL with the HTTP response code.
-	// Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+	// Integer. Requests matching this policy will beredirected to the specified URL or Prefix URL with the HTTP response code.Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
 	// 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
 	RedirectHttpCode *int `pulumi:"redirectHttpCode"`
 	// Requests matching this policy will be redirected to the
@@ -322,9 +314,7 @@ type L7PolicyV2Args struct {
 	Name pulumi.StringPtrInput
 	// The position of this policy on the listener. Positions start at 1.
 	Position pulumi.IntPtrInput
-	// Integer. Requests matching this policy will be\
-	// redirected to the specified URL or Prefix URL with the HTTP response code.
-	// Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+	// Integer. Requests matching this policy will beredirected to the specified URL or Prefix URL with the HTTP response code.Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
 	// 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
 	RedirectHttpCode pulumi.IntPtrInput
 	// Requests matching this policy will be redirected to the
@@ -468,9 +458,7 @@ func (o L7PolicyV2Output) Position() pulumi.IntOutput {
 	return o.ApplyT(func(v *L7PolicyV2) pulumi.IntOutput { return v.Position }).(pulumi.IntOutput)
 }
 
-// Integer. Requests matching this policy will be\
-// redirected to the specified URL or Prefix URL with the HTTP response code.
-// Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+// Integer. Requests matching this policy will beredirected to the specified URL or Prefix URL with the HTTP response code.Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
 // 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
 func (o L7PolicyV2Output) RedirectHttpCode() pulumi.IntOutput {
 	return o.ApplyT(func(v *L7PolicyV2) pulumi.IntOutput { return v.RedirectHttpCode }).(pulumi.IntOutput)

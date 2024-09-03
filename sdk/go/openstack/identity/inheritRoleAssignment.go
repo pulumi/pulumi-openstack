@@ -16,7 +16,7 @@ import (
 // Openstack keystone `OS-INHERIT` api to created inherit roles within domains
 // and parent projects for users and groups.
 //
-// > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+// > **Note:** You *must* have admin privileges in your OpenStack cloud to use
 // this resource.
 //
 // ## Example Usage

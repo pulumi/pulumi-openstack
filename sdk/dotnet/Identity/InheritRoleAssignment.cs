@@ -14,7 +14,7 @@ namespace Pulumi.OpenStack.Identity
     /// Openstack keystone `OS-INHERIT` api to created inherit roles within domains
     /// and parent projects for users and groups.
     /// 
-    /// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+    /// &gt; **Note:** You *must* have admin privileges in your OpenStack cloud to use
     /// this resource.
     /// 
     /// ## Example Usage

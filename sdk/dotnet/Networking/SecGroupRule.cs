@@ -65,15 +65,15 @@ namespace Pulumi.OpenStack.Networking
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The direction of the rule, valid values are __ingress__
-        /// or __egress__. Changing this creates a new security group rule.
+        /// The direction of the rule, valid values are **ingress**
+        /// or **egress**. Changing this creates a new security group rule.
         /// </summary>
         [Output("direction")]
         public Output<string> Direction { get; private set; } = null!;
 
         /// <summary>
-        /// The layer 3 protocol type, valid values are __IPv4__
-        /// or __IPv6__. Changing this creates a new security group rule.
+        /// The layer 3 protocol type, valid values are **IPv4**
+        /// or **IPv6**. Changing this creates a new security group rule.
         /// </summary>
         [Output("ethertype")]
         public Output<string> Ethertype { get; private set; } = null!;
@@ -96,27 +96,27 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-        /// * __tcp__
-        /// * __udp__
-        /// * __icmp__
-        /// * __ah__
-        /// * __dccp__
-        /// * __egp__
-        /// * __esp__
-        /// * __gre__
-        /// * __igmp__
-        /// * __ipv6-encap__
-        /// * __ipv6-frag__
-        /// * __ipv6-icmp__
-        /// * __ipv6-nonxt__
-        /// * __ipv6-opts__
-        /// * __ipv6-route__
-        /// * __ospf__
-        /// * __pgm__
-        /// * __rsvp__
-        /// * __sctp__
-        /// * __udplite__
-        /// * __vrrp__
+        /// * **tcp**
+        /// * **udp**
+        /// * **icmp**
+        /// * **ah**
+        /// * **dccp**
+        /// * **egp**
+        /// * **esp**
+        /// * **gre**
+        /// * **igmp**
+        /// * **ipv6-encap**
+        /// * **ipv6-frag**
+        /// * **ipv6-icmp**
+        /// * **ipv6-nonxt**
+        /// * **ipv6-opts**
+        /// * **ipv6-route**
+        /// * **ospf**
+        /// * **pgm**
+        /// * **rsvp**
+        /// * **sctp**
+        /// * **udplite**
+        /// * **vrrp**
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
@@ -214,15 +214,15 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The direction of the rule, valid values are __ingress__
-        /// or __egress__. Changing this creates a new security group rule.
+        /// The direction of the rule, valid values are **ingress**
+        /// or **egress**. Changing this creates a new security group rule.
         /// </summary>
         [Input("direction", required: true)]
         public Input<string> Direction { get; set; } = null!;
 
         /// <summary>
-        /// The layer 3 protocol type, valid values are __IPv4__
-        /// or __IPv6__. Changing this creates a new security group rule.
+        /// The layer 3 protocol type, valid values are **IPv4**
+        /// or **IPv6**. Changing this creates a new security group rule.
         /// </summary>
         [Input("ethertype", required: true)]
         public Input<string> Ethertype { get; set; } = null!;
@@ -245,27 +245,27 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-        /// * __tcp__
-        /// * __udp__
-        /// * __icmp__
-        /// * __ah__
-        /// * __dccp__
-        /// * __egp__
-        /// * __esp__
-        /// * __gre__
-        /// * __igmp__
-        /// * __ipv6-encap__
-        /// * __ipv6-frag__
-        /// * __ipv6-icmp__
-        /// * __ipv6-nonxt__
-        /// * __ipv6-opts__
-        /// * __ipv6-route__
-        /// * __ospf__
-        /// * __pgm__
-        /// * __rsvp__
-        /// * __sctp__
-        /// * __udplite__
-        /// * __vrrp__
+        /// * **tcp**
+        /// * **udp**
+        /// * **icmp**
+        /// * **ah**
+        /// * **dccp**
+        /// * **egp**
+        /// * **esp**
+        /// * **gre**
+        /// * **igmp**
+        /// * **ipv6-encap**
+        /// * **ipv6-frag**
+        /// * **ipv6-icmp**
+        /// * **ipv6-nonxt**
+        /// * **ipv6-opts**
+        /// * **ipv6-route**
+        /// * **ospf**
+        /// * **pgm**
+        /// * **rsvp**
+        /// * **sctp**
+        /// * **udplite**
+        /// * **vrrp**
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -325,15 +325,15 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The direction of the rule, valid values are __ingress__
-        /// or __egress__. Changing this creates a new security group rule.
+        /// The direction of the rule, valid values are **ingress**
+        /// or **egress**. Changing this creates a new security group rule.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// The layer 3 protocol type, valid values are __IPv4__
-        /// or __IPv6__. Changing this creates a new security group rule.
+        /// The layer 3 protocol type, valid values are **IPv4**
+        /// or **IPv6**. Changing this creates a new security group rule.
         /// </summary>
         [Input("ethertype")]
         public Input<string>? Ethertype { get; set; }
@@ -356,27 +356,27 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
-        /// * __tcp__
-        /// * __udp__
-        /// * __icmp__
-        /// * __ah__
-        /// * __dccp__
-        /// * __egp__
-        /// * __esp__
-        /// * __gre__
-        /// * __igmp__
-        /// * __ipv6-encap__
-        /// * __ipv6-frag__
-        /// * __ipv6-icmp__
-        /// * __ipv6-nonxt__
-        /// * __ipv6-opts__
-        /// * __ipv6-route__
-        /// * __ospf__
-        /// * __pgm__
-        /// * __rsvp__
-        /// * __sctp__
-        /// * __udplite__
-        /// * __vrrp__
+        /// * **tcp**
+        /// * **udp**
+        /// * **icmp**
+        /// * **ah**
+        /// * **dccp**
+        /// * **egp**
+        /// * **esp**
+        /// * **gre**
+        /// * **igmp**
+        /// * **ipv6-encap**
+        /// * **ipv6-frag**
+        /// * **ipv6-icmp**
+        /// * **ipv6-nonxt**
+        /// * **ipv6-opts**
+        /// * **ipv6-route**
+        /// * **ospf**
+        /// * **pgm**
+        /// * **rsvp**
+        /// * **sctp**
+        /// * **udplite**
+        /// * **vrrp**
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

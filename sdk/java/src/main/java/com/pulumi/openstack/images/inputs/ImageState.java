@@ -243,7 +243,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
     /**
      * The metadata associated with the image.
      * Image metadata allow for meaningfully define the image properties
-     * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+     * and tags. See &lt;https://docs.openstack.org/glance/latest/user/metadefs-concepts.html&gt;.
      * 
      */
     @Import(name="metadata")
@@ -252,7 +252,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The metadata associated with the image.
      * Image metadata allow for meaningfully define the image properties
-     * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+     * and tags. See &lt;https://docs.openstack.org/glance/latest/user/metadefs-concepts.html&gt;.
      * 
      */
     public Optional<Output<Map<String,String>>> metadata() {
@@ -868,7 +868,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param metadata The metadata associated with the image.
          * Image metadata allow for meaningfully define the image properties
-         * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+         * and tags. See &lt;https://docs.openstack.org/glance/latest/user/metadefs-concepts.html&gt;.
          * 
          * @return builder
          * 
@@ -881,7 +881,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param metadata The metadata associated with the image.
          * Image metadata allow for meaningfully define the image properties
-         * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+         * and tags. See &lt;https://docs.openstack.org/glance/latest/user/metadefs-concepts.html&gt;.
          * 
          * @return builder
          * 

@@ -217,8 +217,8 @@ class RouterRoute(pulumi.CustomResource):
 
         ## Notes
 
-        The `next_hop` IP address must be directly reachable from the router at the ``networking.RouterRoute``
-        resource creation time.  You can ensure that by explicitly specifying a dependency on the ``networking.RouterInterface``
+        The `next_hop` IP address must be directly reachable from the router at the `networking.RouterRoute`
+        resource creation time.  You can ensure that by explicitly specifying a dependency on the `networking.RouterInterface`
         resource that connects the next hop to the router, as in the example above.
 
         ## Import
@@ -279,8 +279,8 @@ class RouterRoute(pulumi.CustomResource):
 
         ## Notes
 
-        The `next_hop` IP address must be directly reachable from the router at the ``networking.RouterRoute``
-        resource creation time.  You can ensure that by explicitly specifying a dependency on the ``networking.RouterInterface``
+        The `next_hop` IP address must be directly reachable from the router at the `networking.RouterRoute`
+        resource creation time.  You can ensure that by explicitly specifying a dependency on the `networking.RouterInterface`
         resource that connects the next hop to the router, as in the example above.
 
         ## Import
