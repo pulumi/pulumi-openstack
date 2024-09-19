@@ -88,14 +88,20 @@ type GetSnapshotV2Result struct {
 
 func GetSnapshotV2Output(ctx *pulumi.Context, args GetSnapshotV2OutputArgs, opts ...pulumi.InvokeOption) GetSnapshotV2ResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSnapshotV2Result, error) {
+		ApplyT(func(v interface{}) (GetSnapshotV2ResultOutput, error) {
 			args := v.(GetSnapshotV2Args)
-			r, err := GetSnapshotV2(ctx, &args, opts...)
-			var s GetSnapshotV2Result
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSnapshotV2Result
+			secret, err := ctx.InvokePackageRaw("openstack:blockstorage/getSnapshotV2:getSnapshotV2", args, &rv, "", opts...)
+			if err != nil {
+				return GetSnapshotV2ResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSnapshotV2ResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSnapshotV2ResultOutput), nil
+			}
+			return output, nil
 		}).(GetSnapshotV2ResultOutput)
 }
 

@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  */
 export function getRouter(args?: GetRouterArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getRouter:getRouter", {
         "adminStateUp": args.adminStateUp,
@@ -139,7 +138,20 @@ export interface GetRouterResult {
  * ```
  */
 export function getRouterOutput(args?: GetRouterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterResult> {
-    return pulumi.output(args).apply((a: any) => getRouter(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:networking/getRouter:getRouter", {
+        "adminStateUp": args.adminStateUp,
+        "description": args.description,
+        "distributed": args.distributed,
+        "enableSnat": args.enableSnat,
+        "name": args.name,
+        "region": args.region,
+        "routerId": args.routerId,
+        "status": args.status,
+        "tags": args.tags,
+        "tenantId": args.tenantId,
+    }, opts);
 }
 
 /**

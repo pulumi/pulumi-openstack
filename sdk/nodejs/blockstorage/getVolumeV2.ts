@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  */
 export function getVolumeV2(args?: GetVolumeV2Args, opts?: pulumi.InvokeOptions): Promise<GetVolumeV2Result> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:blockstorage/getVolumeV2:getVolumeV2", {
         "bootable": args.bootable,
@@ -119,7 +118,16 @@ export interface GetVolumeV2Result {
  * ```
  */
 export function getVolumeV2Output(args?: GetVolumeV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeV2Result> {
-    return pulumi.output(args).apply((a: any) => getVolumeV2(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:blockstorage/getVolumeV2:getVolumeV2", {
+        "bootable": args.bootable,
+        "metadata": args.metadata,
+        "name": args.name,
+        "region": args.region,
+        "status": args.status,
+        "volumeType": args.volumeType,
+    }, opts);
 }
 
 /**

@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  */
 export function getQosPolicy(args?: GetQosPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetQosPolicyResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getQosPolicy:getQosPolicy", {
         "description": args.description,
@@ -131,7 +130,17 @@ export interface GetQosPolicyResult {
  * ```
  */
 export function getQosPolicyOutput(args?: GetQosPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQosPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getQosPolicy(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:networking/getQosPolicy:getQosPolicy", {
+        "description": args.description,
+        "isDefault": args.isDefault,
+        "name": args.name,
+        "projectId": args.projectId,
+        "region": args.region,
+        "shared": args.shared,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

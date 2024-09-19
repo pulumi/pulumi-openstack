@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  */
 export function getFlavorV2(args?: GetFlavorV2Args, opts?: pulumi.InvokeOptions): Promise<GetFlavorV2Result> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:loadbalancer/getFlavorV2:getFlavorV2", {
         "flavorId": args.flavorId,
@@ -93,7 +92,13 @@ export interface GetFlavorV2Result {
  * ```
  */
 export function getFlavorV2Output(args?: GetFlavorV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlavorV2Result> {
-    return pulumi.output(args).apply((a: any) => getFlavorV2(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:loadbalancer/getFlavorV2:getFlavorV2", {
+        "flavorId": args.flavorId,
+        "name": args.name,
+        "region": args.region,
+    }, opts);
 }
 
 /**

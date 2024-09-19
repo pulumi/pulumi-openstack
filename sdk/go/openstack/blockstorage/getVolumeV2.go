@@ -89,14 +89,20 @@ type LookupVolumeV2Result struct {
 
 func LookupVolumeV2Output(ctx *pulumi.Context, args LookupVolumeV2OutputArgs, opts ...pulumi.InvokeOption) LookupVolumeV2ResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVolumeV2Result, error) {
+		ApplyT(func(v interface{}) (LookupVolumeV2ResultOutput, error) {
 			args := v.(LookupVolumeV2Args)
-			r, err := LookupVolumeV2(ctx, &args, opts...)
-			var s LookupVolumeV2Result
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupVolumeV2Result
+			secret, err := ctx.InvokePackageRaw("openstack:blockstorage/getVolumeV2:getVolumeV2", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVolumeV2ResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVolumeV2ResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVolumeV2ResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVolumeV2ResultOutput)
 }
 

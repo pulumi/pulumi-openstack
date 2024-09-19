@@ -96,14 +96,20 @@ type LookupQosPolicyResult struct {
 
 func LookupQosPolicyOutput(ctx *pulumi.Context, args LookupQosPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupQosPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupQosPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupQosPolicyResultOutput, error) {
 			args := v.(LookupQosPolicyArgs)
-			r, err := LookupQosPolicy(ctx, &args, opts...)
-			var s LookupQosPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupQosPolicyResult
+			secret, err := ctx.InvokePackageRaw("openstack:networking/getQosPolicy:getQosPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupQosPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupQosPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupQosPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupQosPolicyResultOutput)
 }
 

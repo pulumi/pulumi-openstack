@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getQuotasetV3(args: GetQuotasetV3Args, opts?: pulumi.InvokeOptions): Promise<GetQuotasetV3Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:blockstorage/getQuotasetV3:getQuotasetV3", {
         "projectId": args.projectId,
@@ -106,7 +105,11 @@ export interface GetQuotasetV3Result {
  * ```
  */
 export function getQuotasetV3Output(args: GetQuotasetV3OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotasetV3Result> {
-    return pulumi.output(args).apply((a: any) => getQuotasetV3(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:blockstorage/getQuotasetV3:getQuotasetV3", {
+        "projectId": args.projectId,
+        "region": args.region,
+    }, opts);
 }
 
 /**

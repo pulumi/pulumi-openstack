@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  */
 export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:identity/getService:getService", {
         "enabled": args.enabled,
@@ -101,7 +100,14 @@ export interface GetServiceResult {
  * ```
  */
 export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
-    return pulumi.output(args).apply((a: any) => getService(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:identity/getService:getService", {
+        "enabled": args.enabled,
+        "name": args.name,
+        "region": args.region,
+        "type": args.type,
+    }, opts);
 }
 
 /**

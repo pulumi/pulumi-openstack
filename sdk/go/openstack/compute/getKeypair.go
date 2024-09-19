@@ -79,14 +79,20 @@ type LookupKeypairResult struct {
 
 func LookupKeypairOutput(ctx *pulumi.Context, args LookupKeypairOutputArgs, opts ...pulumi.InvokeOption) LookupKeypairResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKeypairResult, error) {
+		ApplyT(func(v interface{}) (LookupKeypairResultOutput, error) {
 			args := v.(LookupKeypairArgs)
-			r, err := LookupKeypair(ctx, &args, opts...)
-			var s LookupKeypairResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupKeypairResult
+			secret, err := ctx.InvokePackageRaw("openstack:compute/getKeypair:getKeypair", args, &rv, "", opts...)
+			if err != nil {
+				return LookupKeypairResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupKeypairResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupKeypairResultOutput), nil
+			}
+			return output, nil
 		}).(LookupKeypairResultOutput)
 }
 

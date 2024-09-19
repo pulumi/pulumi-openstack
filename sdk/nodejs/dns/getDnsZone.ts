@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  */
 export function getDnsZone(args?: GetDnsZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:dns/getDnsZone:getDnsZone", {
         "allProjects": args.allProjects,
@@ -210,7 +209,27 @@ export interface GetDnsZoneResult {
  * ```
  */
 export function getDnsZoneOutput(args?: GetDnsZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDnsZoneResult> {
-    return pulumi.output(args).apply((a: any) => getDnsZone(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:dns/getDnsZone:getDnsZone", {
+        "allProjects": args.allProjects,
+        "attributes": args.attributes,
+        "createdAt": args.createdAt,
+        "description": args.description,
+        "email": args.email,
+        "masters": args.masters,
+        "name": args.name,
+        "poolId": args.poolId,
+        "projectId": args.projectId,
+        "region": args.region,
+        "serial": args.serial,
+        "status": args.status,
+        "transferredAt": args.transferredAt,
+        "ttl": args.ttl,
+        "type": args.type,
+        "updatedAt": args.updatedAt,
+        "version": args.version,
+    }, opts);
 }
 
 /**

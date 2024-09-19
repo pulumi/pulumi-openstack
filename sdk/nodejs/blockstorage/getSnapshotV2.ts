@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  */
 export function getSnapshotV2(args?: GetSnapshotV2Args, opts?: pulumi.InvokeOptions): Promise<GetSnapshotV2Result> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:blockstorage/getSnapshotV2:getSnapshotV2", {
         "mostRecent": args.mostRecent,
@@ -114,7 +113,15 @@ export interface GetSnapshotV2Result {
  * ```
  */
 export function getSnapshotV2Output(args?: GetSnapshotV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotV2Result> {
-    return pulumi.output(args).apply((a: any) => getSnapshotV2(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:blockstorage/getSnapshotV2:getSnapshotV2", {
+        "mostRecent": args.mostRecent,
+        "name": args.name,
+        "region": args.region,
+        "status": args.status,
+        "volumeId": args.volumeId,
+    }, opts);
 }
 
 /**

@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  */
 export function getEndpoint(args?: GetEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:identity/getEndpoint:getEndpoint", {
         "endpointRegion": args.endpointRegion,
@@ -130,7 +129,17 @@ export interface GetEndpointResult {
  * ```
  */
 export function getEndpointOutput(args?: GetEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointResult> {
-    return pulumi.output(args).apply((a: any) => getEndpoint(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:identity/getEndpoint:getEndpoint", {
+        "endpointRegion": args.endpointRegion,
+        "interface": args.interface,
+        "name": args.name,
+        "region": args.region,
+        "serviceId": args.serviceId,
+        "serviceName": args.serviceName,
+        "serviceType": args.serviceType,
+    }, opts);
 }
 
 /**

@@ -97,14 +97,20 @@ type LookupNodeGroupResult struct {
 
 func LookupNodeGroupOutput(ctx *pulumi.Context, args LookupNodeGroupOutputArgs, opts ...pulumi.InvokeOption) LookupNodeGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNodeGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupNodeGroupResultOutput, error) {
 			args := v.(LookupNodeGroupArgs)
-			r, err := LookupNodeGroup(ctx, &args, opts...)
-			var s LookupNodeGroupResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupNodeGroupResult
+			secret, err := ctx.InvokePackageRaw("openstack:containerinfra/getNodeGroup:getNodeGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNodeGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNodeGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNodeGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNodeGroupResultOutput)
 }
 

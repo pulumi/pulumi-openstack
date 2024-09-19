@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getQosBandwidthLimitRule(args: GetQosBandwidthLimitRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetQosBandwidthLimitRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", {
         "maxBurstKbps": args.maxBurstKbps,
@@ -97,7 +96,13 @@ export interface GetQosBandwidthLimitRuleResult {
  * ```
  */
 export function getQosBandwidthLimitRuleOutput(args: GetQosBandwidthLimitRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQosBandwidthLimitRuleResult> {
-    return pulumi.output(args).apply((a: any) => getQosBandwidthLimitRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", {
+        "maxBurstKbps": args.maxBurstKbps,
+        "maxKbps": args.maxKbps,
+        "qosPolicyId": args.qosPolicyId,
+        "region": args.region,
+    }, opts);
 }
 
 /**

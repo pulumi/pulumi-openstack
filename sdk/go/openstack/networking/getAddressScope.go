@@ -84,14 +84,20 @@ type LookupAddressScopeResult struct {
 
 func LookupAddressScopeOutput(ctx *pulumi.Context, args LookupAddressScopeOutputArgs, opts ...pulumi.InvokeOption) LookupAddressScopeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAddressScopeResult, error) {
+		ApplyT(func(v interface{}) (LookupAddressScopeResultOutput, error) {
 			args := v.(LookupAddressScopeArgs)
-			r, err := LookupAddressScope(ctx, &args, opts...)
-			var s LookupAddressScopeResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAddressScopeResult
+			secret, err := ctx.InvokePackageRaw("openstack:networking/getAddressScope:getAddressScope", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAddressScopeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAddressScopeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAddressScopeResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAddressScopeResultOutput)
 }
 

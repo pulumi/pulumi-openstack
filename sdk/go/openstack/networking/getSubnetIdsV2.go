@@ -120,14 +120,20 @@ type GetSubnetIdsV2Result struct {
 
 func GetSubnetIdsV2Output(ctx *pulumi.Context, args GetSubnetIdsV2OutputArgs, opts ...pulumi.InvokeOption) GetSubnetIdsV2ResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSubnetIdsV2Result, error) {
+		ApplyT(func(v interface{}) (GetSubnetIdsV2ResultOutput, error) {
 			args := v.(GetSubnetIdsV2Args)
-			r, err := GetSubnetIdsV2(ctx, &args, opts...)
-			var s GetSubnetIdsV2Result
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSubnetIdsV2Result
+			secret, err := ctx.InvokePackageRaw("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", args, &rv, "", opts...)
+			if err != nil {
+				return GetSubnetIdsV2ResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSubnetIdsV2ResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSubnetIdsV2ResultOutput), nil
+			}
+			return output, nil
 		}).(GetSubnetIdsV2ResultOutput)
 }
 

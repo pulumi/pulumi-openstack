@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  */
 export function getFwPolicyV2(args?: GetFwPolicyV2Args, opts?: pulumi.InvokeOptions): Promise<GetFwPolicyV2Result> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:index/getFwPolicyV2:getFwPolicyV2", {
         "audited": args.audited,
@@ -133,7 +132,18 @@ export interface GetFwPolicyV2Result {
  * ```
  */
 export function getFwPolicyV2Output(args?: GetFwPolicyV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFwPolicyV2Result> {
-    return pulumi.output(args).apply((a: any) => getFwPolicyV2(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:index/getFwPolicyV2:getFwPolicyV2", {
+        "audited": args.audited,
+        "description": args.description,
+        "name": args.name,
+        "policyId": args.policyId,
+        "projectId": args.projectId,
+        "region": args.region,
+        "shared": args.shared,
+        "tenantId": args.tenantId,
+    }, opts);
 }
 
 /**

@@ -43,7 +43,6 @@ import * as utilities from "../utilities";
  */
 export function getSecret(args?: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:keymanager/getSecret:getSecret", {
         "aclOnly": args.aclOnly,
@@ -249,7 +248,20 @@ export interface GetSecretResult {
  * ```
  */
 export function getSecretOutput(args?: GetSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretResult> {
-    return pulumi.output(args).apply((a: any) => getSecret(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:keymanager/getSecret:getSecret", {
+        "aclOnly": args.aclOnly,
+        "algorithm": args.algorithm,
+        "bitLength": args.bitLength,
+        "createdAtFilter": args.createdAtFilter,
+        "expirationFilter": args.expirationFilter,
+        "mode": args.mode,
+        "name": args.name,
+        "region": args.region,
+        "secretType": args.secretType,
+        "updatedAtFilter": args.updatedAtFilter,
+    }, opts);
 }
 
 /**

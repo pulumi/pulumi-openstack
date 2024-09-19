@@ -89,14 +89,20 @@ type LookupSecGroupResult struct {
 
 func LookupSecGroupOutput(ctx *pulumi.Context, args LookupSecGroupOutputArgs, opts ...pulumi.InvokeOption) LookupSecGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSecGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupSecGroupResultOutput, error) {
 			args := v.(LookupSecGroupArgs)
-			r, err := LookupSecGroup(ctx, &args, opts...)
-			var s LookupSecGroupResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupSecGroupResult
+			secret, err := ctx.InvokePackageRaw("openstack:networking/getSecGroup:getSecGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSecGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSecGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSecGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSecGroupResultOutput)
 }
 

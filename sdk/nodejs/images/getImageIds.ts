@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  */
 export function getImageIds(args?: GetImageIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetImageIdsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:images/getImageIds:getImageIds", {
         "containerFormat": args.containerFormat,
@@ -172,7 +171,25 @@ export interface GetImageIdsResult {
  * ```
  */
 export function getImageIdsOutput(args?: GetImageIdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageIdsResult> {
-    return pulumi.output(args).apply((a: any) => getImageIds(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:images/getImageIds:getImageIds", {
+        "containerFormat": args.containerFormat,
+        "diskFormat": args.diskFormat,
+        "hidden": args.hidden,
+        "memberStatus": args.memberStatus,
+        "name": args.name,
+        "nameRegex": args.nameRegex,
+        "owner": args.owner,
+        "properties": args.properties,
+        "region": args.region,
+        "sizeMax": args.sizeMax,
+        "sizeMin": args.sizeMin,
+        "sort": args.sort,
+        "tag": args.tag,
+        "tags": args.tags,
+        "visibility": args.visibility,
+    }, opts);
 }
 
 /**

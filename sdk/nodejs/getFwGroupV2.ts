@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  */
 export function getFwGroupV2(args?: GetFwGroupV2Args, opts?: pulumi.InvokeOptions): Promise<GetFwGroupV2Result> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:index/getFwGroupV2:getFwGroupV2", {
         "adminStateUp": args.adminStateUp,
@@ -163,7 +162,21 @@ export interface GetFwGroupV2Result {
  * ```
  */
 export function getFwGroupV2Output(args?: GetFwGroupV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFwGroupV2Result> {
-    return pulumi.output(args).apply((a: any) => getFwGroupV2(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:index/getFwGroupV2:getFwGroupV2", {
+        "adminStateUp": args.adminStateUp,
+        "description": args.description,
+        "egressFirewallPolicyId": args.egressFirewallPolicyId,
+        "groupId": args.groupId,
+        "ingressFirewallPolicyId": args.ingressFirewallPolicyId,
+        "name": args.name,
+        "projectId": args.projectId,
+        "region": args.region,
+        "shared": args.shared,
+        "status": args.status,
+        "tenantId": args.tenantId,
+    }, opts);
 }
 
 /**
