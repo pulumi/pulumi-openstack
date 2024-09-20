@@ -139,14 +139,20 @@ type LookupPortResult struct {
 
 func LookupPortOutput(ctx *pulumi.Context, args LookupPortOutputArgs, opts ...pulumi.InvokeOption) LookupPortResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPortResult, error) {
+		ApplyT(func(v interface{}) (LookupPortResultOutput, error) {
 			args := v.(LookupPortArgs)
-			r, err := LookupPort(ctx, &args, opts...)
-			var s LookupPortResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupPortResult
+			secret, err := ctx.InvokePackageRaw("openstack:networking/getPort:getPort", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPortResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPortResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPortResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPortResultOutput)
 }
 

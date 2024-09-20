@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterTemplateResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:containerinfra/getClusterTemplate:getClusterTemplate", {
         "name": args.name,
@@ -213,7 +212,11 @@ export interface GetClusterTemplateResult {
  * ```
  */
 export function getClusterTemplateOutput(args: GetClusterTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterTemplateResult> {
-    return pulumi.output(args).apply((a: any) => getClusterTemplate(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:containerinfra/getClusterTemplate:getClusterTemplate", {
+        "name": args.name,
+        "region": args.region,
+    }, opts);
 }
 
 /**

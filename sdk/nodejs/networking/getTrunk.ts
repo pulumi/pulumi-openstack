@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  */
 export function getTrunk(args?: GetTrunkArgs, opts?: pulumi.InvokeOptions): Promise<GetTrunkResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getTrunk:getTrunk", {
         "adminStateUp": args.adminStateUp,
@@ -126,7 +125,19 @@ export interface GetTrunkResult {
  * ```
  */
 export function getTrunkOutput(args?: GetTrunkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrunkResult> {
-    return pulumi.output(args).apply((a: any) => getTrunk(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:networking/getTrunk:getTrunk", {
+        "adminStateUp": args.adminStateUp,
+        "description": args.description,
+        "name": args.name,
+        "portId": args.portId,
+        "projectId": args.projectId,
+        "region": args.region,
+        "status": args.status,
+        "tags": args.tags,
+        "trunkId": args.trunkId,
+    }, opts);
 }
 
 /**

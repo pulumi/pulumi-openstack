@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  */
 export function getContainer(args?: GetContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:keymanager/getContainer:getContainer", {
         "name": args.name,
@@ -117,7 +116,12 @@ export interface GetContainerResult {
  * ```
  */
 export function getContainerOutput(args?: GetContainerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerResult> {
-    return pulumi.output(args).apply((a: any) => getContainer(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:keymanager/getContainer:getContainer", {
+        "name": args.name,
+        "region": args.region,
+    }, opts);
 }
 
 /**

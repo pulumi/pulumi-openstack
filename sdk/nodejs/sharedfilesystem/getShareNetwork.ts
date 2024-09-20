@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  */
 export function getShareNetwork(args?: GetShareNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetShareNetworkResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", {
         "description": args.description,
@@ -154,7 +153,19 @@ export interface GetShareNetworkResult {
  * ```
  */
 export function getShareNetworkOutput(args?: GetShareNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShareNetworkResult> {
-    return pulumi.output(args).apply((a: any) => getShareNetwork(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", {
+        "description": args.description,
+        "ipVersion": args.ipVersion,
+        "name": args.name,
+        "networkType": args.networkType,
+        "neutronNetId": args.neutronNetId,
+        "neutronSubnetId": args.neutronSubnetId,
+        "region": args.region,
+        "securityServiceId": args.securityServiceId,
+        "segmentationId": args.segmentationId,
+    }, opts);
 }
 
 /**

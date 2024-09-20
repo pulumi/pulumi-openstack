@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  */
 export function getSubnet(args?: GetSubnetArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getSubnet:getSubnet", {
         "cidr": args.cidr,
@@ -179,7 +178,25 @@ export interface GetSubnetResult {
  * ```
  */
 export function getSubnetOutput(args?: GetSubnetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetResult> {
-    return pulumi.output(args).apply((a: any) => getSubnet(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:networking/getSubnet:getSubnet", {
+        "cidr": args.cidr,
+        "description": args.description,
+        "dhcpEnabled": args.dhcpEnabled,
+        "dnsPublishFixedIp": args.dnsPublishFixedIp,
+        "gatewayIp": args.gatewayIp,
+        "ipVersion": args.ipVersion,
+        "ipv6AddressMode": args.ipv6AddressMode,
+        "ipv6RaMode": args.ipv6RaMode,
+        "name": args.name,
+        "networkId": args.networkId,
+        "region": args.region,
+        "subnetId": args.subnetId,
+        "subnetpoolId": args.subnetpoolId,
+        "tags": args.tags,
+        "tenantId": args.tenantId,
+    }, opts);
 }
 
 /**

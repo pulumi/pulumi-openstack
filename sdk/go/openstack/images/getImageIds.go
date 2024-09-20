@@ -126,14 +126,20 @@ type GetImageIdsResult struct {
 
 func GetImageIdsOutput(ctx *pulumi.Context, args GetImageIdsOutputArgs, opts ...pulumi.InvokeOption) GetImageIdsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetImageIdsResult, error) {
+		ApplyT(func(v interface{}) (GetImageIdsResultOutput, error) {
 			args := v.(GetImageIdsArgs)
-			r, err := GetImageIds(ctx, &args, opts...)
-			var s GetImageIdsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetImageIdsResult
+			secret, err := ctx.InvokePackageRaw("openstack:images/getImageIds:getImageIds", args, &rv, "", opts...)
+			if err != nil {
+				return GetImageIdsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetImageIdsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetImageIdsResultOutput), nil
+			}
+			return output, nil
 		}).(GetImageIdsResultOutput)
 }
 

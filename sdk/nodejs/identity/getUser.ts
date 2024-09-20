@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:identity/getUser:getUser", {
         "domainId": args.domainId,
@@ -137,7 +136,18 @@ export interface GetUserResult {
  * ```
  */
 export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
-    return pulumi.output(args).apply((a: any) => getUser(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:identity/getUser:getUser", {
+        "domainId": args.domainId,
+        "enabled": args.enabled,
+        "idpId": args.idpId,
+        "name": args.name,
+        "passwordExpiresAt": args.passwordExpiresAt,
+        "protocolId": args.protocolId,
+        "region": args.region,
+        "uniqueId": args.uniqueId,
+    }, opts);
 }
 
 /**

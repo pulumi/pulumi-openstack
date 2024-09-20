@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  */
 export function getSecGroup(args?: GetSecGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSecGroupResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getSecGroup:getSecGroup", {
         "description": args.description,
@@ -116,7 +115,17 @@ export interface GetSecGroupResult {
  * ```
  */
 export function getSecGroupOutput(args?: GetSecGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecGroupResult> {
-    return pulumi.output(args).apply((a: any) => getSecGroup(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:networking/getSecGroup:getSecGroup", {
+        "description": args.description,
+        "name": args.name,
+        "region": args.region,
+        "secgroupId": args.secgroupId,
+        "stateful": args.stateful,
+        "tags": args.tags,
+        "tenantId": args.tenantId,
+    }, opts);
 }
 
 /**

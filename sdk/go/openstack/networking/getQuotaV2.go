@@ -87,14 +87,20 @@ type LookupQuotaV2Result struct {
 
 func LookupQuotaV2Output(ctx *pulumi.Context, args LookupQuotaV2OutputArgs, opts ...pulumi.InvokeOption) LookupQuotaV2ResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupQuotaV2Result, error) {
+		ApplyT(func(v interface{}) (LookupQuotaV2ResultOutput, error) {
 			args := v.(LookupQuotaV2Args)
-			r, err := LookupQuotaV2(ctx, &args, opts...)
-			var s LookupQuotaV2Result
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupQuotaV2Result
+			secret, err := ctx.InvokePackageRaw("openstack:networking/getQuotaV2:getQuotaV2", args, &rv, "", opts...)
+			if err != nil {
+				return LookupQuotaV2ResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupQuotaV2ResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupQuotaV2ResultOutput), nil
+			}
+			return output, nil
 		}).(LookupQuotaV2ResultOutput)
 }
 

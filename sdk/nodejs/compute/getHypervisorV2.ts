@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getHypervisorV2(args: GetHypervisorV2Args, opts?: pulumi.InvokeOptions): Promise<GetHypervisorV2Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:compute/getHypervisorV2:getHypervisorV2", {
         "hostname": args.hostname,
@@ -94,7 +93,10 @@ export interface GetHypervisorV2Result {
  * ```
  */
 export function getHypervisorV2Output(args: GetHypervisorV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHypervisorV2Result> {
-    return pulumi.output(args).apply((a: any) => getHypervisorV2(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:compute/getHypervisorV2:getHypervisorV2", {
+        "hostname": args.hostname,
+    }, opts);
 }
 
 /**
