@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  */
 export function getPort(args?: GetPortArgs, opts?: pulumi.InvokeOptions): Promise<GetPortResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getPort:getPort", {
         "adminStateUp": args.adminStateUp,
@@ -219,7 +218,26 @@ export interface GetPortResult {
  * ```
  */
 export function getPortOutput(args?: GetPortOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortResult> {
-    return pulumi.output(args).apply((a: any) => getPort(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:networking/getPort:getPort", {
+        "adminStateUp": args.adminStateUp,
+        "description": args.description,
+        "deviceId": args.deviceId,
+        "deviceOwner": args.deviceOwner,
+        "dnsName": args.dnsName,
+        "fixedIp": args.fixedIp,
+        "macAddress": args.macAddress,
+        "name": args.name,
+        "networkId": args.networkId,
+        "portId": args.portId,
+        "projectId": args.projectId,
+        "region": args.region,
+        "securityGroupIds": args.securityGroupIds,
+        "status": args.status,
+        "tags": args.tags,
+        "tenantId": args.tenantId,
+    }, opts);
 }
 
 /**

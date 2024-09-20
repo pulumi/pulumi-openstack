@@ -80,14 +80,20 @@ type LookupQosBandwidthLimitRuleResult struct {
 
 func LookupQosBandwidthLimitRuleOutput(ctx *pulumi.Context, args LookupQosBandwidthLimitRuleOutputArgs, opts ...pulumi.InvokeOption) LookupQosBandwidthLimitRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupQosBandwidthLimitRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupQosBandwidthLimitRuleResultOutput, error) {
 			args := v.(LookupQosBandwidthLimitRuleArgs)
-			r, err := LookupQosBandwidthLimitRule(ctx, &args, opts...)
-			var s LookupQosBandwidthLimitRuleResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupQosBandwidthLimitRuleResult
+			secret, err := ctx.InvokePackageRaw("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupQosBandwidthLimitRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupQosBandwidthLimitRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupQosBandwidthLimitRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupQosBandwidthLimitRuleResultOutput)
 }
 

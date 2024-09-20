@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getQosMinimumBandwidthRule(args: GetQosMinimumBandwidthRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetQosMinimumBandwidthRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", {
         "direction": args.direction,
@@ -87,7 +86,13 @@ export interface GetQosMinimumBandwidthRuleResult {
  * ```
  */
 export function getQosMinimumBandwidthRuleOutput(args: GetQosMinimumBandwidthRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQosMinimumBandwidthRuleResult> {
-    return pulumi.output(args).apply((a: any) => getQosMinimumBandwidthRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", {
+        "direction": args.direction,
+        "minKbps": args.minKbps,
+        "qosPolicyId": args.qosPolicyId,
+        "region": args.region,
+    }, opts);
 }
 
 /**

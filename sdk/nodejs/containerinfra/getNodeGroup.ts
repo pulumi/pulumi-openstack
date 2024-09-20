@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getNodeGroup(args: GetNodeGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:containerinfra/getNodeGroup:getNodeGroup", {
         "clusterId": args.clusterId,
@@ -128,7 +127,12 @@ export interface GetNodeGroupResult {
  * ```
  */
 export function getNodeGroupOutput(args: GetNodeGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeGroupResult> {
-    return pulumi.output(args).apply((a: any) => getNodeGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:containerinfra/getNodeGroup:getNodeGroup", {
+        "clusterId": args.clusterId,
+        "name": args.name,
+        "region": args.region,
+    }, opts);
 }
 
 /**

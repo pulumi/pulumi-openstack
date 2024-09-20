@@ -126,14 +126,20 @@ type LookupSubnetPoolResult struct {
 
 func LookupSubnetPoolOutput(ctx *pulumi.Context, args LookupSubnetPoolOutputArgs, opts ...pulumi.InvokeOption) LookupSubnetPoolResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSubnetPoolResult, error) {
+		ApplyT(func(v interface{}) (LookupSubnetPoolResultOutput, error) {
 			args := v.(LookupSubnetPoolArgs)
-			r, err := LookupSubnetPool(ctx, &args, opts...)
-			var s LookupSubnetPoolResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupSubnetPoolResult
+			secret, err := ctx.InvokePackageRaw("openstack:networking/getSubnetPool:getSubnetPool", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSubnetPoolResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSubnetPoolResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSubnetPoolResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSubnetPoolResultOutput)
 }
 

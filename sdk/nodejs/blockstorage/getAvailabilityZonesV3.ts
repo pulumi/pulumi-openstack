@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  */
 export function getAvailabilityZonesV3(args?: GetAvailabilityZonesV3Args, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZonesV3Result> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3", {
         "region": args.region,
@@ -77,7 +76,12 @@ export interface GetAvailabilityZonesV3Result {
  * ```
  */
 export function getAvailabilityZonesV3Output(args?: GetAvailabilityZonesV3OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvailabilityZonesV3Result> {
-    return pulumi.output(args).apply((a: any) => getAvailabilityZonesV3(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3", {
+        "region": args.region,
+        "state": args.state,
+    }, opts);
 }
 
 /**

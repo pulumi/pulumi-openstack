@@ -100,14 +100,20 @@ type GetInstanceV2Result struct {
 
 func GetInstanceV2Output(ctx *pulumi.Context, args GetInstanceV2OutputArgs, opts ...pulumi.InvokeOption) GetInstanceV2ResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetInstanceV2Result, error) {
+		ApplyT(func(v interface{}) (GetInstanceV2ResultOutput, error) {
 			args := v.(GetInstanceV2Args)
-			r, err := GetInstanceV2(ctx, &args, opts...)
-			var s GetInstanceV2Result
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetInstanceV2Result
+			secret, err := ctx.InvokePackageRaw("openstack:compute/getInstanceV2:getInstanceV2", args, &rv, "", opts...)
+			if err != nil {
+				return GetInstanceV2ResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetInstanceV2ResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetInstanceV2ResultOutput), nil
+			}
+			return output, nil
 		}).(GetInstanceV2ResultOutput)
 }
 

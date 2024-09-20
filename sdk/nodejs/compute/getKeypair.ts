@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKeypair(args: GetKeypairArgs, opts?: pulumi.InvokeOptions): Promise<GetKeypairResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:compute/getKeypair:getKeypair", {
         "name": args.name,
@@ -93,7 +92,12 @@ export interface GetKeypairResult {
  * ```
  */
 export function getKeypairOutput(args: GetKeypairOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeypairResult> {
-    return pulumi.output(args).apply((a: any) => getKeypair(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:compute/getKeypair:getKeypair", {
+        "name": args.name,
+        "region": args.region,
+        "userId": args.userId,
+    }, opts);
 }
 
 /**

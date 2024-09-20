@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  */
 export function getAddressScope(args?: GetAddressScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressScopeResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getAddressScope:getAddressScope", {
         "ipVersion": args.ipVersion,
@@ -105,7 +104,15 @@ export interface GetAddressScopeResult {
  * ```
  */
 export function getAddressScopeOutput(args?: GetAddressScopeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressScopeResult> {
-    return pulumi.output(args).apply((a: any) => getAddressScope(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:networking/getAddressScope:getAddressScope", {
+        "ipVersion": args.ipVersion,
+        "name": args.name,
+        "projectId": args.projectId,
+        "region": args.region,
+        "shared": args.shared,
+    }, opts);
 }
 
 /**

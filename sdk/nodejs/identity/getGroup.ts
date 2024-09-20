@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:identity/getGroup:getGroup", {
         "domainId": args.domainId,
@@ -93,7 +92,12 @@ export interface GetGroupResult {
  * ```
  */
 export function getGroupOutput(args: GetGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
-    return pulumi.output(args).apply((a: any) => getGroup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:identity/getGroup:getGroup", {
+        "domainId": args.domainId,
+        "name": args.name,
+        "region": args.region,
+    }, opts);
 }
 
 /**

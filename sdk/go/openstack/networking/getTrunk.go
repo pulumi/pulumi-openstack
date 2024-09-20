@@ -95,14 +95,20 @@ type LookupTrunkResult struct {
 
 func LookupTrunkOutput(ctx *pulumi.Context, args LookupTrunkOutputArgs, opts ...pulumi.InvokeOption) LookupTrunkResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTrunkResult, error) {
+		ApplyT(func(v interface{}) (LookupTrunkResultOutput, error) {
 			args := v.(LookupTrunkArgs)
-			r, err := LookupTrunk(ctx, &args, opts...)
-			var s LookupTrunkResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupTrunkResult
+			secret, err := ctx.InvokePackageRaw("openstack:networking/getTrunk:getTrunk", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTrunkResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTrunkResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTrunkResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTrunkResultOutput)
 }
 

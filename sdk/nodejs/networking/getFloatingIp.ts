@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  */
 export function getFloatingIp(args?: GetFloatingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIpResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getFloatingIp:getFloatingIp", {
         "address": args.address,
@@ -126,7 +125,19 @@ export interface GetFloatingIpResult {
  * ```
  */
 export function getFloatingIpOutput(args?: GetFloatingIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFloatingIpResult> {
-    return pulumi.output(args).apply((a: any) => getFloatingIp(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:networking/getFloatingIp:getFloatingIp", {
+        "address": args.address,
+        "description": args.description,
+        "fixedIp": args.fixedIp,
+        "pool": args.pool,
+        "portId": args.portId,
+        "region": args.region,
+        "status": args.status,
+        "tags": args.tags,
+        "tenantId": args.tenantId,
+    }, opts);
 }
 
 /**

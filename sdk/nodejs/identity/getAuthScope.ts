@@ -7,7 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getAuthScope(args: GetAuthScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthScopeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:identity/getAuthScope:getAuthScope", {
         "name": args.name,
@@ -113,7 +112,12 @@ export interface GetAuthScopeResult {
     readonly userName: string;
 }
 export function getAuthScopeOutput(args: GetAuthScopeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthScopeResult> {
-    return pulumi.output(args).apply((a: any) => getAuthScope(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:identity/getAuthScope:getAuthScope", {
+        "name": args.name,
+        "region": args.region,
+        "setTokenId": args.setTokenId,
+    }, opts);
 }
 
 /**

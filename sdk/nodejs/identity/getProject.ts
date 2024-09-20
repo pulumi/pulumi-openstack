@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:identity/getProject:getProject", {
         "domainId": args.domainId,
@@ -130,7 +129,17 @@ export interface GetProjectResult {
  * ```
  */
 export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
-    return pulumi.output(args).apply((a: any) => getProject(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:identity/getProject:getProject", {
+        "domainId": args.domainId,
+        "enabled": args.enabled,
+        "isDomain": args.isDomain,
+        "name": args.name,
+        "parentId": args.parentId,
+        "projectId": args.projectId,
+        "region": args.region,
+    }, opts);
 }
 
 /**

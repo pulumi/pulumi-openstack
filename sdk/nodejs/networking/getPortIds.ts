@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  */
 export function getPortIds(args?: GetPortIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetPortIdsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getPortIds:getPortIds", {
         "adminStateUp": args.adminStateUp,
@@ -158,7 +157,27 @@ export interface GetPortIdsResult {
  * ```
  */
 export function getPortIdsOutput(args?: GetPortIdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortIdsResult> {
-    return pulumi.output(args).apply((a: any) => getPortIds(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:networking/getPortIds:getPortIds", {
+        "adminStateUp": args.adminStateUp,
+        "description": args.description,
+        "deviceId": args.deviceId,
+        "deviceOwner": args.deviceOwner,
+        "dnsName": args.dnsName,
+        "fixedIp": args.fixedIp,
+        "macAddress": args.macAddress,
+        "name": args.name,
+        "networkId": args.networkId,
+        "projectId": args.projectId,
+        "region": args.region,
+        "securityGroupIds": args.securityGroupIds,
+        "sortDirection": args.sortDirection,
+        "sortKey": args.sortKey,
+        "status": args.status,
+        "tags": args.tags,
+        "tenantId": args.tenantId,
+    }, opts);
 }
 
 /**

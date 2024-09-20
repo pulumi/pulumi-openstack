@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAggregateV2(args: GetAggregateV2Args, opts?: pulumi.InvokeOptions): Promise<GetAggregateV2Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:compute/getAggregateV2:getAggregateV2", {
         "hosts": args.hosts,
@@ -88,7 +87,12 @@ export interface GetAggregateV2Result {
  * ```
  */
 export function getAggregateV2Output(args: GetAggregateV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregateV2Result> {
-    return pulumi.output(args).apply((a: any) => getAggregateV2(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:compute/getAggregateV2:getAggregateV2", {
+        "hosts": args.hosts,
+        "metadata": args.metadata,
+        "name": args.name,
+    }, opts);
 }
 
 /**

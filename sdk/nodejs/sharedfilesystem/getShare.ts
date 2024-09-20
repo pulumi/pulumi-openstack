@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  */
 export function getShare(args?: GetShareArgs, opts?: pulumi.InvokeOptions): Promise<GetShareResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:sharedfilesystem/getShare:getShare", {
         "description": args.description,
@@ -168,7 +167,19 @@ export interface GetShareResult {
  * ```
  */
 export function getShareOutput(args?: GetShareOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShareResult> {
-    return pulumi.output(args).apply((a: any) => getShare(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:sharedfilesystem/getShare:getShare", {
+        "description": args.description,
+        "exportLocationPath": args.exportLocationPath,
+        "isPublic": args.isPublic,
+        "metadata": args.metadata,
+        "name": args.name,
+        "region": args.region,
+        "shareNetworkId": args.shareNetworkId,
+        "snapshotId": args.snapshotId,
+        "status": args.status,
+    }, opts);
 }
 
 /**

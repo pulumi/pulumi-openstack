@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getLimitsV2(args: GetLimitsV2Args, opts?: pulumi.InvokeOptions): Promise<GetLimitsV2Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:compute/getLimitsV2:getLimitsV2", {
         "projectId": args.projectId,
@@ -150,7 +149,11 @@ export interface GetLimitsV2Result {
  * ```
  */
 export function getLimitsV2Output(args: GetLimitsV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLimitsV2Result> {
-    return pulumi.output(args).apply((a: any) => getLimitsV2(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:compute/getLimitsV2:getLimitsV2", {
+        "projectId": args.projectId,
+        "region": args.region,
+    }, opts);
 }
 
 /**

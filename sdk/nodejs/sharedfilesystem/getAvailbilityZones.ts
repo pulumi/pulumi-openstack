@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  */
 export function getAvailbilityZones(args?: GetAvailbilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailbilityZonesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", {
         "region": args.region,
@@ -68,7 +67,11 @@ export interface GetAvailbilityZonesResult {
  * ```
  */
 export function getAvailbilityZonesOutput(args?: GetAvailbilityZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvailbilityZonesResult> {
-    return pulumi.output(args).apply((a: any) => getAvailbilityZones(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", {
+        "region": args.region,
+    }, opts);
 }
 
 /**

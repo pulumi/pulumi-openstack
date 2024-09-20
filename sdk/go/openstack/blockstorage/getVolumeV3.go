@@ -97,14 +97,20 @@ type GetVolumeV3Result struct {
 
 func GetVolumeV3Output(ctx *pulumi.Context, args GetVolumeV3OutputArgs, opts ...pulumi.InvokeOption) GetVolumeV3ResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetVolumeV3Result, error) {
+		ApplyT(func(v interface{}) (GetVolumeV3ResultOutput, error) {
 			args := v.(GetVolumeV3Args)
-			r, err := GetVolumeV3(ctx, &args, opts...)
-			var s GetVolumeV3Result
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetVolumeV3Result
+			secret, err := ctx.InvokePackageRaw("openstack:blockstorage/getVolumeV3:getVolumeV3", args, &rv, "", opts...)
+			if err != nil {
+				return GetVolumeV3ResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetVolumeV3ResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetVolumeV3ResultOutput), nil
+			}
+			return output, nil
 		}).(GetVolumeV3ResultOutput)
 }
 

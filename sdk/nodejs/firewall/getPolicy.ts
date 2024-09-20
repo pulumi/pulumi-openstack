@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  */
 export function getPolicy(args?: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:firewall/getPolicy:getPolicy", {
         "name": args.name,
@@ -110,7 +109,14 @@ export interface GetPolicyResult {
  * ```
  */
 export function getPolicyOutput(args?: GetPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getPolicy(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:firewall/getPolicy:getPolicy", {
+        "name": args.name,
+        "policyId": args.policyId,
+        "region": args.region,
+        "tenantId": args.tenantId,
+    }, opts);
 }
 
 /**

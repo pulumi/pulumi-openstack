@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getInstanceV2(args: GetInstanceV2Args, opts?: pulumi.InvokeOptions): Promise<GetInstanceV2Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:compute/getInstanceV2:getInstanceV2", {
         "id": args.id,
@@ -137,7 +136,13 @@ export interface GetInstanceV2Result {
  * ```
  */
 export function getInstanceV2Output(args: GetInstanceV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceV2Result> {
-    return pulumi.output(args).apply((a: any) => getInstanceV2(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:compute/getInstanceV2:getInstanceV2", {
+        "id": args.id,
+        "networks": args.networks,
+        "region": args.region,
+        "userData": args.userData,
+    }, opts);
 }
 
 /**

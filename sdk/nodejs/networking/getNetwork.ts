@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  */
 export function getNetwork(args?: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getNetwork:getNetwork", {
         "description": args.description,
@@ -176,7 +175,21 @@ export interface GetNetworkResult {
  * ```
  */
 export function getNetworkOutput(args?: GetNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkResult> {
-    return pulumi.output(args).apply((a: any) => getNetwork(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:networking/getNetwork:getNetwork", {
+        "description": args.description,
+        "external": args.external,
+        "matchingSubnetCidr": args.matchingSubnetCidr,
+        "mtu": args.mtu,
+        "name": args.name,
+        "networkId": args.networkId,
+        "region": args.region,
+        "status": args.status,
+        "tags": args.tags,
+        "tenantId": args.tenantId,
+        "transparentVlan": args.transparentVlan,
+    }, opts);
 }
 
 /**

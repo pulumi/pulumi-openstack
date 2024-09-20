@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getQuotaSetV2(args: GetQuotaSetV2Args, opts?: pulumi.InvokeOptions): Promise<GetQuotaSetV2Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:compute/getQuotaSetV2:getQuotaSetV2", {
         "projectId": args.projectId,
@@ -130,7 +129,11 @@ export interface GetQuotaSetV2Result {
  * ```
  */
 export function getQuotaSetV2Output(args: GetQuotaSetV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaSetV2Result> {
-    return pulumi.output(args).apply((a: any) => getQuotaSetV2(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:compute/getQuotaSetV2:getQuotaSetV2", {
+        "projectId": args.projectId,
+        "region": args.region,
+    }, opts);
 }
 
 /**

@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  */
 export function getSubnetPool(args?: GetSubnetPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetPoolResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getSubnetPool:getSubnetPool", {
         "addressScopeId": args.addressScopeId,
@@ -195,7 +194,23 @@ export interface GetSubnetPoolResult {
  * ```
  */
 export function getSubnetPoolOutput(args?: GetSubnetPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetPoolResult> {
-    return pulumi.output(args).apply((a: any) => getSubnetPool(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:networking/getSubnetPool:getSubnetPool", {
+        "addressScopeId": args.addressScopeId,
+        "defaultPrefixlen": args.defaultPrefixlen,
+        "defaultQuota": args.defaultQuota,
+        "description": args.description,
+        "ipVersion": args.ipVersion,
+        "isDefault": args.isDefault,
+        "maxPrefixlen": args.maxPrefixlen,
+        "minPrefixlen": args.minPrefixlen,
+        "name": args.name,
+        "projectId": args.projectId,
+        "region": args.region,
+        "shared": args.shared,
+        "tags": args.tags,
+    }, opts);
 }
 
 /**

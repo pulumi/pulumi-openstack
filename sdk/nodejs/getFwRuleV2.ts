@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  */
 export function getFwRuleV2(args?: GetFwRuleV2Args, opts?: pulumi.InvokeOptions): Promise<GetFwRuleV2Result> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:index/getFwRuleV2:getFwRuleV2", {
         "action": args.action,
@@ -208,7 +207,26 @@ export interface GetFwRuleV2Result {
  * ```
  */
 export function getFwRuleV2Output(args?: GetFwRuleV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFwRuleV2Result> {
-    return pulumi.output(args).apply((a: any) => getFwRuleV2(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("openstack:index/getFwRuleV2:getFwRuleV2", {
+        "action": args.action,
+        "description": args.description,
+        "destinationIpAddress": args.destinationIpAddress,
+        "destinationPort": args.destinationPort,
+        "enabled": args.enabled,
+        "firewallPolicyIds": args.firewallPolicyIds,
+        "ipVersion": args.ipVersion,
+        "name": args.name,
+        "projectId": args.projectId,
+        "protocol": args.protocol,
+        "region": args.region,
+        "ruleId": args.ruleId,
+        "shared": args.shared,
+        "sourceIpAddress": args.sourceIpAddress,
+        "sourcePort": args.sourcePort,
+        "tenantId": args.tenantId,
+    }, opts);
 }
 
 /**
