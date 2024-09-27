@@ -134,7 +134,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
-        /// A Networking client is needed to create an . If omitted, the
+        /// A Networking client is needed to create an L7 rule. If omitted, the
         /// `region` argument of the provider is used. Changing this creates a new
         /// L7 Rule.
         /// </summary>
@@ -246,7 +246,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
-        /// A Networking client is needed to create an . If omitted, the
+        /// A Networking client is needed to create an L7 rule. If omitted, the
         /// `region` argument of the provider is used. Changing this creates a new
         /// L7 Rule.
         /// </summary>
@@ -326,7 +326,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
-        /// A Networking client is needed to create an . If omitted, the
+        /// A Networking client is needed to create an L7 rule. If omitted, the
         /// `region` argument of the provider is used. Changing this creates a new
         /// L7 Rule.
         /// </summary>

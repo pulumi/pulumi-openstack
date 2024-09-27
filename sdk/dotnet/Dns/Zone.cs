@@ -45,7 +45,7 @@ namespace Pulumi.OpenStack.Dns
     /// ```
     /// 
     /// ```sh
-    /// $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
+    /// $ pulumi import openstack:dns/zone:Zone zone_1 zone_id:project_id
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:dns/zone:Zone")]

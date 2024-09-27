@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BgpvpnRouterAssociateV2{}
 	case "openstack:index/bgpvpnV2:BgpvpnV2":
 		r = &BgpvpnV2{}
+	case "openstack:index/lbFlavorprofileV2:LbFlavorprofileV2":
+		r = &LbFlavorprofileV2{}
 	case "openstack:index/lbLoadbalancerV2:LbLoadbalancerV2":
 		r = &LbLoadbalancerV2{}
 	default:
@@ -80,6 +82,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"index/bgpvpnV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"index/lbFlavorprofileV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

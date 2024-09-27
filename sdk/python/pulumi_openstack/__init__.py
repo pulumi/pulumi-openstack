@@ -12,6 +12,7 @@ from .bgpvpn_v2 import *
 from .get_fw_group_v2 import *
 from .get_fw_policy_v2 import *
 from .get_fw_rule_v2 import *
+from .lb_flavorprofile_v2 import *
 from .lb_loadbalancer_v2 import *
 from .provider import *
 from ._inputs import *
@@ -90,14 +91,6 @@ _utilities.register(
  },
  {
   "pkg": "openstack",
-  "mod": "blockstorage/quoteSetV2",
-  "fqn": "pulumi_openstack.blockstorage",
-  "classes": {
-   "openstack:blockstorage/quoteSetV2:QuoteSetV2": "QuoteSetV2"
-  }
- },
- {
-  "pkg": "openstack",
   "mod": "blockstorage/quoteSetV3",
   "fqn": "pulumi_openstack.blockstorage",
   "classes": {
@@ -122,14 +115,6 @@ _utilities.register(
  },
  {
   "pkg": "openstack",
-  "mod": "blockstorage/volumeAttachV2",
-  "fqn": "pulumi_openstack.blockstorage",
-  "classes": {
-   "openstack:blockstorage/volumeAttachV2:VolumeAttachV2": "VolumeAttachV2"
-  }
- },
- {
-  "pkg": "openstack",
   "mod": "blockstorage/volumeTypeAccessV3",
   "fqn": "pulumi_openstack.blockstorage",
   "classes": {
@@ -142,22 +127,6 @@ _utilities.register(
   "fqn": "pulumi_openstack.blockstorage",
   "classes": {
    "openstack:blockstorage/volumeTypeV3:VolumeTypeV3": "VolumeTypeV3"
-  }
- },
- {
-  "pkg": "openstack",
-  "mod": "blockstorage/volumeV1",
-  "fqn": "pulumi_openstack.blockstorage",
-  "classes": {
-   "openstack:blockstorage/volumeV1:VolumeV1": "VolumeV1"
-  }
- },
- {
-  "pkg": "openstack",
-  "mod": "blockstorage/volumeV2",
-  "fqn": "pulumi_openstack.blockstorage",
-  "classes": {
-   "openstack:blockstorage/volumeV2:VolumeV2": "VolumeV2"
   }
  },
  {
@@ -182,22 +151,6 @@ _utilities.register(
   "fqn": "pulumi_openstack.compute",
   "classes": {
    "openstack:compute/flavorAccess:FlavorAccess": "FlavorAccess"
-  }
- },
- {
-  "pkg": "openstack",
-  "mod": "compute/floatingIp",
-  "fqn": "pulumi_openstack.compute",
-  "classes": {
-   "openstack:compute/floatingIp:FloatingIp": "FloatingIp"
-  }
- },
- {
-  "pkg": "openstack",
-  "mod": "compute/floatingIpAssociate",
-  "fqn": "pulumi_openstack.compute",
-  "classes": {
-   "openstack:compute/floatingIpAssociate:FloatingIpAssociate": "FloatingIpAssociate"
   }
  },
  {
@@ -230,14 +183,6 @@ _utilities.register(
   "fqn": "pulumi_openstack.compute",
   "classes": {
    "openstack:compute/quotaSetV2:QuotaSetV2": "QuotaSetV2"
-  }
- },
- {
-  "pkg": "openstack",
-  "mod": "compute/secGroup",
-  "fqn": "pulumi_openstack.compute",
-  "classes": {
-   "openstack:compute/secGroup:SecGroup": "SecGroup"
   }
  },
  {
@@ -346,14 +291,6 @@ _utilities.register(
  },
  {
   "pkg": "openstack",
-  "mod": "firewall/firewall",
-  "fqn": "pulumi_openstack.firewall",
-  "classes": {
-   "openstack:firewall/firewall:Firewall": "Firewall"
-  }
- },
- {
-  "pkg": "openstack",
   "mod": "firewall/groupV2",
   "fqn": "pulumi_openstack.firewall",
   "classes": {
@@ -362,26 +299,10 @@ _utilities.register(
  },
  {
   "pkg": "openstack",
-  "mod": "firewall/policy",
-  "fqn": "pulumi_openstack.firewall",
-  "classes": {
-   "openstack:firewall/policy:Policy": "Policy"
-  }
- },
- {
-  "pkg": "openstack",
   "mod": "firewall/policyV2",
   "fqn": "pulumi_openstack.firewall",
   "classes": {
    "openstack:firewall/policyV2:PolicyV2": "PolicyV2"
-  }
- },
- {
-  "pkg": "openstack",
-  "mod": "firewall/rule",
-  "fqn": "pulumi_openstack.firewall",
-  "classes": {
-   "openstack:firewall/rule:Rule": "Rule"
   }
  },
  {
@@ -538,6 +459,14 @@ _utilities.register(
  },
  {
   "pkg": "openstack",
+  "mod": "index/lbFlavorprofileV2",
+  "fqn": "pulumi_openstack",
+  "classes": {
+   "openstack:index/lbFlavorprofileV2:LbFlavorprofileV2": "LbFlavorprofileV2"
+  }
+ },
+ {
+  "pkg": "openstack",
   "mod": "index/lbLoadbalancerV2",
   "fqn": "pulumi_openstack",
   "classes": {
@@ -594,26 +523,10 @@ _utilities.register(
  },
  {
   "pkg": "openstack",
-  "mod": "loadbalancer/loadBalancer",
-  "fqn": "pulumi_openstack.loadbalancer",
-  "classes": {
-   "openstack:loadbalancer/loadBalancer:LoadBalancer": "LoadBalancer"
-  }
- },
- {
-  "pkg": "openstack",
   "mod": "loadbalancer/member",
   "fqn": "pulumi_openstack.loadbalancer",
   "classes": {
    "openstack:loadbalancer/member:Member": "Member"
-  }
- },
- {
-  "pkg": "openstack",
-  "mod": "loadbalancer/memberV1",
-  "fqn": "pulumi_openstack.loadbalancer",
-  "classes": {
-   "openstack:loadbalancer/memberV1:MemberV1": "MemberV1"
   }
  },
  {
@@ -634,14 +547,6 @@ _utilities.register(
  },
  {
   "pkg": "openstack",
-  "mod": "loadbalancer/monitorV1",
-  "fqn": "pulumi_openstack.loadbalancer",
-  "classes": {
-   "openstack:loadbalancer/monitorV1:MonitorV1": "MonitorV1"
-  }
- },
- {
-  "pkg": "openstack",
   "mod": "loadbalancer/pool",
   "fqn": "pulumi_openstack.loadbalancer",
   "classes": {
@@ -650,26 +555,10 @@ _utilities.register(
  },
  {
   "pkg": "openstack",
-  "mod": "loadbalancer/poolV1",
-  "fqn": "pulumi_openstack.loadbalancer",
-  "classes": {
-   "openstack:loadbalancer/poolV1:PoolV1": "PoolV1"
-  }
- },
- {
-  "pkg": "openstack",
   "mod": "loadbalancer/quota",
   "fqn": "pulumi_openstack.loadbalancer",
   "classes": {
    "openstack:loadbalancer/quota:Quota": "Quota"
-  }
- },
- {
-  "pkg": "openstack",
-  "mod": "loadbalancer/vip",
-  "fqn": "pulumi_openstack.loadbalancer",
-  "classes": {
-   "openstack:loadbalancer/vip:Vip": "Vip"
   }
  },
  {
@@ -846,6 +735,14 @@ _utilities.register(
   "fqn": "pulumi_openstack.networking",
   "classes": {
    "openstack:networking/trunk:Trunk": "Trunk"
+  }
+ },
+ {
+  "pkg": "openstack",
+  "mod": "objectstorage/accountV1",
+  "fqn": "pulumi_openstack.objectstorage",
+  "classes": {
+   "openstack:objectstorage/accountV1:AccountV1": "AccountV1"
   }
  },
  {

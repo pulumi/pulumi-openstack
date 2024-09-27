@@ -23,9 +23,9 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Simple secret
+ * ### Simple container
  * 
- * The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
+ * A container with the TLS certificates.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -40,12 +40,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.openstack.keymanager.ContainerV1;
  * import com.pulumi.openstack.keymanager.ContainerV1Args;
  * import com.pulumi.openstack.keymanager.inputs.ContainerV1SecretRefArgs;
- * import com.pulumi.openstack.networking.NetworkingFunctions;
- * import com.pulumi.openstack.networking.inputs.GetSubnetArgs;
- * import com.pulumi.openstack.LbLoadbalancerV2;
- * import com.pulumi.openstack.LbLoadbalancerV2Args;
- * import com.pulumi.openstack.loadbalancer.Listener;
- * import com.pulumi.openstack.loadbalancer.ListenerArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -102,23 +96,6 @@ import javax.annotation.Nullable;
  *                     .name("intermediates")
  *                     .secretRef(intermediate1.secretRef())
  *                     .build())
- *             .build());
- * 
- *         final var subnet1 = NetworkingFunctions.getSubnet(GetSubnetArgs.builder()
- *             .name("my-subnet")
- *             .build());
- * 
- *         var lb1 = new LbLoadbalancerV2("lb1", LbLoadbalancerV2Args.builder()
- *             .name("loadbalancer")
- *             .vipSubnetId(subnet1.applyValue(getSubnetResult -> getSubnetResult.id()))
- *             .build());
- * 
- *         var listener1 = new Listener("listener1", ListenerArgs.builder()
- *             .name("https")
- *             .protocol("TERMINATED_HTTPS")
- *             .protocolPort(443)
- *             .loadbalancerId(lb1.id())
- *             .defaultTlsContainerRef(tls1.containerRef())
  *             .build());
  * 
  *     }

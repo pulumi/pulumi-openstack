@@ -377,9 +377,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.personalities);
     }
     /**
-     * Provide the VM state. Only &#39;active&#39;, &#39;shutoff&#39;
+     * Provide the VM state. Only &#39;active&#39;, &#39;shutoff&#39;, &#39;paused&#39;
      * and &#39;shelved_offloaded&#39; are supported values.
-     * *Note*: If the initial power_state is the shutoff
+     * *Note*: If the initial power_state is the shutoff or paused
      * the VM will be stopped immediately after build and the provisioners like
      * remote-exec or files are not supported.
      * 
@@ -388,9 +388,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> powerState;
 
     /**
-     * @return Provide the VM state. Only &#39;active&#39;, &#39;shutoff&#39;
+     * @return Provide the VM state. Only &#39;active&#39;, &#39;shutoff&#39;, &#39;paused&#39;
      * and &#39;shelved_offloaded&#39; are supported values.
-     * *Note*: If the initial power_state is the shutoff
+     * *Note*: If the initial power_state is the shutoff or paused
      * the VM will be stopped immediately after build and the provisioners like
      * remote-exec or files are not supported.
      * 

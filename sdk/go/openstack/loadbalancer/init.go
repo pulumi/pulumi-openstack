@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,26 +27,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &L7RuleV2{}
 	case "openstack:loadbalancer/listener:Listener":
 		r = &Listener{}
-	case "openstack:loadbalancer/loadBalancer:LoadBalancer":
-		r = &LoadBalancer{}
 	case "openstack:loadbalancer/member:Member":
 		r = &Member{}
-	case "openstack:loadbalancer/memberV1:MemberV1":
-		r = &MemberV1{}
 	case "openstack:loadbalancer/members:Members":
 		r = &Members{}
 	case "openstack:loadbalancer/monitor:Monitor":
 		r = &Monitor{}
-	case "openstack:loadbalancer/monitorV1:MonitorV1":
-		r = &MonitorV1{}
 	case "openstack:loadbalancer/pool:Pool":
 		r = &Pool{}
-	case "openstack:loadbalancer/poolV1:PoolV1":
-		r = &PoolV1{}
 	case "openstack:loadbalancer/quota:Quota":
 		r = &Quota{}
-	case "openstack:loadbalancer/vip:Vip":
-		r = &Vip{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -77,17 +67,7 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"openstack",
-		"loadbalancer/loadBalancer",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"openstack",
 		"loadbalancer/member",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"openstack",
-		"loadbalancer/memberV1",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -102,27 +82,12 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"openstack",
-		"loadbalancer/monitorV1",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"openstack",
 		"loadbalancer/pool",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"openstack",
-		"loadbalancer/poolV1",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"openstack",
 		"loadbalancer/quota",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"openstack",
-		"loadbalancer/vip",
 		&module{version},
 	)
 }

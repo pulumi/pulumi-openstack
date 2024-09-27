@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,16 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "openstack:firewall/firewall:Firewall":
-		r = &Firewall{}
 	case "openstack:firewall/groupV2:GroupV2":
 		r = &GroupV2{}
-	case "openstack:firewall/policy:Policy":
-		r = &Policy{}
 	case "openstack:firewall/policyV2:PolicyV2":
 		r = &PolicyV2{}
-	case "openstack:firewall/rule:Rule":
-		r = &Rule{}
 	case "openstack:firewall/ruleV2:RuleV2":
 		r = &RuleV2{}
 	default:
@@ -48,27 +42,12 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"openstack",
-		"firewall/firewall",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"openstack",
 		"firewall/groupV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"openstack",
-		"firewall/policy",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"openstack",
 		"firewall/policyV2",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"openstack",
-		"firewall/rule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

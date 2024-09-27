@@ -26,6 +26,7 @@ class ClusterArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  master_count: Optional[pulumi.Input[int]] = None,
                  master_flavor: Optional[pulumi.Input[str]] = None,
+                 master_lb_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_labels: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
@@ -58,6 +59,8 @@ class ClusterArgs:
         :param pulumi.Input[str] master_flavor: The flavor for the master nodes. Can be set via
                the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
                new cluster.
+        :param pulumi.Input[bool] master_lb_enabled: Indicates whether to create a load balancer
+               for the master nodes. Changing this creates a new cluster.
         :param pulumi.Input[bool] merge_labels: Indicates whether the provided labels should be
                merged with cluster template labels. Changing this creates a new cluster.
         :param pulumi.Input[str] name: The name of the cluster. Changing this creates a new
@@ -91,6 +94,8 @@ class ClusterArgs:
             pulumi.set(__self__, "master_count", master_count)
         if master_flavor is not None:
             pulumi.set(__self__, "master_flavor", master_flavor)
+        if master_lb_enabled is not None:
+            pulumi.set(__self__, "master_lb_enabled", master_lb_enabled)
         if merge_labels is not None:
             pulumi.set(__self__, "merge_labels", merge_labels)
         if name is not None:
@@ -259,6 +264,19 @@ class ClusterArgs:
         pulumi.set(self, "master_flavor", value)
 
     @property
+    @pulumi.getter(name="masterLbEnabled")
+    def master_lb_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether to create a load balancer
+        for the master nodes. Changing this creates a new cluster.
+        """
+        return pulumi.get(self, "master_lb_enabled")
+
+    @master_lb_enabled.setter
+    def master_lb_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "master_lb_enabled", value)
+
+    @property
     @pulumi.getter(name="mergeLabels")
     def merge_labels(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -333,6 +351,7 @@ class _ClusterState:
                  master_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  master_count: Optional[pulumi.Input[int]] = None,
                  master_flavor: Optional[pulumi.Input[str]] = None,
+                 master_lb_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_labels: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -370,6 +389,8 @@ class _ClusterState:
         :param pulumi.Input[str] master_flavor: The flavor for the master nodes. Can be set via
                the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
                new cluster.
+        :param pulumi.Input[bool] master_lb_enabled: Indicates whether to create a load balancer
+               for the master nodes. Changing this creates a new cluster.
         :param pulumi.Input[bool] merge_labels: Indicates whether the provided labels should be
                merged with cluster template labels. Changing this creates a new cluster.
         :param pulumi.Input[str] name: The name of the cluster. Changing this creates a new
@@ -422,6 +443,8 @@ class _ClusterState:
             pulumi.set(__self__, "master_count", master_count)
         if master_flavor is not None:
             pulumi.set(__self__, "master_flavor", master_flavor)
+        if master_lb_enabled is not None:
+            pulumi.set(__self__, "master_lb_enabled", master_lb_enabled)
         if merge_labels is not None:
             pulumi.set(__self__, "merge_labels", merge_labels)
         if name is not None:
@@ -654,6 +677,19 @@ class _ClusterState:
         pulumi.set(self, "master_flavor", value)
 
     @property
+    @pulumi.getter(name="masterLbEnabled")
+    def master_lb_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether to create a load balancer
+        for the master nodes. Changing this creates a new cluster.
+        """
+        return pulumi.get(self, "master_lb_enabled")
+
+    @master_lb_enabled.setter
+    def master_lb_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "master_lb_enabled", value)
+
+    @property
     @pulumi.getter(name="mergeLabels")
     def merge_labels(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -779,6 +815,7 @@ class Cluster(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  master_count: Optional[pulumi.Input[int]] = None,
                  master_flavor: Optional[pulumi.Input[str]] = None,
+                 master_lb_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_labels: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
@@ -879,6 +916,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] master_flavor: The flavor for the master nodes. Can be set via
                the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
                new cluster.
+        :param pulumi.Input[bool] master_lb_enabled: Indicates whether to create a load balancer
+               for the master nodes. Changing this creates a new cluster.
         :param pulumi.Input[bool] merge_labels: Indicates whether the provided labels should be
                merged with cluster template labels. Changing this creates a new cluster.
         :param pulumi.Input[str] name: The name of the cluster. Changing this creates a new
@@ -989,6 +1028,7 @@ class Cluster(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  master_count: Optional[pulumi.Input[int]] = None,
                  master_flavor: Optional[pulumi.Input[str]] = None,
+                 master_lb_enabled: Optional[pulumi.Input[bool]] = None,
                  merge_labels: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
@@ -1016,6 +1056,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["master_count"] = master_count
             __props__.__dict__["master_flavor"] = master_flavor
+            __props__.__dict__["master_lb_enabled"] = master_lb_enabled
             __props__.__dict__["merge_labels"] = merge_labels
             __props__.__dict__["name"] = name
             __props__.__dict__["node_count"] = node_count
@@ -1061,6 +1102,7 @@ class Cluster(pulumi.CustomResource):
             master_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             master_count: Optional[pulumi.Input[int]] = None,
             master_flavor: Optional[pulumi.Input[str]] = None,
+            master_lb_enabled: Optional[pulumi.Input[bool]] = None,
             merge_labels: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1103,6 +1145,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] master_flavor: The flavor for the master nodes. Can be set via
                the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
                new cluster.
+        :param pulumi.Input[bool] master_lb_enabled: Indicates whether to create a load balancer
+               for the master nodes. Changing this creates a new cluster.
         :param pulumi.Input[bool] merge_labels: Indicates whether the provided labels should be
                merged with cluster template labels. Changing this creates a new cluster.
         :param pulumi.Input[str] name: The name of the cluster. Changing this creates a new
@@ -1141,6 +1185,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["master_addresses"] = master_addresses
         __props__.__dict__["master_count"] = master_count
         __props__.__dict__["master_flavor"] = master_flavor
+        __props__.__dict__["master_lb_enabled"] = master_lb_enabled
         __props__.__dict__["merge_labels"] = merge_labels
         __props__.__dict__["name"] = name
         __props__.__dict__["node_addresses"] = node_addresses
@@ -1291,6 +1336,15 @@ class Cluster(pulumi.CustomResource):
         new cluster.
         """
         return pulumi.get(self, "master_flavor")
+
+    @property
+    @pulumi.getter(name="masterLbEnabled")
+    def master_lb_enabled(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether to create a load balancer
+        for the master nodes. Changing this creates a new cluster.
+        """
+        return pulumi.get(self, "master_lb_enabled")
 
     @property
     @pulumi.getter(name="mergeLabels")

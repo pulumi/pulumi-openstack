@@ -11,9 +11,9 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Simple secret
+ * ### Simple container
  *
- * The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
+ * A container with the TLS certificates.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -61,20 +61,6 @@ import * as utilities from "../utilities";
  *             secretRef: intermediate1.secretRef,
  *         },
  *     ],
- * });
- * const subnet1 = openstack.networking.getSubnet({
- *     name: "my-subnet",
- * });
- * const lb1 = new openstack.LbLoadbalancerV2("lb_1", {
- *     name: "loadbalancer",
- *     vipSubnetId: subnet1.then(subnet1 => subnet1.id),
- * });
- * const listener1 = new openstack.loadbalancer.Listener("listener_1", {
- *     name: "https",
- *     protocol: "TERMINATED_HTTPS",
- *     protocolPort: 443,
- *     loadbalancerId: lb1.id,
- *     defaultTlsContainerRef: tls1.containerRef,
  * });
  * ```
  *

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/networking"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -79,12 +79,16 @@ type SecGroupRule struct {
 	// The higher part of the allowed port range, valid
 	// integer value needs to be between 1 and 65535. Changing this creates a new
 	// security group rule.
-	PortRangeMax pulumi.IntOutput `pulumi:"portRangeMax"`
+	PortRangeMax pulumi.IntPtrOutput `pulumi:"portRangeMax"`
 	// The lower part of the allowed port range, valid
 	// integer value needs to be between 1 and 65535. Changing this creates a new
 	// security group rule.
-	PortRangeMin pulumi.IntOutput `pulumi:"portRangeMin"`
-	// The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+	PortRangeMin pulumi.IntPtrOutput `pulumi:"portRangeMin"`
+	// The layer 4 protocol type, valid values are
+	// following. Changing this creates a new security group rule. This is required
+	// if you want to specify a port range.
+	// * empty string or omitted (any protocol)
+	// * integer value between 0 and 255 (valid IP protocol number)
 	// * __tcp__
 	// * __udp__
 	// * __icmp__
@@ -106,7 +110,8 @@ type SecGroupRule struct {
 	// * __sctp__
 	// * __udplite__
 	// * __vrrp__
-	Protocol pulumi.StringOutput `pulumi:"protocol"`
+	// * __ipip__
+	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a port. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -184,7 +189,11 @@ type secGroupRuleState struct {
 	// integer value needs to be between 1 and 65535. Changing this creates a new
 	// security group rule.
 	PortRangeMin *int `pulumi:"portRangeMin"`
-	// The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+	// The layer 4 protocol type, valid values are
+	// following. Changing this creates a new security group rule. This is required
+	// if you want to specify a port range.
+	// * empty string or omitted (any protocol)
+	// * integer value between 0 and 255 (valid IP protocol number)
 	// * __tcp__
 	// * __udp__
 	// * __icmp__
@@ -206,6 +215,7 @@ type secGroupRuleState struct {
 	// * __sctp__
 	// * __udplite__
 	// * __vrrp__
+	// * __ipip__
 	Protocol *string `pulumi:"protocol"`
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a port. If omitted, the
@@ -246,7 +256,11 @@ type SecGroupRuleState struct {
 	// integer value needs to be between 1 and 65535. Changing this creates a new
 	// security group rule.
 	PortRangeMin pulumi.IntPtrInput
-	// The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+	// The layer 4 protocol type, valid values are
+	// following. Changing this creates a new security group rule. This is required
+	// if you want to specify a port range.
+	// * empty string or omitted (any protocol)
+	// * integer value between 0 and 255 (valid IP protocol number)
 	// * __tcp__
 	// * __udp__
 	// * __icmp__
@@ -268,6 +282,7 @@ type SecGroupRuleState struct {
 	// * __sctp__
 	// * __udplite__
 	// * __vrrp__
+	// * __ipip__
 	Protocol pulumi.StringPtrInput
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a port. If omitted, the
@@ -312,7 +327,11 @@ type secGroupRuleArgs struct {
 	// integer value needs to be between 1 and 65535. Changing this creates a new
 	// security group rule.
 	PortRangeMin *int `pulumi:"portRangeMin"`
-	// The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+	// The layer 4 protocol type, valid values are
+	// following. Changing this creates a new security group rule. This is required
+	// if you want to specify a port range.
+	// * empty string or omitted (any protocol)
+	// * integer value between 0 and 255 (valid IP protocol number)
 	// * __tcp__
 	// * __udp__
 	// * __icmp__
@@ -334,6 +353,7 @@ type secGroupRuleArgs struct {
 	// * __sctp__
 	// * __udplite__
 	// * __vrrp__
+	// * __ipip__
 	Protocol *string `pulumi:"protocol"`
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a port. If omitted, the
@@ -375,7 +395,11 @@ type SecGroupRuleArgs struct {
 	// integer value needs to be between 1 and 65535. Changing this creates a new
 	// security group rule.
 	PortRangeMin pulumi.IntPtrInput
-	// The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+	// The layer 4 protocol type, valid values are
+	// following. Changing this creates a new security group rule. This is required
+	// if you want to specify a port range.
+	// * empty string or omitted (any protocol)
+	// * integer value between 0 and 255 (valid IP protocol number)
 	// * __tcp__
 	// * __udp__
 	// * __icmp__
@@ -397,6 +421,7 @@ type SecGroupRuleArgs struct {
 	// * __sctp__
 	// * __udplite__
 	// * __vrrp__
+	// * __ipip__
 	Protocol pulumi.StringPtrInput
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to create a port. If omitted, the
@@ -527,18 +552,22 @@ func (o SecGroupRuleOutput) Ethertype() pulumi.StringOutput {
 // The higher part of the allowed port range, valid
 // integer value needs to be between 1 and 65535. Changing this creates a new
 // security group rule.
-func (o SecGroupRuleOutput) PortRangeMax() pulumi.IntOutput {
-	return o.ApplyT(func(v *SecGroupRule) pulumi.IntOutput { return v.PortRangeMax }).(pulumi.IntOutput)
+func (o SecGroupRuleOutput) PortRangeMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecGroupRule) pulumi.IntPtrOutput { return v.PortRangeMax }).(pulumi.IntPtrOutput)
 }
 
 // The lower part of the allowed port range, valid
 // integer value needs to be between 1 and 65535. Changing this creates a new
 // security group rule.
-func (o SecGroupRuleOutput) PortRangeMin() pulumi.IntOutput {
-	return o.ApplyT(func(v *SecGroupRule) pulumi.IntOutput { return v.PortRangeMin }).(pulumi.IntOutput)
+func (o SecGroupRuleOutput) PortRangeMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecGroupRule) pulumi.IntPtrOutput { return v.PortRangeMin }).(pulumi.IntPtrOutput)
 }
 
-// The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+// The layer 4 protocol type, valid values are
+// following. Changing this creates a new security group rule. This is required
+// if you want to specify a port range.
+// * empty string or omitted (any protocol)
+// * integer value between 0 and 255 (valid IP protocol number)
 // * __tcp__
 // * __udp__
 // * __icmp__
@@ -560,8 +589,9 @@ func (o SecGroupRuleOutput) PortRangeMin() pulumi.IntOutput {
 // * __sctp__
 // * __udplite__
 // * __vrrp__
-func (o SecGroupRuleOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func(v *SecGroupRule) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+// * __ipip__
+func (o SecGroupRuleOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecGroupRule) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
 // The region in which to obtain the V2 networking client.

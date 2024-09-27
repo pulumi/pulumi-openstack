@@ -65,6 +65,20 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Output<string> Container { get; private set; } = null!;
 
         /// <summary>
+        /// The digest to use when generating the tempurl.
+        /// Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+        /// </summary>
+        [Output("digest")]
+        public Output<string?> Digest { get; private set; } = null!;
+
+        /// <summary>
+        /// The key to use when generating the tempurl. If not
+        /// provided, the key will be read from the container or account metadata.
+        /// </summary>
+        [Output("key")]
+        public Output<string?> Key { get; private set; } = null!;
+
+        /// <summary>
         /// The method allowed when accessing this URL.
         /// Valid values are `GET`, and `POST`. Default is `GET`.
         /// </summary>
@@ -91,6 +105,10 @@ namespace Pulumi.OpenStack.ObjectStorage
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
+        /// <summary>
+        /// Split is the string on which to split the object URL.
+        /// Default is `/v1/`.
+        /// </summary>
         [Output("split")]
         public Output<string?> Split { get; private set; } = null!;
 
@@ -132,6 +150,7 @@ namespace Pulumi.OpenStack.ObjectStorage
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "key",
                     "url",
                 },
             };
@@ -164,6 +183,30 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string> Container { get; set; } = null!;
 
         /// <summary>
+        /// The digest to use when generating the tempurl.
+        /// Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+        /// </summary>
+        [Input("digest")]
+        public Input<string>? Digest { get; set; }
+
+        [Input("key")]
+        private Input<string>? _key;
+
+        /// <summary>
+        /// The key to use when generating the tempurl. If not
+        /// provided, the key will be read from the container or account metadata.
+        /// </summary>
+        public Input<string>? Key
+        {
+            get => _key;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
         /// The method allowed when accessing this URL.
         /// Valid values are `GET`, and `POST`. Default is `GET`.
         /// </summary>
@@ -190,6 +233,10 @@ namespace Pulumi.OpenStack.ObjectStorage
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// Split is the string on which to split the object URL.
+        /// Default is `/v1/`.
+        /// </summary>
         [Input("split")]
         public Input<string>? Split { get; set; }
 
@@ -213,6 +260,30 @@ namespace Pulumi.OpenStack.ObjectStorage
         /// </summary>
         [Input("container")]
         public Input<string>? Container { get; set; }
+
+        /// <summary>
+        /// The digest to use when generating the tempurl.
+        /// Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+        /// </summary>
+        [Input("digest")]
+        public Input<string>? Digest { get; set; }
+
+        [Input("key")]
+        private Input<string>? _key;
+
+        /// <summary>
+        /// The key to use when generating the tempurl. If not
+        /// provided, the key will be read from the container or account metadata.
+        /// </summary>
+        public Input<string>? Key
+        {
+            get => _key;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The method allowed when accessing this URL.
@@ -241,6 +312,10 @@ namespace Pulumi.OpenStack.ObjectStorage
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// Split is the string on which to split the object URL.
+        /// Default is `/v1/`.
+        /// </summary>
         [Input("split")]
         public Input<string>? Split { get; set; }
 

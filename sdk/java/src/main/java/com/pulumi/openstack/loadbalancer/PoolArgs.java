@@ -20,20 +20,77 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
     public static final PoolArgs Empty = new PoolArgs();
 
     /**
-     * The administrative state of the pool.
-     * A valid value is true (UP) or false (DOWN).
+     * The administrative state of the pool. A valid
+     * value is true (UP) or false (DOWN).
      * 
      */
     @Import(name="adminStateUp")
     private @Nullable Output<Boolean> adminStateUp;
 
     /**
-     * @return The administrative state of the pool.
-     * A valid value is true (UP) or false (DOWN).
+     * @return The administrative state of the pool. A valid
+     * value is true (UP) or false (DOWN).
      * 
      */
     public Optional<Output<Boolean>> adminStateUp() {
         return Optional.ofNullable(this.adminStateUp);
+    }
+
+    /**
+     * A list of ALPN protocols. Available protocols:
+     * `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
+     * 2.24**.
+     * 
+     */
+    @Import(name="alpnProtocols")
+    private @Nullable Output<List<String>> alpnProtocols;
+
+    /**
+     * @return A list of ALPN protocols. Available protocols:
+     * `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
+     * 2.24**.
+     * 
+     */
+    public Optional<Output<List<String>>> alpnProtocols() {
+        return Optional.ofNullable(this.alpnProtocols);
+    }
+
+    /**
+     * The reference of the key manager service
+     * secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
+     * Supported only in **Octavia minor version &gt;= 2.8**.
+     * 
+     */
+    @Import(name="caTlsContainerRef")
+    private @Nullable Output<String> caTlsContainerRef;
+
+    /**
+     * @return The reference of the key manager service
+     * secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
+     * Supported only in **Octavia minor version &gt;= 2.8**.
+     * 
+     */
+    public Optional<Output<String>> caTlsContainerRef() {
+        return Optional.ofNullable(this.caTlsContainerRef);
+    }
+
+    /**
+     * The reference of the key manager service
+     * secret containing a PEM format CA revocation list file for `tls_enabled`
+     * pools. Supported only in **Octavia minor version &gt;= 2.8**.
+     * 
+     */
+    @Import(name="crlContainerRef")
+    private @Nullable Output<String> crlContainerRef;
+
+    /**
+     * @return The reference of the key manager service
+     * secret containing a PEM format CA revocation list file for `tls_enabled`
+     * pools. Supported only in **Octavia minor version &gt;= 2.8**.
+     * 
+     */
+    public Optional<Output<String>> crlContainerRef() {
+        return Optional.ofNullable(this.crlContainerRef);
     }
 
     /**
@@ -52,18 +109,18 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The load balancing algorithm to
-     * distribute traffic to the pool&#39;s members. Must be one of
-     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
+     * The load balancing algorithm to distribute traffic
+     * to the pool&#39;s members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
+     * SOURCE_IP, or SOURCE_IP_PORT.
      * 
      */
     @Import(name="lbMethod", required=true)
     private Output<String> lbMethod;
 
     /**
-     * @return The load balancing algorithm to
-     * distribute traffic to the pool&#39;s members. Must be one of
-     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
+     * @return The load balancing algorithm to distribute traffic
+     * to the pool&#39;s members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
+     * SOURCE_IP, or SOURCE_IP_PORT.
      * 
      */
     public Output<String> lbMethod() {
@@ -71,18 +128,18 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Listener on which the members of the pool
-     * will be associated with. Changing this creates a new pool.
-     * Note:  One of LoadbalancerID or ListenerID must be provided.
+     * The Listener on which the members of the pool will
+     * be associated with. Changing this creates a new pool. Note: One of
+     * LoadbalancerID or ListenerID must be provided.
      * 
      */
     @Import(name="listenerId")
     private @Nullable Output<String> listenerId;
 
     /**
-     * @return The Listener on which the members of the pool
-     * will be associated with. Changing this creates a new pool.
-     * Note:  One of LoadbalancerID or ListenerID must be provided.
+     * @return The Listener on which the members of the pool will
+     * be associated with. Changing this creates a new pool. Note: One of
+     * LoadbalancerID or ListenerID must be provided.
      * 
      */
     public Optional<Output<String>> listenerId() {
@@ -91,8 +148,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The load balancer on which to provision this
-     * pool. Changing this creates a new pool.
-     * Note:  One of LoadbalancerID or ListenerID must be provided.
+     * pool. Changing this creates a new pool. Note: One of LoadbalancerID or
+     * ListenerID must be provided.
      * 
      */
     @Import(name="loadbalancerId")
@@ -100,8 +157,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The load balancer on which to provision this
-     * pool. Changing this creates a new pool.
-     * Note:  One of LoadbalancerID or ListenerID must be provided.
+     * pool. Changing this creates a new pool. Note: One of LoadbalancerID or
+     * ListenerID must be provided.
      * 
      */
     public Optional<Output<String>> loadbalancerId() {
@@ -124,18 +181,18 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Omit this field to prevent session persistence.  Indicates
-     * whether connections in the same session will be processed by the same Pool
-     * member or not. Changing this creates a new pool.
+     * Omit this field to prevent session persistence.
+     * Indicates whether connections in the same session will be processed by the
+     * same Pool member or not. Changing this creates a new pool.
      * 
      */
     @Import(name="persistence")
     private @Nullable Output<PoolPersistenceArgs> persistence;
 
     /**
-     * @return Omit this field to prevent session persistence.  Indicates
-     * whether connections in the same session will be processed by the same Pool
-     * member or not. Changing this creates a new pool.
+     * @return Omit this field to prevent session persistence.
+     * Indicates whether connections in the same session will be processed by the
+     * same Pool member or not. Changing this creates a new pool.
      * 
      */
     public Optional<Output<PoolPersistenceArgs>> persistence() {
@@ -144,8 +201,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-     * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
-     * (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+     * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP (**Octavia minor
+     * version &gt;= 2.23**). Changing this creates a new pool.
      * 
      */
     @Import(name="protocol", required=true)
@@ -153,8 +210,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-     * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
-     * (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+     * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP (**Octavia minor
+     * version &gt;= 2.23**). Changing this creates a new pool.
      * 
      */
     public Output<String> protocol() {
@@ -163,9 +220,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The region in which to obtain the V2 Networking client.
-     * A Networking client is needed to create an . If omitted, the
-     * `region` argument of the provider is used. Changing this creates a new
-     * pool.
+     * A Networking client is needed to create a pool. If omitted, the `region`
+     * argument of the provider is used. Changing this creates a new pool.
      * 
      */
     @Import(name="region")
@@ -173,9 +229,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The region in which to obtain the V2 Networking client.
-     * A Networking client is needed to create an . If omitted, the
-     * `region` argument of the provider is used. Changing this creates a new
-     * pool.
+     * A Networking client is needed to create a pool. If omitted, the `region`
+     * argument of the provider is used. Changing this creates a new pool.
      * 
      */
     public Optional<Output<String>> region() {
@@ -191,8 +246,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Required for admins. The UUID of the tenant who owns
-     * the pool.  Only administrative users can specify a tenant UUID
-     * other than their own. Changing this creates a new pool.
+     * the pool.  Only administrative users can specify a tenant UUID other than
+     * their own. Changing this creates a new pool.
      * 
      */
     @Import(name="tenantId")
@@ -200,18 +255,101 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Required for admins. The UUID of the tenant who owns
-     * the pool.  Only administrative users can specify a tenant UUID
-     * other than their own. Changing this creates a new pool.
+     * the pool.  Only administrative users can specify a tenant UUID other than
+     * their own. Changing this creates a new pool.
      * 
      */
     public Optional<Output<String>> tenantId() {
         return Optional.ofNullable(this.tenantId);
     }
 
+    /**
+     * List of ciphers in OpenSSL format
+     * (colon-separated). See
+     * https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
+     * Supported only in **Octavia minor version &gt;= 2.15**.
+     * 
+     */
+    @Import(name="tlsCiphers")
+    private @Nullable Output<String> tlsCiphers;
+
+    /**
+     * @return List of ciphers in OpenSSL format
+     * (colon-separated). See
+     * https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
+     * Supported only in **Octavia minor version &gt;= 2.15**.
+     * 
+     */
+    public Optional<Output<String>> tlsCiphers() {
+        return Optional.ofNullable(this.tlsCiphers);
+    }
+
+    /**
+     * The reference to the key manager service
+     * secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
+     * pools for TLS client authentication to the member servers. Supported only in
+     * **Octavia minor version &gt;= 2.8**.
+     * 
+     */
+    @Import(name="tlsContainerRef")
+    private @Nullable Output<String> tlsContainerRef;
+
+    /**
+     * @return The reference to the key manager service
+     * secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
+     * pools for TLS client authentication to the member servers. Supported only in
+     * **Octavia minor version &gt;= 2.8**.
+     * 
+     */
+    public Optional<Output<String>> tlsContainerRef() {
+        return Optional.ofNullable(this.tlsContainerRef);
+    }
+
+    /**
+     * When true connections to backend member servers
+     * will use TLS encryption. Default is false. Supported only in **Octavia minor
+     * version &gt;= 2.8**.
+     * 
+     */
+    @Import(name="tlsEnabled")
+    private @Nullable Output<Boolean> tlsEnabled;
+
+    /**
+     * @return When true connections to backend member servers
+     * will use TLS encryption. Default is false. Supported only in **Octavia minor
+     * version &gt;= 2.8**.
+     * 
+     */
+    public Optional<Output<Boolean>> tlsEnabled() {
+        return Optional.ofNullable(this.tlsEnabled);
+    }
+
+    /**
+     * A list of TLS protocol versions. Available
+     * versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
+     * **Octavia minor version &gt;= 2.17**.
+     * 
+     */
+    @Import(name="tlsVersions")
+    private @Nullable Output<List<String>> tlsVersions;
+
+    /**
+     * @return A list of TLS protocol versions. Available
+     * versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
+     * **Octavia minor version &gt;= 2.17**.
+     * 
+     */
+    public Optional<Output<List<String>>> tlsVersions() {
+        return Optional.ofNullable(this.tlsVersions);
+    }
+
     private PoolArgs() {}
 
     private PoolArgs(PoolArgs $) {
         this.adminStateUp = $.adminStateUp;
+        this.alpnProtocols = $.alpnProtocols;
+        this.caTlsContainerRef = $.caTlsContainerRef;
+        this.crlContainerRef = $.crlContainerRef;
         this.description = $.description;
         this.lbMethod = $.lbMethod;
         this.listenerId = $.listenerId;
@@ -222,6 +360,10 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         this.region = $.region;
         this.tags = $.tags;
         this.tenantId = $.tenantId;
+        this.tlsCiphers = $.tlsCiphers;
+        this.tlsContainerRef = $.tlsContainerRef;
+        this.tlsEnabled = $.tlsEnabled;
+        this.tlsVersions = $.tlsVersions;
     }
 
     public static Builder builder() {
@@ -243,8 +385,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param adminStateUp The administrative state of the pool.
-         * A valid value is true (UP) or false (DOWN).
+         * @param adminStateUp The administrative state of the pool. A valid
+         * value is true (UP) or false (DOWN).
          * 
          * @return builder
          * 
@@ -255,14 +397,101 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param adminStateUp The administrative state of the pool.
-         * A valid value is true (UP) or false (DOWN).
+         * @param adminStateUp The administrative state of the pool. A valid
+         * value is true (UP) or false (DOWN).
          * 
          * @return builder
          * 
          */
         public Builder adminStateUp(Boolean adminStateUp) {
             return adminStateUp(Output.of(adminStateUp));
+        }
+
+        /**
+         * @param alpnProtocols A list of ALPN protocols. Available protocols:
+         * `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
+         * 2.24**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alpnProtocols(@Nullable Output<List<String>> alpnProtocols) {
+            $.alpnProtocols = alpnProtocols;
+            return this;
+        }
+
+        /**
+         * @param alpnProtocols A list of ALPN protocols. Available protocols:
+         * `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
+         * 2.24**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alpnProtocols(List<String> alpnProtocols) {
+            return alpnProtocols(Output.of(alpnProtocols));
+        }
+
+        /**
+         * @param alpnProtocols A list of ALPN protocols. Available protocols:
+         * `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
+         * 2.24**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alpnProtocols(String... alpnProtocols) {
+            return alpnProtocols(List.of(alpnProtocols));
+        }
+
+        /**
+         * @param caTlsContainerRef The reference of the key manager service
+         * secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
+         * Supported only in **Octavia minor version &gt;= 2.8**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caTlsContainerRef(@Nullable Output<String> caTlsContainerRef) {
+            $.caTlsContainerRef = caTlsContainerRef;
+            return this;
+        }
+
+        /**
+         * @param caTlsContainerRef The reference of the key manager service
+         * secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
+         * Supported only in **Octavia minor version &gt;= 2.8**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caTlsContainerRef(String caTlsContainerRef) {
+            return caTlsContainerRef(Output.of(caTlsContainerRef));
+        }
+
+        /**
+         * @param crlContainerRef The reference of the key manager service
+         * secret containing a PEM format CA revocation list file for `tls_enabled`
+         * pools. Supported only in **Octavia minor version &gt;= 2.8**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crlContainerRef(@Nullable Output<String> crlContainerRef) {
+            $.crlContainerRef = crlContainerRef;
+            return this;
+        }
+
+        /**
+         * @param crlContainerRef The reference of the key manager service
+         * secret containing a PEM format CA revocation list file for `tls_enabled`
+         * pools. Supported only in **Octavia minor version &gt;= 2.8**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crlContainerRef(String crlContainerRef) {
+            return crlContainerRef(Output.of(crlContainerRef));
         }
 
         /**
@@ -287,9 +516,9 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lbMethod The load balancing algorithm to
-         * distribute traffic to the pool&#39;s members. Must be one of
-         * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
+         * @param lbMethod The load balancing algorithm to distribute traffic
+         * to the pool&#39;s members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
+         * SOURCE_IP, or SOURCE_IP_PORT.
          * 
          * @return builder
          * 
@@ -300,9 +529,9 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lbMethod The load balancing algorithm to
-         * distribute traffic to the pool&#39;s members. Must be one of
-         * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
+         * @param lbMethod The load balancing algorithm to distribute traffic
+         * to the pool&#39;s members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
+         * SOURCE_IP, or SOURCE_IP_PORT.
          * 
          * @return builder
          * 
@@ -312,9 +541,9 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerId The Listener on which the members of the pool
-         * will be associated with. Changing this creates a new pool.
-         * Note:  One of LoadbalancerID or ListenerID must be provided.
+         * @param listenerId The Listener on which the members of the pool will
+         * be associated with. Changing this creates a new pool. Note: One of
+         * LoadbalancerID or ListenerID must be provided.
          * 
          * @return builder
          * 
@@ -325,9 +554,9 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerId The Listener on which the members of the pool
-         * will be associated with. Changing this creates a new pool.
-         * Note:  One of LoadbalancerID or ListenerID must be provided.
+         * @param listenerId The Listener on which the members of the pool will
+         * be associated with. Changing this creates a new pool. Note: One of
+         * LoadbalancerID or ListenerID must be provided.
          * 
          * @return builder
          * 
@@ -338,8 +567,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param loadbalancerId The load balancer on which to provision this
-         * pool. Changing this creates a new pool.
-         * Note:  One of LoadbalancerID or ListenerID must be provided.
+         * pool. Changing this creates a new pool. Note: One of LoadbalancerID or
+         * ListenerID must be provided.
          * 
          * @return builder
          * 
@@ -351,8 +580,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param loadbalancerId The load balancer on which to provision this
-         * pool. Changing this creates a new pool.
-         * Note:  One of LoadbalancerID or ListenerID must be provided.
+         * pool. Changing this creates a new pool. Note: One of LoadbalancerID or
+         * ListenerID must be provided.
          * 
          * @return builder
          * 
@@ -383,9 +612,9 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param persistence Omit this field to prevent session persistence.  Indicates
-         * whether connections in the same session will be processed by the same Pool
-         * member or not. Changing this creates a new pool.
+         * @param persistence Omit this field to prevent session persistence.
+         * Indicates whether connections in the same session will be processed by the
+         * same Pool member or not. Changing this creates a new pool.
          * 
          * @return builder
          * 
@@ -396,9 +625,9 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param persistence Omit this field to prevent session persistence.  Indicates
-         * whether connections in the same session will be processed by the same Pool
-         * member or not. Changing this creates a new pool.
+         * @param persistence Omit this field to prevent session persistence.
+         * Indicates whether connections in the same session will be processed by the
+         * same Pool member or not. Changing this creates a new pool.
          * 
          * @return builder
          * 
@@ -409,8 +638,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocol The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-         * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
-         * (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+         * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP (**Octavia minor
+         * version &gt;= 2.23**). Changing this creates a new pool.
          * 
          * @return builder
          * 
@@ -422,8 +651,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocol The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-         * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
-         * (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+         * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP (**Octavia minor
+         * version &gt;= 2.23**). Changing this creates a new pool.
          * 
          * @return builder
          * 
@@ -434,9 +663,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param region The region in which to obtain the V2 Networking client.
-         * A Networking client is needed to create an . If omitted, the
-         * `region` argument of the provider is used. Changing this creates a new
-         * pool.
+         * A Networking client is needed to create a pool. If omitted, the `region`
+         * argument of the provider is used. Changing this creates a new pool.
          * 
          * @return builder
          * 
@@ -448,9 +676,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param region The region in which to obtain the V2 Networking client.
-         * A Networking client is needed to create an . If omitted, the
-         * `region` argument of the provider is used. Changing this creates a new
-         * pool.
+         * A Networking client is needed to create a pool. If omitted, the `region`
+         * argument of the provider is used. Changing this creates a new pool.
          * 
          * @return builder
          * 
@@ -474,8 +701,8 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tenantId Required for admins. The UUID of the tenant who owns
-         * the pool.  Only administrative users can specify a tenant UUID
-         * other than their own. Changing this creates a new pool.
+         * the pool.  Only administrative users can specify a tenant UUID other than
+         * their own. Changing this creates a new pool.
          * 
          * @return builder
          * 
@@ -487,14 +714,130 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tenantId Required for admins. The UUID of the tenant who owns
-         * the pool.  Only administrative users can specify a tenant UUID
-         * other than their own. Changing this creates a new pool.
+         * the pool.  Only administrative users can specify a tenant UUID other than
+         * their own. Changing this creates a new pool.
          * 
          * @return builder
          * 
          */
         public Builder tenantId(String tenantId) {
             return tenantId(Output.of(tenantId));
+        }
+
+        /**
+         * @param tlsCiphers List of ciphers in OpenSSL format
+         * (colon-separated). See
+         * https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
+         * Supported only in **Octavia minor version &gt;= 2.15**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsCiphers(@Nullable Output<String> tlsCiphers) {
+            $.tlsCiphers = tlsCiphers;
+            return this;
+        }
+
+        /**
+         * @param tlsCiphers List of ciphers in OpenSSL format
+         * (colon-separated). See
+         * https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
+         * Supported only in **Octavia minor version &gt;= 2.15**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsCiphers(String tlsCiphers) {
+            return tlsCiphers(Output.of(tlsCiphers));
+        }
+
+        /**
+         * @param tlsContainerRef The reference to the key manager service
+         * secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
+         * pools for TLS client authentication to the member servers. Supported only in
+         * **Octavia minor version &gt;= 2.8**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsContainerRef(@Nullable Output<String> tlsContainerRef) {
+            $.tlsContainerRef = tlsContainerRef;
+            return this;
+        }
+
+        /**
+         * @param tlsContainerRef The reference to the key manager service
+         * secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
+         * pools for TLS client authentication to the member servers. Supported only in
+         * **Octavia minor version &gt;= 2.8**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsContainerRef(String tlsContainerRef) {
+            return tlsContainerRef(Output.of(tlsContainerRef));
+        }
+
+        /**
+         * @param tlsEnabled When true connections to backend member servers
+         * will use TLS encryption. Default is false. Supported only in **Octavia minor
+         * version &gt;= 2.8**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsEnabled(@Nullable Output<Boolean> tlsEnabled) {
+            $.tlsEnabled = tlsEnabled;
+            return this;
+        }
+
+        /**
+         * @param tlsEnabled When true connections to backend member servers
+         * will use TLS encryption. Default is false. Supported only in **Octavia minor
+         * version &gt;= 2.8**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsEnabled(Boolean tlsEnabled) {
+            return tlsEnabled(Output.of(tlsEnabled));
+        }
+
+        /**
+         * @param tlsVersions A list of TLS protocol versions. Available
+         * versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
+         * **Octavia minor version &gt;= 2.17**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsVersions(@Nullable Output<List<String>> tlsVersions) {
+            $.tlsVersions = tlsVersions;
+            return this;
+        }
+
+        /**
+         * @param tlsVersions A list of TLS protocol versions. Available
+         * versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
+         * **Octavia minor version &gt;= 2.17**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsVersions(List<String> tlsVersions) {
+            return tlsVersions(Output.of(tlsVersions));
+        }
+
+        /**
+         * @param tlsVersions A list of TLS protocol versions. Available
+         * versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
+         * **Octavia minor version &gt;= 2.17**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsVersions(String... tlsVersions) {
+            return tlsVersions(List.of(tlsVersions));
         }
 
         public PoolArgs build() {

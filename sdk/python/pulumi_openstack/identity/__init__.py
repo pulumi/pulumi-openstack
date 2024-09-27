@@ -12,6 +12,7 @@ from .get_auth_scope import *
 from .get_endpoint import *
 from .get_group import *
 from .get_project import *
+from .get_project_ids_v3 import *
 from .get_role import *
 from .get_service import *
 from .get_user import *

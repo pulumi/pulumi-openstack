@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,8 +20,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/compute"
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/networking"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -44,17 +44,21 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			secgroup1, err := compute.NewSecGroup(ctx, "secgroup_1", &compute.SecGroupArgs{
+//			secgroup1, err := networking.NewSecGroup(ctx, "secgroup_1", &networking.SecGroupArgs{
 //				Name:        pulumi.String("secgroup_1"),
 //				Description: pulumi.String("a security group"),
-//				Rules: compute.SecGroupRuleArray{
-//					&compute.SecGroupRuleArgs{
-//						FromPort:   pulumi.Int(22),
-//						ToPort:     pulumi.Int(22),
-//						IpProtocol: pulumi.String("tcp"),
-//						Cidr:       pulumi.String("0.0.0.0/0"),
-//					},
-//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewSecGroupRule(ctx, "secgroup_rule_1", &networking.SecGroupRuleArgs{
+//				Direction:       pulumi.String("ingress"),
+//				Ethertype:       pulumi.String("IPv4"),
+//				Protocol:        pulumi.String("tcp"),
+//				PortRangeMin:    pulumi.Int(22),
+//				PortRangeMax:    pulumi.Int(22),
+//				RemoteIpPrefix:  pulumi.String("0.0.0.0/0"),
+//				SecurityGroupId: secgroup1.ID(),
 //			})
 //			if err != nil {
 //				return err

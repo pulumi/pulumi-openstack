@@ -105,6 +105,22 @@ public class Monitor extends com.pulumi.resources.CustomResource {
         return this.delay;
     }
     /**
+     * The domain name to use in the HTTP host header
+     * health monitor requests. Supported in Octavia API version 2.10 or later.
+     * 
+     */
+    @Export(name="domainName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> domainName;
+
+    /**
+     * @return The domain name to use in the HTTP host header
+     * health monitor requests. Supported in Octavia API version 2.10 or later.
+     * 
+     */
+    public Output<Optional<String>> domainName() {
+        return Codegen.optional(this.domainName);
+    }
+    /**
      * Required for HTTP(S) types. Expected HTTP codes
      * for a passing HTTP(S) monitor. You can either specify a single status like
      * &#34;200&#34;, a list like &#34;200, 202&#34; or a range like &#34;200-202&#34;. Default is &#34;200&#34;.
@@ -125,7 +141,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     /**
      * Required for HTTP(S) types. The HTTP method that
      * the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
-     * OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
+     * OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
      * 
      */
     @Export(name="httpMethod", refs={String.class}, tree="[0]")
@@ -134,11 +150,31 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     /**
      * @return Required for HTTP(S) types. The HTTP method that
      * the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
-     * OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
+     * OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
      * 
      */
     public Output<String> httpMethod() {
         return this.httpMethod;
+    }
+    /**
+     * Required for HTTP(S) types. The HTTP version that
+     * the health monitor uses for requests. One of `1.0` or 1.1`is supported
+     * for HTTP(S) monitors. The default is`1.0`. Supported in Octavia API version
+     * 2.10 or later.
+     * 
+     */
+    @Export(name="httpVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> httpVersion;
+
+    /**
+     * @return Required for HTTP(S) types. The HTTP version that
+     * the health monitor uses for requests. One of `1.0` or 1.1`is supported
+     * for HTTP(S) monitors. The default is`1.0`. Supported in Octavia API version
+     * 2.10 or later.
+     * 
+     */
+    public Output<Optional<String>> httpVersion() {
+        return Codegen.optional(this.httpVersion);
     }
     /**
      * Number of permissible ping failures before
@@ -208,7 +244,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     }
     /**
      * The region in which to obtain the V2 Networking client.
-     * A Networking client is needed to create an . If omitted, the
+     * A Networking client is needed to create a monitor. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * monitor.
      * 
@@ -218,7 +254,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The region in which to obtain the V2 Networking client.
-     * A Networking client is needed to create an . If omitted, the
+     * A Networking client is needed to create a monitor. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * monitor.
      * 

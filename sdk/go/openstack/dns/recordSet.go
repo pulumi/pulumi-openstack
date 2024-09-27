@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/dns"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/dns"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -61,8 +61,11 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by specifying the zone ID and recordset ID,
-// separated by a forward slash.
+// This resource can be imported by specifying the zone ID and recordset ID with an optional project ID as a prefix:
+//
+// ```sh
+// $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 project_id/zone_id/recordset_id
+// ```
 //
 // ```sh
 // $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 zone_id/recordset_id

@@ -181,6 +181,11 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// </summary>
         public readonly string MasterFlavor;
         /// <summary>
+        /// Whether a load balancer is created for the master
+        /// cluster nodes.
+        /// </summary>
+        public readonly bool MasterLbEnabled;
+        /// <summary>
         /// See Argument Reference above.
         /// </summary>
         public readonly string Name;
@@ -253,6 +258,8 @@ namespace Pulumi.OpenStack.ContainerInfra
 
             string masterFlavor,
 
+            bool masterLbEnabled,
+
             string name,
 
             ImmutableArray<string> nodeAddresses,
@@ -288,6 +295,7 @@ namespace Pulumi.OpenStack.ContainerInfra
             MasterAddresses = masterAddresses;
             MasterCount = masterCount;
             MasterFlavor = masterFlavor;
+            MasterLbEnabled = masterLbEnabled;
             Name = name;
             NodeAddresses = nodeAddresses;
             NodeCount = nodeCount;

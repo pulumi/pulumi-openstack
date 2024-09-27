@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,9 +21,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack"
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/loadbalancer"
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/networking"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -129,7 +129,7 @@ type L7PolicyV2 struct {
 	// Only valid if action is REDIRECT\_TO\_URL.
 	RedirectUrl pulumi.StringPtrOutput `pulumi:"redirectUrl"`
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
+	// A Networking client is needed to create an L7 policy. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// L7 Policy.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -206,7 +206,7 @@ type l7policyV2State struct {
 	// Only valid if action is REDIRECT\_TO\_URL.
 	RedirectUrl *string `pulumi:"redirectUrl"`
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
+	// A Networking client is needed to create an L7 policy. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// L7 Policy.
 	Region *string `pulumi:"region"`
@@ -248,7 +248,7 @@ type L7PolicyV2State struct {
 	// Only valid if action is REDIRECT\_TO\_URL.
 	RedirectUrl pulumi.StringPtrInput
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
+	// A Networking client is needed to create an L7 policy. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// L7 Policy.
 	Region pulumi.StringPtrInput
@@ -294,7 +294,7 @@ type l7policyV2Args struct {
 	// Only valid if action is REDIRECT\_TO\_URL.
 	RedirectUrl *string `pulumi:"redirectUrl"`
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
+	// A Networking client is needed to create an L7 policy. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// L7 Policy.
 	Region *string `pulumi:"region"`
@@ -337,7 +337,7 @@ type L7PolicyV2Args struct {
 	// Only valid if action is REDIRECT\_TO\_URL.
 	RedirectUrl pulumi.StringPtrInput
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
+	// A Networking client is needed to create an L7 policy. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// L7 Policy.
 	Region pulumi.StringPtrInput
@@ -495,7 +495,7 @@ func (o L7PolicyV2Output) RedirectUrl() pulumi.StringPtrOutput {
 }
 
 // The region in which to obtain the V2 Networking client.
-// A Networking client is needed to create an . If omitted, the
+// A Networking client is needed to create an L7 policy. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // L7 Policy.
 func (o L7PolicyV2Output) Region() pulumi.StringOutput {

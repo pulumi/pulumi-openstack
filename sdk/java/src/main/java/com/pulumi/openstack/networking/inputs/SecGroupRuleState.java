@@ -104,7 +104,11 @@ public final class SecGroupRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+     * The layer 4 protocol type, valid values are
+     * following. Changing this creates a new security group rule. This is required
+     * if you want to specify a port range.
+     * * empty string or omitted (any protocol)
+     * * integer value between 0 and 255 (valid IP protocol number)
      * * __tcp__
      * * __udp__
      * * __icmp__
@@ -126,13 +130,18 @@ public final class SecGroupRuleState extends com.pulumi.resources.ResourceArgs {
      * * __sctp__
      * * __udplite__
      * * __vrrp__
+     * * __ipip__
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+     * @return The layer 4 protocol type, valid values are
+     * following. Changing this creates a new security group rule. This is required
+     * if you want to specify a port range.
+     * * empty string or omitted (any protocol)
+     * * integer value between 0 and 255 (valid IP protocol number)
      * * __tcp__
      * * __udp__
      * * __icmp__
@@ -154,6 +163,7 @@ public final class SecGroupRuleState extends com.pulumi.resources.ResourceArgs {
      * * __sctp__
      * * __udplite__
      * * __vrrp__
+     * * __ipip__
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -407,7 +417,11 @@ public final class SecGroupRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+         * @param protocol The layer 4 protocol type, valid values are
+         * following. Changing this creates a new security group rule. This is required
+         * if you want to specify a port range.
+         * * empty string or omitted (any protocol)
+         * * integer value between 0 and 255 (valid IP protocol number)
          * * __tcp__
          * * __udp__
          * * __icmp__
@@ -429,6 +443,7 @@ public final class SecGroupRuleState extends com.pulumi.resources.ResourceArgs {
          * * __sctp__
          * * __udplite__
          * * __vrrp__
+         * * __ipip__
          * 
          * @return builder
          * 
@@ -439,7 +454,11 @@ public final class SecGroupRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+         * @param protocol The layer 4 protocol type, valid values are
+         * following. Changing this creates a new security group rule. This is required
+         * if you want to specify a port range.
+         * * empty string or omitted (any protocol)
+         * * integer value between 0 and 255 (valid IP protocol number)
          * * __tcp__
          * * __udp__
          * * __icmp__
@@ -461,6 +480,7 @@ public final class SecGroupRuleState extends com.pulumi.resources.ResourceArgs {
          * * __sctp__
          * * __udplite__
          * * __vrrp__
+         * * __ipip__
          * 
          * @return builder
          * 

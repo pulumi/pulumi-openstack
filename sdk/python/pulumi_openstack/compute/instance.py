@@ -94,9 +94,9 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]] personalities: Customize the personality of an instance by
                defining one or more files and their contents. The personality structure
                is described below. Changing this rebuilds the existing server.
-        :param pulumi.Input[str] power_state: Provide the VM state. Only 'active', 'shutoff'
+        :param pulumi.Input[str] power_state: Provide the VM state. Only 'active', 'shutoff', 'paused'
                and 'shelved_offloaded' are supported values.
-               *Note*: If the initial power_state is the shutoff
+               *Note*: If the initial power_state is the shutoff or paused
                the VM will be stopped immediately after build and the provisioners like
                remote-exec or files are not supported.
         :param pulumi.Input[str] region: The region in which to create the server instance. If
@@ -425,9 +425,9 @@ class InstanceArgs:
     @pulumi.getter(name="powerState")
     def power_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Provide the VM state. Only 'active', 'shutoff'
+        Provide the VM state. Only 'active', 'shutoff', 'paused'
         and 'shelved_offloaded' are supported values.
-        *Note*: If the initial power_state is the shutoff
+        *Note*: If the initial power_state is the shutoff or paused
         the VM will be stopped immediately after build and the provisioners like
         remote-exec or files are not supported.
         """
@@ -623,9 +623,9 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]] personalities: Customize the personality of an instance by
                defining one or more files and their contents. The personality structure
                is described below. Changing this rebuilds the existing server.
-        :param pulumi.Input[str] power_state: Provide the VM state. Only 'active', 'shutoff'
+        :param pulumi.Input[str] power_state: Provide the VM state. Only 'active', 'shutoff', 'paused'
                and 'shelved_offloaded' are supported values.
-               *Note*: If the initial power_state is the shutoff
+               *Note*: If the initial power_state is the shutoff or paused
                the VM will be stopped immediately after build and the provisioners like
                remote-exec or files are not supported.
         :param pulumi.Input[str] region: The region in which to create the server instance. If
@@ -997,9 +997,9 @@ class _InstanceState:
     @pulumi.getter(name="powerState")
     def power_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Provide the VM state. Only 'active', 'shutoff'
+        Provide the VM state. Only 'active', 'shutoff', 'paused'
         and 'shelved_offloaded' are supported values.
-        *Note*: If the initial power_state is the shutoff
+        *Note*: If the initial power_state is the shutoff or paused
         the VM will be stopped immediately after build and the provisioners like
         remote-exec or files are not supported.
         """
@@ -1205,9 +1205,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstancePersonalityArgs', 'InstancePersonalityArgsDict']]]] personalities: Customize the personality of an instance by
                defining one or more files and their contents. The personality structure
                is described below. Changing this rebuilds the existing server.
-        :param pulumi.Input[str] power_state: Provide the VM state. Only 'active', 'shutoff'
+        :param pulumi.Input[str] power_state: Provide the VM state. Only 'active', 'shutoff', 'paused'
                and 'shelved_offloaded' are supported values.
-               *Note*: If the initial power_state is the shutoff
+               *Note*: If the initial power_state is the shutoff or paused
                the VM will be stopped immediately after build and the provisioners like
                remote-exec or files are not supported.
         :param pulumi.Input[str] region: The region in which to create the server instance. If
@@ -1421,9 +1421,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstancePersonalityArgs', 'InstancePersonalityArgsDict']]]] personalities: Customize the personality of an instance by
                defining one or more files and their contents. The personality structure
                is described below. Changing this rebuilds the existing server.
-        :param pulumi.Input[str] power_state: Provide the VM state. Only 'active', 'shutoff'
+        :param pulumi.Input[str] power_state: Provide the VM state. Only 'active', 'shutoff', 'paused'
                and 'shelved_offloaded' are supported values.
-               *Note*: If the initial power_state is the shutoff
+               *Note*: If the initial power_state is the shutoff or paused
                the VM will be stopped immediately after build and the provisioners like
                remote-exec or files are not supported.
         :param pulumi.Input[str] region: The region in which to create the server instance. If
@@ -1686,9 +1686,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="powerState")
     def power_state(self) -> pulumi.Output[Optional[str]]:
         """
-        Provide the VM state. Only 'active', 'shutoff'
+        Provide the VM state. Only 'active', 'shutoff', 'paused'
         and 'shelved_offloaded' are supported values.
-        *Note*: If the initial power_state is the shutoff
+        *Note*: If the initial power_state is the shutoff or paused
         the VM will be stopped immediately after build and the provisioners like
         remote-exec or files are not supported.
         """

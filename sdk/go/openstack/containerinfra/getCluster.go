@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/containerinfra"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/containerinfra"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -97,6 +97,9 @@ type LookupClusterResult struct {
 	MasterCount int `pulumi:"masterCount"`
 	// The flavor for the master nodes.
 	MasterFlavor string `pulumi:"masterFlavor"`
+	// Whether a load balancer is created for the master
+	// cluster nodes.
+	MasterLbEnabled bool `pulumi:"masterLbEnabled"`
 	// See Argument Reference above.
 	Name string `pulumi:"name"`
 	// IP addresses of the node of the cluster.
@@ -255,6 +258,12 @@ func (o LookupClusterResultOutput) MasterCount() pulumi.IntOutput {
 // The flavor for the master nodes.
 func (o LookupClusterResultOutput) MasterFlavor() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.MasterFlavor }).(pulumi.StringOutput)
+}
+
+// Whether a load balancer is created for the master
+// cluster nodes.
+func (o LookupClusterResultOutput) MasterLbEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.MasterLbEnabled }).(pulumi.BoolOutput)
 }
 
 // See Argument Reference above.

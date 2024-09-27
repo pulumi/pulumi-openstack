@@ -20,16 +20,6 @@ export type FlavorAccess = import("./flavorAccess").FlavorAccess;
 export const FlavorAccess: typeof import("./flavorAccess").FlavorAccess = null as any;
 utilities.lazyLoad(exports, ["FlavorAccess"], () => require("./flavorAccess"));
 
-export { FloatingIpArgs, FloatingIpState } from "./floatingIp";
-export type FloatingIp = import("./floatingIp").FloatingIp;
-export const FloatingIp: typeof import("./floatingIp").FloatingIp = null as any;
-utilities.lazyLoad(exports, ["FloatingIp"], () => require("./floatingIp"));
-
-export { FloatingIpAssociateArgs, FloatingIpAssociateState } from "./floatingIpAssociate";
-export type FloatingIpAssociate = import("./floatingIpAssociate").FloatingIpAssociate;
-export const FloatingIpAssociate: typeof import("./floatingIpAssociate").FloatingIpAssociate = null as any;
-utilities.lazyLoad(exports, ["FloatingIpAssociate"], () => require("./floatingIpAssociate"));
-
 export { GetAggregateV2Args, GetAggregateV2Result, GetAggregateV2OutputArgs } from "./getAggregateV2";
 export const getAggregateV2: typeof import("./getAggregateV2").getAggregateV2 = null as any;
 export const getAggregateV2Output: typeof import("./getAggregateV2").getAggregateV2Output = null as any;
@@ -90,11 +80,6 @@ export type QuotaSetV2 = import("./quotaSetV2").QuotaSetV2;
 export const QuotaSetV2: typeof import("./quotaSetV2").QuotaSetV2 = null as any;
 utilities.lazyLoad(exports, ["QuotaSetV2"], () => require("./quotaSetV2"));
 
-export { SecGroupArgs, SecGroupState } from "./secGroup";
-export type SecGroup = import("./secGroup").SecGroup;
-export const SecGroup: typeof import("./secGroup").SecGroup = null as any;
-utilities.lazyLoad(exports, ["SecGroup"], () => require("./secGroup"));
-
 export { ServerGroupArgs, ServerGroupState } from "./serverGroup";
 export type ServerGroup = import("./serverGroup").ServerGroup;
 export const ServerGroup: typeof import("./serverGroup").ServerGroup = null as any;
@@ -116,10 +101,6 @@ const _module = {
                 return new Flavor(name, <any>undefined, { urn })
             case "openstack:compute/flavorAccess:FlavorAccess":
                 return new FlavorAccess(name, <any>undefined, { urn })
-            case "openstack:compute/floatingIp:FloatingIp":
-                return new FloatingIp(name, <any>undefined, { urn })
-            case "openstack:compute/floatingIpAssociate:FloatingIpAssociate":
-                return new FloatingIpAssociate(name, <any>undefined, { urn })
             case "openstack:compute/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "openstack:compute/interfaceAttach:InterfaceAttach":
@@ -128,8 +109,6 @@ const _module = {
                 return new Keypair(name, <any>undefined, { urn })
             case "openstack:compute/quotaSetV2:QuotaSetV2":
                 return new QuotaSetV2(name, <any>undefined, { urn })
-            case "openstack:compute/secGroup:SecGroup":
-                return new SecGroup(name, <any>undefined, { urn })
             case "openstack:compute/serverGroup:ServerGroup":
                 return new ServerGroup(name, <any>undefined, { urn })
             case "openstack:compute/volumeAttach:VolumeAttach":
@@ -142,12 +121,9 @@ const _module = {
 pulumi.runtime.registerResourceModule("openstack", "compute/aggregateV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "compute/flavor", _module)
 pulumi.runtime.registerResourceModule("openstack", "compute/flavorAccess", _module)
-pulumi.runtime.registerResourceModule("openstack", "compute/floatingIp", _module)
-pulumi.runtime.registerResourceModule("openstack", "compute/floatingIpAssociate", _module)
 pulumi.runtime.registerResourceModule("openstack", "compute/instance", _module)
 pulumi.runtime.registerResourceModule("openstack", "compute/interfaceAttach", _module)
 pulumi.runtime.registerResourceModule("openstack", "compute/keypair", _module)
 pulumi.runtime.registerResourceModule("openstack", "compute/quotaSetV2", _module)
-pulumi.runtime.registerResourceModule("openstack", "compute/secGroup", _module)
 pulumi.runtime.registerResourceModule("openstack", "compute/serverGroup", _module)
 pulumi.runtime.registerResourceModule("openstack", "compute/volumeAttach", _module)

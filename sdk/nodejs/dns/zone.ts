@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * ```
  *
  * ```sh
- * $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
+ * $ pulumi import openstack:dns/zone:Zone zone_1 zone_id:project_id
  * ```
  */
 export class Zone extends pulumi.CustomResource {

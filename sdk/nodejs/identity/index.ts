@@ -40,6 +40,11 @@ export const getProject: typeof import("./getProject").getProject = null as any;
 export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
 utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
 
+export { GetProjectIdsV3Args, GetProjectIdsV3Result, GetProjectIdsV3OutputArgs } from "./getProjectIdsV3";
+export const getProjectIdsV3: typeof import("./getProjectIdsV3").getProjectIdsV3 = null as any;
+export const getProjectIdsV3Output: typeof import("./getProjectIdsV3").getProjectIdsV3Output = null as any;
+utilities.lazyLoad(exports, ["getProjectIdsV3","getProjectIdsV3Output"], () => require("./getProjectIdsV3"));
+
 export { GetRoleArgs, GetRoleResult, GetRoleOutputArgs } from "./getRole";
 export const getRole: typeof import("./getRole").getRole = null as any;
 export const getRoleOutput: typeof import("./getRole").getRoleOutput = null as any;

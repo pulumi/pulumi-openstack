@@ -64,6 +64,13 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Output<int> Delay { get; private set; } = null!;
 
         /// <summary>
+        /// The domain name to use in the HTTP host header
+        /// health monitor requests. Supported in Octavia API version 2.10 or later.
+        /// </summary>
+        [Output("domainName")]
+        public Output<string?> DomainName { get; private set; } = null!;
+
+        /// <summary>
         /// Required for HTTP(S) types. Expected HTTP codes
         /// for a passing HTTP(S) monitor. You can either specify a single status like
         /// "200", a list like "200, 202" or a range like "200-202". Default is "200".
@@ -74,10 +81,19 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// Required for HTTP(S) types. The HTTP method that 
         /// the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
-        /// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
+        /// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
         /// </summary>
         [Output("httpMethod")]
         public Output<string> HttpMethod { get; private set; } = null!;
+
+        /// <summary>
+        /// Required for HTTP(S) types. The HTTP version that
+        /// the health monitor uses for requests. One of `1.0` or 1.1` is supported
+        /// for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+        /// 2.10 or later.
+        /// </summary>
+        [Output("httpVersion")]
+        public Output<string?> HttpVersion { get; private set; } = null!;
 
         /// <summary>
         /// Number of permissible ping failures before
@@ -110,7 +126,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
-        /// A Networking client is needed to create an . If omitted, the
+        /// A Networking client is needed to create a monitor. If omitted, the
         /// `region` argument of the provider is used. Changing this creates a new
         /// monitor.
         /// </summary>
@@ -208,6 +224,13 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<int> Delay { get; set; } = null!;
 
         /// <summary>
+        /// The domain name to use in the HTTP host header
+        /// health monitor requests. Supported in Octavia API version 2.10 or later.
+        /// </summary>
+        [Input("domainName")]
+        public Input<string>? DomainName { get; set; }
+
+        /// <summary>
         /// Required for HTTP(S) types. Expected HTTP codes
         /// for a passing HTTP(S) monitor. You can either specify a single status like
         /// "200", a list like "200, 202" or a range like "200-202". Default is "200".
@@ -218,10 +241,19 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// Required for HTTP(S) types. The HTTP method that 
         /// the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
-        /// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
+        /// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
         /// </summary>
         [Input("httpMethod")]
         public Input<string>? HttpMethod { get; set; }
+
+        /// <summary>
+        /// Required for HTTP(S) types. The HTTP version that
+        /// the health monitor uses for requests. One of `1.0` or 1.1` is supported
+        /// for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+        /// 2.10 or later.
+        /// </summary>
+        [Input("httpVersion")]
+        public Input<string>? HttpVersion { get; set; }
 
         /// <summary>
         /// Number of permissible ping failures before
@@ -254,7 +286,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
-        /// A Networking client is needed to create an . If omitted, the
+        /// A Networking client is needed to create a monitor. If omitted, the
         /// `region` argument of the provider is used. Changing this creates a new
         /// monitor.
         /// </summary>
@@ -314,6 +346,13 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<int>? Delay { get; set; }
 
         /// <summary>
+        /// The domain name to use in the HTTP host header
+        /// health monitor requests. Supported in Octavia API version 2.10 or later.
+        /// </summary>
+        [Input("domainName")]
+        public Input<string>? DomainName { get; set; }
+
+        /// <summary>
         /// Required for HTTP(S) types. Expected HTTP codes
         /// for a passing HTTP(S) monitor. You can either specify a single status like
         /// "200", a list like "200, 202" or a range like "200-202". Default is "200".
@@ -324,10 +363,19 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// Required for HTTP(S) types. The HTTP method that 
         /// the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
-        /// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
+        /// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
         /// </summary>
         [Input("httpMethod")]
         public Input<string>? HttpMethod { get; set; }
+
+        /// <summary>
+        /// Required for HTTP(S) types. The HTTP version that
+        /// the health monitor uses for requests. One of `1.0` or 1.1` is supported
+        /// for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+        /// 2.10 or later.
+        /// </summary>
+        [Input("httpVersion")]
+        public Input<string>? HttpVersion { get; set; }
 
         /// <summary>
         /// Number of permissible ping failures before
@@ -360,7 +408,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
-        /// A Networking client is needed to create an . If omitted, the
+        /// A Networking client is needed to create a monitor. If omitted, the
         /// `region` argument of the provider is used. Changing this creates a new
         /// monitor.
         /// </summary>

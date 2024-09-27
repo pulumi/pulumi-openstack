@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -898,184 +898,6 @@ func (o InstanceVendorOptionsPtrOutput) IgnoreResizeConfirmation() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
-type SecGroupRule struct {
-	// Required if `fromGroupId` or `self` is empty. The IP range
-	// that will be the source of network traffic to the security group. Use 0.0.0.0/0
-	// to allow all IP addresses. Changing this creates a new security group rule. Cannot
-	// be combined with `fromGroupId` or `self`.
-	Cidr *string `pulumi:"cidr"`
-	// Required if `cidr` or `self` is empty. The ID of a
-	// group from which to forward traffic to the parent group. Changing this creates a
-	// new security group rule. Cannot be combined with `cidr` or `self`.
-	FromGroupId *string `pulumi:"fromGroupId"`
-	// An integer representing the lower bound of the port
-	// range to open. Changing this creates a new security group rule.
-	FromPort int     `pulumi:"fromPort"`
-	Id       *string `pulumi:"id"`
-	// The protocol type that will be allowed. Changing
-	// this creates a new security group rule.
-	IpProtocol string `pulumi:"ipProtocol"`
-	// Required if `cidr` and `fromGroupId` is empty. If true,
-	// the security group itself will be added as a source to this ingress rule. Cannot
-	// be combined with `cidr` or `fromGroupId`.
-	Self *bool `pulumi:"self"`
-	// An integer representing the upper bound of the port
-	// range to open. Changing this creates a new security group rule.
-	ToPort int `pulumi:"toPort"`
-}
-
-// SecGroupRuleInput is an input type that accepts SecGroupRuleArgs and SecGroupRuleOutput values.
-// You can construct a concrete instance of `SecGroupRuleInput` via:
-//
-//	SecGroupRuleArgs{...}
-type SecGroupRuleInput interface {
-	pulumi.Input
-
-	ToSecGroupRuleOutput() SecGroupRuleOutput
-	ToSecGroupRuleOutputWithContext(context.Context) SecGroupRuleOutput
-}
-
-type SecGroupRuleArgs struct {
-	// Required if `fromGroupId` or `self` is empty. The IP range
-	// that will be the source of network traffic to the security group. Use 0.0.0.0/0
-	// to allow all IP addresses. Changing this creates a new security group rule. Cannot
-	// be combined with `fromGroupId` or `self`.
-	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
-	// Required if `cidr` or `self` is empty. The ID of a
-	// group from which to forward traffic to the parent group. Changing this creates a
-	// new security group rule. Cannot be combined with `cidr` or `self`.
-	FromGroupId pulumi.StringPtrInput `pulumi:"fromGroupId"`
-	// An integer representing the lower bound of the port
-	// range to open. Changing this creates a new security group rule.
-	FromPort pulumi.IntInput       `pulumi:"fromPort"`
-	Id       pulumi.StringPtrInput `pulumi:"id"`
-	// The protocol type that will be allowed. Changing
-	// this creates a new security group rule.
-	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
-	// Required if `cidr` and `fromGroupId` is empty. If true,
-	// the security group itself will be added as a source to this ingress rule. Cannot
-	// be combined with `cidr` or `fromGroupId`.
-	Self pulumi.BoolPtrInput `pulumi:"self"`
-	// An integer representing the upper bound of the port
-	// range to open. Changing this creates a new security group rule.
-	ToPort pulumi.IntInput `pulumi:"toPort"`
-}
-
-func (SecGroupRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecGroupRule)(nil)).Elem()
-}
-
-func (i SecGroupRuleArgs) ToSecGroupRuleOutput() SecGroupRuleOutput {
-	return i.ToSecGroupRuleOutputWithContext(context.Background())
-}
-
-func (i SecGroupRuleArgs) ToSecGroupRuleOutputWithContext(ctx context.Context) SecGroupRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecGroupRuleOutput)
-}
-
-// SecGroupRuleArrayInput is an input type that accepts SecGroupRuleArray and SecGroupRuleArrayOutput values.
-// You can construct a concrete instance of `SecGroupRuleArrayInput` via:
-//
-//	SecGroupRuleArray{ SecGroupRuleArgs{...} }
-type SecGroupRuleArrayInput interface {
-	pulumi.Input
-
-	ToSecGroupRuleArrayOutput() SecGroupRuleArrayOutput
-	ToSecGroupRuleArrayOutputWithContext(context.Context) SecGroupRuleArrayOutput
-}
-
-type SecGroupRuleArray []SecGroupRuleInput
-
-func (SecGroupRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecGroupRule)(nil)).Elem()
-}
-
-func (i SecGroupRuleArray) ToSecGroupRuleArrayOutput() SecGroupRuleArrayOutput {
-	return i.ToSecGroupRuleArrayOutputWithContext(context.Background())
-}
-
-func (i SecGroupRuleArray) ToSecGroupRuleArrayOutputWithContext(ctx context.Context) SecGroupRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecGroupRuleArrayOutput)
-}
-
-type SecGroupRuleOutput struct{ *pulumi.OutputState }
-
-func (SecGroupRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecGroupRule)(nil)).Elem()
-}
-
-func (o SecGroupRuleOutput) ToSecGroupRuleOutput() SecGroupRuleOutput {
-	return o
-}
-
-func (o SecGroupRuleOutput) ToSecGroupRuleOutputWithContext(ctx context.Context) SecGroupRuleOutput {
-	return o
-}
-
-// Required if `fromGroupId` or `self` is empty. The IP range
-// that will be the source of network traffic to the security group. Use 0.0.0.0/0
-// to allow all IP addresses. Changing this creates a new security group rule. Cannot
-// be combined with `fromGroupId` or `self`.
-func (o SecGroupRuleOutput) Cidr() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecGroupRule) *string { return v.Cidr }).(pulumi.StringPtrOutput)
-}
-
-// Required if `cidr` or `self` is empty. The ID of a
-// group from which to forward traffic to the parent group. Changing this creates a
-// new security group rule. Cannot be combined with `cidr` or `self`.
-func (o SecGroupRuleOutput) FromGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecGroupRule) *string { return v.FromGroupId }).(pulumi.StringPtrOutput)
-}
-
-// An integer representing the lower bound of the port
-// range to open. Changing this creates a new security group rule.
-func (o SecGroupRuleOutput) FromPort() pulumi.IntOutput {
-	return o.ApplyT(func(v SecGroupRule) int { return v.FromPort }).(pulumi.IntOutput)
-}
-
-func (o SecGroupRuleOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecGroupRule) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// The protocol type that will be allowed. Changing
-// this creates a new security group rule.
-func (o SecGroupRuleOutput) IpProtocol() pulumi.StringOutput {
-	return o.ApplyT(func(v SecGroupRule) string { return v.IpProtocol }).(pulumi.StringOutput)
-}
-
-// Required if `cidr` and `fromGroupId` is empty. If true,
-// the security group itself will be added as a source to this ingress rule. Cannot
-// be combined with `cidr` or `fromGroupId`.
-func (o SecGroupRuleOutput) Self() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SecGroupRule) *bool { return v.Self }).(pulumi.BoolPtrOutput)
-}
-
-// An integer representing the upper bound of the port
-// range to open. Changing this creates a new security group rule.
-func (o SecGroupRuleOutput) ToPort() pulumi.IntOutput {
-	return o.ApplyT(func(v SecGroupRule) int { return v.ToPort }).(pulumi.IntOutput)
-}
-
-type SecGroupRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (SecGroupRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecGroupRule)(nil)).Elem()
-}
-
-func (o SecGroupRuleArrayOutput) ToSecGroupRuleArrayOutput() SecGroupRuleArrayOutput {
-	return o
-}
-
-func (o SecGroupRuleArrayOutput) ToSecGroupRuleArrayOutputWithContext(ctx context.Context) SecGroupRuleArrayOutput {
-	return o
-}
-
-func (o SecGroupRuleArrayOutput) Index(i pulumi.IntInput) SecGroupRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecGroupRule {
-		return vs[0].([]SecGroupRule)[vs[1].(int)]
-	}).(SecGroupRuleOutput)
-}
-
 type ServerGroupRules struct {
 	MaxServerPerHost *int `pulumi:"maxServerPerHost"`
 }
@@ -1507,8 +1329,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSchedulerHintArrayInput)(nil)).Elem(), InstanceSchedulerHintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVendorOptionsInput)(nil)).Elem(), InstanceVendorOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVendorOptionsPtrInput)(nil)).Elem(), InstanceVendorOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupRuleInput)(nil)).Elem(), SecGroupRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupRuleArrayInput)(nil)).Elem(), SecGroupRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupRulesInput)(nil)).Elem(), ServerGroupRulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupRulesPtrInput)(nil)).Elem(), ServerGroupRulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachVendorOptionsInput)(nil)).Elem(), VolumeAttachVendorOptionsArgs{})
@@ -1525,8 +1345,6 @@ func init() {
 	pulumi.RegisterOutputType(InstanceSchedulerHintArrayOutput{})
 	pulumi.RegisterOutputType(InstanceVendorOptionsOutput{})
 	pulumi.RegisterOutputType(InstanceVendorOptionsPtrOutput{})
-	pulumi.RegisterOutputType(SecGroupRuleOutput{})
-	pulumi.RegisterOutputType(SecGroupRuleArrayOutput{})
 	pulumi.RegisterOutputType(ServerGroupRulesOutput{})
 	pulumi.RegisterOutputType(ServerGroupRulesPtrOutput{})
 	pulumi.RegisterOutputType(VolumeAttachVendorOptionsOutput{})

@@ -346,6 +346,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.masterFlavor;
     }
     /**
+     * Indicates whether to create a load balancer
+     * for the master nodes. Changing this creates a new cluster.
+     * 
+     */
+    @Export(name="masterLbEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> masterLbEnabled;
+
+    /**
+     * @return Indicates whether to create a load balancer
+     * for the master nodes. Changing this creates a new cluster.
+     * 
+     */
+    public Output<Boolean> masterLbEnabled() {
+        return this.masterLbEnabled;
+    }
+    /**
      * Indicates whether the provided labels should be
      * merged with cluster template labels. Changing this creates a new cluster.
      * 

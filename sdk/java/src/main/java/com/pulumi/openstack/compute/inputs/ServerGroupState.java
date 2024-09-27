@@ -57,7 +57,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="policies")
-    private @Nullable Output<List<String>> policies;
+    private @Nullable Output<String> policies;
 
     /**
      * @return A list of exactly one policy name to associate with
@@ -65,7 +65,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
      * creates a new server group.
      * 
      */
-    public Optional<Output<List<String>>> policies() {
+    public Optional<Output<String>> policies() {
         return Optional.ofNullable(this.policies);
     }
 
@@ -211,7 +211,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder policies(@Nullable Output<List<String>> policies) {
+        public Builder policies(@Nullable Output<String> policies) {
             $.policies = policies;
             return this;
         }
@@ -224,20 +224,8 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder policies(List<String> policies) {
+        public Builder policies(String policies) {
             return policies(Output.of(policies));
-        }
-
-        /**
-         * @param policies A list of exactly one policy name to associate with
-         * the server group. See the Policies section for more information. Changing this
-         * creates a new server group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder policies(String... policies) {
-            return policies(List.of(policies));
         }
 
         /**

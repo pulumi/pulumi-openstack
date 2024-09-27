@@ -7,20 +7,14 @@ import typing
 # Export this package's modules as members:
 from .get_availability_zones_v3 import *
 from .get_quotaset_v3 import *
-from .get_snapshot_v2 import *
 from .get_snapshot_v3 import *
-from .get_volume_v2 import *
 from .get_volume_v3 import *
 from .qos_association_v3 import *
 from .qos_v3 import *
-from .quote_set_v2 import *
 from .quote_set_v3 import *
 from .volume import *
 from .volume_attach import *
-from .volume_attach_v2 import *
 from .volume_type_access_v3 import *
 from .volume_type_v3 import *
-from .volume_v1 import *
-from .volume_v2 import *
 from ._inputs import *
 from . import outputs

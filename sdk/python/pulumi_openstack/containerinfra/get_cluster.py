@@ -21,7 +21,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, api_address=None, cluster_template_id=None, coe_version=None, container_version=None, create_timeout=None, created_at=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, floating_ip_enabled=None, id=None, keypair=None, kubeconfig=None, labels=None, master_addresses=None, master_count=None, master_flavor=None, name=None, node_addresses=None, node_count=None, project_id=None, region=None, stack_id=None, updated_at=None, user_id=None):
+    def __init__(__self__, api_address=None, cluster_template_id=None, coe_version=None, container_version=None, create_timeout=None, created_at=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, floating_ip_enabled=None, id=None, keypair=None, kubeconfig=None, labels=None, master_addresses=None, master_count=None, master_flavor=None, master_lb_enabled=None, name=None, node_addresses=None, node_count=None, project_id=None, region=None, stack_id=None, updated_at=None, user_id=None):
         if api_address and not isinstance(api_address, str):
             raise TypeError("Expected argument 'api_address' to be a str")
         pulumi.set(__self__, "api_address", api_address)
@@ -79,6 +79,9 @@ class GetClusterResult:
         if master_flavor and not isinstance(master_flavor, str):
             raise TypeError("Expected argument 'master_flavor' to be a str")
         pulumi.set(__self__, "master_flavor", master_flavor)
+        if master_lb_enabled and not isinstance(master_lb_enabled, bool):
+            raise TypeError("Expected argument 'master_lb_enabled' to be a bool")
+        pulumi.set(__self__, "master_lb_enabled", master_lb_enabled)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -252,6 +255,15 @@ class GetClusterResult:
         return pulumi.get(self, "master_flavor")
 
     @property
+    @pulumi.getter(name="masterLbEnabled")
+    def master_lb_enabled(self) -> bool:
+        """
+        Whether a load balancer is created for the master
+        cluster nodes.
+        """
+        return pulumi.get(self, "master_lb_enabled")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -341,6 +353,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             master_addresses=self.master_addresses,
             master_count=self.master_count,
             master_flavor=self.master_flavor,
+            master_lb_enabled=self.master_lb_enabled,
             name=self.name,
             node_addresses=self.node_addresses,
             node_count=self.node_count,
@@ -398,6 +411,7 @@ def get_cluster(name: Optional[str] = None,
         master_addresses=pulumi.get(__ret__, 'master_addresses'),
         master_count=pulumi.get(__ret__, 'master_count'),
         master_flavor=pulumi.get(__ret__, 'master_flavor'),
+        master_lb_enabled=pulumi.get(__ret__, 'master_lb_enabled'),
         name=pulumi.get(__ret__, 'name'),
         node_addresses=pulumi.get(__ret__, 'node_addresses'),
         node_count=pulumi.get(__ret__, 'node_count'),

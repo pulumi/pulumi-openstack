@@ -192,6 +192,13 @@ namespace Pulumi.OpenStack.ContainerInfra
         public Output<string> MasterFlavor { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether to create a load balancer
+        /// for the master nodes. Changing this creates a new cluster.
+        /// </summary>
+        [Output("masterLbEnabled")]
+        public Output<bool> MasterLbEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Indicates whether the provided labels should be
         /// merged with cluster template labels. Changing this creates a new cluster.
         /// </summary>
@@ -388,6 +395,13 @@ namespace Pulumi.OpenStack.ContainerInfra
         public Input<string>? MasterFlavor { get; set; }
 
         /// <summary>
+        /// Indicates whether to create a load balancer
+        /// for the master nodes. Changing this creates a new cluster.
+        /// </summary>
+        [Input("masterLbEnabled")]
+        public Input<bool>? MasterLbEnabled { get; set; }
+
+        /// <summary>
         /// Indicates whether the provided labels should be
         /// merged with cluster template labels. Changing this creates a new cluster.
         /// </summary>
@@ -547,6 +561,13 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// </summary>
         [Input("masterFlavor")]
         public Input<string>? MasterFlavor { get; set; }
+
+        /// <summary>
+        /// Indicates whether to create a load balancer
+        /// for the master nodes. Changing this creates a new cluster.
+        /// </summary>
+        [Input("masterLbEnabled")]
+        public Input<bool>? MasterLbEnabled { get; set; }
 
         /// <summary>
         /// Indicates whether the provided labels should be

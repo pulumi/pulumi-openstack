@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/containerinfra"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/containerinfra"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -140,6 +140,9 @@ type Cluster struct {
 	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
 	// new cluster.
 	MasterFlavor pulumi.StringOutput `pulumi:"masterFlavor"`
+	// Indicates whether to create a load balancer
+	// for the master nodes. Changing this creates a new cluster.
+	MasterLbEnabled pulumi.BoolOutput `pulumi:"masterLbEnabled"`
 	// Indicates whether the provided labels should be
 	// merged with cluster template labels. Changing this creates a new cluster.
 	MergeLabels pulumi.BoolPtrOutput `pulumi:"mergeLabels"`
@@ -247,6 +250,9 @@ type clusterState struct {
 	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
 	// new cluster.
 	MasterFlavor *string `pulumi:"masterFlavor"`
+	// Indicates whether to create a load balancer
+	// for the master nodes. Changing this creates a new cluster.
+	MasterLbEnabled *bool `pulumi:"masterLbEnabled"`
 	// Indicates whether the provided labels should be
 	// merged with cluster template labels. Changing this creates a new cluster.
 	MergeLabels *bool `pulumi:"mergeLabels"`
@@ -318,6 +324,9 @@ type ClusterState struct {
 	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
 	// new cluster.
 	MasterFlavor pulumi.StringPtrInput
+	// Indicates whether to create a load balancer
+	// for the master nodes. Changing this creates a new cluster.
+	MasterLbEnabled pulumi.BoolPtrInput
 	// Indicates whether the provided labels should be
 	// merged with cluster template labels. Changing this creates a new cluster.
 	MergeLabels pulumi.BoolPtrInput
@@ -387,6 +396,9 @@ type clusterArgs struct {
 	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
 	// new cluster.
 	MasterFlavor *string `pulumi:"masterFlavor"`
+	// Indicates whether to create a load balancer
+	// for the master nodes. Changing this creates a new cluster.
+	MasterLbEnabled *bool `pulumi:"masterLbEnabled"`
 	// Indicates whether the provided labels should be
 	// merged with cluster template labels. Changing this creates a new cluster.
 	MergeLabels *bool `pulumi:"mergeLabels"`
@@ -442,6 +454,9 @@ type ClusterArgs struct {
 	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
 	// new cluster.
 	MasterFlavor pulumi.StringPtrInput
+	// Indicates whether to create a load balancer
+	// for the master nodes. Changing this creates a new cluster.
+	MasterLbEnabled pulumi.BoolPtrInput
 	// Indicates whether the provided labels should be
 	// merged with cluster template labels. Changing this creates a new cluster.
 	MergeLabels pulumi.BoolPtrInput
@@ -640,6 +655,12 @@ func (o ClusterOutput) MasterCount() pulumi.IntOutput {
 // new cluster.
 func (o ClusterOutput) MasterFlavor() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.MasterFlavor }).(pulumi.StringOutput)
+}
+
+// Indicates whether to create a load balancer
+// for the master nodes. Changing this creates a new cluster.
+func (o ClusterOutput) MasterLbEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.MasterLbEnabled }).(pulumi.BoolOutput)
 }
 
 // Indicates whether the provided labels should be

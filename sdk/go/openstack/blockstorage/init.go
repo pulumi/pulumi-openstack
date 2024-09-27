@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,24 +25,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &QosAssociationV3{}
 	case "openstack:blockstorage/qosV3:QosV3":
 		r = &QosV3{}
-	case "openstack:blockstorage/quoteSetV2:QuoteSetV2":
-		r = &QuoteSetV2{}
 	case "openstack:blockstorage/quoteSetV3:QuoteSetV3":
 		r = &QuoteSetV3{}
 	case "openstack:blockstorage/volume:Volume":
 		r = &Volume{}
 	case "openstack:blockstorage/volumeAttach:VolumeAttach":
 		r = &VolumeAttach{}
-	case "openstack:blockstorage/volumeAttachV2:VolumeAttachV2":
-		r = &VolumeAttachV2{}
 	case "openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3":
 		r = &VolumeTypeAccessV3{}
 	case "openstack:blockstorage/volumeTypeV3:VolumeTypeV3":
 		r = &VolumeTypeV3{}
-	case "openstack:blockstorage/volumeV1:VolumeV1":
-		r = &VolumeV1{}
-	case "openstack:blockstorage/volumeV2:VolumeV2":
-		r = &VolumeV2{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -68,11 +60,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"openstack",
-		"blockstorage/quoteSetV2",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"openstack",
 		"blockstorage/quoteSetV3",
 		&module{version},
 	)
@@ -88,27 +75,12 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"openstack",
-		"blockstorage/volumeAttachV2",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"openstack",
 		"blockstorage/volumeTypeAccessV3",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"blockstorage/volumeTypeV3",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"openstack",
-		"blockstorage/volumeV1",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"openstack",
-		"blockstorage/volumeV2",
 		&module{version},
 	)
 }

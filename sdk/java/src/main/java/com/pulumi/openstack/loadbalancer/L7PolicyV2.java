@@ -273,7 +273,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * The region in which to obtain the V2 Networking client.
-     * A Networking client is needed to create an . If omitted, the
+     * A Networking client is needed to create an L7 policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Policy.
      * 
@@ -283,7 +283,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The region in which to obtain the V2 Networking client.
-     * A Networking client is needed to create an . If omitted, the
+     * A Networking client is needed to create an L7 policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Policy.
      * 

@@ -20,16 +20,16 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     public static final ListenerState Empty = new ListenerState();
 
     /**
-     * The administrative state of the Listener.
-     * A valid value is true (UP) or false (DOWN).
+     * The administrative state of the Listener. A
+     * valid value is true (UP) or false (DOWN).
      * 
      */
     @Import(name="adminStateUp")
     private @Nullable Output<Boolean> adminStateUp;
 
     /**
-     * @return The administrative state of the Listener.
-     * A valid value is true (UP) or false (DOWN).
+     * @return The administrative state of the Listener. A
+     * valid value is true (UP) or false (DOWN).
      * 
      */
     public Optional<Output<Boolean>> adminStateUp() {
@@ -37,16 +37,18 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of CIDR blocks that are permitted to connect to this listener, denying
-     * all other source addresses. If not present, defaults to allow all.
+     * A list of CIDR blocks that are permitted to
+     * connect to this listener, denying all other source addresses. If not present,
+     * defaults to allow all.
      * 
      */
     @Import(name="allowedCidrs")
     private @Nullable Output<List<String>> allowedCidrs;
 
     /**
-     * @return A list of CIDR blocks that are permitted to connect to this listener, denying
-     * all other source addresses. If not present, defaults to allow all.
+     * @return A list of CIDR blocks that are permitted to
+     * connect to this listener, denying all other source addresses. If not present,
+     * defaults to allow all.
      * 
      */
     public Optional<Output<List<String>>> allowedCidrs() {
@@ -54,16 +56,98 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum number of connections allowed
-     * for the Listener.
+     * A list of ALPN protocols. Available protocols:
+     * `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
+     * 2.20**.
+     * 
+     */
+    @Import(name="alpnProtocols")
+    private @Nullable Output<List<String>> alpnProtocols;
+
+    /**
+     * @return A list of ALPN protocols. Available protocols:
+     * `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
+     * 2.20**.
+     * 
+     */
+    public Optional<Output<List<String>>> alpnProtocols() {
+        return Optional.ofNullable(this.alpnProtocols);
+    }
+
+    /**
+     * The TLS client authentication mode.
+     * Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
+     * `TERMINATED_HTTPS` listener protocol and the `client_ca_tls_container_ref`.
+     * Supported only in **Octavia minor version &gt;= 2.8**.
+     * 
+     */
+    @Import(name="clientAuthentication")
+    private @Nullable Output<String> clientAuthentication;
+
+    /**
+     * @return The TLS client authentication mode.
+     * Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
+     * `TERMINATED_HTTPS` listener protocol and the `client_ca_tls_container_ref`.
+     * Supported only in **Octavia minor version &gt;= 2.8**.
+     * 
+     */
+    public Optional<Output<String>> clientAuthentication() {
+        return Optional.ofNullable(this.clientAuthentication);
+    }
+
+    /**
+     * The ref of the key manager service
+     * secret containing a PEM format client CA certificate bundle for
+     * `TERMINATED_HTTPS` listeners. Required if `client_authentication` is
+     * `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version &gt;=
+     * 2.8**.
+     * 
+     */
+    @Import(name="clientCaTlsContainerRef")
+    private @Nullable Output<String> clientCaTlsContainerRef;
+
+    /**
+     * @return The ref of the key manager service
+     * secret containing a PEM format client CA certificate bundle for
+     * `TERMINATED_HTTPS` listeners. Required if `client_authentication` is
+     * `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version &gt;=
+     * 2.8**.
+     * 
+     */
+    public Optional<Output<String>> clientCaTlsContainerRef() {
+        return Optional.ofNullable(this.clientCaTlsContainerRef);
+    }
+
+    /**
+     * The URI of the key manager service
+     * secret containing a PEM format CA revocation list file for `TERMINATED_HTTPS`
+     * listeners. Supported only in **Octavia minor version &gt;= 2.8**.
+     * 
+     */
+    @Import(name="clientCrlContainerRef")
+    private @Nullable Output<String> clientCrlContainerRef;
+
+    /**
+     * @return The URI of the key manager service
+     * secret containing a PEM format CA revocation list file for `TERMINATED_HTTPS`
+     * listeners. Supported only in **Octavia minor version &gt;= 2.8**.
+     * 
+     */
+    public Optional<Output<String>> clientCrlContainerRef() {
+        return Optional.ofNullable(this.clientCrlContainerRef);
+    }
+
+    /**
+     * The maximum number of connections allowed for
+     * the Listener.
      * 
      */
     @Import(name="connectionLimit")
     private @Nullable Output<Integer> connectionLimit;
 
     /**
-     * @return The maximum number of connections allowed
-     * for the Listener.
+     * @return The maximum number of connections allowed for
+     * the Listener.
      * 
      */
     public Optional<Output<Integer>> connectionLimit() {
@@ -89,9 +173,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A reference to a Barbican Secrets
-     * container which stores TLS information. This is required if the protocol
-     * is `TERMINATED_HTTPS`. See
-     * [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
+     * container which stores TLS information. This is required if the protocol is
+     * `TERMINATED_HTTPS`. See
+     * [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
      * for more information.
      * 
      */
@@ -100,9 +184,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A reference to a Barbican Secrets
-     * container which stores TLS information. This is required if the protocol
-     * is `TERMINATED_HTTPS`. See
-     * [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
+     * container which stores TLS information. This is required if the protocol is
+     * `TERMINATED_HTTPS`. See
+     * [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
      * for more information.
      * 
      */
@@ -126,18 +210,89 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of key value pairs representing headers to insert
-     * into the request before it is sent to the backend members. Changing this updates the headers of the
-     * existing listener.
+     * Defines whether the
+     * **includeSubDomains** directive should be added to the
+     * Strict-Transport-Security HTTP response header. This requires setting the
+     * `hsts_max_age` option as well in order to become effective. Requires
+     * `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
+     * version &gt;= 2.27**.
+     * 
+     */
+    @Import(name="hstsIncludeSubdomains")
+    private @Nullable Output<Boolean> hstsIncludeSubdomains;
+
+    /**
+     * @return Defines whether the
+     * **includeSubDomains** directive should be added to the
+     * Strict-Transport-Security HTTP response header. This requires setting the
+     * `hsts_max_age` option as well in order to become effective. Requires
+     * `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
+     * version &gt;= 2.27**.
+     * 
+     */
+    public Optional<Output<Boolean>> hstsIncludeSubdomains() {
+        return Optional.ofNullable(this.hstsIncludeSubdomains);
+    }
+
+    /**
+     * The value of the **max_age** directive for the
+     * Strict-Transport-Security HTTP response header. Setting this enables HTTP
+     * Strict Transport Security (HSTS) for the TLS-terminated listener. Requires
+     * `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
+     * version &gt;= 2.27**.
+     * 
+     */
+    @Import(name="hstsMaxAge")
+    private @Nullable Output<Integer> hstsMaxAge;
+
+    /**
+     * @return The value of the **max_age** directive for the
+     * Strict-Transport-Security HTTP response header. Setting this enables HTTP
+     * Strict Transport Security (HSTS) for the TLS-terminated listener. Requires
+     * `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
+     * version &gt;= 2.27**.
+     * 
+     */
+    public Optional<Output<Integer>> hstsMaxAge() {
+        return Optional.ofNullable(this.hstsMaxAge);
+    }
+
+    /**
+     * Defines whether the **preload** directive should
+     * be added to the Strict-Transport-Security HTTP response header. This requires
+     * setting the `hsts_max_age` option as well in order to become effective.
+     * Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
+     * minor version &gt;= 2.27**.
+     * 
+     */
+    @Import(name="hstsPreload")
+    private @Nullable Output<Boolean> hstsPreload;
+
+    /**
+     * @return Defines whether the **preload** directive should
+     * be added to the Strict-Transport-Security HTTP response header. This requires
+     * setting the `hsts_max_age` option as well in order to become effective.
+     * Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
+     * minor version &gt;= 2.27**.
+     * 
+     */
+    public Optional<Output<Boolean>> hstsPreload() {
+        return Optional.ofNullable(this.hstsPreload);
+    }
+
+    /**
+     * The list of key value pairs representing
+     * headers to insert into the request before it is sent to the backend members.
+     * Changing this updates the headers of the existing listener.
      * 
      */
     @Import(name="insertHeaders")
     private @Nullable Output<Map<String,String>> insertHeaders;
 
     /**
-     * @return The list of key value pairs representing headers to insert
-     * into the request before it is sent to the backend members. Changing this updates the headers of the
-     * existing listener.
+     * @return The list of key value pairs representing
+     * headers to insert into the request before it is sent to the backend members.
+     * Changing this updates the headers of the existing listener.
      * 
      */
     public Optional<Output<Map<String,String>>> insertHeaders() {
@@ -162,16 +317,16 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Human-readable name for the Listener. Does not have
-     * to be unique.
+     * Human-readable name for the Listener. Does not have to be
+     * unique.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Human-readable name for the Listener. Does not have
-     * to be unique.
+     * @return Human-readable name for the Listener. Does not have to be
+     * unique.
      * 
      */
     public Optional<Output<String>> name() {
@@ -179,20 +334,20 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The protocol - can either be TCP, HTTP, HTTPS,
-     * TERMINATED_HTTPS, UDP, SCTP (supported only in
-     * **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
-     * **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
+     * The protocol can be either `TCP`, `HTTP`, `HTTPS`,
+     * `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
+     * \&gt;= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version &gt;=
+     * 2.25**). Changing this creates a new Listener.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return The protocol - can either be TCP, HTTP, HTTPS,
-     * TERMINATED_HTTPS, UDP, SCTP (supported only in
-     * **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
-     * **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
+     * @return The protocol can be either `TCP`, `HTTP`, `HTTPS`,
+     * `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
+     * \&gt;= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version &gt;=
+     * 2.25**). Changing this creates a new Listener.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -201,7 +356,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The port on which to listen for client traffic.
-     * Changing this creates a new Listener.
+     * * Changing this creates a new Listener.
      * 
      */
     @Import(name="protocolPort")
@@ -209,7 +364,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The port on which to listen for client traffic.
-     * Changing this creates a new Listener.
+     * * Changing this creates a new Listener.
      * 
      */
     public Optional<Output<Integer>> protocolPort() {
@@ -218,9 +373,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The region in which to obtain the V2 Networking client.
-     * A Networking client is needed to create an . If omitted, the
-     * `region` argument of the provider is used. Changing this creates a new
-     * Listener.
+     * A Networking client is needed to create a listener. If omitted, the `region`
+     * argument of the provider is used. Changing this creates a new Listener.
      * 
      */
     @Import(name="region")
@@ -228,9 +382,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The region in which to obtain the V2 Networking client.
-     * A Networking client is needed to create an . If omitted, the
-     * `region` argument of the provider is used. Changing this creates a new
-     * Listener.
+     * A Networking client is needed to create a listener. If omitted, the `region`
+     * argument of the provider is used. Changing this creates a new Listener.
      * 
      */
     public Optional<Output<String>> region() {
@@ -240,7 +393,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     /**
      * A list of references to Barbican Secrets
      * containers which store SNI information. See
-     * [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
+     * [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
      * for more information.
      * 
      */
@@ -250,7 +403,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A list of references to Barbican Secrets
      * containers which store SNI information. See
-     * [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
+     * [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
      * for more information.
      * 
      */
@@ -277,8 +430,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Required for admins. The UUID of the tenant who owns
-     * the Listener.  Only administrative users can specify a tenant UUID
-     * other than their own. Changing this creates a new Listener.
+     * the Listener.  Only administrative users can specify a tenant UUID other than
+     * their own. Changing this creates a new Listener.
      * 
      */
     @Import(name="tenantId")
@@ -286,8 +439,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Required for admins. The UUID of the tenant who owns
-     * the Listener.  Only administrative users can specify a tenant UUID
-     * other than their own. Changing this creates a new Listener.
+     * the Listener.  Only administrative users can specify a tenant UUID other than
+     * their own. Changing this creates a new Listener.
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -295,14 +448,16 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The client inactivity timeout in milliseconds.
+     * The client inactivity timeout in
+     * milliseconds.
      * 
      */
     @Import(name="timeoutClientData")
     private @Nullable Output<Integer> timeoutClientData;
 
     /**
-     * @return The client inactivity timeout in milliseconds.
+     * @return The client inactivity timeout in
+     * milliseconds.
      * 
      */
     public Optional<Output<Integer>> timeoutClientData() {
@@ -310,14 +465,16 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The member connection timeout in milliseconds.
+     * The member connection timeout in
+     * milliseconds.
      * 
      */
     @Import(name="timeoutMemberConnect")
     private @Nullable Output<Integer> timeoutMemberConnect;
 
     /**
-     * @return The member connection timeout in milliseconds.
+     * @return The member connection timeout in
+     * milliseconds.
      * 
      */
     public Optional<Output<Integer>> timeoutMemberConnect() {
@@ -325,14 +482,16 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The member inactivity timeout in milliseconds.
+     * The member inactivity timeout in
+     * milliseconds.
      * 
      */
     @Import(name="timeoutMemberData")
     private @Nullable Output<Integer> timeoutMemberData;
 
     /**
-     * @return The member inactivity timeout in milliseconds.
+     * @return The member inactivity timeout in
+     * milliseconds.
      * 
      */
     public Optional<Output<Integer>> timeoutMemberData() {
@@ -340,20 +499,60 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time in milliseconds, to wait for additional
-     * TCP packets for content inspection.
+     * The time in milliseconds, to wait for
+     * additional TCP packets for content inspection.
      * 
      */
     @Import(name="timeoutTcpInspect")
     private @Nullable Output<Integer> timeoutTcpInspect;
 
     /**
-     * @return The time in milliseconds, to wait for additional
-     * TCP packets for content inspection.
+     * @return The time in milliseconds, to wait for
+     * additional TCP packets for content inspection.
      * 
      */
     public Optional<Output<Integer>> timeoutTcpInspect() {
         return Optional.ofNullable(this.timeoutTcpInspect);
+    }
+
+    /**
+     * List of ciphers in OpenSSL format
+     * (colon-separated). See
+     * https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
+     * Supported only in **Octavia minor version &gt;= 2.15**.
+     * 
+     */
+    @Import(name="tlsCiphers")
+    private @Nullable Output<String> tlsCiphers;
+
+    /**
+     * @return List of ciphers in OpenSSL format
+     * (colon-separated). See
+     * https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
+     * Supported only in **Octavia minor version &gt;= 2.15**.
+     * 
+     */
+    public Optional<Output<String>> tlsCiphers() {
+        return Optional.ofNullable(this.tlsCiphers);
+    }
+
+    /**
+     * A list of TLS protocol versions. Available
+     * versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
+     * **Octavia minor version &gt;= 2.17**.
+     * 
+     */
+    @Import(name="tlsVersions")
+    private @Nullable Output<List<String>> tlsVersions;
+
+    /**
+     * @return A list of TLS protocol versions. Available
+     * versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
+     * **Octavia minor version &gt;= 2.17**.
+     * 
+     */
+    public Optional<Output<List<String>>> tlsVersions() {
+        return Optional.ofNullable(this.tlsVersions);
     }
 
     private ListenerState() {}
@@ -361,10 +560,17 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     private ListenerState(ListenerState $) {
         this.adminStateUp = $.adminStateUp;
         this.allowedCidrs = $.allowedCidrs;
+        this.alpnProtocols = $.alpnProtocols;
+        this.clientAuthentication = $.clientAuthentication;
+        this.clientCaTlsContainerRef = $.clientCaTlsContainerRef;
+        this.clientCrlContainerRef = $.clientCrlContainerRef;
         this.connectionLimit = $.connectionLimit;
         this.defaultPoolId = $.defaultPoolId;
         this.defaultTlsContainerRef = $.defaultTlsContainerRef;
         this.description = $.description;
+        this.hstsIncludeSubdomains = $.hstsIncludeSubdomains;
+        this.hstsMaxAge = $.hstsMaxAge;
+        this.hstsPreload = $.hstsPreload;
         this.insertHeaders = $.insertHeaders;
         this.loadbalancerId = $.loadbalancerId;
         this.name = $.name;
@@ -378,6 +584,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         this.timeoutMemberConnect = $.timeoutMemberConnect;
         this.timeoutMemberData = $.timeoutMemberData;
         this.timeoutTcpInspect = $.timeoutTcpInspect;
+        this.tlsCiphers = $.tlsCiphers;
+        this.tlsVersions = $.tlsVersions;
     }
 
     public static Builder builder() {
@@ -399,8 +607,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param adminStateUp The administrative state of the Listener.
-         * A valid value is true (UP) or false (DOWN).
+         * @param adminStateUp The administrative state of the Listener. A
+         * valid value is true (UP) or false (DOWN).
          * 
          * @return builder
          * 
@@ -411,8 +619,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param adminStateUp The administrative state of the Listener.
-         * A valid value is true (UP) or false (DOWN).
+         * @param adminStateUp The administrative state of the Listener. A
+         * valid value is true (UP) or false (DOWN).
          * 
          * @return builder
          * 
@@ -422,8 +630,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedCidrs A list of CIDR blocks that are permitted to connect to this listener, denying
-         * all other source addresses. If not present, defaults to allow all.
+         * @param allowedCidrs A list of CIDR blocks that are permitted to
+         * connect to this listener, denying all other source addresses. If not present,
+         * defaults to allow all.
          * 
          * @return builder
          * 
@@ -434,8 +643,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedCidrs A list of CIDR blocks that are permitted to connect to this listener, denying
-         * all other source addresses. If not present, defaults to allow all.
+         * @param allowedCidrs A list of CIDR blocks that are permitted to
+         * connect to this listener, denying all other source addresses. If not present,
+         * defaults to allow all.
          * 
          * @return builder
          * 
@@ -445,8 +655,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowedCidrs A list of CIDR blocks that are permitted to connect to this listener, denying
-         * all other source addresses. If not present, defaults to allow all.
+         * @param allowedCidrs A list of CIDR blocks that are permitted to
+         * connect to this listener, denying all other source addresses. If not present,
+         * defaults to allow all.
          * 
          * @return builder
          * 
@@ -456,8 +667,126 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionLimit The maximum number of connections allowed
-         * for the Listener.
+         * @param alpnProtocols A list of ALPN protocols. Available protocols:
+         * `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
+         * 2.20**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alpnProtocols(@Nullable Output<List<String>> alpnProtocols) {
+            $.alpnProtocols = alpnProtocols;
+            return this;
+        }
+
+        /**
+         * @param alpnProtocols A list of ALPN protocols. Available protocols:
+         * `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
+         * 2.20**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alpnProtocols(List<String> alpnProtocols) {
+            return alpnProtocols(Output.of(alpnProtocols));
+        }
+
+        /**
+         * @param alpnProtocols A list of ALPN protocols. Available protocols:
+         * `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
+         * 2.20**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alpnProtocols(String... alpnProtocols) {
+            return alpnProtocols(List.of(alpnProtocols));
+        }
+
+        /**
+         * @param clientAuthentication The TLS client authentication mode.
+         * Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
+         * `TERMINATED_HTTPS` listener protocol and the `client_ca_tls_container_ref`.
+         * Supported only in **Octavia minor version &gt;= 2.8**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientAuthentication(@Nullable Output<String> clientAuthentication) {
+            $.clientAuthentication = clientAuthentication;
+            return this;
+        }
+
+        /**
+         * @param clientAuthentication The TLS client authentication mode.
+         * Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
+         * `TERMINATED_HTTPS` listener protocol and the `client_ca_tls_container_ref`.
+         * Supported only in **Octavia minor version &gt;= 2.8**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientAuthentication(String clientAuthentication) {
+            return clientAuthentication(Output.of(clientAuthentication));
+        }
+
+        /**
+         * @param clientCaTlsContainerRef The ref of the key manager service
+         * secret containing a PEM format client CA certificate bundle for
+         * `TERMINATED_HTTPS` listeners. Required if `client_authentication` is
+         * `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version &gt;=
+         * 2.8**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCaTlsContainerRef(@Nullable Output<String> clientCaTlsContainerRef) {
+            $.clientCaTlsContainerRef = clientCaTlsContainerRef;
+            return this;
+        }
+
+        /**
+         * @param clientCaTlsContainerRef The ref of the key manager service
+         * secret containing a PEM format client CA certificate bundle for
+         * `TERMINATED_HTTPS` listeners. Required if `client_authentication` is
+         * `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version &gt;=
+         * 2.8**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCaTlsContainerRef(String clientCaTlsContainerRef) {
+            return clientCaTlsContainerRef(Output.of(clientCaTlsContainerRef));
+        }
+
+        /**
+         * @param clientCrlContainerRef The URI of the key manager service
+         * secret containing a PEM format CA revocation list file for `TERMINATED_HTTPS`
+         * listeners. Supported only in **Octavia minor version &gt;= 2.8**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCrlContainerRef(@Nullable Output<String> clientCrlContainerRef) {
+            $.clientCrlContainerRef = clientCrlContainerRef;
+            return this;
+        }
+
+        /**
+         * @param clientCrlContainerRef The URI of the key manager service
+         * secret containing a PEM format CA revocation list file for `TERMINATED_HTTPS`
+         * listeners. Supported only in **Octavia minor version &gt;= 2.8**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCrlContainerRef(String clientCrlContainerRef) {
+            return clientCrlContainerRef(Output.of(clientCrlContainerRef));
+        }
+
+        /**
+         * @param connectionLimit The maximum number of connections allowed for
+         * the Listener.
          * 
          * @return builder
          * 
@@ -468,8 +797,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionLimit The maximum number of connections allowed
-         * for the Listener.
+         * @param connectionLimit The maximum number of connections allowed for
+         * the Listener.
          * 
          * @return builder
          * 
@@ -503,9 +832,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param defaultTlsContainerRef A reference to a Barbican Secrets
-         * container which stores TLS information. This is required if the protocol
-         * is `TERMINATED_HTTPS`. See
-         * [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
+         * container which stores TLS information. This is required if the protocol is
+         * `TERMINATED_HTTPS`. See
+         * [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
          * for more information.
          * 
          * @return builder
@@ -518,9 +847,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param defaultTlsContainerRef A reference to a Barbican Secrets
-         * container which stores TLS information. This is required if the protocol
-         * is `TERMINATED_HTTPS`. See
-         * [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
+         * container which stores TLS information. This is required if the protocol is
+         * `TERMINATED_HTTPS`. See
+         * [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
          * for more information.
          * 
          * @return builder
@@ -552,9 +881,98 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param insertHeaders The list of key value pairs representing headers to insert
-         * into the request before it is sent to the backend members. Changing this updates the headers of the
-         * existing listener.
+         * @param hstsIncludeSubdomains Defines whether the
+         * **includeSubDomains** directive should be added to the
+         * Strict-Transport-Security HTTP response header. This requires setting the
+         * `hsts_max_age` option as well in order to become effective. Requires
+         * `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
+         * version &gt;= 2.27**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hstsIncludeSubdomains(@Nullable Output<Boolean> hstsIncludeSubdomains) {
+            $.hstsIncludeSubdomains = hstsIncludeSubdomains;
+            return this;
+        }
+
+        /**
+         * @param hstsIncludeSubdomains Defines whether the
+         * **includeSubDomains** directive should be added to the
+         * Strict-Transport-Security HTTP response header. This requires setting the
+         * `hsts_max_age` option as well in order to become effective. Requires
+         * `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
+         * version &gt;= 2.27**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hstsIncludeSubdomains(Boolean hstsIncludeSubdomains) {
+            return hstsIncludeSubdomains(Output.of(hstsIncludeSubdomains));
+        }
+
+        /**
+         * @param hstsMaxAge The value of the **max_age** directive for the
+         * Strict-Transport-Security HTTP response header. Setting this enables HTTP
+         * Strict Transport Security (HSTS) for the TLS-terminated listener. Requires
+         * `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
+         * version &gt;= 2.27**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hstsMaxAge(@Nullable Output<Integer> hstsMaxAge) {
+            $.hstsMaxAge = hstsMaxAge;
+            return this;
+        }
+
+        /**
+         * @param hstsMaxAge The value of the **max_age** directive for the
+         * Strict-Transport-Security HTTP response header. Setting this enables HTTP
+         * Strict Transport Security (HSTS) for the TLS-terminated listener. Requires
+         * `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
+         * version &gt;= 2.27**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hstsMaxAge(Integer hstsMaxAge) {
+            return hstsMaxAge(Output.of(hstsMaxAge));
+        }
+
+        /**
+         * @param hstsPreload Defines whether the **preload** directive should
+         * be added to the Strict-Transport-Security HTTP response header. This requires
+         * setting the `hsts_max_age` option as well in order to become effective.
+         * Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
+         * minor version &gt;= 2.27**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hstsPreload(@Nullable Output<Boolean> hstsPreload) {
+            $.hstsPreload = hstsPreload;
+            return this;
+        }
+
+        /**
+         * @param hstsPreload Defines whether the **preload** directive should
+         * be added to the Strict-Transport-Security HTTP response header. This requires
+         * setting the `hsts_max_age` option as well in order to become effective.
+         * Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
+         * minor version &gt;= 2.27**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hstsPreload(Boolean hstsPreload) {
+            return hstsPreload(Output.of(hstsPreload));
+        }
+
+        /**
+         * @param insertHeaders The list of key value pairs representing
+         * headers to insert into the request before it is sent to the backend members.
+         * Changing this updates the headers of the existing listener.
          * 
          * @return builder
          * 
@@ -565,9 +983,9 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param insertHeaders The list of key value pairs representing headers to insert
-         * into the request before it is sent to the backend members. Changing this updates the headers of the
-         * existing listener.
+         * @param insertHeaders The list of key value pairs representing
+         * headers to insert into the request before it is sent to the backend members.
+         * Changing this updates the headers of the existing listener.
          * 
          * @return builder
          * 
@@ -600,8 +1018,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Human-readable name for the Listener. Does not have
-         * to be unique.
+         * @param name Human-readable name for the Listener. Does not have to be
+         * unique.
          * 
          * @return builder
          * 
@@ -612,8 +1030,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Human-readable name for the Listener. Does not have
-         * to be unique.
+         * @param name Human-readable name for the Listener. Does not have to be
+         * unique.
          * 
          * @return builder
          * 
@@ -623,10 +1041,10 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol The protocol - can either be TCP, HTTP, HTTPS,
-         * TERMINATED_HTTPS, UDP, SCTP (supported only in
-         * **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
-         * **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
+         * @param protocol The protocol can be either `TCP`, `HTTP`, `HTTPS`,
+         * `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
+         * \&gt;= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version &gt;=
+         * 2.25**). Changing this creates a new Listener.
          * 
          * @return builder
          * 
@@ -637,10 +1055,10 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol The protocol - can either be TCP, HTTP, HTTPS,
-         * TERMINATED_HTTPS, UDP, SCTP (supported only in
-         * **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
-         * **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
+         * @param protocol The protocol can be either `TCP`, `HTTP`, `HTTPS`,
+         * `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
+         * \&gt;= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version &gt;=
+         * 2.25**). Changing this creates a new Listener.
          * 
          * @return builder
          * 
@@ -651,7 +1069,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocolPort The port on which to listen for client traffic.
-         * Changing this creates a new Listener.
+         * * Changing this creates a new Listener.
          * 
          * @return builder
          * 
@@ -663,7 +1081,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocolPort The port on which to listen for client traffic.
-         * Changing this creates a new Listener.
+         * * Changing this creates a new Listener.
          * 
          * @return builder
          * 
@@ -674,9 +1092,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param region The region in which to obtain the V2 Networking client.
-         * A Networking client is needed to create an . If omitted, the
-         * `region` argument of the provider is used. Changing this creates a new
-         * Listener.
+         * A Networking client is needed to create a listener. If omitted, the `region`
+         * argument of the provider is used. Changing this creates a new Listener.
          * 
          * @return builder
          * 
@@ -688,9 +1105,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param region The region in which to obtain the V2 Networking client.
-         * A Networking client is needed to create an . If omitted, the
-         * `region` argument of the provider is used. Changing this creates a new
-         * Listener.
+         * A Networking client is needed to create a listener. If omitted, the `region`
+         * argument of the provider is used. Changing this creates a new Listener.
          * 
          * @return builder
          * 
@@ -702,7 +1118,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sniContainerRefs A list of references to Barbican Secrets
          * containers which store SNI information. See
-         * [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
+         * [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
          * for more information.
          * 
          * @return builder
@@ -716,7 +1132,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sniContainerRefs A list of references to Barbican Secrets
          * containers which store SNI information. See
-         * [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
+         * [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
          * for more information.
          * 
          * @return builder
@@ -729,7 +1145,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sniContainerRefs A list of references to Barbican Secrets
          * containers which store SNI information. See
-         * [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
+         * [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
          * for more information.
          * 
          * @return builder
@@ -775,8 +1191,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tenantId Required for admins. The UUID of the tenant who owns
-         * the Listener.  Only administrative users can specify a tenant UUID
-         * other than their own. Changing this creates a new Listener.
+         * the Listener.  Only administrative users can specify a tenant UUID other than
+         * their own. Changing this creates a new Listener.
          * 
          * @return builder
          * 
@@ -788,8 +1204,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tenantId Required for admins. The UUID of the tenant who owns
-         * the Listener.  Only administrative users can specify a tenant UUID
-         * other than their own. Changing this creates a new Listener.
+         * the Listener.  Only administrative users can specify a tenant UUID other than
+         * their own. Changing this creates a new Listener.
          * 
          * @return builder
          * 
@@ -799,7 +1215,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeoutClientData The client inactivity timeout in milliseconds.
+         * @param timeoutClientData The client inactivity timeout in
+         * milliseconds.
          * 
          * @return builder
          * 
@@ -810,7 +1227,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeoutClientData The client inactivity timeout in milliseconds.
+         * @param timeoutClientData The client inactivity timeout in
+         * milliseconds.
          * 
          * @return builder
          * 
@@ -820,7 +1238,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeoutMemberConnect The member connection timeout in milliseconds.
+         * @param timeoutMemberConnect The member connection timeout in
+         * milliseconds.
          * 
          * @return builder
          * 
@@ -831,7 +1250,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeoutMemberConnect The member connection timeout in milliseconds.
+         * @param timeoutMemberConnect The member connection timeout in
+         * milliseconds.
          * 
          * @return builder
          * 
@@ -841,7 +1261,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeoutMemberData The member inactivity timeout in milliseconds.
+         * @param timeoutMemberData The member inactivity timeout in
+         * milliseconds.
          * 
          * @return builder
          * 
@@ -852,7 +1273,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeoutMemberData The member inactivity timeout in milliseconds.
+         * @param timeoutMemberData The member inactivity timeout in
+         * milliseconds.
          * 
          * @return builder
          * 
@@ -862,8 +1284,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeoutTcpInspect The time in milliseconds, to wait for additional
-         * TCP packets for content inspection.
+         * @param timeoutTcpInspect The time in milliseconds, to wait for
+         * additional TCP packets for content inspection.
          * 
          * @return builder
          * 
@@ -874,14 +1296,78 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeoutTcpInspect The time in milliseconds, to wait for additional
-         * TCP packets for content inspection.
+         * @param timeoutTcpInspect The time in milliseconds, to wait for
+         * additional TCP packets for content inspection.
          * 
          * @return builder
          * 
          */
         public Builder timeoutTcpInspect(Integer timeoutTcpInspect) {
             return timeoutTcpInspect(Output.of(timeoutTcpInspect));
+        }
+
+        /**
+         * @param tlsCiphers List of ciphers in OpenSSL format
+         * (colon-separated). See
+         * https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
+         * Supported only in **Octavia minor version &gt;= 2.15**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsCiphers(@Nullable Output<String> tlsCiphers) {
+            $.tlsCiphers = tlsCiphers;
+            return this;
+        }
+
+        /**
+         * @param tlsCiphers List of ciphers in OpenSSL format
+         * (colon-separated). See
+         * https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
+         * Supported only in **Octavia minor version &gt;= 2.15**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsCiphers(String tlsCiphers) {
+            return tlsCiphers(Output.of(tlsCiphers));
+        }
+
+        /**
+         * @param tlsVersions A list of TLS protocol versions. Available
+         * versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
+         * **Octavia minor version &gt;= 2.17**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsVersions(@Nullable Output<List<String>> tlsVersions) {
+            $.tlsVersions = tlsVersions;
+            return this;
+        }
+
+        /**
+         * @param tlsVersions A list of TLS protocol versions. Available
+         * versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
+         * **Octavia minor version &gt;= 2.17**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsVersions(List<String> tlsVersions) {
+            return tlsVersions(Output.of(tlsVersions));
+        }
+
+        /**
+         * @param tlsVersions A list of TLS protocol versions. Available
+         * versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
+         * **Octavia minor version &gt;= 2.17**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsVersions(String... tlsVersions) {
+            return tlsVersions(List.of(tlsVersions));
         }
 
         public ListenerState build() {

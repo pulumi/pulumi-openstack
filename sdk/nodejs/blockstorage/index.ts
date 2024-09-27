@@ -15,20 +15,10 @@ export const getQuotasetV3: typeof import("./getQuotasetV3").getQuotasetV3 = nul
 export const getQuotasetV3Output: typeof import("./getQuotasetV3").getQuotasetV3Output = null as any;
 utilities.lazyLoad(exports, ["getQuotasetV3","getQuotasetV3Output"], () => require("./getQuotasetV3"));
 
-export { GetSnapshotV2Args, GetSnapshotV2Result, GetSnapshotV2OutputArgs } from "./getSnapshotV2";
-export const getSnapshotV2: typeof import("./getSnapshotV2").getSnapshotV2 = null as any;
-export const getSnapshotV2Output: typeof import("./getSnapshotV2").getSnapshotV2Output = null as any;
-utilities.lazyLoad(exports, ["getSnapshotV2","getSnapshotV2Output"], () => require("./getSnapshotV2"));
-
 export { GetSnapshotV3Args, GetSnapshotV3Result, GetSnapshotV3OutputArgs } from "./getSnapshotV3";
 export const getSnapshotV3: typeof import("./getSnapshotV3").getSnapshotV3 = null as any;
 export const getSnapshotV3Output: typeof import("./getSnapshotV3").getSnapshotV3Output = null as any;
 utilities.lazyLoad(exports, ["getSnapshotV3","getSnapshotV3Output"], () => require("./getSnapshotV3"));
-
-export { GetVolumeV2Args, GetVolumeV2Result, GetVolumeV2OutputArgs } from "./getVolumeV2";
-export const getVolumeV2: typeof import("./getVolumeV2").getVolumeV2 = null as any;
-export const getVolumeV2Output: typeof import("./getVolumeV2").getVolumeV2Output = null as any;
-utilities.lazyLoad(exports, ["getVolumeV2","getVolumeV2Output"], () => require("./getVolumeV2"));
 
 export { GetVolumeV3Args, GetVolumeV3Result, GetVolumeV3OutputArgs } from "./getVolumeV3";
 export const getVolumeV3: typeof import("./getVolumeV3").getVolumeV3 = null as any;
@@ -45,11 +35,6 @@ export type QosV3 = import("./qosV3").QosV3;
 export const QosV3: typeof import("./qosV3").QosV3 = null as any;
 utilities.lazyLoad(exports, ["QosV3"], () => require("./qosV3"));
 
-export { QuoteSetV2Args, QuoteSetV2State } from "./quoteSetV2";
-export type QuoteSetV2 = import("./quoteSetV2").QuoteSetV2;
-export const QuoteSetV2: typeof import("./quoteSetV2").QuoteSetV2 = null as any;
-utilities.lazyLoad(exports, ["QuoteSetV2"], () => require("./quoteSetV2"));
-
 export { QuoteSetV3Args, QuoteSetV3State } from "./quoteSetV3";
 export type QuoteSetV3 = import("./quoteSetV3").QuoteSetV3;
 export const QuoteSetV3: typeof import("./quoteSetV3").QuoteSetV3 = null as any;
@@ -65,11 +50,6 @@ export type VolumeAttach = import("./volumeAttach").VolumeAttach;
 export const VolumeAttach: typeof import("./volumeAttach").VolumeAttach = null as any;
 utilities.lazyLoad(exports, ["VolumeAttach"], () => require("./volumeAttach"));
 
-export { VolumeAttachV2Args, VolumeAttachV2State } from "./volumeAttachV2";
-export type VolumeAttachV2 = import("./volumeAttachV2").VolumeAttachV2;
-export const VolumeAttachV2: typeof import("./volumeAttachV2").VolumeAttachV2 = null as any;
-utilities.lazyLoad(exports, ["VolumeAttachV2"], () => require("./volumeAttachV2"));
-
 export { VolumeTypeAccessV3Args, VolumeTypeAccessV3State } from "./volumeTypeAccessV3";
 export type VolumeTypeAccessV3 = import("./volumeTypeAccessV3").VolumeTypeAccessV3;
 export const VolumeTypeAccessV3: typeof import("./volumeTypeAccessV3").VolumeTypeAccessV3 = null as any;
@@ -80,16 +60,6 @@ export type VolumeTypeV3 = import("./volumeTypeV3").VolumeTypeV3;
 export const VolumeTypeV3: typeof import("./volumeTypeV3").VolumeTypeV3 = null as any;
 utilities.lazyLoad(exports, ["VolumeTypeV3"], () => require("./volumeTypeV3"));
 
-export { VolumeV1Args, VolumeV1State } from "./volumeV1";
-export type VolumeV1 = import("./volumeV1").VolumeV1;
-export const VolumeV1: typeof import("./volumeV1").VolumeV1 = null as any;
-utilities.lazyLoad(exports, ["VolumeV1"], () => require("./volumeV1"));
-
-export { VolumeV2Args, VolumeV2State } from "./volumeV2";
-export type VolumeV2 = import("./volumeV2").VolumeV2;
-export const VolumeV2: typeof import("./volumeV2").VolumeV2 = null as any;
-utilities.lazyLoad(exports, ["VolumeV2"], () => require("./volumeV2"));
-
 
 const _module = {
     version: utilities.getVersion(),
@@ -99,24 +69,16 @@ const _module = {
                 return new QosAssociationV3(name, <any>undefined, { urn })
             case "openstack:blockstorage/qosV3:QosV3":
                 return new QosV3(name, <any>undefined, { urn })
-            case "openstack:blockstorage/quoteSetV2:QuoteSetV2":
-                return new QuoteSetV2(name, <any>undefined, { urn })
             case "openstack:blockstorage/quoteSetV3:QuoteSetV3":
                 return new QuoteSetV3(name, <any>undefined, { urn })
             case "openstack:blockstorage/volume:Volume":
                 return new Volume(name, <any>undefined, { urn })
             case "openstack:blockstorage/volumeAttach:VolumeAttach":
                 return new VolumeAttach(name, <any>undefined, { urn })
-            case "openstack:blockstorage/volumeAttachV2:VolumeAttachV2":
-                return new VolumeAttachV2(name, <any>undefined, { urn })
             case "openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3":
                 return new VolumeTypeAccessV3(name, <any>undefined, { urn })
             case "openstack:blockstorage/volumeTypeV3:VolumeTypeV3":
                 return new VolumeTypeV3(name, <any>undefined, { urn })
-            case "openstack:blockstorage/volumeV1:VolumeV1":
-                return new VolumeV1(name, <any>undefined, { urn })
-            case "openstack:blockstorage/volumeV2:VolumeV2":
-                return new VolumeV2(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -124,12 +86,8 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("openstack", "blockstorage/qosAssociationV3", _module)
 pulumi.runtime.registerResourceModule("openstack", "blockstorage/qosV3", _module)
-pulumi.runtime.registerResourceModule("openstack", "blockstorage/quoteSetV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "blockstorage/quoteSetV3", _module)
 pulumi.runtime.registerResourceModule("openstack", "blockstorage/volume", _module)
 pulumi.runtime.registerResourceModule("openstack", "blockstorage/volumeAttach", _module)
-pulumi.runtime.registerResourceModule("openstack", "blockstorage/volumeAttachV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "blockstorage/volumeTypeAccessV3", _module)
 pulumi.runtime.registerResourceModule("openstack", "blockstorage/volumeTypeV3", _module)
-pulumi.runtime.registerResourceModule("openstack", "blockstorage/volumeV1", _module)
-pulumi.runtime.registerResourceModule("openstack", "blockstorage/volumeV2", _module)
