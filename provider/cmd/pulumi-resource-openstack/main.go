@@ -21,8 +21,8 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 
-	openstack "github.com/pulumi/pulumi-openstack/provider/v4"
-	"github.com/pulumi/pulumi-openstack/provider/v4/pkg/version"
+	openstack "github.com/pulumi/pulumi-openstack/provider/v5"
+	"github.com/pulumi/pulumi-openstack/provider/v5/pkg/version"
 )
 
 //go:embed schema-embed.json

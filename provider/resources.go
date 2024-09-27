@@ -23,14 +23,14 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
-	"github.com/terraform-provider-openstack/terraform-provider-openstack/v2/openstack"
+	"github.com/terraform-provider-openstack/terraform-provider-openstack/v3/openstack"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
-	"github.com/pulumi/pulumi-openstack/provider/v4/pkg/version"
+	"github.com/pulumi/pulumi-openstack/provider/v5/pkg/version"
 )
 
 // all of the OpenStack token components used below.
@@ -94,7 +94,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:                "https://pulumi.io",
 		License:                 "Apache-2.0",
 		GitHubOrg:               "terraform-provider-openstack",
-		TFProviderModuleVersion: "v2",
+		TFProviderModuleVersion: "v3",
 		Repository:              "https://github.com/pulumi/pulumi-openstack",
 		MetadataInfo:            tfbridge.NewProviderMetadata(metadata),
 		Version:                 version.Version,
