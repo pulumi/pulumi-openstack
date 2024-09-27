@@ -40,7 +40,7 @@ class L7RuleV2Args:
         :param pulumi.Input[str] key: The key to use for the comparison. For example, the name of the cookie to
                evaluate. Valid when `type` is set to COOKIE or HEADER.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an . If omitted, the
+               A Networking client is needed to create an L7 rule. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                L7 Rule.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
@@ -158,7 +158,7 @@ class L7RuleV2Args:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an . If omitted, the
+        A Networking client is needed to create an L7 rule. If omitted, the
         `region` argument of the provider is used. Changing this creates a new
         L7 Rule.
         """
@@ -210,7 +210,7 @@ class _L7RuleV2State:
                L7 Rule.
         :param pulumi.Input[str] listener_id: The ID of the Listener owning this resource.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an . If omitted, the
+               A Networking client is needed to create an L7 rule. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                L7 Rule.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
@@ -324,7 +324,7 @@ class _L7RuleV2State:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an . If omitted, the
+        A Networking client is needed to create an L7 rule. If omitted, the
         `region` argument of the provider is used. Changing this creates a new
         L7 Rule.
         """
@@ -456,7 +456,7 @@ class L7RuleV2(pulumi.CustomResource):
         :param pulumi.Input[str] l7policy_id: The ID of the L7 Policy to query. Changing this creates a new
                L7 Rule.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an . If omitted, the
+               A Networking client is needed to create an L7 rule. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                L7 Rule.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
@@ -616,7 +616,7 @@ class L7RuleV2(pulumi.CustomResource):
                L7 Rule.
         :param pulumi.Input[str] listener_id: The ID of the Listener owning this resource.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an . If omitted, the
+               A Networking client is needed to create an L7 rule. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                L7 Rule.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
@@ -701,7 +701,7 @@ class L7RuleV2(pulumi.CustomResource):
     def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an . If omitted, the
+        A Networking client is needed to create an L7 rule. If omitted, the
         `region` argument of the provider is used. Changing this creates a new
         L7 Rule.
         """

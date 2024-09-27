@@ -135,7 +135,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="portRangeMax", refs={Integer.class}, tree="[0]")
-    private Output<Integer> portRangeMax;
+    private Output</* @Nullable */ Integer> portRangeMax;
 
     /**
      * @return The higher part of the allowed port range, valid
@@ -143,8 +143,8 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * security group rule.
      * 
      */
-    public Output<Integer> portRangeMax() {
-        return this.portRangeMax;
+    public Output<Optional<Integer>> portRangeMax() {
+        return Codegen.optional(this.portRangeMax);
     }
     /**
      * The lower part of the allowed port range, valid
@@ -153,7 +153,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="portRangeMin", refs={Integer.class}, tree="[0]")
-    private Output<Integer> portRangeMin;
+    private Output</* @Nullable */ Integer> portRangeMin;
 
     /**
      * @return The lower part of the allowed port range, valid
@@ -161,11 +161,15 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * security group rule.
      * 
      */
-    public Output<Integer> portRangeMin() {
-        return this.portRangeMin;
+    public Output<Optional<Integer>> portRangeMin() {
+        return Codegen.optional(this.portRangeMin);
     }
     /**
-     * The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+     * The layer 4 protocol type, valid values are
+     * following. Changing this creates a new security group rule. This is required
+     * if you want to specify a port range.
+     * * empty string or omitted (any protocol)
+     * * integer value between 0 and 255 (valid IP protocol number)
      * * __tcp__
      * * __udp__
      * * __icmp__
@@ -187,13 +191,18 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * * __sctp__
      * * __udplite__
      * * __vrrp__
+     * * __ipip__
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
-    private Output<String> protocol;
+    private Output</* @Nullable */ String> protocol;
 
     /**
-     * @return The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+     * @return The layer 4 protocol type, valid values are
+     * following. Changing this creates a new security group rule. This is required
+     * if you want to specify a port range.
+     * * empty string or omitted (any protocol)
+     * * integer value between 0 and 255 (valid IP protocol number)
      * * __tcp__
      * * __udp__
      * * __icmp__
@@ -215,10 +224,11 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * * __sctp__
      * * __udplite__
      * * __vrrp__
+     * * __ipip__
      * 
      */
-    public Output<String> protocol() {
-        return this.protocol;
+    public Output<Optional<String>> protocol() {
+        return Codegen.optional(this.protocol);
     }
     /**
      * The region in which to obtain the V2 networking client.

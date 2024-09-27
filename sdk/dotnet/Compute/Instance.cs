@@ -169,9 +169,9 @@ namespace Pulumi.OpenStack.Compute
         public Output<ImmutableArray<Outputs.InstancePersonality>> Personalities { get; private set; } = null!;
 
         /// <summary>
-        /// Provide the VM state. Only 'active', 'shutoff'
+        /// Provide the VM state. Only 'active', 'shutoff', 'paused'
         /// and 'shelved_offloaded' are supported values.
-        /// *Note*: If the initial power_state is the shutoff
+        /// *Note*: If the initial power_state is the shutoff or paused
         /// the VM will be stopped immediately after build and the provisioners like
         /// remote-exec or files are not supported.
         /// </summary>
@@ -464,9 +464,9 @@ namespace Pulumi.OpenStack.Compute
         }
 
         /// <summary>
-        /// Provide the VM state. Only 'active', 'shutoff'
+        /// Provide the VM state. Only 'active', 'shutoff', 'paused'
         /// and 'shelved_offloaded' are supported values.
-        /// *Note*: If the initial power_state is the shutoff
+        /// *Note*: If the initial power_state is the shutoff or paused
         /// the VM will be stopped immediately after build and the provisioners like
         /// remote-exec or files are not supported.
         /// </summary>
@@ -756,9 +756,9 @@ namespace Pulumi.OpenStack.Compute
         }
 
         /// <summary>
-        /// Provide the VM state. Only 'active', 'shutoff'
+        /// Provide the VM state. Only 'active', 'shutoff', 'paused'
         /// and 'shelved_offloaded' are supported values.
-        /// *Note*: If the initial power_state is the shutoff
+        /// *Note*: If the initial power_state is the shutoff or paused
         /// the VM will be stopped immediately after build and the provisioners like
         /// remote-exec or files are not supported.
         /// </summary>

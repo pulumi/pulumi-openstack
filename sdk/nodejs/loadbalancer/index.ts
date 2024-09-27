@@ -25,20 +25,10 @@ export type Listener = import("./listener").Listener;
 export const Listener: typeof import("./listener").Listener = null as any;
 utilities.lazyLoad(exports, ["Listener"], () => require("./listener"));
 
-export { LoadBalancerArgs, LoadBalancerState } from "./loadBalancer";
-export type LoadBalancer = import("./loadBalancer").LoadBalancer;
-export const LoadBalancer: typeof import("./loadBalancer").LoadBalancer = null as any;
-utilities.lazyLoad(exports, ["LoadBalancer"], () => require("./loadBalancer"));
-
 export { MemberArgs, MemberState } from "./member";
 export type Member = import("./member").Member;
 export const Member: typeof import("./member").Member = null as any;
 utilities.lazyLoad(exports, ["Member"], () => require("./member"));
-
-export { MemberV1Args, MemberV1State } from "./memberV1";
-export type MemberV1 = import("./memberV1").MemberV1;
-export const MemberV1: typeof import("./memberV1").MemberV1 = null as any;
-utilities.lazyLoad(exports, ["MemberV1"], () => require("./memberV1"));
 
 export { MembersArgs, MembersState } from "./members";
 export type Members = import("./members").Members;
@@ -50,30 +40,15 @@ export type Monitor = import("./monitor").Monitor;
 export const Monitor: typeof import("./monitor").Monitor = null as any;
 utilities.lazyLoad(exports, ["Monitor"], () => require("./monitor"));
 
-export { MonitorV1Args, MonitorV1State } from "./monitorV1";
-export type MonitorV1 = import("./monitorV1").MonitorV1;
-export const MonitorV1: typeof import("./monitorV1").MonitorV1 = null as any;
-utilities.lazyLoad(exports, ["MonitorV1"], () => require("./monitorV1"));
-
 export { PoolArgs, PoolState } from "./pool";
 export type Pool = import("./pool").Pool;
 export const Pool: typeof import("./pool").Pool = null as any;
 utilities.lazyLoad(exports, ["Pool"], () => require("./pool"));
 
-export { PoolV1Args, PoolV1State } from "./poolV1";
-export type PoolV1 = import("./poolV1").PoolV1;
-export const PoolV1: typeof import("./poolV1").PoolV1 = null as any;
-utilities.lazyLoad(exports, ["PoolV1"], () => require("./poolV1"));
-
 export { QuotaArgs, QuotaState } from "./quota";
 export type Quota = import("./quota").Quota;
 export const Quota: typeof import("./quota").Quota = null as any;
 utilities.lazyLoad(exports, ["Quota"], () => require("./quota"));
-
-export { VipArgs, VipState } from "./vip";
-export type Vip = import("./vip").Vip;
-export const Vip: typeof import("./vip").Vip = null as any;
-utilities.lazyLoad(exports, ["Vip"], () => require("./vip"));
 
 
 const _module = {
@@ -86,26 +61,16 @@ const _module = {
                 return new L7RuleV2(name, <any>undefined, { urn })
             case "openstack:loadbalancer/listener:Listener":
                 return new Listener(name, <any>undefined, { urn })
-            case "openstack:loadbalancer/loadBalancer:LoadBalancer":
-                return new LoadBalancer(name, <any>undefined, { urn })
             case "openstack:loadbalancer/member:Member":
                 return new Member(name, <any>undefined, { urn })
-            case "openstack:loadbalancer/memberV1:MemberV1":
-                return new MemberV1(name, <any>undefined, { urn })
             case "openstack:loadbalancer/members:Members":
                 return new Members(name, <any>undefined, { urn })
             case "openstack:loadbalancer/monitor:Monitor":
                 return new Monitor(name, <any>undefined, { urn })
-            case "openstack:loadbalancer/monitorV1:MonitorV1":
-                return new MonitorV1(name, <any>undefined, { urn })
             case "openstack:loadbalancer/pool:Pool":
                 return new Pool(name, <any>undefined, { urn })
-            case "openstack:loadbalancer/poolV1:PoolV1":
-                return new PoolV1(name, <any>undefined, { urn })
             case "openstack:loadbalancer/quota:Quota":
                 return new Quota(name, <any>undefined, { urn })
-            case "openstack:loadbalancer/vip:Vip":
-                return new Vip(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -114,13 +79,8 @@ const _module = {
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/l7PolicyV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/l7RuleV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/listener", _module)
-pulumi.runtime.registerResourceModule("openstack", "loadbalancer/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/member", _module)
-pulumi.runtime.registerResourceModule("openstack", "loadbalancer/memberV1", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/members", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/monitor", _module)
-pulumi.runtime.registerResourceModule("openstack", "loadbalancer/monitorV1", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/pool", _module)
-pulumi.runtime.registerResourceModule("openstack", "loadbalancer/poolV1", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/quota", _module)
-pulumi.runtime.registerResourceModule("openstack", "loadbalancer/vip", _module)

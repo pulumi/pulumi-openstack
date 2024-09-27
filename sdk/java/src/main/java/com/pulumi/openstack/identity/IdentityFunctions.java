@@ -15,6 +15,8 @@ import com.pulumi.openstack.identity.inputs.GetEndpointPlainArgs;
 import com.pulumi.openstack.identity.inputs.GetGroupArgs;
 import com.pulumi.openstack.identity.inputs.GetGroupPlainArgs;
 import com.pulumi.openstack.identity.inputs.GetProjectArgs;
+import com.pulumi.openstack.identity.inputs.GetProjectIdsV3Args;
+import com.pulumi.openstack.identity.inputs.GetProjectIdsV3PlainArgs;
 import com.pulumi.openstack.identity.inputs.GetProjectPlainArgs;
 import com.pulumi.openstack.identity.inputs.GetRoleArgs;
 import com.pulumi.openstack.identity.inputs.GetRolePlainArgs;
@@ -25,6 +27,7 @@ import com.pulumi.openstack.identity.inputs.GetUserPlainArgs;
 import com.pulumi.openstack.identity.outputs.GetAuthScopeResult;
 import com.pulumi.openstack.identity.outputs.GetEndpointResult;
 import com.pulumi.openstack.identity.outputs.GetGroupResult;
+import com.pulumi.openstack.identity.outputs.GetProjectIdsV3Result;
 import com.pulumi.openstack.identity.outputs.GetProjectResult;
 import com.pulumi.openstack.identity.outputs.GetRoleResult;
 import com.pulumi.openstack.identity.outputs.GetServiceResult;
@@ -739,6 +742,282 @@ public final class IdentityFunctions {
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:identity/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a list of OpenStack Project IDs matching the
+     * specified criteria.
+     * 
+     * &gt; **Note:** You _must_ have domain admin or cloud admin privileges in your OpenStack cloud to use
+     * this datasource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetProjectIdsV3Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projects = IdentityFunctions.getProjectIdsV3(GetProjectIdsV3Args.builder()
+     *             .nameRegex("^prod.*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetProjectIdsV3Result> getProjectIdsV3() {
+        return getProjectIdsV3(GetProjectIdsV3Args.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get a list of OpenStack Project IDs matching the
+     * specified criteria.
+     * 
+     * &gt; **Note:** You _must_ have domain admin or cloud admin privileges in your OpenStack cloud to use
+     * this datasource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetProjectIdsV3Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projects = IdentityFunctions.getProjectIdsV3(GetProjectIdsV3Args.builder()
+     *             .nameRegex("^prod.*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetProjectIdsV3Result> getProjectIdsV3Plain() {
+        return getProjectIdsV3Plain(GetProjectIdsV3PlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get a list of OpenStack Project IDs matching the
+     * specified criteria.
+     * 
+     * &gt; **Note:** You _must_ have domain admin or cloud admin privileges in your OpenStack cloud to use
+     * this datasource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetProjectIdsV3Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projects = IdentityFunctions.getProjectIdsV3(GetProjectIdsV3Args.builder()
+     *             .nameRegex("^prod.*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetProjectIdsV3Result> getProjectIdsV3(GetProjectIdsV3Args args) {
+        return getProjectIdsV3(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get a list of OpenStack Project IDs matching the
+     * specified criteria.
+     * 
+     * &gt; **Note:** You _must_ have domain admin or cloud admin privileges in your OpenStack cloud to use
+     * this datasource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetProjectIdsV3Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projects = IdentityFunctions.getProjectIdsV3(GetProjectIdsV3Args.builder()
+     *             .nameRegex("^prod.*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetProjectIdsV3Result> getProjectIdsV3Plain(GetProjectIdsV3PlainArgs args) {
+        return getProjectIdsV3Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get a list of OpenStack Project IDs matching the
+     * specified criteria.
+     * 
+     * &gt; **Note:** You _must_ have domain admin or cloud admin privileges in your OpenStack cloud to use
+     * this datasource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetProjectIdsV3Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projects = IdentityFunctions.getProjectIdsV3(GetProjectIdsV3Args.builder()
+     *             .nameRegex("^prod.*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetProjectIdsV3Result> getProjectIdsV3(GetProjectIdsV3Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:identity/getProjectIdsV3:getProjectIdsV3", TypeShape.of(GetProjectIdsV3Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a list of OpenStack Project IDs matching the
+     * specified criteria.
+     * 
+     * &gt; **Note:** You _must_ have domain admin or cloud admin privileges in your OpenStack cloud to use
+     * this datasource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetProjectIdsV3Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projects = IdentityFunctions.getProjectIdsV3(GetProjectIdsV3Args.builder()
+     *             .nameRegex("^prod.*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetProjectIdsV3Result> getProjectIdsV3Plain(GetProjectIdsV3PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("openstack:identity/getProjectIdsV3:getProjectIdsV3", TypeShape.of(GetProjectIdsV3Result.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get the ID of an OpenStack role.

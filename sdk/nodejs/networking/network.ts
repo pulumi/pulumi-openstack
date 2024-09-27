@@ -25,15 +25,18 @@ import * as utilities from "../utilities";
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
  * });
- * const secgroup1 = new openstack.compute.SecGroup("secgroup_1", {
+ * const secgroup1 = new openstack.networking.SecGroup("secgroup_1", {
  *     name: "secgroup_1",
  *     description: "a security group",
- *     rules: [{
- *         fromPort: 22,
- *         toPort: 22,
- *         ipProtocol: "tcp",
- *         cidr: "0.0.0.0/0",
- *     }],
+ * });
+ * const secgroupRule1 = new openstack.networking.SecGroupRule("secgroup_rule_1", {
+ *     direction: "ingress",
+ *     ethertype: "IPv4",
+ *     protocol: "tcp",
+ *     portRangeMin: 22,
+ *     portRangeMax: 22,
+ *     remoteIpPrefix: "0.0.0.0/0",
+ *     securityGroupId: secgroup1.id,
  * });
  * const port1 = new openstack.networking.Port("port_1", {
  *     name: "port_1",

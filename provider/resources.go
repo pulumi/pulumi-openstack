@@ -23,14 +23,14 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
-	"github.com/terraform-provider-openstack/terraform-provider-openstack/v2/openstack"
+	"github.com/terraform-provider-openstack/terraform-provider-openstack/v3/openstack"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
-	"github.com/pulumi/pulumi-openstack/provider/v4/pkg/version"
+	"github.com/pulumi/pulumi-openstack/provider/v5/pkg/version"
 )
 
 // all of the OpenStack token components used below.
@@ -94,7 +94,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:                "https://pulumi.io",
 		License:                 "Apache-2.0",
 		GitHubOrg:               "terraform-provider-openstack",
-		TFProviderModuleVersion: "v2",
+		TFProviderModuleVersion: "v3",
 		Repository:              "https://github.com/pulumi/pulumi-openstack",
 		MetadataInfo:            tfbridge.NewProviderMetadata(metadata),
 		Version:                 version.Version,
@@ -140,18 +140,14 @@ func Provider() tfbridge.ProviderInfo {
 			// Block Storage
 			"openstack_blockstorage_volume_v3":        {Tok: openstackResource(blockstorageMod, "Volume")},
 			"openstack_blockstorage_volume_attach_v3": {Tok: openstackResource(blockstorageMod, "VolumeAttach")},
-			"openstack_blockstorage_quotaset_v2":      {Tok: openstackResource(blockstorageMod, "QuoteSetV2")},
 			"openstack_blockstorage_quotaset_v3":      {Tok: openstackResource(blockstorageMod, "QuoteSetV3")},
 
 			// Compute
-			"openstack_compute_flavor_v2":               {Tok: openstackResource(computeMod, "Flavor")},
-			"openstack_compute_flavor_access_v2":        {Tok: openstackResource(computeMod, "FlavorAccess")},
-			"openstack_compute_floatingip_v2":           {Tok: openstackResource(computeMod, "FloatingIp")},
-			"openstack_compute_floatingip_associate_v2": {Tok: openstackResource(computeMod, "FloatingIpAssociate")},
-			"openstack_compute_instance_v2":             {Tok: openstackResource(computeMod, "Instance")},
-			"openstack_compute_interface_attach_v2":     {Tok: openstackResource(computeMod, "InterfaceAttach")},
-			"openstack_compute_keypair_v2":              {Tok: openstackResource(computeMod, "Keypair")},
-			"openstack_compute_secgroup_v2":             {Tok: openstackResource(computeMod, "SecGroup")},
+			"openstack_compute_flavor_v2":           {Tok: openstackResource(computeMod, "Flavor")},
+			"openstack_compute_flavor_access_v2":    {Tok: openstackResource(computeMod, "FlavorAccess")},
+			"openstack_compute_instance_v2":         {Tok: openstackResource(computeMod, "Instance")},
+			"openstack_compute_interface_attach_v2": {Tok: openstackResource(computeMod, "InterfaceAttach")},
+			"openstack_compute_keypair_v2":          {Tok: openstackResource(computeMod, "Keypair")},
 
 			"openstack_compute_servergroup_v2": {Tok: openstackResource(computeMod, "ServerGroup")},
 
@@ -226,10 +222,6 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_networking_portforwarding_v2": {Tok: openstackResource(networkingMod, "PortForwardingV2")},
 
 			// Load Balancer
-			"openstack_lb_member_v1":   {Tok: openstackResource(lbMod, "MemberV1")},
-			"openstack_lb_monitor_v1":  {Tok: openstackResource(lbMod, "MonitorV1")},
-			"openstack_lb_pool_v1":     {Tok: openstackResource(lbMod, "PoolV1")},
-			"openstack_lb_vip_v1":      {Tok: openstackResource(lbMod, "Vip")},
 			"openstack_lb_l7policy_v2": {Tok: openstackResource(lbMod, "L7PolicyV2")},
 			"openstack_lb_l7rule_v2":   {Tok: openstackResource(lbMod, "L7RuleV2")},
 			"openstack_lb_listener_v2": {Tok: openstackResource(lbMod, "Listener")},
@@ -250,12 +242,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Firewall
-			"openstack_fw_firewall_v1": {Tok: openstackResource(firewallMod, "Firewall")},
-			"openstack_fw_group_v2":    {Tok: openstackResource(firewallMod, "GroupV2")},
-			"openstack_fw_policy_v1":   {Tok: openstackResource(firewallMod, "Policy")},
-			"openstack_fw_policy_v2":   {Tok: openstackResource(firewallMod, "PolicyV2")},
-			"openstack_fw_rule_v1":     {Tok: openstackResource(firewallMod, "Rule")},
-			"openstack_fw_rule_v2":     {Tok: openstackResource(firewallMod, "RuleV2")},
+			"openstack_fw_group_v2":  {Tok: openstackResource(firewallMod, "GroupV2")},
+			"openstack_fw_policy_v2": {Tok: openstackResource(firewallMod, "PolicyV2")},
+			"openstack_fw_rule_v2":   {Tok: openstackResource(firewallMod, "RuleV2")},
 
 			// Object Storage
 			"openstack_objectstorage_container_v1": {Tok: openstackResource(osMod, "Container")},

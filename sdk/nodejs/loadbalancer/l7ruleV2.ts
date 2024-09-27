@@ -123,7 +123,7 @@ export class L7RuleV2 extends pulumi.CustomResource {
     public /*out*/ readonly listenerId!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
-     * A Networking client is needed to create an . If omitted, the
+     * A Networking client is needed to create an L7 rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Rule.
      */
@@ -233,7 +233,7 @@ export interface L7RuleV2State {
     listenerId?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
-     * A Networking client is needed to create an . If omitted, the
+     * A Networking client is needed to create an L7 rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Rule.
      */
@@ -287,7 +287,7 @@ export interface L7RuleV2Args {
     l7policyId: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Networking client.
-     * A Networking client is needed to create an . If omitted, the
+     * A Networking client is needed to create an L7 rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Rule.
      */

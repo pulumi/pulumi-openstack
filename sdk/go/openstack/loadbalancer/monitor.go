@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/loadbalancer"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -64,14 +64,22 @@ type Monitor struct {
 	AdminStateUp pulumi.BoolPtrOutput `pulumi:"adminStateUp"`
 	// The time, in seconds, between sending probes to members.
 	Delay pulumi.IntOutput `pulumi:"delay"`
+	// The domain name to use in the HTTP host header
+	// health monitor requests. Supported in Octavia API version 2.10 or later.
+	DomainName pulumi.StringPtrOutput `pulumi:"domainName"`
 	// Required for HTTP(S) types. Expected HTTP codes
 	// for a passing HTTP(S) monitor. You can either specify a single status like
 	// "200", a list like "200, 202" or a range like "200-202". Default is "200".
 	ExpectedCodes pulumi.StringOutput `pulumi:"expectedCodes"`
 	// Required for HTTP(S) types. The HTTP method that
 	// the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
-	// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
+	// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
 	HttpMethod pulumi.StringOutput `pulumi:"httpMethod"`
+	// Required for HTTP(S) types. The HTTP version that
+	// the health monitor uses for requests. One of `1.0` or 1.1`is supported
+	// for HTTP(S) monitors. The default is`1.0`. Supported in Octavia API version
+	// 2.10 or later.
+	HttpVersion pulumi.StringPtrOutput `pulumi:"httpVersion"`
 	// Number of permissible ping failures before
 	// changing the member's status to INACTIVE. Must be a number between 1
 	// and 10.
@@ -86,7 +94,7 @@ type Monitor struct {
 	// The id of the pool that this monitor will be assigned to.
 	PoolId pulumi.StringOutput `pulumi:"poolId"`
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
+	// A Networking client is needed to create a monitor. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// monitor.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -157,14 +165,22 @@ type monitorState struct {
 	AdminStateUp *bool `pulumi:"adminStateUp"`
 	// The time, in seconds, between sending probes to members.
 	Delay *int `pulumi:"delay"`
+	// The domain name to use in the HTTP host header
+	// health monitor requests. Supported in Octavia API version 2.10 or later.
+	DomainName *string `pulumi:"domainName"`
 	// Required for HTTP(S) types. Expected HTTP codes
 	// for a passing HTTP(S) monitor. You can either specify a single status like
 	// "200", a list like "200, 202" or a range like "200-202". Default is "200".
 	ExpectedCodes *string `pulumi:"expectedCodes"`
 	// Required for HTTP(S) types. The HTTP method that
 	// the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
-	// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
+	// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
 	HttpMethod *string `pulumi:"httpMethod"`
+	// Required for HTTP(S) types. The HTTP version that
+	// the health monitor uses for requests. One of `1.0` or 1.1`is supported
+	// for HTTP(S) monitors. The default is`1.0`. Supported in Octavia API version
+	// 2.10 or later.
+	HttpVersion *string `pulumi:"httpVersion"`
 	// Number of permissible ping failures before
 	// changing the member's status to INACTIVE. Must be a number between 1
 	// and 10.
@@ -179,7 +195,7 @@ type monitorState struct {
 	// The id of the pool that this monitor will be assigned to.
 	PoolId *string `pulumi:"poolId"`
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
+	// A Networking client is needed to create a monitor. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// monitor.
 	Region *string `pulumi:"region"`
@@ -206,14 +222,22 @@ type MonitorState struct {
 	AdminStateUp pulumi.BoolPtrInput
 	// The time, in seconds, between sending probes to members.
 	Delay pulumi.IntPtrInput
+	// The domain name to use in the HTTP host header
+	// health monitor requests. Supported in Octavia API version 2.10 or later.
+	DomainName pulumi.StringPtrInput
 	// Required for HTTP(S) types. Expected HTTP codes
 	// for a passing HTTP(S) monitor. You can either specify a single status like
 	// "200", a list like "200, 202" or a range like "200-202". Default is "200".
 	ExpectedCodes pulumi.StringPtrInput
 	// Required for HTTP(S) types. The HTTP method that
 	// the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
-	// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
+	// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
 	HttpMethod pulumi.StringPtrInput
+	// Required for HTTP(S) types. The HTTP version that
+	// the health monitor uses for requests. One of `1.0` or 1.1`is supported
+	// for HTTP(S) monitors. The default is`1.0`. Supported in Octavia API version
+	// 2.10 or later.
+	HttpVersion pulumi.StringPtrInput
 	// Number of permissible ping failures before
 	// changing the member's status to INACTIVE. Must be a number between 1
 	// and 10.
@@ -228,7 +252,7 @@ type MonitorState struct {
 	// The id of the pool that this monitor will be assigned to.
 	PoolId pulumi.StringPtrInput
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
+	// A Networking client is needed to create a monitor. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// monitor.
 	Region pulumi.StringPtrInput
@@ -259,14 +283,22 @@ type monitorArgs struct {
 	AdminStateUp *bool `pulumi:"adminStateUp"`
 	// The time, in seconds, between sending probes to members.
 	Delay int `pulumi:"delay"`
+	// The domain name to use in the HTTP host header
+	// health monitor requests. Supported in Octavia API version 2.10 or later.
+	DomainName *string `pulumi:"domainName"`
 	// Required for HTTP(S) types. Expected HTTP codes
 	// for a passing HTTP(S) monitor. You can either specify a single status like
 	// "200", a list like "200, 202" or a range like "200-202". Default is "200".
 	ExpectedCodes *string `pulumi:"expectedCodes"`
 	// Required for HTTP(S) types. The HTTP method that
 	// the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
-	// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
+	// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
 	HttpMethod *string `pulumi:"httpMethod"`
+	// Required for HTTP(S) types. The HTTP version that
+	// the health monitor uses for requests. One of `1.0` or 1.1`is supported
+	// for HTTP(S) monitors. The default is`1.0`. Supported in Octavia API version
+	// 2.10 or later.
+	HttpVersion *string `pulumi:"httpVersion"`
 	// Number of permissible ping failures before
 	// changing the member's status to INACTIVE. Must be a number between 1
 	// and 10.
@@ -281,7 +313,7 @@ type monitorArgs struct {
 	// The id of the pool that this monitor will be assigned to.
 	PoolId string `pulumi:"poolId"`
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
+	// A Networking client is needed to create a monitor. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// monitor.
 	Region *string `pulumi:"region"`
@@ -309,14 +341,22 @@ type MonitorArgs struct {
 	AdminStateUp pulumi.BoolPtrInput
 	// The time, in seconds, between sending probes to members.
 	Delay pulumi.IntInput
+	// The domain name to use in the HTTP host header
+	// health monitor requests. Supported in Octavia API version 2.10 or later.
+	DomainName pulumi.StringPtrInput
 	// Required for HTTP(S) types. Expected HTTP codes
 	// for a passing HTTP(S) monitor. You can either specify a single status like
 	// "200", a list like "200, 202" or a range like "200-202". Default is "200".
 	ExpectedCodes pulumi.StringPtrInput
 	// Required for HTTP(S) types. The HTTP method that
 	// the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
-	// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
+	// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
 	HttpMethod pulumi.StringPtrInput
+	// Required for HTTP(S) types. The HTTP version that
+	// the health monitor uses for requests. One of `1.0` or 1.1`is supported
+	// for HTTP(S) monitors. The default is`1.0`. Supported in Octavia API version
+	// 2.10 or later.
+	HttpVersion pulumi.StringPtrInput
 	// Number of permissible ping failures before
 	// changing the member's status to INACTIVE. Must be a number between 1
 	// and 10.
@@ -331,7 +371,7 @@ type MonitorArgs struct {
 	// The id of the pool that this monitor will be assigned to.
 	PoolId pulumi.StringInput
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
+	// A Networking client is needed to create a monitor. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// monitor.
 	Region pulumi.StringPtrInput
@@ -450,6 +490,12 @@ func (o MonitorOutput) Delay() pulumi.IntOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.IntOutput { return v.Delay }).(pulumi.IntOutput)
 }
 
+// The domain name to use in the HTTP host header
+// health monitor requests. Supported in Octavia API version 2.10 or later.
+func (o MonitorOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringPtrOutput { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
 // Required for HTTP(S) types. Expected HTTP codes
 // for a passing HTTP(S) monitor. You can either specify a single status like
 // "200", a list like "200, 202" or a range like "200-202". Default is "200".
@@ -459,9 +505,17 @@ func (o MonitorOutput) ExpectedCodes() pulumi.StringOutput {
 
 // Required for HTTP(S) types. The HTTP method that
 // the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
-// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
+// OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
 func (o MonitorOutput) HttpMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.HttpMethod }).(pulumi.StringOutput)
+}
+
+// Required for HTTP(S) types. The HTTP version that
+// the health monitor uses for requests. One of `1.0` or 1.1`is supported
+// for HTTP(S) monitors. The default is`1.0`. Supported in Octavia API version
+// 2.10 or later.
+func (o MonitorOutput) HttpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringPtrOutput { return v.HttpVersion }).(pulumi.StringPtrOutput)
 }
 
 // Number of permissible ping failures before
@@ -490,7 +544,7 @@ func (o MonitorOutput) PoolId() pulumi.StringOutput {
 }
 
 // The region in which to obtain the V2 Networking client.
-// A Networking client is needed to create an . If omitted, the
+// A Networking client is needed to create a monitor. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // monitor.
 func (o MonitorOutput) Region() pulumi.StringOutput {

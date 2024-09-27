@@ -34,8 +34,11 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported by specifying the zone ID and recordset ID,
- * separated by a forward slash.
+ * This resource can be imported by specifying the zone ID and recordset ID with an optional project ID as a prefix:
+ *
+ * ```sh
+ * $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 project_id/zone_id/recordset_id
+ * ```
  *
  * ```sh
  * $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 zone_id/recordset_id

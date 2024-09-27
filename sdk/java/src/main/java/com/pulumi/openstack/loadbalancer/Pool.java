@@ -77,20 +77,74 @@ import javax.annotation.Nullable;
 @ResourceType(type="openstack:loadbalancer/pool:Pool")
 public class Pool extends com.pulumi.resources.CustomResource {
     /**
-     * The administrative state of the pool.
-     * A valid value is true (UP) or false (DOWN).
+     * The administrative state of the pool. A valid
+     * value is true (UP) or false (DOWN).
      * 
      */
     @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> adminStateUp;
 
     /**
-     * @return The administrative state of the pool.
-     * A valid value is true (UP) or false (DOWN).
+     * @return The administrative state of the pool. A valid
+     * value is true (UP) or false (DOWN).
      * 
      */
     public Output<Optional<Boolean>> adminStateUp() {
         return Codegen.optional(this.adminStateUp);
+    }
+    /**
+     * A list of ALPN protocols. Available protocols:
+     * `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
+     * 2.24**.
+     * 
+     */
+    @Export(name="alpnProtocols", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> alpnProtocols;
+
+    /**
+     * @return A list of ALPN protocols. Available protocols:
+     * `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
+     * 2.24**.
+     * 
+     */
+    public Output<List<String>> alpnProtocols() {
+        return this.alpnProtocols;
+    }
+    /**
+     * The reference of the key manager service
+     * secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
+     * Supported only in **Octavia minor version &gt;= 2.8**.
+     * 
+     */
+    @Export(name="caTlsContainerRef", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> caTlsContainerRef;
+
+    /**
+     * @return The reference of the key manager service
+     * secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
+     * Supported only in **Octavia minor version &gt;= 2.8**.
+     * 
+     */
+    public Output<Optional<String>> caTlsContainerRef() {
+        return Codegen.optional(this.caTlsContainerRef);
+    }
+    /**
+     * The reference of the key manager service
+     * secret containing a PEM format CA revocation list file for `tls_enabled`
+     * pools. Supported only in **Octavia minor version &gt;= 2.8**.
+     * 
+     */
+    @Export(name="crlContainerRef", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> crlContainerRef;
+
+    /**
+     * @return The reference of the key manager service
+     * secret containing a PEM format CA revocation list file for `tls_enabled`
+     * pools. Supported only in **Octavia minor version &gt;= 2.8**.
+     * 
+     */
+    public Output<Optional<String>> crlContainerRef() {
+        return Codegen.optional(this.crlContainerRef);
     }
     /**
      * Human-readable description for the pool.
@@ -107,36 +161,36 @@ public class Pool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The load balancing algorithm to
-     * distribute traffic to the pool&#39;s members. Must be one of
-     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
+     * The load balancing algorithm to distribute traffic
+     * to the pool&#39;s members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
+     * SOURCE_IP, or SOURCE_IP_PORT.
      * 
      */
     @Export(name="lbMethod", refs={String.class}, tree="[0]")
     private Output<String> lbMethod;
 
     /**
-     * @return The load balancing algorithm to
-     * distribute traffic to the pool&#39;s members. Must be one of
-     * ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
+     * @return The load balancing algorithm to distribute traffic
+     * to the pool&#39;s members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
+     * SOURCE_IP, or SOURCE_IP_PORT.
      * 
      */
     public Output<String> lbMethod() {
         return this.lbMethod;
     }
     /**
-     * The Listener on which the members of the pool
-     * will be associated with. Changing this creates a new pool.
-     * Note:  One of LoadbalancerID or ListenerID must be provided.
+     * The Listener on which the members of the pool will
+     * be associated with. Changing this creates a new pool. Note: One of
+     * LoadbalancerID or ListenerID must be provided.
      * 
      */
     @Export(name="listenerId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> listenerId;
 
     /**
-     * @return The Listener on which the members of the pool
-     * will be associated with. Changing this creates a new pool.
-     * Note:  One of LoadbalancerID or ListenerID must be provided.
+     * @return The Listener on which the members of the pool will
+     * be associated with. Changing this creates a new pool. Note: One of
+     * LoadbalancerID or ListenerID must be provided.
      * 
      */
     public Output<Optional<String>> listenerId() {
@@ -144,8 +198,8 @@ public class Pool extends com.pulumi.resources.CustomResource {
     }
     /**
      * The load balancer on which to provision this
-     * pool. Changing this creates a new pool.
-     * Note:  One of LoadbalancerID or ListenerID must be provided.
+     * pool. Changing this creates a new pool. Note: One of LoadbalancerID or
+     * ListenerID must be provided.
      * 
      */
     @Export(name="loadbalancerId", refs={String.class}, tree="[0]")
@@ -153,8 +207,8 @@ public class Pool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The load balancer on which to provision this
-     * pool. Changing this creates a new pool.
-     * Note:  One of LoadbalancerID or ListenerID must be provided.
+     * pool. Changing this creates a new pool. Note: One of LoadbalancerID or
+     * ListenerID must be provided.
      * 
      */
     public Output<Optional<String>> loadbalancerId() {
@@ -175,27 +229,27 @@ public class Pool extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Omit this field to prevent session persistence.  Indicates
-     * whether connections in the same session will be processed by the same Pool
-     * member or not. Changing this creates a new pool.
+     * Omit this field to prevent session persistence.
+     * Indicates whether connections in the same session will be processed by the
+     * same Pool member or not. Changing this creates a new pool.
      * 
      */
     @Export(name="persistence", refs={PoolPersistence.class}, tree="[0]")
-    private Output<PoolPersistence> persistence;
+    private Output</* @Nullable */ PoolPersistence> persistence;
 
     /**
-     * @return Omit this field to prevent session persistence.  Indicates
-     * whether connections in the same session will be processed by the same Pool
-     * member or not. Changing this creates a new pool.
+     * @return Omit this field to prevent session persistence.
+     * Indicates whether connections in the same session will be processed by the
+     * same Pool member or not. Changing this creates a new pool.
      * 
      */
-    public Output<PoolPersistence> persistence() {
-        return this.persistence;
+    public Output<Optional<PoolPersistence>> persistence() {
+        return Codegen.optional(this.persistence);
     }
     /**
      * The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-     * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
-     * (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+     * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP (**Octavia minor
+     * version &gt;= 2.23**). Changing this creates a new pool.
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
@@ -203,8 +257,8 @@ public class Pool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-     * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP
-     * (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
+     * UDP, PROXYV2 (**Octavia minor version &gt;= 2.22**) or SCTP (**Octavia minor
+     * version &gt;= 2.23**). Changing this creates a new pool.
      * 
      */
     public Output<String> protocol() {
@@ -212,9 +266,8 @@ public class Pool extends com.pulumi.resources.CustomResource {
     }
     /**
      * The region in which to obtain the V2 Networking client.
-     * A Networking client is needed to create an . If omitted, the
-     * `region` argument of the provider is used. Changing this creates a new
-     * pool.
+     * A Networking client is needed to create a pool. If omitted, the `region`
+     * argument of the provider is used. Changing this creates a new pool.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
@@ -222,9 +275,8 @@ public class Pool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The region in which to obtain the V2 Networking client.
-     * A Networking client is needed to create an . If omitted, the
-     * `region` argument of the provider is used. Changing this creates a new
-     * pool.
+     * A Networking client is needed to create a pool. If omitted, the `region`
+     * argument of the provider is used. Changing this creates a new pool.
      * 
      */
     public Output<String> region() {
@@ -238,8 +290,8 @@ public class Pool extends com.pulumi.resources.CustomResource {
     }
     /**
      * Required for admins. The UUID of the tenant who owns
-     * the pool.  Only administrative users can specify a tenant UUID
-     * other than their own. Changing this creates a new pool.
+     * the pool.  Only administrative users can specify a tenant UUID other than
+     * their own. Changing this creates a new pool.
      * 
      */
     @Export(name="tenantId", refs={String.class}, tree="[0]")
@@ -247,12 +299,88 @@ public class Pool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Required for admins. The UUID of the tenant who owns
-     * the pool.  Only administrative users can specify a tenant UUID
-     * other than their own. Changing this creates a new pool.
+     * the pool.  Only administrative users can specify a tenant UUID other than
+     * their own. Changing this creates a new pool.
      * 
      */
     public Output<String> tenantId() {
         return this.tenantId;
+    }
+    /**
+     * List of ciphers in OpenSSL format
+     * (colon-separated). See
+     * https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
+     * Supported only in **Octavia minor version &gt;= 2.15**.
+     * 
+     */
+    @Export(name="tlsCiphers", refs={String.class}, tree="[0]")
+    private Output<String> tlsCiphers;
+
+    /**
+     * @return List of ciphers in OpenSSL format
+     * (colon-separated). See
+     * https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
+     * Supported only in **Octavia minor version &gt;= 2.15**.
+     * 
+     */
+    public Output<String> tlsCiphers() {
+        return this.tlsCiphers;
+    }
+    /**
+     * The reference to the key manager service
+     * secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
+     * pools for TLS client authentication to the member servers. Supported only in
+     * **Octavia minor version &gt;= 2.8**.
+     * 
+     */
+    @Export(name="tlsContainerRef", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> tlsContainerRef;
+
+    /**
+     * @return The reference to the key manager service
+     * secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
+     * pools for TLS client authentication to the member servers. Supported only in
+     * **Octavia minor version &gt;= 2.8**.
+     * 
+     */
+    public Output<Optional<String>> tlsContainerRef() {
+        return Codegen.optional(this.tlsContainerRef);
+    }
+    /**
+     * When true connections to backend member servers
+     * will use TLS encryption. Default is false. Supported only in **Octavia minor
+     * version &gt;= 2.8**.
+     * 
+     */
+    @Export(name="tlsEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> tlsEnabled;
+
+    /**
+     * @return When true connections to backend member servers
+     * will use TLS encryption. Default is false. Supported only in **Octavia minor
+     * version &gt;= 2.8**.
+     * 
+     */
+    public Output<Optional<Boolean>> tlsEnabled() {
+        return Codegen.optional(this.tlsEnabled);
+    }
+    /**
+     * A list of TLS protocol versions. Available
+     * versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
+     * **Octavia minor version &gt;= 2.17**.
+     * 
+     */
+    @Export(name="tlsVersions", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> tlsVersions;
+
+    /**
+     * @return A list of TLS protocol versions. Available
+     * versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
+     * **Octavia minor version &gt;= 2.17**.
+     * 
+     */
+    public Output<List<String>> tlsVersions() {
+        return this.tlsVersions;
     }
 
     /**

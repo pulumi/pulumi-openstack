@@ -88,15 +88,19 @@ export class SecGroupRule extends pulumi.CustomResource {
      * integer value needs to be between 1 and 65535. Changing this creates a new
      * security group rule.
      */
-    public readonly portRangeMax!: pulumi.Output<number>;
+    public readonly portRangeMax!: pulumi.Output<number | undefined>;
     /**
      * The lower part of the allowed port range, valid
      * integer value needs to be between 1 and 65535. Changing this creates a new
      * security group rule.
      */
-    public readonly portRangeMin!: pulumi.Output<number>;
+    public readonly portRangeMin!: pulumi.Output<number | undefined>;
     /**
-     * The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+     * The layer 4 protocol type, valid values are
+     * following. Changing this creates a new security group rule. This is required
+     * if you want to specify a port range.
+     * * empty string or omitted (any protocol)
+     * * integer value between 0 and 255 (valid IP protocol number)
      * * __tcp__
      * * __udp__
      * * __icmp__
@@ -118,8 +122,9 @@ export class SecGroupRule extends pulumi.CustomResource {
      * * __sctp__
      * * __udplite__
      * * __vrrp__
+     * * __ipip__
      */
-    public readonly protocol!: pulumi.Output<string>;
+    public readonly protocol!: pulumi.Output<string | undefined>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
@@ -234,7 +239,11 @@ export interface SecGroupRuleState {
      */
     portRangeMin?: pulumi.Input<number>;
     /**
-     * The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+     * The layer 4 protocol type, valid values are
+     * following. Changing this creates a new security group rule. This is required
+     * if you want to specify a port range.
+     * * empty string or omitted (any protocol)
+     * * integer value between 0 and 255 (valid IP protocol number)
      * * __tcp__
      * * __udp__
      * * __icmp__
@@ -256,6 +265,7 @@ export interface SecGroupRuleState {
      * * __sctp__
      * * __udplite__
      * * __vrrp__
+     * * __ipip__
      */
     protocol?: pulumi.Input<string>;
     /**
@@ -321,7 +331,11 @@ export interface SecGroupRuleArgs {
      */
     portRangeMin?: pulumi.Input<number>;
     /**
-     * The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+     * The layer 4 protocol type, valid values are
+     * following. Changing this creates a new security group rule. This is required
+     * if you want to specify a port range.
+     * * empty string or omitted (any protocol)
+     * * integer value between 0 and 255 (valid IP protocol number)
      * * __tcp__
      * * __udp__
      * * __icmp__
@@ -343,6 +357,7 @@ export interface SecGroupRuleArgs {
      * * __sctp__
      * * __udplite__
      * * __vrrp__
+     * * __ipip__
      */
     protocol?: pulumi.Input<string>;
     /**

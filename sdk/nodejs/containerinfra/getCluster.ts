@@ -118,6 +118,11 @@ export interface GetClusterResult {
      */
     readonly masterFlavor: string;
     /**
+     * Whether a load balancer is created for the master
+     * cluster nodes.
+     */
+    readonly masterLbEnabled: boolean;
+    /**
      * See Argument Reference above.
      */
     readonly name: string;

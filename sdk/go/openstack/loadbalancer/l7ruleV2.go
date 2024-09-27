@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,9 +21,9 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack"
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/loadbalancer"
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/networking"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -126,7 +126,7 @@ type L7RuleV2 struct {
 	// The ID of the Listener owning this resource.
 	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
+	// A Networking client is needed to create an L7 rule. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// L7 Rule.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -202,7 +202,7 @@ type l7ruleV2State struct {
 	// The ID of the Listener owning this resource.
 	ListenerId *string `pulumi:"listenerId"`
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
+	// A Networking client is needed to create an L7 rule. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// L7 Rule.
 	Region *string `pulumi:"region"`
@@ -237,7 +237,7 @@ type L7RuleV2State struct {
 	// The ID of the Listener owning this resource.
 	ListenerId pulumi.StringPtrInput
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
+	// A Networking client is needed to create an L7 rule. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// L7 Rule.
 	Region pulumi.StringPtrInput
@@ -274,7 +274,7 @@ type l7ruleV2Args struct {
 	// L7 Rule.
 	L7policyId string `pulumi:"l7policyId"`
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
+	// A Networking client is needed to create an L7 rule. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// L7 Rule.
 	Region *string `pulumi:"region"`
@@ -308,7 +308,7 @@ type L7RuleV2Args struct {
 	// L7 Rule.
 	L7policyId pulumi.StringInput
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
+	// A Networking client is needed to create an L7 rule. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
 	// L7 Rule.
 	Region pulumi.StringPtrInput
@@ -447,7 +447,7 @@ func (o L7RuleV2Output) ListenerId() pulumi.StringOutput {
 }
 
 // The region in which to obtain the V2 Networking client.
-// A Networking client is needed to create an . If omitted, the
+// A Networking client is needed to create an L7 rule. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
 // L7 Rule.
 func (o L7RuleV2Output) Region() pulumi.StringOutput {

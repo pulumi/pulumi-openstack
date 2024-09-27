@@ -49,7 +49,7 @@ class L7PolicyV2Args:
         :param pulumi.Input[str] redirect_url: Requests matching this policy will be redirected to this URL.
                Only valid if action is REDIRECT\\_TO\\_URL.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an . If omitted, the
+               A Networking client is needed to create an L7 policy. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                L7 Policy.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
@@ -214,7 +214,7 @@ class L7PolicyV2Args:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an . If omitted, the
+        A Networking client is needed to create an L7 policy. If omitted, the
         `region` argument of the provider is used. Changing this creates a new
         L7 Policy.
         """
@@ -277,7 +277,7 @@ class _L7PolicyV2State:
         :param pulumi.Input[str] redirect_url: Requests matching this policy will be redirected to this URL.
                Only valid if action is REDIRECT\\_TO\\_URL.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an . If omitted, the
+               A Networking client is needed to create an L7 policy. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                L7 Policy.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
@@ -444,7 +444,7 @@ class _L7PolicyV2State:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an . If omitted, the
+        A Networking client is needed to create an L7 policy. If omitted, the
         `region` argument of the provider is used. Changing this creates a new
         L7 Policy.
         """
@@ -557,7 +557,7 @@ class L7PolicyV2(pulumi.CustomResource):
         :param pulumi.Input[str] redirect_url: Requests matching this policy will be redirected to this URL.
                Only valid if action is REDIRECT\\_TO\\_URL.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an . If omitted, the
+               A Networking client is needed to create an L7 policy. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                L7 Policy.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
@@ -719,7 +719,7 @@ class L7PolicyV2(pulumi.CustomResource):
         :param pulumi.Input[str] redirect_url: Requests matching this policy will be redirected to this URL.
                Only valid if action is REDIRECT\\_TO\\_URL.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an . If omitted, the
+               A Networking client is needed to create an L7 policy. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                L7 Policy.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
@@ -839,7 +839,7 @@ class L7PolicyV2(pulumi.CustomResource):
     def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an . If omitted, the
+        A Networking client is needed to create an L7 policy. If omitted, the
         `region` argument of the provider is used. Changing this creates a new
         L7 Policy.
         """

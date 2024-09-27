@@ -14,9 +14,9 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// ## Example Usage
     /// 
-    /// ### Simple secret
+    /// ### Simple container
     /// 
-    /// The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
+    /// A container with the TLS certificates.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -82,26 +82,6 @@ namespace Pulumi.OpenStack.KeyManager
     ///                 SecretRef = intermediate1.SecretRef,
     ///             },
     ///         },
-    ///     });
-    /// 
-    ///     var subnet1 = OpenStack.Networking.GetSubnet.Invoke(new()
-    ///     {
-    ///         Name = "my-subnet",
-    ///     });
-    /// 
-    ///     var lb1 = new OpenStack.LbLoadbalancerV2("lb_1", new()
-    ///     {
-    ///         Name = "loadbalancer",
-    ///         VipSubnetId = subnet1.Apply(getSubnetResult =&gt; getSubnetResult.Id),
-    ///     });
-    /// 
-    ///     var listener1 = new OpenStack.LoadBalancer.Listener("listener_1", new()
-    ///     {
-    ///         Name = "https",
-    ///         Protocol = "TERMINATED_HTTPS",
-    ///         ProtocolPort = 443,
-    ///         LoadbalancerId = lb1.Id,
-    ///         DefaultTlsContainerRef = tls1.ContainerRef,
     ///     });
     /// 
     /// });

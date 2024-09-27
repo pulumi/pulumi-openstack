@@ -718,15 +718,17 @@ class Network(pulumi.CustomResource):
             network_id=network1.id,
             cidr="192.168.199.0/24",
             ip_version=4)
-        secgroup1 = openstack.compute.SecGroup("secgroup_1",
+        secgroup1 = openstack.networking.SecGroup("secgroup_1",
             name="secgroup_1",
-            description="a security group",
-            rules=[{
-                "from_port": 22,
-                "to_port": 22,
-                "ip_protocol": "tcp",
-                "cidr": "0.0.0.0/0",
-            }])
+            description="a security group")
+        secgroup_rule1 = openstack.networking.SecGroupRule("secgroup_rule_1",
+            direction="ingress",
+            ethertype="IPv4",
+            protocol="tcp",
+            port_range_min=22,
+            port_range_max=22,
+            remote_ip_prefix="0.0.0.0/0",
+            security_group_id=secgroup1.id)
         port1 = openstack.networking.Port("port_1",
             name="port_1",
             network_id=network1.id,
@@ -824,15 +826,17 @@ class Network(pulumi.CustomResource):
             network_id=network1.id,
             cidr="192.168.199.0/24",
             ip_version=4)
-        secgroup1 = openstack.compute.SecGroup("secgroup_1",
+        secgroup1 = openstack.networking.SecGroup("secgroup_1",
             name="secgroup_1",
-            description="a security group",
-            rules=[{
-                "from_port": 22,
-                "to_port": 22,
-                "ip_protocol": "tcp",
-                "cidr": "0.0.0.0/0",
-            }])
+            description="a security group")
+        secgroup_rule1 = openstack.networking.SecGroupRule("secgroup_rule_1",
+            direction="ingress",
+            ethertype="IPv4",
+            protocol="tcp",
+            port_range_min=22,
+            port_range_max=22,
+            remote_ip_prefix="0.0.0.0/0",
+            security_group_id=secgroup1.id)
         port1 = openstack.networking.Port("port_1",
             name="port_1",
             network_id=network1.id,

@@ -103,6 +103,12 @@ public final class GetClusterResult {
      */
     private String masterFlavor;
     /**
+     * @return Whether a load balancer is created for the master
+     * cluster nodes.
+     * 
+     */
+    private Boolean masterLbEnabled;
+    /**
      * @return See Argument Reference above.
      * 
      */
@@ -271,6 +277,14 @@ public final class GetClusterResult {
         return this.masterFlavor;
     }
     /**
+     * @return Whether a load balancer is created for the master
+     * cluster nodes.
+     * 
+     */
+    public Boolean masterLbEnabled() {
+        return this.masterLbEnabled;
+    }
+    /**
      * @return See Argument Reference above.
      * 
      */
@@ -355,6 +369,7 @@ public final class GetClusterResult {
         private List<String> masterAddresses;
         private Integer masterCount;
         private String masterFlavor;
+        private Boolean masterLbEnabled;
         private String name;
         private List<String> nodeAddresses;
         private Integer nodeCount;
@@ -385,6 +400,7 @@ public final class GetClusterResult {
     	      this.masterAddresses = defaults.masterAddresses;
     	      this.masterCount = defaults.masterCount;
     	      this.masterFlavor = defaults.masterFlavor;
+    	      this.masterLbEnabled = defaults.masterLbEnabled;
     	      this.name = defaults.name;
     	      this.nodeAddresses = defaults.nodeAddresses;
     	      this.nodeCount = defaults.nodeCount;
@@ -551,6 +567,14 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder masterLbEnabled(Boolean masterLbEnabled) {
+            if (masterLbEnabled == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "masterLbEnabled");
+            }
+            this.masterLbEnabled = masterLbEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "name");
@@ -638,6 +662,7 @@ public final class GetClusterResult {
             _resultValue.masterAddresses = masterAddresses;
             _resultValue.masterCount = masterCount;
             _resultValue.masterFlavor = masterFlavor;
+            _resultValue.masterLbEnabled = masterLbEnabled;
             _resultValue.name = name;
             _resultValue.nodeAddresses = nodeAddresses;
             _resultValue.nodeCount = nodeCount;

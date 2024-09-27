@@ -70,54 +70,6 @@ export namespace blockstorage {
          */
         sameHosts?: pulumi.Input<pulumi.Input<string>[]>;
     }
-
-    export interface VolumeV1Attachment {
-        device?: pulumi.Input<string>;
-        id?: pulumi.Input<string>;
-        instanceId?: pulumi.Input<string>;
-    }
-
-    export interface VolumeV2Attachment {
-        device?: pulumi.Input<string>;
-        id?: pulumi.Input<string>;
-        instanceId?: pulumi.Input<string>;
-    }
-
-    export interface VolumeV2SchedulerHint {
-        /**
-         * Arbitrary key/value pairs of additional
-         * properties to pass to the scheduler.
-         */
-        additionalProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-        /**
-         * The volume should be scheduled on a 
-         * different host from the set of volumes specified in the list provided.
-         */
-        differentHosts?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * An instance UUID. The volume should be 
-         * scheduled on the same host as the instance.
-         */
-        localToInstance?: pulumi.Input<string>;
-        /**
-         * A conditional query that a back-end must pass in
-         * order to host a volume. The query must use the `JsonFilter` syntax
-         * which is described
-         * [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
-         * At this time, only simple queries are supported. Compound queries using
-         * `and`, `or`, or `not` are not supported. An example of a simple query is:
-         *
-         * ```
-         * [“=”, “$backend_id”, “rbd:vol@ceph#cloud”]
-         * ```
-         */
-        query?: pulumi.Input<string>;
-        /**
-         * A list of volume UUIDs. The volume should be
-         * scheduled on the same host as another volume specified in the list provided.
-         */
-        sameHosts?: pulumi.Input<pulumi.Input<string>[]>;
-    }
 }
 
 export namespace compute {
@@ -348,44 +300,6 @@ export namespace compute {
          * instances after some timeout.
          */
         ignoreResizeConfirmation?: pulumi.Input<boolean>;
-    }
-
-    export interface SecGroupRule {
-        /**
-         * Required if `fromGroupId` or `self` is empty. The IP range
-         * that will be the source of network traffic to the security group. Use 0.0.0.0/0
-         * to allow all IP addresses. Changing this creates a new security group rule. Cannot
-         * be combined with `fromGroupId` or `self`.
-         */
-        cidr?: pulumi.Input<string>;
-        /**
-         * Required if `cidr` or `self` is empty. The ID of a
-         * group from which to forward traffic to the parent group. Changing this creates a
-         * new security group rule. Cannot be combined with `cidr` or `self`.
-         */
-        fromGroupId?: pulumi.Input<string>;
-        /**
-         * An integer representing the lower bound of the port
-         * range to open. Changing this creates a new security group rule.
-         */
-        fromPort: pulumi.Input<number>;
-        id?: pulumi.Input<string>;
-        /**
-         * The protocol type that will be allowed. Changing
-         * this creates a new security group rule.
-         */
-        ipProtocol: pulumi.Input<string>;
-        /**
-         * Required if `cidr` and `fromGroupId` is empty. If true,
-         * the security group itself will be added as a source to this ingress rule. Cannot
-         * be combined with `cidr` or `fromGroupId`.
-         */
-        self?: pulumi.Input<boolean>;
-        /**
-         * An integer representing the upper bound of the port
-         * range to open. Changing this creates a new security group rule.
-         */
-        toPort: pulumi.Input<number>;
     }
 
     export interface ServerGroupRules {

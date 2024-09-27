@@ -71,6 +71,16 @@ export class TempUrl extends pulumi.CustomResource {
      */
     public readonly container!: pulumi.Output<string>;
     /**
+     * The digest to use when generating the tempurl.
+     * Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+     */
+    public readonly digest!: pulumi.Output<string | undefined>;
+    /**
+     * The key to use when generating the tempurl. If not
+     * provided, the key will be read from the container or account metadata.
+     */
+    public readonly key!: pulumi.Output<string | undefined>;
+    /**
      * The method allowed when accessing this URL.
      * Valid values are `GET`, and `POST`. Default is `GET`.
      */
@@ -89,6 +99,10 @@ export class TempUrl extends pulumi.CustomResource {
      * The region the tempurl is located in.
      */
     public readonly region!: pulumi.Output<string>;
+    /**
+     * Split is the string on which to split the object URL.
+     * Default is `/v1/`.
+     */
     public readonly split!: pulumi.Output<string | undefined>;
     /**
      * The TTL, in seconds, for the URL. For how long it should
@@ -114,6 +128,8 @@ export class TempUrl extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TempUrlState | undefined;
             resourceInputs["container"] = state ? state.container : undefined;
+            resourceInputs["digest"] = state ? state.digest : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
             resourceInputs["method"] = state ? state.method : undefined;
             resourceInputs["object"] = state ? state.object : undefined;
             resourceInputs["regenerate"] = state ? state.regenerate : undefined;
@@ -133,6 +149,8 @@ export class TempUrl extends pulumi.CustomResource {
                 throw new Error("Missing required property 'ttl'");
             }
             resourceInputs["container"] = args ? args.container : undefined;
+            resourceInputs["digest"] = args ? args.digest : undefined;
+            resourceInputs["key"] = args?.key ? pulumi.secret(args.key) : undefined;
             resourceInputs["method"] = args ? args.method : undefined;
             resourceInputs["object"] = args ? args.object : undefined;
             resourceInputs["regenerate"] = args ? args.regenerate : undefined;
@@ -142,7 +160,7 @@ export class TempUrl extends pulumi.CustomResource {
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["url"] };
+        const secretOpts = { additionalSecretOutputs: ["key", "url"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(TempUrl.__pulumiType, name, resourceInputs, opts);
     }
@@ -156,6 +174,16 @@ export interface TempUrlState {
      * The container name the object belongs to.
      */
     container?: pulumi.Input<string>;
+    /**
+     * The digest to use when generating the tempurl.
+     * Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+     */
+    digest?: pulumi.Input<string>;
+    /**
+     * The key to use when generating the tempurl. If not
+     * provided, the key will be read from the container or account metadata.
+     */
+    key?: pulumi.Input<string>;
     /**
      * The method allowed when accessing this URL.
      * Valid values are `GET`, and `POST`. Default is `GET`.
@@ -175,6 +203,10 @@ export interface TempUrlState {
      * The region the tempurl is located in.
      */
     region?: pulumi.Input<string>;
+    /**
+     * Split is the string on which to split the object URL.
+     * Default is `/v1/`.
+     */
     split?: pulumi.Input<string>;
     /**
      * The TTL, in seconds, for the URL. For how long it should
@@ -196,6 +228,16 @@ export interface TempUrlArgs {
      */
     container: pulumi.Input<string>;
     /**
+     * The digest to use when generating the tempurl.
+     * Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+     */
+    digest?: pulumi.Input<string>;
+    /**
+     * The key to use when generating the tempurl. If not
+     * provided, the key will be read from the container or account metadata.
+     */
+    key?: pulumi.Input<string>;
+    /**
      * The method allowed when accessing this URL.
      * Valid values are `GET`, and `POST`. Default is `GET`.
      */
@@ -214,6 +256,10 @@ export interface TempUrlArgs {
      * The region the tempurl is located in.
      */
     region?: pulumi.Input<string>;
+    /**
+     * Split is the string on which to split the object URL.
+     * Default is `/v1/`.
+     */
     split?: pulumi.Input<string>;
     /**
      * The TTL, in seconds, for the URL. For how long it should

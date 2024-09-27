@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/objectstorage"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/objectstorage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -70,6 +70,12 @@ type TempUrl struct {
 
 	// The container name the object belongs to.
 	Container pulumi.StringOutput `pulumi:"container"`
+	// The digest to use when generating the tempurl.
+	// Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+	Digest pulumi.StringPtrOutput `pulumi:"digest"`
+	// The key to use when generating the tempurl. If not
+	// provided, the key will be read from the container or account metadata.
+	Key pulumi.StringPtrOutput `pulumi:"key"`
 	// The method allowed when accessing this URL.
 	// Valid values are `GET`, and `POST`. Default is `GET`.
 	Method pulumi.StringPtrOutput `pulumi:"method"`
@@ -80,8 +86,10 @@ type TempUrl struct {
 	// ID and new URL. Defaults to false.
 	Regenerate pulumi.BoolPtrOutput `pulumi:"regenerate"`
 	// The region the tempurl is located in.
-	Region pulumi.StringOutput    `pulumi:"region"`
-	Split  pulumi.StringPtrOutput `pulumi:"split"`
+	Region pulumi.StringOutput `pulumi:"region"`
+	// Split is the string on which to split the object URL.
+	// Default is `/v1/`.
+	Split pulumi.StringPtrOutput `pulumi:"split"`
 	// The TTL, in seconds, for the URL. For how long it should
 	// be valid.
 	Ttl pulumi.IntOutput `pulumi:"ttl"`
@@ -105,7 +113,11 @@ func NewTempUrl(ctx *pulumi.Context,
 	if args.Ttl == nil {
 		return nil, errors.New("invalid value for required argument 'Ttl'")
 	}
+	if args.Key != nil {
+		args.Key = pulumi.ToSecret(args.Key).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"key",
 		"url",
 	})
 	opts = append(opts, secrets)
@@ -134,6 +146,12 @@ func GetTempUrl(ctx *pulumi.Context,
 type tempUrlState struct {
 	// The container name the object belongs to.
 	Container *string `pulumi:"container"`
+	// The digest to use when generating the tempurl.
+	// Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+	Digest *string `pulumi:"digest"`
+	// The key to use when generating the tempurl. If not
+	// provided, the key will be read from the container or account metadata.
+	Key *string `pulumi:"key"`
 	// The method allowed when accessing this URL.
 	// Valid values are `GET`, and `POST`. Default is `GET`.
 	Method *string `pulumi:"method"`
@@ -145,7 +163,9 @@ type tempUrlState struct {
 	Regenerate *bool `pulumi:"regenerate"`
 	// The region the tempurl is located in.
 	Region *string `pulumi:"region"`
-	Split  *string `pulumi:"split"`
+	// Split is the string on which to split the object URL.
+	// Default is `/v1/`.
+	Split *string `pulumi:"split"`
 	// The TTL, in seconds, for the URL. For how long it should
 	// be valid.
 	Ttl *int `pulumi:"ttl"`
@@ -156,6 +176,12 @@ type tempUrlState struct {
 type TempUrlState struct {
 	// The container name the object belongs to.
 	Container pulumi.StringPtrInput
+	// The digest to use when generating the tempurl.
+	// Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+	Digest pulumi.StringPtrInput
+	// The key to use when generating the tempurl. If not
+	// provided, the key will be read from the container or account metadata.
+	Key pulumi.StringPtrInput
 	// The method allowed when accessing this URL.
 	// Valid values are `GET`, and `POST`. Default is `GET`.
 	Method pulumi.StringPtrInput
@@ -167,7 +193,9 @@ type TempUrlState struct {
 	Regenerate pulumi.BoolPtrInput
 	// The region the tempurl is located in.
 	Region pulumi.StringPtrInput
-	Split  pulumi.StringPtrInput
+	// Split is the string on which to split the object URL.
+	// Default is `/v1/`.
+	Split pulumi.StringPtrInput
 	// The TTL, in seconds, for the URL. For how long it should
 	// be valid.
 	Ttl pulumi.IntPtrInput
@@ -182,6 +210,12 @@ func (TempUrlState) ElementType() reflect.Type {
 type tempUrlArgs struct {
 	// The container name the object belongs to.
 	Container string `pulumi:"container"`
+	// The digest to use when generating the tempurl.
+	// Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+	Digest *string `pulumi:"digest"`
+	// The key to use when generating the tempurl. If not
+	// provided, the key will be read from the container or account metadata.
+	Key *string `pulumi:"key"`
 	// The method allowed when accessing this URL.
 	// Valid values are `GET`, and `POST`. Default is `GET`.
 	Method *string `pulumi:"method"`
@@ -193,7 +227,9 @@ type tempUrlArgs struct {
 	Regenerate *bool `pulumi:"regenerate"`
 	// The region the tempurl is located in.
 	Region *string `pulumi:"region"`
-	Split  *string `pulumi:"split"`
+	// Split is the string on which to split the object URL.
+	// Default is `/v1/`.
+	Split *string `pulumi:"split"`
 	// The TTL, in seconds, for the URL. For how long it should
 	// be valid.
 	Ttl int `pulumi:"ttl"`
@@ -203,6 +239,12 @@ type tempUrlArgs struct {
 type TempUrlArgs struct {
 	// The container name the object belongs to.
 	Container pulumi.StringInput
+	// The digest to use when generating the tempurl.
+	// Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+	Digest pulumi.StringPtrInput
+	// The key to use when generating the tempurl. If not
+	// provided, the key will be read from the container or account metadata.
+	Key pulumi.StringPtrInput
 	// The method allowed when accessing this URL.
 	// Valid values are `GET`, and `POST`. Default is `GET`.
 	Method pulumi.StringPtrInput
@@ -214,7 +256,9 @@ type TempUrlArgs struct {
 	Regenerate pulumi.BoolPtrInput
 	// The region the tempurl is located in.
 	Region pulumi.StringPtrInput
-	Split  pulumi.StringPtrInput
+	// Split is the string on which to split the object URL.
+	// Default is `/v1/`.
+	Split pulumi.StringPtrInput
 	// The TTL, in seconds, for the URL. For how long it should
 	// be valid.
 	Ttl pulumi.IntInput
@@ -312,6 +356,18 @@ func (o TempUrlOutput) Container() pulumi.StringOutput {
 	return o.ApplyT(func(v *TempUrl) pulumi.StringOutput { return v.Container }).(pulumi.StringOutput)
 }
 
+// The digest to use when generating the tempurl.
+// Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+func (o TempUrlOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TempUrl) pulumi.StringPtrOutput { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
+// The key to use when generating the tempurl. If not
+// provided, the key will be read from the container or account metadata.
+func (o TempUrlOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TempUrl) pulumi.StringPtrOutput { return v.Key }).(pulumi.StringPtrOutput)
+}
+
 // The method allowed when accessing this URL.
 // Valid values are `GET`, and `POST`. Default is `GET`.
 func (o TempUrlOutput) Method() pulumi.StringPtrOutput {
@@ -335,6 +391,8 @@ func (o TempUrlOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *TempUrl) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
+// Split is the string on which to split the object URL.
+// Default is `/v1/`.
 func (o TempUrlOutput) Split() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TempUrl) pulumi.StringPtrOutput { return v.Split }).(pulumi.StringPtrOutput)
 }

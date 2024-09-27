@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -30,10 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewServerGroup(ctx, "test-sg", &compute.ServerGroupArgs{
-//				Name: pulumi.String("my-sg"),
-//				Policies: pulumi.StringArray{
-//					pulumi.String("anti-affinity"),
-//				},
+//				Name:     pulumi.String("my-sg"),
+//				Policies: pulumi.String("anti-affinity"),
 //			})
 //			if err != nil {
 //				return err
@@ -69,7 +67,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -77,10 +75,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewServerGroup(ctx, "test-sg", &compute.ServerGroupArgs{
-//				Name: pulumi.String("my-sg"),
-//				Policies: pulumi.StringArray{
-//					pulumi.String("anti-affinity"),
-//				},
+//				Name:     pulumi.String("my-sg"),
+//				Policies: pulumi.String("anti-affinity"),
 //				Rules: &compute.ServerGroupRulesArgs{
 //					MaxServerPerHost: pulumi.Int(3),
 //				},
@@ -148,7 +144,7 @@ type ServerGroup struct {
 	// A list of exactly one policy name to associate with
 	// the server group. See the Policies section for more information. Changing this
 	// creates a new server group.
-	Policies pulumi.StringArrayOutput `pulumi:"policies"`
+	Policies pulumi.StringPtrOutput `pulumi:"policies"`
 	// The region in which to obtain the V2 Compute client.
 	// If omitted, the `region` argument of the provider is used. Changing
 	// this creates a new server group.
@@ -198,7 +194,7 @@ type serverGroupState struct {
 	// A list of exactly one policy name to associate with
 	// the server group. See the Policies section for more information. Changing this
 	// creates a new server group.
-	Policies []string `pulumi:"policies"`
+	Policies *string `pulumi:"policies"`
 	// The region in which to obtain the V2 Compute client.
 	// If omitted, the `region` argument of the provider is used. Changing
 	// this creates a new server group.
@@ -219,7 +215,7 @@ type ServerGroupState struct {
 	// A list of exactly one policy name to associate with
 	// the server group. See the Policies section for more information. Changing this
 	// creates a new server group.
-	Policies pulumi.StringArrayInput
+	Policies pulumi.StringPtrInput
 	// The region in which to obtain the V2 Compute client.
 	// If omitted, the `region` argument of the provider is used. Changing
 	// this creates a new server group.
@@ -242,7 +238,7 @@ type serverGroupArgs struct {
 	// A list of exactly one policy name to associate with
 	// the server group. See the Policies section for more information. Changing this
 	// creates a new server group.
-	Policies []string `pulumi:"policies"`
+	Policies *string `pulumi:"policies"`
 	// The region in which to obtain the V2 Compute client.
 	// If omitted, the `region` argument of the provider is used. Changing
 	// this creates a new server group.
@@ -262,7 +258,7 @@ type ServerGroupArgs struct {
 	// A list of exactly one policy name to associate with
 	// the server group. See the Policies section for more information. Changing this
 	// creates a new server group.
-	Policies pulumi.StringArrayInput
+	Policies pulumi.StringPtrInput
 	// The region in which to obtain the V2 Compute client.
 	// If omitted, the `region` argument of the provider is used. Changing
 	// this creates a new server group.
@@ -375,8 +371,8 @@ func (o ServerGroupOutput) Name() pulumi.StringOutput {
 // A list of exactly one policy name to associate with
 // the server group. See the Policies section for more information. Changing this
 // creates a new server group.
-func (o ServerGroupOutput) Policies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ServerGroup) pulumi.StringArrayOutput { return v.Policies }).(pulumi.StringArrayOutput)
+func (o ServerGroupOutput) Policies() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringPtrOutput { return v.Policies }).(pulumi.StringPtrOutput)
 }
 
 // The region in which to obtain the V2 Compute client.

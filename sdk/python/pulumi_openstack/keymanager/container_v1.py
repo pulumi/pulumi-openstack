@@ -328,9 +328,9 @@ class ContainerV1(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Simple secret
+        ### Simple container
 
-        The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
+        A container with the TLS certificates.
 
         ```python
         import pulumi
@@ -369,16 +369,6 @@ class ContainerV1(pulumi.CustomResource):
                     "secret_ref": intermediate1.secret_ref,
                 },
             ])
-        subnet1 = openstack.networking.get_subnet(name="my-subnet")
-        lb1 = openstack.LbLoadbalancerV2("lb_1",
-            name="loadbalancer",
-            vip_subnet_id=subnet1.id)
-        listener1 = openstack.loadbalancer.Listener("listener_1",
-            name="https",
-            protocol="TERMINATED_HTTPS",
-            protocol_port=443,
-            loadbalancer_id=lb1.id,
-            default_tls_container_ref=tls1.container_ref)
         ```
 
         ### Container with the ACL
@@ -451,9 +441,9 @@ class ContainerV1(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Simple secret
+        ### Simple container
 
-        The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
+        A container with the TLS certificates.
 
         ```python
         import pulumi
@@ -492,16 +482,6 @@ class ContainerV1(pulumi.CustomResource):
                     "secret_ref": intermediate1.secret_ref,
                 },
             ])
-        subnet1 = openstack.networking.get_subnet(name="my-subnet")
-        lb1 = openstack.LbLoadbalancerV2("lb_1",
-            name="loadbalancer",
-            vip_subnet_id=subnet1.id)
-        listener1 = openstack.loadbalancer.Listener("listener_1",
-            name="https",
-            protocol="TERMINATED_HTTPS",
-            protocol_port=443,
-            loadbalancer_id=lb1.id,
-            default_tls_container_ref=tls1.container_ref)
         ```
 
         ### Container with the ACL

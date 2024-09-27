@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/dns"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/dns"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -54,7 +54,7 @@ import (
 // ```
 //
 // ```sh
-// $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
+// $ pulumi import openstack:dns/zone:Zone zone_1 zone_id:project_id
 // ```
 type Zone struct {
 	pulumi.CustomResourceState

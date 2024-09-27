@@ -40,6 +40,11 @@ export const getFwRuleV2: typeof import("./getFwRuleV2").getFwRuleV2 = null as a
 export const getFwRuleV2Output: typeof import("./getFwRuleV2").getFwRuleV2Output = null as any;
 utilities.lazyLoad(exports, ["getFwRuleV2","getFwRuleV2Output"], () => require("./getFwRuleV2"));
 
+export { LbFlavorprofileV2Args, LbFlavorprofileV2State } from "./lbFlavorprofileV2";
+export type LbFlavorprofileV2 = import("./lbFlavorprofileV2").LbFlavorprofileV2;
+export const LbFlavorprofileV2: typeof import("./lbFlavorprofileV2").LbFlavorprofileV2 = null as any;
+utilities.lazyLoad(exports, ["LbFlavorprofileV2"], () => require("./lbFlavorprofileV2"));
+
 export { LbLoadbalancerV2Args, LbLoadbalancerV2State } from "./lbLoadbalancerV2";
 export type LbLoadbalancerV2 = import("./lbLoadbalancerV2").LbLoadbalancerV2;
 export const LbLoadbalancerV2: typeof import("./lbLoadbalancerV2").LbLoadbalancerV2 = null as any;
@@ -102,6 +107,8 @@ const _module = {
                 return new BgpvpnRouterAssociateV2(name, <any>undefined, { urn })
             case "openstack:index/bgpvpnV2:BgpvpnV2":
                 return new BgpvpnV2(name, <any>undefined, { urn })
+            case "openstack:index/lbFlavorprofileV2:LbFlavorprofileV2":
+                return new LbFlavorprofileV2(name, <any>undefined, { urn })
             case "openstack:index/lbLoadbalancerV2:LbLoadbalancerV2":
                 return new LbLoadbalancerV2(name, <any>undefined, { urn })
             default:
@@ -113,6 +120,7 @@ pulumi.runtime.registerResourceModule("openstack", "index/bgpvpnNetworkAssociate
 pulumi.runtime.registerResourceModule("openstack", "index/bgpvpnPortAssociateV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "index/bgpvpnRouterAssociateV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "index/bgpvpnV2", _module)
+pulumi.runtime.registerResourceModule("openstack", "index/lbFlavorprofileV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "index/lbLoadbalancerV2", _module)
 pulumi.runtime.registerResourcePackage("openstack", {
     version: utilities.getVersion(),

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/loadbalancer"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -59,43 +59,72 @@ import (
 type Pool struct {
 	pulumi.CustomResourceState
 
-	// The administrative state of the pool.
-	// A valid value is true (UP) or false (DOWN).
+	// The administrative state of the pool. A valid
+	// value is true (UP) or false (DOWN).
 	AdminStateUp pulumi.BoolPtrOutput `pulumi:"adminStateUp"`
+	// A list of ALPN protocols. Available protocols:
+	// `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
+	// 2.24**.
+	AlpnProtocols pulumi.StringArrayOutput `pulumi:"alpnProtocols"`
+	// The reference of the key manager service
+	// secret containing a PEM format CA certificate bundle for `tlsEnabled` pools.
+	// Supported only in **Octavia minor version >= 2.8**.
+	CaTlsContainerRef pulumi.StringPtrOutput `pulumi:"caTlsContainerRef"`
+	// The reference of the key manager service
+	// secret containing a PEM format CA revocation list file for `tlsEnabled`
+	// pools. Supported only in **Octavia minor version >= 2.8**.
+	CrlContainerRef pulumi.StringPtrOutput `pulumi:"crlContainerRef"`
 	// Human-readable description for the pool.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The load balancing algorithm to
-	// distribute traffic to the pool's members. Must be one of
-	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
+	// The load balancing algorithm to distribute traffic
+	// to the pool's members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
+	// SOURCE_IP, or SOURCE_IP_PORT.
 	LbMethod pulumi.StringOutput `pulumi:"lbMethod"`
-	// The Listener on which the members of the pool
-	// will be associated with. Changing this creates a new pool.
-	// Note:  One of LoadbalancerID or ListenerID must be provided.
+	// The Listener on which the members of the pool will
+	// be associated with. Changing this creates a new pool. Note: One of
+	// LoadbalancerID or ListenerID must be provided.
 	ListenerId pulumi.StringPtrOutput `pulumi:"listenerId"`
 	// The load balancer on which to provision this
-	// pool. Changing this creates a new pool.
-	// Note:  One of LoadbalancerID or ListenerID must be provided.
+	// pool. Changing this creates a new pool. Note: One of LoadbalancerID or
+	// ListenerID must be provided.
 	LoadbalancerId pulumi.StringPtrOutput `pulumi:"loadbalancerId"`
 	// Human-readable name for the pool.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Omit this field to prevent session persistence.  Indicates
-	// whether connections in the same session will be processed by the same Pool
-	// member or not. Changing this creates a new pool.
-	Persistence PoolPersistenceOutput `pulumi:"persistence"`
+	// Omit this field to prevent session persistence.
+	// Indicates whether connections in the same session will be processed by the
+	// same Pool member or not. Changing this creates a new pool.
+	Persistence PoolPersistencePtrOutput `pulumi:"persistence"`
 	// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-	// UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
-	// (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+	// UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP (**Octavia minor
+	// version >= 2.23**). Changing this creates a new pool.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
-	// `region` argument of the provider is used. Changing this creates a new
-	// pool.
+	// A Networking client is needed to create a pool. If omitted, the `region`
+	// argument of the provider is used. Changing this creates a new pool.
 	Region pulumi.StringOutput      `pulumi:"region"`
 	Tags   pulumi.StringArrayOutput `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
-	// the pool.  Only administrative users can specify a tenant UUID
-	// other than their own. Changing this creates a new pool.
+	// the pool.  Only administrative users can specify a tenant UUID other than
+	// their own. Changing this creates a new pool.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
+	// List of ciphers in OpenSSL format
+	// (colon-separated). See
+	// https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
+	// Supported only in **Octavia minor version >= 2.15**.
+	TlsCiphers pulumi.StringOutput `pulumi:"tlsCiphers"`
+	// The reference to the key manager service
+	// secret containing a PKCS12 format certificate/key bundle for `tlsEnabled`
+	// pools for TLS client authentication to the member servers. Supported only in
+	// **Octavia minor version >= 2.8**.
+	TlsContainerRef pulumi.StringPtrOutput `pulumi:"tlsContainerRef"`
+	// When true connections to backend member servers
+	// will use TLS encryption. Default is false. Supported only in **Octavia minor
+	// version >= 2.8**.
+	TlsEnabled pulumi.BoolPtrOutput `pulumi:"tlsEnabled"`
+	// A list of TLS protocol versions. Available
+	// versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
+	// **Octavia minor version >= 2.17**.
+	TlsVersions pulumi.StringArrayOutput `pulumi:"tlsVersions"`
 }
 
 // NewPool registers a new resource with the given unique name, arguments, and options.
@@ -134,83 +163,141 @@ func GetPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Pool resources.
 type poolState struct {
-	// The administrative state of the pool.
-	// A valid value is true (UP) or false (DOWN).
+	// The administrative state of the pool. A valid
+	// value is true (UP) or false (DOWN).
 	AdminStateUp *bool `pulumi:"adminStateUp"`
+	// A list of ALPN protocols. Available protocols:
+	// `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
+	// 2.24**.
+	AlpnProtocols []string `pulumi:"alpnProtocols"`
+	// The reference of the key manager service
+	// secret containing a PEM format CA certificate bundle for `tlsEnabled` pools.
+	// Supported only in **Octavia minor version >= 2.8**.
+	CaTlsContainerRef *string `pulumi:"caTlsContainerRef"`
+	// The reference of the key manager service
+	// secret containing a PEM format CA revocation list file for `tlsEnabled`
+	// pools. Supported only in **Octavia minor version >= 2.8**.
+	CrlContainerRef *string `pulumi:"crlContainerRef"`
 	// Human-readable description for the pool.
 	Description *string `pulumi:"description"`
-	// The load balancing algorithm to
-	// distribute traffic to the pool's members. Must be one of
-	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
+	// The load balancing algorithm to distribute traffic
+	// to the pool's members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
+	// SOURCE_IP, or SOURCE_IP_PORT.
 	LbMethod *string `pulumi:"lbMethod"`
-	// The Listener on which the members of the pool
-	// will be associated with. Changing this creates a new pool.
-	// Note:  One of LoadbalancerID or ListenerID must be provided.
+	// The Listener on which the members of the pool will
+	// be associated with. Changing this creates a new pool. Note: One of
+	// LoadbalancerID or ListenerID must be provided.
 	ListenerId *string `pulumi:"listenerId"`
 	// The load balancer on which to provision this
-	// pool. Changing this creates a new pool.
-	// Note:  One of LoadbalancerID or ListenerID must be provided.
+	// pool. Changing this creates a new pool. Note: One of LoadbalancerID or
+	// ListenerID must be provided.
 	LoadbalancerId *string `pulumi:"loadbalancerId"`
 	// Human-readable name for the pool.
 	Name *string `pulumi:"name"`
-	// Omit this field to prevent session persistence.  Indicates
-	// whether connections in the same session will be processed by the same Pool
-	// member or not. Changing this creates a new pool.
+	// Omit this field to prevent session persistence.
+	// Indicates whether connections in the same session will be processed by the
+	// same Pool member or not. Changing this creates a new pool.
 	Persistence *PoolPersistence `pulumi:"persistence"`
 	// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-	// UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
-	// (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+	// UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP (**Octavia minor
+	// version >= 2.23**). Changing this creates a new pool.
 	Protocol *string `pulumi:"protocol"`
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
-	// `region` argument of the provider is used. Changing this creates a new
-	// pool.
+	// A Networking client is needed to create a pool. If omitted, the `region`
+	// argument of the provider is used. Changing this creates a new pool.
 	Region *string  `pulumi:"region"`
 	Tags   []string `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
-	// the pool.  Only administrative users can specify a tenant UUID
-	// other than their own. Changing this creates a new pool.
+	// the pool.  Only administrative users can specify a tenant UUID other than
+	// their own. Changing this creates a new pool.
 	TenantId *string `pulumi:"tenantId"`
+	// List of ciphers in OpenSSL format
+	// (colon-separated). See
+	// https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
+	// Supported only in **Octavia minor version >= 2.15**.
+	TlsCiphers *string `pulumi:"tlsCiphers"`
+	// The reference to the key manager service
+	// secret containing a PKCS12 format certificate/key bundle for `tlsEnabled`
+	// pools for TLS client authentication to the member servers. Supported only in
+	// **Octavia minor version >= 2.8**.
+	TlsContainerRef *string `pulumi:"tlsContainerRef"`
+	// When true connections to backend member servers
+	// will use TLS encryption. Default is false. Supported only in **Octavia minor
+	// version >= 2.8**.
+	TlsEnabled *bool `pulumi:"tlsEnabled"`
+	// A list of TLS protocol versions. Available
+	// versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
+	// **Octavia minor version >= 2.17**.
+	TlsVersions []string `pulumi:"tlsVersions"`
 }
 
 type PoolState struct {
-	// The administrative state of the pool.
-	// A valid value is true (UP) or false (DOWN).
+	// The administrative state of the pool. A valid
+	// value is true (UP) or false (DOWN).
 	AdminStateUp pulumi.BoolPtrInput
+	// A list of ALPN protocols. Available protocols:
+	// `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
+	// 2.24**.
+	AlpnProtocols pulumi.StringArrayInput
+	// The reference of the key manager service
+	// secret containing a PEM format CA certificate bundle for `tlsEnabled` pools.
+	// Supported only in **Octavia minor version >= 2.8**.
+	CaTlsContainerRef pulumi.StringPtrInput
+	// The reference of the key manager service
+	// secret containing a PEM format CA revocation list file for `tlsEnabled`
+	// pools. Supported only in **Octavia minor version >= 2.8**.
+	CrlContainerRef pulumi.StringPtrInput
 	// Human-readable description for the pool.
 	Description pulumi.StringPtrInput
-	// The load balancing algorithm to
-	// distribute traffic to the pool's members. Must be one of
-	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
+	// The load balancing algorithm to distribute traffic
+	// to the pool's members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
+	// SOURCE_IP, or SOURCE_IP_PORT.
 	LbMethod pulumi.StringPtrInput
-	// The Listener on which the members of the pool
-	// will be associated with. Changing this creates a new pool.
-	// Note:  One of LoadbalancerID or ListenerID must be provided.
+	// The Listener on which the members of the pool will
+	// be associated with. Changing this creates a new pool. Note: One of
+	// LoadbalancerID or ListenerID must be provided.
 	ListenerId pulumi.StringPtrInput
 	// The load balancer on which to provision this
-	// pool. Changing this creates a new pool.
-	// Note:  One of LoadbalancerID or ListenerID must be provided.
+	// pool. Changing this creates a new pool. Note: One of LoadbalancerID or
+	// ListenerID must be provided.
 	LoadbalancerId pulumi.StringPtrInput
 	// Human-readable name for the pool.
 	Name pulumi.StringPtrInput
-	// Omit this field to prevent session persistence.  Indicates
-	// whether connections in the same session will be processed by the same Pool
-	// member or not. Changing this creates a new pool.
+	// Omit this field to prevent session persistence.
+	// Indicates whether connections in the same session will be processed by the
+	// same Pool member or not. Changing this creates a new pool.
 	Persistence PoolPersistencePtrInput
 	// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-	// UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
-	// (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+	// UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP (**Octavia minor
+	// version >= 2.23**). Changing this creates a new pool.
 	Protocol pulumi.StringPtrInput
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
-	// `region` argument of the provider is used. Changing this creates a new
-	// pool.
+	// A Networking client is needed to create a pool. If omitted, the `region`
+	// argument of the provider is used. Changing this creates a new pool.
 	Region pulumi.StringPtrInput
 	Tags   pulumi.StringArrayInput
 	// Required for admins. The UUID of the tenant who owns
-	// the pool.  Only administrative users can specify a tenant UUID
-	// other than their own. Changing this creates a new pool.
+	// the pool.  Only administrative users can specify a tenant UUID other than
+	// their own. Changing this creates a new pool.
 	TenantId pulumi.StringPtrInput
+	// List of ciphers in OpenSSL format
+	// (colon-separated). See
+	// https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
+	// Supported only in **Octavia minor version >= 2.15**.
+	TlsCiphers pulumi.StringPtrInput
+	// The reference to the key manager service
+	// secret containing a PKCS12 format certificate/key bundle for `tlsEnabled`
+	// pools for TLS client authentication to the member servers. Supported only in
+	// **Octavia minor version >= 2.8**.
+	TlsContainerRef pulumi.StringPtrInput
+	// When true connections to backend member servers
+	// will use TLS encryption. Default is false. Supported only in **Octavia minor
+	// version >= 2.8**.
+	TlsEnabled pulumi.BoolPtrInput
+	// A list of TLS protocol versions. Available
+	// versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
+	// **Octavia minor version >= 2.17**.
+	TlsVersions pulumi.StringArrayInput
 }
 
 func (PoolState) ElementType() reflect.Type {
@@ -218,84 +305,142 @@ func (PoolState) ElementType() reflect.Type {
 }
 
 type poolArgs struct {
-	// The administrative state of the pool.
-	// A valid value is true (UP) or false (DOWN).
+	// The administrative state of the pool. A valid
+	// value is true (UP) or false (DOWN).
 	AdminStateUp *bool `pulumi:"adminStateUp"`
+	// A list of ALPN protocols. Available protocols:
+	// `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
+	// 2.24**.
+	AlpnProtocols []string `pulumi:"alpnProtocols"`
+	// The reference of the key manager service
+	// secret containing a PEM format CA certificate bundle for `tlsEnabled` pools.
+	// Supported only in **Octavia minor version >= 2.8**.
+	CaTlsContainerRef *string `pulumi:"caTlsContainerRef"`
+	// The reference of the key manager service
+	// secret containing a PEM format CA revocation list file for `tlsEnabled`
+	// pools. Supported only in **Octavia minor version >= 2.8**.
+	CrlContainerRef *string `pulumi:"crlContainerRef"`
 	// Human-readable description for the pool.
 	Description *string `pulumi:"description"`
-	// The load balancing algorithm to
-	// distribute traffic to the pool's members. Must be one of
-	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
+	// The load balancing algorithm to distribute traffic
+	// to the pool's members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
+	// SOURCE_IP, or SOURCE_IP_PORT.
 	LbMethod string `pulumi:"lbMethod"`
-	// The Listener on which the members of the pool
-	// will be associated with. Changing this creates a new pool.
-	// Note:  One of LoadbalancerID or ListenerID must be provided.
+	// The Listener on which the members of the pool will
+	// be associated with. Changing this creates a new pool. Note: One of
+	// LoadbalancerID or ListenerID must be provided.
 	ListenerId *string `pulumi:"listenerId"`
 	// The load balancer on which to provision this
-	// pool. Changing this creates a new pool.
-	// Note:  One of LoadbalancerID or ListenerID must be provided.
+	// pool. Changing this creates a new pool. Note: One of LoadbalancerID or
+	// ListenerID must be provided.
 	LoadbalancerId *string `pulumi:"loadbalancerId"`
 	// Human-readable name for the pool.
 	Name *string `pulumi:"name"`
-	// Omit this field to prevent session persistence.  Indicates
-	// whether connections in the same session will be processed by the same Pool
-	// member or not. Changing this creates a new pool.
+	// Omit this field to prevent session persistence.
+	// Indicates whether connections in the same session will be processed by the
+	// same Pool member or not. Changing this creates a new pool.
 	Persistence *PoolPersistence `pulumi:"persistence"`
 	// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-	// UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
-	// (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+	// UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP (**Octavia minor
+	// version >= 2.23**). Changing this creates a new pool.
 	Protocol string `pulumi:"protocol"`
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
-	// `region` argument of the provider is used. Changing this creates a new
-	// pool.
+	// A Networking client is needed to create a pool. If omitted, the `region`
+	// argument of the provider is used. Changing this creates a new pool.
 	Region *string  `pulumi:"region"`
 	Tags   []string `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
-	// the pool.  Only administrative users can specify a tenant UUID
-	// other than their own. Changing this creates a new pool.
+	// the pool.  Only administrative users can specify a tenant UUID other than
+	// their own. Changing this creates a new pool.
 	TenantId *string `pulumi:"tenantId"`
+	// List of ciphers in OpenSSL format
+	// (colon-separated). See
+	// https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
+	// Supported only in **Octavia minor version >= 2.15**.
+	TlsCiphers *string `pulumi:"tlsCiphers"`
+	// The reference to the key manager service
+	// secret containing a PKCS12 format certificate/key bundle for `tlsEnabled`
+	// pools for TLS client authentication to the member servers. Supported only in
+	// **Octavia minor version >= 2.8**.
+	TlsContainerRef *string `pulumi:"tlsContainerRef"`
+	// When true connections to backend member servers
+	// will use TLS encryption. Default is false. Supported only in **Octavia minor
+	// version >= 2.8**.
+	TlsEnabled *bool `pulumi:"tlsEnabled"`
+	// A list of TLS protocol versions. Available
+	// versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
+	// **Octavia minor version >= 2.17**.
+	TlsVersions []string `pulumi:"tlsVersions"`
 }
 
 // The set of arguments for constructing a Pool resource.
 type PoolArgs struct {
-	// The administrative state of the pool.
-	// A valid value is true (UP) or false (DOWN).
+	// The administrative state of the pool. A valid
+	// value is true (UP) or false (DOWN).
 	AdminStateUp pulumi.BoolPtrInput
+	// A list of ALPN protocols. Available protocols:
+	// `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
+	// 2.24**.
+	AlpnProtocols pulumi.StringArrayInput
+	// The reference of the key manager service
+	// secret containing a PEM format CA certificate bundle for `tlsEnabled` pools.
+	// Supported only in **Octavia minor version >= 2.8**.
+	CaTlsContainerRef pulumi.StringPtrInput
+	// The reference of the key manager service
+	// secret containing a PEM format CA revocation list file for `tlsEnabled`
+	// pools. Supported only in **Octavia minor version >= 2.8**.
+	CrlContainerRef pulumi.StringPtrInput
 	// Human-readable description for the pool.
 	Description pulumi.StringPtrInput
-	// The load balancing algorithm to
-	// distribute traffic to the pool's members. Must be one of
-	// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
+	// The load balancing algorithm to distribute traffic
+	// to the pool's members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
+	// SOURCE_IP, or SOURCE_IP_PORT.
 	LbMethod pulumi.StringInput
-	// The Listener on which the members of the pool
-	// will be associated with. Changing this creates a new pool.
-	// Note:  One of LoadbalancerID or ListenerID must be provided.
+	// The Listener on which the members of the pool will
+	// be associated with. Changing this creates a new pool. Note: One of
+	// LoadbalancerID or ListenerID must be provided.
 	ListenerId pulumi.StringPtrInput
 	// The load balancer on which to provision this
-	// pool. Changing this creates a new pool.
-	// Note:  One of LoadbalancerID or ListenerID must be provided.
+	// pool. Changing this creates a new pool. Note: One of LoadbalancerID or
+	// ListenerID must be provided.
 	LoadbalancerId pulumi.StringPtrInput
 	// Human-readable name for the pool.
 	Name pulumi.StringPtrInput
-	// Omit this field to prevent session persistence.  Indicates
-	// whether connections in the same session will be processed by the same Pool
-	// member or not. Changing this creates a new pool.
+	// Omit this field to prevent session persistence.
+	// Indicates whether connections in the same session will be processed by the
+	// same Pool member or not. Changing this creates a new pool.
 	Persistence PoolPersistencePtrInput
 	// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-	// UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
-	// (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+	// UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP (**Octavia minor
+	// version >= 2.23**). Changing this creates a new pool.
 	Protocol pulumi.StringInput
 	// The region in which to obtain the V2 Networking client.
-	// A Networking client is needed to create an . If omitted, the
-	// `region` argument of the provider is used. Changing this creates a new
-	// pool.
+	// A Networking client is needed to create a pool. If omitted, the `region`
+	// argument of the provider is used. Changing this creates a new pool.
 	Region pulumi.StringPtrInput
 	Tags   pulumi.StringArrayInput
 	// Required for admins. The UUID of the tenant who owns
-	// the pool.  Only administrative users can specify a tenant UUID
-	// other than their own. Changing this creates a new pool.
+	// the pool.  Only administrative users can specify a tenant UUID other than
+	// their own. Changing this creates a new pool.
 	TenantId pulumi.StringPtrInput
+	// List of ciphers in OpenSSL format
+	// (colon-separated). See
+	// https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
+	// Supported only in **Octavia minor version >= 2.15**.
+	TlsCiphers pulumi.StringPtrInput
+	// The reference to the key manager service
+	// secret containing a PKCS12 format certificate/key bundle for `tlsEnabled`
+	// pools for TLS client authentication to the member servers. Supported only in
+	// **Octavia minor version >= 2.8**.
+	TlsContainerRef pulumi.StringPtrInput
+	// When true connections to backend member servers
+	// will use TLS encryption. Default is false. Supported only in **Octavia minor
+	// version >= 2.8**.
+	TlsEnabled pulumi.BoolPtrInput
+	// A list of TLS protocol versions. Available
+	// versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
+	// **Octavia minor version >= 2.17**.
+	TlsVersions pulumi.StringArrayInput
 }
 
 func (PoolArgs) ElementType() reflect.Type {
@@ -385,10 +530,31 @@ func (o PoolOutput) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 	return o
 }
 
-// The administrative state of the pool.
-// A valid value is true (UP) or false (DOWN).
+// The administrative state of the pool. A valid
+// value is true (UP) or false (DOWN).
 func (o PoolOutput) AdminStateUp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pool) pulumi.BoolPtrOutput { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
+}
+
+// A list of ALPN protocols. Available protocols:
+// `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
+// 2.24**.
+func (o PoolOutput) AlpnProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringArrayOutput { return v.AlpnProtocols }).(pulumi.StringArrayOutput)
+}
+
+// The reference of the key manager service
+// secret containing a PEM format CA certificate bundle for `tlsEnabled` pools.
+// Supported only in **Octavia minor version >= 2.8**.
+func (o PoolOutput) CaTlsContainerRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringPtrOutput { return v.CaTlsContainerRef }).(pulumi.StringPtrOutput)
+}
+
+// The reference of the key manager service
+// secret containing a PEM format CA revocation list file for `tlsEnabled`
+// pools. Supported only in **Octavia minor version >= 2.8**.
+func (o PoolOutput) CrlContainerRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringPtrOutput { return v.CrlContainerRef }).(pulumi.StringPtrOutput)
 }
 
 // Human-readable description for the pool.
@@ -396,23 +562,23 @@ func (o PoolOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The load balancing algorithm to
-// distribute traffic to the pool's members. Must be one of
-// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT.
+// The load balancing algorithm to distribute traffic
+// to the pool's members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
+// SOURCE_IP, or SOURCE_IP_PORT.
 func (o PoolOutput) LbMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.LbMethod }).(pulumi.StringOutput)
 }
 
-// The Listener on which the members of the pool
-// will be associated with. Changing this creates a new pool.
-// Note:  One of LoadbalancerID or ListenerID must be provided.
+// The Listener on which the members of the pool will
+// be associated with. Changing this creates a new pool. Note: One of
+// LoadbalancerID or ListenerID must be provided.
 func (o PoolOutput) ListenerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringPtrOutput { return v.ListenerId }).(pulumi.StringPtrOutput)
 }
 
 // The load balancer on which to provision this
-// pool. Changing this creates a new pool.
-// Note:  One of LoadbalancerID or ListenerID must be provided.
+// pool. Changing this creates a new pool. Note: One of LoadbalancerID or
+// ListenerID must be provided.
 func (o PoolOutput) LoadbalancerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringPtrOutput { return v.LoadbalancerId }).(pulumi.StringPtrOutput)
 }
@@ -422,24 +588,23 @@ func (o PoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Omit this field to prevent session persistence.  Indicates
-// whether connections in the same session will be processed by the same Pool
-// member or not. Changing this creates a new pool.
-func (o PoolOutput) Persistence() PoolPersistenceOutput {
-	return o.ApplyT(func(v *Pool) PoolPersistenceOutput { return v.Persistence }).(PoolPersistenceOutput)
+// Omit this field to prevent session persistence.
+// Indicates whether connections in the same session will be processed by the
+// same Pool member or not. Changing this creates a new pool.
+func (o PoolOutput) Persistence() PoolPersistencePtrOutput {
+	return o.ApplyT(func(v *Pool) PoolPersistencePtrOutput { return v.Persistence }).(PoolPersistencePtrOutput)
 }
 
 // The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-// UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP
-// (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+// UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP (**Octavia minor
+// version >= 2.23**). Changing this creates a new pool.
 func (o PoolOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
 
 // The region in which to obtain the V2 Networking client.
-// A Networking client is needed to create an . If omitted, the
-// `region` argument of the provider is used. Changing this creates a new
-// pool.
+// A Networking client is needed to create a pool. If omitted, the `region`
+// argument of the provider is used. Changing this creates a new pool.
 func (o PoolOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -449,10 +614,40 @@ func (o PoolOutput) Tags() pulumi.StringArrayOutput {
 }
 
 // Required for admins. The UUID of the tenant who owns
-// the pool.  Only administrative users can specify a tenant UUID
-// other than their own. Changing this creates a new pool.
+// the pool.  Only administrative users can specify a tenant UUID other than
+// their own. Changing this creates a new pool.
 func (o PoolOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// List of ciphers in OpenSSL format
+// (colon-separated). See
+// https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
+// Supported only in **Octavia minor version >= 2.15**.
+func (o PoolOutput) TlsCiphers() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.TlsCiphers }).(pulumi.StringOutput)
+}
+
+// The reference to the key manager service
+// secret containing a PKCS12 format certificate/key bundle for `tlsEnabled`
+// pools for TLS client authentication to the member servers. Supported only in
+// **Octavia minor version >= 2.8**.
+func (o PoolOutput) TlsContainerRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringPtrOutput { return v.TlsContainerRef }).(pulumi.StringPtrOutput)
+}
+
+// When true connections to backend member servers
+// will use TLS encryption. Default is false. Supported only in **Octavia minor
+// version >= 2.8**.
+func (o PoolOutput) TlsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Pool) pulumi.BoolPtrOutput { return v.TlsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// A list of TLS protocol versions. Available
+// versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
+// **Octavia minor version >= 2.17**.
+func (o PoolOutput) TlsVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringArrayOutput { return v.TlsVersions }).(pulumi.StringArrayOutput)
 }
 
 type PoolArrayOutput struct{ *pulumi.OutputState }

@@ -169,6 +169,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly masterFlavor!: pulumi.Output<string>;
     /**
+     * Indicates whether to create a load balancer
+     * for the master nodes. Changing this creates a new cluster.
+     */
+    public readonly masterLbEnabled!: pulumi.Output<boolean>;
+    /**
      * Indicates whether the provided labels should be
      * merged with cluster template labels. Changing this creates a new cluster.
      */
@@ -236,6 +241,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["masterAddresses"] = state ? state.masterAddresses : undefined;
             resourceInputs["masterCount"] = state ? state.masterCount : undefined;
             resourceInputs["masterFlavor"] = state ? state.masterFlavor : undefined;
+            resourceInputs["masterLbEnabled"] = state ? state.masterLbEnabled : undefined;
             resourceInputs["mergeLabels"] = state ? state.mergeLabels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeAddresses"] = state ? state.nodeAddresses : undefined;
@@ -262,6 +268,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["masterCount"] = args ? args.masterCount : undefined;
             resourceInputs["masterFlavor"] = args ? args.masterFlavor : undefined;
+            resourceInputs["masterLbEnabled"] = args ? args.masterLbEnabled : undefined;
             resourceInputs["mergeLabels"] = args ? args.mergeLabels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
@@ -357,6 +364,11 @@ export interface ClusterState {
      * new cluster.
      */
     masterFlavor?: pulumi.Input<string>;
+    /**
+     * Indicates whether to create a load balancer
+     * for the master nodes. Changing this creates a new cluster.
+     */
+    masterLbEnabled?: pulumi.Input<boolean>;
     /**
      * Indicates whether the provided labels should be
      * merged with cluster template labels. Changing this creates a new cluster.
@@ -461,6 +473,11 @@ export interface ClusterArgs {
      * new cluster.
      */
     masterFlavor?: pulumi.Input<string>;
+    /**
+     * Indicates whether to create a load balancer
+     * for the master nodes. Changing this creates a new cluster.
+     */
+    masterLbEnabled?: pulumi.Input<boolean>;
     /**
      * Indicates whether the provided labels should be
      * merged with cluster template labels. Changing this creates a new cluster.

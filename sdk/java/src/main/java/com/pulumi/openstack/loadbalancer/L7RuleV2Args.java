@@ -104,7 +104,7 @@ public final class L7RuleV2Args extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The region in which to obtain the V2 Networking client.
-     * A Networking client is needed to create an . If omitted, the
+     * A Networking client is needed to create an L7 rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Rule.
      * 
@@ -114,7 +114,7 @@ public final class L7RuleV2Args extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The region in which to obtain the V2 Networking client.
-     * A Networking client is needed to create an . If omitted, the
+     * A Networking client is needed to create an L7 rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Rule.
      * 
@@ -325,7 +325,7 @@ public final class L7RuleV2Args extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param region The region in which to obtain the V2 Networking client.
-         * A Networking client is needed to create an . If omitted, the
+         * A Networking client is needed to create an L7 rule. If omitted, the
          * `region` argument of the provider is used. Changing this creates a new
          * L7 Rule.
          * 
@@ -339,7 +339,7 @@ public final class L7RuleV2Args extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param region The region in which to obtain the V2 Networking client.
-         * A Networking client is needed to create an . If omitted, the
+         * A Networking client is needed to create an L7 rule. If omitted, the
          * `region` argument of the provider is used. Changing this creates a new
          * L7 Rule.
          * 

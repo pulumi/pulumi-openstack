@@ -84,7 +84,7 @@ namespace Pulumi.OpenStack.Networking
         /// security group rule.
         /// </summary>
         [Output("portRangeMax")]
-        public Output<int> PortRangeMax { get; private set; } = null!;
+        public Output<int?> PortRangeMax { get; private set; } = null!;
 
         /// <summary>
         /// The lower part of the allowed port range, valid
@@ -92,10 +92,14 @@ namespace Pulumi.OpenStack.Networking
         /// security group rule.
         /// </summary>
         [Output("portRangeMin")]
-        public Output<int> PortRangeMin { get; private set; } = null!;
+        public Output<int?> PortRangeMin { get; private set; } = null!;
 
         /// <summary>
-        /// The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+        /// The layer 4 protocol type, valid values are
+        /// following. Changing this creates a new security group rule. This is required
+        /// if you want to specify a port range.
+        /// * empty string or omitted (any protocol)
+        /// * integer value between 0 and 255 (valid IP protocol number)
         /// * __tcp__
         /// * __udp__
         /// * __icmp__
@@ -117,9 +121,10 @@ namespace Pulumi.OpenStack.Networking
         /// * __sctp__
         /// * __udplite__
         /// * __vrrp__
+        /// * __ipip__
         /// </summary>
         [Output("protocol")]
-        public Output<string> Protocol { get; private set; } = null!;
+        public Output<string?> Protocol { get; private set; } = null!;
 
         /// <summary>
         /// The region in which to obtain the V2 networking client.
@@ -244,7 +249,11 @@ namespace Pulumi.OpenStack.Networking
         public Input<int>? PortRangeMin { get; set; }
 
         /// <summary>
-        /// The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+        /// The layer 4 protocol type, valid values are
+        /// following. Changing this creates a new security group rule. This is required
+        /// if you want to specify a port range.
+        /// * empty string or omitted (any protocol)
+        /// * integer value between 0 and 255 (valid IP protocol number)
         /// * __tcp__
         /// * __udp__
         /// * __icmp__
@@ -266,6 +275,7 @@ namespace Pulumi.OpenStack.Networking
         /// * __sctp__
         /// * __udplite__
         /// * __vrrp__
+        /// * __ipip__
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -355,7 +365,11 @@ namespace Pulumi.OpenStack.Networking
         public Input<int>? PortRangeMin { get; set; }
 
         /// <summary>
-        /// The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+        /// The layer 4 protocol type, valid values are
+        /// following. Changing this creates a new security group rule. This is required
+        /// if you want to specify a port range.
+        /// * empty string or omitted (any protocol)
+        /// * integer value between 0 and 255 (valid IP protocol number)
         /// * __tcp__
         /// * __udp__
         /// * __icmp__
@@ -377,6 +391,7 @@ namespace Pulumi.OpenStack.Networking
         /// * __sctp__
         /// * __udplite__
         /// * __vrrp__
+        /// * __ipip__
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

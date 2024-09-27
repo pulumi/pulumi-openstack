@@ -36,20 +36,21 @@ namespace Pulumi.OpenStack.Networking
     ///         IpVersion = 4,
     ///     });
     /// 
-    ///     var secgroup1 = new OpenStack.Compute.SecGroup("secgroup_1", new()
+    ///     var secgroup1 = new OpenStack.Networking.SecGroup("secgroup_1", new()
     ///     {
     ///         Name = "secgroup_1",
     ///         Description = "a security group",
-    ///         Rules = new[]
-    ///         {
-    ///             new OpenStack.Compute.Inputs.SecGroupRuleArgs
-    ///             {
-    ///                 FromPort = 22,
-    ///                 ToPort = 22,
-    ///                 IpProtocol = "tcp",
-    ///                 Cidr = "0.0.0.0/0",
-    ///             },
-    ///         },
+    ///     });
+    /// 
+    ///     var secgroupRule1 = new OpenStack.Networking.SecGroupRule("secgroup_rule_1", new()
+    ///     {
+    ///         Direction = "ingress",
+    ///         Ethertype = "IPv4",
+    ///         Protocol = "tcp",
+    ///         PortRangeMin = 22,
+    ///         PortRangeMax = 22,
+    ///         RemoteIpPrefix = "0.0.0.0/0",
+    ///         SecurityGroupId = secgroup1.Id,
     ///     });
     /// 
     ///     var port1 = new OpenStack.Networking.Port("port_1", new()

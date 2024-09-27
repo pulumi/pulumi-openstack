@@ -5,35 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export { FirewallArgs, FirewallState } from "./firewall";
-export type Firewall = import("./firewall").Firewall;
-export const Firewall: typeof import("./firewall").Firewall = null as any;
-utilities.lazyLoad(exports, ["Firewall"], () => require("./firewall"));
-
-export { GetPolicyArgs, GetPolicyResult, GetPolicyOutputArgs } from "./getPolicy";
-export const getPolicy: typeof import("./getPolicy").getPolicy = null as any;
-export const getPolicyOutput: typeof import("./getPolicy").getPolicyOutput = null as any;
-utilities.lazyLoad(exports, ["getPolicy","getPolicyOutput"], () => require("./getPolicy"));
-
 export { GroupV2Args, GroupV2State } from "./groupV2";
 export type GroupV2 = import("./groupV2").GroupV2;
 export const GroupV2: typeof import("./groupV2").GroupV2 = null as any;
 utilities.lazyLoad(exports, ["GroupV2"], () => require("./groupV2"));
 
-export { PolicyArgs, PolicyState } from "./policy";
-export type Policy = import("./policy").Policy;
-export const Policy: typeof import("./policy").Policy = null as any;
-utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
-
 export { PolicyV2Args, PolicyV2State } from "./policyV2";
 export type PolicyV2 = import("./policyV2").PolicyV2;
 export const PolicyV2: typeof import("./policyV2").PolicyV2 = null as any;
 utilities.lazyLoad(exports, ["PolicyV2"], () => require("./policyV2"));
-
-export { RuleArgs, RuleState } from "./rule";
-export type Rule = import("./rule").Rule;
-export const Rule: typeof import("./rule").Rule = null as any;
-utilities.lazyLoad(exports, ["Rule"], () => require("./rule"));
 
 export { RuleV2Args, RuleV2State } from "./ruleV2";
 export type RuleV2 = import("./ruleV2").RuleV2;
@@ -45,16 +25,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "openstack:firewall/firewall:Firewall":
-                return new Firewall(name, <any>undefined, { urn })
             case "openstack:firewall/groupV2:GroupV2":
                 return new GroupV2(name, <any>undefined, { urn })
-            case "openstack:firewall/policy:Policy":
-                return new Policy(name, <any>undefined, { urn })
             case "openstack:firewall/policyV2:PolicyV2":
                 return new PolicyV2(name, <any>undefined, { urn })
-            case "openstack:firewall/rule:Rule":
-                return new Rule(name, <any>undefined, { urn })
             case "openstack:firewall/ruleV2:RuleV2":
                 return new RuleV2(name, <any>undefined, { urn })
             default:
@@ -62,9 +36,6 @@ const _module = {
         }
     },
 };
-pulumi.runtime.registerResourceModule("openstack", "firewall/firewall", _module)
 pulumi.runtime.registerResourceModule("openstack", "firewall/groupV2", _module)
-pulumi.runtime.registerResourceModule("openstack", "firewall/policy", _module)
 pulumi.runtime.registerResourceModule("openstack", "firewall/policyV2", _module)
-pulumi.runtime.registerResourceModule("openstack", "firewall/rule", _module)
 pulumi.runtime.registerResourceModule("openstack", "firewall/ruleV2", _module)

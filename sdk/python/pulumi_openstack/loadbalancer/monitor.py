@@ -20,8 +20,10 @@ class MonitorArgs:
                  timeout: pulumi.Input[int],
                  type: pulumi.Input[str],
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
+                 domain_name: Optional[pulumi.Input[str]] = None,
                  expected_codes: Optional[pulumi.Input[str]] = None,
                  http_method: Optional[pulumi.Input[str]] = None,
+                 http_version: Optional[pulumi.Input[str]] = None,
                  max_retries_down: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -42,19 +44,25 @@ class MonitorArgs:
                verify the member state. Changing this creates a new monitor.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the monitor.
                A valid value is true (UP) or false (DOWN).
+        :param pulumi.Input[str] domain_name: The domain name to use in the HTTP host header
+               health monitor requests. Supported in Octavia API version 2.10 or later.
         :param pulumi.Input[str] expected_codes: Required for HTTP(S) types. Expected HTTP codes
                for a passing HTTP(S) monitor. You can either specify a single status like
                "200", a list like "200, 202" or a range like "200-202". Default is "200".
         :param pulumi.Input[str] http_method: Required for HTTP(S) types. The HTTP method that 
                the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
-               OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
+               OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
+        :param pulumi.Input[str] http_version: Required for HTTP(S) types. The HTTP version that
+               the health monitor uses for requests. One of `1.0` or 1.1` is supported
+               for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+               2.10 or later.
         :param pulumi.Input[int] max_retries_down: Number of permissible ping failures before 
                changing the member's status to ERROR. Must be a number between 1 and 10.
                The default is 3. Changing this updates the max_retries_down of the
                existing monitor.
         :param pulumi.Input[str] name: The Name of the Monitor.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an . If omitted, the
+               A Networking client is needed to create a monitor. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                monitor.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
@@ -70,10 +78,14 @@ class MonitorArgs:
         pulumi.set(__self__, "type", type)
         if admin_state_up is not None:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
         if expected_codes is not None:
             pulumi.set(__self__, "expected_codes", expected_codes)
         if http_method is not None:
             pulumi.set(__self__, "http_method", http_method)
+        if http_version is not None:
+            pulumi.set(__self__, "http_version", http_version)
         if max_retries_down is not None:
             pulumi.set(__self__, "max_retries_down", max_retries_down)
         if name is not None:
@@ -165,6 +177,19 @@ class MonitorArgs:
         pulumi.set(self, "admin_state_up", value)
 
     @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name to use in the HTTP host header
+        health monitor requests. Supported in Octavia API version 2.10 or later.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
     @pulumi.getter(name="expectedCodes")
     def expected_codes(self) -> Optional[pulumi.Input[str]]:
         """
@@ -184,13 +209,28 @@ class MonitorArgs:
         """
         Required for HTTP(S) types. The HTTP method that 
         the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
-        OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
+        OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
         """
         return pulumi.get(self, "http_method")
 
     @http_method.setter
     def http_method(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "http_method", value)
+
+    @property
+    @pulumi.getter(name="httpVersion")
+    def http_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required for HTTP(S) types. The HTTP version that
+        the health monitor uses for requests. One of `1.0` or 1.1` is supported
+        for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+        2.10 or later.
+        """
+        return pulumi.get(self, "http_version")
+
+    @http_version.setter
+    def http_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_version", value)
 
     @property
     @pulumi.getter(name="maxRetriesDown")
@@ -224,7 +264,7 @@ class MonitorArgs:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an . If omitted, the
+        A Networking client is needed to create a monitor. If omitted, the
         `region` argument of the provider is used. Changing this creates a new
         monitor.
         """
@@ -267,8 +307,10 @@ class _MonitorState:
     def __init__(__self__, *,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  delay: Optional[pulumi.Input[int]] = None,
+                 domain_name: Optional[pulumi.Input[str]] = None,
                  expected_codes: Optional[pulumi.Input[str]] = None,
                  http_method: Optional[pulumi.Input[str]] = None,
+                 http_version: Optional[pulumi.Input[str]] = None,
                  max_retries: Optional[pulumi.Input[int]] = None,
                  max_retries_down: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -283,12 +325,18 @@ class _MonitorState:
         :param pulumi.Input[bool] admin_state_up: The administrative state of the monitor.
                A valid value is true (UP) or false (DOWN).
         :param pulumi.Input[int] delay: The time, in seconds, between sending probes to members.
+        :param pulumi.Input[str] domain_name: The domain name to use in the HTTP host header
+               health monitor requests. Supported in Octavia API version 2.10 or later.
         :param pulumi.Input[str] expected_codes: Required for HTTP(S) types. Expected HTTP codes
                for a passing HTTP(S) monitor. You can either specify a single status like
                "200", a list like "200, 202" or a range like "200-202". Default is "200".
         :param pulumi.Input[str] http_method: Required for HTTP(S) types. The HTTP method that 
                the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
-               OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
+               OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
+        :param pulumi.Input[str] http_version: Required for HTTP(S) types. The HTTP version that
+               the health monitor uses for requests. One of `1.0` or 1.1` is supported
+               for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+               2.10 or later.
         :param pulumi.Input[int] max_retries: Number of permissible ping failures before
                changing the member's status to INACTIVE. Must be a number between 1
                and 10.
@@ -299,7 +347,7 @@ class _MonitorState:
         :param pulumi.Input[str] name: The Name of the Monitor.
         :param pulumi.Input[str] pool_id: The id of the pool that this monitor will be assigned to.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an . If omitted, the
+               A Networking client is needed to create a monitor. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                monitor.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
@@ -318,10 +366,14 @@ class _MonitorState:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
         if delay is not None:
             pulumi.set(__self__, "delay", delay)
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
         if expected_codes is not None:
             pulumi.set(__self__, "expected_codes", expected_codes)
         if http_method is not None:
             pulumi.set(__self__, "http_method", http_method)
+        if http_version is not None:
+            pulumi.set(__self__, "http_version", http_version)
         if max_retries is not None:
             pulumi.set(__self__, "max_retries", max_retries)
         if max_retries_down is not None:
@@ -367,6 +419,19 @@ class _MonitorState:
         pulumi.set(self, "delay", value)
 
     @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name to use in the HTTP host header
+        health monitor requests. Supported in Octavia API version 2.10 or later.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
     @pulumi.getter(name="expectedCodes")
     def expected_codes(self) -> Optional[pulumi.Input[str]]:
         """
@@ -386,13 +451,28 @@ class _MonitorState:
         """
         Required for HTTP(S) types. The HTTP method that 
         the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
-        OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
+        OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
         """
         return pulumi.get(self, "http_method")
 
     @http_method.setter
     def http_method(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "http_method", value)
+
+    @property
+    @pulumi.getter(name="httpVersion")
+    def http_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required for HTTP(S) types. The HTTP version that
+        the health monitor uses for requests. One of `1.0` or 1.1` is supported
+        for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+        2.10 or later.
+        """
+        return pulumi.get(self, "http_version")
+
+    @http_version.setter
+    def http_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_version", value)
 
     @property
     @pulumi.getter(name="maxRetries")
@@ -452,7 +532,7 @@ class _MonitorState:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an . If omitted, the
+        A Networking client is needed to create a monitor. If omitted, the
         `region` argument of the provider is used. Changing this creates a new
         monitor.
         """
@@ -525,8 +605,10 @@ class Monitor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  delay: Optional[pulumi.Input[int]] = None,
+                 domain_name: Optional[pulumi.Input[str]] = None,
                  expected_codes: Optional[pulumi.Input[str]] = None,
                  http_method: Optional[pulumi.Input[str]] = None,
+                 http_version: Optional[pulumi.Input[str]] = None,
                  max_retries: Optional[pulumi.Input[int]] = None,
                  max_retries_down: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -572,12 +654,18 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[bool] admin_state_up: The administrative state of the monitor.
                A valid value is true (UP) or false (DOWN).
         :param pulumi.Input[int] delay: The time, in seconds, between sending probes to members.
+        :param pulumi.Input[str] domain_name: The domain name to use in the HTTP host header
+               health monitor requests. Supported in Octavia API version 2.10 or later.
         :param pulumi.Input[str] expected_codes: Required for HTTP(S) types. Expected HTTP codes
                for a passing HTTP(S) monitor. You can either specify a single status like
                "200", a list like "200, 202" or a range like "200-202". Default is "200".
         :param pulumi.Input[str] http_method: Required for HTTP(S) types. The HTTP method that 
                the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
-               OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
+               OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
+        :param pulumi.Input[str] http_version: Required for HTTP(S) types. The HTTP version that
+               the health monitor uses for requests. One of `1.0` or 1.1` is supported
+               for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+               2.10 or later.
         :param pulumi.Input[int] max_retries: Number of permissible ping failures before
                changing the member's status to INACTIVE. Must be a number between 1
                and 10.
@@ -588,7 +676,7 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[str] name: The Name of the Monitor.
         :param pulumi.Input[str] pool_id: The id of the pool that this monitor will be assigned to.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an . If omitted, the
+               A Networking client is needed to create a monitor. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                monitor.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
@@ -656,8 +744,10 @@ class Monitor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_state_up: Optional[pulumi.Input[bool]] = None,
                  delay: Optional[pulumi.Input[int]] = None,
+                 domain_name: Optional[pulumi.Input[str]] = None,
                  expected_codes: Optional[pulumi.Input[str]] = None,
                  http_method: Optional[pulumi.Input[str]] = None,
+                 http_version: Optional[pulumi.Input[str]] = None,
                  max_retries: Optional[pulumi.Input[int]] = None,
                  max_retries_down: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -680,8 +770,10 @@ class Monitor(pulumi.CustomResource):
             if delay is None and not opts.urn:
                 raise TypeError("Missing required property 'delay'")
             __props__.__dict__["delay"] = delay
+            __props__.__dict__["domain_name"] = domain_name
             __props__.__dict__["expected_codes"] = expected_codes
             __props__.__dict__["http_method"] = http_method
+            __props__.__dict__["http_version"] = http_version
             if max_retries is None and not opts.urn:
                 raise TypeError("Missing required property 'max_retries'")
             __props__.__dict__["max_retries"] = max_retries
@@ -711,8 +803,10 @@ class Monitor(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_state_up: Optional[pulumi.Input[bool]] = None,
             delay: Optional[pulumi.Input[int]] = None,
+            domain_name: Optional[pulumi.Input[str]] = None,
             expected_codes: Optional[pulumi.Input[str]] = None,
             http_method: Optional[pulumi.Input[str]] = None,
+            http_version: Optional[pulumi.Input[str]] = None,
             max_retries: Optional[pulumi.Input[int]] = None,
             max_retries_down: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -732,12 +826,18 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[bool] admin_state_up: The administrative state of the monitor.
                A valid value is true (UP) or false (DOWN).
         :param pulumi.Input[int] delay: The time, in seconds, between sending probes to members.
+        :param pulumi.Input[str] domain_name: The domain name to use in the HTTP host header
+               health monitor requests. Supported in Octavia API version 2.10 or later.
         :param pulumi.Input[str] expected_codes: Required for HTTP(S) types. Expected HTTP codes
                for a passing HTTP(S) monitor. You can either specify a single status like
                "200", a list like "200, 202" or a range like "200-202". Default is "200".
         :param pulumi.Input[str] http_method: Required for HTTP(S) types. The HTTP method that 
                the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
-               OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
+               OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
+        :param pulumi.Input[str] http_version: Required for HTTP(S) types. The HTTP version that
+               the health monitor uses for requests. One of `1.0` or 1.1` is supported
+               for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+               2.10 or later.
         :param pulumi.Input[int] max_retries: Number of permissible ping failures before
                changing the member's status to INACTIVE. Must be a number between 1
                and 10.
@@ -748,7 +848,7 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[str] name: The Name of the Monitor.
         :param pulumi.Input[str] pool_id: The id of the pool that this monitor will be assigned to.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an . If omitted, the
+               A Networking client is needed to create a monitor. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                monitor.
         :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
@@ -769,8 +869,10 @@ class Monitor(pulumi.CustomResource):
 
         __props__.__dict__["admin_state_up"] = admin_state_up
         __props__.__dict__["delay"] = delay
+        __props__.__dict__["domain_name"] = domain_name
         __props__.__dict__["expected_codes"] = expected_codes
         __props__.__dict__["http_method"] = http_method
+        __props__.__dict__["http_version"] = http_version
         __props__.__dict__["max_retries"] = max_retries
         __props__.__dict__["max_retries_down"] = max_retries_down
         __props__.__dict__["name"] = name
@@ -800,6 +902,15 @@ class Monitor(pulumi.CustomResource):
         return pulumi.get(self, "delay")
 
     @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The domain name to use in the HTTP host header
+        health monitor requests. Supported in Octavia API version 2.10 or later.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @property
     @pulumi.getter(name="expectedCodes")
     def expected_codes(self) -> pulumi.Output[str]:
         """
@@ -815,9 +926,20 @@ class Monitor(pulumi.CustomResource):
         """
         Required for HTTP(S) types. The HTTP method that 
         the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
-        OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET
+        OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
         """
         return pulumi.get(self, "http_method")
+
+    @property
+    @pulumi.getter(name="httpVersion")
+    def http_version(self) -> pulumi.Output[Optional[str]]:
+        """
+        Required for HTTP(S) types. The HTTP version that
+        the health monitor uses for requests. One of `1.0` or 1.1` is supported
+        for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+        2.10 or later.
+        """
+        return pulumi.get(self, "http_version")
 
     @property
     @pulumi.getter(name="maxRetries")
@@ -861,7 +983,7 @@ class Monitor(pulumi.CustomResource):
     def region(self) -> pulumi.Output[str]:
         """
         The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an . If omitted, the
+        A Networking client is needed to create a monitor. If omitted, the
         `region` argument of the provider is used. Changing this creates a new
         monitor.
         """

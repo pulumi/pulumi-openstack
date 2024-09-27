@@ -34,6 +34,40 @@ public final class TempUrlArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The digest to use when generating the tempurl.
+     * Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+     * 
+     */
+    @Import(name="digest")
+    private @Nullable Output<String> digest;
+
+    /**
+     * @return The digest to use when generating the tempurl.
+     * Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+     * 
+     */
+    public Optional<Output<String>> digest() {
+        return Optional.ofNullable(this.digest);
+    }
+
+    /**
+     * The key to use when generating the tempurl. If not
+     * provided, the key will be read from the container or account metadata.
+     * 
+     */
+    @Import(name="key")
+    private @Nullable Output<String> key;
+
+    /**
+     * @return The key to use when generating the tempurl. If not
+     * provided, the key will be read from the container or account metadata.
+     * 
+     */
+    public Optional<Output<String>> key() {
+        return Optional.ofNullable(this.key);
+    }
+
+    /**
      * The method allowed when accessing this URL.
      * Valid values are `GET`, and `POST`. Default is `GET`.
      * 
@@ -99,9 +133,19 @@ public final class TempUrlArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * Split is the string on which to split the object URL.
+     * Default is `/v1/`.
+     * 
+     */
     @Import(name="split")
     private @Nullable Output<String> split;
 
+    /**
+     * @return Split is the string on which to split the object URL.
+     * Default is `/v1/`.
+     * 
+     */
     public Optional<Output<String>> split() {
         return Optional.ofNullable(this.split);
     }
@@ -127,6 +171,8 @@ public final class TempUrlArgs extends com.pulumi.resources.ResourceArgs {
 
     private TempUrlArgs(TempUrlArgs $) {
         this.container = $.container;
+        this.digest = $.digest;
+        this.key = $.key;
         this.method = $.method;
         this.object = $.object;
         this.regenerate = $.regenerate;
@@ -172,6 +218,52 @@ public final class TempUrlArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder container(String container) {
             return container(Output.of(container));
+        }
+
+        /**
+         * @param digest The digest to use when generating the tempurl.
+         * Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder digest(@Nullable Output<String> digest) {
+            $.digest = digest;
+            return this;
+        }
+
+        /**
+         * @param digest The digest to use when generating the tempurl.
+         * Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder digest(String digest) {
+            return digest(Output.of(digest));
+        }
+
+        /**
+         * @param key The key to use when generating the tempurl. If not
+         * provided, the key will be read from the container or account metadata.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder key(@Nullable Output<String> key) {
+            $.key = key;
+            return this;
+        }
+
+        /**
+         * @param key The key to use when generating the tempurl. If not
+         * provided, the key will be read from the container or account metadata.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder key(String key) {
+            return key(Output.of(key));
         }
 
         /**
@@ -264,11 +356,25 @@ public final class TempUrlArgs extends com.pulumi.resources.ResourceArgs {
             return region(Output.of(region));
         }
 
+        /**
+         * @param split Split is the string on which to split the object URL.
+         * Default is `/v1/`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder split(@Nullable Output<String> split) {
             $.split = split;
             return this;
         }
 
+        /**
+         * @param split Split is the string on which to split the object URL.
+         * Default is `/v1/`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder split(String split) {
             return split(Output.of(split));
         }

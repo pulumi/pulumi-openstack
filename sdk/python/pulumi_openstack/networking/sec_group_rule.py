@@ -41,7 +41,11 @@ class SecGroupRuleArgs:
         :param pulumi.Input[int] port_range_min: The lower part of the allowed port range, valid
                integer value needs to be between 1 and 65535. Changing this creates a new
                security group rule.
-        :param pulumi.Input[str] protocol: The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+        :param pulumi.Input[str] protocol: The layer 4 protocol type, valid values are
+               following. Changing this creates a new security group rule. This is required
+               if you want to specify a port range.
+               * empty string or omitted (any protocol)
+               * integer value between 0 and 255 (valid IP protocol number)
                * __tcp__
                * __udp__
                * __icmp__
@@ -63,6 +67,7 @@ class SecGroupRuleArgs:
                * __sctp__
                * __udplite__
                * __vrrp__
+               * __ipip__
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -180,7 +185,11 @@ class SecGroupRuleArgs:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+        The layer 4 protocol type, valid values are
+        following. Changing this creates a new security group rule. This is required
+        if you want to specify a port range.
+        * empty string or omitted (any protocol)
+        * integer value between 0 and 255 (valid IP protocol number)
         * __tcp__
         * __udp__
         * __icmp__
@@ -202,6 +211,7 @@ class SecGroupRuleArgs:
         * __sctp__
         * __udplite__
         * __vrrp__
+        * __ipip__
         """
         return pulumi.get(self, "protocol")
 
@@ -293,7 +303,11 @@ class _SecGroupRuleState:
         :param pulumi.Input[int] port_range_min: The lower part of the allowed port range, valid
                integer value needs to be between 1 and 65535. Changing this creates a new
                security group rule.
-        :param pulumi.Input[str] protocol: The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+        :param pulumi.Input[str] protocol: The layer 4 protocol type, valid values are
+               following. Changing this creates a new security group rule. This is required
+               if you want to specify a port range.
+               * empty string or omitted (any protocol)
+               * integer value between 0 and 255 (valid IP protocol number)
                * __tcp__
                * __udp__
                * __icmp__
@@ -315,6 +329,7 @@ class _SecGroupRuleState:
                * __sctp__
                * __udplite__
                * __vrrp__
+               * __ipip__
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -424,7 +439,11 @@ class _SecGroupRuleState:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+        The layer 4 protocol type, valid values are
+        following. Changing this creates a new security group rule. This is required
+        if you want to specify a port range.
+        * empty string or omitted (any protocol)
+        * integer value between 0 and 255 (valid IP protocol number)
         * __tcp__
         * __udp__
         * __icmp__
@@ -446,6 +465,7 @@ class _SecGroupRuleState:
         * __sctp__
         * __udplite__
         * __vrrp__
+        * __ipip__
         """
         return pulumi.get(self, "protocol")
 
@@ -589,7 +609,11 @@ class SecGroupRule(pulumi.CustomResource):
         :param pulumi.Input[int] port_range_min: The lower part of the allowed port range, valid
                integer value needs to be between 1 and 65535. Changing this creates a new
                security group rule.
-        :param pulumi.Input[str] protocol: The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+        :param pulumi.Input[str] protocol: The layer 4 protocol type, valid values are
+               following. Changing this creates a new security group rule. This is required
+               if you want to specify a port range.
+               * empty string or omitted (any protocol)
+               * integer value between 0 and 255 (valid IP protocol number)
                * __tcp__
                * __udp__
                * __icmp__
@@ -611,6 +635,7 @@ class SecGroupRule(pulumi.CustomResource):
                * __sctp__
                * __udplite__
                * __vrrp__
+               * __ipip__
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -759,7 +784,11 @@ class SecGroupRule(pulumi.CustomResource):
         :param pulumi.Input[int] port_range_min: The lower part of the allowed port range, valid
                integer value needs to be between 1 and 65535. Changing this creates a new
                security group rule.
-        :param pulumi.Input[str] protocol: The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+        :param pulumi.Input[str] protocol: The layer 4 protocol type, valid values are
+               following. Changing this creates a new security group rule. This is required
+               if you want to specify a port range.
+               * empty string or omitted (any protocol)
+               * integer value between 0 and 255 (valid IP protocol number)
                * __tcp__
                * __udp__
                * __icmp__
@@ -781,6 +810,7 @@ class SecGroupRule(pulumi.CustomResource):
                * __sctp__
                * __udplite__
                * __vrrp__
+               * __ipip__
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -842,7 +872,7 @@ class SecGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portRangeMax")
-    def port_range_max(self) -> pulumi.Output[int]:
+    def port_range_max(self) -> pulumi.Output[Optional[int]]:
         """
         The higher part of the allowed port range, valid
         integer value needs to be between 1 and 65535. Changing this creates a new
@@ -852,7 +882,7 @@ class SecGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="portRangeMin")
-    def port_range_min(self) -> pulumi.Output[int]:
+    def port_range_min(self) -> pulumi.Output[Optional[int]]:
         """
         The lower part of the allowed port range, valid
         integer value needs to be between 1 and 65535. Changing this creates a new
@@ -862,9 +892,13 @@ class SecGroupRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def protocol(self) -> pulumi.Output[str]:
+    def protocol(self) -> pulumi.Output[Optional[str]]:
         """
-        The layer 4 protocol type, valid values are following. Changing this creates a new security group rule. This is required if you want to specify a port range.
+        The layer 4 protocol type, valid values are
+        following. Changing this creates a new security group rule. This is required
+        if you want to specify a port range.
+        * empty string or omitted (any protocol)
+        * integer value between 0 and 255 (valid IP protocol number)
         * __tcp__
         * __udp__
         * __icmp__
@@ -886,6 +920,7 @@ class SecGroupRule(pulumi.CustomResource):
         * __sctp__
         * __udplite__
         * __vrrp__
+        * __ipip__
         """
         return pulumi.get(self, "protocol")
 

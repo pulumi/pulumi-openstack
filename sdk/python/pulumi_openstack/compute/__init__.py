@@ -8,8 +8,6 @@ import typing
 from .aggregate_v2 import *
 from .flavor import *
 from .flavor_access import *
-from .floating_ip import *
-from .floating_ip_associate import *
 from .get_aggregate_v2 import *
 from .get_availability_zones import *
 from .get_flavor import *
@@ -22,7 +20,6 @@ from .instance import *
 from .interface_attach import *
 from .keypair import *
 from .quota_set_v2 import *
-from .sec_group import *
 from .server_group import *
 from .volume_attach import *
 from ._inputs import *

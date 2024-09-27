@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,19 +16,16 @@ import (
 //
 // ## Example Usage
 //
-// ### Simple secret
+// ### Simple container
 //
-// The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
+// A container with the TLS certificates.
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack"
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/keymanager"
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/loadbalancer"
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/networking"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/keymanager"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -81,7 +78,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tls1, err := keymanager.NewContainerV1(ctx, "tls_1", &keymanager.ContainerV1Args{
+//			_, err = keymanager.NewContainerV1(ctx, "tls_1", &keymanager.ContainerV1Args{
 //				Name: pulumi.String("tls"),
 //				Type: pulumi.String("certificate"),
 //				SecretRefs: keymanager.ContainerV1SecretRefArray{
@@ -102,29 +99,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			subnet1, err := networking.LookupSubnet(ctx, &networking.LookupSubnetArgs{
-//				Name: pulumi.StringRef("my-subnet"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			lb1, err := openstack.NewLbLoadbalancerV2(ctx, "lb_1", &openstack.LbLoadbalancerV2Args{
-//				Name:        pulumi.String("loadbalancer"),
-//				VipSubnetId: pulumi.String(subnet1.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = loadbalancer.NewListener(ctx, "listener_1", &loadbalancer.ListenerArgs{
-//				Name:                   pulumi.String("https"),
-//				Protocol:               pulumi.String("TERMINATED_HTTPS"),
-//				ProtocolPort:           pulumi.Int(443),
-//				LoadbalancerId:         lb1.ID(),
-//				DefaultTlsContainerRef: tls1.ContainerRef,
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			return nil
 //		})
 //	}
@@ -140,7 +114,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/keymanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

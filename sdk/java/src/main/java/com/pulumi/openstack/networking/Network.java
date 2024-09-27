@@ -36,9 +36,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.openstack.networking.NetworkArgs;
  * import com.pulumi.openstack.networking.Subnet;
  * import com.pulumi.openstack.networking.SubnetArgs;
- * import com.pulumi.openstack.compute.SecGroup;
- * import com.pulumi.openstack.compute.SecGroupArgs;
- * import com.pulumi.openstack.compute.inputs.SecGroupRuleArgs;
+ * import com.pulumi.openstack.networking.SecGroup;
+ * import com.pulumi.openstack.networking.SecGroupArgs;
+ * import com.pulumi.openstack.networking.SecGroupRule;
+ * import com.pulumi.openstack.networking.SecGroupRuleArgs;
  * import com.pulumi.openstack.networking.Port;
  * import com.pulumi.openstack.networking.PortArgs;
  * import com.pulumi.openstack.networking.inputs.PortFixedIpArgs;
@@ -73,12 +74,16 @@ import javax.annotation.Nullable;
  *         var secgroup1 = new SecGroup("secgroup1", SecGroupArgs.builder()
  *             .name("secgroup_1")
  *             .description("a security group")
- *             .rules(SecGroupRuleArgs.builder()
- *                 .fromPort(22)
- *                 .toPort(22)
- *                 .ipProtocol("tcp")
- *                 .cidr("0.0.0.0/0")
- *                 .build())
+ *             .build());
+ * 
+ *         var secgroupRule1 = new SecGroupRule("secgroupRule1", SecGroupRuleArgs.builder()
+ *             .direction("ingress")
+ *             .ethertype("IPv4")
+ *             .protocol("tcp")
+ *             .portRangeMin(22)
+ *             .portRangeMax(22)
+ *             .remoteIpPrefix("0.0.0.0/0")
+ *             .securityGroupId(secgroup1.id())
  *             .build());
  * 
  *         var port1 = new Port("port1", PortArgs.builder()

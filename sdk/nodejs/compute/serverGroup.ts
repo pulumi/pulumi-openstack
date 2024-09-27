@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * const test_sg = new openstack.compute.ServerGroup("test-sg", {
  *     name: "my-sg",
- *     policies: ["anti-affinity"],
+ *     policies: "anti-affinity",
  * });
  * const test_instance = new openstack.compute.Instance("test-instance", {
  *     name: "my-instance",
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *
  * const test_sg = new openstack.compute.ServerGroup("test-sg", {
  *     name: "my-sg",
- *     policies: ["anti-affinity"],
+ *     policies: "anti-affinity",
  *     rules: {
  *         maxServerPerHost: 3,
  *     },
@@ -128,7 +128,7 @@ export class ServerGroup extends pulumi.CustomResource {
      * the server group. See the Policies section for more information. Changing this
      * creates a new server group.
      */
-    public readonly policies!: pulumi.Output<string[] | undefined>;
+    public readonly policies!: pulumi.Output<string | undefined>;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used. Changing
@@ -196,7 +196,7 @@ export interface ServerGroupState {
      * the server group. See the Policies section for more information. Changing this
      * creates a new server group.
      */
-    policies?: pulumi.Input<pulumi.Input<string>[]>;
+    policies?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used. Changing
@@ -228,7 +228,7 @@ export interface ServerGroupArgs {
      * the server group. See the Policies section for more information. Changing this
      * creates a new server group.
      */
-    policies?: pulumi.Input<pulumi.Input<string>[]>;
+    policies?: pulumi.Input<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used. Changing

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AccountV1Args, AccountV1State } from "./accountV1";
+export type AccountV1 = import("./accountV1").AccountV1;
+export const AccountV1: typeof import("./accountV1").AccountV1 = null as any;
+utilities.lazyLoad(exports, ["AccountV1"], () => require("./accountV1"));
+
 export { ContainerArgs, ContainerState } from "./container";
 export type Container = import("./container").Container;
 export const Container: typeof import("./container").Container = null as any;
@@ -25,6 +30,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "openstack:objectstorage/accountV1:AccountV1":
+                return new AccountV1(name, <any>undefined, { urn })
             case "openstack:objectstorage/container:Container":
                 return new Container(name, <any>undefined, { urn })
             case "openstack:objectstorage/containerObject:ContainerObject":
@@ -36,6 +43,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("openstack", "objectstorage/accountV1", _module)
 pulumi.runtime.registerResourceModule("openstack", "objectstorage/container", _module)
 pulumi.runtime.registerResourceModule("openstack", "objectstorage/containerObject", _module)
 pulumi.runtime.registerResourceModule("openstack", "objectstorage/tempUrl", _module)

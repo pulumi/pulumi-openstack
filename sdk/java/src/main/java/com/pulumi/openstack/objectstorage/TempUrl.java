@@ -97,6 +97,38 @@ public class TempUrl extends com.pulumi.resources.CustomResource {
         return this.container;
     }
     /**
+     * The digest to use when generating the tempurl.
+     * Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+     * 
+     */
+    @Export(name="digest", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> digest;
+
+    /**
+     * @return The digest to use when generating the tempurl.
+     * Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+     * 
+     */
+    public Output<Optional<String>> digest() {
+        return Codegen.optional(this.digest);
+    }
+    /**
+     * The key to use when generating the tempurl. If not
+     * provided, the key will be read from the container or account metadata.
+     * 
+     */
+    @Export(name="key", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> key;
+
+    /**
+     * @return The key to use when generating the tempurl. If not
+     * provided, the key will be read from the container or account metadata.
+     * 
+     */
+    public Output<Optional<String>> key() {
+        return Codegen.optional(this.key);
+    }
+    /**
      * The method allowed when accessing this URL.
      * Valid values are `GET`, and `POST`. Default is `GET`.
      * 
@@ -158,9 +190,19 @@ public class TempUrl extends com.pulumi.resources.CustomResource {
     public Output<String> region() {
         return this.region;
     }
+    /**
+     * Split is the string on which to split the object URL.
+     * Default is `/v1/`.
+     * 
+     */
     @Export(name="split", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> split;
 
+    /**
+     * @return Split is the string on which to split the object URL.
+     * Default is `/v1/`.
+     * 
+     */
     public Output<Optional<String>> split() {
         return Codegen.optional(this.split);
     }
@@ -235,6 +277,7 @@ public class TempUrl extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
+                "key",
                 "url"
             ))
             .build();

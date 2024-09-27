@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/internal"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,10 +27,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Flavor{}
 	case "openstack:compute/flavorAccess:FlavorAccess":
 		r = &FlavorAccess{}
-	case "openstack:compute/floatingIp:FloatingIp":
-		r = &FloatingIp{}
-	case "openstack:compute/floatingIpAssociate:FloatingIpAssociate":
-		r = &FloatingIpAssociate{}
 	case "openstack:compute/instance:Instance":
 		r = &Instance{}
 	case "openstack:compute/interfaceAttach:InterfaceAttach":
@@ -39,8 +35,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Keypair{}
 	case "openstack:compute/quotaSetV2:QuotaSetV2":
 		r = &QuotaSetV2{}
-	case "openstack:compute/secGroup:SecGroup":
-		r = &SecGroup{}
 	case "openstack:compute/serverGroup:ServerGroup":
 		r = &ServerGroup{}
 	case "openstack:compute/volumeAttach:VolumeAttach":
@@ -75,16 +69,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"openstack",
-		"compute/floatingIp",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"openstack",
-		"compute/floatingIpAssociate",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"openstack",
 		"compute/instance",
 		&module{version},
 	)
@@ -101,11 +85,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"compute/quotaSetV2",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"openstack",
-		"compute/secGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

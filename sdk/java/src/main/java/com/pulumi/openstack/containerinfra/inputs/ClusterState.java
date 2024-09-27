@@ -270,6 +270,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates whether to create a load balancer
+     * for the master nodes. Changing this creates a new cluster.
+     * 
+     */
+    @Import(name="masterLbEnabled")
+    private @Nullable Output<Boolean> masterLbEnabled;
+
+    /**
+     * @return Indicates whether to create a load balancer
+     * for the master nodes. Changing this creates a new cluster.
+     * 
+     */
+    public Optional<Output<Boolean>> masterLbEnabled() {
+        return Optional.ofNullable(this.masterLbEnabled);
+    }
+
+    /**
      * Indicates whether the provided labels should be
      * merged with cluster template labels. Changing this creates a new cluster.
      * 
@@ -419,6 +436,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.masterAddresses = $.masterAddresses;
         this.masterCount = $.masterCount;
         this.masterFlavor = $.masterFlavor;
+        this.masterLbEnabled = $.masterLbEnabled;
         this.mergeLabels = $.mergeLabels;
         this.name = $.name;
         this.nodeAddresses = $.nodeAddresses;
@@ -784,6 +802,29 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder masterFlavor(String masterFlavor) {
             return masterFlavor(Output.of(masterFlavor));
+        }
+
+        /**
+         * @param masterLbEnabled Indicates whether to create a load balancer
+         * for the master nodes. Changing this creates a new cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder masterLbEnabled(@Nullable Output<Boolean> masterLbEnabled) {
+            $.masterLbEnabled = masterLbEnabled;
+            return this;
+        }
+
+        /**
+         * @param masterLbEnabled Indicates whether to create a load balancer
+         * for the master nodes. Changing this creates a new cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder masterLbEnabled(Boolean masterLbEnabled) {
+            return masterLbEnabled(Output.of(masterLbEnabled));
         }
 
         /**
