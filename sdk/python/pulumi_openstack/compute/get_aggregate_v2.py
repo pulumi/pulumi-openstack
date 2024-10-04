@@ -41,9 +41,6 @@ class GetAggregateV2Result:
     @property
     @pulumi.getter
     def hosts(self) -> Sequence[str]:
-        """
-        List of Hypervisors contained in the Host Aggregate
-        """
         return pulumi.get(self, "hosts")
 
     @property
@@ -57,25 +54,16 @@ class GetAggregateV2Result:
     @property
     @pulumi.getter
     def metadata(self) -> Mapping[str, str]:
-        """
-        Metadata of the Host Aggregate
-        """
         return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
-        """
-        Availability zone of the Host Aggregate
-        """
         return pulumi.get(self, "zone")
 
 
@@ -97,22 +85,7 @@ def get_aggregate_v2(hosts: Optional[Sequence[str]] = None,
                      name: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAggregateV2Result:
     """
-    Use this data source to get information about host aggregates
-    by name.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    test = openstack.compute.get_aggregate_v2(name="test")
-    ```
-
-
-    :param Sequence[str] hosts: List of Hypervisors contained in the Host Aggregate
-    :param Mapping[str, str] metadata: Metadata of the Host Aggregate
-    :param str name: The name of the host aggregate
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['hosts'] = hosts
@@ -135,21 +108,6 @@ def get_aggregate_v2_output(hosts: Optional[pulumi.Input[Optional[Sequence[str]]
                             name: Optional[pulumi.Input[str]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAggregateV2Result]:
     """
-    Use this data source to get information about host aggregates
-    by name.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    test = openstack.compute.get_aggregate_v2(name="test")
-    ```
-
-
-    :param Sequence[str] hosts: List of Hypervisors contained in the Host Aggregate
-    :param Mapping[str, str] metadata: Metadata of the Host Aggregate
-    :param str name: The name of the host aggregate
+    Use this data source to access information about an existing resource.
     """
     ...

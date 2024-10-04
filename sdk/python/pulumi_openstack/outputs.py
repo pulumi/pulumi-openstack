@@ -39,17 +39,6 @@ class BgpvpnPortAssociateV2Route(dict):
                  bgpvpn_id: Optional[str] = None,
                  local_pref: Optional[int] = None,
                  prefix: Optional[str] = None):
-        """
-        :param str type: Can be `prefix` or `bgpvpn`. For the `prefix` type, the
-               CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
-               `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpn_id` key.
-        :param str bgpvpn_id: The ID of the BGP VPN to be advertised. Required
-               if `type` is `bgpvpn`. Conflicts with `prefix`.
-        :param int local_pref: The BGP LOCAL\\_PREF value of the routes that will
-               be advertised.
-        :param str prefix: The CIDR prefix (v4 or v6) to be advertised. Required
-               if `type` is `prefix`. Conflicts with `bgpvpn_id`.
-        """
         pulumi.set(__self__, "type", type)
         if bgpvpn_id is not None:
             pulumi.set(__self__, "bgpvpn_id", bgpvpn_id)
@@ -61,38 +50,21 @@ class BgpvpnPortAssociateV2Route(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        Can be `prefix` or `bgpvpn`. For the `prefix` type, the
-        CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
-        `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpn_id` key.
-        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="bgpvpnId")
     def bgpvpn_id(self) -> Optional[str]:
-        """
-        The ID of the BGP VPN to be advertised. Required
-        if `type` is `bgpvpn`. Conflicts with `prefix`.
-        """
         return pulumi.get(self, "bgpvpn_id")
 
     @property
     @pulumi.getter(name="localPref")
     def local_pref(self) -> Optional[int]:
-        """
-        The BGP LOCAL\\_PREF value of the routes that will
-        be advertised.
-        """
         return pulumi.get(self, "local_pref")
 
     @property
     @pulumi.getter
     def prefix(self) -> Optional[str]:
-        """
-        The CIDR prefix (v4 or v6) to be advertised. Required
-        if `type` is `prefix`. Conflicts with `bgpvpn_id`.
-        """
         return pulumi.get(self, "prefix")
 
 

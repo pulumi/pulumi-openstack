@@ -21,16 +21,6 @@ class QosBandwidthLimitRuleArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a QosBandwidthLimitRule resource.
-        :param pulumi.Input[int] max_kbps: The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
-               maximum kilobits per second of the existing QoS bandwidth limit rule.
-        :param pulumi.Input[str] qos_policy_id: The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
-        :param pulumi.Input[str] direction: The direction of traffic. Defaults to "egress". Changing this updates the direction of the
-               existing QoS bandwidth limit rule.
-        :param pulumi.Input[int] max_burst_kbps: The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
-               maximum burst size in kilobits of the existing QoS bandwidth limit rule.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
         """
         pulumi.set(__self__, "max_kbps", max_kbps)
         pulumi.set(__self__, "qos_policy_id", qos_policy_id)
@@ -44,10 +34,6 @@ class QosBandwidthLimitRuleArgs:
     @property
     @pulumi.getter(name="maxKbps")
     def max_kbps(self) -> pulumi.Input[int]:
-        """
-        The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
-        maximum kilobits per second of the existing QoS bandwidth limit rule.
-        """
         return pulumi.get(self, "max_kbps")
 
     @max_kbps.setter
@@ -57,9 +43,6 @@ class QosBandwidthLimitRuleArgs:
     @property
     @pulumi.getter(name="qosPolicyId")
     def qos_policy_id(self) -> pulumi.Input[str]:
-        """
-        The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
-        """
         return pulumi.get(self, "qos_policy_id")
 
     @qos_policy_id.setter
@@ -69,10 +52,6 @@ class QosBandwidthLimitRuleArgs:
     @property
     @pulumi.getter
     def direction(self) -> Optional[pulumi.Input[str]]:
-        """
-        The direction of traffic. Defaults to "egress". Changing this updates the direction of the
-        existing QoS bandwidth limit rule.
-        """
         return pulumi.get(self, "direction")
 
     @direction.setter
@@ -82,10 +61,6 @@ class QosBandwidthLimitRuleArgs:
     @property
     @pulumi.getter(name="maxBurstKbps")
     def max_burst_kbps(self) -> Optional[pulumi.Input[int]]:
-        """
-        The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
-        maximum burst size in kilobits of the existing QoS bandwidth limit rule.
-        """
         return pulumi.get(self, "max_burst_kbps")
 
     @max_burst_kbps.setter
@@ -95,11 +70,6 @@ class QosBandwidthLimitRuleArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -117,16 +87,6 @@ class _QosBandwidthLimitRuleState:
                  region: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering QosBandwidthLimitRule resources.
-        :param pulumi.Input[str] direction: The direction of traffic. Defaults to "egress". Changing this updates the direction of the
-               existing QoS bandwidth limit rule.
-        :param pulumi.Input[int] max_burst_kbps: The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
-               maximum burst size in kilobits of the existing QoS bandwidth limit rule.
-        :param pulumi.Input[int] max_kbps: The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
-               maximum kilobits per second of the existing QoS bandwidth limit rule.
-        :param pulumi.Input[str] qos_policy_id: The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
         """
         if direction is not None:
             pulumi.set(__self__, "direction", direction)
@@ -142,10 +102,6 @@ class _QosBandwidthLimitRuleState:
     @property
     @pulumi.getter
     def direction(self) -> Optional[pulumi.Input[str]]:
-        """
-        The direction of traffic. Defaults to "egress". Changing this updates the direction of the
-        existing QoS bandwidth limit rule.
-        """
         return pulumi.get(self, "direction")
 
     @direction.setter
@@ -155,10 +111,6 @@ class _QosBandwidthLimitRuleState:
     @property
     @pulumi.getter(name="maxBurstKbps")
     def max_burst_kbps(self) -> Optional[pulumi.Input[int]]:
-        """
-        The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
-        maximum burst size in kilobits of the existing QoS bandwidth limit rule.
-        """
         return pulumi.get(self, "max_burst_kbps")
 
     @max_burst_kbps.setter
@@ -168,10 +120,6 @@ class _QosBandwidthLimitRuleState:
     @property
     @pulumi.getter(name="maxKbps")
     def max_kbps(self) -> Optional[pulumi.Input[int]]:
-        """
-        The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
-        maximum kilobits per second of the existing QoS bandwidth limit rule.
-        """
         return pulumi.get(self, "max_kbps")
 
     @max_kbps.setter
@@ -181,9 +129,6 @@ class _QosBandwidthLimitRuleState:
     @property
     @pulumi.getter(name="qosPolicyId")
     def qos_policy_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
-        """
         return pulumi.get(self, "qos_policy_id")
 
     @qos_policy_id.setter
@@ -193,11 +138,6 @@ class _QosBandwidthLimitRuleState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -217,46 +157,9 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a V2 Neutron QoS bandwidth limit rule resource within OpenStack.
-
-        ## Example Usage
-
-        ### Create a QoS Policy with some bandwidth limit rule
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        qos_policy1 = openstack.networking.QosPolicy("qos_policy_1",
-            name="qos_policy_1",
-            description="bw_limit")
-        bw_limit_rule1 = openstack.networking.QosBandwidthLimitRule("bw_limit_rule_1",
-            qos_policy_id=qos_policy1.id,
-            max_kbps=3000,
-            max_burst_kbps=300,
-            direction="egress")
-        ```
-
-        ## Import
-
-        QoS bandwidth limit rules can be imported using the `qos_policy_id/bandwidth_limit_rule` format, e.g.
-
-        ```sh
-        $ pulumi import openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule bw_limit_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
-        ```
-
+        Create a QosBandwidthLimitRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] direction: The direction of traffic. Defaults to "egress". Changing this updates the direction of the
-               existing QoS bandwidth limit rule.
-        :param pulumi.Input[int] max_burst_kbps: The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
-               maximum burst size in kilobits of the existing QoS bandwidth limit rule.
-        :param pulumi.Input[int] max_kbps: The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
-               maximum kilobits per second of the existing QoS bandwidth limit rule.
-        :param pulumi.Input[str] qos_policy_id: The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
         """
         ...
     @overload
@@ -265,34 +168,7 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
                  args: QosBandwidthLimitRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V2 Neutron QoS bandwidth limit rule resource within OpenStack.
-
-        ## Example Usage
-
-        ### Create a QoS Policy with some bandwidth limit rule
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        qos_policy1 = openstack.networking.QosPolicy("qos_policy_1",
-            name="qos_policy_1",
-            description="bw_limit")
-        bw_limit_rule1 = openstack.networking.QosBandwidthLimitRule("bw_limit_rule_1",
-            qos_policy_id=qos_policy1.id,
-            max_kbps=3000,
-            max_burst_kbps=300,
-            direction="egress")
-        ```
-
-        ## Import
-
-        QoS bandwidth limit rules can be imported using the `qos_policy_id/bandwidth_limit_rule` format, e.g.
-
-        ```sh
-        $ pulumi import openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule bw_limit_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
-        ```
-
+        Create a QosBandwidthLimitRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param QosBandwidthLimitRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -353,16 +229,6 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] direction: The direction of traffic. Defaults to "egress". Changing this updates the direction of the
-               existing QoS bandwidth limit rule.
-        :param pulumi.Input[int] max_burst_kbps: The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
-               maximum burst size in kilobits of the existing QoS bandwidth limit rule.
-        :param pulumi.Input[int] max_kbps: The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
-               maximum kilobits per second of the existing QoS bandwidth limit rule.
-        :param pulumi.Input[str] qos_policy_id: The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -378,45 +244,25 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
     @property
     @pulumi.getter
     def direction(self) -> pulumi.Output[Optional[str]]:
-        """
-        The direction of traffic. Defaults to "egress". Changing this updates the direction of the
-        existing QoS bandwidth limit rule.
-        """
         return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter(name="maxBurstKbps")
     def max_burst_kbps(self) -> pulumi.Output[Optional[int]]:
-        """
-        The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
-        maximum burst size in kilobits of the existing QoS bandwidth limit rule.
-        """
         return pulumi.get(self, "max_burst_kbps")
 
     @property
     @pulumi.getter(name="maxKbps")
     def max_kbps(self) -> pulumi.Output[int]:
-        """
-        The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
-        maximum kilobits per second of the existing QoS bandwidth limit rule.
-        """
         return pulumi.get(self, "max_kbps")
 
     @property
     @pulumi.getter(name="qosPolicyId")
     def qos_policy_id(self) -> pulumi.Output[str]:
-        """
-        The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
-        """
         return pulumi.get(self, "qos_policy_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
-        """
         return pulumi.get(self, "region")
 

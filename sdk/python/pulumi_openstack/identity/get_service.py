@@ -44,17 +44,11 @@ class GetServiceResult:
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        The service description.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -68,25 +62,16 @@ class GetServiceResult:
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "type")
 
 
@@ -110,25 +95,7 @@ def get_service(enabled: Optional[bool] = None,
                 type: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
-    Use this data source to get the ID of an OpenStack service.
-
-    > **Note:** This usually requires admin privileges.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    service1 = openstack.identity.get_service(name="keystone")
-    ```
-
-
-    :param bool enabled: The service status.
-    :param str name: The service name.
-    :param str region: The region in which to obtain the V3 Keystone client.
-           If omitted, the `region` argument of the provider is used.
-    :param str type: The service type.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enabled'] = enabled
@@ -154,24 +121,6 @@ def get_service_output(enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                        type: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
     """
-    Use this data source to get the ID of an OpenStack service.
-
-    > **Note:** This usually requires admin privileges.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    service1 = openstack.identity.get_service(name="keystone")
-    ```
-
-
-    :param bool enabled: The service status.
-    :param str name: The service name.
-    :param str region: The region in which to obtain the V3 Keystone client.
-           If omitted, the `region` argument of the provider is used.
-    :param str type: The service type.
+    Use this data source to access information about an existing resource.
     """
     ...

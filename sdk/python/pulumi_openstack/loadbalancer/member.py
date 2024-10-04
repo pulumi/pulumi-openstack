@@ -29,35 +29,6 @@ class MemberArgs:
                  weight: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Member resource.
-        :param pulumi.Input[str] address: The IP address of the member to receive traffic from
-               the load balancer. Changing this creates a new member.
-        :param pulumi.Input[str] pool_id: The id of the pool that this member will be assigned
-               to. Changing this creates a new member.
-        :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
-               Changing this creates a new member.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the member.
-               A valid value is true (UP) or false (DOWN). Defaults to true.
-        :param pulumi.Input[bool] backup: Boolean that indicates whether that member works as a backup or not. Available 
-               only for Octavia >= 2.1.
-        :param pulumi.Input[str] monitor_address: An alternate IP address used for health monitoring a backend member.
-               Available only for Octavia
-        :param pulumi.Input[int] monitor_port: An alternate protocol port used for health monitoring a backend member.
-               Available only for Octavia
-        :param pulumi.Input[str] name: Human-readable name for the member.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a member. If omitted, the `region`
-               argument of the provider is used. Changing this creates a new member.
-        :param pulumi.Input[str] subnet_id: The subnet in which to access the member. Changing
-               this creates a new member.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the member.
-               Available only for Octavia >= 2.5.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the member.  Only administrative users can specify a tenant UUID
-               other than their own. Changing this creates a new member.
-        :param pulumi.Input[int] weight: A positive integer value that indicates the relative
-               portion of traffic that this member should receive from the pool. For
-               example, a member with a weight of 10 receives five times as much traffic
-               as a member with a weight of 2. Defaults to 1.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "pool_id", pool_id)
@@ -86,10 +57,6 @@ class MemberArgs:
     @property
     @pulumi.getter
     def address(self) -> pulumi.Input[str]:
-        """
-        The IP address of the member to receive traffic from
-        the load balancer. Changing this creates a new member.
-        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -99,10 +66,6 @@ class MemberArgs:
     @property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Input[str]:
-        """
-        The id of the pool that this member will be assigned
-        to. Changing this creates a new member.
-        """
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
@@ -112,10 +75,6 @@ class MemberArgs:
     @property
     @pulumi.getter(name="protocolPort")
     def protocol_port(self) -> pulumi.Input[int]:
-        """
-        The port on which to listen for client traffic.
-        Changing this creates a new member.
-        """
         return pulumi.get(self, "protocol_port")
 
     @protocol_port.setter
@@ -125,10 +84,6 @@ class MemberArgs:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The administrative state of the member.
-        A valid value is true (UP) or false (DOWN). Defaults to true.
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -138,10 +93,6 @@ class MemberArgs:
     @property
     @pulumi.getter
     def backup(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Boolean that indicates whether that member works as a backup or not. Available 
-        only for Octavia >= 2.1.
-        """
         return pulumi.get(self, "backup")
 
     @backup.setter
@@ -151,10 +102,6 @@ class MemberArgs:
     @property
     @pulumi.getter(name="monitorAddress")
     def monitor_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        An alternate IP address used for health monitoring a backend member.
-        Available only for Octavia
-        """
         return pulumi.get(self, "monitor_address")
 
     @monitor_address.setter
@@ -164,10 +111,6 @@ class MemberArgs:
     @property
     @pulumi.getter(name="monitorPort")
     def monitor_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        An alternate protocol port used for health monitoring a backend member.
-        Available only for Octavia
-        """
         return pulumi.get(self, "monitor_port")
 
     @monitor_port.setter
@@ -177,9 +120,6 @@ class MemberArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable name for the member.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -189,11 +129,6 @@ class MemberArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a member. If omitted, the `region`
-        argument of the provider is used. Changing this creates a new member.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -203,10 +138,6 @@ class MemberArgs:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The subnet in which to access the member. Changing
-        this creates a new member.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -216,10 +147,6 @@ class MemberArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of simple strings assigned to the member.
-        Available only for Octavia >= 2.5.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -229,11 +156,6 @@ class MemberArgs:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required for admins. The UUID of the tenant who owns
-        the member.  Only administrative users can specify a tenant UUID
-        other than their own. Changing this creates a new member.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -243,12 +165,6 @@ class MemberArgs:
     @property
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[int]]:
-        """
-        A positive integer value that indicates the relative
-        portion of traffic that this member should receive from the pool. For
-        example, a member with a weight of 10 receives five times as much traffic
-        as a member with a weight of 2. Defaults to 1.
-        """
         return pulumi.get(self, "weight")
 
     @weight.setter
@@ -274,35 +190,6 @@ class _MemberState:
                  weight: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Member resources.
-        :param pulumi.Input[str] address: The IP address of the member to receive traffic from
-               the load balancer. Changing this creates a new member.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the member.
-               A valid value is true (UP) or false (DOWN). Defaults to true.
-        :param pulumi.Input[bool] backup: Boolean that indicates whether that member works as a backup or not. Available 
-               only for Octavia >= 2.1.
-        :param pulumi.Input[str] monitor_address: An alternate IP address used for health monitoring a backend member.
-               Available only for Octavia
-        :param pulumi.Input[int] monitor_port: An alternate protocol port used for health monitoring a backend member.
-               Available only for Octavia
-        :param pulumi.Input[str] name: Human-readable name for the member.
-        :param pulumi.Input[str] pool_id: The id of the pool that this member will be assigned
-               to. Changing this creates a new member.
-        :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
-               Changing this creates a new member.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a member. If omitted, the `region`
-               argument of the provider is used. Changing this creates a new member.
-        :param pulumi.Input[str] subnet_id: The subnet in which to access the member. Changing
-               this creates a new member.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the member.
-               Available only for Octavia >= 2.5.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the member.  Only administrative users can specify a tenant UUID
-               other than their own. Changing this creates a new member.
-        :param pulumi.Input[int] weight: A positive integer value that indicates the relative
-               portion of traffic that this member should receive from the pool. For
-               example, a member with a weight of 10 receives five times as much traffic
-               as a member with a weight of 2. Defaults to 1.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -334,10 +221,6 @@ class _MemberState:
     @property
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
-        """
-        The IP address of the member to receive traffic from
-        the load balancer. Changing this creates a new member.
-        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -347,10 +230,6 @@ class _MemberState:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The administrative state of the member.
-        A valid value is true (UP) or false (DOWN). Defaults to true.
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -360,10 +239,6 @@ class _MemberState:
     @property
     @pulumi.getter
     def backup(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Boolean that indicates whether that member works as a backup or not. Available 
-        only for Octavia >= 2.1.
-        """
         return pulumi.get(self, "backup")
 
     @backup.setter
@@ -373,10 +248,6 @@ class _MemberState:
     @property
     @pulumi.getter(name="monitorAddress")
     def monitor_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        An alternate IP address used for health monitoring a backend member.
-        Available only for Octavia
-        """
         return pulumi.get(self, "monitor_address")
 
     @monitor_address.setter
@@ -386,10 +257,6 @@ class _MemberState:
     @property
     @pulumi.getter(name="monitorPort")
     def monitor_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        An alternate protocol port used for health monitoring a backend member.
-        Available only for Octavia
-        """
         return pulumi.get(self, "monitor_port")
 
     @monitor_port.setter
@@ -399,9 +266,6 @@ class _MemberState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable name for the member.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -411,10 +275,6 @@ class _MemberState:
     @property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The id of the pool that this member will be assigned
-        to. Changing this creates a new member.
-        """
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
@@ -424,10 +284,6 @@ class _MemberState:
     @property
     @pulumi.getter(name="protocolPort")
     def protocol_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        The port on which to listen for client traffic.
-        Changing this creates a new member.
-        """
         return pulumi.get(self, "protocol_port")
 
     @protocol_port.setter
@@ -437,11 +293,6 @@ class _MemberState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a member. If omitted, the `region`
-        argument of the provider is used. Changing this creates a new member.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -451,10 +302,6 @@ class _MemberState:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The subnet in which to access the member. Changing
-        this creates a new member.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -464,10 +311,6 @@ class _MemberState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of simple strings assigned to the member.
-        Available only for Octavia >= 2.5.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -477,11 +320,6 @@ class _MemberState:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required for admins. The UUID of the tenant who owns
-        the member.  Only administrative users can specify a tenant UUID
-        other than their own. Changing this creates a new member.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -491,12 +329,6 @@ class _MemberState:
     @property
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[int]]:
-        """
-        A positive integer value that indicates the relative
-        portion of traffic that this member should receive from the pool. For
-        example, a member with a weight of 10 receives five times as much traffic
-        as a member with a weight of 2. Defaults to 1.
-        """
         return pulumi.get(self, "weight")
 
     @weight.setter
@@ -524,60 +356,9 @@ class Member(pulumi.CustomResource):
                  weight: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Manages a V2 member resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        member1 = openstack.loadbalancer.Member("member_1",
-            pool_id="935685fb-a896-40f9-9ff4-ae531a3a00fe",
-            address="192.168.199.23",
-            protocol_port=8080)
-        ```
-
-        ## Import
-
-        Load Balancer Pool Member can be imported using the Pool ID and Member ID
-        separated by a slash, e.g.:
-
-        ```sh
-        $ pulumi import openstack:loadbalancer/member:Member member_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5/9563b79c-8460-47da-8a95-2711b746510f
-        ```
-
+        Create a Member resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The IP address of the member to receive traffic from
-               the load balancer. Changing this creates a new member.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the member.
-               A valid value is true (UP) or false (DOWN). Defaults to true.
-        :param pulumi.Input[bool] backup: Boolean that indicates whether that member works as a backup or not. Available 
-               only for Octavia >= 2.1.
-        :param pulumi.Input[str] monitor_address: An alternate IP address used for health monitoring a backend member.
-               Available only for Octavia
-        :param pulumi.Input[int] monitor_port: An alternate protocol port used for health monitoring a backend member.
-               Available only for Octavia
-        :param pulumi.Input[str] name: Human-readable name for the member.
-        :param pulumi.Input[str] pool_id: The id of the pool that this member will be assigned
-               to. Changing this creates a new member.
-        :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
-               Changing this creates a new member.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a member. If omitted, the `region`
-               argument of the provider is used. Changing this creates a new member.
-        :param pulumi.Input[str] subnet_id: The subnet in which to access the member. Changing
-               this creates a new member.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the member.
-               Available only for Octavia >= 2.5.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the member.  Only administrative users can specify a tenant UUID
-               other than their own. Changing this creates a new member.
-        :param pulumi.Input[int] weight: A positive integer value that indicates the relative
-               portion of traffic that this member should receive from the pool. For
-               example, a member with a weight of 10 receives five times as much traffic
-               as a member with a weight of 2. Defaults to 1.
         """
         ...
     @overload
@@ -586,29 +367,7 @@ class Member(pulumi.CustomResource):
                  args: MemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V2 member resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        member1 = openstack.loadbalancer.Member("member_1",
-            pool_id="935685fb-a896-40f9-9ff4-ae531a3a00fe",
-            address="192.168.199.23",
-            protocol_port=8080)
-        ```
-
-        ## Import
-
-        Load Balancer Pool Member can be imported using the Pool ID and Member ID
-        separated by a slash, e.g.:
-
-        ```sh
-        $ pulumi import openstack:loadbalancer/member:Member member_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5/9563b79c-8460-47da-8a95-2711b746510f
-        ```
-
+        Create a Member resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param MemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -695,35 +454,6 @@ class Member(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The IP address of the member to receive traffic from
-               the load balancer. Changing this creates a new member.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the member.
-               A valid value is true (UP) or false (DOWN). Defaults to true.
-        :param pulumi.Input[bool] backup: Boolean that indicates whether that member works as a backup or not. Available 
-               only for Octavia >= 2.1.
-        :param pulumi.Input[str] monitor_address: An alternate IP address used for health monitoring a backend member.
-               Available only for Octavia
-        :param pulumi.Input[int] monitor_port: An alternate protocol port used for health monitoring a backend member.
-               Available only for Octavia
-        :param pulumi.Input[str] name: Human-readable name for the member.
-        :param pulumi.Input[str] pool_id: The id of the pool that this member will be assigned
-               to. Changing this creates a new member.
-        :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
-               Changing this creates a new member.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a member. If omitted, the `region`
-               argument of the provider is used. Changing this creates a new member.
-        :param pulumi.Input[str] subnet_id: The subnet in which to access the member. Changing
-               this creates a new member.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the member.
-               Available only for Octavia >= 2.5.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the member.  Only administrative users can specify a tenant UUID
-               other than their own. Changing this creates a new member.
-        :param pulumi.Input[int] weight: A positive integer value that indicates the relative
-               portion of traffic that this member should receive from the pool. For
-               example, a member with a weight of 10 receives five times as much traffic
-               as a member with a weight of 2. Defaults to 1.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -747,120 +477,65 @@ class Member(pulumi.CustomResource):
     @property
     @pulumi.getter
     def address(self) -> pulumi.Output[str]:
-        """
-        The IP address of the member to receive traffic from
-        the load balancer. Changing this creates a new member.
-        """
         return pulumi.get(self, "address")
 
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[Optional[bool]]:
-        """
-        The administrative state of the member.
-        A valid value is true (UP) or false (DOWN). Defaults to true.
-        """
         return pulumi.get(self, "admin_state_up")
 
     @property
     @pulumi.getter
     def backup(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Boolean that indicates whether that member works as a backup or not. Available 
-        only for Octavia >= 2.1.
-        """
         return pulumi.get(self, "backup")
 
     @property
     @pulumi.getter(name="monitorAddress")
     def monitor_address(self) -> pulumi.Output[Optional[str]]:
-        """
-        An alternate IP address used for health monitoring a backend member.
-        Available only for Octavia
-        """
         return pulumi.get(self, "monitor_address")
 
     @property
     @pulumi.getter(name="monitorPort")
     def monitor_port(self) -> pulumi.Output[Optional[int]]:
-        """
-        An alternate protocol port used for health monitoring a backend member.
-        Available only for Octavia
-        """
         return pulumi.get(self, "monitor_port")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Human-readable name for the member.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Output[str]:
-        """
-        The id of the pool that this member will be assigned
-        to. Changing this creates a new member.
-        """
         return pulumi.get(self, "pool_id")
 
     @property
     @pulumi.getter(name="protocolPort")
     def protocol_port(self) -> pulumi.Output[int]:
-        """
-        The port on which to listen for client traffic.
-        Changing this creates a new member.
-        """
         return pulumi.get(self, "protocol_port")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a member. If omitted, the `region`
-        argument of the provider is used. Changing this creates a new member.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The subnet in which to access the member. Changing
-        this creates a new member.
-        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        A list of simple strings assigned to the member.
-        Available only for Octavia >= 2.5.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
-        """
-        Required for admins. The UUID of the tenant who owns
-        the member.  Only administrative users can specify a tenant UUID
-        other than their own. Changing this creates a new member.
-        """
         return pulumi.get(self, "tenant_id")
 
     @property
     @pulumi.getter
     def weight(self) -> pulumi.Output[int]:
-        """
-        A positive integer value that indicates the relative
-        portion of traffic that this member should receive from the pool. For
-        example, a member with a weight of 10 receives five times as much traffic
-        as a member with a weight of 2. Defaults to 1.
-        """
         return pulumi.get(self, "weight")
 

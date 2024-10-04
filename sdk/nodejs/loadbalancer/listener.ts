@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * const subnet1 = openstack.networking.getSubnet({
  *     name: "my-subnet",
  * });
- * const lb1 = new openstack.LbLoadbalancerV2("lb_1", {
+ * const lb1 = new openstack.loadbalancer.LoadBalancer("lb_1", {
  *     name: "loadbalancer",
  *     vipSubnetId: subnet1.then(subnet1 => subnet1.id),
  * });

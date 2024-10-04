@@ -77,25 +77,16 @@ class GetQuotaSetV2Result:
     @property
     @pulumi.getter
     def cores(self) -> int:
-        """
-        The number of allowed server cores.
-        """
         return pulumi.get(self, "cores")
 
     @property
     @pulumi.getter(name="fixedIps")
     def fixed_ips(self) -> int:
-        """
-        The number of allowed fixed IP addresses. Available until version 2.35.
-        """
         return pulumi.get(self, "fixed_ips")
 
     @property
     @pulumi.getter(name="floatingIps")
     def floating_ips(self) -> int:
-        """
-        The number of allowed floating IP addresses. Available until version 2.35.
-        """
         return pulumi.get(self, "floating_ips")
 
     @property
@@ -109,105 +100,66 @@ class GetQuotaSetV2Result:
     @property
     @pulumi.getter(name="injectedFileContentBytes")
     def injected_file_content_bytes(self) -> int:
-        """
-        The number of allowed bytes of content for each injected file. Available until version 2.56.
-        """
         return pulumi.get(self, "injected_file_content_bytes")
 
     @property
     @pulumi.getter(name="injectedFilePathBytes")
     def injected_file_path_bytes(self) -> int:
-        """
-        The number of allowed bytes for each injected file path. Available until version 2.56.
-        """
         return pulumi.get(self, "injected_file_path_bytes")
 
     @property
     @pulumi.getter(name="injectedFiles")
     def injected_files(self) -> int:
-        """
-        The number of allowed injected files. Available until version 2.56.
-        """
         return pulumi.get(self, "injected_files")
 
     @property
     @pulumi.getter
     def instances(self) -> int:
-        """
-        The number of allowed servers.
-        """
         return pulumi.get(self, "instances")
 
     @property
     @pulumi.getter(name="keyPairs")
     def key_pairs(self) -> int:
-        """
-        The number of allowed key pairs for each user.
-        """
         return pulumi.get(self, "key_pairs")
 
     @property
     @pulumi.getter(name="metadataItems")
     def metadata_items(self) -> int:
-        """
-        The number of allowed metadata items for each server.
-        """
         return pulumi.get(self, "metadata_items")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def ram(self) -> int:
-        """
-        The amount of allowed server RAM, in MiB.
-        """
         return pulumi.get(self, "ram")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="securityGroupRules")
     def security_group_rules(self) -> int:
-        """
-        The number of allowed rules for each security group. Available until version 2.35.
-        """
         return pulumi.get(self, "security_group_rules")
 
     @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> int:
-        """
-        The number of allowed security groups. Available until version 2.35.
-        """
         return pulumi.get(self, "security_groups")
 
     @property
     @pulumi.getter(name="serverGroupMembers")
     def server_group_members(self) -> int:
-        """
-        The number of allowed members for each server group.
-        """
         return pulumi.get(self, "server_group_members")
 
     @property
     @pulumi.getter(name="serverGroups")
     def server_groups(self) -> int:
-        """
-        The number of allowed server groups.
-        """
         return pulumi.get(self, "server_groups")
 
 
@@ -240,21 +192,7 @@ def get_quota_set_v2(project_id: Optional[str] = None,
                      region: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQuotaSetV2Result:
     """
-    Use this data source to get the compute quotaset of an OpenStack project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    quota = openstack.compute.get_quota_set_v2(project_id="2e367a3d29f94fd988e6ec54e305ec9d")
-    ```
-
-
-    :param str project_id: The id of the project to retrieve the quotaset.
-    :param str region: The region in which to obtain the V2 Compute client.
-           If omitted, the `region` argument of the provider is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['projectId'] = project_id
@@ -287,20 +225,6 @@ def get_quota_set_v2_output(project_id: Optional[pulumi.Input[str]] = None,
                             region: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQuotaSetV2Result]:
     """
-    Use this data source to get the compute quotaset of an OpenStack project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    quota = openstack.compute.get_quota_set_v2(project_id="2e367a3d29f94fd988e6ec54e305ec9d")
-    ```
-
-
-    :param str project_id: The id of the project to retrieve the quotaset.
-    :param str region: The region in which to obtain the V2 Compute client.
-           If omitted, the `region` argument of the provider is used.
+    Use this data source to access information about an existing resource.
     """
     ...

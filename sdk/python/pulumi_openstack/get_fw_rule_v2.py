@@ -16,6 +16,8 @@ __all__ = [
     'get_fw_rule_v2_output',
 ]
 
+warnings.warn("""openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2""", DeprecationWarning)
+
 @pulumi.output_type
 class GetFwRuleV2Result:
     """
@@ -77,49 +79,31 @@ class GetFwRuleV2Result:
     @property
     @pulumi.getter
     def action(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="destinationIpAddress")
     def destination_ip_address(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "destination_ip_address")
 
     @property
     @pulumi.getter(name="destinationPort")
     def destination_port(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "destination_port")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="firewallPolicyIds")
     def firewall_policy_ids(self) -> Sequence[str]:
-        """
-        The ID of the firewall policy the rule belongs to.
-        """
         return pulumi.get(self, "firewall_policy_ids")
 
     @property
@@ -133,81 +117,51 @@ class GetFwRuleV2Result:
     @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[int]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "ip_version")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def protocol(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="ruleId")
     def rule_id(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "rule_id")
 
     @property
     @pulumi.getter
     def shared(self) -> bool:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "shared")
 
     @property
     @pulumi.getter(name="sourceIpAddress")
     def source_ip_address(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "source_ip_address")
 
     @property
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "source_port")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "tenant_id")
 
 
@@ -254,43 +208,9 @@ def get_fw_rule_v2(action: Optional[str] = None,
                    tenant_id: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFwRuleV2Result:
     """
-    Use this data source to get information of an available OpenStack firewall rule v2.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    rule = openstack.get_fw_rule_v2(name="tf_test_rule")
-    ```
-
-
-    :param str action: Action to be taken when the firewall rule matches.
-    :param str description: The description of the firewall rule.
-    :param str destination_ip_address: The destination IP address on which the
-           firewall rule operates.
-    :param str destination_port: The destination port on which the firewall
-           rule operates.
-    :param bool enabled: Enabled status for the firewall rule.
-    :param Sequence[str] firewall_policy_ids: The ID of the firewall policy the rule belongs to.
-    :param int ip_version: IP version, either 4 (default) or 6.
-    :param str name: The name of the firewall rule.
-    :param str project_id: This argument conflicts and is interchangeable
-           with `tenant_id`. The owner of the firewall rule.
-    :param str protocol: The protocol type on which the firewall rule operates.
-    :param str region: The region in which to obtain the V2 Neutron client.
-           A Neutron client is needed to retrieve firewall policy ids. If omitted, the
-           `region` argument of the provider is used.
-    :param str rule_id: The ID of the firewall rule.
-    :param bool shared: The sharing status of the firewall policy.
-    :param str source_ip_address: The source IP address on which the firewall
-           rule operates.
-    :param str source_port: The source port on which the firewall
-           rule operates.
-    :param str tenant_id: This argument conflicts and is interchangeable
-           with `project_id`. The owner of the firewall rule.
+    Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_fw_rule_v2 is deprecated: openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2""")
     __args__ = dict()
     __args__['action'] = action
     __args__['description'] = description
@@ -350,41 +270,7 @@ def get_fw_rule_v2_output(action: Optional[pulumi.Input[Optional[str]]] = None,
                           tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFwRuleV2Result]:
     """
-    Use this data source to get information of an available OpenStack firewall rule v2.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    rule = openstack.get_fw_rule_v2(name="tf_test_rule")
-    ```
-
-
-    :param str action: Action to be taken when the firewall rule matches.
-    :param str description: The description of the firewall rule.
-    :param str destination_ip_address: The destination IP address on which the
-           firewall rule operates.
-    :param str destination_port: The destination port on which the firewall
-           rule operates.
-    :param bool enabled: Enabled status for the firewall rule.
-    :param Sequence[str] firewall_policy_ids: The ID of the firewall policy the rule belongs to.
-    :param int ip_version: IP version, either 4 (default) or 6.
-    :param str name: The name of the firewall rule.
-    :param str project_id: This argument conflicts and is interchangeable
-           with `tenant_id`. The owner of the firewall rule.
-    :param str protocol: The protocol type on which the firewall rule operates.
-    :param str region: The region in which to obtain the V2 Neutron client.
-           A Neutron client is needed to retrieve firewall policy ids. If omitted, the
-           `region` argument of the provider is used.
-    :param str rule_id: The ID of the firewall rule.
-    :param bool shared: The sharing status of the firewall policy.
-    :param str source_ip_address: The source IP address on which the firewall
-           rule operates.
-    :param str source_port: The source port on which the firewall
-           rule operates.
-    :param str tenant_id: This argument conflicts and is interchangeable
-           with `project_id`. The owner of the firewall rule.
+    Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_fw_rule_v2 is deprecated: openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2""")
     ...

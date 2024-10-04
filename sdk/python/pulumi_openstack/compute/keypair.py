@@ -21,21 +21,6 @@ class KeypairArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Keypair resource.
-        :param pulumi.Input[str] name: A unique name for the keypair. Changing this creates a new
-               keypair.
-        :param pulumi.Input[str] public_key: A pregenerated OpenSSH-formatted public key.
-               Changing this creates a new keypair. If a public key is not specified, then
-               a public/private key pair will be automatically generated. If a pair is
-               created, then destroying this resource means you will lose access to that
-               keypair forever.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
-               Keypairs are associated with accounts, but a Compute client is needed to
-               create one. If omitted, the `region` argument of the provider is used.
-               Changing this creates a new keypair.
-        :param pulumi.Input[str] user_id: This allows administrative users to operate key-pairs
-               of specified user ID. For this feature your need to have openstack microversion
-               2.10 (Liberty) or later.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -51,10 +36,6 @@ class KeypairArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        A unique name for the keypair. Changing this creates a new
-        keypair.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -64,13 +45,6 @@ class KeypairArgs:
     @property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        A pregenerated OpenSSH-formatted public key.
-        Changing this creates a new keypair. If a public key is not specified, then
-        a public/private key pair will be automatically generated. If a pair is
-        created, then destroying this resource means you will lose access to that
-        keypair forever.
-        """
         return pulumi.get(self, "public_key")
 
     @public_key.setter
@@ -80,12 +54,6 @@ class KeypairArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Compute client.
-        Keypairs are associated with accounts, but a Compute client is needed to
-        create one. If omitted, the `region` argument of the provider is used.
-        Changing this creates a new keypair.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -95,11 +63,6 @@ class KeypairArgs:
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        This allows administrative users to operate key-pairs
-        of specified user ID. For this feature your need to have openstack microversion
-        2.10 (Liberty) or later.
-        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -109,9 +72,6 @@ class KeypairArgs:
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Map of additional options.
-        """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
@@ -131,23 +91,6 @@ class _KeypairState:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Keypair resources.
-        :param pulumi.Input[str] fingerprint: The fingerprint of the public key.
-        :param pulumi.Input[str] name: A unique name for the keypair. Changing this creates a new
-               keypair.
-        :param pulumi.Input[str] private_key: The generated private key when no public key is specified.
-        :param pulumi.Input[str] public_key: A pregenerated OpenSSH-formatted public key.
-               Changing this creates a new keypair. If a public key is not specified, then
-               a public/private key pair will be automatically generated. If a pair is
-               created, then destroying this resource means you will lose access to that
-               keypair forever.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
-               Keypairs are associated with accounts, but a Compute client is needed to
-               create one. If omitted, the `region` argument of the provider is used.
-               Changing this creates a new keypair.
-        :param pulumi.Input[str] user_id: This allows administrative users to operate key-pairs
-               of specified user ID. For this feature your need to have openstack microversion
-               2.10 (Liberty) or later.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         if fingerprint is not None:
             pulumi.set(__self__, "fingerprint", fingerprint)
@@ -167,9 +110,6 @@ class _KeypairState:
     @property
     @pulumi.getter
     def fingerprint(self) -> Optional[pulumi.Input[str]]:
-        """
-        The fingerprint of the public key.
-        """
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
@@ -179,10 +119,6 @@ class _KeypairState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        A unique name for the keypair. Changing this creates a new
-        keypair.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -192,9 +128,6 @@ class _KeypairState:
     @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        The generated private key when no public key is specified.
-        """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
@@ -204,13 +137,6 @@ class _KeypairState:
     @property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        A pregenerated OpenSSH-formatted public key.
-        Changing this creates a new keypair. If a public key is not specified, then
-        a public/private key pair will be automatically generated. If a pair is
-        created, then destroying this resource means you will lose access to that
-        keypair forever.
-        """
         return pulumi.get(self, "public_key")
 
     @public_key.setter
@@ -220,12 +146,6 @@ class _KeypairState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Compute client.
-        Keypairs are associated with accounts, but a Compute client is needed to
-        create one. If omitted, the `region` argument of the provider is used.
-        Changing this creates a new keypair.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -235,11 +155,6 @@ class _KeypairState:
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        This allows administrative users to operate key-pairs
-        of specified user ID. For this feature your need to have openstack microversion
-        2.10 (Liberty) or later.
-        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -249,9 +164,6 @@ class _KeypairState:
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Map of additional options.
-        """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
@@ -271,53 +183,9 @@ class Keypair(pulumi.CustomResource):
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ### Import an Existing Public Key
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test_keypair = openstack.compute.Keypair("test-keypair",
-            name="my-keypair",
-            public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAjpC1hwiOCCmKEWxJ4qzTTsJbKzndLotBCz5PcwtUnflmU+gHJtWMZKpuEGVi29h0A/+ydKek1O18k10Ff+4tyFjiHDQAnOfgWf7+b1yK+qDip3X1C0UPMbwHlTfSGWLGZqd9LvEFx9k3h/M+VtMvwR1lJ9LUyTAImnNjWG7TaIPmui30HvM2UiFEmqkr4ijq45MyX2+fLIePLRIF61p4whjHAQYufqyno3BS48icQb4p6iVEZPo4AE2o9oIyQvj2mx4dk5Y8CgSETOZTYDOR3rU2fZTRDRgPJDH9FWvQjF5tA0p3d9CoWWd2s6GKKbfoUIi8R/Db1BSPJwkqB")
-        ```
-
-        ### Generate a Public/Private Key Pair
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test_keypair = openstack.compute.Keypair("test-keypair", name="my-keypair")
-        ```
-
-        ## Import
-
-        Keypairs can be imported using the `name`, e.g.
-
-        ```sh
-        $ pulumi import openstack:compute/keypair:Keypair my-keypair test-keypair
-        ```
-
+        Create a Keypair resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: A unique name for the keypair. Changing this creates a new
-               keypair.
-        :param pulumi.Input[str] public_key: A pregenerated OpenSSH-formatted public key.
-               Changing this creates a new keypair. If a public key is not specified, then
-               a public/private key pair will be automatically generated. If a pair is
-               created, then destroying this resource means you will lose access to that
-               keypair forever.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
-               Keypairs are associated with accounts, but a Compute client is needed to
-               create one. If omitted, the `region` argument of the provider is used.
-               Changing this creates a new keypair.
-        :param pulumi.Input[str] user_id: This allows administrative users to operate key-pairs
-               of specified user ID. For this feature your need to have openstack microversion
-               2.10 (Liberty) or later.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         ...
     @overload
@@ -326,36 +194,7 @@ class Keypair(pulumi.CustomResource):
                  args: Optional[KeypairArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ### Import an Existing Public Key
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test_keypair = openstack.compute.Keypair("test-keypair",
-            name="my-keypair",
-            public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAjpC1hwiOCCmKEWxJ4qzTTsJbKzndLotBCz5PcwtUnflmU+gHJtWMZKpuEGVi29h0A/+ydKek1O18k10Ff+4tyFjiHDQAnOfgWf7+b1yK+qDip3X1C0UPMbwHlTfSGWLGZqd9LvEFx9k3h/M+VtMvwR1lJ9LUyTAImnNjWG7TaIPmui30HvM2UiFEmqkr4ijq45MyX2+fLIePLRIF61p4whjHAQYufqyno3BS48icQb4p6iVEZPo4AE2o9oIyQvj2mx4dk5Y8CgSETOZTYDOR3rU2fZTRDRgPJDH9FWvQjF5tA0p3d9CoWWd2s6GKKbfoUIi8R/Db1BSPJwkqB")
-        ```
-
-        ### Generate a Public/Private Key Pair
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test_keypair = openstack.compute.Keypair("test-keypair", name="my-keypair")
-        ```
-
-        ## Import
-
-        Keypairs can be imported using the `name`, e.g.
-
-        ```sh
-        $ pulumi import openstack:compute/keypair:Keypair my-keypair test-keypair
-        ```
-
+        Create a Keypair resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param KeypairArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -418,23 +257,6 @@ class Keypair(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] fingerprint: The fingerprint of the public key.
-        :param pulumi.Input[str] name: A unique name for the keypair. Changing this creates a new
-               keypair.
-        :param pulumi.Input[str] private_key: The generated private key when no public key is specified.
-        :param pulumi.Input[str] public_key: A pregenerated OpenSSH-formatted public key.
-               Changing this creates a new keypair. If a public key is not specified, then
-               a public/private key pair will be automatically generated. If a pair is
-               created, then destroying this resource means you will lose access to that
-               keypair forever.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
-               Keypairs are associated with accounts, but a Compute client is needed to
-               create one. If omitted, the `region` argument of the provider is used.
-               Changing this creates a new keypair.
-        :param pulumi.Input[str] user_id: This allows administrative users to operate key-pairs
-               of specified user ID. For this feature your need to have openstack microversion
-               2.10 (Liberty) or later.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -452,66 +274,35 @@ class Keypair(pulumi.CustomResource):
     @property
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[str]:
-        """
-        The fingerprint of the public key.
-        """
         return pulumi.get(self, "fingerprint")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        A unique name for the keypair. Changing this creates a new
-        keypair.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Output[str]:
-        """
-        The generated private key when no public key is specified.
-        """
         return pulumi.get(self, "private_key")
 
     @property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> pulumi.Output[str]:
-        """
-        A pregenerated OpenSSH-formatted public key.
-        Changing this creates a new keypair. If a public key is not specified, then
-        a public/private key pair will be automatically generated. If a pair is
-        created, then destroying this resource means you will lose access to that
-        keypair forever.
-        """
         return pulumi.get(self, "public_key")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Compute client.
-        Keypairs are associated with accounts, but a Compute client is needed to
-        create one. If omitted, the `region` argument of the provider is used.
-        Changing this creates a new keypair.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[str]:
-        """
-        This allows administrative users to operate key-pairs
-        of specified user ID. For this feature your need to have openstack microversion
-        2.10 (Liberty) or later.
-        """
         return pulumi.get(self, "user_id")
 
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Map of additional options.
-        """
         return pulumi.get(self, "value_specs")
 

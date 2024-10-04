@@ -24,21 +24,6 @@ class BgpvpnPortAssociateV2Args:
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input['BgpvpnPortAssociateV2RouteArgs']]]] = None):
         """
         The set of arguments for constructing a BgpvpnPortAssociateV2 resource.
-        :param pulumi.Input[str] bgpvpn_id: The ID of the BGP VPN to which the port will be
-               associated. Changing this creates a new BGP VPN port association.
-        :param pulumi.Input[str] port_id: The ID of the port to be associated with the BGP VPN.
-               Changing this creates a new BGP VPN port association.
-        :param pulumi.Input[bool] advertise_fixed_ips: A boolean flag indicating whether fixed
-               IPs should be advertised. Defaults to true.
-        :param pulumi.Input[str] project_id: The ID of the project that owns the port
-               association. Only administrative and users with `advsvc` role can specify a
-               project ID other than their own. Changing this creates a new BGP VPN port
-               association.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a BGP VPN port association. If
-               omitted, the `region` argument of the provider is used. Changing this creates
-               a new BGP VPN port association.
-        :param pulumi.Input[Sequence[pulumi.Input['BgpvpnPortAssociateV2RouteArgs']]] routes: A list of dictionaries containing the following keys:
         """
         pulumi.set(__self__, "bgpvpn_id", bgpvpn_id)
         pulumi.set(__self__, "port_id", port_id)
@@ -54,10 +39,6 @@ class BgpvpnPortAssociateV2Args:
     @property
     @pulumi.getter(name="bgpvpnId")
     def bgpvpn_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the BGP VPN to which the port will be
-        associated. Changing this creates a new BGP VPN port association.
-        """
         return pulumi.get(self, "bgpvpn_id")
 
     @bgpvpn_id.setter
@@ -67,10 +48,6 @@ class BgpvpnPortAssociateV2Args:
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the port to be associated with the BGP VPN.
-        Changing this creates a new BGP VPN port association.
-        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -80,10 +57,6 @@ class BgpvpnPortAssociateV2Args:
     @property
     @pulumi.getter(name="advertiseFixedIps")
     def advertise_fixed_ips(self) -> Optional[pulumi.Input[bool]]:
-        """
-        A boolean flag indicating whether fixed
-        IPs should be advertised. Defaults to true.
-        """
         return pulumi.get(self, "advertise_fixed_ips")
 
     @advertise_fixed_ips.setter
@@ -93,12 +66,6 @@ class BgpvpnPortAssociateV2Args:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project that owns the port
-        association. Only administrative and users with `advsvc` role can specify a
-        project ID other than their own. Changing this creates a new BGP VPN port
-        association.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -108,12 +75,6 @@ class BgpvpnPortAssociateV2Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a BGP VPN port association. If
-        omitted, the `region` argument of the provider is used. Changing this creates
-        a new BGP VPN port association.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -123,9 +84,6 @@ class BgpvpnPortAssociateV2Args:
     @property
     @pulumi.getter
     def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BgpvpnPortAssociateV2RouteArgs']]]]:
-        """
-        A list of dictionaries containing the following keys:
-        """
         return pulumi.get(self, "routes")
 
     @routes.setter
@@ -144,21 +102,6 @@ class _BgpvpnPortAssociateV2State:
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input['BgpvpnPortAssociateV2RouteArgs']]]] = None):
         """
         Input properties used for looking up and filtering BgpvpnPortAssociateV2 resources.
-        :param pulumi.Input[bool] advertise_fixed_ips: A boolean flag indicating whether fixed
-               IPs should be advertised. Defaults to true.
-        :param pulumi.Input[str] bgpvpn_id: The ID of the BGP VPN to which the port will be
-               associated. Changing this creates a new BGP VPN port association.
-        :param pulumi.Input[str] port_id: The ID of the port to be associated with the BGP VPN.
-               Changing this creates a new BGP VPN port association.
-        :param pulumi.Input[str] project_id: The ID of the project that owns the port
-               association. Only administrative and users with `advsvc` role can specify a
-               project ID other than their own. Changing this creates a new BGP VPN port
-               association.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a BGP VPN port association. If
-               omitted, the `region` argument of the provider is used. Changing this creates
-               a new BGP VPN port association.
-        :param pulumi.Input[Sequence[pulumi.Input['BgpvpnPortAssociateV2RouteArgs']]] routes: A list of dictionaries containing the following keys:
         """
         if advertise_fixed_ips is not None:
             pulumi.set(__self__, "advertise_fixed_ips", advertise_fixed_ips)
@@ -176,10 +119,6 @@ class _BgpvpnPortAssociateV2State:
     @property
     @pulumi.getter(name="advertiseFixedIps")
     def advertise_fixed_ips(self) -> Optional[pulumi.Input[bool]]:
-        """
-        A boolean flag indicating whether fixed
-        IPs should be advertised. Defaults to true.
-        """
         return pulumi.get(self, "advertise_fixed_ips")
 
     @advertise_fixed_ips.setter
@@ -189,10 +128,6 @@ class _BgpvpnPortAssociateV2State:
     @property
     @pulumi.getter(name="bgpvpnId")
     def bgpvpn_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the BGP VPN to which the port will be
-        associated. Changing this creates a new BGP VPN port association.
-        """
         return pulumi.get(self, "bgpvpn_id")
 
     @bgpvpn_id.setter
@@ -202,10 +137,6 @@ class _BgpvpnPortAssociateV2State:
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the port to be associated with the BGP VPN.
-        Changing this creates a new BGP VPN port association.
-        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -215,12 +146,6 @@ class _BgpvpnPortAssociateV2State:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project that owns the port
-        association. Only administrative and users with `advsvc` role can specify a
-        project ID other than their own. Changing this creates a new BGP VPN port
-        association.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -230,12 +155,6 @@ class _BgpvpnPortAssociateV2State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a BGP VPN port association. If
-        omitted, the `region` argument of the provider is used. Changing this creates
-        a new BGP VPN port association.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -245,9 +164,6 @@ class _BgpvpnPortAssociateV2State:
     @property
     @pulumi.getter
     def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BgpvpnPortAssociateV2RouteArgs']]]]:
-        """
-        A list of dictionaries containing the following keys:
-        """
         return pulumi.get(self, "routes")
 
     @routes.setter
@@ -255,7 +171,12 @@ class _BgpvpnPortAssociateV2State:
         pulumi.set(self, "routes", value)
 
 
+warnings.warn("""openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2""", DeprecationWarning)
+
+
 class BgpvpnPortAssociateV2(pulumi.CustomResource):
+    warnings.warn("""openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -268,58 +189,9 @@ class BgpvpnPortAssociateV2(pulumi.CustomResource):
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BgpvpnPortAssociateV2RouteArgs', 'BgpvpnPortAssociateV2RouteArgsDict']]]]] = None,
                  __props__=None):
         """
-        Manages a V2 BGP VPN port association resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        association1 = openstack.BgpvpnPortAssociateV2("association_1",
-            bgpvpn_id="19382ec5-8098-47d9-a9c6-6270c91103f4",
-            port_id="b83a95b8-c2c8-4eac-9a9e-ddc85bd1266f",
-            routes=[
-                {
-                    "type": "prefix",
-                    "prefix": "192.168.170.1/32",
-                },
-                {
-                    "type": "bgpvpn",
-                    "bgpvpn_id": "35af1cc6-3d0f-4c5d-86f8-8cdb508d3f0c",
-                },
-            ])
-        ```
-
-        ## Import
-
-        BGP VPN port associations can be imported using the BGP VPN ID and BGP VPN port
-
-        association ID separated by a slash, e.g.:
-
-        hcl
-
-        ```sh
-        $ pulumi import openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2 association_1 5bb44ecf-f8fe-4d75-8fc5-313f96ee2696/8f8fc660-3f28-414e-896a-0c7c51162fcf
-        ```
-
+        Create a BgpvpnPortAssociateV2 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] advertise_fixed_ips: A boolean flag indicating whether fixed
-               IPs should be advertised. Defaults to true.
-        :param pulumi.Input[str] bgpvpn_id: The ID of the BGP VPN to which the port will be
-               associated. Changing this creates a new BGP VPN port association.
-        :param pulumi.Input[str] port_id: The ID of the port to be associated with the BGP VPN.
-               Changing this creates a new BGP VPN port association.
-        :param pulumi.Input[str] project_id: The ID of the project that owns the port
-               association. Only administrative and users with `advsvc` role can specify a
-               project ID other than their own. Changing this creates a new BGP VPN port
-               association.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a BGP VPN port association. If
-               omitted, the `region` argument of the provider is used. Changing this creates
-               a new BGP VPN port association.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BgpvpnPortAssociateV2RouteArgs', 'BgpvpnPortAssociateV2RouteArgsDict']]]] routes: A list of dictionaries containing the following keys:
         """
         ...
     @overload
@@ -328,41 +200,7 @@ class BgpvpnPortAssociateV2(pulumi.CustomResource):
                  args: BgpvpnPortAssociateV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V2 BGP VPN port association resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        association1 = openstack.BgpvpnPortAssociateV2("association_1",
-            bgpvpn_id="19382ec5-8098-47d9-a9c6-6270c91103f4",
-            port_id="b83a95b8-c2c8-4eac-9a9e-ddc85bd1266f",
-            routes=[
-                {
-                    "type": "prefix",
-                    "prefix": "192.168.170.1/32",
-                },
-                {
-                    "type": "bgpvpn",
-                    "bgpvpn_id": "35af1cc6-3d0f-4c5d-86f8-8cdb508d3f0c",
-                },
-            ])
-        ```
-
-        ## Import
-
-        BGP VPN port associations can be imported using the BGP VPN ID and BGP VPN port
-
-        association ID separated by a slash, e.g.:
-
-        hcl
-
-        ```sh
-        $ pulumi import openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2 association_1 5bb44ecf-f8fe-4d75-8fc5-313f96ee2696/8f8fc660-3f28-414e-896a-0c7c51162fcf
-        ```
-
+        Create a BgpvpnPortAssociateV2 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param BgpvpnPortAssociateV2Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -385,6 +223,7 @@ class BgpvpnPortAssociateV2(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BgpvpnPortAssociateV2RouteArgs', 'BgpvpnPortAssociateV2RouteArgsDict']]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""BgpvpnPortAssociateV2 is deprecated: openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -426,21 +265,6 @@ class BgpvpnPortAssociateV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] advertise_fixed_ips: A boolean flag indicating whether fixed
-               IPs should be advertised. Defaults to true.
-        :param pulumi.Input[str] bgpvpn_id: The ID of the BGP VPN to which the port will be
-               associated. Changing this creates a new BGP VPN port association.
-        :param pulumi.Input[str] port_id: The ID of the port to be associated with the BGP VPN.
-               Changing this creates a new BGP VPN port association.
-        :param pulumi.Input[str] project_id: The ID of the project that owns the port
-               association. Only administrative and users with `advsvc` role can specify a
-               project ID other than their own. Changing this creates a new BGP VPN port
-               association.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a BGP VPN port association. If
-               omitted, the `region` argument of the provider is used. Changing this creates
-               a new BGP VPN port association.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BgpvpnPortAssociateV2RouteArgs', 'BgpvpnPortAssociateV2RouteArgsDict']]]] routes: A list of dictionaries containing the following keys:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -457,57 +281,30 @@ class BgpvpnPortAssociateV2(pulumi.CustomResource):
     @property
     @pulumi.getter(name="advertiseFixedIps")
     def advertise_fixed_ips(self) -> pulumi.Output[bool]:
-        """
-        A boolean flag indicating whether fixed
-        IPs should be advertised. Defaults to true.
-        """
         return pulumi.get(self, "advertise_fixed_ips")
 
     @property
     @pulumi.getter(name="bgpvpnId")
     def bgpvpn_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the BGP VPN to which the port will be
-        associated. Changing this creates a new BGP VPN port association.
-        """
         return pulumi.get(self, "bgpvpn_id")
 
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the port to be associated with the BGP VPN.
-        Changing this creates a new BGP VPN port association.
-        """
         return pulumi.get(self, "port_id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the project that owns the port
-        association. Only administrative and users with `advsvc` role can specify a
-        project ID other than their own. Changing this creates a new BGP VPN port
-        association.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a BGP VPN port association. If
-        omitted, the `region` argument of the provider is used. Changing this creates
-        a new BGP VPN port association.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def routes(self) -> pulumi.Output[Optional[Sequence['outputs.BgpvpnPortAssociateV2Route']]]:
-        """
-        A list of dictionaries containing the following keys:
-        """
         return pulumi.get(self, "routes")
 

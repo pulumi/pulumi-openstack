@@ -78,17 +78,11 @@ class GetAuthScopeResult:
     @property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> str:
-        """
-        The domain ID of the scope.
-        """
         return pulumi.get(self, "domain_id")
 
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> str:
-        """
-        The domain name of the scope.
-        """
         return pulumi.get(self, "domain_name")
 
     @property
@@ -102,65 +96,41 @@ class GetAuthScopeResult:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the service.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="projectDomainId")
     def project_domain_id(self) -> str:
-        """
-        The domain ID of the project.
-        """
         return pulumi.get(self, "project_domain_id")
 
     @property
     @pulumi.getter(name="projectDomainName")
     def project_domain_name(self) -> str:
-        """
-        The domain name of the project.
-        """
         return pulumi.get(self, "project_domain_name")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
-        """
-        The project ID of the scope.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="projectName")
     def project_name(self) -> str:
-        """
-        The project name of the scope.
-        """
         return pulumi.get(self, "project_name")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        The region of the endpoint.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def roles(self) -> Sequence['outputs.GetAuthScopeRoleResult']:
-        """
-        A list of roles in the current scope. See reference below.
-        """
         return pulumi.get(self, "roles")
 
     @property
     @pulumi.getter(name="serviceCatalogs")
     def service_catalogs(self) -> Sequence['outputs.GetAuthScopeServiceCatalogResult']:
-        """
-        A list of service catalog entries returned with the token.
-        """
         return pulumi.get(self, "service_catalogs")
 
     @property
@@ -171,41 +141,26 @@ class GetAuthScopeResult:
     @property
     @pulumi.getter(name="tokenId")
     def token_id(self) -> str:
-        """
-        The token ID of the scope.
-        """
         return pulumi.get(self, "token_id")
 
     @property
     @pulumi.getter(name="userDomainId")
     def user_domain_id(self) -> str:
-        """
-        The domain ID of the user.
-        """
         return pulumi.get(self, "user_domain_id")
 
     @property
     @pulumi.getter(name="userDomainName")
     def user_domain_name(self) -> str:
-        """
-        The domain name of the user.
-        """
         return pulumi.get(self, "user_domain_name")
 
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> str:
-        """
-        The user ID the of the scope.
-        """
         return pulumi.get(self, "user_id")
 
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> str:
-        """
-        The username of the scope.
-        """
         return pulumi.get(self, "user_name")
 
 
@@ -240,18 +195,6 @@ def get_auth_scope(name: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAuthScopeResult:
     """
     Use this data source to access information about an existing resource.
-
-    :param str name: The name of the scope. This is an arbitrary name which is
-           only used as a unique identifier so an actual token isn't used as the ID.
-    :param str region: The region in which to obtain the V3 Identity client.
-           A Identity client is needed to retrieve tokens IDs. If omitted, the
-           `region` argument of the provider is used.
-    :param bool set_token_id: A boolean argument that determines whether to
-           export the current auth scope token ID. When set to `true`, the `token_id`
-           attribute will contain an unencrypted token that can be used for further API
-           calls. **Warning**: please note that the leaked token may allow unauthorized
-           access to other OpenStack services within the current auth scope, so use this
-           option with caution.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -287,17 +230,5 @@ def get_auth_scope_output(name: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAuthScopeResult]:
     """
     Use this data source to access information about an existing resource.
-
-    :param str name: The name of the scope. This is an arbitrary name which is
-           only used as a unique identifier so an actual token isn't used as the ID.
-    :param str region: The region in which to obtain the V3 Identity client.
-           A Identity client is needed to retrieve tokens IDs. If omitted, the
-           `region` argument of the provider is used.
-    :param bool set_token_id: A boolean argument that determines whether to
-           export the current auth scope token ID. When set to `true`, the `token_id`
-           attribute will contain an unencrypted token that can be used for further API
-           calls. **Warning**: please note that the leaked token may allow unauthorized
-           access to other OpenStack services within the current auth scope, so use this
-           option with caution.
     """
     ...

@@ -21,14 +21,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/bgpvpn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := openstack.NewBgpvpnRouterAssociateV2(ctx, "association_1", &openstack.BgpvpnRouterAssociateV2Args{
+//			_, err := bgpvpn.NewRouterAssociateV2(ctx, "association_1", &bgpvpn.RouterAssociateV2Args{
 //				BgpvpnId: pulumi.String("d57d39e1-dc63-44fd-8cbd-a4e1488100c5"),
 //				RouterId: pulumi.String("423fa80f-e0d7-4d02-a9a5-8b8c05812bf6"),
 //			})
@@ -52,6 +52,8 @@ import (
 // ```sh
 // $ pulumi import openstack:index/bgpvpnRouterAssociateV2:BgpvpnRouterAssociateV2 association_1 e26d509e-fc2d-4fb5-8562-619911a9a6bc/3cc9df2d-80db-4536-8ba6-295d1d0f723f
 // ```
+//
+// Deprecated: openstack.index/bgpvpnrouterassociatev2.BgpvpnRouterAssociateV2 has been deprecated in favor of openstack.bgpvpn/routerassociatev2.RouterAssociateV2
 type BgpvpnRouterAssociateV2 struct {
 	pulumi.CustomResourceState
 

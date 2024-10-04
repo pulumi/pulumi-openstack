@@ -21,20 +21,6 @@ class RbacPolicyV2Args:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RbacPolicyV2 resource.
-        :param pulumi.Input[str] action: Action for the RBAC policy. Can either be
-               `access_as_external` or `access_as_shared`.
-        :param pulumi.Input[str] object_id: The ID of the `object_type` resource. An
-               `object_type` of `network` returns a network ID and an `object_type` of
-               `qos_policy` returns a QoS ID.
-        :param pulumi.Input[str] object_type: The type of the object that the RBAC policy
-               affects. Can be one of the following: `address_scope`, `address_group`,
-               `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
-        :param pulumi.Input[str] target_tenant: The ID of the tenant to which the RBAC policy
-               will be enforced.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to configure a routing entry on a subnet. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               routing entry.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "object_id", object_id)
@@ -46,10 +32,6 @@ class RbacPolicyV2Args:
     @property
     @pulumi.getter
     def action(self) -> pulumi.Input[str]:
-        """
-        Action for the RBAC policy. Can either be
-        `access_as_external` or `access_as_shared`.
-        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -59,11 +41,6 @@ class RbacPolicyV2Args:
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the `object_type` resource. An
-        `object_type` of `network` returns a network ID and an `object_type` of
-        `qos_policy` returns a QoS ID.
-        """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
@@ -73,11 +50,6 @@ class RbacPolicyV2Args:
     @property
     @pulumi.getter(name="objectType")
     def object_type(self) -> pulumi.Input[str]:
-        """
-        The type of the object that the RBAC policy
-        affects. Can be one of the following: `address_scope`, `address_group`,
-        `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
-        """
         return pulumi.get(self, "object_type")
 
     @object_type.setter
@@ -87,10 +59,6 @@ class RbacPolicyV2Args:
     @property
     @pulumi.getter(name="targetTenant")
     def target_tenant(self) -> pulumi.Input[str]:
-        """
-        The ID of the tenant to which the RBAC policy
-        will be enforced.
-        """
         return pulumi.get(self, "target_tenant")
 
     @target_tenant.setter
@@ -100,12 +68,6 @@ class RbacPolicyV2Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to configure a routing entry on a subnet. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        routing entry.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -124,20 +86,6 @@ class _RbacPolicyV2State:
                  target_tenant: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RbacPolicyV2 resources.
-        :param pulumi.Input[str] action: Action for the RBAC policy. Can either be
-               `access_as_external` or `access_as_shared`.
-        :param pulumi.Input[str] object_id: The ID of the `object_type` resource. An
-               `object_type` of `network` returns a network ID and an `object_type` of
-               `qos_policy` returns a QoS ID.
-        :param pulumi.Input[str] object_type: The type of the object that the RBAC policy
-               affects. Can be one of the following: `address_scope`, `address_group`,
-               `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to configure a routing entry on a subnet. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               routing entry.
-        :param pulumi.Input[str] target_tenant: The ID of the tenant to which the RBAC policy
-               will be enforced.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -155,10 +103,6 @@ class _RbacPolicyV2State:
     @property
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
-        """
-        Action for the RBAC policy. Can either be
-        `access_as_external` or `access_as_shared`.
-        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -168,11 +112,6 @@ class _RbacPolicyV2State:
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the `object_type` resource. An
-        `object_type` of `network` returns a network ID and an `object_type` of
-        `qos_policy` returns a QoS ID.
-        """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
@@ -182,11 +121,6 @@ class _RbacPolicyV2State:
     @property
     @pulumi.getter(name="objectType")
     def object_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of the object that the RBAC policy
-        affects. Can be one of the following: `address_scope`, `address_group`,
-        `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
-        """
         return pulumi.get(self, "object_type")
 
     @object_type.setter
@@ -205,12 +139,6 @@ class _RbacPolicyV2State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to configure a routing entry on a subnet. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        routing entry.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -220,10 +148,6 @@ class _RbacPolicyV2State:
     @property
     @pulumi.getter(name="targetTenant")
     def target_tenant(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the tenant to which the RBAC policy
-        will be enforced.
-        """
         return pulumi.get(self, "target_tenant")
 
     @target_tenant.setter
@@ -243,60 +167,9 @@ class RbacPolicyV2(pulumi.CustomResource):
                  target_tenant: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The RBAC policy resource contains functionality for working with Neutron RBAC
-        Policies. Role-Based Access Control (RBAC) policy framework enables both
-        operators and users to grant access to resources for specific projects.
-
-        Sharing an object with a specific project is accomplished by creating a
-        policy entry that permits the target project the `access_as_shared` action
-        on that object.
-
-        To make a network available as an external network for specific projects
-        rather than all projects, use the `access_as_external` action.
-        If a network is marked as external during creation, it now implicitly creates
-        a wildcard RBAC policy granting everyone access to preserve previous behavior
-        before this feature was added.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network_1",
-            name="network_1",
-            admin_state_up=True)
-        rbac_policy1 = openstack.networking.RbacPolicyV2("rbac_policy_1",
-            action="access_as_shared",
-            object_id=network1.id,
-            object_type="network",
-            target_tenant="20415a973c9e45d3917f078950644697")
-        ```
-
-        ## Import
-
-        RBAC policies can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import openstack:networking/rbacPolicyV2:RbacPolicyV2 rbac_policy_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
-        ```
-
+        Create a RbacPolicyV2 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: Action for the RBAC policy. Can either be
-               `access_as_external` or `access_as_shared`.
-        :param pulumi.Input[str] object_id: The ID of the `object_type` resource. An
-               `object_type` of `network` returns a network ID and an `object_type` of
-               `qos_policy` returns a QoS ID.
-        :param pulumi.Input[str] object_type: The type of the object that the RBAC policy
-               affects. Can be one of the following: `address_scope`, `address_group`,
-               `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to configure a routing entry on a subnet. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               routing entry.
-        :param pulumi.Input[str] target_tenant: The ID of the tenant to which the RBAC policy
-               will be enforced.
         """
         ...
     @overload
@@ -305,44 +178,7 @@ class RbacPolicyV2(pulumi.CustomResource):
                  args: RbacPolicyV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The RBAC policy resource contains functionality for working with Neutron RBAC
-        Policies. Role-Based Access Control (RBAC) policy framework enables both
-        operators and users to grant access to resources for specific projects.
-
-        Sharing an object with a specific project is accomplished by creating a
-        policy entry that permits the target project the `access_as_shared` action
-        on that object.
-
-        To make a network available as an external network for specific projects
-        rather than all projects, use the `access_as_external` action.
-        If a network is marked as external during creation, it now implicitly creates
-        a wildcard RBAC policy granting everyone access to preserve previous behavior
-        before this feature was added.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network_1",
-            name="network_1",
-            admin_state_up=True)
-        rbac_policy1 = openstack.networking.RbacPolicyV2("rbac_policy_1",
-            action="access_as_shared",
-            object_id=network1.id,
-            object_type="network",
-            target_tenant="20415a973c9e45d3917f078950644697")
-        ```
-
-        ## Import
-
-        RBAC policies can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import openstack:networking/rbacPolicyV2:RbacPolicyV2 rbac_policy_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
-        ```
-
+        Create a RbacPolicyV2 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param RbacPolicyV2Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -409,20 +245,6 @@ class RbacPolicyV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: Action for the RBAC policy. Can either be
-               `access_as_external` or `access_as_shared`.
-        :param pulumi.Input[str] object_id: The ID of the `object_type` resource. An
-               `object_type` of `network` returns a network ID and an `object_type` of
-               `qos_policy` returns a QoS ID.
-        :param pulumi.Input[str] object_type: The type of the object that the RBAC policy
-               affects. Can be one of the following: `address_scope`, `address_group`,
-               `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to configure a routing entry on a subnet. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               routing entry.
-        :param pulumi.Input[str] target_tenant: The ID of the tenant to which the RBAC policy
-               will be enforced.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -439,30 +261,16 @@ class RbacPolicyV2(pulumi.CustomResource):
     @property
     @pulumi.getter
     def action(self) -> pulumi.Output[str]:
-        """
-        Action for the RBAC policy. Can either be
-        `access_as_external` or `access_as_shared`.
-        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the `object_type` resource. An
-        `object_type` of `network` returns a network ID and an `object_type` of
-        `qos_policy` returns a QoS ID.
-        """
         return pulumi.get(self, "object_id")
 
     @property
     @pulumi.getter(name="objectType")
     def object_type(self) -> pulumi.Output[str]:
-        """
-        The type of the object that the RBAC policy
-        affects. Can be one of the following: `address_scope`, `address_group`,
-        `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
-        """
         return pulumi.get(self, "object_type")
 
     @property
@@ -473,20 +281,10 @@ class RbacPolicyV2(pulumi.CustomResource):
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to configure a routing entry on a subnet. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        routing entry.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="targetTenant")
     def target_tenant(self) -> pulumi.Output[str]:
-        """
-        The ID of the tenant to which the RBAC policy
-        will be enforced.
-        """
         return pulumi.get(self, "target_tenant")
 

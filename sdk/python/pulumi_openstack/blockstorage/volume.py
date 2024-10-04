@@ -33,40 +33,6 @@ class VolumeArgs:
                  volume_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Volume resource.
-        :param pulumi.Input[int] size: The size of the volume to create (in gigabytes).
-        :param pulumi.Input[str] availability_zone: The availability zone for the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[str] backup_id: The backup ID from which to create the volume.
-               Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
-               creates a new volume. Requires microversion >= 3.47.
-        :param pulumi.Input[str] consistency_group_id: The consistency group to place the volume
-               in.
-        :param pulumi.Input[str] description: A description of the volume. Changing this updates
-               the volume's description.
-        :param pulumi.Input[bool] enable_online_resize: When this option is set it allows extending
-               attached volumes. Note: updating size of an attached volume requires Cinder
-               support for version 3.42 and a compatible storage driver.
-        :param pulumi.Input[str] image_id: The image ID from which to create the volume.
-               Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
-               creates a new volume.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to associate with the volume.
-               Changing this updates the existing volume metadata.
-        :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
-               volume's name.
-        :param pulumi.Input[str] region: The region in which to create the volume. If
-               omitted, the `region` argument of the provider is used. Changing this
-               creates a new volume.
-        :param pulumi.Input[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]] scheduler_hints: Provide the Cinder scheduler with hints on where
-               to instantiate a volume in the OpenStack cloud. The available hints are described below.
-        :param pulumi.Input[str] snapshot_id: The snapshot ID from which to create the volume.
-               Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
-               creates a new volume.
-        :param pulumi.Input[str] source_replica: The volume ID to replicate with.
-        :param pulumi.Input[str] source_vol_id: The volume ID from which to create the volume.
-               Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
-               creates a new volume.
-        :param pulumi.Input[str] volume_type: The type of volume to create.
-               Changing this creates a new volume.
         """
         pulumi.set(__self__, "size", size)
         if availability_zone is not None:
@@ -101,9 +67,6 @@ class VolumeArgs:
     @property
     @pulumi.getter
     def size(self) -> pulumi.Input[int]:
-        """
-        The size of the volume to create (in gigabytes).
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -113,10 +76,6 @@ class VolumeArgs:
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The availability zone for the volume.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -126,11 +85,6 @@ class VolumeArgs:
     @property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The backup ID from which to create the volume.
-        Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
-        creates a new volume. Requires microversion >= 3.47.
-        """
         return pulumi.get(self, "backup_id")
 
     @backup_id.setter
@@ -140,10 +94,6 @@ class VolumeArgs:
     @property
     @pulumi.getter(name="consistencyGroupId")
     def consistency_group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The consistency group to place the volume
-        in.
-        """
         return pulumi.get(self, "consistency_group_id")
 
     @consistency_group_id.setter
@@ -153,10 +103,6 @@ class VolumeArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        A description of the volume. Changing this updates
-        the volume's description.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -166,11 +112,6 @@ class VolumeArgs:
     @property
     @pulumi.getter(name="enableOnlineResize")
     def enable_online_resize(self) -> Optional[pulumi.Input[bool]]:
-        """
-        When this option is set it allows extending
-        attached volumes. Note: updating size of an attached volume requires Cinder
-        support for version 3.42 and a compatible storage driver.
-        """
         return pulumi.get(self, "enable_online_resize")
 
     @enable_online_resize.setter
@@ -180,11 +121,6 @@ class VolumeArgs:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The image ID from which to create the volume.
-        Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
-        creates a new volume.
-        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -194,10 +130,6 @@ class VolumeArgs:
     @property
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Metadata key/value pairs to associate with the volume.
-        Changing this updates the existing volume metadata.
-        """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
@@ -207,10 +139,6 @@ class VolumeArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        A unique name for the volume. Changing this updates the
-        volume's name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -220,11 +148,6 @@ class VolumeArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to create the volume. If
-        omitted, the `region` argument of the provider is used. Changing this
-        creates a new volume.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -234,10 +157,6 @@ class VolumeArgs:
     @property
     @pulumi.getter(name="schedulerHints")
     def scheduler_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]]:
-        """
-        Provide the Cinder scheduler with hints on where
-        to instantiate a volume in the OpenStack cloud. The available hints are described below.
-        """
         return pulumi.get(self, "scheduler_hints")
 
     @scheduler_hints.setter
@@ -247,11 +166,6 @@ class VolumeArgs:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The snapshot ID from which to create the volume.
-        Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
-        creates a new volume.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -261,9 +175,6 @@ class VolumeArgs:
     @property
     @pulumi.getter(name="sourceReplica")
     def source_replica(self) -> Optional[pulumi.Input[str]]:
-        """
-        The volume ID to replicate with.
-        """
         return pulumi.get(self, "source_replica")
 
     @source_replica.setter
@@ -273,11 +184,6 @@ class VolumeArgs:
     @property
     @pulumi.getter(name="sourceVolId")
     def source_vol_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The volume ID from which to create the volume.
-        Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
-        creates a new volume.
-        """
         return pulumi.get(self, "source_vol_id")
 
     @source_vol_id.setter
@@ -287,10 +193,6 @@ class VolumeArgs:
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of volume to create.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -319,43 +221,6 @@ class _VolumeState:
                  volume_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Volume resources.
-        :param pulumi.Input[Sequence[pulumi.Input['VolumeAttachmentArgs']]] attachments: If a volume is attached to an instance, this attribute will
-               display the Attachment ID, Instance ID, and the Device as the Instance
-               sees it.
-        :param pulumi.Input[str] availability_zone: The availability zone for the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[str] backup_id: The backup ID from which to create the volume.
-               Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
-               creates a new volume. Requires microversion >= 3.47.
-        :param pulumi.Input[str] consistency_group_id: The consistency group to place the volume
-               in.
-        :param pulumi.Input[str] description: A description of the volume. Changing this updates
-               the volume's description.
-        :param pulumi.Input[bool] enable_online_resize: When this option is set it allows extending
-               attached volumes. Note: updating size of an attached volume requires Cinder
-               support for version 3.42 and a compatible storage driver.
-        :param pulumi.Input[str] image_id: The image ID from which to create the volume.
-               Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
-               creates a new volume.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to associate with the volume.
-               Changing this updates the existing volume metadata.
-        :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
-               volume's name.
-        :param pulumi.Input[str] region: The region in which to create the volume. If
-               omitted, the `region` argument of the provider is used. Changing this
-               creates a new volume.
-        :param pulumi.Input[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]] scheduler_hints: Provide the Cinder scheduler with hints on where
-               to instantiate a volume in the OpenStack cloud. The available hints are described below.
-        :param pulumi.Input[int] size: The size of the volume to create (in gigabytes).
-        :param pulumi.Input[str] snapshot_id: The snapshot ID from which to create the volume.
-               Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
-               creates a new volume.
-        :param pulumi.Input[str] source_replica: The volume ID to replicate with.
-        :param pulumi.Input[str] source_vol_id: The volume ID from which to create the volume.
-               Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
-               creates a new volume.
-        :param pulumi.Input[str] volume_type: The type of volume to create.
-               Changing this creates a new volume.
         """
         if attachments is not None:
             pulumi.set(__self__, "attachments", attachments)
@@ -393,11 +258,6 @@ class _VolumeState:
     @property
     @pulumi.getter
     def attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeAttachmentArgs']]]]:
-        """
-        If a volume is attached to an instance, this attribute will
-        display the Attachment ID, Instance ID, and the Device as the Instance
-        sees it.
-        """
         return pulumi.get(self, "attachments")
 
     @attachments.setter
@@ -407,10 +267,6 @@ class _VolumeState:
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The availability zone for the volume.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -420,11 +276,6 @@ class _VolumeState:
     @property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The backup ID from which to create the volume.
-        Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
-        creates a new volume. Requires microversion >= 3.47.
-        """
         return pulumi.get(self, "backup_id")
 
     @backup_id.setter
@@ -434,10 +285,6 @@ class _VolumeState:
     @property
     @pulumi.getter(name="consistencyGroupId")
     def consistency_group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The consistency group to place the volume
-        in.
-        """
         return pulumi.get(self, "consistency_group_id")
 
     @consistency_group_id.setter
@@ -447,10 +294,6 @@ class _VolumeState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        A description of the volume. Changing this updates
-        the volume's description.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -460,11 +303,6 @@ class _VolumeState:
     @property
     @pulumi.getter(name="enableOnlineResize")
     def enable_online_resize(self) -> Optional[pulumi.Input[bool]]:
-        """
-        When this option is set it allows extending
-        attached volumes. Note: updating size of an attached volume requires Cinder
-        support for version 3.42 and a compatible storage driver.
-        """
         return pulumi.get(self, "enable_online_resize")
 
     @enable_online_resize.setter
@@ -474,11 +312,6 @@ class _VolumeState:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The image ID from which to create the volume.
-        Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
-        creates a new volume.
-        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -488,10 +321,6 @@ class _VolumeState:
     @property
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Metadata key/value pairs to associate with the volume.
-        Changing this updates the existing volume metadata.
-        """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
@@ -501,10 +330,6 @@ class _VolumeState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        A unique name for the volume. Changing this updates the
-        volume's name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -514,11 +339,6 @@ class _VolumeState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to create the volume. If
-        omitted, the `region` argument of the provider is used. Changing this
-        creates a new volume.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -528,10 +348,6 @@ class _VolumeState:
     @property
     @pulumi.getter(name="schedulerHints")
     def scheduler_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]]:
-        """
-        Provide the Cinder scheduler with hints on where
-        to instantiate a volume in the OpenStack cloud. The available hints are described below.
-        """
         return pulumi.get(self, "scheduler_hints")
 
     @scheduler_hints.setter
@@ -541,9 +357,6 @@ class _VolumeState:
     @property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
-        """
-        The size of the volume to create (in gigabytes).
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -553,11 +366,6 @@ class _VolumeState:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The snapshot ID from which to create the volume.
-        Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
-        creates a new volume.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -567,9 +375,6 @@ class _VolumeState:
     @property
     @pulumi.getter(name="sourceReplica")
     def source_replica(self) -> Optional[pulumi.Input[str]]:
-        """
-        The volume ID to replicate with.
-        """
         return pulumi.get(self, "source_replica")
 
     @source_replica.setter
@@ -579,11 +384,6 @@ class _VolumeState:
     @property
     @pulumi.getter(name="sourceVolId")
     def source_vol_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The volume ID from which to create the volume.
-        Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
-        creates a new volume.
-        """
         return pulumi.get(self, "source_vol_id")
 
     @source_vol_id.setter
@@ -593,10 +393,6 @@ class _VolumeState:
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of volume to create.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -626,65 +422,9 @@ class Volume(pulumi.CustomResource):
                  volume_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a V3 volume resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        volume1 = openstack.blockstorage.Volume("volume_1",
-            region="RegionOne",
-            name="volume_1",
-            description="first test volume",
-            size=3)
-        ```
-
-        ## Import
-
-        Volumes can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import openstack:blockstorage/volume:Volume volume_1 ea257959-eeb1-4c10-8d33-26f0409a755d
-        ```
-
+        Create a Volume resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] availability_zone: The availability zone for the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[str] backup_id: The backup ID from which to create the volume.
-               Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
-               creates a new volume. Requires microversion >= 3.47.
-        :param pulumi.Input[str] consistency_group_id: The consistency group to place the volume
-               in.
-        :param pulumi.Input[str] description: A description of the volume. Changing this updates
-               the volume's description.
-        :param pulumi.Input[bool] enable_online_resize: When this option is set it allows extending
-               attached volumes. Note: updating size of an attached volume requires Cinder
-               support for version 3.42 and a compatible storage driver.
-        :param pulumi.Input[str] image_id: The image ID from which to create the volume.
-               Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
-               creates a new volume.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to associate with the volume.
-               Changing this updates the existing volume metadata.
-        :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
-               volume's name.
-        :param pulumi.Input[str] region: The region in which to create the volume. If
-               omitted, the `region` argument of the provider is used. Changing this
-               creates a new volume.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeSchedulerHintArgs', 'VolumeSchedulerHintArgsDict']]]] scheduler_hints: Provide the Cinder scheduler with hints on where
-               to instantiate a volume in the OpenStack cloud. The available hints are described below.
-        :param pulumi.Input[int] size: The size of the volume to create (in gigabytes).
-        :param pulumi.Input[str] snapshot_id: The snapshot ID from which to create the volume.
-               Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
-               creates a new volume.
-        :param pulumi.Input[str] source_replica: The volume ID to replicate with.
-        :param pulumi.Input[str] source_vol_id: The volume ID from which to create the volume.
-               Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
-               creates a new volume.
-        :param pulumi.Input[str] volume_type: The type of volume to create.
-               Changing this creates a new volume.
         """
         ...
     @overload
@@ -693,29 +433,7 @@ class Volume(pulumi.CustomResource):
                  args: VolumeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V3 volume resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        volume1 = openstack.blockstorage.Volume("volume_1",
-            region="RegionOne",
-            name="volume_1",
-            description="first test volume",
-            size=3)
-        ```
-
-        ## Import
-
-        Volumes can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import openstack:blockstorage/volume:Volume volume_1 ea257959-eeb1-4c10-8d33-26f0409a755d
-        ```
-
+        Create a Volume resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param VolumeArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -806,43 +524,6 @@ class Volume(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeAttachmentArgs', 'VolumeAttachmentArgsDict']]]] attachments: If a volume is attached to an instance, this attribute will
-               display the Attachment ID, Instance ID, and the Device as the Instance
-               sees it.
-        :param pulumi.Input[str] availability_zone: The availability zone for the volume.
-               Changing this creates a new volume.
-        :param pulumi.Input[str] backup_id: The backup ID from which to create the volume.
-               Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
-               creates a new volume. Requires microversion >= 3.47.
-        :param pulumi.Input[str] consistency_group_id: The consistency group to place the volume
-               in.
-        :param pulumi.Input[str] description: A description of the volume. Changing this updates
-               the volume's description.
-        :param pulumi.Input[bool] enable_online_resize: When this option is set it allows extending
-               attached volumes. Note: updating size of an attached volume requires Cinder
-               support for version 3.42 and a compatible storage driver.
-        :param pulumi.Input[str] image_id: The image ID from which to create the volume.
-               Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
-               creates a new volume.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to associate with the volume.
-               Changing this updates the existing volume metadata.
-        :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
-               volume's name.
-        :param pulumi.Input[str] region: The region in which to create the volume. If
-               omitted, the `region` argument of the provider is used. Changing this
-               creates a new volume.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeSchedulerHintArgs', 'VolumeSchedulerHintArgsDict']]]] scheduler_hints: Provide the Cinder scheduler with hints on where
-               to instantiate a volume in the OpenStack cloud. The available hints are described below.
-        :param pulumi.Input[int] size: The size of the volume to create (in gigabytes).
-        :param pulumi.Input[str] snapshot_id: The snapshot ID from which to create the volume.
-               Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
-               creates a new volume.
-        :param pulumi.Input[str] source_replica: The volume ID to replicate with.
-        :param pulumi.Input[str] source_vol_id: The volume ID from which to create the volume.
-               Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
-               creates a new volume.
-        :param pulumi.Input[str] volume_type: The type of volume to create.
-               Changing this creates a new volume.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -869,149 +550,80 @@ class Volume(pulumi.CustomResource):
     @property
     @pulumi.getter
     def attachments(self) -> pulumi.Output[Sequence['outputs.VolumeAttachment']]:
-        """
-        If a volume is attached to an instance, this attribute will
-        display the Attachment ID, Instance ID, and the Device as the Instance
-        sees it.
-        """
         return pulumi.get(self, "attachments")
 
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[str]:
-        """
-        The availability zone for the volume.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The backup ID from which to create the volume.
-        Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
-        creates a new volume. Requires microversion >= 3.47.
-        """
         return pulumi.get(self, "backup_id")
 
     @property
     @pulumi.getter(name="consistencyGroupId")
     def consistency_group_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The consistency group to place the volume
-        in.
-        """
         return pulumi.get(self, "consistency_group_id")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        A description of the volume. Changing this updates
-        the volume's description.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="enableOnlineResize")
     def enable_online_resize(self) -> pulumi.Output[Optional[bool]]:
-        """
-        When this option is set it allows extending
-        attached volumes. Note: updating size of an attached volume requires Cinder
-        support for version 3.42 and a compatible storage driver.
-        """
         return pulumi.get(self, "enable_online_resize")
 
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The image ID from which to create the volume.
-        Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
-        creates a new volume.
-        """
         return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter
     def metadata(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        Metadata key/value pairs to associate with the volume.
-        Changing this updates the existing volume metadata.
-        """
         return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        A unique name for the volume. Changing this updates the
-        volume's name.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to create the volume. If
-        omitted, the `region` argument of the provider is used. Changing this
-        creates a new volume.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="schedulerHints")
     def scheduler_hints(self) -> pulumi.Output[Optional[Sequence['outputs.VolumeSchedulerHint']]]:
-        """
-        Provide the Cinder scheduler with hints on where
-        to instantiate a volume in the OpenStack cloud. The available hints are described below.
-        """
         return pulumi.get(self, "scheduler_hints")
 
     @property
     @pulumi.getter
     def size(self) -> pulumi.Output[int]:
-        """
-        The size of the volume to create (in gigabytes).
-        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The snapshot ID from which to create the volume.
-        Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
-        creates a new volume.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter(name="sourceReplica")
     def source_replica(self) -> pulumi.Output[Optional[str]]:
-        """
-        The volume ID to replicate with.
-        """
         return pulumi.get(self, "source_replica")
 
     @property
     @pulumi.getter(name="sourceVolId")
     def source_vol_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The volume ID from which to create the volume.
-        Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
-        creates a new volume.
-        """
         return pulumi.get(self, "source_vol_id")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> pulumi.Output[str]:
-        """
-        The type of volume to create.
-        Changing this creates a new volume.
-        """
         return pulumi.get(self, "volume_type")
 

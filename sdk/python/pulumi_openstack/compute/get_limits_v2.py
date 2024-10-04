@@ -100,169 +100,106 @@ class GetLimitsV2Result:
     @property
     @pulumi.getter(name="maxImageMeta")
     def max_image_meta(self) -> int:
-        """
-        The number of allowed metadata items for each image. Starting from version 2.39 this field is dropped from ‘os-limits’ response, because ‘image-metadata’ proxy API was deprecated. Available until version 2.38.
-        """
         return pulumi.get(self, "max_image_meta")
 
     @property
     @pulumi.getter(name="maxPersonality")
     def max_personality(self) -> int:
-        """
-        The number of allowed injected files for the tenant. Available until version 2.56.
-        """
         return pulumi.get(self, "max_personality")
 
     @property
     @pulumi.getter(name="maxPersonalitySize")
     def max_personality_size(self) -> int:
-        """
-        The number of allowed bytes of content for each injected file. Available until version 2.56.
-        """
         return pulumi.get(self, "max_personality_size")
 
     @property
     @pulumi.getter(name="maxSecurityGroupRules")
     def max_security_group_rules(self) -> int:
-        """
-        The number of allowed rules for each security group. Available until version 2.35.
-        """
         return pulumi.get(self, "max_security_group_rules")
 
     @property
     @pulumi.getter(name="maxSecurityGroups")
     def max_security_groups(self) -> int:
-        """
-        The number of allowed security groups for the tenant. Available until version 2.35.
-        """
         return pulumi.get(self, "max_security_groups")
 
     @property
     @pulumi.getter(name="maxServerGroupMembers")
     def max_server_group_members(self) -> int:
-        """
-        The number of allowed members for each server group.
-        """
         return pulumi.get(self, "max_server_group_members")
 
     @property
     @pulumi.getter(name="maxServerGroups")
     def max_server_groups(self) -> int:
-        """
-        The number of allowed server groups for the tenant.
-        """
         return pulumi.get(self, "max_server_groups")
 
     @property
     @pulumi.getter(name="maxServerMeta")
     def max_server_meta(self) -> int:
-        """
-        The number of allowed server groups for the tenant.
-        """
         return pulumi.get(self, "max_server_meta")
 
     @property
     @pulumi.getter(name="maxTotalCores")
     def max_total_cores(self) -> int:
-        """
-        The number of allowed server cores for the tenant.
-        """
         return pulumi.get(self, "max_total_cores")
 
     @property
     @pulumi.getter(name="maxTotalFloatingIps")
     def max_total_floating_ips(self) -> int:
-        """
-        The number of allowed floating IP addresses for each tenant. Available until version 2.35.
-        """
         return pulumi.get(self, "max_total_floating_ips")
 
     @property
     @pulumi.getter(name="maxTotalInstances")
     def max_total_instances(self) -> int:
-        """
-        The number of allowed servers for the tenant.
-        """
         return pulumi.get(self, "max_total_instances")
 
     @property
     @pulumi.getter(name="maxTotalKeypairs")
     def max_total_keypairs(self) -> int:
-        """
-        The number of allowed key pairs for the user.
-        """
         return pulumi.get(self, "max_total_keypairs")
 
     @property
     @pulumi.getter(name="maxTotalRamSize")
     def max_total_ram_size(self) -> int:
-        """
-        The number of allowed floating IP addresses for the tenant. Available until version 2.35.
-        """
         return pulumi.get(self, "max_total_ram_size")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="totalCoresUsed")
     def total_cores_used(self) -> int:
-        """
-        The number of used server cores in the tenant.
-        """
         return pulumi.get(self, "total_cores_used")
 
     @property
     @pulumi.getter(name="totalFloatingIpsUsed")
     def total_floating_ips_used(self) -> int:
-        """
-        The number of used floating IP addresses in the tenant.
-        """
         return pulumi.get(self, "total_floating_ips_used")
 
     @property
     @pulumi.getter(name="totalInstancesUsed")
     def total_instances_used(self) -> int:
-        """
-        The number of used server cores in the tenant.
-        """
         return pulumi.get(self, "total_instances_used")
 
     @property
     @pulumi.getter(name="totalRamUsed")
     def total_ram_used(self) -> int:
-        """
-        The amount of used server RAM in the tenant.
-        """
         return pulumi.get(self, "total_ram_used")
 
     @property
     @pulumi.getter(name="totalSecurityGroupsUsed")
     def total_security_groups_used(self) -> int:
-        """
-        The number of used security groups in the tenant. Available until version 2.35.
-        """
         return pulumi.get(self, "total_security_groups_used")
 
     @property
     @pulumi.getter(name="totalServerGroupsUsed")
     def total_server_groups_used(self) -> int:
-        """
-        The number of used server groups in each tenant.
-        """
         return pulumi.get(self, "total_server_groups_used")
 
 
@@ -300,21 +237,7 @@ def get_limits_v2(project_id: Optional[str] = None,
                   region: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLimitsV2Result:
     """
-    Use this data source to get the compute limits of an OpenStack project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    limits = openstack.compute.get_limits_v2(project_id="2e367a3d29f94fd988e6ec54e305ec9d")
-    ```
-
-
-    :param str project_id: The id of the project to retrieve the limits.
-    :param str region: The region in which to obtain the V2 Compute client.
-           If omitted, the `region` argument of the provider is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['projectId'] = project_id
@@ -352,20 +275,6 @@ def get_limits_v2_output(project_id: Optional[pulumi.Input[str]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLimitsV2Result]:
     """
-    Use this data source to get the compute limits of an OpenStack project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    limits = openstack.compute.get_limits_v2(project_id="2e367a3d29f94fd988e6ec54e305ec9d")
-    ```
-
-
-    :param str project_id: The id of the project to retrieve the limits.
-    :param str region: The region in which to obtain the V2 Compute client.
-           If omitted, the `region` argument of the provider is used.
+    Use this data source to access information about an existing resource.
     """
     ...

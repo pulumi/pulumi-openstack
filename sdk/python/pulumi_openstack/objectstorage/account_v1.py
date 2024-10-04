@@ -19,14 +19,6 @@ class AccountV1Args:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccountV1 resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A map of custom key/value pairs to associate with the
-               account metadata. Changing the `Quota-Bytes` key value is allowed to be
-               updated only by the cloud administrator.
-        :param pulumi.Input[str] project_id: The project ID of the corresponding account. If
-               omitted, the token's project ID is used. Changing this creates a new account.
-        :param pulumi.Input[str] region: The region in which to create the account. If omitted,
-               the `region` argument of the provider is used. Changing this creates a new
-               account.
         """
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
@@ -38,11 +30,6 @@ class AccountV1Args:
     @property
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        A map of custom key/value pairs to associate with the
-        account metadata. Changing the `Quota-Bytes` key value is allowed to be
-        updated only by the cloud administrator.
-        """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
@@ -52,10 +39,6 @@ class AccountV1Args:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project ID of the corresponding account. If
-        omitted, the token's project ID is used. Changing this creates a new account.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -65,11 +48,6 @@ class AccountV1Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to create the account. If omitted,
-        the `region` argument of the provider is used. Changing this creates a new
-        account.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -90,19 +68,6 @@ class _AccountV1State:
                  region: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccountV1 resources.
-        :param pulumi.Input[int] bytes_used: The number of bytes used by the account.
-        :param pulumi.Input[int] container_count: The number of containers in the account.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: A map of headers returned for the account.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A map of custom key/value pairs to associate with the
-               account metadata. Changing the `Quota-Bytes` key value is allowed to be
-               updated only by the cloud administrator.
-        :param pulumi.Input[int] object_count: The number of objects in the account.
-        :param pulumi.Input[str] project_id: The project ID of the corresponding account. If
-               omitted, the token's project ID is used. Changing this creates a new account.
-        :param pulumi.Input[int] quota_bytes: The number of bytes allowed for the account.
-        :param pulumi.Input[str] region: The region in which to create the account. If omitted,
-               the `region` argument of the provider is used. Changing this creates a new
-               account.
         """
         if bytes_used is not None:
             pulumi.set(__self__, "bytes_used", bytes_used)
@@ -124,9 +89,6 @@ class _AccountV1State:
     @property
     @pulumi.getter(name="bytesUsed")
     def bytes_used(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of bytes used by the account.
-        """
         return pulumi.get(self, "bytes_used")
 
     @bytes_used.setter
@@ -136,9 +98,6 @@ class _AccountV1State:
     @property
     @pulumi.getter(name="containerCount")
     def container_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of containers in the account.
-        """
         return pulumi.get(self, "container_count")
 
     @container_count.setter
@@ -148,9 +107,6 @@ class _AccountV1State:
     @property
     @pulumi.getter
     def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        A map of headers returned for the account.
-        """
         return pulumi.get(self, "headers")
 
     @headers.setter
@@ -160,11 +116,6 @@ class _AccountV1State:
     @property
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        A map of custom key/value pairs to associate with the
-        account metadata. Changing the `Quota-Bytes` key value is allowed to be
-        updated only by the cloud administrator.
-        """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
@@ -174,9 +125,6 @@ class _AccountV1State:
     @property
     @pulumi.getter(name="objectCount")
     def object_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of objects in the account.
-        """
         return pulumi.get(self, "object_count")
 
     @object_count.setter
@@ -186,10 +134,6 @@ class _AccountV1State:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project ID of the corresponding account. If
-        omitted, the token's project ID is used. Changing this creates a new account.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -199,9 +143,6 @@ class _AccountV1State:
     @property
     @pulumi.getter(name="quotaBytes")
     def quota_bytes(self) -> Optional[pulumi.Input[int]]:
-        """
-        The number of bytes allowed for the account.
-        """
         return pulumi.get(self, "quota_bytes")
 
     @quota_bytes.setter
@@ -211,11 +152,6 @@ class _AccountV1State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to create the account. If omitted,
-        the `region` argument of the provider is used. Changing this creates a new
-        account.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -233,40 +169,9 @@ class AccountV1(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a V1 account resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        account1 = openstack.objectstorage.AccountV1("account_1",
-            region="RegionOne",
-            metadata={
-                "Temp-Url-Key": "testkey",
-                "test": "true",
-            })
-        ```
-
-        ## Import
-
-        This resource can be imported by specifying the project ID of the account:
-
-        ```sh
-        $ pulumi import openstack:objectstorage/accountV1:AccountV1 account_1 1202b3d0aaa44cfc8b79475c007b0711
-        ```
-
+        Create a AccountV1 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A map of custom key/value pairs to associate with the
-               account metadata. Changing the `Quota-Bytes` key value is allowed to be
-               updated only by the cloud administrator.
-        :param pulumi.Input[str] project_id: The project ID of the corresponding account. If
-               omitted, the token's project ID is used. Changing this creates a new account.
-        :param pulumi.Input[str] region: The region in which to create the account. If omitted,
-               the `region` argument of the provider is used. Changing this creates a new
-               account.
         """
         ...
     @overload
@@ -275,30 +180,7 @@ class AccountV1(pulumi.CustomResource):
                  args: Optional[AccountV1Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V1 account resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        account1 = openstack.objectstorage.AccountV1("account_1",
-            region="RegionOne",
-            metadata={
-                "Temp-Url-Key": "testkey",
-                "test": "true",
-            })
-        ```
-
-        ## Import
-
-        This resource can be imported by specifying the project ID of the account:
-
-        ```sh
-        $ pulumi import openstack:objectstorage/accountV1:AccountV1 account_1 1202b3d0aaa44cfc8b79475c007b0711
-        ```
-
+        Create a AccountV1 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AccountV1Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -359,19 +241,6 @@ class AccountV1(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] bytes_used: The number of bytes used by the account.
-        :param pulumi.Input[int] container_count: The number of containers in the account.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: A map of headers returned for the account.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A map of custom key/value pairs to associate with the
-               account metadata. Changing the `Quota-Bytes` key value is allowed to be
-               updated only by the cloud administrator.
-        :param pulumi.Input[int] object_count: The number of objects in the account.
-        :param pulumi.Input[str] project_id: The project ID of the corresponding account. If
-               omitted, the token's project ID is used. Changing this creates a new account.
-        :param pulumi.Input[int] quota_bytes: The number of bytes allowed for the account.
-        :param pulumi.Input[str] region: The region in which to create the account. If omitted,
-               the `region` argument of the provider is used. Changing this creates a new
-               account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -390,69 +259,40 @@ class AccountV1(pulumi.CustomResource):
     @property
     @pulumi.getter(name="bytesUsed")
     def bytes_used(self) -> pulumi.Output[int]:
-        """
-        The number of bytes used by the account.
-        """
         return pulumi.get(self, "bytes_used")
 
     @property
     @pulumi.getter(name="containerCount")
     def container_count(self) -> pulumi.Output[int]:
-        """
-        The number of containers in the account.
-        """
         return pulumi.get(self, "container_count")
 
     @property
     @pulumi.getter
     def headers(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        A map of headers returned for the account.
-        """
         return pulumi.get(self, "headers")
 
     @property
     @pulumi.getter
     def metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        A map of custom key/value pairs to associate with the
-        account metadata. Changing the `Quota-Bytes` key value is allowed to be
-        updated only by the cloud administrator.
-        """
         return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter(name="objectCount")
     def object_count(self) -> pulumi.Output[int]:
-        """
-        The number of objects in the account.
-        """
         return pulumi.get(self, "object_count")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
-        """
-        The project ID of the corresponding account. If
-        omitted, the token's project ID is used. Changing this creates a new account.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="quotaBytes")
     def quota_bytes(self) -> pulumi.Output[int]:
-        """
-        The number of bytes allowed for the account.
-        """
         return pulumi.get(self, "quota_bytes")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to create the account. If omitted,
-        the `region` argument of the provider is used. Changing this creates a new
-        account.
-        """
         return pulumi.get(self, "region")
 

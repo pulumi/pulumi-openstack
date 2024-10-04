@@ -27,7 +27,7 @@ namespace Pulumi.OpenStack
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var flavorprofile1 = new OpenStack.LbFlavorprofileV2("flavorprofile_1", new()
+    ///     var flavorprofile1 = new OpenStack.LoadBalancer.FlavorprofileV2("flavorprofile_1", new()
     ///     {
     ///         Name = "amphora-single-profile",
     ///         ProviderName = "amphora",
@@ -50,7 +50,7 @@ namespace Pulumi.OpenStack
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var flavorprofile1 = new OpenStack.LbFlavorprofileV2("flavorprofile_1", new()
+    ///     var flavorprofile1 = new OpenStack.LoadBalancer.FlavorprofileV2("flavorprofile_1", new()
     ///     {
     ///         Name = "amphora-single-profile",
     ///         ProviderName = "amphora",
@@ -68,6 +68,7 @@ namespace Pulumi.OpenStack
     /// $ pulumi import openstack:index/lbFlavorprofileV2:LbFlavorprofileV2 flavorprofile_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
     /// ```
     /// </summary>
+    [Obsolete(@"openstack.index/lbflavorprofilev2.LbFlavorprofileV2 has been deprecated in favor of openstack.loadbalancer/flavorprofilev2.FlavorprofileV2")]
     [OpenStackResourceType("openstack:index/lbFlavorprofileV2:LbFlavorprofileV2")]
     public partial class LbFlavorprofileV2 : global::Pulumi.CustomResource
     {

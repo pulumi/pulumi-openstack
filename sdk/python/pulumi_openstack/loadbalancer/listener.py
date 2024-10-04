@@ -44,92 +44,6 @@ class ListenerArgs:
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Listener resource.
-        :param pulumi.Input[str] loadbalancer_id: The load balancer on which to provision this
-               Listener. Changing this creates a new Listener.
-        :param pulumi.Input[str] protocol: The protocol can be either `TCP`, `HTTP`, `HTTPS`,
-               `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
-               \\>= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version >=
-               2.25**). Changing this creates a new Listener.
-        :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
-               * Changing this creates a new Listener.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the Listener. A
-               valid value is true (UP) or false (DOWN).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_cidrs: A list of CIDR blocks that are permitted to
-               connect to this listener, denying all other source addresses. If not present,
-               defaults to allow all.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] alpn_protocols: A list of ALPN protocols. Available protocols:
-               `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
-               2.20**.
-        :param pulumi.Input[str] client_authentication: The TLS client authentication mode.
-               Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
-               `TERMINATED_HTTPS` listener protocol and the `client_ca_tls_container_ref`.
-               Supported only in **Octavia minor version >= 2.8**.
-        :param pulumi.Input[str] client_ca_tls_container_ref: The ref of the key manager service
-               secret containing a PEM format client CA certificate bundle for
-               `TERMINATED_HTTPS` listeners. Required if `client_authentication` is
-               `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version >=
-               2.8**.
-        :param pulumi.Input[str] client_crl_container_ref: The URI of the key manager service
-               secret containing a PEM format CA revocation list file for `TERMINATED_HTTPS`
-               listeners. Supported only in **Octavia minor version >= 2.8**.
-        :param pulumi.Input[int] connection_limit: The maximum number of connections allowed for
-               the Listener.
-        :param pulumi.Input[str] default_pool_id: The ID of the default pool with which the
-               Listener is associated.
-        :param pulumi.Input[str] default_tls_container_ref: A reference to a Barbican Secrets
-               container which stores TLS information. This is required if the protocol is
-               `TERMINATED_HTTPS`. See
-               [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
-               for more information.
-        :param pulumi.Input[str] description: Human-readable description for the Listener.
-        :param pulumi.Input[bool] hsts_include_subdomains: Defines whether the
-               **includeSubDomains** directive should be added to the
-               Strict-Transport-Security HTTP response header. This requires setting the
-               `hsts_max_age` option as well in order to become effective. Requires
-               `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
-               version >= 2.27**.
-        :param pulumi.Input[int] hsts_max_age: The value of the **max_age** directive for the
-               Strict-Transport-Security HTTP response header. Setting this enables HTTP
-               Strict Transport Security (HSTS) for the TLS-terminated listener. Requires
-               `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
-               version >= 2.27**.
-        :param pulumi.Input[bool] hsts_preload: Defines whether the **preload** directive should
-               be added to the Strict-Transport-Security HTTP response header. This requires
-               setting the `hsts_max_age` option as well in order to become effective.
-               Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
-               minor version >= 2.27**.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] insert_headers: The list of key value pairs representing
-               headers to insert into the request before it is sent to the backend members.
-               Changing this updates the headers of the existing listener.
-        :param pulumi.Input[str] name: Human-readable name for the Listener. Does not have to be
-               unique.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a listener. If omitted, the `region`
-               argument of the provider is used. Changing this creates a new Listener.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sni_container_refs: A list of references to Barbican Secrets
-               containers which store SNI information. See
-               [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
-               for more information.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the pool. Available
-               for Octavia **minor version 2.5 or later**.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the Listener.  Only administrative users can specify a tenant UUID other than
-               their own. Changing this creates a new Listener.
-        :param pulumi.Input[int] timeout_client_data: The client inactivity timeout in
-               milliseconds.
-        :param pulumi.Input[int] timeout_member_connect: The member connection timeout in
-               milliseconds.
-        :param pulumi.Input[int] timeout_member_data: The member inactivity timeout in
-               milliseconds.
-        :param pulumi.Input[int] timeout_tcp_inspect: The time in milliseconds, to wait for
-               additional TCP packets for content inspection.
-        :param pulumi.Input[str] tls_ciphers: List of ciphers in OpenSSL format
-               (colon-separated). See
-               https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
-               Supported only in **Octavia minor version >= 2.15**.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tls_versions: A list of TLS protocol versions. Available
-               versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
-               **Octavia minor version >= 2.17**.
         """
         pulumi.set(__self__, "loadbalancer_id", loadbalancer_id)
         pulumi.set(__self__, "protocol", protocol)
@@ -188,10 +102,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="loadbalancerId")
     def loadbalancer_id(self) -> pulumi.Input[str]:
-        """
-        The load balancer on which to provision this
-        Listener. Changing this creates a new Listener.
-        """
         return pulumi.get(self, "loadbalancer_id")
 
     @loadbalancer_id.setter
@@ -201,12 +111,6 @@ class ListenerArgs:
     @property
     @pulumi.getter
     def protocol(self) -> pulumi.Input[str]:
-        """
-        The protocol can be either `TCP`, `HTTP`, `HTTPS`,
-        `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
-        \\>= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version >=
-        2.25**). Changing this creates a new Listener.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -216,10 +120,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="protocolPort")
     def protocol_port(self) -> pulumi.Input[int]:
-        """
-        The port on which to listen for client traffic.
-        * Changing this creates a new Listener.
-        """
         return pulumi.get(self, "protocol_port")
 
     @protocol_port.setter
@@ -229,10 +129,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The administrative state of the Listener. A
-        valid value is true (UP) or false (DOWN).
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -242,11 +138,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="allowedCidrs")
     def allowed_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of CIDR blocks that are permitted to
-        connect to this listener, denying all other source addresses. If not present,
-        defaults to allow all.
-        """
         return pulumi.get(self, "allowed_cidrs")
 
     @allowed_cidrs.setter
@@ -256,11 +147,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="alpnProtocols")
     def alpn_protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of ALPN protocols. Available protocols:
-        `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
-        2.20**.
-        """
         return pulumi.get(self, "alpn_protocols")
 
     @alpn_protocols.setter
@@ -270,12 +156,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="clientAuthentication")
     def client_authentication(self) -> Optional[pulumi.Input[str]]:
-        """
-        The TLS client authentication mode.
-        Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
-        `TERMINATED_HTTPS` listener protocol and the `client_ca_tls_container_ref`.
-        Supported only in **Octavia minor version >= 2.8**.
-        """
         return pulumi.get(self, "client_authentication")
 
     @client_authentication.setter
@@ -285,13 +165,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="clientCaTlsContainerRef")
     def client_ca_tls_container_ref(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ref of the key manager service
-        secret containing a PEM format client CA certificate bundle for
-        `TERMINATED_HTTPS` listeners. Required if `client_authentication` is
-        `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version >=
-        2.8**.
-        """
         return pulumi.get(self, "client_ca_tls_container_ref")
 
     @client_ca_tls_container_ref.setter
@@ -301,11 +174,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="clientCrlContainerRef")
     def client_crl_container_ref(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URI of the key manager service
-        secret containing a PEM format CA revocation list file for `TERMINATED_HTTPS`
-        listeners. Supported only in **Octavia minor version >= 2.8**.
-        """
         return pulumi.get(self, "client_crl_container_ref")
 
     @client_crl_container_ref.setter
@@ -315,10 +183,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="connectionLimit")
     def connection_limit(self) -> Optional[pulumi.Input[int]]:
-        """
-        The maximum number of connections allowed for
-        the Listener.
-        """
         return pulumi.get(self, "connection_limit")
 
     @connection_limit.setter
@@ -328,10 +192,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="defaultPoolId")
     def default_pool_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the default pool with which the
-        Listener is associated.
-        """
         return pulumi.get(self, "default_pool_id")
 
     @default_pool_id.setter
@@ -341,13 +201,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="defaultTlsContainerRef")
     def default_tls_container_ref(self) -> Optional[pulumi.Input[str]]:
-        """
-        A reference to a Barbican Secrets
-        container which stores TLS information. This is required if the protocol is
-        `TERMINATED_HTTPS`. See
-        [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
-        for more information.
-        """
         return pulumi.get(self, "default_tls_container_ref")
 
     @default_tls_container_ref.setter
@@ -357,9 +210,6 @@ class ListenerArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable description for the Listener.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -369,14 +219,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="hstsIncludeSubdomains")
     def hsts_include_subdomains(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Defines whether the
-        **includeSubDomains** directive should be added to the
-        Strict-Transport-Security HTTP response header. This requires setting the
-        `hsts_max_age` option as well in order to become effective. Requires
-        `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
-        version >= 2.27**.
-        """
         return pulumi.get(self, "hsts_include_subdomains")
 
     @hsts_include_subdomains.setter
@@ -386,13 +228,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="hstsMaxAge")
     def hsts_max_age(self) -> Optional[pulumi.Input[int]]:
-        """
-        The value of the **max_age** directive for the
-        Strict-Transport-Security HTTP response header. Setting this enables HTTP
-        Strict Transport Security (HSTS) for the TLS-terminated listener. Requires
-        `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
-        version >= 2.27**.
-        """
         return pulumi.get(self, "hsts_max_age")
 
     @hsts_max_age.setter
@@ -402,13 +237,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="hstsPreload")
     def hsts_preload(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Defines whether the **preload** directive should
-        be added to the Strict-Transport-Security HTTP response header. This requires
-        setting the `hsts_max_age` option as well in order to become effective.
-        Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
-        minor version >= 2.27**.
-        """
         return pulumi.get(self, "hsts_preload")
 
     @hsts_preload.setter
@@ -418,11 +246,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="insertHeaders")
     def insert_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The list of key value pairs representing
-        headers to insert into the request before it is sent to the backend members.
-        Changing this updates the headers of the existing listener.
-        """
         return pulumi.get(self, "insert_headers")
 
     @insert_headers.setter
@@ -432,10 +255,6 @@ class ListenerArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable name for the Listener. Does not have to be
-        unique.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -445,11 +264,6 @@ class ListenerArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a listener. If omitted, the `region`
-        argument of the provider is used. Changing this creates a new Listener.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -459,12 +273,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="sniContainerRefs")
     def sni_container_refs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of references to Barbican Secrets
-        containers which store SNI information. See
-        [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
-        for more information.
-        """
         return pulumi.get(self, "sni_container_refs")
 
     @sni_container_refs.setter
@@ -474,10 +282,6 @@ class ListenerArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of simple strings assigned to the pool. Available
-        for Octavia **minor version 2.5 or later**.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -487,11 +291,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required for admins. The UUID of the tenant who owns
-        the Listener.  Only administrative users can specify a tenant UUID other than
-        their own. Changing this creates a new Listener.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -501,10 +300,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="timeoutClientData")
     def timeout_client_data(self) -> Optional[pulumi.Input[int]]:
-        """
-        The client inactivity timeout in
-        milliseconds.
-        """
         return pulumi.get(self, "timeout_client_data")
 
     @timeout_client_data.setter
@@ -514,10 +309,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="timeoutMemberConnect")
     def timeout_member_connect(self) -> Optional[pulumi.Input[int]]:
-        """
-        The member connection timeout in
-        milliseconds.
-        """
         return pulumi.get(self, "timeout_member_connect")
 
     @timeout_member_connect.setter
@@ -527,10 +318,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="timeoutMemberData")
     def timeout_member_data(self) -> Optional[pulumi.Input[int]]:
-        """
-        The member inactivity timeout in
-        milliseconds.
-        """
         return pulumi.get(self, "timeout_member_data")
 
     @timeout_member_data.setter
@@ -540,10 +327,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="timeoutTcpInspect")
     def timeout_tcp_inspect(self) -> Optional[pulumi.Input[int]]:
-        """
-        The time in milliseconds, to wait for
-        additional TCP packets for content inspection.
-        """
         return pulumi.get(self, "timeout_tcp_inspect")
 
     @timeout_tcp_inspect.setter
@@ -553,12 +336,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="tlsCiphers")
     def tls_ciphers(self) -> Optional[pulumi.Input[str]]:
-        """
-        List of ciphers in OpenSSL format
-        (colon-separated). See
-        https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
-        Supported only in **Octavia minor version >= 2.15**.
-        """
         return pulumi.get(self, "tls_ciphers")
 
     @tls_ciphers.setter
@@ -568,11 +345,6 @@ class ListenerArgs:
     @property
     @pulumi.getter(name="tlsVersions")
     def tls_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of TLS protocol versions. Available
-        versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
-        **Octavia minor version >= 2.17**.
-        """
         return pulumi.get(self, "tls_versions")
 
     @tls_versions.setter
@@ -613,92 +385,6 @@ class _ListenerState:
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Listener resources.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the Listener. A
-               valid value is true (UP) or false (DOWN).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_cidrs: A list of CIDR blocks that are permitted to
-               connect to this listener, denying all other source addresses. If not present,
-               defaults to allow all.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] alpn_protocols: A list of ALPN protocols. Available protocols:
-               `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
-               2.20**.
-        :param pulumi.Input[str] client_authentication: The TLS client authentication mode.
-               Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
-               `TERMINATED_HTTPS` listener protocol and the `client_ca_tls_container_ref`.
-               Supported only in **Octavia minor version >= 2.8**.
-        :param pulumi.Input[str] client_ca_tls_container_ref: The ref of the key manager service
-               secret containing a PEM format client CA certificate bundle for
-               `TERMINATED_HTTPS` listeners. Required if `client_authentication` is
-               `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version >=
-               2.8**.
-        :param pulumi.Input[str] client_crl_container_ref: The URI of the key manager service
-               secret containing a PEM format CA revocation list file for `TERMINATED_HTTPS`
-               listeners. Supported only in **Octavia minor version >= 2.8**.
-        :param pulumi.Input[int] connection_limit: The maximum number of connections allowed for
-               the Listener.
-        :param pulumi.Input[str] default_pool_id: The ID of the default pool with which the
-               Listener is associated.
-        :param pulumi.Input[str] default_tls_container_ref: A reference to a Barbican Secrets
-               container which stores TLS information. This is required if the protocol is
-               `TERMINATED_HTTPS`. See
-               [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
-               for more information.
-        :param pulumi.Input[str] description: Human-readable description for the Listener.
-        :param pulumi.Input[bool] hsts_include_subdomains: Defines whether the
-               **includeSubDomains** directive should be added to the
-               Strict-Transport-Security HTTP response header. This requires setting the
-               `hsts_max_age` option as well in order to become effective. Requires
-               `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
-               version >= 2.27**.
-        :param pulumi.Input[int] hsts_max_age: The value of the **max_age** directive for the
-               Strict-Transport-Security HTTP response header. Setting this enables HTTP
-               Strict Transport Security (HSTS) for the TLS-terminated listener. Requires
-               `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
-               version >= 2.27**.
-        :param pulumi.Input[bool] hsts_preload: Defines whether the **preload** directive should
-               be added to the Strict-Transport-Security HTTP response header. This requires
-               setting the `hsts_max_age` option as well in order to become effective.
-               Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
-               minor version >= 2.27**.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] insert_headers: The list of key value pairs representing
-               headers to insert into the request before it is sent to the backend members.
-               Changing this updates the headers of the existing listener.
-        :param pulumi.Input[str] loadbalancer_id: The load balancer on which to provision this
-               Listener. Changing this creates a new Listener.
-        :param pulumi.Input[str] name: Human-readable name for the Listener. Does not have to be
-               unique.
-        :param pulumi.Input[str] protocol: The protocol can be either `TCP`, `HTTP`, `HTTPS`,
-               `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
-               \\>= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version >=
-               2.25**). Changing this creates a new Listener.
-        :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
-               * Changing this creates a new Listener.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a listener. If omitted, the `region`
-               argument of the provider is used. Changing this creates a new Listener.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sni_container_refs: A list of references to Barbican Secrets
-               containers which store SNI information. See
-               [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
-               for more information.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the pool. Available
-               for Octavia **minor version 2.5 or later**.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the Listener.  Only administrative users can specify a tenant UUID other than
-               their own. Changing this creates a new Listener.
-        :param pulumi.Input[int] timeout_client_data: The client inactivity timeout in
-               milliseconds.
-        :param pulumi.Input[int] timeout_member_connect: The member connection timeout in
-               milliseconds.
-        :param pulumi.Input[int] timeout_member_data: The member inactivity timeout in
-               milliseconds.
-        :param pulumi.Input[int] timeout_tcp_inspect: The time in milliseconds, to wait for
-               additional TCP packets for content inspection.
-        :param pulumi.Input[str] tls_ciphers: List of ciphers in OpenSSL format
-               (colon-separated). See
-               https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
-               Supported only in **Octavia minor version >= 2.15**.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tls_versions: A list of TLS protocol versions. Available
-               versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
-               **Octavia minor version >= 2.17**.
         """
         if admin_state_up is not None:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
@@ -760,10 +446,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The administrative state of the Listener. A
-        valid value is true (UP) or false (DOWN).
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -773,11 +455,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="allowedCidrs")
     def allowed_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of CIDR blocks that are permitted to
-        connect to this listener, denying all other source addresses. If not present,
-        defaults to allow all.
-        """
         return pulumi.get(self, "allowed_cidrs")
 
     @allowed_cidrs.setter
@@ -787,11 +464,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="alpnProtocols")
     def alpn_protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of ALPN protocols. Available protocols:
-        `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
-        2.20**.
-        """
         return pulumi.get(self, "alpn_protocols")
 
     @alpn_protocols.setter
@@ -801,12 +473,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="clientAuthentication")
     def client_authentication(self) -> Optional[pulumi.Input[str]]:
-        """
-        The TLS client authentication mode.
-        Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
-        `TERMINATED_HTTPS` listener protocol and the `client_ca_tls_container_ref`.
-        Supported only in **Octavia minor version >= 2.8**.
-        """
         return pulumi.get(self, "client_authentication")
 
     @client_authentication.setter
@@ -816,13 +482,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="clientCaTlsContainerRef")
     def client_ca_tls_container_ref(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ref of the key manager service
-        secret containing a PEM format client CA certificate bundle for
-        `TERMINATED_HTTPS` listeners. Required if `client_authentication` is
-        `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version >=
-        2.8**.
-        """
         return pulumi.get(self, "client_ca_tls_container_ref")
 
     @client_ca_tls_container_ref.setter
@@ -832,11 +491,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="clientCrlContainerRef")
     def client_crl_container_ref(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URI of the key manager service
-        secret containing a PEM format CA revocation list file for `TERMINATED_HTTPS`
-        listeners. Supported only in **Octavia minor version >= 2.8**.
-        """
         return pulumi.get(self, "client_crl_container_ref")
 
     @client_crl_container_ref.setter
@@ -846,10 +500,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="connectionLimit")
     def connection_limit(self) -> Optional[pulumi.Input[int]]:
-        """
-        The maximum number of connections allowed for
-        the Listener.
-        """
         return pulumi.get(self, "connection_limit")
 
     @connection_limit.setter
@@ -859,10 +509,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="defaultPoolId")
     def default_pool_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the default pool with which the
-        Listener is associated.
-        """
         return pulumi.get(self, "default_pool_id")
 
     @default_pool_id.setter
@@ -872,13 +518,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="defaultTlsContainerRef")
     def default_tls_container_ref(self) -> Optional[pulumi.Input[str]]:
-        """
-        A reference to a Barbican Secrets
-        container which stores TLS information. This is required if the protocol is
-        `TERMINATED_HTTPS`. See
-        [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
-        for more information.
-        """
         return pulumi.get(self, "default_tls_container_ref")
 
     @default_tls_container_ref.setter
@@ -888,9 +527,6 @@ class _ListenerState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable description for the Listener.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -900,14 +536,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="hstsIncludeSubdomains")
     def hsts_include_subdomains(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Defines whether the
-        **includeSubDomains** directive should be added to the
-        Strict-Transport-Security HTTP response header. This requires setting the
-        `hsts_max_age` option as well in order to become effective. Requires
-        `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
-        version >= 2.27**.
-        """
         return pulumi.get(self, "hsts_include_subdomains")
 
     @hsts_include_subdomains.setter
@@ -917,13 +545,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="hstsMaxAge")
     def hsts_max_age(self) -> Optional[pulumi.Input[int]]:
-        """
-        The value of the **max_age** directive for the
-        Strict-Transport-Security HTTP response header. Setting this enables HTTP
-        Strict Transport Security (HSTS) for the TLS-terminated listener. Requires
-        `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
-        version >= 2.27**.
-        """
         return pulumi.get(self, "hsts_max_age")
 
     @hsts_max_age.setter
@@ -933,13 +554,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="hstsPreload")
     def hsts_preload(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Defines whether the **preload** directive should
-        be added to the Strict-Transport-Security HTTP response header. This requires
-        setting the `hsts_max_age` option as well in order to become effective.
-        Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
-        minor version >= 2.27**.
-        """
         return pulumi.get(self, "hsts_preload")
 
     @hsts_preload.setter
@@ -949,11 +563,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="insertHeaders")
     def insert_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The list of key value pairs representing
-        headers to insert into the request before it is sent to the backend members.
-        Changing this updates the headers of the existing listener.
-        """
         return pulumi.get(self, "insert_headers")
 
     @insert_headers.setter
@@ -963,10 +572,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="loadbalancerId")
     def loadbalancer_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The load balancer on which to provision this
-        Listener. Changing this creates a new Listener.
-        """
         return pulumi.get(self, "loadbalancer_id")
 
     @loadbalancer_id.setter
@@ -976,10 +581,6 @@ class _ListenerState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable name for the Listener. Does not have to be
-        unique.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -989,12 +590,6 @@ class _ListenerState:
     @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
-        """
-        The protocol can be either `TCP`, `HTTP`, `HTTPS`,
-        `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
-        \\>= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version >=
-        2.25**). Changing this creates a new Listener.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -1004,10 +599,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="protocolPort")
     def protocol_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        The port on which to listen for client traffic.
-        * Changing this creates a new Listener.
-        """
         return pulumi.get(self, "protocol_port")
 
     @protocol_port.setter
@@ -1017,11 +608,6 @@ class _ListenerState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a listener. If omitted, the `region`
-        argument of the provider is used. Changing this creates a new Listener.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -1031,12 +617,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="sniContainerRefs")
     def sni_container_refs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of references to Barbican Secrets
-        containers which store SNI information. See
-        [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
-        for more information.
-        """
         return pulumi.get(self, "sni_container_refs")
 
     @sni_container_refs.setter
@@ -1046,10 +626,6 @@ class _ListenerState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of simple strings assigned to the pool. Available
-        for Octavia **minor version 2.5 or later**.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -1059,11 +635,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required for admins. The UUID of the tenant who owns
-        the Listener.  Only administrative users can specify a tenant UUID other than
-        their own. Changing this creates a new Listener.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -1073,10 +644,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="timeoutClientData")
     def timeout_client_data(self) -> Optional[pulumi.Input[int]]:
-        """
-        The client inactivity timeout in
-        milliseconds.
-        """
         return pulumi.get(self, "timeout_client_data")
 
     @timeout_client_data.setter
@@ -1086,10 +653,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="timeoutMemberConnect")
     def timeout_member_connect(self) -> Optional[pulumi.Input[int]]:
-        """
-        The member connection timeout in
-        milliseconds.
-        """
         return pulumi.get(self, "timeout_member_connect")
 
     @timeout_member_connect.setter
@@ -1099,10 +662,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="timeoutMemberData")
     def timeout_member_data(self) -> Optional[pulumi.Input[int]]:
-        """
-        The member inactivity timeout in
-        milliseconds.
-        """
         return pulumi.get(self, "timeout_member_data")
 
     @timeout_member_data.setter
@@ -1112,10 +671,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="timeoutTcpInspect")
     def timeout_tcp_inspect(self) -> Optional[pulumi.Input[int]]:
-        """
-        The time in milliseconds, to wait for
-        additional TCP packets for content inspection.
-        """
         return pulumi.get(self, "timeout_tcp_inspect")
 
     @timeout_tcp_inspect.setter
@@ -1125,12 +680,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="tlsCiphers")
     def tls_ciphers(self) -> Optional[pulumi.Input[str]]:
-        """
-        List of ciphers in OpenSSL format
-        (colon-separated). See
-        https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
-        Supported only in **Octavia minor version >= 2.15**.
-        """
         return pulumi.get(self, "tls_ciphers")
 
     @tls_ciphers.setter
@@ -1140,11 +689,6 @@ class _ListenerState:
     @property
     @pulumi.getter(name="tlsVersions")
     def tls_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of TLS protocol versions. Available
-        versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
-        **Octavia minor version >= 2.17**.
-        """
         return pulumi.get(self, "tls_versions")
 
     @tls_versions.setter
@@ -1187,155 +731,9 @@ class Listener(pulumi.CustomResource):
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Manages a V2 listener resource within OpenStack.
-
-        > **Note:** This resource has attributes that depend on octavia minor versions.
-        Please ensure your Openstack cloud supports the required minor version.
-
-        ## Example Usage
-
-        ### Simple listener
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        listener1 = openstack.loadbalancer.Listener("listener_1",
-            protocol="HTTP",
-            protocol_port=8080,
-            loadbalancer_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
-            insert_headers={
-                "X-Forwarded-For": "true",
-            })
-        ```
-
-        ### Listener with TLS and client certificate authentication
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-        import pulumi_std as std
-
-        certificate1 = openstack.keymanager.SecretV1("certificate_1",
-            name="certificate",
-            payload=std.filebase64(input="snakeoil.p12").result,
-            payload_content_encoding="base64",
-            payload_content_type="application/octet-stream")
-        ca_certificate1 = openstack.keymanager.SecretV1("ca_certificate_1",
-            name="certificate",
-            payload=std.file(input="CA.pem").result,
-            secret_type="certificate",
-            payload_content_type="text/plain")
-        subnet1 = openstack.networking.get_subnet(name="my-subnet")
-        lb1 = openstack.LbLoadbalancerV2("lb_1",
-            name="loadbalancer",
-            vip_subnet_id=subnet1.id)
-        listener1 = openstack.loadbalancer.Listener("listener_1",
-            name="https",
-            protocol="TERMINATED_HTTPS",
-            protocol_port=443,
-            loadbalancer_id=lb1.id,
-            default_tls_container_ref=certificate1,
-            client_authentication="OPTIONAL",
-            client_ca_tls_container_ref=ca_certificate2["secretRef"])
-        ```
-
-        ## Import
-
-        Load Balancer Listener can be imported using the Listener ID, e.g.:
-
-        ```sh
-        $ pulumi import openstack:loadbalancer/listener:Listener listener_1 b67ce64e-8b26-405d-afeb-4a078901f15a
-        ```
-
+        Create a Listener resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the Listener. A
-               valid value is true (UP) or false (DOWN).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_cidrs: A list of CIDR blocks that are permitted to
-               connect to this listener, denying all other source addresses. If not present,
-               defaults to allow all.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] alpn_protocols: A list of ALPN protocols. Available protocols:
-               `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
-               2.20**.
-        :param pulumi.Input[str] client_authentication: The TLS client authentication mode.
-               Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
-               `TERMINATED_HTTPS` listener protocol and the `client_ca_tls_container_ref`.
-               Supported only in **Octavia minor version >= 2.8**.
-        :param pulumi.Input[str] client_ca_tls_container_ref: The ref of the key manager service
-               secret containing a PEM format client CA certificate bundle for
-               `TERMINATED_HTTPS` listeners. Required if `client_authentication` is
-               `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version >=
-               2.8**.
-        :param pulumi.Input[str] client_crl_container_ref: The URI of the key manager service
-               secret containing a PEM format CA revocation list file for `TERMINATED_HTTPS`
-               listeners. Supported only in **Octavia minor version >= 2.8**.
-        :param pulumi.Input[int] connection_limit: The maximum number of connections allowed for
-               the Listener.
-        :param pulumi.Input[str] default_pool_id: The ID of the default pool with which the
-               Listener is associated.
-        :param pulumi.Input[str] default_tls_container_ref: A reference to a Barbican Secrets
-               container which stores TLS information. This is required if the protocol is
-               `TERMINATED_HTTPS`. See
-               [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
-               for more information.
-        :param pulumi.Input[str] description: Human-readable description for the Listener.
-        :param pulumi.Input[bool] hsts_include_subdomains: Defines whether the
-               **includeSubDomains** directive should be added to the
-               Strict-Transport-Security HTTP response header. This requires setting the
-               `hsts_max_age` option as well in order to become effective. Requires
-               `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
-               version >= 2.27**.
-        :param pulumi.Input[int] hsts_max_age: The value of the **max_age** directive for the
-               Strict-Transport-Security HTTP response header. Setting this enables HTTP
-               Strict Transport Security (HSTS) for the TLS-terminated listener. Requires
-               `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
-               version >= 2.27**.
-        :param pulumi.Input[bool] hsts_preload: Defines whether the **preload** directive should
-               be added to the Strict-Transport-Security HTTP response header. This requires
-               setting the `hsts_max_age` option as well in order to become effective.
-               Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
-               minor version >= 2.27**.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] insert_headers: The list of key value pairs representing
-               headers to insert into the request before it is sent to the backend members.
-               Changing this updates the headers of the existing listener.
-        :param pulumi.Input[str] loadbalancer_id: The load balancer on which to provision this
-               Listener. Changing this creates a new Listener.
-        :param pulumi.Input[str] name: Human-readable name for the Listener. Does not have to be
-               unique.
-        :param pulumi.Input[str] protocol: The protocol can be either `TCP`, `HTTP`, `HTTPS`,
-               `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
-               \\>= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version >=
-               2.25**). Changing this creates a new Listener.
-        :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
-               * Changing this creates a new Listener.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a listener. If omitted, the `region`
-               argument of the provider is used. Changing this creates a new Listener.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sni_container_refs: A list of references to Barbican Secrets
-               containers which store SNI information. See
-               [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
-               for more information.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the pool. Available
-               for Octavia **minor version 2.5 or later**.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the Listener.  Only administrative users can specify a tenant UUID other than
-               their own. Changing this creates a new Listener.
-        :param pulumi.Input[int] timeout_client_data: The client inactivity timeout in
-               milliseconds.
-        :param pulumi.Input[int] timeout_member_connect: The member connection timeout in
-               milliseconds.
-        :param pulumi.Input[int] timeout_member_data: The member inactivity timeout in
-               milliseconds.
-        :param pulumi.Input[int] timeout_tcp_inspect: The time in milliseconds, to wait for
-               additional TCP packets for content inspection.
-        :param pulumi.Input[str] tls_ciphers: List of ciphers in OpenSSL format
-               (colon-separated). See
-               https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
-               Supported only in **Octavia minor version >= 2.15**.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tls_versions: A list of TLS protocol versions. Available
-               versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
-               **Octavia minor version >= 2.17**.
         """
         ...
     @overload
@@ -1344,67 +742,7 @@ class Listener(pulumi.CustomResource):
                  args: ListenerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V2 listener resource within OpenStack.
-
-        > **Note:** This resource has attributes that depend on octavia minor versions.
-        Please ensure your Openstack cloud supports the required minor version.
-
-        ## Example Usage
-
-        ### Simple listener
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        listener1 = openstack.loadbalancer.Listener("listener_1",
-            protocol="HTTP",
-            protocol_port=8080,
-            loadbalancer_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
-            insert_headers={
-                "X-Forwarded-For": "true",
-            })
-        ```
-
-        ### Listener with TLS and client certificate authentication
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-        import pulumi_std as std
-
-        certificate1 = openstack.keymanager.SecretV1("certificate_1",
-            name="certificate",
-            payload=std.filebase64(input="snakeoil.p12").result,
-            payload_content_encoding="base64",
-            payload_content_type="application/octet-stream")
-        ca_certificate1 = openstack.keymanager.SecretV1("ca_certificate_1",
-            name="certificate",
-            payload=std.file(input="CA.pem").result,
-            secret_type="certificate",
-            payload_content_type="text/plain")
-        subnet1 = openstack.networking.get_subnet(name="my-subnet")
-        lb1 = openstack.LbLoadbalancerV2("lb_1",
-            name="loadbalancer",
-            vip_subnet_id=subnet1.id)
-        listener1 = openstack.loadbalancer.Listener("listener_1",
-            name="https",
-            protocol="TERMINATED_HTTPS",
-            protocol_port=443,
-            loadbalancer_id=lb1.id,
-            default_tls_container_ref=certificate1,
-            client_authentication="OPTIONAL",
-            client_ca_tls_container_ref=ca_certificate2["secretRef"])
-        ```
-
-        ## Import
-
-        Load Balancer Listener can be imported using the Listener ID, e.g.:
-
-        ```sh
-        $ pulumi import openstack:loadbalancer/listener:Listener listener_1 b67ce64e-8b26-405d-afeb-4a078901f15a
-        ```
-
+        Create a Listener resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ListenerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1536,92 +874,6 @@ class Listener(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the Listener. A
-               valid value is true (UP) or false (DOWN).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_cidrs: A list of CIDR blocks that are permitted to
-               connect to this listener, denying all other source addresses. If not present,
-               defaults to allow all.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] alpn_protocols: A list of ALPN protocols. Available protocols:
-               `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
-               2.20**.
-        :param pulumi.Input[str] client_authentication: The TLS client authentication mode.
-               Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
-               `TERMINATED_HTTPS` listener protocol and the `client_ca_tls_container_ref`.
-               Supported only in **Octavia minor version >= 2.8**.
-        :param pulumi.Input[str] client_ca_tls_container_ref: The ref of the key manager service
-               secret containing a PEM format client CA certificate bundle for
-               `TERMINATED_HTTPS` listeners. Required if `client_authentication` is
-               `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version >=
-               2.8**.
-        :param pulumi.Input[str] client_crl_container_ref: The URI of the key manager service
-               secret containing a PEM format CA revocation list file for `TERMINATED_HTTPS`
-               listeners. Supported only in **Octavia minor version >= 2.8**.
-        :param pulumi.Input[int] connection_limit: The maximum number of connections allowed for
-               the Listener.
-        :param pulumi.Input[str] default_pool_id: The ID of the default pool with which the
-               Listener is associated.
-        :param pulumi.Input[str] default_tls_container_ref: A reference to a Barbican Secrets
-               container which stores TLS information. This is required if the protocol is
-               `TERMINATED_HTTPS`. See
-               [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
-               for more information.
-        :param pulumi.Input[str] description: Human-readable description for the Listener.
-        :param pulumi.Input[bool] hsts_include_subdomains: Defines whether the
-               **includeSubDomains** directive should be added to the
-               Strict-Transport-Security HTTP response header. This requires setting the
-               `hsts_max_age` option as well in order to become effective. Requires
-               `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
-               version >= 2.27**.
-        :param pulumi.Input[int] hsts_max_age: The value of the **max_age** directive for the
-               Strict-Transport-Security HTTP response header. Setting this enables HTTP
-               Strict Transport Security (HSTS) for the TLS-terminated listener. Requires
-               `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
-               version >= 2.27**.
-        :param pulumi.Input[bool] hsts_preload: Defines whether the **preload** directive should
-               be added to the Strict-Transport-Security HTTP response header. This requires
-               setting the `hsts_max_age` option as well in order to become effective.
-               Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
-               minor version >= 2.27**.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] insert_headers: The list of key value pairs representing
-               headers to insert into the request before it is sent to the backend members.
-               Changing this updates the headers of the existing listener.
-        :param pulumi.Input[str] loadbalancer_id: The load balancer on which to provision this
-               Listener. Changing this creates a new Listener.
-        :param pulumi.Input[str] name: Human-readable name for the Listener. Does not have to be
-               unique.
-        :param pulumi.Input[str] protocol: The protocol can be either `TCP`, `HTTP`, `HTTPS`,
-               `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
-               \\>= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version >=
-               2.25**). Changing this creates a new Listener.
-        :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
-               * Changing this creates a new Listener.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a listener. If omitted, the `region`
-               argument of the provider is used. Changing this creates a new Listener.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sni_container_refs: A list of references to Barbican Secrets
-               containers which store SNI information. See
-               [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
-               for more information.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of simple strings assigned to the pool. Available
-               for Octavia **minor version 2.5 or later**.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the Listener.  Only administrative users can specify a tenant UUID other than
-               their own. Changing this creates a new Listener.
-        :param pulumi.Input[int] timeout_client_data: The client inactivity timeout in
-               milliseconds.
-        :param pulumi.Input[int] timeout_member_connect: The member connection timeout in
-               milliseconds.
-        :param pulumi.Input[int] timeout_member_data: The member inactivity timeout in
-               milliseconds.
-        :param pulumi.Input[int] timeout_tcp_inspect: The time in milliseconds, to wait for
-               additional TCP packets for content inspection.
-        :param pulumi.Input[str] tls_ciphers: List of ciphers in OpenSSL format
-               (colon-separated). See
-               https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
-               Supported only in **Octavia minor version >= 2.15**.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tls_versions: A list of TLS protocol versions. Available
-               versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
-               **Octavia minor version >= 2.17**.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1660,282 +912,140 @@ class Listener(pulumi.CustomResource):
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[Optional[bool]]:
-        """
-        The administrative state of the Listener. A
-        valid value is true (UP) or false (DOWN).
-        """
         return pulumi.get(self, "admin_state_up")
 
     @property
     @pulumi.getter(name="allowedCidrs")
     def allowed_cidrs(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        A list of CIDR blocks that are permitted to
-        connect to this listener, denying all other source addresses. If not present,
-        defaults to allow all.
-        """
         return pulumi.get(self, "allowed_cidrs")
 
     @property
     @pulumi.getter(name="alpnProtocols")
     def alpn_protocols(self) -> pulumi.Output[Sequence[str]]:
-        """
-        A list of ALPN protocols. Available protocols:
-        `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
-        2.20**.
-        """
         return pulumi.get(self, "alpn_protocols")
 
     @property
     @pulumi.getter(name="clientAuthentication")
     def client_authentication(self) -> pulumi.Output[Optional[str]]:
-        """
-        The TLS client authentication mode.
-        Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
-        `TERMINATED_HTTPS` listener protocol and the `client_ca_tls_container_ref`.
-        Supported only in **Octavia minor version >= 2.8**.
-        """
         return pulumi.get(self, "client_authentication")
 
     @property
     @pulumi.getter(name="clientCaTlsContainerRef")
     def client_ca_tls_container_ref(self) -> pulumi.Output[Optional[str]]:
-        """
-        The ref of the key manager service
-        secret containing a PEM format client CA certificate bundle for
-        `TERMINATED_HTTPS` listeners. Required if `client_authentication` is
-        `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version >=
-        2.8**.
-        """
         return pulumi.get(self, "client_ca_tls_container_ref")
 
     @property
     @pulumi.getter(name="clientCrlContainerRef")
     def client_crl_container_ref(self) -> pulumi.Output[Optional[str]]:
-        """
-        The URI of the key manager service
-        secret containing a PEM format CA revocation list file for `TERMINATED_HTTPS`
-        listeners. Supported only in **Octavia minor version >= 2.8**.
-        """
         return pulumi.get(self, "client_crl_container_ref")
 
     @property
     @pulumi.getter(name="connectionLimit")
     def connection_limit(self) -> pulumi.Output[int]:
-        """
-        The maximum number of connections allowed for
-        the Listener.
-        """
         return pulumi.get(self, "connection_limit")
 
     @property
     @pulumi.getter(name="defaultPoolId")
     def default_pool_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the default pool with which the
-        Listener is associated.
-        """
         return pulumi.get(self, "default_pool_id")
 
     @property
     @pulumi.getter(name="defaultTlsContainerRef")
     def default_tls_container_ref(self) -> pulumi.Output[Optional[str]]:
-        """
-        A reference to a Barbican Secrets
-        container which stores TLS information. This is required if the protocol is
-        `TERMINATED_HTTPS`. See
-        [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
-        for more information.
-        """
         return pulumi.get(self, "default_tls_container_ref")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        Human-readable description for the Listener.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="hstsIncludeSubdomains")
     def hsts_include_subdomains(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Defines whether the
-        **includeSubDomains** directive should be added to the
-        Strict-Transport-Security HTTP response header. This requires setting the
-        `hsts_max_age` option as well in order to become effective. Requires
-        `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
-        version >= 2.27**.
-        """
         return pulumi.get(self, "hsts_include_subdomains")
 
     @property
     @pulumi.getter(name="hstsMaxAge")
     def hsts_max_age(self) -> pulumi.Output[Optional[int]]:
-        """
-        The value of the **max_age** directive for the
-        Strict-Transport-Security HTTP response header. Setting this enables HTTP
-        Strict Transport Security (HSTS) for the TLS-terminated listener. Requires
-        `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
-        version >= 2.27**.
-        """
         return pulumi.get(self, "hsts_max_age")
 
     @property
     @pulumi.getter(name="hstsPreload")
     def hsts_preload(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Defines whether the **preload** directive should
-        be added to the Strict-Transport-Security HTTP response header. This requires
-        setting the `hsts_max_age` option as well in order to become effective.
-        Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
-        minor version >= 2.27**.
-        """
         return pulumi.get(self, "hsts_preload")
 
     @property
     @pulumi.getter(name="insertHeaders")
     def insert_headers(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        The list of key value pairs representing
-        headers to insert into the request before it is sent to the backend members.
-        Changing this updates the headers of the existing listener.
-        """
         return pulumi.get(self, "insert_headers")
 
     @property
     @pulumi.getter(name="loadbalancerId")
     def loadbalancer_id(self) -> pulumi.Output[str]:
-        """
-        The load balancer on which to provision this
-        Listener. Changing this creates a new Listener.
-        """
         return pulumi.get(self, "loadbalancer_id")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Human-readable name for the Listener. Does not have to be
-        unique.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def protocol(self) -> pulumi.Output[str]:
-        """
-        The protocol can be either `TCP`, `HTTP`, `HTTPS`,
-        `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
-        \\>= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version >=
-        2.25**). Changing this creates a new Listener.
-        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter(name="protocolPort")
     def protocol_port(self) -> pulumi.Output[int]:
-        """
-        The port on which to listen for client traffic.
-        * Changing this creates a new Listener.
-        """
         return pulumi.get(self, "protocol_port")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a listener. If omitted, the `region`
-        argument of the provider is used. Changing this creates a new Listener.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="sniContainerRefs")
     def sni_container_refs(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        A list of references to Barbican Secrets
-        containers which store SNI information. See
-        [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
-        for more information.
-        """
         return pulumi.get(self, "sni_container_refs")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        A list of simple strings assigned to the pool. Available
-        for Octavia **minor version 2.5 or later**.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
-        """
-        Required for admins. The UUID of the tenant who owns
-        the Listener.  Only administrative users can specify a tenant UUID other than
-        their own. Changing this creates a new Listener.
-        """
         return pulumi.get(self, "tenant_id")
 
     @property
     @pulumi.getter(name="timeoutClientData")
     def timeout_client_data(self) -> pulumi.Output[int]:
-        """
-        The client inactivity timeout in
-        milliseconds.
-        """
         return pulumi.get(self, "timeout_client_data")
 
     @property
     @pulumi.getter(name="timeoutMemberConnect")
     def timeout_member_connect(self) -> pulumi.Output[int]:
-        """
-        The member connection timeout in
-        milliseconds.
-        """
         return pulumi.get(self, "timeout_member_connect")
 
     @property
     @pulumi.getter(name="timeoutMemberData")
     def timeout_member_data(self) -> pulumi.Output[int]:
-        """
-        The member inactivity timeout in
-        milliseconds.
-        """
         return pulumi.get(self, "timeout_member_data")
 
     @property
     @pulumi.getter(name="timeoutTcpInspect")
     def timeout_tcp_inspect(self) -> pulumi.Output[int]:
-        """
-        The time in milliseconds, to wait for
-        additional TCP packets for content inspection.
-        """
         return pulumi.get(self, "timeout_tcp_inspect")
 
     @property
     @pulumi.getter(name="tlsCiphers")
     def tls_ciphers(self) -> pulumi.Output[str]:
-        """
-        List of ciphers in OpenSSL format
-        (colon-separated). See
-        https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
-        Supported only in **Octavia minor version >= 2.15**.
-        """
         return pulumi.get(self, "tls_ciphers")
 
     @property
     @pulumi.getter(name="tlsVersions")
     def tls_versions(self) -> pulumi.Output[Sequence[str]]:
-        """
-        A list of TLS protocol versions. Available
-        versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
-        **Octavia minor version >= 2.17**.
-        """
         return pulumi.get(self, "tls_versions")
 

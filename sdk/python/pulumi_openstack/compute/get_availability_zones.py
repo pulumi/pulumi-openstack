@@ -46,9 +46,6 @@ class GetAvailabilityZonesResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
-        """
-        The names of the availability zones, ordered alphanumerically, that match the queried `state`
-        """
         return pulumi.get(self, "names")
 
     @property
@@ -78,20 +75,7 @@ def get_availability_zones(region: Optional[str] = None,
                            state: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAvailabilityZonesResult:
     """
-    Use this data source to get a list of availability zones from OpenStack
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    zones = openstack.compute.get_availability_zones()
-    ```
-
-
-    :param str region: The `region` to fetch availability zones from, defaults to the provider's `region`
-    :param str state: The `state` of the availability zones to match, default ("available").
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region
@@ -111,19 +95,6 @@ def get_availability_zones_output(region: Optional[pulumi.Input[Optional[str]]] 
                                   state: Optional[pulumi.Input[Optional[str]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAvailabilityZonesResult]:
     """
-    Use this data source to get a list of availability zones from OpenStack
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    zones = openstack.compute.get_availability_zones()
-    ```
-
-
-    :param str region: The `region` to fetch availability zones from, defaults to the provider's `region`
-    :param str state: The `state` of the availability zones to match, default ("available").
+    Use this data source to access information about an existing resource.
     """
     ...

@@ -52,25 +52,16 @@ class GetAddressScopeResult:
     @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[int]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "ip_version")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "project_id")
 
     @property
@@ -81,9 +72,6 @@ class GetAddressScopeResult:
     @property
     @pulumi.getter
     def shared(self) -> Optional[bool]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "shared")
 
 
@@ -108,28 +96,7 @@ def get_address_scope(ip_version: Optional[int] = None,
                       shared: Optional[bool] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAddressScopeResult:
     """
-    Use this data source to get the ID of an available OpenStack address-scope.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    public_addressscope = openstack.networking.get_address_scope(name="public_addressscope",
-        shared=True,
-        ip_version=4)
-    ```
-
-
-    :param int ip_version: IP version.
-    :param str name: Name of the address-scope.
-    :param str project_id: The owner of the address-scope.
-    :param str region: The region in which to obtain the V2 Neutron client.
-           A Neutron client is needed to retrieve address-scopes. If omitted, the
-           `region` argument of the provider is used.
-    :param bool shared: Indicates whether this address-scope is shared across
-           all projects.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['ipVersion'] = ip_version
@@ -157,27 +124,6 @@ def get_address_scope_output(ip_version: Optional[pulumi.Input[Optional[int]]] =
                              shared: Optional[pulumi.Input[Optional[bool]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAddressScopeResult]:
     """
-    Use this data source to get the ID of an available OpenStack address-scope.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    public_addressscope = openstack.networking.get_address_scope(name="public_addressscope",
-        shared=True,
-        ip_version=4)
-    ```
-
-
-    :param int ip_version: IP version.
-    :param str name: Name of the address-scope.
-    :param str project_id: The owner of the address-scope.
-    :param str region: The region in which to obtain the V2 Neutron client.
-           A Neutron client is needed to retrieve address-scopes. If omitted, the
-           `region` argument of the provider is used.
-    :param bool shared: Indicates whether this address-scope is shared across
-           all projects.
+    Use this data source to access information about an existing resource.
     """
     ...

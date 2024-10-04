@@ -78,9 +78,6 @@ class GetFlavorResult:
     @property
     @pulumi.getter(name="extraSpecs")
     def extra_specs(self) -> Mapping[str, str]:
-        """
-        Key/Value pairs of metadata for the flavor.
-        """
         return pulumi.get(self, "extra_specs")
 
     @property
@@ -178,35 +175,7 @@ def get_flavor(description: Optional[str] = None,
                vcpus: Optional[int] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlavorResult:
     """
-    Use this data source to get the ID of an available OpenStack flavor.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    small = openstack.compute.get_flavor(vcpus=1,
-        ram=512)
-    ```
-
-
-    :param str description: The description of the flavor.
-    :param int disk: The exact amount of disk (in gigabytes).
-    :param str flavor_id: The ID of the flavor. Conflicts with the `name`,
-           `min_ram` and `min_disk`
-    :param bool is_public: The flavor visibility.
-    :param int min_disk: The minimum amount of disk (in gigabytes). Conflicts
-           with the `flavor_id`.
-    :param int min_ram: The minimum amount of RAM (in megabytes). Conflicts
-           with the `flavor_id`.
-    :param str name: The name of the flavor. Conflicts with the `flavor_id`.
-    :param int ram: The exact amount of RAM (in megabytes).
-    :param str region: The region in which to obtain the V2 Compute client.
-           If omitted, the `region` argument of the provider is used.
-    :param float rx_tx_factor: The `rx_tx_factor` of the flavor.
-    :param int swap: The amount of swap (in gigabytes).
-    :param int vcpus: The amount of VCPUs.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -256,34 +225,6 @@ def get_flavor_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                       vcpus: Optional[pulumi.Input[Optional[int]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlavorResult]:
     """
-    Use this data source to get the ID of an available OpenStack flavor.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    small = openstack.compute.get_flavor(vcpus=1,
-        ram=512)
-    ```
-
-
-    :param str description: The description of the flavor.
-    :param int disk: The exact amount of disk (in gigabytes).
-    :param str flavor_id: The ID of the flavor. Conflicts with the `name`,
-           `min_ram` and `min_disk`
-    :param bool is_public: The flavor visibility.
-    :param int min_disk: The minimum amount of disk (in gigabytes). Conflicts
-           with the `flavor_id`.
-    :param int min_ram: The minimum amount of RAM (in megabytes). Conflicts
-           with the `flavor_id`.
-    :param str name: The name of the flavor. Conflicts with the `flavor_id`.
-    :param int ram: The exact amount of RAM (in megabytes).
-    :param str region: The region in which to obtain the V2 Compute client.
-           If omitted, the `region` argument of the provider is used.
-    :param float rx_tx_factor: The `rx_tx_factor` of the flavor.
-    :param int swap: The amount of swap (in gigabytes).
-    :param int vcpus: The amount of VCPUs.
+    Use this data source to access information about an existing resource.
     """
     ...

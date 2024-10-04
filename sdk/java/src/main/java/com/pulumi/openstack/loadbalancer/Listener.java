@@ -78,8 +78,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.openstack.keymanager.SecretV1Args;
  * import com.pulumi.openstack.networking.NetworkingFunctions;
  * import com.pulumi.openstack.networking.inputs.GetSubnetArgs;
- * import com.pulumi.openstack.LbLoadbalancerV2;
- * import com.pulumi.openstack.LbLoadbalancerV2Args;
+ * import com.pulumi.openstack.loadbalancer.LoadBalancer;
+ * import com.pulumi.openstack.loadbalancer.LoadBalancerArgs;
  * import com.pulumi.openstack.loadbalancer.Listener;
  * import com.pulumi.openstack.loadbalancer.ListenerArgs;
  * import java.util.List;
@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  *             .name("my-subnet")
  *             .build());
  * 
- *         var lb1 = new LbLoadbalancerV2("lb1", LbLoadbalancerV2Args.builder()
+ *         var lb1 = new LoadBalancer("lb1", LoadBalancerArgs.builder()
  *             .name("loadbalancer")
  *             .vipSubnetId(subnet1.applyValue(getSubnetResult -> getSubnetResult.id()))
  *             .build());

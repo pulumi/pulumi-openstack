@@ -23,23 +23,6 @@ class SecGroupArgs:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SecGroup resource.
-        :param pulumi.Input[bool] delete_default_rules: Whether or not to delete the default
-               egress security rules. This is `false` by default. See the below note
-               for more information.
-        :param pulumi.Input[str] description: A unique name for the security group.
-        :param pulumi.Input[str] name: A unique name for the security group.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a port. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               security group.
-        :param pulumi.Input[bool] stateful: Indicates if the security group is stateful or
-               stateless. Update of the stateful argument is allowed when there is no port
-               associated with the security group. Available only in OpenStack environments
-               with the `stateful-security-group` extension. Defaults to true.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the security group.
-        :param pulumi.Input[str] tenant_id: The owner of the security group. Required if admin
-               wants to create a port for another tenant. Changing this creates a new
-               security group.
         """
         if delete_default_rules is not None:
             pulumi.set(__self__, "delete_default_rules", delete_default_rules)
@@ -59,11 +42,6 @@ class SecGroupArgs:
     @property
     @pulumi.getter(name="deleteDefaultRules")
     def delete_default_rules(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether or not to delete the default
-        egress security rules. This is `false` by default. See the below note
-        for more information.
-        """
         return pulumi.get(self, "delete_default_rules")
 
     @delete_default_rules.setter
@@ -73,9 +51,6 @@ class SecGroupArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        A unique name for the security group.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -85,9 +60,6 @@ class SecGroupArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        A unique name for the security group.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -97,12 +69,6 @@ class SecGroupArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to create a port. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        security group.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -112,12 +78,6 @@ class SecGroupArgs:
     @property
     @pulumi.getter
     def stateful(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates if the security group is stateful or
-        stateless. Update of the stateful argument is allowed when there is no port
-        associated with the security group. Available only in OpenStack environments
-        with the `stateful-security-group` extension. Defaults to true.
-        """
         return pulumi.get(self, "stateful")
 
     @stateful.setter
@@ -127,9 +87,6 @@ class SecGroupArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A set of string tags for the security group.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -139,11 +96,6 @@ class SecGroupArgs:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The owner of the security group. Required if admin
-        wants to create a port for another tenant. Changing this creates a new
-        security group.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -164,25 +116,6 @@ class _SecGroupState:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SecGroup resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] all_tags: The collection of tags assigned on the security group, which have
-               been explicitly and implicitly added.
-        :param pulumi.Input[bool] delete_default_rules: Whether or not to delete the default
-               egress security rules. This is `false` by default. See the below note
-               for more information.
-        :param pulumi.Input[str] description: A unique name for the security group.
-        :param pulumi.Input[str] name: A unique name for the security group.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a port. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               security group.
-        :param pulumi.Input[bool] stateful: Indicates if the security group is stateful or
-               stateless. Update of the stateful argument is allowed when there is no port
-               associated with the security group. Available only in OpenStack environments
-               with the `stateful-security-group` extension. Defaults to true.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the security group.
-        :param pulumi.Input[str] tenant_id: The owner of the security group. Required if admin
-               wants to create a port for another tenant. Changing this creates a new
-               security group.
         """
         if all_tags is not None:
             pulumi.set(__self__, "all_tags", all_tags)
@@ -204,10 +137,6 @@ class _SecGroupState:
     @property
     @pulumi.getter(name="allTags")
     def all_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The collection of tags assigned on the security group, which have
-        been explicitly and implicitly added.
-        """
         return pulumi.get(self, "all_tags")
 
     @all_tags.setter
@@ -217,11 +146,6 @@ class _SecGroupState:
     @property
     @pulumi.getter(name="deleteDefaultRules")
     def delete_default_rules(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether or not to delete the default
-        egress security rules. This is `false` by default. See the below note
-        for more information.
-        """
         return pulumi.get(self, "delete_default_rules")
 
     @delete_default_rules.setter
@@ -231,9 +155,6 @@ class _SecGroupState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        A unique name for the security group.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -243,9 +164,6 @@ class _SecGroupState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        A unique name for the security group.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -255,12 +173,6 @@ class _SecGroupState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to create a port. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        security group.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -270,12 +182,6 @@ class _SecGroupState:
     @property
     @pulumi.getter
     def stateful(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates if the security group is stateful or
-        stateless. Update of the stateful argument is allowed when there is no port
-        associated with the security group. Available only in OpenStack environments
-        with the `stateful-security-group` extension. Defaults to true.
-        """
         return pulumi.get(self, "stateful")
 
     @stateful.setter
@@ -285,9 +191,6 @@ class _SecGroupState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A set of string tags for the security group.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -297,11 +200,6 @@ class _SecGroupState:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The owner of the security group. Required if admin
-        wants to create a port for another tenant. Changing this creates a new
-        security group.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -323,33 +221,9 @@ class SecGroup(pulumi.CustomResource):
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Import
-
-        Security Groups can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import openstack:networking/secGroup:SecGroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc
-        ```
-
+        Create a SecGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] delete_default_rules: Whether or not to delete the default
-               egress security rules. This is `false` by default. See the below note
-               for more information.
-        :param pulumi.Input[str] description: A unique name for the security group.
-        :param pulumi.Input[str] name: A unique name for the security group.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a port. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               security group.
-        :param pulumi.Input[bool] stateful: Indicates if the security group is stateful or
-               stateless. Update of the stateful argument is allowed when there is no port
-               associated with the security group. Available only in OpenStack environments
-               with the `stateful-security-group` extension. Defaults to true.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the security group.
-        :param pulumi.Input[str] tenant_id: The owner of the security group. Required if admin
-               wants to create a port for another tenant. Changing this creates a new
-               security group.
         """
         ...
     @overload
@@ -358,14 +232,7 @@ class SecGroup(pulumi.CustomResource):
                  args: Optional[SecGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Import
-
-        Security Groups can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import openstack:networking/secGroup:SecGroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc
-        ```
-
+        Create a SecGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SecGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -430,25 +297,6 @@ class SecGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] all_tags: The collection of tags assigned on the security group, which have
-               been explicitly and implicitly added.
-        :param pulumi.Input[bool] delete_default_rules: Whether or not to delete the default
-               egress security rules. This is `false` by default. See the below note
-               for more information.
-        :param pulumi.Input[str] description: A unique name for the security group.
-        :param pulumi.Input[str] name: A unique name for the security group.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a port. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               security group.
-        :param pulumi.Input[bool] stateful: Indicates if the security group is stateful or
-               stateless. Update of the stateful argument is allowed when there is no port
-               associated with the security group. Available only in OpenStack environments
-               with the `stateful-security-group` extension. Defaults to true.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the security group.
-        :param pulumi.Input[str] tenant_id: The owner of the security group. Required if admin
-               wants to create a port for another tenant. Changing this creates a new
-               security group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -467,75 +315,40 @@ class SecGroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="allTags")
     def all_tags(self) -> pulumi.Output[Sequence[str]]:
-        """
-        The collection of tags assigned on the security group, which have
-        been explicitly and implicitly added.
-        """
         return pulumi.get(self, "all_tags")
 
     @property
     @pulumi.getter(name="deleteDefaultRules")
     def delete_default_rules(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether or not to delete the default
-        egress security rules. This is `false` by default. See the below note
-        for more information.
-        """
         return pulumi.get(self, "delete_default_rules")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
-        """
-        A unique name for the security group.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        A unique name for the security group.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to create a port. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        security group.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def stateful(self) -> pulumi.Output[bool]:
-        """
-        Indicates if the security group is stateful or
-        stateless. Update of the stateful argument is allowed when there is no port
-        associated with the security group. Available only in OpenStack environments
-        with the `stateful-security-group` extension. Defaults to true.
-        """
         return pulumi.get(self, "stateful")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        A set of string tags for the security group.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
-        """
-        The owner of the security group. Required if admin
-        wants to create a port for another tenant. Changing this creates a new
-        security group.
-        """
         return pulumi.get(self, "tenant_id")
 

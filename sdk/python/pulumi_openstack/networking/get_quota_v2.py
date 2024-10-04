@@ -62,9 +62,6 @@ class GetQuotaV2Result:
     @property
     @pulumi.getter
     def floatingip(self) -> int:
-        """
-        The number of allowed floating ips.
-        """
         return pulumi.get(self, "floatingip")
 
     @property
@@ -78,74 +75,46 @@ class GetQuotaV2Result:
     @property
     @pulumi.getter
     def network(self) -> int:
-        """
-        The number of allowed networks.
-        """
         return pulumi.get(self, "network")
 
     @property
     @pulumi.getter
     def port(self) -> int:
-        """
-        The number of allowed ports.
-        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="rbacPolicy")
     def rbac_policy(self) -> int:
-        """
-        The number of allowed rbac policies.
-        """
         return pulumi.get(self, "rbac_policy")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def router(self) -> int:
-        """
-        The amount of allowed routers.
-        """
         return pulumi.get(self, "router")
 
     @property
     @pulumi.getter(name="securityGroup")
     def security_group(self) -> int:
-        """
-        The number of allowed security groups.
-        """
         return pulumi.get(self, "security_group")
 
     @property
     @pulumi.getter(name="securityGroupRule")
     def security_group_rule(self) -> int:
-        """
-        The number of allowed security group rules.
-        """
         return pulumi.get(self, "security_group_rule")
 
     @property
     @pulumi.getter
     def subnet(self) -> int:
-        """
-        The number of allowed subnets.
-        * `subnetpool-` - The number of allowed subnet pools.
-        """
         return pulumi.get(self, "subnet")
 
     @property
@@ -178,21 +147,7 @@ def get_quota_v2(project_id: Optional[str] = None,
                  region: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQuotaV2Result:
     """
-    Use this data source to get the networking quota of an OpenStack project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    quota = openstack.networking.get_quota_v2(project_id="2e367a3d29f94fd988e6ec54e305ec9d")
-    ```
-
-
-    :param str project_id: The id of the project to retrieve the quota.
-    :param str region: The region in which to obtain the V2 Network client.
-           If omitted, the `region` argument of the provider is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['projectId'] = project_id
@@ -220,20 +175,6 @@ def get_quota_v2_output(project_id: Optional[pulumi.Input[str]] = None,
                         region: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQuotaV2Result]:
     """
-    Use this data source to get the networking quota of an OpenStack project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    quota = openstack.networking.get_quota_v2(project_id="2e367a3d29f94fd988e6ec54e305ec9d")
-    ```
-
-
-    :param str project_id: The id of the project to retrieve the quota.
-    :param str region: The region in which to obtain the V2 Network client.
-           If omitted, the `region` argument of the provider is used.
+    Use this data source to access information about an existing resource.
     """
     ...

@@ -16,6 +16,8 @@ __all__ = [
     'get_fw_policy_v2_output',
 ]
 
+warnings.warn("""openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2""", DeprecationWarning)
+
 @pulumi.output_type
 class GetFwPolicyV2Result:
     """
@@ -56,9 +58,6 @@ class GetFwPolicyV2Result:
     @property
     @pulumi.getter
     def audited(self) -> bool:
-        """
-        The audit status of the firewall policy.
-        """
         return pulumi.get(self, "audited")
 
     @property
@@ -77,57 +76,36 @@ class GetFwPolicyV2Result:
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="policyId")
     def policy_id(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "policy_id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def rules(self) -> Sequence[str]:
-        """
-        The array of one or more firewall rules that comprise the policy.
-        """
         return pulumi.get(self, "rules")
 
     @property
     @pulumi.getter
     def shared(self) -> bool:
-        """
-        The sharing status of the firewall policy.
-        """
         return pulumi.get(self, "shared")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "tenant_id")
 
 
@@ -159,31 +137,9 @@ def get_fw_policy_v2(audited: Optional[bool] = None,
                      tenant_id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFwPolicyV2Result:
     """
-    Use this data source to get information of an available OpenStack firewall policy v2.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    policy = openstack.get_fw_policy_v2(name="tf_test_policy")
-    ```
-
-
-    :param bool audited: Whether this policy has been audited.
-    :param str description: Human-readable description of the policy.
-    :param str name: The name of the firewall policy.
-    :param str policy_id: The ID of the firewall policy.
-    :param str project_id: This argument conflicts and is interchangeable
-           with `tenant_id`. The owner of the firewall policy.
-    :param str region: The region in which to obtain the V2 Neutron client.
-           A Neutron client is needed to retrieve firewall policy ids. If omitted, the
-           `region` argument of the provider is used.
-    :param bool shared: Whether this policy is shared across all projects.
-    :param str tenant_id: This argument conflicts and is interchangeable
-           with `project_id`. The owner of the firewall policy.
+    Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_fw_policy_v2 is deprecated: openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2""")
     __args__ = dict()
     __args__['audited'] = audited
     __args__['description'] = description
@@ -220,29 +176,7 @@ def get_fw_policy_v2_output(audited: Optional[pulumi.Input[Optional[bool]]] = No
                             tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFwPolicyV2Result]:
     """
-    Use this data source to get information of an available OpenStack firewall policy v2.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    policy = openstack.get_fw_policy_v2(name="tf_test_policy")
-    ```
-
-
-    :param bool audited: Whether this policy has been audited.
-    :param str description: Human-readable description of the policy.
-    :param str name: The name of the firewall policy.
-    :param str policy_id: The ID of the firewall policy.
-    :param str project_id: This argument conflicts and is interchangeable
-           with `tenant_id`. The owner of the firewall policy.
-    :param str region: The region in which to obtain the V2 Neutron client.
-           A Neutron client is needed to retrieve firewall policy ids. If omitted, the
-           `region` argument of the provider is used.
-    :param bool shared: Whether this policy is shared across all projects.
-    :param str tenant_id: This argument conflicts and is interchangeable
-           with `project_id`. The owner of the firewall policy.
+    Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_fw_policy_v2 is deprecated: openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2""")
     ...

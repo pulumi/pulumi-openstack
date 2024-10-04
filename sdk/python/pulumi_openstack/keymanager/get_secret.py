@@ -96,81 +96,51 @@ class GetSecretResult:
     @property
     @pulumi.getter(name="aclOnly")
     def acl_only(self) -> Optional[bool]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "acl_only")
 
     @property
     @pulumi.getter
     def acls(self) -> Sequence['outputs.GetSecretAclResult']:
-        """
-        The list of ACLs assigned to a secret. The `read` structure is described below.
-        """
         return pulumi.get(self, "acls")
 
     @property
     @pulumi.getter
     def algorithm(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "algorithm")
 
     @property
     @pulumi.getter(name="bitLength")
     def bit_length(self) -> Optional[int]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "bit_length")
 
     @property
     @pulumi.getter(name="contentTypes")
     def content_types(self) -> Mapping[str, str]:
-        """
-        The map of the content types, assigned on the secret.
-        """
         return pulumi.get(self, "content_types")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        The date the secret ACL was created.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="createdAtFilter")
     def created_at_filter(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "created_at_filter")
 
     @property
     @pulumi.getter(name="creatorId")
     def creator_id(self) -> str:
-        """
-        The creator of the secret.
-        """
         return pulumi.get(self, "creator_id")
 
     @property
     @pulumi.getter
     def expiration(self) -> str:
-        """
-        The date the secret will expire.
-        """
         return pulumi.get(self, "expiration")
 
     @property
     @pulumi.getter(name="expirationFilter")
     def expiration_filter(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "expiration_filter")
 
     @property
@@ -184,98 +154,61 @@ class GetSecretResult:
     @property
     @pulumi.getter
     def metadata(self) -> Mapping[str, str]:
-        """
-        The map of metadata, assigned on the secret, which has been
-        explicitly and implicitly added.
-        """
         return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter
     def mode(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def payload(self) -> str:
-        """
-        The secret payload.
-        """
         return pulumi.get(self, "payload")
 
     @property
     @pulumi.getter(name="payloadContentEncoding")
     def payload_content_encoding(self) -> str:
-        """
-        The Secret encoding.
-        """
         return pulumi.get(self, "payload_content_encoding")
 
     @property
     @pulumi.getter(name="payloadContentType")
     def payload_content_type(self) -> str:
-        """
-        The Secret content type.
-        """
         return pulumi.get(self, "payload_content_type")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="secretRef")
     def secret_ref(self) -> str:
-        """
-        The secret reference / where to find the secret.
-        """
         return pulumi.get(self, "secret_ref")
 
     @property
     @pulumi.getter(name="secretType")
     def secret_type(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "secret_type")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        The status of the secret.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
-        """
-        The date the secret ACL was last updated.
-        """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter(name="updatedAtFilter")
     def updated_at_filter(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "updated_at_filter")
 
 
@@ -322,57 +255,7 @@ def get_secret(acl_only: Optional[bool] = None,
                updated_at_filter: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    example = openstack.keymanager.get_secret(mode="cbc",
-        secret_type="passphrase")
-    ```
-
-    ## Date Filters
-
-    The values for the `expiration_filter`, `created_at_filter`, and
-    `updated_at_filter` parameters are comma-separated lists of time stamps in
-    RFC3339 format. The time stamps can be prefixed with any of these comparison
-    operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
-    (less-than), *lte:* (less-than-or-equal).
-
-    For example, to get a passphrase a Secret with CBC moda, that will expire in
-    January of 2020:
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    date_filter_example = openstack.keymanager.get_secret(mode="cbc",
-        secret_type="passphrase",
-        expiration_filter="gt:2020-01-01T00:00:00Z")
-    ```
-
-
-    :param bool acl_only: Select the Secret with an ACL that contains the user.
-           Project scope is ignored. Defaults to `false`.
-    :param str algorithm: The Secret algorithm.
-    :param int bit_length: The Secret bit length.
-    :param str created_at_filter: Date filter to select the Secret with
-           created matching the specified criteria. See Date Filters below for more
-           detail.
-    :param str expiration_filter: Date filter to select the Secret with
-           expiration matching the specified criteria. See Date Filters below for more
-           detail.
-    :param str mode: The Secret mode.
-    :param str name: The Secret name.
-    :param str region: The region in which to obtain the V1 KeyManager client.
-           A KeyManager client is needed to fetch a secret. If omitted, the `region`
-           argument of the provider is used.
-    :param str secret_type: The Secret type. For more information see
-           [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
-    :param str updated_at_filter: Date filter to select the Secret with
-           updated matching the specified criteria. See Date Filters below for more
-           detail.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['aclOnly'] = acl_only
@@ -427,56 +310,6 @@ def get_secret_output(acl_only: Optional[pulumi.Input[Optional[bool]]] = None,
                       updated_at_filter: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretResult]:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    example = openstack.keymanager.get_secret(mode="cbc",
-        secret_type="passphrase")
-    ```
-
-    ## Date Filters
-
-    The values for the `expiration_filter`, `created_at_filter`, and
-    `updated_at_filter` parameters are comma-separated lists of time stamps in
-    RFC3339 format. The time stamps can be prefixed with any of these comparison
-    operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
-    (less-than), *lte:* (less-than-or-equal).
-
-    For example, to get a passphrase a Secret with CBC moda, that will expire in
-    January of 2020:
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    date_filter_example = openstack.keymanager.get_secret(mode="cbc",
-        secret_type="passphrase",
-        expiration_filter="gt:2020-01-01T00:00:00Z")
-    ```
-
-
-    :param bool acl_only: Select the Secret with an ACL that contains the user.
-           Project scope is ignored. Defaults to `false`.
-    :param str algorithm: The Secret algorithm.
-    :param int bit_length: The Secret bit length.
-    :param str created_at_filter: Date filter to select the Secret with
-           created matching the specified criteria. See Date Filters below for more
-           detail.
-    :param str expiration_filter: Date filter to select the Secret with
-           expiration matching the specified criteria. See Date Filters below for more
-           detail.
-    :param str mode: The Secret mode.
-    :param str name: The Secret name.
-    :param str region: The region in which to obtain the V1 KeyManager client.
-           A KeyManager client is needed to fetch a secret. If omitted, the `region`
-           argument of the provider is used.
-    :param str secret_type: The Secret type. For more information see
-           [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
-    :param str updated_at_filter: Date filter to select the Secret with
-           updated matching the specified criteria. See Date Filters below for more
-           detail.
+    Use this data source to access information about an existing resource.
     """
     ...

@@ -20,6 +20,8 @@ from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
+    import pulumi_openstack.bgpvpn as __bgpvpn
+    bgpvpn = __bgpvpn
     import pulumi_openstack.blockstorage as __blockstorage
     blockstorage = __blockstorage
     import pulumi_openstack.compute as __compute
@@ -53,6 +55,7 @@ if typing.TYPE_CHECKING:
     import pulumi_openstack.vpnaas as __vpnaas
     vpnaas = __vpnaas
 else:
+    bgpvpn = _utilities.lazy_import('pulumi_openstack.bgpvpn')
     blockstorage = _utilities.lazy_import('pulumi_openstack.blockstorage')
     compute = _utilities.lazy_import('pulumi_openstack.compute')
     config = _utilities.lazy_import('pulumi_openstack.config')
@@ -73,6 +76,38 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "openstack",
+  "mod": "bgpvpn/networkAssociateV2",
+  "fqn": "pulumi_openstack.bgpvpn",
+  "classes": {
+   "openstack:bgpvpn/networkAssociateV2:NetworkAssociateV2": "NetworkAssociateV2"
+  }
+ },
+ {
+  "pkg": "openstack",
+  "mod": "bgpvpn/portAssociateV2",
+  "fqn": "pulumi_openstack.bgpvpn",
+  "classes": {
+   "openstack:bgpvpn/portAssociateV2:PortAssociateV2": "PortAssociateV2"
+  }
+ },
+ {
+  "pkg": "openstack",
+  "mod": "bgpvpn/routerAssociateV2",
+  "fqn": "pulumi_openstack.bgpvpn",
+  "classes": {
+   "openstack:bgpvpn/routerAssociateV2:RouterAssociateV2": "RouterAssociateV2"
+  }
+ },
+ {
+  "pkg": "openstack",
+  "mod": "bgpvpn/v2",
+  "fqn": "pulumi_openstack.bgpvpn",
+  "classes": {
+   "openstack:bgpvpn/v2:V2": "V2"
+  }
+ },
  {
   "pkg": "openstack",
   "mod": "blockstorage/qosAssociationV3",
@@ -499,6 +534,14 @@ _utilities.register(
  },
  {
   "pkg": "openstack",
+  "mod": "loadbalancer/flavorprofileV2",
+  "fqn": "pulumi_openstack.loadbalancer",
+  "classes": {
+   "openstack:loadbalancer/flavorprofileV2:FlavorprofileV2": "FlavorprofileV2"
+  }
+ },
+ {
+  "pkg": "openstack",
   "mod": "loadbalancer/l7PolicyV2",
   "fqn": "pulumi_openstack.loadbalancer",
   "classes": {
@@ -519,6 +562,14 @@ _utilities.register(
   "fqn": "pulumi_openstack.loadbalancer",
   "classes": {
    "openstack:loadbalancer/listener:Listener": "Listener"
+  }
+ },
+ {
+  "pkg": "openstack",
+  "mod": "loadbalancer/loadBalancer",
+  "fqn": "pulumi_openstack.loadbalancer",
+  "classes": {
+   "openstack:loadbalancer/loadBalancer:LoadBalancer": "LoadBalancer"
   }
  },
  {

@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.openstack.networking.NetworkArgs;
  * import com.pulumi.openstack.networking.Subnet;
  * import com.pulumi.openstack.networking.SubnetArgs;
- * import com.pulumi.openstack.LbLoadbalancerV2;
- * import com.pulumi.openstack.LbLoadbalancerV2Args;
+ * import com.pulumi.openstack.loadbalancer.LoadBalancer;
+ * import com.pulumi.openstack.loadbalancer.LoadBalancerArgs;
  * import com.pulumi.openstack.loadbalancer.Listener;
  * import com.pulumi.openstack.loadbalancer.ListenerArgs;
  * import com.pulumi.openstack.loadbalancer.Pool;
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .networkId(network1.id())
  *             .build());
  * 
- *         var loadbalancer1 = new LbLoadbalancerV2("loadbalancer1", LbLoadbalancerV2Args.builder()
+ *         var loadbalancer1 = new LoadBalancer("loadbalancer1", LoadBalancerArgs.builder()
  *             .name("loadbalancer_1")
  *             .vipSubnetId(subnet1.id())
  *             .build());

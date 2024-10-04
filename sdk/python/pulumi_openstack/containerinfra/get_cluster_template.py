@@ -128,128 +128,76 @@ class GetClusterTemplateResult:
     @property
     @pulumi.getter(name="apiserverPort")
     def apiserver_port(self) -> int:
-        """
-        The API server port for the Container Orchestration
-        Engine for this cluster template.
-        """
         return pulumi.get(self, "apiserver_port")
 
     @property
     @pulumi.getter(name="clusterDistro")
     def cluster_distro(self) -> str:
-        """
-        The distro for the cluster (fedora-atomic, coreos, etc.).
-        """
         return pulumi.get(self, "cluster_distro")
 
     @property
     @pulumi.getter
     def coe(self) -> str:
-        """
-        The Container Orchestration Engine for this cluster template.
-        """
         return pulumi.get(self, "coe")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        The time at which cluster template was created.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="dnsNameserver")
     def dns_nameserver(self) -> str:
-        """
-        Address of the DNS nameserver that is used in nodes of the
-        cluster.
-        """
         return pulumi.get(self, "dns_nameserver")
 
     @property
     @pulumi.getter(name="dockerStorageDriver")
     def docker_storage_driver(self) -> str:
-        """
-        Docker storage driver. Changing this updates the
-        Docker storage driver of the existing cluster template.
-        """
         return pulumi.get(self, "docker_storage_driver")
 
     @property
     @pulumi.getter(name="dockerVolumeSize")
     def docker_volume_size(self) -> int:
-        """
-        The size (in GB) of the Docker volume.
-        """
         return pulumi.get(self, "docker_volume_size")
 
     @property
     @pulumi.getter(name="externalNetworkId")
     def external_network_id(self) -> str:
-        """
-        The ID of the external network that will be used for
-        the cluster.
-        """
         return pulumi.get(self, "external_network_id")
 
     @property
     @pulumi.getter(name="fixedNetwork")
     def fixed_network(self) -> str:
-        """
-        The fixed network that will be attached to the cluster.
-        """
         return pulumi.get(self, "fixed_network")
 
     @property
     @pulumi.getter(name="fixedSubnet")
     def fixed_subnet(self) -> str:
-        """
-        =The fixed subnet that will be attached to the cluster.
-        """
         return pulumi.get(self, "fixed_subnet")
 
     @property
     @pulumi.getter
     def flavor(self) -> str:
-        """
-        The flavor for the nodes of the cluster.
-        """
         return pulumi.get(self, "flavor")
 
     @property
     @pulumi.getter(name="floatingIpEnabled")
     def floating_ip_enabled(self) -> bool:
-        """
-        Indicates whether created cluster should create IP
-        floating IP for every node or not.
-        """
         return pulumi.get(self, "floating_ip_enabled")
 
     @property
     @pulumi.getter
     def hidden(self) -> bool:
-        """
-        Indicates whether the ClusterTemplate is hidden or not.
-        """
         return pulumi.get(self, "hidden")
 
     @property
     @pulumi.getter(name="httpProxy")
     def http_proxy(self) -> str:
-        """
-        The address of a proxy for receiving all HTTP requests and
-        relay them.
-        """
         return pulumi.get(self, "http_proxy")
 
     @property
     @pulumi.getter(name="httpsProxy")
     def https_proxy(self) -> str:
-        """
-        The address of a proxy for receiving all HTTPS requests and
-        relay them.
-        """
         return pulumi.get(self, "https_proxy")
 
     @property
@@ -263,150 +211,91 @@ class GetClusterTemplateResult:
     @property
     @pulumi.getter
     def image(self) -> str:
-        """
-        The reference to an image that is used for nodes of the cluster.
-        """
         return pulumi.get(self, "image")
 
     @property
     @pulumi.getter(name="insecureRegistry")
     def insecure_registry(self) -> str:
-        """
-        The insecure registry URL for the cluster template.
-        """
         return pulumi.get(self, "insecure_registry")
 
     @property
     @pulumi.getter(name="keypairId")
     def keypair_id(self) -> str:
-        """
-        The name of the Compute service SSH keypair.
-        """
         return pulumi.get(self, "keypair_id")
 
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
-        """
-        The list of key value pairs representing additional properties
-        of the cluster template.
-        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="masterFlavor")
     def master_flavor(self) -> str:
-        """
-        The flavor for the master nodes.
-        """
         return pulumi.get(self, "master_flavor")
 
     @property
     @pulumi.getter(name="masterLbEnabled")
     def master_lb_enabled(self) -> bool:
-        """
-        Indicates whether created cluster should has a
-        loadbalancer for master nodes or not.
-        """
         return pulumi.get(self, "master_lb_enabled")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="networkDriver")
     def network_driver(self) -> str:
-        """
-        The name of the driver for the container network.
-        """
         return pulumi.get(self, "network_driver")
 
     @property
     @pulumi.getter(name="noProxy")
     def no_proxy(self) -> str:
-        """
-        A comma-separated list of IP addresses that shouldn't be used in
-        the cluster.
-        """
         return pulumi.get(self, "no_proxy")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
-        """
-        The project of the cluster template.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def public(self) -> bool:
-        """
-        Indicates whether cluster template should be public.
-        """
         return pulumi.get(self, "public")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="registryEnabled")
     def registry_enabled(self) -> bool:
-        """
-        Indicates whether Docker registry is enabled in the
-        cluster.
-        """
         return pulumi.get(self, "registry_enabled")
 
     @property
     @pulumi.getter(name="serverType")
     def server_type(self) -> str:
-        """
-        The server type for the cluster template.
-        """
         return pulumi.get(self, "server_type")
 
     @property
     @pulumi.getter(name="tlsDisabled")
     def tls_disabled(self) -> bool:
-        """
-        Indicates whether the TLS should be disabled in the cluster.
-        """
         return pulumi.get(self, "tls_disabled")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
-        """
-        The time at which cluster template was updated.
-        """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> str:
-        """
-        The user of the cluster template.
-        """
         return pulumi.get(self, "user_id")
 
     @property
     @pulumi.getter(name="volumeDriver")
     def volume_driver(self) -> str:
-        """
-        The name of the driver that is used for the volumes of the
-        cluster nodes.
-        """
         return pulumi.get(self, "volume_driver")
 
 
@@ -456,23 +345,7 @@ def get_cluster_template(name: Optional[str] = None,
                          region: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterTemplateResult:
     """
-    Use this data source to get the ID of an available OpenStack Magnum cluster
-    template.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    clustertemplate1 = openstack.containerinfra.get_cluster_template(name="clustertemplate_1")
-    ```
-
-
-    :param str name: The name of the cluster template.
-    :param str region: The region in which to obtain the V1 Container Infra
-           client.
-           If omitted, the `region` argument of the provider is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -522,22 +395,6 @@ def get_cluster_template_output(name: Optional[pulumi.Input[str]] = None,
                                 region: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterTemplateResult]:
     """
-    Use this data source to get the ID of an available OpenStack Magnum cluster
-    template.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    clustertemplate1 = openstack.containerinfra.get_cluster_template(name="clustertemplate_1")
-    ```
-
-
-    :param str name: The name of the cluster template.
-    :param str region: The region in which to obtain the V1 Container Infra
-           client.
-           If omitted, the `region` argument of the provider is used.
+    Use this data source to access information about an existing resource.
     """
     ...

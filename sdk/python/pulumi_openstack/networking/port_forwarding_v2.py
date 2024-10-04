@@ -24,23 +24,6 @@ class PortForwardingV2Args:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PortForwardingV2 resource.
-        :param pulumi.Input[int] external_port: The TCP/UDP/other protocol port number of the port forwarding. Changing this
-               updates the `external_port` of an existing port forwarding.
-        :param pulumi.Input[str] floatingip_id: The ID of the Neutron floating IP address. Changing this creates a new port forwarding.
-        :param pulumi.Input[str] internal_ip_address: The fixed IPv4 address of the Neutron port associated with the port forwarding.
-               Changing this updates the `internal_ip_address` of an existing port forwarding.
-        :param pulumi.Input[int] internal_port: The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
-               port forwarding. Changing this updates the `internal_port` of an existing port forwarding.
-        :param pulumi.Input[str] internal_port_id: The ID of the Neutron port associated with the port forwarding. Changing
-               this updates the `internal_port_id` of an existing port forwarding.
-        :param pulumi.Input[str] protocol: The IP protocol used in the port forwarding. Changing this updates the `protocol`
-               of an existing port forwarding.
-        :param pulumi.Input[str] description: A text describing the port forwarding. Changing this
-               updates the `description` of an existing port forwarding.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a port forwarding. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               port forwarding.
         """
         pulumi.set(__self__, "external_port", external_port)
         pulumi.set(__self__, "floatingip_id", floatingip_id)
@@ -56,10 +39,6 @@ class PortForwardingV2Args:
     @property
     @pulumi.getter(name="externalPort")
     def external_port(self) -> pulumi.Input[int]:
-        """
-        The TCP/UDP/other protocol port number of the port forwarding. Changing this
-        updates the `external_port` of an existing port forwarding.
-        """
         return pulumi.get(self, "external_port")
 
     @external_port.setter
@@ -69,9 +48,6 @@ class PortForwardingV2Args:
     @property
     @pulumi.getter(name="floatingipId")
     def floatingip_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the Neutron floating IP address. Changing this creates a new port forwarding.
-        """
         return pulumi.get(self, "floatingip_id")
 
     @floatingip_id.setter
@@ -81,10 +57,6 @@ class PortForwardingV2Args:
     @property
     @pulumi.getter(name="internalIpAddress")
     def internal_ip_address(self) -> pulumi.Input[str]:
-        """
-        The fixed IPv4 address of the Neutron port associated with the port forwarding.
-        Changing this updates the `internal_ip_address` of an existing port forwarding.
-        """
         return pulumi.get(self, "internal_ip_address")
 
     @internal_ip_address.setter
@@ -94,10 +66,6 @@ class PortForwardingV2Args:
     @property
     @pulumi.getter(name="internalPort")
     def internal_port(self) -> pulumi.Input[int]:
-        """
-        The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
-        port forwarding. Changing this updates the `internal_port` of an existing port forwarding.
-        """
         return pulumi.get(self, "internal_port")
 
     @internal_port.setter
@@ -107,10 +75,6 @@ class PortForwardingV2Args:
     @property
     @pulumi.getter(name="internalPortId")
     def internal_port_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the Neutron port associated with the port forwarding. Changing
-        this updates the `internal_port_id` of an existing port forwarding.
-        """
         return pulumi.get(self, "internal_port_id")
 
     @internal_port_id.setter
@@ -120,10 +84,6 @@ class PortForwardingV2Args:
     @property
     @pulumi.getter
     def protocol(self) -> pulumi.Input[str]:
-        """
-        The IP protocol used in the port forwarding. Changing this updates the `protocol`
-        of an existing port forwarding.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -133,10 +93,6 @@ class PortForwardingV2Args:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        A text describing the port forwarding. Changing this
-        updates the `description` of an existing port forwarding.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -146,12 +102,6 @@ class PortForwardingV2Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to create a port forwarding. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        port forwarding.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -172,23 +122,6 @@ class _PortForwardingV2State:
                  region: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PortForwardingV2 resources.
-        :param pulumi.Input[str] description: A text describing the port forwarding. Changing this
-               updates the `description` of an existing port forwarding.
-        :param pulumi.Input[int] external_port: The TCP/UDP/other protocol port number of the port forwarding. Changing this
-               updates the `external_port` of an existing port forwarding.
-        :param pulumi.Input[str] floatingip_id: The ID of the Neutron floating IP address. Changing this creates a new port forwarding.
-        :param pulumi.Input[str] internal_ip_address: The fixed IPv4 address of the Neutron port associated with the port forwarding.
-               Changing this updates the `internal_ip_address` of an existing port forwarding.
-        :param pulumi.Input[int] internal_port: The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
-               port forwarding. Changing this updates the `internal_port` of an existing port forwarding.
-        :param pulumi.Input[str] internal_port_id: The ID of the Neutron port associated with the port forwarding. Changing
-               this updates the `internal_port_id` of an existing port forwarding.
-        :param pulumi.Input[str] protocol: The IP protocol used in the port forwarding. Changing this updates the `protocol`
-               of an existing port forwarding.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a port forwarding. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               port forwarding.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -210,10 +143,6 @@ class _PortForwardingV2State:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        A text describing the port forwarding. Changing this
-        updates the `description` of an existing port forwarding.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -223,10 +152,6 @@ class _PortForwardingV2State:
     @property
     @pulumi.getter(name="externalPort")
     def external_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        The TCP/UDP/other protocol port number of the port forwarding. Changing this
-        updates the `external_port` of an existing port forwarding.
-        """
         return pulumi.get(self, "external_port")
 
     @external_port.setter
@@ -236,9 +161,6 @@ class _PortForwardingV2State:
     @property
     @pulumi.getter(name="floatingipId")
     def floatingip_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the Neutron floating IP address. Changing this creates a new port forwarding.
-        """
         return pulumi.get(self, "floatingip_id")
 
     @floatingip_id.setter
@@ -248,10 +170,6 @@ class _PortForwardingV2State:
     @property
     @pulumi.getter(name="internalIpAddress")
     def internal_ip_address(self) -> Optional[pulumi.Input[str]]:
-        """
-        The fixed IPv4 address of the Neutron port associated with the port forwarding.
-        Changing this updates the `internal_ip_address` of an existing port forwarding.
-        """
         return pulumi.get(self, "internal_ip_address")
 
     @internal_ip_address.setter
@@ -261,10 +179,6 @@ class _PortForwardingV2State:
     @property
     @pulumi.getter(name="internalPort")
     def internal_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
-        port forwarding. Changing this updates the `internal_port` of an existing port forwarding.
-        """
         return pulumi.get(self, "internal_port")
 
     @internal_port.setter
@@ -274,10 +188,6 @@ class _PortForwardingV2State:
     @property
     @pulumi.getter(name="internalPortId")
     def internal_port_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the Neutron port associated with the port forwarding. Changing
-        this updates the `internal_port_id` of an existing port forwarding.
-        """
         return pulumi.get(self, "internal_port_id")
 
     @internal_port_id.setter
@@ -287,10 +197,6 @@ class _PortForwardingV2State:
     @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
-        """
-        The IP protocol used in the port forwarding. Changing this updates the `protocol`
-        of an existing port forwarding.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -300,12 +206,6 @@ class _PortForwardingV2State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to create a port forwarding. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        port forwarding.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -328,43 +228,9 @@ class PortForwardingV2(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a V2 portforwarding resource within OpenStack.
-
-        ## Example Usage
-
-        ### Simple portforwarding
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        pf1 = openstack.networking.PortForwardingV2("pf_1",
-            floatingip_id="7a52eb59-7d47-415d-a884-046666a6fbae",
-            external_port=7233,
-            internal_port=25,
-            internal_port_id="b930d7f6-ceb7-40a0-8b81-a425dd994ccf",
-            protocol="tcp")
-        ```
-
+        Create a PortForwardingV2 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A text describing the port forwarding. Changing this
-               updates the `description` of an existing port forwarding.
-        :param pulumi.Input[int] external_port: The TCP/UDP/other protocol port number of the port forwarding. Changing this
-               updates the `external_port` of an existing port forwarding.
-        :param pulumi.Input[str] floatingip_id: The ID of the Neutron floating IP address. Changing this creates a new port forwarding.
-        :param pulumi.Input[str] internal_ip_address: The fixed IPv4 address of the Neutron port associated with the port forwarding.
-               Changing this updates the `internal_ip_address` of an existing port forwarding.
-        :param pulumi.Input[int] internal_port: The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
-               port forwarding. Changing this updates the `internal_port` of an existing port forwarding.
-        :param pulumi.Input[str] internal_port_id: The ID of the Neutron port associated with the port forwarding. Changing
-               this updates the `internal_port_id` of an existing port forwarding.
-        :param pulumi.Input[str] protocol: The IP protocol used in the port forwarding. Changing this updates the `protocol`
-               of an existing port forwarding.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a port forwarding. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               port forwarding.
         """
         ...
     @overload
@@ -373,24 +239,7 @@ class PortForwardingV2(pulumi.CustomResource):
                  args: PortForwardingV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V2 portforwarding resource within OpenStack.
-
-        ## Example Usage
-
-        ### Simple portforwarding
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        pf1 = openstack.networking.PortForwardingV2("pf_1",
-            floatingip_id="7a52eb59-7d47-415d-a884-046666a6fbae",
-            external_port=7233,
-            internal_port=25,
-            internal_port_id="b930d7f6-ceb7-40a0-8b81-a425dd994ccf",
-            protocol="tcp")
-        ```
-
+        Create a PortForwardingV2 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param PortForwardingV2Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -468,23 +317,6 @@ class PortForwardingV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A text describing the port forwarding. Changing this
-               updates the `description` of an existing port forwarding.
-        :param pulumi.Input[int] external_port: The TCP/UDP/other protocol port number of the port forwarding. Changing this
-               updates the `external_port` of an existing port forwarding.
-        :param pulumi.Input[str] floatingip_id: The ID of the Neutron floating IP address. Changing this creates a new port forwarding.
-        :param pulumi.Input[str] internal_ip_address: The fixed IPv4 address of the Neutron port associated with the port forwarding.
-               Changing this updates the `internal_ip_address` of an existing port forwarding.
-        :param pulumi.Input[int] internal_port: The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
-               port forwarding. Changing this updates the `internal_port` of an existing port forwarding.
-        :param pulumi.Input[str] internal_port_id: The ID of the Neutron port associated with the port forwarding. Changing
-               this updates the `internal_port_id` of an existing port forwarding.
-        :param pulumi.Input[str] protocol: The IP protocol used in the port forwarding. Changing this updates the `protocol`
-               of an existing port forwarding.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a port forwarding. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               port forwarding.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -503,73 +335,40 @@ class PortForwardingV2(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        A text describing the port forwarding. Changing this
-        updates the `description` of an existing port forwarding.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="externalPort")
     def external_port(self) -> pulumi.Output[int]:
-        """
-        The TCP/UDP/other protocol port number of the port forwarding. Changing this
-        updates the `external_port` of an existing port forwarding.
-        """
         return pulumi.get(self, "external_port")
 
     @property
     @pulumi.getter(name="floatingipId")
     def floatingip_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the Neutron floating IP address. Changing this creates a new port forwarding.
-        """
         return pulumi.get(self, "floatingip_id")
 
     @property
     @pulumi.getter(name="internalIpAddress")
     def internal_ip_address(self) -> pulumi.Output[str]:
-        """
-        The fixed IPv4 address of the Neutron port associated with the port forwarding.
-        Changing this updates the `internal_ip_address` of an existing port forwarding.
-        """
         return pulumi.get(self, "internal_ip_address")
 
     @property
     @pulumi.getter(name="internalPort")
     def internal_port(self) -> pulumi.Output[int]:
-        """
-        The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
-        port forwarding. Changing this updates the `internal_port` of an existing port forwarding.
-        """
         return pulumi.get(self, "internal_port")
 
     @property
     @pulumi.getter(name="internalPortId")
     def internal_port_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the Neutron port associated with the port forwarding. Changing
-        this updates the `internal_port_id` of an existing port forwarding.
-        """
         return pulumi.get(self, "internal_port_id")
 
     @property
     @pulumi.getter
     def protocol(self) -> pulumi.Output[str]:
-        """
-        The IP protocol used in the port forwarding. Changing this updates the `protocol`
-        of an existing port forwarding.
-        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to create a port forwarding. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        port forwarding.
-        """
         return pulumi.get(self, "region")
 
