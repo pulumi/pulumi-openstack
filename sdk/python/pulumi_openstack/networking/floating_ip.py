@@ -29,42 +29,6 @@ class FloatingIpArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a FloatingIp resource.
-        :param pulumi.Input[str] pool: The name of the pool from which to obtain the floating
-               IP. Changing this creates a new floating IP.
-        :param pulumi.Input[str] address: The actual/specific floating IP to obtain. By default,
-               non-admin users are not able to specify a floating IP, so you must either be
-               an admin user or have had a custom policy or role applied to your OpenStack
-               user or project.
-        :param pulumi.Input[str] description: Human-readable description for the floating IP.
-        :param pulumi.Input[str] dns_domain: The floating IP DNS domain. Available, when Neutron
-               DNS extension is enabled. The data in this attribute will be published in an
-               external DNS service when Neutron is configured to integrate with such a
-               service. Changing this creates a new floating IP.
-        :param pulumi.Input[str] dns_name: The floating IP DNS name. Available, when Neutron DNS
-               extension is enabled. The data in this attribute will be published in an
-               external DNS service when Neutron is configured to integrate with such a
-               service. Changing this creates a new floating IP.
-        :param pulumi.Input[str] fixed_ip: Fixed IP of the port to associate with this floating IP. Required if
-               the port has multiple fixed IPs.
-        :param pulumi.Input[str] port_id: ID of an existing port with at least one IP address to
-               associate with this floating IP.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a floating IP that can be used with
-               another networking resource, such as a load balancer. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               floating IP (which may or may not have a different address).
-        :param pulumi.Input[str] subnet_id: The subnet ID of the floating IP pool. Specify this if
-               the floating IP network has multiple subnets.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A list of external subnet IDs to try over each to
-               allocate a floating IP address. If a subnet ID in a list has exhausted
-               floating IP pool, the next subnet ID will be tried. This argument is used only
-               during the resource creation. Conflicts with a `subnet_id` argument.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the floating IP.
-        :param pulumi.Input[str] tenant_id: The target tenant ID in which to allocate the floating
-               IP, if you specify this together with a port_id, make sure the target port
-               belongs to the same tenant. Changing this creates a new floating IP (which
-               may or may not have a different address)
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         pulumi.set(__self__, "pool", pool)
         if address is not None:
@@ -95,10 +59,6 @@ class FloatingIpArgs:
     @property
     @pulumi.getter
     def pool(self) -> pulumi.Input[str]:
-        """
-        The name of the pool from which to obtain the floating
-        IP. Changing this creates a new floating IP.
-        """
         return pulumi.get(self, "pool")
 
     @pool.setter
@@ -108,12 +68,6 @@ class FloatingIpArgs:
     @property
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
-        """
-        The actual/specific floating IP to obtain. By default,
-        non-admin users are not able to specify a floating IP, so you must either be
-        an admin user or have had a custom policy or role applied to your OpenStack
-        user or project.
-        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -123,9 +77,6 @@ class FloatingIpArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable description for the floating IP.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -135,12 +86,6 @@ class FloatingIpArgs:
     @property
     @pulumi.getter(name="dnsDomain")
     def dns_domain(self) -> Optional[pulumi.Input[str]]:
-        """
-        The floating IP DNS domain. Available, when Neutron
-        DNS extension is enabled. The data in this attribute will be published in an
-        external DNS service when Neutron is configured to integrate with such a
-        service. Changing this creates a new floating IP.
-        """
         return pulumi.get(self, "dns_domain")
 
     @dns_domain.setter
@@ -150,12 +95,6 @@ class FloatingIpArgs:
     @property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The floating IP DNS name. Available, when Neutron DNS
-        extension is enabled. The data in this attribute will be published in an
-        external DNS service when Neutron is configured to integrate with such a
-        service. Changing this creates a new floating IP.
-        """
         return pulumi.get(self, "dns_name")
 
     @dns_name.setter
@@ -165,10 +104,6 @@ class FloatingIpArgs:
     @property
     @pulumi.getter(name="fixedIp")
     def fixed_ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        Fixed IP of the port to associate with this floating IP. Required if
-        the port has multiple fixed IPs.
-        """
         return pulumi.get(self, "fixed_ip")
 
     @fixed_ip.setter
@@ -178,10 +113,6 @@ class FloatingIpArgs:
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of an existing port with at least one IP address to
-        associate with this floating IP.
-        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -191,13 +122,6 @@ class FloatingIpArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a floating IP that can be used with
-        another networking resource, such as a load balancer. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        floating IP (which may or may not have a different address).
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -207,10 +131,6 @@ class FloatingIpArgs:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The subnet ID of the floating IP pool. Specify this if
-        the floating IP network has multiple subnets.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -220,12 +140,6 @@ class FloatingIpArgs:
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of external subnet IDs to try over each to
-        allocate a floating IP address. If a subnet ID in a list has exhausted
-        floating IP pool, the next subnet ID will be tried. This argument is used only
-        during the resource creation. Conflicts with a `subnet_id` argument.
-        """
         return pulumi.get(self, "subnet_ids")
 
     @subnet_ids.setter
@@ -235,9 +149,6 @@ class FloatingIpArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A set of string tags for the floating IP.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -247,12 +158,6 @@ class FloatingIpArgs:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The target tenant ID in which to allocate the floating
-        IP, if you specify this together with a port_id, make sure the target port
-        belongs to the same tenant. Changing this creates a new floating IP (which
-        may or may not have a different address)
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -262,9 +167,6 @@ class FloatingIpArgs:
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Map of additional options.
-        """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
@@ -291,44 +193,6 @@ class _FloatingIpState:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering FloatingIp resources.
-        :param pulumi.Input[str] address: The actual/specific floating IP to obtain. By default,
-               non-admin users are not able to specify a floating IP, so you must either be
-               an admin user or have had a custom policy or role applied to your OpenStack
-               user or project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] all_tags: The collection of tags assigned on the floating IP, which have
-               been explicitly and implicitly added.
-        :param pulumi.Input[str] description: Human-readable description for the floating IP.
-        :param pulumi.Input[str] dns_domain: The floating IP DNS domain. Available, when Neutron
-               DNS extension is enabled. The data in this attribute will be published in an
-               external DNS service when Neutron is configured to integrate with such a
-               service. Changing this creates a new floating IP.
-        :param pulumi.Input[str] dns_name: The floating IP DNS name. Available, when Neutron DNS
-               extension is enabled. The data in this attribute will be published in an
-               external DNS service when Neutron is configured to integrate with such a
-               service. Changing this creates a new floating IP.
-        :param pulumi.Input[str] fixed_ip: Fixed IP of the port to associate with this floating IP. Required if
-               the port has multiple fixed IPs.
-        :param pulumi.Input[str] pool: The name of the pool from which to obtain the floating
-               IP. Changing this creates a new floating IP.
-        :param pulumi.Input[str] port_id: ID of an existing port with at least one IP address to
-               associate with this floating IP.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a floating IP that can be used with
-               another networking resource, such as a load balancer. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               floating IP (which may or may not have a different address).
-        :param pulumi.Input[str] subnet_id: The subnet ID of the floating IP pool. Specify this if
-               the floating IP network has multiple subnets.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A list of external subnet IDs to try over each to
-               allocate a floating IP address. If a subnet ID in a list has exhausted
-               floating IP pool, the next subnet ID will be tried. This argument is used only
-               during the resource creation. Conflicts with a `subnet_id` argument.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the floating IP.
-        :param pulumi.Input[str] tenant_id: The target tenant ID in which to allocate the floating
-               IP, if you specify this together with a port_id, make sure the target port
-               belongs to the same tenant. Changing this creates a new floating IP (which
-               may or may not have a different address)
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -362,12 +226,6 @@ class _FloatingIpState:
     @property
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
-        """
-        The actual/specific floating IP to obtain. By default,
-        non-admin users are not able to specify a floating IP, so you must either be
-        an admin user or have had a custom policy or role applied to your OpenStack
-        user or project.
-        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -377,10 +235,6 @@ class _FloatingIpState:
     @property
     @pulumi.getter(name="allTags")
     def all_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The collection of tags assigned on the floating IP, which have
-        been explicitly and implicitly added.
-        """
         return pulumi.get(self, "all_tags")
 
     @all_tags.setter
@@ -390,9 +244,6 @@ class _FloatingIpState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable description for the floating IP.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -402,12 +253,6 @@ class _FloatingIpState:
     @property
     @pulumi.getter(name="dnsDomain")
     def dns_domain(self) -> Optional[pulumi.Input[str]]:
-        """
-        The floating IP DNS domain. Available, when Neutron
-        DNS extension is enabled. The data in this attribute will be published in an
-        external DNS service when Neutron is configured to integrate with such a
-        service. Changing this creates a new floating IP.
-        """
         return pulumi.get(self, "dns_domain")
 
     @dns_domain.setter
@@ -417,12 +262,6 @@ class _FloatingIpState:
     @property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The floating IP DNS name. Available, when Neutron DNS
-        extension is enabled. The data in this attribute will be published in an
-        external DNS service when Neutron is configured to integrate with such a
-        service. Changing this creates a new floating IP.
-        """
         return pulumi.get(self, "dns_name")
 
     @dns_name.setter
@@ -432,10 +271,6 @@ class _FloatingIpState:
     @property
     @pulumi.getter(name="fixedIp")
     def fixed_ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        Fixed IP of the port to associate with this floating IP. Required if
-        the port has multiple fixed IPs.
-        """
         return pulumi.get(self, "fixed_ip")
 
     @fixed_ip.setter
@@ -445,10 +280,6 @@ class _FloatingIpState:
     @property
     @pulumi.getter
     def pool(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the pool from which to obtain the floating
-        IP. Changing this creates a new floating IP.
-        """
         return pulumi.get(self, "pool")
 
     @pool.setter
@@ -458,10 +289,6 @@ class _FloatingIpState:
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of an existing port with at least one IP address to
-        associate with this floating IP.
-        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -471,13 +298,6 @@ class _FloatingIpState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a floating IP that can be used with
-        another networking resource, such as a load balancer. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        floating IP (which may or may not have a different address).
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -487,10 +307,6 @@ class _FloatingIpState:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The subnet ID of the floating IP pool. Specify this if
-        the floating IP network has multiple subnets.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -500,12 +316,6 @@ class _FloatingIpState:
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of external subnet IDs to try over each to
-        allocate a floating IP address. If a subnet ID in a list has exhausted
-        floating IP pool, the next subnet ID will be tried. This argument is used only
-        during the resource creation. Conflicts with a `subnet_id` argument.
-        """
         return pulumi.get(self, "subnet_ids")
 
     @subnet_ids.setter
@@ -515,9 +325,6 @@ class _FloatingIpState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A set of string tags for the floating IP.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -527,12 +334,6 @@ class _FloatingIpState:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The target tenant ID in which to allocate the floating
-        IP, if you specify this together with a port_id, make sure the target port
-        belongs to the same tenant. Changing this creates a new floating IP (which
-        may or may not have a different address)
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -542,9 +343,6 @@ class _FloatingIpState:
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Map of additional options.
-        """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
@@ -572,52 +370,9 @@ class FloatingIp(pulumi.CustomResource):
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        ## Import
-
-        Floating IPs can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import openstack:networking/floatingIp:FloatingIp floatip_1 2c7f39f3-702b-48d1-940c-b50384177ee1
-        ```
-
+        Create a FloatingIp resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The actual/specific floating IP to obtain. By default,
-               non-admin users are not able to specify a floating IP, so you must either be
-               an admin user or have had a custom policy or role applied to your OpenStack
-               user or project.
-        :param pulumi.Input[str] description: Human-readable description for the floating IP.
-        :param pulumi.Input[str] dns_domain: The floating IP DNS domain. Available, when Neutron
-               DNS extension is enabled. The data in this attribute will be published in an
-               external DNS service when Neutron is configured to integrate with such a
-               service. Changing this creates a new floating IP.
-        :param pulumi.Input[str] dns_name: The floating IP DNS name. Available, when Neutron DNS
-               extension is enabled. The data in this attribute will be published in an
-               external DNS service when Neutron is configured to integrate with such a
-               service. Changing this creates a new floating IP.
-        :param pulumi.Input[str] fixed_ip: Fixed IP of the port to associate with this floating IP. Required if
-               the port has multiple fixed IPs.
-        :param pulumi.Input[str] pool: The name of the pool from which to obtain the floating
-               IP. Changing this creates a new floating IP.
-        :param pulumi.Input[str] port_id: ID of an existing port with at least one IP address to
-               associate with this floating IP.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a floating IP that can be used with
-               another networking resource, such as a load balancer. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               floating IP (which may or may not have a different address).
-        :param pulumi.Input[str] subnet_id: The subnet ID of the floating IP pool. Specify this if
-               the floating IP network has multiple subnets.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A list of external subnet IDs to try over each to
-               allocate a floating IP address. If a subnet ID in a list has exhausted
-               floating IP pool, the next subnet ID will be tried. This argument is used only
-               during the resource creation. Conflicts with a `subnet_id` argument.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the floating IP.
-        :param pulumi.Input[str] tenant_id: The target tenant ID in which to allocate the floating
-               IP, if you specify this together with a port_id, make sure the target port
-               belongs to the same tenant. Changing this creates a new floating IP (which
-               may or may not have a different address)
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         ...
     @overload
@@ -626,14 +381,7 @@ class FloatingIp(pulumi.CustomResource):
                  args: FloatingIpArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Import
-
-        Floating IPs can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import openstack:networking/floatingIp:FloatingIp floatip_1 2c7f39f3-702b-48d1-940c-b50384177ee1
-        ```
-
+        Create a FloatingIp resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param FloatingIpArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -718,44 +466,6 @@ class FloatingIp(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The actual/specific floating IP to obtain. By default,
-               non-admin users are not able to specify a floating IP, so you must either be
-               an admin user or have had a custom policy or role applied to your OpenStack
-               user or project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] all_tags: The collection of tags assigned on the floating IP, which have
-               been explicitly and implicitly added.
-        :param pulumi.Input[str] description: Human-readable description for the floating IP.
-        :param pulumi.Input[str] dns_domain: The floating IP DNS domain. Available, when Neutron
-               DNS extension is enabled. The data in this attribute will be published in an
-               external DNS service when Neutron is configured to integrate with such a
-               service. Changing this creates a new floating IP.
-        :param pulumi.Input[str] dns_name: The floating IP DNS name. Available, when Neutron DNS
-               extension is enabled. The data in this attribute will be published in an
-               external DNS service when Neutron is configured to integrate with such a
-               service. Changing this creates a new floating IP.
-        :param pulumi.Input[str] fixed_ip: Fixed IP of the port to associate with this floating IP. Required if
-               the port has multiple fixed IPs.
-        :param pulumi.Input[str] pool: The name of the pool from which to obtain the floating
-               IP. Changing this creates a new floating IP.
-        :param pulumi.Input[str] port_id: ID of an existing port with at least one IP address to
-               associate with this floating IP.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a floating IP that can be used with
-               another networking resource, such as a load balancer. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               floating IP (which may or may not have a different address).
-        :param pulumi.Input[str] subnet_id: The subnet ID of the floating IP pool. Specify this if
-               the floating IP network has multiple subnets.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: A list of external subnet IDs to try over each to
-               allocate a floating IP address. If a subnet ID in a list has exhausted
-               floating IP pool, the next subnet ID will be tried. This argument is used only
-               during the resource creation. Conflicts with a `subnet_id` argument.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the floating IP.
-        :param pulumi.Input[str] tenant_id: The target tenant ID in which to allocate the floating
-               IP, if you specify this together with a port_id, make sure the target port
-               belongs to the same tenant. Changing this creates a new floating IP (which
-               may or may not have a different address)
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -780,136 +490,70 @@ class FloatingIp(pulumi.CustomResource):
     @property
     @pulumi.getter
     def address(self) -> pulumi.Output[str]:
-        """
-        The actual/specific floating IP to obtain. By default,
-        non-admin users are not able to specify a floating IP, so you must either be
-        an admin user or have had a custom policy or role applied to your OpenStack
-        user or project.
-        """
         return pulumi.get(self, "address")
 
     @property
     @pulumi.getter(name="allTags")
     def all_tags(self) -> pulumi.Output[Sequence[str]]:
-        """
-        The collection of tags assigned on the floating IP, which have
-        been explicitly and implicitly added.
-        """
         return pulumi.get(self, "all_tags")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        Human-readable description for the floating IP.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="dnsDomain")
     def dns_domain(self) -> pulumi.Output[str]:
-        """
-        The floating IP DNS domain. Available, when Neutron
-        DNS extension is enabled. The data in this attribute will be published in an
-        external DNS service when Neutron is configured to integrate with such a
-        service. Changing this creates a new floating IP.
-        """
         return pulumi.get(self, "dns_domain")
 
     @property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> pulumi.Output[str]:
-        """
-        The floating IP DNS name. Available, when Neutron DNS
-        extension is enabled. The data in this attribute will be published in an
-        external DNS service when Neutron is configured to integrate with such a
-        service. Changing this creates a new floating IP.
-        """
         return pulumi.get(self, "dns_name")
 
     @property
     @pulumi.getter(name="fixedIp")
     def fixed_ip(self) -> pulumi.Output[str]:
-        """
-        Fixed IP of the port to associate with this floating IP. Required if
-        the port has multiple fixed IPs.
-        """
         return pulumi.get(self, "fixed_ip")
 
     @property
     @pulumi.getter
     def pool(self) -> pulumi.Output[str]:
-        """
-        The name of the pool from which to obtain the floating
-        IP. Changing this creates a new floating IP.
-        """
         return pulumi.get(self, "pool")
 
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Output[str]:
-        """
-        ID of an existing port with at least one IP address to
-        associate with this floating IP.
-        """
         return pulumi.get(self, "port_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a floating IP that can be used with
-        another networking resource, such as a load balancer. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        floating IP (which may or may not have a different address).
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[str]:
-        """
-        The subnet ID of the floating IP pool. Specify this if
-        the floating IP network has multiple subnets.
-        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter(name="subnetIds")
     def subnet_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        A list of external subnet IDs to try over each to
-        allocate a floating IP address. If a subnet ID in a list has exhausted
-        floating IP pool, the next subnet ID will be tried. This argument is used only
-        during the resource creation. Conflicts with a `subnet_id` argument.
-        """
         return pulumi.get(self, "subnet_ids")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        A set of string tags for the floating IP.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
-        """
-        The target tenant ID in which to allocate the floating
-        IP, if you specify this together with a port_id, make sure the target port
-        belongs to the same tenant. Changing this creates a new floating IP (which
-        may or may not have a different address)
-        """
         return pulumi.get(self, "tenant_id")
 
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Map of additional options.
-        """
         return pulumi.get(self, "value_specs")
 

@@ -56,9 +56,6 @@ class GetSnapshotResult:
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -72,17 +69,11 @@ class GetSnapshotResult:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "project_id")
 
     @property
@@ -93,41 +84,26 @@ class GetSnapshotResult:
     @property
     @pulumi.getter(name="shareId")
     def share_id(self) -> str:
-        """
-        The UUID of the source share that was used to create the snapshot.
-        """
         return pulumi.get(self, "share_id")
 
     @property
     @pulumi.getter(name="shareProto")
     def share_proto(self) -> str:
-        """
-        The file system protocol of a share snapshot.
-        """
         return pulumi.get(self, "share_proto")
 
     @property
     @pulumi.getter(name="shareSize")
     def share_size(self) -> int:
-        """
-        The share snapshot size, in GBs.
-        """
         return pulumi.get(self, "share_size")
 
     @property
     @pulumi.getter
     def size(self) -> int:
-        """
-        The snapshot size, in GBs.
-        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "status")
 
 
@@ -156,25 +132,7 @@ def get_snapshot(description: Optional[str] = None,
                  status: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotResult:
     """
-    Use this data source to get the ID of an available Shared File System snapshot.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    snapshot1 = openstack.sharedfilesystem.get_snapshot(name="snapshot_1")
-    ```
-
-
-    :param str description: The human-readable description of the snapshot.
-    :param str name: The name of the snapshot.
-    :param str region: The region in which to obtain the V2 Shared File System client.
-    :param str share_id: The UUID of the source share that was used to create the snapshot.
-    :param str status: A snapshot status filter. A valid value is `available`, `error`,
-           `creating`, `deleting`, `manage_starting`, `manage_error`, `unmanage_starting`,
-           `unmanage_error` or `error_deleting`.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -206,24 +164,6 @@ def get_snapshot_output(description: Optional[pulumi.Input[Optional[str]]] = Non
                         status: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotResult]:
     """
-    Use this data source to get the ID of an available Shared File System snapshot.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    snapshot1 = openstack.sharedfilesystem.get_snapshot(name="snapshot_1")
-    ```
-
-
-    :param str description: The human-readable description of the snapshot.
-    :param str name: The name of the snapshot.
-    :param str region: The region in which to obtain the V2 Shared File System client.
-    :param str share_id: The UUID of the source share that was used to create the snapshot.
-    :param str status: A snapshot status filter. A valid value is `available`, `error`,
-           `creating`, `deleting`, `manage_starting`, `manage_error`, `unmanage_starting`,
-           `unmanage_error` or `error_deleting`.
+    Use this data source to access information about an existing resource.
     """
     ...

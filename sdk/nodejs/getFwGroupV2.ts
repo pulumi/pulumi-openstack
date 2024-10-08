@@ -13,12 +13,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const group = openstack.getFwGroupV2({
+ * const group = openstack.firewall.getGroupV2({
  *     name: "tf_test_group",
  * });
  * ```
  */
+/** @deprecated openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2 */
 export function getFwGroupV2(args?: GetFwGroupV2Args, opts?: pulumi.InvokeOptions): Promise<GetFwGroupV2Result> {
+    pulumi.log.warn("getFwGroupV2 is deprecated: openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:index/getFwGroupV2:getFwGroupV2", {
@@ -156,12 +158,14 @@ export interface GetFwGroupV2Result {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const group = openstack.getFwGroupV2({
+ * const group = openstack.firewall.getGroupV2({
  *     name: "tf_test_group",
  * });
  * ```
  */
+/** @deprecated openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2 */
 export function getFwGroupV2Output(args?: GetFwGroupV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFwGroupV2Result> {
+    pulumi.log.warn("getFwGroupV2 is deprecated: openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:index/getFwGroupV2:getFwGroupV2", {

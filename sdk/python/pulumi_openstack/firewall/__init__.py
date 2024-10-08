@@ -5,6 +5,9 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .get_group_v2 import *
+from .get_policy_v2 import *
+from .get_rule_v2 import *
 from .group_v2 import *
 from .policy_v2 import *
 from .rule_v2 import *

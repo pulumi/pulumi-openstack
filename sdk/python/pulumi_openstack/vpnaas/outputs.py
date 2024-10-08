@@ -20,10 +20,6 @@ class IkePolicyLifetime(dict):
     def __init__(__self__, *,
                  units: Optional[str] = None,
                  value: Optional[int] = None):
-        """
-        :param int value: The value for the lifetime of the security association. Must be a positive integer.
-               Default is 3600.
-        """
         if units is not None:
             pulumi.set(__self__, "units", units)
         if value is not None:
@@ -37,10 +33,6 @@ class IkePolicyLifetime(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[int]:
-        """
-        The value for the lifetime of the security association. Must be a positive integer.
-        Default is 3600.
-        """
         return pulumi.get(self, "value")
 
 
@@ -49,10 +41,6 @@ class IpSecPolicyLifetime(dict):
     def __init__(__self__, *,
                  units: Optional[str] = None,
                  value: Optional[int] = None):
-        """
-        :param int value: The value for the lifetime of the security association. Must be a positive integer.
-               Default is 3600.
-        """
         if units is not None:
             pulumi.set(__self__, "units", units)
         if value is not None:
@@ -66,10 +54,6 @@ class IpSecPolicyLifetime(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[int]:
-        """
-        The value for the lifetime of the security association. Must be a positive integer.
-        Default is 3600.
-        """
         return pulumi.get(self, "value")
 
 
@@ -79,17 +63,6 @@ class SiteConnectionDpd(dict):
                  action: Optional[str] = None,
                  interval: Optional[int] = None,
                  timeout: Optional[int] = None):
-        """
-        :param str action: The dead peer detection (DPD) action.
-               A valid value is clear, hold, restart, disabled, or restart-by-peer.
-               Default value is hold.
-        :param int interval: The dead peer detection (DPD) interval, in seconds.
-               A valid value is a positive integer.
-               Default is 30.
-        :param int timeout: The dead peer detection (DPD) timeout in seconds.
-               A valid value is a positive integer that is greater than the DPD interval value.
-               Default is 120.
-        """
         if action is not None:
             pulumi.set(__self__, "action", action)
         if interval is not None:
@@ -100,31 +73,16 @@ class SiteConnectionDpd(dict):
     @property
     @pulumi.getter
     def action(self) -> Optional[str]:
-        """
-        The dead peer detection (DPD) action.
-        A valid value is clear, hold, restart, disabled, or restart-by-peer.
-        Default value is hold.
-        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter
     def interval(self) -> Optional[int]:
-        """
-        The dead peer detection (DPD) interval, in seconds.
-        A valid value is a positive integer.
-        Default is 30.
-        """
         return pulumi.get(self, "interval")
 
     @property
     @pulumi.getter
     def timeout(self) -> Optional[int]:
-        """
-        The dead peer detection (DPD) timeout in seconds.
-        A valid value is a positive integer that is greater than the DPD interval value.
-        Default is 120.
-        """
         return pulumi.get(self, "timeout")
 
 

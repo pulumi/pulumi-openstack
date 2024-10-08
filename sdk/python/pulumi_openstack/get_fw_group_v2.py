@@ -16,6 +16,8 @@ __all__ = [
     'get_fw_group_v2_output',
 ]
 
+warnings.warn("""openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2""", DeprecationWarning)
+
 @pulumi.output_type
 class GetFwGroupV2Result:
     """
@@ -65,33 +67,21 @@ class GetFwGroupV2Result:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> bool:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "admin_state_up")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="egressFirewallPolicyId")
     def egress_firewall_policy_id(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "egress_firewall_policy_id")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "group_id")
 
     @property
@@ -105,65 +95,41 @@ class GetFwGroupV2Result:
     @property
     @pulumi.getter(name="ingressFirewallPolicyId")
     def ingress_firewall_policy_id(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "ingress_firewall_policy_id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def ports(self) -> Sequence[str]:
-        """
-        Ports associated with the firewall group.
-        """
         return pulumi.get(self, "ports")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def shared(self) -> bool:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "shared")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "tenant_id")
 
 
@@ -201,34 +167,9 @@ def get_fw_group_v2(admin_state_up: Optional[bool] = None,
                     tenant_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFwGroupV2Result:
     """
-    Use this data source to get information of an available OpenStack firewall group v2.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    group = openstack.get_fw_group_v2(name="tf_test_group")
-    ```
-
-
-    :param bool admin_state_up: Administrative up/down status for the firewall group.
-    :param str description: Human-readable description of the firewall group.
-    :param str egress_firewall_policy_id: The egress policy ID of the firewall group.
-    :param str group_id: The ID of the firewall group.
-    :param str ingress_firewall_policy_id: The ingress policy ID of the firewall group.
-    :param str name: The name of the firewall group.
-    :param str project_id: This argument conflicts and is interchangeable
-           with `tenant_id`. The owner of the firewall group.
-    :param str region: The region in which to obtain the V2 Neutron client.
-           A Neutron client is needed to retrieve firewall group ids. If omitted, the
-           `region` argument of the provider is used.
-    :param bool shared: The sharing status of the firewall group.
-    :param str status: Enabled status for the firewall group.
-    :param str tenant_id: This argument conflicts and is interchangeable
-           with `project_id`. The owner of the firewall group.
+    Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_fw_group_v2 is deprecated: openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2""")
     __args__ = dict()
     __args__['adminStateUp'] = admin_state_up
     __args__['description'] = description
@@ -274,32 +215,7 @@ def get_fw_group_v2_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]
                            tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFwGroupV2Result]:
     """
-    Use this data source to get information of an available OpenStack firewall group v2.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    group = openstack.get_fw_group_v2(name="tf_test_group")
-    ```
-
-
-    :param bool admin_state_up: Administrative up/down status for the firewall group.
-    :param str description: Human-readable description of the firewall group.
-    :param str egress_firewall_policy_id: The egress policy ID of the firewall group.
-    :param str group_id: The ID of the firewall group.
-    :param str ingress_firewall_policy_id: The ingress policy ID of the firewall group.
-    :param str name: The name of the firewall group.
-    :param str project_id: This argument conflicts and is interchangeable
-           with `tenant_id`. The owner of the firewall group.
-    :param str region: The region in which to obtain the V2 Neutron client.
-           A Neutron client is needed to retrieve firewall group ids. If omitted, the
-           `region` argument of the provider is used.
-    :param bool shared: The sharing status of the firewall group.
-    :param str status: Enabled status for the firewall group.
-    :param str tenant_id: This argument conflicts and is interchangeable
-           with `project_id`. The owner of the firewall group.
+    Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_fw_group_v2 is deprecated: openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2""")
     ...

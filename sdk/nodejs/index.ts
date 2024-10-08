@@ -57,6 +57,7 @@ utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
 
 // Export sub-modules:
+import * as bgpvpn from "./bgpvpn";
 import * as blockstorage from "./blockstorage";
 import * as compute from "./compute";
 import * as config from "./config";
@@ -76,6 +77,7 @@ import * as types from "./types";
 import * as vpnaas from "./vpnaas";
 
 export {
+    bgpvpn,
     blockstorage,
     compute,
     config,

@@ -21,16 +21,6 @@ class VolumeTypeV3Args:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a VolumeTypeV3 resource.
-        :param pulumi.Input[str] description: Human-readable description of the port. Changing
-               this updates the `description` of an existing volume type.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_specs: Key/Value pairs of metadata for the volume type.
-        :param pulumi.Input[bool] is_public: Whether the volume type is public. Changing
-               this updates the `is_public` of an existing volume type.
-        :param pulumi.Input[str] name: Name of the volume type.  Changing this
-               updates the `name` of an existing volume type.
-        :param pulumi.Input[str] region: The region in which to create the volume. If
-               omitted, the `region` argument of the provider is used. Changing this
-               creates a new quotaset.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -46,10 +36,6 @@ class VolumeTypeV3Args:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable description of the port. Changing
-        this updates the `description` of an existing volume type.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -59,9 +45,6 @@ class VolumeTypeV3Args:
     @property
     @pulumi.getter(name="extraSpecs")
     def extra_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Key/Value pairs of metadata for the volume type.
-        """
         return pulumi.get(self, "extra_specs")
 
     @extra_specs.setter
@@ -71,10 +54,6 @@ class VolumeTypeV3Args:
     @property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether the volume type is public. Changing
-        this updates the `is_public` of an existing volume type.
-        """
         return pulumi.get(self, "is_public")
 
     @is_public.setter
@@ -84,10 +63,6 @@ class VolumeTypeV3Args:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the volume type.  Changing this
-        updates the `name` of an existing volume type.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -97,11 +72,6 @@ class VolumeTypeV3Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to create the volume. If
-        omitted, the `region` argument of the provider is used. Changing this
-        creates a new quotaset.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -119,16 +89,6 @@ class _VolumeTypeV3State:
                  region: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering VolumeTypeV3 resources.
-        :param pulumi.Input[str] description: Human-readable description of the port. Changing
-               this updates the `description` of an existing volume type.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_specs: Key/Value pairs of metadata for the volume type.
-        :param pulumi.Input[bool] is_public: Whether the volume type is public. Changing
-               this updates the `is_public` of an existing volume type.
-        :param pulumi.Input[str] name: Name of the volume type.  Changing this
-               updates the `name` of an existing volume type.
-        :param pulumi.Input[str] region: The region in which to create the volume. If
-               omitted, the `region` argument of the provider is used. Changing this
-               creates a new quotaset.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -144,10 +104,6 @@ class _VolumeTypeV3State:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable description of the port. Changing
-        this updates the `description` of an existing volume type.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -157,9 +113,6 @@ class _VolumeTypeV3State:
     @property
     @pulumi.getter(name="extraSpecs")
     def extra_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Key/Value pairs of metadata for the volume type.
-        """
         return pulumi.get(self, "extra_specs")
 
     @extra_specs.setter
@@ -169,10 +122,6 @@ class _VolumeTypeV3State:
     @property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether the volume type is public. Changing
-        this updates the `is_public` of an existing volume type.
-        """
         return pulumi.get(self, "is_public")
 
     @is_public.setter
@@ -182,10 +131,6 @@ class _VolumeTypeV3State:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the volume type.  Changing this
-        updates the `name` of an existing volume type.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -195,11 +140,6 @@ class _VolumeTypeV3State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to create the volume. If
-        omitted, the `region` argument of the provider is used. Changing this
-        creates a new quotaset.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -219,61 +159,9 @@ class VolumeTypeV3(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a V3 block storage volume type resource within OpenStack.
-
-        > **Note:** This usually requires admin privileges.
-
-        ## Example Usage
-
-        ### Basic Volume Type
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        volume_type1 = openstack.blockstorage.VolumeTypeV3("volume_type_1",
-            name="volume_type_1",
-            description="Volume type 1",
-            extra_specs={
-                "capabilities": "gpu",
-                "volume_backend_name": "ssd",
-            })
-        ```
-
-        ### Volume Type with multiattach enabled
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        multiattach = openstack.blockstorage.VolumeTypeV3("multiattach",
-            name="multiattach",
-            description="Multiattach-enabled volume type",
-            extra_specs={
-                "multiattach": "<is> True",
-            })
-        ```
-
-        ## Import
-
-        Volume types can be imported using the `volume_type_id`, e.g.
-
-        ```sh
-        $ pulumi import openstack:blockstorage/volumeTypeV3:VolumeTypeV3 volume_type_1 941793f0-0a34-4bc4-b72e-a6326ae58283
-        ```
-
+        Create a VolumeTypeV3 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Human-readable description of the port. Changing
-               this updates the `description` of an existing volume type.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_specs: Key/Value pairs of metadata for the volume type.
-        :param pulumi.Input[bool] is_public: Whether the volume type is public. Changing
-               this updates the `is_public` of an existing volume type.
-        :param pulumi.Input[str] name: Name of the volume type.  Changing this
-               updates the `name` of an existing volume type.
-        :param pulumi.Input[str] region: The region in which to create the volume. If
-               omitted, the `region` argument of the provider is used. Changing this
-               creates a new quotaset.
         """
         ...
     @overload
@@ -282,49 +170,7 @@ class VolumeTypeV3(pulumi.CustomResource):
                  args: Optional[VolumeTypeV3Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V3 block storage volume type resource within OpenStack.
-
-        > **Note:** This usually requires admin privileges.
-
-        ## Example Usage
-
-        ### Basic Volume Type
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        volume_type1 = openstack.blockstorage.VolumeTypeV3("volume_type_1",
-            name="volume_type_1",
-            description="Volume type 1",
-            extra_specs={
-                "capabilities": "gpu",
-                "volume_backend_name": "ssd",
-            })
-        ```
-
-        ### Volume Type with multiattach enabled
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        multiattach = openstack.blockstorage.VolumeTypeV3("multiattach",
-            name="multiattach",
-            description="Multiattach-enabled volume type",
-            extra_specs={
-                "multiattach": "<is> True",
-            })
-        ```
-
-        ## Import
-
-        Volume types can be imported using the `volume_type_id`, e.g.
-
-        ```sh
-        $ pulumi import openstack:blockstorage/volumeTypeV3:VolumeTypeV3 volume_type_1 941793f0-0a34-4bc4-b72e-a6326ae58283
-        ```
-
+        Create a VolumeTypeV3 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param VolumeTypeV3Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -381,16 +227,6 @@ class VolumeTypeV3(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Human-readable description of the port. Changing
-               this updates the `description` of an existing volume type.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extra_specs: Key/Value pairs of metadata for the volume type.
-        :param pulumi.Input[bool] is_public: Whether the volume type is public. Changing
-               this updates the `is_public` of an existing volume type.
-        :param pulumi.Input[str] name: Name of the volume type.  Changing this
-               updates the `name` of an existing volume type.
-        :param pulumi.Input[str] region: The region in which to create the volume. If
-               omitted, the `region` argument of the provider is used. Changing this
-               creates a new quotaset.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -406,45 +242,25 @@ class VolumeTypeV3(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
-        """
-        Human-readable description of the port. Changing
-        this updates the `description` of an existing volume type.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="extraSpecs")
     def extra_specs(self) -> pulumi.Output[Mapping[str, str]]:
-        """
-        Key/Value pairs of metadata for the volume type.
-        """
         return pulumi.get(self, "extra_specs")
 
     @property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> pulumi.Output[bool]:
-        """
-        Whether the volume type is public. Changing
-        this updates the `is_public` of an existing volume type.
-        """
         return pulumi.get(self, "is_public")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Name of the volume type.  Changing this
-        updates the `name` of an existing volume type.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to create the volume. If
-        omitted, the `region` argument of the provider is used. Changing this
-        creates a new quotaset.
-        """
         return pulumi.get(self, "region")
 

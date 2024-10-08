@@ -65,17 +65,11 @@ class GetShareNetworkResult:
     @property
     @pulumi.getter
     def cidr(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "cidr")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -89,82 +83,51 @@ class GetShareNetworkResult:
     @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> int:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "ip_version")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="networkType")
     def network_type(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "network_type")
 
     @property
     @pulumi.getter(name="neutronNetId")
     def neutron_net_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "neutron_net_id")
 
     @property
     @pulumi.getter(name="neutronSubnetId")
     def neutron_subnet_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "neutron_subnet_id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
-        """
-        The owner of the Share Network.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="securityServiceId")
     def security_service_id(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "security_service_id")
 
     @property
     @pulumi.getter(name="securityServiceIds")
     def security_service_ids(self) -> Sequence[str]:
-        """
-        The list of security service IDs associated with
-        the share network.
-        """
         return pulumi.get(self, "security_service_ids")
 
     @property
     @pulumi.getter(name="segmentationId")
     def segmentation_id(self) -> int:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "segmentation_id")
 
 
@@ -200,31 +163,7 @@ def get_share_network(description: Optional[str] = None,
                       segmentation_id: Optional[int] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetShareNetworkResult:
     """
-    Use this data source to get the ID of an available Shared File System share network.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    sharenetwork1 = openstack.sharedfilesystem.get_share_network(name="sharenetwork_1")
-    ```
-
-
-    :param str description: The human-readable description of the share network.
-    :param int ip_version: The IP version of the share network. Can either be 4 or 6.
-    :param str name: The name of the share network.
-    :param str network_type: The share network type. Can either be VLAN, VXLAN,
-           GRE, or flat.
-    :param str neutron_net_id: The neutron network UUID of the share network.
-    :param str neutron_subnet_id: The neutron subnet UUID of the share network.
-    :param str region: The region in which to obtain the V2 Shared File System client.
-           A Shared File System client is needed to read a share network. If omitted, the
-           `region` argument of the provider is used.
-    :param str security_service_id: The security service IDs associated with
-           the share network.
-    :param int segmentation_id: The share network segmentation ID.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -267,30 +206,6 @@ def get_share_network_output(description: Optional[pulumi.Input[Optional[str]]] 
                              segmentation_id: Optional[pulumi.Input[Optional[int]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetShareNetworkResult]:
     """
-    Use this data source to get the ID of an available Shared File System share network.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    sharenetwork1 = openstack.sharedfilesystem.get_share_network(name="sharenetwork_1")
-    ```
-
-
-    :param str description: The human-readable description of the share network.
-    :param int ip_version: The IP version of the share network. Can either be 4 or 6.
-    :param str name: The name of the share network.
-    :param str network_type: The share network type. Can either be VLAN, VXLAN,
-           GRE, or flat.
-    :param str neutron_net_id: The neutron network UUID of the share network.
-    :param str neutron_subnet_id: The neutron subnet UUID of the share network.
-    :param str region: The region in which to obtain the V2 Shared File System client.
-           A Shared File System client is needed to read a share network. If omitted, the
-           `region` argument of the provider is used.
-    :param str security_service_id: The security service IDs associated with
-           the share network.
-    :param int segmentation_id: The share network segmentation ID.
+    Use this data source to access information about an existing resource.
     """
     ...

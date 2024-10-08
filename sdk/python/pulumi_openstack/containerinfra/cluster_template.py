@@ -45,89 +45,6 @@ class ClusterTemplateArgs:
                  volume_driver: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ClusterTemplate resource.
-        :param pulumi.Input[str] coe: The Container Orchestration Engine for this cluster
-               template. Changing this updates the engine of the existing cluster
-               template.
-        :param pulumi.Input[str] image: The reference to an image that is used for nodes of the
-               cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
-               Changing this updates the image attribute of the existing cluster template.
-        :param pulumi.Input[int] apiserver_port: The API server port for the Container
-               Orchestration Engine for this cluster template. Changing this updates the
-               API server port of the existing cluster template.
-        :param pulumi.Input[str] cluster_distro: The distro for the cluster (fedora-atomic,
-               coreos, etc.). Changing this updates the cluster distro of the existing
-               cluster template.
-        :param pulumi.Input[str] dns_nameserver: Address of the DNS nameserver that is used in
-               nodes of the cluster. Changing this updates the DNS nameserver of the
-               existing cluster template.
-        :param pulumi.Input[str] docker_storage_driver: Docker storage driver. Changing this
-               updates the Docker storage driver of the existing cluster template.
-        :param pulumi.Input[int] docker_volume_size: The size (in GB) of the Docker volume.
-               Changing this updates the Docker volume size of the existing cluster
-               template.
-        :param pulumi.Input[str] external_network_id: The ID of the external network that will
-               be used for the cluster. Changing this updates the external network ID of
-               the existing cluster template.
-        :param pulumi.Input[str] fixed_network: The fixed network that will be attached to the
-               cluster. Changing this updates the fixed network of the existing cluster
-               template.
-        :param pulumi.Input[str] fixed_subnet: The fixed subnet that will be attached to the
-               cluster. Changing this updates the fixed subnet of the existing cluster
-               template.
-        :param pulumi.Input[str] flavor: The flavor for the nodes of the cluster. Can be set via
-               the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
-               flavor of the existing cluster template.
-        :param pulumi.Input[bool] floating_ip_enabled: Indicates whether created cluster should
-               create floating IP for every node or not. Changing this updates the
-               floating IP enabled attribute of the existing cluster template.
-        :param pulumi.Input[bool] hidden: Indicates whether the ClusterTemplate is hidden or not.
-               Changing this updates the hidden attribute of the existing cluster
-               template.
-        :param pulumi.Input[str] http_proxy: The address of a proxy for receiving all HTTP
-               requests and relay them. Changing this updates the HTTP proxy address of
-               the existing cluster template.
-        :param pulumi.Input[str] https_proxy: The address of a proxy for receiving all HTTPS
-               requests and relay them. Changing this updates the HTTPS proxy address of
-               the existing cluster template.
-        :param pulumi.Input[str] insecure_registry: The insecure registry URL for the cluster
-               template. Changing this updates the insecure registry attribute of the
-               existing cluster template.
-        :param pulumi.Input[str] keypair_id: The name of the Compute service SSH keypair.
-               Changing this updates the keypair of the existing cluster template.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of key value pairs representing additional
-               properties of the cluster template. Changing this updates the labels of the
-               existing cluster template.
-        :param pulumi.Input[str] master_flavor: The flavor for the master nodes. Can be set via
-               the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
-               the master flavor of the existing cluster template.
-        :param pulumi.Input[bool] master_lb_enabled: Indicates whether created cluster should
-               has a loadbalancer for master nodes or not. Changing this updates the
-               attribute of the existing cluster template.
-        :param pulumi.Input[str] name: The name of the cluster template. Changing this updates
-               the name of the existing cluster template.
-        :param pulumi.Input[str] network_driver: The name of the driver for the container
-               network. Changing this updates the network driver of the existing cluster
-               template.
-        :param pulumi.Input[str] no_proxy: A comma-separated list of IP addresses that shouldn't
-               be used in the cluster. Changing this updates the no proxy list of the
-               existing cluster template.
-        :param pulumi.Input[bool] public: Indicates whether cluster template should be public.
-               Changing this updates the public attribute of the existing cluster
-               template.
-        :param pulumi.Input[str] region: The region in which to obtain the V1 Container Infra
-               client. A Container Infra client is needed to create a cluster template. If
-               omitted,the `region` argument of the provider is used. Changing this
-               creates a new cluster template.
-        :param pulumi.Input[bool] registry_enabled: Indicates whether Docker registry is enabled
-               in the cluster. Changing this updates the registry enabled attribute of the
-               existing cluster template.
-        :param pulumi.Input[str] server_type: The server type for the cluster template. Changing
-               this updates the server type of the existing cluster template.
-        :param pulumi.Input[bool] tls_disabled: Indicates whether the TLS should be disabled in
-               the cluster. Changing this updates the attribute of the existing cluster.
-        :param pulumi.Input[str] volume_driver: The name of the driver that is used for the
-               volumes of the cluster nodes. Changing this updates the volume driver of
-               the existing cluster template.
         """
         pulumi.set(__self__, "coe", coe)
         pulumi.set(__self__, "image", image)
@@ -189,11 +106,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter
     def coe(self) -> pulumi.Input[str]:
-        """
-        The Container Orchestration Engine for this cluster
-        template. Changing this updates the engine of the existing cluster
-        template.
-        """
         return pulumi.get(self, "coe")
 
     @coe.setter
@@ -203,11 +115,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter
     def image(self) -> pulumi.Input[str]:
-        """
-        The reference to an image that is used for nodes of the
-        cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
-        Changing this updates the image attribute of the existing cluster template.
-        """
         return pulumi.get(self, "image")
 
     @image.setter
@@ -217,11 +124,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="apiserverPort")
     def apiserver_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        The API server port for the Container
-        Orchestration Engine for this cluster template. Changing this updates the
-        API server port of the existing cluster template.
-        """
         return pulumi.get(self, "apiserver_port")
 
     @apiserver_port.setter
@@ -231,11 +133,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="clusterDistro")
     def cluster_distro(self) -> Optional[pulumi.Input[str]]:
-        """
-        The distro for the cluster (fedora-atomic,
-        coreos, etc.). Changing this updates the cluster distro of the existing
-        cluster template.
-        """
         return pulumi.get(self, "cluster_distro")
 
     @cluster_distro.setter
@@ -245,11 +142,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="dnsNameserver")
     def dns_nameserver(self) -> Optional[pulumi.Input[str]]:
-        """
-        Address of the DNS nameserver that is used in
-        nodes of the cluster. Changing this updates the DNS nameserver of the
-        existing cluster template.
-        """
         return pulumi.get(self, "dns_nameserver")
 
     @dns_nameserver.setter
@@ -259,10 +151,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="dockerStorageDriver")
     def docker_storage_driver(self) -> Optional[pulumi.Input[str]]:
-        """
-        Docker storage driver. Changing this
-        updates the Docker storage driver of the existing cluster template.
-        """
         return pulumi.get(self, "docker_storage_driver")
 
     @docker_storage_driver.setter
@@ -272,11 +160,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="dockerVolumeSize")
     def docker_volume_size(self) -> Optional[pulumi.Input[int]]:
-        """
-        The size (in GB) of the Docker volume.
-        Changing this updates the Docker volume size of the existing cluster
-        template.
-        """
         return pulumi.get(self, "docker_volume_size")
 
     @docker_volume_size.setter
@@ -286,11 +169,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="externalNetworkId")
     def external_network_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the external network that will
-        be used for the cluster. Changing this updates the external network ID of
-        the existing cluster template.
-        """
         return pulumi.get(self, "external_network_id")
 
     @external_network_id.setter
@@ -300,11 +178,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="fixedNetwork")
     def fixed_network(self) -> Optional[pulumi.Input[str]]:
-        """
-        The fixed network that will be attached to the
-        cluster. Changing this updates the fixed network of the existing cluster
-        template.
-        """
         return pulumi.get(self, "fixed_network")
 
     @fixed_network.setter
@@ -314,11 +187,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="fixedSubnet")
     def fixed_subnet(self) -> Optional[pulumi.Input[str]]:
-        """
-        The fixed subnet that will be attached to the
-        cluster. Changing this updates the fixed subnet of the existing cluster
-        template.
-        """
         return pulumi.get(self, "fixed_subnet")
 
     @fixed_subnet.setter
@@ -328,11 +196,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter
     def flavor(self) -> Optional[pulumi.Input[str]]:
-        """
-        The flavor for the nodes of the cluster. Can be set via
-        the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
-        flavor of the existing cluster template.
-        """
         return pulumi.get(self, "flavor")
 
     @flavor.setter
@@ -342,11 +205,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="floatingIpEnabled")
     def floating_ip_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether created cluster should
-        create floating IP for every node or not. Changing this updates the
-        floating IP enabled attribute of the existing cluster template.
-        """
         return pulumi.get(self, "floating_ip_enabled")
 
     @floating_ip_enabled.setter
@@ -356,11 +214,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter
     def hidden(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether the ClusterTemplate is hidden or not.
-        Changing this updates the hidden attribute of the existing cluster
-        template.
-        """
         return pulumi.get(self, "hidden")
 
     @hidden.setter
@@ -370,11 +223,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="httpProxy")
     def http_proxy(self) -> Optional[pulumi.Input[str]]:
-        """
-        The address of a proxy for receiving all HTTP
-        requests and relay them. Changing this updates the HTTP proxy address of
-        the existing cluster template.
-        """
         return pulumi.get(self, "http_proxy")
 
     @http_proxy.setter
@@ -384,11 +232,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="httpsProxy")
     def https_proxy(self) -> Optional[pulumi.Input[str]]:
-        """
-        The address of a proxy for receiving all HTTPS
-        requests and relay them. Changing this updates the HTTPS proxy address of
-        the existing cluster template.
-        """
         return pulumi.get(self, "https_proxy")
 
     @https_proxy.setter
@@ -398,11 +241,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="insecureRegistry")
     def insecure_registry(self) -> Optional[pulumi.Input[str]]:
-        """
-        The insecure registry URL for the cluster
-        template. Changing this updates the insecure registry attribute of the
-        existing cluster template.
-        """
         return pulumi.get(self, "insecure_registry")
 
     @insecure_registry.setter
@@ -412,10 +250,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="keypairId")
     def keypair_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the Compute service SSH keypair.
-        Changing this updates the keypair of the existing cluster template.
-        """
         return pulumi.get(self, "keypair_id")
 
     @keypair_id.setter
@@ -425,11 +259,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The list of key value pairs representing additional
-        properties of the cluster template. Changing this updates the labels of the
-        existing cluster template.
-        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -439,11 +268,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="masterFlavor")
     def master_flavor(self) -> Optional[pulumi.Input[str]]:
-        """
-        The flavor for the master nodes. Can be set via
-        the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
-        the master flavor of the existing cluster template.
-        """
         return pulumi.get(self, "master_flavor")
 
     @master_flavor.setter
@@ -453,11 +277,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="masterLbEnabled")
     def master_lb_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether created cluster should
-        has a loadbalancer for master nodes or not. Changing this updates the
-        attribute of the existing cluster template.
-        """
         return pulumi.get(self, "master_lb_enabled")
 
     @master_lb_enabled.setter
@@ -467,10 +286,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the cluster template. Changing this updates
-        the name of the existing cluster template.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -480,11 +295,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="networkDriver")
     def network_driver(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the driver for the container
-        network. Changing this updates the network driver of the existing cluster
-        template.
-        """
         return pulumi.get(self, "network_driver")
 
     @network_driver.setter
@@ -494,11 +304,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="noProxy")
     def no_proxy(self) -> Optional[pulumi.Input[str]]:
-        """
-        A comma-separated list of IP addresses that shouldn't
-        be used in the cluster. Changing this updates the no proxy list of the
-        existing cluster template.
-        """
         return pulumi.get(self, "no_proxy")
 
     @no_proxy.setter
@@ -508,11 +313,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter
     def public(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether cluster template should be public.
-        Changing this updates the public attribute of the existing cluster
-        template.
-        """
         return pulumi.get(self, "public")
 
     @public.setter
@@ -522,12 +322,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V1 Container Infra
-        client. A Container Infra client is needed to create a cluster template. If
-        omitted,the `region` argument of the provider is used. Changing this
-        creates a new cluster template.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -537,11 +331,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="registryEnabled")
     def registry_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether Docker registry is enabled
-        in the cluster. Changing this updates the registry enabled attribute of the
-        existing cluster template.
-        """
         return pulumi.get(self, "registry_enabled")
 
     @registry_enabled.setter
@@ -551,10 +340,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="serverType")
     def server_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The server type for the cluster template. Changing
-        this updates the server type of the existing cluster template.
-        """
         return pulumi.get(self, "server_type")
 
     @server_type.setter
@@ -564,10 +349,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="tlsDisabled")
     def tls_disabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether the TLS should be disabled in
-        the cluster. Changing this updates the attribute of the existing cluster.
-        """
         return pulumi.get(self, "tls_disabled")
 
     @tls_disabled.setter
@@ -577,11 +358,6 @@ class ClusterTemplateArgs:
     @property
     @pulumi.getter(name="volumeDriver")
     def volume_driver(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the driver that is used for the
-        volumes of the cluster nodes. Changing this updates the volume driver of
-        the existing cluster template.
-        """
         return pulumi.get(self, "volume_driver")
 
     @volume_driver.setter
@@ -627,95 +403,6 @@ class _ClusterTemplateState:
                  volume_driver: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ClusterTemplate resources.
-        :param pulumi.Input[int] apiserver_port: The API server port for the Container
-               Orchestration Engine for this cluster template. Changing this updates the
-               API server port of the existing cluster template.
-        :param pulumi.Input[str] cluster_distro: The distro for the cluster (fedora-atomic,
-               coreos, etc.). Changing this updates the cluster distro of the existing
-               cluster template.
-        :param pulumi.Input[str] coe: The Container Orchestration Engine for this cluster
-               template. Changing this updates the engine of the existing cluster
-               template.
-        :param pulumi.Input[str] dns_nameserver: Address of the DNS nameserver that is used in
-               nodes of the cluster. Changing this updates the DNS nameserver of the
-               existing cluster template.
-        :param pulumi.Input[str] docker_storage_driver: Docker storage driver. Changing this
-               updates the Docker storage driver of the existing cluster template.
-        :param pulumi.Input[int] docker_volume_size: The size (in GB) of the Docker volume.
-               Changing this updates the Docker volume size of the existing cluster
-               template.
-        :param pulumi.Input[str] external_network_id: The ID of the external network that will
-               be used for the cluster. Changing this updates the external network ID of
-               the existing cluster template.
-        :param pulumi.Input[str] fixed_network: The fixed network that will be attached to the
-               cluster. Changing this updates the fixed network of the existing cluster
-               template.
-        :param pulumi.Input[str] fixed_subnet: The fixed subnet that will be attached to the
-               cluster. Changing this updates the fixed subnet of the existing cluster
-               template.
-        :param pulumi.Input[str] flavor: The flavor for the nodes of the cluster. Can be set via
-               the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
-               flavor of the existing cluster template.
-        :param pulumi.Input[bool] floating_ip_enabled: Indicates whether created cluster should
-               create floating IP for every node or not. Changing this updates the
-               floating IP enabled attribute of the existing cluster template.
-        :param pulumi.Input[bool] hidden: Indicates whether the ClusterTemplate is hidden or not.
-               Changing this updates the hidden attribute of the existing cluster
-               template.
-        :param pulumi.Input[str] http_proxy: The address of a proxy for receiving all HTTP
-               requests and relay them. Changing this updates the HTTP proxy address of
-               the existing cluster template.
-        :param pulumi.Input[str] https_proxy: The address of a proxy for receiving all HTTPS
-               requests and relay them. Changing this updates the HTTPS proxy address of
-               the existing cluster template.
-        :param pulumi.Input[str] image: The reference to an image that is used for nodes of the
-               cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
-               Changing this updates the image attribute of the existing cluster template.
-        :param pulumi.Input[str] insecure_registry: The insecure registry URL for the cluster
-               template. Changing this updates the insecure registry attribute of the
-               existing cluster template.
-        :param pulumi.Input[str] keypair_id: The name of the Compute service SSH keypair.
-               Changing this updates the keypair of the existing cluster template.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of key value pairs representing additional
-               properties of the cluster template. Changing this updates the labels of the
-               existing cluster template.
-        :param pulumi.Input[str] master_flavor: The flavor for the master nodes. Can be set via
-               the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
-               the master flavor of the existing cluster template.
-        :param pulumi.Input[bool] master_lb_enabled: Indicates whether created cluster should
-               has a loadbalancer for master nodes or not. Changing this updates the
-               attribute of the existing cluster template.
-        :param pulumi.Input[str] name: The name of the cluster template. Changing this updates
-               the name of the existing cluster template.
-        :param pulumi.Input[str] network_driver: The name of the driver for the container
-               network. Changing this updates the network driver of the existing cluster
-               template.
-        :param pulumi.Input[str] no_proxy: A comma-separated list of IP addresses that shouldn't
-               be used in the cluster. Changing this updates the no proxy list of the
-               existing cluster template.
-        :param pulumi.Input[str] project_id: The project of the cluster template. Required if
-               admin wants to create a cluster template in another project. Changing this
-               creates a new cluster template.
-        :param pulumi.Input[bool] public: Indicates whether cluster template should be public.
-               Changing this updates the public attribute of the existing cluster
-               template.
-        :param pulumi.Input[str] region: The region in which to obtain the V1 Container Infra
-               client. A Container Infra client is needed to create a cluster template. If
-               omitted,the `region` argument of the provider is used. Changing this
-               creates a new cluster template.
-        :param pulumi.Input[bool] registry_enabled: Indicates whether Docker registry is enabled
-               in the cluster. Changing this updates the registry enabled attribute of the
-               existing cluster template.
-        :param pulumi.Input[str] server_type: The server type for the cluster template. Changing
-               this updates the server type of the existing cluster template.
-        :param pulumi.Input[bool] tls_disabled: Indicates whether the TLS should be disabled in
-               the cluster. Changing this updates the attribute of the existing cluster.
-        :param pulumi.Input[str] user_id: The user of the cluster template. Required if admin
-               wants to create a cluster template for another user. Changing this creates
-               a new cluster template.
-        :param pulumi.Input[str] volume_driver: The name of the driver that is used for the
-               volumes of the cluster nodes. Changing this updates the volume driver of
-               the existing cluster template.
         """
         if apiserver_port is not None:
             pulumi.set(__self__, "apiserver_port", apiserver_port)
@@ -787,11 +474,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="apiserverPort")
     def apiserver_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        The API server port for the Container
-        Orchestration Engine for this cluster template. Changing this updates the
-        API server port of the existing cluster template.
-        """
         return pulumi.get(self, "apiserver_port")
 
     @apiserver_port.setter
@@ -801,11 +483,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="clusterDistro")
     def cluster_distro(self) -> Optional[pulumi.Input[str]]:
-        """
-        The distro for the cluster (fedora-atomic,
-        coreos, etc.). Changing this updates the cluster distro of the existing
-        cluster template.
-        """
         return pulumi.get(self, "cluster_distro")
 
     @cluster_distro.setter
@@ -815,11 +492,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter
     def coe(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Container Orchestration Engine for this cluster
-        template. Changing this updates the engine of the existing cluster
-        template.
-        """
         return pulumi.get(self, "coe")
 
     @coe.setter
@@ -838,11 +510,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="dnsNameserver")
     def dns_nameserver(self) -> Optional[pulumi.Input[str]]:
-        """
-        Address of the DNS nameserver that is used in
-        nodes of the cluster. Changing this updates the DNS nameserver of the
-        existing cluster template.
-        """
         return pulumi.get(self, "dns_nameserver")
 
     @dns_nameserver.setter
@@ -852,10 +519,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="dockerStorageDriver")
     def docker_storage_driver(self) -> Optional[pulumi.Input[str]]:
-        """
-        Docker storage driver. Changing this
-        updates the Docker storage driver of the existing cluster template.
-        """
         return pulumi.get(self, "docker_storage_driver")
 
     @docker_storage_driver.setter
@@ -865,11 +528,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="dockerVolumeSize")
     def docker_volume_size(self) -> Optional[pulumi.Input[int]]:
-        """
-        The size (in GB) of the Docker volume.
-        Changing this updates the Docker volume size of the existing cluster
-        template.
-        """
         return pulumi.get(self, "docker_volume_size")
 
     @docker_volume_size.setter
@@ -879,11 +537,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="externalNetworkId")
     def external_network_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the external network that will
-        be used for the cluster. Changing this updates the external network ID of
-        the existing cluster template.
-        """
         return pulumi.get(self, "external_network_id")
 
     @external_network_id.setter
@@ -893,11 +546,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="fixedNetwork")
     def fixed_network(self) -> Optional[pulumi.Input[str]]:
-        """
-        The fixed network that will be attached to the
-        cluster. Changing this updates the fixed network of the existing cluster
-        template.
-        """
         return pulumi.get(self, "fixed_network")
 
     @fixed_network.setter
@@ -907,11 +555,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="fixedSubnet")
     def fixed_subnet(self) -> Optional[pulumi.Input[str]]:
-        """
-        The fixed subnet that will be attached to the
-        cluster. Changing this updates the fixed subnet of the existing cluster
-        template.
-        """
         return pulumi.get(self, "fixed_subnet")
 
     @fixed_subnet.setter
@@ -921,11 +564,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter
     def flavor(self) -> Optional[pulumi.Input[str]]:
-        """
-        The flavor for the nodes of the cluster. Can be set via
-        the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
-        flavor of the existing cluster template.
-        """
         return pulumi.get(self, "flavor")
 
     @flavor.setter
@@ -935,11 +573,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="floatingIpEnabled")
     def floating_ip_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether created cluster should
-        create floating IP for every node or not. Changing this updates the
-        floating IP enabled attribute of the existing cluster template.
-        """
         return pulumi.get(self, "floating_ip_enabled")
 
     @floating_ip_enabled.setter
@@ -949,11 +582,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter
     def hidden(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether the ClusterTemplate is hidden or not.
-        Changing this updates the hidden attribute of the existing cluster
-        template.
-        """
         return pulumi.get(self, "hidden")
 
     @hidden.setter
@@ -963,11 +591,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="httpProxy")
     def http_proxy(self) -> Optional[pulumi.Input[str]]:
-        """
-        The address of a proxy for receiving all HTTP
-        requests and relay them. Changing this updates the HTTP proxy address of
-        the existing cluster template.
-        """
         return pulumi.get(self, "http_proxy")
 
     @http_proxy.setter
@@ -977,11 +600,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="httpsProxy")
     def https_proxy(self) -> Optional[pulumi.Input[str]]:
-        """
-        The address of a proxy for receiving all HTTPS
-        requests and relay them. Changing this updates the HTTPS proxy address of
-        the existing cluster template.
-        """
         return pulumi.get(self, "https_proxy")
 
     @https_proxy.setter
@@ -991,11 +609,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
-        """
-        The reference to an image that is used for nodes of the
-        cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
-        Changing this updates the image attribute of the existing cluster template.
-        """
         return pulumi.get(self, "image")
 
     @image.setter
@@ -1005,11 +618,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="insecureRegistry")
     def insecure_registry(self) -> Optional[pulumi.Input[str]]:
-        """
-        The insecure registry URL for the cluster
-        template. Changing this updates the insecure registry attribute of the
-        existing cluster template.
-        """
         return pulumi.get(self, "insecure_registry")
 
     @insecure_registry.setter
@@ -1019,10 +627,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="keypairId")
     def keypair_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the Compute service SSH keypair.
-        Changing this updates the keypair of the existing cluster template.
-        """
         return pulumi.get(self, "keypair_id")
 
     @keypair_id.setter
@@ -1032,11 +636,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The list of key value pairs representing additional
-        properties of the cluster template. Changing this updates the labels of the
-        existing cluster template.
-        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -1046,11 +645,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="masterFlavor")
     def master_flavor(self) -> Optional[pulumi.Input[str]]:
-        """
-        The flavor for the master nodes. Can be set via
-        the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
-        the master flavor of the existing cluster template.
-        """
         return pulumi.get(self, "master_flavor")
 
     @master_flavor.setter
@@ -1060,11 +654,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="masterLbEnabled")
     def master_lb_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether created cluster should
-        has a loadbalancer for master nodes or not. Changing this updates the
-        attribute of the existing cluster template.
-        """
         return pulumi.get(self, "master_lb_enabled")
 
     @master_lb_enabled.setter
@@ -1074,10 +663,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the cluster template. Changing this updates
-        the name of the existing cluster template.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1087,11 +672,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="networkDriver")
     def network_driver(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the driver for the container
-        network. Changing this updates the network driver of the existing cluster
-        template.
-        """
         return pulumi.get(self, "network_driver")
 
     @network_driver.setter
@@ -1101,11 +681,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="noProxy")
     def no_proxy(self) -> Optional[pulumi.Input[str]]:
-        """
-        A comma-separated list of IP addresses that shouldn't
-        be used in the cluster. Changing this updates the no proxy list of the
-        existing cluster template.
-        """
         return pulumi.get(self, "no_proxy")
 
     @no_proxy.setter
@@ -1115,11 +690,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project of the cluster template. Required if
-        admin wants to create a cluster template in another project. Changing this
-        creates a new cluster template.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -1129,11 +699,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter
     def public(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether cluster template should be public.
-        Changing this updates the public attribute of the existing cluster
-        template.
-        """
         return pulumi.get(self, "public")
 
     @public.setter
@@ -1143,12 +708,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V1 Container Infra
-        client. A Container Infra client is needed to create a cluster template. If
-        omitted,the `region` argument of the provider is used. Changing this
-        creates a new cluster template.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -1158,11 +717,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="registryEnabled")
     def registry_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether Docker registry is enabled
-        in the cluster. Changing this updates the registry enabled attribute of the
-        existing cluster template.
-        """
         return pulumi.get(self, "registry_enabled")
 
     @registry_enabled.setter
@@ -1172,10 +726,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="serverType")
     def server_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The server type for the cluster template. Changing
-        this updates the server type of the existing cluster template.
-        """
         return pulumi.get(self, "server_type")
 
     @server_type.setter
@@ -1185,10 +735,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="tlsDisabled")
     def tls_disabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether the TLS should be disabled in
-        the cluster. Changing this updates the attribute of the existing cluster.
-        """
         return pulumi.get(self, "tls_disabled")
 
     @tls_disabled.setter
@@ -1207,11 +753,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The user of the cluster template. Required if admin
-        wants to create a cluster template for another user. Changing this creates
-        a new cluster template.
-        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -1221,11 +762,6 @@ class _ClusterTemplateState:
     @property
     @pulumi.getter(name="volumeDriver")
     def volume_driver(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the driver that is used for the
-        volumes of the cluster nodes. Changing this updates the volume driver of
-        the existing cluster template.
-        """
         return pulumi.get(self, "volume_driver")
 
     @volume_driver.setter
@@ -1269,169 +805,9 @@ class ClusterTemplate(pulumi.CustomResource):
                  volume_driver: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a V1 Magnum cluster template resource within OpenStack.
-
-        ## Example Usage
-
-        ### Create a Cluster template
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        clustertemplate1 = openstack.containerinfra.ClusterTemplate("clustertemplate_1",
-            name="clustertemplate_1",
-            image="Fedora-Atomic-27",
-            coe="kubernetes",
-            flavor="m1.small",
-            master_flavor="m1.medium",
-            dns_nameserver="1.1.1.1",
-            docker_storage_driver="devicemapper",
-            docker_volume_size=10,
-            volume_driver="cinder",
-            network_driver="flannel",
-            server_type="vm",
-            master_lb_enabled=True,
-            floating_ip_enabled=False,
-            labels={
-                "kube_tag": "1.11.1",
-                "kube_dashboard_enabled": "true",
-                "prometheus_monitoring": "true",
-                "influx_grafana_dashboard_enabled": "true",
-            })
-        ```
-
-        ## Attributes reference
-
-        The following attributes are exported:
-
-        * `region` - See Argument Reference above.
-        * `name` - See Argument Reference above.
-        * `project_id` - See Argument Reference above.
-        * `created_at` - The time at which cluster template was created.
-        * `updated_at` - The time at which cluster template was created.
-        * `apiserver_port` - See Argument Reference above.
-        * `coe` - See Argument Reference above.
-        * `cluster_distro` - See Argument Reference above.
-        * `dns_nameserver` - See Argument Reference above.
-        * `docker_storage_driver` - See Argument Reference above.
-        * `docker_volume_size` - See Argument Reference above.
-        * `external_network_id` - See Argument Reference above.
-        * `fixed_network` - See Argument Reference above.
-        * `fixed_subnet` - See Argument Reference above.
-        * `flavor` - See Argument Reference above.
-        * `master_flavor` - See Argument Reference above.
-        * `floating_ip_enabled` - See Argument Reference above.
-        * `http_proxy` - See Argument Reference above.
-        * `https_proxy` - See Argument Reference above.
-        * `image` - See Argument Reference above.
-        * `insecure_registry` - See Argument Reference above.
-        * `keypair_id` - See Argument Reference above.
-        * `labels` - See Argument Reference above.
-        * `links` - A list containing associated cluster template links.
-        * `master_lb_enabled` - See Argument Reference above.
-        * `network_driver` - See Argument Reference above.
-        * `no_proxy` - See Argument Reference above.
-        * `public` - See Argument Reference above.
-        * `registry_enabled` - See Argument Reference above.
-        * `server_type` - See Argument Reference above.
-        * `tls_disabled` - See Argument Reference above.
-        * `volume_driver` - See Argument Reference above.
-        * `hidden` - See Argument Reference above.
-
-        ## Import
-
-        Cluster templates can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
-        ```
-
+        Create a ClusterTemplate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] apiserver_port: The API server port for the Container
-               Orchestration Engine for this cluster template. Changing this updates the
-               API server port of the existing cluster template.
-        :param pulumi.Input[str] cluster_distro: The distro for the cluster (fedora-atomic,
-               coreos, etc.). Changing this updates the cluster distro of the existing
-               cluster template.
-        :param pulumi.Input[str] coe: The Container Orchestration Engine for this cluster
-               template. Changing this updates the engine of the existing cluster
-               template.
-        :param pulumi.Input[str] dns_nameserver: Address of the DNS nameserver that is used in
-               nodes of the cluster. Changing this updates the DNS nameserver of the
-               existing cluster template.
-        :param pulumi.Input[str] docker_storage_driver: Docker storage driver. Changing this
-               updates the Docker storage driver of the existing cluster template.
-        :param pulumi.Input[int] docker_volume_size: The size (in GB) of the Docker volume.
-               Changing this updates the Docker volume size of the existing cluster
-               template.
-        :param pulumi.Input[str] external_network_id: The ID of the external network that will
-               be used for the cluster. Changing this updates the external network ID of
-               the existing cluster template.
-        :param pulumi.Input[str] fixed_network: The fixed network that will be attached to the
-               cluster. Changing this updates the fixed network of the existing cluster
-               template.
-        :param pulumi.Input[str] fixed_subnet: The fixed subnet that will be attached to the
-               cluster. Changing this updates the fixed subnet of the existing cluster
-               template.
-        :param pulumi.Input[str] flavor: The flavor for the nodes of the cluster. Can be set via
-               the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
-               flavor of the existing cluster template.
-        :param pulumi.Input[bool] floating_ip_enabled: Indicates whether created cluster should
-               create floating IP for every node or not. Changing this updates the
-               floating IP enabled attribute of the existing cluster template.
-        :param pulumi.Input[bool] hidden: Indicates whether the ClusterTemplate is hidden or not.
-               Changing this updates the hidden attribute of the existing cluster
-               template.
-        :param pulumi.Input[str] http_proxy: The address of a proxy for receiving all HTTP
-               requests and relay them. Changing this updates the HTTP proxy address of
-               the existing cluster template.
-        :param pulumi.Input[str] https_proxy: The address of a proxy for receiving all HTTPS
-               requests and relay them. Changing this updates the HTTPS proxy address of
-               the existing cluster template.
-        :param pulumi.Input[str] image: The reference to an image that is used for nodes of the
-               cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
-               Changing this updates the image attribute of the existing cluster template.
-        :param pulumi.Input[str] insecure_registry: The insecure registry URL for the cluster
-               template. Changing this updates the insecure registry attribute of the
-               existing cluster template.
-        :param pulumi.Input[str] keypair_id: The name of the Compute service SSH keypair.
-               Changing this updates the keypair of the existing cluster template.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of key value pairs representing additional
-               properties of the cluster template. Changing this updates the labels of the
-               existing cluster template.
-        :param pulumi.Input[str] master_flavor: The flavor for the master nodes. Can be set via
-               the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
-               the master flavor of the existing cluster template.
-        :param pulumi.Input[bool] master_lb_enabled: Indicates whether created cluster should
-               has a loadbalancer for master nodes or not. Changing this updates the
-               attribute of the existing cluster template.
-        :param pulumi.Input[str] name: The name of the cluster template. Changing this updates
-               the name of the existing cluster template.
-        :param pulumi.Input[str] network_driver: The name of the driver for the container
-               network. Changing this updates the network driver of the existing cluster
-               template.
-        :param pulumi.Input[str] no_proxy: A comma-separated list of IP addresses that shouldn't
-               be used in the cluster. Changing this updates the no proxy list of the
-               existing cluster template.
-        :param pulumi.Input[bool] public: Indicates whether cluster template should be public.
-               Changing this updates the public attribute of the existing cluster
-               template.
-        :param pulumi.Input[str] region: The region in which to obtain the V1 Container Infra
-               client. A Container Infra client is needed to create a cluster template. If
-               omitted,the `region` argument of the provider is used. Changing this
-               creates a new cluster template.
-        :param pulumi.Input[bool] registry_enabled: Indicates whether Docker registry is enabled
-               in the cluster. Changing this updates the registry enabled attribute of the
-               existing cluster template.
-        :param pulumi.Input[str] server_type: The server type for the cluster template. Changing
-               this updates the server type of the existing cluster template.
-        :param pulumi.Input[bool] tls_disabled: Indicates whether the TLS should be disabled in
-               the cluster. Changing this updates the attribute of the existing cluster.
-        :param pulumi.Input[str] volume_driver: The name of the driver that is used for the
-               volumes of the cluster nodes. Changing this updates the volume driver of
-               the existing cluster template.
         """
         ...
     @overload
@@ -1440,84 +816,7 @@ class ClusterTemplate(pulumi.CustomResource):
                  args: ClusterTemplateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V1 Magnum cluster template resource within OpenStack.
-
-        ## Example Usage
-
-        ### Create a Cluster template
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        clustertemplate1 = openstack.containerinfra.ClusterTemplate("clustertemplate_1",
-            name="clustertemplate_1",
-            image="Fedora-Atomic-27",
-            coe="kubernetes",
-            flavor="m1.small",
-            master_flavor="m1.medium",
-            dns_nameserver="1.1.1.1",
-            docker_storage_driver="devicemapper",
-            docker_volume_size=10,
-            volume_driver="cinder",
-            network_driver="flannel",
-            server_type="vm",
-            master_lb_enabled=True,
-            floating_ip_enabled=False,
-            labels={
-                "kube_tag": "1.11.1",
-                "kube_dashboard_enabled": "true",
-                "prometheus_monitoring": "true",
-                "influx_grafana_dashboard_enabled": "true",
-            })
-        ```
-
-        ## Attributes reference
-
-        The following attributes are exported:
-
-        * `region` - See Argument Reference above.
-        * `name` - See Argument Reference above.
-        * `project_id` - See Argument Reference above.
-        * `created_at` - The time at which cluster template was created.
-        * `updated_at` - The time at which cluster template was created.
-        * `apiserver_port` - See Argument Reference above.
-        * `coe` - See Argument Reference above.
-        * `cluster_distro` - See Argument Reference above.
-        * `dns_nameserver` - See Argument Reference above.
-        * `docker_storage_driver` - See Argument Reference above.
-        * `docker_volume_size` - See Argument Reference above.
-        * `external_network_id` - See Argument Reference above.
-        * `fixed_network` - See Argument Reference above.
-        * `fixed_subnet` - See Argument Reference above.
-        * `flavor` - See Argument Reference above.
-        * `master_flavor` - See Argument Reference above.
-        * `floating_ip_enabled` - See Argument Reference above.
-        * `http_proxy` - See Argument Reference above.
-        * `https_proxy` - See Argument Reference above.
-        * `image` - See Argument Reference above.
-        * `insecure_registry` - See Argument Reference above.
-        * `keypair_id` - See Argument Reference above.
-        * `labels` - See Argument Reference above.
-        * `links` - A list containing associated cluster template links.
-        * `master_lb_enabled` - See Argument Reference above.
-        * `network_driver` - See Argument Reference above.
-        * `no_proxy` - See Argument Reference above.
-        * `public` - See Argument Reference above.
-        * `registry_enabled` - See Argument Reference above.
-        * `server_type` - See Argument Reference above.
-        * `tls_disabled` - See Argument Reference above.
-        * `volume_driver` - See Argument Reference above.
-        * `hidden` - See Argument Reference above.
-
-        ## Import
-
-        Cluster templates can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
-        ```
-
+        Create a ClusterTemplate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ClusterTemplateArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1658,95 +957,6 @@ class ClusterTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] apiserver_port: The API server port for the Container
-               Orchestration Engine for this cluster template. Changing this updates the
-               API server port of the existing cluster template.
-        :param pulumi.Input[str] cluster_distro: The distro for the cluster (fedora-atomic,
-               coreos, etc.). Changing this updates the cluster distro of the existing
-               cluster template.
-        :param pulumi.Input[str] coe: The Container Orchestration Engine for this cluster
-               template. Changing this updates the engine of the existing cluster
-               template.
-        :param pulumi.Input[str] dns_nameserver: Address of the DNS nameserver that is used in
-               nodes of the cluster. Changing this updates the DNS nameserver of the
-               existing cluster template.
-        :param pulumi.Input[str] docker_storage_driver: Docker storage driver. Changing this
-               updates the Docker storage driver of the existing cluster template.
-        :param pulumi.Input[int] docker_volume_size: The size (in GB) of the Docker volume.
-               Changing this updates the Docker volume size of the existing cluster
-               template.
-        :param pulumi.Input[str] external_network_id: The ID of the external network that will
-               be used for the cluster. Changing this updates the external network ID of
-               the existing cluster template.
-        :param pulumi.Input[str] fixed_network: The fixed network that will be attached to the
-               cluster. Changing this updates the fixed network of the existing cluster
-               template.
-        :param pulumi.Input[str] fixed_subnet: The fixed subnet that will be attached to the
-               cluster. Changing this updates the fixed subnet of the existing cluster
-               template.
-        :param pulumi.Input[str] flavor: The flavor for the nodes of the cluster. Can be set via
-               the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
-               flavor of the existing cluster template.
-        :param pulumi.Input[bool] floating_ip_enabled: Indicates whether created cluster should
-               create floating IP for every node or not. Changing this updates the
-               floating IP enabled attribute of the existing cluster template.
-        :param pulumi.Input[bool] hidden: Indicates whether the ClusterTemplate is hidden or not.
-               Changing this updates the hidden attribute of the existing cluster
-               template.
-        :param pulumi.Input[str] http_proxy: The address of a proxy for receiving all HTTP
-               requests and relay them. Changing this updates the HTTP proxy address of
-               the existing cluster template.
-        :param pulumi.Input[str] https_proxy: The address of a proxy for receiving all HTTPS
-               requests and relay them. Changing this updates the HTTPS proxy address of
-               the existing cluster template.
-        :param pulumi.Input[str] image: The reference to an image that is used for nodes of the
-               cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
-               Changing this updates the image attribute of the existing cluster template.
-        :param pulumi.Input[str] insecure_registry: The insecure registry URL for the cluster
-               template. Changing this updates the insecure registry attribute of the
-               existing cluster template.
-        :param pulumi.Input[str] keypair_id: The name of the Compute service SSH keypair.
-               Changing this updates the keypair of the existing cluster template.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of key value pairs representing additional
-               properties of the cluster template. Changing this updates the labels of the
-               existing cluster template.
-        :param pulumi.Input[str] master_flavor: The flavor for the master nodes. Can be set via
-               the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
-               the master flavor of the existing cluster template.
-        :param pulumi.Input[bool] master_lb_enabled: Indicates whether created cluster should
-               has a loadbalancer for master nodes or not. Changing this updates the
-               attribute of the existing cluster template.
-        :param pulumi.Input[str] name: The name of the cluster template. Changing this updates
-               the name of the existing cluster template.
-        :param pulumi.Input[str] network_driver: The name of the driver for the container
-               network. Changing this updates the network driver of the existing cluster
-               template.
-        :param pulumi.Input[str] no_proxy: A comma-separated list of IP addresses that shouldn't
-               be used in the cluster. Changing this updates the no proxy list of the
-               existing cluster template.
-        :param pulumi.Input[str] project_id: The project of the cluster template. Required if
-               admin wants to create a cluster template in another project. Changing this
-               creates a new cluster template.
-        :param pulumi.Input[bool] public: Indicates whether cluster template should be public.
-               Changing this updates the public attribute of the existing cluster
-               template.
-        :param pulumi.Input[str] region: The region in which to obtain the V1 Container Infra
-               client. A Container Infra client is needed to create a cluster template. If
-               omitted,the `region` argument of the provider is used. Changing this
-               creates a new cluster template.
-        :param pulumi.Input[bool] registry_enabled: Indicates whether Docker registry is enabled
-               in the cluster. Changing this updates the registry enabled attribute of the
-               existing cluster template.
-        :param pulumi.Input[str] server_type: The server type for the cluster template. Changing
-               this updates the server type of the existing cluster template.
-        :param pulumi.Input[bool] tls_disabled: Indicates whether the TLS should be disabled in
-               the cluster. Changing this updates the attribute of the existing cluster.
-        :param pulumi.Input[str] user_id: The user of the cluster template. Required if admin
-               wants to create a cluster template for another user. Changing this creates
-               a new cluster template.
-        :param pulumi.Input[str] volume_driver: The name of the driver that is used for the
-               volumes of the cluster nodes. Changing this updates the volume driver of
-               the existing cluster template.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1790,31 +1000,16 @@ class ClusterTemplate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="apiserverPort")
     def apiserver_port(self) -> pulumi.Output[Optional[int]]:
-        """
-        The API server port for the Container
-        Orchestration Engine for this cluster template. Changing this updates the
-        API server port of the existing cluster template.
-        """
         return pulumi.get(self, "apiserver_port")
 
     @property
     @pulumi.getter(name="clusterDistro")
     def cluster_distro(self) -> pulumi.Output[str]:
-        """
-        The distro for the cluster (fedora-atomic,
-        coreos, etc.). Changing this updates the cluster distro of the existing
-        cluster template.
-        """
         return pulumi.get(self, "cluster_distro")
 
     @property
     @pulumi.getter
     def coe(self) -> pulumi.Output[str]:
-        """
-        The Container Orchestration Engine for this cluster
-        template. Changing this updates the engine of the existing cluster
-        template.
-        """
         return pulumi.get(self, "coe")
 
     @property
@@ -1825,257 +1020,131 @@ class ClusterTemplate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="dnsNameserver")
     def dns_nameserver(self) -> pulumi.Output[Optional[str]]:
-        """
-        Address of the DNS nameserver that is used in
-        nodes of the cluster. Changing this updates the DNS nameserver of the
-        existing cluster template.
-        """
         return pulumi.get(self, "dns_nameserver")
 
     @property
     @pulumi.getter(name="dockerStorageDriver")
     def docker_storage_driver(self) -> pulumi.Output[Optional[str]]:
-        """
-        Docker storage driver. Changing this
-        updates the Docker storage driver of the existing cluster template.
-        """
         return pulumi.get(self, "docker_storage_driver")
 
     @property
     @pulumi.getter(name="dockerVolumeSize")
     def docker_volume_size(self) -> pulumi.Output[Optional[int]]:
-        """
-        The size (in GB) of the Docker volume.
-        Changing this updates the Docker volume size of the existing cluster
-        template.
-        """
         return pulumi.get(self, "docker_volume_size")
 
     @property
     @pulumi.getter(name="externalNetworkId")
     def external_network_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The ID of the external network that will
-        be used for the cluster. Changing this updates the external network ID of
-        the existing cluster template.
-        """
         return pulumi.get(self, "external_network_id")
 
     @property
     @pulumi.getter(name="fixedNetwork")
     def fixed_network(self) -> pulumi.Output[Optional[str]]:
-        """
-        The fixed network that will be attached to the
-        cluster. Changing this updates the fixed network of the existing cluster
-        template.
-        """
         return pulumi.get(self, "fixed_network")
 
     @property
     @pulumi.getter(name="fixedSubnet")
     def fixed_subnet(self) -> pulumi.Output[Optional[str]]:
-        """
-        The fixed subnet that will be attached to the
-        cluster. Changing this updates the fixed subnet of the existing cluster
-        template.
-        """
         return pulumi.get(self, "fixed_subnet")
 
     @property
     @pulumi.getter
     def flavor(self) -> pulumi.Output[Optional[str]]:
-        """
-        The flavor for the nodes of the cluster. Can be set via
-        the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
-        flavor of the existing cluster template.
-        """
         return pulumi.get(self, "flavor")
 
     @property
     @pulumi.getter(name="floatingIpEnabled")
     def floating_ip_enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Indicates whether created cluster should
-        create floating IP for every node or not. Changing this updates the
-        floating IP enabled attribute of the existing cluster template.
-        """
         return pulumi.get(self, "floating_ip_enabled")
 
     @property
     @pulumi.getter
     def hidden(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Indicates whether the ClusterTemplate is hidden or not.
-        Changing this updates the hidden attribute of the existing cluster
-        template.
-        """
         return pulumi.get(self, "hidden")
 
     @property
     @pulumi.getter(name="httpProxy")
     def http_proxy(self) -> pulumi.Output[Optional[str]]:
-        """
-        The address of a proxy for receiving all HTTP
-        requests and relay them. Changing this updates the HTTP proxy address of
-        the existing cluster template.
-        """
         return pulumi.get(self, "http_proxy")
 
     @property
     @pulumi.getter(name="httpsProxy")
     def https_proxy(self) -> pulumi.Output[Optional[str]]:
-        """
-        The address of a proxy for receiving all HTTPS
-        requests and relay them. Changing this updates the HTTPS proxy address of
-        the existing cluster template.
-        """
         return pulumi.get(self, "https_proxy")
 
     @property
     @pulumi.getter
     def image(self) -> pulumi.Output[str]:
-        """
-        The reference to an image that is used for nodes of the
-        cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
-        Changing this updates the image attribute of the existing cluster template.
-        """
         return pulumi.get(self, "image")
 
     @property
     @pulumi.getter(name="insecureRegistry")
     def insecure_registry(self) -> pulumi.Output[Optional[str]]:
-        """
-        The insecure registry URL for the cluster
-        template. Changing this updates the insecure registry attribute of the
-        existing cluster template.
-        """
         return pulumi.get(self, "insecure_registry")
 
     @property
     @pulumi.getter(name="keypairId")
     def keypair_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The name of the Compute service SSH keypair.
-        Changing this updates the keypair of the existing cluster template.
-        """
         return pulumi.get(self, "keypair_id")
 
     @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        The list of key value pairs representing additional
-        properties of the cluster template. Changing this updates the labels of the
-        existing cluster template.
-        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="masterFlavor")
     def master_flavor(self) -> pulumi.Output[Optional[str]]:
-        """
-        The flavor for the master nodes. Can be set via
-        the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
-        the master flavor of the existing cluster template.
-        """
         return pulumi.get(self, "master_flavor")
 
     @property
     @pulumi.getter(name="masterLbEnabled")
     def master_lb_enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Indicates whether created cluster should
-        has a loadbalancer for master nodes or not. Changing this updates the
-        attribute of the existing cluster template.
-        """
         return pulumi.get(self, "master_lb_enabled")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the cluster template. Changing this updates
-        the name of the existing cluster template.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="networkDriver")
     def network_driver(self) -> pulumi.Output[str]:
-        """
-        The name of the driver for the container
-        network. Changing this updates the network driver of the existing cluster
-        template.
-        """
         return pulumi.get(self, "network_driver")
 
     @property
     @pulumi.getter(name="noProxy")
     def no_proxy(self) -> pulumi.Output[Optional[str]]:
-        """
-        A comma-separated list of IP addresses that shouldn't
-        be used in the cluster. Changing this updates the no proxy list of the
-        existing cluster template.
-        """
         return pulumi.get(self, "no_proxy")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
-        """
-        The project of the cluster template. Required if
-        admin wants to create a cluster template in another project. Changing this
-        creates a new cluster template.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def public(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Indicates whether cluster template should be public.
-        Changing this updates the public attribute of the existing cluster
-        template.
-        """
         return pulumi.get(self, "public")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V1 Container Infra
-        client. A Container Infra client is needed to create a cluster template. If
-        omitted,the `region` argument of the provider is used. Changing this
-        creates a new cluster template.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="registryEnabled")
     def registry_enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Indicates whether Docker registry is enabled
-        in the cluster. Changing this updates the registry enabled attribute of the
-        existing cluster template.
-        """
         return pulumi.get(self, "registry_enabled")
 
     @property
     @pulumi.getter(name="serverType")
     def server_type(self) -> pulumi.Output[str]:
-        """
-        The server type for the cluster template. Changing
-        this updates the server type of the existing cluster template.
-        """
         return pulumi.get(self, "server_type")
 
     @property
     @pulumi.getter(name="tlsDisabled")
     def tls_disabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Indicates whether the TLS should be disabled in
-        the cluster. Changing this updates the attribute of the existing cluster.
-        """
         return pulumi.get(self, "tls_disabled")
 
     @property
@@ -2086,20 +1155,10 @@ class ClusterTemplate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[str]:
-        """
-        The user of the cluster template. Required if admin
-        wants to create a cluster template for another user. Changing this creates
-        a new cluster template.
-        """
         return pulumi.get(self, "user_id")
 
     @property
     @pulumi.getter(name="volumeDriver")
     def volume_driver(self) -> pulumi.Output[Optional[str]]:
-        """
-        The name of the driver that is used for the
-        volumes of the cluster nodes. Changing this updates the volume driver of
-        the existing cluster template.
-        """
         return pulumi.get(self, "volume_driver")
 

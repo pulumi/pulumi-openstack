@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const bgpvpn1 = new openstack.BgpvpnV2("bgpvpn_1", {
+ * const bgpvpn1 = new openstack.bgpvpn.V2("bgpvpn_1", {
  *     name: "bgpvpn1",
  *     routeDistinguishers: ["64512:1"],
  *     routeTargets: ["64512:1"],
@@ -31,6 +31,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import openstack:index/bgpvpnV2:BgpvpnV2 bgpvpn_1 1eec2c66-6be2-4305-af3f-354c9b81f18c
  * ```
+ *
+ * @deprecated openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2
  */
 export class BgpvpnV2 extends pulumi.CustomResource {
     /**
@@ -43,6 +45,7 @@ export class BgpvpnV2 extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BgpvpnV2State, opts?: pulumi.CustomResourceOptions): BgpvpnV2 {
+        pulumi.log.warn("BgpvpnV2 is deprecated: openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2")
         return new BgpvpnV2(name, <any>state, { ...opts, id: id });
     }
 
@@ -137,8 +140,11 @@ export class BgpvpnV2 extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2 */
     constructor(name: string, args?: BgpvpnV2Args, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2 */
     constructor(name: string, argsOrState?: BgpvpnV2Args | BgpvpnV2State, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("BgpvpnV2 is deprecated: openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

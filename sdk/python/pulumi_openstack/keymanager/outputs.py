@@ -67,14 +67,6 @@ class ContainerV1AclRead(dict):
                  project_access: Optional[bool] = None,
                  updated_at: Optional[str] = None,
                  users: Optional[Sequence[str]] = None):
-        """
-        :param str created_at: The date the container was created.
-        :param bool project_access: Whether the container is accessible project wide.
-               Defaults to `true`.
-        :param str updated_at: The date the container was last updated.
-        :param Sequence[str] users: The list of user IDs, which are allowed to access the
-               container, when `project_access` is set to `false`.
-        """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if project_access is not None:
@@ -87,35 +79,21 @@ class ContainerV1AclRead(dict):
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[str]:
-        """
-        The date the container was created.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="projectAccess")
     def project_access(self) -> Optional[bool]:
-        """
-        Whether the container is accessible project wide.
-        Defaults to `true`.
-        """
         return pulumi.get(self, "project_access")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[str]:
-        """
-        The date the container was last updated.
-        """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter
     def users(self) -> Optional[Sequence[str]]:
-        """
-        The list of user IDs, which are allowed to access the
-        container, when `project_access` is set to `false`.
-        """
         return pulumi.get(self, "users")
 
 
@@ -124,11 +102,6 @@ class ContainerV1Consumer(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  url: Optional[str] = None):
-        """
-        :param str name: Human-readable name for the Container. Does not have
-               to be unique.
-        :param str url: The consumer URL.
-        """
         if name is not None:
             pulumi.set(__self__, "name", name)
         if url is not None:
@@ -137,18 +110,11 @@ class ContainerV1Consumer(dict):
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        Human-readable name for the Container. Does not have
-        to be unique.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def url(self) -> Optional[str]:
-        """
-        The consumer URL.
-        """
         return pulumi.get(self, "url")
 
 
@@ -174,10 +140,6 @@ class ContainerV1SecretRef(dict):
     def __init__(__self__, *,
                  secret_ref: str,
                  name: Optional[str] = None):
-        """
-        :param str secret_ref: The secret reference / where to find the secret, URL.
-        :param str name: The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
-        """
         pulumi.set(__self__, "secret_ref", secret_ref)
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -185,17 +147,11 @@ class ContainerV1SecretRef(dict):
     @property
     @pulumi.getter(name="secretRef")
     def secret_ref(self) -> str:
-        """
-        The secret reference / where to find the secret, URL.
-        """
         return pulumi.get(self, "secret_ref")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
-        """
         return pulumi.get(self, "name")
 
 
@@ -227,14 +183,6 @@ class OrderV1Meta(dict):
                  mode: Optional[str] = None,
                  name: Optional[str] = None,
                  payload_content_type: Optional[str] = None):
-        """
-        :param str algorithm: Algorithm to use for key generation.
-        :param int bit_length: Bit lenght of key to be generated.
-        :param str expiration: This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
-        :param str mode: The mode to use for key generation.
-        :param str name: The name of the secret set by the user.
-        :param str payload_content_type: The media type for the content of the secrets payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
-        """
         pulumi.set(__self__, "algorithm", algorithm)
         pulumi.set(__self__, "bit_length", bit_length)
         if expiration is not None:
@@ -249,49 +197,31 @@ class OrderV1Meta(dict):
     @property
     @pulumi.getter
     def algorithm(self) -> str:
-        """
-        Algorithm to use for key generation.
-        """
         return pulumi.get(self, "algorithm")
 
     @property
     @pulumi.getter(name="bitLength")
     def bit_length(self) -> int:
-        """
-        Bit lenght of key to be generated.
-        """
         return pulumi.get(self, "bit_length")
 
     @property
     @pulumi.getter
     def expiration(self) -> Optional[str]:
-        """
-        This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
-        """
         return pulumi.get(self, "expiration")
 
     @property
     @pulumi.getter
     def mode(self) -> Optional[str]:
-        """
-        The mode to use for key generation.
-        """
         return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The name of the secret set by the user.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="payloadContentType")
     def payload_content_type(self) -> Optional[str]:
-        """
-        The media type for the content of the secrets payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
-        """
         return pulumi.get(self, "payload_content_type")
 
 
@@ -336,14 +266,6 @@ class SecretV1AclRead(dict):
                  project_access: Optional[bool] = None,
                  updated_at: Optional[str] = None,
                  users: Optional[Sequence[str]] = None):
-        """
-        :param str created_at: The date the secret was created.
-        :param bool project_access: Whether the secret is accessible project wide.
-               Defaults to `true`.
-        :param str updated_at: The date the secret was last updated.
-        :param Sequence[str] users: The list of user IDs, which are allowed to access the
-               secret, when `project_access` is set to `false`.
-        """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if project_access is not None:
@@ -356,35 +278,21 @@ class SecretV1AclRead(dict):
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[str]:
-        """
-        The date the secret was created.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="projectAccess")
     def project_access(self) -> Optional[bool]:
-        """
-        Whether the secret is accessible project wide.
-        Defaults to `true`.
-        """
         return pulumi.get(self, "project_access")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[str]:
-        """
-        The date the secret was last updated.
-        """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter
     def users(self) -> Optional[Sequence[str]]:
-        """
-        The list of user IDs, which are allowed to access the
-        secret, when `project_access` is set to `false`.
-        """
         return pulumi.get(self, "users")
 
 
@@ -407,13 +315,6 @@ class GetContainerAclReadResult(dict):
                  updated_at: str,
                  project_access: Optional[bool] = None,
                  users: Optional[Sequence[str]] = None):
-        """
-        :param str created_at: The date the container ACL was created.
-        :param str updated_at: The date the container ACL was last updated.
-        :param bool project_access: Whether the container is accessible project wide.
-        :param Sequence[str] users: The list of user IDs, which are allowed to access the container,
-               when `project_access` is set to `false`.
-        """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "updated_at", updated_at)
         if project_access is not None:
@@ -424,34 +325,21 @@ class GetContainerAclReadResult(dict):
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        The date the container ACL was created.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
-        """
-        The date the container ACL was last updated.
-        """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter(name="projectAccess")
     def project_access(self) -> Optional[bool]:
-        """
-        Whether the container is accessible project wide.
-        """
         return pulumi.get(self, "project_access")
 
     @property
     @pulumi.getter
     def users(self) -> Optional[Sequence[str]]:
-        """
-        The list of user IDs, which are allowed to access the container,
-        when `project_access` is set to `false`.
-        """
         return pulumi.get(self, "users")
 
 
@@ -460,10 +348,6 @@ class GetContainerConsumerResult(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  url: Optional[str] = None):
-        """
-        :param str name: The Container name.
-        :param str url: The consumer URL.
-        """
         if name is not None:
             pulumi.set(__self__, "name", name)
         if url is not None:
@@ -472,17 +356,11 @@ class GetContainerConsumerResult(dict):
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The Container name.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def url(self) -> Optional[str]:
-        """
-        The consumer URL.
-        """
         return pulumi.get(self, "url")
 
 
@@ -491,10 +369,6 @@ class GetContainerSecretRefResult(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  secret_ref: Optional[str] = None):
-        """
-        :param str name: The Container name.
-        :param str secret_ref: The secret reference / where to find the secret, URL.
-        """
         if name is not None:
             pulumi.set(__self__, "name", name)
         if secret_ref is not None:
@@ -503,17 +377,11 @@ class GetContainerSecretRefResult(dict):
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The Container name.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="secretRef")
     def secret_ref(self) -> Optional[str]:
-        """
-        The secret reference / where to find the secret, URL.
-        """
         return pulumi.get(self, "secret_ref")
 
 
@@ -536,13 +404,6 @@ class GetSecretAclReadResult(dict):
                  updated_at: str,
                  project_access: Optional[bool] = None,
                  users: Optional[Sequence[str]] = None):
-        """
-        :param str created_at: The date the secret ACL was created.
-        :param str updated_at: The date the secret ACL was last updated.
-        :param bool project_access: Whether the secret is accessible project wide.
-        :param Sequence[str] users: The list of user IDs, which are allowed to access the secret, when
-               `project_access` is set to `false`.
-        """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "updated_at", updated_at)
         if project_access is not None:
@@ -553,34 +414,21 @@ class GetSecretAclReadResult(dict):
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        The date the secret ACL was created.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
-        """
-        The date the secret ACL was last updated.
-        """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter(name="projectAccess")
     def project_access(self) -> Optional[bool]:
-        """
-        Whether the secret is accessible project wide.
-        """
         return pulumi.get(self, "project_access")
 
     @property
     @pulumi.getter
     def users(self) -> Optional[Sequence[str]]:
-        """
-        The list of user IDs, which are allowed to access the secret, when
-        `project_access` is set to `false`.
-        """
         return pulumi.get(self, "users")
 
 

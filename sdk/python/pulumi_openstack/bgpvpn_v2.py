@@ -26,29 +26,6 @@ class BgpvpnV2Args:
                  vni: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a BgpvpnV2 resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] export_targets: A list of additional Route Targets that will be
-               used for export.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] import_targets: A list of additional Route Targets that will be
-               imported.
-        :param pulumi.Input[int] local_pref: The default BGP LOCAL\\_PREF of routes that will be
-               advertised to the BGP VPN, unless overridden per-route.
-        :param pulumi.Input[str] name: The name of the BGP VPN. Changing this updates the name of
-               the existing BGP VPN.
-        :param pulumi.Input[str] project_id: The ID of the project that owns the BGPVPN. Only
-               administrative and users with `advsvc` role can specify a project ID other
-               than their own. Changing this creates a new BGP VPN.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a BGP VPN service. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               BGP VPN.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_distinguishers: A list of route distinguisher strings. If
-               specified, one of these RDs will be used to advertise VPN routes.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_targets: A list of Route Targets that will be both
-               imported and used for export.
-        :param pulumi.Input[str] type: The type of the BGP VPN (either `l2` or `l3`). Changing this
-               creates a new BGP VPN. Defaults to `l3`.
-        :param pulumi.Input[int] vni: The globally-assigned VXLAN VNI for the BGP VPN. Changing
-               this creates a new BGP VPN.
         """
         if export_targets is not None:
             pulumi.set(__self__, "export_targets", export_targets)
@@ -74,10 +51,6 @@ class BgpvpnV2Args:
     @property
     @pulumi.getter(name="exportTargets")
     def export_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of additional Route Targets that will be
-        used for export.
-        """
         return pulumi.get(self, "export_targets")
 
     @export_targets.setter
@@ -87,10 +60,6 @@ class BgpvpnV2Args:
     @property
     @pulumi.getter(name="importTargets")
     def import_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of additional Route Targets that will be
-        imported.
-        """
         return pulumi.get(self, "import_targets")
 
     @import_targets.setter
@@ -100,10 +69,6 @@ class BgpvpnV2Args:
     @property
     @pulumi.getter(name="localPref")
     def local_pref(self) -> Optional[pulumi.Input[int]]:
-        """
-        The default BGP LOCAL\\_PREF of routes that will be
-        advertised to the BGP VPN, unless overridden per-route.
-        """
         return pulumi.get(self, "local_pref")
 
     @local_pref.setter
@@ -113,10 +78,6 @@ class BgpvpnV2Args:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the BGP VPN. Changing this updates the name of
-        the existing BGP VPN.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -126,11 +87,6 @@ class BgpvpnV2Args:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project that owns the BGPVPN. Only
-        administrative and users with `advsvc` role can specify a project ID other
-        than their own. Changing this creates a new BGP VPN.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -140,12 +96,6 @@ class BgpvpnV2Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a BGP VPN service. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        BGP VPN.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -155,10 +105,6 @@ class BgpvpnV2Args:
     @property
     @pulumi.getter(name="routeDistinguishers")
     def route_distinguishers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of route distinguisher strings. If
-        specified, one of these RDs will be used to advertise VPN routes.
-        """
         return pulumi.get(self, "route_distinguishers")
 
     @route_distinguishers.setter
@@ -168,10 +114,6 @@ class BgpvpnV2Args:
     @property
     @pulumi.getter(name="routeTargets")
     def route_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of Route Targets that will be both
-        imported and used for export.
-        """
         return pulumi.get(self, "route_targets")
 
     @route_targets.setter
@@ -181,10 +123,6 @@ class BgpvpnV2Args:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of the BGP VPN (either `l2` or `l3`). Changing this
-        creates a new BGP VPN. Defaults to `l3`.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -194,10 +132,6 @@ class BgpvpnV2Args:
     @property
     @pulumi.getter
     def vni(self) -> Optional[pulumi.Input[int]]:
-        """
-        The globally-assigned VXLAN VNI for the BGP VPN. Changing
-        this creates a new BGP VPN.
-        """
         return pulumi.get(self, "vni")
 
     @vni.setter
@@ -224,33 +158,6 @@ class _BgpvpnV2State:
                  vni: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering BgpvpnV2 resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] export_targets: A list of additional Route Targets that will be
-               used for export.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] import_targets: A list of additional Route Targets that will be
-               imported.
-        :param pulumi.Input[int] local_pref: The default BGP LOCAL\\_PREF of routes that will be
-               advertised to the BGP VPN, unless overridden per-route.
-        :param pulumi.Input[str] name: The name of the BGP VPN. Changing this updates the name of
-               the existing BGP VPN.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] networks: A list of network IDs that are associated with the BGP VPN.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: A list of port IDs that are associated with the BGP VPN.
-        :param pulumi.Input[str] project_id: The ID of the project that owns the BGPVPN. Only
-               administrative and users with `advsvc` role can specify a project ID other
-               than their own. Changing this creates a new BGP VPN.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a BGP VPN service. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               BGP VPN.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_distinguishers: A list of route distinguisher strings. If
-               specified, one of these RDs will be used to advertise VPN routes.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_targets: A list of Route Targets that will be both
-               imported and used for export.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] routers: A list of router IDs that are associated with the BGP VPN.
-        :param pulumi.Input[bool] shared: Indicates whether the BGP VPN is shared across projects.
-        :param pulumi.Input[str] type: The type of the BGP VPN (either `l2` or `l3`). Changing this
-               creates a new BGP VPN. Defaults to `l3`.
-        :param pulumi.Input[int] vni: The globally-assigned VXLAN VNI for the BGP VPN. Changing
-               this creates a new BGP VPN.
         """
         if export_targets is not None:
             pulumi.set(__self__, "export_targets", export_targets)
@@ -284,10 +191,6 @@ class _BgpvpnV2State:
     @property
     @pulumi.getter(name="exportTargets")
     def export_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of additional Route Targets that will be
-        used for export.
-        """
         return pulumi.get(self, "export_targets")
 
     @export_targets.setter
@@ -297,10 +200,6 @@ class _BgpvpnV2State:
     @property
     @pulumi.getter(name="importTargets")
     def import_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of additional Route Targets that will be
-        imported.
-        """
         return pulumi.get(self, "import_targets")
 
     @import_targets.setter
@@ -310,10 +209,6 @@ class _BgpvpnV2State:
     @property
     @pulumi.getter(name="localPref")
     def local_pref(self) -> Optional[pulumi.Input[int]]:
-        """
-        The default BGP LOCAL\\_PREF of routes that will be
-        advertised to the BGP VPN, unless overridden per-route.
-        """
         return pulumi.get(self, "local_pref")
 
     @local_pref.setter
@@ -323,10 +218,6 @@ class _BgpvpnV2State:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the BGP VPN. Changing this updates the name of
-        the existing BGP VPN.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -336,9 +227,6 @@ class _BgpvpnV2State:
     @property
     @pulumi.getter
     def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of network IDs that are associated with the BGP VPN.
-        """
         return pulumi.get(self, "networks")
 
     @networks.setter
@@ -348,9 +236,6 @@ class _BgpvpnV2State:
     @property
     @pulumi.getter
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of port IDs that are associated with the BGP VPN.
-        """
         return pulumi.get(self, "ports")
 
     @ports.setter
@@ -360,11 +245,6 @@ class _BgpvpnV2State:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project that owns the BGPVPN. Only
-        administrative and users with `advsvc` role can specify a project ID other
-        than their own. Changing this creates a new BGP VPN.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -374,12 +254,6 @@ class _BgpvpnV2State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a BGP VPN service. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        BGP VPN.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -389,10 +263,6 @@ class _BgpvpnV2State:
     @property
     @pulumi.getter(name="routeDistinguishers")
     def route_distinguishers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of route distinguisher strings. If
-        specified, one of these RDs will be used to advertise VPN routes.
-        """
         return pulumi.get(self, "route_distinguishers")
 
     @route_distinguishers.setter
@@ -402,10 +272,6 @@ class _BgpvpnV2State:
     @property
     @pulumi.getter(name="routeTargets")
     def route_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of Route Targets that will be both
-        imported and used for export.
-        """
         return pulumi.get(self, "route_targets")
 
     @route_targets.setter
@@ -415,9 +281,6 @@ class _BgpvpnV2State:
     @property
     @pulumi.getter
     def routers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of router IDs that are associated with the BGP VPN.
-        """
         return pulumi.get(self, "routers")
 
     @routers.setter
@@ -427,9 +290,6 @@ class _BgpvpnV2State:
     @property
     @pulumi.getter
     def shared(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether the BGP VPN is shared across projects.
-        """
         return pulumi.get(self, "shared")
 
     @shared.setter
@@ -439,10 +299,6 @@ class _BgpvpnV2State:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of the BGP VPN (either `l2` or `l3`). Changing this
-        creates a new BGP VPN. Defaults to `l3`.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -452,10 +308,6 @@ class _BgpvpnV2State:
     @property
     @pulumi.getter
     def vni(self) -> Optional[pulumi.Input[int]]:
-        """
-        The globally-assigned VXLAN VNI for the BGP VPN. Changing
-        this creates a new BGP VPN.
-        """
         return pulumi.get(self, "vni")
 
     @vni.setter
@@ -463,7 +315,12 @@ class _BgpvpnV2State:
         pulumi.set(self, "vni", value)
 
 
+warnings.warn("""openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2""", DeprecationWarning)
+
+
 class BgpvpnV2(pulumi.CustomResource):
+    warnings.warn("""openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -480,57 +337,9 @@ class BgpvpnV2(pulumi.CustomResource):
                  vni: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Manages a V2 BGP VPN service resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        bgpvpn1 = openstack.BgpvpnV2("bgpvpn_1",
-            name="bgpvpn1",
-            route_distinguishers=["64512:1"],
-            route_targets=["64512:1"],
-            import_targets=["64512:2"],
-            export_targets=["64512:3"])
-        ```
-
-        ## Import
-
-        BGP VPNs can be imported using the `id`, e.g.
-
-        hcl
-
-        ```sh
-        $ pulumi import openstack:index/bgpvpnV2:BgpvpnV2 bgpvpn_1 1eec2c66-6be2-4305-af3f-354c9b81f18c
-        ```
-
+        Create a BgpvpnV2 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] export_targets: A list of additional Route Targets that will be
-               used for export.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] import_targets: A list of additional Route Targets that will be
-               imported.
-        :param pulumi.Input[int] local_pref: The default BGP LOCAL\\_PREF of routes that will be
-               advertised to the BGP VPN, unless overridden per-route.
-        :param pulumi.Input[str] name: The name of the BGP VPN. Changing this updates the name of
-               the existing BGP VPN.
-        :param pulumi.Input[str] project_id: The ID of the project that owns the BGPVPN. Only
-               administrative and users with `advsvc` role can specify a project ID other
-               than their own. Changing this creates a new BGP VPN.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a BGP VPN service. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               BGP VPN.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_distinguishers: A list of route distinguisher strings. If
-               specified, one of these RDs will be used to advertise VPN routes.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_targets: A list of Route Targets that will be both
-               imported and used for export.
-        :param pulumi.Input[str] type: The type of the BGP VPN (either `l2` or `l3`). Changing this
-               creates a new BGP VPN. Defaults to `l3`.
-        :param pulumi.Input[int] vni: The globally-assigned VXLAN VNI for the BGP VPN. Changing
-               this creates a new BGP VPN.
         """
         ...
     @overload
@@ -539,32 +348,7 @@ class BgpvpnV2(pulumi.CustomResource):
                  args: Optional[BgpvpnV2Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V2 BGP VPN service resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        bgpvpn1 = openstack.BgpvpnV2("bgpvpn_1",
-            name="bgpvpn1",
-            route_distinguishers=["64512:1"],
-            route_targets=["64512:1"],
-            import_targets=["64512:2"],
-            export_targets=["64512:3"])
-        ```
-
-        ## Import
-
-        BGP VPNs can be imported using the `id`, e.g.
-
-        hcl
-
-        ```sh
-        $ pulumi import openstack:index/bgpvpnV2:BgpvpnV2 bgpvpn_1 1eec2c66-6be2-4305-af3f-354c9b81f18c
-        ```
-
+        Create a BgpvpnV2 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param BgpvpnV2Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -591,6 +375,7 @@ class BgpvpnV2(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  vni: Optional[pulumi.Input[int]] = None,
                  __props__=None):
+        pulumi.log.warn("""BgpvpnV2 is deprecated: openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -644,33 +429,6 @@ class BgpvpnV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] export_targets: A list of additional Route Targets that will be
-               used for export.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] import_targets: A list of additional Route Targets that will be
-               imported.
-        :param pulumi.Input[int] local_pref: The default BGP LOCAL\\_PREF of routes that will be
-               advertised to the BGP VPN, unless overridden per-route.
-        :param pulumi.Input[str] name: The name of the BGP VPN. Changing this updates the name of
-               the existing BGP VPN.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] networks: A list of network IDs that are associated with the BGP VPN.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: A list of port IDs that are associated with the BGP VPN.
-        :param pulumi.Input[str] project_id: The ID of the project that owns the BGPVPN. Only
-               administrative and users with `advsvc` role can specify a project ID other
-               than their own. Changing this creates a new BGP VPN.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a BGP VPN service. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               BGP VPN.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_distinguishers: A list of route distinguisher strings. If
-               specified, one of these RDs will be used to advertise VPN routes.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] route_targets: A list of Route Targets that will be both
-               imported and used for export.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] routers: A list of router IDs that are associated with the BGP VPN.
-        :param pulumi.Input[bool] shared: Indicates whether the BGP VPN is shared across projects.
-        :param pulumi.Input[str] type: The type of the BGP VPN (either `l2` or `l3`). Changing this
-               creates a new BGP VPN. Defaults to `l3`.
-        :param pulumi.Input[int] vni: The globally-assigned VXLAN VNI for the BGP VPN. Changing
-               this creates a new BGP VPN.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -695,125 +453,70 @@ class BgpvpnV2(pulumi.CustomResource):
     @property
     @pulumi.getter(name="exportTargets")
     def export_targets(self) -> pulumi.Output[Sequence[str]]:
-        """
-        A list of additional Route Targets that will be
-        used for export.
-        """
         return pulumi.get(self, "export_targets")
 
     @property
     @pulumi.getter(name="importTargets")
     def import_targets(self) -> pulumi.Output[Sequence[str]]:
-        """
-        A list of additional Route Targets that will be
-        imported.
-        """
         return pulumi.get(self, "import_targets")
 
     @property
     @pulumi.getter(name="localPref")
     def local_pref(self) -> pulumi.Output[Optional[int]]:
-        """
-        The default BGP LOCAL\\_PREF of routes that will be
-        advertised to the BGP VPN, unless overridden per-route.
-        """
         return pulumi.get(self, "local_pref")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the BGP VPN. Changing this updates the name of
-        the existing BGP VPN.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def networks(self) -> pulumi.Output[Sequence[str]]:
-        """
-        A list of network IDs that are associated with the BGP VPN.
-        """
         return pulumi.get(self, "networks")
 
     @property
     @pulumi.getter
     def ports(self) -> pulumi.Output[Sequence[str]]:
-        """
-        A list of port IDs that are associated with the BGP VPN.
-        """
         return pulumi.get(self, "ports")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the project that owns the BGPVPN. Only
-        administrative and users with `advsvc` role can specify a project ID other
-        than their own. Changing this creates a new BGP VPN.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a BGP VPN service. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        BGP VPN.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="routeDistinguishers")
     def route_distinguishers(self) -> pulumi.Output[Sequence[str]]:
-        """
-        A list of route distinguisher strings. If
-        specified, one of these RDs will be used to advertise VPN routes.
-        """
         return pulumi.get(self, "route_distinguishers")
 
     @property
     @pulumi.getter(name="routeTargets")
     def route_targets(self) -> pulumi.Output[Sequence[str]]:
-        """
-        A list of Route Targets that will be both
-        imported and used for export.
-        """
         return pulumi.get(self, "route_targets")
 
     @property
     @pulumi.getter
     def routers(self) -> pulumi.Output[Sequence[str]]:
-        """
-        A list of router IDs that are associated with the BGP VPN.
-        """
         return pulumi.get(self, "routers")
 
     @property
     @pulumi.getter
     def shared(self) -> pulumi.Output[bool]:
-        """
-        Indicates whether the BGP VPN is shared across projects.
-        """
         return pulumi.get(self, "shared")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
-        """
-        The type of the BGP VPN (either `l2` or `l3`). Changing this
-        creates a new BGP VPN. Defaults to `l3`.
-        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def vni(self) -> pulumi.Output[Optional[int]]:
-        """
-        The globally-assigned VXLAN VNI for the BGP VPN. Changing
-        this creates a new BGP VPN.
-        """
         return pulumi.get(self, "vni")
 

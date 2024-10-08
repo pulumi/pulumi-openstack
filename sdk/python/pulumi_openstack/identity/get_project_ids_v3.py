@@ -144,32 +144,7 @@ def get_project_ids_v3(domain_id: Optional[str] = None,
                        tags: Optional[Sequence[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectIdsV3Result:
     """
-    Use this data source to get a list of OpenStack Project IDs matching the
-    specified criteria.
-
-    > **Note:** You _must_ have domain admin or cloud admin privileges in your OpenStack cloud to use
-    this datasource.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    projects = openstack.identity.get_project_ids_v3(name_regex="^prod.*")
-    ```
-
-
-    :param str domain_id: The domain projects belongs to.
-    :param bool enabled: Whether the project is enabled or disabled. Valid
-           values are `true` and `false`. Default is `true`.
-    :param str name: The name of the project.
-    :param str name_regex: The regular expression of the name of the project.
-           Cannot be used simultaneously with `name`. Unlike filtering by `name` the
-           `name_regex` filtering does by client on the result of OpenStack search
-           query.
-    :param str parent_id: The parent of the project.
-    :param Sequence[str] tags: Tags for the project.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['domainId'] = domain_id
@@ -208,31 +183,6 @@ def get_project_ids_v3_output(domain_id: Optional[pulumi.Input[Optional[str]]] =
                               tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectIdsV3Result]:
     """
-    Use this data source to get a list of OpenStack Project IDs matching the
-    specified criteria.
-
-    > **Note:** You _must_ have domain admin or cloud admin privileges in your OpenStack cloud to use
-    this datasource.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    projects = openstack.identity.get_project_ids_v3(name_regex="^prod.*")
-    ```
-
-
-    :param str domain_id: The domain projects belongs to.
-    :param bool enabled: Whether the project is enabled or disabled. Valid
-           values are `true` and `false`. Default is `true`.
-    :param str name: The name of the project.
-    :param str name_regex: The regular expression of the name of the project.
-           Cannot be used simultaneously with `name`. Unlike filtering by `name` the
-           `name_regex` filtering does by client on the result of OpenStack search
-           query.
-    :param str parent_id: The parent of the project.
-    :param Sequence[str] tags: Tags for the project.
+    Use this data source to access information about an existing resource.
     """
     ...

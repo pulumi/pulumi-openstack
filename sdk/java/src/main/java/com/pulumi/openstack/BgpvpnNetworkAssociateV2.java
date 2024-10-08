@@ -26,8 +26,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.openstack.BgpvpnNetworkAssociateV2;
- * import com.pulumi.openstack.BgpvpnNetworkAssociateV2Args;
+ * import com.pulumi.openstack.bgpvpn.NetworkAssociateV2;
+ * import com.pulumi.openstack.bgpvpn.NetworkAssociateV2Args;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var association1 = new BgpvpnNetworkAssociateV2("association1", BgpvpnNetworkAssociateV2Args.builder()
+ *         var association1 = new NetworkAssociateV2("association1", NetworkAssociateV2Args.builder()
  *             .bgpvpnId("e7189337-5684-46ee-bcb1-44f1a57066c9")
  *             .networkId("de83d56c-4d2f-44f7-ac24-af393252204f")
  *             .build());
@@ -64,7 +64,11 @@ import javax.annotation.Nullable;
  * $ pulumi import openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2 association_1 2145aaa9-edaa-44fb-9815-e47a96677a72/67bb952a-f9d1-4fc8-ae84-082253a879d4
  * ```
  * 
+ * @deprecated
+ * openstack.index/bgpvpnnetworkassociatev2.BgpvpnNetworkAssociateV2 has been deprecated in favor of openstack.bgpvpn/networkassociatev2.NetworkAssociateV2
+ * 
  */
+@Deprecated /* openstack.index/bgpvpnnetworkassociatev2.BgpvpnNetworkAssociateV2 has been deprecated in favor of openstack.bgpvpn/networkassociatev2.NetworkAssociateV2 */
 @ResourceType(type="openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2")
 public class BgpvpnNetworkAssociateV2 extends com.pulumi.resources.CustomResource {
     /**

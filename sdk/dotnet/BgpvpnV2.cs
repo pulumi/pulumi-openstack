@@ -22,7 +22,7 @@ namespace Pulumi.OpenStack
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var bgpvpn1 = new OpenStack.BgpvpnV2("bgpvpn_1", new()
+    ///     var bgpvpn1 = new OpenStack.BGPVPN.V2("bgpvpn_1", new()
     ///     {
     ///         Name = "bgpvpn1",
     ///         RouteDistinguishers = new[]
@@ -56,6 +56,7 @@ namespace Pulumi.OpenStack
     /// $ pulumi import openstack:index/bgpvpnV2:BgpvpnV2 bgpvpn_1 1eec2c66-6be2-4305-af3f-354c9b81f18c
     /// ```
     /// </summary>
+    [Obsolete(@"openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2")]
     [OpenStackResourceType("openstack:index/bgpvpnV2:BgpvpnV2")]
     public partial class BgpvpnV2 : global::Pulumi.CustomResource
     {

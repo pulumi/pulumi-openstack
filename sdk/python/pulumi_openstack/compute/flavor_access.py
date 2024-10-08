@@ -19,12 +19,6 @@ class FlavorAccessArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FlavorAccess resource.
-        :param pulumi.Input[str] flavor_id: The UUID of flavor to use. Changing this creates a new flavor access.
-        :param pulumi.Input[str] tenant_id: The UUID of tenant which is allowed to use the flavor.
-               Changing this creates a new flavor access.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
-               If omitted, the `region` argument of the provider is used.
-               Changing this creates a new flavor access.
         """
         pulumi.set(__self__, "flavor_id", flavor_id)
         pulumi.set(__self__, "tenant_id", tenant_id)
@@ -34,9 +28,6 @@ class FlavorAccessArgs:
     @property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> pulumi.Input[str]:
-        """
-        The UUID of flavor to use. Changing this creates a new flavor access.
-        """
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
@@ -46,10 +37,6 @@ class FlavorAccessArgs:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Input[str]:
-        """
-        The UUID of tenant which is allowed to use the flavor.
-        Changing this creates a new flavor access.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -59,11 +46,6 @@ class FlavorAccessArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Compute client.
-        If omitted, the `region` argument of the provider is used.
-        Changing this creates a new flavor access.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -79,12 +61,6 @@ class _FlavorAccessState:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FlavorAccess resources.
-        :param pulumi.Input[str] flavor_id: The UUID of flavor to use. Changing this creates a new flavor access.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
-               If omitted, the `region` argument of the provider is used.
-               Changing this creates a new flavor access.
-        :param pulumi.Input[str] tenant_id: The UUID of tenant which is allowed to use the flavor.
-               Changing this creates a new flavor access.
         """
         if flavor_id is not None:
             pulumi.set(__self__, "flavor_id", flavor_id)
@@ -96,9 +72,6 @@ class _FlavorAccessState:
     @property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The UUID of flavor to use. Changing this creates a new flavor access.
-        """
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
@@ -108,11 +81,6 @@ class _FlavorAccessState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Compute client.
-        If omitted, the `region` argument of the provider is used.
-        Changing this creates a new flavor access.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -122,10 +90,6 @@ class _FlavorAccessState:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The UUID of tenant which is allowed to use the flavor.
-        Changing this creates a new flavor access.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -143,48 +107,9 @@ class FlavorAccess(pulumi.CustomResource):
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a project access for flavor V2 resource within OpenStack.
-
-        > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
-        this resource.
-
-        ***
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        project1 = openstack.identity.Project("project_1", name="my-project")
-        flavor1 = openstack.compute.Flavor("flavor_1",
-            name="my-flavor",
-            ram=8096,
-            vcpus=2,
-            disk=20,
-            is_public=False)
-        access1 = openstack.compute.FlavorAccess("access_1",
-            tenant_id=project1.id,
-            flavor_id=flavor1.id)
-        ```
-
-        ## Import
-
-        This resource can be imported by specifying all two arguments, separated
-        by a forward slash:
-
-        ```sh
-        $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 flavor_id/tenant_id
-        ```
-
+        Create a FlavorAccess resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] flavor_id: The UUID of flavor to use. Changing this creates a new flavor access.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
-               If omitted, the `region` argument of the provider is used.
-               Changing this creates a new flavor access.
-        :param pulumi.Input[str] tenant_id: The UUID of tenant which is allowed to use the flavor.
-               Changing this creates a new flavor access.
         """
         ...
     @overload
@@ -193,40 +118,7 @@ class FlavorAccess(pulumi.CustomResource):
                  args: FlavorAccessArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a project access for flavor V2 resource within OpenStack.
-
-        > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
-        this resource.
-
-        ***
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        project1 = openstack.identity.Project("project_1", name="my-project")
-        flavor1 = openstack.compute.Flavor("flavor_1",
-            name="my-flavor",
-            ram=8096,
-            vcpus=2,
-            disk=20,
-            is_public=False)
-        access1 = openstack.compute.FlavorAccess("access_1",
-            tenant_id=project1.id,
-            flavor_id=flavor1.id)
-        ```
-
-        ## Import
-
-        This resource can be imported by specifying all two arguments, separated
-        by a forward slash:
-
-        ```sh
-        $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 flavor_id/tenant_id
-        ```
-
+        Create a FlavorAccess resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param FlavorAccessArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -281,12 +173,6 @@ class FlavorAccess(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] flavor_id: The UUID of flavor to use. Changing this creates a new flavor access.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
-               If omitted, the `region` argument of the provider is used.
-               Changing this creates a new flavor access.
-        :param pulumi.Input[str] tenant_id: The UUID of tenant which is allowed to use the flavor.
-               Changing this creates a new flavor access.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -300,27 +186,15 @@ class FlavorAccess(pulumi.CustomResource):
     @property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> pulumi.Output[str]:
-        """
-        The UUID of flavor to use. Changing this creates a new flavor access.
-        """
         return pulumi.get(self, "flavor_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Compute client.
-        If omitted, the `region` argument of the provider is used.
-        Changing this creates a new flavor access.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
-        """
-        The UUID of tenant which is allowed to use the flavor.
-        Changing this creates a new flavor access.
-        """
         return pulumi.get(self, "tenant_id")
 

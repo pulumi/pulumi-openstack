@@ -2,11 +2,25 @@
     "auto-aliasing": {
         "resources": {
             "openstack_bgpvpn_network_associate_v2": {
-                "current": "openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2",
+                "current": "openstack:bgpvpn/networkAssociateV2:NetworkAssociateV2",
+                "past": [
+                    {
+                        "name": "openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2",
+                        "inCodegen": true,
+                        "majorVersion": 5
+                    }
+                ],
                 "majorVersion": 5
             },
             "openstack_bgpvpn_port_associate_v2": {
-                "current": "openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2",
+                "current": "openstack:bgpvpn/portAssociateV2:PortAssociateV2",
+                "past": [
+                    {
+                        "name": "openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2",
+                        "inCodegen": true,
+                        "majorVersion": 5
+                    }
+                ],
                 "majorVersion": 5,
                 "fields": {
                     "routes": {
@@ -15,11 +29,25 @@
                 }
             },
             "openstack_bgpvpn_router_associate_v2": {
-                "current": "openstack:index/bgpvpnRouterAssociateV2:BgpvpnRouterAssociateV2",
+                "current": "openstack:bgpvpn/routerAssociateV2:RouterAssociateV2",
+                "past": [
+                    {
+                        "name": "openstack:index/bgpvpnRouterAssociateV2:BgpvpnRouterAssociateV2",
+                        "inCodegen": true,
+                        "majorVersion": 5
+                    }
+                ],
                 "majorVersion": 5
             },
             "openstack_bgpvpn_v2": {
-                "current": "openstack:index/bgpvpnV2:BgpvpnV2",
+                "current": "openstack:bgpvpn/v2:V2",
+                "past": [
+                    {
+                        "name": "openstack:index/bgpvpnV2:BgpvpnV2",
+                        "inCodegen": true,
+                        "majorVersion": 5
+                    }
+                ],
                 "majorVersion": 5,
                 "fields": {
                     "export_targets": {
@@ -464,7 +492,14 @@
                 }
             },
             "openstack_lb_flavorprofile_v2": {
-                "current": "openstack:index/lbFlavorprofileV2:LbFlavorprofileV2",
+                "current": "openstack:loadbalancer/flavorprofileV2:FlavorprofileV2",
+                "past": [
+                    {
+                        "name": "openstack:index/lbFlavorprofileV2:LbFlavorprofileV2",
+                        "inCodegen": true,
+                        "majorVersion": 5
+                    }
+                ],
                 "majorVersion": 5
             },
             "openstack_lb_l7policy_v2": {
@@ -497,12 +532,12 @@
                 }
             },
             "openstack_lb_loadbalancer_v2": {
-                "current": "openstack:index/lbLoadbalancerV2:LbLoadbalancerV2",
+                "current": "openstack:loadbalancer/loadBalancer:LoadBalancer",
                 "past": [
                     {
-                        "name": "openstack:loadbalancer/loadBalancer:LoadBalancer",
+                        "name": "openstack:index/lbLoadbalancerV2:LbLoadbalancerV2",
                         "inCodegen": true,
-                        "majorVersion": 4
+                        "majorVersion": 5
                     }
                 ],
                 "majorVersion": 5,
@@ -1006,7 +1041,14 @@
                 }
             },
             "openstack_fw_group_v2": {
-                "current": "openstack:index/getFwGroupV2:getFwGroupV2",
+                "current": "openstack:firewall/getGroupV2:getGroupV2",
+                "past": [
+                    {
+                        "name": "openstack:index/getFwGroupV2:getFwGroupV2",
+                        "inCodegen": true,
+                        "majorVersion": 5
+                    }
+                ],
                 "majorVersion": 5,
                 "fields": {
                     "ports": {
@@ -1015,7 +1057,14 @@
                 }
             },
             "openstack_fw_policy_v2": {
-                "current": "openstack:index/getFwPolicyV2:getFwPolicyV2",
+                "current": "openstack:firewall/getPolicyV2:getPolicyV2",
+                "past": [
+                    {
+                        "name": "openstack:index/getFwPolicyV2:getFwPolicyV2",
+                        "inCodegen": true,
+                        "majorVersion": 5
+                    }
+                ],
                 "majorVersion": 5,
                 "fields": {
                     "rules": {
@@ -1024,7 +1073,14 @@
                 }
             },
             "openstack_fw_rule_v2": {
-                "current": "openstack:index/getFwRuleV2:getFwRuleV2",
+                "current": "openstack:firewall/getRuleV2:getRuleV2",
+                "past": [
+                    {
+                        "name": "openstack:index/getFwRuleV2:getFwRuleV2",
+                        "inCodegen": true,
+                        "majorVersion": 5
+                    }
+                ],
                 "majorVersion": 5,
                 "fields": {
                     "firewall_policy_id": {
@@ -1413,9 +1469,51 @@
     },
     "auto-settings": {
         "resources": {
+            "openstack_bgpvpn_network_associate_v2": {
+                "aliases": [
+                    "openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2"
+                ]
+            },
+            "openstack_bgpvpn_port_associate_v2": {
+                "aliases": [
+                    "openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2"
+                ]
+            },
+            "openstack_bgpvpn_router_associate_v2": {
+                "aliases": [
+                    "openstack:index/bgpvpnRouterAssociateV2:BgpvpnRouterAssociateV2"
+                ]
+            },
+            "openstack_bgpvpn_v2": {
+                "aliases": [
+                    "openstack:index/bgpvpnV2:BgpvpnV2"
+                ]
+            },
+            "openstack_lb_flavorprofile_v2": {
+                "aliases": [
+                    "openstack:index/lbFlavorprofileV2:LbFlavorprofileV2"
+                ]
+            },
             "openstack_lb_loadbalancer_v2": {
+                "aliases": [
+                    "openstack:index/lbLoadbalancerV2:LbLoadbalancerV2"
+                ]
+            }
+        },
+        "datasources": {
+            "openstack_fw_group_v2": {
                 "renames": [
-                    "openstack:loadbalancer/loadBalancer:LoadBalancer"
+                    "openstack:index/getFwGroupV2:getFwGroupV2"
+                ]
+            },
+            "openstack_fw_policy_v2": {
+                "renames": [
+                    "openstack:index/getFwPolicyV2:getFwPolicyV2"
+                ]
+            },
+            "openstack_fw_rule_v2": {
+                "renames": [
+                    "openstack:index/getFwRuleV2:getFwRuleV2"
                 ]
             }
         }

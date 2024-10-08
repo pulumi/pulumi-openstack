@@ -36,54 +36,6 @@ class PoolArgs:
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Pool resource.
-        :param pulumi.Input[str] lb_method: The load balancing algorithm to distribute traffic
-               to the pool's members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-               SOURCE_IP, or SOURCE_IP_PORT.
-        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-               UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP (**Octavia minor
-               version >= 2.23**). Changing this creates a new pool.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the pool. A valid
-               value is true (UP) or false (DOWN).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] alpn_protocols: A list of ALPN protocols. Available protocols:
-               `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
-               2.24**.
-        :param pulumi.Input[str] ca_tls_container_ref: The reference of the key manager service
-               secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
-               Supported only in **Octavia minor version >= 2.8**.
-        :param pulumi.Input[str] crl_container_ref: The reference of the key manager service
-               secret containing a PEM format CA revocation list file for `tls_enabled`
-               pools. Supported only in **Octavia minor version >= 2.8**.
-        :param pulumi.Input[str] description: Human-readable description for the pool.
-        :param pulumi.Input[str] listener_id: The Listener on which the members of the pool will
-               be associated with. Changing this creates a new pool. Note: One of
-               LoadbalancerID or ListenerID must be provided.
-        :param pulumi.Input[str] loadbalancer_id: The load balancer on which to provision this
-               pool. Changing this creates a new pool. Note: One of LoadbalancerID or
-               ListenerID must be provided.
-        :param pulumi.Input[str] name: Human-readable name for the pool.
-        :param pulumi.Input['PoolPersistenceArgs'] persistence: Omit this field to prevent session persistence.
-               Indicates whether connections in the same session will be processed by the
-               same Pool member or not. Changing this creates a new pool.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a pool. If omitted, the `region`
-               argument of the provider is used. Changing this creates a new pool.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the pool.  Only administrative users can specify a tenant UUID other than
-               their own. Changing this creates a new pool.
-        :param pulumi.Input[str] tls_ciphers: List of ciphers in OpenSSL format
-               (colon-separated). See
-               https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
-               Supported only in **Octavia minor version >= 2.15**.
-        :param pulumi.Input[str] tls_container_ref: The reference to the key manager service
-               secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
-               pools for TLS client authentication to the member servers. Supported only in
-               **Octavia minor version >= 2.8**.
-        :param pulumi.Input[bool] tls_enabled: When true connections to backend member servers
-               will use TLS encryption. Default is false. Supported only in **Octavia minor
-               version >= 2.8**.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tls_versions: A list of TLS protocol versions. Available
-               versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
-               **Octavia minor version >= 2.17**.
         """
         pulumi.set(__self__, "lb_method", lb_method)
         pulumi.set(__self__, "protocol", protocol)
@@ -123,11 +75,6 @@ class PoolArgs:
     @property
     @pulumi.getter(name="lbMethod")
     def lb_method(self) -> pulumi.Input[str]:
-        """
-        The load balancing algorithm to distribute traffic
-        to the pool's members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-        SOURCE_IP, or SOURCE_IP_PORT.
-        """
         return pulumi.get(self, "lb_method")
 
     @lb_method.setter
@@ -137,11 +84,6 @@ class PoolArgs:
     @property
     @pulumi.getter
     def protocol(self) -> pulumi.Input[str]:
-        """
-        The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-        UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP (**Octavia minor
-        version >= 2.23**). Changing this creates a new pool.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -151,10 +93,6 @@ class PoolArgs:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The administrative state of the pool. A valid
-        value is true (UP) or false (DOWN).
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -164,11 +102,6 @@ class PoolArgs:
     @property
     @pulumi.getter(name="alpnProtocols")
     def alpn_protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of ALPN protocols. Available protocols:
-        `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
-        2.24**.
-        """
         return pulumi.get(self, "alpn_protocols")
 
     @alpn_protocols.setter
@@ -178,11 +111,6 @@ class PoolArgs:
     @property
     @pulumi.getter(name="caTlsContainerRef")
     def ca_tls_container_ref(self) -> Optional[pulumi.Input[str]]:
-        """
-        The reference of the key manager service
-        secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
-        Supported only in **Octavia minor version >= 2.8**.
-        """
         return pulumi.get(self, "ca_tls_container_ref")
 
     @ca_tls_container_ref.setter
@@ -192,11 +120,6 @@ class PoolArgs:
     @property
     @pulumi.getter(name="crlContainerRef")
     def crl_container_ref(self) -> Optional[pulumi.Input[str]]:
-        """
-        The reference of the key manager service
-        secret containing a PEM format CA revocation list file for `tls_enabled`
-        pools. Supported only in **Octavia minor version >= 2.8**.
-        """
         return pulumi.get(self, "crl_container_ref")
 
     @crl_container_ref.setter
@@ -206,9 +129,6 @@ class PoolArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable description for the pool.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -218,11 +138,6 @@ class PoolArgs:
     @property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Listener on which the members of the pool will
-        be associated with. Changing this creates a new pool. Note: One of
-        LoadbalancerID or ListenerID must be provided.
-        """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
@@ -232,11 +147,6 @@ class PoolArgs:
     @property
     @pulumi.getter(name="loadbalancerId")
     def loadbalancer_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The load balancer on which to provision this
-        pool. Changing this creates a new pool. Note: One of LoadbalancerID or
-        ListenerID must be provided.
-        """
         return pulumi.get(self, "loadbalancer_id")
 
     @loadbalancer_id.setter
@@ -246,9 +156,6 @@ class PoolArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable name for the pool.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -258,11 +165,6 @@ class PoolArgs:
     @property
     @pulumi.getter
     def persistence(self) -> Optional[pulumi.Input['PoolPersistenceArgs']]:
-        """
-        Omit this field to prevent session persistence.
-        Indicates whether connections in the same session will be processed by the
-        same Pool member or not. Changing this creates a new pool.
-        """
         return pulumi.get(self, "persistence")
 
     @persistence.setter
@@ -272,11 +174,6 @@ class PoolArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a pool. If omitted, the `region`
-        argument of the provider is used. Changing this creates a new pool.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -295,11 +192,6 @@ class PoolArgs:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required for admins. The UUID of the tenant who owns
-        the pool.  Only administrative users can specify a tenant UUID other than
-        their own. Changing this creates a new pool.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -309,12 +201,6 @@ class PoolArgs:
     @property
     @pulumi.getter(name="tlsCiphers")
     def tls_ciphers(self) -> Optional[pulumi.Input[str]]:
-        """
-        List of ciphers in OpenSSL format
-        (colon-separated). See
-        https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
-        Supported only in **Octavia minor version >= 2.15**.
-        """
         return pulumi.get(self, "tls_ciphers")
 
     @tls_ciphers.setter
@@ -324,12 +210,6 @@ class PoolArgs:
     @property
     @pulumi.getter(name="tlsContainerRef")
     def tls_container_ref(self) -> Optional[pulumi.Input[str]]:
-        """
-        The reference to the key manager service
-        secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
-        pools for TLS client authentication to the member servers. Supported only in
-        **Octavia minor version >= 2.8**.
-        """
         return pulumi.get(self, "tls_container_ref")
 
     @tls_container_ref.setter
@@ -339,11 +219,6 @@ class PoolArgs:
     @property
     @pulumi.getter(name="tlsEnabled")
     def tls_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        When true connections to backend member servers
-        will use TLS encryption. Default is false. Supported only in **Octavia minor
-        version >= 2.8**.
-        """
         return pulumi.get(self, "tls_enabled")
 
     @tls_enabled.setter
@@ -353,11 +228,6 @@ class PoolArgs:
     @property
     @pulumi.getter(name="tlsVersions")
     def tls_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of TLS protocol versions. Available
-        versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
-        **Octavia minor version >= 2.17**.
-        """
         return pulumi.get(self, "tls_versions")
 
     @tls_versions.setter
@@ -388,54 +258,6 @@ class _PoolState:
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Pool resources.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the pool. A valid
-               value is true (UP) or false (DOWN).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] alpn_protocols: A list of ALPN protocols. Available protocols:
-               `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
-               2.24**.
-        :param pulumi.Input[str] ca_tls_container_ref: The reference of the key manager service
-               secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
-               Supported only in **Octavia minor version >= 2.8**.
-        :param pulumi.Input[str] crl_container_ref: The reference of the key manager service
-               secret containing a PEM format CA revocation list file for `tls_enabled`
-               pools. Supported only in **Octavia minor version >= 2.8**.
-        :param pulumi.Input[str] description: Human-readable description for the pool.
-        :param pulumi.Input[str] lb_method: The load balancing algorithm to distribute traffic
-               to the pool's members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-               SOURCE_IP, or SOURCE_IP_PORT.
-        :param pulumi.Input[str] listener_id: The Listener on which the members of the pool will
-               be associated with. Changing this creates a new pool. Note: One of
-               LoadbalancerID or ListenerID must be provided.
-        :param pulumi.Input[str] loadbalancer_id: The load balancer on which to provision this
-               pool. Changing this creates a new pool. Note: One of LoadbalancerID or
-               ListenerID must be provided.
-        :param pulumi.Input[str] name: Human-readable name for the pool.
-        :param pulumi.Input['PoolPersistenceArgs'] persistence: Omit this field to prevent session persistence.
-               Indicates whether connections in the same session will be processed by the
-               same Pool member or not. Changing this creates a new pool.
-        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-               UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP (**Octavia minor
-               version >= 2.23**). Changing this creates a new pool.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a pool. If omitted, the `region`
-               argument of the provider is used. Changing this creates a new pool.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the pool.  Only administrative users can specify a tenant UUID other than
-               their own. Changing this creates a new pool.
-        :param pulumi.Input[str] tls_ciphers: List of ciphers in OpenSSL format
-               (colon-separated). See
-               https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
-               Supported only in **Octavia minor version >= 2.15**.
-        :param pulumi.Input[str] tls_container_ref: The reference to the key manager service
-               secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
-               pools for TLS client authentication to the member servers. Supported only in
-               **Octavia minor version >= 2.8**.
-        :param pulumi.Input[bool] tls_enabled: When true connections to backend member servers
-               will use TLS encryption. Default is false. Supported only in **Octavia minor
-               version >= 2.8**.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tls_versions: A list of TLS protocol versions. Available
-               versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
-               **Octavia minor version >= 2.17**.
         """
         if admin_state_up is not None:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
@@ -477,10 +299,6 @@ class _PoolState:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The administrative state of the pool. A valid
-        value is true (UP) or false (DOWN).
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -490,11 +308,6 @@ class _PoolState:
     @property
     @pulumi.getter(name="alpnProtocols")
     def alpn_protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of ALPN protocols. Available protocols:
-        `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
-        2.24**.
-        """
         return pulumi.get(self, "alpn_protocols")
 
     @alpn_protocols.setter
@@ -504,11 +317,6 @@ class _PoolState:
     @property
     @pulumi.getter(name="caTlsContainerRef")
     def ca_tls_container_ref(self) -> Optional[pulumi.Input[str]]:
-        """
-        The reference of the key manager service
-        secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
-        Supported only in **Octavia minor version >= 2.8**.
-        """
         return pulumi.get(self, "ca_tls_container_ref")
 
     @ca_tls_container_ref.setter
@@ -518,11 +326,6 @@ class _PoolState:
     @property
     @pulumi.getter(name="crlContainerRef")
     def crl_container_ref(self) -> Optional[pulumi.Input[str]]:
-        """
-        The reference of the key manager service
-        secret containing a PEM format CA revocation list file for `tls_enabled`
-        pools. Supported only in **Octavia minor version >= 2.8**.
-        """
         return pulumi.get(self, "crl_container_ref")
 
     @crl_container_ref.setter
@@ -532,9 +335,6 @@ class _PoolState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable description for the pool.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -544,11 +344,6 @@ class _PoolState:
     @property
     @pulumi.getter(name="lbMethod")
     def lb_method(self) -> Optional[pulumi.Input[str]]:
-        """
-        The load balancing algorithm to distribute traffic
-        to the pool's members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-        SOURCE_IP, or SOURCE_IP_PORT.
-        """
         return pulumi.get(self, "lb_method")
 
     @lb_method.setter
@@ -558,11 +353,6 @@ class _PoolState:
     @property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Listener on which the members of the pool will
-        be associated with. Changing this creates a new pool. Note: One of
-        LoadbalancerID or ListenerID must be provided.
-        """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
@@ -572,11 +362,6 @@ class _PoolState:
     @property
     @pulumi.getter(name="loadbalancerId")
     def loadbalancer_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The load balancer on which to provision this
-        pool. Changing this creates a new pool. Note: One of LoadbalancerID or
-        ListenerID must be provided.
-        """
         return pulumi.get(self, "loadbalancer_id")
 
     @loadbalancer_id.setter
@@ -586,9 +371,6 @@ class _PoolState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable name for the pool.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -598,11 +380,6 @@ class _PoolState:
     @property
     @pulumi.getter
     def persistence(self) -> Optional[pulumi.Input['PoolPersistenceArgs']]:
-        """
-        Omit this field to prevent session persistence.
-        Indicates whether connections in the same session will be processed by the
-        same Pool member or not. Changing this creates a new pool.
-        """
         return pulumi.get(self, "persistence")
 
     @persistence.setter
@@ -612,11 +389,6 @@ class _PoolState:
     @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
-        """
-        The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-        UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP (**Octavia minor
-        version >= 2.23**). Changing this creates a new pool.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -626,11 +398,6 @@ class _PoolState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a pool. If omitted, the `region`
-        argument of the provider is used. Changing this creates a new pool.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -649,11 +416,6 @@ class _PoolState:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required for admins. The UUID of the tenant who owns
-        the pool.  Only administrative users can specify a tenant UUID other than
-        their own. Changing this creates a new pool.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -663,12 +425,6 @@ class _PoolState:
     @property
     @pulumi.getter(name="tlsCiphers")
     def tls_ciphers(self) -> Optional[pulumi.Input[str]]:
-        """
-        List of ciphers in OpenSSL format
-        (colon-separated). See
-        https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
-        Supported only in **Octavia minor version >= 2.15**.
-        """
         return pulumi.get(self, "tls_ciphers")
 
     @tls_ciphers.setter
@@ -678,12 +434,6 @@ class _PoolState:
     @property
     @pulumi.getter(name="tlsContainerRef")
     def tls_container_ref(self) -> Optional[pulumi.Input[str]]:
-        """
-        The reference to the key manager service
-        secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
-        pools for TLS client authentication to the member servers. Supported only in
-        **Octavia minor version >= 2.8**.
-        """
         return pulumi.get(self, "tls_container_ref")
 
     @tls_container_ref.setter
@@ -693,11 +443,6 @@ class _PoolState:
     @property
     @pulumi.getter(name="tlsEnabled")
     def tls_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        When true connections to backend member servers
-        will use TLS encryption. Default is false. Supported only in **Octavia minor
-        version >= 2.8**.
-        """
         return pulumi.get(self, "tls_enabled")
 
     @tls_enabled.setter
@@ -707,11 +452,6 @@ class _PoolState:
     @property
     @pulumi.getter(name="tlsVersions")
     def tls_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of TLS protocol versions. Available
-        versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
-        **Octavia minor version >= 2.17**.
-        """
         return pulumi.get(self, "tls_versions")
 
     @tls_versions.setter
@@ -744,85 +484,9 @@ class Pool(pulumi.CustomResource):
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Manages a V2 pool resource within OpenStack.
-
-        > **Note:** This resource has attributes that depend on octavia minor versions.
-        Please ensure your Openstack cloud supports the required minor version.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        pool1 = openstack.loadbalancer.Pool("pool_1",
-            protocol="HTTP",
-            lb_method="ROUND_ROBIN",
-            listener_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
-            persistence={
-                "type": "APP_COOKIE",
-                "cookie_name": "testCookie",
-            })
-        ```
-
-        ## Import
-
-        Load Balancer Pool can be imported using the Pool ID, e.g.:
-
-        ```sh
-        $ pulumi import openstack:loadbalancer/pool:Pool pool_1 60ad9ee4-249a-4d60-a45b-aa60e046c513
-        ```
-
+        Create a Pool resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the pool. A valid
-               value is true (UP) or false (DOWN).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] alpn_protocols: A list of ALPN protocols. Available protocols:
-               `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
-               2.24**.
-        :param pulumi.Input[str] ca_tls_container_ref: The reference of the key manager service
-               secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
-               Supported only in **Octavia minor version >= 2.8**.
-        :param pulumi.Input[str] crl_container_ref: The reference of the key manager service
-               secret containing a PEM format CA revocation list file for `tls_enabled`
-               pools. Supported only in **Octavia minor version >= 2.8**.
-        :param pulumi.Input[str] description: Human-readable description for the pool.
-        :param pulumi.Input[str] lb_method: The load balancing algorithm to distribute traffic
-               to the pool's members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-               SOURCE_IP, or SOURCE_IP_PORT.
-        :param pulumi.Input[str] listener_id: The Listener on which the members of the pool will
-               be associated with. Changing this creates a new pool. Note: One of
-               LoadbalancerID or ListenerID must be provided.
-        :param pulumi.Input[str] loadbalancer_id: The load balancer on which to provision this
-               pool. Changing this creates a new pool. Note: One of LoadbalancerID or
-               ListenerID must be provided.
-        :param pulumi.Input[str] name: Human-readable name for the pool.
-        :param pulumi.Input[Union['PoolPersistenceArgs', 'PoolPersistenceArgsDict']] persistence: Omit this field to prevent session persistence.
-               Indicates whether connections in the same session will be processed by the
-               same Pool member or not. Changing this creates a new pool.
-        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-               UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP (**Octavia minor
-               version >= 2.23**). Changing this creates a new pool.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a pool. If omitted, the `region`
-               argument of the provider is used. Changing this creates a new pool.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the pool.  Only administrative users can specify a tenant UUID other than
-               their own. Changing this creates a new pool.
-        :param pulumi.Input[str] tls_ciphers: List of ciphers in OpenSSL format
-               (colon-separated). See
-               https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
-               Supported only in **Octavia minor version >= 2.15**.
-        :param pulumi.Input[str] tls_container_ref: The reference to the key manager service
-               secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
-               pools for TLS client authentication to the member servers. Supported only in
-               **Octavia minor version >= 2.8**.
-        :param pulumi.Input[bool] tls_enabled: When true connections to backend member servers
-               will use TLS encryption. Default is false. Supported only in **Octavia minor
-               version >= 2.8**.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tls_versions: A list of TLS protocol versions. Available
-               versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
-               **Octavia minor version >= 2.17**.
         """
         ...
     @overload
@@ -831,35 +495,7 @@ class Pool(pulumi.CustomResource):
                  args: PoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V2 pool resource within OpenStack.
-
-        > **Note:** This resource has attributes that depend on octavia minor versions.
-        Please ensure your Openstack cloud supports the required minor version.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        pool1 = openstack.loadbalancer.Pool("pool_1",
-            protocol="HTTP",
-            lb_method="ROUND_ROBIN",
-            listener_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
-            persistence={
-                "type": "APP_COOKIE",
-                "cookie_name": "testCookie",
-            })
-        ```
-
-        ## Import
-
-        Load Balancer Pool can be imported using the Pool ID, e.g.:
-
-        ```sh
-        $ pulumi import openstack:loadbalancer/pool:Pool pool_1 60ad9ee4-249a-4d60-a45b-aa60e046c513
-        ```
-
+        Create a Pool resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param PoolArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -959,54 +595,6 @@ class Pool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the pool. A valid
-               value is true (UP) or false (DOWN).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] alpn_protocols: A list of ALPN protocols. Available protocols:
-               `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
-               2.24**.
-        :param pulumi.Input[str] ca_tls_container_ref: The reference of the key manager service
-               secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
-               Supported only in **Octavia minor version >= 2.8**.
-        :param pulumi.Input[str] crl_container_ref: The reference of the key manager service
-               secret containing a PEM format CA revocation list file for `tls_enabled`
-               pools. Supported only in **Octavia minor version >= 2.8**.
-        :param pulumi.Input[str] description: Human-readable description for the pool.
-        :param pulumi.Input[str] lb_method: The load balancing algorithm to distribute traffic
-               to the pool's members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-               SOURCE_IP, or SOURCE_IP_PORT.
-        :param pulumi.Input[str] listener_id: The Listener on which the members of the pool will
-               be associated with. Changing this creates a new pool. Note: One of
-               LoadbalancerID or ListenerID must be provided.
-        :param pulumi.Input[str] loadbalancer_id: The load balancer on which to provision this
-               pool. Changing this creates a new pool. Note: One of LoadbalancerID or
-               ListenerID must be provided.
-        :param pulumi.Input[str] name: Human-readable name for the pool.
-        :param pulumi.Input[Union['PoolPersistenceArgs', 'PoolPersistenceArgsDict']] persistence: Omit this field to prevent session persistence.
-               Indicates whether connections in the same session will be processed by the
-               same Pool member or not. Changing this creates a new pool.
-        :param pulumi.Input[str] protocol: The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-               UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP (**Octavia minor
-               version >= 2.23**). Changing this creates a new pool.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a pool. If omitted, the `region`
-               argument of the provider is used. Changing this creates a new pool.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the pool.  Only administrative users can specify a tenant UUID other than
-               their own. Changing this creates a new pool.
-        :param pulumi.Input[str] tls_ciphers: List of ciphers in OpenSSL format
-               (colon-separated). See
-               https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
-               Supported only in **Octavia minor version >= 2.15**.
-        :param pulumi.Input[str] tls_container_ref: The reference to the key manager service
-               secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
-               pools for TLS client authentication to the member servers. Supported only in
-               **Octavia minor version >= 2.8**.
-        :param pulumi.Input[bool] tls_enabled: When true connections to backend member servers
-               will use TLS encryption. Default is false. Supported only in **Octavia minor
-               version >= 2.8**.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tls_versions: A list of TLS protocol versions. Available
-               versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
-               **Octavia minor version >= 2.17**.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1035,116 +623,61 @@ class Pool(pulumi.CustomResource):
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[Optional[bool]]:
-        """
-        The administrative state of the pool. A valid
-        value is true (UP) or false (DOWN).
-        """
         return pulumi.get(self, "admin_state_up")
 
     @property
     @pulumi.getter(name="alpnProtocols")
     def alpn_protocols(self) -> pulumi.Output[Sequence[str]]:
-        """
-        A list of ALPN protocols. Available protocols:
-        `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
-        2.24**.
-        """
         return pulumi.get(self, "alpn_protocols")
 
     @property
     @pulumi.getter(name="caTlsContainerRef")
     def ca_tls_container_ref(self) -> pulumi.Output[Optional[str]]:
-        """
-        The reference of the key manager service
-        secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
-        Supported only in **Octavia minor version >= 2.8**.
-        """
         return pulumi.get(self, "ca_tls_container_ref")
 
     @property
     @pulumi.getter(name="crlContainerRef")
     def crl_container_ref(self) -> pulumi.Output[Optional[str]]:
-        """
-        The reference of the key manager service
-        secret containing a PEM format CA revocation list file for `tls_enabled`
-        pools. Supported only in **Octavia minor version >= 2.8**.
-        """
         return pulumi.get(self, "crl_container_ref")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        Human-readable description for the pool.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="lbMethod")
     def lb_method(self) -> pulumi.Output[str]:
-        """
-        The load balancing algorithm to distribute traffic
-        to the pool's members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-        SOURCE_IP, or SOURCE_IP_PORT.
-        """
         return pulumi.get(self, "lb_method")
 
     @property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The Listener on which the members of the pool will
-        be associated with. Changing this creates a new pool. Note: One of
-        LoadbalancerID or ListenerID must be provided.
-        """
         return pulumi.get(self, "listener_id")
 
     @property
     @pulumi.getter(name="loadbalancerId")
     def loadbalancer_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The load balancer on which to provision this
-        pool. Changing this creates a new pool. Note: One of LoadbalancerID or
-        ListenerID must be provided.
-        """
         return pulumi.get(self, "loadbalancer_id")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Human-readable name for the pool.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def persistence(self) -> pulumi.Output[Optional['outputs.PoolPersistence']]:
-        """
-        Omit this field to prevent session persistence.
-        Indicates whether connections in the same session will be processed by the
-        same Pool member or not. Changing this creates a new pool.
-        """
         return pulumi.get(self, "persistence")
 
     @property
     @pulumi.getter
     def protocol(self) -> pulumi.Output[str]:
-        """
-        The protocol - can either be TCP, HTTP, HTTPS, PROXY,
-        UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP (**Octavia minor
-        version >= 2.23**). Changing this creates a new pool.
-        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a pool. If omitted, the `region`
-        argument of the provider is used. Changing this creates a new pool.
-        """
         return pulumi.get(self, "region")
 
     @property
@@ -1155,52 +688,25 @@ class Pool(pulumi.CustomResource):
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
-        """
-        Required for admins. The UUID of the tenant who owns
-        the pool.  Only administrative users can specify a tenant UUID other than
-        their own. Changing this creates a new pool.
-        """
         return pulumi.get(self, "tenant_id")
 
     @property
     @pulumi.getter(name="tlsCiphers")
     def tls_ciphers(self) -> pulumi.Output[str]:
-        """
-        List of ciphers in OpenSSL format
-        (colon-separated). See
-        https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
-        Supported only in **Octavia minor version >= 2.15**.
-        """
         return pulumi.get(self, "tls_ciphers")
 
     @property
     @pulumi.getter(name="tlsContainerRef")
     def tls_container_ref(self) -> pulumi.Output[Optional[str]]:
-        """
-        The reference to the key manager service
-        secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
-        pools for TLS client authentication to the member servers. Supported only in
-        **Octavia minor version >= 2.8**.
-        """
         return pulumi.get(self, "tls_container_ref")
 
     @property
     @pulumi.getter(name="tlsEnabled")
     def tls_enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        When true connections to backend member servers
-        will use TLS encryption. Default is false. Supported only in **Octavia minor
-        version >= 2.8**.
-        """
         return pulumi.get(self, "tls_enabled")
 
     @property
     @pulumi.getter(name="tlsVersions")
     def tls_versions(self) -> pulumi.Output[Sequence[str]]:
-        """
-        A list of TLS protocol versions. Available
-        versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
-        **Octavia minor version >= 2.17**.
-        """
         return pulumi.get(self, "tls_versions")
 

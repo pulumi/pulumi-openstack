@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/firewall"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := openstack.GetFwGroupV2(ctx, &openstack.GetFwGroupV2Args{
+//			_, err := firewall.LookupGroupV2(ctx, &firewall.LookupGroupV2Args{
 //				Name: pulumi.StringRef("tf_test_group"),
 //			}, nil)
 //			if err != nil {
@@ -38,6 +38,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2
 func GetFwGroupV2(ctx *pulumi.Context, args *GetFwGroupV2Args, opts ...pulumi.InvokeOption) (*GetFwGroupV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFwGroupV2Result

@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/bgpvpn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := openstack.NewBgpvpnV2(ctx, "bgpvpn_1", &openstack.BgpvpnV2Args{
+//			_, err := bgpvpn.NewV2(ctx, "bgpvpn_1", &bgpvpn.V2Args{
 //				Name: pulumi.String("bgpvpn1"),
 //				RouteDistinguishers: pulumi.StringArray{
 //					pulumi.String("64512:1"),
@@ -60,6 +60,8 @@ import (
 // ```sh
 // $ pulumi import openstack:index/bgpvpnV2:BgpvpnV2 bgpvpn_1 1eec2c66-6be2-4305-af3f-354c9b81f18c
 // ```
+//
+// Deprecated: openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2
 type BgpvpnV2 struct {
 	pulumi.CustomResourceState
 

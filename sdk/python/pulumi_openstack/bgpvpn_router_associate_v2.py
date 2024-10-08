@@ -21,20 +21,6 @@ class BgpvpnRouterAssociateV2Args:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BgpvpnRouterAssociateV2 resource.
-        :param pulumi.Input[str] bgpvpn_id: The ID of the BGP VPN to which the router will be
-               associated. Changing this creates a new BGP VPN router association.
-        :param pulumi.Input[str] router_id: The ID of the router to be associated with the BGP
-               VPN. Changing this creates a new BGP VPN router association.
-        :param pulumi.Input[bool] advertise_extra_routes: A boolean flag indicating whether extra
-               routes should be advertised. Defaults to true.
-        :param pulumi.Input[str] project_id: The ID of the project that owns the BGP VPN router
-               association. Only administrative and users with `advsvc` role can specify a
-               project ID other than their own. Changing this creates a new BGP VPN router
-               association.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a BGP VPN router association. If
-               omitted, the `region` argument of the provider is used. Changing this creates
-               a new BGP VPN router association.
         """
         pulumi.set(__self__, "bgpvpn_id", bgpvpn_id)
         pulumi.set(__self__, "router_id", router_id)
@@ -48,10 +34,6 @@ class BgpvpnRouterAssociateV2Args:
     @property
     @pulumi.getter(name="bgpvpnId")
     def bgpvpn_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the BGP VPN to which the router will be
-        associated. Changing this creates a new BGP VPN router association.
-        """
         return pulumi.get(self, "bgpvpn_id")
 
     @bgpvpn_id.setter
@@ -61,10 +43,6 @@ class BgpvpnRouterAssociateV2Args:
     @property
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the router to be associated with the BGP
-        VPN. Changing this creates a new BGP VPN router association.
-        """
         return pulumi.get(self, "router_id")
 
     @router_id.setter
@@ -74,10 +52,6 @@ class BgpvpnRouterAssociateV2Args:
     @property
     @pulumi.getter(name="advertiseExtraRoutes")
     def advertise_extra_routes(self) -> Optional[pulumi.Input[bool]]:
-        """
-        A boolean flag indicating whether extra
-        routes should be advertised. Defaults to true.
-        """
         return pulumi.get(self, "advertise_extra_routes")
 
     @advertise_extra_routes.setter
@@ -87,12 +61,6 @@ class BgpvpnRouterAssociateV2Args:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project that owns the BGP VPN router
-        association. Only administrative and users with `advsvc` role can specify a
-        project ID other than their own. Changing this creates a new BGP VPN router
-        association.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -102,12 +70,6 @@ class BgpvpnRouterAssociateV2Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a BGP VPN router association. If
-        omitted, the `region` argument of the provider is used. Changing this creates
-        a new BGP VPN router association.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -125,20 +87,6 @@ class _BgpvpnRouterAssociateV2State:
                  router_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering BgpvpnRouterAssociateV2 resources.
-        :param pulumi.Input[bool] advertise_extra_routes: A boolean flag indicating whether extra
-               routes should be advertised. Defaults to true.
-        :param pulumi.Input[str] bgpvpn_id: The ID of the BGP VPN to which the router will be
-               associated. Changing this creates a new BGP VPN router association.
-        :param pulumi.Input[str] project_id: The ID of the project that owns the BGP VPN router
-               association. Only administrative and users with `advsvc` role can specify a
-               project ID other than their own. Changing this creates a new BGP VPN router
-               association.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a BGP VPN router association. If
-               omitted, the `region` argument of the provider is used. Changing this creates
-               a new BGP VPN router association.
-        :param pulumi.Input[str] router_id: The ID of the router to be associated with the BGP
-               VPN. Changing this creates a new BGP VPN router association.
         """
         if advertise_extra_routes is not None:
             pulumi.set(__self__, "advertise_extra_routes", advertise_extra_routes)
@@ -154,10 +102,6 @@ class _BgpvpnRouterAssociateV2State:
     @property
     @pulumi.getter(name="advertiseExtraRoutes")
     def advertise_extra_routes(self) -> Optional[pulumi.Input[bool]]:
-        """
-        A boolean flag indicating whether extra
-        routes should be advertised. Defaults to true.
-        """
         return pulumi.get(self, "advertise_extra_routes")
 
     @advertise_extra_routes.setter
@@ -167,10 +111,6 @@ class _BgpvpnRouterAssociateV2State:
     @property
     @pulumi.getter(name="bgpvpnId")
     def bgpvpn_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the BGP VPN to which the router will be
-        associated. Changing this creates a new BGP VPN router association.
-        """
         return pulumi.get(self, "bgpvpn_id")
 
     @bgpvpn_id.setter
@@ -180,12 +120,6 @@ class _BgpvpnRouterAssociateV2State:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the project that owns the BGP VPN router
-        association. Only administrative and users with `advsvc` role can specify a
-        project ID other than their own. Changing this creates a new BGP VPN router
-        association.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -195,12 +129,6 @@ class _BgpvpnRouterAssociateV2State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a BGP VPN router association. If
-        omitted, the `region` argument of the provider is used. Changing this creates
-        a new BGP VPN router association.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -210,10 +138,6 @@ class _BgpvpnRouterAssociateV2State:
     @property
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the router to be associated with the BGP
-        VPN. Changing this creates a new BGP VPN router association.
-        """
         return pulumi.get(self, "router_id")
 
     @router_id.setter
@@ -221,7 +145,12 @@ class _BgpvpnRouterAssociateV2State:
         pulumi.set(self, "router_id", value)
 
 
+warnings.warn("""openstack.index/bgpvpnrouterassociatev2.BgpvpnRouterAssociateV2 has been deprecated in favor of openstack.bgpvpn/routerassociatev2.RouterAssociateV2""", DeprecationWarning)
+
+
 class BgpvpnRouterAssociateV2(pulumi.CustomResource):
+    warnings.warn("""openstack.index/bgpvpnrouterassociatev2.BgpvpnRouterAssociateV2 has been deprecated in favor of openstack.bgpvpn/routerassociatev2.RouterAssociateV2""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -233,47 +162,9 @@ class BgpvpnRouterAssociateV2(pulumi.CustomResource):
                  router_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a V2 BGP VPN router association resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        association1 = openstack.BgpvpnRouterAssociateV2("association_1",
-            bgpvpn_id="d57d39e1-dc63-44fd-8cbd-a4e1488100c5",
-            router_id="423fa80f-e0d7-4d02-a9a5-8b8c05812bf6")
-        ```
-
-        ## Import
-
-        BGP VPN router associations can be imported using the BGP VPN ID and BGP VPN
-
-        router association ID separated by a slash, e.g.:
-
-        hcl
-
-        ```sh
-        $ pulumi import openstack:index/bgpvpnRouterAssociateV2:BgpvpnRouterAssociateV2 association_1 e26d509e-fc2d-4fb5-8562-619911a9a6bc/3cc9df2d-80db-4536-8ba6-295d1d0f723f
-        ```
-
+        Create a BgpvpnRouterAssociateV2 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] advertise_extra_routes: A boolean flag indicating whether extra
-               routes should be advertised. Defaults to true.
-        :param pulumi.Input[str] bgpvpn_id: The ID of the BGP VPN to which the router will be
-               associated. Changing this creates a new BGP VPN router association.
-        :param pulumi.Input[str] project_id: The ID of the project that owns the BGP VPN router
-               association. Only administrative and users with `advsvc` role can specify a
-               project ID other than their own. Changing this creates a new BGP VPN router
-               association.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a BGP VPN router association. If
-               omitted, the `region` argument of the provider is used. Changing this creates
-               a new BGP VPN router association.
-        :param pulumi.Input[str] router_id: The ID of the router to be associated with the BGP
-               VPN. Changing this creates a new BGP VPN router association.
         """
         ...
     @overload
@@ -282,31 +173,7 @@ class BgpvpnRouterAssociateV2(pulumi.CustomResource):
                  args: BgpvpnRouterAssociateV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V2 BGP VPN router association resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        association1 = openstack.BgpvpnRouterAssociateV2("association_1",
-            bgpvpn_id="d57d39e1-dc63-44fd-8cbd-a4e1488100c5",
-            router_id="423fa80f-e0d7-4d02-a9a5-8b8c05812bf6")
-        ```
-
-        ## Import
-
-        BGP VPN router associations can be imported using the BGP VPN ID and BGP VPN
-
-        router association ID separated by a slash, e.g.:
-
-        hcl
-
-        ```sh
-        $ pulumi import openstack:index/bgpvpnRouterAssociateV2:BgpvpnRouterAssociateV2 association_1 e26d509e-fc2d-4fb5-8562-619911a9a6bc/3cc9df2d-80db-4536-8ba6-295d1d0f723f
-        ```
-
+        Create a BgpvpnRouterAssociateV2 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param BgpvpnRouterAssociateV2Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -328,6 +195,7 @@ class BgpvpnRouterAssociateV2(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  router_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""BgpvpnRouterAssociateV2 is deprecated: openstack.index/bgpvpnrouterassociatev2.BgpvpnRouterAssociateV2 has been deprecated in favor of openstack.bgpvpn/routerassociatev2.RouterAssociateV2""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -367,20 +235,6 @@ class BgpvpnRouterAssociateV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] advertise_extra_routes: A boolean flag indicating whether extra
-               routes should be advertised. Defaults to true.
-        :param pulumi.Input[str] bgpvpn_id: The ID of the BGP VPN to which the router will be
-               associated. Changing this creates a new BGP VPN router association.
-        :param pulumi.Input[str] project_id: The ID of the project that owns the BGP VPN router
-               association. Only administrative and users with `advsvc` role can specify a
-               project ID other than their own. Changing this creates a new BGP VPN router
-               association.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a BGP VPN router association. If
-               omitted, the `region` argument of the provider is used. Changing this creates
-               a new BGP VPN router association.
-        :param pulumi.Input[str] router_id: The ID of the router to be associated with the BGP
-               VPN. Changing this creates a new BGP VPN router association.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -396,49 +250,25 @@ class BgpvpnRouterAssociateV2(pulumi.CustomResource):
     @property
     @pulumi.getter(name="advertiseExtraRoutes")
     def advertise_extra_routes(self) -> pulumi.Output[bool]:
-        """
-        A boolean flag indicating whether extra
-        routes should be advertised. Defaults to true.
-        """
         return pulumi.get(self, "advertise_extra_routes")
 
     @property
     @pulumi.getter(name="bgpvpnId")
     def bgpvpn_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the BGP VPN to which the router will be
-        associated. Changing this creates a new BGP VPN router association.
-        """
         return pulumi.get(self, "bgpvpn_id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the project that owns the BGP VPN router
-        association. Only administrative and users with `advsvc` role can specify a
-        project ID other than their own. Changing this creates a new BGP VPN router
-        association.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a BGP VPN router association. If
-        omitted, the `region` argument of the provider is used. Changing this creates
-        a new BGP VPN router association.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the router to be associated with the BGP
-        VPN. Changing this creates a new BGP VPN router association.
-        """
         return pulumi.get(self, "router_id")
 

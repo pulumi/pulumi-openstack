@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const lb1 = new openstack.LbLoadbalancerV2("lb_1", {vipSubnetId: "d9415786-5f1a-428b-b35f-2f1523e146d2"});
+ * const lb1 = new openstack.loadbalancer.LoadBalancer("lb_1", {vipSubnetId: "d9415786-5f1a-428b-b35f-2f1523e146d2"});
  * ```
  *
  * ## Import
@@ -26,6 +26,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import openstack:index/lbLoadbalancerV2:LbLoadbalancerV2 loadbalancer_1 19bcfdc7-c521-4a7e-9459-6750bd16df76
  * ```
+ *
+ * @deprecated openstack.index/lbloadbalancerv2.LbLoadbalancerV2 has been deprecated in favor of openstack.loadbalancer/loadbalancer.LoadBalancer
  */
 export class LbLoadbalancerV2 extends pulumi.CustomResource {
     /**
@@ -38,6 +40,7 @@ export class LbLoadbalancerV2 extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LbLoadbalancerV2State, opts?: pulumi.CustomResourceOptions): LbLoadbalancerV2 {
+        pulumi.log.warn("LbLoadbalancerV2 is deprecated: openstack.index/lbloadbalancerv2.LbLoadbalancerV2 has been deprecated in favor of openstack.loadbalancer/loadbalancer.LoadBalancer")
         return new LbLoadbalancerV2(name, <any>state, { ...opts, id: id });
     }
 
@@ -149,8 +152,11 @@ export class LbLoadbalancerV2 extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated openstack.index/lbloadbalancerv2.LbLoadbalancerV2 has been deprecated in favor of openstack.loadbalancer/loadbalancer.LoadBalancer */
     constructor(name: string, args?: LbLoadbalancerV2Args, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated openstack.index/lbloadbalancerv2.LbLoadbalancerV2 has been deprecated in favor of openstack.loadbalancer/loadbalancer.LoadBalancer */
     constructor(name: string, argsOrState?: LbLoadbalancerV2Args | LbLoadbalancerV2State, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("LbLoadbalancerV2 is deprecated: openstack.index/lbloadbalancerv2.LbLoadbalancerV2 has been deprecated in favor of openstack.loadbalancer/loadbalancer.LoadBalancer")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -189,8 +195,6 @@ export class LbLoadbalancerV2 extends pulumi.CustomResource {
             resourceInputs["vipSubnetId"] = args ? args.vipSubnetId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "openstack:loadbalancer/loadBalancer:LoadBalancer" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(LbLoadbalancerV2.__pulumiType, name, resourceInputs, opts);
     }
 }

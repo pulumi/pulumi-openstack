@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.openstack.BgpvpnV2;
- * import com.pulumi.openstack.BgpvpnV2Args;
+ * import com.pulumi.openstack.bgpvpn.V2;
+ * import com.pulumi.openstack.bgpvpn.V2Args;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bgpvpn1 = new BgpvpnV2("bgpvpn1", BgpvpnV2Args.builder()
+ *         var bgpvpn1 = new V2("bgpvpn1", V2Args.builder()
  *             .name("bgpvpn1")
  *             .routeDistinguishers("64512:1")
  *             .routeTargets("64512:1")
@@ -69,7 +69,11 @@ import javax.annotation.Nullable;
  * $ pulumi import openstack:index/bgpvpnV2:BgpvpnV2 bgpvpn_1 1eec2c66-6be2-4305-af3f-354c9b81f18c
  * ```
  * 
+ * @deprecated
+ * openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2
+ * 
  */
+@Deprecated /* openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2 */
 @ResourceType(type="openstack:index/bgpvpnV2:BgpvpnV2")
 public class BgpvpnV2 extends com.pulumi.resources.CustomResource {
     /**

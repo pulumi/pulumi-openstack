@@ -22,7 +22,7 @@ namespace Pulumi.OpenStack
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var association1 = new OpenStack.BgpvpnNetworkAssociateV2("association_1", new()
+    ///     var association1 = new OpenStack.BGPVPN.NetworkAssociateV2("association_1", new()
     ///     {
     ///         BgpvpnId = "e7189337-5684-46ee-bcb1-44f1a57066c9",
     ///         NetworkId = "de83d56c-4d2f-44f7-ac24-af393252204f",
@@ -43,6 +43,7 @@ namespace Pulumi.OpenStack
     /// $ pulumi import openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2 association_1 2145aaa9-edaa-44fb-9815-e47a96677a72/67bb952a-f9d1-4fc8-ae84-082253a879d4
     /// ```
     /// </summary>
+    [Obsolete(@"openstack.index/bgpvpnnetworkassociatev2.BgpvpnNetworkAssociateV2 has been deprecated in favor of openstack.bgpvpn/networkassociatev2.NetworkAssociateV2")]
     [OpenStackResourceType("openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2")]
     public partial class BgpvpnNetworkAssociateV2 : global::Pulumi.CustomResource
     {

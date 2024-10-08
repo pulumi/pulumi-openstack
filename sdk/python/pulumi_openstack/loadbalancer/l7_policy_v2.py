@@ -28,33 +28,6 @@ class L7PolicyV2Args:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a L7PolicyV2 resource.
-        :param pulumi.Input[str] action: The L7 Policy action - can either be REDIRECT\\_TO\\_POOL,
-               REDIRECT\\_TO\\_URL or REJECT.
-        :param pulumi.Input[str] listener_id: The Listener on which the L7 Policy will be associated with.
-               Changing this creates a new L7 Policy.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the L7 Policy.
-               A valid value is true (UP) or false (DOWN).
-        :param pulumi.Input[str] description: Human-readable description for the L7 Policy.
-        :param pulumi.Input[str] name: Human-readable name for the L7 Policy. Does not have
-               to be unique.
-        :param pulumi.Input[int] position: The position of this policy on the listener. Positions start at 1.
-        :param pulumi.Input[int] redirect_http_code: Integer. Requests matching this policy will be  
-               redirected to the specified URL or Prefix URL with the HTTP response code.
-               Valid if action is REDIRECT\\_TO\\_URL or REDIRECT\\_PREFIX. Valid options are:
-               301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
-        :param pulumi.Input[str] redirect_pool_id: Requests matching this policy will be redirected to the
-               pool with this ID. Only valid if action is REDIRECT\\_TO\\_POOL.
-        :param pulumi.Input[str] redirect_prefix: Requests matching this policy will be redirected to 
-               this Prefix URL. Only valid if action is REDIRECT\\_PREFIX.
-        :param pulumi.Input[str] redirect_url: Requests matching this policy will be redirected to this URL.
-               Only valid if action is REDIRECT\\_TO\\_URL.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an L7 policy. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               L7 Policy.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the L7 Policy.  Only administrative users can specify a tenant UUID
-               other than their own. Changing this creates a new L7 Policy.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "listener_id", listener_id)
@@ -82,10 +55,6 @@ class L7PolicyV2Args:
     @property
     @pulumi.getter
     def action(self) -> pulumi.Input[str]:
-        """
-        The L7 Policy action - can either be REDIRECT\\_TO\\_POOL,
-        REDIRECT\\_TO\\_URL or REJECT.
-        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -95,10 +64,6 @@ class L7PolicyV2Args:
     @property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> pulumi.Input[str]:
-        """
-        The Listener on which the L7 Policy will be associated with.
-        Changing this creates a new L7 Policy.
-        """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
@@ -108,10 +73,6 @@ class L7PolicyV2Args:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The administrative state of the L7 Policy.
-        A valid value is true (UP) or false (DOWN).
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -121,9 +82,6 @@ class L7PolicyV2Args:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable description for the L7 Policy.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -133,10 +91,6 @@ class L7PolicyV2Args:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable name for the L7 Policy. Does not have
-        to be unique.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -146,9 +100,6 @@ class L7PolicyV2Args:
     @property
     @pulumi.getter
     def position(self) -> Optional[pulumi.Input[int]]:
-        """
-        The position of this policy on the listener. Positions start at 1.
-        """
         return pulumi.get(self, "position")
 
     @position.setter
@@ -158,12 +109,6 @@ class L7PolicyV2Args:
     @property
     @pulumi.getter(name="redirectHttpCode")
     def redirect_http_code(self) -> Optional[pulumi.Input[int]]:
-        """
-        Integer. Requests matching this policy will be  
-        redirected to the specified URL or Prefix URL with the HTTP response code.
-        Valid if action is REDIRECT\\_TO\\_URL or REDIRECT\\_PREFIX. Valid options are:
-        301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
-        """
         return pulumi.get(self, "redirect_http_code")
 
     @redirect_http_code.setter
@@ -173,10 +118,6 @@ class L7PolicyV2Args:
     @property
     @pulumi.getter(name="redirectPoolId")
     def redirect_pool_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Requests matching this policy will be redirected to the
-        pool with this ID. Only valid if action is REDIRECT\\_TO\\_POOL.
-        """
         return pulumi.get(self, "redirect_pool_id")
 
     @redirect_pool_id.setter
@@ -186,10 +127,6 @@ class L7PolicyV2Args:
     @property
     @pulumi.getter(name="redirectPrefix")
     def redirect_prefix(self) -> Optional[pulumi.Input[str]]:
-        """
-        Requests matching this policy will be redirected to 
-        this Prefix URL. Only valid if action is REDIRECT\\_PREFIX.
-        """
         return pulumi.get(self, "redirect_prefix")
 
     @redirect_prefix.setter
@@ -199,10 +136,6 @@ class L7PolicyV2Args:
     @property
     @pulumi.getter(name="redirectUrl")
     def redirect_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        Requests matching this policy will be redirected to this URL.
-        Only valid if action is REDIRECT\\_TO\\_URL.
-        """
         return pulumi.get(self, "redirect_url")
 
     @redirect_url.setter
@@ -212,12 +145,6 @@ class L7PolicyV2Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an L7 policy. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        L7 Policy.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -227,11 +154,6 @@ class L7PolicyV2Args:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required for admins. The UUID of the tenant who owns
-        the L7 Policy.  Only administrative users can specify a tenant UUID
-        other than their own. Changing this creates a new L7 Policy.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -256,33 +178,6 @@ class _L7PolicyV2State:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering L7PolicyV2 resources.
-        :param pulumi.Input[str] action: The L7 Policy action - can either be REDIRECT\\_TO\\_POOL,
-               REDIRECT\\_TO\\_URL or REJECT.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the L7 Policy.
-               A valid value is true (UP) or false (DOWN).
-        :param pulumi.Input[str] description: Human-readable description for the L7 Policy.
-        :param pulumi.Input[str] listener_id: The Listener on which the L7 Policy will be associated with.
-               Changing this creates a new L7 Policy.
-        :param pulumi.Input[str] name: Human-readable name for the L7 Policy. Does not have
-               to be unique.
-        :param pulumi.Input[int] position: The position of this policy on the listener. Positions start at 1.
-        :param pulumi.Input[int] redirect_http_code: Integer. Requests matching this policy will be  
-               redirected to the specified URL or Prefix URL with the HTTP response code.
-               Valid if action is REDIRECT\\_TO\\_URL or REDIRECT\\_PREFIX. Valid options are:
-               301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
-        :param pulumi.Input[str] redirect_pool_id: Requests matching this policy will be redirected to the
-               pool with this ID. Only valid if action is REDIRECT\\_TO\\_POOL.
-        :param pulumi.Input[str] redirect_prefix: Requests matching this policy will be redirected to 
-               this Prefix URL. Only valid if action is REDIRECT\\_PREFIX.
-        :param pulumi.Input[str] redirect_url: Requests matching this policy will be redirected to this URL.
-               Only valid if action is REDIRECT\\_TO\\_URL.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an L7 policy. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               L7 Policy.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the L7 Policy.  Only administrative users can specify a tenant UUID
-               other than their own. Changing this creates a new L7 Policy.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -312,10 +207,6 @@ class _L7PolicyV2State:
     @property
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
-        """
-        The L7 Policy action - can either be REDIRECT\\_TO\\_POOL,
-        REDIRECT\\_TO\\_URL or REJECT.
-        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -325,10 +216,6 @@ class _L7PolicyV2State:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The administrative state of the L7 Policy.
-        A valid value is true (UP) or false (DOWN).
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -338,9 +225,6 @@ class _L7PolicyV2State:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable description for the L7 Policy.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -350,10 +234,6 @@ class _L7PolicyV2State:
     @property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Listener on which the L7 Policy will be associated with.
-        Changing this creates a new L7 Policy.
-        """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
@@ -363,10 +243,6 @@ class _L7PolicyV2State:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable name for the L7 Policy. Does not have
-        to be unique.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -376,9 +252,6 @@ class _L7PolicyV2State:
     @property
     @pulumi.getter
     def position(self) -> Optional[pulumi.Input[int]]:
-        """
-        The position of this policy on the listener. Positions start at 1.
-        """
         return pulumi.get(self, "position")
 
     @position.setter
@@ -388,12 +261,6 @@ class _L7PolicyV2State:
     @property
     @pulumi.getter(name="redirectHttpCode")
     def redirect_http_code(self) -> Optional[pulumi.Input[int]]:
-        """
-        Integer. Requests matching this policy will be  
-        redirected to the specified URL or Prefix URL with the HTTP response code.
-        Valid if action is REDIRECT\\_TO\\_URL or REDIRECT\\_PREFIX. Valid options are:
-        301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
-        """
         return pulumi.get(self, "redirect_http_code")
 
     @redirect_http_code.setter
@@ -403,10 +270,6 @@ class _L7PolicyV2State:
     @property
     @pulumi.getter(name="redirectPoolId")
     def redirect_pool_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Requests matching this policy will be redirected to the
-        pool with this ID. Only valid if action is REDIRECT\\_TO\\_POOL.
-        """
         return pulumi.get(self, "redirect_pool_id")
 
     @redirect_pool_id.setter
@@ -416,10 +279,6 @@ class _L7PolicyV2State:
     @property
     @pulumi.getter(name="redirectPrefix")
     def redirect_prefix(self) -> Optional[pulumi.Input[str]]:
-        """
-        Requests matching this policy will be redirected to 
-        this Prefix URL. Only valid if action is REDIRECT\\_PREFIX.
-        """
         return pulumi.get(self, "redirect_prefix")
 
     @redirect_prefix.setter
@@ -429,10 +288,6 @@ class _L7PolicyV2State:
     @property
     @pulumi.getter(name="redirectUrl")
     def redirect_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        Requests matching this policy will be redirected to this URL.
-        Only valid if action is REDIRECT\\_TO\\_URL.
-        """
         return pulumi.get(self, "redirect_url")
 
     @redirect_url.setter
@@ -442,12 +297,6 @@ class _L7PolicyV2State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an L7 policy. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        L7 Policy.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -457,11 +306,6 @@ class _L7PolicyV2State:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required for admins. The UUID of the tenant who owns
-        the L7 Policy.  Only administrative users can specify a tenant UUID
-        other than their own. Changing this creates a new L7 Policy.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -488,81 +332,9 @@ class L7PolicyV2(pulumi.CustomResource):
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a Load Balancer L7 Policy resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network_1",
-            name="network_1",
-            admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet_1",
-            name="subnet_1",
-            cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
-        loadbalancer1 = openstack.LbLoadbalancerV2("loadbalancer_1",
-            name="loadbalancer_1",
-            vip_subnet_id=subnet1.id)
-        listener1 = openstack.loadbalancer.Listener("listener_1",
-            name="listener_1",
-            protocol="HTTP",
-            protocol_port=8080,
-            loadbalancer_id=loadbalancer1.id)
-        pool1 = openstack.loadbalancer.Pool("pool_1",
-            name="pool_1",
-            protocol="HTTP",
-            lb_method="ROUND_ROBIN",
-            loadbalancer_id=loadbalancer1.id)
-        l7policy1 = openstack.loadbalancer.L7PolicyV2("l7policy_1",
-            name="test",
-            action="REDIRECT_TO_POOL",
-            description="test l7 policy",
-            position=1,
-            listener_id=listener1.id,
-            redirect_pool_id=pool1.id)
-        ```
-
-        ## Import
-
-        Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.:
-
-        ```sh
-        $ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
-        ```
-
+        Create a L7PolicyV2 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: The L7 Policy action - can either be REDIRECT\\_TO\\_POOL,
-               REDIRECT\\_TO\\_URL or REJECT.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the L7 Policy.
-               A valid value is true (UP) or false (DOWN).
-        :param pulumi.Input[str] description: Human-readable description for the L7 Policy.
-        :param pulumi.Input[str] listener_id: The Listener on which the L7 Policy will be associated with.
-               Changing this creates a new L7 Policy.
-        :param pulumi.Input[str] name: Human-readable name for the L7 Policy. Does not have
-               to be unique.
-        :param pulumi.Input[int] position: The position of this policy on the listener. Positions start at 1.
-        :param pulumi.Input[int] redirect_http_code: Integer. Requests matching this policy will be  
-               redirected to the specified URL or Prefix URL with the HTTP response code.
-               Valid if action is REDIRECT\\_TO\\_URL or REDIRECT\\_PREFIX. Valid options are:
-               301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
-        :param pulumi.Input[str] redirect_pool_id: Requests matching this policy will be redirected to the
-               pool with this ID. Only valid if action is REDIRECT\\_TO\\_POOL.
-        :param pulumi.Input[str] redirect_prefix: Requests matching this policy will be redirected to 
-               this Prefix URL. Only valid if action is REDIRECT\\_PREFIX.
-        :param pulumi.Input[str] redirect_url: Requests matching this policy will be redirected to this URL.
-               Only valid if action is REDIRECT\\_TO\\_URL.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an L7 policy. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               L7 Policy.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the L7 Policy.  Only administrative users can specify a tenant UUID
-               other than their own. Changing this creates a new L7 Policy.
         """
         ...
     @overload
@@ -571,52 +343,7 @@ class L7PolicyV2(pulumi.CustomResource):
                  args: L7PolicyV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Load Balancer L7 Policy resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network_1",
-            name="network_1",
-            admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet_1",
-            name="subnet_1",
-            cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
-        loadbalancer1 = openstack.LbLoadbalancerV2("loadbalancer_1",
-            name="loadbalancer_1",
-            vip_subnet_id=subnet1.id)
-        listener1 = openstack.loadbalancer.Listener("listener_1",
-            name="listener_1",
-            protocol="HTTP",
-            protocol_port=8080,
-            loadbalancer_id=loadbalancer1.id)
-        pool1 = openstack.loadbalancer.Pool("pool_1",
-            name="pool_1",
-            protocol="HTTP",
-            lb_method="ROUND_ROBIN",
-            loadbalancer_id=loadbalancer1.id)
-        l7policy1 = openstack.loadbalancer.L7PolicyV2("l7policy_1",
-            name="test",
-            action="REDIRECT_TO_POOL",
-            description="test l7 policy",
-            position=1,
-            listener_id=listener1.id,
-            redirect_pool_id=pool1.id)
-        ```
-
-        ## Import
-
-        Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.:
-
-        ```sh
-        $ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
-        ```
-
+        Create a L7PolicyV2 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param L7PolicyV2Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -698,33 +425,6 @@ class L7PolicyV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: The L7 Policy action - can either be REDIRECT\\_TO\\_POOL,
-               REDIRECT\\_TO\\_URL or REJECT.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the L7 Policy.
-               A valid value is true (UP) or false (DOWN).
-        :param pulumi.Input[str] description: Human-readable description for the L7 Policy.
-        :param pulumi.Input[str] listener_id: The Listener on which the L7 Policy will be associated with.
-               Changing this creates a new L7 Policy.
-        :param pulumi.Input[str] name: Human-readable name for the L7 Policy. Does not have
-               to be unique.
-        :param pulumi.Input[int] position: The position of this policy on the listener. Positions start at 1.
-        :param pulumi.Input[int] redirect_http_code: Integer. Requests matching this policy will be  
-               redirected to the specified URL or Prefix URL with the HTTP response code.
-               Valid if action is REDIRECT\\_TO\\_URL or REDIRECT\\_PREFIX. Valid options are:
-               301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
-        :param pulumi.Input[str] redirect_pool_id: Requests matching this policy will be redirected to the
-               pool with this ID. Only valid if action is REDIRECT\\_TO\\_POOL.
-        :param pulumi.Input[str] redirect_prefix: Requests matching this policy will be redirected to 
-               this Prefix URL. Only valid if action is REDIRECT\\_PREFIX.
-        :param pulumi.Input[str] redirect_url: Requests matching this policy will be redirected to this URL.
-               Only valid if action is REDIRECT\\_TO\\_URL.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an L7 policy. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               L7 Policy.
-        :param pulumi.Input[str] tenant_id: Required for admins. The UUID of the tenant who owns
-               the L7 Policy.  Only administrative users can specify a tenant UUID
-               other than their own. Changing this creates a new L7 Policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -747,111 +447,60 @@ class L7PolicyV2(pulumi.CustomResource):
     @property
     @pulumi.getter
     def action(self) -> pulumi.Output[str]:
-        """
-        The L7 Policy action - can either be REDIRECT\\_TO\\_POOL,
-        REDIRECT\\_TO\\_URL or REJECT.
-        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[Optional[bool]]:
-        """
-        The administrative state of the L7 Policy.
-        A valid value is true (UP) or false (DOWN).
-        """
         return pulumi.get(self, "admin_state_up")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        Human-readable description for the L7 Policy.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> pulumi.Output[str]:
-        """
-        The Listener on which the L7 Policy will be associated with.
-        Changing this creates a new L7 Policy.
-        """
         return pulumi.get(self, "listener_id")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Human-readable name for the L7 Policy. Does not have
-        to be unique.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def position(self) -> pulumi.Output[int]:
-        """
-        The position of this policy on the listener. Positions start at 1.
-        """
         return pulumi.get(self, "position")
 
     @property
     @pulumi.getter(name="redirectHttpCode")
     def redirect_http_code(self) -> pulumi.Output[int]:
-        """
-        Integer. Requests matching this policy will be  
-        redirected to the specified URL or Prefix URL with the HTTP response code.
-        Valid if action is REDIRECT\\_TO\\_URL or REDIRECT\\_PREFIX. Valid options are:
-        301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
-        """
         return pulumi.get(self, "redirect_http_code")
 
     @property
     @pulumi.getter(name="redirectPoolId")
     def redirect_pool_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        Requests matching this policy will be redirected to the
-        pool with this ID. Only valid if action is REDIRECT\\_TO\\_POOL.
-        """
         return pulumi.get(self, "redirect_pool_id")
 
     @property
     @pulumi.getter(name="redirectPrefix")
     def redirect_prefix(self) -> pulumi.Output[Optional[str]]:
-        """
-        Requests matching this policy will be redirected to 
-        this Prefix URL. Only valid if action is REDIRECT\\_PREFIX.
-        """
         return pulumi.get(self, "redirect_prefix")
 
     @property
     @pulumi.getter(name="redirectUrl")
     def redirect_url(self) -> pulumi.Output[Optional[str]]:
-        """
-        Requests matching this policy will be redirected to this URL.
-        Only valid if action is REDIRECT\\_TO\\_URL.
-        """
         return pulumi.get(self, "redirect_url")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an L7 policy. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        L7 Policy.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
-        """
-        Required for admins. The UUID of the tenant who owns
-        the L7 Policy.  Only administrative users can specify a tenant UUID
-        other than their own. Changing this creates a new L7 Policy.
-        """
         return pulumi.get(self, "tenant_id")
 

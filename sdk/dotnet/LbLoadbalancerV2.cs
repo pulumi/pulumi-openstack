@@ -25,7 +25,7 @@ namespace Pulumi.OpenStack
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var lb1 = new OpenStack.LbLoadbalancerV2("lb_1", new()
+    ///     var lb1 = new OpenStack.LoadBalancer.LoadBalancer("lb_1", new()
     ///     {
     ///         VipSubnetId = "d9415786-5f1a-428b-b35f-2f1523e146d2",
     ///     });
@@ -41,6 +41,7 @@ namespace Pulumi.OpenStack
     /// $ pulumi import openstack:index/lbLoadbalancerV2:LbLoadbalancerV2 loadbalancer_1 19bcfdc7-c521-4a7e-9459-6750bd16df76
     /// ```
     /// </summary>
+    [Obsolete(@"openstack.index/lbloadbalancerv2.LbLoadbalancerV2 has been deprecated in favor of openstack.loadbalancer/loadbalancer.LoadBalancer")]
     [OpenStackResourceType("openstack:index/lbLoadbalancerV2:LbLoadbalancerV2")]
     public partial class LbLoadbalancerV2 : global::Pulumi.CustomResource
     {
@@ -183,10 +184,6 @@ namespace Pulumi.OpenStack
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "openstack:loadbalancer/loadBalancer:LoadBalancer" },
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const flavorprofile1 = new openstack.LbFlavorprofileV2("flavorprofile_1", {
+ * const flavorprofile1 = new openstack.loadbalancer.FlavorprofileV2("flavorprofile_1", {
  *     name: "amphora-single-profile",
  *     providerName: "amphora",
  *     flavorData: JSON.stringify({
@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const flavorprofile1 = new openstack.LbFlavorprofileV2("flavorprofile_1", {
+ * const flavorprofile1 = new openstack.loadbalancer.FlavorprofileV2("flavorprofile_1", {
  *     name: "amphora-single-profile",
  *     providerName: "amphora",
  *     flavorData: "{\"loadbalancer_topology\": \"SINGLE\"}",
@@ -46,6 +46,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import openstack:index/lbFlavorprofileV2:LbFlavorprofileV2 flavorprofile_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
  * ```
+ *
+ * @deprecated openstack.index/lbflavorprofilev2.LbFlavorprofileV2 has been deprecated in favor of openstack.loadbalancer/flavorprofilev2.FlavorprofileV2
  */
 export class LbFlavorprofileV2 extends pulumi.CustomResource {
     /**
@@ -58,6 +60,7 @@ export class LbFlavorprofileV2 extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LbFlavorprofileV2State, opts?: pulumi.CustomResourceOptions): LbFlavorprofileV2 {
+        pulumi.log.warn("LbFlavorprofileV2 is deprecated: openstack.index/lbflavorprofilev2.LbFlavorprofileV2 has been deprecated in favor of openstack.loadbalancer/flavorprofilev2.FlavorprofileV2")
         return new LbFlavorprofileV2(name, <any>state, { ...opts, id: id });
     }
 
@@ -101,8 +104,11 @@ export class LbFlavorprofileV2 extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated openstack.index/lbflavorprofilev2.LbFlavorprofileV2 has been deprecated in favor of openstack.loadbalancer/flavorprofilev2.FlavorprofileV2 */
     constructor(name: string, args: LbFlavorprofileV2Args, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated openstack.index/lbflavorprofilev2.LbFlavorprofileV2 has been deprecated in favor of openstack.loadbalancer/flavorprofilev2.FlavorprofileV2 */
     constructor(name: string, argsOrState?: LbFlavorprofileV2Args | LbFlavorprofileV2State, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("LbFlavorprofileV2 is deprecated: openstack.index/lbflavorprofilev2.LbFlavorprofileV2 has been deprecated in favor of openstack.loadbalancer/flavorprofilev2.FlavorprofileV2")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

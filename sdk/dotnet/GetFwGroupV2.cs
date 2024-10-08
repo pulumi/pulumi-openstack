@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack
 {
+    [Obsolete(@"openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2")]
     public static class GetFwGroupV2
     {
         /// <summary>
@@ -24,7 +25,7 @@ namespace Pulumi.OpenStack
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @group = OpenStack.GetFwGroupV2.Invoke(new()
+        ///     var @group = OpenStack.Firewall.GetGroupV2.Invoke(new()
         ///     {
         ///         Name = "tf_test_group",
         ///     });
@@ -48,7 +49,7 @@ namespace Pulumi.OpenStack
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @group = OpenStack.GetFwGroupV2.Invoke(new()
+        ///     var @group = OpenStack.Firewall.GetGroupV2.Invoke(new()
         ///     {
         ///         Name = "tf_test_group",
         ///     });

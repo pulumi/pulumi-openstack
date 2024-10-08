@@ -29,6 +29,33 @@ export interface BgpvpnPortAssociateV2Route {
     type: string;
 }
 
+export namespace bgpvpn {
+    export interface PortAssociateV2Route {
+        /**
+         * The ID of the BGP VPN to be advertised. Required
+         * if `type` is `bgpvpn`. Conflicts with `prefix`.
+         */
+        bgpvpnId?: string;
+        /**
+         * The BGP LOCAL\_PREF value of the routes that will
+         * be advertised.
+         */
+        localPref?: number;
+        /**
+         * The CIDR prefix (v4 or v6) to be advertised. Required
+         * if `type` is `prefix`. Conflicts with `bgpvpnId`.
+         */
+        prefix?: string;
+        /**
+         * Can be `prefix` or `bgpvpn`. For the `prefix` type, the
+         * CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
+         * `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpnId` key.
+         */
+        type: string;
+    }
+
+}
+
 export namespace blockstorage {
     export interface GetVolumeV3Attachment {
         device: string;

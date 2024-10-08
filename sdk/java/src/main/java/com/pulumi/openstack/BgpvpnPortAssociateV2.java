@@ -30,9 +30,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.openstack.BgpvpnPortAssociateV2;
- * import com.pulumi.openstack.BgpvpnPortAssociateV2Args;
- * import com.pulumi.openstack.inputs.BgpvpnPortAssociateV2RouteArgs;
+ * import com.pulumi.openstack.bgpvpn.PortAssociateV2;
+ * import com.pulumi.openstack.bgpvpn.PortAssociateV2Args;
+ * import com.pulumi.openstack.bgpvpn.inputs.PortAssociateV2RouteArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,15 +46,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var association1 = new BgpvpnPortAssociateV2("association1", BgpvpnPortAssociateV2Args.builder()
+ *         var association1 = new PortAssociateV2("association1", PortAssociateV2Args.builder()
  *             .bgpvpnId("19382ec5-8098-47d9-a9c6-6270c91103f4")
  *             .portId("b83a95b8-c2c8-4eac-9a9e-ddc85bd1266f")
  *             .routes(            
- *                 BgpvpnPortAssociateV2RouteArgs.builder()
+ *                 PortAssociateV2RouteArgs.builder()
  *                     .type("prefix")
  *                     .prefix("192.168.170.1/32")
  *                     .build(),
- *                 BgpvpnPortAssociateV2RouteArgs.builder()
+ *                 PortAssociateV2RouteArgs.builder()
  *                     .type("bgpvpn")
  *                     .bgpvpnId("35af1cc6-3d0f-4c5d-86f8-8cdb508d3f0c")
  *                     .build())
@@ -78,7 +78,11 @@ import javax.annotation.Nullable;
  * $ pulumi import openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2 association_1 5bb44ecf-f8fe-4d75-8fc5-313f96ee2696/8f8fc660-3f28-414e-896a-0c7c51162fcf
  * ```
  * 
+ * @deprecated
+ * openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2
+ * 
  */
+@Deprecated /* openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2 */
 @ResourceType(type="openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2")
 public class BgpvpnPortAssociateV2 extends com.pulumi.resources.CustomResource {
     /**

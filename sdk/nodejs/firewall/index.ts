@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetGroupV2Args, GetGroupV2Result, GetGroupV2OutputArgs } from "./getGroupV2";
+export const getGroupV2: typeof import("./getGroupV2").getGroupV2 = null as any;
+export const getGroupV2Output: typeof import("./getGroupV2").getGroupV2Output = null as any;
+utilities.lazyLoad(exports, ["getGroupV2","getGroupV2Output"], () => require("./getGroupV2"));
+
+export { GetPolicyV2Args, GetPolicyV2Result, GetPolicyV2OutputArgs } from "./getPolicyV2";
+export const getPolicyV2: typeof import("./getPolicyV2").getPolicyV2 = null as any;
+export const getPolicyV2Output: typeof import("./getPolicyV2").getPolicyV2Output = null as any;
+utilities.lazyLoad(exports, ["getPolicyV2","getPolicyV2Output"], () => require("./getPolicyV2"));
+
+export { GetRuleV2Args, GetRuleV2Result, GetRuleV2OutputArgs } from "./getRuleV2";
+export const getRuleV2: typeof import("./getRuleV2").getRuleV2 = null as any;
+export const getRuleV2Output: typeof import("./getRuleV2").getRuleV2Output = null as any;
+utilities.lazyLoad(exports, ["getRuleV2","getRuleV2Output"], () => require("./getRuleV2"));
+
 export { GroupV2Args, GroupV2State } from "./groupV2";
 export type GroupV2 = import("./groupV2").GroupV2;
 export const GroupV2: typeof import("./groupV2").GroupV2 = null as any;

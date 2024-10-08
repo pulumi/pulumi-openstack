@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { FlavorprofileV2Args, FlavorprofileV2State } from "./flavorprofileV2";
+export type FlavorprofileV2 = import("./flavorprofileV2").FlavorprofileV2;
+export const FlavorprofileV2: typeof import("./flavorprofileV2").FlavorprofileV2 = null as any;
+utilities.lazyLoad(exports, ["FlavorprofileV2"], () => require("./flavorprofileV2"));
+
 export { GetFlavorV2Args, GetFlavorV2Result, GetFlavorV2OutputArgs } from "./getFlavorV2";
 export const getFlavorV2: typeof import("./getFlavorV2").getFlavorV2 = null as any;
 export const getFlavorV2Output: typeof import("./getFlavorV2").getFlavorV2Output = null as any;
@@ -24,6 +29,11 @@ export { ListenerArgs, ListenerState } from "./listener";
 export type Listener = import("./listener").Listener;
 export const Listener: typeof import("./listener").Listener = null as any;
 utilities.lazyLoad(exports, ["Listener"], () => require("./listener"));
+
+export { LoadBalancerArgs, LoadBalancerState } from "./loadBalancer";
+export type LoadBalancer = import("./loadBalancer").LoadBalancer;
+export const LoadBalancer: typeof import("./loadBalancer").LoadBalancer = null as any;
+utilities.lazyLoad(exports, ["LoadBalancer"], () => require("./loadBalancer"));
 
 export { MemberArgs, MemberState } from "./member";
 export type Member = import("./member").Member;
@@ -55,12 +65,16 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "openstack:loadbalancer/flavorprofileV2:FlavorprofileV2":
+                return new FlavorprofileV2(name, <any>undefined, { urn })
             case "openstack:loadbalancer/l7PolicyV2:L7PolicyV2":
                 return new L7PolicyV2(name, <any>undefined, { urn })
             case "openstack:loadbalancer/l7RuleV2:L7RuleV2":
                 return new L7RuleV2(name, <any>undefined, { urn })
             case "openstack:loadbalancer/listener:Listener":
                 return new Listener(name, <any>undefined, { urn })
+            case "openstack:loadbalancer/loadBalancer:LoadBalancer":
+                return new LoadBalancer(name, <any>undefined, { urn })
             case "openstack:loadbalancer/member:Member":
                 return new Member(name, <any>undefined, { urn })
             case "openstack:loadbalancer/members:Members":
@@ -76,9 +90,11 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("openstack", "loadbalancer/flavorprofileV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/l7PolicyV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/l7RuleV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/listener", _module)
+pulumi.runtime.registerResourceModule("openstack", "loadbalancer/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/member", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/members", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/monitor", _module)

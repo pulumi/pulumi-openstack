@@ -21,22 +21,22 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/bgpvpn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := openstack.NewBgpvpnPortAssociateV2(ctx, "association_1", &openstack.BgpvpnPortAssociateV2Args{
+//			_, err := bgpvpn.NewPortAssociateV2(ctx, "association_1", &bgpvpn.PortAssociateV2Args{
 //				BgpvpnId: pulumi.String("19382ec5-8098-47d9-a9c6-6270c91103f4"),
 //				PortId:   pulumi.String("b83a95b8-c2c8-4eac-9a9e-ddc85bd1266f"),
-//				Routes: openstack.BgpvpnPortAssociateV2RouteArray{
-//					&openstack.BgpvpnPortAssociateV2RouteArgs{
+//				Routes: bgpvpn.PortAssociateV2RouteArray{
+//					&bgpvpn.PortAssociateV2RouteArgs{
 //						Type:   pulumi.String("prefix"),
 //						Prefix: pulumi.String("192.168.170.1/32"),
 //					},
-//					&openstack.BgpvpnPortAssociateV2RouteArgs{
+//					&bgpvpn.PortAssociateV2RouteArgs{
 //						Type:     pulumi.String("bgpvpn"),
 //						BgpvpnId: pulumi.String("35af1cc6-3d0f-4c5d-86f8-8cdb508d3f0c"),
 //					},
@@ -62,6 +62,8 @@ import (
 // ```sh
 // $ pulumi import openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2 association_1 5bb44ecf-f8fe-4d75-8fc5-313f96ee2696/8f8fc660-3f28-414e-896a-0c7c51162fcf
 // ```
+//
+// Deprecated: openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2
 type BgpvpnPortAssociateV2 struct {
 	pulumi.CustomResourceState
 

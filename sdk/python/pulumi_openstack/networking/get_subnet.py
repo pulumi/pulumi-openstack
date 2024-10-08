@@ -93,17 +93,11 @@ class GetSubnetResult:
     @property
     @pulumi.getter(name="allTags")
     def all_tags(self) -> Sequence[str]:
-        """
-        A set of string tags applied on the subnet.
-        """
         return pulumi.get(self, "all_tags")
 
     @property
     @pulumi.getter(name="allocationPools")
     def allocation_pools(self) -> Sequence['outputs.GetSubnetAllocationPoolResult']:
-        """
-        Allocation pools of the subnet.
-        """
         return pulumi.get(self, "allocation_pools")
 
     @property
@@ -124,9 +118,6 @@ class GetSubnetResult:
     @property
     @pulumi.getter(name="dnsNameservers")
     def dns_nameservers(self) -> Sequence[str]:
-        """
-        DNS Nameservers of the subnet.
-        """
         return pulumi.get(self, "dns_nameservers")
 
     @property
@@ -137,9 +128,6 @@ class GetSubnetResult:
     @property
     @pulumi.getter(name="enableDhcp")
     def enable_dhcp(self) -> bool:
-        """
-        Whether the subnet has DHCP enabled or not.
-        """
         return pulumi.get(self, "enable_dhcp")
 
     @property
@@ -150,9 +138,6 @@ class GetSubnetResult:
     @property
     @pulumi.getter(name="hostRoutes")
     def host_routes(self) -> Sequence['outputs.GetSubnetHostRouteResult']:
-        """
-        Host Routes of the subnet.
-        """
         return pulumi.get(self, "host_routes")
 
     @property
@@ -191,17 +176,11 @@ class GetSubnetResult:
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="serviceTypes")
     def service_types(self) -> Sequence[str]:
-        """
-        Service types of the subnet.
-        """
         return pulumi.get(self, "service_types")
 
     @property
@@ -272,37 +251,7 @@ def get_subnet(cidr: Optional[str] = None,
                tenant_id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubnetResult:
     """
-    Use this data source to get the ID of an available OpenStack subnet.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    subnet1 = openstack.networking.get_subnet(name="subnet_1")
-    ```
-
-
-    :param str cidr: The CIDR of the subnet.
-    :param str description: Human-readable description of the subnet.
-    :param bool dhcp_enabled: If the subnet has DHCP enabled.
-    :param bool dns_publish_fixed_ip: If the subnet publishes DNS records.
-    :param str gateway_ip: The IP of the subnet's gateway.
-    :param int ip_version: The IP version of the subnet (either 4 or 6).
-    :param str ipv6_address_mode: The IPv6 address mode. Valid values are
-           `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
-    :param str ipv6_ra_mode: The IPv6 Router Advertisement mode. Valid values
-           are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
-    :param str name: The name of the subnet.
-    :param str network_id: The ID of the network the subnet belongs to.
-    :param str region: The region in which to obtain the V2 Neutron client.
-           A Neutron client is needed to retrieve subnet ids. If omitted, the
-           `region` argument of the provider is used.
-    :param str subnet_id: The ID of the subnet.
-    :param str subnetpool_id: The ID of the subnetpool associated with the subnet.
-    :param Sequence[str] tags: The list of subnet tags to filter.
-    :param str tenant_id: The owner of the subnet.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['cidr'] = cidr
@@ -366,36 +315,6 @@ def get_subnet_output(cidr: Optional[pulumi.Input[Optional[str]]] = None,
                       tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetResult]:
     """
-    Use this data source to get the ID of an available OpenStack subnet.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    subnet1 = openstack.networking.get_subnet(name="subnet_1")
-    ```
-
-
-    :param str cidr: The CIDR of the subnet.
-    :param str description: Human-readable description of the subnet.
-    :param bool dhcp_enabled: If the subnet has DHCP enabled.
-    :param bool dns_publish_fixed_ip: If the subnet publishes DNS records.
-    :param str gateway_ip: The IP of the subnet's gateway.
-    :param int ip_version: The IP version of the subnet (either 4 or 6).
-    :param str ipv6_address_mode: The IPv6 address mode. Valid values are
-           `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
-    :param str ipv6_ra_mode: The IPv6 Router Advertisement mode. Valid values
-           are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
-    :param str name: The name of the subnet.
-    :param str network_id: The ID of the network the subnet belongs to.
-    :param str region: The region in which to obtain the V2 Neutron client.
-           A Neutron client is needed to retrieve subnet ids. If omitted, the
-           `region` argument of the provider is used.
-    :param str subnet_id: The ID of the subnet.
-    :param str subnetpool_id: The ID of the subnetpool associated with the subnet.
-    :param Sequence[str] tags: The list of subnet tags to filter.
-    :param str tenant_id: The owner of the subnet.
+    Use this data source to access information about an existing resource.
     """
     ...

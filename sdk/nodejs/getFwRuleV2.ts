@@ -13,12 +13,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const rule = openstack.getFwRuleV2({
+ * const rule = openstack.firewall.getRuleV2({
  *     name: "tf_test_rule",
  * });
  * ```
  */
+/** @deprecated openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2 */
 export function getFwRuleV2(args?: GetFwRuleV2Args, opts?: pulumi.InvokeOptions): Promise<GetFwRuleV2Result> {
+    pulumi.log.warn("getFwRuleV2 is deprecated: openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:index/getFwRuleV2:getFwRuleV2", {
@@ -201,12 +203,14 @@ export interface GetFwRuleV2Result {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const rule = openstack.getFwRuleV2({
+ * const rule = openstack.firewall.getRuleV2({
  *     name: "tf_test_rule",
  * });
  * ```
  */
+/** @deprecated openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2 */
 export function getFwRuleV2Output(args?: GetFwRuleV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFwRuleV2Result> {
+    pulumi.log.warn("getFwRuleV2 is deprecated: openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:index/getFwRuleV2:getFwRuleV2", {

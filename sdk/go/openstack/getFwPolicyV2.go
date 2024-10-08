@@ -20,14 +20,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/firewall"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := openstack.GetFwPolicyV2(ctx, &openstack.GetFwPolicyV2Args{
+//			_, err := firewall.LookupPolicyV2(ctx, &firewall.LookupPolicyV2Args{
 //				Name: pulumi.StringRef("tf_test_policy"),
 //			}, nil)
 //			if err != nil {
@@ -38,6 +38,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2
 func GetFwPolicyV2(ctx *pulumi.Context, args *GetFwPolicyV2Args, opts ...pulumi.InvokeOption) (*GetFwPolicyV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFwPolicyV2Result
