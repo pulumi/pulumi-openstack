@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -184,9 +189,6 @@ def get_snapshot_v3(most_recent: Optional[bool] = None,
         size=pulumi.get(__ret__, 'size'),
         status=pulumi.get(__ret__, 'status'),
         volume_id=pulumi.get(__ret__, 'volume_id'))
-
-
-@_utilities.lift_output_func(get_snapshot_v3)
 def get_snapshot_v3_output(most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
                            region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -215,4 +217,21 @@ def get_snapshot_v3_output(most_recent: Optional[pulumi.Input[Optional[bool]]] =
     :param str status: The status of the snapshot.
     :param str volume_id: The ID of the snapshot's volume.
     """
-    ...
+    __args__ = dict()
+    __args__['mostRecent'] = most_recent
+    __args__['name'] = name
+    __args__['region'] = region
+    __args__['status'] = status
+    __args__['volumeId'] = volume_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:blockstorage/getSnapshotV3:getSnapshotV3', __args__, opts=opts, typ=GetSnapshotV3Result)
+    return __ret__.apply(lambda __response__: GetSnapshotV3Result(
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        metadata=pulumi.get(__response__, 'metadata'),
+        most_recent=pulumi.get(__response__, 'most_recent'),
+        name=pulumi.get(__response__, 'name'),
+        region=pulumi.get(__response__, 'region'),
+        size=pulumi.get(__response__, 'size'),
+        status=pulumi.get(__response__, 'status'),
+        volume_id=pulumi.get(__response__, 'volume_id')))

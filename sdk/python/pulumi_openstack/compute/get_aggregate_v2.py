@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -127,9 +132,6 @@ def get_aggregate_v2(hosts: Optional[Sequence[str]] = None,
         metadata=pulumi.get(__ret__, 'metadata'),
         name=pulumi.get(__ret__, 'name'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_aggregate_v2)
 def get_aggregate_v2_output(hosts: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             metadata: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                             name: Optional[pulumi.Input[str]] = None,
@@ -152,4 +154,15 @@ def get_aggregate_v2_output(hosts: Optional[pulumi.Input[Optional[Sequence[str]]
     :param Mapping[str, str] metadata: Metadata of the Host Aggregate
     :param str name: The name of the host aggregate
     """
-    ...
+    __args__ = dict()
+    __args__['hosts'] = hosts
+    __args__['metadata'] = metadata
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:compute/getAggregateV2:getAggregateV2', __args__, opts=opts, typ=GetAggregateV2Result)
+    return __ret__.apply(lambda __response__: GetAggregateV2Result(
+        hosts=pulumi.get(__response__, 'hosts'),
+        id=pulumi.get(__response__, 'id'),
+        metadata=pulumi.get(__response__, 'metadata'),
+        name=pulumi.get(__response__, 'name'),
+        zone=pulumi.get(__response__, 'zone')))

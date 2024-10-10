@@ -4,15 +4,32 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'VolumeAttachmentArgs',
+    'VolumeAttachmentArgsDict',
     'VolumeSchedulerHintArgs',
+    'VolumeSchedulerHintArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class VolumeAttachmentArgsDict(TypedDict):
+        device: NotRequired[pulumi.Input[str]]
+        id: NotRequired[pulumi.Input[str]]
+        instance_id: NotRequired[pulumi.Input[str]]
+elif False:
+    VolumeAttachmentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VolumeAttachmentArgs:
@@ -54,6 +71,44 @@ class VolumeAttachmentArgs:
     def instance_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_id", value)
 
+
+if not MYPY:
+    class VolumeSchedulerHintArgsDict(TypedDict):
+        additional_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Arbitrary key/value pairs of additional
+        properties to pass to the scheduler.
+        """
+        different_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The volume should be scheduled on a 
+        different host from the set of volumes specified in the list provided.
+        """
+        local_to_instance: NotRequired[pulumi.Input[str]]
+        """
+        An instance UUID. The volume should be 
+        scheduled on the same host as the instance.
+        """
+        query: NotRequired[pulumi.Input[str]]
+        """
+        A conditional query that a back-end must pass in
+        order to host a volume. The query must use the `JsonFilter` syntax
+        which is described
+        [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
+        At this time, only simple queries are supported. Compound queries using
+        `and`, `or`, or `not` are not supported. An example of a simple query is:
+
+        ```
+        [“=”, “$backend_id”, “rbd:vol@ceph#cloud”]
+        ```
+        """
+        same_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of volume UUIDs. The volume should be
+        scheduled on the same host as another volume specified in the list provided.
+        """
+elif False:
+    VolumeSchedulerHintArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VolumeSchedulerHintArgs:

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -412,9 +417,6 @@ def get_secret(acl_only: Optional[bool] = None,
         status=pulumi.get(__ret__, 'status'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         updated_at_filter=pulumi.get(__ret__, 'updated_at_filter'))
-
-
-@_utilities.lift_output_func(get_secret)
 def get_secret_output(acl_only: Optional[pulumi.Input[Optional[bool]]] = None,
                       algorithm: Optional[pulumi.Input[Optional[str]]] = None,
                       bit_length: Optional[pulumi.Input[Optional[int]]] = None,
@@ -479,4 +481,40 @@ def get_secret_output(acl_only: Optional[pulumi.Input[Optional[bool]]] = None,
            updated matching the specified criteria. See Date Filters below for more
            detail.
     """
-    ...
+    __args__ = dict()
+    __args__['aclOnly'] = acl_only
+    __args__['algorithm'] = algorithm
+    __args__['bitLength'] = bit_length
+    __args__['createdAtFilter'] = created_at_filter
+    __args__['expirationFilter'] = expiration_filter
+    __args__['mode'] = mode
+    __args__['name'] = name
+    __args__['region'] = region
+    __args__['secretType'] = secret_type
+    __args__['updatedAtFilter'] = updated_at_filter
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:keymanager/getSecret:getSecret', __args__, opts=opts, typ=GetSecretResult)
+    return __ret__.apply(lambda __response__: GetSecretResult(
+        acl_only=pulumi.get(__response__, 'acl_only'),
+        acls=pulumi.get(__response__, 'acls'),
+        algorithm=pulumi.get(__response__, 'algorithm'),
+        bit_length=pulumi.get(__response__, 'bit_length'),
+        content_types=pulumi.get(__response__, 'content_types'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        created_at_filter=pulumi.get(__response__, 'created_at_filter'),
+        creator_id=pulumi.get(__response__, 'creator_id'),
+        expiration=pulumi.get(__response__, 'expiration'),
+        expiration_filter=pulumi.get(__response__, 'expiration_filter'),
+        id=pulumi.get(__response__, 'id'),
+        metadata=pulumi.get(__response__, 'metadata'),
+        mode=pulumi.get(__response__, 'mode'),
+        name=pulumi.get(__response__, 'name'),
+        payload=pulumi.get(__response__, 'payload'),
+        payload_content_encoding=pulumi.get(__response__, 'payload_content_encoding'),
+        payload_content_type=pulumi.get(__response__, 'payload_content_type'),
+        region=pulumi.get(__response__, 'region'),
+        secret_ref=pulumi.get(__response__, 'secret_ref'),
+        secret_type=pulumi.get(__response__, 'secret_type'),
+        status=pulumi.get(__response__, 'status'),
+        updated_at=pulumi.get(__response__, 'updated_at'),
+        updated_at_filter=pulumi.get(__response__, 'updated_at_filter')))

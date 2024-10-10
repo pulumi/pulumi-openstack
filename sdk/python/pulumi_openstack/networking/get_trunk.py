@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -215,9 +220,6 @@ def get_trunk(admin_state_up: Optional[bool] = None,
         sub_ports=pulumi.get(__ret__, 'sub_ports'),
         tags=pulumi.get(__ret__, 'tags'),
         trunk_id=pulumi.get(__ret__, 'trunk_id'))
-
-
-@_utilities.lift_output_func(get_trunk)
 def get_trunk_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = None,
                      description: Optional[pulumi.Input[Optional[str]]] = None,
                      name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -253,4 +255,28 @@ def get_trunk_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = No
     :param Sequence[str] tags: The list of trunk tags to filter.
     :param str trunk_id: The ID of the trunk.
     """
-    ...
+    __args__ = dict()
+    __args__['adminStateUp'] = admin_state_up
+    __args__['description'] = description
+    __args__['name'] = name
+    __args__['portId'] = port_id
+    __args__['projectId'] = project_id
+    __args__['region'] = region
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['trunkId'] = trunk_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:networking/getTrunk:getTrunk', __args__, opts=opts, typ=GetTrunkResult)
+    return __ret__.apply(lambda __response__: GetTrunkResult(
+        admin_state_up=pulumi.get(__response__, 'admin_state_up'),
+        all_tags=pulumi.get(__response__, 'all_tags'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        port_id=pulumi.get(__response__, 'port_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
+        status=pulumi.get(__response__, 'status'),
+        sub_ports=pulumi.get(__response__, 'sub_ports'),
+        tags=pulumi.get(__response__, 'tags'),
+        trunk_id=pulumi.get(__response__, 'trunk_id')))

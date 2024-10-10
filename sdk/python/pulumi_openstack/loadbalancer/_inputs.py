@@ -4,15 +4,77 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'MembersMemberArgs',
+    'MembersMemberArgsDict',
     'PoolPersistenceArgs',
+    'PoolPersistenceArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class MembersMemberArgsDict(TypedDict):
+        address: pulumi.Input[str]
+        """
+        The IP address of the members to receive traffic from
+        the load balancer.
+        """
+        protocol_port: pulumi.Input[int]
+        """
+        The port on which to listen for client traffic.
+        """
+        admin_state_up: NotRequired[pulumi.Input[bool]]
+        """
+        The administrative state of the member.
+        A valid value is true (UP) or false (DOWN). Defaults to true.
+        """
+        backup: NotRequired[pulumi.Input[bool]]
+        """
+        A bool that indicates whether the member is
+        backup. **Requires octavia minor version 2.1 or later**.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The unique ID for the members.
+        """
+        monitor_address: NotRequired[pulumi.Input[str]]
+        """
+        An alternate IP address used for health 
+        monitoring a backend member.
+        """
+        monitor_port: NotRequired[pulumi.Input[int]]
+        """
+        An alternate protocol port used for health 
+        monitoring a backend member.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Human-readable name for the member.
+        """
+        subnet_id: NotRequired[pulumi.Input[str]]
+        """
+        The subnet in which to access the member.
+        """
+        weight: NotRequired[pulumi.Input[int]]
+        """
+        A positive integer value that indicates the relative
+        portion of traffic that this members should receive from the pool. For
+        example, a member with a weight of 10 receives five times as much traffic
+        as a member with a weight of 2. Defaults to 1.
+        """
+elif False:
+    MembersMemberArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MembersMemberArgs:
@@ -194,6 +256,21 @@ class MembersMemberArgs:
     def weight(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "weight", value)
 
+
+if not MYPY:
+    class PoolPersistenceArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        The type of persistence mode. The current specification
+        supports SOURCE_IP, HTTP_COOKIE, and APP_COOKIE.
+        """
+        cookie_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the cookie if persistence mode is set
+        appropriately. Required if `type = APP_COOKIE`.
+        """
+elif False:
+    PoolPersistenceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PoolPersistenceArgs:

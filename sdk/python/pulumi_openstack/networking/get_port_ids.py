@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -298,9 +303,6 @@ def get_port_ids(admin_state_up: Optional[bool] = None,
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'))
-
-
-@_utilities.lift_output_func(get_port_ids)
 def get_port_ids_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = None,
                         description: Optional[pulumi.Input[Optional[str]]] = None,
                         device_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -352,4 +354,43 @@ def get_port_ids_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] =
     :param str status: The status of the port.
     :param Sequence[str] tags: The list of port tags to filter.
     """
-    ...
+    __args__ = dict()
+    __args__['adminStateUp'] = admin_state_up
+    __args__['description'] = description
+    __args__['deviceId'] = device_id
+    __args__['deviceOwner'] = device_owner
+    __args__['dnsName'] = dns_name
+    __args__['fixedIp'] = fixed_ip
+    __args__['macAddress'] = mac_address
+    __args__['name'] = name
+    __args__['networkId'] = network_id
+    __args__['projectId'] = project_id
+    __args__['region'] = region
+    __args__['securityGroupIds'] = security_group_ids
+    __args__['sortDirection'] = sort_direction
+    __args__['sortKey'] = sort_key
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['tenantId'] = tenant_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:networking/getPortIds:getPortIds', __args__, opts=opts, typ=GetPortIdsResult)
+    return __ret__.apply(lambda __response__: GetPortIdsResult(
+        admin_state_up=pulumi.get(__response__, 'admin_state_up'),
+        description=pulumi.get(__response__, 'description'),
+        device_id=pulumi.get(__response__, 'device_id'),
+        device_owner=pulumi.get(__response__, 'device_owner'),
+        dns_name=pulumi.get(__response__, 'dns_name'),
+        fixed_ip=pulumi.get(__response__, 'fixed_ip'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        mac_address=pulumi.get(__response__, 'mac_address'),
+        name=pulumi.get(__response__, 'name'),
+        network_id=pulumi.get(__response__, 'network_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
+        security_group_ids=pulumi.get(__response__, 'security_group_ids'),
+        sort_direction=pulumi.get(__response__, 'sort_direction'),
+        sort_key=pulumi.get(__response__, 'sort_key'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        tenant_id=pulumi.get(__response__, 'tenant_id')))

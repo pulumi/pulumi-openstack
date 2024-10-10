@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -280,9 +285,6 @@ def get_quota_set_v2(project_id: Optional[str] = None,
         security_groups=pulumi.get(__ret__, 'security_groups'),
         server_group_members=pulumi.get(__ret__, 'server_group_members'),
         server_groups=pulumi.get(__ret__, 'server_groups'))
-
-
-@_utilities.lift_output_func(get_quota_set_v2)
 def get_quota_set_v2_output(project_id: Optional[pulumi.Input[str]] = None,
                             region: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQuotaSetV2Result]:
@@ -303,4 +305,26 @@ def get_quota_set_v2_output(project_id: Optional[pulumi.Input[str]] = None,
     :param str region: The region in which to obtain the V2 Compute client.
            If omitted, the `region` argument of the provider is used.
     """
-    ...
+    __args__ = dict()
+    __args__['projectId'] = project_id
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:compute/getQuotaSetV2:getQuotaSetV2', __args__, opts=opts, typ=GetQuotaSetV2Result)
+    return __ret__.apply(lambda __response__: GetQuotaSetV2Result(
+        cores=pulumi.get(__response__, 'cores'),
+        fixed_ips=pulumi.get(__response__, 'fixed_ips'),
+        floating_ips=pulumi.get(__response__, 'floating_ips'),
+        id=pulumi.get(__response__, 'id'),
+        injected_file_content_bytes=pulumi.get(__response__, 'injected_file_content_bytes'),
+        injected_file_path_bytes=pulumi.get(__response__, 'injected_file_path_bytes'),
+        injected_files=pulumi.get(__response__, 'injected_files'),
+        instances=pulumi.get(__response__, 'instances'),
+        key_pairs=pulumi.get(__response__, 'key_pairs'),
+        metadata_items=pulumi.get(__response__, 'metadata_items'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        ram=pulumi.get(__response__, 'ram'),
+        region=pulumi.get(__response__, 'region'),
+        security_group_rules=pulumi.get(__response__, 'security_group_rules'),
+        security_groups=pulumi.get(__response__, 'security_groups'),
+        server_group_members=pulumi.get(__response__, 'server_group_members'),
+        server_groups=pulumi.get(__response__, 'server_groups')))

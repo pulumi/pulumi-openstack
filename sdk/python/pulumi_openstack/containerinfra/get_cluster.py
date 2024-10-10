@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -420,9 +425,6 @@ def get_cluster(name: Optional[str] = None,
         stack_id=pulumi.get(__ret__, 'stack_id'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         user_id=pulumi.get(__ret__, 'user_id'))
-
-
-@_utilities.lift_output_func(get_cluster)
 def get_cluster_output(name: Optional[pulumi.Input[str]] = None,
                        region: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
@@ -444,4 +446,37 @@ def get_cluster_output(name: Optional[pulumi.Input[str]] = None,
            client.
            If omitted, the `region` argument of the provider is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:containerinfra/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult)
+    return __ret__.apply(lambda __response__: GetClusterResult(
+        api_address=pulumi.get(__response__, 'api_address'),
+        cluster_template_id=pulumi.get(__response__, 'cluster_template_id'),
+        coe_version=pulumi.get(__response__, 'coe_version'),
+        container_version=pulumi.get(__response__, 'container_version'),
+        create_timeout=pulumi.get(__response__, 'create_timeout'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        discovery_url=pulumi.get(__response__, 'discovery_url'),
+        docker_volume_size=pulumi.get(__response__, 'docker_volume_size'),
+        fixed_network=pulumi.get(__response__, 'fixed_network'),
+        fixed_subnet=pulumi.get(__response__, 'fixed_subnet'),
+        flavor=pulumi.get(__response__, 'flavor'),
+        floating_ip_enabled=pulumi.get(__response__, 'floating_ip_enabled'),
+        id=pulumi.get(__response__, 'id'),
+        keypair=pulumi.get(__response__, 'keypair'),
+        kubeconfig=pulumi.get(__response__, 'kubeconfig'),
+        labels=pulumi.get(__response__, 'labels'),
+        master_addresses=pulumi.get(__response__, 'master_addresses'),
+        master_count=pulumi.get(__response__, 'master_count'),
+        master_flavor=pulumi.get(__response__, 'master_flavor'),
+        master_lb_enabled=pulumi.get(__response__, 'master_lb_enabled'),
+        name=pulumi.get(__response__, 'name'),
+        node_addresses=pulumi.get(__response__, 'node_addresses'),
+        node_count=pulumi.get(__response__, 'node_count'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
+        stack_id=pulumi.get(__response__, 'stack_id'),
+        updated_at=pulumi.get(__response__, 'updated_at'),
+        user_id=pulumi.get(__response__, 'user_id')))

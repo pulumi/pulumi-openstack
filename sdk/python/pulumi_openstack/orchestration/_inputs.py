@@ -4,14 +4,33 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'StackV1StackOutputArgs',
+    'StackV1StackOutputArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class StackV1StackOutputArgsDict(TypedDict):
+        output_key: pulumi.Input[str]
+        output_value: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the stack resource.
+        """
+elif False:
+    StackV1StackOutputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StackV1StackOutputArgs:

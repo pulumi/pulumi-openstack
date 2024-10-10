@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -253,9 +258,6 @@ def get_share_network(description: Optional[str] = None,
         security_service_id=pulumi.get(__ret__, 'security_service_id'),
         security_service_ids=pulumi.get(__ret__, 'security_service_ids'),
         segmentation_id=pulumi.get(__ret__, 'segmentation_id'))
-
-
-@_utilities.lift_output_func(get_share_network)
 def get_share_network_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                              ip_version: Optional[pulumi.Input[Optional[int]]] = None,
                              name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -293,4 +295,29 @@ def get_share_network_output(description: Optional[pulumi.Input[Optional[str]]] 
            the share network.
     :param int segmentation_id: The share network segmentation ID.
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['ipVersion'] = ip_version
+    __args__['name'] = name
+    __args__['networkType'] = network_type
+    __args__['neutronNetId'] = neutron_net_id
+    __args__['neutronSubnetId'] = neutron_subnet_id
+    __args__['region'] = region
+    __args__['securityServiceId'] = security_service_id
+    __args__['segmentationId'] = segmentation_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:sharedfilesystem/getShareNetwork:getShareNetwork', __args__, opts=opts, typ=GetShareNetworkResult)
+    return __ret__.apply(lambda __response__: GetShareNetworkResult(
+        cidr=pulumi.get(__response__, 'cidr'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        ip_version=pulumi.get(__response__, 'ip_version'),
+        name=pulumi.get(__response__, 'name'),
+        network_type=pulumi.get(__response__, 'network_type'),
+        neutron_net_id=pulumi.get(__response__, 'neutron_net_id'),
+        neutron_subnet_id=pulumi.get(__response__, 'neutron_subnet_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
+        security_service_id=pulumi.get(__response__, 'security_service_id'),
+        security_service_ids=pulumi.get(__response__, 'security_service_ids'),
+        segmentation_id=pulumi.get(__response__, 'segmentation_id')))

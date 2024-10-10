@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -346,9 +351,6 @@ def get_subnet(cidr: Optional[str] = None,
         subnetpool_id=pulumi.get(__ret__, 'subnetpool_id'),
         tags=pulumi.get(__ret__, 'tags'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'))
-
-
-@_utilities.lift_output_func(get_subnet)
 def get_subnet_output(cidr: Optional[pulumi.Input[Optional[str]]] = None,
                       description: Optional[pulumi.Input[Optional[str]]] = None,
                       dhcp_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -398,4 +400,44 @@ def get_subnet_output(cidr: Optional[pulumi.Input[Optional[str]]] = None,
     :param Sequence[str] tags: The list of subnet tags to filter.
     :param str tenant_id: The owner of the subnet.
     """
-    ...
+    __args__ = dict()
+    __args__['cidr'] = cidr
+    __args__['description'] = description
+    __args__['dhcpEnabled'] = dhcp_enabled
+    __args__['dnsPublishFixedIp'] = dns_publish_fixed_ip
+    __args__['gatewayIp'] = gateway_ip
+    __args__['ipVersion'] = ip_version
+    __args__['ipv6AddressMode'] = ipv6_address_mode
+    __args__['ipv6RaMode'] = ipv6_ra_mode
+    __args__['name'] = name
+    __args__['networkId'] = network_id
+    __args__['region'] = region
+    __args__['subnetId'] = subnet_id
+    __args__['subnetpoolId'] = subnetpool_id
+    __args__['tags'] = tags
+    __args__['tenantId'] = tenant_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:networking/getSubnet:getSubnet', __args__, opts=opts, typ=GetSubnetResult)
+    return __ret__.apply(lambda __response__: GetSubnetResult(
+        all_tags=pulumi.get(__response__, 'all_tags'),
+        allocation_pools=pulumi.get(__response__, 'allocation_pools'),
+        cidr=pulumi.get(__response__, 'cidr'),
+        description=pulumi.get(__response__, 'description'),
+        dhcp_enabled=pulumi.get(__response__, 'dhcp_enabled'),
+        dns_nameservers=pulumi.get(__response__, 'dns_nameservers'),
+        dns_publish_fixed_ip=pulumi.get(__response__, 'dns_publish_fixed_ip'),
+        enable_dhcp=pulumi.get(__response__, 'enable_dhcp'),
+        gateway_ip=pulumi.get(__response__, 'gateway_ip'),
+        host_routes=pulumi.get(__response__, 'host_routes'),
+        id=pulumi.get(__response__, 'id'),
+        ip_version=pulumi.get(__response__, 'ip_version'),
+        ipv6_address_mode=pulumi.get(__response__, 'ipv6_address_mode'),
+        ipv6_ra_mode=pulumi.get(__response__, 'ipv6_ra_mode'),
+        name=pulumi.get(__response__, 'name'),
+        network_id=pulumi.get(__response__, 'network_id'),
+        region=pulumi.get(__response__, 'region'),
+        service_types=pulumi.get(__response__, 'service_types'),
+        subnet_id=pulumi.get(__response__, 'subnet_id'),
+        subnetpool_id=pulumi.get(__response__, 'subnetpool_id'),
+        tags=pulumi.get(__response__, 'tags'),
+        tenant_id=pulumi.get(__response__, 'tenant_id')))
