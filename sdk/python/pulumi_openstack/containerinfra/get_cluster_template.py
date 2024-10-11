@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -515,9 +520,6 @@ def get_cluster_template(name: Optional[str] = None,
         updated_at=pulumi.get(__ret__, 'updated_at'),
         user_id=pulumi.get(__ret__, 'user_id'),
         volume_driver=pulumi.get(__ret__, 'volume_driver'))
-
-
-@_utilities.lift_output_func(get_cluster_template)
 def get_cluster_template_output(name: Optional[pulumi.Input[str]] = None,
                                 region: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterTemplateResult]:
@@ -540,4 +542,43 @@ def get_cluster_template_output(name: Optional[pulumi.Input[str]] = None,
            client.
            If omitted, the `region` argument of the provider is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:containerinfra/getClusterTemplate:getClusterTemplate', __args__, opts=opts, typ=GetClusterTemplateResult)
+    return __ret__.apply(lambda __response__: GetClusterTemplateResult(
+        apiserver_port=pulumi.get(__response__, 'apiserver_port'),
+        cluster_distro=pulumi.get(__response__, 'cluster_distro'),
+        coe=pulumi.get(__response__, 'coe'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        dns_nameserver=pulumi.get(__response__, 'dns_nameserver'),
+        docker_storage_driver=pulumi.get(__response__, 'docker_storage_driver'),
+        docker_volume_size=pulumi.get(__response__, 'docker_volume_size'),
+        external_network_id=pulumi.get(__response__, 'external_network_id'),
+        fixed_network=pulumi.get(__response__, 'fixed_network'),
+        fixed_subnet=pulumi.get(__response__, 'fixed_subnet'),
+        flavor=pulumi.get(__response__, 'flavor'),
+        floating_ip_enabled=pulumi.get(__response__, 'floating_ip_enabled'),
+        hidden=pulumi.get(__response__, 'hidden'),
+        http_proxy=pulumi.get(__response__, 'http_proxy'),
+        https_proxy=pulumi.get(__response__, 'https_proxy'),
+        id=pulumi.get(__response__, 'id'),
+        image=pulumi.get(__response__, 'image'),
+        insecure_registry=pulumi.get(__response__, 'insecure_registry'),
+        keypair_id=pulumi.get(__response__, 'keypair_id'),
+        labels=pulumi.get(__response__, 'labels'),
+        master_flavor=pulumi.get(__response__, 'master_flavor'),
+        master_lb_enabled=pulumi.get(__response__, 'master_lb_enabled'),
+        name=pulumi.get(__response__, 'name'),
+        network_driver=pulumi.get(__response__, 'network_driver'),
+        no_proxy=pulumi.get(__response__, 'no_proxy'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        public=pulumi.get(__response__, 'public'),
+        region=pulumi.get(__response__, 'region'),
+        registry_enabled=pulumi.get(__response__, 'registry_enabled'),
+        server_type=pulumi.get(__response__, 'server_type'),
+        tls_disabled=pulumi.get(__response__, 'tls_disabled'),
+        updated_at=pulumi.get(__response__, 'updated_at'),
+        user_id=pulumi.get(__response__, 'user_id'),
+        volume_driver=pulumi.get(__response__, 'volume_driver')))

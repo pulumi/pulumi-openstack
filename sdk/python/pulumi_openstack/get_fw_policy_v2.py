@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -207,9 +212,6 @@ def get_fw_policy_v2(audited: Optional[bool] = None,
         rules=pulumi.get(__ret__, 'rules'),
         shared=pulumi.get(__ret__, 'shared'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'))
-
-
-@_utilities.lift_output_func(get_fw_policy_v2)
 def get_fw_policy_v2_output(audited: Optional[pulumi.Input[Optional[bool]]] = None,
                             description: Optional[pulumi.Input[Optional[str]]] = None,
                             name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -245,4 +247,25 @@ def get_fw_policy_v2_output(audited: Optional[pulumi.Input[Optional[bool]]] = No
     :param str tenant_id: This argument conflicts and is interchangeable
            with `project_id`. The owner of the firewall policy.
     """
-    ...
+    __args__ = dict()
+    __args__['audited'] = audited
+    __args__['description'] = description
+    __args__['name'] = name
+    __args__['policyId'] = policy_id
+    __args__['projectId'] = project_id
+    __args__['region'] = region
+    __args__['shared'] = shared
+    __args__['tenantId'] = tenant_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:index/getFwPolicyV2:getFwPolicyV2', __args__, opts=opts, typ=GetFwPolicyV2Result)
+    return __ret__.apply(lambda __response__: GetFwPolicyV2Result(
+        audited=pulumi.get(__response__, 'audited'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        policy_id=pulumi.get(__response__, 'policy_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
+        rules=pulumi.get(__response__, 'rules'),
+        shared=pulumi.get(__response__, 'shared'),
+        tenant_id=pulumi.get(__response__, 'tenant_id')))

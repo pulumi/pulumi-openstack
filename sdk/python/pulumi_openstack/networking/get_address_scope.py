@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -147,9 +152,6 @@ def get_address_scope(ip_version: Optional[int] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'),
         shared=pulumi.get(__ret__, 'shared'))
-
-
-@_utilities.lift_output_func(get_address_scope)
 def get_address_scope_output(ip_version: Optional[pulumi.Input[Optional[int]]] = None,
                              name: Optional[pulumi.Input[Optional[str]]] = None,
                              project_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -180,4 +182,18 @@ def get_address_scope_output(ip_version: Optional[pulumi.Input[Optional[int]]] =
     :param bool shared: Indicates whether this address-scope is shared across
            all projects.
     """
-    ...
+    __args__ = dict()
+    __args__['ipVersion'] = ip_version
+    __args__['name'] = name
+    __args__['projectId'] = project_id
+    __args__['region'] = region
+    __args__['shared'] = shared
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:networking/getAddressScope:getAddressScope', __args__, opts=opts, typ=GetAddressScopeResult)
+    return __ret__.apply(lambda __response__: GetAddressScopeResult(
+        id=pulumi.get(__response__, 'id'),
+        ip_version=pulumi.get(__response__, 'ip_version'),
+        name=pulumi.get(__response__, 'name'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
+        shared=pulumi.get(__response__, 'shared')))

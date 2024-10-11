@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -196,9 +201,6 @@ def get_snapshot(description: Optional[str] = None,
         share_size=pulumi.get(__ret__, 'share_size'),
         size=pulumi.get(__ret__, 'size'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_snapshot)
 def get_snapshot_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
                         region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -226,4 +228,22 @@ def get_snapshot_output(description: Optional[pulumi.Input[Optional[str]]] = Non
            `creating`, `deleting`, `manage_starting`, `manage_error`, `unmanage_starting`,
            `unmanage_error` or `error_deleting`.
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['name'] = name
+    __args__['region'] = region
+    __args__['shareId'] = share_id
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:sharedfilesystem/getSnapshot:getSnapshot', __args__, opts=opts, typ=GetSnapshotResult)
+    return __ret__.apply(lambda __response__: GetSnapshotResult(
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
+        share_id=pulumi.get(__response__, 'share_id'),
+        share_proto=pulumi.get(__response__, 'share_proto'),
+        share_size=pulumi.get(__response__, 'share_size'),
+        size=pulumi.get(__response__, 'size'),
+        status=pulumi.get(__response__, 'status')))

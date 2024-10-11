@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -206,9 +211,6 @@ def get_project(domain_id: Optional[str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_project)
 def get_project_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
                        enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                        is_domain: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -241,4 +243,24 @@ def get_project_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
            above arguments.
     :param str region: The region the project is located in.
     """
-    ...
+    __args__ = dict()
+    __args__['domainId'] = domain_id
+    __args__['enabled'] = enabled
+    __args__['isDomain'] = is_domain
+    __args__['name'] = name
+    __args__['parentId'] = parent_id
+    __args__['projectId'] = project_id
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:identity/getProject:getProject', __args__, opts=opts, typ=GetProjectResult)
+    return __ret__.apply(lambda __response__: GetProjectResult(
+        description=pulumi.get(__response__, 'description'),
+        domain_id=pulumi.get(__response__, 'domain_id'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        id=pulumi.get(__response__, 'id'),
+        is_domain=pulumi.get(__response__, 'is_domain'),
+        name=pulumi.get(__response__, 'name'),
+        parent_id=pulumi.get(__response__, 'parent_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
+        tags=pulumi.get(__response__, 'tags')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -345,9 +350,6 @@ def get_limits_v2(project_id: Optional[str] = None,
         total_ram_used=pulumi.get(__ret__, 'total_ram_used'),
         total_security_groups_used=pulumi.get(__ret__, 'total_security_groups_used'),
         total_server_groups_used=pulumi.get(__ret__, 'total_server_groups_used'))
-
-
-@_utilities.lift_output_func(get_limits_v2)
 def get_limits_v2_output(project_id: Optional[pulumi.Input[str]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLimitsV2Result]:
@@ -368,4 +370,31 @@ def get_limits_v2_output(project_id: Optional[pulumi.Input[str]] = None,
     :param str region: The region in which to obtain the V2 Compute client.
            If omitted, the `region` argument of the provider is used.
     """
-    ...
+    __args__ = dict()
+    __args__['projectId'] = project_id
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:compute/getLimitsV2:getLimitsV2', __args__, opts=opts, typ=GetLimitsV2Result)
+    return __ret__.apply(lambda __response__: GetLimitsV2Result(
+        id=pulumi.get(__response__, 'id'),
+        max_image_meta=pulumi.get(__response__, 'max_image_meta'),
+        max_personality=pulumi.get(__response__, 'max_personality'),
+        max_personality_size=pulumi.get(__response__, 'max_personality_size'),
+        max_security_group_rules=pulumi.get(__response__, 'max_security_group_rules'),
+        max_security_groups=pulumi.get(__response__, 'max_security_groups'),
+        max_server_group_members=pulumi.get(__response__, 'max_server_group_members'),
+        max_server_groups=pulumi.get(__response__, 'max_server_groups'),
+        max_server_meta=pulumi.get(__response__, 'max_server_meta'),
+        max_total_cores=pulumi.get(__response__, 'max_total_cores'),
+        max_total_floating_ips=pulumi.get(__response__, 'max_total_floating_ips'),
+        max_total_instances=pulumi.get(__response__, 'max_total_instances'),
+        max_total_keypairs=pulumi.get(__response__, 'max_total_keypairs'),
+        max_total_ram_size=pulumi.get(__response__, 'max_total_ram_size'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
+        total_cores_used=pulumi.get(__response__, 'total_cores_used'),
+        total_floating_ips_used=pulumi.get(__response__, 'total_floating_ips_used'),
+        total_instances_used=pulumi.get(__response__, 'total_instances_used'),
+        total_ram_used=pulumi.get(__response__, 'total_ram_used'),
+        total_security_groups_used=pulumi.get(__response__, 'total_security_groups_used'),
+        total_server_groups_used=pulumi.get(__response__, 'total_server_groups_used')))

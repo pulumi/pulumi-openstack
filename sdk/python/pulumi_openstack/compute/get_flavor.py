@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -239,9 +244,6 @@ def get_flavor(description: Optional[str] = None,
         rx_tx_factor=pulumi.get(__ret__, 'rx_tx_factor'),
         swap=pulumi.get(__ret__, 'swap'),
         vcpus=pulumi.get(__ret__, 'vcpus'))
-
-
-@_utilities.lift_output_func(get_flavor)
 def get_flavor_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                       disk: Optional[pulumi.Input[Optional[int]]] = None,
                       flavor_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -286,4 +288,33 @@ def get_flavor_output(description: Optional[pulumi.Input[Optional[str]]] = None,
     :param int swap: The amount of swap (in gigabytes).
     :param int vcpus: The amount of VCPUs.
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['disk'] = disk
+    __args__['flavorId'] = flavor_id
+    __args__['isPublic'] = is_public
+    __args__['minDisk'] = min_disk
+    __args__['minRam'] = min_ram
+    __args__['name'] = name
+    __args__['ram'] = ram
+    __args__['region'] = region
+    __args__['rxTxFactor'] = rx_tx_factor
+    __args__['swap'] = swap
+    __args__['vcpus'] = vcpus
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:compute/getFlavor:getFlavor', __args__, opts=opts, typ=GetFlavorResult)
+    return __ret__.apply(lambda __response__: GetFlavorResult(
+        description=pulumi.get(__response__, 'description'),
+        disk=pulumi.get(__response__, 'disk'),
+        extra_specs=pulumi.get(__response__, 'extra_specs'),
+        flavor_id=pulumi.get(__response__, 'flavor_id'),
+        id=pulumi.get(__response__, 'id'),
+        is_public=pulumi.get(__response__, 'is_public'),
+        min_disk=pulumi.get(__response__, 'min_disk'),
+        min_ram=pulumi.get(__response__, 'min_ram'),
+        name=pulumi.get(__response__, 'name'),
+        ram=pulumi.get(__response__, 'ram'),
+        region=pulumi.get(__response__, 'region'),
+        rx_tx_factor=pulumi.get(__response__, 'rx_tx_factor'),
+        swap=pulumi.get(__response__, 'swap'),
+        vcpus=pulumi.get(__response__, 'vcpus')))

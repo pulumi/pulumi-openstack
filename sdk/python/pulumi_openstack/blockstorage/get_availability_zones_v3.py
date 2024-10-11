@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -113,9 +118,6 @@ def get_availability_zones_v3(region: Optional[str] = None,
         names=pulumi.get(__ret__, 'names'),
         region=pulumi.get(__ret__, 'region'),
         state=pulumi.get(__ret__, 'state'))
-
-
-@_utilities.lift_output_func(get_availability_zones_v3)
 def get_availability_zones_v3_output(region: Optional[pulumi.Input[Optional[str]]] = None,
                                      state: Optional[pulumi.Input[Optional[str]]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAvailabilityZonesV3Result]:
@@ -137,4 +139,13 @@ def get_availability_zones_v3_output(region: Optional[pulumi.Input[Optional[str]
     :param str state: The `state` of the availability zones to match. Can
            either be `available` or `unavailable`. Default is `available`.
     """
-    ...
+    __args__ = dict()
+    __args__['region'] = region
+    __args__['state'] = state
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3', __args__, opts=opts, typ=GetAvailabilityZonesV3Result)
+    return __ret__.apply(lambda __response__: GetAvailabilityZonesV3Result(
+        id=pulumi.get(__response__, 'id'),
+        names=pulumi.get(__response__, 'names'),
+        region=pulumi.get(__response__, 'region'),
+        state=pulumi.get(__response__, 'state')))

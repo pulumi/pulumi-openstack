@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -225,9 +230,6 @@ def get_qos_policy(description: Optional[str] = None,
         shared=pulumi.get(__ret__, 'shared'),
         tags=pulumi.get(__ret__, 'tags'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-
-
-@_utilities.lift_output_func(get_qos_policy)
 def get_qos_policy_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                           is_default: Optional[pulumi.Input[Optional[bool]]] = None,
                           name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -259,4 +261,26 @@ def get_qos_policy_output(description: Optional[pulumi.Input[Optional[str]]] = N
     :param bool shared: Whether this QoS policy is shared across all projects.
     :param Sequence[str] tags: The list of QoS policy tags to filter.
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['isDefault'] = is_default
+    __args__['name'] = name
+    __args__['projectId'] = project_id
+    __args__['region'] = region
+    __args__['shared'] = shared
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:networking/getQosPolicy:getQosPolicy', __args__, opts=opts, typ=GetQosPolicyResult)
+    return __ret__.apply(lambda __response__: GetQosPolicyResult(
+        all_tags=pulumi.get(__response__, 'all_tags'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        is_default=pulumi.get(__response__, 'is_default'),
+        name=pulumi.get(__response__, 'name'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
+        revision_number=pulumi.get(__response__, 'revision_number'),
+        shared=pulumi.get(__response__, 'shared'),
+        tags=pulumi.get(__response__, 'tags'),
+        updated_at=pulumi.get(__response__, 'updated_at')))

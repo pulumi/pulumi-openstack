@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -284,9 +289,6 @@ def get_share(description: Optional[str] = None,
         size=pulumi.get(__ret__, 'size'),
         snapshot_id=pulumi.get(__ret__, 'snapshot_id'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_share)
 def get_share_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                      export_location_path: Optional[pulumi.Input[Optional[str]]] = None,
                      is_public: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -327,4 +329,31 @@ def get_share_output(description: Optional[pulumi.Input[Optional[str]]] = None,
            `extending`, `extending_error`, `shrinking`, `shrinking_error`, or
            `shrinking_possible_data_loss_error`.
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['exportLocationPath'] = export_location_path
+    __args__['isPublic'] = is_public
+    __args__['metadata'] = metadata
+    __args__['name'] = name
+    __args__['region'] = region
+    __args__['shareNetworkId'] = share_network_id
+    __args__['snapshotId'] = snapshot_id
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:sharedfilesystem/getShare:getShare', __args__, opts=opts, typ=GetShareResult)
+    return __ret__.apply(lambda __response__: GetShareResult(
+        availability_zone=pulumi.get(__response__, 'availability_zone'),
+        description=pulumi.get(__response__, 'description'),
+        export_location_path=pulumi.get(__response__, 'export_location_path'),
+        export_locations=pulumi.get(__response__, 'export_locations'),
+        id=pulumi.get(__response__, 'id'),
+        is_public=pulumi.get(__response__, 'is_public'),
+        metadata=pulumi.get(__response__, 'metadata'),
+        name=pulumi.get(__response__, 'name'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
+        share_network_id=pulumi.get(__response__, 'share_network_id'),
+        share_proto=pulumi.get(__response__, 'share_proto'),
+        size=pulumi.get(__response__, 'size'),
+        snapshot_id=pulumi.get(__response__, 'snapshot_id'),
+        status=pulumi.get(__response__, 'status')))

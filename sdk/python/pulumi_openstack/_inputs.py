@@ -4,14 +4,48 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'BgpvpnPortAssociateV2RouteArgs',
+    'BgpvpnPortAssociateV2RouteArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class BgpvpnPortAssociateV2RouteArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Can be `prefix` or `bgpvpn`. For the `prefix` type, the
+        CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
+        `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpn_id` key.
+        """
+        bgpvpn_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the BGP VPN to be advertised. Required
+        if `type` is `bgpvpn`. Conflicts with `prefix`.
+        """
+        local_pref: NotRequired[pulumi.Input[int]]
+        """
+        The BGP LOCAL\\_PREF value of the routes that will
+        be advertised.
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        The CIDR prefix (v4 or v6) to be advertised. Required
+        if `type` is `prefix`. Conflicts with `bgpvpn_id`.
+        """
+elif False:
+    BgpvpnPortAssociateV2RouteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BgpvpnPortAssociateV2RouteArgs:

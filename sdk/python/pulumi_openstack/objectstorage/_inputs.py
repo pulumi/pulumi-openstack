@@ -4,14 +4,35 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ContainerVersioningLegacyArgs',
+    'ContainerVersioningLegacyArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ContainerVersioningLegacyArgsDict(TypedDict):
+        location: pulumi.Input[str]
+        """
+        Container in which versions will be stored.
+        """
+        type: pulumi.Input[str]
+        """
+        Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+        """
+elif False:
+    ContainerVersioningLegacyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ContainerVersioningLegacyArgs:

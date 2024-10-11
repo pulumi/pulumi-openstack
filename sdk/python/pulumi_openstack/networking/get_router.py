@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -253,9 +258,6 @@ def get_router(admin_state_up: Optional[bool] = None,
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'))
-
-
-@_utilities.lift_output_func(get_router)
 def get_router_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = None,
                       description: Optional[pulumi.Input[Optional[str]]] = None,
                       distributed: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -293,4 +295,32 @@ def get_router_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = N
     :param Sequence[str] tags: The list of router tags to filter.
     :param str tenant_id: The owner of the router.
     """
-    ...
+    __args__ = dict()
+    __args__['adminStateUp'] = admin_state_up
+    __args__['description'] = description
+    __args__['distributed'] = distributed
+    __args__['enableSnat'] = enable_snat
+    __args__['name'] = name
+    __args__['region'] = region
+    __args__['routerId'] = router_id
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['tenantId'] = tenant_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:networking/getRouter:getRouter', __args__, opts=opts, typ=GetRouterResult)
+    return __ret__.apply(lambda __response__: GetRouterResult(
+        admin_state_up=pulumi.get(__response__, 'admin_state_up'),
+        all_tags=pulumi.get(__response__, 'all_tags'),
+        availability_zone_hints=pulumi.get(__response__, 'availability_zone_hints'),
+        description=pulumi.get(__response__, 'description'),
+        distributed=pulumi.get(__response__, 'distributed'),
+        enable_snat=pulumi.get(__response__, 'enable_snat'),
+        external_fixed_ips=pulumi.get(__response__, 'external_fixed_ips'),
+        external_network_id=pulumi.get(__response__, 'external_network_id'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        region=pulumi.get(__response__, 'region'),
+        router_id=pulumi.get(__response__, 'router_id'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        tenant_id=pulumi.get(__response__, 'tenant_id')))

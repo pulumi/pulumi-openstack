@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -142,9 +147,6 @@ def get_keypair(name: Optional[str] = None,
         public_key=pulumi.get(__ret__, 'public_key'),
         region=pulumi.get(__ret__, 'region'),
         user_id=pulumi.get(__ret__, 'user_id'))
-
-
-@_utilities.lift_output_func(get_keypair)
 def get_keypair_output(name: Optional[pulumi.Input[str]] = None,
                        region: Optional[pulumi.Input[Optional[str]]] = None,
                        user_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -169,4 +171,16 @@ def get_keypair_output(name: Optional[pulumi.Input[str]] = None,
            This parameter can be specified only if the provider is configured to use
            the credentials of an OpenStack administrator.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['region'] = region
+    __args__['userId'] = user_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:compute/getKeypair:getKeypair', __args__, opts=opts, typ=GetKeypairResult)
+    return __ret__.apply(lambda __response__: GetKeypairResult(
+        fingerprint=pulumi.get(__response__, 'fingerprint'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        public_key=pulumi.get(__response__, 'public_key'),
+        region=pulumi.get(__response__, 'region'),
+        user_id=pulumi.get(__response__, 'user_id')))

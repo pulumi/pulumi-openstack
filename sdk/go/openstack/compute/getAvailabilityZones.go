@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.GetAvailabilityZones(ctx, nil, nil)
+//			_, err := compute.GetAvailabilityZones(ctx, &compute.GetAvailabilityZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

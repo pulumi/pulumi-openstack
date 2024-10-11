@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -195,9 +200,6 @@ def get_endpoint(endpoint_region: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         service_type=pulumi.get(__ret__, 'service_type'),
         url=pulumi.get(__ret__, 'url'))
-
-
-@_utilities.lift_output_func(get_endpoint)
 def get_endpoint_output(endpoint_region: Optional[pulumi.Input[Optional[str]]] = None,
                         interface: Optional[pulumi.Input[Optional[str]]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -232,4 +234,23 @@ def get_endpoint_output(endpoint_region: Optional[pulumi.Input[Optional[str]]] =
     :param str service_name: The service name of the endpoint.
     :param str service_type: The service type of the endpoint.
     """
-    ...
+    __args__ = dict()
+    __args__['endpointRegion'] = endpoint_region
+    __args__['interface'] = interface
+    __args__['name'] = name
+    __args__['region'] = region
+    __args__['serviceId'] = service_id
+    __args__['serviceName'] = service_name
+    __args__['serviceType'] = service_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:identity/getEndpoint:getEndpoint', __args__, opts=opts, typ=GetEndpointResult)
+    return __ret__.apply(lambda __response__: GetEndpointResult(
+        endpoint_region=pulumi.get(__response__, 'endpoint_region'),
+        id=pulumi.get(__response__, 'id'),
+        interface=pulumi.get(__response__, 'interface'),
+        name=pulumi.get(__response__, 'name'),
+        region=pulumi.get(__response__, 'region'),
+        service_id=pulumi.get(__response__, 'service_id'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        service_type=pulumi.get(__response__, 'service_type'),
+        url=pulumi.get(__response__, 'url')))

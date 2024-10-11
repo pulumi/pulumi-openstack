@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -340,9 +345,6 @@ def get_subnet_pool(address_scope_id: Optional[str] = None,
         shared=pulumi.get(__ret__, 'shared'),
         tags=pulumi.get(__ret__, 'tags'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-
-
-@_utilities.lift_output_func(get_subnet_pool)
 def get_subnet_pool_output(address_scope_id: Optional[pulumi.Input[Optional[str]]] = None,
                            default_prefixlen: Optional[pulumi.Input[Optional[int]]] = None,
                            default_quota: Optional[pulumi.Input[Optional[int]]] = None,
@@ -389,4 +391,39 @@ def get_subnet_pool_output(address_scope_id: Optional[pulumi.Input[Optional[str]
     :param bool shared: Whether this subnetpool is shared across all projects.
     :param Sequence[str] tags: The list of subnetpool tags to filter.
     """
-    ...
+    __args__ = dict()
+    __args__['addressScopeId'] = address_scope_id
+    __args__['defaultPrefixlen'] = default_prefixlen
+    __args__['defaultQuota'] = default_quota
+    __args__['description'] = description
+    __args__['ipVersion'] = ip_version
+    __args__['isDefault'] = is_default
+    __args__['maxPrefixlen'] = max_prefixlen
+    __args__['minPrefixlen'] = min_prefixlen
+    __args__['name'] = name
+    __args__['projectId'] = project_id
+    __args__['region'] = region
+    __args__['shared'] = shared
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:networking/getSubnetPool:getSubnetPool', __args__, opts=opts, typ=GetSubnetPoolResult)
+    return __ret__.apply(lambda __response__: GetSubnetPoolResult(
+        address_scope_id=pulumi.get(__response__, 'address_scope_id'),
+        all_tags=pulumi.get(__response__, 'all_tags'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        default_prefixlen=pulumi.get(__response__, 'default_prefixlen'),
+        default_quota=pulumi.get(__response__, 'default_quota'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        ip_version=pulumi.get(__response__, 'ip_version'),
+        is_default=pulumi.get(__response__, 'is_default'),
+        max_prefixlen=pulumi.get(__response__, 'max_prefixlen'),
+        min_prefixlen=pulumi.get(__response__, 'min_prefixlen'),
+        name=pulumi.get(__response__, 'name'),
+        prefixes=pulumi.get(__response__, 'prefixes'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
+        revision_number=pulumi.get(__response__, 'revision_number'),
+        shared=pulumi.get(__response__, 'shared'),
+        tags=pulumi.get(__response__, 'tags'),
+        updated_at=pulumi.get(__response__, 'updated_at')))

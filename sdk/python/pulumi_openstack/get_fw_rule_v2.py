@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -329,9 +334,6 @@ def get_fw_rule_v2(action: Optional[str] = None,
         source_ip_address=pulumi.get(__ret__, 'source_ip_address'),
         source_port=pulumi.get(__ret__, 'source_port'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'))
-
-
-@_utilities.lift_output_func(get_fw_rule_v2)
 def get_fw_rule_v2_output(action: Optional[pulumi.Input[Optional[str]]] = None,
                           description: Optional[pulumi.Input[Optional[str]]] = None,
                           destination_ip_address: Optional[pulumi.Input[Optional[str]]] = None,
@@ -387,4 +389,40 @@ def get_fw_rule_v2_output(action: Optional[pulumi.Input[Optional[str]]] = None,
     :param str tenant_id: This argument conflicts and is interchangeable
            with `project_id`. The owner of the firewall rule.
     """
-    ...
+    __args__ = dict()
+    __args__['action'] = action
+    __args__['description'] = description
+    __args__['destinationIpAddress'] = destination_ip_address
+    __args__['destinationPort'] = destination_port
+    __args__['enabled'] = enabled
+    __args__['firewallPolicyIds'] = firewall_policy_ids
+    __args__['ipVersion'] = ip_version
+    __args__['name'] = name
+    __args__['projectId'] = project_id
+    __args__['protocol'] = protocol
+    __args__['region'] = region
+    __args__['ruleId'] = rule_id
+    __args__['shared'] = shared
+    __args__['sourceIpAddress'] = source_ip_address
+    __args__['sourcePort'] = source_port
+    __args__['tenantId'] = tenant_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:index/getFwRuleV2:getFwRuleV2', __args__, opts=opts, typ=GetFwRuleV2Result)
+    return __ret__.apply(lambda __response__: GetFwRuleV2Result(
+        action=pulumi.get(__response__, 'action'),
+        description=pulumi.get(__response__, 'description'),
+        destination_ip_address=pulumi.get(__response__, 'destination_ip_address'),
+        destination_port=pulumi.get(__response__, 'destination_port'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        firewall_policy_ids=pulumi.get(__response__, 'firewall_policy_ids'),
+        id=pulumi.get(__response__, 'id'),
+        ip_version=pulumi.get(__response__, 'ip_version'),
+        name=pulumi.get(__response__, 'name'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        protocol=pulumi.get(__response__, 'protocol'),
+        region=pulumi.get(__response__, 'region'),
+        rule_id=pulumi.get(__response__, 'rule_id'),
+        shared=pulumi.get(__response__, 'shared'),
+        source_ip_address=pulumi.get(__response__, 'source_ip_address'),
+        source_port=pulumi.get(__response__, 'source_port'),
+        tenant_id=pulumi.get(__response__, 'tenant_id')))

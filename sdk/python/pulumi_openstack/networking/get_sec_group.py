@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -183,9 +188,6 @@ def get_sec_group(description: Optional[str] = None,
         stateful=pulumi.get(__ret__, 'stateful'),
         tags=pulumi.get(__ret__, 'tags'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'))
-
-
-@_utilities.lift_output_func(get_sec_group)
 def get_sec_group_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                          name: Optional[pulumi.Input[Optional[str]]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -217,4 +219,23 @@ def get_sec_group_output(description: Optional[pulumi.Input[Optional[str]]] = No
     :param Sequence[str] tags: The list of security group tags to filter.
     :param str tenant_id: The owner of the security group.
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['name'] = name
+    __args__['region'] = region
+    __args__['secgroupId'] = secgroup_id
+    __args__['stateful'] = stateful
+    __args__['tags'] = tags
+    __args__['tenantId'] = tenant_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:networking/getSecGroup:getSecGroup', __args__, opts=opts, typ=GetSecGroupResult)
+    return __ret__.apply(lambda __response__: GetSecGroupResult(
+        all_tags=pulumi.get(__response__, 'all_tags'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        region=pulumi.get(__response__, 'region'),
+        secgroup_id=pulumi.get(__response__, 'secgroup_id'),
+        stateful=pulumi.get(__response__, 'stateful'),
+        tags=pulumi.get(__response__, 'tags'),
+        tenant_id=pulumi.get(__response__, 'tenant_id')))
