@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -220,9 +225,6 @@ def get_volume_v3(bootable: Optional[str] = None,
         source_volume_id=pulumi.get(__ret__, 'source_volume_id'),
         status=pulumi.get(__ret__, 'status'),
         volume_type=pulumi.get(__ret__, 'volume_type'))
-
-
-@_utilities.lift_output_func(get_volume_v3)
 def get_volume_v3_output(bootable: Optional[pulumi.Input[Optional[str]]] = None,
                          host: Optional[pulumi.Input[Optional[str]]] = None,
                          metadata: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
@@ -253,4 +255,25 @@ def get_volume_v3_output(bootable: Optional[pulumi.Input[Optional[str]]] = None,
     :param str status: The status of the volume.
     :param str volume_type: The type of the volume.
     """
-    ...
+    __args__ = dict()
+    __args__['bootable'] = bootable
+    __args__['host'] = host
+    __args__['metadata'] = metadata
+    __args__['name'] = name
+    __args__['region'] = region
+    __args__['status'] = status
+    __args__['volumeType'] = volume_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:blockstorage/getVolumeV3:getVolumeV3', __args__, opts=opts, typ=GetVolumeV3Result)
+    return __ret__.apply(lambda __response__: GetVolumeV3Result(
+        attachments=pulumi.get(__response__, 'attachments'),
+        bootable=pulumi.get(__response__, 'bootable'),
+        host=pulumi.get(__response__, 'host'),
+        id=pulumi.get(__response__, 'id'),
+        metadata=pulumi.get(__response__, 'metadata'),
+        name=pulumi.get(__response__, 'name'),
+        region=pulumi.get(__response__, 'region'),
+        size=pulumi.get(__response__, 'size'),
+        source_volume_id=pulumi.get(__response__, 'source_volume_id'),
+        status=pulumi.get(__response__, 'status'),
+        volume_type=pulumi.get(__response__, 'volume_type')))

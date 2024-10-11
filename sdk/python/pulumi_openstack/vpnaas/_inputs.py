@@ -4,16 +4,37 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'IkePolicyLifetimeArgs',
+    'IkePolicyLifetimeArgsDict',
     'IpSecPolicyLifetimeArgs',
+    'IpSecPolicyLifetimeArgsDict',
     'SiteConnectionDpdArgs',
+    'SiteConnectionDpdArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class IkePolicyLifetimeArgsDict(TypedDict):
+        units: NotRequired[pulumi.Input[str]]
+        value: NotRequired[pulumi.Input[int]]
+        """
+        The value for the lifetime of the security association. Must be a positive integer.
+        Default is 3600.
+        """
+elif False:
+    IkePolicyLifetimeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IkePolicyLifetimeArgs:
@@ -52,6 +73,17 @@ class IkePolicyLifetimeArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class IpSecPolicyLifetimeArgsDict(TypedDict):
+        units: NotRequired[pulumi.Input[str]]
+        value: NotRequired[pulumi.Input[int]]
+        """
+        The value for the lifetime of the security association. Must be a positive integer.
+        Default is 3600.
+        """
+elif False:
+    IpSecPolicyLifetimeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class IpSecPolicyLifetimeArgs:
     def __init__(__self__, *,
@@ -88,6 +120,29 @@ class IpSecPolicyLifetimeArgs:
     def value(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class SiteConnectionDpdArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        """
+        The dead peer detection (DPD) action.
+        A valid value is clear, hold, restart, disabled, or restart-by-peer.
+        Default value is hold.
+        """
+        interval: NotRequired[pulumi.Input[int]]
+        """
+        The dead peer detection (DPD) interval, in seconds.
+        A valid value is a positive integer.
+        Default is 30.
+        """
+        timeout: NotRequired[pulumi.Input[int]]
+        """
+        The dead peer detection (DPD) timeout in seconds.
+        A valid value is a positive integer that is greater than the DPD interval value.
+        Default is 120.
+        """
+elif False:
+    SiteConnectionDpdArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SiteConnectionDpdArgs:

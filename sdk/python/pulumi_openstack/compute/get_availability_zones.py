@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -104,9 +109,6 @@ def get_availability_zones(region: Optional[str] = None,
         names=pulumi.get(__ret__, 'names'),
         region=pulumi.get(__ret__, 'region'),
         state=pulumi.get(__ret__, 'state'))
-
-
-@_utilities.lift_output_func(get_availability_zones)
 def get_availability_zones_output(region: Optional[pulumi.Input[Optional[str]]] = None,
                                   state: Optional[pulumi.Input[Optional[str]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAvailabilityZonesResult]:
@@ -126,4 +128,13 @@ def get_availability_zones_output(region: Optional[pulumi.Input[Optional[str]]] 
     :param str region: The `region` to fetch availability zones from, defaults to the provider's `region`
     :param str state: The `state` of the availability zones to match, default ("available").
     """
-    ...
+    __args__ = dict()
+    __args__['region'] = region
+    __args__['state'] = state
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:compute/getAvailabilityZones:getAvailabilityZones', __args__, opts=opts, typ=GetAvailabilityZonesResult)
+    return __ret__.apply(lambda __response__: GetAvailabilityZonesResult(
+        id=pulumi.get(__response__, 'id'),
+        names=pulumi.get(__response__, 'names'),
+        region=pulumi.get(__response__, 'region'),
+        state=pulumi.get(__response__, 'state')))

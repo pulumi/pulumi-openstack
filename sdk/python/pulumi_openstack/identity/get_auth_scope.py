@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -278,9 +283,6 @@ def get_auth_scope(name: Optional[str] = None,
         user_domain_name=pulumi.get(__ret__, 'user_domain_name'),
         user_id=pulumi.get(__ret__, 'user_id'),
         user_name=pulumi.get(__ret__, 'user_name'))
-
-
-@_utilities.lift_output_func(get_auth_scope)
 def get_auth_scope_output(name: Optional[pulumi.Input[str]] = None,
                           region: Optional[pulumi.Input[Optional[str]]] = None,
                           set_token_id: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -300,4 +302,27 @@ def get_auth_scope_output(name: Optional[pulumi.Input[str]] = None,
            access to other OpenStack services within the current auth scope, so use this
            option with caution.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['region'] = region
+    __args__['setTokenId'] = set_token_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:identity/getAuthScope:getAuthScope', __args__, opts=opts, typ=GetAuthScopeResult)
+    return __ret__.apply(lambda __response__: GetAuthScopeResult(
+        domain_id=pulumi.get(__response__, 'domain_id'),
+        domain_name=pulumi.get(__response__, 'domain_name'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        project_domain_id=pulumi.get(__response__, 'project_domain_id'),
+        project_domain_name=pulumi.get(__response__, 'project_domain_name'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        project_name=pulumi.get(__response__, 'project_name'),
+        region=pulumi.get(__response__, 'region'),
+        roles=pulumi.get(__response__, 'roles'),
+        service_catalogs=pulumi.get(__response__, 'service_catalogs'),
+        set_token_id=pulumi.get(__response__, 'set_token_id'),
+        token_id=pulumi.get(__response__, 'token_id'),
+        user_domain_id=pulumi.get(__response__, 'user_domain_id'),
+        user_domain_name=pulumi.get(__response__, 'user_domain_name'),
+        user_id=pulumi.get(__response__, 'user_id'),
+        user_name=pulumi.get(__response__, 'user_name')))

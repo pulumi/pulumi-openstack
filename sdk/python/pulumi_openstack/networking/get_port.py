@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -404,9 +409,6 @@ def get_port(admin_state_up: Optional[bool] = None,
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'))
-
-
-@_utilities.lift_output_func(get_port)
 def get_port_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = None,
                     description: Optional[pulumi.Input[Optional[str]]] = None,
                     device_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -456,4 +458,47 @@ def get_port_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = Non
     :param str status: The status of the port.
     :param Sequence[str] tags: The list of port tags to filter.
     """
-    ...
+    __args__ = dict()
+    __args__['adminStateUp'] = admin_state_up
+    __args__['description'] = description
+    __args__['deviceId'] = device_id
+    __args__['deviceOwner'] = device_owner
+    __args__['dnsName'] = dns_name
+    __args__['fixedIp'] = fixed_ip
+    __args__['macAddress'] = mac_address
+    __args__['name'] = name
+    __args__['networkId'] = network_id
+    __args__['portId'] = port_id
+    __args__['projectId'] = project_id
+    __args__['region'] = region
+    __args__['securityGroupIds'] = security_group_ids
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['tenantId'] = tenant_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:networking/getPort:getPort', __args__, opts=opts, typ=GetPortResult)
+    return __ret__.apply(lambda __response__: GetPortResult(
+        admin_state_up=pulumi.get(__response__, 'admin_state_up'),
+        all_fixed_ips=pulumi.get(__response__, 'all_fixed_ips'),
+        all_security_group_ids=pulumi.get(__response__, 'all_security_group_ids'),
+        all_tags=pulumi.get(__response__, 'all_tags'),
+        allowed_address_pairs=pulumi.get(__response__, 'allowed_address_pairs'),
+        bindings=pulumi.get(__response__, 'bindings'),
+        description=pulumi.get(__response__, 'description'),
+        device_id=pulumi.get(__response__, 'device_id'),
+        device_owner=pulumi.get(__response__, 'device_owner'),
+        dns_assignments=pulumi.get(__response__, 'dns_assignments'),
+        dns_name=pulumi.get(__response__, 'dns_name'),
+        extra_dhcp_options=pulumi.get(__response__, 'extra_dhcp_options'),
+        fixed_ip=pulumi.get(__response__, 'fixed_ip'),
+        id=pulumi.get(__response__, 'id'),
+        mac_address=pulumi.get(__response__, 'mac_address'),
+        name=pulumi.get(__response__, 'name'),
+        network_id=pulumi.get(__response__, 'network_id'),
+        port_id=pulumi.get(__response__, 'port_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
+        security_group_ids=pulumi.get(__response__, 'security_group_ids'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        tenant_id=pulumi.get(__response__, 'tenant_id')))

@@ -4,20 +4,40 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ContainerV1AclArgs',
+    'ContainerV1AclArgsDict',
     'ContainerV1AclReadArgs',
+    'ContainerV1AclReadArgsDict',
     'ContainerV1ConsumerArgs',
+    'ContainerV1ConsumerArgsDict',
     'ContainerV1SecretRefArgs',
+    'ContainerV1SecretRefArgsDict',
     'OrderV1MetaArgs',
+    'OrderV1MetaArgsDict',
     'SecretV1AclArgs',
+    'SecretV1AclArgsDict',
     'SecretV1AclReadArgs',
+    'SecretV1AclReadArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ContainerV1AclArgsDict(TypedDict):
+        read: NotRequired[pulumi.Input['ContainerV1AclReadArgsDict']]
+elif False:
+    ContainerV1AclArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ContainerV1AclArgs:
@@ -35,6 +55,29 @@ class ContainerV1AclArgs:
     def read(self, value: Optional[pulumi.Input['ContainerV1AclReadArgs']]):
         pulumi.set(self, "read", value)
 
+
+if not MYPY:
+    class ContainerV1AclReadArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[str]]
+        """
+        The date the container was created.
+        """
+        project_access: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the container is accessible project wide.
+        Defaults to `true`.
+        """
+        updated_at: NotRequired[pulumi.Input[str]]
+        """
+        The date the container was last updated.
+        """
+        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of user IDs, which are allowed to access the
+        container, when `project_access` is set to `false`.
+        """
+elif False:
+    ContainerV1AclReadArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ContainerV1AclReadArgs:
@@ -111,6 +154,20 @@ class ContainerV1AclReadArgs:
         pulumi.set(self, "users", value)
 
 
+if not MYPY:
+    class ContainerV1ConsumerArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Human-readable name for the Container. Does not have
+        to be unique.
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        The consumer URL.
+        """
+elif False:
+    ContainerV1ConsumerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ContainerV1ConsumerArgs:
     def __init__(__self__, *,
@@ -152,6 +209,19 @@ class ContainerV1ConsumerArgs:
         pulumi.set(self, "url", value)
 
 
+if not MYPY:
+    class ContainerV1SecretRefArgsDict(TypedDict):
+        secret_ref: pulumi.Input[str]
+        """
+        The secret reference / where to find the secret, URL.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+        """
+elif False:
+    ContainerV1SecretRefArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ContainerV1SecretRefArgs:
     def __init__(__self__, *,
@@ -189,6 +259,35 @@ class ContainerV1SecretRefArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+
+if not MYPY:
+    class OrderV1MetaArgsDict(TypedDict):
+        algorithm: pulumi.Input[str]
+        """
+        Algorithm to use for key generation.
+        """
+        bit_length: pulumi.Input[int]
+        """
+        Bit lenght of key to be generated.
+        """
+        expiration: NotRequired[pulumi.Input[str]]
+        """
+        This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        The mode to use for key generation.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the secret set by the user.
+        """
+        payload_content_type: NotRequired[pulumi.Input[str]]
+        """
+        The media type for the content of the secrets payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+        """
+elif False:
+    OrderV1MetaArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class OrderV1MetaArgs:
@@ -291,6 +390,12 @@ class OrderV1MetaArgs:
         pulumi.set(self, "payload_content_type", value)
 
 
+if not MYPY:
+    class SecretV1AclArgsDict(TypedDict):
+        read: NotRequired[pulumi.Input['SecretV1AclReadArgsDict']]
+elif False:
+    SecretV1AclArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SecretV1AclArgs:
     def __init__(__self__, *,
@@ -307,6 +412,29 @@ class SecretV1AclArgs:
     def read(self, value: Optional[pulumi.Input['SecretV1AclReadArgs']]):
         pulumi.set(self, "read", value)
 
+
+if not MYPY:
+    class SecretV1AclReadArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[str]]
+        """
+        The date the secret was created.
+        """
+        project_access: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the secret is accessible project wide.
+        Defaults to `true`.
+        """
+        updated_at: NotRequired[pulumi.Input[str]]
+        """
+        The date the secret was last updated.
+        """
+        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of user IDs, which are allowed to access the
+        secret, when `project_access` is set to `false`.
+        """
+elif False:
+    SecretV1AclReadArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SecretV1AclReadArgs:

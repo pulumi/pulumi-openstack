@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -303,9 +308,6 @@ def get_instance_v2(id: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         updated=pulumi.get(__ret__, 'updated'),
         user_data=pulumi.get(__ret__, 'user_data'))
-
-
-@_utilities.lift_output_func(get_instance_v2)
 def get_instance_v2_output(id: Optional[pulumi.Input[str]] = None,
                            networks: Optional[pulumi.Input[Optional[Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict']]]]] = None,
                            region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -328,4 +330,30 @@ def get_instance_v2_output(id: Optional[pulumi.Input[str]] = None,
     :param Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict']] networks: An array of maps, detailed below.
     :param str user_data: The user data added when the server was created.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['networks'] = networks
+    __args__['region'] = region
+    __args__['userData'] = user_data
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:compute/getInstanceV2:getInstanceV2', __args__, opts=opts, typ=GetInstanceV2Result)
+    return __ret__.apply(lambda __response__: GetInstanceV2Result(
+        access_ip_v4=pulumi.get(__response__, 'access_ip_v4'),
+        access_ip_v6=pulumi.get(__response__, 'access_ip_v6'),
+        availability_zone=pulumi.get(__response__, 'availability_zone'),
+        created=pulumi.get(__response__, 'created'),
+        flavor_id=pulumi.get(__response__, 'flavor_id'),
+        flavor_name=pulumi.get(__response__, 'flavor_name'),
+        id=pulumi.get(__response__, 'id'),
+        image_id=pulumi.get(__response__, 'image_id'),
+        image_name=pulumi.get(__response__, 'image_name'),
+        key_pair=pulumi.get(__response__, 'key_pair'),
+        metadata=pulumi.get(__response__, 'metadata'),
+        name=pulumi.get(__response__, 'name'),
+        networks=pulumi.get(__response__, 'networks'),
+        power_state=pulumi.get(__response__, 'power_state'),
+        region=pulumi.get(__response__, 'region'),
+        security_groups=pulumi.get(__response__, 'security_groups'),
+        tags=pulumi.get(__response__, 'tags'),
+        updated=pulumi.get(__response__, 'updated'),
+        user_data=pulumi.get(__response__, 'user_data')))

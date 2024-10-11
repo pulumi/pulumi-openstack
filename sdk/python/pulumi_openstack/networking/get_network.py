@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -324,9 +329,6 @@ def get_network(description: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'),
         transparent_vlan=pulumi.get(__ret__, 'transparent_vlan'))
-
-
-@_utilities.lift_output_func(get_network)
 def get_network_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                        external: Optional[pulumi.Input[Optional[bool]]] = None,
                        matching_subnet_cidr: Optional[pulumi.Input[Optional[str]]] = None,
@@ -368,4 +370,37 @@ def get_network_output(description: Optional[pulumi.Input[Optional[str]]] = None
     :param bool transparent_vlan: The VLAN transparent attribute for the
            network.
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['external'] = external
+    __args__['matchingSubnetCidr'] = matching_subnet_cidr
+    __args__['mtu'] = mtu
+    __args__['name'] = name
+    __args__['networkId'] = network_id
+    __args__['region'] = region
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['tenantId'] = tenant_id
+    __args__['transparentVlan'] = transparent_vlan
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:networking/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult)
+    return __ret__.apply(lambda __response__: GetNetworkResult(
+        admin_state_up=pulumi.get(__response__, 'admin_state_up'),
+        all_tags=pulumi.get(__response__, 'all_tags'),
+        availability_zone_hints=pulumi.get(__response__, 'availability_zone_hints'),
+        description=pulumi.get(__response__, 'description'),
+        dns_domain=pulumi.get(__response__, 'dns_domain'),
+        external=pulumi.get(__response__, 'external'),
+        id=pulumi.get(__response__, 'id'),
+        matching_subnet_cidr=pulumi.get(__response__, 'matching_subnet_cidr'),
+        mtu=pulumi.get(__response__, 'mtu'),
+        name=pulumi.get(__response__, 'name'),
+        network_id=pulumi.get(__response__, 'network_id'),
+        region=pulumi.get(__response__, 'region'),
+        segments=pulumi.get(__response__, 'segments'),
+        shared=pulumi.get(__response__, 'shared'),
+        status=pulumi.get(__response__, 'status'),
+        subnets=pulumi.get(__response__, 'subnets'),
+        tags=pulumi.get(__response__, 'tags'),
+        tenant_id=pulumi.get(__response__, 'tenant_id'),
+        transparent_vlan=pulumi.get(__response__, 'transparent_vlan')))

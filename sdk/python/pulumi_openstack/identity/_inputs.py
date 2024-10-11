@@ -4,15 +4,55 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ApplicationCredentialAccessRuleArgs',
+    'ApplicationCredentialAccessRuleArgsDict',
     'UserMultiFactorAuthRuleArgs',
+    'UserMultiFactorAuthRuleArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ApplicationCredentialAccessRuleArgsDict(TypedDict):
+        method: pulumi.Input[str]
+        """
+        The request method that the application credential is
+        permitted to use for a given API endpoint. Allowed values: `POST`, `GET`,
+        `HEAD`, `PATCH`, `PUT` and `DELETE`.
+        """
+        path: pulumi.Input[str]
+        """
+        The API path that the application credential is permitted
+        to access. May use named wildcards such as **{tag}** or the unnamed wildcard
+        **\\*** to match against any string in the path up to a **/**, or the recursive
+        wildcard **\\*\\*** to include **/** in the matched path.
+        """
+        service: pulumi.Input[str]
+        """
+        The service type identifier for the service that the
+        application credential is granted to access. Must be a service type that is
+        listed in the service catalog and not a code name for a service. E.g.
+        **identity**, **compute**, **volumev3**, **image**, **network**,
+        **object-store**, **sharev2**, **dns**, **key-manager**, **monitoring**, etc.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the existing access rule. The access rule ID of
+        another application credential can be provided.
+        """
+elif False:
+    ApplicationCredentialAccessRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApplicationCredentialAccessRuleArgs:
@@ -101,6 +141,16 @@ class ApplicationCredentialAccessRuleArgs:
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
 
+
+if not MYPY:
+    class UserMultiFactorAuthRuleArgsDict(TypedDict):
+        rules: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of authentication plugins that the user must
+        authenticate with.
+        """
+elif False:
+    UserMultiFactorAuthRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class UserMultiFactorAuthRuleArgs:

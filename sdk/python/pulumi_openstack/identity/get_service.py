@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -145,9 +150,6 @@ def get_service(enabled: Optional[bool] = None,
         name=pulumi.get(__ret__, 'name'),
         region=pulumi.get(__ret__, 'region'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_service)
 def get_service_output(enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                        name: Optional[pulumi.Input[Optional[str]]] = None,
                        region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -174,4 +176,17 @@ def get_service_output(enabled: Optional[pulumi.Input[Optional[bool]]] = None,
            If omitted, the `region` argument of the provider is used.
     :param str type: The service type.
     """
-    ...
+    __args__ = dict()
+    __args__['enabled'] = enabled
+    __args__['name'] = name
+    __args__['region'] = region
+    __args__['type'] = type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:identity/getService:getService', __args__, opts=opts, typ=GetServiceResult)
+    return __ret__.apply(lambda __response__: GetServiceResult(
+        description=pulumi.get(__response__, 'description'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        region=pulumi.get(__response__, 'region'),
+        type=pulumi.get(__response__, 'type')))

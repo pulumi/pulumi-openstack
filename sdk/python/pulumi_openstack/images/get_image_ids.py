@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -290,9 +295,6 @@ def get_image_ids(container_format: Optional[str] = None,
         tag=pulumi.get(__ret__, 'tag'),
         tags=pulumi.get(__ret__, 'tags'),
         visibility=pulumi.get(__ret__, 'visibility'))
-
-
-@_utilities.lift_output_func(get_image_ids)
 def get_image_ids_output(container_format: Optional[pulumi.Input[Optional[str]]] = None,
                          disk_format: Optional[pulumi.Input[Optional[str]]] = None,
                          hidden: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -358,4 +360,39 @@ def get_image_ids_output(container_format: Optional[pulumi.Input[Optional[str]]]
     :param str visibility: The visibility of the image. Must be one of
            "public", "private", "community", or "shared". Defaults to "private".
     """
-    ...
+    __args__ = dict()
+    __args__['containerFormat'] = container_format
+    __args__['diskFormat'] = disk_format
+    __args__['hidden'] = hidden
+    __args__['memberStatus'] = member_status
+    __args__['name'] = name
+    __args__['nameRegex'] = name_regex
+    __args__['owner'] = owner
+    __args__['properties'] = properties
+    __args__['region'] = region
+    __args__['sizeMax'] = size_max
+    __args__['sizeMin'] = size_min
+    __args__['sort'] = sort
+    __args__['tag'] = tag
+    __args__['tags'] = tags
+    __args__['visibility'] = visibility
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:images/getImageIds:getImageIds', __args__, opts=opts, typ=GetImageIdsResult)
+    return __ret__.apply(lambda __response__: GetImageIdsResult(
+        container_format=pulumi.get(__response__, 'container_format'),
+        disk_format=pulumi.get(__response__, 'disk_format'),
+        hidden=pulumi.get(__response__, 'hidden'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        member_status=pulumi.get(__response__, 'member_status'),
+        name=pulumi.get(__response__, 'name'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        owner=pulumi.get(__response__, 'owner'),
+        properties=pulumi.get(__response__, 'properties'),
+        region=pulumi.get(__response__, 'region'),
+        size_max=pulumi.get(__response__, 'size_max'),
+        size_min=pulumi.get(__response__, 'size_min'),
+        sort=pulumi.get(__response__, 'sort'),
+        tag=pulumi.get(__response__, 'tag'),
+        tags=pulumi.get(__response__, 'tags'),
+        visibility=pulumi.get(__response__, 'visibility')))

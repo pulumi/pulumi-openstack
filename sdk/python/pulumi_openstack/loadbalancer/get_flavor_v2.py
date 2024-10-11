@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -150,9 +155,6 @@ def get_flavor_v2(flavor_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         region=pulumi.get(__ret__, 'region'))
-
-
-@_utilities.lift_output_func(get_flavor_v2)
 def get_flavor_v2_output(flavor_id: Optional[pulumi.Input[Optional[str]]] = None,
                          name: Optional[pulumi.Input[Optional[str]]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -175,4 +177,17 @@ def get_flavor_v2_output(flavor_id: Optional[pulumi.Input[Optional[str]]] = None
     :param str region: The region in which to obtain the V2 Load Balancer client.
            If omitted, the `region` argument of the provider is used.
     """
-    ...
+    __args__ = dict()
+    __args__['flavorId'] = flavor_id
+    __args__['name'] = name
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:loadbalancer/getFlavorV2:getFlavorV2', __args__, opts=opts, typ=GetFlavorV2Result)
+    return __ret__.apply(lambda __response__: GetFlavorV2Result(
+        description=pulumi.get(__response__, 'description'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        flavor_id=pulumi.get(__response__, 'flavor_id'),
+        flavor_profile_id=pulumi.get(__response__, 'flavor_profile_id'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        region=pulumi.get(__response__, 'region')))

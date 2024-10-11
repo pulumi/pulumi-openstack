@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -225,9 +230,6 @@ def get_floating_ip(address: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'))
-
-
-@_utilities.lift_output_func(get_floating_ip)
 def get_floating_ip_output(address: Optional[pulumi.Input[Optional[str]]] = None,
                            description: Optional[pulumi.Input[Optional[str]]] = None,
                            fixed_ip: Optional[pulumi.Input[Optional[str]]] = None,
@@ -263,4 +265,29 @@ def get_floating_ip_output(address: Optional[pulumi.Input[Optional[str]]] = None
     :param Sequence[str] tags: The list of floating IP tags to filter.
     :param str tenant_id: The owner of the floating IP.
     """
-    ...
+    __args__ = dict()
+    __args__['address'] = address
+    __args__['description'] = description
+    __args__['fixedIp'] = fixed_ip
+    __args__['pool'] = pool
+    __args__['portId'] = port_id
+    __args__['region'] = region
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['tenantId'] = tenant_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:networking/getFloatingIp:getFloatingIp', __args__, opts=opts, typ=GetFloatingIpResult)
+    return __ret__.apply(lambda __response__: GetFloatingIpResult(
+        address=pulumi.get(__response__, 'address'),
+        all_tags=pulumi.get(__response__, 'all_tags'),
+        description=pulumi.get(__response__, 'description'),
+        dns_domain=pulumi.get(__response__, 'dns_domain'),
+        dns_name=pulumi.get(__response__, 'dns_name'),
+        fixed_ip=pulumi.get(__response__, 'fixed_ip'),
+        id=pulumi.get(__response__, 'id'),
+        pool=pulumi.get(__response__, 'pool'),
+        port_id=pulumi.get(__response__, 'port_id'),
+        region=pulumi.get(__response__, 'region'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        tenant_id=pulumi.get(__response__, 'tenant_id')))

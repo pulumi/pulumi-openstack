@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -213,9 +218,6 @@ def get_quota_v2(project_id: Optional[str] = None,
         security_group_rule=pulumi.get(__ret__, 'security_group_rule'),
         subnet=pulumi.get(__ret__, 'subnet'),
         subnetpool=pulumi.get(__ret__, 'subnetpool'))
-
-
-@_utilities.lift_output_func(get_quota_v2)
 def get_quota_v2_output(project_id: Optional[pulumi.Input[str]] = None,
                         region: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQuotaV2Result]:
@@ -236,4 +238,21 @@ def get_quota_v2_output(project_id: Optional[pulumi.Input[str]] = None,
     :param str region: The region in which to obtain the V2 Network client.
            If omitted, the `region` argument of the provider is used.
     """
-    ...
+    __args__ = dict()
+    __args__['projectId'] = project_id
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:networking/getQuotaV2:getQuotaV2', __args__, opts=opts, typ=GetQuotaV2Result)
+    return __ret__.apply(lambda __response__: GetQuotaV2Result(
+        floatingip=pulumi.get(__response__, 'floatingip'),
+        id=pulumi.get(__response__, 'id'),
+        network=pulumi.get(__response__, 'network'),
+        port=pulumi.get(__response__, 'port'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        rbac_policy=pulumi.get(__response__, 'rbac_policy'),
+        region=pulumi.get(__response__, 'region'),
+        router=pulumi.get(__response__, 'router'),
+        security_group=pulumi.get(__response__, 'security_group'),
+        security_group_rule=pulumi.get(__response__, 'security_group_rule'),
+        subnet=pulumi.get(__response__, 'subnet'),
+        subnetpool=pulumi.get(__response__, 'subnetpool')))

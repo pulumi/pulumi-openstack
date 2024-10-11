@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -96,9 +101,6 @@ def get_availbility_zones(region: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         names=pulumi.get(__ret__, 'names'),
         region=pulumi.get(__ret__, 'region'))
-
-
-@_utilities.lift_output_func(get_availbility_zones)
 def get_availbility_zones_output(region: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAvailbilityZonesResult]:
     """
@@ -118,4 +120,11 @@ def get_availbility_zones_output(region: Optional[pulumi.Input[Optional[str]]] =
     :param str region: The region in which to obtain the V2 Shared File System
            client. If omitted, the `region` argument of the provider is used.
     """
-    ...
+    __args__ = dict()
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones', __args__, opts=opts, typ=GetAvailbilityZonesResult)
+    return __ret__.apply(lambda __response__: GetAvailbilityZonesResult(
+        id=pulumi.get(__response__, 'id'),
+        names=pulumi.get(__response__, 'names'),
+        region=pulumi.get(__response__, 'region')))

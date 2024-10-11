@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -257,9 +262,6 @@ def get_node_group(cluster_id: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'),
         role=pulumi.get(__ret__, 'role'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-
-
-@_utilities.lift_output_func(get_node_group)
 def get_node_group_output(cluster_id: Optional[pulumi.Input[str]] = None,
                           name: Optional[pulumi.Input[Optional[str]]] = None,
                           region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -284,4 +286,25 @@ def get_node_group_output(cluster_id: Optional[pulumi.Input[str]] = None,
            client.
            If omitted, the `region` argument of the provider is used.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['name'] = name
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:containerinfra/getNodeGroup:getNodeGroup', __args__, opts=opts, typ=GetNodeGroupResult)
+    return __ret__.apply(lambda __response__: GetNodeGroupResult(
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        docker_volume_size=pulumi.get(__response__, 'docker_volume_size'),
+        flavor=pulumi.get(__response__, 'flavor'),
+        id=pulumi.get(__response__, 'id'),
+        image=pulumi.get(__response__, 'image'),
+        labels=pulumi.get(__response__, 'labels'),
+        max_node_count=pulumi.get(__response__, 'max_node_count'),
+        min_node_count=pulumi.get(__response__, 'min_node_count'),
+        name=pulumi.get(__response__, 'name'),
+        node_count=pulumi.get(__response__, 'node_count'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
+        role=pulumi.get(__response__, 'role'),
+        updated_at=pulumi.get(__response__, 'updated_at')))

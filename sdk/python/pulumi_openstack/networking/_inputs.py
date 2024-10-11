@@ -4,22 +4,55 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'NetworkSegmentArgs',
+    'NetworkSegmentArgsDict',
     'PortAllowedAddressPairArgs',
+    'PortAllowedAddressPairArgsDict',
     'PortBindingArgs',
+    'PortBindingArgsDict',
     'PortExtraDhcpOptionArgs',
+    'PortExtraDhcpOptionArgsDict',
     'PortFixedIpArgs',
+    'PortFixedIpArgsDict',
     'RouterExternalFixedIpArgs',
+    'RouterExternalFixedIpArgsDict',
     'RouterVendorOptionsArgs',
+    'RouterVendorOptionsArgsDict',
     'SubnetAllocationPoolArgs',
+    'SubnetAllocationPoolArgsDict',
     'TrunkSubPortArgs',
+    'TrunkSubPortArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class NetworkSegmentArgsDict(TypedDict):
+        network_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of physical network.
+        """
+        physical_network: NotRequired[pulumi.Input[str]]
+        """
+        The physical network where this network is implemented.
+        """
+        segmentation_id: NotRequired[pulumi.Input[int]]
+        """
+        An isolated segment on the physical network.
+        """
+elif False:
+    NetworkSegmentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NetworkSegmentArgs:
@@ -76,6 +109,19 @@ class NetworkSegmentArgs:
         pulumi.set(self, "segmentation_id", value)
 
 
+if not MYPY:
+    class PortAllowedAddressPairArgsDict(TypedDict):
+        ip_address: pulumi.Input[str]
+        """
+        The additional IP address.
+        """
+        mac_address: NotRequired[pulumi.Input[str]]
+        """
+        The additional MAC address.
+        """
+elif False:
+    PortAllowedAddressPairArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PortAllowedAddressPairArgs:
     def __init__(__self__, *,
@@ -113,6 +159,35 @@ class PortAllowedAddressPairArgs:
     def mac_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mac_address", value)
 
+
+if not MYPY:
+    class PortBindingArgsDict(TypedDict):
+        host_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the host to allocate port on.
+        """
+        profile: NotRequired[pulumi.Input[str]]
+        """
+        Custom data to be passed as `binding:profile`. Data
+        must be passed as JSON.
+        """
+        vif_details: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A map of JSON strings containing additional
+        details for this specific binding.
+        """
+        vif_type: NotRequired[pulumi.Input[str]]
+        """
+        The VNIC type of the port binding.
+        """
+        vnic_type: NotRequired[pulumi.Input[str]]
+        """
+        VNIC type for the port. Can either be `direct`,
+        `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
+        Default value is `normal`. It can be updated on unbound ports only.
+        """
+elif False:
+    PortBindingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PortBindingArgs:
@@ -209,6 +284,23 @@ class PortBindingArgs:
         pulumi.set(self, "vnic_type", value)
 
 
+if not MYPY:
+    class PortExtraDhcpOptionArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the DHCP option.
+        """
+        value: pulumi.Input[str]
+        """
+        Value of the DHCP option.
+        """
+        ip_version: NotRequired[pulumi.Input[int]]
+        """
+        IP protocol version. Defaults to 4.
+        """
+elif False:
+    PortExtraDhcpOptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PortExtraDhcpOptionArgs:
     def __init__(__self__, *,
@@ -262,6 +354,24 @@ class PortExtraDhcpOptionArgs:
         pulumi.set(self, "ip_version", value)
 
 
+if not MYPY:
+    class PortFixedIpArgsDict(TypedDict):
+        ip_address: NotRequired[pulumi.Input[str]]
+        """
+        IP address desired in the subnet for this port. If
+        you don't specify `ip_address`, an available IP address from the specified
+        subnet will be allocated to this port. This field will not be populated if it
+        is left blank or omitted. To retrieve the assigned IP address, use the
+        `all_fixed_ips` attribute.
+        """
+        subnet_id: NotRequired[pulumi.Input[str]]
+        """
+        Subnet in which to allocate IP address for
+        this port.
+        """
+elif False:
+    PortFixedIpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PortFixedIpArgs:
     def __init__(__self__, *,
@@ -311,6 +421,19 @@ class PortFixedIpArgs:
         pulumi.set(self, "subnet_id", value)
 
 
+if not MYPY:
+    class RouterExternalFixedIpArgsDict(TypedDict):
+        ip_address: NotRequired[pulumi.Input[str]]
+        """
+        The IP address to set on the router.
+        """
+        subnet_id: NotRequired[pulumi.Input[str]]
+        """
+        Subnet in which the fixed IP belongs to.
+        """
+elif False:
+    RouterExternalFixedIpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RouterExternalFixedIpArgs:
     def __init__(__self__, *,
@@ -350,6 +473,16 @@ class RouterExternalFixedIpArgs:
         pulumi.set(self, "subnet_id", value)
 
 
+if not MYPY:
+    class RouterVendorOptionsArgsDict(TypedDict):
+        set_router_gateway_after_create: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean to control whether
+        the Router gateway is assigned during creation or updated after creation.
+        """
+elif False:
+    RouterVendorOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RouterVendorOptionsArgs:
     def __init__(__self__, *,
@@ -374,6 +507,19 @@ class RouterVendorOptionsArgs:
     def set_router_gateway_after_create(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "set_router_gateway_after_create", value)
 
+
+if not MYPY:
+    class SubnetAllocationPoolArgsDict(TypedDict):
+        end: pulumi.Input[str]
+        """
+        The ending address.
+        """
+        start: pulumi.Input[str]
+        """
+        The starting address.
+        """
+elif False:
+    SubnetAllocationPoolArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SubnetAllocationPoolArgs:
@@ -411,6 +557,23 @@ class SubnetAllocationPoolArgs:
     def start(self, value: pulumi.Input[str]):
         pulumi.set(self, "start", value)
 
+
+if not MYPY:
+    class TrunkSubPortArgsDict(TypedDict):
+        port_id: pulumi.Input[str]
+        """
+        The ID of the port to be made a subport of the trunk.
+        """
+        segmentation_id: pulumi.Input[int]
+        """
+        The numeric id of the subport segment.
+        """
+        segmentation_type: pulumi.Input[str]
+        """
+        The segmentation technology to use, e.g., "vlan".
+        """
+elif False:
+    TrunkSubPortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TrunkSubPortArgs:

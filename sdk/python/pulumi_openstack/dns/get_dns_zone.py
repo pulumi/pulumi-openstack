@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -338,9 +343,6 @@ def get_dns_zone(all_projects: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_dns_zone)
 def get_dns_zone_output(all_projects: Optional[pulumi.Input[Optional[str]]] = None,
                         attributes: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                         created_at: Optional[pulumi.Input[Optional[str]]] = None,
@@ -394,4 +396,42 @@ def get_dns_zone_output(all_projects: Optional[pulumi.Input[Optional[str]]] = No
     :param str updated_at: The time the zone was last updated.
     :param int version: The version of the zone.
     """
-    ...
+    __args__ = dict()
+    __args__['allProjects'] = all_projects
+    __args__['attributes'] = attributes
+    __args__['createdAt'] = created_at
+    __args__['description'] = description
+    __args__['email'] = email
+    __args__['masters'] = masters
+    __args__['name'] = name
+    __args__['poolId'] = pool_id
+    __args__['projectId'] = project_id
+    __args__['region'] = region
+    __args__['serial'] = serial
+    __args__['status'] = status
+    __args__['transferredAt'] = transferred_at
+    __args__['ttl'] = ttl
+    __args__['type'] = type
+    __args__['updatedAt'] = updated_at
+    __args__['version'] = version
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:dns/getDnsZone:getDnsZone', __args__, opts=opts, typ=GetDnsZoneResult)
+    return __ret__.apply(lambda __response__: GetDnsZoneResult(
+        all_projects=pulumi.get(__response__, 'all_projects'),
+        attributes=pulumi.get(__response__, 'attributes'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        description=pulumi.get(__response__, 'description'),
+        email=pulumi.get(__response__, 'email'),
+        id=pulumi.get(__response__, 'id'),
+        masters=pulumi.get(__response__, 'masters'),
+        name=pulumi.get(__response__, 'name'),
+        pool_id=pulumi.get(__response__, 'pool_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
+        serial=pulumi.get(__response__, 'serial'),
+        status=pulumi.get(__response__, 'status'),
+        transferred_at=pulumi.get(__response__, 'transferred_at'),
+        ttl=pulumi.get(__response__, 'ttl'),
+        type=pulumi.get(__response__, 'type'),
+        updated_at=pulumi.get(__response__, 'updated_at'),
+        version=pulumi.get(__response__, 'version')))

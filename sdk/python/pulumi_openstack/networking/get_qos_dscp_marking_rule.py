@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -115,9 +120,6 @@ def get_qos_dscp_marking_rule(dscp_mark: Optional[int] = None,
         id=pulumi.get(__ret__, 'id'),
         qos_policy_id=pulumi.get(__ret__, 'qos_policy_id'),
         region=pulumi.get(__ret__, 'region'))
-
-
-@_utilities.lift_output_func(get_qos_dscp_marking_rule)
 def get_qos_dscp_marking_rule_output(dscp_mark: Optional[pulumi.Input[Optional[int]]] = None,
                                      qos_policy_id: Optional[pulumi.Input[str]] = None,
                                      region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -141,4 +143,14 @@ def get_qos_dscp_marking_rule_output(dscp_mark: Optional[pulumi.Input[Optional[i
            A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
            `region` argument of the provider is used.
     """
-    ...
+    __args__ = dict()
+    __args__['dscpMark'] = dscp_mark
+    __args__['qosPolicyId'] = qos_policy_id
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule', __args__, opts=opts, typ=GetQosDscpMarkingRuleResult)
+    return __ret__.apply(lambda __response__: GetQosDscpMarkingRuleResult(
+        dscp_mark=pulumi.get(__response__, 'dscp_mark'),
+        id=pulumi.get(__response__, 'id'),
+        qos_policy_id=pulumi.get(__response__, 'qos_policy_id'),
+        region=pulumi.get(__response__, 'region')))

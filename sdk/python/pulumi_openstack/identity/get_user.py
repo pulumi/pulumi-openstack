@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -220,9 +225,6 @@ def get_user(domain_id: Optional[str] = None,
         protocol_id=pulumi.get(__ret__, 'protocol_id'),
         region=pulumi.get(__ret__, 'region'),
         unique_id=pulumi.get(__ret__, 'unique_id'))
-
-
-@_utilities.lift_output_func(get_user)
 def get_user_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
                     enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                     idp_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -255,4 +257,26 @@ def get_user_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str region: The region the user is located in.
     :param str unique_id: The unique ID of the user.
     """
-    ...
+    __args__ = dict()
+    __args__['domainId'] = domain_id
+    __args__['enabled'] = enabled
+    __args__['idpId'] = idp_id
+    __args__['name'] = name
+    __args__['passwordExpiresAt'] = password_expires_at
+    __args__['protocolId'] = protocol_id
+    __args__['region'] = region
+    __args__['uniqueId'] = unique_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('openstack:identity/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
+    return __ret__.apply(lambda __response__: GetUserResult(
+        default_project_id=pulumi.get(__response__, 'default_project_id'),
+        description=pulumi.get(__response__, 'description'),
+        domain_id=pulumi.get(__response__, 'domain_id'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        id=pulumi.get(__response__, 'id'),
+        idp_id=pulumi.get(__response__, 'idp_id'),
+        name=pulumi.get(__response__, 'name'),
+        password_expires_at=pulumi.get(__response__, 'password_expires_at'),
+        protocol_id=pulumi.get(__response__, 'protocol_id'),
+        region=pulumi.get(__response__, 'region'),
+        unique_id=pulumi.get(__response__, 'unique_id')))
