@@ -41,7 +41,7 @@ LDFLAGS=$(LDFLAGS_PROJ_VERSION) $(LDFLAGS_UPSTREAM_VERSION) $(LDFLAGS_EXTRAS) $(
 _ := $(shell mkdir -p .make bin .pulumi/bin)
 
 # Build the provider and all SDKs and install ready for testing
-build: install_plugins provider build_sdks install_sdks
+build: install_plugins provider build_sdks install_sdks build_registry_docs
 # Keep aliases for old targets to ensure backwards compatibility
 development: build
 only_build: build
@@ -49,9 +49,9 @@ only_build: build
 # Importantly this is run by CI ahead of restoring the bin directory and resuming SDK builds
 prepare_local_workspace: install_plugins upstream
 # Creates all generated files which need to be committed
-generate: generate_sdks schema
-generate_sdks: generate_nodejs generate_python generate_dotnet generate_go generate_java
-build_sdks: build_nodejs build_python build_dotnet build_go build_java
+generate: generate_sdks schema build_registry_docs
+generate_sdks: generate_nodejs generate_python generate_dotnet generate_go generate_java build_registry_docs
+build_sdks: build_nodejs build_python build_dotnet build_go build_java build_registry_docs
 install_sdks: install_nodejs_sdk install_python_sdk install_dotnet_sdk install_go_sdk install_java_sdk
 .PHONY: development only_build build generate generate_sdks build_sdks install_sdks
 
@@ -170,6 +170,12 @@ build_python: .make/build_python
 		../venv/bin/python -m build .
 	@touch $@
 .PHONY: generate_python build_python
+# Run the bridge's registry-docs command to generated the content of the installation docs/ folder at provider repo root
+build_registry_docs: .make/build_registry_docs
+.make/build_registry_docs: .make/install_plugins bin/$(CODEGEN)
+	bin/$(CODEGEN) registry-docs --out $(WORKING_DIR)/docs
+	@touch $@
+.PHONY: build_registry_docs
 
 clean:
 	rm -rf sdk/{dotnet,nodejs,go,python}
