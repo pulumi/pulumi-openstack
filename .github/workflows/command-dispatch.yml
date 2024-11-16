@@ -6,7 +6,7 @@ env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
   OS_AUTH_URL: https://auth.cloud.ovh.net/v3/
-  OS_IDENTITY_API_VERSION: 3
+  OS_IDENTITY_API_VERSION: "3"
   OS_PASSWORD: ${{ secrets.OS_PASSWORD }}
   OS_PROJECT_DOMAIN_NAME: Default
   OS_REGION_NAME: UK1
