@@ -9,10 +9,11 @@ The openstack provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/openstack`](https://www.npmjs.com/package/@pulumi/openstack)
 * Python: [`pulumi-openstack`](https://pypi.org/project/pulumi-openstack/)
-* Go: [`github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack`](https://github.com/pulumi/pulumi-openstack)
+* Go: [`github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack`](https://github.com/pulumi/pulumi-openstack)
 * .NET: [`Pulumi.Openstack`](https://www.nuget.org/packages/Pulumi.Openstack)
 * Java: [`com.pulumi/openstack`](https://central.sonatype.com/artifact/com.pulumi/openstack)
 ## Overview
+
 The OpenStack provider is used to interact with the
 many resources supported by OpenStack. The provider needs to be configured
 with the proper credentials before it can be used.
@@ -128,7 +129,7 @@ config:
 package main
 
 import (
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/compute"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -487,8 +488,9 @@ A simple way of checking which minor versions are supported on your Openstack
 cloud is the following:
 
 ```shell
-export OS_TOKEN=`openstack token issue -c id -f value`
-curl -s -H "X-Auth-Token: $OS_TOKEN"  "https://example.com:9876/"
+export OCTAVIA_URL=`openstack endpoint list --interface public --service octavia -f value -c URL`
+export OS_TOKEN=`openstack token issue -f value -c id`
+curl -s -H "X-Auth-Token: $OS_TOKEN" "$OCTAVIA_URL" | jq -r '.versions[]|select(.status=="SUPPORTED")|.id' | tail -1
 ```
 ### Rackspace Compatibility
 
@@ -607,7 +609,7 @@ return await Deployment.RunAsync(() =>
 package main
 
 import (
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/compute"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
