@@ -461,7 +461,7 @@ def get_image_output(container_format: Optional[pulumi.Input[Optional[str]]] = N
                      tag: Optional[pulumi.Input[Optional[str]]] = None,
                      tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      visibility: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageResult]:
     """
     Use this data source to get the ID of an available OpenStack image.
 
@@ -531,7 +531,7 @@ def get_image_output(container_format: Optional[pulumi.Input[Optional[str]]] = N
     __args__['tag'] = tag
     __args__['tags'] = tags
     __args__['visibility'] = visibility
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:images/getImage:getImage', __args__, opts=opts, typ=GetImageResult)
     return __ret__.apply(lambda __response__: GetImageResult(
         checksum=pulumi.get(__response__, 'checksum'),

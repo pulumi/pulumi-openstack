@@ -298,7 +298,7 @@ def get_share_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                      share_network_id: Optional[pulumi.Input[Optional[str]]] = None,
                      snapshot_id: Optional[pulumi.Input[Optional[str]]] = None,
                      status: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetShareResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetShareResult]:
     """
     Use this data source to get the ID of an available Shared File System share.
 
@@ -339,7 +339,7 @@ def get_share_output(description: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['shareNetworkId'] = share_network_id
     __args__['snapshotId'] = snapshot_id
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:sharedfilesystem/getShare:getShare', __args__, opts=opts, typ=GetShareResult)
     return __ret__.apply(lambda __response__: GetShareResult(
         availability_zone=pulumi.get(__response__, 'availability_zone'),

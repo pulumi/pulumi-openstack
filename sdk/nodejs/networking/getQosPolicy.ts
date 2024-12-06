@@ -129,7 +129,7 @@ export interface GetQosPolicyResult {
  * });
  * ```
  */
-export function getQosPolicyOutput(args?: GetQosPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQosPolicyResult> {
+export function getQosPolicyOutput(args?: GetQosPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQosPolicyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:networking/getQosPolicy:getQosPolicy", {

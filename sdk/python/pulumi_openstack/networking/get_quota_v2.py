@@ -220,7 +220,7 @@ def get_quota_v2(project_id: Optional[str] = None,
         subnetpool=pulumi.get(__ret__, 'subnetpool'))
 def get_quota_v2_output(project_id: Optional[pulumi.Input[str]] = None,
                         region: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQuotaV2Result]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQuotaV2Result]:
     """
     Use this data source to get the networking quota of an OpenStack project.
 
@@ -241,7 +241,7 @@ def get_quota_v2_output(project_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['projectId'] = project_id
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:networking/getQuotaV2:getQuotaV2', __args__, opts=opts, typ=GetQuotaV2Result)
     return __ret__.apply(lambda __response__: GetQuotaV2Result(
         floatingip=pulumi.get(__response__, 'floatingip'),

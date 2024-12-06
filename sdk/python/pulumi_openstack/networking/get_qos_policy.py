@@ -237,7 +237,7 @@ def get_qos_policy_output(description: Optional[pulumi.Input[Optional[str]]] = N
                           region: Optional[pulumi.Input[Optional[str]]] = None,
                           shared: Optional[pulumi.Input[Optional[bool]]] = None,
                           tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQosPolicyResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQosPolicyResult]:
     """
     Use this data source to get the ID of an available OpenStack QoS policy.
 
@@ -269,7 +269,7 @@ def get_qos_policy_output(description: Optional[pulumi.Input[Optional[str]]] = N
     __args__['region'] = region
     __args__['shared'] = shared
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:networking/getQosPolicy:getQosPolicy', __args__, opts=opts, typ=GetQosPolicyResult)
     return __ret__.apply(lambda __response__: GetQosPolicyResult(
         all_tags=pulumi.get(__response__, 'all_tags'),

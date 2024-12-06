@@ -135,7 +135,7 @@ export interface GetInstanceV2Result {
  * });
  * ```
  */
-export function getInstanceV2Output(args: GetInstanceV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceV2Result> {
+export function getInstanceV2Output(args: GetInstanceV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:compute/getInstanceV2:getInstanceV2", {
         "id": args.id,

@@ -310,7 +310,7 @@ def get_image_ids_output(container_format: Optional[pulumi.Input[Optional[str]]]
                          tag: Optional[pulumi.Input[Optional[str]]] = None,
                          tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          visibility: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageIdsResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageIdsResult]:
     """
     Use this data source to get a list of Openstack Image IDs matching the
     specified criteria.
@@ -376,7 +376,7 @@ def get_image_ids_output(container_format: Optional[pulumi.Input[Optional[str]]]
     __args__['tag'] = tag
     __args__['tags'] = tags
     __args__['visibility'] = visibility
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:images/getImageIds:getImageIds', __args__, opts=opts, typ=GetImageIdsResult)
     return __ret__.apply(lambda __response__: GetImageIdsResult(
         container_format=pulumi.get(__response__, 'container_format'),

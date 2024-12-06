@@ -152,7 +152,7 @@ export interface GetShareNetworkResult {
  * });
  * ```
  */
-export function getShareNetworkOutput(args?: GetShareNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShareNetworkResult> {
+export function getShareNetworkOutput(args?: GetShareNetworkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetShareNetworkResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", {

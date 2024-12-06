@@ -340,7 +340,7 @@ def get_network_output(description: Optional[pulumi.Input[Optional[str]]] = None
                        tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                        tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
                        transparent_vlan: Optional[pulumi.Input[Optional[bool]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkResult]:
     """
     Use this data source to get the ID of an available OpenStack network.
 
@@ -382,7 +382,7 @@ def get_network_output(description: Optional[pulumi.Input[Optional[str]]] = None
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
     __args__['transparentVlan'] = transparent_vlan
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:networking/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult)
     return __ret__.apply(lambda __response__: GetNetworkResult(
         admin_state_up=pulumi.get(__response__, 'admin_state_up'),

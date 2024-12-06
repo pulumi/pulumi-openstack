@@ -274,7 +274,7 @@ def get_fw_group_v2_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]
                            shared: Optional[pulumi.Input[Optional[bool]]] = None,
                            status: Optional[pulumi.Input[Optional[str]]] = None,
                            tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFwGroupV2Result]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFwGroupV2Result]:
     """
     Use this data source to get information of an available OpenStack firewall group v2.
 
@@ -316,7 +316,7 @@ def get_fw_group_v2_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]
     __args__['shared'] = shared
     __args__['status'] = status
     __args__['tenantId'] = tenant_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:index/getFwGroupV2:getFwGroupV2', __args__, opts=opts, typ=GetFwGroupV2Result)
     return __ret__.apply(lambda __response__: GetFwGroupV2Result(
         admin_state_up=pulumi.get(__response__, 'admin_state_up'),

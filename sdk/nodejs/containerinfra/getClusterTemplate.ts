@@ -211,7 +211,7 @@ export interface GetClusterTemplateResult {
  * });
  * ```
  */
-export function getClusterTemplateOutput(args: GetClusterTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterTemplateResult> {
+export function getClusterTemplateOutput(args: GetClusterTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:containerinfra/getClusterTemplate:getClusterTemplate", {
         "name": args.name,

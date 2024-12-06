@@ -158,7 +158,7 @@ def get_flavor_v2(flavor_id: Optional[str] = None,
 def get_flavor_v2_output(flavor_id: Optional[pulumi.Input[Optional[str]]] = None,
                          name: Optional[pulumi.Input[Optional[str]]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlavorV2Result]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlavorV2Result]:
     """
     Use this data source to get the ID of an OpenStack Load Balancer flavor.
 
@@ -181,7 +181,7 @@ def get_flavor_v2_output(flavor_id: Optional[pulumi.Input[Optional[str]]] = None
     __args__['flavorId'] = flavor_id
     __args__['name'] = name
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:loadbalancer/getFlavorV2:getFlavorV2', __args__, opts=opts, typ=GetFlavorV2Result)
     return __ret__.apply(lambda __response__: GetFlavorV2Result(
         description=pulumi.get(__response__, 'description'),

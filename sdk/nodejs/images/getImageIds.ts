@@ -170,7 +170,7 @@ export interface GetImageIdsResult {
  * });
  * ```
  */
-export function getImageIdsOutput(args?: GetImageIdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageIdsResult> {
+export function getImageIdsOutput(args?: GetImageIdsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetImageIdsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:images/getImageIds:getImageIds", {
