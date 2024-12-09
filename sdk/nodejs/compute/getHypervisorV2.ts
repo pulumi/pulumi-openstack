@@ -92,7 +92,7 @@ export interface GetHypervisorV2Result {
  * });
  * ```
  */
-export function getHypervisorV2Output(args: GetHypervisorV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHypervisorV2Result> {
+export function getHypervisorV2Output(args: GetHypervisorV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHypervisorV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:compute/getHypervisorV2:getHypervisorV2", {
         "hostname": args.hostname,

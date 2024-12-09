@@ -111,7 +111,7 @@ export interface GetAuthScopeResult {
      */
     readonly userName: string;
 }
-export function getAuthScopeOutput(args: GetAuthScopeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthScopeResult> {
+export function getAuthScopeOutput(args: GetAuthScopeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuthScopeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:identity/getAuthScope:getAuthScope", {
         "name": args.name,

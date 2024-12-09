@@ -208,7 +208,7 @@ export interface GetDnsZoneResult {
  * });
  * ```
  */
-export function getDnsZoneOutput(args?: GetDnsZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDnsZoneResult> {
+export function getDnsZoneOutput(args?: GetDnsZoneOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDnsZoneResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:dns/getDnsZone:getDnsZone", {

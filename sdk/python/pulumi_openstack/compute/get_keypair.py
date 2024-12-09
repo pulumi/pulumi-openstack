@@ -150,7 +150,7 @@ def get_keypair(name: Optional[str] = None,
 def get_keypair_output(name: Optional[pulumi.Input[str]] = None,
                        region: Optional[pulumi.Input[Optional[str]]] = None,
                        user_id: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeypairResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeypairResult]:
     """
     Use this data source to get the ID and public key of an OpenStack keypair.
 
@@ -175,7 +175,7 @@ def get_keypair_output(name: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['region'] = region
     __args__['userId'] = user_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:compute/getKeypair:getKeypair', __args__, opts=opts, typ=GetKeypairResult)
     return __ret__.apply(lambda __response__: GetKeypairResult(
         fingerprint=pulumi.get(__response__, 'fingerprint'),

@@ -227,7 +227,7 @@ def get_container(name: Optional[str] = None,
         updated_at=pulumi.get(__ret__, 'updated_at'))
 def get_container_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContainerResult]:
     """
     Use this data source to get the ID of an available Barbican container.
 
@@ -249,7 +249,7 @@ def get_container_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:keymanager/getContainer:getContainer', __args__, opts=opts, typ=GetContainerResult)
     return __ret__.apply(lambda __response__: GetContainerResult(
         acls=pulumi.get(__response__, 'acls'),

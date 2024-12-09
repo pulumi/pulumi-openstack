@@ -126,7 +126,7 @@ export interface GetNodeGroupResult {
  * });
  * ```
  */
-export function getNodeGroupOutput(args: GetNodeGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeGroupResult> {
+export function getNodeGroupOutput(args: GetNodeGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodeGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:containerinfra/getNodeGroup:getNodeGroup", {
         "clusterId": args.clusterId,

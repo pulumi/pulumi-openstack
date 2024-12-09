@@ -153,7 +153,7 @@ def get_qos_bandwidth_limit_rule_output(max_burst_kbps: Optional[pulumi.Input[Op
                                         max_kbps: Optional[pulumi.Input[Optional[int]]] = None,
                                         qos_policy_id: Optional[pulumi.Input[str]] = None,
                                         region: Optional[pulumi.Input[Optional[str]]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQosBandwidthLimitRuleResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQosBandwidthLimitRuleResult]:
     """
     Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
 
@@ -179,7 +179,7 @@ def get_qos_bandwidth_limit_rule_output(max_burst_kbps: Optional[pulumi.Input[Op
     __args__['maxKbps'] = max_kbps
     __args__['qosPolicyId'] = qos_policy_id
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule', __args__, opts=opts, typ=GetQosBandwidthLimitRuleResult)
     return __ret__.apply(lambda __response__: GetQosBandwidthLimitRuleResult(
         direction=pulumi.get(__response__, 'direction'),

@@ -366,7 +366,7 @@ def get_subnet_output(cidr: Optional[pulumi.Input[Optional[str]]] = None,
                       subnetpool_id: Optional[pulumi.Input[Optional[str]]] = None,
                       tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubnetResult]:
     """
     Use this data source to get the ID of an available OpenStack subnet.
 
@@ -416,7 +416,7 @@ def get_subnet_output(cidr: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['subnetpoolId'] = subnetpool_id
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:networking/getSubnet:getSubnet', __args__, opts=opts, typ=GetSubnetResult)
     return __ret__.apply(lambda __response__: GetSubnetResult(
         all_tags=pulumi.get(__response__, 'all_tags'),

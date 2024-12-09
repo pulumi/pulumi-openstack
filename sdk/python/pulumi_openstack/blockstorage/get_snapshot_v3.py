@@ -194,7 +194,7 @@ def get_snapshot_v3_output(most_recent: Optional[pulumi.Input[Optional[bool]]] =
                            region: Optional[pulumi.Input[Optional[str]]] = None,
                            status: Optional[pulumi.Input[Optional[str]]] = None,
                            volume_id: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotV3Result]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSnapshotV3Result]:
     """
     Use this data source to get information about an existing snapshot.
 
@@ -223,7 +223,7 @@ def get_snapshot_v3_output(most_recent: Optional[pulumi.Input[Optional[bool]]] =
     __args__['region'] = region
     __args__['status'] = status
     __args__['volumeId'] = volume_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:blockstorage/getSnapshotV3:getSnapshotV3', __args__, opts=opts, typ=GetSnapshotV3Result)
     return __ret__.apply(lambda __response__: GetSnapshotV3Result(
         description=pulumi.get(__response__, 'description'),

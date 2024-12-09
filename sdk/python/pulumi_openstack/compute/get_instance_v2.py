@@ -312,7 +312,7 @@ def get_instance_v2_output(id: Optional[pulumi.Input[str]] = None,
                            networks: Optional[pulumi.Input[Optional[Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict']]]]] = None,
                            region: Optional[pulumi.Input[Optional[str]]] = None,
                            user_data: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceV2Result]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceV2Result]:
     """
     Use this data source to get the details of a running server
 
@@ -335,7 +335,7 @@ def get_instance_v2_output(id: Optional[pulumi.Input[str]] = None,
     __args__['networks'] = networks
     __args__['region'] = region
     __args__['userData'] = user_data
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:compute/getInstanceV2:getInstanceV2', __args__, opts=opts, typ=GetInstanceV2Result)
     return __ret__.apply(lambda __response__: GetInstanceV2Result(
         access_ip_v4=pulumi.get(__response__, 'access_ip_v4'),

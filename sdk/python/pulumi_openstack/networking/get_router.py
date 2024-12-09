@@ -268,7 +268,7 @@ def get_router_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = N
                       status: Optional[pulumi.Input[Optional[str]]] = None,
                       tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouterResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouterResult]:
     """
     Use this data source to get the ID of an available OpenStack router.
 
@@ -306,7 +306,7 @@ def get_router_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = N
     __args__['status'] = status
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:networking/getRouter:getRouter', __args__, opts=opts, typ=GetRouterResult)
     return __ret__.apply(lambda __response__: GetRouterResult(
         admin_state_up=pulumi.get(__response__, 'admin_state_up'),

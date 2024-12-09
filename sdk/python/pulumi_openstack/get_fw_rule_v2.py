@@ -350,7 +350,7 @@ def get_fw_rule_v2_output(action: Optional[pulumi.Input[Optional[str]]] = None,
                           source_ip_address: Optional[pulumi.Input[Optional[str]]] = None,
                           source_port: Optional[pulumi.Input[Optional[str]]] = None,
                           tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFwRuleV2Result]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFwRuleV2Result]:
     """
     Use this data source to get information of an available OpenStack firewall rule v2.
 
@@ -406,7 +406,7 @@ def get_fw_rule_v2_output(action: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['sourceIpAddress'] = source_ip_address
     __args__['sourcePort'] = source_port
     __args__['tenantId'] = tenant_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:index/getFwRuleV2:getFwRuleV2', __args__, opts=opts, typ=GetFwRuleV2Result)
     return __ret__.apply(lambda __response__: GetFwRuleV2Result(
         action=pulumi.get(__response__, 'action'),
