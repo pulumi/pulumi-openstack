@@ -208,7 +208,7 @@ def get_project_ids_v3_output(domain_id: Optional[pulumi.Input[Optional[str]]] =
                               parent_id: Optional[pulumi.Input[Optional[str]]] = None,
                               region: Optional[pulumi.Input[Optional[str]]] = None,
                               tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectIdsV3Result]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectIdsV3Result]:
     """
     Use this data source to get a list of OpenStack Project IDs matching the
     specified criteria.
@@ -246,7 +246,7 @@ def get_project_ids_v3_output(domain_id: Optional[pulumi.Input[Optional[str]]] =
     __args__['parentId'] = parent_id
     __args__['region'] = region
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:identity/getProjectIdsV3:getProjectIdsV3', __args__, opts=opts, typ=GetProjectIdsV3Result)
     return __ret__.apply(lambda __response__: GetProjectIdsV3Result(
         description=pulumi.get(__response__, 'description'),

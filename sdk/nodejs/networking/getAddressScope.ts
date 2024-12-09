@@ -103,7 +103,7 @@ export interface GetAddressScopeResult {
  * });
  * ```
  */
-export function getAddressScopeOutput(args?: GetAddressScopeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressScopeResult> {
+export function getAddressScopeOutput(args?: GetAddressScopeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddressScopeResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:networking/getAddressScope:getAddressScope", {

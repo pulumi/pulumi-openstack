@@ -66,7 +66,7 @@ export interface GetAvailbilityZonesResult {
  * const zones = openstack.sharedfilesystem.getAvailbilityZones({});
  * ```
  */
-export function getAvailbilityZonesOutput(args?: GetAvailbilityZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvailbilityZonesResult> {
+export function getAvailbilityZonesOutput(args?: GetAvailbilityZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAvailbilityZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", {

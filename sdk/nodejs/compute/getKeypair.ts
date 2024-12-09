@@ -91,7 +91,7 @@ export interface GetKeypairResult {
  * });
  * ```
  */
-export function getKeypairOutput(args: GetKeypairOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeypairResult> {
+export function getKeypairOutput(args: GetKeypairOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKeypairResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:compute/getKeypair:getKeypair", {
         "name": args.name,

@@ -195,7 +195,7 @@ def get_sec_group_output(description: Optional[pulumi.Input[Optional[str]]] = No
                          stateful: Optional[pulumi.Input[Optional[bool]]] = None,
                          tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecGroupResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecGroupResult]:
     """
     Use this data source to get the ID of an available OpenStack security group.
 
@@ -227,7 +227,7 @@ def get_sec_group_output(description: Optional[pulumi.Input[Optional[str]]] = No
     __args__['stateful'] = stateful
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:networking/getSecGroup:getSecGroup', __args__, opts=opts, typ=GetSecGroupResult)
     return __ret__.apply(lambda __response__: GetSecGroupResult(
         all_tags=pulumi.get(__response__, 'all_tags'),

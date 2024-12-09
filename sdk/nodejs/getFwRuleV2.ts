@@ -206,7 +206,7 @@ export interface GetFwRuleV2Result {
  * });
  * ```
  */
-export function getFwRuleV2Output(args?: GetFwRuleV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFwRuleV2Result> {
+export function getFwRuleV2Output(args?: GetFwRuleV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFwRuleV2Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:index/getFwRuleV2:getFwRuleV2", {

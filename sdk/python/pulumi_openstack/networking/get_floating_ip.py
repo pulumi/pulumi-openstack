@@ -239,7 +239,7 @@ def get_floating_ip_output(address: Optional[pulumi.Input[Optional[str]]] = None
                            status: Optional[pulumi.Input[Optional[str]]] = None,
                            tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFloatingIpResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFloatingIpResult]:
     """
     Use this data source to get the ID of an available OpenStack floating IP.
 
@@ -275,7 +275,7 @@ def get_floating_ip_output(address: Optional[pulumi.Input[Optional[str]]] = None
     __args__['status'] = status
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:networking/getFloatingIp:getFloatingIp', __args__, opts=opts, typ=GetFloatingIpResult)
     return __ret__.apply(lambda __response__: GetFloatingIpResult(
         address=pulumi.get(__response__, 'address'),

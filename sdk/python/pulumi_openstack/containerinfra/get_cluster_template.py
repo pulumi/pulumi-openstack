@@ -522,7 +522,7 @@ def get_cluster_template(name: Optional[str] = None,
         volume_driver=pulumi.get(__ret__, 'volume_driver'))
 def get_cluster_template_output(name: Optional[pulumi.Input[str]] = None,
                                 region: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterTemplateResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterTemplateResult]:
     """
     Use this data source to get the ID of an available OpenStack Magnum cluster
     template.
@@ -545,7 +545,7 @@ def get_cluster_template_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:containerinfra/getClusterTemplate:getClusterTemplate', __args__, opts=opts, typ=GetClusterTemplateResult)
     return __ret__.apply(lambda __response__: GetClusterTemplateResult(
         apiserver_port=pulumi.get(__response__, 'apiserver_port'),

@@ -148,7 +148,7 @@ export interface GetLimitsV2Result {
  * });
  * ```
  */
-export function getLimitsV2Output(args: GetLimitsV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLimitsV2Result> {
+export function getLimitsV2Output(args: GetLimitsV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLimitsV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:compute/getLimitsV2:getLimitsV2", {
         "projectId": args.projectId,

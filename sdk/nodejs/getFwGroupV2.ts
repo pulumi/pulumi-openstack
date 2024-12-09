@@ -161,7 +161,7 @@ export interface GetFwGroupV2Result {
  * });
  * ```
  */
-export function getFwGroupV2Output(args?: GetFwGroupV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFwGroupV2Result> {
+export function getFwGroupV2Output(args?: GetFwGroupV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFwGroupV2Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:index/getFwGroupV2:getFwGroupV2", {

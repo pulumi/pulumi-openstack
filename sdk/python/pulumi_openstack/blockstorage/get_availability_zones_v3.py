@@ -120,7 +120,7 @@ def get_availability_zones_v3(region: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'))
 def get_availability_zones_v3_output(region: Optional[pulumi.Input[Optional[str]]] = None,
                                      state: Optional[pulumi.Input[Optional[str]]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAvailabilityZonesV3Result]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAvailabilityZonesV3Result]:
     """
     Use this data source to get a list of Block Storage availability zones from OpenStack
 
@@ -142,7 +142,7 @@ def get_availability_zones_v3_output(region: Optional[pulumi.Input[Optional[str]
     __args__ = dict()
     __args__['region'] = region
     __args__['state'] = state
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3', __args__, opts=opts, typ=GetAvailabilityZonesV3Result)
     return __ret__.apply(lambda __response__: GetAvailabilityZonesV3Result(
         id=pulumi.get(__response__, 'id'),
