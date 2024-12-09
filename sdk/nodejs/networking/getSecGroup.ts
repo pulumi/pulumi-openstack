@@ -114,7 +114,7 @@ export interface GetSecGroupResult {
  * });
  * ```
  */
-export function getSecGroupOutput(args?: GetSecGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecGroupResult> {
+export function getSecGroupOutput(args?: GetSecGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecGroupResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:networking/getSecGroup:getSecGroup", {

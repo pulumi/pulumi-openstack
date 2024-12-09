@@ -177,7 +177,7 @@ export interface GetSubnetResult {
  * });
  * ```
  */
-export function getSubnetOutput(args?: GetSubnetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetResult> {
+export function getSubnetOutput(args?: GetSubnetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSubnetResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:networking/getSubnet:getSubnet", {

@@ -358,7 +358,7 @@ def get_subnet_pool_output(address_scope_id: Optional[pulumi.Input[Optional[str]
                            region: Optional[pulumi.Input[Optional[str]]] = None,
                            shared: Optional[pulumi.Input[Optional[bool]]] = None,
                            tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetPoolResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubnetPoolResult]:
     """
     Use this data source to get the ID of an available OpenStack subnetpool.
 
@@ -405,7 +405,7 @@ def get_subnet_pool_output(address_scope_id: Optional[pulumi.Input[Optional[str]
     __args__['region'] = region
     __args__['shared'] = shared
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:networking/getSubnetPool:getSubnetPool', __args__, opts=opts, typ=GetSubnetPoolResult)
     return __ret__.apply(lambda __response__: GetSubnetPoolResult(
         address_scope_id=pulumi.get(__response__, 'address_scope_id'),

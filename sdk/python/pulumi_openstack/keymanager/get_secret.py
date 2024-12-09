@@ -427,7 +427,7 @@ def get_secret_output(acl_only: Optional[pulumi.Input[Optional[bool]]] = None,
                       region: Optional[pulumi.Input[Optional[str]]] = None,
                       secret_type: Optional[pulumi.Input[Optional[str]]] = None,
                       updated_at_filter: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretResult]:
     """
     ## Example Usage
 
@@ -492,7 +492,7 @@ def get_secret_output(acl_only: Optional[pulumi.Input[Optional[bool]]] = None,
     __args__['region'] = region
     __args__['secretType'] = secret_type
     __args__['updatedAtFilter'] = updated_at_filter
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:keymanager/getSecret:getSecret', __args__, opts=opts, typ=GetSecretResult)
     return __ret__.apply(lambda __response__: GetSecretResult(
         acl_only=pulumi.get(__response__, 'acl_only'),

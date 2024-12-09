@@ -135,7 +135,7 @@ def get_aggregate_v2(hosts: Optional[Sequence[str]] = None,
 def get_aggregate_v2_output(hosts: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             metadata: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                             name: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAggregateV2Result]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAggregateV2Result]:
     """
     Use this data source to get information about host aggregates
     by name.
@@ -158,7 +158,7 @@ def get_aggregate_v2_output(hosts: Optional[pulumi.Input[Optional[Sequence[str]]
     __args__['hosts'] = hosts
     __args__['metadata'] = metadata
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:compute/getAggregateV2:getAggregateV2', __args__, opts=opts, typ=GetAggregateV2Result)
     return __ret__.apply(lambda __response__: GetAggregateV2Result(
         hosts=pulumi.get(__response__, 'hosts'),

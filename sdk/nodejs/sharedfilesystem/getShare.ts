@@ -166,7 +166,7 @@ export interface GetShareResult {
  * });
  * ```
  */
-export function getShareOutput(args?: GetShareOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShareResult> {
+export function getShareOutput(args?: GetShareOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetShareResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:sharedfilesystem/getShare:getShare", {

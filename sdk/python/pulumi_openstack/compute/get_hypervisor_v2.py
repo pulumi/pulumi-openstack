@@ -179,7 +179,7 @@ def get_hypervisor_v2(hostname: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         vcpus=pulumi.get(__ret__, 'vcpus'))
 def get_hypervisor_v2_output(hostname: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHypervisorV2Result]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHypervisorV2Result]:
     """
     Use this data source to get information about hypervisors
     by hostname.
@@ -198,7 +198,7 @@ def get_hypervisor_v2_output(hostname: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['hostname'] = hostname
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:compute/getHypervisorV2:getHypervisorV2', __args__, opts=opts, typ=GetHypervisorV2Result)
     return __ret__.apply(lambda __response__: GetHypervisorV2Result(
         disk=pulumi.get(__response__, 'disk'),

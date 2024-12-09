@@ -156,7 +156,7 @@ export interface GetPortIdsResult {
  * });
  * ```
  */
-export function getPortIdsOutput(args?: GetPortIdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortIdsResult> {
+export function getPortIdsOutput(args?: GetPortIdsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPortIdsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:networking/getPortIds:getPortIds", {

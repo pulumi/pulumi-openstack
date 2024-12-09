@@ -82,7 +82,7 @@ export interface GetQosDscpMarkingRuleResult {
  * });
  * ```
  */
-export function getQosDscpMarkingRuleOutput(args: GetQosDscpMarkingRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQosDscpMarkingRuleResult> {
+export function getQosDscpMarkingRuleOutput(args: GetQosDscpMarkingRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQosDscpMarkingRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", {
         "dscpMark": args.dscpMark,
