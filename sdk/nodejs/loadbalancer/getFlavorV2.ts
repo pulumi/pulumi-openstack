@@ -91,7 +91,7 @@ export interface GetFlavorV2Result {
  * });
  * ```
  */
-export function getFlavorV2Output(args?: GetFlavorV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlavorV2Result> {
+export function getFlavorV2Output(args?: GetFlavorV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlavorV2Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:loadbalancer/getFlavorV2:getFlavorV2", {

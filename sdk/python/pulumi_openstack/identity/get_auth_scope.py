@@ -286,7 +286,7 @@ def get_auth_scope(name: Optional[str] = None,
 def get_auth_scope_output(name: Optional[pulumi.Input[str]] = None,
                           region: Optional[pulumi.Input[Optional[str]]] = None,
                           set_token_id: Optional[pulumi.Input[Optional[bool]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAuthScopeResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAuthScopeResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -306,7 +306,7 @@ def get_auth_scope_output(name: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['region'] = region
     __args__['setTokenId'] = set_token_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:identity/getAuthScope:getAuthScope', __args__, opts=opts, typ=GetAuthScopeResult)
     return __ret__.apply(lambda __response__: GetAuthScopeResult(
         domain_id=pulumi.get(__response__, 'domain_id'),

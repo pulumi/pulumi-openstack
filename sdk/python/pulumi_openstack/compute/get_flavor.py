@@ -256,7 +256,7 @@ def get_flavor_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                       rx_tx_factor: Optional[pulumi.Input[Optional[float]]] = None,
                       swap: Optional[pulumi.Input[Optional[int]]] = None,
                       vcpus: Optional[pulumi.Input[Optional[int]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlavorResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlavorResult]:
     """
     Use this data source to get the ID of an available OpenStack flavor.
 
@@ -301,7 +301,7 @@ def get_flavor_output(description: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['rxTxFactor'] = rx_tx_factor
     __args__['swap'] = swap
     __args__['vcpus'] = vcpus
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:compute/getFlavor:getFlavor', __args__, opts=opts, typ=GetFlavorResult)
     return __ret__.apply(lambda __response__: GetFlavorResult(
         description=pulumi.get(__response__, 'description'),

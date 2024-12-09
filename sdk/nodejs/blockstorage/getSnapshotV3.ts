@@ -112,7 +112,7 @@ export interface GetSnapshotV3Result {
  * });
  * ```
  */
-export function getSnapshotV3Output(args?: GetSnapshotV3OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotV3Result> {
+export function getSnapshotV3Output(args?: GetSnapshotV3OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSnapshotV3Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:blockstorage/getSnapshotV3:getSnapshotV3", {

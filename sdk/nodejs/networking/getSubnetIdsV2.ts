@@ -163,7 +163,7 @@ export interface GetSubnetIdsV2Result {
  * });
  * ```
  */
-export function getSubnetIdsV2Output(args?: GetSubnetIdsV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetIdsV2Result> {
+export function getSubnetIdsV2Output(args?: GetSubnetIdsV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSubnetIdsV2Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", {

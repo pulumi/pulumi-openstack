@@ -229,7 +229,7 @@ def get_trunk_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = No
                      status: Optional[pulumi.Input[Optional[str]]] = None,
                      tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      trunk_id: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrunkResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTrunkResult]:
     """
     Use this data source to get the ID of an available OpenStack trunk.
 
@@ -265,7 +265,7 @@ def get_trunk_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = No
     __args__['status'] = status
     __args__['tags'] = tags
     __args__['trunkId'] = trunk_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:networking/getTrunk:getTrunk', __args__, opts=opts, typ=GetTrunkResult)
     return __ret__.apply(lambda __response__: GetTrunkResult(
         admin_state_up=pulumi.get(__response__, 'admin_state_up'),

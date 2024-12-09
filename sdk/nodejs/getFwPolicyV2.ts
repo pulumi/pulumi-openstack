@@ -131,7 +131,7 @@ export interface GetFwPolicyV2Result {
  * });
  * ```
  */
-export function getFwPolicyV2Output(args?: GetFwPolicyV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFwPolicyV2Result> {
+export function getFwPolicyV2Output(args?: GetFwPolicyV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFwPolicyV2Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:index/getFwPolicyV2:getFwPolicyV2", {

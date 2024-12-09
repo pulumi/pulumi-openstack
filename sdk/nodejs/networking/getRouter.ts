@@ -137,7 +137,7 @@ export interface GetRouterResult {
  * });
  * ```
  */
-export function getRouterOutput(args?: GetRouterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterResult> {
+export function getRouterOutput(args?: GetRouterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouterResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:networking/getRouter:getRouter", {

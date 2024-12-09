@@ -104,7 +104,7 @@ export interface GetQuotasetV3Result {
  * });
  * ```
  */
-export function getQuotasetV3Output(args: GetQuotasetV3OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotasetV3Result> {
+export function getQuotasetV3Output(args: GetQuotasetV3OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQuotasetV3Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:blockstorage/getQuotasetV3:getQuotasetV3", {
         "projectId": args.projectId,

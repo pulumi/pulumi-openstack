@@ -232,7 +232,7 @@ def get_volume_v3_output(bootable: Optional[pulumi.Input[Optional[str]]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
                          status: Optional[pulumi.Input[Optional[str]]] = None,
                          volume_type: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumeV3Result]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumeV3Result]:
     """
     Use this data source to get information about an existing volume.
 
@@ -263,7 +263,7 @@ def get_volume_v3_output(bootable: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['region'] = region
     __args__['status'] = status
     __args__['volumeType'] = volume_type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:blockstorage/getVolumeV3:getVolumeV3', __args__, opts=opts, typ=GetVolumeV3Result)
     return __ret__.apply(lambda __response__: GetVolumeV3Result(
         attachments=pulumi.get(__response__, 'attachments'),

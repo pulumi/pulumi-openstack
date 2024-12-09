@@ -265,7 +265,7 @@ def get_node_group(cluster_id: Optional[str] = None,
 def get_node_group_output(cluster_id: Optional[pulumi.Input[str]] = None,
                           name: Optional[pulumi.Input[Optional[str]]] = None,
                           region: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeGroupResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeGroupResult]:
     """
     Use this data source to get information of an available OpenStack Magnum node group.
 
@@ -290,7 +290,7 @@ def get_node_group_output(cluster_id: Optional[pulumi.Input[str]] = None,
     __args__['clusterId'] = cluster_id
     __args__['name'] = name
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:containerinfra/getNodeGroup:getNodeGroup', __args__, opts=opts, typ=GetNodeGroupResult)
     return __ret__.apply(lambda __response__: GetNodeGroupResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

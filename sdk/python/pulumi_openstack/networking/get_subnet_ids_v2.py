@@ -324,7 +324,7 @@ def get_subnet_ids_v2_output(cidr: Optional[pulumi.Input[Optional[str]]] = None,
                              subnetpool_id: Optional[pulumi.Input[Optional[str]]] = None,
                              tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                              tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetIdsV2Result]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubnetIdsV2Result]:
     """
     Use this data source to get a list of Openstack Subnet IDs matching the
     specified criteria.
@@ -380,7 +380,7 @@ def get_subnet_ids_v2_output(cidr: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['subnetpoolId'] = subnetpool_id
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:networking/getSubnetIdsV2:getSubnetIdsV2', __args__, opts=opts, typ=GetSubnetIdsV2Result)
     return __ret__.apply(lambda __response__: GetSubnetIdsV2Result(
         cidr=pulumi.get(__response__, 'cidr'),

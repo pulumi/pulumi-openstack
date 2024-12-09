@@ -124,7 +124,7 @@ export interface GetFloatingIpResult {
  * });
  * ```
  */
-export function getFloatingIpOutput(args?: GetFloatingIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFloatingIpResult> {
+export function getFloatingIpOutput(args?: GetFloatingIpOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFloatingIpResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:networking/getFloatingIp:getFloatingIp", {
