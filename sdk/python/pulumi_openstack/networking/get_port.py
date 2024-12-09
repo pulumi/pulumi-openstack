@@ -425,7 +425,7 @@ def get_port_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = Non
                     status: Optional[pulumi.Input[Optional[str]]] = None,
                     tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                     tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPortResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPortResult]:
     """
     Use this data source to get the ID of an available OpenStack port.
 
@@ -475,7 +475,7 @@ def get_port_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = Non
     __args__['status'] = status
     __args__['tags'] = tags
     __args__['tenantId'] = tenant_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:networking/getPort:getPort', __args__, opts=opts, typ=GetPortResult)
     return __ret__.apply(lambda __response__: GetPortResult(
         admin_state_up=pulumi.get(__response__, 'admin_state_up'),

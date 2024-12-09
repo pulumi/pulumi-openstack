@@ -206,7 +206,7 @@ def get_snapshot_output(description: Optional[pulumi.Input[Optional[str]]] = Non
                         region: Optional[pulumi.Input[Optional[str]]] = None,
                         share_id: Optional[pulumi.Input[Optional[str]]] = None,
                         status: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSnapshotResult]:
     """
     Use this data source to get the ID of an available Shared File System snapshot.
 
@@ -234,7 +234,7 @@ def get_snapshot_output(description: Optional[pulumi.Input[Optional[str]]] = Non
     __args__['region'] = region
     __args__['shareId'] = share_id
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:sharedfilesystem/getSnapshot:getSnapshot', __args__, opts=opts, typ=GetSnapshotResult)
     return __ret__.apply(lambda __response__: GetSnapshotResult(
         description=pulumi.get(__response__, 'description'),

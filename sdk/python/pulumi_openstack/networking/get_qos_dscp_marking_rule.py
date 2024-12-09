@@ -123,7 +123,7 @@ def get_qos_dscp_marking_rule(dscp_mark: Optional[int] = None,
 def get_qos_dscp_marking_rule_output(dscp_mark: Optional[pulumi.Input[Optional[int]]] = None,
                                      qos_policy_id: Optional[pulumi.Input[str]] = None,
                                      region: Optional[pulumi.Input[Optional[str]]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQosDscpMarkingRuleResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQosDscpMarkingRuleResult]:
     """
     Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
 
@@ -147,7 +147,7 @@ def get_qos_dscp_marking_rule_output(dscp_mark: Optional[pulumi.Input[Optional[i
     __args__['dscpMark'] = dscp_mark
     __args__['qosPolicyId'] = qos_policy_id
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule', __args__, opts=opts, typ=GetQosDscpMarkingRuleResult)
     return __ret__.apply(lambda __response__: GetQosDscpMarkingRuleResult(
         dscp_mark=pulumi.get(__response__, 'dscp_mark'),

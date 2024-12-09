@@ -134,7 +134,7 @@ export interface GetVolumeV3Result {
  * });
  * ```
  */
-export function getVolumeV3Output(args?: GetVolumeV3OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeV3Result> {
+export function getVolumeV3Output(args?: GetVolumeV3OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVolumeV3Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:blockstorage/getVolumeV3:getVolumeV3", {

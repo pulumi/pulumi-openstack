@@ -110,7 +110,7 @@ export interface GetProjectIdsV3Result {
  * });
  * ```
  */
-export function getProjectIdsV3Output(args?: GetProjectIdsV3OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectIdsV3Result> {
+export function getProjectIdsV3Output(args?: GetProjectIdsV3OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectIdsV3Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:identity/getProjectIdsV3:getProjectIdsV3", {

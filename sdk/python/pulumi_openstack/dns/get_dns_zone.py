@@ -360,7 +360,7 @@ def get_dns_zone_output(all_projects: Optional[pulumi.Input[Optional[str]]] = No
                         type: Optional[pulumi.Input[Optional[str]]] = None,
                         updated_at: Optional[pulumi.Input[Optional[str]]] = None,
                         version: Optional[pulumi.Input[Optional[int]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDnsZoneResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDnsZoneResult]:
     """
     Use this data source to get the ID of an available OpenStack DNS zone.
 
@@ -414,7 +414,7 @@ def get_dns_zone_output(all_projects: Optional[pulumi.Input[Optional[str]]] = No
     __args__['type'] = type
     __args__['updatedAt'] = updated_at
     __args__['version'] = version
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:dns/getDnsZone:getDnsZone', __args__, opts=opts, typ=GetDnsZoneResult)
     return __ret__.apply(lambda __response__: GetDnsZoneResult(
         all_projects=pulumi.get(__response__, 'all_projects'),

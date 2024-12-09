@@ -136,7 +136,7 @@ def get_qos_minimum_bandwidth_rule_output(direction: Optional[pulumi.Input[Optio
                                           min_kbps: Optional[pulumi.Input[Optional[int]]] = None,
                                           qos_policy_id: Optional[pulumi.Input[str]] = None,
                                           region: Optional[pulumi.Input[Optional[str]]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQosMinimumBandwidthRuleResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQosMinimumBandwidthRuleResult]:
     """
     Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
 
@@ -161,7 +161,7 @@ def get_qos_minimum_bandwidth_rule_output(direction: Optional[pulumi.Input[Optio
     __args__['minKbps'] = min_kbps
     __args__['qosPolicyId'] = qos_policy_id
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule', __args__, opts=opts, typ=GetQosMinimumBandwidthRuleResult)
     return __ret__.apply(lambda __response__: GetQosMinimumBandwidthRuleResult(
         direction=pulumi.get(__response__, 'direction'),

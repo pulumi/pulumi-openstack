@@ -136,7 +136,7 @@ export interface GetFlavorResult {
  * });
  * ```
  */
-export function getFlavorOutput(args?: GetFlavorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlavorResult> {
+export function getFlavorOutput(args?: GetFlavorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlavorResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:compute/getFlavor:getFlavor", {

@@ -128,7 +128,7 @@ export interface GetQuotaSetV2Result {
  * });
  * ```
  */
-export function getQuotaSetV2Output(args: GetQuotaSetV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaSetV2Result> {
+export function getQuotaSetV2Output(args: GetQuotaSetV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQuotaSetV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:compute/getQuotaSetV2:getQuotaSetV2", {
         "projectId": args.projectId,

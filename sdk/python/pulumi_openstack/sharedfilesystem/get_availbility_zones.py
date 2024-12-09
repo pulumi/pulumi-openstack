@@ -102,7 +102,7 @@ def get_availbility_zones(region: Optional[str] = None,
         names=pulumi.get(__ret__, 'names'),
         region=pulumi.get(__ret__, 'region'))
 def get_availbility_zones_output(region: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAvailbilityZonesResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAvailbilityZonesResult]:
     """
     Use this data source to get a list of Shared File System availability zones
     from OpenStack
@@ -122,7 +122,7 @@ def get_availbility_zones_output(region: Optional[pulumi.Input[Optional[str]]] =
     """
     __args__ = dict()
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones', __args__, opts=opts, typ=GetAvailbilityZonesResult)
     return __ret__.apply(lambda __response__: GetAvailbilityZonesResult(
         id=pulumi.get(__response__, 'id'),

@@ -193,7 +193,7 @@ export interface GetSubnetPoolResult {
  * });
  * ```
  */
-export function getSubnetPoolOutput(args?: GetSubnetPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetPoolResult> {
+export function getSubnetPoolOutput(args?: GetSubnetPoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSubnetPoolResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:networking/getSubnetPool:getSubnetPool", {

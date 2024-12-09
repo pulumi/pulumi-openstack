@@ -220,7 +220,7 @@ def get_fw_policy_v2_output(audited: Optional[pulumi.Input[Optional[bool]]] = No
                             region: Optional[pulumi.Input[Optional[str]]] = None,
                             shared: Optional[pulumi.Input[Optional[bool]]] = None,
                             tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFwPolicyV2Result]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFwPolicyV2Result]:
     """
     Use this data source to get information of an available OpenStack firewall policy v2.
 
@@ -256,7 +256,7 @@ def get_fw_policy_v2_output(audited: Optional[pulumi.Input[Optional[bool]]] = No
     __args__['region'] = region
     __args__['shared'] = shared
     __args__['tenantId'] = tenant_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:index/getFwPolicyV2:getFwPolicyV2', __args__, opts=opts, typ=GetFwPolicyV2Result)
     return __ret__.apply(lambda __response__: GetFwPolicyV2Result(
         audited=pulumi.get(__response__, 'audited'),
