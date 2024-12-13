@@ -58,6 +58,30 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public static Output<GetQuotaSetV2Result> Invoke(GetQuotaSetV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQuotaSetV2Result>("openstack:compute/getQuotaSetV2:getQuotaSetV2", args ?? new GetQuotaSetV2InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the compute quotaset of an OpenStack project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var quota = OpenStack.Compute.GetQuotaSetV2.Invoke(new()
+        ///     {
+        ///         ProjectId = "2e367a3d29f94fd988e6ec54e305ec9d",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetQuotaSetV2Result> Invoke(GetQuotaSetV2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetQuotaSetV2Result>("openstack:compute/getQuotaSetV2:getQuotaSetV2", args ?? new GetQuotaSetV2InvokeArgs(), options.WithDefaults());
     }
 
 

@@ -86,21 +86,11 @@ type LookupQuotaV2Result struct {
 }
 
 func LookupQuotaV2Output(ctx *pulumi.Context, args LookupQuotaV2OutputArgs, opts ...pulumi.InvokeOption) LookupQuotaV2ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupQuotaV2ResultOutput, error) {
 			args := v.(LookupQuotaV2Args)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupQuotaV2Result
-			secret, err := ctx.InvokePackageRaw("openstack:networking/getQuotaV2:getQuotaV2", args, &rv, "", opts...)
-			if err != nil {
-				return LookupQuotaV2ResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupQuotaV2ResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupQuotaV2ResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:networking/getQuotaV2:getQuotaV2", args, LookupQuotaV2ResultOutput{}, options).(LookupQuotaV2ResultOutput), nil
 		}).(LookupQuotaV2ResultOutput)
 }
 

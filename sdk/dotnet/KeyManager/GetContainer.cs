@@ -58,6 +58,30 @@ namespace Pulumi.OpenStack.KeyManager
         /// </summary>
         public static Output<GetContainerResult> Invoke(GetContainerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerResult>("openstack:keymanager/getContainer:getContainer", args ?? new GetContainerInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available Barbican container.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = OpenStack.KeyManager.GetContainer.Invoke(new()
+        ///     {
+        ///         Name = "my_container",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetContainerResult> Invoke(GetContainerInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetContainerResult>("openstack:keymanager/getContainer:getContainer", args ?? new GetContainerInvokeArgs(), options.WithDefaults());
     }
 
 

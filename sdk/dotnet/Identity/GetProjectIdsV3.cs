@@ -66,6 +66,34 @@ namespace Pulumi.OpenStack.Identity
         /// </summary>
         public static Output<GetProjectIdsV3Result> Invoke(GetProjectIdsV3InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectIdsV3Result>("openstack:identity/getProjectIdsV3:getProjectIdsV3", args ?? new GetProjectIdsV3InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get a list of OpenStack Project IDs matching the
+        /// specified criteria.
+        /// 
+        /// &gt; **Note:** You _must_ have domain admin or cloud admin privileges in your OpenStack cloud to use
+        /// this datasource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projects = OpenStack.Identity.GetProjectIdsV3.Invoke(new()
+        ///     {
+        ///         NameRegex = "^prod.*",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProjectIdsV3Result> Invoke(GetProjectIdsV3InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectIdsV3Result>("openstack:identity/getProjectIdsV3:getProjectIdsV3", args ?? new GetProjectIdsV3InvokeArgs(), options.WithDefaults());
     }
 
 

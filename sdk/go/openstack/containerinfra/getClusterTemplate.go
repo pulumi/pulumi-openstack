@@ -144,21 +144,11 @@ type LookupClusterTemplateResult struct {
 }
 
 func LookupClusterTemplateOutput(ctx *pulumi.Context, args LookupClusterTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupClusterTemplateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupClusterTemplateResultOutput, error) {
 			args := v.(LookupClusterTemplateArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupClusterTemplateResult
-			secret, err := ctx.InvokePackageRaw("openstack:containerinfra/getClusterTemplate:getClusterTemplate", args, &rv, "", opts...)
-			if err != nil {
-				return LookupClusterTemplateResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupClusterTemplateResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupClusterTemplateResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:containerinfra/getClusterTemplate:getClusterTemplate", args, LookupClusterTemplateResultOutput{}, options).(LookupClusterTemplateResultOutput), nil
 		}).(LookupClusterTemplateResultOutput)
 }
 

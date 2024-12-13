@@ -102,21 +102,11 @@ type LookupFlavorResult struct {
 }
 
 func LookupFlavorOutput(ctx *pulumi.Context, args LookupFlavorOutputArgs, opts ...pulumi.InvokeOption) LookupFlavorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFlavorResultOutput, error) {
 			args := v.(LookupFlavorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupFlavorResult
-			secret, err := ctx.InvokePackageRaw("openstack:compute/getFlavor:getFlavor", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFlavorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFlavorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFlavorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:compute/getFlavor:getFlavor", args, LookupFlavorResultOutput{}, options).(LookupFlavorResultOutput), nil
 		}).(LookupFlavorResultOutput)
 }
 

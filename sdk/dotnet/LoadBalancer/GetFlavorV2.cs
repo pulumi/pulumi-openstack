@@ -58,6 +58,30 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// </summary>
         public static Output<GetFlavorV2Result> Invoke(GetFlavorV2InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlavorV2Result>("openstack:loadbalancer/getFlavorV2:getFlavorV2", args ?? new GetFlavorV2InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the ID of an OpenStack Load Balancer flavor.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var flavor1 = OpenStack.LoadBalancer.GetFlavorV2.Invoke(new()
+        ///     {
+        ///         Name = "flavor_1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFlavorV2Result> Invoke(GetFlavorV2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFlavorV2Result>("openstack:loadbalancer/getFlavorV2:getFlavorV2", args ?? new GetFlavorV2InvokeArgs(), options.WithDefaults());
     }
 
 

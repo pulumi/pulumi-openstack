@@ -73,21 +73,11 @@ type LookupQosDscpMarkingRuleResult struct {
 }
 
 func LookupQosDscpMarkingRuleOutput(ctx *pulumi.Context, args LookupQosDscpMarkingRuleOutputArgs, opts ...pulumi.InvokeOption) LookupQosDscpMarkingRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupQosDscpMarkingRuleResultOutput, error) {
 			args := v.(LookupQosDscpMarkingRuleArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupQosDscpMarkingRuleResult
-			secret, err := ctx.InvokePackageRaw("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupQosDscpMarkingRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupQosDscpMarkingRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupQosDscpMarkingRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args, LookupQosDscpMarkingRuleResultOutput{}, options).(LookupQosDscpMarkingRuleResultOutput), nil
 		}).(LookupQosDscpMarkingRuleResultOutput)
 }
 

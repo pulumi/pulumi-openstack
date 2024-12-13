@@ -58,6 +58,30 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public static Output<GetTrunkResult> Invoke(GetTrunkInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTrunkResult>("openstack:networking/getTrunk:getTrunk", args ?? new GetTrunkInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack trunk.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var trunk1 = OpenStack.Networking.GetTrunk.Invoke(new()
+        ///     {
+        ///         Name = "trunk_1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTrunkResult> Invoke(GetTrunkInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTrunkResult>("openstack:networking/getTrunk:getTrunk", args ?? new GetTrunkInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -84,21 +84,11 @@ type GetQuotasetV3Result struct {
 }
 
 func GetQuotasetV3Output(ctx *pulumi.Context, args GetQuotasetV3OutputArgs, opts ...pulumi.InvokeOption) GetQuotasetV3ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetQuotasetV3ResultOutput, error) {
 			args := v.(GetQuotasetV3Args)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetQuotasetV3Result
-			secret, err := ctx.InvokePackageRaw("openstack:blockstorage/getQuotasetV3:getQuotasetV3", args, &rv, "", opts...)
-			if err != nil {
-				return GetQuotasetV3ResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetQuotasetV3ResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetQuotasetV3ResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:blockstorage/getQuotasetV3:getQuotasetV3", args, GetQuotasetV3ResultOutput{}, options).(GetQuotasetV3ResultOutput), nil
 		}).(GetQuotasetV3ResultOutput)
 }
 

@@ -58,6 +58,30 @@ namespace Pulumi.OpenStack
         /// </summary>
         public static Output<GetFwRuleV2Result> Invoke(GetFwRuleV2InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFwRuleV2Result>("openstack:index/getFwRuleV2:getFwRuleV2", args ?? new GetFwRuleV2InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get information of an available OpenStack firewall rule v2.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var rule = OpenStack.GetFwRuleV2.Invoke(new()
+        ///     {
+        ///         Name = "tf_test_rule",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFwRuleV2Result> Invoke(GetFwRuleV2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFwRuleV2Result>("openstack:index/getFwRuleV2:getFwRuleV2", args ?? new GetFwRuleV2InvokeArgs(), options.WithDefaults());
     }
 
 

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.blockstorage.inputs.GetAvailabilityZonesV3Args;
 import com.pulumi.openstack.blockstorage.inputs.GetAvailabilityZonesV3PlainArgs;
@@ -260,6 +261,46 @@ public final class BlockstorageFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAvailabilityZonesV3Result> getAvailabilityZonesV3(GetAvailabilityZonesV3Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3", TypeShape.of(GetAvailabilityZonesV3Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a list of Block Storage availability zones from OpenStack
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
+     * import com.pulumi.openstack.blockstorage.inputs.GetAvailabilityZonesV3Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = BlockstorageFunctions.getAvailabilityZonesV3();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAvailabilityZonesV3Result> getAvailabilityZonesV3Plain(GetAvailabilityZonesV3PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3", TypeShape.of(GetAvailabilityZonesV3Result.class), args, Utilities.withVersion(options));
     }
@@ -387,6 +428,48 @@ public final class BlockstorageFunctions {
      * 
      */
     public static Output<GetQuotasetV3Result> getQuotasetV3(GetQuotasetV3Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:blockstorage/getQuotasetV3:getQuotasetV3", TypeShape.of(GetQuotasetV3Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the blockstorage quotaset v3 of an OpenStack project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
+     * import com.pulumi.openstack.blockstorage.inputs.GetQuotasetV3Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var quota = BlockstorageFunctions.getQuotasetV3(GetQuotasetV3Args.builder()
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetQuotasetV3Result> getQuotasetV3(GetQuotasetV3Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:blockstorage/getQuotasetV3:getQuotasetV3", TypeShape.of(GetQuotasetV3Result.class), args, Utilities.withVersion(options));
     }
     /**
@@ -686,6 +769,49 @@ public final class BlockstorageFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSnapshotV3Result> getSnapshotV3(GetSnapshotV3Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:blockstorage/getSnapshotV3:getSnapshotV3", TypeShape.of(GetSnapshotV3Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about an existing snapshot.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
+     * import com.pulumi.openstack.blockstorage.inputs.GetSnapshotV3Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot1 = BlockstorageFunctions.getSnapshotV3(GetSnapshotV3Args.builder()
+     *             .name("snapshot_1")
+     *             .mostRecent(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSnapshotV3Result> getSnapshotV3Plain(GetSnapshotV3PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:blockstorage/getSnapshotV3:getSnapshotV3", TypeShape.of(GetSnapshotV3Result.class), args, Utilities.withVersion(options));
     }
@@ -897,6 +1023,48 @@ public final class BlockstorageFunctions {
      * 
      */
     public static Output<GetVolumeV3Result> getVolumeV3(GetVolumeV3Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:blockstorage/getVolumeV3:getVolumeV3", TypeShape.of(GetVolumeV3Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about an existing volume.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
+     * import com.pulumi.openstack.blockstorage.inputs.GetVolumeV3Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volume1 = BlockstorageFunctions.getVolumeV3(GetVolumeV3Args.builder()
+     *             .name("volume_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVolumeV3Result> getVolumeV3(GetVolumeV3Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:blockstorage/getVolumeV3:getVolumeV3", TypeShape.of(GetVolumeV3Result.class), args, Utilities.withVersion(options));
     }
     /**

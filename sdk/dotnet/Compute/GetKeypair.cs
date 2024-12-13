@@ -58,6 +58,30 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public static Output<GetKeypairResult> Invoke(GetKeypairInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKeypairResult>("openstack:compute/getKeypair:getKeypair", args ?? new GetKeypairInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the ID and public key of an OpenStack keypair.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var kp = OpenStack.Compute.GetKeypair.Invoke(new()
+        ///     {
+        ///         Name = "sand",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKeypairResult> Invoke(GetKeypairInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKeypairResult>("openstack:compute/getKeypair:getKeypair", args ?? new GetKeypairInvokeArgs(), options.WithDefaults());
     }
 
 

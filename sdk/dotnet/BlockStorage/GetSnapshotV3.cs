@@ -60,6 +60,31 @@ namespace Pulumi.OpenStack.BlockStorage
         /// </summary>
         public static Output<GetSnapshotV3Result> Invoke(GetSnapshotV3InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotV3Result>("openstack:blockstorage/getSnapshotV3:getSnapshotV3", args ?? new GetSnapshotV3InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get information about an existing snapshot.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var snapshot1 = OpenStack.BlockStorage.GetSnapshotV3.Invoke(new()
+        ///     {
+        ///         Name = "snapshot_1",
+        ///         MostRecent = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSnapshotV3Result> Invoke(GetSnapshotV3InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotV3Result>("openstack:blockstorage/getSnapshotV3:getSnapshotV3", args ?? new GetSnapshotV3InvokeArgs(), options.WithDefaults());
     }
 
 

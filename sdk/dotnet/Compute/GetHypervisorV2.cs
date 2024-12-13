@@ -60,6 +60,31 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public static Output<GetHypervisorV2Result> Invoke(GetHypervisorV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHypervisorV2Result>("openstack:compute/getHypervisorV2:getHypervisorV2", args ?? new GetHypervisorV2InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get information about hypervisors
+        /// by hostname.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var host01 = OpenStack.Compute.GetHypervisorV2.Invoke(new()
+        ///     {
+        ///         Hostname = "host01",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHypervisorV2Result> Invoke(GetHypervisorV2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHypervisorV2Result>("openstack:compute/getHypervisorV2:getHypervisorV2", args ?? new GetHypervisorV2InvokeArgs(), options.WithDefaults());
     }
 
 
