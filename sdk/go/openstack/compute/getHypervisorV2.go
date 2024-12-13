@@ -78,21 +78,11 @@ type GetHypervisorV2Result struct {
 }
 
 func GetHypervisorV2Output(ctx *pulumi.Context, args GetHypervisorV2OutputArgs, opts ...pulumi.InvokeOption) GetHypervisorV2ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetHypervisorV2ResultOutput, error) {
 			args := v.(GetHypervisorV2Args)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetHypervisorV2Result
-			secret, err := ctx.InvokePackageRaw("openstack:compute/getHypervisorV2:getHypervisorV2", args, &rv, "", opts...)
-			if err != nil {
-				return GetHypervisorV2ResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetHypervisorV2ResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetHypervisorV2ResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:compute/getHypervisorV2:getHypervisorV2", args, GetHypervisorV2ResultOutput{}, options).(GetHypervisorV2ResultOutput), nil
 		}).(GetHypervisorV2ResultOutput)
 }
 

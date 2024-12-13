@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.images.inputs.GetImageArgs;
 import com.pulumi.openstack.images.inputs.GetImageIdsArgs;
@@ -278,6 +279,50 @@ public final class ImagesFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetImageResult> getImage(GetImageArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:images/getImage:getImage", TypeShape.of(GetImageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack image.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.images.ImagesFunctions;
+     * import com.pulumi.openstack.images.inputs.GetImageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntu = ImagesFunctions.getImage(GetImageArgs.builder()
+     *             .name("Ubuntu 16.04")
+     *             .mostRecent(true)
+     *             .properties(Map.of("key", "value"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetImageResult> getImagePlain(GetImagePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:images/getImage:getImage", TypeShape.of(GetImageResult.class), args, Utilities.withVersion(options));
     }
@@ -504,6 +549,51 @@ public final class ImagesFunctions {
      * 
      */
     public static Output<GetImageIdsResult> getImageIds(GetImageIdsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:images/getImageIds:getImageIds", TypeShape.of(GetImageIdsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a list of Openstack Image IDs matching the
+     * specified criteria.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.images.ImagesFunctions;
+     * import com.pulumi.openstack.images.inputs.GetImageIdsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
+     *             .nameRegex("^Ubuntu 16\\.04.*-amd64")
+     *             .sort("updated_at")
+     *             .properties(Map.of("key", "value"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetImageIdsResult> getImageIds(GetImageIdsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:images/getImageIds:getImageIds", TypeShape.of(GetImageIdsResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -100,21 +100,11 @@ type LookupRouterResult struct {
 }
 
 func LookupRouterOutput(ctx *pulumi.Context, args LookupRouterOutputArgs, opts ...pulumi.InvokeOption) LookupRouterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRouterResultOutput, error) {
 			args := v.(LookupRouterArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupRouterResult
-			secret, err := ctx.InvokePackageRaw("openstack:networking/getRouter:getRouter", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRouterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRouterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRouterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:networking/getRouter:getRouter", args, LookupRouterResultOutput{}, options).(LookupRouterResultOutput), nil
 		}).(LookupRouterResultOutput)
 }
 

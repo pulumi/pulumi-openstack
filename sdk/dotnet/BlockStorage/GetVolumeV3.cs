@@ -58,6 +58,30 @@ namespace Pulumi.OpenStack.BlockStorage
         /// </summary>
         public static Output<GetVolumeV3Result> Invoke(GetVolumeV3InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumeV3Result>("openstack:blockstorage/getVolumeV3:getVolumeV3", args ?? new GetVolumeV3InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get information about an existing volume.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var volume1 = OpenStack.BlockStorage.GetVolumeV3.Invoke(new()
+        ///     {
+        ///         Name = "volume_1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVolumeV3Result> Invoke(GetVolumeV3InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVolumeV3Result>("openstack:blockstorage/getVolumeV3:getVolumeV3", args ?? new GetVolumeV3InvokeArgs(), options.WithDefaults());
     }
 
 

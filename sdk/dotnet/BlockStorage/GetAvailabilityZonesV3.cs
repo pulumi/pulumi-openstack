@@ -52,6 +52,27 @@ namespace Pulumi.OpenStack.BlockStorage
         /// </summary>
         public static Output<GetAvailabilityZonesV3Result> Invoke(GetAvailabilityZonesV3InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAvailabilityZonesV3Result>("openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3", args ?? new GetAvailabilityZonesV3InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get a list of Block Storage availability zones from OpenStack
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var zones = OpenStack.BlockStorage.GetAvailabilityZonesV3.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAvailabilityZonesV3Result> Invoke(GetAvailabilityZonesV3InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAvailabilityZonesV3Result>("openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3", args ?? new GetAvailabilityZonesV3InvokeArgs(), options.WithDefaults());
     }
 
 

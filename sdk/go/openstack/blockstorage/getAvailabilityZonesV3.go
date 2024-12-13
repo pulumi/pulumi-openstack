@@ -70,21 +70,11 @@ type GetAvailabilityZonesV3Result struct {
 }
 
 func GetAvailabilityZonesV3Output(ctx *pulumi.Context, args GetAvailabilityZonesV3OutputArgs, opts ...pulumi.InvokeOption) GetAvailabilityZonesV3ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAvailabilityZonesV3ResultOutput, error) {
 			args := v.(GetAvailabilityZonesV3Args)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAvailabilityZonesV3Result
-			secret, err := ctx.InvokePackageRaw("openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3", args, &rv, "", opts...)
-			if err != nil {
-				return GetAvailabilityZonesV3ResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAvailabilityZonesV3ResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAvailabilityZonesV3ResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3", args, GetAvailabilityZonesV3ResultOutput{}, options).(GetAvailabilityZonesV3ResultOutput), nil
 		}).(GetAvailabilityZonesV3ResultOutput)
 }
 

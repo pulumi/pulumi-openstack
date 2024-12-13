@@ -106,21 +106,11 @@ type GetLimitsV2Result struct {
 }
 
 func GetLimitsV2Output(ctx *pulumi.Context, args GetLimitsV2OutputArgs, opts ...pulumi.InvokeOption) GetLimitsV2ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetLimitsV2ResultOutput, error) {
 			args := v.(GetLimitsV2Args)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetLimitsV2Result
-			secret, err := ctx.InvokePackageRaw("openstack:compute/getLimitsV2:getLimitsV2", args, &rv, "", opts...)
-			if err != nil {
-				return GetLimitsV2ResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetLimitsV2ResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetLimitsV2ResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:compute/getLimitsV2:getLimitsV2", args, GetLimitsV2ResultOutput{}, options).(GetLimitsV2ResultOutput), nil
 		}).(GetLimitsV2ResultOutput)
 }
 

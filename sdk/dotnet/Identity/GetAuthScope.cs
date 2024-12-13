@@ -16,6 +16,9 @@ namespace Pulumi.OpenStack.Identity
 
         public static Output<GetAuthScopeResult> Invoke(GetAuthScopeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args ?? new GetAuthScopeInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetAuthScopeResult> Invoke(GetAuthScopeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args ?? new GetAuthScopeInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -96,21 +96,11 @@ type LookupFloatingIpResult struct {
 }
 
 func LookupFloatingIpOutput(ctx *pulumi.Context, args LookupFloatingIpOutputArgs, opts ...pulumi.InvokeOption) LookupFloatingIpResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFloatingIpResultOutput, error) {
 			args := v.(LookupFloatingIpArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupFloatingIpResult
-			secret, err := ctx.InvokePackageRaw("openstack:networking/getFloatingIp:getFloatingIp", args, &rv, "", opts...)
-			if err != nil {
-				return LookupFloatingIpResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupFloatingIpResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupFloatingIpResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:networking/getFloatingIp:getFloatingIp", args, LookupFloatingIpResultOutput{}, options).(LookupFloatingIpResultOutput), nil
 		}).(LookupFloatingIpResultOutput)
 }
 

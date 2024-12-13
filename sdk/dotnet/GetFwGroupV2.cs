@@ -58,6 +58,30 @@ namespace Pulumi.OpenStack
         /// </summary>
         public static Output<GetFwGroupV2Result> Invoke(GetFwGroupV2InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFwGroupV2Result>("openstack:index/getFwGroupV2:getFwGroupV2", args ?? new GetFwGroupV2InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get information of an available OpenStack firewall group v2.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @group = OpenStack.GetFwGroupV2.Invoke(new()
+        ///     {
+        ///         Name = "tf_test_group",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFwGroupV2Result> Invoke(GetFwGroupV2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFwGroupV2Result>("openstack:index/getFwGroupV2:getFwGroupV2", args ?? new GetFwGroupV2InvokeArgs(), options.WithDefaults());
     }
 
 
