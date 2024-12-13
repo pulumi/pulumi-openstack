@@ -109,21 +109,11 @@ type GetFwGroupV2Result struct {
 }
 
 func GetFwGroupV2Output(ctx *pulumi.Context, args GetFwGroupV2OutputArgs, opts ...pulumi.InvokeOption) GetFwGroupV2ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetFwGroupV2ResultOutput, error) {
 			args := v.(GetFwGroupV2Args)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetFwGroupV2Result
-			secret, err := ctx.InvokePackageRaw("openstack:index/getFwGroupV2:getFwGroupV2", args, &rv, "", opts...)
-			if err != nil {
-				return GetFwGroupV2ResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetFwGroupV2ResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetFwGroupV2ResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:index/getFwGroupV2:getFwGroupV2", args, GetFwGroupV2ResultOutput{}, options).(GetFwGroupV2ResultOutput), nil
 		}).(GetFwGroupV2ResultOutput)
 }
 

@@ -68,6 +68,35 @@ namespace Pulumi.OpenStack.Images
         /// </summary>
         public static Output<GetImageResult> Invoke(GetImageInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImageResult>("openstack:images/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack image.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ubuntu = OpenStack.Images.GetImage.Invoke(new()
+        ///     {
+        ///         Name = "Ubuntu 16.04",
+        ///         MostRecent = true,
+        ///         Properties = 
+        ///         {
+        ///             { "key", "value" },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetImageResult> Invoke(GetImageInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetImageResult>("openstack:images/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());
     }
 
 

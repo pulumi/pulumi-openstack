@@ -68,6 +68,35 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public static Output<GetSubnetIdsV2Result> Invoke(GetSubnetIdsV2InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSubnetIdsV2Result>("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", args ?? new GetSubnetIdsV2InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get a list of Openstack Subnet IDs matching the
+        /// specified criteria.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var subnets = OpenStack.Networking.GetSubnetIdsV2.Invoke(new()
+        ///     {
+        ///         NameRegex = "public",
+        ///         Tags = new[]
+        ///         {
+        ///             "public",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSubnetIdsV2Result> Invoke(GetSubnetIdsV2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSubnetIdsV2Result>("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", args ?? new GetSubnetIdsV2InvokeArgs(), options.WithDefaults());
     }
 
 

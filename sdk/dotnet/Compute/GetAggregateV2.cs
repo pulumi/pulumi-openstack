@@ -60,6 +60,31 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public static Output<GetAggregateV2Result> Invoke(GetAggregateV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAggregateV2Result>("openstack:compute/getAggregateV2:getAggregateV2", args ?? new GetAggregateV2InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get information about host aggregates
+        /// by name.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = OpenStack.Compute.GetAggregateV2.Invoke(new()
+        ///     {
+        ///         Name = "test",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAggregateV2Result> Invoke(GetAggregateV2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAggregateV2Result>("openstack:compute/getAggregateV2:getAggregateV2", args ?? new GetAggregateV2InvokeArgs(), options.WithDefaults());
     }
 
 

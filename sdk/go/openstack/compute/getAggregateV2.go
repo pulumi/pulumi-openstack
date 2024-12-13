@@ -74,21 +74,11 @@ type LookupAggregateV2Result struct {
 }
 
 func LookupAggregateV2Output(ctx *pulumi.Context, args LookupAggregateV2OutputArgs, opts ...pulumi.InvokeOption) LookupAggregateV2ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAggregateV2ResultOutput, error) {
 			args := v.(LookupAggregateV2Args)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAggregateV2Result
-			secret, err := ctx.InvokePackageRaw("openstack:compute/getAggregateV2:getAggregateV2", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAggregateV2ResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAggregateV2ResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAggregateV2ResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:compute/getAggregateV2:getAggregateV2", args, LookupAggregateV2ResultOutput{}, options).(LookupAggregateV2ResultOutput), nil
 		}).(LookupAggregateV2ResultOutput)
 }
 

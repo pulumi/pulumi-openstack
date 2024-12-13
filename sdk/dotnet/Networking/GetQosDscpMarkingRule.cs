@@ -58,6 +58,30 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public static Output<GetQosDscpMarkingRuleResult> Invoke(GetQosDscpMarkingRuleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQosDscpMarkingRuleResult>("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args ?? new GetQosDscpMarkingRuleInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var qosDscpMarkingRule1 = OpenStack.Networking.GetQosDscpMarkingRule.Invoke(new()
+        ///     {
+        ///         DscpMark = 26,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetQosDscpMarkingRuleResult> Invoke(GetQosDscpMarkingRuleInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetQosDscpMarkingRuleResult>("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args ?? new GetQosDscpMarkingRuleInvokeArgs(), options.WithDefaults());
     }
 
 

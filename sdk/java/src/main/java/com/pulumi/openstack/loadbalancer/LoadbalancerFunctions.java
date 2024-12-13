@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.loadbalancer.inputs.GetFlavorV2Args;
 import com.pulumi.openstack.loadbalancer.inputs.GetFlavorV2PlainArgs;
@@ -222,6 +223,48 @@ public final class LoadbalancerFunctions {
      * 
      */
     public static Output<GetFlavorV2Result> getFlavorV2(GetFlavorV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:loadbalancer/getFlavorV2:getFlavorV2", TypeShape.of(GetFlavorV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer flavor.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var flavor1 = LoadbalancerFunctions.getFlavorV2(GetFlavorV2Args.builder()
+     *             .name("flavor_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFlavorV2Result> getFlavorV2(GetFlavorV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:loadbalancer/getFlavorV2:getFlavorV2", TypeShape.of(GetFlavorV2Result.class), args, Utilities.withVersion(options));
     }
     /**

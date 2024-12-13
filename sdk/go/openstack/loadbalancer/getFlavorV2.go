@@ -77,21 +77,11 @@ type GetFlavorV2Result struct {
 }
 
 func GetFlavorV2Output(ctx *pulumi.Context, args GetFlavorV2OutputArgs, opts ...pulumi.InvokeOption) GetFlavorV2ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetFlavorV2ResultOutput, error) {
 			args := v.(GetFlavorV2Args)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetFlavorV2Result
-			secret, err := ctx.InvokePackageRaw("openstack:loadbalancer/getFlavorV2:getFlavorV2", args, &rv, "", opts...)
-			if err != nil {
-				return GetFlavorV2ResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetFlavorV2ResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetFlavorV2ResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:loadbalancer/getFlavorV2:getFlavorV2", args, GetFlavorV2ResultOutput{}, options).(GetFlavorV2ResultOutput), nil
 		}).(GetFlavorV2ResultOutput)
 }
 

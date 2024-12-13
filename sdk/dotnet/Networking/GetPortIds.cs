@@ -60,6 +60,31 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public static Output<GetPortIdsResult> Invoke(GetPortIdsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPortIdsResult>("openstack:networking/getPortIds:getPortIds", args ?? new GetPortIdsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get a list of Openstack Port IDs matching the
+        /// specified criteria.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ports = OpenStack.Networking.GetPortIds.Invoke(new()
+        ///     {
+        ///         Name = "port",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPortIdsResult> Invoke(GetPortIdsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPortIdsResult>("openstack:networking/getPortIds:getPortIds", args ?? new GetPortIdsInvokeArgs(), options.WithDefaults());
     }
 
 

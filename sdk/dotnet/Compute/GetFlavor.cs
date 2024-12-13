@@ -60,6 +60,31 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public static Output<GetFlavorResult> Invoke(GetFlavorInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlavorResult>("openstack:compute/getFlavor:getFlavor", args ?? new GetFlavorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack flavor.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var small = OpenStack.Compute.GetFlavor.Invoke(new()
+        ///     {
+        ///         Vcpus = 1,
+        ///         Ram = 512,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFlavorResult> Invoke(GetFlavorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFlavorResult>("openstack:compute/getFlavor:getFlavor", args ?? new GetFlavorInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -58,6 +58,30 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public static Output<GetQuotaV2Result> Invoke(GetQuotaV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQuotaV2Result>("openstack:networking/getQuotaV2:getQuotaV2", args ?? new GetQuotaV2InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the networking quota of an OpenStack project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var quota = OpenStack.Networking.GetQuotaV2.Invoke(new()
+        ///     {
+        ///         ProjectId = "2e367a3d29f94fd988e6ec54e305ec9d",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetQuotaV2Result> Invoke(GetQuotaV2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetQuotaV2Result>("openstack:networking/getQuotaV2:getQuotaV2", args ?? new GetQuotaV2InvokeArgs(), options.WithDefaults());
     }
 
 

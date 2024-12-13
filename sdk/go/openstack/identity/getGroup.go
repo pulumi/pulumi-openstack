@@ -77,21 +77,11 @@ type GetGroupResult struct {
 }
 
 func GetGroupOutput(ctx *pulumi.Context, args GetGroupOutputArgs, opts ...pulumi.InvokeOption) GetGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGroupResultOutput, error) {
 			args := v.(GetGroupArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGroupResult
-			secret, err := ctx.InvokePackageRaw("openstack:identity/getGroup:getGroup", args, &rv, "", opts...)
-			if err != nil {
-				return GetGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:identity/getGroup:getGroup", args, GetGroupResultOutput{}, options).(GetGroupResultOutput), nil
 		}).(GetGroupResultOutput)
 }
 
