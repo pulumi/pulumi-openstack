@@ -25,103 +25,11 @@ import javax.annotation.Nullable;
  * ### Example with simple content
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.openstack.objectstorage.Container;
- * import com.pulumi.openstack.objectstorage.ContainerArgs;
- * import com.pulumi.openstack.objectstorage.ContainerObject;
- * import com.pulumi.openstack.objectstorage.ContainerObjectArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var container1 = new Container("container1", ContainerArgs.builder()
- *             .region("RegionOne")
- *             .name("tf-test-container-1")
- *             .metadata(Map.of("test", "true"))
- *             .contentType("application/json")
- *             .build());
- * 
- *         var doc1 = new ContainerObject("doc1", ContainerObjectArgs.builder()
- *             .region("RegionOne")
- *             .containerName(container1.name())
- *             .name("test/default.json")
- *             .metadata(Map.of("test", "true"))
- *             .contentType("application/json")
- *             .content("""
- *                {
- *                  "foo" : "bar"
- *                }
- *             """)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Example with content from file
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.openstack.objectstorage.Container;
- * import com.pulumi.openstack.objectstorage.ContainerArgs;
- * import com.pulumi.openstack.objectstorage.ContainerObject;
- * import com.pulumi.openstack.objectstorage.ContainerObjectArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var container1 = new Container("container1", ContainerArgs.builder()
- *             .region("RegionOne")
- *             .name("tf-test-container-1")
- *             .metadata(Map.of("test", "true"))
- *             .contentType("application/json")
- *             .build());
- * 
- *         var doc1 = new ContainerObject("doc1", ContainerObjectArgs.builder()
- *             .region("RegionOne")
- *             .containerName(container1.name())
- *             .name("test/default.json")
- *             .metadata(Map.of("test", "true"))
- *             .contentType("application/json")
- *             .source("./default.json")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

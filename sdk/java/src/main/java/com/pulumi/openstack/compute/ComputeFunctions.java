@@ -279,7 +279,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = ComputeFunctions.getAvailabilityZones();
+     *         final var zones = ComputeFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -319,7 +320,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = ComputeFunctions.getAvailabilityZones();
+     *         final var zones = ComputeFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -359,7 +361,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = ComputeFunctions.getAvailabilityZones();
+     *         final var zones = ComputeFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -399,7 +402,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = ComputeFunctions.getAvailabilityZones();
+     *         final var zones = ComputeFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -439,7 +443,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = ComputeFunctions.getAvailabilityZones();
+     *         final var zones = ComputeFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -479,7 +484,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = ComputeFunctions.getAvailabilityZones();
+     *         final var zones = ComputeFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -519,7 +525,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = ComputeFunctions.getAvailabilityZones();
+     *         final var zones = ComputeFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }

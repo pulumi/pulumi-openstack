@@ -53,7 +53,8 @@ public final class SharedfilesystemFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones();
+     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones(GetAvailbilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -94,7 +95,8 @@ public final class SharedfilesystemFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones();
+     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones(GetAvailbilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -135,7 +137,8 @@ public final class SharedfilesystemFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones();
+     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones(GetAvailbilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -176,7 +179,8 @@ public final class SharedfilesystemFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones();
+     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones(GetAvailbilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -217,7 +221,8 @@ public final class SharedfilesystemFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones();
+     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones(GetAvailbilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -258,7 +263,8 @@ public final class SharedfilesystemFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones();
+     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones(GetAvailbilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -299,7 +305,8 @@ public final class SharedfilesystemFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones();
+     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones(GetAvailbilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
