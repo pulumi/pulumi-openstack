@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .action("deny")
  *             .protocol("tcp")
  *             .destinationPort("23")
- *             .enabled("true")
+ *             .enabled(true)
  *             .build());
  * 
  *         var rule2 = new RuleV2("rule2", RuleV2Args.builder()
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .action("deny")
  *             .protocol("udp")
  *             .destinationPort("123")
- *             .enabled("false")
+ *             .enabled(false)
  *             .build());
  * 
  *         var policy1 = new PolicyV2("policy1", PolicyV2Args.builder()

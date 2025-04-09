@@ -216,7 +216,7 @@ import javax.annotation.Nullable;
  *             .region("RegionOne")
  *             .name("tf-test-container-1")
  *             .containerRead(String.format(".r:-%s", username))
- *             .containerWrite(String.format("%s:%s", current.applyValue(getAuthScopeResult -> getAuthScopeResult.projectId()),username))
+ *             .containerWrite(String.format("%s:%s", current.projectId(),username))
  *             .build());
  * 
  *     }

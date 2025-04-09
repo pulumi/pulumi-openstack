@@ -37,6 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.openstack.keymanager.SecretV1;
  * import com.pulumi.openstack.keymanager.SecretV1Args;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.openstack.keymanager.ContainerV1;
  * import com.pulumi.openstack.keymanager.ContainerV1Args;
  * import com.pulumi.openstack.keymanager.inputs.ContainerV1SecretRefArgs;
