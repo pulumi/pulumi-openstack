@@ -48,9 +48,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var test_flavor = new Flavor("test-flavor", FlavorArgs.builder()
  *             .name("my-flavor")
- *             .ram("8096")
- *             .vcpus("2")
- *             .disk("20")
+ *             .ram(8096)
+ *             .vcpus(2)
+ *             .disk(20)
  *             .extraSpecs(Map.ofEntries(
  *                 Map.entry("hw:cpu_policy", "CPU-POLICY"),
  *                 Map.entry("hw:cpu_thread_policy", "CPU-THREAD-POLICY")

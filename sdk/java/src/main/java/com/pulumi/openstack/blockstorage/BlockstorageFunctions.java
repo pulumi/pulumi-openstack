@@ -52,7 +52,8 @@ public final class BlockstorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = BlockstorageFunctions.getAvailabilityZonesV3();
+     *         final var zones = BlockstorageFunctions.getAvailabilityZonesV3(GetAvailabilityZonesV3Args.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -92,7 +93,8 @@ public final class BlockstorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = BlockstorageFunctions.getAvailabilityZonesV3();
+     *         final var zones = BlockstorageFunctions.getAvailabilityZonesV3(GetAvailabilityZonesV3Args.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -132,7 +134,8 @@ public final class BlockstorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = BlockstorageFunctions.getAvailabilityZonesV3();
+     *         final var zones = BlockstorageFunctions.getAvailabilityZonesV3(GetAvailabilityZonesV3Args.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -172,7 +175,8 @@ public final class BlockstorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = BlockstorageFunctions.getAvailabilityZonesV3();
+     *         final var zones = BlockstorageFunctions.getAvailabilityZonesV3(GetAvailabilityZonesV3Args.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -212,7 +216,8 @@ public final class BlockstorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = BlockstorageFunctions.getAvailabilityZonesV3();
+     *         final var zones = BlockstorageFunctions.getAvailabilityZonesV3(GetAvailabilityZonesV3Args.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -252,7 +257,8 @@ public final class BlockstorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = BlockstorageFunctions.getAvailabilityZonesV3();
+     *         final var zones = BlockstorageFunctions.getAvailabilityZonesV3(GetAvailabilityZonesV3Args.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -292,7 +298,8 @@ public final class BlockstorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = BlockstorageFunctions.getAvailabilityZonesV3();
+     *         final var zones = BlockstorageFunctions.getAvailabilityZonesV3(GetAvailabilityZonesV3Args.builder()
+     *             .build());
      * 
      *     }
      * }

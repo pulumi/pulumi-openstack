@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var rancherosMember = new ImageAccessAccept("rancherosMember", ImageAccessAcceptArgs.builder()
- *             .imageId(rancheros.applyValue(getImageResult -> getImageResult.id()))
+ *             .imageId(rancheros.id())
  *             .status("accepted")
  *             .build());
  * 

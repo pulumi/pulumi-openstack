@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
- *             .adminStateUp("true")
+ *             .adminStateUp(true)
  *             .build());
  * 
  *         var rbacPolicy1 = new RbacPolicyV2("rbacPolicy1", RbacPolicyV2Args.builder()

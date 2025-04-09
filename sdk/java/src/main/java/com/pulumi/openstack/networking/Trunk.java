@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
- *             .adminStateUp("true")
+ *             .adminStateUp(true)
  *             .build());
  * 
  *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *         var parentPort1 = new Port("parentPort1", PortArgs.builder()
  *             .name("parent_port_1")
  *             .networkId(network1.id())
- *             .adminStateUp("true")
+ *             .adminStateUp(true)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(subnet1)
  *                 .build());
@@ -81,14 +81,14 @@ import javax.annotation.Nullable;
  *         var subport1 = new Port("subport1", PortArgs.builder()
  *             .name("subport_1")
  *             .networkId(network1.id())
- *             .adminStateUp("true")
+ *             .adminStateUp(true)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(subnet1)
  *                 .build());
  * 
  *         var trunk1 = new Trunk("trunk1", TrunkArgs.builder()
  *             .name("trunk_1")
- *             .adminStateUp("true")
+ *             .adminStateUp(true)
  *             .portId(parentPort1.id())
  *             .subPorts(TrunkSubPortArgs.builder()
  *                 .portId(subport1.id())

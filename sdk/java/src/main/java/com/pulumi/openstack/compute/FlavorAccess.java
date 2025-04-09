@@ -56,9 +56,9 @@ import javax.annotation.Nullable;
  * 
  *         var flavor1 = new Flavor("flavor1", FlavorArgs.builder()
  *             .name("my-flavor")
- *             .ram("8096")
- *             .vcpus("2")
- *             .disk("20")
+ *             .ram(8096)
+ *             .vcpus(2)
+ *             .disk(20)
  *             .isPublic(false)
  *             .build());
  * 

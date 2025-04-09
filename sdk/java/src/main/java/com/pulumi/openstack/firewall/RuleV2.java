@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *             .action("deny")
  *             .protocol("tcp")
  *             .destinationPort("23")
- *             .enabled("true")
+ *             .enabled(true)
  *             .build());
  * 
  *     }
