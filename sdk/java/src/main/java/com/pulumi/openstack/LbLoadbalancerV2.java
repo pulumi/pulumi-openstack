@@ -3,7 +3,6 @@
 
 package com.pulumi.openstack;
 
-import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -33,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.openstack.LbLoadbalancerV2;
- * import com.pulumi.openstack.LbLoadbalancerV2Args;
+ * import com.pulumi.openstack.loadbalancer.LoadBalancer;
+ * import com.pulumi.openstack.loadbalancer.LoadBalancerArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -48,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var lb1 = new LbLoadbalancerV2("lb1", LbLoadbalancerV2Args.builder()
+ *         var lb1 = new LoadBalancer("lb1", LoadBalancerArgs.builder()
  *             .vipSubnetId("d9415786-5f1a-428b-b35f-2f1523e146d2")
  *             .build());
  * 
@@ -66,7 +65,11 @@ import javax.annotation.Nullable;
  * $ pulumi import openstack:index/lbLoadbalancerV2:LbLoadbalancerV2 loadbalancer_1 19bcfdc7-c521-4a7e-9459-6750bd16df76
  * ```
  * 
+ * @deprecated
+ * openstack.index/lbloadbalancerv2.LbLoadbalancerV2 has been deprecated in favor of openstack.loadbalancer/loadbalancer.LoadBalancer
+ * 
  */
+@Deprecated /* openstack.index/lbloadbalancerv2.LbLoadbalancerV2 has been deprecated in favor of openstack.loadbalancer/loadbalancer.LoadBalancer */
 @ResourceType(type="openstack:index/lbLoadbalancerV2:LbLoadbalancerV2")
 public class LbLoadbalancerV2 extends com.pulumi.resources.CustomResource {
     /**
@@ -371,9 +374,6 @@ public class LbLoadbalancerV2 extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .aliases(List.of(
-                Output.of(Alias.builder().type("openstack:loadbalancer/loadBalancer:LoadBalancer").build())
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -22,6 +22,8 @@ __all__ = [
     'get_fw_policy_v2_output',
 ]
 
+warnings.warn("""openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2""", DeprecationWarning)
+
 @pulumi.output_type
 class GetFwPolicyV2Result:
     """
@@ -173,7 +175,7 @@ def get_fw_policy_v2(audited: Optional[builtins.bool] = None,
     import pulumi
     import pulumi_openstack as openstack
 
-    policy = openstack.get_fw_policy_v2(name="tf_test_policy")
+    policy = openstack.firewall.get_policy_v2(name="tf_test_policy")
     ```
 
 
@@ -190,6 +192,7 @@ def get_fw_policy_v2(audited: Optional[builtins.bool] = None,
     :param builtins.str tenant_id: This argument conflicts and is interchangeable
            with `project_id`. The owner of the firewall policy.
     """
+    pulumi.log.warn("""get_fw_policy_v2 is deprecated: openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2""")
     __args__ = dict()
     __args__['audited'] = audited
     __args__['description'] = description
@@ -231,7 +234,7 @@ def get_fw_policy_v2_output(audited: Optional[pulumi.Input[Optional[builtins.boo
     import pulumi
     import pulumi_openstack as openstack
 
-    policy = openstack.get_fw_policy_v2(name="tf_test_policy")
+    policy = openstack.firewall.get_policy_v2(name="tf_test_policy")
     ```
 
 
@@ -248,6 +251,7 @@ def get_fw_policy_v2_output(audited: Optional[pulumi.Input[Optional[builtins.boo
     :param builtins.str tenant_id: This argument conflicts and is interchangeable
            with `project_id`. The owner of the firewall policy.
     """
+    pulumi.log.warn("""get_fw_policy_v2 is deprecated: openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2""")
     __args__ = dict()
     __args__['audited'] = audited
     __args__['description'] = description

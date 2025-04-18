@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack
 {
+    [Obsolete(@"openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2")]
     public static class GetFwPolicyV2
     {
         /// <summary>
@@ -24,7 +25,7 @@ namespace Pulumi.OpenStack
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var policy = OpenStack.GetFwPolicyV2.Invoke(new()
+        ///     var policy = OpenStack.Firewall.GetPolicyV2.Invoke(new()
         ///     {
         ///         Name = "tf_test_policy",
         ///     });
@@ -48,7 +49,7 @@ namespace Pulumi.OpenStack
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var policy = OpenStack.GetFwPolicyV2.Invoke(new()
+        ///     var policy = OpenStack.Firewall.GetPolicyV2.Invoke(new()
         ///     {
         ///         Name = "tf_test_policy",
         ///     });
@@ -72,7 +73,7 @@ namespace Pulumi.OpenStack
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var policy = OpenStack.GetFwPolicyV2.Invoke(new()
+        ///     var policy = OpenStack.Firewall.GetPolicyV2.Invoke(new()
         ///     {
         ///         Name = "tf_test_policy",
         ///     });

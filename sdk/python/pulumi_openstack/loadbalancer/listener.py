@@ -1233,7 +1233,7 @@ class Listener(pulumi.CustomResource):
             secret_type="certificate",
             payload_content_type="text/plain")
         subnet1 = openstack.networking.get_subnet(name="my-subnet")
-        lb1 = openstack.LbLoadbalancerV2("lb_1",
+        lb1 = openstack.loadbalancer.LoadBalancer("lb_1",
             name="loadbalancer",
             vip_subnet_id=subnet1.id)
         listener1 = openstack.loadbalancer.Listener("listener_1",
@@ -1390,7 +1390,7 @@ class Listener(pulumi.CustomResource):
             secret_type="certificate",
             payload_content_type="text/plain")
         subnet1 = openstack.networking.get_subnet(name="my-subnet")
-        lb1 = openstack.LbLoadbalancerV2("lb_1",
+        lb1 = openstack.loadbalancer.LoadBalancer("lb_1",
             name="loadbalancer",
             vip_subnet_id=subnet1.id)
         listener1 = openstack.loadbalancer.Listener("listener_1",

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack
 {
+    [Obsolete(@"openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2")]
     public static class GetFwRuleV2
     {
         /// <summary>
@@ -24,7 +25,7 @@ namespace Pulumi.OpenStack
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var rule = OpenStack.GetFwRuleV2.Invoke(new()
+        ///     var rule = OpenStack.Firewall.GetRuleV2.Invoke(new()
         ///     {
         ///         Name = "tf_test_rule",
         ///     });
@@ -48,7 +49,7 @@ namespace Pulumi.OpenStack
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var rule = OpenStack.GetFwRuleV2.Invoke(new()
+        ///     var rule = OpenStack.Firewall.GetRuleV2.Invoke(new()
         ///     {
         ///         Name = "tf_test_rule",
         ///     });
@@ -72,7 +73,7 @@ namespace Pulumi.OpenStack
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var rule = OpenStack.GetFwRuleV2.Invoke(new()
+        ///     var rule = OpenStack.Firewall.GetRuleV2.Invoke(new()
         ///     {
         ///         Name = "tf_test_rule",
         ///     });

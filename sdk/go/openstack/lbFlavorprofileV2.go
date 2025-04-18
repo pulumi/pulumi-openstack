@@ -27,7 +27,7 @@ import (
 //
 //	"encoding/json"
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/loadbalancer"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err = openstack.NewLbFlavorprofileV2(ctx, "flavorprofile_1", &openstack.LbFlavorprofileV2Args{
+//			_, err = loadbalancer.NewFlavorprofileV2(ctx, "flavorprofile_1", &loadbalancer.FlavorprofileV2Args{
 //				Name:         pulumi.String("amphora-single-profile"),
 //				ProviderName: pulumi.String("amphora"),
 //				FlavorData:   pulumi.String(json0),
@@ -62,14 +62,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/loadbalancer"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := openstack.NewLbFlavorprofileV2(ctx, "flavorprofile_1", &openstack.LbFlavorprofileV2Args{
+//			_, err := loadbalancer.NewFlavorprofileV2(ctx, "flavorprofile_1", &loadbalancer.FlavorprofileV2Args{
 //				Name:         pulumi.String("amphora-single-profile"),
 //				ProviderName: pulumi.String("amphora"),
 //				FlavorData:   pulumi.String("{\"loadbalancer_topology\": \"SINGLE\"}"),
@@ -90,6 +90,8 @@ import (
 // ```sh
 // $ pulumi import openstack:index/lbFlavorprofileV2:LbFlavorprofileV2 flavorprofile_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
 // ```
+//
+// Deprecated: openstack.index/lbflavorprofilev2.LbFlavorprofileV2 has been deprecated in favor of openstack.loadbalancer/flavorprofilev2.FlavorprofileV2
 type LbFlavorprofileV2 struct {
 	pulumi.CustomResourceState
 

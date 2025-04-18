@@ -617,7 +617,12 @@ class _LbLoadbalancerV2State:
         pulumi.set(self, "vip_subnet_id", value)
 
 
+warnings.warn("""openstack.index/lbloadbalancerv2.LbLoadbalancerV2 has been deprecated in favor of openstack.loadbalancer/loadbalancer.LoadBalancer""", DeprecationWarning)
+
+
 class LbLoadbalancerV2(pulumi.CustomResource):
+    warnings.warn("""openstack.index/lbloadbalancerv2.LbLoadbalancerV2 has been deprecated in favor of openstack.loadbalancer/loadbalancer.LoadBalancer""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -650,7 +655,7 @@ class LbLoadbalancerV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        lb1 = openstack.LbLoadbalancerV2("lb_1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
+        lb1 = openstack.loadbalancer.LoadBalancer("lb_1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
         ```
 
         ## Import
@@ -723,7 +728,7 @@ class LbLoadbalancerV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        lb1 = openstack.LbLoadbalancerV2("lb_1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
+        lb1 = openstack.loadbalancer.LoadBalancer("lb_1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
         ```
 
         ## Import
@@ -765,6 +770,7 @@ class LbLoadbalancerV2(pulumi.CustomResource):
                  vip_qos_policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  vip_subnet_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""LbLoadbalancerV2 is deprecated: openstack.index/lbloadbalancerv2.LbLoadbalancerV2 has been deprecated in favor of openstack.loadbalancer/loadbalancer.LoadBalancer""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -788,8 +794,6 @@ class LbLoadbalancerV2(pulumi.CustomResource):
             __props__.__dict__["vip_port_id"] = vip_port_id
             __props__.__dict__["vip_qos_policy_id"] = vip_qos_policy_id
             __props__.__dict__["vip_subnet_id"] = vip_subnet_id
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="openstack:loadbalancer/loadBalancer:LoadBalancer")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(LbLoadbalancerV2, __self__).__init__(
             'openstack:index/lbLoadbalancerV2:LbLoadbalancerV2',
             resource_name,

@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const association1 = new openstack.BgpvpnPortAssociateV2("association_1", {
+ * const association1 = new openstack.bgpvpn.PortAssociateV2("association_1", {
  *     bgpvpnId: "19382ec5-8098-47d9-a9c6-6270c91103f4",
  *     portId: "b83a95b8-c2c8-4eac-9a9e-ddc85bd1266f",
  *     routes: [
@@ -42,6 +42,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2 association_1 5bb44ecf-f8fe-4d75-8fc5-313f96ee2696/8f8fc660-3f28-414e-896a-0c7c51162fcf
  * ```
+ *
+ * @deprecated openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2
  */
 export class BgpvpnPortAssociateV2 extends pulumi.CustomResource {
     /**
@@ -54,6 +56,7 @@ export class BgpvpnPortAssociateV2 extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BgpvpnPortAssociateV2State, opts?: pulumi.CustomResourceOptions): BgpvpnPortAssociateV2 {
+        pulumi.log.warn("BgpvpnPortAssociateV2 is deprecated: openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2")
         return new BgpvpnPortAssociateV2(name, <any>state, { ...opts, id: id });
     }
 
@@ -112,8 +115,11 @@ export class BgpvpnPortAssociateV2 extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2 */
     constructor(name: string, args: BgpvpnPortAssociateV2Args, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2 */
     constructor(name: string, argsOrState?: BgpvpnPortAssociateV2Args | BgpvpnPortAssociateV2State, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("BgpvpnPortAssociateV2 is deprecated: openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

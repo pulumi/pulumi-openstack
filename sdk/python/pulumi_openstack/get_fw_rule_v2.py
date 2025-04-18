@@ -22,6 +22,8 @@ __all__ = [
     'get_fw_rule_v2_output',
 ]
 
+warnings.warn("""openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2""", DeprecationWarning)
+
 @pulumi.output_type
 class GetFwRuleV2Result:
     """
@@ -268,7 +270,7 @@ def get_fw_rule_v2(action: Optional[builtins.str] = None,
     import pulumi
     import pulumi_openstack as openstack
 
-    rule = openstack.get_fw_rule_v2(name="tf_test_rule")
+    rule = openstack.firewall.get_rule_v2(name="tf_test_rule")
     ```
 
 
@@ -297,6 +299,7 @@ def get_fw_rule_v2(action: Optional[builtins.str] = None,
     :param builtins.str tenant_id: This argument conflicts and is interchangeable
            with `project_id`. The owner of the firewall rule.
     """
+    pulumi.log.warn("""get_fw_rule_v2 is deprecated: openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2""")
     __args__ = dict()
     __args__['action'] = action
     __args__['description'] = description
@@ -361,7 +364,7 @@ def get_fw_rule_v2_output(action: Optional[pulumi.Input[Optional[builtins.str]]]
     import pulumi
     import pulumi_openstack as openstack
 
-    rule = openstack.get_fw_rule_v2(name="tf_test_rule")
+    rule = openstack.firewall.get_rule_v2(name="tf_test_rule")
     ```
 
 
@@ -390,6 +393,7 @@ def get_fw_rule_v2_output(action: Optional[pulumi.Input[Optional[builtins.str]]]
     :param builtins.str tenant_id: This argument conflicts and is interchangeable
            with `project_id`. The owner of the firewall rule.
     """
+    pulumi.log.warn("""get_fw_rule_v2 is deprecated: openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2""")
     __args__ = dict()
     __args__['action'] = action
     __args__['description'] = description

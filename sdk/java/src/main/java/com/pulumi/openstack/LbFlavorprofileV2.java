@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.openstack.LbFlavorprofileV2;
- * import com.pulumi.openstack.LbFlavorprofileV2Args;
+ * import com.pulumi.openstack.loadbalancer.FlavorprofileV2;
+ * import com.pulumi.openstack.loadbalancer.FlavorprofileV2Args;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var flavorprofile1 = new LbFlavorprofileV2("flavorprofile1", LbFlavorprofileV2Args.builder()
+ *         var flavorprofile1 = new FlavorprofileV2("flavorprofile1", FlavorprofileV2Args.builder()
  *             .name("amphora-single-profile")
  *             .providerName("amphora")
  *             .flavorData(serializeJson(
@@ -71,8 +71,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.openstack.LbFlavorprofileV2;
- * import com.pulumi.openstack.LbFlavorprofileV2Args;
+ * import com.pulumi.openstack.loadbalancer.FlavorprofileV2;
+ * import com.pulumi.openstack.loadbalancer.FlavorprofileV2Args;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var flavorprofile1 = new LbFlavorprofileV2("flavorprofile1", LbFlavorprofileV2Args.builder()
+ *         var flavorprofile1 = new FlavorprofileV2("flavorprofile1", FlavorprofileV2Args.builder()
  *             .name("amphora-single-profile")
  *             .providerName("amphora")
  *             .flavorData("{\"loadbalancer_topology\": \"SINGLE\"}")
@@ -106,7 +106,11 @@ import javax.annotation.Nullable;
  * $ pulumi import openstack:index/lbFlavorprofileV2:LbFlavorprofileV2 flavorprofile_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
  * ```
  * 
+ * @deprecated
+ * openstack.index/lbflavorprofilev2.LbFlavorprofileV2 has been deprecated in favor of openstack.loadbalancer/flavorprofilev2.FlavorprofileV2
+ * 
  */
+@Deprecated /* openstack.index/lbflavorprofilev2.LbFlavorprofileV2 has been deprecated in favor of openstack.loadbalancer/flavorprofilev2.FlavorprofileV2 */
 @ResourceType(type="openstack:index/lbFlavorprofileV2:LbFlavorprofileV2")
 public class LbFlavorprofileV2 extends com.pulumi.resources.CustomResource {
     /**

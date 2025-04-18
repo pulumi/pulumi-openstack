@@ -22,6 +22,8 @@ __all__ = [
     'get_fw_group_v2_output',
 ]
 
+warnings.warn("""openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2""", DeprecationWarning)
+
 @pulumi.output_type
 class GetFwGroupV2Result:
     """
@@ -215,7 +217,7 @@ def get_fw_group_v2(admin_state_up: Optional[builtins.bool] = None,
     import pulumi
     import pulumi_openstack as openstack
 
-    group = openstack.get_fw_group_v2(name="tf_test_group")
+    group = openstack.firewall.get_group_v2(name="tf_test_group")
     ```
 
 
@@ -235,6 +237,7 @@ def get_fw_group_v2(admin_state_up: Optional[builtins.bool] = None,
     :param builtins.str tenant_id: This argument conflicts and is interchangeable
            with `project_id`. The owner of the firewall group.
     """
+    pulumi.log.warn("""get_fw_group_v2 is deprecated: openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2""")
     __args__ = dict()
     __args__['adminStateUp'] = admin_state_up
     __args__['description'] = description
@@ -285,7 +288,7 @@ def get_fw_group_v2_output(admin_state_up: Optional[pulumi.Input[Optional[builti
     import pulumi
     import pulumi_openstack as openstack
 
-    group = openstack.get_fw_group_v2(name="tf_test_group")
+    group = openstack.firewall.get_group_v2(name="tf_test_group")
     ```
 
 
@@ -305,6 +308,7 @@ def get_fw_group_v2_output(admin_state_up: Optional[pulumi.Input[Optional[builti
     :param builtins.str tenant_id: This argument conflicts and is interchangeable
            with `project_id`. The owner of the firewall group.
     """
+    pulumi.log.warn("""get_fw_group_v2 is deprecated: openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2""")
     __args__ = dict()
     __args__['adminStateUp'] = admin_state_up
     __args__['description'] = description

@@ -22,18 +22,18 @@ namespace Pulumi.OpenStack
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var association1 = new OpenStack.BgpvpnPortAssociateV2("association_1", new()
+    ///     var association1 = new OpenStack.BGPVPN.PortAssociateV2("association_1", new()
     ///     {
     ///         BgpvpnId = "19382ec5-8098-47d9-a9c6-6270c91103f4",
     ///         PortId = "b83a95b8-c2c8-4eac-9a9e-ddc85bd1266f",
     ///         Routes = new[]
     ///         {
-    ///             new OpenStack.Inputs.BgpvpnPortAssociateV2RouteArgs
+    ///             new OpenStack.BGPVPN.Inputs.PortAssociateV2RouteArgs
     ///             {
     ///                 Type = "prefix",
     ///                 Prefix = "192.168.170.1/32",
     ///             },
-    ///             new OpenStack.Inputs.BgpvpnPortAssociateV2RouteArgs
+    ///             new OpenStack.BGPVPN.Inputs.PortAssociateV2RouteArgs
     ///             {
     ///                 Type = "bgpvpn",
     ///                 BgpvpnId = "35af1cc6-3d0f-4c5d-86f8-8cdb508d3f0c",
@@ -56,6 +56,7 @@ namespace Pulumi.OpenStack
     /// $ pulumi import openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2 association_1 5bb44ecf-f8fe-4d75-8fc5-313f96ee2696/8f8fc660-3f28-414e-896a-0c7c51162fcf
     /// ```
     /// </summary>
+    [Obsolete(@"openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2")]
     [OpenStackResourceType("openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2")]
     public partial class BgpvpnPortAssociateV2 : global::Pulumi.CustomResource
     {

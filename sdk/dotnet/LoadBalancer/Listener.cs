@@ -79,7 +79,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     ///         Name = "my-subnet",
     ///     });
     /// 
-    ///     var lb1 = new OpenStack.LbLoadbalancerV2("lb_1", new()
+    ///     var lb1 = new OpenStack.LoadBalancer.LoadBalancer("lb_1", new()
     ///     {
     ///         Name = "loadbalancer",
     ///         VipSubnetId = subnet1.Apply(getSubnetResult =&gt; getSubnetResult.Id),

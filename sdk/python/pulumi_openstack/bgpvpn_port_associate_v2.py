@@ -261,7 +261,12 @@ class _BgpvpnPortAssociateV2State:
         pulumi.set(self, "routes", value)
 
 
+warnings.warn("""openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2""", DeprecationWarning)
+
+
 class BgpvpnPortAssociateV2(pulumi.CustomResource):
+    warnings.warn("""openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -282,7 +287,7 @@ class BgpvpnPortAssociateV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        association1 = openstack.BgpvpnPortAssociateV2("association_1",
+        association1 = openstack.bgpvpn.PortAssociateV2("association_1",
             bgpvpn_id="19382ec5-8098-47d9-a9c6-6270c91103f4",
             port_id="b83a95b8-c2c8-4eac-9a9e-ddc85bd1266f",
             routes=[
@@ -342,7 +347,7 @@ class BgpvpnPortAssociateV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        association1 = openstack.BgpvpnPortAssociateV2("association_1",
+        association1 = openstack.bgpvpn.PortAssociateV2("association_1",
             bgpvpn_id="19382ec5-8098-47d9-a9c6-6270c91103f4",
             port_id="b83a95b8-c2c8-4eac-9a9e-ddc85bd1266f",
             routes=[
@@ -391,6 +396,7 @@ class BgpvpnPortAssociateV2(pulumi.CustomResource):
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BgpvpnPortAssociateV2RouteArgs', 'BgpvpnPortAssociateV2RouteArgsDict']]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""BgpvpnPortAssociateV2 is deprecated: openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

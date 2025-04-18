@@ -469,7 +469,12 @@ class _BgpvpnV2State:
         pulumi.set(self, "vni", value)
 
 
+warnings.warn("""openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2""", DeprecationWarning)
+
+
 class BgpvpnV2(pulumi.CustomResource):
+    warnings.warn("""openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -494,7 +499,7 @@ class BgpvpnV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        bgpvpn1 = openstack.BgpvpnV2("bgpvpn_1",
+        bgpvpn1 = openstack.bgpvpn.V2("bgpvpn_1",
             name="bgpvpn1",
             route_distinguishers=["64512:1"],
             route_targets=["64512:1"],
@@ -553,7 +558,7 @@ class BgpvpnV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        bgpvpn1 = openstack.BgpvpnV2("bgpvpn_1",
+        bgpvpn1 = openstack.bgpvpn.V2("bgpvpn_1",
             name="bgpvpn1",
             route_distinguishers=["64512:1"],
             route_targets=["64512:1"],
@@ -597,6 +602,7 @@ class BgpvpnV2(pulumi.CustomResource):
                  type: Optional[pulumi.Input[builtins.str]] = None,
                  vni: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
+        pulumi.log.warn("""BgpvpnV2 is deprecated: openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

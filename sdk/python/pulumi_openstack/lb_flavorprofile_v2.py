@@ -171,7 +171,12 @@ class _LbFlavorprofileV2State:
         pulumi.set(self, "region", value)
 
 
+warnings.warn("""openstack.index/lbflavorprofilev2.LbFlavorprofileV2 has been deprecated in favor of openstack.loadbalancer/flavorprofilev2.FlavorprofileV2""", DeprecationWarning)
+
+
 class LbFlavorprofileV2(pulumi.CustomResource):
+    warnings.warn("""openstack.index/lbflavorprofilev2.LbFlavorprofileV2 has been deprecated in favor of openstack.loadbalancer/flavorprofilev2.FlavorprofileV2""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -195,7 +200,7 @@ class LbFlavorprofileV2(pulumi.CustomResource):
         import json
         import pulumi_openstack as openstack
 
-        flavorprofile1 = openstack.LbFlavorprofileV2("flavorprofile_1",
+        flavorprofile1 = openstack.loadbalancer.FlavorprofileV2("flavorprofile_1",
             name="amphora-single-profile",
             provider_name="amphora",
             flavor_data=json.dumps({
@@ -209,7 +214,7 @@ class LbFlavorprofileV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        flavorprofile1 = openstack.LbFlavorprofileV2("flavorprofile_1",
+        flavorprofile1 = openstack.loadbalancer.FlavorprofileV2("flavorprofile_1",
             name="amphora-single-profile",
             provider_name="amphora",
             flavor_data="{\\"loadbalancer_topology\\": \\"SINGLE\\"}")
@@ -254,7 +259,7 @@ class LbFlavorprofileV2(pulumi.CustomResource):
         import json
         import pulumi_openstack as openstack
 
-        flavorprofile1 = openstack.LbFlavorprofileV2("flavorprofile_1",
+        flavorprofile1 = openstack.loadbalancer.FlavorprofileV2("flavorprofile_1",
             name="amphora-single-profile",
             provider_name="amphora",
             flavor_data=json.dumps({
@@ -268,7 +273,7 @@ class LbFlavorprofileV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        flavorprofile1 = openstack.LbFlavorprofileV2("flavorprofile_1",
+        flavorprofile1 = openstack.loadbalancer.FlavorprofileV2("flavorprofile_1",
             name="amphora-single-profile",
             provider_name="amphora",
             flavor_data="{\\"loadbalancer_topology\\": \\"SINGLE\\"}")
@@ -302,6 +307,7 @@ class LbFlavorprofileV2(pulumi.CustomResource):
                  provider_name: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""LbFlavorprofileV2 is deprecated: openstack.index/lbflavorprofilev2.LbFlavorprofileV2 has been deprecated in favor of openstack.loadbalancer/flavorprofilev2.FlavorprofileV2""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

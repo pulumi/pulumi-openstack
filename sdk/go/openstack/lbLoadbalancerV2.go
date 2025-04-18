@@ -23,14 +23,14 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/loadbalancer"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := openstack.NewLbLoadbalancerV2(ctx, "lb_1", &openstack.LbLoadbalancerV2Args{
+//			_, err := loadbalancer.NewLoadBalancer(ctx, "lb_1", &loadbalancer.LoadBalancerArgs{
 //				VipSubnetId: pulumi.String("d9415786-5f1a-428b-b35f-2f1523e146d2"),
 //			})
 //			if err != nil {
@@ -49,6 +49,8 @@ import (
 // ```sh
 // $ pulumi import openstack:index/lbLoadbalancerV2:LbLoadbalancerV2 loadbalancer_1 19bcfdc7-c521-4a7e-9459-6750bd16df76
 // ```
+//
+// Deprecated: openstack.index/lbloadbalancerv2.LbLoadbalancerV2 has been deprecated in favor of openstack.loadbalancer/loadbalancer.LoadBalancer
 type LbLoadbalancerV2 struct {
 	pulumi.CustomResourceState
 
@@ -117,12 +119,6 @@ func NewLbLoadbalancerV2(ctx *pulumi.Context,
 		args = &LbLoadbalancerV2Args{}
 	}
 
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("openstack:loadbalancer/loadBalancer:LoadBalancer"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LbLoadbalancerV2
 	err := ctx.RegisterResource("openstack:index/lbLoadbalancerV2:LbLoadbalancerV2", name, args, &resource, opts...)

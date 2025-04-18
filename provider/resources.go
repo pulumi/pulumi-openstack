@@ -26,9 +26,10 @@ import (
 	"github.com/terraform-provider-openstack/terraform-provider-openstack/v3/openstack"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens/fallbackstrat"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	"github.com/pulumi/pulumi-openstack/provider/v5/pkg/version"
 )
@@ -39,6 +40,7 @@ const (
 	openstackPkg = "openstack"
 	// modules:
 	blockstorageMod     = "BlockStorage"     // Block Storage
+	bgpvpnMod           = "BGPVPN"           // BGP VPN
 	computeMod          = "Compute"          // Compute
 	containerinfraMod   = "ContainerInfra"   // Container Infrastructure
 	databaseMod         = "Database"         // Database
@@ -54,6 +56,26 @@ const (
 	sharedfilesystemMod = "SharedFileSystem" // Shared FileSystem
 	vpnaasMod           = "VPNaaS"           // VPNaaS
 )
+
+var moduleMapping = map[string]string{
+	"blockstorage":     blockstorageMod,
+	"bgpvpn":           bgpvpnMod,
+	"compute":          computeMod,
+	"containerinfra":   containerinfraMod,
+	"database":         databaseMod,
+	"dns":              dnsMod,
+	"identity":         identityMod,
+	"images":           imagesMod,
+	"keymanager":       keymanagerMod,
+	"networking":       networkingMod,
+	"lb":               lbMod,
+	"loadbalancer":     lbMod,
+	"fw":               firewallMod,
+	"objectstorage":    osMod,
+	"orchestration":    orchestrationMod,
+	"sharedfilesystem": sharedfilesystemMod,
+	"vpnaas":           vpnaasMod,
+}
 
 var namespaceMap = map[string]string{
 	"openstack": "OpenStack",
@@ -236,11 +258,11 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"openstack_lb_loadbalancer_v2": {
+				Tok: openstackResource(lbMod, "LoadBalancer"),
 				Docs: &tfbridge.DocInfo{
 					AllowMissing: true,
 				},
 			},
-
 			// Firewall
 			"openstack_fw_group_v2":  {Tok: openstackResource(firewallMod, "GroupV2")},
 			"openstack_fw_policy_v2": {Tok: openstackResource(firewallMod, "PolicyV2")},
@@ -399,23 +421,17 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	prov.MustComputeTokens(tfbridgetokens.KnownModules("openstack_", "index", []string{
-		"blockstorage_",
-		"compute_",
-		"containerinfra_",
-		"database_",
-		"dns_",
-		"identity_",
-		"images_",
-		"keymanager_",
-		"networking_",
-		"loadbalancer_",
-		"firewall_",
-		"objectstorage_",
-		"orchestration_",
-		"sharedfile_system_",
-		"vpnaas_",
-	}, tfbridgetokens.MakeStandard(openstackPkg)))
+	strategy, err := fallbackstrat.MappedModulesWithInferredFallback(
+		&prov,
+		"openstack_",
+		"",
+		moduleMapping,
+		func(module, name string) (string, error) {
+			return string(openstackResource(module, name)), nil
+		},
+	)
+	contract.AssertNoErrorf(err, "failed to create fallback strategy")
+	prov.MustComputeTokens(strategy)
 
 	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
