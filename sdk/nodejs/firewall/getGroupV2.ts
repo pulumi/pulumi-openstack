@@ -161,7 +161,7 @@ export interface GetGroupV2Result {
  * });
  * ```
  */
-export function getGroupV2Output(args?: GetGroupV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupV2Result> {
+export function getGroupV2Output(args?: GetGroupV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupV2Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:firewall/getGroupV2:getGroupV2", {

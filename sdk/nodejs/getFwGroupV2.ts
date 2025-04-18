@@ -164,7 +164,7 @@ export interface GetFwGroupV2Result {
  * ```
  */
 /** @deprecated openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2 */
-export function getFwGroupV2Output(args?: GetFwGroupV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFwGroupV2Result> {
+export function getFwGroupV2Output(args?: GetFwGroupV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFwGroupV2Result> {
     pulumi.log.warn("getFwGroupV2 is deprecated: openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

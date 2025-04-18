@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
- *             .adminStateUp("true")
+ *             .adminStateUp(true)
  *             .build());
  * 
  *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()

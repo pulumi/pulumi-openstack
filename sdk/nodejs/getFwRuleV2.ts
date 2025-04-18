@@ -209,7 +209,7 @@ export interface GetFwRuleV2Result {
  * ```
  */
 /** @deprecated openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2 */
-export function getFwRuleV2Output(args?: GetFwRuleV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFwRuleV2Result> {
+export function getFwRuleV2Output(args?: GetFwRuleV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFwRuleV2Result> {
     pulumi.log.warn("getFwRuleV2 is deprecated: openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

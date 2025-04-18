@@ -134,7 +134,7 @@ export interface GetFwPolicyV2Result {
  * ```
  */
 /** @deprecated openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2 */
-export function getFwPolicyV2Output(args?: GetFwPolicyV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFwPolicyV2Result> {
+export function getFwPolicyV2Output(args?: GetFwPolicyV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFwPolicyV2Result> {
     pulumi.log.warn("getFwPolicyV2 is deprecated: openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

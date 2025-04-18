@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.GetAvailabilityZones(ctx, nil, nil)
+//			_, err := compute.GetAvailabilityZones(ctx, &compute.GetAvailabilityZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -65,21 +65,11 @@ type GetAvailabilityZonesResult struct {
 }
 
 func GetAvailabilityZonesOutput(ctx *pulumi.Context, args GetAvailabilityZonesOutputArgs, opts ...pulumi.InvokeOption) GetAvailabilityZonesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAvailabilityZonesResultOutput, error) {
 			args := v.(GetAvailabilityZonesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAvailabilityZonesResult
-			secret, err := ctx.InvokePackageRaw("openstack:compute/getAvailabilityZones:getAvailabilityZones", args, &rv, "", opts...)
-			if err != nil {
-				return GetAvailabilityZonesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAvailabilityZonesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAvailabilityZonesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:compute/getAvailabilityZones:getAvailabilityZones", args, GetAvailabilityZonesResultOutput{}, options).(GetAvailabilityZonesResultOutput), nil
 		}).(GetAvailabilityZonesResultOutput)
 }
 

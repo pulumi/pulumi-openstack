@@ -58,6 +58,30 @@ namespace Pulumi.OpenStack.Firewall
         /// </summary>
         public static Output<GetPolicyV2Result> Invoke(GetPolicyV2InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyV2Result>("openstack:firewall/getPolicyV2:getPolicyV2", args ?? new GetPolicyV2InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get information of an available OpenStack firewall policy v2.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = OpenStack.Firewall.GetPolicyV2.Invoke(new()
+        ///     {
+        ///         Name = "tf_test_policy",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPolicyV2Result> Invoke(GetPolicyV2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPolicyV2Result>("openstack:firewall/getPolicyV2:getPolicyV2", args ?? new GetPolicyV2InvokeArgs(), options.WithDefaults());
     }
 
 

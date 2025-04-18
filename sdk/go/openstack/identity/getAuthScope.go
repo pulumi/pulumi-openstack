@@ -77,21 +77,11 @@ type GetAuthScopeResult struct {
 }
 
 func GetAuthScopeOutput(ctx *pulumi.Context, args GetAuthScopeOutputArgs, opts ...pulumi.InvokeOption) GetAuthScopeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAuthScopeResultOutput, error) {
 			args := v.(GetAuthScopeArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAuthScopeResult
-			secret, err := ctx.InvokePackageRaw("openstack:identity/getAuthScope:getAuthScope", args, &rv, "", opts...)
-			if err != nil {
-				return GetAuthScopeResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAuthScopeResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAuthScopeResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:identity/getAuthScope:getAuthScope", args, GetAuthScopeResultOutput{}, options).(GetAuthScopeResultOutput), nil
 		}).(GetAuthScopeResultOutput)
 }
 

@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
- *             .adminStateUp("true")
+ *             .adminStateUp(true)
  *             .build());
  * 
  *         var instance1 = new Instance("instance1", InstanceArgs.builder()
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
- *             .adminStateUp("true")
+ *             .adminStateUp(true)
  *             .build());
  * 
  *         var instance1 = new Instance("instance1", InstanceArgs.builder()
@@ -153,13 +153,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
- *             .adminStateUp("true")
+ *             .adminStateUp(true)
  *             .build());
  * 
  *         var port1 = new Port("port1", PortArgs.builder()
  *             .name("port_1")
  *             .networkId(network1.id())
- *             .adminStateUp("true")
+ *             .adminStateUp(true)
  *             .build());
  * 
  *         var instance1 = new Instance("instance1", InstanceArgs.builder()

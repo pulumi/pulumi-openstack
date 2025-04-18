@@ -124,7 +124,7 @@ export interface GetTrunkResult {
  * });
  * ```
  */
-export function getTrunkOutput(args?: GetTrunkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrunkResult> {
+export function getTrunkOutput(args?: GetTrunkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTrunkResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:networking/getTrunk:getTrunk", {

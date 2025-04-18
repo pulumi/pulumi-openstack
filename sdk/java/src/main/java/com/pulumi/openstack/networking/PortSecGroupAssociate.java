@@ -56,8 +56,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var port1 = new PortSecGroupAssociate("port1", PortSecGroupAssociateArgs.builder()
- *             .portId(systemPort.applyValue(getPortResult -> getPortResult.id()))
- *             .securityGroupIds(secgroup.applyValue(getSecGroupResult -> getSecGroupResult.id()))
+ *             .portId(systemPort.id())
+ *             .securityGroupIds(secgroup.id())
  *             .build());
  * 
  *     }
@@ -103,9 +103,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var port1 = new PortSecGroupAssociate("port1", PortSecGroupAssociateArgs.builder()
- *             .portId(systemPort.applyValue(getPortResult -> getPortResult.id()))
- *             .enforce("true")
- *             .securityGroupIds(secgroup.applyValue(getSecGroupResult -> getSecGroupResult.id()))
+ *             .portId(systemPort.id())
+ *             .enforce(true)
+ *             .securityGroupIds(secgroup.id())
  *             .build());
  * 
  *     }
@@ -146,8 +146,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var port1 = new PortSecGroupAssociate("port1", PortSecGroupAssociateArgs.builder()
- *             .portId(systemPort.applyValue(getPortResult -> getPortResult.id()))
- *             .enforce("true")
+ *             .portId(systemPort.id())
+ *             .enforce(true)
  *             .securityGroupIds()
  *             .build());
  * 

@@ -131,7 +131,7 @@ export interface GetPolicyV2Result {
  * });
  * ```
  */
-export function getPolicyV2Output(args?: GetPolicyV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyV2Result> {
+export function getPolicyV2Output(args?: GetPolicyV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPolicyV2Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:firewall/getPolicyV2:getPolicyV2", {

@@ -206,7 +206,7 @@ export interface GetRuleV2Result {
  * });
  * ```
  */
-export function getRuleV2Output(args?: GetRuleV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRuleV2Result> {
+export function getRuleV2Output(args?: GetRuleV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRuleV2Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:firewall/getRuleV2:getRuleV2", {

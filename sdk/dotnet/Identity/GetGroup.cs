@@ -64,6 +64,33 @@ namespace Pulumi.OpenStack.Identity
         /// </summary>
         public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("openstack:identity/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the ID of an OpenStack group.
+        /// 
+        /// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+        /// this resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var admins = OpenStack.Identity.GetGroup.Invoke(new()
+        ///     {
+        ///         Name = "admins",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("openstack:identity/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
     }
 
 

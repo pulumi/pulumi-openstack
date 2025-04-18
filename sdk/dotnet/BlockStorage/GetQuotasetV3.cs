@@ -58,6 +58,30 @@ namespace Pulumi.OpenStack.BlockStorage
         /// </summary>
         public static Output<GetQuotasetV3Result> Invoke(GetQuotasetV3InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQuotasetV3Result>("openstack:blockstorage/getQuotasetV3:getQuotasetV3", args ?? new GetQuotasetV3InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the blockstorage quotaset v3 of an OpenStack project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var quota = OpenStack.BlockStorage.GetQuotasetV3.Invoke(new()
+        ///     {
+        ///         ProjectId = "2e367a3d29f94fd988e6ec54e305ec9d",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetQuotasetV3Result> Invoke(GetQuotasetV3InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetQuotasetV3Result>("openstack:blockstorage/getQuotasetV3:getQuotasetV3", args ?? new GetQuotasetV3InvokeArgs(), options.WithDefaults());
     }
 
 

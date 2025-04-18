@@ -90,21 +90,11 @@ type GetContainerResult struct {
 }
 
 func GetContainerOutput(ctx *pulumi.Context, args GetContainerOutputArgs, opts ...pulumi.InvokeOption) GetContainerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetContainerResultOutput, error) {
 			args := v.(GetContainerArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetContainerResult
-			secret, err := ctx.InvokePackageRaw("openstack:keymanager/getContainer:getContainer", args, &rv, "", opts...)
-			if err != nil {
-				return GetContainerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetContainerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetContainerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:keymanager/getContainer:getContainer", args, GetContainerResultOutput{}, options).(GetContainerResultOutput), nil
 		}).(GetContainerResultOutput)
 }
 

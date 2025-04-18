@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *         var service1 = new Service("service1", ServiceArgs.builder()
  *             .name("my_service")
  *             .routerId("14a75700-fc03-4602-9294-26ee44f366b3")
- *             .adminStateUp("true")
+ *             .adminStateUp(true)
  *             .build());
  * 
  *     }

@@ -58,6 +58,30 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// </summary>
         public static Output<GetShareNetworkResult> Invoke(GetShareNetworkInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetShareNetworkResult>("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", args ?? new GetShareNetworkInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available Shared File System share network.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sharenetwork1 = OpenStack.SharedFileSystem.GetShareNetwork.Invoke(new()
+        ///     {
+        ///         Name = "sharenetwork_1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetShareNetworkResult> Invoke(GetShareNetworkInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetShareNetworkResult>("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", args ?? new GetShareNetworkInvokeArgs(), options.WithDefaults());
     }
 
 

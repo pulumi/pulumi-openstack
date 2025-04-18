@@ -60,6 +60,31 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// </summary>
         public static Output<GetNodeGroupResult> Invoke(GetNodeGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodeGroupResult>("openstack:containerinfra/getNodeGroup:getNodeGroup", args ?? new GetNodeGroupInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get information of an available OpenStack Magnum node group.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var nodegroup1 = OpenStack.ContainerInfra.GetNodeGroup.Invoke(new()
+        ///     {
+        ///         ClusterId = "cluster_1",
+        ///         Name = "nodegroup_1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNodeGroupResult> Invoke(GetNodeGroupInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodeGroupResult>("openstack:containerinfra/getNodeGroup:getNodeGroup", args ?? new GetNodeGroupInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -76,6 +76,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.openstack.keymanager.SecretV1;
  * import com.pulumi.openstack.keymanager.SecretV1Args;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Filebase64Args;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.openstack.networking.NetworkingFunctions;
  * import com.pulumi.openstack.networking.inputs.GetSubnetArgs;
  * import com.pulumi.openstack.loadbalancer.LoadBalancer;
@@ -119,7 +122,7 @@ import javax.annotation.Nullable;
  * 
  *         var lb1 = new LoadBalancer("lb1", LoadBalancerArgs.builder()
  *             .name("loadbalancer")
- *             .vipSubnetId(subnet1.applyValue(getSubnetResult -> getSubnetResult.id()))
+ *             .vipSubnetId(subnet1.id())
  *             .build());
  * 
  *         var listener1 = new Listener("listener1", ListenerArgs.builder()

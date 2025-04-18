@@ -86,7 +86,7 @@ export interface GetAggregateV2Result {
  * });
  * ```
  */
-export function getAggregateV2Output(args: GetAggregateV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregateV2Result> {
+export function getAggregateV2Output(args: GetAggregateV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAggregateV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:compute/getAggregateV2:getAggregateV2", {
         "hosts": args.hosts,

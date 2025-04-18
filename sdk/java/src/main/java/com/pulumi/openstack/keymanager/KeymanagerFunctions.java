@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.keymanager.inputs.GetContainerArgs;
 import com.pulumi.openstack.keymanager.inputs.GetContainerPlainArgs;
@@ -225,6 +226,48 @@ public final class KeymanagerFunctions {
      * 
      */
     public static Output<GetContainerResult> getContainer(GetContainerArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:keymanager/getContainer:getContainer", TypeShape.of(GetContainerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available Barbican container.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.keymanager.KeymanagerFunctions;
+     * import com.pulumi.openstack.keymanager.inputs.GetContainerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = KeymanagerFunctions.getContainer(GetContainerArgs.builder()
+     *             .name("my_container")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetContainerResult> getContainer(GetContainerArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:keymanager/getContainer:getContainer", TypeShape.of(GetContainerResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -702,6 +745,93 @@ public final class KeymanagerFunctions {
      * 
      */
     public static Output<GetSecretResult> getSecret(GetSecretArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:keymanager/getSecret:getSecret", TypeShape.of(GetSecretResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.keymanager.KeymanagerFunctions;
+     * import com.pulumi.openstack.keymanager.inputs.GetSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
+     *             .mode("cbc")
+     *             .secretType("passphrase")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Date Filters
+     * 
+     * The values for the `expiration_filter`, `created_at_filter`, and
+     * `updated_at_filter` parameters are comma-separated lists of time stamps in
+     * RFC3339 format. The time stamps can be prefixed with any of these comparison
+     * operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
+     * (less-than), *lte:* (less-than-or-equal).
+     * 
+     * For example, to get a passphrase a Secret with CBC moda, that will expire in
+     * January of 2020:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.keymanager.KeymanagerFunctions;
+     * import com.pulumi.openstack.keymanager.inputs.GetSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dateFilterExample = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
+     *             .mode("cbc")
+     *             .secretType("passphrase")
+     *             .expirationFilter("gt:2020-01-01T00:00:00Z")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSecretResult> getSecret(GetSecretArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:keymanager/getSecret:getSecret", TypeShape.of(GetSecretResult.class), args, Utilities.withVersion(options));
     }
     /**

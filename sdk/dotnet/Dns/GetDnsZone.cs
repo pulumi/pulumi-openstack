@@ -58,6 +58,30 @@ namespace Pulumi.OpenStack.Dns
         /// </summary>
         public static Output<GetDnsZoneResult> Invoke(GetDnsZoneInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDnsZoneResult>("openstack:dns/getDnsZone:getDnsZone", args ?? new GetDnsZoneInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the ID of an available OpenStack DNS zone.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var zone1 = OpenStack.Dns.GetDnsZone.Invoke(new()
+        ///     {
+        ///         Name = "example.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDnsZoneResult> Invoke(GetDnsZoneInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDnsZoneResult>("openstack:dns/getDnsZone:getDnsZone", args ?? new GetDnsZoneInvokeArgs(), options.WithDefaults());
     }
 
 

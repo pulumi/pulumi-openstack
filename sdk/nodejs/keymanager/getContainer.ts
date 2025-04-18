@@ -115,7 +115,7 @@ export interface GetContainerResult {
  * });
  * ```
  */
-export function getContainerOutput(args?: GetContainerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerResult> {
+export function getContainerOutput(args?: GetContainerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContainerResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:keymanager/getContainer:getContainer", {

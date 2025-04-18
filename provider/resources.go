@@ -26,9 +26,10 @@ import (
 	"github.com/terraform-provider-openstack/terraform-provider-openstack/v3/openstack"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens/fallbackstrat"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	"github.com/pulumi/pulumi-openstack/provider/v5/pkg/version"
 )
@@ -305,9 +306,7 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_blockstorage_availability_zones_v3": {
 				Tok: openstackDataSource(blockstorageMod, "getAvailabilityZonesV3"),
 			},
-			"openstack_blockstorage_snapshot_v2": {Tok: openstackDataSource(blockstorageMod, "getSnapshotV2")},
 			"openstack_blockstorage_snapshot_v3": {Tok: openstackDataSource(blockstorageMod, "getSnapshotV3")},
-			"openstack_blockstorage_volume_v2":   {Tok: openstackDataSource(blockstorageMod, "getVolumeV2")},
 			"openstack_blockstorage_volume_v3":   {Tok: openstackDataSource(blockstorageMod, "getVolumeV3")},
 			"openstack_blockstorage_quotaset_v3": {Tok: openstackDataSource(blockstorageMod, "getQuotasetV3")},
 
@@ -366,9 +365,6 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_networking_subnet_ids_v2": {Tok: openstackDataSource(networkingMod, "getSubnetIdsV2")},
 			"openstack_networking_quota_v2":      {Tok: openstackDataSource(networkingMod, "getQuotaV2")},
 
-			// Firewall
-			"openstack_fw_policy_v1": {Tok: openstackDataSource(firewallMod, "getPolicy")},
-
 			// Shared Filesystem
 			"openstack_sharedfilesystem_availability_zones_v2": {
 				Tok: openstackDataSource(sharedfilesystemMod, "getAvailbilityZones"),
@@ -425,10 +421,17 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	prov.MustComputeTokens(tfbridgetokens.MappedModules("openstack_", "",
-		moduleMapping, func(module, name string) (string, error) {
+	strategy, err := fallbackstrat.MappedModulesWithInferredFallback(
+		&prov,
+		"openstack_",
+		"",
+		moduleMapping,
+		func(module, name string) (string, error) {
 			return string(openstackResource(module, name)), nil
-		}))
+		},
+	)
+	contract.AssertNoErrorf(err, "failed to create fallback strategy")
+	prov.MustComputeTokens(strategy)
 
 	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")

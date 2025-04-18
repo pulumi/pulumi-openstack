@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.networking.inputs.GetAddressScopeArgs;
 import com.pulumi.openstack.networking.inputs.GetAddressScopePlainArgs;
@@ -320,6 +321,50 @@ public final class NetworkingFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAddressScopeResult> getAddressScope(GetAddressScopeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:networking/getAddressScope:getAddressScope", TypeShape.of(GetAddressScopeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack address-scope.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetAddressScopeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var publicAddressscope = NetworkingFunctions.getAddressScope(GetAddressScopeArgs.builder()
+     *             .name("public_addressscope")
+     *             .shared(true)
+     *             .ipVersion(4)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAddressScopeResult> getAddressScopePlain(GetAddressScopePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:networking/getAddressScope:getAddressScope", TypeShape.of(GetAddressScopeResult.class), args, Utilities.withVersion(options));
     }
@@ -531,6 +576,48 @@ public final class NetworkingFunctions {
      * 
      */
     public static Output<GetFloatingIpResult> getFloatingIp(GetFloatingIpArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:networking/getFloatingIp:getFloatingIp", TypeShape.of(GetFloatingIpResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack floating IP.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetFloatingIpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var floatingip1 = NetworkingFunctions.getFloatingIp(GetFloatingIpArgs.builder()
+     *             .address("192.168.0.4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFloatingIpResult> getFloatingIp(GetFloatingIpArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:networking/getFloatingIp:getFloatingIp", TypeShape.of(GetFloatingIpResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -824,6 +911,48 @@ public final class NetworkingFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetNetworkResult> getNetwork(GetNetworkArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:networking/getNetwork:getNetwork", TypeShape.of(GetNetworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var network = NetworkingFunctions.getNetwork(GetNetworkArgs.builder()
+     *             .name("tf_test_network")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetNetworkResult> getNetworkPlain(GetNetworkPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:networking/getNetwork:getNetwork", TypeShape.of(GetNetworkResult.class), args, Utilities.withVersion(options));
     }
@@ -1035,6 +1164,48 @@ public final class NetworkingFunctions {
      * 
      */
     public static Output<GetPortResult> getPort(GetPortArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:networking/getPort:getPort", TypeShape.of(GetPortResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack port.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetPortArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var port1 = NetworkingFunctions.getPort(GetPortArgs.builder()
+     *             .name("port_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPortResult> getPort(GetPortArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:networking/getPort:getPort", TypeShape.of(GetPortResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1334,6 +1505,49 @@ public final class NetworkingFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPortIdsResult> getPortIds(GetPortIdsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:networking/getPortIds:getPortIds", TypeShape.of(GetPortIdsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a list of Openstack Port IDs matching the
+     * specified criteria.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetPortIdsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ports = NetworkingFunctions.getPortIds(GetPortIdsArgs.builder()
+     *             .name("port")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPortIdsResult> getPortIdsPlain(GetPortIdsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:networking/getPortIds:getPortIds", TypeShape.of(GetPortIdsResult.class), args, Utilities.withVersion(options));
     }
@@ -1461,6 +1675,48 @@ public final class NetworkingFunctions {
      * 
      */
     public static Output<GetQosBandwidthLimitRuleResult> getQosBandwidthLimitRule(GetQosBandwidthLimitRuleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", TypeShape.of(GetQosBandwidthLimitRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetQosBandwidthLimitRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qosBandwidthLimitRule1 = NetworkingFunctions.getQosBandwidthLimitRule(GetQosBandwidthLimitRuleArgs.builder()
+     *             .maxKbps(300)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetQosBandwidthLimitRuleResult> getQosBandwidthLimitRule(GetQosBandwidthLimitRuleArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", TypeShape.of(GetQosBandwidthLimitRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1670,6 +1926,48 @@ public final class NetworkingFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetQosDscpMarkingRuleResult> getQosDscpMarkingRule(GetQosDscpMarkingRuleArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", TypeShape.of(GetQosDscpMarkingRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetQosDscpMarkingRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qosDscpMarkingRule1 = NetworkingFunctions.getQosDscpMarkingRule(GetQosDscpMarkingRuleArgs.builder()
+     *             .dscpMark(26)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetQosDscpMarkingRuleResult> getQosDscpMarkingRulePlain(GetQosDscpMarkingRulePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", TypeShape.of(GetQosDscpMarkingRuleResult.class), args, Utilities.withVersion(options));
     }
@@ -1797,6 +2095,48 @@ public final class NetworkingFunctions {
      * 
      */
     public static Output<GetQosMinimumBandwidthRuleResult> getQosMinimumBandwidthRule(GetQosMinimumBandwidthRuleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", TypeShape.of(GetQosMinimumBandwidthRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetQosMinimumBandwidthRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qosMinBwRule1 = NetworkingFunctions.getQosMinimumBandwidthRule(GetQosMinimumBandwidthRuleArgs.builder()
+     *             .minKbps(2000)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetQosMinimumBandwidthRuleResult> getQosMinimumBandwidthRule(GetQosMinimumBandwidthRuleArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", TypeShape.of(GetQosMinimumBandwidthRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2090,6 +2430,48 @@ public final class NetworkingFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetQosPolicyResult> getQosPolicy(GetQosPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:networking/getQosPolicy:getQosPolicy", TypeShape.of(GetQosPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack QoS policy.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetQosPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qosPolicy1 = NetworkingFunctions.getQosPolicy(GetQosPolicyArgs.builder()
+     *             .name("qos_policy_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetQosPolicyResult> getQosPolicyPlain(GetQosPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:networking/getQosPolicy:getQosPolicy", TypeShape.of(GetQosPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -2217,6 +2599,48 @@ public final class NetworkingFunctions {
      * 
      */
     public static Output<GetQuotaV2Result> getQuotaV2(GetQuotaV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:networking/getQuotaV2:getQuotaV2", TypeShape.of(GetQuotaV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the networking quota of an OpenStack project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetQuotaV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var quota = NetworkingFunctions.getQuotaV2(GetQuotaV2Args.builder()
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetQuotaV2Result> getQuotaV2(GetQuotaV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:networking/getQuotaV2:getQuotaV2", TypeShape.of(GetQuotaV2Result.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2510,6 +2934,48 @@ public final class NetworkingFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetRouterResult> getRouter(GetRouterArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:networking/getRouter:getRouter", TypeShape.of(GetRouterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack router.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetRouterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var router = NetworkingFunctions.getRouter(GetRouterArgs.builder()
+     *             .name("router_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRouterResult> getRouterPlain(GetRouterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:networking/getRouter:getRouter", TypeShape.of(GetRouterResult.class), args, Utilities.withVersion(options));
     }
@@ -2762,6 +3228,48 @@ public final class NetworkingFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSecGroupResult> getSecGroup(GetSecGroupArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:networking/getSecGroup:getSecGroup", TypeShape.of(GetSecGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack security group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetSecGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secgroup = NetworkingFunctions.getSecGroup(GetSecGroupArgs.builder()
+     *             .name("tf_test_secgroup")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSecGroupResult> getSecGroupPlain(GetSecGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:networking/getSecGroup:getSecGroup", TypeShape.of(GetSecGroupResult.class), args, Utilities.withVersion(options));
     }
@@ -2973,6 +3481,48 @@ public final class NetworkingFunctions {
      * 
      */
     public static Output<GetSubnetResult> getSubnet(GetSubnetArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:networking/getSubnet:getSubnet", TypeShape.of(GetSubnetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack subnet.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subnet1 = NetworkingFunctions.getSubnet(GetSubnetArgs.builder()
+     *             .name("subnet_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSubnetResult> getSubnet(GetSubnetArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:networking/getSubnet:getSubnet", TypeShape.of(GetSubnetResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3278,6 +3828,50 @@ public final class NetworkingFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSubnetIdsV2Result> getSubnetIdsV2(GetSubnetIdsV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", TypeShape.of(GetSubnetIdsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a list of Openstack Subnet IDs matching the
+     * specified criteria.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetSubnetIdsV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subnets = NetworkingFunctions.getSubnetIdsV2(GetSubnetIdsV2Args.builder()
+     *             .nameRegex("public")
+     *             .tags("public")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSubnetIdsV2Result> getSubnetIdsV2Plain(GetSubnetIdsV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", TypeShape.of(GetSubnetIdsV2Result.class), args, Utilities.withVersion(options));
     }
@@ -3530,6 +4124,48 @@ public final class NetworkingFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSubnetPoolResult> getSubnetPool(GetSubnetPoolArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:networking/getSubnetPool:getSubnetPool", TypeShape.of(GetSubnetPoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack subnetpool.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetSubnetPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subnetpool1 = NetworkingFunctions.getSubnetPool(GetSubnetPoolArgs.builder()
+     *             .name("subnetpool_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSubnetPoolResult> getSubnetPoolPlain(GetSubnetPoolPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:networking/getSubnetPool:getSubnetPool", TypeShape.of(GetSubnetPoolResult.class), args, Utilities.withVersion(options));
     }
@@ -3741,6 +4377,48 @@ public final class NetworkingFunctions {
      * 
      */
     public static Output<GetTrunkResult> getTrunk(GetTrunkArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:networking/getTrunk:getTrunk", TypeShape.of(GetTrunkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack trunk.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetTrunkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var trunk1 = NetworkingFunctions.getTrunk(GetTrunkArgs.builder()
+     *             .name("trunk_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTrunkResult> getTrunk(GetTrunkArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:networking/getTrunk:getTrunk", TypeShape.of(GetTrunkResult.class), args, Utilities.withVersion(options));
     }
     /**

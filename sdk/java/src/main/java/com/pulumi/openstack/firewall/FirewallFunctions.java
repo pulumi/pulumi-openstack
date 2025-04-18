@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.firewall.inputs.GetGroupV2Args;
 import com.pulumi.openstack.firewall.inputs.GetGroupV2PlainArgs;
@@ -228,6 +229,48 @@ public final class FirewallFunctions {
      * 
      */
     public static Output<GetGroupV2Result> getGroupV2(GetGroupV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:firewall/getGroupV2:getGroupV2", TypeShape.of(GetGroupV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information of an available OpenStack firewall group v2.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.firewall.FirewallFunctions;
+     * import com.pulumi.openstack.firewall.inputs.GetGroupV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var group = FirewallFunctions.getGroupV2(GetGroupV2Args.builder()
+     *             .name("tf_test_group")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupV2Result> getGroupV2(GetGroupV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:firewall/getGroupV2:getGroupV2", TypeShape.of(GetGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
@@ -521,6 +564,48 @@ public final class FirewallFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPolicyV2Result> getPolicyV2(GetPolicyV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:firewall/getPolicyV2:getPolicyV2", TypeShape.of(GetPolicyV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information of an available OpenStack firewall policy v2.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.firewall.FirewallFunctions;
+     * import com.pulumi.openstack.firewall.inputs.GetPolicyV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = FirewallFunctions.getPolicyV2(GetPolicyV2Args.builder()
+     *             .name("tf_test_policy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPolicyV2Result> getPolicyV2Plain(GetPolicyV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:firewall/getPolicyV2:getPolicyV2", TypeShape.of(GetPolicyV2Result.class), args, Utilities.withVersion(options));
     }
@@ -732,6 +817,48 @@ public final class FirewallFunctions {
      * 
      */
     public static Output<GetRuleV2Result> getRuleV2(GetRuleV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:firewall/getRuleV2:getRuleV2", TypeShape.of(GetRuleV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information of an available OpenStack firewall rule v2.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.firewall.FirewallFunctions;
+     * import com.pulumi.openstack.firewall.inputs.GetRuleV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rule = FirewallFunctions.getRuleV2(GetRuleV2Args.builder()
+     *             .name("tf_test_rule")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRuleV2Result> getRuleV2(GetRuleV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:firewall/getRuleV2:getRuleV2", TypeShape.of(GetRuleV2Result.class), args, Utilities.withVersion(options));
     }
     /**

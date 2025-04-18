@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.compute.inputs.GetAggregateV2Args;
 import com.pulumi.openstack.compute.inputs.GetAggregateV2PlainArgs;
@@ -204,6 +205,49 @@ public final class ComputeFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAggregateV2Result> getAggregateV2(GetAggregateV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:compute/getAggregateV2:getAggregateV2", TypeShape.of(GetAggregateV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about host aggregates
+     * by name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.compute.ComputeFunctions;
+     * import com.pulumi.openstack.compute.inputs.GetAggregateV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ComputeFunctions.getAggregateV2(GetAggregateV2Args.builder()
+     *             .name("test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAggregateV2Result> getAggregateV2Plain(GetAggregateV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:compute/getAggregateV2:getAggregateV2", TypeShape.of(GetAggregateV2Result.class), args, Utilities.withVersion(options));
     }
@@ -235,7 +279,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = ComputeFunctions.getAvailabilityZones();
+     *         final var zones = ComputeFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -275,7 +320,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = ComputeFunctions.getAvailabilityZones();
+     *         final var zones = ComputeFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -315,7 +361,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = ComputeFunctions.getAvailabilityZones();
+     *         final var zones = ComputeFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -355,7 +402,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = ComputeFunctions.getAvailabilityZones();
+     *         final var zones = ComputeFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -395,7 +443,8 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = ComputeFunctions.getAvailabilityZones();
+     *         final var zones = ComputeFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -435,7 +484,49 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = ComputeFunctions.getAvailabilityZones();
+     *         final var zones = ComputeFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAvailabilityZonesResult> getAvailabilityZones(GetAvailabilityZonesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:compute/getAvailabilityZones:getAvailabilityZones", TypeShape.of(GetAvailabilityZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a list of availability zones from OpenStack
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.compute.ComputeFunctions;
+     * import com.pulumi.openstack.compute.inputs.GetAvailabilityZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = ComputeFunctions.getAvailabilityZones(GetAvailabilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -702,6 +793,49 @@ public final class ComputeFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetFlavorResult> getFlavor(GetFlavorArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:compute/getFlavor:getFlavor", TypeShape.of(GetFlavorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack flavor.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.compute.ComputeFunctions;
+     * import com.pulumi.openstack.compute.inputs.GetFlavorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var small = ComputeFunctions.getFlavor(GetFlavorArgs.builder()
+     *             .vcpus(1)
+     *             .ram(512)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetFlavorResult> getFlavorPlain(GetFlavorPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:compute/getFlavor:getFlavor", TypeShape.of(GetFlavorResult.class), args, Utilities.withVersion(options));
     }
@@ -832,6 +966,49 @@ public final class ComputeFunctions {
      * 
      */
     public static Output<GetHypervisorV2Result> getHypervisorV2(GetHypervisorV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:compute/getHypervisorV2:getHypervisorV2", TypeShape.of(GetHypervisorV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about hypervisors
+     * by hostname.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.compute.ComputeFunctions;
+     * import com.pulumi.openstack.compute.inputs.GetHypervisorV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var host01 = ComputeFunctions.getHypervisorV2(GetHypervisorV2Args.builder()
+     *             .hostname("host01")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHypervisorV2Result> getHypervisorV2(GetHypervisorV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:compute/getHypervisorV2:getHypervisorV2", TypeShape.of(GetHypervisorV2Result.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1042,6 +1219,48 @@ public final class ComputeFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetInstanceV2Result> getInstanceV2(GetInstanceV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:compute/getInstanceV2:getInstanceV2", TypeShape.of(GetInstanceV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the details of a running server
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.compute.ComputeFunctions;
+     * import com.pulumi.openstack.compute.inputs.GetInstanceV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instance = ComputeFunctions.getInstanceV2(GetInstanceV2Args.builder()
+     *             .id("2ba26dc6-a12d-4889-8f25-794ea5bf4453")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetInstanceV2Result> getInstanceV2Plain(GetInstanceV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:compute/getInstanceV2:getInstanceV2", TypeShape.of(GetInstanceV2Result.class), args, Utilities.withVersion(options));
     }
@@ -1169,6 +1388,48 @@ public final class ComputeFunctions {
      * 
      */
     public static Output<GetKeypairResult> getKeypair(GetKeypairArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:compute/getKeypair:getKeypair", TypeShape.of(GetKeypairResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID and public key of an OpenStack keypair.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.compute.ComputeFunctions;
+     * import com.pulumi.openstack.compute.inputs.GetKeypairArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var kp = ComputeFunctions.getKeypair(GetKeypairArgs.builder()
+     *             .name("sand")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetKeypairResult> getKeypair(GetKeypairArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:compute/getKeypair:getKeypair", TypeShape.of(GetKeypairResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1378,6 +1639,48 @@ public final class ComputeFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetLimitsV2Result> getLimitsV2(GetLimitsV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:compute/getLimitsV2:getLimitsV2", TypeShape.of(GetLimitsV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the compute limits of an OpenStack project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.compute.ComputeFunctions;
+     * import com.pulumi.openstack.compute.inputs.GetLimitsV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var limits = ComputeFunctions.getLimitsV2(GetLimitsV2Args.builder()
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetLimitsV2Result> getLimitsV2Plain(GetLimitsV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:compute/getLimitsV2:getLimitsV2", TypeShape.of(GetLimitsV2Result.class), args, Utilities.withVersion(options));
     }
@@ -1505,6 +1808,48 @@ public final class ComputeFunctions {
      * 
      */
     public static Output<GetQuotaSetV2Result> getQuotaSetV2(GetQuotaSetV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:compute/getQuotaSetV2:getQuotaSetV2", TypeShape.of(GetQuotaSetV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the compute quotaset of an OpenStack project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.compute.ComputeFunctions;
+     * import com.pulumi.openstack.compute.inputs.GetQuotaSetV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var quota = ComputeFunctions.getQuotaSetV2(GetQuotaSetV2Args.builder()
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetQuotaSetV2Result> getQuotaSetV2(GetQuotaSetV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:compute/getQuotaSetV2:getQuotaSetV2", TypeShape.of(GetQuotaSetV2Result.class), args, Utilities.withVersion(options));
     }
     /**

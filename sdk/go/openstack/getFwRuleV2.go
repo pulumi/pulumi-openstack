@@ -133,21 +133,11 @@ type GetFwRuleV2Result struct {
 }
 
 func GetFwRuleV2Output(ctx *pulumi.Context, args GetFwRuleV2OutputArgs, opts ...pulumi.InvokeOption) GetFwRuleV2ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetFwRuleV2ResultOutput, error) {
 			args := v.(GetFwRuleV2Args)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetFwRuleV2Result
-			secret, err := ctx.InvokePackageRaw("openstack:index/getFwRuleV2:getFwRuleV2", args, &rv, "", opts...)
-			if err != nil {
-				return GetFwRuleV2ResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetFwRuleV2ResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetFwRuleV2ResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:index/getFwRuleV2:getFwRuleV2", args, GetFwRuleV2ResultOutput{}, options).(GetFwRuleV2ResultOutput), nil
 		}).(GetFwRuleV2ResultOutput)
 }
 

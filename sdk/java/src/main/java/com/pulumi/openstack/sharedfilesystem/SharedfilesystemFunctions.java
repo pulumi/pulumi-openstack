@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.sharedfilesystem.inputs.GetAvailbilityZonesArgs;
 import com.pulumi.openstack.sharedfilesystem.inputs.GetAvailbilityZonesPlainArgs;
@@ -52,7 +53,8 @@ public final class SharedfilesystemFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones();
+     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones(GetAvailbilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -93,7 +95,8 @@ public final class SharedfilesystemFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones();
+     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones(GetAvailbilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -134,7 +137,8 @@ public final class SharedfilesystemFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones();
+     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones(GetAvailbilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -175,7 +179,8 @@ public final class SharedfilesystemFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones();
+     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones(GetAvailbilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -216,7 +221,8 @@ public final class SharedfilesystemFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones();
+     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones(GetAvailbilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -257,7 +263,50 @@ public final class SharedfilesystemFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones();
+     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones(GetAvailbilityZonesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAvailbilityZonesResult> getAvailbilityZones(GetAvailbilityZonesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", TypeShape.of(GetAvailbilityZonesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a list of Shared File System availability zones
+     * from OpenStack
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
+     * import com.pulumi.openstack.sharedfilesystem.inputs.GetAvailbilityZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = SharedfilesystemFunctions.getAvailbilityZones(GetAvailbilityZonesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -477,6 +526,48 @@ public final class SharedfilesystemFunctions {
      * 
      */
     public static Output<GetShareResult> getShare(GetShareArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:sharedfilesystem/getShare:getShare", TypeShape.of(GetShareResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available Shared File System share.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
+     * import com.pulumi.openstack.sharedfilesystem.inputs.GetShareArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var share1 = SharedfilesystemFunctions.getShare(GetShareArgs.builder()
+     *             .name("share_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetShareResult> getShare(GetShareArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:sharedfilesystem/getShare:getShare", TypeShape.of(GetShareResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -770,6 +861,48 @@ public final class SharedfilesystemFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetShareNetworkResult> getShareNetwork(GetShareNetworkArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", TypeShape.of(GetShareNetworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available Shared File System share network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
+     * import com.pulumi.openstack.sharedfilesystem.inputs.GetShareNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sharenetwork1 = SharedfilesystemFunctions.getShareNetwork(GetShareNetworkArgs.builder()
+     *             .name("sharenetwork_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetShareNetworkResult> getShareNetworkPlain(GetShareNetworkPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", TypeShape.of(GetShareNetworkResult.class), args, Utilities.withVersion(options));
     }
@@ -981,6 +1114,48 @@ public final class SharedfilesystemFunctions {
      * 
      */
     public static Output<GetSnapshotResult> getSnapshot(GetSnapshotArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:sharedfilesystem/getSnapshot:getSnapshot", TypeShape.of(GetSnapshotResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available Shared File System snapshot.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
+     * import com.pulumi.openstack.sharedfilesystem.inputs.GetSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot1 = SharedfilesystemFunctions.getSnapshot(GetSnapshotArgs.builder()
+     *             .name("snapshot_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSnapshotResult> getSnapshot(GetSnapshotArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:sharedfilesystem/getSnapshot:getSnapshot", TypeShape.of(GetSnapshotResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -75,7 +75,7 @@ export interface GetAvailabilityZonesV3Result {
  * const zones = openstack.blockstorage.getAvailabilityZonesV3({});
  * ```
  */
-export function getAvailabilityZonesV3Output(args?: GetAvailabilityZonesV3OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvailabilityZonesV3Result> {
+export function getAvailabilityZonesV3Output(args?: GetAvailabilityZonesV3OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAvailabilityZonesV3Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3", {

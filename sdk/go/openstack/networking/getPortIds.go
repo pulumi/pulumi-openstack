@@ -113,21 +113,11 @@ type GetPortIdsResult struct {
 }
 
 func GetPortIdsOutput(ctx *pulumi.Context, args GetPortIdsOutputArgs, opts ...pulumi.InvokeOption) GetPortIdsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPortIdsResultOutput, error) {
 			args := v.(GetPortIdsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetPortIdsResult
-			secret, err := ctx.InvokePackageRaw("openstack:networking/getPortIds:getPortIds", args, &rv, "", opts...)
-			if err != nil {
-				return GetPortIdsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPortIdsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPortIdsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("openstack:networking/getPortIds:getPortIds", args, GetPortIdsResultOutput{}, options).(GetPortIdsResultOutput), nil
 		}).(GetPortIdsResultOutput)
 }
 

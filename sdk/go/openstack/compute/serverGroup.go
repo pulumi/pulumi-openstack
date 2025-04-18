@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewServerGroup(ctx, "test-sg", &compute.ServerGroupArgs{
+//			test_sg, err := compute.NewServerGroup(ctx, "test-sg", &compute.ServerGroupArgs{
 //				Name:     pulumi.String("my-sg"),
 //				Policies: pulumi.String("anti-affinity"),
 //			})
@@ -74,7 +74,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewServerGroup(ctx, "test-sg", &compute.ServerGroupArgs{
+//			test_sg, err := compute.NewServerGroup(ctx, "test-sg", &compute.ServerGroupArgs{
 //				Name:     pulumi.String("my-sg"),
 //				Policies: pulumi.String("anti-affinity"),
 //				Rules: &compute.ServerGroupRulesArgs{

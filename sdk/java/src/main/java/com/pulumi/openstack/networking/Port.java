@@ -61,13 +61,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
- *             .adminStateUp("true")
+ *             .adminStateUp(true)
  *             .build());
  * 
  *         var port1 = new Port("port1", PortArgs.builder()
  *             .name("port_1")
  *             .networkId(network1.id())
- *             .adminStateUp("true")
+ *             .adminStateUp(true)
  *             .build());
  * 
  *     }
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
- *             .adminStateUp("true")
+ *             .adminStateUp(true)
  *             .build());
  * 
  *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *         var port1 = new Port("port1", PortArgs.builder()
  *             .name("port_1")
  *             .networkId(network1.id())
- *             .adminStateUp("true")
+ *             .adminStateUp(true)
  *             .fixedIps(PortFixedIpArgs.builder()
  *                 .subnetId(subnet1.id())
  *                 .build())
@@ -162,7 +162,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
- *             .adminStateUp("true")
+ *             .adminStateUp(true)
  *             .build());
  * 
  *         var port1 = new Port("port1", PortArgs.builder()
@@ -170,7 +170,7 @@ import javax.annotation.Nullable;
  *             .networkId(network1.id())
  *             .deviceId("cdf70fcf-c161-4f24-9c70-96b3f5a54b71")
  *             .deviceOwner("baremetal:none")
- *             .adminStateUp("true")
+ *             .adminStateUp(true)
  *             .binding(PortBindingArgs.builder()
  *                 .hostId("b080b9cf-46e0-4ce8-ad47-0fd4accc872b")
  *                 .vnicType("baremetal")
