@@ -365,9 +365,6 @@ class _QuotaState:
 
 
 class Quota(pulumi.CustomResource):
-
-    pulumi_type = "openstack:loadbalancer/quota:Quota"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

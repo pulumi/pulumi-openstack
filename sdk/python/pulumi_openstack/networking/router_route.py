@@ -183,9 +183,6 @@ class _RouterRouteState:
 
 
 class RouterRoute(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/routerRoute:RouterRoute"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

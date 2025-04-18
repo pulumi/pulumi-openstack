@@ -433,9 +433,6 @@ class _QuotaV2State:
 
 
 class QuotaV2(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/quotaV2:QuotaV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

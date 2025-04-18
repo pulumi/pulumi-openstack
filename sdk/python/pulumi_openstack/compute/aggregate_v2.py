@@ -214,9 +214,6 @@ class _AggregateV2State:
 
 
 class AggregateV2(pulumi.CustomResource):
-
-    pulumi_type = "openstack:compute/aggregateV2:AggregateV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

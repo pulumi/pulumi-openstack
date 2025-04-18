@@ -192,9 +192,6 @@ class _NetworkAssociateV2State:
 
 
 class NetworkAssociateV2(pulumi.CustomResource):
-
-    pulumi_type = "openstack:bgpvpn/networkAssociateV2:NetworkAssociateV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

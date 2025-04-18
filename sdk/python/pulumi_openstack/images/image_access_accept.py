@@ -228,9 +228,6 @@ class _ImageAccessAcceptState:
 
 
 class ImageAccessAccept(pulumi.CustomResource):
-
-    pulumi_type = "openstack:images/imageAccessAccept:ImageAccessAccept"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

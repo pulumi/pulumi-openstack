@@ -392,9 +392,6 @@ class _RecordSetState:
 
 
 class RecordSet(pulumi.CustomResource):
-
-    pulumi_type = "openstack:dns/recordSet:RecordSet"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

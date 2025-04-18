@@ -221,9 +221,6 @@ class _InheritRoleAssignmentState:
 
 
 class InheritRoleAssignment(pulumi.CustomResource):
-
-    pulumi_type = "openstack:identity/inheritRoleAssignment:InheritRoleAssignment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

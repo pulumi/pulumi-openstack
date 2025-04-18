@@ -230,9 +230,6 @@ class _AccountV1State:
 
 
 class AccountV1(pulumi.CustomResource):
-
-    pulumi_type = "openstack:objectstorage/accountV1:AccountV1"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

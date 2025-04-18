@@ -611,9 +611,6 @@ class _VolumeState:
 
 
 class Volume(pulumi.CustomResource):
-
-    pulumi_type = "openstack:blockstorage/volume:Volume"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

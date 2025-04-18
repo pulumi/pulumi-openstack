@@ -613,9 +613,6 @@ class _QuotaSetV2State:
 
 
 class QuotaSetV2(pulumi.CustomResource):
-
-    pulumi_type = "openstack:compute/quotaSetV2:QuotaSetV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

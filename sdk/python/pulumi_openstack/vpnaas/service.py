@@ -365,9 +365,6 @@ class _ServiceState:
 
 
 class Service(pulumi.CustomResource):
-
-    pulumi_type = "openstack:vpnaas/service:Service"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

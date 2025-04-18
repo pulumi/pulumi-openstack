@@ -467,9 +467,6 @@ class _FlavorState:
 
 
 class Flavor(pulumi.CustomResource):
-
-    pulumi_type = "openstack:compute/flavor:Flavor"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

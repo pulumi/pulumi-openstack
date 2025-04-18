@@ -228,9 +228,6 @@ class _RouterAssociateV2State:
 
 
 class RouterAssociateV2(pulumi.CustomResource):
-
-    pulumi_type = "openstack:bgpvpn/routerAssociateV2:RouterAssociateV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -319,9 +319,6 @@ class _ContainerV1State:
 
 
 class ContainerV1(pulumi.CustomResource):
-
-    pulumi_type = "openstack:keymanager/containerV1:ContainerV1"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

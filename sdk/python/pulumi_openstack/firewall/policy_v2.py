@@ -374,9 +374,6 @@ class _PolicyV2State:
 
 
 class PolicyV2(pulumi.CustomResource):
-
-    pulumi_type = "openstack:firewall/policyV2:PolicyV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

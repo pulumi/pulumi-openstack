@@ -683,9 +683,6 @@ class _SubnetPoolState:
 
 
 class SubnetPool(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/subnetPool:SubnetPool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

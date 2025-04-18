@@ -242,9 +242,6 @@ class _ShareAccessState:
 
 
 class ShareAccess(pulumi.CustomResource):
-
-    pulumi_type = "openstack:sharedfilesystem/shareAccess:ShareAccess"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -813,9 +813,6 @@ class _SubnetState:
 
 
 class Subnet(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/subnet:Subnet"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

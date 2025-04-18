@@ -706,9 +706,6 @@ class _SiteConnectionState:
 
 
 class SiteConnection(pulumi.CustomResource):
-
-    pulumi_type = "openstack:vpnaas/siteConnection:SiteConnection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

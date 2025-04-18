@@ -380,9 +380,6 @@ class _ApplicationCredentialState:
 
 
 class ApplicationCredential(pulumi.CustomResource):
-
-    pulumi_type = "openstack:identity/applicationCredential:ApplicationCredential"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

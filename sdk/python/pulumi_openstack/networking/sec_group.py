@@ -316,9 +316,6 @@ class _SecGroupState:
 
 
 class SecGroup(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/secGroup:SecGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

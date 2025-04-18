@@ -353,9 +353,6 @@ class _TrunkState:
 
 
 class Trunk(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/trunk:Trunk"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

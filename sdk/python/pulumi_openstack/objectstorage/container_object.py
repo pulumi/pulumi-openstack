@@ -687,9 +687,6 @@ class _ContainerObjectState:
 
 
 class ContainerObject(pulumi.CustomResource):
-
-    pulumi_type = "openstack:objectstorage/containerObject:ContainerObject"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

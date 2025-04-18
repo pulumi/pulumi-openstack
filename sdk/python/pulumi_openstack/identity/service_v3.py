@@ -197,9 +197,6 @@ class _ServiceV3State:
 
 
 class ServiceV3(pulumi.CustomResource):
-
-    pulumi_type = "openstack:identity/serviceV3:ServiceV3"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

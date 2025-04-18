@@ -558,9 +558,6 @@ class _ShareState:
 
 
 class Share(pulumi.CustomResource):
-
-    pulumi_type = "openstack:sharedfilesystem/share:Share"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

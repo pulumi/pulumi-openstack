@@ -202,9 +202,6 @@ class _PortSecGroupAssociateState:
 
 
 class PortSecGroupAssociate(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/portSecGroupAssociate:PortSecGroupAssociate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -470,9 +470,6 @@ class _V2State:
 
 
 class V2(pulumi.CustomResource):
-
-    pulumi_type = "openstack:bgpvpn/v2:V2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

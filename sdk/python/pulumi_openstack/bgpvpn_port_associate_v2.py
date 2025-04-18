@@ -267,9 +267,6 @@ warnings.warn("""openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has
 class BgpvpnPortAssociateV2(pulumi.CustomResource):
     warnings.warn("""openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2""", DeprecationWarning)
 
-
-    pulumi_type = "openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

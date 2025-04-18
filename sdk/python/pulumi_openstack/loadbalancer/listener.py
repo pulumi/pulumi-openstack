@@ -1159,9 +1159,6 @@ class _ListenerState:
 
 
 class Listener(pulumi.CustomResource):
-
-    pulumi_type = "openstack:loadbalancer/listener:Listener"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

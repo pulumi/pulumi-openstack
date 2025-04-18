@@ -277,9 +277,6 @@ class _TransferRequestState:
 
 
 class TransferRequest(pulumi.CustomResource):
-
-    pulumi_type = "openstack:dns/transferRequest:TransferRequest"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

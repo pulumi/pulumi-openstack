@@ -525,9 +525,6 @@ class _NodeGroupState:
 
 
 class NodeGroup(pulumi.CustomResource):
-
-    pulumi_type = "openstack:containerinfra/nodeGroup:NodeGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

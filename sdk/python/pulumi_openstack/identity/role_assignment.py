@@ -217,9 +217,6 @@ class _RoleAssignmentState:
 
 
 class RoleAssignment(pulumi.CustomResource):
-
-    pulumi_type = "openstack:identity/roleAssignment:RoleAssignment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
