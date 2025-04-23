@@ -500,6 +500,9 @@ class _VolumeAttachState:
 
 
 class VolumeAttach(pulumi.CustomResource):
+
+    pulumi_type = "openstack:blockstorage/volumeAttach:VolumeAttach"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

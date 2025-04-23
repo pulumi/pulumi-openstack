@@ -172,6 +172,9 @@ class _FloatingIpAssociateState:
 
 
 class FloatingIpAssociate(pulumi.CustomResource):
+
+    pulumi_type = "openstack:networking/floatingIpAssociate:FloatingIpAssociate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

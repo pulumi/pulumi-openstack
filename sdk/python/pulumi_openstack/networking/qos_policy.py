@@ -396,6 +396,9 @@ class _QosPolicyState:
 
 
 class QosPolicy(pulumi.CustomResource):
+
+    pulumi_type = "openstack:networking/qosPolicy:QosPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

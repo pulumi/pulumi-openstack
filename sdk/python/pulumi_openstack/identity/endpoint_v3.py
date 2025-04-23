@@ -267,6 +267,9 @@ class _EndpointV3State:
 
 
 class EndpointV3(pulumi.CustomResource):
+
+    pulumi_type = "openstack:identity/endpointV3:EndpointV3"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

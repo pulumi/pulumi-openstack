@@ -401,6 +401,9 @@ class _QuoteSetV3State:
 
 
 class QuoteSetV3(pulumi.CustomResource):
+
+    pulumi_type = "openstack:blockstorage/quoteSetV3:QuoteSetV3"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

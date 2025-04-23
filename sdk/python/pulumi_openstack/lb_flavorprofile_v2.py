@@ -177,6 +177,9 @@ warnings.warn("""openstack.index/lbflavorprofilev2.LbFlavorprofileV2 has been de
 class LbFlavorprofileV2(pulumi.CustomResource):
     warnings.warn("""openstack.index/lbflavorprofilev2.LbFlavorprofileV2 has been deprecated in favor of openstack.loadbalancer/flavorprofilev2.FlavorprofileV2""", DeprecationWarning)
 
+
+    pulumi_type = "openstack:index/lbFlavorprofileV2:LbFlavorprofileV2"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
