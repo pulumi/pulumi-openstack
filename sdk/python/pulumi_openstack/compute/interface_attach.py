@@ -213,6 +213,9 @@ class _InterfaceAttachState:
 
 
 class InterfaceAttach(pulumi.CustomResource):
+
+    pulumi_type = "openstack:compute/interfaceAttach:InterfaceAttach"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

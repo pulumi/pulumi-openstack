@@ -344,6 +344,9 @@ class _ShareNetworkState:
 
 
 class ShareNetwork(pulumi.CustomResource):
+
+    pulumi_type = "openstack:sharedfilesystem/shareNetwork:ShareNetwork"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

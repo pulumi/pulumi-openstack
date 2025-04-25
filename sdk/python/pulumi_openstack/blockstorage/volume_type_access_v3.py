@@ -144,6 +144,9 @@ class _VolumeTypeAccessV3State:
 
 
 class VolumeTypeAccessV3(pulumi.CustomResource):
+
+    pulumi_type = "openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

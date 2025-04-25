@@ -140,6 +140,9 @@ class _FlavorAccessState:
 
 
 class FlavorAccess(pulumi.CustomResource):
+
+    pulumi_type = "openstack:compute/flavorAccess:FlavorAccess"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -138,6 +138,9 @@ class _RoleState:
 
 
 class Role(pulumi.CustomResource):
+
+    pulumi_type = "openstack:identity/role:Role"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

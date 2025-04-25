@@ -405,6 +405,9 @@ class _SecurityServiceState:
 
 
 class SecurityService(pulumi.CustomResource):
+
+    pulumi_type = "openstack:sharedfilesystem/securityService:SecurityService"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

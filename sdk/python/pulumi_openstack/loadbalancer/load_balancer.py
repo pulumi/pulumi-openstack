@@ -618,6 +618,9 @@ class _LoadBalancerState:
 
 
 class LoadBalancer(pulumi.CustomResource):
+
+    pulumi_type = "openstack:loadbalancer/loadBalancer:LoadBalancer"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

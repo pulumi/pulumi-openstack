@@ -602,6 +602,9 @@ class _RuleV2State:
 
 
 class RuleV2(pulumi.CustomResource):
+
+    pulumi_type = "openstack:firewall/ruleV2:RuleV2"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
