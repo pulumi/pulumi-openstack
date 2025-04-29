@@ -216,6 +216,9 @@ class _TransferAcceptState:
 
 
 class TransferAccept(pulumi.CustomResource):
+
+    pulumi_type = "openstack:dns/transferAccept:TransferAccept"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

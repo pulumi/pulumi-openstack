@@ -140,6 +140,9 @@ class _QosDscpMarkingRuleState:
 
 
 class QosDscpMarkingRule(pulumi.CustomResource):
+
+    pulumi_type = "openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

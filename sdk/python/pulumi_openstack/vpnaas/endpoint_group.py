@@ -290,6 +290,9 @@ class _EndpointGroupState:
 
 
 class EndpointGroup(pulumi.CustomResource):
+
+    pulumi_type = "openstack:vpnaas/endpointGroup:EndpointGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

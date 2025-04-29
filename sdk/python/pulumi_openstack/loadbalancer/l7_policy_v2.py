@@ -476,6 +476,9 @@ class _L7PolicyV2State:
 
 
 class L7PolicyV2(pulumi.CustomResource):
+
+    pulumi_type = "openstack:loadbalancer/l7PolicyV2:L7PolicyV2"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

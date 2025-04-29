@@ -462,6 +462,9 @@ class _GroupV2State:
 
 
 class GroupV2(pulumi.CustomResource):
+
+    pulumi_type = "openstack:firewall/groupV2:GroupV2"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -363,6 +363,9 @@ class _TempUrlState:
 
 
 class TempUrl(pulumi.CustomResource):
+
+    pulumi_type = "openstack:objectstorage/tempUrl:TempUrl"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

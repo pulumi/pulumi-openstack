@@ -1126,6 +1126,9 @@ class _InstanceState:
 
 
 class Instance(pulumi.CustomResource):
+
+    pulumi_type = "openstack:compute/instance:Instance"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

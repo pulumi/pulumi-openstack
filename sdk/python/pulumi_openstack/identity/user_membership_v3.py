@@ -140,6 +140,9 @@ class _UserMembershipV3State:
 
 
 class UserMembershipV3(pulumi.CustomResource):
+
+    pulumi_type = "openstack:identity/userMembershipV3:UserMembershipV3"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

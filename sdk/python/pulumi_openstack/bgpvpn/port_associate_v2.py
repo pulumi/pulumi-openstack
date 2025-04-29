@@ -262,6 +262,9 @@ class _PortAssociateV2State:
 
 
 class PortAssociateV2(pulumi.CustomResource):
+
+    pulumi_type = "openstack:bgpvpn/portAssociateV2:PortAssociateV2"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

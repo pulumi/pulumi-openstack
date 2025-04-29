@@ -144,6 +144,9 @@ class _QosAssociationV3State:
 
 
 class QosAssociationV3(pulumi.CustomResource):
+
+    pulumi_type = "openstack:blockstorage/qosAssociationV3:QosAssociationV3"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
