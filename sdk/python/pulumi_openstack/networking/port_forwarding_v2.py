@@ -320,6 +320,9 @@ class _PortForwardingV2State:
 
 
 class PortForwardingV2(pulumi.CustomResource):
+
+    pulumi_type = "openstack:networking/portForwardingV2:PortForwardingV2"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

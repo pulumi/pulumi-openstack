@@ -151,6 +151,9 @@ class _MembersState:
 
 
 class Members(pulumi.CustomResource):
+
+    pulumi_type = "openstack:loadbalancer/members:Members"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

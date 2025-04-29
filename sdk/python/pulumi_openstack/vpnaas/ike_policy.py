@@ -432,6 +432,9 @@ class _IkePolicyState:
 
 
 class IkePolicy(pulumi.CustomResource):
+
+    pulumi_type = "openstack:vpnaas/ikePolicy:IkePolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

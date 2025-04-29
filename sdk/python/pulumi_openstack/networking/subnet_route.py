@@ -183,6 +183,9 @@ class _SubnetRouteState:
 
 
 class SubnetRoute(pulumi.CustomResource):
+
+    pulumi_type = "openstack:networking/subnetRoute:SubnetRoute"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
