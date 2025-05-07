@@ -705,10 +705,8 @@ class _SiteConnectionState:
         pulumi.set(self, "vpnservice_id", value)
 
 
+@pulumi.type_token("openstack:vpnaas/siteConnection:SiteConnection")
 class SiteConnection(pulumi.CustomResource):
-
-    pulumi_type = "openstack:vpnaas/siteConnection:SiteConnection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

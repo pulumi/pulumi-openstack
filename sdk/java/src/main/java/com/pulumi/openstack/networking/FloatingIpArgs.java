@@ -5,7 +5,6 @@ package com.pulumi.openstack.networking;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -118,16 +117,16 @@ public final class FloatingIpArgs extends com.pulumi.resources.ResourceArgs {
      * IP. Changing this creates a new floating IP.
      * 
      */
-    @Import(name="pool", required=true)
-    private Output<String> pool;
+    @Import(name="pool")
+    private @Nullable Output<String> pool;
 
     /**
      * @return The name of the pool from which to obtain the floating
      * IP. Changing this creates a new floating IP.
      * 
      */
-    public Output<String> pool() {
-        return this.pool;
+    public Optional<Output<String>> pool() {
+        return Optional.ofNullable(this.pool);
     }
 
     /**
@@ -427,7 +426,7 @@ public final class FloatingIpArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder pool(Output<String> pool) {
+        public Builder pool(@Nullable Output<String> pool) {
             $.pool = pool;
             return this;
         }
@@ -638,9 +637,6 @@ public final class FloatingIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FloatingIpArgs build() {
-            if ($.pool == null) {
-                throw new MissingRequiredPropertyException("FloatingIpArgs", "pool");
-            }
             return $;
         }
     }

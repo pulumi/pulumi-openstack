@@ -20,12 +20,12 @@ __all__ = ['FloatingIpArgs', 'FloatingIp']
 @pulumi.input_type
 class FloatingIpArgs:
     def __init__(__self__, *,
-                 pool: pulumi.Input[builtins.str],
                  address: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  dns_domain: Optional[pulumi.Input[builtins.str]] = None,
                  dns_name: Optional[pulumi.Input[builtins.str]] = None,
                  fixed_ip: Optional[pulumi.Input[builtins.str]] = None,
+                 pool: Optional[pulumi.Input[builtins.str]] = None,
                  port_id: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  subnet_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -35,8 +35,6 @@ class FloatingIpArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
         """
         The set of arguments for constructing a FloatingIp resource.
-        :param pulumi.Input[builtins.str] pool: The name of the pool from which to obtain the floating
-               IP. Changing this creates a new floating IP.
         :param pulumi.Input[builtins.str] address: The actual/specific floating IP to obtain. By default,
                non-admin users are not able to specify a floating IP, so you must either be
                an admin user or have had a custom policy or role applied to your OpenStack
@@ -52,6 +50,8 @@ class FloatingIpArgs:
                service. Changing this creates a new floating IP.
         :param pulumi.Input[builtins.str] fixed_ip: Fixed IP of the port to associate with this floating IP. Required if
                the port has multiple fixed IPs.
+        :param pulumi.Input[builtins.str] pool: The name of the pool from which to obtain the floating
+               IP. Changing this creates a new floating IP.
         :param pulumi.Input[builtins.str] port_id: ID of an existing port with at least one IP address to
                associate with this floating IP.
         :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Networking client.
@@ -72,7 +72,6 @@ class FloatingIpArgs:
                may or may not have a different address)
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] value_specs: Map of additional options.
         """
-        pulumi.set(__self__, "pool", pool)
         if address is not None:
             pulumi.set(__self__, "address", address)
         if description is not None:
@@ -83,6 +82,8 @@ class FloatingIpArgs:
             pulumi.set(__self__, "dns_name", dns_name)
         if fixed_ip is not None:
             pulumi.set(__self__, "fixed_ip", fixed_ip)
+        if pool is not None:
+            pulumi.set(__self__, "pool", pool)
         if port_id is not None:
             pulumi.set(__self__, "port_id", port_id)
         if region is not None:
@@ -97,19 +98,6 @@ class FloatingIpArgs:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if value_specs is not None:
             pulumi.set(__self__, "value_specs", value_specs)
-
-    @property
-    @pulumi.getter
-    def pool(self) -> pulumi.Input[builtins.str]:
-        """
-        The name of the pool from which to obtain the floating
-        IP. Changing this creates a new floating IP.
-        """
-        return pulumi.get(self, "pool")
-
-    @pool.setter
-    def pool(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "pool", value)
 
     @property
     @pulumi.getter
@@ -180,6 +168,19 @@ class FloatingIpArgs:
     @fixed_ip.setter
     def fixed_ip(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "fixed_ip", value)
+
+    @property
+    @pulumi.getter
+    def pool(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the pool from which to obtain the floating
+        IP. Changing this creates a new floating IP.
+        """
+        return pulumi.get(self, "pool")
+
+    @pool.setter
+    def pool(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pool", value)
 
     @property
     @pulumi.getter(name="portId")
@@ -558,10 +559,8 @@ class _FloatingIpState:
         pulumi.set(self, "value_specs", value)
 
 
+@pulumi.type_token("openstack:networking/floatingIp:FloatingIp")
 class FloatingIp(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/floatingIp:FloatingIp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -632,7 +631,7 @@ class FloatingIp(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FloatingIpArgs,
+                 args: Optional[FloatingIpArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -685,8 +684,6 @@ class FloatingIp(pulumi.CustomResource):
             __props__.__dict__["dns_domain"] = dns_domain
             __props__.__dict__["dns_name"] = dns_name
             __props__.__dict__["fixed_ip"] = fixed_ip
-            if pool is None and not opts.urn:
-                raise TypeError("Missing required property 'pool'")
             __props__.__dict__["pool"] = pool
             __props__.__dict__["port_id"] = port_id
             __props__.__dict__["region"] = region

@@ -379,10 +379,8 @@ class _ApplicationCredentialState:
         pulumi.set(self, "unrestricted", value)
 
 
+@pulumi.type_token("openstack:identity/applicationCredential:ApplicationCredential")
 class ApplicationCredential(pulumi.CustomResource):
-
-    pulumi_type = "openstack:identity/applicationCredential:ApplicationCredential"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

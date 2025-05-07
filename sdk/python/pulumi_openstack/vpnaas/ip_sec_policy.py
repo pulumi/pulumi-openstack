@@ -431,10 +431,8 @@ class _IpSecPolicyState:
         pulumi.set(self, "value_specs", value)
 
 
+@pulumi.type_token("openstack:vpnaas/ipSecPolicy:IpSecPolicy")
 class IpSecPolicy(pulumi.CustomResource):
-
-    pulumi_type = "openstack:vpnaas/ipSecPolicy:IpSecPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

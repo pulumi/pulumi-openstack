@@ -260,7 +260,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Cluster(string name, ClusterArgs args, CustomResourceOptions? options = null)
+        public Cluster(string name, ClusterArgs? args = null, CustomResourceOptions? options = null)
             : base("openstack:containerinfra/cluster:Cluster", name, args ?? new ClusterArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -306,8 +306,8 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// The UUID of the V1 Container Infra cluster
         /// template. Changing this creates a new cluster.
         /// </summary>
-        [Input("clusterTemplateId", required: true)]
-        public Input<string> ClusterTemplateId { get; set; } = null!;
+        [Input("clusterTemplateId")]
+        public Input<string>? ClusterTemplateId { get; set; }
 
         /// <summary>
         /// The timeout (in minutes) for creating the

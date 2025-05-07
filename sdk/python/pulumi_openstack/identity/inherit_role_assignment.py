@@ -220,10 +220,8 @@ class _InheritRoleAssignmentState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("openstack:identity/inheritRoleAssignment:InheritRoleAssignment")
 class InheritRoleAssignment(pulumi.CustomResource):
-
-    pulumi_type = "openstack:identity/inheritRoleAssignment:InheritRoleAssignment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

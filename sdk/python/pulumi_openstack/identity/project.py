@@ -317,10 +317,8 @@ class _ProjectState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("openstack:identity/project:Project")
 class Project(pulumi.CustomResource):
-
-    pulumi_type = "openstack:identity/project:Project"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

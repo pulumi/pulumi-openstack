@@ -137,7 +137,7 @@ namespace Pulumi.OpenStack.Networking
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public FloatingIp(string name, FloatingIpArgs args, CustomResourceOptions? options = null)
+        public FloatingIp(string name, FloatingIpArgs? args = null, CustomResourceOptions? options = null)
             : base("openstack:networking/floatingIp:FloatingIp", name, args ?? new FloatingIpArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -219,8 +219,8 @@ namespace Pulumi.OpenStack.Networking
         /// The name of the pool from which to obtain the floating
         /// IP. Changing this creates a new floating IP.
         /// </summary>
-        [Input("pool", required: true)]
-        public Input<string> Pool { get; set; } = null!;
+        [Input("pool")]
+        public Input<string>? Pool { get; set; }
 
         /// <summary>
         /// ID of an existing port with at least one IP address to

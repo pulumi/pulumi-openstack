@@ -241,10 +241,8 @@ class _ShareAccessState:
         pulumi.set(self, "state", value)
 
 
+@pulumi.type_token("openstack:sharedfilesystem/shareAccess:ShareAccess")
 class ShareAccess(pulumi.CustomResource):
-
-    pulumi_type = "openstack:sharedfilesystem/shareAccess:ShareAccess"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

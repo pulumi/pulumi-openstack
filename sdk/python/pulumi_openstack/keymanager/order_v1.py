@@ -285,10 +285,8 @@ class _OrderV1State:
         pulumi.set(self, "updated", value)
 
 
+@pulumi.type_token("openstack:keymanager/orderV1:OrderV1")
 class OrderV1(pulumi.CustomResource):
-
-    pulumi_type = "openstack:keymanager/orderV1:OrderV1"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

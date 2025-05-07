@@ -601,10 +601,8 @@ class _RuleV2State:
         pulumi.set(self, "tenant_id", value)
 
 
+@pulumi.type_token("openstack:firewall/ruleV2:RuleV2")
 class RuleV2(pulumi.CustomResource):
-
-    pulumi_type = "openstack:firewall/ruleV2:RuleV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

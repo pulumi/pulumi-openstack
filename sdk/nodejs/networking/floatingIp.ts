@@ -129,7 +129,7 @@ export class FloatingIp extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: FloatingIpArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: FloatingIpArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FloatingIpArgs | FloatingIpState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -151,9 +151,6 @@ export class FloatingIp extends pulumi.CustomResource {
             resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as FloatingIpArgs | undefined;
-            if ((!args || args.pool === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'pool'");
-            }
             resourceInputs["address"] = args ? args.address : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["dnsDomain"] = args ? args.dnsDomain : undefined;
@@ -298,7 +295,7 @@ export interface FloatingIpArgs {
      * The name of the pool from which to obtain the floating
      * IP. Changing this creates a new floating IP.
      */
-    pool: pulumi.Input<string>;
+    pool?: pulumi.Input<string>;
     /**
      * ID of an existing port with at least one IP address to
      * associate with this floating IP.

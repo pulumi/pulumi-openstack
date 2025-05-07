@@ -612,10 +612,8 @@ class _QuotaSetV2State:
         pulumi.set(self, "server_groups", value)
 
 
+@pulumi.type_token("openstack:compute/quotaSetV2:QuotaSetV2")
 class QuotaSetV2(pulumi.CustomResource):
-
-    pulumi_type = "openstack:compute/quotaSetV2:QuotaSetV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

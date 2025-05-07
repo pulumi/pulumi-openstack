@@ -510,10 +510,8 @@ class _MemberState:
         pulumi.set(self, "weight", value)
 
 
+@pulumi.type_token("openstack:loadbalancer/member:Member")
 class Member(pulumi.CustomResource):
-
-    pulumi_type = "openstack:loadbalancer/member:Member"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

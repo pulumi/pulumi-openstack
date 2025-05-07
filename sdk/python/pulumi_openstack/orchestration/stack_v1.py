@@ -650,10 +650,8 @@ class _StackV1State:
         pulumi.set(self, "updated_time", value)
 
 
+@pulumi.type_token("openstack:orchestration/stackV1:StackV1")
 class StackV1(pulumi.CustomResource):
-
-    pulumi_type = "openstack:orchestration/stackV1:StackV1"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

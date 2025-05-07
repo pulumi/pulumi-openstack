@@ -227,10 +227,8 @@ class _ImageAccessAcceptState:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("openstack:images/imageAccessAccept:ImageAccessAccept")
 class ImageAccessAccept(pulumi.CustomResource):
-
-    pulumi_type = "openstack:images/imageAccessAccept:ImageAccessAccept"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

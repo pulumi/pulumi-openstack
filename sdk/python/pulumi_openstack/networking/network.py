@@ -685,10 +685,8 @@ class _NetworkState:
         pulumi.set(self, "value_specs", value)
 
 
+@pulumi.type_token("openstack:networking/network:Network")
 class Network(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/network:Network"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

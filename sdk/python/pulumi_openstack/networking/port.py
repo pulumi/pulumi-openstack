@@ -908,10 +908,8 @@ class _PortState:
         pulumi.set(self, "value_specs", value)
 
 
+@pulumi.type_token("openstack:networking/port:Port")
 class Port(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/port:Port"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

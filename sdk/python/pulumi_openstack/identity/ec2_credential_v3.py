@@ -205,10 +205,8 @@ class _Ec2CredentialV3State:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("openstack:identity/ec2CredentialV3:Ec2CredentialV3")
 class Ec2CredentialV3(pulumi.CustomResource):
-
-    pulumi_type = "openstack:identity/ec2CredentialV3:Ec2CredentialV3"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

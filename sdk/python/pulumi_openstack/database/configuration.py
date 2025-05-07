@@ -201,10 +201,8 @@ class _ConfigurationState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("openstack:database/configuration:Configuration")
 class Configuration(pulumi.CustomResource):
-
-    pulumi_type = "openstack:database/configuration:Configuration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

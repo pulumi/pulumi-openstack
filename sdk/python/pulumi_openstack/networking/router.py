@@ -609,10 +609,8 @@ class _RouterState:
         pulumi.set(self, "vendor_options", value)
 
 
+@pulumi.type_token("openstack:networking/router:Router")
 class Router(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/router:Router"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

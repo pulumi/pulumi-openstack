@@ -524,10 +524,8 @@ class _NodeGroupState:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("openstack:containerinfra/nodeGroup:NodeGroup")
 class NodeGroup(pulumi.CustomResource):
-
-    pulumi_type = "openstack:containerinfra/nodeGroup:NodeGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
