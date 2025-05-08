@@ -499,10 +499,8 @@ class _VolumeAttachState:
         pulumi.set(self, "wwpns", value)
 
 
+@pulumi.type_token("openstack:blockstorage/volumeAttach:VolumeAttach")
 class VolumeAttach(pulumi.CustomResource):
-
-    pulumi_type = "openstack:blockstorage/volumeAttach:VolumeAttach"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

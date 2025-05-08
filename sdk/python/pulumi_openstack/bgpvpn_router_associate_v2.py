@@ -230,11 +230,9 @@ class _BgpvpnRouterAssociateV2State:
 warnings.warn("""openstack.index/bgpvpnrouterassociatev2.BgpvpnRouterAssociateV2 has been deprecated in favor of openstack.bgpvpn/routerassociatev2.RouterAssociateV2""", DeprecationWarning)
 
 
+@pulumi.type_token("openstack:index/bgpvpnRouterAssociateV2:BgpvpnRouterAssociateV2")
 class BgpvpnRouterAssociateV2(pulumi.CustomResource):
     warnings.warn("""openstack.index/bgpvpnrouterassociatev2.BgpvpnRouterAssociateV2 has been deprecated in favor of openstack.bgpvpn/routerassociatev2.RouterAssociateV2""", DeprecationWarning)
-
-
-    pulumi_type = "openstack:index/bgpvpnRouterAssociateV2:BgpvpnRouterAssociateV2"
 
     @overload
     def __init__(__self__,

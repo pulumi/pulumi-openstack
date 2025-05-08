@@ -201,10 +201,8 @@ class _PortSecGroupAssociateState:
         pulumi.set(self, "security_group_ids", value)
 
 
+@pulumi.type_token("openstack:networking/portSecGroupAssociate:PortSecGroupAssociate")
 class PortSecGroupAssociate(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/portSecGroupAssociate:PortSecGroupAssociate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

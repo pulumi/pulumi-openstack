@@ -289,10 +289,8 @@ class _EndpointGroupState:
         pulumi.set(self, "value_specs", value)
 
 
+@pulumi.type_token("openstack:vpnaas/endpointGroup:EndpointGroup")
 class EndpointGroup(pulumi.CustomResource):
-
-    pulumi_type = "openstack:vpnaas/endpointGroup:EndpointGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

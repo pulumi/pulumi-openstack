@@ -610,10 +610,8 @@ class _VolumeState:
         pulumi.set(self, "volume_type", value)
 
 
+@pulumi.type_token("openstack:blockstorage/volume:Volume")
 class Volume(pulumi.CustomResource):
-
-    pulumi_type = "openstack:blockstorage/volume:Volume"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

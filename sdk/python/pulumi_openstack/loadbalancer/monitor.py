@@ -604,10 +604,8 @@ class _MonitorState:
         pulumi.set(self, "url_path", value)
 
 
+@pulumi.type_token("openstack:loadbalancer/monitor:Monitor")
 class Monitor(pulumi.CustomResource):
-
-    pulumi_type = "openstack:loadbalancer/monitor:Monitor"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

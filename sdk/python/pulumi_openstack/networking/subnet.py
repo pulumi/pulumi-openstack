@@ -812,10 +812,8 @@ class _SubnetState:
         pulumi.set(self, "value_specs", value)
 
 
+@pulumi.type_token("openstack:networking/subnet:Subnet")
 class Subnet(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/subnet:Subnet"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

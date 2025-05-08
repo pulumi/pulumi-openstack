@@ -1239,10 +1239,8 @@ class _ClusterTemplateState:
         pulumi.set(self, "volume_driver", value)
 
 
+@pulumi.type_token("openstack:containerinfra/clusterTemplate:ClusterTemplate")
 class ClusterTemplate(pulumi.CustomResource):
-
-    pulumi_type = "openstack:containerinfra/clusterTemplate:ClusterTemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

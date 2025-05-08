@@ -620,11 +620,9 @@ class _LbLoadbalancerV2State:
 warnings.warn("""openstack.index/lbloadbalancerv2.LbLoadbalancerV2 has been deprecated in favor of openstack.loadbalancer/loadbalancer.LoadBalancer""", DeprecationWarning)
 
 
+@pulumi.type_token("openstack:index/lbLoadbalancerV2:LbLoadbalancerV2")
 class LbLoadbalancerV2(pulumi.CustomResource):
     warnings.warn("""openstack.index/lbloadbalancerv2.LbLoadbalancerV2 has been deprecated in favor of openstack.loadbalancer/loadbalancer.LoadBalancer""", DeprecationWarning)
-
-
-    pulumi_type = "openstack:index/lbLoadbalancerV2:LbLoadbalancerV2"
 
     @overload
     def __init__(__self__,

@@ -2105,6 +2105,9 @@
                 "type": "string",
                 "description": "Username to login with.\n"
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:openstack/terraformConfig"
         }
     },
     "resources": {
@@ -25367,6 +25370,35 @@
                     "size",
                     "status",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "pulumi:providers:openstack/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:openstack"
+                    }
+                },
+                "type": "pulumi:providers:openstack/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
                 ],
                 "type": "object"
             }

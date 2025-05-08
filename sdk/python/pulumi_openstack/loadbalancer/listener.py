@@ -1158,10 +1158,8 @@ class _ListenerState:
         pulumi.set(self, "tls_versions", value)
 
 
+@pulumi.type_token("openstack:loadbalancer/listener:Listener")
 class Listener(pulumi.CustomResource):
-
-    pulumi_type = "openstack:loadbalancer/listener:Listener"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

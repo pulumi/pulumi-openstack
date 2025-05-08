@@ -150,10 +150,8 @@ class _MembersState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("openstack:loadbalancer/members:Members")
 class Members(pulumi.CustomResource):
-
-    pulumi_type = "openstack:loadbalancer/members:Members"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

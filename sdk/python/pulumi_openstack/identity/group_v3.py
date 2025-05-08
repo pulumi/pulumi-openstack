@@ -169,10 +169,8 @@ class _GroupV3State:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("openstack:identity/groupV3:GroupV3")
 class GroupV3(pulumi.CustomResource):
-
-    pulumi_type = "openstack:identity/groupV3:GroupV3"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -235,10 +235,8 @@ class _ServerGroupState:
         pulumi.set(self, "value_specs", value)
 
 
+@pulumi.type_token("openstack:compute/serverGroup:ServerGroup")
 class ServerGroup(pulumi.CustomResource):
-
-    pulumi_type = "openstack:compute/serverGroup:ServerGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

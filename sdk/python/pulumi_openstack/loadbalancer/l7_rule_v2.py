@@ -381,10 +381,8 @@ class _L7RuleV2State:
         pulumi.set(self, "value", value)
 
 
+@pulumi.type_token("openstack:loadbalancer/l7RuleV2:L7RuleV2")
 class L7RuleV2(pulumi.CustomResource):
-
-    pulumi_type = "openstack:loadbalancer/l7RuleV2:L7RuleV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

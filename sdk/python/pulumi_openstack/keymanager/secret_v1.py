@@ -557,10 +557,8 @@ class _SecretV1State:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("openstack:keymanager/secretV1:SecretV1")
 class SecretV1(pulumi.CustomResource):
-
-    pulumi_type = "openstack:keymanager/secretV1:SecretV1"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

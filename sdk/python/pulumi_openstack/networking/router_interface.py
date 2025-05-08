@@ -224,10 +224,8 @@ class _RouterInterfaceState:
         pulumi.set(self, "subnet_id", value)
 
 
+@pulumi.type_token("openstack:networking/routerInterface:RouterInterface")
 class RouterInterface(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/routerInterface:RouterInterface"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

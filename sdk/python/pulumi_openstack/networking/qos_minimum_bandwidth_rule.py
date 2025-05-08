@@ -175,10 +175,8 @@ class _QosMinimumBandwidthRuleState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule")
 class QosMinimumBandwidthRule(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

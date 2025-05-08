@@ -171,10 +171,8 @@ class _FlavorprofileV2State:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("openstack:loadbalancer/flavorprofileV2:FlavorprofileV2")
 class FlavorprofileV2(pulumi.CustomResource):
-
-    pulumi_type = "openstack:loadbalancer/flavorprofileV2:FlavorprofileV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

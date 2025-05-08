@@ -315,10 +315,8 @@ class _SecGroupState:
         pulumi.set(self, "tenant_id", value)
 
 
+@pulumi.type_token("openstack:networking/secGroup:SecGroup")
 class SecGroup(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/secGroup:SecGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

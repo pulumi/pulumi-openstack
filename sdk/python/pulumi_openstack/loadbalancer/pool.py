@@ -725,10 +725,8 @@ class _PoolState:
         pulumi.set(self, "tls_versions", value)
 
 
+@pulumi.type_token("openstack:loadbalancer/pool:Pool")
 class Pool(pulumi.CustomResource):
-
-    pulumi_type = "openstack:loadbalancer/pool:Pool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

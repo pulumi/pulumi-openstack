@@ -273,10 +273,8 @@ class _VolumeAttachState:
         pulumi.set(self, "volume_id", value)
 
 
+@pulumi.type_token("openstack:compute/volumeAttach:VolumeAttach")
 class VolumeAttach(pulumi.CustomResource):
-
-    pulumi_type = "openstack:compute/volumeAttach:VolumeAttach"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

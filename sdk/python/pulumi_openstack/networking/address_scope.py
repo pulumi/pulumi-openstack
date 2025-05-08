@@ -229,10 +229,8 @@ class _AddressScopeState:
         pulumi.set(self, "shared", value)
 
 
+@pulumi.type_token("openstack:networking/addressScope:AddressScope")
 class AddressScope(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/addressScope:AddressScope"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -191,10 +191,8 @@ class _NetworkAssociateV2State:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("openstack:bgpvpn/networkAssociateV2:NetworkAssociateV2")
 class NetworkAssociateV2(pulumi.CustomResource):
-
-    pulumi_type = "openstack:bgpvpn/networkAssociateV2:NetworkAssociateV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
