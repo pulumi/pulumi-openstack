@@ -265,10 +265,8 @@ class _KeypairState:
         pulumi.set(self, "value_specs", value)
 
 
+@pulumi.type_token("openstack:compute/keypair:Keypair")
 class Keypair(pulumi.CustomResource):
-
-    pulumi_type = "openstack:compute/keypair:Keypair"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -139,10 +139,8 @@ class _FlavorAccessState:
         pulumi.set(self, "tenant_id", value)
 
 
+@pulumi.type_token("openstack:compute/flavorAccess:FlavorAccess")
 class FlavorAccess(pulumi.CustomResource):
-
-    pulumi_type = "openstack:compute/flavorAccess:FlavorAccess"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -237,10 +237,8 @@ class _RbacPolicyV2State:
         pulumi.set(self, "target_tenant", value)
 
 
+@pulumi.type_token("openstack:networking/rbacPolicyV2:RbacPolicyV2")
 class RbacPolicyV2(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/rbacPolicyV2:RbacPolicyV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

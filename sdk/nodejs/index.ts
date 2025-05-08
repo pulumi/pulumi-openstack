@@ -50,10 +50,8 @@ export type LbLoadbalancerV2 = import("./lbLoadbalancerV2").LbLoadbalancerV2;
 export const LbLoadbalancerV2: typeof import("./lbLoadbalancerV2").LbLoadbalancerV2 = null as any;
 utilities.lazyLoad(exports, ["LbLoadbalancerV2"], () => require("./lbLoadbalancerV2"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 
 // Export sub-modules:

@@ -143,10 +143,8 @@ class _VolumeTypeAccessV3State:
         pulumi.set(self, "volume_type_id", value)
 
 
+@pulumi.type_token("openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3")
 class VolumeTypeAccessV3(pulumi.CustomResource):
-
-    pulumi_type = "openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

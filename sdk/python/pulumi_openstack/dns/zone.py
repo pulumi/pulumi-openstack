@@ -433,10 +433,8 @@ class _ZoneState:
         pulumi.set(self, "value_specs", value)
 
 
+@pulumi.type_token("openstack:dns/zone:Zone")
 class Zone(pulumi.CustomResource):
-
-    pulumi_type = "openstack:dns/zone:Zone"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

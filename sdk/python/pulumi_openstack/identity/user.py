@@ -491,10 +491,8 @@ class _UserState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("openstack:identity/user:User")
 class User(pulumi.CustomResource):
-
-    pulumi_type = "openstack:identity/user:User"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

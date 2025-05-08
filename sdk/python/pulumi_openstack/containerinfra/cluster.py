@@ -804,10 +804,8 @@ class _ClusterState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("openstack:containerinfra/cluster:Cluster")
 class Cluster(pulumi.CustomResource):
-
-    pulumi_type = "openstack:containerinfra/cluster:Cluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

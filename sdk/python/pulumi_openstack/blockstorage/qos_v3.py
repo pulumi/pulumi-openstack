@@ -177,10 +177,8 @@ class _QosV3State:
         pulumi.set(self, "specs", value)
 
 
+@pulumi.type_token("openstack:blockstorage/qosV3:QosV3")
 class QosV3(pulumi.CustomResource):
-
-    pulumi_type = "openstack:blockstorage/qosV3:QosV3"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

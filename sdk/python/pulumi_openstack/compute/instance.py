@@ -1125,10 +1125,8 @@ class _InstanceState:
         pulumi.set(self, "vendor_options", value)
 
 
+@pulumi.type_token("openstack:compute/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "openstack:compute/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

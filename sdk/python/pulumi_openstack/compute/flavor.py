@@ -466,10 +466,8 @@ class _FlavorState:
         pulumi.set(self, "vcpus", value)
 
 
+@pulumi.type_token("openstack:compute/flavor:Flavor")
 class Flavor(pulumi.CustomResource):
-
-    pulumi_type = "openstack:compute/flavor:Flavor"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

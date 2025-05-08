@@ -128,10 +128,8 @@ class _DatabaseState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("openstack:database/database:Database")
 class Database(pulumi.CustomResource):
-
-    pulumi_type = "openstack:database/database:Database"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

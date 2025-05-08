@@ -404,10 +404,8 @@ class _SecurityServiceState:
         pulumi.set(self, "user", value)
 
 
+@pulumi.type_token("openstack:sharedfilesystem/securityService:SecurityService")
 class SecurityService(pulumi.CustomResource):
-
-    pulumi_type = "openstack:sharedfilesystem/securityService:SecurityService"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

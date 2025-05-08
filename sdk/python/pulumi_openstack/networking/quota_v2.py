@@ -432,10 +432,8 @@ class _QuotaV2State:
         pulumi.set(self, "subnetpool", value)
 
 
+@pulumi.type_token("openstack:networking/quotaV2:QuotaV2")
 class QuotaV2(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/quotaV2:QuotaV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

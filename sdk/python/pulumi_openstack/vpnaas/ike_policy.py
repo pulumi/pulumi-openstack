@@ -431,10 +431,8 @@ class _IkePolicyState:
         pulumi.set(self, "value_specs", value)
 
 
+@pulumi.type_token("openstack:vpnaas/ikePolicy:IkePolicy")
 class IkePolicy(pulumi.CustomResource):
-
-    pulumi_type = "openstack:vpnaas/ikePolicy:IkePolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

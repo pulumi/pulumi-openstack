@@ -343,10 +343,8 @@ class _ShareNetworkState:
         pulumi.set(self, "segmentation_id", value)
 
 
+@pulumi.type_token("openstack:sharedfilesystem/shareNetwork:ShareNetwork")
 class ShareNetwork(pulumi.CustomResource):
-
-    pulumi_type = "openstack:sharedfilesystem/shareNetwork:ShareNetwork"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

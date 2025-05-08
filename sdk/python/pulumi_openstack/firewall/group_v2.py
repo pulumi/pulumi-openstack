@@ -461,10 +461,8 @@ class _GroupV2State:
         pulumi.set(self, "tenant_id", value)
 
 
+@pulumi.type_token("openstack:firewall/groupV2:GroupV2")
 class GroupV2(pulumi.CustomResource):
-
-    pulumi_type = "openstack:firewall/groupV2:GroupV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

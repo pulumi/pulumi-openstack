@@ -211,10 +211,8 @@ class _QosBandwidthLimitRuleState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule")
 class QosBandwidthLimitRule(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

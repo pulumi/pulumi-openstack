@@ -558,10 +558,8 @@ class _FloatingIpState:
         pulumi.set(self, "value_specs", value)
 
 
+@pulumi.type_token("openstack:networking/floatingIp:FloatingIp")
 class FloatingIp(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/floatingIp:FloatingIp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

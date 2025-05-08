@@ -352,10 +352,8 @@ class _TrunkState:
         pulumi.set(self, "tenant_id", value)
 
 
+@pulumi.type_token("openstack:networking/trunk:Trunk")
 class Trunk(pulumi.CustomResource):
-
-    pulumi_type = "openstack:networking/trunk:Trunk"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

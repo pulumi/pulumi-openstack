@@ -939,10 +939,8 @@ class _ImageState:
         pulumi.set(self, "web_download", value)
 
 
+@pulumi.type_token("openstack:images/image:Image")
 class Image(pulumi.CustomResource):
-
-    pulumi_type = "openstack:images/image:Image"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

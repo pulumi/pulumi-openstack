@@ -617,10 +617,8 @@ class _LoadBalancerState:
         pulumi.set(self, "vip_subnet_id", value)
 
 
+@pulumi.type_token("openstack:loadbalancer/loadBalancer:LoadBalancer")
 class LoadBalancer(pulumi.CustomResource):
-
-    pulumi_type = "openstack:loadbalancer/loadBalancer:LoadBalancer"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

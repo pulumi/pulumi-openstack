@@ -472,11 +472,9 @@ class _BgpvpnV2State:
 warnings.warn("""openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2""", DeprecationWarning)
 
 
+@pulumi.type_token("openstack:index/bgpvpnV2:BgpvpnV2")
 class BgpvpnV2(pulumi.CustomResource):
     warnings.warn("""openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2""", DeprecationWarning)
-
-
-    pulumi_type = "openstack:index/bgpvpnV2:BgpvpnV2"
 
     @overload
     def __init__(__self__,

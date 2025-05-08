@@ -137,10 +137,8 @@ class _RoleState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("openstack:identity/role:Role")
 class Role(pulumi.CustomResource):
-
-    pulumi_type = "openstack:identity/role:Role"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

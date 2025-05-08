@@ -318,10 +318,8 @@ class _ContainerV1State:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("openstack:keymanager/containerV1:ContainerV1")
 class ContainerV1(pulumi.CustomResource):
-
-    pulumi_type = "openstack:keymanager/containerV1:ContainerV1"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
