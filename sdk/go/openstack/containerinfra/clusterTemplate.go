@@ -242,9 +242,6 @@ func NewClusterTemplate(ctx *pulumi.Context,
 	if args.Coe == nil {
 		return nil, errors.New("invalid value for required argument 'Coe'")
 	}
-	if args.Image == nil {
-		return nil, errors.New("invalid value for required argument 'Image'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ClusterTemplate
 	err := ctx.RegisterResource("openstack:containerinfra/clusterTemplate:ClusterTemplate", name, args, &resource, opts...)
@@ -580,7 +577,7 @@ type clusterTemplateArgs struct {
 	// The reference to an image that is used for nodes of the
 	// cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
 	// Changing this updates the image attribute of the existing cluster template.
-	Image string `pulumi:"image"`
+	Image *string `pulumi:"image"`
 	// The insecure registry URL for the cluster
 	// template. Changing this updates the insecure registry attribute of the
 	// existing cluster template.
@@ -696,7 +693,7 @@ type ClusterTemplateArgs struct {
 	// The reference to an image that is used for nodes of the
 	// cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
 	// Changing this updates the image attribute of the existing cluster template.
-	Image pulumi.StringInput
+	Image pulumi.StringPtrInput
 	// The insecure registry URL for the cluster
 	// template. Changing this updates the insecure registry attribute of the
 	// existing cluster template.

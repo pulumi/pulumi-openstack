@@ -512,8 +512,8 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
         /// Changing this updates the image attribute of the existing cluster template.
         /// </summary>
-        [Input("image", required: true)]
-        public Input<string> Image { get; set; } = null!;
+        [Input("image")]
+        public Input<string>? Image { get; set; }
 
         /// <summary>
         /// The insecure registry URL for the cluster
