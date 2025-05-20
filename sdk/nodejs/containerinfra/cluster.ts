@@ -217,7 +217,7 @@ export class Cluster extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ClusterArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -253,9 +253,6 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.clusterTemplateId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'clusterTemplateId'");
-            }
             resourceInputs["clusterTemplateId"] = args ? args.clusterTemplateId : undefined;
             resourceInputs["createTimeout"] = args ? args.createTimeout : undefined;
             resourceInputs["discoveryUrl"] = args ? args.discoveryUrl : undefined;
@@ -415,7 +412,7 @@ export interface ClusterArgs {
      * The UUID of the V1 Container Infra cluster
      * template. Changing this creates a new cluster.
      */
-    clusterTemplateId: pulumi.Input<string>;
+    clusterTemplateId?: pulumi.Input<string>;
     /**
      * The timeout (in minutes) for creating the
      * cluster. Changing this creates a new cluster.

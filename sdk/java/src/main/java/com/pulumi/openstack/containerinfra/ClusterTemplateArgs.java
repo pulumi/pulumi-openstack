@@ -289,8 +289,8 @@ public final class ClusterTemplateArgs extends com.pulumi.resources.ResourceArgs
      * Changing this updates the image attribute of the existing cluster template.
      * 
      */
-    @Import(name="image", required=true)
-    private Output<String> image;
+    @Import(name="image")
+    private @Nullable Output<String> image;
 
     /**
      * @return The reference to an image that is used for nodes of the
@@ -298,8 +298,8 @@ public final class ClusterTemplateArgs extends com.pulumi.resources.ResourceArgs
      * Changing this updates the image attribute of the existing cluster template.
      * 
      */
-    public Output<String> image() {
-        return this.image;
+    public Optional<Output<String>> image() {
+        return Optional.ofNullable(this.image);
     }
 
     /**
@@ -970,7 +970,7 @@ public final class ClusterTemplateArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder image(Output<String> image) {
+        public Builder image(@Nullable Output<String> image) {
             $.image = image;
             return this;
         }
@@ -1334,9 +1334,6 @@ public final class ClusterTemplateArgs extends com.pulumi.resources.ResourceArgs
         public ClusterTemplateArgs build() {
             if ($.coe == null) {
                 throw new MissingRequiredPropertyException("ClusterTemplateArgs", "coe");
-            }
-            if ($.image == null) {
-                throw new MissingRequiredPropertyException("ClusterTemplateArgs", "image");
             }
             return $;
         }

@@ -21,7 +21,6 @@ __all__ = ['ClusterTemplateArgs', 'ClusterTemplate']
 class ClusterTemplateArgs:
     def __init__(__self__, *,
                  coe: pulumi.Input[builtins.str],
-                 image: pulumi.Input[builtins.str],
                  apiserver_port: Optional[pulumi.Input[builtins.int]] = None,
                  cluster_distro: Optional[pulumi.Input[builtins.str]] = None,
                  dns_nameserver: Optional[pulumi.Input[builtins.str]] = None,
@@ -35,6 +34,7 @@ class ClusterTemplateArgs:
                  hidden: Optional[pulumi.Input[builtins.bool]] = None,
                  http_proxy: Optional[pulumi.Input[builtins.str]] = None,
                  https_proxy: Optional[pulumi.Input[builtins.str]] = None,
+                 image: Optional[pulumi.Input[builtins.str]] = None,
                  insecure_registry: Optional[pulumi.Input[builtins.str]] = None,
                  keypair_id: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
@@ -54,9 +54,6 @@ class ClusterTemplateArgs:
         :param pulumi.Input[builtins.str] coe: The Container Orchestration Engine for this cluster
                template. Changing this updates the engine of the existing cluster
                template.
-        :param pulumi.Input[builtins.str] image: The reference to an image that is used for nodes of the
-               cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
-               Changing this updates the image attribute of the existing cluster template.
         :param pulumi.Input[builtins.int] apiserver_port: The API server port for the Container
                Orchestration Engine for this cluster template. Changing this updates the
                API server port of the existing cluster template.
@@ -95,6 +92,9 @@ class ClusterTemplateArgs:
         :param pulumi.Input[builtins.str] https_proxy: The address of a proxy for receiving all HTTPS
                requests and relay them. Changing this updates the HTTPS proxy address of
                the existing cluster template.
+        :param pulumi.Input[builtins.str] image: The reference to an image that is used for nodes of the
+               cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+               Changing this updates the image attribute of the existing cluster template.
         :param pulumi.Input[builtins.str] insecure_registry: The insecure registry URL for the cluster
                template. Changing this updates the insecure registry attribute of the
                existing cluster template.
@@ -136,7 +136,6 @@ class ClusterTemplateArgs:
                the existing cluster template.
         """
         pulumi.set(__self__, "coe", coe)
-        pulumi.set(__self__, "image", image)
         if apiserver_port is not None:
             pulumi.set(__self__, "apiserver_port", apiserver_port)
         if cluster_distro is not None:
@@ -163,6 +162,8 @@ class ClusterTemplateArgs:
             pulumi.set(__self__, "http_proxy", http_proxy)
         if https_proxy is not None:
             pulumi.set(__self__, "https_proxy", https_proxy)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
         if insecure_registry is not None:
             pulumi.set(__self__, "insecure_registry", insecure_registry)
         if keypair_id is not None:
@@ -205,20 +206,6 @@ class ClusterTemplateArgs:
     @coe.setter
     def coe(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "coe", value)
-
-    @property
-    @pulumi.getter
-    def image(self) -> pulumi.Input[builtins.str]:
-        """
-        The reference to an image that is used for nodes of the
-        cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
-        Changing this updates the image attribute of the existing cluster template.
-        """
-        return pulumi.get(self, "image")
-
-    @image.setter
-    def image(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "image", value)
 
     @property
     @pulumi.getter(name="apiserverPort")
@@ -400,6 +387,20 @@ class ClusterTemplateArgs:
     @https_proxy.setter
     def https_proxy(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "https_proxy", value)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The reference to an image that is used for nodes of the
+        cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+        Changing this updates the image attribute of the existing cluster template.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "image", value)
 
     @property
     @pulumi.getter(name="insecureRegistry")
@@ -1594,8 +1595,6 @@ class ClusterTemplate(pulumi.CustomResource):
             __props__.__dict__["hidden"] = hidden
             __props__.__dict__["http_proxy"] = http_proxy
             __props__.__dict__["https_proxy"] = https_proxy
-            if image is None and not opts.urn:
-                raise TypeError("Missing required property 'image'")
             __props__.__dict__["image"] = image
             __props__.__dict__["insecure_registry"] = insecure_registry
             __props__.__dict__["keypair_id"] = keypair_id
