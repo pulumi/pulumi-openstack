@@ -27,6 +27,7 @@
                 "firewall": "Firewall",
                 "identity": "Identity",
                 "images": "Images",
+                "index": "index",
                 "keymanager": "KeyManager",
                 "loadbalancer": "LoadBalancer",
                 "networking": "Networking",
@@ -1660,7 +1661,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).\n"
+                    "description": "Versioning type which can be `versions` or `history`\naccording to [OpenStack\ndocumentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).\n"
                 }
             },
             "type": "object",
@@ -2799,7 +2800,7 @@
             }
         },
         "openstack:blockstorage/quoteSetV3:QuoteSetV3": {
-            "description": "Manages a V3 block storage quotaset resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API\n    in case of delete call.\n\n\u003e **Note:** This resource has all-in creation so all optional quota arguments that were not specified are\n    created with zero value. This excludes volume type quota.\n\n## Import\n\nQuotasets can be imported using the `project_id/region`, e.g.\n\n```sh\n$ pulumi import openstack:blockstorage/quoteSetV3:QuoteSetV3 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1\n```\n",
+            "description": "Manages a V3 block storage quotaset resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API\n    in case of delete call.\n\n## Import\n\nQuotasets can be imported using the `project_id/region`, e.g.\n\n```sh\n$ pulumi import openstack:blockstorage/quoteSetV3:QuoteSetV3 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1\n```\n",
             "properties": {
                 "backupGigabytes": {
                     "type": "integer",
@@ -3030,9 +3031,13 @@
                     "type": "string",
                     "description": "The volume ID from which to create the volume.\nConflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this\ncreates a new volume.\n"
                 },
+                "volumeRetypePolicy": {
+                    "type": "string",
+                    "description": "Migration policy when changing `volume_type`.\n`\"never\"` *(default)* prevents migration to another storage backend, while `\"on-demand\"`\nallows migration if needed. Applicable only when updating `volume_type`.\n"
+                },
                 "volumeType": {
                     "type": "string",
-                    "description": "The type of volume to create.\nChanging this creates a new volume.\n"
+                    "description": "The type of volume to create or update.\nChanging this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.\n"
                 }
             },
             "required": [
@@ -3115,10 +3120,13 @@
                     "description": "The volume ID from which to create the volume.\nConflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this\ncreates a new volume.\n",
                     "willReplaceOnChanges": true
                 },
+                "volumeRetypePolicy": {
+                    "type": "string",
+                    "description": "Migration policy when changing `volume_type`.\n`\"never\"` *(default)* prevents migration to another storage backend, while `\"on-demand\"`\nallows migration if needed. Applicable only when updating `volume_type`.\n"
+                },
                 "volumeType": {
                     "type": "string",
-                    "description": "The type of volume to create.\nChanging this creates a new volume.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The type of volume to create or update.\nChanging this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.\n"
                 }
             },
             "requiredInputs": [
@@ -3204,10 +3212,13 @@
                         "description": "The volume ID from which to create the volume.\nConflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this\ncreates a new volume.\n",
                         "willReplaceOnChanges": true
                     },
+                    "volumeRetypePolicy": {
+                        "type": "string",
+                        "description": "Migration policy when changing `volume_type`.\n`\"never\"` *(default)* prevents migration to another storage backend, while `\"on-demand\"`\nallows migration if needed. Applicable only when updating `volume_type`.\n"
+                    },
                     "volumeType": {
                         "type": "string",
-                        "description": "The type of volume to create.\nChanging this creates a new volume.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The type of volume to create or update.\nChanging this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.\n"
                     }
                 },
                 "type": "object"
@@ -4026,6 +4037,10 @@
                     "type": "boolean",
                     "description": "Whether to force the OpenStack instance to be\nforcefully deleted. This is useful for environments that have reclaim / soft\ndeletion enabled.\n"
                 },
+                "hypervisorHostname": {
+                    "type": "string",
+                    "description": "Specifies the exact hypervisor hostname on\nwhich to create the instance. When provided, this parameter is included in\nthe request to Nova, directing the scheduler to launch the instance on the\nspecified host. Note: This option requires administrative privileges and a\nNova microversion of 2.74 or later. Conflicts with `personality`. Changing\nthis value forces a new instance to be created.\n"
+                },
                 "imageId": {
                     "type": "string",
                     "description": "(Optional; Required if `image_name` is empty and not booting\nfrom a volume. Do not specify if booting from a volume.) The image ID of\nthe desired image for the server. Changing this rebuilds the existing\nserver.\n"
@@ -4065,7 +4080,7 @@
                     "items": {
                         "$ref": "#/types/openstack:compute/InstancePersonality:InstancePersonality"
                     },
-                    "description": "Customize the personality of an instance by\ndefining one or more files and their contents. The personality structure\nis described below. Changing this rebuilds the existing server.\n"
+                    "description": "Customize the personality of an instance by\ndefining one or more files and their contents. The personality structure is\ndescribed below. Conflicts with `hypervisor_hostname`. Changing this rebuilds\nthe existing server.\n"
                 },
                 "powerState": {
                     "type": "string",
@@ -4122,6 +4137,7 @@
                 "created",
                 "flavorId",
                 "flavorName",
+                "hypervisorHostname",
                 "imageId",
                 "imageName",
                 "name",
@@ -4178,6 +4194,11 @@
                     "type": "boolean",
                     "description": "Whether to force the OpenStack instance to be\nforcefully deleted. This is useful for environments that have reclaim / soft\ndeletion enabled.\n"
                 },
+                "hypervisorHostname": {
+                    "type": "string",
+                    "description": "Specifies the exact hypervisor hostname on\nwhich to create the instance. When provided, this parameter is included in\nthe request to Nova, directing the scheduler to launch the instance on the\nspecified host. Note: This option requires administrative privileges and a\nNova microversion of 2.74 or later. Conflicts with `personality`. Changing\nthis value forces a new instance to be created.\n",
+                    "willReplaceOnChanges": true
+                },
                 "imageId": {
                     "type": "string",
                     "description": "(Optional; Required if `image_name` is empty and not booting\nfrom a volume. Do not specify if booting from a volume.) The image ID of\nthe desired image for the server. Changing this rebuilds the existing\nserver.\n"
@@ -4220,7 +4241,7 @@
                     "items": {
                         "$ref": "#/types/openstack:compute/InstancePersonality:InstancePersonality"
                     },
-                    "description": "Customize the personality of an instance by\ndefining one or more files and their contents. The personality structure\nis described below. Changing this rebuilds the existing server.\n"
+                    "description": "Customize the personality of an instance by\ndefining one or more files and their contents. The personality structure is\ndescribed below. Conflicts with `hypervisor_hostname`. Changing this rebuilds\nthe existing server.\n"
                 },
                 "powerState": {
                     "type": "string",
@@ -4333,6 +4354,11 @@
                         "type": "boolean",
                         "description": "Whether to force the OpenStack instance to be\nforcefully deleted. This is useful for environments that have reclaim / soft\ndeletion enabled.\n"
                     },
+                    "hypervisorHostname": {
+                        "type": "string",
+                        "description": "Specifies the exact hypervisor hostname on\nwhich to create the instance. When provided, this parameter is included in\nthe request to Nova, directing the scheduler to launch the instance on the\nspecified host. Note: This option requires administrative privileges and a\nNova microversion of 2.74 or later. Conflicts with `personality`. Changing\nthis value forces a new instance to be created.\n",
+                        "willReplaceOnChanges": true
+                    },
                     "imageId": {
                         "type": "string",
                         "description": "(Optional; Required if `image_name` is empty and not booting\nfrom a volume. Do not specify if booting from a volume.) The image ID of\nthe desired image for the server. Changing this rebuilds the existing\nserver.\n"
@@ -4375,7 +4401,7 @@
                         "items": {
                             "$ref": "#/types/openstack:compute/InstancePersonality:InstancePersonality"
                         },
-                        "description": "Customize the personality of an instance by\ndefining one or more files and their contents. The personality structure\nis described below. Changing this rebuilds the existing server.\n"
+                        "description": "Customize the personality of an instance by\ndefining one or more files and their contents. The personality structure is\ndescribed below. Conflicts with `hypervisor_hostname`. Changing this rebuilds\nthe existing server.\n"
                     },
                     "powerState": {
                         "type": "string",
@@ -6984,7 +7010,7 @@
             }
         },
         "openstack:dns/zone:Zone": {
-            "description": "Manages a DNS zone in the OpenStack DNS Service.\n\n## Example Usage\n\n### Automatically detect the correct network\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst exampleCom = new openstack.dns.Zone(\"example_com\", {\n    name: \"example.com.\",\n    email: \"jdoe@example.com\",\n    description: \"An example zone\",\n    ttl: 3000,\n    type: \"PRIMARY\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nexample_com = openstack.dns.Zone(\"example_com\",\n    name=\"example.com.\",\n    email=\"jdoe@example.com\",\n    description=\"An example zone\",\n    ttl=3000,\n    type=\"PRIMARY\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleCom = new OpenStack.Dns.Zone(\"example_com\", new()\n    {\n        Name = \"example.com.\",\n        Email = \"jdoe@example.com\",\n        Description = \"An example zone\",\n        Ttl = 3000,\n        Type = \"PRIMARY\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/dns\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dns.NewZone(ctx, \"example_com\", \u0026dns.ZoneArgs{\n\t\t\tName:        pulumi.String(\"example.com.\"),\n\t\t\tEmail:       pulumi.String(\"jdoe@example.com\"),\n\t\t\tDescription: pulumi.String(\"An example zone\"),\n\t\t\tTtl:         pulumi.Int(3000),\n\t\t\tType:        pulumi.String(\"PRIMARY\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.dns.Zone;\nimport com.pulumi.openstack.dns.ZoneArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleCom = new Zone(\"exampleCom\", ZoneArgs.builder()\n            .name(\"example.com.\")\n            .email(\"jdoe@example.com\")\n            .description(\"An example zone\")\n            .ttl(3000)\n            .type(\"PRIMARY\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleCom:\n    type: openstack:dns:Zone\n    name: example_com\n    properties:\n      name: example.com.\n      email: jdoe@example.com\n      description: An example zone\n      ttl: 3000\n      type: PRIMARY\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the zone ID with optional project ID:\n\n```sh\n$ pulumi import openstack:dns/zone:Zone zone_1 zone_id\n```\n\n```sh\n$ pulumi import openstack:dns/zone:Zone zone_1 zone_id:project_id\n```\n\n",
+            "description": "Manages a DNS zone in the OpenStack DNS Service.\n\n## Example Usage\n\n### Automatically detect the correct network\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst exampleCom = new openstack.dns.Zone(\"example_com\", {\n    name: \"example.com.\",\n    email: \"jdoe@example.com\",\n    description: \"An example zone\",\n    ttl: 3000,\n    type: \"PRIMARY\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nexample_com = openstack.dns.Zone(\"example_com\",\n    name=\"example.com.\",\n    email=\"jdoe@example.com\",\n    description=\"An example zone\",\n    ttl=3000,\n    type=\"PRIMARY\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleCom = new OpenStack.Dns.Zone(\"example_com\", new()\n    {\n        Name = \"example.com.\",\n        Email = \"jdoe@example.com\",\n        Description = \"An example zone\",\n        Ttl = 3000,\n        Type = \"PRIMARY\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/dns\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dns.NewZone(ctx, \"example_com\", \u0026dns.ZoneArgs{\n\t\t\tName:        pulumi.String(\"example.com.\"),\n\t\t\tEmail:       pulumi.String(\"jdoe@example.com\"),\n\t\t\tDescription: pulumi.String(\"An example zone\"),\n\t\t\tTtl:         pulumi.Int(3000),\n\t\t\tType:        pulumi.String(\"PRIMARY\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.dns.Zone;\nimport com.pulumi.openstack.dns.ZoneArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleCom = new Zone(\"exampleCom\", ZoneArgs.builder()\n            .name(\"example.com.\")\n            .email(\"jdoe@example.com\")\n            .description(\"An example zone\")\n            .ttl(3000)\n            .type(\"PRIMARY\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleCom:\n    type: openstack:dns:Zone\n    name: example_com\n    properties:\n      name: example.com.\n      email: jdoe@example.com\n      description: An example zone\n      ttl: 3000\n      type: PRIMARY\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the zone ID with optional project ID:\n\n```sh\n$ pulumi import openstack:dns/zone:Zone zone_1 zone_id\n```\n\n```sh\n$ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id\n```\n\n",
             "properties": {
                 "attributes": {
                     "type": "object",
@@ -7018,11 +7044,11 @@
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned\nuser role in target project)\n"
+                    "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned\nuser role in target project).\n"
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region in which to obtain the V2 Compute client.\nKeypairs are associated with accounts, but a Compute client is needed to\ncreate one. If omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone.\n"
+                    "description": "The region in which to obtain the V2 DNS client.\nIf omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone.\n"
                 },
                 "ttl": {
                     "type": "integer",
@@ -7082,12 +7108,12 @@
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned\nuser role in target project)\n",
+                    "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned\nuser role in target project).\n",
                     "willReplaceOnChanges": true
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region in which to obtain the V2 Compute client.\nKeypairs are associated with accounts, but a Compute client is needed to\ncreate one. If omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone.\n",
+                    "description": "The region in which to obtain the V2 DNS client.\nIf omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone.\n",
                     "willReplaceOnChanges": true
                 },
                 "ttl": {
@@ -7145,12 +7171,12 @@
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned\nuser role in target project)\n",
+                        "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned\nuser role in target project).\n",
                         "willReplaceOnChanges": true
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region in which to obtain the V2 Compute client.\nKeypairs are associated with accounts, but a Compute client is needed to\ncreate one. If omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone.\n",
+                        "description": "The region in which to obtain the V2 DNS client.\nIf omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone.\n",
                         "willReplaceOnChanges": true
                     },
                     "ttl": {
@@ -16573,23 +16599,23 @@
             }
         },
         "openstack:objectstorage/container:Container": {
-            "description": "Manages a V1 container resource within OpenStack.\n\n## Example Usage\n\n### Basic Container\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst container1 = new openstack.objectstorage.Container(\"container_1\", {\n    region: \"RegionOne\",\n    name: \"tf-test-container-1\",\n    metadata: {\n        test: \"true\",\n    },\n    contentType: \"application/json\",\n    versioning: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ncontainer1 = openstack.objectstorage.Container(\"container_1\",\n    region=\"RegionOne\",\n    name=\"tf-test-container-1\",\n    metadata={\n        \"test\": \"true\",\n    },\n    content_type=\"application/json\",\n    versioning=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var container1 = new OpenStack.ObjectStorage.Container(\"container_1\", new()\n    {\n        Region = \"RegionOne\",\n        Name = \"tf-test-container-1\",\n        Metadata = \n        {\n            { \"test\", \"true\" },\n        },\n        ContentType = \"application/json\",\n        Versioning = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/objectstorage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := objectstorage.NewContainer(ctx, \"container_1\", \u0026objectstorage.ContainerArgs{\n\t\t\tRegion: pulumi.String(\"RegionOne\"),\n\t\t\tName:   pulumi.String(\"tf-test-container-1\"),\n\t\t\tMetadata: pulumi.StringMap{\n\t\t\t\t\"test\": pulumi.String(\"true\"),\n\t\t\t},\n\t\t\tContentType: pulumi.String(\"application/json\"),\n\t\t\tVersioning:  pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.objectstorage.Container;\nimport com.pulumi.openstack.objectstorage.ContainerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var container1 = new Container(\"container1\", ContainerArgs.builder()\n            .region(\"RegionOne\")\n            .name(\"tf-test-container-1\")\n            .metadata(Map.of(\"test\", \"true\"))\n            .contentType(\"application/json\")\n            .versioning(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  container1:\n    type: openstack:objectstorage:Container\n    name: container_1\n    properties:\n      region: RegionOne\n      name: tf-test-container-1\n      metadata:\n        test: 'true'\n      contentType: application/json\n      versioning: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Basic Container with legacy versioning\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst container1 = new openstack.objectstorage.Container(\"container_1\", {\n    region: \"RegionOne\",\n    name: \"tf-test-container-1\",\n    metadata: {\n        test: \"true\",\n    },\n    contentType: \"application/json\",\n    versioningLegacy: {\n        type: \"versions\",\n        location: \"tf-test-container-versions\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ncontainer1 = openstack.objectstorage.Container(\"container_1\",\n    region=\"RegionOne\",\n    name=\"tf-test-container-1\",\n    metadata={\n        \"test\": \"true\",\n    },\n    content_type=\"application/json\",\n    versioning_legacy={\n        \"type\": \"versions\",\n        \"location\": \"tf-test-container-versions\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var container1 = new OpenStack.ObjectStorage.Container(\"container_1\", new()\n    {\n        Region = \"RegionOne\",\n        Name = \"tf-test-container-1\",\n        Metadata = \n        {\n            { \"test\", \"true\" },\n        },\n        ContentType = \"application/json\",\n        VersioningLegacy = new OpenStack.ObjectStorage.Inputs.ContainerVersioningLegacyArgs\n        {\n            Type = \"versions\",\n            Location = \"tf-test-container-versions\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/objectstorage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := objectstorage.NewContainer(ctx, \"container_1\", \u0026objectstorage.ContainerArgs{\n\t\t\tRegion: pulumi.String(\"RegionOne\"),\n\t\t\tName:   pulumi.String(\"tf-test-container-1\"),\n\t\t\tMetadata: pulumi.StringMap{\n\t\t\t\t\"test\": pulumi.String(\"true\"),\n\t\t\t},\n\t\t\tContentType: pulumi.String(\"application/json\"),\n\t\t\tVersioningLegacy: \u0026objectstorage.ContainerVersioningLegacyArgs{\n\t\t\t\tType:     pulumi.String(\"versions\"),\n\t\t\t\tLocation: pulumi.String(\"tf-test-container-versions\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.objectstorage.Container;\nimport com.pulumi.openstack.objectstorage.ContainerArgs;\nimport com.pulumi.openstack.objectstorage.inputs.ContainerVersioningLegacyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var container1 = new Container(\"container1\", ContainerArgs.builder()\n            .region(\"RegionOne\")\n            .name(\"tf-test-container-1\")\n            .metadata(Map.of(\"test\", \"true\"))\n            .contentType(\"application/json\")\n            .versioningLegacy(ContainerVersioningLegacyArgs.builder()\n                .type(\"versions\")\n                .location(\"tf-test-container-versions\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  container1:\n    type: openstack:objectstorage:Container\n    name: container_1\n    properties:\n      region: RegionOne\n      name: tf-test-container-1\n      metadata:\n        test: 'true'\n      contentType: application/json\n      versioningLegacy:\n        type: versions\n        location: tf-test-container-versions\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Global Read Access\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\n// Requires that a user know the object name they are attempting to download\nconst container1 = new openstack.objectstorage.Container(\"container_1\", {\n    region: \"RegionOne\",\n    name: \"tf-test-container-1\",\n    containerRead: \".r:*\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\n# Requires that a user know the object name they are attempting to download\ncontainer1 = openstack.objectstorage.Container(\"container_1\",\n    region=\"RegionOne\",\n    name=\"tf-test-container-1\",\n    container_read=\".r:*\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Requires that a user know the object name they are attempting to download\n    var container1 = new OpenStack.ObjectStorage.Container(\"container_1\", new()\n    {\n        Region = \"RegionOne\",\n        Name = \"tf-test-container-1\",\n        ContainerRead = \".r:*\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/objectstorage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Requires that a user know the object name they are attempting to download\n\t\t_, err := objectstorage.NewContainer(ctx, \"container_1\", \u0026objectstorage.ContainerArgs{\n\t\t\tRegion:        pulumi.String(\"RegionOne\"),\n\t\t\tName:          pulumi.String(\"tf-test-container-1\"),\n\t\t\tContainerRead: pulumi.String(\".r:*\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.objectstorage.Container;\nimport com.pulumi.openstack.objectstorage.ContainerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Requires that a user know the object name they are attempting to download\n        var container1 = new Container(\"container1\", ContainerArgs.builder()\n            .region(\"RegionOne\")\n            .name(\"tf-test-container-1\")\n            .containerRead(\".r:*\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Requires that a user know the object name they are attempting to download\n  container1:\n    type: openstack:objectstorage:Container\n    name: container_1\n    properties:\n      region: RegionOne\n      name: tf-test-container-1\n      containerRead: .r:*\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Global Read and List Access\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\n// Any user can read any object, and list all objects in the container\nconst container1 = new openstack.objectstorage.Container(\"container_1\", {\n    region: \"RegionOne\",\n    name: \"tf-test-container-1\",\n    containerRead: \".r:*,.rlistings\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\n# Any user can read any object, and list all objects in the container\ncontainer1 = openstack.objectstorage.Container(\"container_1\",\n    region=\"RegionOne\",\n    name=\"tf-test-container-1\",\n    container_read=\".r:*,.rlistings\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Any user can read any object, and list all objects in the container\n    var container1 = new OpenStack.ObjectStorage.Container(\"container_1\", new()\n    {\n        Region = \"RegionOne\",\n        Name = \"tf-test-container-1\",\n        ContainerRead = \".r:*,.rlistings\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/objectstorage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Any user can read any object, and list all objects in the container\n\t\t_, err := objectstorage.NewContainer(ctx, \"container_1\", \u0026objectstorage.ContainerArgs{\n\t\t\tRegion:        pulumi.String(\"RegionOne\"),\n\t\t\tName:          pulumi.String(\"tf-test-container-1\"),\n\t\t\tContainerRead: pulumi.String(\".r:*,.rlistings\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.objectstorage.Container;\nimport com.pulumi.openstack.objectstorage.ContainerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Any user can read any object, and list all objects in the container\n        var container1 = new Container(\"container1\", ContainerArgs.builder()\n            .region(\"RegionOne\")\n            .name(\"tf-test-container-1\")\n            .containerRead(\".r:*,.rlistings\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Any user can read any object, and list all objects in the container\n  container1:\n    type: openstack:objectstorage:Container\n    name: container_1\n    properties:\n      region: RegionOne\n      name: tf-test-container-1\n      containerRead: .r:*,.rlistings\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Write-Only Access for a User\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst current = openstack.identity.getAuthScope({\n    name: \"current\",\n});\n// The named user can only upload objects, not read objects or list the container\nconst container1 = new openstack.objectstorage.Container(\"container_1\", {\n    region: \"RegionOne\",\n    name: \"tf-test-container-1\",\n    containerRead: `.r:-${username}`,\n    containerWrite: current.then(current =\u003e `${current.projectId}:${username}`),\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ncurrent = openstack.identity.get_auth_scope(name=\"current\")\n# The named user can only upload objects, not read objects or list the container\ncontainer1 = openstack.objectstorage.Container(\"container_1\",\n    region=\"RegionOne\",\n    name=\"tf-test-container-1\",\n    container_read=f\".r:-{username}\",\n    container_write=f\"{current.project_id}:{username}\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var current = OpenStack.Identity.GetAuthScope.Invoke(new()\n    {\n        Name = \"current\",\n    });\n\n    // The named user can only upload objects, not read objects or list the container\n    var container1 = new OpenStack.ObjectStorage.Container(\"container_1\", new()\n    {\n        Region = \"RegionOne\",\n        Name = \"tf-test-container-1\",\n        ContainerRead = $\".r:-{username}\",\n        ContainerWrite = $\"{current.Apply(getAuthScopeResult =\u003e getAuthScopeResult.ProjectId)}:{username}\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/objectstorage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := identity.GetAuthScope(ctx, \u0026identity.GetAuthScopeArgs{\n\t\t\tName: \"current\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// The named user can only upload objects, not read objects or list the container\n\t\t_, err = objectstorage.NewContainer(ctx, \"container_1\", \u0026objectstorage.ContainerArgs{\n\t\t\tRegion:         pulumi.String(\"RegionOne\"),\n\t\t\tName:           pulumi.String(\"tf-test-container-1\"),\n\t\t\tContainerRead:  pulumi.Sprintf(\".r:-%v\", username),\n\t\t\tContainerWrite: pulumi.Sprintf(\"%v:%v\", current.ProjectId, username),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.identity.IdentityFunctions;\nimport com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;\nimport com.pulumi.openstack.objectstorage.Container;\nimport com.pulumi.openstack.objectstorage.ContainerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()\n            .name(\"current\")\n            .build());\n\n        // The named user can only upload objects, not read objects or list the container\n        var container1 = new Container(\"container1\", ContainerArgs.builder()\n            .region(\"RegionOne\")\n            .name(\"tf-test-container-1\")\n            .containerRead(String.format(\".r:-%s\", username))\n            .containerWrite(String.format(\"%s:%s\", current.projectId(),username))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # The named user can only upload objects, not read objects or list the container\n  container1:\n    type: openstack:objectstorage:Container\n    name: container_1\n    properties:\n      region: RegionOne\n      name: tf-test-container-1\n      containerRead: .r:-${username}\n      containerWrite: ${current.projectId}:${username}\nvariables:\n  current:\n    fn::invoke:\n      function: openstack:identity:getAuthScope\n      arguments:\n        name: current\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the name of the container:\n\nSome attributes can't be imported :\n* `force_destroy`\n* `content_type`\n* `metadata`\n* `container_sync_to`\n* `container_sync_key`\n\nSo you'll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.\n\n```sh\n$ pulumi import openstack:objectstorage/container:Container container_1 container_name\n```\n",
+            "description": "Manages a V1 container resource within OpenStack.\n\n## Example Usage\n\n### Basic Container\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst container1 = new openstack.objectstorage.Container(\"container_1\", {\n    region: \"RegionOne\",\n    name: \"tf-test-container-1\",\n    metadata: {\n        test: \"true\",\n    },\n    contentType: \"application/json\",\n    versioning: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ncontainer1 = openstack.objectstorage.Container(\"container_1\",\n    region=\"RegionOne\",\n    name=\"tf-test-container-1\",\n    metadata={\n        \"test\": \"true\",\n    },\n    content_type=\"application/json\",\n    versioning=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var container1 = new OpenStack.ObjectStorage.Container(\"container_1\", new()\n    {\n        Region = \"RegionOne\",\n        Name = \"tf-test-container-1\",\n        Metadata = \n        {\n            { \"test\", \"true\" },\n        },\n        ContentType = \"application/json\",\n        Versioning = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/objectstorage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := objectstorage.NewContainer(ctx, \"container_1\", \u0026objectstorage.ContainerArgs{\n\t\t\tRegion: pulumi.String(\"RegionOne\"),\n\t\t\tName:   pulumi.String(\"tf-test-container-1\"),\n\t\t\tMetadata: pulumi.StringMap{\n\t\t\t\t\"test\": pulumi.String(\"true\"),\n\t\t\t},\n\t\t\tContentType: pulumi.String(\"application/json\"),\n\t\t\tVersioning:  pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.objectstorage.Container;\nimport com.pulumi.openstack.objectstorage.ContainerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var container1 = new Container(\"container1\", ContainerArgs.builder()\n            .region(\"RegionOne\")\n            .name(\"tf-test-container-1\")\n            .metadata(Map.of(\"test\", \"true\"))\n            .contentType(\"application/json\")\n            .versioning(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  container1:\n    type: openstack:objectstorage:Container\n    name: container_1\n    properties:\n      region: RegionOne\n      name: tf-test-container-1\n      metadata:\n        test: 'true'\n      contentType: application/json\n      versioning: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Basic Container with legacy versioning\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst container1 = new openstack.objectstorage.Container(\"container_1\", {\n    region: \"RegionOne\",\n    name: \"tf-test-container-1\",\n    metadata: {\n        test: \"true\",\n    },\n    contentType: \"application/json\",\n    versioningLegacy: {\n        type: \"versions\",\n        location: \"tf-test-container-versions\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ncontainer1 = openstack.objectstorage.Container(\"container_1\",\n    region=\"RegionOne\",\n    name=\"tf-test-container-1\",\n    metadata={\n        \"test\": \"true\",\n    },\n    content_type=\"application/json\",\n    versioning_legacy={\n        \"type\": \"versions\",\n        \"location\": \"tf-test-container-versions\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var container1 = new OpenStack.ObjectStorage.Container(\"container_1\", new()\n    {\n        Region = \"RegionOne\",\n        Name = \"tf-test-container-1\",\n        Metadata = \n        {\n            { \"test\", \"true\" },\n        },\n        ContentType = \"application/json\",\n        VersioningLegacy = new OpenStack.ObjectStorage.Inputs.ContainerVersioningLegacyArgs\n        {\n            Type = \"versions\",\n            Location = \"tf-test-container-versions\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/objectstorage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := objectstorage.NewContainer(ctx, \"container_1\", \u0026objectstorage.ContainerArgs{\n\t\t\tRegion: pulumi.String(\"RegionOne\"),\n\t\t\tName:   pulumi.String(\"tf-test-container-1\"),\n\t\t\tMetadata: pulumi.StringMap{\n\t\t\t\t\"test\": pulumi.String(\"true\"),\n\t\t\t},\n\t\t\tContentType: pulumi.String(\"application/json\"),\n\t\t\tVersioningLegacy: \u0026objectstorage.ContainerVersioningLegacyArgs{\n\t\t\t\tType:     pulumi.String(\"versions\"),\n\t\t\t\tLocation: pulumi.String(\"tf-test-container-versions\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.objectstorage.Container;\nimport com.pulumi.openstack.objectstorage.ContainerArgs;\nimport com.pulumi.openstack.objectstorage.inputs.ContainerVersioningLegacyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var container1 = new Container(\"container1\", ContainerArgs.builder()\n            .region(\"RegionOne\")\n            .name(\"tf-test-container-1\")\n            .metadata(Map.of(\"test\", \"true\"))\n            .contentType(\"application/json\")\n            .versioningLegacy(ContainerVersioningLegacyArgs.builder()\n                .type(\"versions\")\n                .location(\"tf-test-container-versions\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  container1:\n    type: openstack:objectstorage:Container\n    name: container_1\n    properties:\n      region: RegionOne\n      name: tf-test-container-1\n      metadata:\n        test: 'true'\n      contentType: application/json\n      versioningLegacy:\n        type: versions\n        location: tf-test-container-versions\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Global Read Access\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\n// Requires that a user know the object name they are attempting to download\nconst container1 = new openstack.objectstorage.Container(\"container_1\", {\n    region: \"RegionOne\",\n    name: \"tf-test-container-1\",\n    containerRead: \".r:*\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\n# Requires that a user know the object name they are attempting to download\ncontainer1 = openstack.objectstorage.Container(\"container_1\",\n    region=\"RegionOne\",\n    name=\"tf-test-container-1\",\n    container_read=\".r:*\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Requires that a user know the object name they are attempting to download\n    var container1 = new OpenStack.ObjectStorage.Container(\"container_1\", new()\n    {\n        Region = \"RegionOne\",\n        Name = \"tf-test-container-1\",\n        ContainerRead = \".r:*\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/objectstorage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Requires that a user know the object name they are attempting to download\n\t\t_, err := objectstorage.NewContainer(ctx, \"container_1\", \u0026objectstorage.ContainerArgs{\n\t\t\tRegion:        pulumi.String(\"RegionOne\"),\n\t\t\tName:          pulumi.String(\"tf-test-container-1\"),\n\t\t\tContainerRead: pulumi.String(\".r:*\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.objectstorage.Container;\nimport com.pulumi.openstack.objectstorage.ContainerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Requires that a user know the object name they are attempting to download\n        var container1 = new Container(\"container1\", ContainerArgs.builder()\n            .region(\"RegionOne\")\n            .name(\"tf-test-container-1\")\n            .containerRead(\".r:*\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Requires that a user know the object name they are attempting to download\n  container1:\n    type: openstack:objectstorage:Container\n    name: container_1\n    properties:\n      region: RegionOne\n      name: tf-test-container-1\n      containerRead: .r:*\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Global Read and List Access\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\n// Any user can read any object, and list all objects in the container\nconst container1 = new openstack.objectstorage.Container(\"container_1\", {\n    region: \"RegionOne\",\n    name: \"tf-test-container-1\",\n    containerRead: \".r:*,.rlistings\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\n# Any user can read any object, and list all objects in the container\ncontainer1 = openstack.objectstorage.Container(\"container_1\",\n    region=\"RegionOne\",\n    name=\"tf-test-container-1\",\n    container_read=\".r:*,.rlistings\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Any user can read any object, and list all objects in the container\n    var container1 = new OpenStack.ObjectStorage.Container(\"container_1\", new()\n    {\n        Region = \"RegionOne\",\n        Name = \"tf-test-container-1\",\n        ContainerRead = \".r:*,.rlistings\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/objectstorage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Any user can read any object, and list all objects in the container\n\t\t_, err := objectstorage.NewContainer(ctx, \"container_1\", \u0026objectstorage.ContainerArgs{\n\t\t\tRegion:        pulumi.String(\"RegionOne\"),\n\t\t\tName:          pulumi.String(\"tf-test-container-1\"),\n\t\t\tContainerRead: pulumi.String(\".r:*,.rlistings\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.objectstorage.Container;\nimport com.pulumi.openstack.objectstorage.ContainerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Any user can read any object, and list all objects in the container\n        var container1 = new Container(\"container1\", ContainerArgs.builder()\n            .region(\"RegionOne\")\n            .name(\"tf-test-container-1\")\n            .containerRead(\".r:*,.rlistings\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Any user can read any object, and list all objects in the container\n  container1:\n    type: openstack:objectstorage:Container\n    name: container_1\n    properties:\n      region: RegionOne\n      name: tf-test-container-1\n      containerRead: .r:*,.rlistings\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Write-Only Access for a User\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst current = openstack.identity.getAuthScope({\n    name: \"current\",\n});\n// The named user can only upload objects, not read objects or list the container\nconst container1 = new openstack.objectstorage.Container(\"container_1\", {\n    region: \"RegionOne\",\n    name: \"tf-test-container-1\",\n    containerRead: `.r:-${username}`,\n    containerWrite: current.then(current =\u003e `${current.projectId}:${username}`),\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ncurrent = openstack.identity.get_auth_scope(name=\"current\")\n# The named user can only upload objects, not read objects or list the container\ncontainer1 = openstack.objectstorage.Container(\"container_1\",\n    region=\"RegionOne\",\n    name=\"tf-test-container-1\",\n    container_read=f\".r:-{username}\",\n    container_write=f\"{current.project_id}:{username}\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var current = OpenStack.Identity.GetAuthScope.Invoke(new()\n    {\n        Name = \"current\",\n    });\n\n    // The named user can only upload objects, not read objects or list the container\n    var container1 = new OpenStack.ObjectStorage.Container(\"container_1\", new()\n    {\n        Region = \"RegionOne\",\n        Name = \"tf-test-container-1\",\n        ContainerRead = $\".r:-{username}\",\n        ContainerWrite = $\"{current.Apply(getAuthScopeResult =\u003e getAuthScopeResult.ProjectId)}:{username}\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/objectstorage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := identity.GetAuthScope(ctx, \u0026identity.GetAuthScopeArgs{\n\t\t\tName: \"current\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// The named user can only upload objects, not read objects or list the container\n\t\t_, err = objectstorage.NewContainer(ctx, \"container_1\", \u0026objectstorage.ContainerArgs{\n\t\t\tRegion:         pulumi.String(\"RegionOne\"),\n\t\t\tName:           pulumi.String(\"tf-test-container-1\"),\n\t\t\tContainerRead:  pulumi.Sprintf(\".r:-%v\", username),\n\t\t\tContainerWrite: pulumi.Sprintf(\"%v:%v\", current.ProjectId, username),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.identity.IdentityFunctions;\nimport com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;\nimport com.pulumi.openstack.objectstorage.Container;\nimport com.pulumi.openstack.objectstorage.ContainerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()\n            .name(\"current\")\n            .build());\n\n        // The named user can only upload objects, not read objects or list the container\n        var container1 = new Container(\"container1\", ContainerArgs.builder()\n            .region(\"RegionOne\")\n            .name(\"tf-test-container-1\")\n            .containerRead(String.format(\".r:-%s\", username))\n            .containerWrite(String.format(\"%s:%s\", current.projectId(),username))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # The named user can only upload objects, not read objects or list the container\n  container1:\n    type: openstack:objectstorage:Container\n    name: container_1\n    properties:\n      region: RegionOne\n      name: tf-test-container-1\n      containerRead: .r:-${username}\n      containerWrite: ${current.projectId}:${username}\nvariables:\n  current:\n    fn::invoke:\n      function: openstack:identity:getAuthScope\n      arguments:\n        name: current\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Set a custom storage class in the Ceph RGW Swift API\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst container1 = new openstack.objectstorage.Container(\"container_1\", {\n    name: \"tf-test-container-1\",\n    storagePolicy: \"az1\",\n    storageClass: \"SSD\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ncontainer1 = openstack.objectstorage.Container(\"container_1\",\n    name=\"tf-test-container-1\",\n    storage_policy=\"az1\",\n    storage_class=\"SSD\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var container1 = new OpenStack.ObjectStorage.Container(\"container_1\", new()\n    {\n        Name = \"tf-test-container-1\",\n        StoragePolicy = \"az1\",\n        StorageClass = \"SSD\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/objectstorage\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := objectstorage.NewContainer(ctx, \"container_1\", \u0026objectstorage.ContainerArgs{\n\t\t\tName:          pulumi.String(\"tf-test-container-1\"),\n\t\t\tStoragePolicy: pulumi.String(\"az1\"),\n\t\t\tStorageClass:  pulumi.String(\"SSD\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.objectstorage.Container;\nimport com.pulumi.openstack.objectstorage.ContainerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var container1 = new Container(\"container1\", ContainerArgs.builder()\n            .name(\"tf-test-container-1\")\n            .storagePolicy(\"az1\")\n            .storageClass(\"SSD\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  container1:\n    type: openstack:objectstorage:Container\n    name: container_1\n    properties:\n      name: tf-test-container-1\n      storagePolicy: az1\n      storageClass: SSD\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the name of the container:\n\nSome attributes can't be imported :\n* `force_destroy`\n* `content_type`\n* `metadata`\n* `container_sync_to`\n* `container_sync_key`\n\nSo you'll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.\n\n```sh\n$ pulumi import openstack:objectstorage/container:Container container_1 container_name\n```\n",
             "properties": {
                 "containerRead": {
                     "type": "string",
-                    "description": "Sets an access control list (ACL) that grants\nread access. This header can contain a comma-delimited list of users that\ncan read the container (allows the GET method for all objects in the\ncontainer). Changing this updates the access control list read access.\n"
+                    "description": "Sets an access control list (ACL) that grants\nread access. This header can contain a comma-delimited list of users that can\nread the container (allows the GET method for all objects in the container).\nChanging this updates the access control list read access.\n"
                 },
                 "containerSyncKey": {
                     "type": "string",
-                    "description": "The secret key for container synchronization.\nChanging this updates container synchronization.\n"
+                    "description": "The secret key for container\nsynchronization. Changing this updates container synchronization.\n"
                 },
                 "containerSyncTo": {
                     "type": "string",
-                    "description": "The destination for container synchronization.\nChanging this updates container synchronization.\n"
+                    "description": "The destination for container\nsynchronization. Changing this updates container synchronization.\n"
                 },
                 "containerWrite": {
                     "type": "string",
-                    "description": "Sets an ACL that grants write access.\nChanging this updates the access control list write access.\n"
+                    "description": "Sets an ACL that grants write access. Changing\nthis updates the access control list write access.\n"
                 },
                 "contentType": {
                     "type": "string",
@@ -16597,14 +16623,14 @@
                 },
                 "forceDestroy": {
                     "type": "boolean",
-                    "description": "A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.\n"
+                    "description": "A boolean that indicates all\nobjects should be deleted from the container so that the container can be\ndestroyed without error. These objects are not recoverable.\n"
                 },
                 "metadata": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Custom key/value pairs to associate with the container.\nChanging this updates the existing container metadata.\n"
+                    "description": "Custom key/value pairs to associate with the\ncontainer. Changing this updates the existing container metadata.\n"
                 },
                 "name": {
                     "type": "string",
@@ -16612,43 +16638,48 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region in which to create the container. If\nomitted, the `region` argument of the provider is used. Changing this\ncreates a new container.\n"
+                    "description": "The region in which to create the container. If\nomitted, the `region` argument of the provider is used. Changing this creates\na new container.\n"
+                },
+                "storageClass": {
+                    "type": "string",
+                    "description": "The storage class to be used for the container.\nChanging this creates a new container. This option is only available in Ceph\nRGW Swift API implementation.\n"
                 },
                 "storagePolicy": {
                     "type": "string",
-                    "description": "The storage policy to be used for the container. \nChanging this creates a new container.\n"
+                    "description": "The storage policy to be used for the\ncontainer. Changing this creates a new container.\n"
                 },
                 "versioning": {
                     "type": "boolean",
-                    "description": "A boolean that can enable or disable object\nversioning. The default value is `false`. To use this feature, your Swift\nversion must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),\nand a cloud administrator must have set the `allow_object_versioning = true`\nconfiguration option in Swift. If you cannot set this versioning type, you may\nwant to consider using `versioning_legacy` instead.\n"
+                    "description": "A boolean that can enable or disable object\nversioning. The default value is `false`. To use this feature, your Swift\nversion must be 2.24 or higher (as described in the [OpenStack Swift Ussuri\nrelease\nnotes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),\nand a cloud administrator must have set the `allow_object_versioning = true`\nconfiguration option in Swift. If you cannot set this versioning type, you\nmay want to consider using `versioning_legacy` instead.\n"
                 },
                 "versioningLegacy": {
                     "$ref": "#/types/openstack:objectstorage/ContainerVersioningLegacy:ContainerVersioningLegacy",
-                    "description": "Enable legacy object versioning. The structure is described below.\n",
+                    "description": "Enable legacy object versioning. The\nstructure is described below.\n",
                     "deprecationMessage": "Use newer \"versioning\" implementation"
                 }
             },
             "required": [
                 "name",
                 "region",
+                "storageClass",
                 "storagePolicy"
             ],
             "inputProperties": {
                 "containerRead": {
                     "type": "string",
-                    "description": "Sets an access control list (ACL) that grants\nread access. This header can contain a comma-delimited list of users that\ncan read the container (allows the GET method for all objects in the\ncontainer). Changing this updates the access control list read access.\n"
+                    "description": "Sets an access control list (ACL) that grants\nread access. This header can contain a comma-delimited list of users that can\nread the container (allows the GET method for all objects in the container).\nChanging this updates the access control list read access.\n"
                 },
                 "containerSyncKey": {
                     "type": "string",
-                    "description": "The secret key for container synchronization.\nChanging this updates container synchronization.\n"
+                    "description": "The secret key for container\nsynchronization. Changing this updates container synchronization.\n"
                 },
                 "containerSyncTo": {
                     "type": "string",
-                    "description": "The destination for container synchronization.\nChanging this updates container synchronization.\n"
+                    "description": "The destination for container\nsynchronization. Changing this updates container synchronization.\n"
                 },
                 "containerWrite": {
                     "type": "string",
-                    "description": "Sets an ACL that grants write access.\nChanging this updates the access control list write access.\n"
+                    "description": "Sets an ACL that grants write access. Changing\nthis updates the access control list write access.\n"
                 },
                 "contentType": {
                     "type": "string",
@@ -16656,14 +16687,14 @@
                 },
                 "forceDestroy": {
                     "type": "boolean",
-                    "description": "A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.\n"
+                    "description": "A boolean that indicates all\nobjects should be deleted from the container so that the container can be\ndestroyed without error. These objects are not recoverable.\n"
                 },
                 "metadata": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Custom key/value pairs to associate with the container.\nChanging this updates the existing container metadata.\n"
+                    "description": "Custom key/value pairs to associate with the\ncontainer. Changing this updates the existing container metadata.\n"
                 },
                 "name": {
                     "type": "string",
@@ -16671,21 +16702,26 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region in which to create the container. If\nomitted, the `region` argument of the provider is used. Changing this\ncreates a new container.\n",
+                    "description": "The region in which to create the container. If\nomitted, the `region` argument of the provider is used. Changing this creates\na new container.\n",
+                    "willReplaceOnChanges": true
+                },
+                "storageClass": {
+                    "type": "string",
+                    "description": "The storage class to be used for the container.\nChanging this creates a new container. This option is only available in Ceph\nRGW Swift API implementation.\n",
                     "willReplaceOnChanges": true
                 },
                 "storagePolicy": {
                     "type": "string",
-                    "description": "The storage policy to be used for the container. \nChanging this creates a new container.\n",
+                    "description": "The storage policy to be used for the\ncontainer. Changing this creates a new container.\n",
                     "willReplaceOnChanges": true
                 },
                 "versioning": {
                     "type": "boolean",
-                    "description": "A boolean that can enable or disable object\nversioning. The default value is `false`. To use this feature, your Swift\nversion must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),\nand a cloud administrator must have set the `allow_object_versioning = true`\nconfiguration option in Swift. If you cannot set this versioning type, you may\nwant to consider using `versioning_legacy` instead.\n"
+                    "description": "A boolean that can enable or disable object\nversioning. The default value is `false`. To use this feature, your Swift\nversion must be 2.24 or higher (as described in the [OpenStack Swift Ussuri\nrelease\nnotes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),\nand a cloud administrator must have set the `allow_object_versioning = true`\nconfiguration option in Swift. If you cannot set this versioning type, you\nmay want to consider using `versioning_legacy` instead.\n"
                 },
                 "versioningLegacy": {
                     "$ref": "#/types/openstack:objectstorage/ContainerVersioningLegacy:ContainerVersioningLegacy",
-                    "description": "Enable legacy object versioning. The structure is described below.\n",
+                    "description": "Enable legacy object versioning. The\nstructure is described below.\n",
                     "deprecationMessage": "Use newer \"versioning\" implementation"
                 }
             },
@@ -16694,19 +16730,19 @@
                 "properties": {
                     "containerRead": {
                         "type": "string",
-                        "description": "Sets an access control list (ACL) that grants\nread access. This header can contain a comma-delimited list of users that\ncan read the container (allows the GET method for all objects in the\ncontainer). Changing this updates the access control list read access.\n"
+                        "description": "Sets an access control list (ACL) that grants\nread access. This header can contain a comma-delimited list of users that can\nread the container (allows the GET method for all objects in the container).\nChanging this updates the access control list read access.\n"
                     },
                     "containerSyncKey": {
                         "type": "string",
-                        "description": "The secret key for container synchronization.\nChanging this updates container synchronization.\n"
+                        "description": "The secret key for container\nsynchronization. Changing this updates container synchronization.\n"
                     },
                     "containerSyncTo": {
                         "type": "string",
-                        "description": "The destination for container synchronization.\nChanging this updates container synchronization.\n"
+                        "description": "The destination for container\nsynchronization. Changing this updates container synchronization.\n"
                     },
                     "containerWrite": {
                         "type": "string",
-                        "description": "Sets an ACL that grants write access.\nChanging this updates the access control list write access.\n"
+                        "description": "Sets an ACL that grants write access. Changing\nthis updates the access control list write access.\n"
                     },
                     "contentType": {
                         "type": "string",
@@ -16714,14 +16750,14 @@
                     },
                     "forceDestroy": {
                         "type": "boolean",
-                        "description": "A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.\n"
+                        "description": "A boolean that indicates all\nobjects should be deleted from the container so that the container can be\ndestroyed without error. These objects are not recoverable.\n"
                     },
                     "metadata": {
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "Custom key/value pairs to associate with the container.\nChanging this updates the existing container metadata.\n"
+                        "description": "Custom key/value pairs to associate with the\ncontainer. Changing this updates the existing container metadata.\n"
                     },
                     "name": {
                         "type": "string",
@@ -16729,21 +16765,26 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region in which to create the container. If\nomitted, the `region` argument of the provider is used. Changing this\ncreates a new container.\n",
+                        "description": "The region in which to create the container. If\nomitted, the `region` argument of the provider is used. Changing this creates\na new container.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "storageClass": {
+                        "type": "string",
+                        "description": "The storage class to be used for the container.\nChanging this creates a new container. This option is only available in Ceph\nRGW Swift API implementation.\n",
                         "willReplaceOnChanges": true
                     },
                     "storagePolicy": {
                         "type": "string",
-                        "description": "The storage policy to be used for the container. \nChanging this creates a new container.\n",
+                        "description": "The storage policy to be used for the\ncontainer. Changing this creates a new container.\n",
                         "willReplaceOnChanges": true
                     },
                     "versioning": {
                         "type": "boolean",
-                        "description": "A boolean that can enable or disable object\nversioning. The default value is `false`. To use this feature, your Swift\nversion must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),\nand a cloud administrator must have set the `allow_object_versioning = true`\nconfiguration option in Swift. If you cannot set this versioning type, you may\nwant to consider using `versioning_legacy` instead.\n"
+                        "description": "A boolean that can enable or disable object\nversioning. The default value is `false`. To use this feature, your Swift\nversion must be 2.24 or higher (as described in the [OpenStack Swift Ussuri\nrelease\nnotes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),\nand a cloud administrator must have set the `allow_object_versioning = true`\nconfiguration option in Swift. If you cannot set this versioning type, you\nmay want to consider using `versioning_legacy` instead.\n"
                     },
                     "versioningLegacy": {
                         "$ref": "#/types/openstack:objectstorage/ContainerVersioningLegacy:ContainerVersioningLegacy",
-                        "description": "Enable legacy object versioning. The structure is described below.\n",
+                        "description": "Enable legacy object versioning. The\nstructure is described below.\n",
                         "deprecationMessage": "Use newer \"versioning\" implementation"
                     }
                 },
@@ -18285,7 +18326,7 @@
             "properties": {
                 "authAlgorithm": {
                     "type": "string",
-                    "description": "The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.\nDefault is sha1. Changing this updates the algorithm of the existing policy.\n"
+                    "description": "The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,\naes-xcbc, aes-cmac. Default is sha1.\nChanging this updates the algorithm of the existing policy.\n"
                 },
                 "description": {
                     "type": "string",
@@ -18293,7 +18334,7 @@
                 },
                 "encryptionAlgorithm": {
                     "type": "string",
-                    "description": "The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.\nThe default value is aes-128. Changing this updates the existing policy.\n"
+                    "description": "The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,\naes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).\nThe default value is aes-128. Changing this updates the existing policy.\n"
                 },
                 "ikeVersion": {
                     "type": "string",
@@ -18312,7 +18353,7 @@
                 },
                 "pfs": {
                     "type": "string",
-                    "description": "The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.\nChanging this updates the existing policy.\n"
+                    "description": "The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.\nDefault is group5. Changing this updates the existing policy.\n"
                 },
                 "phase1NegotiationMode": {
                     "type": "string",
@@ -18343,7 +18384,7 @@
             "inputProperties": {
                 "authAlgorithm": {
                     "type": "string",
-                    "description": "The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.\nDefault is sha1. Changing this updates the algorithm of the existing policy.\n"
+                    "description": "The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,\naes-xcbc, aes-cmac. Default is sha1.\nChanging this updates the algorithm of the existing policy.\n"
                 },
                 "description": {
                     "type": "string",
@@ -18351,7 +18392,7 @@
                 },
                 "encryptionAlgorithm": {
                     "type": "string",
-                    "description": "The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.\nThe default value is aes-128. Changing this updates the existing policy.\n"
+                    "description": "The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,\naes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).\nThe default value is aes-128. Changing this updates the existing policy.\n"
                 },
                 "ikeVersion": {
                     "type": "string",
@@ -18370,7 +18411,7 @@
                 },
                 "pfs": {
                     "type": "string",
-                    "description": "The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.\nChanging this updates the existing policy.\n"
+                    "description": "The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.\nDefault is group5. Changing this updates the existing policy.\n"
                 },
                 "phase1NegotiationMode": {
                     "type": "string",
@@ -18400,7 +18441,7 @@
                 "properties": {
                     "authAlgorithm": {
                         "type": "string",
-                        "description": "The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.\nDefault is sha1. Changing this updates the algorithm of the existing policy.\n"
+                        "description": "The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,\naes-xcbc, aes-cmac. Default is sha1.\nChanging this updates the algorithm of the existing policy.\n"
                     },
                     "description": {
                         "type": "string",
@@ -18408,7 +18449,7 @@
                     },
                     "encryptionAlgorithm": {
                         "type": "string",
-                        "description": "The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.\nThe default value is aes-128. Changing this updates the existing policy.\n"
+                        "description": "The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,\naes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).\nThe default value is aes-128. Changing this updates the existing policy.\n"
                     },
                     "ikeVersion": {
                         "type": "string",
@@ -18427,7 +18468,7 @@
                     },
                     "pfs": {
                         "type": "string",
-                        "description": "The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.\nChanging this updates the existing policy.\n"
+                        "description": "The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.\nDefault is group5. Changing this updates the existing policy.\n"
                     },
                     "phase1NegotiationMode": {
                         "type": "string",
@@ -18460,7 +18501,7 @@
             "properties": {
                 "authAlgorithm": {
                     "type": "string",
-                    "description": "The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.\nDefault is sha1. Changing this updates the algorithm of the existing policy.\n"
+                    "description": "The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,\naes-xcbc, aes-cmac. Default is sha1.\nChanging this updates the algorithm of the existing policy.\n"
                 },
                 "description": {
                     "type": "string",
@@ -18472,7 +18513,7 @@
                 },
                 "encryptionAlgorithm": {
                     "type": "string",
-                    "description": "The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.\nThe default value is aes-128. Changing this updates the existing policy.\n"
+                    "description": "The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,\naes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).\nThe default value is aes-128. Changing this updates the existing policy.\n"
                 },
                 "lifetimes": {
                     "type": "array",
@@ -18487,7 +18528,7 @@
                 },
                 "pfs": {
                     "type": "string",
-                    "description": "The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default \nis group5. Changing this updates the existing policy.\n"
+                    "description": "The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.\nDefault is group5. Changing this updates the existing policy.\n"
                 },
                 "region": {
                     "type": "string",
@@ -18523,7 +18564,7 @@
             "inputProperties": {
                 "authAlgorithm": {
                     "type": "string",
-                    "description": "The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.\nDefault is sha1. Changing this updates the algorithm of the existing policy.\n"
+                    "description": "The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,\naes-xcbc, aes-cmac. Default is sha1.\nChanging this updates the algorithm of the existing policy.\n"
                 },
                 "description": {
                     "type": "string",
@@ -18535,7 +18576,7 @@
                 },
                 "encryptionAlgorithm": {
                     "type": "string",
-                    "description": "The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.\nThe default value is aes-128. Changing this updates the existing policy.\n"
+                    "description": "The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,\naes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).\nThe default value is aes-128. Changing this updates the existing policy.\n"
                 },
                 "lifetimes": {
                     "type": "array",
@@ -18550,7 +18591,7 @@
                 },
                 "pfs": {
                     "type": "string",
-                    "description": "The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default \nis group5. Changing this updates the existing policy.\n"
+                    "description": "The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.\nDefault is group5. Changing this updates the existing policy.\n"
                 },
                 "region": {
                     "type": "string",
@@ -18580,7 +18621,7 @@
                 "properties": {
                     "authAlgorithm": {
                         "type": "string",
-                        "description": "The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.\nDefault is sha1. Changing this updates the algorithm of the existing policy.\n"
+                        "description": "The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,\naes-xcbc, aes-cmac. Default is sha1.\nChanging this updates the algorithm of the existing policy.\n"
                     },
                     "description": {
                         "type": "string",
@@ -18592,7 +18633,7 @@
                     },
                     "encryptionAlgorithm": {
                         "type": "string",
-                        "description": "The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.\nThe default value is aes-128. Changing this updates the existing policy.\n"
+                        "description": "The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,\naes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).\nThe default value is aes-128. Changing this updates the existing policy.\n"
                     },
                     "lifetimes": {
                         "type": "array",
@@ -18607,7 +18648,7 @@
                     },
                     "pfs": {
                         "type": "string",
-                        "description": "The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default \nis group5. Changing this updates the existing policy.\n"
+                        "description": "The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.\nDefault is group5. Changing this updates the existing policy.\n"
                     },
                     "region": {
                         "type": "string",
@@ -19672,7 +19713,7 @@
             }
         },
         "openstack:compute/getHypervisorV2:getHypervisorV2": {
-            "description": "Use this data source to get information about hypervisors\nby hostname.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst host01 = openstack.compute.getHypervisorV2({\n    hostname: \"host01\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nhost01 = openstack.compute.get_hypervisor_v2(hostname=\"host01\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var host01 = OpenStack.Compute.GetHypervisorV2.Invoke(new()\n    {\n        Hostname = \"host01\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.GetHypervisorV2(ctx, \u0026compute.GetHypervisorV2Args{\n\t\t\tHostname: \"host01\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.compute.ComputeFunctions;\nimport com.pulumi.openstack.compute.inputs.GetHypervisorV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var host01 = ComputeFunctions.getHypervisorV2(GetHypervisorV2Args.builder()\n            .hostname(\"host01\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  host01:\n    fn::invoke:\n      function: openstack:compute:getHypervisorV2\n      arguments:\n        hostname: host01\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Use this data source to get information about hypervisors\nby hostname.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst host01 = openstack.compute.getHypervisorV2({\n    hostname: \"host01\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nhost01 = openstack.compute.get_hypervisor_v2(hostname=\"host01\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var host01 = OpenStack.Compute.GetHypervisorV2.Invoke(new()\n    {\n        Hostname = \"host01\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.GetHypervisorV2(ctx, \u0026compute.GetHypervisorV2Args{\n\t\t\tHostname: pulumi.StringRef(\"host01\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.compute.ComputeFunctions;\nimport com.pulumi.openstack.compute.inputs.GetHypervisorV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var host01 = ComputeFunctions.getHypervisorV2(GetHypervisorV2Args.builder()\n            .hostname(\"host01\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  host01:\n    fn::invoke:\n      function: openstack:compute:getHypervisorV2\n      arguments:\n        hostname: host01\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getHypervisorV2.\n",
                 "properties": {
@@ -19681,10 +19722,7 @@
                         "description": "The hostname of the hypervisor\n"
                     }
                 },
-                "type": "object",
-                "required": [
-                    "hostname"
-                ]
+                "type": "object"
             },
             "outputs": {
                 "description": "A collection of values returned by getHypervisorV2.\n",
@@ -21918,6 +21956,7 @@
                     "defaultProjectId",
                     "description",
                     "domainId",
+                    "enabled",
                     "region",
                     "id"
                 ],
@@ -22683,6 +22722,92 @@
                     "region",
                     "shared",
                     "tenantId",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "openstack:index/workflowWorkflowV2:WorkflowWorkflowV2": {
+            "description": "Use this data source to get the ID of an available workflow.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst workflow1 = openstack.WorkflowWorkflowV2({\n    name: \"workflow_1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nworkflow1 = openstack.workflow_workflow_v2(name=\"workflow_1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var workflow1 = OpenStack.WorkflowWorkflowV2.Invoke(new()\n    {\n        Name = \"workflow_1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := openstack.WorkflowWorkflowV2(ctx, \u0026openstack.WorkflowWorkflowV2Args{\n\t\t\tName: pulumi.StringRef(\"workflow_1\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.OpenstackFunctions;\nimport com.pulumi.openstack.inputs.WorkflowWorkflowV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var workflow1 = OpenstackFunctions.WorkflowWorkflowV2(WorkflowWorkflowV2Args.builder()\n            .name(\"workflow_1\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  workflow1:\n    fn::invoke:\n      function: openstack:WorkflowWorkflowV2\n      arguments:\n        name: workflow_1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking WorkflowWorkflowV2.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the workflow.\n"
+                    },
+                    "namespace": {
+                        "type": "string",
+                        "description": "The namespace of the workflow.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The id of the project to retrieve the workflow.\nRequires admin privileges.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 Workflow client.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by WorkflowWorkflowV2.\n",
+                "properties": {
+                    "createdAt": {
+                        "description": "The date the workflow was created.\n",
+                        "type": "string"
+                    },
+                    "definition": {
+                        "description": "The workflow definition in Mistral v2 DSL.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "input": {
+                        "description": "A set of input parameters required for workflow execution.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "string"
+                    },
+                    "namespace": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "string"
+                    },
+                    "region": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "string"
+                    },
+                    "scope": {
+                        "description": "Scope (private or public).\n",
+                        "type": "string"
+                    },
+                    "tags": {
+                        "description": "A set of string tags for the workflow.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "createdAt",
+                    "definition",
+                    "input",
+                    "name",
+                    "namespace",
+                    "projectId",
+                    "region",
+                    "scope",
+                    "tags",
                     "id"
                 ],
                 "type": "object"
