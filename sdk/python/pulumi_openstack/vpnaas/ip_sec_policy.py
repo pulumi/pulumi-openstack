@@ -35,19 +35,21 @@ class IpSecPolicyArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
         """
         The set of arguments for constructing a IpSecPolicy resource.
-        :param pulumi.Input[builtins.str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-               Default is sha1. Changing this updates the algorithm of the existing policy.
+        :param pulumi.Input[builtins.str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+               aes-xcbc, aes-cmac. Default is sha1.
+               Changing this updates the algorithm of the existing policy.
         :param pulumi.Input[builtins.str] description: The human-readable description for the policy.
                Changing this updates the description of the existing policy.
         :param pulumi.Input[builtins.str] encapsulation_mode: The encapsulation mode. Valid values are tunnel and transport. Default is tunnel.
                Changing this updates the existing policy.
-        :param pulumi.Input[builtins.str] encryption_algorithm: The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+        :param pulumi.Input[builtins.str] encryption_algorithm: The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+               aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
                The default value is aes-128. Changing this updates the existing policy.
         :param pulumi.Input[Sequence[pulumi.Input['IpSecPolicyLifetimeArgs']]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[builtins.str] name: The name of the policy. Changing this updates the name of
                the existing policy.
-        :param pulumi.Input[builtins.str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
-               is group5. Changing this updates the existing policy.
+        :param pulumi.Input[builtins.str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+               Default is group5. Changing this updates the existing policy.
         :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an IPSec policy. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -85,8 +87,9 @@ class IpSecPolicyArgs:
     @pulumi.getter(name="authAlgorithm")
     def auth_algorithm(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-        Default is sha1. Changing this updates the algorithm of the existing policy.
+        The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+        aes-xcbc, aes-cmac. Default is sha1.
+        Changing this updates the algorithm of the existing policy.
         """
         return pulumi.get(self, "auth_algorithm")
 
@@ -124,7 +127,8 @@ class IpSecPolicyArgs:
     @pulumi.getter(name="encryptionAlgorithm")
     def encryption_algorithm(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+        The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+        aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
         The default value is aes-128. Changing this updates the existing policy.
         """
         return pulumi.get(self, "encryption_algorithm")
@@ -162,8 +166,8 @@ class IpSecPolicyArgs:
     @pulumi.getter
     def pfs(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
-        is group5. Changing this updates the existing policy.
+        The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+        Default is group5. Changing this updates the existing policy.
         """
         return pulumi.get(self, "pfs")
 
@@ -241,19 +245,21 @@ class _IpSecPolicyState:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering IpSecPolicy resources.
-        :param pulumi.Input[builtins.str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-               Default is sha1. Changing this updates the algorithm of the existing policy.
+        :param pulumi.Input[builtins.str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+               aes-xcbc, aes-cmac. Default is sha1.
+               Changing this updates the algorithm of the existing policy.
         :param pulumi.Input[builtins.str] description: The human-readable description for the policy.
                Changing this updates the description of the existing policy.
         :param pulumi.Input[builtins.str] encapsulation_mode: The encapsulation mode. Valid values are tunnel and transport. Default is tunnel.
                Changing this updates the existing policy.
-        :param pulumi.Input[builtins.str] encryption_algorithm: The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+        :param pulumi.Input[builtins.str] encryption_algorithm: The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+               aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
                The default value is aes-128. Changing this updates the existing policy.
         :param pulumi.Input[Sequence[pulumi.Input['IpSecPolicyLifetimeArgs']]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[builtins.str] name: The name of the policy. Changing this updates the name of
                the existing policy.
-        :param pulumi.Input[builtins.str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
-               is group5. Changing this updates the existing policy.
+        :param pulumi.Input[builtins.str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+               Default is group5. Changing this updates the existing policy.
         :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an IPSec policy. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -291,8 +297,9 @@ class _IpSecPolicyState:
     @pulumi.getter(name="authAlgorithm")
     def auth_algorithm(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-        Default is sha1. Changing this updates the algorithm of the existing policy.
+        The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+        aes-xcbc, aes-cmac. Default is sha1.
+        Changing this updates the algorithm of the existing policy.
         """
         return pulumi.get(self, "auth_algorithm")
 
@@ -330,7 +337,8 @@ class _IpSecPolicyState:
     @pulumi.getter(name="encryptionAlgorithm")
     def encryption_algorithm(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+        The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+        aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
         The default value is aes-128. Changing this updates the existing policy.
         """
         return pulumi.get(self, "encryption_algorithm")
@@ -368,8 +376,8 @@ class _IpSecPolicyState:
     @pulumi.getter
     def pfs(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
-        is group5. Changing this updates the existing policy.
+        The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+        Default is group5. Changing this updates the existing policy.
         """
         return pulumi.get(self, "pfs")
 
@@ -471,19 +479,21 @@ class IpSecPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-               Default is sha1. Changing this updates the algorithm of the existing policy.
+        :param pulumi.Input[builtins.str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+               aes-xcbc, aes-cmac. Default is sha1.
+               Changing this updates the algorithm of the existing policy.
         :param pulumi.Input[builtins.str] description: The human-readable description for the policy.
                Changing this updates the description of the existing policy.
         :param pulumi.Input[builtins.str] encapsulation_mode: The encapsulation mode. Valid values are tunnel and transport. Default is tunnel.
                Changing this updates the existing policy.
-        :param pulumi.Input[builtins.str] encryption_algorithm: The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+        :param pulumi.Input[builtins.str] encryption_algorithm: The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+               aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
                The default value is aes-128. Changing this updates the existing policy.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[builtins.str] name: The name of the policy. Changing this updates the name of
                the existing policy.
-        :param pulumi.Input[builtins.str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
-               is group5. Changing this updates the existing policy.
+        :param pulumi.Input[builtins.str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+               Default is group5. Changing this updates the existing policy.
         :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an IPSec policy. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -594,19 +604,21 @@ class IpSecPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-               Default is sha1. Changing this updates the algorithm of the existing policy.
+        :param pulumi.Input[builtins.str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+               aes-xcbc, aes-cmac. Default is sha1.
+               Changing this updates the algorithm of the existing policy.
         :param pulumi.Input[builtins.str] description: The human-readable description for the policy.
                Changing this updates the description of the existing policy.
         :param pulumi.Input[builtins.str] encapsulation_mode: The encapsulation mode. Valid values are tunnel and transport. Default is tunnel.
                Changing this updates the existing policy.
-        :param pulumi.Input[builtins.str] encryption_algorithm: The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+        :param pulumi.Input[builtins.str] encryption_algorithm: The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+               aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
                The default value is aes-128. Changing this updates the existing policy.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[builtins.str] name: The name of the policy. Changing this updates the name of
                the existing policy.
-        :param pulumi.Input[builtins.str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
-               is group5. Changing this updates the existing policy.
+        :param pulumi.Input[builtins.str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+               Default is group5. Changing this updates the existing policy.
         :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Networking client.
                A Networking client is needed to create an IPSec policy. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -638,8 +650,9 @@ class IpSecPolicy(pulumi.CustomResource):
     @pulumi.getter(name="authAlgorithm")
     def auth_algorithm(self) -> pulumi.Output[builtins.str]:
         """
-        The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-        Default is sha1. Changing this updates the algorithm of the existing policy.
+        The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+        aes-xcbc, aes-cmac. Default is sha1.
+        Changing this updates the algorithm of the existing policy.
         """
         return pulumi.get(self, "auth_algorithm")
 
@@ -665,7 +678,8 @@ class IpSecPolicy(pulumi.CustomResource):
     @pulumi.getter(name="encryptionAlgorithm")
     def encryption_algorithm(self) -> pulumi.Output[builtins.str]:
         """
-        The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+        The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+        aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
         The default value is aes-128. Changing this updates the existing policy.
         """
         return pulumi.get(self, "encryption_algorithm")
@@ -691,8 +705,8 @@ class IpSecPolicy(pulumi.CustomResource):
     @pulumi.getter
     def pfs(self) -> pulumi.Output[builtins.str]:
         """
-        The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
-        is group5. Changing this updates the existing policy.
+        The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+        Default is group5. Changing this updates the existing policy.
         """
         return pulumi.get(self, "pfs")
 

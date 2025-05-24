@@ -103,6 +103,15 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly forceDelete!: pulumi.Output<boolean | undefined>;
     /**
+     * Specifies the exact hypervisor hostname on
+     * which to create the instance. When provided, this parameter is included in
+     * the request to Nova, directing the scheduler to launch the instance on the
+     * specified host. Note: This option requires administrative privileges and a
+     * Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+     * this value forces a new instance to be created.
+     */
+    public readonly hypervisorHostname!: pulumi.Output<string>;
+    /**
      * (Optional; Required if `imageName` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The image ID of
      * the desired image for the server. Changing this rebuilds the existing
@@ -144,8 +153,9 @@ export class Instance extends pulumi.CustomResource {
     public readonly networks!: pulumi.Output<outputs.compute.InstanceNetwork[]>;
     /**
      * Customize the personality of an instance by
-     * defining one or more files and their contents. The personality structure
-     * is described below. Changing this rebuilds the existing server.
+     * defining one or more files and their contents. The personality structure is
+     * described below. Conflicts with `hypervisorHostname`. Changing this rebuilds
+     * the existing server.
      */
     public readonly personalities!: pulumi.Output<outputs.compute.InstancePersonality[] | undefined>;
     /**
@@ -228,6 +238,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["flavorId"] = state ? state.flavorId : undefined;
             resourceInputs["flavorName"] = state ? state.flavorName : undefined;
             resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
+            resourceInputs["hypervisorHostname"] = state ? state.hypervisorHostname : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["imageName"] = state ? state.imageName : undefined;
             resourceInputs["keyPair"] = state ? state.keyPair : undefined;
@@ -257,6 +268,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["flavorId"] = args ? args.flavorId : undefined;
             resourceInputs["flavorName"] = args ? args.flavorName : undefined;
             resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
+            resourceInputs["hypervisorHostname"] = args ? args.hypervisorHostname : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["imageName"] = args ? args.imageName : undefined;
             resourceInputs["keyPair"] = args ? args.keyPair : undefined;
@@ -358,6 +370,15 @@ export interface InstanceState {
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
+     * Specifies the exact hypervisor hostname on
+     * which to create the instance. When provided, this parameter is included in
+     * the request to Nova, directing the scheduler to launch the instance on the
+     * specified host. Note: This option requires administrative privileges and a
+     * Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+     * this value forces a new instance to be created.
+     */
+    hypervisorHostname?: pulumi.Input<string>;
+    /**
      * (Optional; Required if `imageName` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The image ID of
      * the desired image for the server. Changing this rebuilds the existing
@@ -399,8 +420,9 @@ export interface InstanceState {
     networks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetwork>[]>;
     /**
      * Customize the personality of an instance by
-     * defining one or more files and their contents. The personality structure
-     * is described below. Changing this rebuilds the existing server.
+     * defining one or more files and their contents. The personality structure is
+     * described below. Conflicts with `hypervisorHostname`. Changing this rebuilds
+     * the existing server.
      */
     personalities?: pulumi.Input<pulumi.Input<inputs.compute.InstancePersonality>[]>;
     /**
@@ -521,6 +543,15 @@ export interface InstanceArgs {
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
+     * Specifies the exact hypervisor hostname on
+     * which to create the instance. When provided, this parameter is included in
+     * the request to Nova, directing the scheduler to launch the instance on the
+     * specified host. Note: This option requires administrative privileges and a
+     * Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+     * this value forces a new instance to be created.
+     */
+    hypervisorHostname?: pulumi.Input<string>;
+    /**
      * (Optional; Required if `imageName` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The image ID of
      * the desired image for the server. Changing this rebuilds the existing
@@ -562,8 +593,9 @@ export interface InstanceArgs {
     networks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetwork>[]>;
     /**
      * Customize the personality of an instance by
-     * defining one or more files and their contents. The personality structure
-     * is described below. Changing this rebuilds the existing server.
+     * defining one or more files and their contents. The personality structure is
+     * described below. Conflicts with `hypervisorHostname`. Changing this rebuilds
+     * the existing server.
      */
     personalities?: pulumi.Input<pulumi.Input<inputs.compute.InstancePersonality>[]>;
     /**

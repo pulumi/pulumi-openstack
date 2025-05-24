@@ -54,7 +54,7 @@ import (
 // ```
 //
 // ```sh
-// $ pulumi import openstack:dns/zone:Zone zone_1 zone_id:project_id
+// $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
 // ```
 type Zone struct {
 	pulumi.CustomResourceState
@@ -78,11 +78,10 @@ type Zone struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project DNS zone is created
 	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-	// user role in target project)
+	// user role in target project).
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// The region in which to obtain the V2 Compute client.
-	// Keypairs are associated with accounts, but a Compute client is needed to
-	// create one. If omitted, the `region` argument of the provider is used.
+	// The region in which to obtain the V2 DNS client.
+	// If omitted, the `region` argument of the provider is used.
 	// Changing this creates a new DNS zone.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The time to live (TTL) of the zone.
@@ -144,11 +143,10 @@ type zoneState struct {
 	Name *string `pulumi:"name"`
 	// The ID of the project DNS zone is created
 	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-	// user role in target project)
+	// user role in target project).
 	ProjectId *string `pulumi:"projectId"`
-	// The region in which to obtain the V2 Compute client.
-	// Keypairs are associated with accounts, but a Compute client is needed to
-	// create one. If omitted, the `region` argument of the provider is used.
+	// The region in which to obtain the V2 DNS client.
+	// If omitted, the `region` argument of the provider is used.
 	// Changing this creates a new DNS zone.
 	Region *string `pulumi:"region"`
 	// The time to live (TTL) of the zone.
@@ -181,11 +179,10 @@ type ZoneState struct {
 	Name pulumi.StringPtrInput
 	// The ID of the project DNS zone is created
 	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-	// user role in target project)
+	// user role in target project).
 	ProjectId pulumi.StringPtrInput
-	// The region in which to obtain the V2 Compute client.
-	// Keypairs are associated with accounts, but a Compute client is needed to
-	// create one. If omitted, the `region` argument of the provider is used.
+	// The region in which to obtain the V2 DNS client.
+	// If omitted, the `region` argument of the provider is used.
 	// Changing this creates a new DNS zone.
 	Region pulumi.StringPtrInput
 	// The time to live (TTL) of the zone.
@@ -222,11 +219,10 @@ type zoneArgs struct {
 	Name *string `pulumi:"name"`
 	// The ID of the project DNS zone is created
 	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-	// user role in target project)
+	// user role in target project).
 	ProjectId *string `pulumi:"projectId"`
-	// The region in which to obtain the V2 Compute client.
-	// Keypairs are associated with accounts, but a Compute client is needed to
-	// create one. If omitted, the `region` argument of the provider is used.
+	// The region in which to obtain the V2 DNS client.
+	// If omitted, the `region` argument of the provider is used.
 	// Changing this creates a new DNS zone.
 	Region *string `pulumi:"region"`
 	// The time to live (TTL) of the zone.
@@ -260,11 +256,10 @@ type ZoneArgs struct {
 	Name pulumi.StringPtrInput
 	// The ID of the project DNS zone is created
 	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-	// user role in target project)
+	// user role in target project).
 	ProjectId pulumi.StringPtrInput
-	// The region in which to obtain the V2 Compute client.
-	// Keypairs are associated with accounts, but a Compute client is needed to
-	// create one. If omitted, the `region` argument of the provider is used.
+	// The region in which to obtain the V2 DNS client.
+	// If omitted, the `region` argument of the provider is used.
 	// Changing this creates a new DNS zone.
 	Region pulumi.StringPtrInput
 	// The time to live (TTL) of the zone.
@@ -401,14 +396,13 @@ func (o ZoneOutput) Name() pulumi.StringOutput {
 
 // The ID of the project DNS zone is created
 // for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-// user role in target project)
+// user role in target project).
 func (o ZoneOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// The region in which to obtain the V2 Compute client.
-// Keypairs are associated with accounts, but a Compute client is needed to
-// create one. If omitted, the `region` argument of the provider is used.
+// The region in which to obtain the V2 DNS client.
+// If omitted, the `region` argument of the provider is used.
 // Changing this creates a new DNS zone.
 func (o ZoneOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)

@@ -32,6 +32,7 @@ class InstanceArgs:
                  flavor_id: Optional[pulumi.Input[builtins.str]] = None,
                  flavor_name: Optional[pulumi.Input[builtins.str]] = None,
                  force_delete: Optional[pulumi.Input[builtins.bool]] = None,
+                 hypervisor_hostname: Optional[pulumi.Input[builtins.str]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
                  image_name: Optional[pulumi.Input[builtins.str]] = None,
                  key_pair: Optional[pulumi.Input[builtins.str]] = None,
@@ -78,6 +79,12 @@ class InstanceArgs:
         :param pulumi.Input[builtins.bool] force_delete: Whether to force the OpenStack instance to be
                forcefully deleted. This is useful for environments that have reclaim / soft
                deletion enabled.
+        :param pulumi.Input[builtins.str] hypervisor_hostname: Specifies the exact hypervisor hostname on
+               which to create the instance. When provided, this parameter is included in
+               the request to Nova, directing the scheduler to launch the instance on the
+               specified host. Note: This option requires administrative privileges and a
+               Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+               this value forces a new instance to be created.
         :param pulumi.Input[builtins.str] image_id: (Optional; Required if `image_name` is empty and not booting
                from a volume. Do not specify if booting from a volume.) The image ID of
                the desired image for the server. Changing this rebuilds the existing
@@ -98,8 +105,9 @@ class InstanceArgs:
                instance. The network object structure is documented below. Changing this
                creates a new server.
         :param pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]] personalities: Customize the personality of an instance by
-               defining one or more files and their contents. The personality structure
-               is described below. Changing this rebuilds the existing server.
+               defining one or more files and their contents. The personality structure is
+               described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+               the existing server.
         :param pulumi.Input[builtins.str] power_state: Provide the VM state. Only 'active', 'shutoff', 'paused'
                and 'shelved_offloaded' are supported values.
                *Note*: If the initial power_state is the shutoff or paused
@@ -146,6 +154,8 @@ class InstanceArgs:
             pulumi.set(__self__, "flavor_name", flavor_name)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
+        if hypervisor_hostname is not None:
+            pulumi.set(__self__, "hypervisor_hostname", hypervisor_hostname)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
         if image_name is not None:
@@ -318,6 +328,23 @@ class InstanceArgs:
         pulumi.set(self, "force_delete", value)
 
     @property
+    @pulumi.getter(name="hypervisorHostname")
+    def hypervisor_hostname(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the exact hypervisor hostname on
+        which to create the instance. When provided, this parameter is included in
+        the request to Nova, directing the scheduler to launch the instance on the
+        specified host. Note: This option requires administrative privileges and a
+        Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+        this value forces a new instance to be created.
+        """
+        return pulumi.get(self, "hypervisor_hostname")
+
+    @hypervisor_hostname.setter
+    def hypervisor_hostname(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "hypervisor_hostname", value)
+
+    @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -418,8 +445,9 @@ class InstanceArgs:
     def personalities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]]]:
         """
         Customize the personality of an instance by
-        defining one or more files and their contents. The personality structure
-        is described below. Changing this rebuilds the existing server.
+        defining one or more files and their contents. The personality structure is
+        described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+        the existing server.
         """
         return pulumi.get(self, "personalities")
 
@@ -557,6 +585,7 @@ class _InstanceState:
                  flavor_id: Optional[pulumi.Input[builtins.str]] = None,
                  flavor_name: Optional[pulumi.Input[builtins.str]] = None,
                  force_delete: Optional[pulumi.Input[builtins.bool]] = None,
+                 hypervisor_hostname: Optional[pulumi.Input[builtins.str]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
                  image_name: Optional[pulumi.Input[builtins.str]] = None,
                  key_pair: Optional[pulumi.Input[builtins.str]] = None,
@@ -607,6 +636,12 @@ class _InstanceState:
         :param pulumi.Input[builtins.bool] force_delete: Whether to force the OpenStack instance to be
                forcefully deleted. This is useful for environments that have reclaim / soft
                deletion enabled.
+        :param pulumi.Input[builtins.str] hypervisor_hostname: Specifies the exact hypervisor hostname on
+               which to create the instance. When provided, this parameter is included in
+               the request to Nova, directing the scheduler to launch the instance on the
+               specified host. Note: This option requires administrative privileges and a
+               Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+               this value forces a new instance to be created.
         :param pulumi.Input[builtins.str] image_id: (Optional; Required if `image_name` is empty and not booting
                from a volume. Do not specify if booting from a volume.) The image ID of
                the desired image for the server. Changing this rebuilds the existing
@@ -627,8 +662,9 @@ class _InstanceState:
                instance. The network object structure is documented below. Changing this
                creates a new server.
         :param pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]] personalities: Customize the personality of an instance by
-               defining one or more files and their contents. The personality structure
-               is described below. Changing this rebuilds the existing server.
+               defining one or more files and their contents. The personality structure is
+               described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+               the existing server.
         :param pulumi.Input[builtins.str] power_state: Provide the VM state. Only 'active', 'shutoff', 'paused'
                and 'shelved_offloaded' are supported values.
                *Note*: If the initial power_state is the shutoff or paused
@@ -682,6 +718,8 @@ class _InstanceState:
             pulumi.set(__self__, "flavor_name", flavor_name)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
+        if hypervisor_hostname is not None:
+            pulumi.set(__self__, "hypervisor_hostname", hypervisor_hostname)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
         if image_name is not None:
@@ -890,6 +928,23 @@ class _InstanceState:
         pulumi.set(self, "force_delete", value)
 
     @property
+    @pulumi.getter(name="hypervisorHostname")
+    def hypervisor_hostname(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the exact hypervisor hostname on
+        which to create the instance. When provided, this parameter is included in
+        the request to Nova, directing the scheduler to launch the instance on the
+        specified host. Note: This option requires administrative privileges and a
+        Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+        this value forces a new instance to be created.
+        """
+        return pulumi.get(self, "hypervisor_hostname")
+
+    @hypervisor_hostname.setter
+    def hypervisor_hostname(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "hypervisor_hostname", value)
+
+    @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -990,8 +1045,9 @@ class _InstanceState:
     def personalities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]]]:
         """
         Customize the personality of an instance by
-        defining one or more files and their contents. The personality structure
-        is described below. Changing this rebuilds the existing server.
+        defining one or more files and their contents. The personality structure is
+        described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+        the existing server.
         """
         return pulumi.get(self, "personalities")
 
@@ -1141,6 +1197,7 @@ class Instance(pulumi.CustomResource):
                  flavor_id: Optional[pulumi.Input[builtins.str]] = None,
                  flavor_name: Optional[pulumi.Input[builtins.str]] = None,
                  force_delete: Optional[pulumi.Input[builtins.bool]] = None,
+                 hypervisor_hostname: Optional[pulumi.Input[builtins.str]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
                  image_name: Optional[pulumi.Input[builtins.str]] = None,
                  key_pair: Optional[pulumi.Input[builtins.str]] = None,
@@ -1190,6 +1247,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] force_delete: Whether to force the OpenStack instance to be
                forcefully deleted. This is useful for environments that have reclaim / soft
                deletion enabled.
+        :param pulumi.Input[builtins.str] hypervisor_hostname: Specifies the exact hypervisor hostname on
+               which to create the instance. When provided, this parameter is included in
+               the request to Nova, directing the scheduler to launch the instance on the
+               specified host. Note: This option requires administrative privileges and a
+               Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+               this value forces a new instance to be created.
         :param pulumi.Input[builtins.str] image_id: (Optional; Required if `image_name` is empty and not booting
                from a volume. Do not specify if booting from a volume.) The image ID of
                the desired image for the server. Changing this rebuilds the existing
@@ -1210,8 +1273,9 @@ class Instance(pulumi.CustomResource):
                instance. The network object structure is documented below. Changing this
                creates a new server.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstancePersonalityArgs', 'InstancePersonalityArgsDict']]]] personalities: Customize the personality of an instance by
-               defining one or more files and their contents. The personality structure
-               is described below. Changing this rebuilds the existing server.
+               defining one or more files and their contents. The personality structure is
+               described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+               the existing server.
         :param pulumi.Input[builtins.str] power_state: Provide the VM state. Only 'active', 'shutoff', 'paused'
                and 'shelved_offloaded' are supported values.
                *Note*: If the initial power_state is the shutoff or paused
@@ -1271,6 +1335,7 @@ class Instance(pulumi.CustomResource):
                  flavor_id: Optional[pulumi.Input[builtins.str]] = None,
                  flavor_name: Optional[pulumi.Input[builtins.str]] = None,
                  force_delete: Optional[pulumi.Input[builtins.bool]] = None,
+                 hypervisor_hostname: Optional[pulumi.Input[builtins.str]] = None,
                  image_id: Optional[pulumi.Input[builtins.str]] = None,
                  image_name: Optional[pulumi.Input[builtins.str]] = None,
                  key_pair: Optional[pulumi.Input[builtins.str]] = None,
@@ -1306,6 +1371,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["flavor_id"] = flavor_id
             __props__.__dict__["flavor_name"] = flavor_name
             __props__.__dict__["force_delete"] = force_delete
+            __props__.__dict__["hypervisor_hostname"] = hypervisor_hostname
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["image_name"] = image_name
             __props__.__dict__["key_pair"] = key_pair
@@ -1351,6 +1417,7 @@ class Instance(pulumi.CustomResource):
             flavor_id: Optional[pulumi.Input[builtins.str]] = None,
             flavor_name: Optional[pulumi.Input[builtins.str]] = None,
             force_delete: Optional[pulumi.Input[builtins.bool]] = None,
+            hypervisor_hostname: Optional[pulumi.Input[builtins.str]] = None,
             image_id: Optional[pulumi.Input[builtins.str]] = None,
             image_name: Optional[pulumi.Input[builtins.str]] = None,
             key_pair: Optional[pulumi.Input[builtins.str]] = None,
@@ -1406,6 +1473,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] force_delete: Whether to force the OpenStack instance to be
                forcefully deleted. This is useful for environments that have reclaim / soft
                deletion enabled.
+        :param pulumi.Input[builtins.str] hypervisor_hostname: Specifies the exact hypervisor hostname on
+               which to create the instance. When provided, this parameter is included in
+               the request to Nova, directing the scheduler to launch the instance on the
+               specified host. Note: This option requires administrative privileges and a
+               Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+               this value forces a new instance to be created.
         :param pulumi.Input[builtins.str] image_id: (Optional; Required if `image_name` is empty and not booting
                from a volume. Do not specify if booting from a volume.) The image ID of
                the desired image for the server. Changing this rebuilds the existing
@@ -1426,8 +1499,9 @@ class Instance(pulumi.CustomResource):
                instance. The network object structure is documented below. Changing this
                creates a new server.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstancePersonalityArgs', 'InstancePersonalityArgsDict']]]] personalities: Customize the personality of an instance by
-               defining one or more files and their contents. The personality structure
-               is described below. Changing this rebuilds the existing server.
+               defining one or more files and their contents. The personality structure is
+               described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+               the existing server.
         :param pulumi.Input[builtins.str] power_state: Provide the VM state. Only 'active', 'shutoff', 'paused'
                and 'shelved_offloaded' are supported values.
                *Note*: If the initial power_state is the shutoff or paused
@@ -1472,6 +1546,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["flavor_id"] = flavor_id
         __props__.__dict__["flavor_name"] = flavor_name
         __props__.__dict__["force_delete"] = force_delete
+        __props__.__dict__["hypervisor_hostname"] = hypervisor_hostname
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["image_name"] = image_name
         __props__.__dict__["key_pair"] = key_pair
@@ -1612,6 +1687,19 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "force_delete")
 
     @property
+    @pulumi.getter(name="hypervisorHostname")
+    def hypervisor_hostname(self) -> pulumi.Output[builtins.str]:
+        """
+        Specifies the exact hypervisor hostname on
+        which to create the instance. When provided, this parameter is included in
+        the request to Nova, directing the scheduler to launch the instance on the
+        specified host. Note: This option requires administrative privileges and a
+        Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+        this value forces a new instance to be created.
+        """
+        return pulumi.get(self, "hypervisor_hostname")
+
+    @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[builtins.str]:
         """
@@ -1684,8 +1772,9 @@ class Instance(pulumi.CustomResource):
     def personalities(self) -> pulumi.Output[Optional[Sequence['outputs.InstancePersonality']]]:
         """
         Customize the personality of an instance by
-        defining one or more files and their contents. The personality structure
-        is described below. Changing this rebuilds the existing server.
+        defining one or more files and their contents. The personality structure is
+        described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+        the existing server.
         """
         return pulumi.get(self, "personalities")
 

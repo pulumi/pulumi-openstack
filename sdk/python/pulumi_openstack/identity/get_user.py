@@ -88,7 +88,7 @@ class GetUserResult:
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[builtins.bool]:
+    def enabled(self) -> builtins.bool:
         """
         See Argument Reference above.
         """

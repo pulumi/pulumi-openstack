@@ -49,13 +49,15 @@ import (
 type IkePolicy struct {
 	pulumi.CustomResourceState
 
-	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-	// Default is sha1. Changing this updates the algorithm of the existing policy.
+	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+	// aes-xcbc, aes-cmac. Default is sha1.
+	// Changing this updates the algorithm of the existing policy.
 	AuthAlgorithm pulumi.StringPtrOutput `pulumi:"authAlgorithm"`
 	// The human-readable description for the policy.
 	// Changing this updates the description of the existing policy.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+	// The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+	// aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
 	// The default value is aes-128. Changing this updates the existing policy.
 	EncryptionAlgorithm pulumi.StringPtrOutput `pulumi:"encryptionAlgorithm"`
 	// The IKE version. A valid value is v1 or v2. Default is v1.
@@ -66,8 +68,8 @@ type IkePolicy struct {
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-	// Changing this updates the existing policy.
+	// The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+	// Default is group5. Changing this updates the existing policy.
 	Pfs pulumi.StringPtrOutput `pulumi:"pfs"`
 	// The IKE mode. A valid value is main, which is the default.
 	// Changing this updates the existing policy.
@@ -114,13 +116,15 @@ func GetIkePolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IkePolicy resources.
 type ikePolicyState struct {
-	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-	// Default is sha1. Changing this updates the algorithm of the existing policy.
+	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+	// aes-xcbc, aes-cmac. Default is sha1.
+	// Changing this updates the algorithm of the existing policy.
 	AuthAlgorithm *string `pulumi:"authAlgorithm"`
 	// The human-readable description for the policy.
 	// Changing this updates the description of the existing policy.
 	Description *string `pulumi:"description"`
-	// The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+	// The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+	// aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
 	// The default value is aes-128. Changing this updates the existing policy.
 	EncryptionAlgorithm *string `pulumi:"encryptionAlgorithm"`
 	// The IKE version. A valid value is v1 or v2. Default is v1.
@@ -131,8 +135,8 @@ type ikePolicyState struct {
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
 	Name *string `pulumi:"name"`
-	// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-	// Changing this updates the existing policy.
+	// The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+	// Default is group5. Changing this updates the existing policy.
 	Pfs *string `pulumi:"pfs"`
 	// The IKE mode. A valid value is main, which is the default.
 	// Changing this updates the existing policy.
@@ -150,13 +154,15 @@ type ikePolicyState struct {
 }
 
 type IkePolicyState struct {
-	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-	// Default is sha1. Changing this updates the algorithm of the existing policy.
+	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+	// aes-xcbc, aes-cmac. Default is sha1.
+	// Changing this updates the algorithm of the existing policy.
 	AuthAlgorithm pulumi.StringPtrInput
 	// The human-readable description for the policy.
 	// Changing this updates the description of the existing policy.
 	Description pulumi.StringPtrInput
-	// The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+	// The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+	// aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
 	// The default value is aes-128. Changing this updates the existing policy.
 	EncryptionAlgorithm pulumi.StringPtrInput
 	// The IKE version. A valid value is v1 or v2. Default is v1.
@@ -167,8 +173,8 @@ type IkePolicyState struct {
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
 	Name pulumi.StringPtrInput
-	// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-	// Changing this updates the existing policy.
+	// The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+	// Default is group5. Changing this updates the existing policy.
 	Pfs pulumi.StringPtrInput
 	// The IKE mode. A valid value is main, which is the default.
 	// Changing this updates the existing policy.
@@ -190,13 +196,15 @@ func (IkePolicyState) ElementType() reflect.Type {
 }
 
 type ikePolicyArgs struct {
-	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-	// Default is sha1. Changing this updates the algorithm of the existing policy.
+	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+	// aes-xcbc, aes-cmac. Default is sha1.
+	// Changing this updates the algorithm of the existing policy.
 	AuthAlgorithm *string `pulumi:"authAlgorithm"`
 	// The human-readable description for the policy.
 	// Changing this updates the description of the existing policy.
 	Description *string `pulumi:"description"`
-	// The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+	// The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+	// aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
 	// The default value is aes-128. Changing this updates the existing policy.
 	EncryptionAlgorithm *string `pulumi:"encryptionAlgorithm"`
 	// The IKE version. A valid value is v1 or v2. Default is v1.
@@ -207,8 +215,8 @@ type ikePolicyArgs struct {
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
 	Name *string `pulumi:"name"`
-	// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-	// Changing this updates the existing policy.
+	// The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+	// Default is group5. Changing this updates the existing policy.
 	Pfs *string `pulumi:"pfs"`
 	// The IKE mode. A valid value is main, which is the default.
 	// Changing this updates the existing policy.
@@ -227,13 +235,15 @@ type ikePolicyArgs struct {
 
 // The set of arguments for constructing a IkePolicy resource.
 type IkePolicyArgs struct {
-	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-	// Default is sha1. Changing this updates the algorithm of the existing policy.
+	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+	// aes-xcbc, aes-cmac. Default is sha1.
+	// Changing this updates the algorithm of the existing policy.
 	AuthAlgorithm pulumi.StringPtrInput
 	// The human-readable description for the policy.
 	// Changing this updates the description of the existing policy.
 	Description pulumi.StringPtrInput
-	// The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+	// The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+	// aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
 	// The default value is aes-128. Changing this updates the existing policy.
 	EncryptionAlgorithm pulumi.StringPtrInput
 	// The IKE version. A valid value is v1 or v2. Default is v1.
@@ -244,8 +254,8 @@ type IkePolicyArgs struct {
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
 	Name pulumi.StringPtrInput
-	// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-	// Changing this updates the existing policy.
+	// The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+	// Default is group5. Changing this updates the existing policy.
 	Pfs pulumi.StringPtrInput
 	// The IKE mode. A valid value is main, which is the default.
 	// Changing this updates the existing policy.
@@ -349,8 +359,9 @@ func (o IkePolicyOutput) ToIkePolicyOutputWithContext(ctx context.Context) IkePo
 	return o
 }
 
-// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-// Default is sha1. Changing this updates the algorithm of the existing policy.
+// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+// aes-xcbc, aes-cmac. Default is sha1.
+// Changing this updates the algorithm of the existing policy.
 func (o IkePolicyOutput) AuthAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IkePolicy) pulumi.StringPtrOutput { return v.AuthAlgorithm }).(pulumi.StringPtrOutput)
 }
@@ -361,7 +372,8 @@ func (o IkePolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IkePolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+// The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+// aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
 // The default value is aes-128. Changing this updates the existing policy.
 func (o IkePolicyOutput) EncryptionAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IkePolicy) pulumi.StringPtrOutput { return v.EncryptionAlgorithm }).(pulumi.StringPtrOutput)
@@ -384,8 +396,8 @@ func (o IkePolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IkePolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-// Changing this updates the existing policy.
+// The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+// Default is group5. Changing this updates the existing policy.
 func (o IkePolicyOutput) Pfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IkePolicy) pulumi.StringPtrOutput { return v.Pfs }).(pulumi.StringPtrOutput)
 }

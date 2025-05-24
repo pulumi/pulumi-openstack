@@ -46,10 +46,9 @@ class ZoneArgs:
                Changing this creates a new DNS zone.
         :param pulumi.Input[builtins.str] project_id: The ID of the project DNS zone is created
                for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-               user role in target project)
-        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Compute client.
-               Keypairs are associated with accounts, but a Compute client is needed to
-               create one. If omitted, the `region` argument of the provider is used.
+               user role in target project).
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 DNS client.
+               If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS zone.
         :param pulumi.Input[builtins.int] ttl: The time to live (TTL) of the zone.
         :param pulumi.Input[builtins.str] type: The type of zone. Can either be `PRIMARY` or `SECONDARY`.
@@ -163,7 +162,7 @@ class ZoneArgs:
         """
         The ID of the project DNS zone is created
         for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-        user role in target project)
+        user role in target project).
         """
         return pulumi.get(self, "project_id")
 
@@ -175,9 +174,8 @@ class ZoneArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The region in which to obtain the V2 Compute client.
-        Keypairs are associated with accounts, but a Compute client is needed to
-        create one. If omitted, the `region` argument of the provider is used.
+        The region in which to obtain the V2 DNS client.
+        If omitted, the `region` argument of the provider is used.
         Changing this creates a new DNS zone.
         """
         return pulumi.get(self, "region")
@@ -254,10 +252,9 @@ class _ZoneState:
                Changing this creates a new DNS zone.
         :param pulumi.Input[builtins.str] project_id: The ID of the project DNS zone is created
                for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-               user role in target project)
-        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Compute client.
-               Keypairs are associated with accounts, but a Compute client is needed to
-               create one. If omitted, the `region` argument of the provider is used.
+               user role in target project).
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 DNS client.
+               If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS zone.
         :param pulumi.Input[builtins.int] ttl: The time to live (TTL) of the zone.
         :param pulumi.Input[builtins.str] type: The type of zone. Can either be `PRIMARY` or `SECONDARY`.
@@ -371,7 +368,7 @@ class _ZoneState:
         """
         The ID of the project DNS zone is created
         for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-        user role in target project)
+        user role in target project).
         """
         return pulumi.get(self, "project_id")
 
@@ -383,9 +380,8 @@ class _ZoneState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The region in which to obtain the V2 Compute client.
-        Keypairs are associated with accounts, but a Compute client is needed to
-        create one. If omitted, the `region` argument of the provider is used.
+        The region in which to obtain the V2 DNS client.
+        If omitted, the `region` argument of the provider is used.
         Changing this creates a new DNS zone.
         """
         return pulumi.get(self, "region")
@@ -479,7 +475,7 @@ class Zone(pulumi.CustomResource):
         ```
 
         ```sh
-        $ pulumi import openstack:dns/zone:Zone zone_1 zone_id:project_id
+        $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -497,10 +493,9 @@ class Zone(pulumi.CustomResource):
                Changing this creates a new DNS zone.
         :param pulumi.Input[builtins.str] project_id: The ID of the project DNS zone is created
                for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-               user role in target project)
-        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Compute client.
-               Keypairs are associated with accounts, but a Compute client is needed to
-               create one. If omitted, the `region` argument of the provider is used.
+               user role in target project).
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 DNS client.
+               If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS zone.
         :param pulumi.Input[builtins.int] ttl: The time to live (TTL) of the zone.
         :param pulumi.Input[builtins.str] type: The type of zone. Can either be `PRIMARY` or `SECONDARY`.
@@ -542,7 +537,7 @@ class Zone(pulumi.CustomResource):
         ```
 
         ```sh
-        $ pulumi import openstack:dns/zone:Zone zone_1 zone_id:project_id
+        $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -632,10 +627,9 @@ class Zone(pulumi.CustomResource):
                Changing this creates a new DNS zone.
         :param pulumi.Input[builtins.str] project_id: The ID of the project DNS zone is created
                for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-               user role in target project)
-        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Compute client.
-               Keypairs are associated with accounts, but a Compute client is needed to
-               create one. If omitted, the `region` argument of the provider is used.
+               user role in target project).
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 DNS client.
+               If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS zone.
         :param pulumi.Input[builtins.int] ttl: The time to live (TTL) of the zone.
         :param pulumi.Input[builtins.str] type: The type of zone. Can either be `PRIMARY` or `SECONDARY`.
@@ -719,7 +713,7 @@ class Zone(pulumi.CustomResource):
         """
         The ID of the project DNS zone is created
         for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-        user role in target project)
+        user role in target project).
         """
         return pulumi.get(self, "project_id")
 
@@ -727,9 +721,8 @@ class Zone(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[builtins.str]:
         """
-        The region in which to obtain the V2 Compute client.
-        Keypairs are associated with accounts, but a Compute client is needed to
-        create one. If omitted, the `region` argument of the provider is used.
+        The region in which to obtain the V2 DNS client.
+        If omitted, the `region` argument of the provider is used.
         Changing this creates a new DNS zone.
         """
         return pulumi.get(self, "region")

@@ -33,7 +33,7 @@ namespace Pulumi.OpenStack.Compute
         /// });
         /// ```
         /// </summary>
-        public static Task<GetHypervisorV2Result> InvokeAsync(GetHypervisorV2Args args, InvokeOptions? options = null)
+        public static Task<GetHypervisorV2Result> InvokeAsync(GetHypervisorV2Args? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHypervisorV2Result>("openstack:compute/getHypervisorV2:getHypervisorV2", args ?? new GetHypervisorV2Args(), options.WithDefaults());
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.OpenStack.Compute
         /// });
         /// ```
         /// </summary>
-        public static Output<GetHypervisorV2Result> Invoke(GetHypervisorV2InvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetHypervisorV2Result> Invoke(GetHypervisorV2InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHypervisorV2Result>("openstack:compute/getHypervisorV2:getHypervisorV2", args ?? new GetHypervisorV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -93,8 +93,8 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// The hostname of the hypervisor
         /// </summary>
-        [Input("hostname", required: true)]
-        public string Hostname { get; set; } = null!;
+        [Input("hostname")]
+        public string? Hostname { get; set; }
 
         public GetHypervisorV2Args()
         {
@@ -107,8 +107,8 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// The hostname of the hypervisor
         /// </summary>
-        [Input("hostname", required: true)]
-        public Input<string> Hostname { get; set; } = null!;
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
 
         public GetHypervisorV2InvokeArgs()
         {

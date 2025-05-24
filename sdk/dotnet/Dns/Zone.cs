@@ -45,7 +45,7 @@ namespace Pulumi.OpenStack.Dns
     /// ```
     /// 
     /// ```sh
-    /// $ pulumi import openstack:dns/zone:Zone zone_1 zone_id:project_id
+    /// $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:dns/zone:Zone")]
@@ -95,15 +95,14 @@ namespace Pulumi.OpenStack.Dns
         /// <summary>
         /// The ID of the project DNS zone is created
         /// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-        /// user role in target project)
+        /// user role in target project).
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The region in which to obtain the V2 Compute client.
-        /// Keypairs are associated with accounts, but a Compute client is needed to
-        /// create one. If omitted, the `region` argument of the provider is used.
+        /// The region in which to obtain the V2 DNS client.
+        /// If omitted, the `region` argument of the provider is used.
         /// Changing this creates a new DNS zone.
         /// </summary>
         [Output("region")]
@@ -231,15 +230,14 @@ namespace Pulumi.OpenStack.Dns
         /// <summary>
         /// The ID of the project DNS zone is created
         /// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-        /// user role in target project)
+        /// user role in target project).
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// The region in which to obtain the V2 Compute client.
-        /// Keypairs are associated with accounts, but a Compute client is needed to
-        /// create one. If omitted, the `region` argument of the provider is used.
+        /// The region in which to obtain the V2 DNS client.
+        /// If omitted, the `region` argument of the provider is used.
         /// Changing this creates a new DNS zone.
         /// </summary>
         [Input("region")]
@@ -335,15 +333,14 @@ namespace Pulumi.OpenStack.Dns
         /// <summary>
         /// The ID of the project DNS zone is created
         /// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-        /// user role in target project)
+        /// user role in target project).
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// The region in which to obtain the V2 Compute client.
-        /// Keypairs are associated with accounts, but a Compute client is needed to
-        /// create one. If omitted, the `region` argument of the provider is used.
+        /// The region in which to obtain the V2 DNS client.
+        /// If omitted, the `region` argument of the provider is used.
         /// Changing this creates a new DNS zone.
         /// </summary>
         [Input("region")]

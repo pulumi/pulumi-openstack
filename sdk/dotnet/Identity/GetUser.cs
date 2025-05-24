@@ -218,7 +218,7 @@ namespace Pulumi.OpenStack.Identity
         /// <summary>
         /// See Argument Reference above.
         /// </summary>
-        public readonly bool? Enabled;
+        public readonly bool Enabled;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -256,7 +256,7 @@ namespace Pulumi.OpenStack.Identity
 
             string domainId,
 
-            bool? enabled,
+            bool enabled,
 
             string id,
 

@@ -140,8 +140,14 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly sourceVolId!: pulumi.Output<string | undefined>;
     /**
-     * The type of volume to create.
-     * Changing this creates a new volume.
+     * Migration policy when changing `volumeType`.
+     * `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+     * allows migration if needed. Applicable only when updating `volumeType`.
+     */
+    public readonly volumeRetypePolicy!: pulumi.Output<string | undefined>;
+    /**
+     * The type of volume to create or update.
+     * Changing this will attempt an in-place retype operation; migration depends on `volumeRetypePolicy`.
      */
     public readonly volumeType!: pulumi.Output<string>;
 
@@ -173,6 +179,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
             resourceInputs["sourceReplica"] = state ? state.sourceReplica : undefined;
             resourceInputs["sourceVolId"] = state ? state.sourceVolId : undefined;
+            resourceInputs["volumeRetypePolicy"] = state ? state.volumeRetypePolicy : undefined;
             resourceInputs["volumeType"] = state ? state.volumeType : undefined;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
@@ -193,6 +200,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
             resourceInputs["sourceReplica"] = args ? args.sourceReplica : undefined;
             resourceInputs["sourceVolId"] = args ? args.sourceVolId : undefined;
+            resourceInputs["volumeRetypePolicy"] = args ? args.volumeRetypePolicy : undefined;
             resourceInputs["volumeType"] = args ? args.volumeType : undefined;
             resourceInputs["attachments"] = undefined /*out*/;
         }
@@ -286,8 +294,14 @@ export interface VolumeState {
      */
     sourceVolId?: pulumi.Input<string>;
     /**
-     * The type of volume to create.
-     * Changing this creates a new volume.
+     * Migration policy when changing `volumeType`.
+     * `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+     * allows migration if needed. Applicable only when updating `volumeType`.
+     */
+    volumeRetypePolicy?: pulumi.Input<string>;
+    /**
+     * The type of volume to create or update.
+     * Changing this will attempt an in-place retype operation; migration depends on `volumeRetypePolicy`.
      */
     volumeType?: pulumi.Input<string>;
 }
@@ -371,8 +385,14 @@ export interface VolumeArgs {
      */
     sourceVolId?: pulumi.Input<string>;
     /**
-     * The type of volume to create.
-     * Changing this creates a new volume.
+     * Migration policy when changing `volumeType`.
+     * `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+     * allows migration if needed. Applicable only when updating `volumeType`.
+     */
+    volumeRetypePolicy?: pulumi.Input<string>;
+    /**
+     * The type of volume to create or update.
+     * Changing this will attempt an in-place retype operation; migration depends on `volumeRetypePolicy`.
      */
     volumeType?: pulumi.Input<string>;
 }

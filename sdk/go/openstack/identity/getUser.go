@@ -78,7 +78,7 @@ type LookupUserResult struct {
 	// See Argument Reference above.
 	DomainId string `pulumi:"domainId"`
 	// See Argument Reference above.
-	Enabled *bool `pulumi:"enabled"`
+	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// See Argument Reference above.
@@ -160,8 +160,8 @@ func (o LookupUserResultOutput) DomainId() pulumi.StringOutput {
 }
 
 // See Argument Reference above.
-func (o LookupUserResultOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupUserResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o LookupUserResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

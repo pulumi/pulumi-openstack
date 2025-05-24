@@ -58,6 +58,13 @@ type Instance struct {
 	// forcefully deleted. This is useful for environments that have reclaim / soft
 	// deletion enabled.
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
+	// Specifies the exact hypervisor hostname on
+	// which to create the instance. When provided, this parameter is included in
+	// the request to Nova, directing the scheduler to launch the instance on the
+	// specified host. Note: This option requires administrative privileges and a
+	// Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+	// this value forces a new instance to be created.
+	HypervisorHostname pulumi.StringOutput `pulumi:"hypervisorHostname"`
 	// (Optional; Required if `imageName` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The image ID of
 	// the desired image for the server. Changing this rebuilds the existing
@@ -85,8 +92,9 @@ type Instance struct {
 	// creates a new server.
 	Networks InstanceNetworkArrayOutput `pulumi:"networks"`
 	// Customize the personality of an instance by
-	// defining one or more files and their contents. The personality structure
-	// is described below. Changing this rebuilds the existing server.
+	// defining one or more files and their contents. The personality structure is
+	// described below. Conflicts with `hypervisorHostname`. Changing this rebuilds
+	// the existing server.
 	Personalities InstancePersonalityArrayOutput `pulumi:"personalities"`
 	// Provide the VM state. Only 'active', 'shutoff', 'paused'
 	// and 'shelved_offloaded' are supported values.
@@ -206,6 +214,13 @@ type instanceState struct {
 	// forcefully deleted. This is useful for environments that have reclaim / soft
 	// deletion enabled.
 	ForceDelete *bool `pulumi:"forceDelete"`
+	// Specifies the exact hypervisor hostname on
+	// which to create the instance. When provided, this parameter is included in
+	// the request to Nova, directing the scheduler to launch the instance on the
+	// specified host. Note: This option requires administrative privileges and a
+	// Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+	// this value forces a new instance to be created.
+	HypervisorHostname *string `pulumi:"hypervisorHostname"`
 	// (Optional; Required if `imageName` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The image ID of
 	// the desired image for the server. Changing this rebuilds the existing
@@ -233,8 +248,9 @@ type instanceState struct {
 	// creates a new server.
 	Networks []InstanceNetwork `pulumi:"networks"`
 	// Customize the personality of an instance by
-	// defining one or more files and their contents. The personality structure
-	// is described below. Changing this rebuilds the existing server.
+	// defining one or more files and their contents. The personality structure is
+	// described below. Conflicts with `hypervisorHostname`. Changing this rebuilds
+	// the existing server.
 	Personalities []InstancePersonality `pulumi:"personalities"`
 	// Provide the VM state. Only 'active', 'shutoff', 'paused'
 	// and 'shelved_offloaded' are supported values.
@@ -318,6 +334,13 @@ type InstanceState struct {
 	// forcefully deleted. This is useful for environments that have reclaim / soft
 	// deletion enabled.
 	ForceDelete pulumi.BoolPtrInput
+	// Specifies the exact hypervisor hostname on
+	// which to create the instance. When provided, this parameter is included in
+	// the request to Nova, directing the scheduler to launch the instance on the
+	// specified host. Note: This option requires administrative privileges and a
+	// Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+	// this value forces a new instance to be created.
+	HypervisorHostname pulumi.StringPtrInput
 	// (Optional; Required if `imageName` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The image ID of
 	// the desired image for the server. Changing this rebuilds the existing
@@ -345,8 +368,9 @@ type InstanceState struct {
 	// creates a new server.
 	Networks InstanceNetworkArrayInput
 	// Customize the personality of an instance by
-	// defining one or more files and their contents. The personality structure
-	// is described below. Changing this rebuilds the existing server.
+	// defining one or more files and their contents. The personality structure is
+	// described below. Conflicts with `hypervisorHostname`. Changing this rebuilds
+	// the existing server.
 	Personalities InstancePersonalityArrayInput
 	// Provide the VM state. Only 'active', 'shutoff', 'paused'
 	// and 'shelved_offloaded' are supported values.
@@ -428,6 +452,13 @@ type instanceArgs struct {
 	// forcefully deleted. This is useful for environments that have reclaim / soft
 	// deletion enabled.
 	ForceDelete *bool `pulumi:"forceDelete"`
+	// Specifies the exact hypervisor hostname on
+	// which to create the instance. When provided, this parameter is included in
+	// the request to Nova, directing the scheduler to launch the instance on the
+	// specified host. Note: This option requires administrative privileges and a
+	// Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+	// this value forces a new instance to be created.
+	HypervisorHostname *string `pulumi:"hypervisorHostname"`
 	// (Optional; Required if `imageName` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The image ID of
 	// the desired image for the server. Changing this rebuilds the existing
@@ -455,8 +486,9 @@ type instanceArgs struct {
 	// creates a new server.
 	Networks []InstanceNetwork `pulumi:"networks"`
 	// Customize the personality of an instance by
-	// defining one or more files and their contents. The personality structure
-	// is described below. Changing this rebuilds the existing server.
+	// defining one or more files and their contents. The personality structure is
+	// described below. Conflicts with `hypervisorHostname`. Changing this rebuilds
+	// the existing server.
 	Personalities []InstancePersonality `pulumi:"personalities"`
 	// Provide the VM state. Only 'active', 'shutoff', 'paused'
 	// and 'shelved_offloaded' are supported values.
@@ -533,6 +565,13 @@ type InstanceArgs struct {
 	// forcefully deleted. This is useful for environments that have reclaim / soft
 	// deletion enabled.
 	ForceDelete pulumi.BoolPtrInput
+	// Specifies the exact hypervisor hostname on
+	// which to create the instance. When provided, this parameter is included in
+	// the request to Nova, directing the scheduler to launch the instance on the
+	// specified host. Note: This option requires administrative privileges and a
+	// Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+	// this value forces a new instance to be created.
+	HypervisorHostname pulumi.StringPtrInput
 	// (Optional; Required if `imageName` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The image ID of
 	// the desired image for the server. Changing this rebuilds the existing
@@ -560,8 +599,9 @@ type InstanceArgs struct {
 	// creates a new server.
 	Networks InstanceNetworkArrayInput
 	// Customize the personality of an instance by
-	// defining one or more files and their contents. The personality structure
-	// is described below. Changing this rebuilds the existing server.
+	// defining one or more files and their contents. The personality structure is
+	// described below. Conflicts with `hypervisorHostname`. Changing this rebuilds
+	// the existing server.
 	Personalities InstancePersonalityArrayInput
 	// Provide the VM state. Only 'active', 'shutoff', 'paused'
 	// and 'shelved_offloaded' are supported values.
@@ -768,6 +808,16 @@ func (o InstanceOutput) ForceDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies the exact hypervisor hostname on
+// which to create the instance. When provided, this parameter is included in
+// the request to Nova, directing the scheduler to launch the instance on the
+// specified host. Note: This option requires administrative privileges and a
+// Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+// this value forces a new instance to be created.
+func (o InstanceOutput) HypervisorHostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.HypervisorHostname }).(pulumi.StringOutput)
+}
+
 // (Optional; Required if `imageName` is empty and not booting
 // from a volume. Do not specify if booting from a volume.) The image ID of
 // the desired image for the server. Changing this rebuilds the existing
@@ -816,8 +866,9 @@ func (o InstanceOutput) Networks() InstanceNetworkArrayOutput {
 }
 
 // Customize the personality of an instance by
-// defining one or more files and their contents. The personality structure
-// is described below. Changing this rebuilds the existing server.
+// defining one or more files and their contents. The personality structure is
+// described below. Conflicts with `hypervisorHostname`. Changing this rebuilds
+// the existing server.
 func (o InstanceOutput) Personalities() InstancePersonalityArrayOutput {
 	return o.ApplyT(func(v *Instance) InstancePersonalityArrayOutput { return v.Personalities }).(InstancePersonalityArrayOutput)
 }

@@ -36,6 +36,7 @@ class VolumeArgs:
                  snapshot_id: Optional[pulumi.Input[builtins.str]] = None,
                  source_replica: Optional[pulumi.Input[builtins.str]] = None,
                  source_vol_id: Optional[pulumi.Input[builtins.str]] = None,
+                 volume_retype_policy: Optional[pulumi.Input[builtins.str]] = None,
                  volume_type: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Volume resource.
@@ -71,8 +72,11 @@ class VolumeArgs:
         :param pulumi.Input[builtins.str] source_vol_id: The volume ID from which to create the volume.
                Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
                creates a new volume.
-        :param pulumi.Input[builtins.str] volume_type: The type of volume to create.
-               Changing this creates a new volume.
+        :param pulumi.Input[builtins.str] volume_retype_policy: Migration policy when changing `volume_type`.
+               `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+               allows migration if needed. Applicable only when updating `volume_type`.
+        :param pulumi.Input[builtins.str] volume_type: The type of volume to create or update.
+               Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
         """
         pulumi.set(__self__, "size", size)
         if availability_zone is not None:
@@ -101,6 +105,8 @@ class VolumeArgs:
             pulumi.set(__self__, "source_replica", source_replica)
         if source_vol_id is not None:
             pulumi.set(__self__, "source_vol_id", source_vol_id)
+        if volume_retype_policy is not None:
+            pulumi.set(__self__, "volume_retype_policy", volume_retype_policy)
         if volume_type is not None:
             pulumi.set(__self__, "volume_type", volume_type)
 
@@ -291,11 +297,25 @@ class VolumeArgs:
         pulumi.set(self, "source_vol_id", value)
 
     @property
+    @pulumi.getter(name="volumeRetypePolicy")
+    def volume_retype_policy(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Migration policy when changing `volume_type`.
+        `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+        allows migration if needed. Applicable only when updating `volume_type`.
+        """
+        return pulumi.get(self, "volume_retype_policy")
+
+    @volume_retype_policy.setter
+    def volume_retype_policy(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "volume_retype_policy", value)
+
+    @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The type of volume to create.
-        Changing this creates a new volume.
+        The type of volume to create or update.
+        Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
         """
         return pulumi.get(self, "volume_type")
 
@@ -322,6 +342,7 @@ class _VolumeState:
                  snapshot_id: Optional[pulumi.Input[builtins.str]] = None,
                  source_replica: Optional[pulumi.Input[builtins.str]] = None,
                  source_vol_id: Optional[pulumi.Input[builtins.str]] = None,
+                 volume_retype_policy: Optional[pulumi.Input[builtins.str]] = None,
                  volume_type: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Volume resources.
@@ -360,8 +381,11 @@ class _VolumeState:
         :param pulumi.Input[builtins.str] source_vol_id: The volume ID from which to create the volume.
                Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
                creates a new volume.
-        :param pulumi.Input[builtins.str] volume_type: The type of volume to create.
-               Changing this creates a new volume.
+        :param pulumi.Input[builtins.str] volume_retype_policy: Migration policy when changing `volume_type`.
+               `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+               allows migration if needed. Applicable only when updating `volume_type`.
+        :param pulumi.Input[builtins.str] volume_type: The type of volume to create or update.
+               Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
         """
         if attachments is not None:
             pulumi.set(__self__, "attachments", attachments)
@@ -393,6 +417,8 @@ class _VolumeState:
             pulumi.set(__self__, "source_replica", source_replica)
         if source_vol_id is not None:
             pulumi.set(__self__, "source_vol_id", source_vol_id)
+        if volume_retype_policy is not None:
+            pulumi.set(__self__, "volume_retype_policy", volume_retype_policy)
         if volume_type is not None:
             pulumi.set(__self__, "volume_type", volume_type)
 
@@ -597,11 +623,25 @@ class _VolumeState:
         pulumi.set(self, "source_vol_id", value)
 
     @property
+    @pulumi.getter(name="volumeRetypePolicy")
+    def volume_retype_policy(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Migration policy when changing `volume_type`.
+        `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+        allows migration if needed. Applicable only when updating `volume_type`.
+        """
+        return pulumi.get(self, "volume_retype_policy")
+
+    @volume_retype_policy.setter
+    def volume_retype_policy(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "volume_retype_policy", value)
+
+    @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The type of volume to create.
-        Changing this creates a new volume.
+        The type of volume to create or update.
+        Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
         """
         return pulumi.get(self, "volume_type")
 
@@ -630,6 +670,7 @@ class Volume(pulumi.CustomResource):
                  snapshot_id: Optional[pulumi.Input[builtins.str]] = None,
                  source_replica: Optional[pulumi.Input[builtins.str]] = None,
                  source_vol_id: Optional[pulumi.Input[builtins.str]] = None,
+                 volume_retype_policy: Optional[pulumi.Input[builtins.str]] = None,
                  volume_type: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
@@ -690,8 +731,11 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] source_vol_id: The volume ID from which to create the volume.
                Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
                creates a new volume.
-        :param pulumi.Input[builtins.str] volume_type: The type of volume to create.
-               Changing this creates a new volume.
+        :param pulumi.Input[builtins.str] volume_retype_policy: Migration policy when changing `volume_type`.
+               `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+               allows migration if needed. Applicable only when updating `volume_type`.
+        :param pulumi.Input[builtins.str] volume_type: The type of volume to create or update.
+               Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
         """
         ...
     @overload
@@ -752,6 +796,7 @@ class Volume(pulumi.CustomResource):
                  snapshot_id: Optional[pulumi.Input[builtins.str]] = None,
                  source_replica: Optional[pulumi.Input[builtins.str]] = None,
                  source_vol_id: Optional[pulumi.Input[builtins.str]] = None,
+                 volume_retype_policy: Optional[pulumi.Input[builtins.str]] = None,
                  volume_type: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -778,6 +823,7 @@ class Volume(pulumi.CustomResource):
             __props__.__dict__["snapshot_id"] = snapshot_id
             __props__.__dict__["source_replica"] = source_replica
             __props__.__dict__["source_vol_id"] = source_vol_id
+            __props__.__dict__["volume_retype_policy"] = volume_retype_policy
             __props__.__dict__["volume_type"] = volume_type
             __props__.__dict__["attachments"] = None
         super(Volume, __self__).__init__(
@@ -805,6 +851,7 @@ class Volume(pulumi.CustomResource):
             snapshot_id: Optional[pulumi.Input[builtins.str]] = None,
             source_replica: Optional[pulumi.Input[builtins.str]] = None,
             source_vol_id: Optional[pulumi.Input[builtins.str]] = None,
+            volume_retype_policy: Optional[pulumi.Input[builtins.str]] = None,
             volume_type: Optional[pulumi.Input[builtins.str]] = None) -> 'Volume':
         """
         Get an existing Volume resource's state with the given name, id, and optional extra
@@ -848,8 +895,11 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] source_vol_id: The volume ID from which to create the volume.
                Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
                creates a new volume.
-        :param pulumi.Input[builtins.str] volume_type: The type of volume to create.
-               Changing this creates a new volume.
+        :param pulumi.Input[builtins.str] volume_retype_policy: Migration policy when changing `volume_type`.
+               `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+               allows migration if needed. Applicable only when updating `volume_type`.
+        :param pulumi.Input[builtins.str] volume_type: The type of volume to create or update.
+               Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -870,6 +920,7 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["snapshot_id"] = snapshot_id
         __props__.__dict__["source_replica"] = source_replica
         __props__.__dict__["source_vol_id"] = source_vol_id
+        __props__.__dict__["volume_retype_policy"] = volume_retype_policy
         __props__.__dict__["volume_type"] = volume_type
         return Volume(resource_name, opts=opts, __props__=__props__)
 
@@ -1014,11 +1065,21 @@ class Volume(pulumi.CustomResource):
         return pulumi.get(self, "source_vol_id")
 
     @property
+    @pulumi.getter(name="volumeRetypePolicy")
+    def volume_retype_policy(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Migration policy when changing `volume_type`.
+        `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+        allows migration if needed. Applicable only when updating `volume_type`.
+        """
+        return pulumi.get(self, "volume_retype_policy")
+
+    @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> pulumi.Output[builtins.str]:
         """
-        The type of volume to create.
-        Changing this creates a new volume.
+        The type of volume to create or update.
+        Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
         """
         return pulumi.get(self, "volume_type")
 

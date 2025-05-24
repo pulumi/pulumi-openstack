@@ -879,6 +879,92 @@ public final class ComputeFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetHypervisorV2Result> getHypervisorV2() {
+        return getHypervisorV2(GetHypervisorV2Args.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about hypervisors
+     * by hostname.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.compute.ComputeFunctions;
+     * import com.pulumi.openstack.compute.inputs.GetHypervisorV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var host01 = ComputeFunctions.getHypervisorV2(GetHypervisorV2Args.builder()
+     *             .hostname("host01")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetHypervisorV2Result> getHypervisorV2Plain() {
+        return getHypervisorV2Plain(GetHypervisorV2PlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about hypervisors
+     * by hostname.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.compute.ComputeFunctions;
+     * import com.pulumi.openstack.compute.inputs.GetHypervisorV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var host01 = ComputeFunctions.getHypervisorV2(GetHypervisorV2Args.builder()
+     *             .hostname("host01")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetHypervisorV2Result> getHypervisorV2(GetHypervisorV2Args args) {
         return getHypervisorV2(args, InvokeOptions.Empty);
     }

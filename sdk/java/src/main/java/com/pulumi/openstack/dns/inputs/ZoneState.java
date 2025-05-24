@@ -122,7 +122,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the project DNS zone is created
      * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-     * user role in target project)
+     * user role in target project).
      * 
      */
     @Import(name="projectId")
@@ -131,7 +131,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The ID of the project DNS zone is created
      * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-     * user role in target project)
+     * user role in target project).
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -139,9 +139,8 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The region in which to obtain the V2 Compute client.
-     * Keypairs are associated with accounts, but a Compute client is needed to
-     * create one. If omitted, the `region` argument of the provider is used.
+     * The region in which to obtain the V2 DNS client.
+     * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone.
      * 
      */
@@ -149,9 +148,8 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> region;
 
     /**
-     * @return The region in which to obtain the V2 Compute client.
-     * Keypairs are associated with accounts, but a Compute client is needed to
-     * create one. If omitted, the `region` argument of the provider is used.
+     * @return The region in which to obtain the V2 DNS client.
+     * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone.
      * 
      */
@@ -392,7 +390,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param projectId The ID of the project DNS zone is created
          * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-         * user role in target project)
+         * user role in target project).
          * 
          * @return builder
          * 
@@ -405,7 +403,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param projectId The ID of the project DNS zone is created
          * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-         * user role in target project)
+         * user role in target project).
          * 
          * @return builder
          * 
@@ -415,9 +413,8 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region in which to obtain the V2 Compute client.
-         * Keypairs are associated with accounts, but a Compute client is needed to
-         * create one. If omitted, the `region` argument of the provider is used.
+         * @param region The region in which to obtain the V2 DNS client.
+         * If omitted, the `region` argument of the provider is used.
          * Changing this creates a new DNS zone.
          * 
          * @return builder
@@ -429,9 +426,8 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region in which to obtain the V2 Compute client.
-         * Keypairs are associated with accounts, but a Compute client is needed to
-         * create one. If omitted, the `region` argument of the provider is used.
+         * @param region The region in which to obtain the V2 DNS client.
+         * If omitted, the `region` argument of the provider is used.
          * Changing this creates a new DNS zone.
          * 
          * @return builder

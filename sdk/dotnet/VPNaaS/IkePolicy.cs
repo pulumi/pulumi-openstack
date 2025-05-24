@@ -42,8 +42,9 @@ namespace Pulumi.OpenStack.VPNaaS
     public partial class IkePolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-        /// Default is sha1. Changing this updates the algorithm of the existing policy.
+        /// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+        /// aes-xcbc, aes-cmac. Default is sha1.
+        /// Changing this updates the algorithm of the existing policy.
         /// </summary>
         [Output("authAlgorithm")]
         public Output<string?> AuthAlgorithm { get; private set; } = null!;
@@ -56,7 +57,8 @@ namespace Pulumi.OpenStack.VPNaaS
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+        /// The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+        /// aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
         /// The default value is aes-128. Changing this updates the existing policy.
         /// </summary>
         [Output("encryptionAlgorithm")]
@@ -83,8 +85,8 @@ namespace Pulumi.OpenStack.VPNaaS
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-        /// Changing this updates the existing policy.
+        /// The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+        /// Default is group5. Changing this updates the existing policy.
         /// </summary>
         [Output("pfs")]
         public Output<string?> Pfs { get; private set; } = null!;
@@ -165,8 +167,9 @@ namespace Pulumi.OpenStack.VPNaaS
     public sealed class IkePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-        /// Default is sha1. Changing this updates the algorithm of the existing policy.
+        /// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+        /// aes-xcbc, aes-cmac. Default is sha1.
+        /// Changing this updates the algorithm of the existing policy.
         /// </summary>
         [Input("authAlgorithm")]
         public Input<string>? AuthAlgorithm { get; set; }
@@ -179,7 +182,8 @@ namespace Pulumi.OpenStack.VPNaaS
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+        /// The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+        /// aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
         /// The default value is aes-128. Changing this updates the existing policy.
         /// </summary>
         [Input("encryptionAlgorithm")]
@@ -212,8 +216,8 @@ namespace Pulumi.OpenStack.VPNaaS
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-        /// Changing this updates the existing policy.
+        /// The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+        /// Default is group5. Changing this updates the existing policy.
         /// </summary>
         [Input("pfs")]
         public Input<string>? Pfs { get; set; }
@@ -262,8 +266,9 @@ namespace Pulumi.OpenStack.VPNaaS
     public sealed class IkePolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-        /// Default is sha1. Changing this updates the algorithm of the existing policy.
+        /// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+        /// aes-xcbc, aes-cmac. Default is sha1.
+        /// Changing this updates the algorithm of the existing policy.
         /// </summary>
         [Input("authAlgorithm")]
         public Input<string>? AuthAlgorithm { get; set; }
@@ -276,7 +281,8 @@ namespace Pulumi.OpenStack.VPNaaS
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+        /// The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+        /// aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
         /// The default value is aes-128. Changing this updates the existing policy.
         /// </summary>
         [Input("encryptionAlgorithm")]
@@ -309,8 +315,8 @@ namespace Pulumi.OpenStack.VPNaaS
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-        /// Changing this updates the existing policy.
+        /// The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+        /// Default is group5. Changing this updates the existing policy.
         /// </summary>
         [Input("pfs")]
         public Input<string>? Pfs { get; set; }

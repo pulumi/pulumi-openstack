@@ -20,9 +20,9 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Sets an access control list (ACL) that grants
-     * read access. This header can contain a comma-delimited list of users that
-     * can read the container (allows the GET method for all objects in the
-     * container). Changing this updates the access control list read access.
+     * read access. This header can contain a comma-delimited list of users that can
+     * read the container (allows the GET method for all objects in the container).
+     * Changing this updates the access control list read access.
      * 
      */
     @Import(name="containerRead")
@@ -30,9 +30,9 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Sets an access control list (ACL) that grants
-     * read access. This header can contain a comma-delimited list of users that
-     * can read the container (allows the GET method for all objects in the
-     * container). Changing this updates the access control list read access.
+     * read access. This header can contain a comma-delimited list of users that can
+     * read the container (allows the GET method for all objects in the container).
+     * Changing this updates the access control list read access.
      * 
      */
     public Optional<Output<String>> containerRead() {
@@ -40,16 +40,16 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The secret key for container synchronization.
-     * Changing this updates container synchronization.
+     * The secret key for container
+     * synchronization. Changing this updates container synchronization.
      * 
      */
     @Import(name="containerSyncKey")
     private @Nullable Output<String> containerSyncKey;
 
     /**
-     * @return The secret key for container synchronization.
-     * Changing this updates container synchronization.
+     * @return The secret key for container
+     * synchronization. Changing this updates container synchronization.
      * 
      */
     public Optional<Output<String>> containerSyncKey() {
@@ -57,16 +57,16 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The destination for container synchronization.
-     * Changing this updates container synchronization.
+     * The destination for container
+     * synchronization. Changing this updates container synchronization.
      * 
      */
     @Import(name="containerSyncTo")
     private @Nullable Output<String> containerSyncTo;
 
     /**
-     * @return The destination for container synchronization.
-     * Changing this updates container synchronization.
+     * @return The destination for container
+     * synchronization. Changing this updates container synchronization.
      * 
      */
     public Optional<Output<String>> containerSyncTo() {
@@ -74,16 +74,16 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Sets an ACL that grants write access.
-     * Changing this updates the access control list write access.
+     * Sets an ACL that grants write access. Changing
+     * this updates the access control list write access.
      * 
      */
     @Import(name="containerWrite")
     private @Nullable Output<String> containerWrite;
 
     /**
-     * @return Sets an ACL that grants write access.
-     * Changing this updates the access control list write access.
+     * @return Sets an ACL that grants write access. Changing
+     * this updates the access control list write access.
      * 
      */
     public Optional<Output<String>> containerWrite() {
@@ -108,14 +108,18 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+     * A boolean that indicates all
+     * objects should be deleted from the container so that the container can be
+     * destroyed without error. These objects are not recoverable.
      * 
      */
     @Import(name="forceDestroy")
     private @Nullable Output<Boolean> forceDestroy;
 
     /**
-     * @return A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+     * @return A boolean that indicates all
+     * objects should be deleted from the container so that the container can be
+     * destroyed without error. These objects are not recoverable.
      * 
      */
     public Optional<Output<Boolean>> forceDestroy() {
@@ -123,16 +127,16 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom key/value pairs to associate with the container.
-     * Changing this updates the existing container metadata.
+     * Custom key/value pairs to associate with the
+     * container. Changing this updates the existing container metadata.
      * 
      */
     @Import(name="metadata")
     private @Nullable Output<Map<String,String>> metadata;
 
     /**
-     * @return Custom key/value pairs to associate with the container.
-     * Changing this updates the existing container metadata.
+     * @return Custom key/value pairs to associate with the
+     * container. Changing this updates the existing container metadata.
      * 
      */
     public Optional<Output<Map<String,String>>> metadata() {
@@ -158,8 +162,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The region in which to create the container. If
-     * omitted, the `region` argument of the provider is used. Changing this
-     * creates a new container.
+     * omitted, the `region` argument of the provider is used. Changing this creates
+     * a new container.
      * 
      */
     @Import(name="region")
@@ -167,8 +171,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The region in which to create the container. If
-     * omitted, the `region` argument of the provider is used. Changing this
-     * creates a new container.
+     * omitted, the `region` argument of the provider is used. Changing this creates
+     * a new container.
      * 
      */
     public Optional<Output<String>> region() {
@@ -176,16 +180,35 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The storage policy to be used for the container.
-     * Changing this creates a new container.
+     * The storage class to be used for the container.
+     * Changing this creates a new container. This option is only available in Ceph
+     * RGW Swift API implementation.
+     * 
+     */
+    @Import(name="storageClass")
+    private @Nullable Output<String> storageClass;
+
+    /**
+     * @return The storage class to be used for the container.
+     * Changing this creates a new container. This option is only available in Ceph
+     * RGW Swift API implementation.
+     * 
+     */
+    public Optional<Output<String>> storageClass() {
+        return Optional.ofNullable(this.storageClass);
+    }
+
+    /**
+     * The storage policy to be used for the
+     * container. Changing this creates a new container.
      * 
      */
     @Import(name="storagePolicy")
     private @Nullable Output<String> storagePolicy;
 
     /**
-     * @return The storage policy to be used for the container.
-     * Changing this creates a new container.
+     * @return The storage policy to be used for the
+     * container. Changing this creates a new container.
      * 
      */
     public Optional<Output<String>> storagePolicy() {
@@ -195,10 +218,12 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A boolean that can enable or disable object
      * versioning. The default value is `false`. To use this feature, your Swift
-     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+     * release
+     * notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
      * and a cloud administrator must have set the `allow_object_versioning = true`
-     * configuration option in Swift. If you cannot set this versioning type, you may
-     * want to consider using `versioning_legacy` instead.
+     * configuration option in Swift. If you cannot set this versioning type, you
+     * may want to consider using `versioning_legacy` instead.
      * 
      */
     @Import(name="versioning")
@@ -207,10 +232,12 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A boolean that can enable or disable object
      * versioning. The default value is `false`. To use this feature, your Swift
-     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+     * release
+     * notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
      * and a cloud administrator must have set the `allow_object_versioning = true`
-     * configuration option in Swift. If you cannot set this versioning type, you may
-     * want to consider using `versioning_legacy` instead.
+     * configuration option in Swift. If you cannot set this versioning type, you
+     * may want to consider using `versioning_legacy` instead.
      * 
      */
     public Optional<Output<Boolean>> versioning() {
@@ -218,7 +245,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable legacy object versioning. The structure is described below.
+     * Enable legacy object versioning. The
+     * structure is described below.
      * 
      * @deprecated
      * Use newer &#34;versioning&#34; implementation
@@ -229,7 +257,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ContainerVersioningLegacyArgs> versioningLegacy;
 
     /**
-     * @return Enable legacy object versioning. The structure is described below.
+     * @return Enable legacy object versioning. The
+     * structure is described below.
      * 
      * @deprecated
      * Use newer &#34;versioning&#34; implementation
@@ -252,6 +281,7 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         this.metadata = $.metadata;
         this.name = $.name;
         this.region = $.region;
+        this.storageClass = $.storageClass;
         this.storagePolicy = $.storagePolicy;
         this.versioning = $.versioning;
         this.versioningLegacy = $.versioningLegacy;
@@ -277,9 +307,9 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param containerRead Sets an access control list (ACL) that grants
-         * read access. This header can contain a comma-delimited list of users that
-         * can read the container (allows the GET method for all objects in the
-         * container). Changing this updates the access control list read access.
+         * read access. This header can contain a comma-delimited list of users that can
+         * read the container (allows the GET method for all objects in the container).
+         * Changing this updates the access control list read access.
          * 
          * @return builder
          * 
@@ -291,9 +321,9 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param containerRead Sets an access control list (ACL) that grants
-         * read access. This header can contain a comma-delimited list of users that
-         * can read the container (allows the GET method for all objects in the
-         * container). Changing this updates the access control list read access.
+         * read access. This header can contain a comma-delimited list of users that can
+         * read the container (allows the GET method for all objects in the container).
+         * Changing this updates the access control list read access.
          * 
          * @return builder
          * 
@@ -303,8 +333,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerSyncKey The secret key for container synchronization.
-         * Changing this updates container synchronization.
+         * @param containerSyncKey The secret key for container
+         * synchronization. Changing this updates container synchronization.
          * 
          * @return builder
          * 
@@ -315,8 +345,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerSyncKey The secret key for container synchronization.
-         * Changing this updates container synchronization.
+         * @param containerSyncKey The secret key for container
+         * synchronization. Changing this updates container synchronization.
          * 
          * @return builder
          * 
@@ -326,8 +356,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerSyncTo The destination for container synchronization.
-         * Changing this updates container synchronization.
+         * @param containerSyncTo The destination for container
+         * synchronization. Changing this updates container synchronization.
          * 
          * @return builder
          * 
@@ -338,8 +368,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerSyncTo The destination for container synchronization.
-         * Changing this updates container synchronization.
+         * @param containerSyncTo The destination for container
+         * synchronization. Changing this updates container synchronization.
          * 
          * @return builder
          * 
@@ -349,8 +379,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerWrite Sets an ACL that grants write access.
-         * Changing this updates the access control list write access.
+         * @param containerWrite Sets an ACL that grants write access. Changing
+         * this updates the access control list write access.
          * 
          * @return builder
          * 
@@ -361,8 +391,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerWrite Sets an ACL that grants write access.
-         * Changing this updates the access control list write access.
+         * @param containerWrite Sets an ACL that grants write access. Changing
+         * this updates the access control list write access.
          * 
          * @return builder
          * 
@@ -395,7 +425,9 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDestroy A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+         * @param forceDestroy A boolean that indicates all
+         * objects should be deleted from the container so that the container can be
+         * destroyed without error. These objects are not recoverable.
          * 
          * @return builder
          * 
@@ -406,7 +438,9 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDestroy A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+         * @param forceDestroy A boolean that indicates all
+         * objects should be deleted from the container so that the container can be
+         * destroyed without error. These objects are not recoverable.
          * 
          * @return builder
          * 
@@ -416,8 +450,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadata Custom key/value pairs to associate with the container.
-         * Changing this updates the existing container metadata.
+         * @param metadata Custom key/value pairs to associate with the
+         * container. Changing this updates the existing container metadata.
          * 
          * @return builder
          * 
@@ -428,8 +462,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadata Custom key/value pairs to associate with the container.
-         * Changing this updates the existing container metadata.
+         * @param metadata Custom key/value pairs to associate with the
+         * container. Changing this updates the existing container metadata.
          * 
          * @return builder
          * 
@@ -463,8 +497,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param region The region in which to create the container. If
-         * omitted, the `region` argument of the provider is used. Changing this
-         * creates a new container.
+         * omitted, the `region` argument of the provider is used. Changing this creates
+         * a new container.
          * 
          * @return builder
          * 
@@ -476,8 +510,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param region The region in which to create the container. If
-         * omitted, the `region` argument of the provider is used. Changing this
-         * creates a new container.
+         * omitted, the `region` argument of the provider is used. Changing this creates
+         * a new container.
          * 
          * @return builder
          * 
@@ -487,8 +521,33 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storagePolicy The storage policy to be used for the container.
-         * Changing this creates a new container.
+         * @param storageClass The storage class to be used for the container.
+         * Changing this creates a new container. This option is only available in Ceph
+         * RGW Swift API implementation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageClass(@Nullable Output<String> storageClass) {
+            $.storageClass = storageClass;
+            return this;
+        }
+
+        /**
+         * @param storageClass The storage class to be used for the container.
+         * Changing this creates a new container. This option is only available in Ceph
+         * RGW Swift API implementation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageClass(String storageClass) {
+            return storageClass(Output.of(storageClass));
+        }
+
+        /**
+         * @param storagePolicy The storage policy to be used for the
+         * container. Changing this creates a new container.
          * 
          * @return builder
          * 
@@ -499,8 +558,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storagePolicy The storage policy to be used for the container.
-         * Changing this creates a new container.
+         * @param storagePolicy The storage policy to be used for the
+         * container. Changing this creates a new container.
          * 
          * @return builder
          * 
@@ -512,10 +571,12 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param versioning A boolean that can enable or disable object
          * versioning. The default value is `false`. To use this feature, your Swift
-         * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+         * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+         * release
+         * notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
          * and a cloud administrator must have set the `allow_object_versioning = true`
-         * configuration option in Swift. If you cannot set this versioning type, you may
-         * want to consider using `versioning_legacy` instead.
+         * configuration option in Swift. If you cannot set this versioning type, you
+         * may want to consider using `versioning_legacy` instead.
          * 
          * @return builder
          * 
@@ -528,10 +589,12 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param versioning A boolean that can enable or disable object
          * versioning. The default value is `false`. To use this feature, your Swift
-         * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+         * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+         * release
+         * notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
          * and a cloud administrator must have set the `allow_object_versioning = true`
-         * configuration option in Swift. If you cannot set this versioning type, you may
-         * want to consider using `versioning_legacy` instead.
+         * configuration option in Swift. If you cannot set this versioning type, you
+         * may want to consider using `versioning_legacy` instead.
          * 
          * @return builder
          * 
@@ -541,7 +604,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versioningLegacy Enable legacy object versioning. The structure is described below.
+         * @param versioningLegacy Enable legacy object versioning. The
+         * structure is described below.
          * 
          * @return builder
          * 
@@ -556,7 +620,8 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versioningLegacy Enable legacy object versioning. The structure is described below.
+         * @param versioningLegacy Enable legacy object versioning. The
+         * structure is described below.
          * 
          * @return builder
          * 

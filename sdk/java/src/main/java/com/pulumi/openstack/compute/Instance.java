@@ -237,6 +237,30 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.forceDelete);
     }
     /**
+     * Specifies the exact hypervisor hostname on
+     * which to create the instance. When provided, this parameter is included in
+     * the request to Nova, directing the scheduler to launch the instance on the
+     * specified host. Note: This option requires administrative privileges and a
+     * Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+     * this value forces a new instance to be created.
+     * 
+     */
+    @Export(name="hypervisorHostname", refs={String.class}, tree="[0]")
+    private Output<String> hypervisorHostname;
+
+    /**
+     * @return Specifies the exact hypervisor hostname on
+     * which to create the instance. When provided, this parameter is included in
+     * the request to Nova, directing the scheduler to launch the instance on the
+     * specified host. Note: This option requires administrative privileges and a
+     * Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+     * this value forces a new instance to be created.
+     * 
+     */
+    public Output<String> hypervisorHostname() {
+        return this.hypervisorHostname;
+    }
+    /**
      * (Optional; Required if `image_name` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The image ID of
      * the desired image for the server. Changing this rebuilds the existing
@@ -360,8 +384,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Customize the personality of an instance by
-     * defining one or more files and their contents. The personality structure
-     * is described below. Changing this rebuilds the existing server.
+     * defining one or more files and their contents. The personality structure is
+     * described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+     * the existing server.
      * 
      */
     @Export(name="personalities", refs={List.class,InstancePersonality.class}, tree="[0,1]")
@@ -369,8 +394,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Customize the personality of an instance by
-     * defining one or more files and their contents. The personality structure
-     * is described below. Changing this rebuilds the existing server.
+     * defining one or more files and their contents. The personality structure is
+     * described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+     * the existing server.
      * 
      */
     public Output<Optional<List<InstancePersonality>>> personalities() {

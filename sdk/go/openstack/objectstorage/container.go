@@ -179,6 +179,34 @@ import (
 //
 // ```
 //
+// ### Set a custom storage class in the Ceph RGW Swift API
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/objectstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := objectstorage.NewContainer(ctx, "container_1", &objectstorage.ContainerArgs{
+//				Name:          pulumi.String("tf-test-container-1"),
+//				StoragePolicy: pulumi.String("az1"),
+//				StorageClass:  pulumi.String("SSD"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by specifying the name of the container:
@@ -199,45 +227,54 @@ type Container struct {
 	pulumi.CustomResourceState
 
 	// Sets an access control list (ACL) that grants
-	// read access. This header can contain a comma-delimited list of users that
-	// can read the container (allows the GET method for all objects in the
-	// container). Changing this updates the access control list read access.
+	// read access. This header can contain a comma-delimited list of users that can
+	// read the container (allows the GET method for all objects in the container).
+	// Changing this updates the access control list read access.
 	ContainerRead pulumi.StringPtrOutput `pulumi:"containerRead"`
-	// The secret key for container synchronization.
-	// Changing this updates container synchronization.
+	// The secret key for container
+	// synchronization. Changing this updates container synchronization.
 	ContainerSyncKey pulumi.StringPtrOutput `pulumi:"containerSyncKey"`
-	// The destination for container synchronization.
-	// Changing this updates container synchronization.
+	// The destination for container
+	// synchronization. Changing this updates container synchronization.
 	ContainerSyncTo pulumi.StringPtrOutput `pulumi:"containerSyncTo"`
-	// Sets an ACL that grants write access.
-	// Changing this updates the access control list write access.
+	// Sets an ACL that grants write access. Changing
+	// this updates the access control list write access.
 	ContainerWrite pulumi.StringPtrOutput `pulumi:"containerWrite"`
 	// The MIME type for the container. Changing this
 	// updates the MIME type.
 	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
-	// A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+	// A boolean that indicates all
+	// objects should be deleted from the container so that the container can be
+	// destroyed without error. These objects are not recoverable.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
-	// Custom key/value pairs to associate with the container.
-	// Changing this updates the existing container metadata.
+	// Custom key/value pairs to associate with the
+	// container. Changing this updates the existing container metadata.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// A unique name for the container. Changing this creates a
 	// new container.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The region in which to create the container. If
-	// omitted, the `region` argument of the provider is used. Changing this
-	// creates a new container.
+	// omitted, the `region` argument of the provider is used. Changing this creates
+	// a new container.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The storage policy to be used for the container.
-	// Changing this creates a new container.
+	// The storage class to be used for the container.
+	// Changing this creates a new container. This option is only available in Ceph
+	// RGW Swift API implementation.
+	StorageClass pulumi.StringOutput `pulumi:"storageClass"`
+	// The storage policy to be used for the
+	// container. Changing this creates a new container.
 	StoragePolicy pulumi.StringOutput `pulumi:"storagePolicy"`
 	// A boolean that can enable or disable object
 	// versioning. The default value is `false`. To use this feature, your Swift
-	// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+	// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+	// release
+	// notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
 	// and a cloud administrator must have set the `allowObjectVersioning = true`
-	// configuration option in Swift. If you cannot set this versioning type, you may
-	// want to consider using `versioningLegacy` instead.
+	// configuration option in Swift. If you cannot set this versioning type, you
+	// may want to consider using `versioningLegacy` instead.
 	Versioning pulumi.BoolPtrOutput `pulumi:"versioning"`
-	// Enable legacy object versioning. The structure is described below.
+	// Enable legacy object versioning. The
+	// structure is described below.
 	//
 	// Deprecated: Use newer "versioning" implementation
 	VersioningLegacy ContainerVersioningLegacyPtrOutput `pulumi:"versioningLegacy"`
@@ -274,45 +311,54 @@ func GetContainer(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Container resources.
 type containerState struct {
 	// Sets an access control list (ACL) that grants
-	// read access. This header can contain a comma-delimited list of users that
-	// can read the container (allows the GET method for all objects in the
-	// container). Changing this updates the access control list read access.
+	// read access. This header can contain a comma-delimited list of users that can
+	// read the container (allows the GET method for all objects in the container).
+	// Changing this updates the access control list read access.
 	ContainerRead *string `pulumi:"containerRead"`
-	// The secret key for container synchronization.
-	// Changing this updates container synchronization.
+	// The secret key for container
+	// synchronization. Changing this updates container synchronization.
 	ContainerSyncKey *string `pulumi:"containerSyncKey"`
-	// The destination for container synchronization.
-	// Changing this updates container synchronization.
+	// The destination for container
+	// synchronization. Changing this updates container synchronization.
 	ContainerSyncTo *string `pulumi:"containerSyncTo"`
-	// Sets an ACL that grants write access.
-	// Changing this updates the access control list write access.
+	// Sets an ACL that grants write access. Changing
+	// this updates the access control list write access.
 	ContainerWrite *string `pulumi:"containerWrite"`
 	// The MIME type for the container. Changing this
 	// updates the MIME type.
 	ContentType *string `pulumi:"contentType"`
-	// A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+	// A boolean that indicates all
+	// objects should be deleted from the container so that the container can be
+	// destroyed without error. These objects are not recoverable.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// Custom key/value pairs to associate with the container.
-	// Changing this updates the existing container metadata.
+	// Custom key/value pairs to associate with the
+	// container. Changing this updates the existing container metadata.
 	Metadata map[string]string `pulumi:"metadata"`
 	// A unique name for the container. Changing this creates a
 	// new container.
 	Name *string `pulumi:"name"`
 	// The region in which to create the container. If
-	// omitted, the `region` argument of the provider is used. Changing this
-	// creates a new container.
+	// omitted, the `region` argument of the provider is used. Changing this creates
+	// a new container.
 	Region *string `pulumi:"region"`
-	// The storage policy to be used for the container.
-	// Changing this creates a new container.
+	// The storage class to be used for the container.
+	// Changing this creates a new container. This option is only available in Ceph
+	// RGW Swift API implementation.
+	StorageClass *string `pulumi:"storageClass"`
+	// The storage policy to be used for the
+	// container. Changing this creates a new container.
 	StoragePolicy *string `pulumi:"storagePolicy"`
 	// A boolean that can enable or disable object
 	// versioning. The default value is `false`. To use this feature, your Swift
-	// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+	// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+	// release
+	// notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
 	// and a cloud administrator must have set the `allowObjectVersioning = true`
-	// configuration option in Swift. If you cannot set this versioning type, you may
-	// want to consider using `versioningLegacy` instead.
+	// configuration option in Swift. If you cannot set this versioning type, you
+	// may want to consider using `versioningLegacy` instead.
 	Versioning *bool `pulumi:"versioning"`
-	// Enable legacy object versioning. The structure is described below.
+	// Enable legacy object versioning. The
+	// structure is described below.
 	//
 	// Deprecated: Use newer "versioning" implementation
 	VersioningLegacy *ContainerVersioningLegacy `pulumi:"versioningLegacy"`
@@ -320,45 +366,54 @@ type containerState struct {
 
 type ContainerState struct {
 	// Sets an access control list (ACL) that grants
-	// read access. This header can contain a comma-delimited list of users that
-	// can read the container (allows the GET method for all objects in the
-	// container). Changing this updates the access control list read access.
+	// read access. This header can contain a comma-delimited list of users that can
+	// read the container (allows the GET method for all objects in the container).
+	// Changing this updates the access control list read access.
 	ContainerRead pulumi.StringPtrInput
-	// The secret key for container synchronization.
-	// Changing this updates container synchronization.
+	// The secret key for container
+	// synchronization. Changing this updates container synchronization.
 	ContainerSyncKey pulumi.StringPtrInput
-	// The destination for container synchronization.
-	// Changing this updates container synchronization.
+	// The destination for container
+	// synchronization. Changing this updates container synchronization.
 	ContainerSyncTo pulumi.StringPtrInput
-	// Sets an ACL that grants write access.
-	// Changing this updates the access control list write access.
+	// Sets an ACL that grants write access. Changing
+	// this updates the access control list write access.
 	ContainerWrite pulumi.StringPtrInput
 	// The MIME type for the container. Changing this
 	// updates the MIME type.
 	ContentType pulumi.StringPtrInput
-	// A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+	// A boolean that indicates all
+	// objects should be deleted from the container so that the container can be
+	// destroyed without error. These objects are not recoverable.
 	ForceDestroy pulumi.BoolPtrInput
-	// Custom key/value pairs to associate with the container.
-	// Changing this updates the existing container metadata.
+	// Custom key/value pairs to associate with the
+	// container. Changing this updates the existing container metadata.
 	Metadata pulumi.StringMapInput
 	// A unique name for the container. Changing this creates a
 	// new container.
 	Name pulumi.StringPtrInput
 	// The region in which to create the container. If
-	// omitted, the `region` argument of the provider is used. Changing this
-	// creates a new container.
+	// omitted, the `region` argument of the provider is used. Changing this creates
+	// a new container.
 	Region pulumi.StringPtrInput
-	// The storage policy to be used for the container.
-	// Changing this creates a new container.
+	// The storage class to be used for the container.
+	// Changing this creates a new container. This option is only available in Ceph
+	// RGW Swift API implementation.
+	StorageClass pulumi.StringPtrInput
+	// The storage policy to be used for the
+	// container. Changing this creates a new container.
 	StoragePolicy pulumi.StringPtrInput
 	// A boolean that can enable or disable object
 	// versioning. The default value is `false`. To use this feature, your Swift
-	// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+	// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+	// release
+	// notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
 	// and a cloud administrator must have set the `allowObjectVersioning = true`
-	// configuration option in Swift. If you cannot set this versioning type, you may
-	// want to consider using `versioningLegacy` instead.
+	// configuration option in Swift. If you cannot set this versioning type, you
+	// may want to consider using `versioningLegacy` instead.
 	Versioning pulumi.BoolPtrInput
-	// Enable legacy object versioning. The structure is described below.
+	// Enable legacy object versioning. The
+	// structure is described below.
 	//
 	// Deprecated: Use newer "versioning" implementation
 	VersioningLegacy ContainerVersioningLegacyPtrInput
@@ -370,45 +425,54 @@ func (ContainerState) ElementType() reflect.Type {
 
 type containerArgs struct {
 	// Sets an access control list (ACL) that grants
-	// read access. This header can contain a comma-delimited list of users that
-	// can read the container (allows the GET method for all objects in the
-	// container). Changing this updates the access control list read access.
+	// read access. This header can contain a comma-delimited list of users that can
+	// read the container (allows the GET method for all objects in the container).
+	// Changing this updates the access control list read access.
 	ContainerRead *string `pulumi:"containerRead"`
-	// The secret key for container synchronization.
-	// Changing this updates container synchronization.
+	// The secret key for container
+	// synchronization. Changing this updates container synchronization.
 	ContainerSyncKey *string `pulumi:"containerSyncKey"`
-	// The destination for container synchronization.
-	// Changing this updates container synchronization.
+	// The destination for container
+	// synchronization. Changing this updates container synchronization.
 	ContainerSyncTo *string `pulumi:"containerSyncTo"`
-	// Sets an ACL that grants write access.
-	// Changing this updates the access control list write access.
+	// Sets an ACL that grants write access. Changing
+	// this updates the access control list write access.
 	ContainerWrite *string `pulumi:"containerWrite"`
 	// The MIME type for the container. Changing this
 	// updates the MIME type.
 	ContentType *string `pulumi:"contentType"`
-	// A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+	// A boolean that indicates all
+	// objects should be deleted from the container so that the container can be
+	// destroyed without error. These objects are not recoverable.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// Custom key/value pairs to associate with the container.
-	// Changing this updates the existing container metadata.
+	// Custom key/value pairs to associate with the
+	// container. Changing this updates the existing container metadata.
 	Metadata map[string]string `pulumi:"metadata"`
 	// A unique name for the container. Changing this creates a
 	// new container.
 	Name *string `pulumi:"name"`
 	// The region in which to create the container. If
-	// omitted, the `region` argument of the provider is used. Changing this
-	// creates a new container.
+	// omitted, the `region` argument of the provider is used. Changing this creates
+	// a new container.
 	Region *string `pulumi:"region"`
-	// The storage policy to be used for the container.
-	// Changing this creates a new container.
+	// The storage class to be used for the container.
+	// Changing this creates a new container. This option is only available in Ceph
+	// RGW Swift API implementation.
+	StorageClass *string `pulumi:"storageClass"`
+	// The storage policy to be used for the
+	// container. Changing this creates a new container.
 	StoragePolicy *string `pulumi:"storagePolicy"`
 	// A boolean that can enable or disable object
 	// versioning. The default value is `false`. To use this feature, your Swift
-	// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+	// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+	// release
+	// notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
 	// and a cloud administrator must have set the `allowObjectVersioning = true`
-	// configuration option in Swift. If you cannot set this versioning type, you may
-	// want to consider using `versioningLegacy` instead.
+	// configuration option in Swift. If you cannot set this versioning type, you
+	// may want to consider using `versioningLegacy` instead.
 	Versioning *bool `pulumi:"versioning"`
-	// Enable legacy object versioning. The structure is described below.
+	// Enable legacy object versioning. The
+	// structure is described below.
 	//
 	// Deprecated: Use newer "versioning" implementation
 	VersioningLegacy *ContainerVersioningLegacy `pulumi:"versioningLegacy"`
@@ -417,45 +481,54 @@ type containerArgs struct {
 // The set of arguments for constructing a Container resource.
 type ContainerArgs struct {
 	// Sets an access control list (ACL) that grants
-	// read access. This header can contain a comma-delimited list of users that
-	// can read the container (allows the GET method for all objects in the
-	// container). Changing this updates the access control list read access.
+	// read access. This header can contain a comma-delimited list of users that can
+	// read the container (allows the GET method for all objects in the container).
+	// Changing this updates the access control list read access.
 	ContainerRead pulumi.StringPtrInput
-	// The secret key for container synchronization.
-	// Changing this updates container synchronization.
+	// The secret key for container
+	// synchronization. Changing this updates container synchronization.
 	ContainerSyncKey pulumi.StringPtrInput
-	// The destination for container synchronization.
-	// Changing this updates container synchronization.
+	// The destination for container
+	// synchronization. Changing this updates container synchronization.
 	ContainerSyncTo pulumi.StringPtrInput
-	// Sets an ACL that grants write access.
-	// Changing this updates the access control list write access.
+	// Sets an ACL that grants write access. Changing
+	// this updates the access control list write access.
 	ContainerWrite pulumi.StringPtrInput
 	// The MIME type for the container. Changing this
 	// updates the MIME type.
 	ContentType pulumi.StringPtrInput
-	// A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+	// A boolean that indicates all
+	// objects should be deleted from the container so that the container can be
+	// destroyed without error. These objects are not recoverable.
 	ForceDestroy pulumi.BoolPtrInput
-	// Custom key/value pairs to associate with the container.
-	// Changing this updates the existing container metadata.
+	// Custom key/value pairs to associate with the
+	// container. Changing this updates the existing container metadata.
 	Metadata pulumi.StringMapInput
 	// A unique name for the container. Changing this creates a
 	// new container.
 	Name pulumi.StringPtrInput
 	// The region in which to create the container. If
-	// omitted, the `region` argument of the provider is used. Changing this
-	// creates a new container.
+	// omitted, the `region` argument of the provider is used. Changing this creates
+	// a new container.
 	Region pulumi.StringPtrInput
-	// The storage policy to be used for the container.
-	// Changing this creates a new container.
+	// The storage class to be used for the container.
+	// Changing this creates a new container. This option is only available in Ceph
+	// RGW Swift API implementation.
+	StorageClass pulumi.StringPtrInput
+	// The storage policy to be used for the
+	// container. Changing this creates a new container.
 	StoragePolicy pulumi.StringPtrInput
 	// A boolean that can enable or disable object
 	// versioning. The default value is `false`. To use this feature, your Swift
-	// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+	// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+	// release
+	// notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
 	// and a cloud administrator must have set the `allowObjectVersioning = true`
-	// configuration option in Swift. If you cannot set this versioning type, you may
-	// want to consider using `versioningLegacy` instead.
+	// configuration option in Swift. If you cannot set this versioning type, you
+	// may want to consider using `versioningLegacy` instead.
 	Versioning pulumi.BoolPtrInput
-	// Enable legacy object versioning. The structure is described below.
+	// Enable legacy object versioning. The
+	// structure is described below.
 	//
 	// Deprecated: Use newer "versioning" implementation
 	VersioningLegacy ContainerVersioningLegacyPtrInput
@@ -549,27 +622,27 @@ func (o ContainerOutput) ToContainerOutputWithContext(ctx context.Context) Conta
 }
 
 // Sets an access control list (ACL) that grants
-// read access. This header can contain a comma-delimited list of users that
-// can read the container (allows the GET method for all objects in the
-// container). Changing this updates the access control list read access.
+// read access. This header can contain a comma-delimited list of users that can
+// read the container (allows the GET method for all objects in the container).
+// Changing this updates the access control list read access.
 func (o ContainerOutput) ContainerRead() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.ContainerRead }).(pulumi.StringPtrOutput)
 }
 
-// The secret key for container synchronization.
-// Changing this updates container synchronization.
+// The secret key for container
+// synchronization. Changing this updates container synchronization.
 func (o ContainerOutput) ContainerSyncKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.ContainerSyncKey }).(pulumi.StringPtrOutput)
 }
 
-// The destination for container synchronization.
-// Changing this updates container synchronization.
+// The destination for container
+// synchronization. Changing this updates container synchronization.
 func (o ContainerOutput) ContainerSyncTo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.ContainerSyncTo }).(pulumi.StringPtrOutput)
 }
 
-// Sets an ACL that grants write access.
-// Changing this updates the access control list write access.
+// Sets an ACL that grants write access. Changing
+// this updates the access control list write access.
 func (o ContainerOutput) ContainerWrite() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.ContainerWrite }).(pulumi.StringPtrOutput)
 }
@@ -580,13 +653,15 @@ func (o ContainerOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
 }
 
-// A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+// A boolean that indicates all
+// objects should be deleted from the container so that the container can be
+// destroyed without error. These objects are not recoverable.
 func (o ContainerOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
 
-// Custom key/value pairs to associate with the container.
-// Changing this updates the existing container metadata.
+// Custom key/value pairs to associate with the
+// container. Changing this updates the existing container metadata.
 func (o ContainerOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
@@ -598,29 +673,39 @@ func (o ContainerOutput) Name() pulumi.StringOutput {
 }
 
 // The region in which to create the container. If
-// omitted, the `region` argument of the provider is used. Changing this
-// creates a new container.
+// omitted, the `region` argument of the provider is used. Changing this creates
+// a new container.
 func (o ContainerOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The storage policy to be used for the container.
-// Changing this creates a new container.
+// The storage class to be used for the container.
+// Changing this creates a new container. This option is only available in Ceph
+// RGW Swift API implementation.
+func (o ContainerOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *Container) pulumi.StringOutput { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+// The storage policy to be used for the
+// container. Changing this creates a new container.
 func (o ContainerOutput) StoragePolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringOutput { return v.StoragePolicy }).(pulumi.StringOutput)
 }
 
 // A boolean that can enable or disable object
 // versioning. The default value is `false`. To use this feature, your Swift
-// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+// release
+// notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
 // and a cloud administrator must have set the `allowObjectVersioning = true`
-// configuration option in Swift. If you cannot set this versioning type, you may
-// want to consider using `versioningLegacy` instead.
+// configuration option in Swift. If you cannot set this versioning type, you
+// may want to consider using `versioningLegacy` instead.
 func (o ContainerOutput) Versioning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.Versioning }).(pulumi.BoolPtrOutput)
 }
 
-// Enable legacy object versioning. The structure is described below.
+// Enable legacy object versioning. The
+// structure is described below.
 //
 // Deprecated: Use newer "versioning" implementation
 func (o ContainerOutput) VersioningLegacy() ContainerVersioningLegacyPtrOutput {
