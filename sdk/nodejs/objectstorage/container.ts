@@ -94,6 +94,19 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Set a custom storage class in the Ceph RGW Swift API
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const container1 = new openstack.objectstorage.Container("container_1", {
+ *     name: "tf-test-container-1",
+ *     storagePolicy: "az1",
+ *     storageClass: "SSD",
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by specifying the name of the container:
@@ -141,24 +154,24 @@ export class Container extends pulumi.CustomResource {
 
     /**
      * Sets an access control list (ACL) that grants
-     * read access. This header can contain a comma-delimited list of users that
-     * can read the container (allows the GET method for all objects in the
-     * container). Changing this updates the access control list read access.
+     * read access. This header can contain a comma-delimited list of users that can
+     * read the container (allows the GET method for all objects in the container).
+     * Changing this updates the access control list read access.
      */
     public readonly containerRead!: pulumi.Output<string | undefined>;
     /**
-     * The secret key for container synchronization.
-     * Changing this updates container synchronization.
+     * The secret key for container
+     * synchronization. Changing this updates container synchronization.
      */
     public readonly containerSyncKey!: pulumi.Output<string | undefined>;
     /**
-     * The destination for container synchronization.
-     * Changing this updates container synchronization.
+     * The destination for container
+     * synchronization. Changing this updates container synchronization.
      */
     public readonly containerSyncTo!: pulumi.Output<string | undefined>;
     /**
-     * Sets an ACL that grants write access.
-     * Changing this updates the access control list write access.
+     * Sets an ACL that grants write access. Changing
+     * this updates the access control list write access.
      */
     public readonly containerWrite!: pulumi.Output<string | undefined>;
     /**
@@ -167,12 +180,14 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly contentType!: pulumi.Output<string | undefined>;
     /**
-     * A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+     * A boolean that indicates all
+     * objects should be deleted from the container so that the container can be
+     * destroyed without error. These objects are not recoverable.
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
-     * Custom key/value pairs to associate with the container.
-     * Changing this updates the existing container metadata.
+     * Custom key/value pairs to associate with the
+     * container. Changing this updates the existing container metadata.
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -182,26 +197,35 @@ export class Container extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The region in which to create the container. If
-     * omitted, the `region` argument of the provider is used. Changing this
-     * creates a new container.
+     * omitted, the `region` argument of the provider is used. Changing this creates
+     * a new container.
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * The storage policy to be used for the container. 
-     * Changing this creates a new container.
+     * The storage class to be used for the container.
+     * Changing this creates a new container. This option is only available in Ceph
+     * RGW Swift API implementation.
+     */
+    public readonly storageClass!: pulumi.Output<string>;
+    /**
+     * The storage policy to be used for the
+     * container. Changing this creates a new container.
      */
     public readonly storagePolicy!: pulumi.Output<string>;
     /**
      * A boolean that can enable or disable object
      * versioning. The default value is `false`. To use this feature, your Swift
-     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+     * release
+     * notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
      * and a cloud administrator must have set the `allowObjectVersioning = true`
-     * configuration option in Swift. If you cannot set this versioning type, you may
-     * want to consider using `versioningLegacy` instead.
+     * configuration option in Swift. If you cannot set this versioning type, you
+     * may want to consider using `versioningLegacy` instead.
      */
     public readonly versioning!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable legacy object versioning. The structure is described below.
+     * Enable legacy object versioning. The
+     * structure is described below.
      *
      * @deprecated Use newer "versioning" implementation
      */
@@ -229,6 +253,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["metadata"] = state ? state.metadata : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["storageClass"] = state ? state.storageClass : undefined;
             resourceInputs["storagePolicy"] = state ? state.storagePolicy : undefined;
             resourceInputs["versioning"] = state ? state.versioning : undefined;
             resourceInputs["versioningLegacy"] = state ? state.versioningLegacy : undefined;
@@ -243,6 +268,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["metadata"] = args ? args.metadata : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["storageClass"] = args ? args.storageClass : undefined;
             resourceInputs["storagePolicy"] = args ? args.storagePolicy : undefined;
             resourceInputs["versioning"] = args ? args.versioning : undefined;
             resourceInputs["versioningLegacy"] = args ? args.versioningLegacy : undefined;
@@ -258,24 +284,24 @@ export class Container extends pulumi.CustomResource {
 export interface ContainerState {
     /**
      * Sets an access control list (ACL) that grants
-     * read access. This header can contain a comma-delimited list of users that
-     * can read the container (allows the GET method for all objects in the
-     * container). Changing this updates the access control list read access.
+     * read access. This header can contain a comma-delimited list of users that can
+     * read the container (allows the GET method for all objects in the container).
+     * Changing this updates the access control list read access.
      */
     containerRead?: pulumi.Input<string>;
     /**
-     * The secret key for container synchronization.
-     * Changing this updates container synchronization.
+     * The secret key for container
+     * synchronization. Changing this updates container synchronization.
      */
     containerSyncKey?: pulumi.Input<string>;
     /**
-     * The destination for container synchronization.
-     * Changing this updates container synchronization.
+     * The destination for container
+     * synchronization. Changing this updates container synchronization.
      */
     containerSyncTo?: pulumi.Input<string>;
     /**
-     * Sets an ACL that grants write access.
-     * Changing this updates the access control list write access.
+     * Sets an ACL that grants write access. Changing
+     * this updates the access control list write access.
      */
     containerWrite?: pulumi.Input<string>;
     /**
@@ -284,12 +310,14 @@ export interface ContainerState {
      */
     contentType?: pulumi.Input<string>;
     /**
-     * A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+     * A boolean that indicates all
+     * objects should be deleted from the container so that the container can be
+     * destroyed without error. These objects are not recoverable.
      */
     forceDestroy?: pulumi.Input<boolean>;
     /**
-     * Custom key/value pairs to associate with the container.
-     * Changing this updates the existing container metadata.
+     * Custom key/value pairs to associate with the
+     * container. Changing this updates the existing container metadata.
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -299,26 +327,35 @@ export interface ContainerState {
     name?: pulumi.Input<string>;
     /**
      * The region in which to create the container. If
-     * omitted, the `region` argument of the provider is used. Changing this
-     * creates a new container.
+     * omitted, the `region` argument of the provider is used. Changing this creates
+     * a new container.
      */
     region?: pulumi.Input<string>;
     /**
-     * The storage policy to be used for the container. 
-     * Changing this creates a new container.
+     * The storage class to be used for the container.
+     * Changing this creates a new container. This option is only available in Ceph
+     * RGW Swift API implementation.
+     */
+    storageClass?: pulumi.Input<string>;
+    /**
+     * The storage policy to be used for the
+     * container. Changing this creates a new container.
      */
     storagePolicy?: pulumi.Input<string>;
     /**
      * A boolean that can enable or disable object
      * versioning. The default value is `false`. To use this feature, your Swift
-     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+     * release
+     * notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
      * and a cloud administrator must have set the `allowObjectVersioning = true`
-     * configuration option in Swift. If you cannot set this versioning type, you may
-     * want to consider using `versioningLegacy` instead.
+     * configuration option in Swift. If you cannot set this versioning type, you
+     * may want to consider using `versioningLegacy` instead.
      */
     versioning?: pulumi.Input<boolean>;
     /**
-     * Enable legacy object versioning. The structure is described below.
+     * Enable legacy object versioning. The
+     * structure is described below.
      *
      * @deprecated Use newer "versioning" implementation
      */
@@ -331,24 +368,24 @@ export interface ContainerState {
 export interface ContainerArgs {
     /**
      * Sets an access control list (ACL) that grants
-     * read access. This header can contain a comma-delimited list of users that
-     * can read the container (allows the GET method for all objects in the
-     * container). Changing this updates the access control list read access.
+     * read access. This header can contain a comma-delimited list of users that can
+     * read the container (allows the GET method for all objects in the container).
+     * Changing this updates the access control list read access.
      */
     containerRead?: pulumi.Input<string>;
     /**
-     * The secret key for container synchronization.
-     * Changing this updates container synchronization.
+     * The secret key for container
+     * synchronization. Changing this updates container synchronization.
      */
     containerSyncKey?: pulumi.Input<string>;
     /**
-     * The destination for container synchronization.
-     * Changing this updates container synchronization.
+     * The destination for container
+     * synchronization. Changing this updates container synchronization.
      */
     containerSyncTo?: pulumi.Input<string>;
     /**
-     * Sets an ACL that grants write access.
-     * Changing this updates the access control list write access.
+     * Sets an ACL that grants write access. Changing
+     * this updates the access control list write access.
      */
     containerWrite?: pulumi.Input<string>;
     /**
@@ -357,12 +394,14 @@ export interface ContainerArgs {
      */
     contentType?: pulumi.Input<string>;
     /**
-     * A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+     * A boolean that indicates all
+     * objects should be deleted from the container so that the container can be
+     * destroyed without error. These objects are not recoverable.
      */
     forceDestroy?: pulumi.Input<boolean>;
     /**
-     * Custom key/value pairs to associate with the container.
-     * Changing this updates the existing container metadata.
+     * Custom key/value pairs to associate with the
+     * container. Changing this updates the existing container metadata.
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -372,26 +411,35 @@ export interface ContainerArgs {
     name?: pulumi.Input<string>;
     /**
      * The region in which to create the container. If
-     * omitted, the `region` argument of the provider is used. Changing this
-     * creates a new container.
+     * omitted, the `region` argument of the provider is used. Changing this creates
+     * a new container.
      */
     region?: pulumi.Input<string>;
     /**
-     * The storage policy to be used for the container. 
-     * Changing this creates a new container.
+     * The storage class to be used for the container.
+     * Changing this creates a new container. This option is only available in Ceph
+     * RGW Swift API implementation.
+     */
+    storageClass?: pulumi.Input<string>;
+    /**
+     * The storage policy to be used for the
+     * container. Changing this creates a new container.
      */
     storagePolicy?: pulumi.Input<string>;
     /**
      * A boolean that can enable or disable object
      * versioning. The default value is `false`. To use this feature, your Swift
-     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+     * release
+     * notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
      * and a cloud administrator must have set the `allowObjectVersioning = true`
-     * configuration option in Swift. If you cannot set this versioning type, you may
-     * want to consider using `versioningLegacy` instead.
+     * configuration option in Swift. If you cannot set this versioning type, you
+     * may want to consider using `versioningLegacy` instead.
      */
     versioning?: pulumi.Input<boolean>;
     /**
-     * Enable legacy object versioning. The structure is described below.
+     * Enable legacy object versioning. The
+     * structure is described below.
      *
      * @deprecated Use newer "versioning" implementation
      */

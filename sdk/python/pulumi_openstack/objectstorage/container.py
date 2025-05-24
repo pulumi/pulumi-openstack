@@ -31,40 +31,49 @@ class ContainerArgs:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
+                 storage_class: Optional[pulumi.Input[builtins.str]] = None,
                  storage_policy: Optional[pulumi.Input[builtins.str]] = None,
                  versioning: Optional[pulumi.Input[builtins.bool]] = None,
                  versioning_legacy: Optional[pulumi.Input['ContainerVersioningLegacyArgs']] = None):
         """
         The set of arguments for constructing a Container resource.
         :param pulumi.Input[builtins.str] container_read: Sets an access control list (ACL) that grants
-               read access. This header can contain a comma-delimited list of users that
-               can read the container (allows the GET method for all objects in the
-               container). Changing this updates the access control list read access.
-        :param pulumi.Input[builtins.str] container_sync_key: The secret key for container synchronization.
-               Changing this updates container synchronization.
-        :param pulumi.Input[builtins.str] container_sync_to: The destination for container synchronization.
-               Changing this updates container synchronization.
-        :param pulumi.Input[builtins.str] container_write: Sets an ACL that grants write access.
-               Changing this updates the access control list write access.
+               read access. This header can contain a comma-delimited list of users that can
+               read the container (allows the GET method for all objects in the container).
+               Changing this updates the access control list read access.
+        :param pulumi.Input[builtins.str] container_sync_key: The secret key for container
+               synchronization. Changing this updates container synchronization.
+        :param pulumi.Input[builtins.str] container_sync_to: The destination for container
+               synchronization. Changing this updates container synchronization.
+        :param pulumi.Input[builtins.str] container_write: Sets an ACL that grants write access. Changing
+               this updates the access control list write access.
         :param pulumi.Input[builtins.str] content_type: The MIME type for the container. Changing this
                updates the MIME type.
-        :param pulumi.Input[builtins.bool] force_destroy: A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: Custom key/value pairs to associate with the container.
-               Changing this updates the existing container metadata.
+        :param pulumi.Input[builtins.bool] force_destroy: A boolean that indicates all
+               objects should be deleted from the container so that the container can be
+               destroyed without error. These objects are not recoverable.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: Custom key/value pairs to associate with the
+               container. Changing this updates the existing container metadata.
         :param pulumi.Input[builtins.str] name: A unique name for the container. Changing this creates a
                new container.
         :param pulumi.Input[builtins.str] region: The region in which to create the container. If
-               omitted, the `region` argument of the provider is used. Changing this
-               creates a new container.
-        :param pulumi.Input[builtins.str] storage_policy: The storage policy to be used for the container. 
-               Changing this creates a new container.
+               omitted, the `region` argument of the provider is used. Changing this creates
+               a new container.
+        :param pulumi.Input[builtins.str] storage_class: The storage class to be used for the container.
+               Changing this creates a new container. This option is only available in Ceph
+               RGW Swift API implementation.
+        :param pulumi.Input[builtins.str] storage_policy: The storage policy to be used for the
+               container. Changing this creates a new container.
         :param pulumi.Input[builtins.bool] versioning: A boolean that can enable or disable object
                versioning. The default value is `false`. To use this feature, your Swift
-               version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+               version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+               release
+               notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
                and a cloud administrator must have set the `allow_object_versioning = true`
-               configuration option in Swift. If you cannot set this versioning type, you may
-               want to consider using `versioning_legacy` instead.
-        :param pulumi.Input['ContainerVersioningLegacyArgs'] versioning_legacy: Enable legacy object versioning. The structure is described below.
+               configuration option in Swift. If you cannot set this versioning type, you
+               may want to consider using `versioning_legacy` instead.
+        :param pulumi.Input['ContainerVersioningLegacyArgs'] versioning_legacy: Enable legacy object versioning. The
+               structure is described below.
         """
         if container_read is not None:
             pulumi.set(__self__, "container_read", container_read)
@@ -84,6 +93,8 @@ class ContainerArgs:
             pulumi.set(__self__, "name", name)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if storage_class is not None:
+            pulumi.set(__self__, "storage_class", storage_class)
         if storage_policy is not None:
             pulumi.set(__self__, "storage_policy", storage_policy)
         if versioning is not None:
@@ -99,9 +110,9 @@ class ContainerArgs:
     def container_read(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Sets an access control list (ACL) that grants
-        read access. This header can contain a comma-delimited list of users that
-        can read the container (allows the GET method for all objects in the
-        container). Changing this updates the access control list read access.
+        read access. This header can contain a comma-delimited list of users that can
+        read the container (allows the GET method for all objects in the container).
+        Changing this updates the access control list read access.
         """
         return pulumi.get(self, "container_read")
 
@@ -113,8 +124,8 @@ class ContainerArgs:
     @pulumi.getter(name="containerSyncKey")
     def container_sync_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The secret key for container synchronization.
-        Changing this updates container synchronization.
+        The secret key for container
+        synchronization. Changing this updates container synchronization.
         """
         return pulumi.get(self, "container_sync_key")
 
@@ -126,8 +137,8 @@ class ContainerArgs:
     @pulumi.getter(name="containerSyncTo")
     def container_sync_to(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The destination for container synchronization.
-        Changing this updates container synchronization.
+        The destination for container
+        synchronization. Changing this updates container synchronization.
         """
         return pulumi.get(self, "container_sync_to")
 
@@ -139,8 +150,8 @@ class ContainerArgs:
     @pulumi.getter(name="containerWrite")
     def container_write(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Sets an ACL that grants write access.
-        Changing this updates the access control list write access.
+        Sets an ACL that grants write access. Changing
+        this updates the access control list write access.
         """
         return pulumi.get(self, "container_write")
 
@@ -165,7 +176,9 @@ class ContainerArgs:
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+        A boolean that indicates all
+        objects should be deleted from the container so that the container can be
+        destroyed without error. These objects are not recoverable.
         """
         return pulumi.get(self, "force_destroy")
 
@@ -177,8 +190,8 @@ class ContainerArgs:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Custom key/value pairs to associate with the container.
-        Changing this updates the existing container metadata.
+        Custom key/value pairs to associate with the
+        container. Changing this updates the existing container metadata.
         """
         return pulumi.get(self, "metadata")
 
@@ -204,8 +217,8 @@ class ContainerArgs:
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The region in which to create the container. If
-        omitted, the `region` argument of the provider is used. Changing this
-        creates a new container.
+        omitted, the `region` argument of the provider is used. Changing this creates
+        a new container.
         """
         return pulumi.get(self, "region")
 
@@ -214,11 +227,25 @@ class ContainerArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The storage class to be used for the container.
+        Changing this creates a new container. This option is only available in Ceph
+        RGW Swift API implementation.
+        """
+        return pulumi.get(self, "storage_class")
+
+    @storage_class.setter
+    def storage_class(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "storage_class", value)
+
+    @property
     @pulumi.getter(name="storagePolicy")
     def storage_policy(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The storage policy to be used for the container. 
-        Changing this creates a new container.
+        The storage policy to be used for the
+        container. Changing this creates a new container.
         """
         return pulumi.get(self, "storage_policy")
 
@@ -232,10 +259,12 @@ class ContainerArgs:
         """
         A boolean that can enable or disable object
         versioning. The default value is `false`. To use this feature, your Swift
-        version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+        version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+        release
+        notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
         and a cloud administrator must have set the `allow_object_versioning = true`
-        configuration option in Swift. If you cannot set this versioning type, you may
-        want to consider using `versioning_legacy` instead.
+        configuration option in Swift. If you cannot set this versioning type, you
+        may want to consider using `versioning_legacy` instead.
         """
         return pulumi.get(self, "versioning")
 
@@ -248,7 +277,8 @@ class ContainerArgs:
     @_utilities.deprecated("""Use newer \"versioning\" implementation""")
     def versioning_legacy(self) -> Optional[pulumi.Input['ContainerVersioningLegacyArgs']]:
         """
-        Enable legacy object versioning. The structure is described below.
+        Enable legacy object versioning. The
+        structure is described below.
         """
         return pulumi.get(self, "versioning_legacy")
 
@@ -269,40 +299,49 @@ class _ContainerState:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
+                 storage_class: Optional[pulumi.Input[builtins.str]] = None,
                  storage_policy: Optional[pulumi.Input[builtins.str]] = None,
                  versioning: Optional[pulumi.Input[builtins.bool]] = None,
                  versioning_legacy: Optional[pulumi.Input['ContainerVersioningLegacyArgs']] = None):
         """
         Input properties used for looking up and filtering Container resources.
         :param pulumi.Input[builtins.str] container_read: Sets an access control list (ACL) that grants
-               read access. This header can contain a comma-delimited list of users that
-               can read the container (allows the GET method for all objects in the
-               container). Changing this updates the access control list read access.
-        :param pulumi.Input[builtins.str] container_sync_key: The secret key for container synchronization.
-               Changing this updates container synchronization.
-        :param pulumi.Input[builtins.str] container_sync_to: The destination for container synchronization.
-               Changing this updates container synchronization.
-        :param pulumi.Input[builtins.str] container_write: Sets an ACL that grants write access.
-               Changing this updates the access control list write access.
+               read access. This header can contain a comma-delimited list of users that can
+               read the container (allows the GET method for all objects in the container).
+               Changing this updates the access control list read access.
+        :param pulumi.Input[builtins.str] container_sync_key: The secret key for container
+               synchronization. Changing this updates container synchronization.
+        :param pulumi.Input[builtins.str] container_sync_to: The destination for container
+               synchronization. Changing this updates container synchronization.
+        :param pulumi.Input[builtins.str] container_write: Sets an ACL that grants write access. Changing
+               this updates the access control list write access.
         :param pulumi.Input[builtins.str] content_type: The MIME type for the container. Changing this
                updates the MIME type.
-        :param pulumi.Input[builtins.bool] force_destroy: A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: Custom key/value pairs to associate with the container.
-               Changing this updates the existing container metadata.
+        :param pulumi.Input[builtins.bool] force_destroy: A boolean that indicates all
+               objects should be deleted from the container so that the container can be
+               destroyed without error. These objects are not recoverable.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: Custom key/value pairs to associate with the
+               container. Changing this updates the existing container metadata.
         :param pulumi.Input[builtins.str] name: A unique name for the container. Changing this creates a
                new container.
         :param pulumi.Input[builtins.str] region: The region in which to create the container. If
-               omitted, the `region` argument of the provider is used. Changing this
-               creates a new container.
-        :param pulumi.Input[builtins.str] storage_policy: The storage policy to be used for the container. 
-               Changing this creates a new container.
+               omitted, the `region` argument of the provider is used. Changing this creates
+               a new container.
+        :param pulumi.Input[builtins.str] storage_class: The storage class to be used for the container.
+               Changing this creates a new container. This option is only available in Ceph
+               RGW Swift API implementation.
+        :param pulumi.Input[builtins.str] storage_policy: The storage policy to be used for the
+               container. Changing this creates a new container.
         :param pulumi.Input[builtins.bool] versioning: A boolean that can enable or disable object
                versioning. The default value is `false`. To use this feature, your Swift
-               version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+               version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+               release
+               notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
                and a cloud administrator must have set the `allow_object_versioning = true`
-               configuration option in Swift. If you cannot set this versioning type, you may
-               want to consider using `versioning_legacy` instead.
-        :param pulumi.Input['ContainerVersioningLegacyArgs'] versioning_legacy: Enable legacy object versioning. The structure is described below.
+               configuration option in Swift. If you cannot set this versioning type, you
+               may want to consider using `versioning_legacy` instead.
+        :param pulumi.Input['ContainerVersioningLegacyArgs'] versioning_legacy: Enable legacy object versioning. The
+               structure is described below.
         """
         if container_read is not None:
             pulumi.set(__self__, "container_read", container_read)
@@ -322,6 +361,8 @@ class _ContainerState:
             pulumi.set(__self__, "name", name)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if storage_class is not None:
+            pulumi.set(__self__, "storage_class", storage_class)
         if storage_policy is not None:
             pulumi.set(__self__, "storage_policy", storage_policy)
         if versioning is not None:
@@ -337,9 +378,9 @@ class _ContainerState:
     def container_read(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Sets an access control list (ACL) that grants
-        read access. This header can contain a comma-delimited list of users that
-        can read the container (allows the GET method for all objects in the
-        container). Changing this updates the access control list read access.
+        read access. This header can contain a comma-delimited list of users that can
+        read the container (allows the GET method for all objects in the container).
+        Changing this updates the access control list read access.
         """
         return pulumi.get(self, "container_read")
 
@@ -351,8 +392,8 @@ class _ContainerState:
     @pulumi.getter(name="containerSyncKey")
     def container_sync_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The secret key for container synchronization.
-        Changing this updates container synchronization.
+        The secret key for container
+        synchronization. Changing this updates container synchronization.
         """
         return pulumi.get(self, "container_sync_key")
 
@@ -364,8 +405,8 @@ class _ContainerState:
     @pulumi.getter(name="containerSyncTo")
     def container_sync_to(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The destination for container synchronization.
-        Changing this updates container synchronization.
+        The destination for container
+        synchronization. Changing this updates container synchronization.
         """
         return pulumi.get(self, "container_sync_to")
 
@@ -377,8 +418,8 @@ class _ContainerState:
     @pulumi.getter(name="containerWrite")
     def container_write(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Sets an ACL that grants write access.
-        Changing this updates the access control list write access.
+        Sets an ACL that grants write access. Changing
+        this updates the access control list write access.
         """
         return pulumi.get(self, "container_write")
 
@@ -403,7 +444,9 @@ class _ContainerState:
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+        A boolean that indicates all
+        objects should be deleted from the container so that the container can be
+        destroyed without error. These objects are not recoverable.
         """
         return pulumi.get(self, "force_destroy")
 
@@ -415,8 +458,8 @@ class _ContainerState:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Custom key/value pairs to associate with the container.
-        Changing this updates the existing container metadata.
+        Custom key/value pairs to associate with the
+        container. Changing this updates the existing container metadata.
         """
         return pulumi.get(self, "metadata")
 
@@ -442,8 +485,8 @@ class _ContainerState:
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The region in which to create the container. If
-        omitted, the `region` argument of the provider is used. Changing this
-        creates a new container.
+        omitted, the `region` argument of the provider is used. Changing this creates
+        a new container.
         """
         return pulumi.get(self, "region")
 
@@ -452,11 +495,25 @@ class _ContainerState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The storage class to be used for the container.
+        Changing this creates a new container. This option is only available in Ceph
+        RGW Swift API implementation.
+        """
+        return pulumi.get(self, "storage_class")
+
+    @storage_class.setter
+    def storage_class(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "storage_class", value)
+
+    @property
     @pulumi.getter(name="storagePolicy")
     def storage_policy(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The storage policy to be used for the container. 
-        Changing this creates a new container.
+        The storage policy to be used for the
+        container. Changing this creates a new container.
         """
         return pulumi.get(self, "storage_policy")
 
@@ -470,10 +527,12 @@ class _ContainerState:
         """
         A boolean that can enable or disable object
         versioning. The default value is `false`. To use this feature, your Swift
-        version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+        version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+        release
+        notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
         and a cloud administrator must have set the `allow_object_versioning = true`
-        configuration option in Swift. If you cannot set this versioning type, you may
-        want to consider using `versioning_legacy` instead.
+        configuration option in Swift. If you cannot set this versioning type, you
+        may want to consider using `versioning_legacy` instead.
         """
         return pulumi.get(self, "versioning")
 
@@ -486,7 +545,8 @@ class _ContainerState:
     @_utilities.deprecated("""Use newer \"versioning\" implementation""")
     def versioning_legacy(self) -> Optional[pulumi.Input['ContainerVersioningLegacyArgs']]:
         """
-        Enable legacy object versioning. The structure is described below.
+        Enable legacy object versioning. The
+        structure is described below.
         """
         return pulumi.get(self, "versioning_legacy")
 
@@ -510,6 +570,7 @@ class Container(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
+                 storage_class: Optional[pulumi.Input[builtins.str]] = None,
                  storage_policy: Optional[pulumi.Input[builtins.str]] = None,
                  versioning: Optional[pulumi.Input[builtins.bool]] = None,
                  versioning_legacy: Optional[pulumi.Input[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict']]] = None,
@@ -595,6 +656,18 @@ class Container(pulumi.CustomResource):
             container_write=f"{current.project_id}:{username}")
         ```
 
+        ### Set a custom storage class in the Ceph RGW Swift API
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container_1",
+            name="tf-test-container-1",
+            storage_policy="az1",
+            storage_class="SSD")
+        ```
+
         ## Import
 
         This resource can be imported by specifying the name of the container:
@@ -615,34 +688,42 @@ class Container(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] container_read: Sets an access control list (ACL) that grants
-               read access. This header can contain a comma-delimited list of users that
-               can read the container (allows the GET method for all objects in the
-               container). Changing this updates the access control list read access.
-        :param pulumi.Input[builtins.str] container_sync_key: The secret key for container synchronization.
-               Changing this updates container synchronization.
-        :param pulumi.Input[builtins.str] container_sync_to: The destination for container synchronization.
-               Changing this updates container synchronization.
-        :param pulumi.Input[builtins.str] container_write: Sets an ACL that grants write access.
-               Changing this updates the access control list write access.
+               read access. This header can contain a comma-delimited list of users that can
+               read the container (allows the GET method for all objects in the container).
+               Changing this updates the access control list read access.
+        :param pulumi.Input[builtins.str] container_sync_key: The secret key for container
+               synchronization. Changing this updates container synchronization.
+        :param pulumi.Input[builtins.str] container_sync_to: The destination for container
+               synchronization. Changing this updates container synchronization.
+        :param pulumi.Input[builtins.str] container_write: Sets an ACL that grants write access. Changing
+               this updates the access control list write access.
         :param pulumi.Input[builtins.str] content_type: The MIME type for the container. Changing this
                updates the MIME type.
-        :param pulumi.Input[builtins.bool] force_destroy: A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: Custom key/value pairs to associate with the container.
-               Changing this updates the existing container metadata.
+        :param pulumi.Input[builtins.bool] force_destroy: A boolean that indicates all
+               objects should be deleted from the container so that the container can be
+               destroyed without error. These objects are not recoverable.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: Custom key/value pairs to associate with the
+               container. Changing this updates the existing container metadata.
         :param pulumi.Input[builtins.str] name: A unique name for the container. Changing this creates a
                new container.
         :param pulumi.Input[builtins.str] region: The region in which to create the container. If
-               omitted, the `region` argument of the provider is used. Changing this
-               creates a new container.
-        :param pulumi.Input[builtins.str] storage_policy: The storage policy to be used for the container. 
-               Changing this creates a new container.
+               omitted, the `region` argument of the provider is used. Changing this creates
+               a new container.
+        :param pulumi.Input[builtins.str] storage_class: The storage class to be used for the container.
+               Changing this creates a new container. This option is only available in Ceph
+               RGW Swift API implementation.
+        :param pulumi.Input[builtins.str] storage_policy: The storage policy to be used for the
+               container. Changing this creates a new container.
         :param pulumi.Input[builtins.bool] versioning: A boolean that can enable or disable object
                versioning. The default value is `false`. To use this feature, your Swift
-               version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+               version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+               release
+               notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
                and a cloud administrator must have set the `allow_object_versioning = true`
-               configuration option in Swift. If you cannot set this versioning type, you may
-               want to consider using `versioning_legacy` instead.
-        :param pulumi.Input[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict']] versioning_legacy: Enable legacy object versioning. The structure is described below.
+               configuration option in Swift. If you cannot set this versioning type, you
+               may want to consider using `versioning_legacy` instead.
+        :param pulumi.Input[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict']] versioning_legacy: Enable legacy object versioning. The
+               structure is described below.
         """
         ...
     @overload
@@ -731,6 +812,18 @@ class Container(pulumi.CustomResource):
             container_write=f"{current.project_id}:{username}")
         ```
 
+        ### Set a custom storage class in the Ceph RGW Swift API
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container_1",
+            name="tf-test-container-1",
+            storage_policy="az1",
+            storage_class="SSD")
+        ```
+
         ## Import
 
         This resource can be imported by specifying the name of the container:
@@ -772,6 +865,7 @@ class Container(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
+                 storage_class: Optional[pulumi.Input[builtins.str]] = None,
                  storage_policy: Optional[pulumi.Input[builtins.str]] = None,
                  versioning: Optional[pulumi.Input[builtins.bool]] = None,
                  versioning_legacy: Optional[pulumi.Input[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict']]] = None,
@@ -793,6 +887,7 @@ class Container(pulumi.CustomResource):
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
             __props__.__dict__["region"] = region
+            __props__.__dict__["storage_class"] = storage_class
             __props__.__dict__["storage_policy"] = storage_policy
             __props__.__dict__["versioning"] = versioning
             __props__.__dict__["versioning_legacy"] = versioning_legacy
@@ -815,6 +910,7 @@ class Container(pulumi.CustomResource):
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             region: Optional[pulumi.Input[builtins.str]] = None,
+            storage_class: Optional[pulumi.Input[builtins.str]] = None,
             storage_policy: Optional[pulumi.Input[builtins.str]] = None,
             versioning: Optional[pulumi.Input[builtins.bool]] = None,
             versioning_legacy: Optional[pulumi.Input[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict']]] = None) -> 'Container':
@@ -826,34 +922,42 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] container_read: Sets an access control list (ACL) that grants
-               read access. This header can contain a comma-delimited list of users that
-               can read the container (allows the GET method for all objects in the
-               container). Changing this updates the access control list read access.
-        :param pulumi.Input[builtins.str] container_sync_key: The secret key for container synchronization.
-               Changing this updates container synchronization.
-        :param pulumi.Input[builtins.str] container_sync_to: The destination for container synchronization.
-               Changing this updates container synchronization.
-        :param pulumi.Input[builtins.str] container_write: Sets an ACL that grants write access.
-               Changing this updates the access control list write access.
+               read access. This header can contain a comma-delimited list of users that can
+               read the container (allows the GET method for all objects in the container).
+               Changing this updates the access control list read access.
+        :param pulumi.Input[builtins.str] container_sync_key: The secret key for container
+               synchronization. Changing this updates container synchronization.
+        :param pulumi.Input[builtins.str] container_sync_to: The destination for container
+               synchronization. Changing this updates container synchronization.
+        :param pulumi.Input[builtins.str] container_write: Sets an ACL that grants write access. Changing
+               this updates the access control list write access.
         :param pulumi.Input[builtins.str] content_type: The MIME type for the container. Changing this
                updates the MIME type.
-        :param pulumi.Input[builtins.bool] force_destroy: A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: Custom key/value pairs to associate with the container.
-               Changing this updates the existing container metadata.
+        :param pulumi.Input[builtins.bool] force_destroy: A boolean that indicates all
+               objects should be deleted from the container so that the container can be
+               destroyed without error. These objects are not recoverable.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] metadata: Custom key/value pairs to associate with the
+               container. Changing this updates the existing container metadata.
         :param pulumi.Input[builtins.str] name: A unique name for the container. Changing this creates a
                new container.
         :param pulumi.Input[builtins.str] region: The region in which to create the container. If
-               omitted, the `region` argument of the provider is used. Changing this
-               creates a new container.
-        :param pulumi.Input[builtins.str] storage_policy: The storage policy to be used for the container. 
-               Changing this creates a new container.
+               omitted, the `region` argument of the provider is used. Changing this creates
+               a new container.
+        :param pulumi.Input[builtins.str] storage_class: The storage class to be used for the container.
+               Changing this creates a new container. This option is only available in Ceph
+               RGW Swift API implementation.
+        :param pulumi.Input[builtins.str] storage_policy: The storage policy to be used for the
+               container. Changing this creates a new container.
         :param pulumi.Input[builtins.bool] versioning: A boolean that can enable or disable object
                versioning. The default value is `false`. To use this feature, your Swift
-               version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+               version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+               release
+               notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
                and a cloud administrator must have set the `allow_object_versioning = true`
-               configuration option in Swift. If you cannot set this versioning type, you may
-               want to consider using `versioning_legacy` instead.
-        :param pulumi.Input[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict']] versioning_legacy: Enable legacy object versioning. The structure is described below.
+               configuration option in Swift. If you cannot set this versioning type, you
+               may want to consider using `versioning_legacy` instead.
+        :param pulumi.Input[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict']] versioning_legacy: Enable legacy object versioning. The
+               structure is described below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -868,6 +972,7 @@ class Container(pulumi.CustomResource):
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["name"] = name
         __props__.__dict__["region"] = region
+        __props__.__dict__["storage_class"] = storage_class
         __props__.__dict__["storage_policy"] = storage_policy
         __props__.__dict__["versioning"] = versioning
         __props__.__dict__["versioning_legacy"] = versioning_legacy
@@ -878,9 +983,9 @@ class Container(pulumi.CustomResource):
     def container_read(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         Sets an access control list (ACL) that grants
-        read access. This header can contain a comma-delimited list of users that
-        can read the container (allows the GET method for all objects in the
-        container). Changing this updates the access control list read access.
+        read access. This header can contain a comma-delimited list of users that can
+        read the container (allows the GET method for all objects in the container).
+        Changing this updates the access control list read access.
         """
         return pulumi.get(self, "container_read")
 
@@ -888,8 +993,8 @@ class Container(pulumi.CustomResource):
     @pulumi.getter(name="containerSyncKey")
     def container_sync_key(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The secret key for container synchronization.
-        Changing this updates container synchronization.
+        The secret key for container
+        synchronization. Changing this updates container synchronization.
         """
         return pulumi.get(self, "container_sync_key")
 
@@ -897,8 +1002,8 @@ class Container(pulumi.CustomResource):
     @pulumi.getter(name="containerSyncTo")
     def container_sync_to(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The destination for container synchronization.
-        Changing this updates container synchronization.
+        The destination for container
+        synchronization. Changing this updates container synchronization.
         """
         return pulumi.get(self, "container_sync_to")
 
@@ -906,8 +1011,8 @@ class Container(pulumi.CustomResource):
     @pulumi.getter(name="containerWrite")
     def container_write(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Sets an ACL that grants write access.
-        Changing this updates the access control list write access.
+        Sets an ACL that grants write access. Changing
+        this updates the access control list write access.
         """
         return pulumi.get(self, "container_write")
 
@@ -924,7 +1029,9 @@ class Container(pulumi.CustomResource):
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+        A boolean that indicates all
+        objects should be deleted from the container so that the container can be
+        destroyed without error. These objects are not recoverable.
         """
         return pulumi.get(self, "force_destroy")
 
@@ -932,8 +1039,8 @@ class Container(pulumi.CustomResource):
     @pulumi.getter
     def metadata(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        Custom key/value pairs to associate with the container.
-        Changing this updates the existing container metadata.
+        Custom key/value pairs to associate with the
+        container. Changing this updates the existing container metadata.
         """
         return pulumi.get(self, "metadata")
 
@@ -951,17 +1058,27 @@ class Container(pulumi.CustomResource):
     def region(self) -> pulumi.Output[builtins.str]:
         """
         The region in which to create the container. If
-        omitted, the `region` argument of the provider is used. Changing this
-        creates a new container.
+        omitted, the `region` argument of the provider is used. Changing this creates
+        a new container.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> pulumi.Output[builtins.str]:
+        """
+        The storage class to be used for the container.
+        Changing this creates a new container. This option is only available in Ceph
+        RGW Swift API implementation.
+        """
+        return pulumi.get(self, "storage_class")
 
     @property
     @pulumi.getter(name="storagePolicy")
     def storage_policy(self) -> pulumi.Output[builtins.str]:
         """
-        The storage policy to be used for the container. 
-        Changing this creates a new container.
+        The storage policy to be used for the
+        container. Changing this creates a new container.
         """
         return pulumi.get(self, "storage_policy")
 
@@ -971,10 +1088,12 @@ class Container(pulumi.CustomResource):
         """
         A boolean that can enable or disable object
         versioning. The default value is `false`. To use this feature, your Swift
-        version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+        version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+        release
+        notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
         and a cloud administrator must have set the `allow_object_versioning = true`
-        configuration option in Swift. If you cannot set this versioning type, you may
-        want to consider using `versioning_legacy` instead.
+        configuration option in Swift. If you cannot set this versioning type, you
+        may want to consider using `versioning_legacy` instead.
         """
         return pulumi.get(self, "versioning")
 
@@ -983,7 +1102,8 @@ class Container(pulumi.CustomResource):
     @_utilities.deprecated("""Use newer \"versioning\" implementation""")
     def versioning_legacy(self) -> pulumi.Output[Optional['outputs.ContainerVersioningLegacy']]:
         """
-        Enable legacy object versioning. The structure is described below.
+        Enable legacy object versioning. The
+        structure is described below.
         """
         return pulumi.get(self, "versioning_legacy")
 

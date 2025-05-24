@@ -1464,6 +1464,15 @@
             "openstack_sharedfilesystem_snapshot_v2": {
                 "current": "openstack:sharedfilesystem/getSnapshot:getSnapshot",
                 "majorVersion": 5
+            },
+            "openstack_workflow_workflow_v2": {
+                "current": "openstack:index/workflowWorkflowV2:WorkflowWorkflowV2",
+                "majorVersion": 5,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         }
     },

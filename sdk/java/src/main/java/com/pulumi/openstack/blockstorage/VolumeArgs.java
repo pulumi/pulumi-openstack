@@ -268,16 +268,35 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of volume to create.
-     * Changing this creates a new volume.
+     * Migration policy when changing `volume_type`.
+     * `&#34;never&#34;` *(default)* prevents migration to another storage backend, while `&#34;on-demand&#34;`
+     * allows migration if needed. Applicable only when updating `volume_type`.
+     * 
+     */
+    @Import(name="volumeRetypePolicy")
+    private @Nullable Output<String> volumeRetypePolicy;
+
+    /**
+     * @return Migration policy when changing `volume_type`.
+     * `&#34;never&#34;` *(default)* prevents migration to another storage backend, while `&#34;on-demand&#34;`
+     * allows migration if needed. Applicable only when updating `volume_type`.
+     * 
+     */
+    public Optional<Output<String>> volumeRetypePolicy() {
+        return Optional.ofNullable(this.volumeRetypePolicy);
+    }
+
+    /**
+     * The type of volume to create or update.
+     * Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
      * 
      */
     @Import(name="volumeType")
     private @Nullable Output<String> volumeType;
 
     /**
-     * @return The type of volume to create.
-     * Changing this creates a new volume.
+     * @return The type of volume to create or update.
+     * Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
      * 
      */
     public Optional<Output<String>> volumeType() {
@@ -301,6 +320,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         this.snapshotId = $.snapshotId;
         this.sourceReplica = $.sourceReplica;
         this.sourceVolId = $.sourceVolId;
+        this.volumeRetypePolicy = $.volumeRetypePolicy;
         this.volumeType = $.volumeType;
     }
 
@@ -664,8 +684,33 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeType The type of volume to create.
-         * Changing this creates a new volume.
+         * @param volumeRetypePolicy Migration policy when changing `volume_type`.
+         * `&#34;never&#34;` *(default)* prevents migration to another storage backend, while `&#34;on-demand&#34;`
+         * allows migration if needed. Applicable only when updating `volume_type`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder volumeRetypePolicy(@Nullable Output<String> volumeRetypePolicy) {
+            $.volumeRetypePolicy = volumeRetypePolicy;
+            return this;
+        }
+
+        /**
+         * @param volumeRetypePolicy Migration policy when changing `volume_type`.
+         * `&#34;never&#34;` *(default)* prevents migration to another storage backend, while `&#34;on-demand&#34;`
+         * allows migration if needed. Applicable only when updating `volume_type`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder volumeRetypePolicy(String volumeRetypePolicy) {
+            return volumeRetypePolicy(Output.of(volumeRetypePolicy));
+        }
+
+        /**
+         * @param volumeType The type of volume to create or update.
+         * Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
          * 
          * @return builder
          * 
@@ -676,8 +721,8 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeType The type of volume to create.
-         * Changing this creates a new volume.
+         * @param volumeType The type of volume to create or update.
+         * Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
          * 
          * @return builder
          * 

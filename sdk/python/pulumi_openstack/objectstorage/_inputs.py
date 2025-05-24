@@ -30,7 +30,9 @@ if not MYPY:
         """
         type: pulumi.Input[builtins.str]
         """
-        Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+        Versioning type which can be `versions` or `history`
+        according to [OpenStack
+        documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
         """
 elif False:
     ContainerVersioningLegacyArgsDict: TypeAlias = Mapping[str, Any]
@@ -42,7 +44,9 @@ class ContainerVersioningLegacyArgs:
                  type: pulumi.Input[builtins.str]):
         """
         :param pulumi.Input[builtins.str] location: Container in which versions will be stored.
-        :param pulumi.Input[builtins.str] type: Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+        :param pulumi.Input[builtins.str] type: Versioning type which can be `versions` or `history`
+               according to [OpenStack
+               documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "type", type)
@@ -63,7 +67,9 @@ class ContainerVersioningLegacyArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[builtins.str]:
         """
-        Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+        Versioning type which can be `versions` or `history`
+        according to [OpenStack
+        documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
         """
         return pulumi.get(self, "type")
 

@@ -16,7 +16,9 @@ public final class ContainerVersioningLegacy {
      */
     private String location;
     /**
-     * @return Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+     * @return Versioning type which can be `versions` or `history`
+     * according to [OpenStack
+     * documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
      * 
      */
     private String type;
@@ -30,7 +32,9 @@ public final class ContainerVersioningLegacy {
         return this.location;
     }
     /**
-     * @return Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+     * @return Versioning type which can be `versions` or `history`
+     * according to [OpenStack
+     * documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
      * 
      */
     public String type() {

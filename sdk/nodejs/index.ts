@@ -53,6 +53,11 @@ utilities.lazyLoad(exports, ["LbLoadbalancerV2"], () => require("./lbLoadbalance
 export * from "./provider";
 import { Provider } from "./provider";
 
+export { WorkflowWorkflowV2Args, WorkflowWorkflowV2Result, WorkflowWorkflowV2OutputArgs } from "./workflowWorkflowV2";
+export const workflowWorkflowV2: typeof import("./workflowWorkflowV2").workflowWorkflowV2 = null as any;
+export const workflowWorkflowV2Output: typeof import("./workflowWorkflowV2").workflowWorkflowV2Output = null as any;
+utilities.lazyLoad(exports, ["workflowWorkflowV2","workflowWorkflowV2Output"], () => require("./workflowWorkflowV2"));
+
 
 // Export sub-modules:
 import * as bgpvpn from "./bgpvpn";

@@ -323,16 +323,34 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceVolId);
     }
     /**
-     * The type of volume to create.
-     * Changing this creates a new volume.
+     * Migration policy when changing `volume_type`.
+     * `&#34;never&#34;` *(default)* prevents migration to another storage backend, while `&#34;on-demand&#34;`
+     * allows migration if needed. Applicable only when updating `volume_type`.
+     * 
+     */
+    @Export(name="volumeRetypePolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> volumeRetypePolicy;
+
+    /**
+     * @return Migration policy when changing `volume_type`.
+     * `&#34;never&#34;` *(default)* prevents migration to another storage backend, while `&#34;on-demand&#34;`
+     * allows migration if needed. Applicable only when updating `volume_type`.
+     * 
+     */
+    public Output<Optional<String>> volumeRetypePolicy() {
+        return Codegen.optional(this.volumeRetypePolicy);
+    }
+    /**
+     * The type of volume to create or update.
+     * Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
      * 
      */
     @Export(name="volumeType", refs={String.class}, tree="[0]")
     private Output<String> volumeType;
 
     /**
-     * @return The type of volume to create.
-     * Changing this creates a new volume.
+     * @return The type of volume to create or update.
+     * Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
      * 
      */
     public Output<String> volumeType() {

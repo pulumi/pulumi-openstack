@@ -103,8 +103,12 @@ type Volume struct {
 	// Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
 	// creates a new volume.
 	SourceVolId pulumi.StringPtrOutput `pulumi:"sourceVolId"`
-	// The type of volume to create.
-	// Changing this creates a new volume.
+	// Migration policy when changing `volumeType`.
+	// `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+	// allows migration if needed. Applicable only when updating `volumeType`.
+	VolumeRetypePolicy pulumi.StringPtrOutput `pulumi:"volumeRetypePolicy"`
+	// The type of volume to create or update.
+	// Changing this will attempt an in-place retype operation; migration depends on `volumeRetypePolicy`.
 	VolumeType pulumi.StringOutput `pulumi:"volumeType"`
 }
 
@@ -191,8 +195,12 @@ type volumeState struct {
 	// Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
 	// creates a new volume.
 	SourceVolId *string `pulumi:"sourceVolId"`
-	// The type of volume to create.
-	// Changing this creates a new volume.
+	// Migration policy when changing `volumeType`.
+	// `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+	// allows migration if needed. Applicable only when updating `volumeType`.
+	VolumeRetypePolicy *string `pulumi:"volumeRetypePolicy"`
+	// The type of volume to create or update.
+	// Changing this will attempt an in-place retype operation; migration depends on `volumeRetypePolicy`.
 	VolumeType *string `pulumi:"volumeType"`
 }
 
@@ -247,8 +255,12 @@ type VolumeState struct {
 	// Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
 	// creates a new volume.
 	SourceVolId pulumi.StringPtrInput
-	// The type of volume to create.
-	// Changing this creates a new volume.
+	// Migration policy when changing `volumeType`.
+	// `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+	// allows migration if needed. Applicable only when updating `volumeType`.
+	VolumeRetypePolicy pulumi.StringPtrInput
+	// The type of volume to create or update.
+	// Changing this will attempt an in-place retype operation; migration depends on `volumeRetypePolicy`.
 	VolumeType pulumi.StringPtrInput
 }
 
@@ -303,8 +315,12 @@ type volumeArgs struct {
 	// Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
 	// creates a new volume.
 	SourceVolId *string `pulumi:"sourceVolId"`
-	// The type of volume to create.
-	// Changing this creates a new volume.
+	// Migration policy when changing `volumeType`.
+	// `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+	// allows migration if needed. Applicable only when updating `volumeType`.
+	VolumeRetypePolicy *string `pulumi:"volumeRetypePolicy"`
+	// The type of volume to create or update.
+	// Changing this will attempt an in-place retype operation; migration depends on `volumeRetypePolicy`.
 	VolumeType *string `pulumi:"volumeType"`
 }
 
@@ -356,8 +372,12 @@ type VolumeArgs struct {
 	// Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
 	// creates a new volume.
 	SourceVolId pulumi.StringPtrInput
-	// The type of volume to create.
-	// Changing this creates a new volume.
+	// Migration policy when changing `volumeType`.
+	// `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+	// allows migration if needed. Applicable only when updating `volumeType`.
+	VolumeRetypePolicy pulumi.StringPtrInput
+	// The type of volume to create or update.
+	// Changing this will attempt an in-place retype operation; migration depends on `volumeRetypePolicy`.
 	VolumeType pulumi.StringPtrInput
 }
 
@@ -543,8 +563,15 @@ func (o VolumeOutput) SourceVolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.SourceVolId }).(pulumi.StringPtrOutput)
 }
 
-// The type of volume to create.
-// Changing this creates a new volume.
+// Migration policy when changing `volumeType`.
+// `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+// allows migration if needed. Applicable only when updating `volumeType`.
+func (o VolumeOutput) VolumeRetypePolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.VolumeRetypePolicy }).(pulumi.StringPtrOutput)
+}
+
+// The type of volume to create or update.
+// Changing this will attempt an in-place retype operation; migration depends on `volumeRetypePolicy`.
 func (o VolumeOutput) VolumeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.VolumeType }).(pulumi.StringOutput)
 }

@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * ```
  * 
  * ```sh
- * $ pulumi import openstack:dns/zone:Zone zone_1 zone_id:project_id
+ * $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
  * ```
  * 
  */
@@ -174,7 +174,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the project DNS zone is created
      * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-     * user role in target project)
+     * user role in target project).
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
@@ -183,16 +183,15 @@ public class Zone extends com.pulumi.resources.CustomResource {
     /**
      * @return The ID of the project DNS zone is created
      * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-     * user role in target project)
+     * user role in target project).
      * 
      */
     public Output<String> projectId() {
         return this.projectId;
     }
     /**
-     * The region in which to obtain the V2 Compute client.
-     * Keypairs are associated with accounts, but a Compute client is needed to
-     * create one. If omitted, the `region` argument of the provider is used.
+     * The region in which to obtain the V2 DNS client.
+     * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone.
      * 
      */
@@ -200,9 +199,8 @@ public class Zone extends com.pulumi.resources.CustomResource {
     private Output<String> region;
 
     /**
-     * @return The region in which to obtain the V2 Compute client.
-     * Keypairs are associated with accounts, but a Compute client is needed to
-     * create one. If omitted, the `region` argument of the provider is used.
+     * @return The region in which to obtain the V2 DNS client.
+     * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone.
      * 
      */

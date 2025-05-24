@@ -155,8 +155,16 @@ namespace Pulumi.OpenStack.BlockStorage
         public Output<string?> SourceVolId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of volume to create.
-        /// Changing this creates a new volume.
+        /// Migration policy when changing `volume_type`.
+        /// `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+        /// allows migration if needed. Applicable only when updating `volume_type`.
+        /// </summary>
+        [Output("volumeRetypePolicy")]
+        public Output<string?> VolumeRetypePolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of volume to create or update.
+        /// Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
         /// </summary>
         [Output("volumeType")]
         public Output<string> VolumeType { get; private set; } = null!;
@@ -322,8 +330,16 @@ namespace Pulumi.OpenStack.BlockStorage
         public Input<string>? SourceVolId { get; set; }
 
         /// <summary>
-        /// The type of volume to create.
-        /// Changing this creates a new volume.
+        /// Migration policy when changing `volume_type`.
+        /// `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+        /// allows migration if needed. Applicable only when updating `volume_type`.
+        /// </summary>
+        [Input("volumeRetypePolicy")]
+        public Input<string>? VolumeRetypePolicy { get; set; }
+
+        /// <summary>
+        /// The type of volume to create or update.
+        /// Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
         /// </summary>
         [Input("volumeType")]
         public Input<string>? VolumeType { get; set; }
@@ -465,8 +481,16 @@ namespace Pulumi.OpenStack.BlockStorage
         public Input<string>? SourceVolId { get; set; }
 
         /// <summary>
-        /// The type of volume to create.
-        /// Changing this creates a new volume.
+        /// Migration policy when changing `volume_type`.
+        /// `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
+        /// allows migration if needed. Applicable only when updating `volume_type`.
+        /// </summary>
+        [Input("volumeRetypePolicy")]
+        public Input<string>? VolumeRetypePolicy { get; set; }
+
+        /// <summary>
+        /// The type of volume to create or update.
+        /// Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
         /// </summary>
         [Input("volumeType")]
         public Input<string>? VolumeType { get; set; }

@@ -19,16 +19,18 @@ public final class IkePolicyState extends com.pulumi.resources.ResourceArgs {
     public static final IkePolicyState Empty = new IkePolicyState();
 
     /**
-     * The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-     * Default is sha1. Changing this updates the algorithm of the existing policy.
+     * The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+     * aes-xcbc, aes-cmac. Default is sha1.
+     * Changing this updates the algorithm of the existing policy.
      * 
      */
     @Import(name="authAlgorithm")
     private @Nullable Output<String> authAlgorithm;
 
     /**
-     * @return The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-     * Default is sha1. Changing this updates the algorithm of the existing policy.
+     * @return The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+     * aes-xcbc, aes-cmac. Default is sha1.
+     * Changing this updates the algorithm of the existing policy.
      * 
      */
     public Optional<Output<String>> authAlgorithm() {
@@ -53,7 +55,8 @@ public final class IkePolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+     * The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+     * aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
      * The default value is aes-128. Changing this updates the existing policy.
      * 
      */
@@ -61,7 +64,8 @@ public final class IkePolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> encryptionAlgorithm;
 
     /**
-     * @return The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+     * @return The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+     * aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
      * The default value is aes-128. Changing this updates the existing policy.
      * 
      */
@@ -119,16 +123,16 @@ public final class IkePolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-     * Changing this updates the existing policy.
+     * The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+     * Default is group5. Changing this updates the existing policy.
      * 
      */
     @Import(name="pfs")
     private @Nullable Output<String> pfs;
 
     /**
-     * @return The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-     * Changing this updates the existing policy.
+     * @return The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+     * Default is group5. Changing this updates the existing policy.
      * 
      */
     public Optional<Output<String>> pfs() {
@@ -240,8 +244,9 @@ public final class IkePolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authAlgorithm The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-         * Default is sha1. Changing this updates the algorithm of the existing policy.
+         * @param authAlgorithm The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+         * aes-xcbc, aes-cmac. Default is sha1.
+         * Changing this updates the algorithm of the existing policy.
          * 
          * @return builder
          * 
@@ -252,8 +257,9 @@ public final class IkePolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authAlgorithm The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-         * Default is sha1. Changing this updates the algorithm of the existing policy.
+         * @param authAlgorithm The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+         * aes-xcbc, aes-cmac. Default is sha1.
+         * Changing this updates the algorithm of the existing policy.
          * 
          * @return builder
          * 
@@ -286,7 +292,8 @@ public final class IkePolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionAlgorithm The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+         * @param encryptionAlgorithm The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+         * aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
          * The default value is aes-128. Changing this updates the existing policy.
          * 
          * @return builder
@@ -298,7 +305,8 @@ public final class IkePolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionAlgorithm The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+         * @param encryptionAlgorithm The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+         * aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
          * The default value is aes-128. Changing this updates the existing policy.
          * 
          * @return builder
@@ -386,8 +394,8 @@ public final class IkePolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pfs The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-         * Changing this updates the existing policy.
+         * @param pfs The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+         * Default is group5. Changing this updates the existing policy.
          * 
          * @return builder
          * 
@@ -398,8 +406,8 @@ public final class IkePolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pfs The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-         * Changing this updates the existing policy.
+         * @param pfs The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+         * Default is group5. Changing this updates the existing policy.
          * 
          * @return builder
          * 

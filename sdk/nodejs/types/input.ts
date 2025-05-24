@@ -791,7 +791,9 @@ export namespace objectstorage {
          */
         location: pulumi.Input<string>;
         /**
-         * Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+         * Versioning type which can be `versions` or `history`
+         * according to [OpenStack
+         * documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
          */
         type: pulumi.Input<string>;
     }

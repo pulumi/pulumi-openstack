@@ -137,6 +137,26 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// });
     /// ```
     /// 
+    /// ### Set a custom storage class in the Ceph RGW Swift API
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container_1", new()
+    ///     {
+    ///         Name = "tf-test-container-1",
+    ///         StoragePolicy = "az1",
+    ///         StorageClass = "SSD",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the name of the container:
@@ -159,30 +179,30 @@ namespace Pulumi.OpenStack.ObjectStorage
     {
         /// <summary>
         /// Sets an access control list (ACL) that grants
-        /// read access. This header can contain a comma-delimited list of users that
-        /// can read the container (allows the GET method for all objects in the
-        /// container). Changing this updates the access control list read access.
+        /// read access. This header can contain a comma-delimited list of users that can
+        /// read the container (allows the GET method for all objects in the container).
+        /// Changing this updates the access control list read access.
         /// </summary>
         [Output("containerRead")]
         public Output<string?> ContainerRead { get; private set; } = null!;
 
         /// <summary>
-        /// The secret key for container synchronization.
-        /// Changing this updates container synchronization.
+        /// The secret key for container
+        /// synchronization. Changing this updates container synchronization.
         /// </summary>
         [Output("containerSyncKey")]
         public Output<string?> ContainerSyncKey { get; private set; } = null!;
 
         /// <summary>
-        /// The destination for container synchronization.
-        /// Changing this updates container synchronization.
+        /// The destination for container
+        /// synchronization. Changing this updates container synchronization.
         /// </summary>
         [Output("containerSyncTo")]
         public Output<string?> ContainerSyncTo { get; private set; } = null!;
 
         /// <summary>
-        /// Sets an ACL that grants write access.
-        /// Changing this updates the access control list write access.
+        /// Sets an ACL that grants write access. Changing
+        /// this updates the access control list write access.
         /// </summary>
         [Output("containerWrite")]
         public Output<string?> ContainerWrite { get; private set; } = null!;
@@ -195,14 +215,16 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Output<string?> ContentType { get; private set; } = null!;
 
         /// <summary>
-        /// A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+        /// A boolean that indicates all
+        /// objects should be deleted from the container so that the container can be
+        /// destroyed without error. These objects are not recoverable.
         /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
         /// <summary>
-        /// Custom key/value pairs to associate with the container.
-        /// Changing this updates the existing container metadata.
+        /// Custom key/value pairs to associate with the
+        /// container. Changing this updates the existing container metadata.
         /// </summary>
         [Output("metadata")]
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
@@ -216,15 +238,23 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// The region in which to create the container. If
-        /// omitted, the `region` argument of the provider is used. Changing this
-        /// creates a new container.
+        /// omitted, the `region` argument of the provider is used. Changing this creates
+        /// a new container.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The storage policy to be used for the container. 
-        /// Changing this creates a new container.
+        /// The storage class to be used for the container.
+        /// Changing this creates a new container. This option is only available in Ceph
+        /// RGW Swift API implementation.
+        /// </summary>
+        [Output("storageClass")]
+        public Output<string> StorageClass { get; private set; } = null!;
+
+        /// <summary>
+        /// The storage policy to be used for the
+        /// container. Changing this creates a new container.
         /// </summary>
         [Output("storagePolicy")]
         public Output<string> StoragePolicy { get; private set; } = null!;
@@ -232,16 +262,19 @@ namespace Pulumi.OpenStack.ObjectStorage
         /// <summary>
         /// A boolean that can enable or disable object
         /// versioning. The default value is `false`. To use this feature, your Swift
-        /// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+        /// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+        /// release
+        /// notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
         /// and a cloud administrator must have set the `allow_object_versioning = true`
-        /// configuration option in Swift. If you cannot set this versioning type, you may
-        /// want to consider using `versioning_legacy` instead.
+        /// configuration option in Swift. If you cannot set this versioning type, you
+        /// may want to consider using `versioning_legacy` instead.
         /// </summary>
         [Output("versioning")]
         public Output<bool?> Versioning { get; private set; } = null!;
 
         /// <summary>
-        /// Enable legacy object versioning. The structure is described below.
+        /// Enable legacy object versioning. The
+        /// structure is described below.
         /// </summary>
         [Output("versioningLegacy")]
         public Output<Outputs.ContainerVersioningLegacy?> VersioningLegacy { get; private set; } = null!;
@@ -294,30 +327,30 @@ namespace Pulumi.OpenStack.ObjectStorage
     {
         /// <summary>
         /// Sets an access control list (ACL) that grants
-        /// read access. This header can contain a comma-delimited list of users that
-        /// can read the container (allows the GET method for all objects in the
-        /// container). Changing this updates the access control list read access.
+        /// read access. This header can contain a comma-delimited list of users that can
+        /// read the container (allows the GET method for all objects in the container).
+        /// Changing this updates the access control list read access.
         /// </summary>
         [Input("containerRead")]
         public Input<string>? ContainerRead { get; set; }
 
         /// <summary>
-        /// The secret key for container synchronization.
-        /// Changing this updates container synchronization.
+        /// The secret key for container
+        /// synchronization. Changing this updates container synchronization.
         /// </summary>
         [Input("containerSyncKey")]
         public Input<string>? ContainerSyncKey { get; set; }
 
         /// <summary>
-        /// The destination for container synchronization.
-        /// Changing this updates container synchronization.
+        /// The destination for container
+        /// synchronization. Changing this updates container synchronization.
         /// </summary>
         [Input("containerSyncTo")]
         public Input<string>? ContainerSyncTo { get; set; }
 
         /// <summary>
-        /// Sets an ACL that grants write access.
-        /// Changing this updates the access control list write access.
+        /// Sets an ACL that grants write access. Changing
+        /// this updates the access control list write access.
         /// </summary>
         [Input("containerWrite")]
         public Input<string>? ContainerWrite { get; set; }
@@ -330,7 +363,9 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? ContentType { get; set; }
 
         /// <summary>
-        /// A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+        /// A boolean that indicates all
+        /// objects should be deleted from the container so that the container can be
+        /// destroyed without error. These objects are not recoverable.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
@@ -339,8 +374,8 @@ namespace Pulumi.OpenStack.ObjectStorage
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// Custom key/value pairs to associate with the container.
-        /// Changing this updates the existing container metadata.
+        /// Custom key/value pairs to associate with the
+        /// container. Changing this updates the existing container metadata.
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -357,15 +392,23 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// The region in which to create the container. If
-        /// omitted, the `region` argument of the provider is used. Changing this
-        /// creates a new container.
+        /// omitted, the `region` argument of the provider is used. Changing this creates
+        /// a new container.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The storage policy to be used for the container. 
-        /// Changing this creates a new container.
+        /// The storage class to be used for the container.
+        /// Changing this creates a new container. This option is only available in Ceph
+        /// RGW Swift API implementation.
+        /// </summary>
+        [Input("storageClass")]
+        public Input<string>? StorageClass { get; set; }
+
+        /// <summary>
+        /// The storage policy to be used for the
+        /// container. Changing this creates a new container.
         /// </summary>
         [Input("storagePolicy")]
         public Input<string>? StoragePolicy { get; set; }
@@ -373,16 +416,19 @@ namespace Pulumi.OpenStack.ObjectStorage
         /// <summary>
         /// A boolean that can enable or disable object
         /// versioning. The default value is `false`. To use this feature, your Swift
-        /// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+        /// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+        /// release
+        /// notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
         /// and a cloud administrator must have set the `allow_object_versioning = true`
-        /// configuration option in Swift. If you cannot set this versioning type, you may
-        /// want to consider using `versioning_legacy` instead.
+        /// configuration option in Swift. If you cannot set this versioning type, you
+        /// may want to consider using `versioning_legacy` instead.
         /// </summary>
         [Input("versioning")]
         public Input<bool>? Versioning { get; set; }
 
         /// <summary>
-        /// Enable legacy object versioning. The structure is described below.
+        /// Enable legacy object versioning. The
+        /// structure is described below.
         /// </summary>
         [Input("versioningLegacy")]
         public Input<Inputs.ContainerVersioningLegacyArgs>? VersioningLegacy { get; set; }
@@ -397,30 +443,30 @@ namespace Pulumi.OpenStack.ObjectStorage
     {
         /// <summary>
         /// Sets an access control list (ACL) that grants
-        /// read access. This header can contain a comma-delimited list of users that
-        /// can read the container (allows the GET method for all objects in the
-        /// container). Changing this updates the access control list read access.
+        /// read access. This header can contain a comma-delimited list of users that can
+        /// read the container (allows the GET method for all objects in the container).
+        /// Changing this updates the access control list read access.
         /// </summary>
         [Input("containerRead")]
         public Input<string>? ContainerRead { get; set; }
 
         /// <summary>
-        /// The secret key for container synchronization.
-        /// Changing this updates container synchronization.
+        /// The secret key for container
+        /// synchronization. Changing this updates container synchronization.
         /// </summary>
         [Input("containerSyncKey")]
         public Input<string>? ContainerSyncKey { get; set; }
 
         /// <summary>
-        /// The destination for container synchronization.
-        /// Changing this updates container synchronization.
+        /// The destination for container
+        /// synchronization. Changing this updates container synchronization.
         /// </summary>
         [Input("containerSyncTo")]
         public Input<string>? ContainerSyncTo { get; set; }
 
         /// <summary>
-        /// Sets an ACL that grants write access.
-        /// Changing this updates the access control list write access.
+        /// Sets an ACL that grants write access. Changing
+        /// this updates the access control list write access.
         /// </summary>
         [Input("containerWrite")]
         public Input<string>? ContainerWrite { get; set; }
@@ -433,7 +479,9 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? ContentType { get; set; }
 
         /// <summary>
-        /// A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+        /// A boolean that indicates all
+        /// objects should be deleted from the container so that the container can be
+        /// destroyed without error. These objects are not recoverable.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
@@ -442,8 +490,8 @@ namespace Pulumi.OpenStack.ObjectStorage
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// Custom key/value pairs to associate with the container.
-        /// Changing this updates the existing container metadata.
+        /// Custom key/value pairs to associate with the
+        /// container. Changing this updates the existing container metadata.
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -460,15 +508,23 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// The region in which to create the container. If
-        /// omitted, the `region` argument of the provider is used. Changing this
-        /// creates a new container.
+        /// omitted, the `region` argument of the provider is used. Changing this creates
+        /// a new container.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The storage policy to be used for the container. 
-        /// Changing this creates a new container.
+        /// The storage class to be used for the container.
+        /// Changing this creates a new container. This option is only available in Ceph
+        /// RGW Swift API implementation.
+        /// </summary>
+        [Input("storageClass")]
+        public Input<string>? StorageClass { get; set; }
+
+        /// <summary>
+        /// The storage policy to be used for the
+        /// container. Changing this creates a new container.
         /// </summary>
         [Input("storagePolicy")]
         public Input<string>? StoragePolicy { get; set; }
@@ -476,16 +532,19 @@ namespace Pulumi.OpenStack.ObjectStorage
         /// <summary>
         /// A boolean that can enable or disable object
         /// versioning. The default value is `false`. To use this feature, your Swift
-        /// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+        /// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+        /// release
+        /// notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
         /// and a cloud administrator must have set the `allow_object_versioning = true`
-        /// configuration option in Swift. If you cannot set this versioning type, you may
-        /// want to consider using `versioning_legacy` instead.
+        /// configuration option in Swift. If you cannot set this versioning type, you
+        /// may want to consider using `versioning_legacy` instead.
         /// </summary>
         [Input("versioning")]
         public Input<bool>? Versioning { get; set; }
 
         /// <summary>
-        /// Enable legacy object versioning. The structure is described below.
+        /// Enable legacy object versioning. The
+        /// structure is described below.
         /// </summary>
         [Input("versioningLegacy")]
         public Input<Inputs.ContainerVersioningLegacyGetArgs>? VersioningLegacy { get; set; }

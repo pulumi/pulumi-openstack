@@ -30,14 +30,18 @@ public final class ContainerVersioningLegacyArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+     * Versioning type which can be `versions` or `history`
+     * according to [OpenStack
+     * documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+     * @return Versioning type which can be `versions` or `history`
+     * according to [OpenStack
+     * documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
      * 
      */
     public Output<String> type() {
@@ -91,7 +95,9 @@ public final class ContainerVersioningLegacyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+         * @param type Versioning type which can be `versions` or `history`
+         * according to [OpenStack
+         * documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
          * 
          * @return builder
          * 
@@ -102,7 +108,9 @@ public final class ContainerVersioningLegacyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+         * @param type Versioning type which can be `versions` or `history`
+         * according to [OpenStack
+         * documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
          * 
          * @return builder
          * 

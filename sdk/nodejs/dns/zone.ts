@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * ```
  *
  * ```sh
- * $ pulumi import openstack:dns/zone:Zone zone_1 zone_id:project_id
+ * $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
  * ```
  */
 export class Zone extends pulumi.CustomResource {
@@ -96,13 +96,12 @@ export class Zone extends pulumi.CustomResource {
     /**
      * The ID of the project DNS zone is created
      * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-     * user role in target project)
+     * user role in target project).
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * The region in which to obtain the V2 Compute client.
-     * Keypairs are associated with accounts, but a Compute client is needed to
-     * create one. If omitted, the `region` argument of the provider is used.
+     * The region in which to obtain the V2 DNS client.
+     * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone.
      */
     public readonly region!: pulumi.Output<string>;
@@ -200,13 +199,12 @@ export interface ZoneState {
     /**
      * The ID of the project DNS zone is created
      * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-     * user role in target project)
+     * user role in target project).
      */
     projectId?: pulumi.Input<string>;
     /**
-     * The region in which to obtain the V2 Compute client.
-     * Keypairs are associated with accounts, but a Compute client is needed to
-     * create one. If omitted, the `region` argument of the provider is used.
+     * The region in which to obtain the V2 DNS client.
+     * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone.
      */
     region?: pulumi.Input<string>;
@@ -262,13 +260,12 @@ export interface ZoneArgs {
     /**
      * The ID of the project DNS zone is created
      * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
-     * user role in target project)
+     * user role in target project).
      */
     projectId?: pulumi.Input<string>;
     /**
-     * The region in which to obtain the V2 Compute client.
-     * Keypairs are associated with accounts, but a Compute client is needed to
-     * create one. If omitted, the `region` argument of the provider is used.
+     * The region in which to obtain the V2 DNS client.
+     * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone.
      */
     region?: pulumi.Input<string>;

@@ -32,7 +32,7 @@ public final class GetUserResult {
      * @return See Argument Reference above.
      * 
      */
-    private @Nullable Boolean enabled;
+    private Boolean enabled;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -95,8 +95,8 @@ public final class GetUserResult {
      * @return See Argument Reference above.
      * 
      */
-    public Optional<Boolean> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Boolean enabled() {
+        return this.enabled;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -160,7 +160,7 @@ public final class GetUserResult {
         private String defaultProjectId;
         private String description;
         private String domainId;
-        private @Nullable Boolean enabled;
+        private Boolean enabled;
         private String id;
         private @Nullable String idpId;
         private @Nullable String name;
@@ -209,8 +209,10 @@ public final class GetUserResult {
             return this;
         }
         @CustomType.Setter
-        public Builder enabled(@Nullable Boolean enabled) {
-
+        public Builder enabled(Boolean enabled) {
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "enabled");
+            }
             this.enabled = enabled;
             return this;
         }

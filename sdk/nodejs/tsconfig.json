@@ -194,6 +194,7 @@
         "vpnaas/index.ts",
         "vpnaas/ipSecPolicy.ts",
         "vpnaas/service.ts",
-        "vpnaas/siteConnection.ts"
+        "vpnaas/siteConnection.ts",
+        "workflowWorkflowV2.ts"
     ]
 }

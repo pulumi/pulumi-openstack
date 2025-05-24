@@ -19,7 +19,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  */
-export function getHypervisorV2(args: GetHypervisorV2Args, opts?: pulumi.InvokeOptions): Promise<GetHypervisorV2Result> {
+export function getHypervisorV2(args?: GetHypervisorV2Args, opts?: pulumi.InvokeOptions): Promise<GetHypervisorV2Result> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:compute/getHypervisorV2:getHypervisorV2", {
         "hostname": args.hostname,
@@ -33,7 +34,7 @@ export interface GetHypervisorV2Args {
     /**
      * The hostname of the hypervisor
      */
-    hostname: string;
+    hostname?: string;
 }
 
 /**
@@ -92,7 +93,8 @@ export interface GetHypervisorV2Result {
  * });
  * ```
  */
-export function getHypervisorV2Output(args: GetHypervisorV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHypervisorV2Result> {
+export function getHypervisorV2Output(args?: GetHypervisorV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHypervisorV2Result> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:compute/getHypervisorV2:getHypervisorV2", {
         "hostname": args.hostname,
@@ -106,5 +108,5 @@ export interface GetHypervisorV2OutputArgs {
     /**
      * The hostname of the hypervisor
      */
-    hostname: pulumi.Input<string>;
+    hostname?: pulumi.Input<string>;
 }

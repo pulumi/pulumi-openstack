@@ -4,9 +4,10 @@
 package com.pulumi.openstack.compute.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetHypervisorV2PlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -17,15 +18,15 @@ public final class GetHypervisorV2PlainArgs extends com.pulumi.resources.InvokeA
      * The hostname of the hypervisor
      * 
      */
-    @Import(name="hostname", required=true)
-    private String hostname;
+    @Import(name="hostname")
+    private @Nullable String hostname;
 
     /**
      * @return The hostname of the hypervisor
      * 
      */
-    public String hostname() {
-        return this.hostname;
+    public Optional<String> hostname() {
+        return Optional.ofNullable(this.hostname);
     }
 
     private GetHypervisorV2PlainArgs() {}
@@ -58,15 +59,12 @@ public final class GetHypervisorV2PlainArgs extends com.pulumi.resources.InvokeA
          * @return builder
          * 
          */
-        public Builder hostname(String hostname) {
+        public Builder hostname(@Nullable String hostname) {
             $.hostname = hostname;
             return this;
         }
 
         public GetHypervisorV2PlainArgs build() {
-            if ($.hostname == null) {
-                throw new MissingRequiredPropertyException("GetHypervisorV2PlainArgs", "hostname");
-            }
             return $;
         }
     }

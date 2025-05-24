@@ -16,6 +16,7 @@ from .get_fw_rule_v2 import *
 from .lb_flavorprofile_v2 import *
 from .lb_loadbalancer_v2 import *
 from .provider import *
+from .workflow_workflow_v2 import *
 from ._inputs import *
 from . import outputs
 

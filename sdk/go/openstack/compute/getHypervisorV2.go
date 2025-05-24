@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.GetHypervisorV2(ctx, &compute.GetHypervisorV2Args{
-//				Hostname: "host01",
+//				Hostname: pulumi.StringRef("host01"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ func GetHypervisorV2(ctx *pulumi.Context, args *GetHypervisorV2Args, opts ...pul
 // A collection of arguments for invoking getHypervisorV2.
 type GetHypervisorV2Args struct {
 	// The hostname of the hypervisor
-	Hostname string `pulumi:"hostname"`
+	Hostname *string `pulumi:"hostname"`
 }
 
 // A collection of values returned by getHypervisorV2.
@@ -89,7 +89,7 @@ func GetHypervisorV2Output(ctx *pulumi.Context, args GetHypervisorV2OutputArgs, 
 // A collection of arguments for invoking getHypervisorV2.
 type GetHypervisorV2OutputArgs struct {
 	// The hostname of the hypervisor
-	Hostname pulumi.StringInput `pulumi:"hostname"`
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 }
 
 func (GetHypervisorV2OutputArgs) ElementType() reflect.Type {

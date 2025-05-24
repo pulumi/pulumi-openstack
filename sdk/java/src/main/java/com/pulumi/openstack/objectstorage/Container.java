@@ -225,6 +225,43 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Set a custom storage class in the Ceph RGW Swift API
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.objectstorage.Container;
+ * import com.pulumi.openstack.objectstorage.ContainerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var container1 = new Container("container1", ContainerArgs.builder()
+ *             .name("tf-test-container-1")
+ *             .storagePolicy("az1")
+ *             .storageClass("SSD")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * This resource can be imported by specifying the name of the container:
@@ -247,9 +284,9 @@ import javax.annotation.Nullable;
 public class Container extends com.pulumi.resources.CustomResource {
     /**
      * Sets an access control list (ACL) that grants
-     * read access. This header can contain a comma-delimited list of users that
-     * can read the container (allows the GET method for all objects in the
-     * container). Changing this updates the access control list read access.
+     * read access. This header can contain a comma-delimited list of users that can
+     * read the container (allows the GET method for all objects in the container).
+     * Changing this updates the access control list read access.
      * 
      */
     @Export(name="containerRead", refs={String.class}, tree="[0]")
@@ -257,57 +294,57 @@ public class Container extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Sets an access control list (ACL) that grants
-     * read access. This header can contain a comma-delimited list of users that
-     * can read the container (allows the GET method for all objects in the
-     * container). Changing this updates the access control list read access.
+     * read access. This header can contain a comma-delimited list of users that can
+     * read the container (allows the GET method for all objects in the container).
+     * Changing this updates the access control list read access.
      * 
      */
     public Output<Optional<String>> containerRead() {
         return Codegen.optional(this.containerRead);
     }
     /**
-     * The secret key for container synchronization.
-     * Changing this updates container synchronization.
+     * The secret key for container
+     * synchronization. Changing this updates container synchronization.
      * 
      */
     @Export(name="containerSyncKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> containerSyncKey;
 
     /**
-     * @return The secret key for container synchronization.
-     * Changing this updates container synchronization.
+     * @return The secret key for container
+     * synchronization. Changing this updates container synchronization.
      * 
      */
     public Output<Optional<String>> containerSyncKey() {
         return Codegen.optional(this.containerSyncKey);
     }
     /**
-     * The destination for container synchronization.
-     * Changing this updates container synchronization.
+     * The destination for container
+     * synchronization. Changing this updates container synchronization.
      * 
      */
     @Export(name="containerSyncTo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> containerSyncTo;
 
     /**
-     * @return The destination for container synchronization.
-     * Changing this updates container synchronization.
+     * @return The destination for container
+     * synchronization. Changing this updates container synchronization.
      * 
      */
     public Output<Optional<String>> containerSyncTo() {
         return Codegen.optional(this.containerSyncTo);
     }
     /**
-     * Sets an ACL that grants write access.
-     * Changing this updates the access control list write access.
+     * Sets an ACL that grants write access. Changing
+     * this updates the access control list write access.
      * 
      */
     @Export(name="containerWrite", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> containerWrite;
 
     /**
-     * @return Sets an ACL that grants write access.
-     * Changing this updates the access control list write access.
+     * @return Sets an ACL that grants write access. Changing
+     * this updates the access control list write access.
      * 
      */
     public Output<Optional<String>> containerWrite() {
@@ -330,30 +367,34 @@ public class Container extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.contentType);
     }
     /**
-     * A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+     * A boolean that indicates all
+     * objects should be deleted from the container so that the container can be
+     * destroyed without error. These objects are not recoverable.
      * 
      */
     @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
-     * @return A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+     * @return A boolean that indicates all
+     * objects should be deleted from the container so that the container can be
+     * destroyed without error. These objects are not recoverable.
      * 
      */
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }
     /**
-     * Custom key/value pairs to associate with the container.
-     * Changing this updates the existing container metadata.
+     * Custom key/value pairs to associate with the
+     * container. Changing this updates the existing container metadata.
      * 
      */
     @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
-     * @return Custom key/value pairs to associate with the container.
-     * Changing this updates the existing container metadata.
+     * @return Custom key/value pairs to associate with the
+     * container. Changing this updates the existing container metadata.
      * 
      */
     public Output<Optional<Map<String,String>>> metadata() {
@@ -377,8 +418,8 @@ public class Container extends com.pulumi.resources.CustomResource {
     }
     /**
      * The region in which to create the container. If
-     * omitted, the `region` argument of the provider is used. Changing this
-     * creates a new container.
+     * omitted, the `region` argument of the provider is used. Changing this creates
+     * a new container.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
@@ -386,24 +427,42 @@ public class Container extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The region in which to create the container. If
-     * omitted, the `region` argument of the provider is used. Changing this
-     * creates a new container.
+     * omitted, the `region` argument of the provider is used. Changing this creates
+     * a new container.
      * 
      */
     public Output<String> region() {
         return this.region;
     }
     /**
-     * The storage policy to be used for the container.
-     * Changing this creates a new container.
+     * The storage class to be used for the container.
+     * Changing this creates a new container. This option is only available in Ceph
+     * RGW Swift API implementation.
+     * 
+     */
+    @Export(name="storageClass", refs={String.class}, tree="[0]")
+    private Output<String> storageClass;
+
+    /**
+     * @return The storage class to be used for the container.
+     * Changing this creates a new container. This option is only available in Ceph
+     * RGW Swift API implementation.
+     * 
+     */
+    public Output<String> storageClass() {
+        return this.storageClass;
+    }
+    /**
+     * The storage policy to be used for the
+     * container. Changing this creates a new container.
      * 
      */
     @Export(name="storagePolicy", refs={String.class}, tree="[0]")
     private Output<String> storagePolicy;
 
     /**
-     * @return The storage policy to be used for the container.
-     * Changing this creates a new container.
+     * @return The storage policy to be used for the
+     * container. Changing this creates a new container.
      * 
      */
     public Output<String> storagePolicy() {
@@ -412,10 +471,12 @@ public class Container extends com.pulumi.resources.CustomResource {
     /**
      * A boolean that can enable or disable object
      * versioning. The default value is `false`. To use this feature, your Swift
-     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+     * release
+     * notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
      * and a cloud administrator must have set the `allow_object_versioning = true`
-     * configuration option in Swift. If you cannot set this versioning type, you may
-     * want to consider using `versioning_legacy` instead.
+     * configuration option in Swift. If you cannot set this versioning type, you
+     * may want to consider using `versioning_legacy` instead.
      * 
      */
     @Export(name="versioning", refs={Boolean.class}, tree="[0]")
@@ -424,17 +485,20 @@ public class Container extends com.pulumi.resources.CustomResource {
     /**
      * @return A boolean that can enable or disable object
      * versioning. The default value is `false`. To use this feature, your Swift
-     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
+     * release
+     * notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
      * and a cloud administrator must have set the `allow_object_versioning = true`
-     * configuration option in Swift. If you cannot set this versioning type, you may
-     * want to consider using `versioning_legacy` instead.
+     * configuration option in Swift. If you cannot set this versioning type, you
+     * may want to consider using `versioning_legacy` instead.
      * 
      */
     public Output<Optional<Boolean>> versioning() {
         return Codegen.optional(this.versioning);
     }
     /**
-     * Enable legacy object versioning. The structure is described below.
+     * Enable legacy object versioning. The
+     * structure is described below.
      * 
      * @deprecated
      * Use newer &#34;versioning&#34; implementation
@@ -445,7 +509,8 @@ public class Container extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ ContainerVersioningLegacy> versioningLegacy;
 
     /**
-     * @return Enable legacy object versioning. The structure is described below.
+     * @return Enable legacy object versioning. The
+     * structure is described below.
      * 
      */
     public Output<Optional<ContainerVersioningLegacy>> versioningLegacy() {

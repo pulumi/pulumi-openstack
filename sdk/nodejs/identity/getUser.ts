@@ -91,7 +91,7 @@ export interface GetUserResult {
     /**
      * See Argument Reference above.
      */
-    readonly enabled?: boolean;
+    readonly enabled: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

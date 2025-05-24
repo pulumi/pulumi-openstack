@@ -107,6 +107,17 @@ namespace Pulumi.OpenStack.Compute
         public Output<bool?> ForceDelete { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the exact hypervisor hostname on
+        /// which to create the instance. When provided, this parameter is included in
+        /// the request to Nova, directing the scheduler to launch the instance on the
+        /// specified host. Note: This option requires administrative privileges and a
+        /// Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+        /// this value forces a new instance to be created.
+        /// </summary>
+        [Output("hypervisorHostname")]
+        public Output<string> HypervisorHostname { get; private set; } = null!;
+
+        /// <summary>
         /// (Optional; Required if `image_name` is empty and not booting
         /// from a volume. Do not specify if booting from a volume.) The image ID of
         /// the desired image for the server. Changing this rebuilds the existing
@@ -162,8 +173,9 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// Customize the personality of an instance by
-        /// defining one or more files and their contents. The personality structure
-        /// is described below. Changing this rebuilds the existing server.
+        /// defining one or more files and their contents. The personality structure is
+        /// described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+        /// the existing server.
         /// </summary>
         [Output("personalities")]
         public Output<ImmutableArray<Outputs.InstancePersonality>> Personalities { get; private set; } = null!;
@@ -384,6 +396,17 @@ namespace Pulumi.OpenStack.Compute
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
+        /// Specifies the exact hypervisor hostname on
+        /// which to create the instance. When provided, this parameter is included in
+        /// the request to Nova, directing the scheduler to launch the instance on the
+        /// specified host. Note: This option requires administrative privileges and a
+        /// Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+        /// this value forces a new instance to be created.
+        /// </summary>
+        [Input("hypervisorHostname")]
+        public Input<string>? HypervisorHostname { get; set; }
+
+        /// <summary>
         /// (Optional; Required if `image_name` is empty and not booting
         /// from a volume. Do not specify if booting from a volume.) The image ID of
         /// the desired image for the server. Changing this rebuilds the existing
@@ -454,8 +477,9 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// Customize the personality of an instance by
-        /// defining one or more files and their contents. The personality structure
-        /// is described below. Changing this rebuilds the existing server.
+        /// defining one or more files and their contents. The personality structure is
+        /// described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+        /// the existing server.
         /// </summary>
         public InputList<Inputs.InstancePersonalityArgs> Personalities
         {
@@ -676,6 +700,17 @@ namespace Pulumi.OpenStack.Compute
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
+        /// Specifies the exact hypervisor hostname on
+        /// which to create the instance. When provided, this parameter is included in
+        /// the request to Nova, directing the scheduler to launch the instance on the
+        /// specified host. Note: This option requires administrative privileges and a
+        /// Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+        /// this value forces a new instance to be created.
+        /// </summary>
+        [Input("hypervisorHostname")]
+        public Input<string>? HypervisorHostname { get; set; }
+
+        /// <summary>
         /// (Optional; Required if `image_name` is empty and not booting
         /// from a volume. Do not specify if booting from a volume.) The image ID of
         /// the desired image for the server. Changing this rebuilds the existing
@@ -746,8 +781,9 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// Customize the personality of an instance by
-        /// defining one or more files and their contents. The personality structure
-        /// is described below. Changing this rebuilds the existing server.
+        /// defining one or more files and their contents. The personality structure is
+        /// described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+        /// the existing server.
         /// </summary>
         public InputList<Inputs.InstancePersonalityGetArgs> Personalities
         {

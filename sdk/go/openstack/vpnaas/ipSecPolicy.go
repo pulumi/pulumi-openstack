@@ -49,8 +49,9 @@ import (
 type IpSecPolicy struct {
 	pulumi.CustomResourceState
 
-	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-	// Default is sha1. Changing this updates the algorithm of the existing policy.
+	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+	// aes-xcbc, aes-cmac. Default is sha1.
+	// Changing this updates the algorithm of the existing policy.
 	AuthAlgorithm pulumi.StringOutput `pulumi:"authAlgorithm"`
 	// The human-readable description for the policy.
 	// Changing this updates the description of the existing policy.
@@ -58,7 +59,8 @@ type IpSecPolicy struct {
 	// The encapsulation mode. Valid values are tunnel and transport. Default is tunnel.
 	// Changing this updates the existing policy.
 	EncapsulationMode pulumi.StringOutput `pulumi:"encapsulationMode"`
-	// The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+	// The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+	// aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
 	// The default value is aes-128. Changing this updates the existing policy.
 	EncryptionAlgorithm pulumi.StringOutput `pulumi:"encryptionAlgorithm"`
 	// The lifetime of the security association. Consists of Unit and Value.
@@ -66,8 +68,8 @@ type IpSecPolicy struct {
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
-	// is group5. Changing this updates the existing policy.
+	// The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+	// Default is group5. Changing this updates the existing policy.
 	Pfs pulumi.StringOutput `pulumi:"pfs"`
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an IPSec policy. If omitted, the
@@ -114,8 +116,9 @@ func GetIpSecPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IpSecPolicy resources.
 type ipSecPolicyState struct {
-	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-	// Default is sha1. Changing this updates the algorithm of the existing policy.
+	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+	// aes-xcbc, aes-cmac. Default is sha1.
+	// Changing this updates the algorithm of the existing policy.
 	AuthAlgorithm *string `pulumi:"authAlgorithm"`
 	// The human-readable description for the policy.
 	// Changing this updates the description of the existing policy.
@@ -123,7 +126,8 @@ type ipSecPolicyState struct {
 	// The encapsulation mode. Valid values are tunnel and transport. Default is tunnel.
 	// Changing this updates the existing policy.
 	EncapsulationMode *string `pulumi:"encapsulationMode"`
-	// The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+	// The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+	// aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
 	// The default value is aes-128. Changing this updates the existing policy.
 	EncryptionAlgorithm *string `pulumi:"encryptionAlgorithm"`
 	// The lifetime of the security association. Consists of Unit and Value.
@@ -131,8 +135,8 @@ type ipSecPolicyState struct {
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
 	Name *string `pulumi:"name"`
-	// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
-	// is group5. Changing this updates the existing policy.
+	// The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+	// Default is group5. Changing this updates the existing policy.
 	Pfs *string `pulumi:"pfs"`
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an IPSec policy. If omitted, the
@@ -150,8 +154,9 @@ type ipSecPolicyState struct {
 }
 
 type IpSecPolicyState struct {
-	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-	// Default is sha1. Changing this updates the algorithm of the existing policy.
+	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+	// aes-xcbc, aes-cmac. Default is sha1.
+	// Changing this updates the algorithm of the existing policy.
 	AuthAlgorithm pulumi.StringPtrInput
 	// The human-readable description for the policy.
 	// Changing this updates the description of the existing policy.
@@ -159,7 +164,8 @@ type IpSecPolicyState struct {
 	// The encapsulation mode. Valid values are tunnel and transport. Default is tunnel.
 	// Changing this updates the existing policy.
 	EncapsulationMode pulumi.StringPtrInput
-	// The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+	// The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+	// aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
 	// The default value is aes-128. Changing this updates the existing policy.
 	EncryptionAlgorithm pulumi.StringPtrInput
 	// The lifetime of the security association. Consists of Unit and Value.
@@ -167,8 +173,8 @@ type IpSecPolicyState struct {
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
 	Name pulumi.StringPtrInput
-	// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
-	// is group5. Changing this updates the existing policy.
+	// The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+	// Default is group5. Changing this updates the existing policy.
 	Pfs pulumi.StringPtrInput
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an IPSec policy. If omitted, the
@@ -190,8 +196,9 @@ func (IpSecPolicyState) ElementType() reflect.Type {
 }
 
 type ipSecPolicyArgs struct {
-	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-	// Default is sha1. Changing this updates the algorithm of the existing policy.
+	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+	// aes-xcbc, aes-cmac. Default is sha1.
+	// Changing this updates the algorithm of the existing policy.
 	AuthAlgorithm *string `pulumi:"authAlgorithm"`
 	// The human-readable description for the policy.
 	// Changing this updates the description of the existing policy.
@@ -199,7 +206,8 @@ type ipSecPolicyArgs struct {
 	// The encapsulation mode. Valid values are tunnel and transport. Default is tunnel.
 	// Changing this updates the existing policy.
 	EncapsulationMode *string `pulumi:"encapsulationMode"`
-	// The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+	// The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+	// aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
 	// The default value is aes-128. Changing this updates the existing policy.
 	EncryptionAlgorithm *string `pulumi:"encryptionAlgorithm"`
 	// The lifetime of the security association. Consists of Unit and Value.
@@ -207,8 +215,8 @@ type ipSecPolicyArgs struct {
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
 	Name *string `pulumi:"name"`
-	// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
-	// is group5. Changing this updates the existing policy.
+	// The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+	// Default is group5. Changing this updates the existing policy.
 	Pfs *string `pulumi:"pfs"`
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an IPSec policy. If omitted, the
@@ -227,8 +235,9 @@ type ipSecPolicyArgs struct {
 
 // The set of arguments for constructing a IpSecPolicy resource.
 type IpSecPolicyArgs struct {
-	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-	// Default is sha1. Changing this updates the algorithm of the existing policy.
+	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+	// aes-xcbc, aes-cmac. Default is sha1.
+	// Changing this updates the algorithm of the existing policy.
 	AuthAlgorithm pulumi.StringPtrInput
 	// The human-readable description for the policy.
 	// Changing this updates the description of the existing policy.
@@ -236,7 +245,8 @@ type IpSecPolicyArgs struct {
 	// The encapsulation mode. Valid values are tunnel and transport. Default is tunnel.
 	// Changing this updates the existing policy.
 	EncapsulationMode pulumi.StringPtrInput
-	// The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+	// The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+	// aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
 	// The default value is aes-128. Changing this updates the existing policy.
 	EncryptionAlgorithm pulumi.StringPtrInput
 	// The lifetime of the security association. Consists of Unit and Value.
@@ -244,8 +254,8 @@ type IpSecPolicyArgs struct {
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
 	Name pulumi.StringPtrInput
-	// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
-	// is group5. Changing this updates the existing policy.
+	// The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+	// Default is group5. Changing this updates the existing policy.
 	Pfs pulumi.StringPtrInput
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an IPSec policy. If omitted, the
@@ -349,8 +359,9 @@ func (o IpSecPolicyOutput) ToIpSecPolicyOutputWithContext(ctx context.Context) I
 	return o
 }
 
-// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-// Default is sha1. Changing this updates the algorithm of the existing policy.
+// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+// aes-xcbc, aes-cmac. Default is sha1.
+// Changing this updates the algorithm of the existing policy.
 func (o IpSecPolicyOutput) AuthAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringOutput { return v.AuthAlgorithm }).(pulumi.StringOutput)
 }
@@ -367,7 +378,8 @@ func (o IpSecPolicyOutput) EncapsulationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringOutput { return v.EncapsulationMode }).(pulumi.StringOutput)
 }
 
-// The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+// The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+// aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
 // The default value is aes-128. Changing this updates the existing policy.
 func (o IpSecPolicyOutput) EncryptionAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringOutput { return v.EncryptionAlgorithm }).(pulumi.StringOutput)
@@ -384,8 +396,8 @@ func (o IpSecPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
-// is group5. Changing this updates the existing policy.
+// The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+// Default is group5. Changing this updates the existing policy.
 func (o IpSecPolicyOutput) Pfs() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringOutput { return v.Pfs }).(pulumi.StringOutput)
 }

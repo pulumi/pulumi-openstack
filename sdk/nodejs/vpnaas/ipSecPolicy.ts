@@ -55,8 +55,9 @@ export class IpSecPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-     * Default is sha1. Changing this updates the algorithm of the existing policy.
+     * The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+     * aes-xcbc, aes-cmac. Default is sha1.
+     * Changing this updates the algorithm of the existing policy.
      */
     public readonly authAlgorithm!: pulumi.Output<string>;
     /**
@@ -70,7 +71,8 @@ export class IpSecPolicy extends pulumi.CustomResource {
      */
     public readonly encapsulationMode!: pulumi.Output<string>;
     /**
-     * The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+     * The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+     * aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
      * The default value is aes-128. Changing this updates the existing policy.
      */
     public readonly encryptionAlgorithm!: pulumi.Output<string>;
@@ -84,8 +86,8 @@ export class IpSecPolicy extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
-     * is group5. Changing this updates the existing policy.
+     * The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+     * Default is group5. Changing this updates the existing policy.
      */
     public readonly pfs!: pulumi.Output<string>;
     /**
@@ -158,8 +160,9 @@ export class IpSecPolicy extends pulumi.CustomResource {
  */
 export interface IpSecPolicyState {
     /**
-     * The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-     * Default is sha1. Changing this updates the algorithm of the existing policy.
+     * The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+     * aes-xcbc, aes-cmac. Default is sha1.
+     * Changing this updates the algorithm of the existing policy.
      */
     authAlgorithm?: pulumi.Input<string>;
     /**
@@ -173,7 +176,8 @@ export interface IpSecPolicyState {
      */
     encapsulationMode?: pulumi.Input<string>;
     /**
-     * The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+     * The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+     * aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
      * The default value is aes-128. Changing this updates the existing policy.
      */
     encryptionAlgorithm?: pulumi.Input<string>;
@@ -187,8 +191,8 @@ export interface IpSecPolicyState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
-     * is group5. Changing this updates the existing policy.
+     * The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+     * Default is group5. Changing this updates the existing policy.
      */
     pfs?: pulumi.Input<string>;
     /**
@@ -219,8 +223,9 @@ export interface IpSecPolicyState {
  */
 export interface IpSecPolicyArgs {
     /**
-     * The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-     * Default is sha1. Changing this updates the algorithm of the existing policy.
+     * The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+     * aes-xcbc, aes-cmac. Default is sha1.
+     * Changing this updates the algorithm of the existing policy.
      */
     authAlgorithm?: pulumi.Input<string>;
     /**
@@ -234,7 +239,8 @@ export interface IpSecPolicyArgs {
      */
     encapsulationMode?: pulumi.Input<string>;
     /**
-     * The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+     * The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+     * aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
      * The default value is aes-128. Changing this updates the existing policy.
      */
     encryptionAlgorithm?: pulumi.Input<string>;
@@ -248,8 +254,8 @@ export interface IpSecPolicyArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
-     * is group5. Changing this updates the existing policy.
+     * The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+     * Default is group5. Changing this updates the existing policy.
      */
     pfs?: pulumi.Input<string>;
     /**

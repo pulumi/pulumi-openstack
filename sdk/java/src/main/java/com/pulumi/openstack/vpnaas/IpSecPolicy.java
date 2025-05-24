@@ -67,16 +67,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="openstack:vpnaas/ipSecPolicy:IpSecPolicy")
 public class IpSecPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-     * Default is sha1. Changing this updates the algorithm of the existing policy.
+     * The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+     * aes-xcbc, aes-cmac. Default is sha1.
+     * Changing this updates the algorithm of the existing policy.
      * 
      */
     @Export(name="authAlgorithm", refs={String.class}, tree="[0]")
     private Output<String> authAlgorithm;
 
     /**
-     * @return The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
-     * Default is sha1. Changing this updates the algorithm of the existing policy.
+     * @return The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
+     * aes-xcbc, aes-cmac. Default is sha1.
+     * Changing this updates the algorithm of the existing policy.
      * 
      */
     public Output<String> authAlgorithm() {
@@ -115,7 +117,8 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
         return this.encapsulationMode;
     }
     /**
-     * The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+     * The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+     * aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
      * The default value is aes-128. Changing this updates the existing policy.
      * 
      */
@@ -123,7 +126,8 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
     private Output<String> encryptionAlgorithm;
 
     /**
-     * @return The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+     * @return The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
+     * aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
      * The default value is aes-128. Changing this updates the existing policy.
      * 
      */
@@ -161,16 +165,16 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
-     * is group5. Changing this updates the existing policy.
+     * The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+     * Default is group5. Changing this updates the existing policy.
      * 
      */
     @Export(name="pfs", refs={String.class}, tree="[0]")
     private Output<String> pfs;
 
     /**
-     * @return The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
-     * is group5. Changing this updates the existing policy.
+     * @return The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
+     * Default is group5. Changing this updates the existing policy.
      * 
      */
     public Output<String> pfs() {
