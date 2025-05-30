@@ -5359,9 +5359,6 @@
                     "willReplaceOnChanges": true
                 }
             },
-            "requiredInputs": [
-                "clusterTemplateId"
-            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Cluster resources.\n",
                 "properties": {
@@ -5775,8 +5772,7 @@
                 }
             },
             "requiredInputs": [
-                "coe",
-                "image"
+                "coe"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ClusterTemplate resources.\n",
@@ -13118,9 +13114,6 @@
                     "willReplaceOnChanges": true
                 }
             },
-            "requiredInputs": [
-                "pool"
-            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering FloatingIp resources.\n",
                 "properties": {
