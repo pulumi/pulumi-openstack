@@ -285,7 +285,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FloatingIp(java.lang.String name, FloatingIpArgs args) {
+    public FloatingIp(java.lang.String name, @Nullable FloatingIpArgs args) {
         this(name, args, null);
     }
     /**
@@ -294,7 +294,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FloatingIp(java.lang.String name, FloatingIpArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public FloatingIp(java.lang.String name, @Nullable FloatingIpArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("openstack:networking/floatingIp:FloatingIp", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -302,7 +302,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
         super("openstack:networking/floatingIp:FloatingIp", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static FloatingIpArgs makeArgs(FloatingIpArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static FloatingIpArgs makeArgs(@Nullable FloatingIpArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }
