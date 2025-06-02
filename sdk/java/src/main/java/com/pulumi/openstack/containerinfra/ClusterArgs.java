@@ -5,7 +5,6 @@ package com.pulumi.openstack.containerinfra;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -24,16 +23,16 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * template. Changing this creates a new cluster.
      * 
      */
-    @Import(name="clusterTemplateId", required=true)
-    private Output<String> clusterTemplateId;
+    @Import(name="clusterTemplateId")
+    private @Nullable Output<String> clusterTemplateId;
 
     /**
      * @return The UUID of the V1 Container Infra cluster
      * template. Changing this creates a new cluster.
      * 
      */
-    public Output<String> clusterTemplateId() {
-        return this.clusterTemplateId;
+    public Optional<Output<String>> clusterTemplateId() {
+        return Optional.ofNullable(this.clusterTemplateId);
     }
 
     /**
@@ -361,7 +360,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder clusterTemplateId(Output<String> clusterTemplateId) {
+        public Builder clusterTemplateId(@Nullable Output<String> clusterTemplateId) {
             $.clusterTemplateId = clusterTemplateId;
             return this;
         }
@@ -752,9 +751,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterArgs build() {
-            if ($.clusterTemplateId == null) {
-                throw new MissingRequiredPropertyException("ClusterArgs", "clusterTemplateId");
-            }
             return $;
         }
     }
