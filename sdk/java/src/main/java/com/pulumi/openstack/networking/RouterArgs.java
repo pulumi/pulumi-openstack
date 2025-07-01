@@ -160,6 +160,25 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The QoS policy UUID that will be applied
+     * on the external gateway for the router. Changing this updates the external
+     * gateway of the router.
+     * 
+     */
+    @Import(name="externalQosPolicyId")
+    private @Nullable Output<String> externalQosPolicyId;
+
+    /**
+     * @return The QoS policy UUID that will be applied
+     * on the external gateway for the router. Changing this updates the external
+     * gateway of the router.
+     * 
+     */
+    public Optional<Output<String>> externalQosPolicyId() {
+        return Optional.ofNullable(this.externalQosPolicyId);
+    }
+
+    /**
      * A list of external subnet IDs to try over
      * each to obtain a fixed IP for the router. If a subnet ID in a list has
      * exhausted floating IP pool, the next subnet ID will be tried. This argument is
@@ -294,6 +313,7 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
         this.enableSnat = $.enableSnat;
         this.externalFixedIps = $.externalFixedIps;
         this.externalNetworkId = $.externalNetworkId;
+        this.externalQosPolicyId = $.externalQosPolicyId;
         this.externalSubnetIds = $.externalSubnetIds;
         this.name = $.name;
         this.region = $.region;
@@ -526,6 +546,31 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder externalNetworkId(String externalNetworkId) {
             return externalNetworkId(Output.of(externalNetworkId));
+        }
+
+        /**
+         * @param externalQosPolicyId The QoS policy UUID that will be applied
+         * on the external gateway for the router. Changing this updates the external
+         * gateway of the router.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalQosPolicyId(@Nullable Output<String> externalQosPolicyId) {
+            $.externalQosPolicyId = externalQosPolicyId;
+            return this;
+        }
+
+        /**
+         * @param externalQosPolicyId The QoS policy UUID that will be applied
+         * on the external gateway for the router. Changing this updates the external
+         * gateway of the router.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalQosPolicyId(String externalQosPolicyId) {
+            return externalQosPolicyId(Output.of(externalQosPolicyId));
         }
 
         /**

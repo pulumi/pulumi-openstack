@@ -33,6 +33,11 @@ public final class GetAggregateV2Result {
      */
     private String name;
     /**
+     * @return See Argument Reference above.
+     * 
+     */
+    private String region;
+    /**
      * @return Availability zone of the Host Aggregate
      * 
      */
@@ -68,6 +73,13 @@ public final class GetAggregateV2Result {
         return this.name;
     }
     /**
+     * @return See Argument Reference above.
+     * 
+     */
+    public String region() {
+        return this.region;
+    }
+    /**
      * @return Availability zone of the Host Aggregate
      * 
      */
@@ -88,6 +100,7 @@ public final class GetAggregateV2Result {
         private String id;
         private Map<String,String> metadata;
         private String name;
+        private String region;
         private String zone;
         public Builder() {}
         public Builder(GetAggregateV2Result defaults) {
@@ -96,6 +109,7 @@ public final class GetAggregateV2Result {
     	      this.id = defaults.id;
     	      this.metadata = defaults.metadata;
     	      this.name = defaults.name;
+    	      this.region = defaults.region;
     	      this.zone = defaults.zone;
         }
 
@@ -135,6 +149,14 @@ public final class GetAggregateV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder region(String region) {
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetAggregateV2Result", "region");
+            }
+            this.region = region;
+            return this;
+        }
+        @CustomType.Setter
         public Builder zone(String zone) {
             if (zone == null) {
               throw new MissingRequiredPropertyException("GetAggregateV2Result", "zone");
@@ -148,6 +170,7 @@ public final class GetAggregateV2Result {
             _resultValue.id = id;
             _resultValue.metadata = metadata;
             _resultValue.name = name;
+            _resultValue.region = region;
             _resultValue.zone = zone;
             return _resultValue;
         }

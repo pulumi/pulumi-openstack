@@ -8,8 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFlavorV2Result {
@@ -43,7 +41,7 @@ public final class GetFlavorV2Result {
      * 
      */
     private String name;
-    private @Nullable String region;
+    private String region;
 
     private GetFlavorV2Result() {}
     /**
@@ -88,8 +86,8 @@ public final class GetFlavorV2Result {
     public String name() {
         return this.name;
     }
-    public Optional<String> region() {
-        return Optional.ofNullable(this.region);
+    public String region() {
+        return this.region;
     }
 
     public static Builder builder() {
@@ -107,7 +105,7 @@ public final class GetFlavorV2Result {
         private String flavorProfileId;
         private String id;
         private String name;
-        private @Nullable String region;
+        private String region;
         public Builder() {}
         public Builder(GetFlavorV2Result defaults) {
     	      Objects.requireNonNull(defaults);
@@ -169,8 +167,10 @@ public final class GetFlavorV2Result {
             return this;
         }
         @CustomType.Setter
-        public Builder region(@Nullable String region) {
-
+        public Builder region(String region) {
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetFlavorV2Result", "region");
+            }
             this.region = region;
             return this;
         }

@@ -235,6 +235,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<InstanceUser>>> users() {
         return Codegen.optional(this.users);
     }
+    /**
+     * Specifies the volume type to use. If you want to
+     * specify a volume type, you must also specify a volume size. Changing this
+     * creates new instance.
+     * 
+     */
+    @Export(name="volumeType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> volumeType;
+
+    /**
+     * @return Specifies the volume type to use. If you want to
+     * specify a volume type, you must also specify a volume size. Changing this
+     * creates new instance.
+     * 
+     */
+    public Output<Optional<String>> volumeType() {
+        return Codegen.optional(this.volumeType);
+    }
 
     /**
      *

@@ -193,6 +193,27 @@ public final class SecGroupRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The remote address group id, the value
+     * needs to be an OpenStack ID of an address group in the same tenant. Changing
+     * this creates a new security group rule. This argument is mutually exclusive
+     * with `remote_ip_prefix` and `remote_group_id`.
+     * 
+     */
+    @Import(name="remoteAddressGroupId")
+    private @Nullable Output<String> remoteAddressGroupId;
+
+    /**
+     * @return The remote address group id, the value
+     * needs to be an OpenStack ID of an address group in the same tenant. Changing
+     * this creates a new security group rule. This argument is mutually exclusive
+     * with `remote_ip_prefix` and `remote_group_id`.
+     * 
+     */
+    public Optional<Output<String>> remoteAddressGroupId() {
+        return Optional.ofNullable(this.remoteAddressGroupId);
+    }
+
+    /**
      * The remote group id, the value needs to be an
      * Openstack ID of a security group in the same tenant. Changing this creates
      * a new security group rule.
@@ -276,6 +297,7 @@ public final class SecGroupRuleArgs extends com.pulumi.resources.ResourceArgs {
         this.portRangeMin = $.portRangeMin;
         this.protocol = $.protocol;
         this.region = $.region;
+        this.remoteAddressGroupId = $.remoteAddressGroupId;
         this.remoteGroupId = $.remoteGroupId;
         this.remoteIpPrefix = $.remoteIpPrefix;
         this.securityGroupId = $.securityGroupId;
@@ -515,6 +537,33 @@ public final class SecGroupRuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param remoteAddressGroupId The remote address group id, the value
+         * needs to be an OpenStack ID of an address group in the same tenant. Changing
+         * this creates a new security group rule. This argument is mutually exclusive
+         * with `remote_ip_prefix` and `remote_group_id`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remoteAddressGroupId(@Nullable Output<String> remoteAddressGroupId) {
+            $.remoteAddressGroupId = remoteAddressGroupId;
+            return this;
+        }
+
+        /**
+         * @param remoteAddressGroupId The remote address group id, the value
+         * needs to be an OpenStack ID of an address group in the same tenant. Changing
+         * this creates a new security group rule. This argument is mutually exclusive
+         * with `remote_ip_prefix` and `remote_group_id`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remoteAddressGroupId(String remoteAddressGroupId) {
+            return remoteAddressGroupId(Output.of(remoteAddressGroupId));
         }
 
         /**

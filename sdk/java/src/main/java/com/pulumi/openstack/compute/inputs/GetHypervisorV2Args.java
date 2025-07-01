@@ -16,24 +16,42 @@ public final class GetHypervisorV2Args extends com.pulumi.resources.InvokeArgs {
     public static final GetHypervisorV2Args Empty = new GetHypervisorV2Args();
 
     /**
-     * The hostname of the hypervisor
+     * The hostname of the hypervisor.
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
     /**
-     * @return The hostname of the hypervisor
+     * @return The hostname of the hypervisor.
      * 
      */
     public Optional<Output<String>> hostname() {
         return Optional.ofNullable(this.hostname);
     }
 
+    /**
+     * The region in which to obtain the V2 Compute client.
+     * If omitted, the `region` argument of the provider is used.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return The region in which to obtain the V2 Compute client.
+     * If omitted, the `region` argument of the provider is used.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
     private GetHypervisorV2Args() {}
 
     private GetHypervisorV2Args(GetHypervisorV2Args $) {
         this.hostname = $.hostname;
+        this.region = $.region;
     }
 
     public static Builder builder() {
@@ -55,7 +73,7 @@ public final class GetHypervisorV2Args extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param hostname The hostname of the hypervisor
+         * @param hostname The hostname of the hypervisor.
          * 
          * @return builder
          * 
@@ -66,13 +84,36 @@ public final class GetHypervisorV2Args extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param hostname The hostname of the hypervisor
+         * @param hostname The hostname of the hypervisor.
          * 
          * @return builder
          * 
          */
         public Builder hostname(String hostname) {
             return hostname(Output.of(hostname));
+        }
+
+        /**
+         * @param region The region in which to obtain the V2 Compute client.
+         * If omitted, the `region` argument of the provider is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region The region in which to obtain the V2 Compute client.
+         * If omitted, the `region` argument of the provider is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         public GetHypervisorV2Args build() {

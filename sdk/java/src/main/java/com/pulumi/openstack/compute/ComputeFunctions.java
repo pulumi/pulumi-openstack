@@ -25,6 +25,8 @@ import com.pulumi.openstack.compute.inputs.GetLimitsV2Args;
 import com.pulumi.openstack.compute.inputs.GetLimitsV2PlainArgs;
 import com.pulumi.openstack.compute.inputs.GetQuotaSetV2Args;
 import com.pulumi.openstack.compute.inputs.GetQuotaSetV2PlainArgs;
+import com.pulumi.openstack.compute.inputs.GetServergroupV2Args;
+import com.pulumi.openstack.compute.inputs.GetServergroupV2PlainArgs;
 import com.pulumi.openstack.compute.outputs.GetAggregateV2Result;
 import com.pulumi.openstack.compute.outputs.GetAvailabilityZonesResult;
 import com.pulumi.openstack.compute.outputs.GetFlavorResult;
@@ -33,6 +35,7 @@ import com.pulumi.openstack.compute.outputs.GetInstanceV2Result;
 import com.pulumi.openstack.compute.outputs.GetKeypairResult;
 import com.pulumi.openstack.compute.outputs.GetLimitsV2Result;
 import com.pulumi.openstack.compute.outputs.GetQuotaSetV2Result;
+import com.pulumi.openstack.compute.outputs.GetServergroupV2Result;
 import java.util.concurrent.CompletableFuture;
 
 public final class ComputeFunctions {
@@ -1979,5 +1982,220 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetQuotaSetV2Result> getQuotaSetV2Plain(GetQuotaSetV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:compute/getQuotaSetV2:getQuotaSetV2", TypeShape.of(GetQuotaSetV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about server groups
+     * by name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.compute.ComputeFunctions;
+     * import com.pulumi.openstack.compute.inputs.GetServergroupV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ComputeFunctions.getServergroupV2(GetServergroupV2Args.builder()
+     *             .name("test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServergroupV2Result> getServergroupV2(GetServergroupV2Args args) {
+        return getServergroupV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about server groups
+     * by name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.compute.ComputeFunctions;
+     * import com.pulumi.openstack.compute.inputs.GetServergroupV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ComputeFunctions.getServergroupV2(GetServergroupV2Args.builder()
+     *             .name("test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetServergroupV2Result> getServergroupV2Plain(GetServergroupV2PlainArgs args) {
+        return getServergroupV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about server groups
+     * by name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.compute.ComputeFunctions;
+     * import com.pulumi.openstack.compute.inputs.GetServergroupV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ComputeFunctions.getServergroupV2(GetServergroupV2Args.builder()
+     *             .name("test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServergroupV2Result> getServergroupV2(GetServergroupV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:compute/getServergroupV2:getServergroupV2", TypeShape.of(GetServergroupV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about server groups
+     * by name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.compute.ComputeFunctions;
+     * import com.pulumi.openstack.compute.inputs.GetServergroupV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ComputeFunctions.getServergroupV2(GetServergroupV2Args.builder()
+     *             .name("test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServergroupV2Result> getServergroupV2(GetServergroupV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:compute/getServergroupV2:getServergroupV2", TypeShape.of(GetServergroupV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about server groups
+     * by name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.compute.ComputeFunctions;
+     * import com.pulumi.openstack.compute.inputs.GetServergroupV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ComputeFunctions.getServergroupV2(GetServergroupV2Args.builder()
+     *             .name("test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetServergroupV2Result> getServergroupV2Plain(GetServergroupV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("openstack:compute/getServergroupV2:getServergroupV2", TypeShape.of(GetServergroupV2Result.class), args, Utilities.withVersion(options));
     }
 }

@@ -15,24 +15,42 @@ public final class GetHypervisorV2PlainArgs extends com.pulumi.resources.InvokeA
     public static final GetHypervisorV2PlainArgs Empty = new GetHypervisorV2PlainArgs();
 
     /**
-     * The hostname of the hypervisor
+     * The hostname of the hypervisor.
      * 
      */
     @Import(name="hostname")
     private @Nullable String hostname;
 
     /**
-     * @return The hostname of the hypervisor
+     * @return The hostname of the hypervisor.
      * 
      */
     public Optional<String> hostname() {
         return Optional.ofNullable(this.hostname);
     }
 
+    /**
+     * The region in which to obtain the V2 Compute client.
+     * If omitted, the `region` argument of the provider is used.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable String region;
+
+    /**
+     * @return The region in which to obtain the V2 Compute client.
+     * If omitted, the `region` argument of the provider is used.
+     * 
+     */
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
+    }
+
     private GetHypervisorV2PlainArgs() {}
 
     private GetHypervisorV2PlainArgs(GetHypervisorV2PlainArgs $) {
         this.hostname = $.hostname;
+        this.region = $.region;
     }
 
     public static Builder builder() {
@@ -54,13 +72,25 @@ public final class GetHypervisorV2PlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param hostname The hostname of the hypervisor
+         * @param hostname The hostname of the hypervisor.
          * 
          * @return builder
          * 
          */
         public Builder hostname(@Nullable String hostname) {
             $.hostname = hostname;
+            return this;
+        }
+
+        /**
+         * @param region The region in which to obtain the V2 Compute client.
+         * If omitted, the `region` argument of the provider is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable String region) {
+            $.region = region;
             return this;
         }
 

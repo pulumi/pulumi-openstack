@@ -63,9 +63,21 @@ public final class InheritRoleAssignmentArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used. Changing this
+     * creates a new inherit role assignment.
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used. Changing this
+     * creates a new inherit role assignment.
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
@@ -194,11 +206,27 @@ public final class InheritRoleAssignmentArgs extends com.pulumi.resources.Resour
             return projectId(Output.of(projectId));
         }
 
+        /**
+         * @param region The region in which to obtain the V3 Keystone client.
+         * If omitted, the `region` argument of the provider is used. Changing this
+         * creates a new inherit role assignment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region The region in which to obtain the V3 Keystone client.
+         * If omitted, the `region` argument of the provider is used. Changing this
+         * creates a new inherit role assignment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }

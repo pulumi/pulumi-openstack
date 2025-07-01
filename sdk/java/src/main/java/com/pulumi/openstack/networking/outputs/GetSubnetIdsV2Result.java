@@ -33,6 +33,7 @@ public final class GetSubnetIdsV2Result {
     private @Nullable String nameRegex;
     private @Nullable String networkId;
     private String region;
+    private @Nullable String segmentId;
     private @Nullable String sortDirection;
     private @Nullable String sortKey;
     private @Nullable String subnetpoolId;
@@ -86,6 +87,9 @@ public final class GetSubnetIdsV2Result {
     public String region() {
         return this.region;
     }
+    public Optional<String> segmentId() {
+        return Optional.ofNullable(this.segmentId);
+    }
     public Optional<String> sortDirection() {
         return Optional.ofNullable(this.sortDirection);
     }
@@ -125,6 +129,7 @@ public final class GetSubnetIdsV2Result {
         private @Nullable String nameRegex;
         private @Nullable String networkId;
         private String region;
+        private @Nullable String segmentId;
         private @Nullable String sortDirection;
         private @Nullable String sortKey;
         private @Nullable String subnetpoolId;
@@ -147,6 +152,7 @@ public final class GetSubnetIdsV2Result {
     	      this.nameRegex = defaults.nameRegex;
     	      this.networkId = defaults.networkId;
     	      this.region = defaults.region;
+    	      this.segmentId = defaults.segmentId;
     	      this.sortDirection = defaults.sortDirection;
     	      this.sortKey = defaults.sortKey;
     	      this.subnetpoolId = defaults.subnetpoolId;
@@ -250,6 +256,12 @@ public final class GetSubnetIdsV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder segmentId(@Nullable String segmentId) {
+
+            this.segmentId = segmentId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sortDirection(@Nullable String sortDirection) {
 
             this.sortDirection = sortDirection;
@@ -298,6 +310,7 @@ public final class GetSubnetIdsV2Result {
             _resultValue.nameRegex = nameRegex;
             _resultValue.networkId = networkId;
             _resultValue.region = region;
+            _resultValue.segmentId = segmentId;
             _resultValue.sortDirection = sortDirection;
             _resultValue.sortKey = sortKey;
             _resultValue.subnetpoolId = subnetpoolId;
