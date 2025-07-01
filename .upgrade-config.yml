@@ -5,4 +5,5 @@ upstream-provider-name: terraform-provider-openstack
 pulumi-infer-version: true
 remove-plugins: true
 upstream-provider-org: terraform-provider-openstack
-current-upstream-version: 3.1.0
+
+current-upstream-version: 3.2.0
