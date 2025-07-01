@@ -48,18 +48,35 @@ public final class GetAggregateV2PlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The name of the host aggregate
+     * The name of the host aggregate.
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The name of the host aggregate
+     * @return The name of the host aggregate.
      * 
      */
     public String name() {
         return this.name;
+    }
+
+    /**
+     * The region in which to obtain the V2 Compute client.
+     * If omitted, the `region` argument of the provider is used.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable String region;
+
+    /**
+     * @return The region in which to obtain the V2 Compute client.
+     * If omitted, the `region` argument of the provider is used.
+     * 
+     */
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
     }
 
     private GetAggregateV2PlainArgs() {}
@@ -68,6 +85,7 @@ public final class GetAggregateV2PlainArgs extends com.pulumi.resources.InvokeAr
         this.hosts = $.hosts;
         this.metadata = $.metadata;
         this.name = $.name;
+        this.region = $.region;
     }
 
     public static Builder builder() {
@@ -121,13 +139,25 @@ public final class GetAggregateV2PlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param name The name of the host aggregate
+         * @param name The name of the host aggregate.
          * 
          * @return builder
          * 
          */
         public Builder name(String name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param region The region in which to obtain the V2 Compute client.
+         * If omitted, the `region` argument of the provider is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable String region) {
+            $.region = region;
             return this;
         }
 

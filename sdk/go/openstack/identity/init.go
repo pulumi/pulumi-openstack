@@ -31,8 +31,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GroupV3{}
 	case "openstack:identity/inheritRoleAssignment:InheritRoleAssignment":
 		r = &InheritRoleAssignment{}
+	case "openstack:identity/limitV3:LimitV3":
+		r = &LimitV3{}
 	case "openstack:identity/project:Project":
 		r = &Project{}
+	case "openstack:identity/registeredLimitV3:RegisteredLimitV3":
+		r = &RegisteredLimitV3{}
 	case "openstack:identity/role:Role":
 		r = &Role{}
 	case "openstack:identity/roleAssignment:RoleAssignment":
@@ -83,7 +87,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"openstack",
+		"identity/limitV3",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
 		"identity/project",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"identity/registeredLimitV3",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

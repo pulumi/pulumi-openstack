@@ -94,6 +94,12 @@ namespace Pulumi.OpenStack.LoadBalancer
         [Output("providerName")]
         public Output<string> ProviderName { get; private set; } = null!;
 
+        /// <summary>
+        /// The region in which to obtain the V2 Networking client.
+        /// A Networking client is needed to create an LB member. If omitted, the
+        /// `region` argument of the provider is used. Changing this creates a new
+        /// LB flavorprofile.
+        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
@@ -170,6 +176,12 @@ namespace Pulumi.OpenStack.LoadBalancer
         [Input("providerName", required: true)]
         public Input<string> ProviderName { get; set; } = null!;
 
+        /// <summary>
+        /// The region in which to obtain the V2 Networking client.
+        /// A Networking client is needed to create an LB member. If omitted, the
+        /// `region` argument of the provider is used. Changing this creates a new
+        /// LB flavorprofile.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -204,6 +216,12 @@ namespace Pulumi.OpenStack.LoadBalancer
         [Input("providerName")]
         public Input<string>? ProviderName { get; set; }
 
+        /// <summary>
+        /// The region in which to obtain the V2 Networking client.
+        /// A Networking client is needed to create an LB member. If omitted, the
+        /// `region` argument of the provider is used. Changing this creates a new
+        /// LB flavorprofile.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 

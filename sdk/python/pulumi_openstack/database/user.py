@@ -32,7 +32,8 @@ class UserArgs:
         :param pulumi.Input[builtins.str] password: User's password.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] databases: A list of database user should have access to.
         :param pulumi.Input[builtins.str] name: A unique name for the resource.
-        :param pulumi.Input[builtins.str] region: Openstack region resource is created in.
+        :param pulumi.Input[builtins.str] region: The region in which to create the db user. Changing
+               this creates a new user.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "password", password)
@@ -106,7 +107,8 @@ class UserArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Openstack region resource is created in.
+        The region in which to create the db user. Changing
+        this creates a new user.
         """
         return pulumi.get(self, "region")
 
@@ -130,7 +132,8 @@ class _UserState:
         :param pulumi.Input[builtins.str] instance_id: The ID for the database instance.
         :param pulumi.Input[builtins.str] name: A unique name for the resource.
         :param pulumi.Input[builtins.str] password: User's password.
-        :param pulumi.Input[builtins.str] region: Openstack region resource is created in.
+        :param pulumi.Input[builtins.str] region: The region in which to create the db user. Changing
+               this creates a new user.
         """
         if databases is not None:
             pulumi.set(__self__, "databases", databases)
@@ -206,7 +209,8 @@ class _UserState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Openstack region resource is created in.
+        The region in which to create the db user. Changing
+        this creates a new user.
         """
         return pulumi.get(self, "region")
 
@@ -256,7 +260,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] instance_id: The ID for the database instance.
         :param pulumi.Input[builtins.str] name: A unique name for the resource.
         :param pulumi.Input[builtins.str] password: User's password.
-        :param pulumi.Input[builtins.str] region: Openstack region resource is created in.
+        :param pulumi.Input[builtins.str] region: The region in which to create the db user. Changing
+               this creates a new user.
         """
         ...
     @overload
@@ -355,7 +360,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] instance_id: The ID for the database instance.
         :param pulumi.Input[builtins.str] name: A unique name for the resource.
         :param pulumi.Input[builtins.str] password: User's password.
-        :param pulumi.Input[builtins.str] region: Openstack region resource is created in.
+        :param pulumi.Input[builtins.str] region: The region in which to create the db user. Changing
+               this creates a new user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -410,7 +416,8 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[builtins.str]:
         """
-        Openstack region resource is created in.
+        The region in which to create the db user. Changing
+        this creates a new user.
         """
         return pulumi.get(self, "region")
 

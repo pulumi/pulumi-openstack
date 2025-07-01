@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { FlavorV2Args, FlavorV2State } from "./flavorV2";
+export type FlavorV2 = import("./flavorV2").FlavorV2;
+export const FlavorV2: typeof import("./flavorV2").FlavorV2 = null as any;
+utilities.lazyLoad(exports, ["FlavorV2"], () => require("./flavorV2"));
+
 export { FlavorprofileV2Args, FlavorprofileV2State } from "./flavorprofileV2";
 export type FlavorprofileV2 = import("./flavorprofileV2").FlavorprofileV2;
 export const FlavorprofileV2: typeof import("./flavorprofileV2").FlavorprofileV2 = null as any;
@@ -14,6 +19,16 @@ export { GetFlavorV2Args, GetFlavorV2Result, GetFlavorV2OutputArgs } from "./get
 export const getFlavorV2: typeof import("./getFlavorV2").getFlavorV2 = null as any;
 export const getFlavorV2Output: typeof import("./getFlavorV2").getFlavorV2Output = null as any;
 utilities.lazyLoad(exports, ["getFlavorV2","getFlavorV2Output"], () => require("./getFlavorV2"));
+
+export { GetFlavorprofileV2Args, GetFlavorprofileV2Result, GetFlavorprofileV2OutputArgs } from "./getFlavorprofileV2";
+export const getFlavorprofileV2: typeof import("./getFlavorprofileV2").getFlavorprofileV2 = null as any;
+export const getFlavorprofileV2Output: typeof import("./getFlavorprofileV2").getFlavorprofileV2Output = null as any;
+utilities.lazyLoad(exports, ["getFlavorprofileV2","getFlavorprofileV2Output"], () => require("./getFlavorprofileV2"));
+
+export { GetLbFlavorDeprecatedArgs, GetLbFlavorDeprecatedResult, GetLbFlavorDeprecatedOutputArgs } from "./getLbFlavorDeprecated";
+export const getLbFlavorDeprecated: typeof import("./getLbFlavorDeprecated").getLbFlavorDeprecated = null as any;
+export const getLbFlavorDeprecatedOutput: typeof import("./getLbFlavorDeprecated").getLbFlavorDeprecatedOutput = null as any;
+utilities.lazyLoad(exports, ["getLbFlavorDeprecated","getLbFlavorDeprecatedOutput"], () => require("./getLbFlavorDeprecated"));
 
 export { L7PolicyV2Args, L7PolicyV2State } from "./l7policyV2";
 export type L7PolicyV2 = import("./l7policyV2").L7PolicyV2;
@@ -65,6 +80,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "openstack:loadbalancer/flavorV2:FlavorV2":
+                return new FlavorV2(name, <any>undefined, { urn })
             case "openstack:loadbalancer/flavorprofileV2:FlavorprofileV2":
                 return new FlavorprofileV2(name, <any>undefined, { urn })
             case "openstack:loadbalancer/l7PolicyV2:L7PolicyV2":
@@ -90,6 +107,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("openstack", "loadbalancer/flavorV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/flavorprofileV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/l7PolicyV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "loadbalancer/l7RuleV2", _module)

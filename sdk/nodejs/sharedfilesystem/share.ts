@@ -125,9 +125,9 @@ export class Share extends pulumi.CustomResource {
      */
     public /*out*/ readonly projectId!: pulumi.Output<string>;
     /**
-     * The region in which to obtain the V2 Shared File System client.
-     * A Shared File System client is needed to create a share. Changing this
-     * creates a new share.
+     * The region in which to obtain the V2 Shared File System
+     * client. A Shared File System client is needed to create a share. Changing
+     * this creates a new share.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -281,9 +281,9 @@ export interface ShareState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * The region in which to obtain the V2 Shared File System client.
-     * A Shared File System client is needed to create a share. Changing this
-     * creates a new share.
+     * The region in which to obtain the V2 Shared File System
+     * client. A Shared File System client is needed to create a share. Changing
+     * this creates a new share.
      */
     region?: pulumi.Input<string>;
     /**
@@ -353,9 +353,9 @@ export interface ShareArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The region in which to obtain the V2 Shared File System client.
-     * A Shared File System client is needed to create a share. Changing this
-     * creates a new share.
+     * The region in which to obtain the V2 Shared File System
+     * client. A Shared File System client is needed to create a share. Changing
+     * this creates a new share.
      */
     region?: pulumi.Input<string>;
     /**

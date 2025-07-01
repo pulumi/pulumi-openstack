@@ -122,6 +122,14 @@ namespace Pulumi.OpenStack.Database
         [Output("users")]
         public Output<ImmutableArray<Outputs.InstanceUser>> Users { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies the volume type to use. If you want to
+        /// specify a volume type, you must also specify a volume size. Changing this
+        /// creates new instance.
+        /// </summary>
+        [Output("volumeType")]
+        public Output<string?> VolumeType { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Instance resource with the given unique name, arguments, and options.
@@ -248,6 +256,14 @@ namespace Pulumi.OpenStack.Database
             set => _users = value;
         }
 
+        /// <summary>
+        /// Specifies the volume type to use. If you want to
+        /// specify a volume type, you must also specify a volume size. Changing this
+        /// creates new instance.
+        /// </summary>
+        [Input("volumeType")]
+        public Input<string>? VolumeType { get; set; }
+
         public InstanceArgs()
         {
         }
@@ -347,6 +363,14 @@ namespace Pulumi.OpenStack.Database
             get => _users ?? (_users = new InputList<Inputs.InstanceUserGetArgs>());
             set => _users = value;
         }
+
+        /// <summary>
+        /// Specifies the volume type to use. If you want to
+        /// specify a volume type, you must also specify a volume size. Changing this
+        /// creates new instance.
+        /// </summary>
+        [Input("volumeType")]
+        public Input<string>? VolumeType { get; set; }
 
         public InstanceState()
         {

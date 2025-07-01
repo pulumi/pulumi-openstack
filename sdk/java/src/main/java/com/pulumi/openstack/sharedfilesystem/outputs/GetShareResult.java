@@ -65,7 +65,7 @@ public final class GetShareResult {
      */
     private String projectId;
     /**
-     * @return The region in which to obtain the V2 Shared File System client.
+     * @return See Argument Reference above.
      * 
      */
     private String region;
@@ -162,7 +162,7 @@ public final class GetShareResult {
         return this.projectId;
     }
     /**
-     * @return The region in which to obtain the V2 Shared File System client.
+     * @return See Argument Reference above.
      * 
      */
     public String region() {

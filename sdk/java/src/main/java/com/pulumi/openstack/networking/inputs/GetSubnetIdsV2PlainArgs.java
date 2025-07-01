@@ -198,6 +198,23 @@ public final class GetSubnetIdsV2PlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
+     * The ID of the segment the subnet belongs to.
+     * Available when neutron segment extension is enabled.
+     * 
+     */
+    @Import(name="segmentId")
+    private @Nullable String segmentId;
+
+    /**
+     * @return The ID of the segment the subnet belongs to.
+     * Available when neutron segment extension is enabled.
+     * 
+     */
+    public Optional<String> segmentId() {
+        return Optional.ofNullable(this.segmentId);
+    }
+
+    /**
      * Order the results in either `asc` or `desc`.
      * Defaults to none.
      * 
@@ -289,6 +306,7 @@ public final class GetSubnetIdsV2PlainArgs extends com.pulumi.resources.InvokeAr
         this.nameRegex = $.nameRegex;
         this.networkId = $.networkId;
         this.region = $.region;
+        this.segmentId = $.segmentId;
         this.sortDirection = $.sortDirection;
         this.sortKey = $.sortKey;
         this.subnetpoolId = $.subnetpoolId;
@@ -441,6 +459,18 @@ public final class GetSubnetIdsV2PlainArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder region(@Nullable String region) {
             $.region = region;
+            return this;
+        }
+
+        /**
+         * @param segmentId The ID of the segment the subnet belongs to.
+         * Available when neutron segment extension is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder segmentId(@Nullable String segmentId) {
+            $.segmentId = segmentId;
             return this;
         }
 

@@ -57,7 +57,8 @@ namespace Pulumi.OpenStack.Database
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Openstack region resource is created in.
+        /// The region in which to create the database. Changing
+        /// this creates a new database.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -121,7 +122,8 @@ namespace Pulumi.OpenStack.Database
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Openstack region resource is created in.
+        /// The region in which to create the database. Changing
+        /// this creates a new database.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -147,7 +149,8 @@ namespace Pulumi.OpenStack.Database
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Openstack region resource is created in.
+        /// The region in which to create the database. Changing
+        /// this creates a new database.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

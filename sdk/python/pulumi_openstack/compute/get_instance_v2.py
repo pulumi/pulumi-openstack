@@ -197,6 +197,9 @@ class GetInstanceV2Result:
     @property
     @pulumi.getter
     def region(self) -> builtins.str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "region")
 
     @property
@@ -279,6 +282,8 @@ def get_instance_v2(id: Optional[builtins.str] = None,
 
     :param builtins.str id: The UUID of the instance
     :param Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict']] networks: An array of maps, detailed below.
+    :param builtins.str region: The region in which to obtain the V2 Compute client.
+           If omitted, the `region` argument of the provider is used.
     :param builtins.str user_data: The user data added when the server was created.
     """
     __args__ = dict()
@@ -329,6 +334,8 @@ def get_instance_v2_output(id: Optional[pulumi.Input[builtins.str]] = None,
 
     :param builtins.str id: The UUID of the instance
     :param Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict']] networks: An array of maps, detailed below.
+    :param builtins.str region: The region in which to obtain the V2 Compute client.
+           If omitted, the `region` argument of the provider is used.
     :param builtins.str user_data: The user data added when the server was created.
     """
     __args__ = dict()

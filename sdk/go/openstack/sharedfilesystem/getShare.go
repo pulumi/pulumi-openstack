@@ -63,7 +63,9 @@ type LookupShareArgs struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the share.
 	Name *string `pulumi:"name"`
-	// The region in which to obtain the V2 Shared File System client.
+	// The region in which to obtain the V2 Shared File System
+	// client. A Shared File System client is needed to read a share. If omitted,
+	// the `region` argument of the provider is used.
 	Region *string `pulumi:"region"`
 	// The UUID of the share's share network.
 	ShareNetworkId *string `pulumi:"shareNetworkId"`
@@ -99,7 +101,7 @@ type LookupShareResult struct {
 	Name string `pulumi:"name"`
 	// See Argument Reference above.
 	ProjectId string `pulumi:"projectId"`
-	// The region in which to obtain the V2 Shared File System client.
+	// See Argument Reference above.
 	Region string `pulumi:"region"`
 	// See Argument Reference above.
 	ShareNetworkId string `pulumi:"shareNetworkId"`
@@ -137,7 +139,9 @@ type LookupShareOutputArgs struct {
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// The name of the share.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The region in which to obtain the V2 Shared File System client.
+	// The region in which to obtain the V2 Shared File System
+	// client. A Shared File System client is needed to read a share. If omitted,
+	// the `region` argument of the provider is used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The UUID of the share's share network.
 	ShareNetworkId pulumi.StringPtrInput `pulumi:"shareNetworkId"`
@@ -217,7 +221,7 @@ func (o LookupShareResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// The region in which to obtain the V2 Shared File System client.
+// See Argument Reference above.
 func (o LookupShareResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResult) string { return v.Region }).(pulumi.StringOutput)
 }

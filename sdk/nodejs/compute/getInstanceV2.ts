@@ -42,6 +42,10 @@ export interface GetInstanceV2Args {
      * An array of maps, detailed below.
      */
     networks?: inputs.compute.GetInstanceV2Network[];
+    /**
+     * The region in which to obtain the V2 Compute client.
+     * If omitted, the `region` argument of the provider is used.
+     */
     region?: string;
     /**
      * The user data added when the server was created.
@@ -103,6 +107,9 @@ export interface GetInstanceV2Result {
      */
     readonly networks: outputs.compute.GetInstanceV2Network[];
     readonly powerState: string;
+    /**
+     * See Argument Reference above.
+     */
     readonly region: string;
     /**
      * An array of security group names associated with this server.
@@ -157,6 +164,10 @@ export interface GetInstanceV2OutputArgs {
      * An array of maps, detailed below.
      */
     networks?: pulumi.Input<pulumi.Input<inputs.compute.GetInstanceV2NetworkArgs>[]>;
+    /**
+     * The region in which to obtain the V2 Compute client.
+     * If omitted, the `region` argument of the provider is used.
+     */
     region?: pulumi.Input<string>;
     /**
      * The user data added when the server was created.

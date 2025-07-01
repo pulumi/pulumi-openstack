@@ -37,11 +37,11 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The first detected Fixed IPv4 address.
      */
-    public readonly accessIpV4!: pulumi.Output<string>;
+    public /*out*/ readonly accessIpV4!: pulumi.Output<string>;
     /**
      * The first detected Fixed IPv6 address.
      */
-    public readonly accessIpV6!: pulumi.Output<string>;
+    public /*out*/ readonly accessIpV6!: pulumi.Output<string>;
     /**
      * The administrative password to assign to the server.
      * Changing this changes the root password on the existing server.
@@ -258,8 +258,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["vendorOptions"] = state ? state.vendorOptions : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            resourceInputs["accessIpV4"] = args ? args.accessIpV4 : undefined;
-            resourceInputs["accessIpV6"] = args ? args.accessIpV6 : undefined;
             resourceInputs["adminPass"] = args?.adminPass ? pulumi.secret(args.adminPass) : undefined;
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["availabilityZoneHints"] = args ? args.availabilityZoneHints : undefined;
@@ -285,6 +283,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["userData"] = args ? args.userData : undefined;
             resourceInputs["vendorOptions"] = args ? args.vendorOptions : undefined;
+            resourceInputs["accessIpV4"] = undefined /*out*/;
+            resourceInputs["accessIpV6"] = undefined /*out*/;
             resourceInputs["allMetadata"] = undefined /*out*/;
             resourceInputs["allTags"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
@@ -484,14 +484,6 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
-    /**
-     * The first detected Fixed IPv4 address.
-     */
-    accessIpV4?: pulumi.Input<string>;
-    /**
-     * The first detected Fixed IPv6 address.
-     */
-    accessIpV6?: pulumi.Input<string>;
     /**
      * The administrative password to assign to the server.
      * Changing this changes the root password on the existing server.

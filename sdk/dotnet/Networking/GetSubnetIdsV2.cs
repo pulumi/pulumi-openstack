@@ -176,6 +176,13 @@ namespace Pulumi.OpenStack.Networking
         public string? Region { get; set; }
 
         /// <summary>
+        /// The ID of the segment the subnet belongs to.
+        /// Available when neutron segment extension is enabled.
+        /// </summary>
+        [Input("segmentId")]
+        public string? SegmentId { get; set; }
+
+        /// <summary>
         /// Order the results in either `asc` or `desc`.
         /// Defaults to none.
         /// </summary>
@@ -294,6 +301,13 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? Region { get; set; }
 
         /// <summary>
+        /// The ID of the segment the subnet belongs to.
+        /// Available when neutron segment extension is enabled.
+        /// </summary>
+        [Input("segmentId")]
+        public Input<string>? SegmentId { get; set; }
+
+        /// <summary>
         /// Order the results in either `asc` or `desc`.
         /// Defaults to none.
         /// </summary>
@@ -357,6 +371,7 @@ namespace Pulumi.OpenStack.Networking
         public readonly string? NameRegex;
         public readonly string? NetworkId;
         public readonly string Region;
+        public readonly string? SegmentId;
         public readonly string? SortDirection;
         public readonly string? SortKey;
         public readonly string? SubnetpoolId;
@@ -393,6 +408,8 @@ namespace Pulumi.OpenStack.Networking
 
             string region,
 
+            string? segmentId,
+
             string? sortDirection,
 
             string? sortKey,
@@ -417,6 +434,7 @@ namespace Pulumi.OpenStack.Networking
             NameRegex = nameRegex;
             NetworkId = networkId;
             Region = region;
+            SegmentId = segmentId;
             SortDirection = sortDirection;
             SortKey = sortKey;
             SubnetpoolId = subnetpoolId;

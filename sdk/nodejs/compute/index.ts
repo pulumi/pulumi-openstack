@@ -60,6 +60,11 @@ export const getQuotaSetV2: typeof import("./getQuotaSetV2").getQuotaSetV2 = nul
 export const getQuotaSetV2Output: typeof import("./getQuotaSetV2").getQuotaSetV2Output = null as any;
 utilities.lazyLoad(exports, ["getQuotaSetV2","getQuotaSetV2Output"], () => require("./getQuotaSetV2"));
 
+export { GetServergroupV2Args, GetServergroupV2Result, GetServergroupV2OutputArgs } from "./getServergroupV2";
+export const getServergroupV2: typeof import("./getServergroupV2").getServergroupV2 = null as any;
+export const getServergroupV2Output: typeof import("./getServergroupV2").getServergroupV2Output = null as any;
+utilities.lazyLoad(exports, ["getServergroupV2","getServergroupV2Output"], () => require("./getServergroupV2"));
+
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;

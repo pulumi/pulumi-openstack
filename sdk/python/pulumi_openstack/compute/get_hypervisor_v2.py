@@ -27,7 +27,7 @@ class GetHypervisorV2Result:
     """
     A collection of values returned by getHypervisorV2.
     """
-    def __init__(__self__, disk=None, host_ip=None, hostname=None, id=None, memory=None, state=None, status=None, type=None, vcpus=None):
+    def __init__(__self__, disk=None, host_ip=None, hostname=None, id=None, memory=None, region=None, state=None, status=None, type=None, vcpus=None):
         if disk and not isinstance(disk, int):
             raise TypeError("Expected argument 'disk' to be a int")
         pulumi.set(__self__, "disk", disk)
@@ -43,6 +43,9 @@ class GetHypervisorV2Result:
         if memory and not isinstance(memory, int):
             raise TypeError("Expected argument 'memory' to be a int")
         pulumi.set(__self__, "memory", memory)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -98,6 +101,14 @@ class GetHypervisorV2Result:
 
     @property
     @pulumi.getter
+    def region(self) -> builtins.str:
+        """
+        See Argument Reference above.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
     def state(self) -> builtins.str:
         """
         The state of the hypervisor (`up` or `down`)
@@ -140,6 +151,7 @@ class AwaitableGetHypervisorV2Result(GetHypervisorV2Result):
             hostname=self.hostname,
             id=self.id,
             memory=self.memory,
+            region=self.region,
             state=self.state,
             status=self.status,
             type=self.type,
@@ -147,6 +159,7 @@ class AwaitableGetHypervisorV2Result(GetHypervisorV2Result):
 
 
 def get_hypervisor_v2(hostname: Optional[builtins.str] = None,
+                      region: Optional[builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHypervisorV2Result:
     """
     Use this data source to get information about hypervisors
@@ -162,10 +175,13 @@ def get_hypervisor_v2(hostname: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str hostname: The hostname of the hypervisor
+    :param builtins.str hostname: The hostname of the hypervisor.
+    :param builtins.str region: The region in which to obtain the V2 Compute client.
+           If omitted, the `region` argument of the provider is used.
     """
     __args__ = dict()
     __args__['hostname'] = hostname
+    __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('openstack:compute/getHypervisorV2:getHypervisorV2', __args__, opts=opts, typ=GetHypervisorV2Result).value
 
@@ -175,11 +191,13 @@ def get_hypervisor_v2(hostname: Optional[builtins.str] = None,
         hostname=pulumi.get(__ret__, 'hostname'),
         id=pulumi.get(__ret__, 'id'),
         memory=pulumi.get(__ret__, 'memory'),
+        region=pulumi.get(__ret__, 'region'),
         state=pulumi.get(__ret__, 'state'),
         status=pulumi.get(__ret__, 'status'),
         type=pulumi.get(__ret__, 'type'),
         vcpus=pulumi.get(__ret__, 'vcpus'))
 def get_hypervisor_v2_output(hostname: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                             region: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHypervisorV2Result]:
     """
     Use this data source to get information about hypervisors
@@ -195,10 +213,13 @@ def get_hypervisor_v2_output(hostname: Optional[pulumi.Input[Optional[builtins.s
     ```
 
 
-    :param builtins.str hostname: The hostname of the hypervisor
+    :param builtins.str hostname: The hostname of the hypervisor.
+    :param builtins.str region: The region in which to obtain the V2 Compute client.
+           If omitted, the `region` argument of the provider is used.
     """
     __args__ = dict()
     __args__['hostname'] = hostname
+    __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:compute/getHypervisorV2:getHypervisorV2', __args__, opts=opts, typ=GetHypervisorV2Result)
     return __ret__.apply(lambda __response__: GetHypervisorV2Result(
@@ -207,6 +228,7 @@ def get_hypervisor_v2_output(hostname: Optional[pulumi.Input[Optional[builtins.s
         hostname=pulumi.get(__response__, 'hostname'),
         id=pulumi.get(__response__, 'id'),
         memory=pulumi.get(__response__, 'memory'),
+        region=pulumi.get(__response__, 'region'),
         state=pulumi.get(__response__, 'state'),
         status=pulumi.get(__response__, 'status'),
         type=pulumi.get(__response__, 'type'),

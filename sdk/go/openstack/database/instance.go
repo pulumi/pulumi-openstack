@@ -88,6 +88,10 @@ type Instance struct {
 	// An array of username, password, host and databases. The user
 	// object structure is documented below.
 	Users InstanceUserArrayOutput `pulumi:"users"`
+	// Specifies the volume type to use. If you want to
+	// specify a volume type, you must also specify a volume size. Changing this
+	// creates new instance.
+	VolumeType pulumi.StringPtrOutput `pulumi:"volumeType"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -154,6 +158,10 @@ type instanceState struct {
 	// An array of username, password, host and databases. The user
 	// object structure is documented below.
 	Users []InstanceUser `pulumi:"users"`
+	// Specifies the volume type to use. If you want to
+	// specify a volume type, you must also specify a volume size. Changing this
+	// creates new instance.
+	VolumeType *string `pulumi:"volumeType"`
 }
 
 type InstanceState struct {
@@ -185,6 +193,10 @@ type InstanceState struct {
 	// An array of username, password, host and databases. The user
 	// object structure is documented below.
 	Users InstanceUserArrayInput
+	// Specifies the volume type to use. If you want to
+	// specify a volume type, you must also specify a volume size. Changing this
+	// creates new instance.
+	VolumeType pulumi.StringPtrInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -218,6 +230,10 @@ type instanceArgs struct {
 	// An array of username, password, host and databases. The user
 	// object structure is documented below.
 	Users []InstanceUser `pulumi:"users"`
+	// Specifies the volume type to use. If you want to
+	// specify a volume type, you must also specify a volume size. Changing this
+	// creates new instance.
+	VolumeType *string `pulumi:"volumeType"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -248,6 +264,10 @@ type InstanceArgs struct {
 	// An array of username, password, host and databases. The user
 	// object structure is documented below.
 	Users InstanceUserArrayInput
+	// Specifies the volume type to use. If you want to
+	// specify a volume type, you must also specify a volume size. Changing this
+	// creates new instance.
+	VolumeType pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {
@@ -393,6 +413,13 @@ func (o InstanceOutput) Size() pulumi.IntOutput {
 // object structure is documented below.
 func (o InstanceOutput) Users() InstanceUserArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceUserArrayOutput { return v.Users }).(InstanceUserArrayOutput)
+}
+
+// Specifies the volume type to use. If you want to
+// specify a volume type, you must also specify a volume size. Changing this
+// creates new instance.
+func (o InstanceOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.VolumeType }).(pulumi.StringPtrOutput)
 }
 
 type InstanceArrayOutput struct{ *pulumi.OutputState }

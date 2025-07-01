@@ -25,6 +25,7 @@ export function getAggregateV2(args: GetAggregateV2Args, opts?: pulumi.InvokeOpt
         "hosts": args.hosts,
         "metadata": args.metadata,
         "name": args.name,
+        "region": args.region,
     }, opts);
 }
 
@@ -41,9 +42,14 @@ export interface GetAggregateV2Args {
      */
     metadata?: {[key: string]: string};
     /**
-     * The name of the host aggregate
+     * The name of the host aggregate.
      */
     name: string;
+    /**
+     * The region in which to obtain the V2 Compute client.
+     * If omitted, the `region` argument of the provider is used.
+     */
+    region?: string;
 }
 
 /**
@@ -66,6 +72,10 @@ export interface GetAggregateV2Result {
      * See Argument Reference above.
      */
     readonly name: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly region: string;
     /**
      * Availability zone of the Host Aggregate
      */
@@ -92,6 +102,7 @@ export function getAggregateV2Output(args: GetAggregateV2OutputArgs, opts?: pulu
         "hosts": args.hosts,
         "metadata": args.metadata,
         "name": args.name,
+        "region": args.region,
     }, opts);
 }
 
@@ -108,7 +119,12 @@ export interface GetAggregateV2OutputArgs {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of the host aggregate
+     * The name of the host aggregate.
      */
     name: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Compute client.
+     * If omitted, the `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
 }

@@ -65,7 +65,8 @@ type LookupProjectArgs struct {
 	// The id of the project. Conflicts with any of the
 	// above arguments.
 	ProjectId *string `pulumi:"projectId"`
-	// The region the project is located in.
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used.
 	Region *string `pulumi:"region"`
 }
 
@@ -87,7 +88,7 @@ type LookupProjectResult struct {
 	ParentId *string `pulumi:"parentId"`
 	// See Argument Reference above.
 	ProjectId *string `pulumi:"projectId"`
-	// The region the project is located in.
+	// See Argument Reference above.
 	Region string `pulumi:"region"`
 	// See Argument Reference above.
 	Tags []string `pulumi:"tags"`
@@ -119,7 +120,8 @@ type LookupProjectOutputArgs struct {
 	// The id of the project. Conflicts with any of the
 	// above arguments.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	// The region the project is located in.
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
@@ -182,7 +184,7 @@ func (o LookupProjectResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// The region the project is located in.
+// See Argument Reference above.
 func (o LookupProjectResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Region }).(pulumi.StringOutput)
 }

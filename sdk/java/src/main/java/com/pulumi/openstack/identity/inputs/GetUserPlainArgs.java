@@ -108,14 +108,16 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The region the user is located in.
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used.
      * 
      */
     @Import(name="region")
     private @Nullable String region;
 
     /**
-     * @return The region the user is located in.
+     * @return The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used.
      * 
      */
     public Optional<String> region() {
@@ -236,7 +238,8 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param region The region the user is located in.
+         * @param region The region in which to obtain the V3 Keystone client.
+         * If omitted, the `region` argument of the provider is used.
          * 
          * @return builder
          * 

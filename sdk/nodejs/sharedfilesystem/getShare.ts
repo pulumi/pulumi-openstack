@@ -64,7 +64,9 @@ export interface GetShareArgs {
      */
     name?: string;
     /**
-     * The region in which to obtain the V2 Shared File System client.
+     * The region in which to obtain the V2 Shared File System
+     * client. A Shared File System client is needed to read a share. If omitted,
+     * the `region` argument of the provider is used.
      */
     region?: string;
     /**
@@ -128,7 +130,7 @@ export interface GetShareResult {
      */
     readonly projectId: string;
     /**
-     * The region in which to obtain the V2 Shared File System client.
+     * See Argument Reference above.
      */
     readonly region: string;
     /**
@@ -210,7 +212,9 @@ export interface GetShareOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The region in which to obtain the V2 Shared File System client.
+     * The region in which to obtain the V2 Shared File System
+     * client. A Shared File System client is needed to read a share. If omitted,
+     * the `region` argument of the provider is used.
      */
     region?: pulumi.Input<string>;
     /**

@@ -379,6 +379,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Load Balancer
 			"openstack_loadbalancer_flavor_v2": {
+				Tok: openstackDataSource(lbMod, "getLbFlavorDeprecated"),
 				Docs: &tfbridge.DocInfo{
 					Source: "lb_flavor_v2.md",
 				},

@@ -48,9 +48,19 @@ public final class GetInstanceV2Args extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.networks);
     }
 
+    /**
+     * The region in which to obtain the V2 Compute client.
+     * If omitted, the `region` argument of the provider is used.
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return The region in which to obtain the V2 Compute client.
+     * If omitted, the `region` argument of the provider is used.
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
@@ -149,11 +159,25 @@ public final class GetInstanceV2Args extends com.pulumi.resources.InvokeArgs {
             return networks(List.of(networks));
         }
 
+        /**
+         * @param region The region in which to obtain the V2 Compute client.
+         * If omitted, the `region` argument of the provider is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region The region in which to obtain the V2 Compute client.
+         * If omitted, the `region` argument of the provider is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }

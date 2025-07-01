@@ -55,7 +55,7 @@ public final class GetProjectResult {
      */
     private @Nullable String projectId;
     /**
-     * @return The region the project is located in.
+     * @return See Argument Reference above.
      * 
      */
     private String region;
@@ -123,7 +123,7 @@ public final class GetProjectResult {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return The region the project is located in.
+     * @return See Argument Reference above.
      * 
      */
     public String region() {

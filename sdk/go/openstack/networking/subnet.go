@@ -119,6 +119,10 @@ type Subnet struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// subnet.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The segment ID of the subnet. This is used to
+	// specify which segment the subnet belongs to when using Neutron's routed
+	// provider networks. Available when neutron segment extension is enabled.
+	SegmentId pulumi.StringPtrOutput `pulumi:"segmentId"`
 	// An array of service types used by the subnet.
 	// Changing this updates the service types for the existing subnet.
 	ServiceTypes pulumi.StringArrayOutput `pulumi:"serviceTypes"`
@@ -227,6 +231,10 @@ type subnetState struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// subnet.
 	Region *string `pulumi:"region"`
+	// The segment ID of the subnet. This is used to
+	// specify which segment the subnet belongs to when using Neutron's routed
+	// provider networks. Available when neutron segment extension is enabled.
+	SegmentId *string `pulumi:"segmentId"`
 	// An array of service types used by the subnet.
 	// Changing this updates the service types for the existing subnet.
 	ServiceTypes []string `pulumi:"serviceTypes"`
@@ -303,6 +311,10 @@ type SubnetState struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// subnet.
 	Region pulumi.StringPtrInput
+	// The segment ID of the subnet. This is used to
+	// specify which segment the subnet belongs to when using Neutron's routed
+	// provider networks. Available when neutron segment extension is enabled.
+	SegmentId pulumi.StringPtrInput
 	// An array of service types used by the subnet.
 	// Changing this updates the service types for the existing subnet.
 	ServiceTypes pulumi.StringArrayInput
@@ -380,6 +392,10 @@ type subnetArgs struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// subnet.
 	Region *string `pulumi:"region"`
+	// The segment ID of the subnet. This is used to
+	// specify which segment the subnet belongs to when using Neutron's routed
+	// provider networks. Available when neutron segment extension is enabled.
+	SegmentId *string `pulumi:"segmentId"`
 	// An array of service types used by the subnet.
 	// Changing this updates the service types for the existing subnet.
 	ServiceTypes []string `pulumi:"serviceTypes"`
@@ -454,6 +470,10 @@ type SubnetArgs struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// subnet.
 	Region pulumi.StringPtrInput
+	// The segment ID of the subnet. This is used to
+	// specify which segment the subnet belongs to when using Neutron's routed
+	// provider networks. Available when neutron segment extension is enabled.
+	SegmentId pulumi.StringPtrInput
 	// An array of service types used by the subnet.
 	// Changing this updates the service types for the existing subnet.
 	ServiceTypes pulumi.StringArrayInput
@@ -662,6 +682,13 @@ func (o SubnetOutput) PrefixLength() pulumi.IntPtrOutput {
 // subnet.
 func (o SubnetOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The segment ID of the subnet. This is used to
+// specify which segment the subnet belongs to when using Neutron's routed
+// provider networks. Available when neutron segment extension is enabled.
+func (o SubnetOutput) SegmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringPtrOutput { return v.SegmentId }).(pulumi.StringPtrOutput)
 }
 
 // An array of service types used by the subnet.

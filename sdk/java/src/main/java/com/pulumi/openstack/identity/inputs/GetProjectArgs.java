@@ -113,14 +113,16 @@ public final class GetProjectArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The region the project is located in.
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region the project is located in.
+     * @return The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used.
      * 
      */
     public Optional<Output<String>> region() {
@@ -290,7 +292,8 @@ public final class GetProjectArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param region The region the project is located in.
+         * @param region The region in which to obtain the V3 Keystone client.
+         * If omitted, the `region` argument of the provider is used.
          * 
          * @return builder
          * 
@@ -301,7 +304,8 @@ public final class GetProjectArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param region The region the project is located in.
+         * @param region The region in which to obtain the V3 Keystone client.
+         * If omitted, the `region` argument of the provider is used.
          * 
          * @return builder
          * 

@@ -136,9 +136,9 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The region in which to obtain the V2 Shared File System client.
-        /// A Shared File System client is needed to create a share. Changing this
-        /// creates a new share.
+        /// The region in which to obtain the V2 Shared File System
+        /// client. A Shared File System client is needed to create a share. Changing
+        /// this creates a new share.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -280,9 +280,9 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The region in which to obtain the V2 Shared File System client.
-        /// A Shared File System client is needed to create a share. Changing this
-        /// creates a new share.
+        /// The region in which to obtain the V2 Shared File System
+        /// client. A Shared File System client is needed to create a share. Changing
+        /// this creates a new share.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -418,9 +418,9 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// The region in which to obtain the V2 Shared File System client.
-        /// A Shared File System client is needed to create a share. Changing this
-        /// creates a new share.
+        /// The region in which to obtain the V2 Shared File System
+        /// client. A Shared File System client is needed to create a share. Changing
+        /// this creates a new share.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

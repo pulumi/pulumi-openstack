@@ -27,7 +27,7 @@ class GetAggregateV2Result:
     """
     A collection of values returned by getAggregateV2.
     """
-    def __init__(__self__, hosts=None, id=None, metadata=None, name=None, zone=None):
+    def __init__(__self__, hosts=None, id=None, metadata=None, name=None, region=None, zone=None):
         if hosts and not isinstance(hosts, list):
             raise TypeError("Expected argument 'hosts' to be a list")
         pulumi.set(__self__, "hosts", hosts)
@@ -40,6 +40,9 @@ class GetAggregateV2Result:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
@@ -78,6 +81,14 @@ class GetAggregateV2Result:
 
     @property
     @pulumi.getter
+    def region(self) -> builtins.str:
+        """
+        See Argument Reference above.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
     def zone(self) -> builtins.str:
         """
         Availability zone of the Host Aggregate
@@ -95,12 +106,14 @@ class AwaitableGetAggregateV2Result(GetAggregateV2Result):
             id=self.id,
             metadata=self.metadata,
             name=self.name,
+            region=self.region,
             zone=self.zone)
 
 
 def get_aggregate_v2(hosts: Optional[Sequence[builtins.str]] = None,
                      metadata: Optional[Mapping[str, builtins.str]] = None,
                      name: Optional[builtins.str] = None,
+                     region: Optional[builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAggregateV2Result:
     """
     Use this data source to get information about host aggregates
@@ -118,12 +131,15 @@ def get_aggregate_v2(hosts: Optional[Sequence[builtins.str]] = None,
 
     :param Sequence[builtins.str] hosts: List of Hypervisors contained in the Host Aggregate
     :param Mapping[str, builtins.str] metadata: Metadata of the Host Aggregate
-    :param builtins.str name: The name of the host aggregate
+    :param builtins.str name: The name of the host aggregate.
+    :param builtins.str region: The region in which to obtain the V2 Compute client.
+           If omitted, the `region` argument of the provider is used.
     """
     __args__ = dict()
     __args__['hosts'] = hosts
     __args__['metadata'] = metadata
     __args__['name'] = name
+    __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('openstack:compute/getAggregateV2:getAggregateV2', __args__, opts=opts, typ=GetAggregateV2Result).value
 
@@ -132,10 +148,12 @@ def get_aggregate_v2(hosts: Optional[Sequence[builtins.str]] = None,
         id=pulumi.get(__ret__, 'id'),
         metadata=pulumi.get(__ret__, 'metadata'),
         name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'),
         zone=pulumi.get(__ret__, 'zone'))
 def get_aggregate_v2_output(hosts: Optional[pulumi.Input[Optional[Sequence[builtins.str]]]] = None,
                             metadata: Optional[pulumi.Input[Optional[Mapping[str, builtins.str]]]] = None,
                             name: Optional[pulumi.Input[builtins.str]] = None,
+                            region: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAggregateV2Result]:
     """
     Use this data source to get information about host aggregates
@@ -153,12 +171,15 @@ def get_aggregate_v2_output(hosts: Optional[pulumi.Input[Optional[Sequence[built
 
     :param Sequence[builtins.str] hosts: List of Hypervisors contained in the Host Aggregate
     :param Mapping[str, builtins.str] metadata: Metadata of the Host Aggregate
-    :param builtins.str name: The name of the host aggregate
+    :param builtins.str name: The name of the host aggregate.
+    :param builtins.str region: The region in which to obtain the V2 Compute client.
+           If omitted, the `region` argument of the provider is used.
     """
     __args__ = dict()
     __args__['hosts'] = hosts
     __args__['metadata'] = metadata
     __args__['name'] = name
+    __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('openstack:compute/getAggregateV2:getAggregateV2', __args__, opts=opts, typ=GetAggregateV2Result)
     return __ret__.apply(lambda __response__: GetAggregateV2Result(
@@ -166,4 +187,5 @@ def get_aggregate_v2_output(hosts: Optional[pulumi.Input[Optional[Sequence[built
         id=pulumi.get(__response__, 'id'),
         metadata=pulumi.get(__response__, 'metadata'),
         name=pulumi.get(__response__, 'name'),
+        region=pulumi.get(__response__, 'region'),
         zone=pulumi.get(__response__, 'zone')))

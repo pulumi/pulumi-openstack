@@ -359,6 +359,24 @@ public class Subnet extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
+     * The segment ID of the subnet. This is used to
+     * specify which segment the subnet belongs to when using Neutron&#39;s routed
+     * provider networks. Available when neutron segment extension is enabled.
+     * 
+     */
+    @Export(name="segmentId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> segmentId;
+
+    /**
+     * @return The segment ID of the subnet. This is used to
+     * specify which segment the subnet belongs to when using Neutron&#39;s routed
+     * provider networks. Available when neutron segment extension is enabled.
+     * 
+     */
+    public Output<Optional<String>> segmentId() {
+        return Codegen.optional(this.segmentId);
+    }
+    /**
      * An array of service types used by the subnet.
      * Changing this updates the service types for the existing subnet.
      * 

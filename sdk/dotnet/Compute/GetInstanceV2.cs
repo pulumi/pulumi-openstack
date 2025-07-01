@@ -105,6 +105,10 @@ namespace Pulumi.OpenStack.Compute
             set => _networks = value;
         }
 
+        /// <summary>
+        /// The region in which to obtain the V2 Compute client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
@@ -140,6 +144,10 @@ namespace Pulumi.OpenStack.Compute
             set => _networks = value;
         }
 
+        /// <summary>
+        /// The region in which to obtain the V2 Compute client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -209,6 +217,9 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceV2NetworkResult> Networks;
         public readonly string PowerState;
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         public readonly string Region;
         /// <summary>
         /// An array of security group names associated with this server.

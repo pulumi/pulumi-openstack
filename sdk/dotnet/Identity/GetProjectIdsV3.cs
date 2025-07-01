@@ -136,6 +136,10 @@ namespace Pulumi.OpenStack.Identity
         [Input("parentId")]
         public string? ParentId { get; set; }
 
+        /// <summary>
+        /// The region in which to obtain the V3 Keystone client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
@@ -196,6 +200,10 @@ namespace Pulumi.OpenStack.Identity
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
+        /// <summary>
+        /// The region in which to obtain the V3 Keystone client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 

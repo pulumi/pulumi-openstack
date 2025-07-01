@@ -44,6 +44,11 @@ public final class GetRouterResult {
      */
     private String externalNetworkId;
     /**
+     * @return The QoS policy UUID applied on the external gateway for the router.
+     * 
+     */
+    private String externalQosPolicyId;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -101,6 +106,13 @@ public final class GetRouterResult {
         return this.externalNetworkId;
     }
     /**
+     * @return The QoS policy UUID applied on the external gateway for the router.
+     * 
+     */
+    public String externalQosPolicyId() {
+        return this.externalQosPolicyId;
+    }
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -143,6 +155,7 @@ public final class GetRouterResult {
         private Boolean enableSnat;
         private List<GetRouterExternalFixedIp> externalFixedIps;
         private String externalNetworkId;
+        private String externalQosPolicyId;
         private String id;
         private @Nullable String name;
         private @Nullable String region;
@@ -161,6 +174,7 @@ public final class GetRouterResult {
     	      this.enableSnat = defaults.enableSnat;
     	      this.externalFixedIps = defaults.externalFixedIps;
     	      this.externalNetworkId = defaults.externalNetworkId;
+    	      this.externalQosPolicyId = defaults.externalQosPolicyId;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.region = defaults.region;
@@ -238,6 +252,14 @@ public final class GetRouterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder externalQosPolicyId(String externalQosPolicyId) {
+            if (externalQosPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "externalQosPolicyId");
+            }
+            this.externalQosPolicyId = externalQosPolicyId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetRouterResult", "id");
@@ -294,6 +316,7 @@ public final class GetRouterResult {
             _resultValue.enableSnat = enableSnat;
             _resultValue.externalFixedIps = externalFixedIps;
             _resultValue.externalNetworkId = externalNetworkId;
+            _resultValue.externalQosPolicyId = externalQosPolicyId;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.region = region;

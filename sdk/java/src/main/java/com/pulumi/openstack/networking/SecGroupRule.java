@@ -251,6 +251,26 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
+     * The remote address group id, the value
+     * needs to be an OpenStack ID of an address group in the same tenant. Changing
+     * this creates a new security group rule. This argument is mutually exclusive
+     * with `remote_ip_prefix` and `remote_group_id`.
+     * 
+     */
+    @Export(name="remoteAddressGroupId", refs={String.class}, tree="[0]")
+    private Output<String> remoteAddressGroupId;
+
+    /**
+     * @return The remote address group id, the value
+     * needs to be an OpenStack ID of an address group in the same tenant. Changing
+     * this creates a new security group rule. This argument is mutually exclusive
+     * with `remote_ip_prefix` and `remote_group_id`.
+     * 
+     */
+    public Output<String> remoteAddressGroupId() {
+        return this.remoteAddressGroupId;
+    }
+    /**
      * The remote group id, the value needs to be an
      * Openstack ID of a security group in the same tenant. Changing this creates
      * a new security group rule.

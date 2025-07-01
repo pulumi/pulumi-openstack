@@ -125,7 +125,8 @@ namespace Pulumi.OpenStack.Identity
         public string? ProtocolId { get; set; }
 
         /// <summary>
-        /// The region the user is located in.
+        /// The region in which to obtain the V3 Keystone client.
+        /// If omitted, the `region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -182,7 +183,8 @@ namespace Pulumi.OpenStack.Identity
         public Input<string>? ProtocolId { get; set; }
 
         /// <summary>
-        /// The region the user is located in.
+        /// The region in which to obtain the V3 Keystone client.
+        /// If omitted, the `region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -240,7 +242,7 @@ namespace Pulumi.OpenStack.Identity
         /// </summary>
         public readonly string? ProtocolId;
         /// <summary>
-        /// The region the user is located in.
+        /// See Argument Reference above.
         /// </summary>
         public readonly string Region;
         /// <summary>

@@ -6,6 +6,7 @@ import builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .address_group_v2 import *
 from .address_scope import *
 from .floating_ip import *
 from .floating_ip_associate import *

@@ -87,7 +87,10 @@ type RoleAssignment struct {
 	GroupId pulumi.StringPtrOutput `pulumi:"groupId"`
 	// The project to assign the role in.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	Region    pulumi.StringOutput    `pulumi:"region"`
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used. Changing this
+	// creates a new role assignment.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The role to assign.
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
 	// The user to assign the role to.
@@ -133,7 +136,10 @@ type roleAssignmentState struct {
 	GroupId *string `pulumi:"groupId"`
 	// The project to assign the role in.
 	ProjectId *string `pulumi:"projectId"`
-	Region    *string `pulumi:"region"`
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used. Changing this
+	// creates a new role assignment.
+	Region *string `pulumi:"region"`
 	// The role to assign.
 	RoleId *string `pulumi:"roleId"`
 	// The user to assign the role to.
@@ -147,7 +153,10 @@ type RoleAssignmentState struct {
 	GroupId pulumi.StringPtrInput
 	// The project to assign the role in.
 	ProjectId pulumi.StringPtrInput
-	Region    pulumi.StringPtrInput
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used. Changing this
+	// creates a new role assignment.
+	Region pulumi.StringPtrInput
 	// The role to assign.
 	RoleId pulumi.StringPtrInput
 	// The user to assign the role to.
@@ -165,7 +174,10 @@ type roleAssignmentArgs struct {
 	GroupId *string `pulumi:"groupId"`
 	// The project to assign the role in.
 	ProjectId *string `pulumi:"projectId"`
-	Region    *string `pulumi:"region"`
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used. Changing this
+	// creates a new role assignment.
+	Region *string `pulumi:"region"`
 	// The role to assign.
 	RoleId string `pulumi:"roleId"`
 	// The user to assign the role to.
@@ -180,7 +192,10 @@ type RoleAssignmentArgs struct {
 	GroupId pulumi.StringPtrInput
 	// The project to assign the role in.
 	ProjectId pulumi.StringPtrInput
-	Region    pulumi.StringPtrInput
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used. Changing this
+	// creates a new role assignment.
+	Region pulumi.StringPtrInput
 	// The role to assign.
 	RoleId pulumi.StringInput
 	// The user to assign the role to.
@@ -289,6 +304,9 @@ func (o RoleAssignmentOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoleAssignment) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
+// The region in which to obtain the V3 Keystone client.
+// If omitted, the `region` argument of the provider is used. Changing this
+// creates a new role assignment.
 func (o RoleAssignmentOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RoleAssignment) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

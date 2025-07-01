@@ -59,7 +59,7 @@ namespace Pulumi.OpenStack.Networking
         public Output<ImmutableArray<string>> AllTags { get; private set; } = null!;
 
         /// <summary>
-        /// An availability zone is used to make 
+        /// An availability zone is used to make
         /// network resources highly available. Used for resources with high availability
         /// so that they are scheduled on different availability zones. Changing this
         /// creates a new router.
@@ -108,6 +108,14 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Output("externalNetworkId")]
         public Output<string> ExternalNetworkId { get; private set; } = null!;
+
+        /// <summary>
+        /// The QoS policy UUID that will be applied
+        /// on the external gateway for the router. Changing this updates the external
+        /// gateway of the router.
+        /// </summary>
+        [Output("externalQosPolicyId")]
+        public Output<string> ExternalQosPolicyId { get; private set; } = null!;
 
         /// <summary>
         /// A list of external subnet IDs to try over
@@ -219,7 +227,7 @@ namespace Pulumi.OpenStack.Networking
         private InputList<string>? _availabilityZoneHints;
 
         /// <summary>
-        /// An availability zone is used to make 
+        /// An availability zone is used to make
         /// network resources highly available. Used for resources with high availability
         /// so that they are scheduled on different availability zones. Changing this
         /// creates a new router.
@@ -277,6 +285,14 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Input("externalNetworkId")]
         public Input<string>? ExternalNetworkId { get; set; }
+
+        /// <summary>
+        /// The QoS policy UUID that will be applied
+        /// on the external gateway for the router. Changing this updates the external
+        /// gateway of the router.
+        /// </summary>
+        [Input("externalQosPolicyId")]
+        public Input<string>? ExternalQosPolicyId { get; set; }
 
         [Input("externalSubnetIds")]
         private InputList<string>? _externalSubnetIds;
@@ -381,7 +397,7 @@ namespace Pulumi.OpenStack.Networking
         private InputList<string>? _availabilityZoneHints;
 
         /// <summary>
-        /// An availability zone is used to make 
+        /// An availability zone is used to make
         /// network resources highly available. Used for resources with high availability
         /// so that they are scheduled on different availability zones. Changing this
         /// creates a new router.
@@ -439,6 +455,14 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Input("externalNetworkId")]
         public Input<string>? ExternalNetworkId { get; set; }
+
+        /// <summary>
+        /// The QoS policy UUID that will be applied
+        /// on the external gateway for the router. Changing this updates the external
+        /// gateway of the router.
+        /// </summary>
+        [Input("externalQosPolicyId")]
+        public Input<string>? ExternalQosPolicyId { get; set; }
 
         [Input("externalSubnetIds")]
         private InputList<string>? _externalSubnetIds;

@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := loadbalancer.GetFlavorV2(ctx, &loadbalancer.GetFlavorV2Args{
+//			_, err := loadbalancer.LookupFlavorV2(ctx, &loadbalancer.LookupFlavorV2Args{
 //				Name: pulumi.StringRef("flavor_1"),
 //			}, nil)
 //			if err != nil {
@@ -38,9 +38,9 @@ import (
 //	}
 //
 // ```
-func GetFlavorV2(ctx *pulumi.Context, args *GetFlavorV2Args, opts ...pulumi.InvokeOption) (*GetFlavorV2Result, error) {
+func LookupFlavorV2(ctx *pulumi.Context, args *LookupFlavorV2Args, opts ...pulumi.InvokeOption) (*LookupFlavorV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetFlavorV2Result
+	var rv LookupFlavorV2Result
 	err := ctx.Invoke("openstack:loadbalancer/getFlavorV2:getFlavorV2", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -49,7 +49,7 @@ func GetFlavorV2(ctx *pulumi.Context, args *GetFlavorV2Args, opts ...pulumi.Invo
 }
 
 // A collection of arguments for invoking getFlavorV2.
-type GetFlavorV2Args struct {
+type LookupFlavorV2Args struct {
 	// The ID of the flavor. Exactly one of `name`, `flavorId` is required to be set.
 	FlavorId *string `pulumi:"flavorId"`
 	// The name of the flavor. Exactly one of `name`, `flavorId` is required to be set.
@@ -60,7 +60,7 @@ type GetFlavorV2Args struct {
 }
 
 // A collection of values returned by getFlavorV2.
-type GetFlavorV2Result struct {
+type LookupFlavorV2Result struct {
 	// The description of the flavor.
 	Description string `pulumi:"description"`
 	// Is the flavor enabled.
@@ -72,21 +72,21 @@ type GetFlavorV2Result struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The name of the flavor.
-	Name   string  `pulumi:"name"`
-	Region *string `pulumi:"region"`
+	Name   string `pulumi:"name"`
+	Region string `pulumi:"region"`
 }
 
-func GetFlavorV2Output(ctx *pulumi.Context, args GetFlavorV2OutputArgs, opts ...pulumi.InvokeOption) GetFlavorV2ResultOutput {
+func LookupFlavorV2Output(ctx *pulumi.Context, args LookupFlavorV2OutputArgs, opts ...pulumi.InvokeOption) LookupFlavorV2ResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFlavorV2ResultOutput, error) {
-			args := v.(GetFlavorV2Args)
+		ApplyT(func(v interface{}) (LookupFlavorV2ResultOutput, error) {
+			args := v.(LookupFlavorV2Args)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:loadbalancer/getFlavorV2:getFlavorV2", args, GetFlavorV2ResultOutput{}, options).(GetFlavorV2ResultOutput), nil
-		}).(GetFlavorV2ResultOutput)
+			return ctx.InvokeOutput("openstack:loadbalancer/getFlavorV2:getFlavorV2", args, LookupFlavorV2ResultOutput{}, options).(LookupFlavorV2ResultOutput), nil
+		}).(LookupFlavorV2ResultOutput)
 }
 
 // A collection of arguments for invoking getFlavorV2.
-type GetFlavorV2OutputArgs struct {
+type LookupFlavorV2OutputArgs struct {
 	// The ID of the flavor. Exactly one of `name`, `flavorId` is required to be set.
 	FlavorId pulumi.StringPtrInput `pulumi:"flavorId"`
 	// The name of the flavor. Exactly one of `name`, `flavorId` is required to be set.
@@ -96,59 +96,59 @@ type GetFlavorV2OutputArgs struct {
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
-func (GetFlavorV2OutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetFlavorV2Args)(nil)).Elem()
+func (LookupFlavorV2OutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFlavorV2Args)(nil)).Elem()
 }
 
 // A collection of values returned by getFlavorV2.
-type GetFlavorV2ResultOutput struct{ *pulumi.OutputState }
+type LookupFlavorV2ResultOutput struct{ *pulumi.OutputState }
 
-func (GetFlavorV2ResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetFlavorV2Result)(nil)).Elem()
+func (LookupFlavorV2ResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFlavorV2Result)(nil)).Elem()
 }
 
-func (o GetFlavorV2ResultOutput) ToGetFlavorV2ResultOutput() GetFlavorV2ResultOutput {
+func (o LookupFlavorV2ResultOutput) ToLookupFlavorV2ResultOutput() LookupFlavorV2ResultOutput {
 	return o
 }
 
-func (o GetFlavorV2ResultOutput) ToGetFlavorV2ResultOutputWithContext(ctx context.Context) GetFlavorV2ResultOutput {
+func (o LookupFlavorV2ResultOutput) ToLookupFlavorV2ResultOutputWithContext(ctx context.Context) LookupFlavorV2ResultOutput {
 	return o
 }
 
 // The description of the flavor.
-func (o GetFlavorV2ResultOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFlavorV2Result) string { return v.Description }).(pulumi.StringOutput)
+func (o LookupFlavorV2ResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFlavorV2Result) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Is the flavor enabled.
-func (o GetFlavorV2ResultOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetFlavorV2Result) bool { return v.Enabled }).(pulumi.BoolOutput)
+func (o LookupFlavorV2ResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupFlavorV2Result) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // The ID of the flavor.
-func (o GetFlavorV2ResultOutput) FlavorId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFlavorV2Result) string { return v.FlavorId }).(pulumi.StringOutput)
+func (o LookupFlavorV2ResultOutput) FlavorId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFlavorV2Result) string { return v.FlavorId }).(pulumi.StringOutput)
 }
 
 // The ID of the flavor profile.
-func (o GetFlavorV2ResultOutput) FlavorProfileId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFlavorV2Result) string { return v.FlavorProfileId }).(pulumi.StringOutput)
+func (o LookupFlavorV2ResultOutput) FlavorProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFlavorV2Result) string { return v.FlavorProfileId }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetFlavorV2ResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFlavorV2Result) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupFlavorV2ResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFlavorV2Result) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of the flavor.
-func (o GetFlavorV2ResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFlavorV2Result) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupFlavorV2ResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFlavorV2Result) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetFlavorV2ResultOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetFlavorV2Result) *string { return v.Region }).(pulumi.StringPtrOutput)
+func (o LookupFlavorV2ResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFlavorV2Result) string { return v.Region }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetFlavorV2ResultOutput{})
+	pulumi.RegisterOutputType(LookupFlavorV2ResultOutput{})
 }

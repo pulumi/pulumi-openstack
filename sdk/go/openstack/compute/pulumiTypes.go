@@ -1318,6 +1318,100 @@ func (o GetInstanceV2NetworkArrayOutput) Index(i pulumi.IntInput) GetInstanceV2N
 	}).(GetInstanceV2NetworkOutput)
 }
 
+type GetServergroupV2Rule struct {
+	MaxServerPerHost int `pulumi:"maxServerPerHost"`
+}
+
+// GetServergroupV2RuleInput is an input type that accepts GetServergroupV2RuleArgs and GetServergroupV2RuleOutput values.
+// You can construct a concrete instance of `GetServergroupV2RuleInput` via:
+//
+//	GetServergroupV2RuleArgs{...}
+type GetServergroupV2RuleInput interface {
+	pulumi.Input
+
+	ToGetServergroupV2RuleOutput() GetServergroupV2RuleOutput
+	ToGetServergroupV2RuleOutputWithContext(context.Context) GetServergroupV2RuleOutput
+}
+
+type GetServergroupV2RuleArgs struct {
+	MaxServerPerHost pulumi.IntInput `pulumi:"maxServerPerHost"`
+}
+
+func (GetServergroupV2RuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServergroupV2Rule)(nil)).Elem()
+}
+
+func (i GetServergroupV2RuleArgs) ToGetServergroupV2RuleOutput() GetServergroupV2RuleOutput {
+	return i.ToGetServergroupV2RuleOutputWithContext(context.Background())
+}
+
+func (i GetServergroupV2RuleArgs) ToGetServergroupV2RuleOutputWithContext(ctx context.Context) GetServergroupV2RuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServergroupV2RuleOutput)
+}
+
+// GetServergroupV2RuleArrayInput is an input type that accepts GetServergroupV2RuleArray and GetServergroupV2RuleArrayOutput values.
+// You can construct a concrete instance of `GetServergroupV2RuleArrayInput` via:
+//
+//	GetServergroupV2RuleArray{ GetServergroupV2RuleArgs{...} }
+type GetServergroupV2RuleArrayInput interface {
+	pulumi.Input
+
+	ToGetServergroupV2RuleArrayOutput() GetServergroupV2RuleArrayOutput
+	ToGetServergroupV2RuleArrayOutputWithContext(context.Context) GetServergroupV2RuleArrayOutput
+}
+
+type GetServergroupV2RuleArray []GetServergroupV2RuleInput
+
+func (GetServergroupV2RuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServergroupV2Rule)(nil)).Elem()
+}
+
+func (i GetServergroupV2RuleArray) ToGetServergroupV2RuleArrayOutput() GetServergroupV2RuleArrayOutput {
+	return i.ToGetServergroupV2RuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetServergroupV2RuleArray) ToGetServergroupV2RuleArrayOutputWithContext(ctx context.Context) GetServergroupV2RuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServergroupV2RuleArrayOutput)
+}
+
+type GetServergroupV2RuleOutput struct{ *pulumi.OutputState }
+
+func (GetServergroupV2RuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServergroupV2Rule)(nil)).Elem()
+}
+
+func (o GetServergroupV2RuleOutput) ToGetServergroupV2RuleOutput() GetServergroupV2RuleOutput {
+	return o
+}
+
+func (o GetServergroupV2RuleOutput) ToGetServergroupV2RuleOutputWithContext(ctx context.Context) GetServergroupV2RuleOutput {
+	return o
+}
+
+func (o GetServergroupV2RuleOutput) MaxServerPerHost() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServergroupV2Rule) int { return v.MaxServerPerHost }).(pulumi.IntOutput)
+}
+
+type GetServergroupV2RuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServergroupV2RuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServergroupV2Rule)(nil)).Elem()
+}
+
+func (o GetServergroupV2RuleArrayOutput) ToGetServergroupV2RuleArrayOutput() GetServergroupV2RuleArrayOutput {
+	return o
+}
+
+func (o GetServergroupV2RuleArrayOutput) ToGetServergroupV2RuleArrayOutputWithContext(ctx context.Context) GetServergroupV2RuleArrayOutput {
+	return o
+}
+
+func (o GetServergroupV2RuleArrayOutput) Index(i pulumi.IntInput) GetServergroupV2RuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServergroupV2Rule {
+		return vs[0].([]GetServergroupV2Rule)[vs[1].(int)]
+	}).(GetServergroupV2RuleOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBlockDeviceInput)(nil)).Elem(), InstanceBlockDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBlockDeviceArrayInput)(nil)).Elem(), InstanceBlockDeviceArray{})
@@ -1335,6 +1429,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachVendorOptionsPtrInput)(nil)).Elem(), VolumeAttachVendorOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceV2NetworkInput)(nil)).Elem(), GetInstanceV2NetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceV2NetworkArrayInput)(nil)).Elem(), GetInstanceV2NetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServergroupV2RuleInput)(nil)).Elem(), GetServergroupV2RuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServergroupV2RuleArrayInput)(nil)).Elem(), GetServergroupV2RuleArray{})
 	pulumi.RegisterOutputType(InstanceBlockDeviceOutput{})
 	pulumi.RegisterOutputType(InstanceBlockDeviceArrayOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkOutput{})
@@ -1351,4 +1447,6 @@ func init() {
 	pulumi.RegisterOutputType(VolumeAttachVendorOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GetInstanceV2NetworkOutput{})
 	pulumi.RegisterOutputType(GetInstanceV2NetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetServergroupV2RuleOutput{})
+	pulumi.RegisterOutputType(GetServergroupV2RuleArrayOutput{})
 }

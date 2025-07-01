@@ -115,10 +115,17 @@ namespace Pulumi.OpenStack.Compute
         }
 
         /// <summary>
-        /// The name of the host aggregate
+        /// The name of the host aggregate.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
+
+        /// <summary>
+        /// The region in which to obtain the V2 Compute client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
 
         public GetAggregateV2Args()
         {
@@ -153,10 +160,17 @@ namespace Pulumi.OpenStack.Compute
         }
 
         /// <summary>
-        /// The name of the host aggregate
+        /// The name of the host aggregate.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The region in which to obtain the V2 Compute client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public GetAggregateV2InvokeArgs()
         {
@@ -185,6 +199,10 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
+        public readonly string Region;
+        /// <summary>
         /// Availability zone of the Host Aggregate
         /// </summary>
         public readonly string Zone;
@@ -199,12 +217,15 @@ namespace Pulumi.OpenStack.Compute
 
             string name,
 
+            string region,
+
             string zone)
         {
             Hosts = hosts;
             Id = id;
             Metadata = metadata;
             Name = name;
+            Region = region;
             Zone = zone;
         }
     }

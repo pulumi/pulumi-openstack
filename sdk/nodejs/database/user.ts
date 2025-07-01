@@ -73,7 +73,8 @@ export class User extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string>;
     /**
-     * Openstack region resource is created in.
+     * The region in which to create the db user. Changing
+     * this creates a new user.
      */
     public readonly region!: pulumi.Output<string>;
 
@@ -140,7 +141,8 @@ export interface UserState {
      */
     password?: pulumi.Input<string>;
     /**
-     * Openstack region resource is created in.
+     * The region in which to create the db user. Changing
+     * this creates a new user.
      */
     region?: pulumi.Input<string>;
 }
@@ -167,7 +169,8 @@ export interface UserArgs {
      */
     password: pulumi.Input<string>;
     /**
-     * Openstack region resource is created in.
+     * The region in which to create the db user. Changing
+     * this creates a new user.
      */
     region?: pulumi.Input<string>;
 }

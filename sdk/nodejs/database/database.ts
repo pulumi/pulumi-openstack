@@ -66,7 +66,8 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Openstack region resource is created in.
+     * The region in which to create the database. Changing
+     * this creates a new database.
      */
     public readonly region!: pulumi.Output<string>;
 
@@ -113,7 +114,8 @@ export interface DatabaseState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Openstack region resource is created in.
+     * The region in which to create the database. Changing
+     * this creates a new database.
      */
     region?: pulumi.Input<string>;
 }
@@ -131,7 +133,8 @@ export interface DatabaseArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Openstack region resource is created in.
+     * The region in which to create the database. Changing
+     * this creates a new database.
      */
     region?: pulumi.Input<string>;
 }

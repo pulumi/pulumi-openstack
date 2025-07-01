@@ -35,6 +35,7 @@ export function getSubnet(args?: GetSubnetArgs, opts?: pulumi.InvokeOptions): Pr
         "name": args.name,
         "networkId": args.networkId,
         "region": args.region,
+        "segmentId": args.segmentId,
         "subnetId": args.subnetId,
         "subnetpoolId": args.subnetpoolId,
         "tags": args.tags,
@@ -95,6 +96,11 @@ export interface GetSubnetArgs {
      */
     region?: string;
     /**
+     * The ID of the segment the subnet belongs to.
+     * Available when neutron segment extension is enabled.
+     */
+    segmentId?: string;
+    /**
      * The ID of the subnet.
      */
     subnetId?: string;
@@ -154,6 +160,7 @@ export interface GetSubnetResult {
      * See Argument Reference above.
      */
     readonly region: string;
+    readonly segmentId: string;
     /**
      * Service types of the subnet.
      */
@@ -192,6 +199,7 @@ export function getSubnetOutput(args?: GetSubnetOutputArgs, opts?: pulumi.Invoke
         "name": args.name,
         "networkId": args.networkId,
         "region": args.region,
+        "segmentId": args.segmentId,
         "subnetId": args.subnetId,
         "subnetpoolId": args.subnetpoolId,
         "tags": args.tags,
@@ -251,6 +259,11 @@ export interface GetSubnetOutputArgs {
      * `region` argument of the provider is used.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The ID of the segment the subnet belongs to.
+     * Available when neutron segment extension is enabled.
+     */
+    segmentId?: pulumi.Input<string>;
     /**
      * The ID of the subnet.
      */

@@ -76,6 +76,9 @@ type LookupSubnetArgs struct {
 	// A Neutron client is needed to retrieve subnet ids. If omitted, the
 	// `region` argument of the provider is used.
 	Region *string `pulumi:"region"`
+	// The ID of the segment the subnet belongs to.
+	// Available when neutron segment extension is enabled.
+	SegmentId *string `pulumi:"segmentId"`
 	// The ID of the subnet.
 	SubnetId *string `pulumi:"subnetId"`
 	// The ID of the subnetpool associated with the subnet.
@@ -111,7 +114,8 @@ type LookupSubnetResult struct {
 	Name            string `pulumi:"name"`
 	NetworkId       string `pulumi:"networkId"`
 	// See Argument Reference above.
-	Region string `pulumi:"region"`
+	Region    string `pulumi:"region"`
+	SegmentId string `pulumi:"segmentId"`
 	// Service types of the subnet.
 	ServiceTypes []string `pulumi:"serviceTypes"`
 	SubnetId     string   `pulumi:"subnetId"`
@@ -157,6 +161,9 @@ type LookupSubnetOutputArgs struct {
 	// A Neutron client is needed to retrieve subnet ids. If omitted, the
 	// `region` argument of the provider is used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The ID of the segment the subnet belongs to.
+	// Available when neutron segment extension is enabled.
+	SegmentId pulumi.StringPtrInput `pulumi:"segmentId"`
 	// The ID of the subnet.
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 	// The ID of the subnetpool associated with the subnet.
@@ -259,6 +266,10 @@ func (o LookupSubnetResultOutput) NetworkId() pulumi.StringOutput {
 // See Argument Reference above.
 func (o LookupSubnetResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o LookupSubnetResultOutput) SegmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubnetResult) string { return v.SegmentId }).(pulumi.StringOutput)
 }
 
 // Service types of the subnet.

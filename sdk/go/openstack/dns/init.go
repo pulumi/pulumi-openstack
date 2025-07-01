@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TransferRequest{}
 	case "openstack:dns/zone:Zone":
 		r = &Zone{}
+	case "openstack:dns/zoneShareV2:ZoneShareV2":
+		r = &ZoneShareV2{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -60,6 +62,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"dns/zone",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"dns/zoneShareV2",
 		&module{version},
 	)
 }

@@ -135,6 +135,10 @@ export namespace compute {
         uuid: string;
     }
 
+    export interface GetServergroupV2Rule {
+        maxServerPerHost: number;
+    }
+
     export interface InstanceBlockDevice {
         /**
          * The boot index of the volume. It defaults to 0.

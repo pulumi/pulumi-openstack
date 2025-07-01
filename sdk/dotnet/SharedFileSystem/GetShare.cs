@@ -127,7 +127,9 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public string? Name { get; set; }
 
         /// <summary>
-        /// The region in which to obtain the V2 Shared File System client.
+        /// The region in which to obtain the V2 Shared File System
+        /// client. A Shared File System client is needed to read a share. If omitted,
+        /// the `region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -202,7 +204,9 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The region in which to obtain the V2 Shared File System client.
+        /// The region in which to obtain the V2 Shared File System
+        /// client. A Shared File System client is needed to read a share. If omitted,
+        /// the `region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -278,7 +282,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// The region in which to obtain the V2 Shared File System client.
+        /// See Argument Reference above.
         /// </summary>
         public readonly string Region;
         /// <summary>

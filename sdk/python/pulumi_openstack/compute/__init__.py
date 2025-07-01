@@ -17,6 +17,7 @@ from .get_instance_v2 import *
 from .get_keypair import *
 from .get_limits_v2 import *
 from .get_quota_set_v2 import *
+from .get_servergroup_v2 import *
 from .instance import *
 from .interface_attach import *
 from .keypair import *

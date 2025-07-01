@@ -62,6 +62,7 @@ public final class GetSubnetResult {
      * 
      */
     private String region;
+    private String segmentId;
     /**
      * @return Service types of the subnet.
      * 
@@ -152,6 +153,9 @@ public final class GetSubnetResult {
     public String region() {
         return this.region;
     }
+    public String segmentId() {
+        return this.segmentId;
+    }
     /**
      * @return Service types of the subnet.
      * 
@@ -198,6 +202,7 @@ public final class GetSubnetResult {
         private String name;
         private String networkId;
         private String region;
+        private String segmentId;
         private List<String> serviceTypes;
         private String subnetId;
         private String subnetpoolId;
@@ -223,6 +228,7 @@ public final class GetSubnetResult {
     	      this.name = defaults.name;
     	      this.networkId = defaults.networkId;
     	      this.region = defaults.region;
+    	      this.segmentId = defaults.segmentId;
     	      this.serviceTypes = defaults.serviceTypes;
     	      this.subnetId = defaults.subnetId;
     	      this.subnetpoolId = defaults.subnetpoolId;
@@ -375,6 +381,14 @@ public final class GetSubnetResult {
             return this;
         }
         @CustomType.Setter
+        public Builder segmentId(String segmentId) {
+            if (segmentId == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "segmentId");
+            }
+            this.segmentId = segmentId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceTypes(List<String> serviceTypes) {
             if (serviceTypes == null) {
               throw new MissingRequiredPropertyException("GetSubnetResult", "serviceTypes");
@@ -437,6 +451,7 @@ public final class GetSubnetResult {
             _resultValue.name = name;
             _resultValue.networkId = networkId;
             _resultValue.region = region;
+            _resultValue.segmentId = segmentId;
             _resultValue.serviceTypes = serviceTypes;
             _resultValue.subnetId = subnetId;
             _resultValue.subnetpoolId = subnetpoolId;

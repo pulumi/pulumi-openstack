@@ -138,7 +138,7 @@ class GetUserResult:
     @pulumi.getter
     def region(self) -> builtins.str:
         """
-        The region the user is located in.
+        See Argument Reference above.
         """
         return pulumi.get(self, "region")
 
@@ -199,7 +199,8 @@ def get_user(domain_id: Optional[builtins.str] = None,
     :param builtins.str name: The name of the user.
     :param builtins.str password_expires_at: Query for expired passwords. See the [OpenStack API docs](https://developer.openstack.org/api-ref/identity/v3/#list-users) for more information on the query format.
     :param builtins.str protocol_id: The protocol ID of the user.
-    :param builtins.str region: The region the user is located in.
+    :param builtins.str region: The region in which to obtain the V3 Keystone client.
+           If omitted, the `region` argument of the provider is used.
     :param builtins.str unique_id: The unique ID of the user.
     """
     __args__ = dict()
@@ -255,7 +256,8 @@ def get_user_output(domain_id: Optional[pulumi.Input[Optional[builtins.str]]] = 
     :param builtins.str name: The name of the user.
     :param builtins.str password_expires_at: Query for expired passwords. See the [OpenStack API docs](https://developer.openstack.org/api-ref/identity/v3/#list-users) for more information on the query format.
     :param builtins.str protocol_id: The protocol ID of the user.
-    :param builtins.str region: The region the user is located in.
+    :param builtins.str region: The region in which to obtain the V3 Keystone client.
+           If omitted, the `region` argument of the provider is used.
     :param builtins.str unique_id: The unique ID of the user.
     """
     __args__ = dict()

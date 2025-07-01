@@ -313,6 +313,10 @@
                 "current": "openstack:dns/transferRequest:TransferRequest",
                 "majorVersion": 5
             },
+            "openstack_dns_zone_share_v2": {
+                "current": "openstack:dns/zoneShareV2:ZoneShareV2",
+                "majorVersion": 5
+            },
             "openstack_dns_zone_v2": {
                 "current": "openstack:dns/zone:Zone",
                 "majorVersion": 5,
@@ -372,6 +376,10 @@
                 "current": "openstack:identity/inheritRoleAssignment:InheritRoleAssignment",
                 "majorVersion": 5
             },
+            "openstack_identity_limit_v3": {
+                "current": "openstack:identity/limitV3:LimitV3",
+                "majorVersion": 5
+            },
             "openstack_identity_project_v3": {
                 "current": "openstack:identity/project:Project",
                 "majorVersion": 5,
@@ -380,6 +388,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "openstack_identity_registered_limit_v3": {
+                "current": "openstack:identity/registeredLimitV3:RegisteredLimitV3",
+                "majorVersion": 5
             },
             "openstack_identity_role_assignment_v3": {
                 "current": "openstack:identity/roleAssignment:RoleAssignment",
@@ -491,6 +503,10 @@
                     }
                 }
             },
+            "openstack_lb_flavor_v2": {
+                "current": "openstack:loadbalancer/flavorV2:FlavorV2",
+                "majorVersion": 5
+            },
             "openstack_lb_flavorprofile_v2": {
                 "current": "openstack:loadbalancer/flavorprofileV2:FlavorprofileV2",
                 "past": [
@@ -593,6 +609,15 @@
             "openstack_lb_quota_v2": {
                 "current": "openstack:loadbalancer/quota:Quota",
                 "majorVersion": 5
+            },
+            "openstack_networking_address_group_v2": {
+                "current": "openstack:networking/addressGroupV2:AddressGroupV2",
+                "majorVersion": 5,
+                "fields": {
+                    "addresses": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "openstack_networking_addressscope_v2": {
                 "current": "openstack:networking/addressScope:AddressScope",
@@ -1011,6 +1036,21 @@
                 "current": "openstack:compute/getQuotaSetV2:getQuotaSetV2",
                 "majorVersion": 5
             },
+            "openstack_compute_servergroup_v2": {
+                "current": "openstack:compute/getServergroupV2:getServergroupV2",
+                "majorVersion": 5,
+                "fields": {
+                    "members": {
+                        "maxItemsOne": false
+                    },
+                    "policies": {
+                        "maxItemsOne": false
+                    },
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "openstack_containerinfra_cluster_v1": {
                 "current": "openstack:containerinfra/getCluster:getCluster",
                 "majorVersion": 5,
@@ -1029,6 +1069,10 @@
             },
             "openstack_containerinfra_nodegroup_v1": {
                 "current": "openstack:containerinfra/getNodeGroup:getNodeGroup",
+                "majorVersion": 5
+            },
+            "openstack_dns_zone_share_v2": {
+                "current": "openstack:dns/getZoneShareV2:getZoneShareV2",
                 "majorVersion": 5
             },
             "openstack_dns_zone_v2": {
@@ -1221,8 +1265,16 @@
                     }
                 }
             },
-            "openstack_loadbalancer_flavor_v2": {
+            "openstack_lb_flavor_v2": {
                 "current": "openstack:loadbalancer/getFlavorV2:getFlavorV2",
+                "majorVersion": 5
+            },
+            "openstack_lb_flavorprofile_v2": {
+                "current": "openstack:loadbalancer/getFlavorprofileV2:getFlavorprofileV2",
+                "majorVersion": 5
+            },
+            "openstack_loadbalancer_flavor_v2": {
+                "current": "openstack:loadbalancer/getLbFlavorDeprecated:getLbFlavorDeprecated",
                 "majorVersion": 5
             },
             "openstack_networking_addressscope_v2": {

@@ -107,18 +107,18 @@ public final class ShareArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The region in which to obtain the V2 Shared File System client.
-     * A Shared File System client is needed to create a share. Changing this
-     * creates a new share.
+     * The region in which to obtain the V2 Shared File System
+     * client. A Shared File System client is needed to create a share. Changing
+     * this creates a new share.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region in which to obtain the V2 Shared File System client.
-     * A Shared File System client is needed to create a share. Changing this
-     * creates a new share.
+     * @return The region in which to obtain the V2 Shared File System
+     * client. A Shared File System client is needed to create a share. Changing
+     * this creates a new share.
      * 
      */
     public Optional<Output<String>> region() {
@@ -364,9 +364,9 @@ public final class ShareArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region in which to obtain the V2 Shared File System client.
-         * A Shared File System client is needed to create a share. Changing this
-         * creates a new share.
+         * @param region The region in which to obtain the V2 Shared File System
+         * client. A Shared File System client is needed to create a share. Changing
+         * this creates a new share.
          * 
          * @return builder
          * 
@@ -377,9 +377,9 @@ public final class ShareArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region in which to obtain the V2 Shared File System client.
-         * A Shared File System client is needed to create a share. Changing this
-         * creates a new share.
+         * @param region The region in which to obtain the V2 Shared File System
+         * client. A Shared File System client is needed to create a share. Changing
+         * this creates a new share.
          * 
          * @return builder
          * 

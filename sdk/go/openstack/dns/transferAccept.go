@@ -76,10 +76,9 @@ type TransferAccept struct {
 	DisableStatusCheck pulumi.BoolPtrOutput `pulumi:"disableStatusCheck"`
 	// The transfer key.
 	Key pulumi.StringOutput `pulumi:"key"`
-	// The region in which to obtain the V2 Compute client.
-	// Keypairs are associated with accounts, but a Compute client is needed to
-	// create one. If omitted, the `region` argument of the provider is used.
-	// Changing this creates a new DNS zone.
+	// The region in which to obtain the V2 DNS client.
+	// If omitted, the `region` argument of the provider is used.
+	// Changing this creates a new DNS zone zone transfer accept.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Map of additional options. Changing this creates a
 	// new transfer accept.
@@ -130,10 +129,9 @@ type transferAcceptState struct {
 	DisableStatusCheck *bool `pulumi:"disableStatusCheck"`
 	// The transfer key.
 	Key *string `pulumi:"key"`
-	// The region in which to obtain the V2 Compute client.
-	// Keypairs are associated with accounts, but a Compute client is needed to
-	// create one. If omitted, the `region` argument of the provider is used.
-	// Changing this creates a new DNS zone.
+	// The region in which to obtain the V2 DNS client.
+	// If omitted, the `region` argument of the provider is used.
+	// Changing this creates a new DNS zone zone transfer accept.
 	Region *string `pulumi:"region"`
 	// Map of additional options. Changing this creates a
 	// new transfer accept.
@@ -149,10 +147,9 @@ type TransferAcceptState struct {
 	DisableStatusCheck pulumi.BoolPtrInput
 	// The transfer key.
 	Key pulumi.StringPtrInput
-	// The region in which to obtain the V2 Compute client.
-	// Keypairs are associated with accounts, but a Compute client is needed to
-	// create one. If omitted, the `region` argument of the provider is used.
-	// Changing this creates a new DNS zone.
+	// The region in which to obtain the V2 DNS client.
+	// If omitted, the `region` argument of the provider is used.
+	// Changing this creates a new DNS zone zone transfer accept.
 	Region pulumi.StringPtrInput
 	// Map of additional options. Changing this creates a
 	// new transfer accept.
@@ -172,10 +169,9 @@ type transferAcceptArgs struct {
 	DisableStatusCheck *bool `pulumi:"disableStatusCheck"`
 	// The transfer key.
 	Key string `pulumi:"key"`
-	// The region in which to obtain the V2 Compute client.
-	// Keypairs are associated with accounts, but a Compute client is needed to
-	// create one. If omitted, the `region` argument of the provider is used.
-	// Changing this creates a new DNS zone.
+	// The region in which to obtain the V2 DNS client.
+	// If omitted, the `region` argument of the provider is used.
+	// Changing this creates a new DNS zone zone transfer accept.
 	Region *string `pulumi:"region"`
 	// Map of additional options. Changing this creates a
 	// new transfer accept.
@@ -192,10 +188,9 @@ type TransferAcceptArgs struct {
 	DisableStatusCheck pulumi.BoolPtrInput
 	// The transfer key.
 	Key pulumi.StringInput
-	// The region in which to obtain the V2 Compute client.
-	// Keypairs are associated with accounts, but a Compute client is needed to
-	// create one. If omitted, the `region` argument of the provider is used.
-	// Changing this creates a new DNS zone.
+	// The region in which to obtain the V2 DNS client.
+	// If omitted, the `region` argument of the provider is used.
+	// Changing this creates a new DNS zone zone transfer accept.
 	Region pulumi.StringPtrInput
 	// Map of additional options. Changing this creates a
 	// new transfer accept.
@@ -303,10 +298,9 @@ func (o TransferAcceptOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferAccept) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// The region in which to obtain the V2 Compute client.
-// Keypairs are associated with accounts, but a Compute client is needed to
-// create one. If omitted, the `region` argument of the provider is used.
-// Changing this creates a new DNS zone.
+// The region in which to obtain the V2 DNS client.
+// If omitted, the `region` argument of the provider is used.
+// Changing this creates a new DNS zone zone transfer accept.
 func (o TransferAcceptOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferAccept) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

@@ -10,6 +10,11 @@ export const getDnsZone: typeof import("./getDnsZone").getDnsZone = null as any;
 export const getDnsZoneOutput: typeof import("./getDnsZone").getDnsZoneOutput = null as any;
 utilities.lazyLoad(exports, ["getDnsZone","getDnsZoneOutput"], () => require("./getDnsZone"));
 
+export { GetZoneShareV2Args, GetZoneShareV2Result, GetZoneShareV2OutputArgs } from "./getZoneShareV2";
+export const getZoneShareV2: typeof import("./getZoneShareV2").getZoneShareV2 = null as any;
+export const getZoneShareV2Output: typeof import("./getZoneShareV2").getZoneShareV2Output = null as any;
+utilities.lazyLoad(exports, ["getZoneShareV2","getZoneShareV2Output"], () => require("./getZoneShareV2"));
+
 export { RecordSetArgs, RecordSetState } from "./recordSet";
 export type RecordSet = import("./recordSet").RecordSet;
 export const RecordSet: typeof import("./recordSet").RecordSet = null as any;
@@ -30,6 +35,11 @@ export type Zone = import("./zone").Zone;
 export const Zone: typeof import("./zone").Zone = null as any;
 utilities.lazyLoad(exports, ["Zone"], () => require("./zone"));
 
+export { ZoneShareV2Args, ZoneShareV2State } from "./zoneShareV2";
+export type ZoneShareV2 = import("./zoneShareV2").ZoneShareV2;
+export const ZoneShareV2: typeof import("./zoneShareV2").ZoneShareV2 = null as any;
+utilities.lazyLoad(exports, ["ZoneShareV2"], () => require("./zoneShareV2"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -43,6 +53,8 @@ const _module = {
                 return new TransferRequest(name, <any>undefined, { urn })
             case "openstack:dns/zone:Zone":
                 return new Zone(name, <any>undefined, { urn })
+            case "openstack:dns/zoneShareV2:ZoneShareV2":
+                return new ZoneShareV2(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -52,3 +64,4 @@ pulumi.runtime.registerResourceModule("openstack", "dns/recordSet", _module)
 pulumi.runtime.registerResourceModule("openstack", "dns/transferAccept", _module)
 pulumi.runtime.registerResourceModule("openstack", "dns/transferRequest", _module)
 pulumi.runtime.registerResourceModule("openstack", "dns/zone", _module)
+pulumi.runtime.registerResourceModule("openstack", "dns/zoneShareV2", _module)

@@ -28,7 +28,7 @@ class GetSubnetResult:
     """
     A collection of values returned by getSubnet.
     """
-    def __init__(__self__, all_tags=None, allocation_pools=None, cidr=None, description=None, dhcp_enabled=None, dns_nameservers=None, dns_publish_fixed_ip=None, enable_dhcp=None, gateway_ip=None, host_routes=None, id=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, service_types=None, subnet_id=None, subnetpool_id=None, tags=None, tenant_id=None):
+    def __init__(__self__, all_tags=None, allocation_pools=None, cidr=None, description=None, dhcp_enabled=None, dns_nameservers=None, dns_publish_fixed_ip=None, enable_dhcp=None, gateway_ip=None, host_routes=None, id=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, segment_id=None, service_types=None, subnet_id=None, subnetpool_id=None, tags=None, tenant_id=None):
         if all_tags and not isinstance(all_tags, list):
             raise TypeError("Expected argument 'all_tags' to be a list")
         pulumi.set(__self__, "all_tags", all_tags)
@@ -80,6 +80,9 @@ class GetSubnetResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if segment_id and not isinstance(segment_id, str):
+            raise TypeError("Expected argument 'segment_id' to be a str")
+        pulumi.set(__self__, "segment_id", segment_id)
         if service_types and not isinstance(service_types, list):
             raise TypeError("Expected argument 'service_types' to be a list")
         pulumi.set(__self__, "service_types", service_types)
@@ -203,6 +206,11 @@ class GetSubnetResult:
         return pulumi.get(self, "region")
 
     @property
+    @pulumi.getter(name="segmentId")
+    def segment_id(self) -> builtins.str:
+        return pulumi.get(self, "segment_id")
+
+    @property
     @pulumi.getter(name="serviceTypes")
     def service_types(self) -> Sequence[builtins.str]:
         """
@@ -254,6 +262,7 @@ class AwaitableGetSubnetResult(GetSubnetResult):
             name=self.name,
             network_id=self.network_id,
             region=self.region,
+            segment_id=self.segment_id,
             service_types=self.service_types,
             subnet_id=self.subnet_id,
             subnetpool_id=self.subnetpool_id,
@@ -272,6 +281,7 @@ def get_subnet(cidr: Optional[builtins.str] = None,
                name: Optional[builtins.str] = None,
                network_id: Optional[builtins.str] = None,
                region: Optional[builtins.str] = None,
+               segment_id: Optional[builtins.str] = None,
                subnet_id: Optional[builtins.str] = None,
                subnetpool_id: Optional[builtins.str] = None,
                tags: Optional[Sequence[builtins.str]] = None,
@@ -305,6 +315,8 @@ def get_subnet(cidr: Optional[builtins.str] = None,
     :param builtins.str region: The region in which to obtain the V2 Neutron client.
            A Neutron client is needed to retrieve subnet ids. If omitted, the
            `region` argument of the provider is used.
+    :param builtins.str segment_id: The ID of the segment the subnet belongs to.
+           Available when neutron segment extension is enabled.
     :param builtins.str subnet_id: The ID of the subnet.
     :param builtins.str subnetpool_id: The ID of the subnetpool associated with the subnet.
     :param Sequence[builtins.str] tags: The list of subnet tags to filter.
@@ -322,6 +334,7 @@ def get_subnet(cidr: Optional[builtins.str] = None,
     __args__['name'] = name
     __args__['networkId'] = network_id
     __args__['region'] = region
+    __args__['segmentId'] = segment_id
     __args__['subnetId'] = subnet_id
     __args__['subnetpoolId'] = subnetpool_id
     __args__['tags'] = tags
@@ -347,6 +360,7 @@ def get_subnet(cidr: Optional[builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         network_id=pulumi.get(__ret__, 'network_id'),
         region=pulumi.get(__ret__, 'region'),
+        segment_id=pulumi.get(__ret__, 'segment_id'),
         service_types=pulumi.get(__ret__, 'service_types'),
         subnet_id=pulumi.get(__ret__, 'subnet_id'),
         subnetpool_id=pulumi.get(__ret__, 'subnetpool_id'),
@@ -363,6 +377,7 @@ def get_subnet_output(cidr: Optional[pulumi.Input[Optional[builtins.str]]] = Non
                       name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                       network_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                       region: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                      segment_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                       subnet_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                       subnetpool_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                       tags: Optional[pulumi.Input[Optional[Sequence[builtins.str]]]] = None,
@@ -396,6 +411,8 @@ def get_subnet_output(cidr: Optional[pulumi.Input[Optional[builtins.str]]] = Non
     :param builtins.str region: The region in which to obtain the V2 Neutron client.
            A Neutron client is needed to retrieve subnet ids. If omitted, the
            `region` argument of the provider is used.
+    :param builtins.str segment_id: The ID of the segment the subnet belongs to.
+           Available when neutron segment extension is enabled.
     :param builtins.str subnet_id: The ID of the subnet.
     :param builtins.str subnetpool_id: The ID of the subnetpool associated with the subnet.
     :param Sequence[builtins.str] tags: The list of subnet tags to filter.
@@ -413,6 +430,7 @@ def get_subnet_output(cidr: Optional[pulumi.Input[Optional[builtins.str]]] = Non
     __args__['name'] = name
     __args__['networkId'] = network_id
     __args__['region'] = region
+    __args__['segmentId'] = segment_id
     __args__['subnetId'] = subnet_id
     __args__['subnetpoolId'] = subnetpool_id
     __args__['tags'] = tags
@@ -437,6 +455,7 @@ def get_subnet_output(cidr: Optional[pulumi.Input[Optional[builtins.str]]] = Non
         name=pulumi.get(__response__, 'name'),
         network_id=pulumi.get(__response__, 'network_id'),
         region=pulumi.get(__response__, 'region'),
+        segment_id=pulumi.get(__response__, 'segment_id'),
         service_types=pulumi.get(__response__, 'service_types'),
         subnet_id=pulumi.get(__response__, 'subnet_id'),
         subnetpool_id=pulumi.get(__response__, 'subnetpool_id'),

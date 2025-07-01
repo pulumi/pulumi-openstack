@@ -76,10 +76,9 @@ export class TransferRequest extends pulumi.CustomResource {
     public readonly disableStatusCheck!: pulumi.Output<boolean | undefined>;
     public readonly key!: pulumi.Output<string>;
     /**
-     * The region in which to obtain the V2 Compute client.
-     * Keypairs are associated with accounts, but a Compute client is needed to
-     * create one. If omitted, the `region` argument of the provider is used.
-     * Changing this creates a new DNS zone.
+     * The region in which to obtain the V2 DNS client.
+     * If omitted, the `region` argument of the provider is used.
+     * Changing this creates a new DNS zone zone transfer accept.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -151,10 +150,9 @@ export interface TransferRequestState {
     disableStatusCheck?: pulumi.Input<boolean>;
     key?: pulumi.Input<string>;
     /**
-     * The region in which to obtain the V2 Compute client.
-     * Keypairs are associated with accounts, but a Compute client is needed to
-     * create one. If omitted, the `region` argument of the provider is used.
-     * Changing this creates a new DNS zone.
+     * The region in which to obtain the V2 DNS client.
+     * If omitted, the `region` argument of the provider is used.
+     * Changing this creates a new DNS zone zone transfer accept.
      */
     region?: pulumi.Input<string>;
     /**
@@ -189,10 +187,9 @@ export interface TransferRequestArgs {
     disableStatusCheck?: pulumi.Input<boolean>;
     key?: pulumi.Input<string>;
     /**
-     * The region in which to obtain the V2 Compute client.
-     * Keypairs are associated with accounts, but a Compute client is needed to
-     * create one. If omitted, the `region` argument of the provider is used.
-     * Changing this creates a new DNS zone.
+     * The region in which to obtain the V2 DNS client.
+     * If omitted, the `region` argument of the provider is used.
+     * Changing this creates a new DNS zone zone transfer accept.
      */
     region?: pulumi.Input<string>;
     /**

@@ -99,14 +99,18 @@ public final class GetShareArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The region in which to obtain the V2 Shared File System client.
+     * The region in which to obtain the V2 Shared File System
+     * client. A Shared File System client is needed to read a share. If omitted,
+     * the `region` argument of the provider is used.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region in which to obtain the V2 Shared File System client.
+     * @return The region in which to obtain the V2 Shared File System
+     * client. A Shared File System client is needed to read a share. If omitted,
+     * the `region` argument of the provider is used.
      * 
      */
     public Optional<Output<String>> region() {
@@ -310,7 +314,9 @@ public final class GetShareArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param region The region in which to obtain the V2 Shared File System client.
+         * @param region The region in which to obtain the V2 Shared File System
+         * client. A Shared File System client is needed to read a share. If omitted,
+         * the `region` argument of the provider is used.
          * 
          * @return builder
          * 
@@ -321,7 +327,9 @@ public final class GetShareArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param region The region in which to obtain the V2 Shared File System client.
+         * @param region The region in which to obtain the V2 Shared File System
+         * client. A Shared File System client is needed to read a share. If omitted,
+         * the `region` argument of the provider is used.
          * 
          * @return builder
          * 

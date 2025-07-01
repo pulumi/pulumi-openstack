@@ -265,6 +265,10 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public readonly string ExternalNetworkId;
         /// <summary>
+        /// The QoS policy UUID applied on the external gateway for the router.
+        /// </summary>
+        public readonly string ExternalQosPolicyId;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -293,6 +297,8 @@ namespace Pulumi.OpenStack.Networking
 
             string externalNetworkId,
 
+            string externalQosPolicyId,
+
             string id,
 
             string? name,
@@ -315,6 +321,7 @@ namespace Pulumi.OpenStack.Networking
             EnableSnat = enableSnat;
             ExternalFixedIps = externalFixedIps;
             ExternalNetworkId = externalNetworkId;
+            ExternalQosPolicyId = externalQosPolicyId;
             Id = id;
             Name = name;
             Region = region;

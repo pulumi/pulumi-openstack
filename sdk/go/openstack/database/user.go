@@ -62,7 +62,8 @@ type User struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// User's password.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Openstack region resource is created in.
+	// The region in which to create the db user. Changing
+	// this creates a new user.
 	Region pulumi.StringOutput `pulumi:"region"`
 }
 
@@ -118,7 +119,8 @@ type userState struct {
 	Name *string `pulumi:"name"`
 	// User's password.
 	Password *string `pulumi:"password"`
-	// Openstack region resource is created in.
+	// The region in which to create the db user. Changing
+	// this creates a new user.
 	Region *string `pulumi:"region"`
 }
 
@@ -132,7 +134,8 @@ type UserState struct {
 	Name pulumi.StringPtrInput
 	// User's password.
 	Password pulumi.StringPtrInput
-	// Openstack region resource is created in.
+	// The region in which to create the db user. Changing
+	// this creates a new user.
 	Region pulumi.StringPtrInput
 }
 
@@ -150,7 +153,8 @@ type userArgs struct {
 	Name *string `pulumi:"name"`
 	// User's password.
 	Password string `pulumi:"password"`
-	// Openstack region resource is created in.
+	// The region in which to create the db user. Changing
+	// this creates a new user.
 	Region *string `pulumi:"region"`
 }
 
@@ -165,7 +169,8 @@ type UserArgs struct {
 	Name pulumi.StringPtrInput
 	// User's password.
 	Password pulumi.StringInput
-	// Openstack region resource is created in.
+	// The region in which to create the db user. Changing
+	// this creates a new user.
 	Region pulumi.StringPtrInput
 }
 
@@ -280,7 +285,8 @@ func (o UserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// Openstack region resource is created in.
+// The region in which to create the db user. Changing
+// this creates a new user.
 func (o UserOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

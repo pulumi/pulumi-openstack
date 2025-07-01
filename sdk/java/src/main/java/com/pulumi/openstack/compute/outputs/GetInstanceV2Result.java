@@ -75,6 +75,10 @@ public final class GetInstanceV2Result {
      */
     private List<GetInstanceV2Network> networks;
     private String powerState;
+    /**
+     * @return See Argument Reference above.
+     * 
+     */
     private String region;
     /**
      * @return An array of security group names associated with this server.
@@ -188,6 +192,10 @@ public final class GetInstanceV2Result {
     public String powerState() {
         return this.powerState;
     }
+    /**
+     * @return See Argument Reference above.
+     * 
+     */
     public String region() {
         return this.region;
     }

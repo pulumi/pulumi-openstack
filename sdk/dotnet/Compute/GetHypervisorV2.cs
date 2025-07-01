@@ -91,10 +91,17 @@ namespace Pulumi.OpenStack.Compute
     public sealed class GetHypervisorV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The hostname of the hypervisor
+        /// The hostname of the hypervisor.
         /// </summary>
         [Input("hostname")]
         public string? Hostname { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V2 Compute client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
 
         public GetHypervisorV2Args()
         {
@@ -105,10 +112,17 @@ namespace Pulumi.OpenStack.Compute
     public sealed class GetHypervisorV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The hostname of the hypervisor
+        /// The hostname of the hypervisor.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
+
+        /// <summary>
+        /// The region in which to obtain the V2 Compute client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public GetHypervisorV2InvokeArgs()
         {
@@ -141,6 +155,10 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public readonly int Memory;
         /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
+        public readonly string Region;
+        /// <summary>
         /// The state of the hypervisor (`up` or `down`)
         /// </summary>
         public readonly string State;
@@ -169,6 +187,8 @@ namespace Pulumi.OpenStack.Compute
 
             int memory,
 
+            string region,
+
             string state,
 
             string status,
@@ -182,6 +202,7 @@ namespace Pulumi.OpenStack.Compute
             Hostname = hostname;
             Id = id;
             Memory = memory;
+            Region = region;
             State = state;
             Status = status;
             Type = type;

@@ -607,6 +607,22 @@
                 }
             }
         },
+        "openstack:compute/getServergroupV2Rule:getServergroupV2Rule": {
+            "properties": {
+                "maxServerPerHost": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "maxServerPerHost"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "openstack:database/ConfigurationConfiguration:ConfigurationConfiguration": {
             "properties": {
                 "name": {
@@ -4147,14 +4163,6 @@
                 "updated"
             ],
             "inputProperties": {
-                "accessIpV4": {
-                    "type": "string",
-                    "description": "The first detected Fixed IPv4 address.\n"
-                },
-                "accessIpV6": {
-                    "type": "string",
-                    "description": "The first detected Fixed IPv6 address.\n"
-                },
                 "adminPass": {
                     "type": "string",
                     "description": "The administrative password to assign to the server.\nChanging this changes the root password on the existing server.\n",
@@ -6253,7 +6261,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "Openstack region resource is created in.\n"
+                    "description": "The region in which to create the database. Changing\nthis creates a new database.\n"
                 }
             },
             "required": [
@@ -6274,7 +6282,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "Openstack region resource is created in.\n",
+                    "description": "The region in which to create the database. Changing\nthis creates a new database.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -6296,7 +6304,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "Openstack region resource is created in.\n",
+                        "description": "The region in which to create the database. Changing\nthis creates a new database.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -6357,6 +6365,10 @@
                         "$ref": "#/types/openstack:database/InstanceUser:InstanceUser"
                     },
                     "description": "An array of username, password, host and databases. The user\nobject structure is documented below.\n"
+                },
+                "volumeType": {
+                    "type": "string",
+                    "description": "Specifies the volume type to use. If you want to\nspecify a volume type, you must also specify a volume size. Changing this\ncreates new instance.\n"
                 }
             },
             "required": [
@@ -6418,6 +6430,11 @@
                         "$ref": "#/types/openstack:database/InstanceUser:InstanceUser"
                     },
                     "description": "An array of username, password, host and databases. The user\nobject structure is documented below.\n",
+                    "willReplaceOnChanges": true
+                },
+                "volumeType": {
+                    "type": "string",
+                    "description": "Specifies the volume type to use. If you want to\nspecify a volume type, you must also specify a volume size. Changing this\ncreates new instance.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -6486,6 +6503,11 @@
                         },
                         "description": "An array of username, password, host and databases. The user\nobject structure is documented below.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "volumeType": {
+                        "type": "string",
+                        "description": "Specifies the volume type to use. If you want to\nspecify a volume type, you must also specify a volume size. Changing this\ncreates new instance.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -6519,7 +6541,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "Openstack region resource is created in.\n"
+                    "description": "The region in which to create the db user. Changing\nthis creates a new user.\n"
                 }
             },
             "required": [
@@ -6559,7 +6581,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "Openstack region resource is created in.\n",
+                    "description": "The region in which to create the db user. Changing\nthis creates a new user.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -6599,7 +6621,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "Openstack region resource is created in.\n",
+                        "description": "The region in which to create the db user. Changing\nthis creates a new user.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -6795,7 +6817,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region in which to obtain the V2 Compute client.\nKeypairs are associated with accounts, but a Compute client is needed to\ncreate one. If omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone.\n"
+                    "description": "The region in which to obtain the V2 DNS client.\nIf omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone zone transfer accept.\n"
                 },
                 "valueSpecs": {
                     "type": "object",
@@ -6827,7 +6849,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region in which to obtain the V2 Compute client.\nKeypairs are associated with accounts, but a Compute client is needed to\ncreate one. If omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone.\n",
+                    "description": "The region in which to obtain the V2 DNS client.\nIf omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone zone transfer accept.\n",
                     "willReplaceOnChanges": true
                 },
                 "valueSpecs": {
@@ -6863,7 +6885,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region in which to obtain the V2 Compute client.\nKeypairs are associated with accounts, but a Compute client is needed to\ncreate one. If omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone.\n",
+                        "description": "The region in which to obtain the V2 DNS client.\nIf omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone zone transfer accept.\n",
                         "willReplaceOnChanges": true
                     },
                     "valueSpecs": {
@@ -6899,7 +6921,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region in which to obtain the V2 Compute client.\nKeypairs are associated with accounts, but a Compute client is needed to\ncreate one. If omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone.\n"
+                    "description": "The region in which to obtain the V2 DNS client.\nIf omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone zone transfer accept.\n"
                 },
                 "targetProjectId": {
                     "type": "string",
@@ -6938,7 +6960,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region in which to obtain the V2 Compute client.\nKeypairs are associated with accounts, but a Compute client is needed to\ncreate one. If omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone.\n",
+                    "description": "The region in which to obtain the V2 DNS client.\nIf omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone zone transfer accept.\n",
                     "willReplaceOnChanges": true
                 },
                 "targetProjectId": {
@@ -6980,7 +7002,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region in which to obtain the V2 Compute client.\nKeypairs are associated with accounts, but a Compute client is needed to\ncreate one. If omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone.\n",
+                        "description": "The region in which to obtain the V2 DNS client.\nIf omitted, the `region` argument of the provider is used.\nChanging this creates a new DNS zone zone transfer accept.\n",
                         "willReplaceOnChanges": true
                     },
                     "targetProjectId": {
@@ -7190,6 +7212,83 @@
                             "type": "string"
                         },
                         "description": "Map of additional options. Changing this creates a\nnew zone.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "openstack:dns/zoneShareV2:ZoneShareV2": {
+            "description": "Manages the sharing of a DNS zone in the OpenStack DNS Service.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst example = new openstack.dns.ZoneShareV2(\"example\", {\n    zoneId: \"00000000-0000-0000-0000-000000000000\",\n    targetProjectId: \"11111111-1111-1111-1111-111111111111\",\n    projectId: \"22222222-2222-2222-2222-222222222222\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nexample = openstack.dns.ZoneShareV2(\"example\",\n    zone_id=\"00000000-0000-0000-0000-000000000000\",\n    target_project_id=\"11111111-1111-1111-1111-111111111111\",\n    project_id=\"22222222-2222-2222-2222-222222222222\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new OpenStack.Dns.ZoneShareV2(\"example\", new()\n    {\n        ZoneId = \"00000000-0000-0000-0000-000000000000\",\n        TargetProjectId = \"11111111-1111-1111-1111-111111111111\",\n        ProjectId = \"22222222-2222-2222-2222-222222222222\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/dns\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dns.NewZoneShareV2(ctx, \"example\", \u0026dns.ZoneShareV2Args{\n\t\t\tZoneId:          pulumi.String(\"00000000-0000-0000-0000-000000000000\"),\n\t\t\tTargetProjectId: pulumi.String(\"11111111-1111-1111-1111-111111111111\"),\n\t\t\tProjectId:       pulumi.String(\"22222222-2222-2222-2222-222222222222\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.dns.ZoneShareV2;\nimport com.pulumi.openstack.dns.ZoneShareV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new ZoneShareV2(\"example\", ZoneShareV2Args.builder()\n            .zoneId(\"00000000-0000-0000-0000-000000000000\")\n            .targetProjectId(\"11111111-1111-1111-1111-111111111111\")\n            .projectId(\"22222222-2222-2222-2222-222222222222\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: openstack:dns:ZoneShareV2\n    properties:\n      zoneId: 00000000-0000-0000-0000-000000000000\n      targetProjectId: 11111111-1111-1111-1111-111111111111\n      projectId: 22222222-2222-2222-2222-222222222222\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDNS zone share can be imported by specifying the zone ID with share ID and optional project ID:\n\nbash\n\n```sh\n$ pulumi import openstack:dns/zoneShareV2:ZoneShareV2 share_1 60cbdc69-64f9-49ee-b294-352e71e22827/0e1dae51-aee2-4b44-962f-885bb69f3a5c\n```\n\n```sh\n$ pulumi import openstack:dns/zoneShareV2:ZoneShareV2 share_1 60cbdc69-64f9-49ee-b294-352e71e22827/0e1dae51-aee2-4b44-962f-885bb69f3a5c/eb92139f6c054a878852ac9e8cbe612a\n```\n\n",
+            "properties": {
+                "projectId": {
+                    "type": "string",
+                    "description": "The ID of the project DNS zone is created for, sets\n`X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target\nproject).\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 DNS client. If\nomitted, the `region` argument of the provider is used. Changing this creates\na new DNS zone share.\n"
+                },
+                "targetProjectId": {
+                    "type": "string",
+                    "description": "The ID of the target project with which the\nDNS zone will be shared.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The ID of the DNS zone to be shared.\n"
+                }
+            },
+            "required": [
+                "projectId",
+                "region",
+                "targetProjectId",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "projectId": {
+                    "type": "string",
+                    "description": "The ID of the project DNS zone is created for, sets\n`X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target\nproject).\n",
+                    "willReplaceOnChanges": true
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 DNS client. If\nomitted, the `region` argument of the provider is used. Changing this creates\na new DNS zone share.\n"
+                },
+                "targetProjectId": {
+                    "type": "string",
+                    "description": "The ID of the target project with which the\nDNS zone will be shared.\n",
+                    "willReplaceOnChanges": true
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The ID of the DNS zone to be shared.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "targetProjectId",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ZoneShareV2 resources.\n",
+                "properties": {
+                    "projectId": {
+                        "type": "string",
+                        "description": "The ID of the project DNS zone is created for, sets\n`X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target\nproject).\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 DNS client. If\nomitted, the `region` argument of the provider is used. Changing this creates\na new DNS zone share.\n"
+                    },
+                    "targetProjectId": {
+                        "type": "string",
+                        "description": "The ID of the target project with which the\nDNS zone will be shared.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The ID of the DNS zone to be shared.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -8139,7 +8238,8 @@
                     "description": "The project to assign the role in.\nThe project should be able to containt child projects.\n"
                 },
                 "region": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new inherit role assignment.\n"
                 },
                 "roleId": {
                     "type": "string",
@@ -8172,6 +8272,7 @@
                 },
                 "region": {
                     "type": "string",
+                    "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new inherit role assignment.\n",
                     "willReplaceOnChanges": true
                 },
                 "roleId": {
@@ -8208,6 +8309,7 @@
                     },
                     "region": {
                         "type": "string",
+                        "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new inherit role assignment.\n",
                         "willReplaceOnChanges": true
                     },
                     "roleId": {
@@ -8218,6 +8320,126 @@
                     "userId": {
                         "type": "string",
                         "description": "The user to assign the role to.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "openstack:identity/limitV3:LimitV3": {
+            "description": "Manages a V3 Limit resource within OpenStack Keystone.\n\n\u003e **Note:** You _must_ have admin privileges in your OpenStack cloud to use\nthis resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst glance = openstack.identity.getService({\n    name: \"glance\",\n});\nconst project1 = new openstack.identity.Project(\"project_1\", {name: \"project_1\"});\nconst limit1 = new openstack.identity.LimitV3(\"limit_1\", {\n    projectId: project1.id,\n    serviceId: glance.then(glance =\u003e glance.id),\n    resourceName: \"image_count_total\",\n    resourceLimit: 10,\n    description: \"foo\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nglance = openstack.identity.get_service(name=\"glance\")\nproject1 = openstack.identity.Project(\"project_1\", name=\"project_1\")\nlimit1 = openstack.identity.LimitV3(\"limit_1\",\n    project_id=project1.id,\n    service_id=glance.id,\n    resource_name_=\"image_count_total\",\n    resource_limit=10,\n    description=\"foo\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var glance = OpenStack.Identity.GetService.Invoke(new()\n    {\n        Name = \"glance\",\n    });\n\n    var project1 = new OpenStack.Identity.Project(\"project_1\", new()\n    {\n        Name = \"project_1\",\n    });\n\n    var limit1 = new OpenStack.Identity.LimitV3(\"limit_1\", new()\n    {\n        ProjectId = project1.Id,\n        ServiceId = glance.Apply(getServiceResult =\u003e getServiceResult.Id),\n        ResourceName = \"image_count_total\",\n        ResourceLimit = 10,\n        Description = \"foo\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tglance, err := identity.GetService(ctx, \u0026identity.GetServiceArgs{\n\t\t\tName: pulumi.StringRef(\"glance\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tproject1, err := identity.NewProject(ctx, \"project_1\", \u0026identity.ProjectArgs{\n\t\t\tName: pulumi.String(\"project_1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = identity.NewLimitV3(ctx, \"limit_1\", \u0026identity.LimitV3Args{\n\t\t\tProjectId:     project1.ID(),\n\t\t\tServiceId:     pulumi.String(glance.Id),\n\t\t\tResourceName:  pulumi.String(\"image_count_total\"),\n\t\t\tResourceLimit: pulumi.Int(10),\n\t\t\tDescription:   pulumi.String(\"foo\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.identity.IdentityFunctions;\nimport com.pulumi.openstack.identity.inputs.GetServiceArgs;\nimport com.pulumi.openstack.identity.Project;\nimport com.pulumi.openstack.identity.ProjectArgs;\nimport com.pulumi.openstack.identity.LimitV3;\nimport com.pulumi.openstack.identity.LimitV3Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var glance = IdentityFunctions.getService(GetServiceArgs.builder()\n            .name(\"glance\")\n            .build());\n\n        var project1 = new Project(\"project1\", ProjectArgs.builder()\n            .name(\"project_1\")\n            .build());\n\n        var limit1 = new LimitV3(\"limit1\", LimitV3Args.builder()\n            .projectId(project1.id())\n            .serviceId(glance.id())\n            .resourceName(\"image_count_total\")\n            .resourceLimit(10)\n            .description(\"foo\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  project1:\n    type: openstack:identity:Project\n    name: project_1\n    properties:\n      name: project_1\n  limit1:\n    type: openstack:identity:LimitV3\n    name: limit_1\n    properties:\n      projectId: ${project1.id}\n      serviceId: ${glance.id}\n      resourceName: image_count_total\n      resourceLimit: 10\n      description: foo\nvariables:\n  glance:\n    fn::invoke:\n      function: openstack:identity:getService\n      arguments:\n        name: glance\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nLimits can be imported using the `id`, e.g.\n\n```sh\n$ pulumi import openstack:identity/limitV3:LimitV3 limit_1 89c60255-9bd6-460c-822a-e2b959ede9d2\n```\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the limit.\n"
+                },
+                "domainId": {
+                    "type": "string",
+                    "description": "The domain the limit applies to. Changing this\ncreates a new Limit.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The project the limit applies to. Changing this\ncreates a new Limit.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new Limit.\n"
+                },
+                "resourceLimit": {
+                    "type": "integer",
+                    "description": "Integer for the actual limit.\n"
+                },
+                "resourceName": {
+                    "type": "string",
+                    "description": "The resource that the limit applies to. Changing\nthis creates a new Limit.\n"
+                },
+                "serviceId": {
+                    "type": "string",
+                    "description": "The service the limit applies to. Changing this\ncreates a new Limit.\n"
+                }
+            },
+            "required": [
+                "domainId",
+                "projectId",
+                "region",
+                "resourceLimit",
+                "resourceName",
+                "serviceId"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the limit.\n"
+                },
+                "domainId": {
+                    "type": "string",
+                    "description": "The domain the limit applies to. Changing this\ncreates a new Limit.\n",
+                    "willReplaceOnChanges": true
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The project the limit applies to. Changing this\ncreates a new Limit.\n",
+                    "willReplaceOnChanges": true
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new Limit.\n",
+                    "willReplaceOnChanges": true
+                },
+                "resourceLimit": {
+                    "type": "integer",
+                    "description": "Integer for the actual limit.\n"
+                },
+                "resourceName": {
+                    "type": "string",
+                    "description": "The resource that the limit applies to. Changing\nthis creates a new Limit.\n",
+                    "willReplaceOnChanges": true
+                },
+                "serviceId": {
+                    "type": "string",
+                    "description": "The service the limit applies to. Changing this\ncreates a new Limit.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "resourceLimit",
+                "resourceName",
+                "serviceId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering LimitV3 resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the limit.\n"
+                    },
+                    "domainId": {
+                        "type": "string",
+                        "description": "The domain the limit applies to. Changing this\ncreates a new Limit.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The project the limit applies to. Changing this\ncreates a new Limit.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new Limit.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "resourceLimit": {
+                        "type": "integer",
+                        "description": "Integer for the actual limit.\n"
+                    },
+                    "resourceName": {
+                        "type": "string",
+                        "description": "The resource that the limit applies to. Changing\nthis creates a new Limit.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "serviceId": {
+                        "type": "string",
+                        "description": "The service the limit applies to. Changing this\ncreates a new Limit.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -8356,6 +8578,92 @@
                 "type": "object"
             }
         },
+        "openstack:identity/registeredLimitV3:RegisteredLimitV3": {
+            "description": "Manages a V3 Registered Limit resource within OpenStack Keystone.\n\n\u003e **Note:** You _must_ have admin privileges in your OpenStack cloud to use\nthis resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst glance = openstack.identity.getService({\n    name: \"glance\",\n});\nconst limit1 = new openstack.identity.RegisteredLimitV3(\"limit_1\", {\n    serviceId: glance.then(glance =\u003e glance.id),\n    resourceName: \"image_count_total\",\n    defaultLimit: 10,\n    description: \"foo\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nglance = openstack.identity.get_service(name=\"glance\")\nlimit1 = openstack.identity.RegisteredLimitV3(\"limit_1\",\n    service_id=glance.id,\n    resource_name_=\"image_count_total\",\n    default_limit=10,\n    description=\"foo\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var glance = OpenStack.Identity.GetService.Invoke(new()\n    {\n        Name = \"glance\",\n    });\n\n    var limit1 = new OpenStack.Identity.RegisteredLimitV3(\"limit_1\", new()\n    {\n        ServiceId = glance.Apply(getServiceResult =\u003e getServiceResult.Id),\n        ResourceName = \"image_count_total\",\n        DefaultLimit = 10,\n        Description = \"foo\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tglance, err := identity.GetService(ctx, \u0026identity.GetServiceArgs{\n\t\t\tName: pulumi.StringRef(\"glance\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = identity.NewRegisteredLimitV3(ctx, \"limit_1\", \u0026identity.RegisteredLimitV3Args{\n\t\t\tServiceId:    pulumi.String(glance.Id),\n\t\t\tResourceName: pulumi.String(\"image_count_total\"),\n\t\t\tDefaultLimit: pulumi.Int(10),\n\t\t\tDescription:  pulumi.String(\"foo\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.identity.IdentityFunctions;\nimport com.pulumi.openstack.identity.inputs.GetServiceArgs;\nimport com.pulumi.openstack.identity.RegisteredLimitV3;\nimport com.pulumi.openstack.identity.RegisteredLimitV3Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var glance = IdentityFunctions.getService(GetServiceArgs.builder()\n            .name(\"glance\")\n            .build());\n\n        var limit1 = new RegisteredLimitV3(\"limit1\", RegisteredLimitV3Args.builder()\n            .serviceId(glance.id())\n            .resourceName(\"image_count_total\")\n            .defaultLimit(10)\n            .description(\"foo\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  limit1:\n    type: openstack:identity:RegisteredLimitV3\n    name: limit_1\n    properties:\n      serviceId: ${glance.id}\n      resourceName: image_count_total\n      defaultLimit: 10\n      description: foo\nvariables:\n  glance:\n    fn::invoke:\n      function: openstack:identity:getService\n      arguments:\n        name: glance\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nRegistered Limits can be imported using the `id`, e.g.\n\n```sh\n$ pulumi import openstack:identity/registeredLimitV3:RegisteredLimitV3 limit_1 89c60255-9bd6-460c-822a-e2b959ede9d2\n```\n",
+            "properties": {
+                "defaultLimit": {
+                    "type": "integer",
+                    "description": "Integer for the actual limit.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the limit\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new registered limit.\n"
+                },
+                "resourceName": {
+                    "type": "string",
+                    "description": "The resource that the limit applies to. On\nupdates, either service_id, resource_name or region_id must be different than\nexisting value otherwise it will raise 409.\n"
+                },
+                "serviceId": {
+                    "type": "string",
+                    "description": "The service the limit applies to. On updates,\neither service_id, resource_name or region_id must be different than existing\nvalue otherwise it will raise 409.\n"
+                }
+            },
+            "required": [
+                "defaultLimit",
+                "region",
+                "resourceName",
+                "serviceId"
+            ],
+            "inputProperties": {
+                "defaultLimit": {
+                    "type": "integer",
+                    "description": "Integer for the actual limit.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the limit\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new registered limit.\n",
+                    "willReplaceOnChanges": true
+                },
+                "resourceName": {
+                    "type": "string",
+                    "description": "The resource that the limit applies to. On\nupdates, either service_id, resource_name or region_id must be different than\nexisting value otherwise it will raise 409.\n"
+                },
+                "serviceId": {
+                    "type": "string",
+                    "description": "The service the limit applies to. On updates,\neither service_id, resource_name or region_id must be different than existing\nvalue otherwise it will raise 409.\n"
+                }
+            },
+            "requiredInputs": [
+                "defaultLimit",
+                "resourceName",
+                "serviceId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RegisteredLimitV3 resources.\n",
+                "properties": {
+                    "defaultLimit": {
+                        "type": "integer",
+                        "description": "Integer for the actual limit.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the limit\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new registered limit.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "resourceName": {
+                        "type": "string",
+                        "description": "The resource that the limit applies to. On\nupdates, either service_id, resource_name or region_id must be different than\nexisting value otherwise it will raise 409.\n"
+                    },
+                    "serviceId": {
+                        "type": "string",
+                        "description": "The service the limit applies to. On updates,\neither service_id, resource_name or region_id must be different than existing\nvalue otherwise it will raise 409.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "openstack:identity/role:Role": {
             "description": "Manages a V3 Role resource within OpenStack Keystone.\n\n\u003e **Note:** You _must_ have admin privileges in your OpenStack cloud to use\nthis resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst role1 = new openstack.identity.Role(\"role_1\", {name: \"role_1\"});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nrole1 = openstack.identity.Role(\"role_1\", name=\"role_1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var role1 = new OpenStack.Identity.Role(\"role_1\", new()\n    {\n        Name = \"role_1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := identity.NewRole(ctx, \"role_1\", \u0026identity.RoleArgs{\n\t\t\tName: pulumi.String(\"role_1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.identity.Role;\nimport com.pulumi.openstack.identity.RoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var role1 = new Role(\"role1\", RoleArgs.builder()\n            .name(\"role_1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  role1:\n    type: openstack:identity:Role\n    name: role_1\n    properties:\n      name: role_1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nRoles can be imported using the `id`, e.g.\n\n```sh\n$ pulumi import openstack:identity/role:Role role_1 89c60255-9bd6-460c-822a-e2b959ede9d2\n```\n",
             "properties": {
@@ -8428,7 +8736,8 @@
                     "description": "The project to assign the role in.\n"
                 },
                 "region": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new role assignment.\n"
                 },
                 "roleId": {
                     "type": "string",
@@ -8461,6 +8770,7 @@
                 },
                 "region": {
                     "type": "string",
+                    "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new role assignment.\n",
                     "willReplaceOnChanges": true
                 },
                 "roleId": {
@@ -8497,6 +8807,7 @@
                     },
                     "region": {
                         "type": "string",
+                        "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new role assignment.\n",
                         "willReplaceOnChanges": true
                     },
                     "roleId": {
@@ -9995,7 +10306,8 @@
                     "description": "The provider_name that the flavor_profile will use.\nChanging this updates the existing flavorprofile.\n"
                 },
                 "region": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create an LB member. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nLB flavorprofile.\n"
                 }
             },
             "required": [
@@ -10019,6 +10331,7 @@
                 },
                 "region": {
                     "type": "string",
+                    "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create an LB member. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nLB flavorprofile.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -10043,6 +10356,7 @@
                     },
                     "region": {
                         "type": "string",
+                        "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create an LB member. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nLB flavorprofile.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -10867,6 +11181,92 @@
                 "type": "object"
             }
         },
+        "openstack:loadbalancer/flavorV2:FlavorV2": {
+            "description": "Manages a V2 load balancer flavor resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst fp1 = new openstack.loadbalancer.FlavorprofileV2(\"fp_1\", {\n    name: \"test\",\n    providerName: \"amphora\",\n    flavorData: JSON.stringify({\n        loadbalancer_topology: \"ACTIVE_STANDBY\",\n    }),\n});\nconst flavor1 = new openstack.loadbalancer.FlavorV2(\"flavor_1\", {\n    name: \"test\",\n    description: \"This is a test flavor\",\n    flavorProfileId: fp1.id,\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_openstack as openstack\n\nfp1 = openstack.loadbalancer.FlavorprofileV2(\"fp_1\",\n    name=\"test\",\n    provider_name=\"amphora\",\n    flavor_data=json.dumps({\n        \"loadbalancer_topology\": \"ACTIVE_STANDBY\",\n    }))\nflavor1 = openstack.loadbalancer.FlavorV2(\"flavor_1\",\n    name=\"test\",\n    description=\"This is a test flavor\",\n    flavor_profile_id=fp1.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var fp1 = new OpenStack.LoadBalancer.FlavorprofileV2(\"fp_1\", new()\n    {\n        Name = \"test\",\n        ProviderName = \"amphora\",\n        FlavorData = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n        {\n            [\"loadbalancer_topology\"] = \"ACTIVE_STANDBY\",\n        }),\n    });\n\n    var flavor1 = new OpenStack.LoadBalancer.FlavorV2(\"flavor_1\", new()\n    {\n        Name = \"test\",\n        Description = \"This is a test flavor\",\n        FlavorProfileId = fp1.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"loadbalancer_topology\": \"ACTIVE_STANDBY\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\tfp1, err := loadbalancer.NewFlavorprofileV2(ctx, \"fp_1\", \u0026loadbalancer.FlavorprofileV2Args{\n\t\t\tName:         pulumi.String(\"test\"),\n\t\t\tProviderName: pulumi.String(\"amphora\"),\n\t\t\tFlavorData:   pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = loadbalancer.NewFlavorV2(ctx, \"flavor_1\", \u0026loadbalancer.FlavorV2Args{\n\t\t\tName:            pulumi.String(\"test\"),\n\t\t\tDescription:     pulumi.String(\"This is a test flavor\"),\n\t\t\tFlavorProfileId: fp1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.loadbalancer.FlavorprofileV2;\nimport com.pulumi.openstack.loadbalancer.FlavorprofileV2Args;\nimport com.pulumi.openstack.loadbalancer.FlavorV2;\nimport com.pulumi.openstack.loadbalancer.FlavorV2Args;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var fp1 = new FlavorprofileV2(\"fp1\", FlavorprofileV2Args.builder()\n            .name(\"test\")\n            .providerName(\"amphora\")\n            .flavorData(serializeJson(\n                jsonObject(\n                    jsonProperty(\"loadbalancer_topology\", \"ACTIVE_STANDBY\")\n                )))\n            .build());\n\n        var flavor1 = new FlavorV2(\"flavor1\", FlavorV2Args.builder()\n            .name(\"test\")\n            .description(\"This is a test flavor\")\n            .flavorProfileId(fp1.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  fp1:\n    type: openstack:loadbalancer:FlavorprofileV2\n    name: fp_1\n    properties:\n      name: test\n      providerName: amphora\n      flavorData:\n        fn::toJSON:\n          loadbalancer_topology: ACTIVE_STANDBY\n  flavor1:\n    type: openstack:loadbalancer:FlavorV2\n    name: flavor_1\n    properties:\n      name: test\n      description: This is a test flavor\n      flavorProfileId: ${fp1.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nflavors can be imported using their `id`. Example:\n\n```sh\n$ pulumi import openstack:loadbalancer/flavorV2:FlavorV2 flavor_1 2a0f2240-c5e6-41de-896d-e80d97428d6b\n```\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the flavor. Changing this\nupdates the existing flavor.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the flavor is enabled or not. Defaults to `true`.\nChanging this updates the existing flavor.\n"
+                },
+                "flavorProfileId": {
+                    "type": "string",
+                    "description": "The flavor_profile_id that the flavor\nwill use. Changing this creates a new flavor.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the flavor. Changing this updates the existing\nflavor.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create an LB member. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nLB flavor.\n"
+                }
+            },
+            "required": [
+                "enabled",
+                "flavorProfileId",
+                "name",
+                "region"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the flavor. Changing this\nupdates the existing flavor.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the flavor is enabled or not. Defaults to `true`.\nChanging this updates the existing flavor.\n"
+                },
+                "flavorProfileId": {
+                    "type": "string",
+                    "description": "The flavor_profile_id that the flavor\nwill use. Changing this creates a new flavor.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the flavor. Changing this updates the existing\nflavor.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create an LB member. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nLB flavor.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "flavorProfileId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering FlavorV2 resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the flavor. Changing this\nupdates the existing flavor.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether the flavor is enabled or not. Defaults to `true`.\nChanging this updates the existing flavor.\n"
+                    },
+                    "flavorProfileId": {
+                        "type": "string",
+                        "description": "The flavor_profile_id that the flavor\nwill use. Changing this creates a new flavor.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the flavor. Changing this updates the existing\nflavor.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create an LB member. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nLB flavor.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "openstack:loadbalancer/flavorprofileV2:FlavorprofileV2": {
             "description": "Manages a V2 load balancer flavorprofile resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n## Example Usage\n\n### Using jsonencode\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst flavorprofile1 = new openstack.loadbalancer.FlavorprofileV2(\"flavorprofile_1\", {\n    name: \"amphora-single-profile\",\n    providerName: \"amphora\",\n    flavorData: JSON.stringify({\n        loadbalancer_topology: \"SINGLE\",\n    }),\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_openstack as openstack\n\nflavorprofile1 = openstack.loadbalancer.FlavorprofileV2(\"flavorprofile_1\",\n    name=\"amphora-single-profile\",\n    provider_name=\"amphora\",\n    flavor_data=json.dumps({\n        \"loadbalancer_topology\": \"SINGLE\",\n    }))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var flavorprofile1 = new OpenStack.LoadBalancer.FlavorprofileV2(\"flavorprofile_1\", new()\n    {\n        Name = \"amphora-single-profile\",\n        ProviderName = \"amphora\",\n        FlavorData = JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n        {\n            [\"loadbalancer_topology\"] = \"SINGLE\",\n        }),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal(map[string]interface{}{\n\t\t\t\"loadbalancer_topology\": \"SINGLE\",\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = loadbalancer.NewFlavorprofileV2(ctx, \"flavorprofile_1\", \u0026loadbalancer.FlavorprofileV2Args{\n\t\t\tName:         pulumi.String(\"amphora-single-profile\"),\n\t\t\tProviderName: pulumi.String(\"amphora\"),\n\t\t\tFlavorData:   pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.loadbalancer.FlavorprofileV2;\nimport com.pulumi.openstack.loadbalancer.FlavorprofileV2Args;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var flavorprofile1 = new FlavorprofileV2(\"flavorprofile1\", FlavorprofileV2Args.builder()\n            .name(\"amphora-single-profile\")\n            .providerName(\"amphora\")\n            .flavorData(serializeJson(\n                jsonObject(\n                    jsonProperty(\"loadbalancer_topology\", \"SINGLE\")\n                )))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  flavorprofile1:\n    type: openstack:loadbalancer:FlavorprofileV2\n    name: flavorprofile_1\n    properties:\n      name: amphora-single-profile\n      providerName: amphora\n      flavorData:\n        fn::toJSON:\n          loadbalancer_topology: SINGLE\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Using plain string\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst flavorprofile1 = new openstack.loadbalancer.FlavorprofileV2(\"flavorprofile_1\", {\n    name: \"amphora-single-profile\",\n    providerName: \"amphora\",\n    flavorData: \"{\\\"loadbalancer_topology\\\": \\\"SINGLE\\\"}\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nflavorprofile1 = openstack.loadbalancer.FlavorprofileV2(\"flavorprofile_1\",\n    name=\"amphora-single-profile\",\n    provider_name=\"amphora\",\n    flavor_data=\"{\\\"loadbalancer_topology\\\": \\\"SINGLE\\\"}\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var flavorprofile1 = new OpenStack.LoadBalancer.FlavorprofileV2(\"flavorprofile_1\", new()\n    {\n        Name = \"amphora-single-profile\",\n        ProviderName = \"amphora\",\n        FlavorData = \"{\\\"loadbalancer_topology\\\": \\\"SINGLE\\\"}\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := loadbalancer.NewFlavorprofileV2(ctx, \"flavorprofile_1\", \u0026loadbalancer.FlavorprofileV2Args{\n\t\t\tName:         pulumi.String(\"amphora-single-profile\"),\n\t\t\tProviderName: pulumi.String(\"amphora\"),\n\t\t\tFlavorData:   pulumi.String(\"{\\\"loadbalancer_topology\\\": \\\"SINGLE\\\"}\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.loadbalancer.FlavorprofileV2;\nimport com.pulumi.openstack.loadbalancer.FlavorprofileV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var flavorprofile1 = new FlavorprofileV2(\"flavorprofile1\", FlavorprofileV2Args.builder()\n            .name(\"amphora-single-profile\")\n            .providerName(\"amphora\")\n            .flavorData(\"{\\\"loadbalancer_topology\\\": \\\"SINGLE\\\"}\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  flavorprofile1:\n    type: openstack:loadbalancer:FlavorprofileV2\n    name: flavorprofile_1\n    properties:\n      name: amphora-single-profile\n      providerName: amphora\n      flavorData: '{\"loadbalancer_topology\": \"SINGLE\"}'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nflavorprofiles can be imported using their `id`. Example:\n\n```sh\n$ pulumi import openstack:loadbalancer/flavorprofileV2:FlavorprofileV2 flavorprofile_1 2a0f2240-c5e6-41de-896d-e80d97428d6b\n```\n",
             "properties": {
@@ -10883,7 +11283,8 @@
                     "description": "The provider_name that the flavor_profile will use.\nChanging this updates the existing flavorprofile.\n"
                 },
                 "region": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create an LB member. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nLB flavorprofile.\n"
                 }
             },
             "required": [
@@ -10907,6 +11308,7 @@
                 },
                 "region": {
                     "type": "string",
+                    "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create an LB member. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nLB flavorprofile.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -10931,6 +11333,7 @@
                     },
                     "region": {
                         "type": "string",
+                        "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create an LB member. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nLB flavorprofile.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -12869,6 +13272,101 @@
                     "region": {
                         "type": "string",
                         "description": "Region in which to manage quotas. Changing this\ncreates a new quota. If ommited, the region of the credentials is used.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "openstack:networking/addressGroupV2:AddressGroupV2": {
+            "description": "Manages a V2 neutron address group resource within OpenStack.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst group1 = new openstack.networking.AddressGroupV2(\"group_1\", {\n    name: \"group_1\",\n    description: \"My neutron address group\",\n    addresses: [\n        \"192.168.0.1/32\",\n        \"2001:db8::1/128\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ngroup1 = openstack.networking.AddressGroupV2(\"group_1\",\n    name=\"group_1\",\n    description=\"My neutron address group\",\n    addresses=[\n        \"192.168.0.1/32\",\n        \"2001:db8::1/128\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var group1 = new OpenStack.Networking.AddressGroupV2(\"group_1\", new()\n    {\n        Name = \"group_1\",\n        Description = \"My neutron address group\",\n        Addresses = new[]\n        {\n            \"192.168.0.1/32\",\n            \"2001:db8::1/128\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := networking.NewAddressGroupV2(ctx, \"group_1\", \u0026networking.AddressGroupV2Args{\n\t\t\tName:        pulumi.String(\"group_1\"),\n\t\t\tDescription: pulumi.String(\"My neutron address group\"),\n\t\t\tAddresses: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"192.168.0.1/32\"),\n\t\t\t\tpulumi.String(\"2001:db8::1/128\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.networking.AddressGroupV2;\nimport com.pulumi.openstack.networking.AddressGroupV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var group1 = new AddressGroupV2(\"group1\", AddressGroupV2Args.builder()\n            .name(\"group_1\")\n            .description(\"My neutron address group\")\n            .addresses(            \n                \"192.168.0.1/32\",\n                \"2001:db8::1/128\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  group1:\n    type: openstack:networking:AddressGroupV2\n    name: group_1\n    properties:\n      name: group_1\n      description: My neutron address group\n      addresses:\n        - 192.168.0.1/32\n        - 2001:db8::1/128\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAddress Groups can be imported using the `id`, e.g.\n\n```sh\n$ pulumi import openstack:networking/addressGroupV2:AddressGroupV2 group_1 782fef9c-d03c-400a-9735-2f9af5681cb3\n```\n",
+            "properties": {
+                "addresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of CIDR blocks that define the addresses in\nthe address group. Each address must be a valid IPv4 or IPv6 CIDR block.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description of the address group.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name of the address group.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The owner of the address group. Required if admin\nwants to create a group for a specific project. Changing this creates a new\naddress group.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 networking client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new address group.\n"
+                }
+            },
+            "required": [
+                "addresses",
+                "name",
+                "projectId",
+                "region"
+            ],
+            "inputProperties": {
+                "addresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of CIDR blocks that define the addresses in\nthe address group. Each address must be a valid IPv4 or IPv6 CIDR block.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description of the address group.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name of the address group.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The owner of the address group. Required if admin\nwants to create a group for a specific project. Changing this creates a new\naddress group.\n",
+                    "willReplaceOnChanges": true
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 networking client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new address group.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "addresses"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AddressGroupV2 resources.\n",
+                "properties": {
+                    "addresses": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of CIDR blocks that define the addresses in\nthe address group. Each address must be a valid IPv4 or IPv6 CIDR block.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description of the address group.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A name of the address group.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The owner of the address group. Required if admin\nwants to create a group for a specific project. Changing this creates a new\naddress group.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 networking client.\nIf omitted, the `region` argument of the provider is used. Changing this\ncreates a new address group.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -14880,7 +15378,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An availability zone is used to make \nnetwork resources highly available. Used for resources with high availability\nso that they are scheduled on different availability zones. Changing this\ncreates a new router.\n"
+                    "description": "An availability zone is used to make\nnetwork resources highly available. Used for resources with high availability\nso that they are scheduled on different availability zones. Changing this\ncreates a new router.\n"
                 },
                 "description": {
                     "type": "string",
@@ -14904,6 +15402,10 @@
                 "externalNetworkId": {
                     "type": "string",
                     "description": "The network UUID of an external gateway\nfor the router. A router with an external gateway is required if any\ncompute instances or load balancers will be using floating IPs. Changing\nthis updates the external gateway of the router.\n"
+                },
+                "externalQosPolicyId": {
+                    "type": "string",
+                    "description": "The QoS policy UUID that will be applied\non the external gateway for the router. Changing this updates the external\ngateway of the router.\n"
                 },
                 "externalSubnetIds": {
                     "type": "array",
@@ -14951,6 +15453,7 @@
                 "enableSnat",
                 "externalFixedIps",
                 "externalNetworkId",
+                "externalQosPolicyId",
                 "name",
                 "region",
                 "tenantId"
@@ -14965,7 +15468,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An availability zone is used to make \nnetwork resources highly available. Used for resources with high availability\nso that they are scheduled on different availability zones. Changing this\ncreates a new router.\n",
+                    "description": "An availability zone is used to make\nnetwork resources highly available. Used for resources with high availability\nso that they are scheduled on different availability zones. Changing this\ncreates a new router.\n",
                     "willReplaceOnChanges": true
                 },
                 "description": {
@@ -14991,6 +15494,10 @@
                 "externalNetworkId": {
                     "type": "string",
                     "description": "The network UUID of an external gateway\nfor the router. A router with an external gateway is required if any\ncompute instances or load balancers will be using floating IPs. Changing\nthis updates the external gateway of the router.\n"
+                },
+                "externalQosPolicyId": {
+                    "type": "string",
+                    "description": "The QoS policy UUID that will be applied\non the external gateway for the router. Changing this updates the external\ngateway of the router.\n"
                 },
                 "externalSubnetIds": {
                     "type": "array",
@@ -15052,7 +15559,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "An availability zone is used to make \nnetwork resources highly available. Used for resources with high availability\nso that they are scheduled on different availability zones. Changing this\ncreates a new router.\n",
+                        "description": "An availability zone is used to make\nnetwork resources highly available. Used for resources with high availability\nso that they are scheduled on different availability zones. Changing this\ncreates a new router.\n",
                         "willReplaceOnChanges": true
                     },
                     "description": {
@@ -15078,6 +15585,10 @@
                     "externalNetworkId": {
                         "type": "string",
                         "description": "The network UUID of an external gateway\nfor the router. A router with an external gateway is required if any\ncompute instances or load balancers will be using floating IPs. Changing\nthis updates the external gateway of the router.\n"
+                    },
+                    "externalQosPolicyId": {
+                        "type": "string",
+                        "description": "The QoS policy UUID that will be applied\non the external gateway for the router. Changing this updates the external\ngateway of the router.\n"
                     },
                     "externalSubnetIds": {
                         "type": "array",
@@ -15458,6 +15969,10 @@
                     "type": "string",
                     "description": "The region in which to obtain the V2 networking client.\nA networking client is needed to create a port. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nsecurity group rule.\n"
                 },
+                "remoteAddressGroupId": {
+                    "type": "string",
+                    "description": "The remote address group id, the value\nneeds to be an OpenStack ID of an address group in the same tenant. Changing\nthis creates a new security group rule. This argument is mutually exclusive\nwith `remote_ip_prefix` and `remote_group_id`.\n"
+                },
                 "remoteGroupId": {
                     "type": "string",
                     "description": "The remote group id, the value needs to be an\nOpenstack ID of a security group in the same tenant. Changing this creates\na new security group rule.\n"
@@ -15479,6 +15994,7 @@
                 "direction",
                 "ethertype",
                 "region",
+                "remoteAddressGroupId",
                 "remoteGroupId",
                 "remoteIpPrefix",
                 "securityGroupId",
@@ -15518,6 +16034,11 @@
                 "region": {
                     "type": "string",
                     "description": "The region in which to obtain the V2 networking client.\nA networking client is needed to create a port. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nsecurity group rule.\n",
+                    "willReplaceOnChanges": true
+                },
+                "remoteAddressGroupId": {
+                    "type": "string",
+                    "description": "The remote address group id, the value\nneeds to be an OpenStack ID of an address group in the same tenant. Changing\nthis creates a new security group rule. This argument is mutually exclusive\nwith `remote_ip_prefix` and `remote_group_id`.\n",
                     "willReplaceOnChanges": true
                 },
                 "remoteGroupId": {
@@ -15582,6 +16103,11 @@
                     "region": {
                         "type": "string",
                         "description": "The region in which to obtain the V2 networking client.\nA networking client is needed to create a port. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nsecurity group rule.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "remoteAddressGroupId": {
+                        "type": "string",
+                        "description": "The remote address group id, the value\nneeds to be an OpenStack ID of an address group in the same tenant. Changing\nthis creates a new security group rule. This argument is mutually exclusive\nwith `remote_ip_prefix` and `remote_group_id`.\n",
                         "willReplaceOnChanges": true
                     },
                     "remoteGroupId": {
@@ -15683,6 +16209,10 @@
                 "region": {
                     "type": "string",
                     "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create a Neutron subnet. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nsubnet.\n"
+                },
+                "segmentId": {
+                    "type": "string",
+                    "description": "The segment ID of the subnet. This is used to\nspecify which segment the subnet belongs to when using Neutron's routed\nprovider networks. Available when neutron segment extension is enabled.\n"
                 },
                 "serviceTypes": {
                     "type": "array",
@@ -15800,6 +16330,10 @@
                     "type": "string",
                     "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create a Neutron subnet. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nsubnet.\n",
                     "willReplaceOnChanges": true
+                },
+                "segmentId": {
+                    "type": "string",
+                    "description": "The segment ID of the subnet. This is used to\nspecify which segment the subnet belongs to when using Neutron's routed\nprovider networks. Available when neutron segment extension is enabled.\n"
                 },
                 "serviceTypes": {
                     "type": "array",
@@ -15919,6 +16453,10 @@
                         "type": "string",
                         "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create a Neutron subnet. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nsubnet.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "segmentId": {
+                        "type": "string",
+                        "description": "The segment ID of the subnet. This is used to\nspecify which segment the subnet belongs to when using Neutron's routed\nprovider networks. Available when neutron segment extension is enabled.\n"
                     },
                     "serviceTypes": {
                         "type": "array",
@@ -17716,7 +18254,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region in which to obtain the V2 Shared File System client.\nA Shared File System client is needed to create a share. Changing this\ncreates a new share.\n"
+                    "description": "The region in which to obtain the V2 Shared File System\nclient. A Shared File System client is needed to create a share. Changing\nthis creates a new share.\n"
                 },
                 "replicationType": {
                     "type": "string",
@@ -17790,7 +18328,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region in which to obtain the V2 Shared File System client.\nA Shared File System client is needed to create a share. Changing this\ncreates a new share.\n",
+                    "description": "The region in which to obtain the V2 Shared File System\nclient. A Shared File System client is needed to create a share. Changing\nthis creates a new share.\n",
                     "willReplaceOnChanges": true
                 },
                 "shareNetworkId": {
@@ -17877,7 +18415,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region in which to obtain the V2 Shared File System client.\nA Shared File System client is needed to create a share. Changing this\ncreates a new share.\n",
+                        "description": "The region in which to obtain the V2 Shared File System\nclient. A Shared File System client is needed to create a share. Changing\nthis creates a new share.\n",
                         "willReplaceOnChanges": true
                     },
                     "replicationType": {
@@ -17938,7 +18476,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region in which to obtain the V2 Shared File System client.\nA Shared File System client is needed to create a share access. Changing this\ncreates a new share access.\n"
+                    "description": "The region in which to obtain the V2 Shared File System\nclient. A Shared File System client is needed to create a share access.\nChanging this creates a new share access.\n"
                 },
                 "shareId": {
                     "type": "string",
@@ -17976,7 +18514,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region in which to obtain the V2 Shared File System client.\nA Shared File System client is needed to create a share access. Changing this\ncreates a new share access.\n",
+                    "description": "The region in which to obtain the V2 Shared File System\nclient. A Shared File System client is needed to create a share access.\nChanging this creates a new share access.\n",
                     "willReplaceOnChanges": true
                 },
                 "shareId": {
@@ -18016,7 +18554,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region in which to obtain the V2 Shared File System client.\nA Shared File System client is needed to create a share access. Changing this\ncreates a new share access.\n",
+                        "description": "The region in which to obtain the V2 Shared File System\nclient. A Shared File System client is needed to create a share access.\nChanging this creates a new share access.\n",
                         "willReplaceOnChanges": true
                     },
                     "shareId": {
@@ -19485,7 +20023,11 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the host aggregate\n"
+                        "description": "The name of the host aggregate.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 Compute client.\nIf omitted, the `region` argument of the provider is used.\n"
                     }
                 },
                 "type": "object",
@@ -19518,6 +20060,10 @@
                         "description": "See Argument Reference above.\n",
                         "type": "string"
                     },
+                    "region": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "string"
+                    },
                     "zone": {
                         "description": "Availability zone of the Host Aggregate\n",
                         "type": "string"
@@ -19527,6 +20073,7 @@
                     "hosts",
                     "metadata",
                     "name",
+                    "region",
                     "zone",
                     "id"
                 ],
@@ -19625,8 +20172,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region in which to obtain the V2 Compute client.\nIf omitted, the `region` argument of the provider is used.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The region in which to obtain the V2 Compute client.\nIf omitted, the `region` argument of the provider is used.\n"
                     },
                     "rxTxFactor": {
                         "type": "number",
@@ -19712,7 +20258,11 @@
                 "properties": {
                     "hostname": {
                         "type": "string",
-                        "description": "The hostname of the hypervisor\n"
+                        "description": "The hostname of the hypervisor.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 Compute client.\nIf omitted, the `region` argument of the provider is used.\n"
                     }
                 },
                 "type": "object"
@@ -19740,6 +20290,10 @@
                         "description": "The number in MegaBytes of memory the hypervisor can provide\n",
                         "type": "integer"
                     },
+                    "region": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "string"
+                    },
                     "state": {
                         "description": "The state of the hypervisor (`up` or `down`)\n",
                         "type": "string"
@@ -19762,6 +20316,7 @@
                     "hostIp",
                     "hostname",
                     "memory",
+                    "region",
                     "state",
                     "status",
                     "type",
@@ -19788,7 +20343,8 @@
                         "description": "An array of maps, detailed below.\n"
                     },
                     "region": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 Compute client.\nIf omitted, the `region` argument of the provider is used.\n"
                     },
                     "userData": {
                         "type": "string",
@@ -19864,6 +20420,7 @@
                         "type": "string"
                     },
                     "region": {
+                        "description": "See Argument Reference above.\n",
                         "type": "string"
                     },
                     "securityGroups": {
@@ -20225,6 +20782,90 @@
                     "securityGroups",
                     "serverGroupMembers",
                     "serverGroups",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "openstack:compute/getServergroupV2:getServergroupV2": {
+            "description": "Use this data source to get information about server groups\nby name.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst test = openstack.compute.getServergroupV2({\n    name: \"test\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ntest = openstack.compute.get_servergroup_v2(name=\"test\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = OpenStack.Compute.GetServergroupV2.Invoke(new()\n    {\n        Name = \"test\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.GetServergroupV2(ctx, \u0026compute.GetServergroupV2Args{\n\t\t\tName: \"test\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.compute.ComputeFunctions;\nimport com.pulumi.openstack.compute.inputs.GetServergroupV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = ComputeFunctions.getServergroupV2(GetServergroupV2Args.builder()\n            .name(\"test\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  test:\n    fn::invoke:\n      function: openstack:compute:getServergroupV2\n      arguments:\n        name: test\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getServergroupV2.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the server group.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 Compute client.\nIf omitted, the `region` argument of the provider is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getServergroupV2.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "members": {
+                        "description": "The instances that are part of this server group.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "metadata": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Metadata of the server group.\n",
+                        "type": "object"
+                    },
+                    "name": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "string"
+                    },
+                    "policies": {
+                        "description": "Policy name associated with the server group.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "projectId": {
+                        "description": "Project ID of the server group.\n",
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "rules": {
+                        "description": "Rules which are applied to specified policy.\n",
+                        "items": {
+                            "$ref": "#/types/openstack:compute/getServergroupV2Rule:getServergroupV2Rule"
+                        },
+                        "type": "array"
+                    },
+                    "userId": {
+                        "description": "User ID of the server group.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "members",
+                    "metadata",
+                    "name",
+                    "policies",
+                    "projectId",
+                    "region",
+                    "rules",
+                    "userId",
                     "id"
                 ],
                 "type": "object"
@@ -20893,6 +21534,82 @@
                     "transferredAt",
                     "updatedAt",
                     "version",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "openstack:dns/getZoneShareV2:getZoneShareV2": {
+            "description": "Use this data source to get information about a DNS zone share.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst example = openstack.dns.getZoneShareV2({\n    zoneId: \"00000000-0000-0000-0000-000000000000\",\n    targetProjectId: \"11111111-1111-1111-1111-111111111111\",\n    projectId: \"22222222-2222-2222-2222-222222222222\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nexample = openstack.dns.get_zone_share_v2(zone_id=\"00000000-0000-0000-0000-000000000000\",\n    target_project_id=\"11111111-1111-1111-1111-111111111111\",\n    project_id=\"22222222-2222-2222-2222-222222222222\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = OpenStack.Dns.GetZoneShareV2.Invoke(new()\n    {\n        ZoneId = \"00000000-0000-0000-0000-000000000000\",\n        TargetProjectId = \"11111111-1111-1111-1111-111111111111\",\n        ProjectId = \"22222222-2222-2222-2222-222222222222\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/dns\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dns.LookupZoneShareV2(ctx, \u0026dns.LookupZoneShareV2Args{\n\t\t\tZoneId:          \"00000000-0000-0000-0000-000000000000\",\n\t\t\tTargetProjectId: pulumi.StringRef(\"11111111-1111-1111-1111-111111111111\"),\n\t\t\tProjectId:       pulumi.StringRef(\"22222222-2222-2222-2222-222222222222\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.dns.DnsFunctions;\nimport com.pulumi.openstack.dns.inputs.GetZoneShareV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DnsFunctions.getZoneShareV2(GetZoneShareV2Args.builder()\n            .zoneId(\"00000000-0000-0000-0000-000000000000\")\n            .targetProjectId(\"11111111-1111-1111-1111-111111111111\")\n            .projectId(\"22222222-2222-2222-2222-222222222222\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: openstack:dns:getZoneShareV2\n      arguments:\n        zoneId: 00000000-0000-0000-0000-000000000000\n        targetProjectId: 11111111-1111-1111-1111-111111111111\n        projectId: 22222222-2222-2222-2222-222222222222\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getZoneShareV2.\n",
+                "properties": {
+                    "allProjects": {
+                        "type": "string",
+                        "description": "If set to `true`, the data source will search\nacross all projects. If set to `false`, it will only search within the\ncurrent project. Defaults to `false`.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The owner project ID. If omitted, it is derived\nfrom the zone share details.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 DNS client. If\nomitted, the `region` argument of the provider is used. Changing this creates\na new DNS zone share data source.\n"
+                    },
+                    "shareId": {
+                        "type": "string",
+                        "description": "The ID of the DNS zone share to retrieve. If\nprovided, the data source returns only the share with this ID.\n"
+                    },
+                    "targetProjectId": {
+                        "type": "string",
+                        "description": "If provided, the data source returns the\nshare with this target project ID.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The ID of the DNS zone for which to get share.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "zoneId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getZoneShareV2.\n",
+                "properties": {
+                    "allProjects": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "string"
+                    },
+                    "region": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "string"
+                    },
+                    "shareId": {
+                        "description": "The ID of the zone share.\n",
+                        "type": "string"
+                    },
+                    "targetProjectId": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "string"
+                    },
+                    "zoneId": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "region",
+                    "shareId",
+                    "zoneId",
                     "id"
                 ],
                 "type": "object"
@@ -21583,8 +22300,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region the project is located in.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used.\n"
                     }
                 },
                 "type": "object"
@@ -21625,7 +22341,7 @@
                         "type": "string"
                     },
                     "region": {
-                        "description": "The region the project is located in.\n",
+                        "description": "See Argument Reference above.\n",
                         "type": "string"
                     },
                     "tags": {
@@ -21676,7 +22392,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "willReplaceOnChanges": true
+                        "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -21887,8 +22603,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region the user is located in.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The region in which to obtain the V3 Keystone client.\nIf omitted, the `region` argument of the provider is used.\n"
                     },
                     "uniqueId": {
                         "type": "string",
@@ -21937,7 +22652,7 @@
                         "type": "string"
                     },
                     "region": {
-                        "description": "The region the user is located in.\n",
+                        "description": "See Argument Reference above.\n",
                         "type": "string"
                     },
                     "uniqueId": {
@@ -23071,7 +23786,7 @@
             }
         },
         "openstack:loadbalancer/getFlavorV2:getFlavorV2": {
-            "description": "Use this data source to get the ID of an OpenStack Load Balancer flavor.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst flavor1 = openstack.loadbalancer.getFlavorV2({\n    name: \"flavor_1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nflavor1 = openstack.loadbalancer.get_flavor_v2(name=\"flavor_1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var flavor1 = OpenStack.LoadBalancer.GetFlavorV2.Invoke(new()\n    {\n        Name = \"flavor_1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := loadbalancer.GetFlavorV2(ctx, \u0026loadbalancer.GetFlavorV2Args{\n\t\t\tName: pulumi.StringRef(\"flavor_1\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;\nimport com.pulumi.openstack.loadbalancer.inputs.GetFlavorV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var flavor1 = LoadbalancerFunctions.getFlavorV2(GetFlavorV2Args.builder()\n            .name(\"flavor_1\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  flavor1:\n    fn::invoke:\n      function: openstack:loadbalancer:getFlavorV2\n      arguments:\n        name: flavor_1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Use this data source to get the ID of an OpenStack Load Balancer flavor.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst flavor1 = openstack.loadbalancer.getFlavorV2({\n    name: \"flavor_1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nflavor1 = openstack.loadbalancer.get_flavor_v2(name=\"flavor_1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var flavor1 = OpenStack.LoadBalancer.GetFlavorV2.Invoke(new()\n    {\n        Name = \"flavor_1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := loadbalancer.LookupFlavorV2(ctx, \u0026loadbalancer.LookupFlavorV2Args{\n\t\t\tName: pulumi.StringRef(\"flavor_1\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;\nimport com.pulumi.openstack.loadbalancer.inputs.GetFlavorV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var flavor1 = LoadbalancerFunctions.getFlavorV2(GetFlavorV2Args.builder()\n            .name(\"flavor_1\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  flavor1:\n    fn::invoke:\n      function: openstack:loadbalancer:getFlavorV2\n      arguments:\n        name: flavor_1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getFlavorV2.\n",
                 "properties": {
@@ -23129,6 +23844,133 @@
                     "flavorId",
                     "flavorProfileId",
                     "name",
+                    "region",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "openstack:loadbalancer/getFlavorprofileV2:getFlavorprofileV2": {
+            "description": "Use this data source to get the ID of an OpenStack Load Balancer flavorprofile.\n\n\u003e **Note:** This usually requires admin privileges.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst fp1 = openstack.loadbalancer.getFlavorprofileV2({\n    name: \"flavorprofile_1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nfp1 = openstack.loadbalancer.get_flavorprofile_v2(name=\"flavorprofile_1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var fp1 = OpenStack.LoadBalancer.GetFlavorprofileV2.Invoke(new()\n    {\n        Name = \"flavorprofile_1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := loadbalancer.LookupFlavorprofileV2(ctx, \u0026loadbalancer.LookupFlavorprofileV2Args{\n\t\t\tName: pulumi.StringRef(\"flavorprofile_1\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;\nimport com.pulumi.openstack.loadbalancer.inputs.GetFlavorprofileV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var fp1 = LoadbalancerFunctions.getFlavorprofileV2(GetFlavorprofileV2Args.builder()\n            .name(\"flavorprofile_1\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  fp1:\n    fn::invoke:\n      function: openstack:loadbalancer:getFlavorprofileV2\n      arguments:\n        name: flavorprofile_1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getFlavorprofileV2.\n",
+                "properties": {
+                    "flavorprofileId": {
+                        "type": "string",
+                        "description": "The ID of the flavorprofile. Conflicts with `name` and\n`provider_name`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the flavorprofile. Conflicts with `flavorprofile_id`.\n"
+                    },
+                    "providerName": {
+                        "type": "string",
+                        "description": "The name of the provider that the flavorprofile uses. Conflicts\nwith `flavorprofile_id`.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 Load Balancer client.\nIf omitted, the `region` argument of the provider is used.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getFlavorprofileV2.\n",
+                "properties": {
+                    "flavorData": {
+                        "description": "Extra data of the flavorprofile depending on the provider.\n",
+                        "type": "string"
+                    },
+                    "flavorprofileId": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the flavorprofile.\n",
+                        "type": "string"
+                    },
+                    "providerName": {
+                        "description": "The name of the provider that the flavorprofile uses.\n",
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "flavorData",
+                    "flavorprofileId",
+                    "name",
+                    "providerName",
+                    "region",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "openstack:loadbalancer/getLbFlavorDeprecated:getLbFlavorDeprecated": {
+            "description": "Use this data source to get the ID of an OpenStack Load Balancer flavor.\n\n\u003e **Note:** This data source is deprecated, please use `openstack.loadbalancer.FlavorV2` instead.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst flavor1 = openstack.loadbalancer.getLbFlavorDeprecated({\n    name: \"flavor_1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nflavor1 = openstack.loadbalancer.get_lb_flavor_deprecated(name=\"flavor_1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var flavor1 = OpenStack.LoadBalancer.GetLbFlavorDeprecated.Invoke(new()\n    {\n        Name = \"flavor_1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := loadbalancer.GetLbFlavorDeprecated(ctx, \u0026loadbalancer.GetLbFlavorDeprecatedArgs{\n\t\t\tName: pulumi.StringRef(\"flavor_1\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;\nimport com.pulumi.openstack.loadbalancer.inputs.GetLbFlavorDeprecatedArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var flavor1 = LoadbalancerFunctions.getLbFlavorDeprecated(GetLbFlavorDeprecatedArgs.builder()\n            .name(\"flavor_1\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  flavor1:\n    fn::invoke:\n      function: openstack:loadbalancer:getLbFlavorDeprecated\n      arguments:\n        name: flavor_1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getLbFlavorDeprecated.\n",
+                "properties": {
+                    "flavorId": {
+                        "type": "string",
+                        "description": "The ID of the flavor. Exactly one of `name`, `flavor_id` is required to be set.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 Load Balancer client.\nIf omitted, the `region` argument of the provider is used.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getLbFlavorDeprecated.\n",
+                "properties": {
+                    "description": {
+                        "description": "The description of the flavor.\n",
+                        "type": "string"
+                    },
+                    "enabled": {
+                        "description": "Is the flavor enabled.\n",
+                        "type": "boolean"
+                    },
+                    "flavorId": {
+                        "description": "The ID of the flavor.\n",
+                        "type": "string"
+                    },
+                    "flavorProfileId": {
+                        "description": "The ID of the flavor profile.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the flavor.\n",
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "description",
+                    "enabled",
+                    "flavorId",
+                    "flavorProfileId",
+                    "name",
+                    "region",
                     "id"
                 ],
                 "type": "object"
@@ -24332,6 +25174,10 @@
                         "description": "The network UUID of an external gateway for the router.\n",
                         "type": "string"
                     },
+                    "externalQosPolicyId": {
+                        "description": "The QoS policy UUID applied on the external gateway for the router.\n",
+                        "type": "string"
+                    },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.\n",
                         "type": "string"
@@ -24364,6 +25210,7 @@
                     "enableSnat",
                     "externalFixedIps",
                     "externalNetworkId",
+                    "externalQosPolicyId",
                     "id"
                 ],
                 "type": "object"
@@ -24515,6 +25362,10 @@
                         "description": "The region in which to obtain the V2 Neutron client.\nA Neutron client is needed to retrieve subnet ids. If omitted, the\n`region` argument of the provider is used.\n",
                         "willReplaceOnChanges": true
                     },
+                    "segmentId": {
+                        "type": "string",
+                        "description": "The ID of the segment the subnet belongs to.\nAvailable when neutron segment extension is enabled.\n"
+                    },
                     "subnetId": {
                         "type": "string",
                         "description": "The ID of the subnet.\n"
@@ -24610,6 +25461,9 @@
                         "description": "See Argument Reference above.\n",
                         "type": "string"
                     },
+                    "segmentId": {
+                        "type": "string"
+                    },
                     "serviceTypes": {
                         "description": "Service types of the subnet.\n",
                         "items": {
@@ -24648,6 +25502,7 @@
                     "name",
                     "networkId",
                     "region",
+                    "segmentId",
                     "serviceTypes",
                     "subnetId",
                     "subnetpoolId",
@@ -24718,6 +25573,10 @@
                         "type": "string",
                         "description": "The region in which to obtain the V2 Neutron client.\nA Neutron client is needed to retrieve subnet ids. If omitted, the\n`region` argument of the provider is used.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "segmentId": {
+                        "type": "string",
+                        "description": "The ID of the segment the subnet belongs to.\nAvailable when neutron segment extension is enabled.\n"
                     },
                     "sortDirection": {
                         "type": "string",
@@ -24795,6 +25654,9 @@
                         "type": "string"
                     },
                     "region": {
+                        "type": "string"
+                    },
+                    "segmentId": {
                         "type": "string"
                     },
                     "sortDirection": {
@@ -25180,7 +26042,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region in which to obtain the V2 Shared File System client.\n"
+                        "description": "The region in which to obtain the V2 Shared File System\nclient. A Shared File System client is needed to read a share. If omitted,\nthe `region` argument of the provider is used.\n"
                     },
                     "shareNetworkId": {
                         "type": "string",
@@ -25243,7 +26105,7 @@
                         "type": "string"
                     },
                     "region": {
-                        "description": "The region in which to obtain the V2 Shared File System client.\n",
+                        "description": "See Argument Reference above.\n",
                         "type": "string"
                     },
                     "shareNetworkId": {

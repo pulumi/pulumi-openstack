@@ -34,9 +34,9 @@ class ShareAccessArgs:
                cert, or cephx. cephx support requires an OpenStack environment that supports
                Shared Filesystem microversion 2.13 (Mitaka) or later.
         :param pulumi.Input[builtins.str] share_id: The UUID of the share to which you are granted access.
-        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Shared File System client.
-               A Shared File System client is needed to create a share access. Changing this
-               creates a new share access.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Shared File System
+               client. A Shared File System client is needed to create a share access.
+               Changing this creates a new share access.
         """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "access_to", access_to)
@@ -100,9 +100,9 @@ class ShareAccessArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The region in which to obtain the V2 Shared File System client.
-        A Shared File System client is needed to create a share access. Changing this
-        creates a new share access.
+        The region in which to obtain the V2 Shared File System
+        client. A Shared File System client is needed to create a share access.
+        Changing this creates a new share access.
         """
         return pulumi.get(self, "region")
 
@@ -130,9 +130,9 @@ class _ShareAccessState:
         :param pulumi.Input[builtins.str] access_type: The access rule type. Can either be an ip, user,
                cert, or cephx. cephx support requires an OpenStack environment that supports
                Shared Filesystem microversion 2.13 (Mitaka) or later.
-        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Shared File System client.
-               A Shared File System client is needed to create a share access. Changing this
-               creates a new share access.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Shared File System
+               client. A Shared File System client is needed to create a share access.
+               Changing this creates a new share access.
         :param pulumi.Input[builtins.str] share_id: The UUID of the share to which you are granted access.
         :param pulumi.Input[builtins.str] state: The share access state.
         """
@@ -206,9 +206,9 @@ class _ShareAccessState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The region in which to obtain the V2 Shared File System client.
-        A Shared File System client is needed to create a share access. Changing this
-        creates a new share access.
+        The region in which to obtain the V2 Shared File System
+        client. A Shared File System client is needed to create a share access.
+        Changing this creates a new share access.
         """
         return pulumi.get(self, "region")
 
@@ -353,9 +353,9 @@ class ShareAccess(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] access_type: The access rule type. Can either be an ip, user,
                cert, or cephx. cephx support requires an OpenStack environment that supports
                Shared Filesystem microversion 2.13 (Mitaka) or later.
-        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Shared File System client.
-               A Shared File System client is needed to create a share access. Changing this
-               creates a new share access.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Shared File System
+               client. A Shared File System client is needed to create a share access.
+               Changing this creates a new share access.
         :param pulumi.Input[builtins.str] share_id: The UUID of the share to which you are granted access.
         """
         ...
@@ -533,9 +533,9 @@ class ShareAccess(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] access_type: The access rule type. Can either be an ip, user,
                cert, or cephx. cephx support requires an OpenStack environment that supports
                Shared Filesystem microversion 2.13 (Mitaka) or later.
-        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Shared File System client.
-               A Shared File System client is needed to create a share access. Changing this
-               creates a new share access.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Shared File System
+               client. A Shared File System client is needed to create a share access.
+               Changing this creates a new share access.
         :param pulumi.Input[builtins.str] share_id: The UUID of the share to which you are granted access.
         :param pulumi.Input[builtins.str] state: The share access state.
         """
@@ -591,9 +591,9 @@ class ShareAccess(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[builtins.str]:
         """
-        The region in which to obtain the V2 Shared File System client.
-        A Shared File System client is needed to create a share access. Changing this
-        creates a new share access.
+        The region in which to obtain the V2 Shared File System
+        client. A Shared File System client is needed to create a share access.
+        Changing this creates a new share access.
         """
         return pulumi.get(self, "region")
 

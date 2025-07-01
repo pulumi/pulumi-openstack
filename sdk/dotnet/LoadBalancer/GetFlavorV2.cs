@@ -167,7 +167,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// The name of the flavor.
         /// </summary>
         public readonly string Name;
-        public readonly string? Region;
+        public readonly string Region;
 
         [OutputConstructor]
         private GetFlavorV2Result(
@@ -183,7 +183,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
             string name,
 
-            string? region)
+            string region)
         {
             Description = description;
             Enabled = enabled;

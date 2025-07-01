@@ -70,10 +70,9 @@ type TransferRequest struct {
 	// will be considered as created/updated if OpenStack request returned success.
 	DisableStatusCheck pulumi.BoolPtrOutput `pulumi:"disableStatusCheck"`
 	Key                pulumi.StringOutput  `pulumi:"key"`
-	// The region in which to obtain the V2 Compute client.
-	// Keypairs are associated with accounts, but a Compute client is needed to
-	// create one. If omitted, the `region` argument of the provider is used.
-	// Changing this creates a new DNS zone.
+	// The region in which to obtain the V2 DNS client.
+	// If omitted, the `region` argument of the provider is used.
+	// Changing this creates a new DNS zone zone transfer accept.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The target Project ID to transfer to.
 	TargetProjectId pulumi.StringOutput `pulumi:"targetProjectId"`
@@ -125,10 +124,9 @@ type transferRequestState struct {
 	// will be considered as created/updated if OpenStack request returned success.
 	DisableStatusCheck *bool   `pulumi:"disableStatusCheck"`
 	Key                *string `pulumi:"key"`
-	// The region in which to obtain the V2 Compute client.
-	// Keypairs are associated with accounts, but a Compute client is needed to
-	// create one. If omitted, the `region` argument of the provider is used.
-	// Changing this creates a new DNS zone.
+	// The region in which to obtain the V2 DNS client.
+	// If omitted, the `region` argument of the provider is used.
+	// Changing this creates a new DNS zone zone transfer accept.
 	Region *string `pulumi:"region"`
 	// The target Project ID to transfer to.
 	TargetProjectId *string `pulumi:"targetProjectId"`
@@ -148,10 +146,9 @@ type TransferRequestState struct {
 	// will be considered as created/updated if OpenStack request returned success.
 	DisableStatusCheck pulumi.BoolPtrInput
 	Key                pulumi.StringPtrInput
-	// The region in which to obtain the V2 Compute client.
-	// Keypairs are associated with accounts, but a Compute client is needed to
-	// create one. If omitted, the `region` argument of the provider is used.
-	// Changing this creates a new DNS zone.
+	// The region in which to obtain the V2 DNS client.
+	// If omitted, the `region` argument of the provider is used.
+	// Changing this creates a new DNS zone zone transfer accept.
 	Region pulumi.StringPtrInput
 	// The target Project ID to transfer to.
 	TargetProjectId pulumi.StringPtrInput
@@ -175,10 +172,9 @@ type transferRequestArgs struct {
 	// will be considered as created/updated if OpenStack request returned success.
 	DisableStatusCheck *bool   `pulumi:"disableStatusCheck"`
 	Key                *string `pulumi:"key"`
-	// The region in which to obtain the V2 Compute client.
-	// Keypairs are associated with accounts, but a Compute client is needed to
-	// create one. If omitted, the `region` argument of the provider is used.
-	// Changing this creates a new DNS zone.
+	// The region in which to obtain the V2 DNS client.
+	// If omitted, the `region` argument of the provider is used.
+	// Changing this creates a new DNS zone zone transfer accept.
 	Region *string `pulumi:"region"`
 	// The target Project ID to transfer to.
 	TargetProjectId *string `pulumi:"targetProjectId"`
@@ -199,10 +195,9 @@ type TransferRequestArgs struct {
 	// will be considered as created/updated if OpenStack request returned success.
 	DisableStatusCheck pulumi.BoolPtrInput
 	Key                pulumi.StringPtrInput
-	// The region in which to obtain the V2 Compute client.
-	// Keypairs are associated with accounts, but a Compute client is needed to
-	// create one. If omitted, the `region` argument of the provider is used.
-	// Changing this creates a new DNS zone.
+	// The region in which to obtain the V2 DNS client.
+	// If omitted, the `region` argument of the provider is used.
+	// Changing this creates a new DNS zone zone transfer accept.
 	Region pulumi.StringPtrInput
 	// The target Project ID to transfer to.
 	TargetProjectId pulumi.StringPtrInput
@@ -317,10 +312,9 @@ func (o TransferRequestOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferRequest) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// The region in which to obtain the V2 Compute client.
-// Keypairs are associated with accounts, but a Compute client is needed to
-// create one. If omitted, the `region` argument of the provider is used.
-// Changing this creates a new DNS zone.
+// The region in which to obtain the V2 DNS client.
+// If omitted, the `region` argument of the provider is used.
+// Changing this creates a new DNS zone zone transfer accept.
 func (o TransferRequestOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferRequest) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

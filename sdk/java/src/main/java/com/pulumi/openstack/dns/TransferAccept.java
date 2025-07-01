@@ -118,20 +118,18 @@ public class TransferAccept extends com.pulumi.resources.CustomResource {
         return this.key;
     }
     /**
-     * The region in which to obtain the V2 Compute client.
-     * Keypairs are associated with accounts, but a Compute client is needed to
-     * create one. If omitted, the `region` argument of the provider is used.
-     * Changing this creates a new DNS zone.
+     * The region in which to obtain the V2 DNS client.
+     * If omitted, the `region` argument of the provider is used.
+     * Changing this creates a new DNS zone zone transfer accept.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return The region in which to obtain the V2 Compute client.
-     * Keypairs are associated with accounts, but a Compute client is needed to
-     * create one. If omitted, the `region` argument of the provider is used.
-     * Changing this creates a new DNS zone.
+     * @return The region in which to obtain the V2 DNS client.
+     * If omitted, the `region` argument of the provider is used.
+     * Changing this creates a new DNS zone zone transfer accept.
      * 
      */
     public Output<String> region() {

@@ -30,7 +30,8 @@ class InstanceArgs:
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]] = None):
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]] = None,
+                 volume_type: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input['InstanceDatastoreArgs'] datastore: An array of database engine type and version. The datastore
@@ -50,6 +51,9 @@ class InstanceArgs:
                creates a new instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]] users: An array of username, password, host and databases. The user
                object structure is documented below.
+        :param pulumi.Input[builtins.str] volume_type: Specifies the volume type to use. If you want to
+               specify a volume type, you must also specify a volume size. Changing this
+               creates new instance.
         """
         pulumi.set(__self__, "datastore", datastore)
         pulumi.set(__self__, "size", size)
@@ -67,6 +71,8 @@ class InstanceArgs:
             pulumi.set(__self__, "region", region)
         if users is not None:
             pulumi.set(__self__, "users", users)
+        if volume_type is not None:
+            pulumi.set(__self__, "volume_type", volume_type)
 
     @property
     @pulumi.getter
@@ -184,6 +190,20 @@ class InstanceArgs:
     def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]]):
         pulumi.set(self, "users", value)
 
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the volume type to use. If you want to
+        specify a volume type, you must also specify a volume size. Changing this
+        creates new instance.
+        """
+        return pulumi.get(self, "volume_type")
+
+    @volume_type.setter
+    def volume_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "volume_type", value)
+
 
 @pulumi.input_type
 class _InstanceState:
@@ -197,7 +217,8 @@ class _InstanceState:
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  size: Optional[pulumi.Input[builtins.int]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]] = None):
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]] = None,
+                 volume_type: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] addresses: A list of IP addresses assigned to the instance.
@@ -218,6 +239,9 @@ class _InstanceState:
         :param pulumi.Input[builtins.int] size: Specifies the volume size in GB. Changing this creates new instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]] users: An array of username, password, host and databases. The user
                object structure is documented below.
+        :param pulumi.Input[builtins.str] volume_type: Specifies the volume type to use. If you want to
+               specify a volume type, you must also specify a volume size. Changing this
+               creates new instance.
         """
         if addresses is not None:
             pulumi.set(__self__, "addresses", addresses)
@@ -239,6 +263,8 @@ class _InstanceState:
             pulumi.set(__self__, "size", size)
         if users is not None:
             pulumi.set(__self__, "users", users)
+        if volume_type is not None:
+            pulumi.set(__self__, "volume_type", volume_type)
 
     @property
     @pulumi.getter
@@ -368,6 +394,20 @@ class _InstanceState:
     def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]]):
         pulumi.set(self, "users", value)
 
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the volume type to use. If you want to
+        specify a volume type, you must also specify a volume size. Changing this
+        creates new instance.
+        """
+        return pulumi.get(self, "volume_type")
+
+    @volume_type.setter
+    def volume_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "volume_type", value)
+
 
 @pulumi.type_token("openstack:database/instance:Instance")
 class Instance(pulumi.CustomResource):
@@ -384,6 +424,7 @@ class Instance(pulumi.CustomResource):
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  size: Optional[pulumi.Input[builtins.int]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceUserArgs', 'InstanceUserArgsDict']]]]] = None,
+                 volume_type: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
         Manages a V1 DB instance resource within OpenStack.
@@ -433,6 +474,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] size: Specifies the volume size in GB. Changing this creates new instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceUserArgs', 'InstanceUserArgsDict']]]] users: An array of username, password, host and databases. The user
                object structure is documented below.
+        :param pulumi.Input[builtins.str] volume_type: Specifies the volume type to use. If you want to
+               specify a volume type, you must also specify a volume size. Changing this
+               creates new instance.
         """
         ...
     @overload
@@ -493,6 +537,7 @@ class Instance(pulumi.CustomResource):
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  size: Optional[pulumi.Input[builtins.int]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceUserArgs', 'InstanceUserArgsDict']]]]] = None,
+                 volume_type: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -515,6 +560,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'size'")
             __props__.__dict__["size"] = size
             __props__.__dict__["users"] = users
+            __props__.__dict__["volume_type"] = volume_type
             __props__.__dict__["addresses"] = None
         super(Instance, __self__).__init__(
             'openstack:database/instance:Instance',
@@ -535,7 +581,8 @@ class Instance(pulumi.CustomResource):
             networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
             region: Optional[pulumi.Input[builtins.str]] = None,
             size: Optional[pulumi.Input[builtins.int]] = None,
-            users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceUserArgs', 'InstanceUserArgsDict']]]]] = None) -> 'Instance':
+            users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceUserArgs', 'InstanceUserArgsDict']]]]] = None,
+            volume_type: Optional[pulumi.Input[builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -561,6 +608,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] size: Specifies the volume size in GB. Changing this creates new instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceUserArgs', 'InstanceUserArgsDict']]]] users: An array of username, password, host and databases. The user
                object structure is documented below.
+        :param pulumi.Input[builtins.str] volume_type: Specifies the volume type to use. If you want to
+               specify a volume type, you must also specify a volume size. Changing this
+               creates new instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -576,6 +626,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["size"] = size
         __props__.__dict__["users"] = users
+        __props__.__dict__["volume_type"] = volume_type
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -665,4 +716,14 @@ class Instance(pulumi.CustomResource):
         object structure is documented below.
         """
         return pulumi.get(self, "users")
+
+    @property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Specifies the volume type to use. If you want to
+        specify a volume type, you must also specify a volume size. Changing this
+        creates new instance.
+        """
+        return pulumi.get(self, "volume_type")
 
