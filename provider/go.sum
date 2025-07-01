@@ -1799,8 +1799,8 @@ github.com/googleapis/gax-go/v2 v2.12.2 h1:mhN09QQW1jEWeMF74zGR81R30z4VJzjZsfkUh
 github.com/googleapis/gax-go/v2 v2.12.2/go.mod h1:61M8vcyyXR2kqKFxKrfA22jaA8JGF7Dc8App1U3H6jc=
 github.com/googleapis/go-type-adapters v1.0.0/go.mod h1:zHW75FOG2aur7gAO2B+MLby+cLsWGBF62rFAi7WjWO4=
 github.com/googleapis/google-cloud-go-testing v0.0.0-20200911160855-bcd43fbb19e8/go.mod h1:dvDLG8qkwmyD9a/MJJN3XJcT3xFxOKAvTZGvuZmac9g=
-github.com/gophercloud/gophercloud/v2 v2.7.1-0.20250430161700-dd3f10310e96 h1:MJekZzTFmnfhr83hw87E6RLIi2teVnR5qN3b+DhutWc=
-github.com/gophercloud/gophercloud/v2 v2.7.1-0.20250430161700-dd3f10310e96/go.mod h1:Ki/ILhYZr/5EPebrPL9Ej+tUg4lqx71/YH2JWVeU+Qk=
+github.com/gophercloud/gophercloud/v2 v2.7.1-0.20250602133909-0c4819a8e5d3 h1:3cHFD8Qr0kkAC8S1w1IXtM77S85gF3uMH5P8yqKM6Ds=
+github.com/gophercloud/gophercloud/v2 v2.7.1-0.20250602133909-0c4819a8e5d3/go.mod h1:Ki/ILhYZr/5EPebrPL9Ej+tUg4lqx71/YH2JWVeU+Qk=
 github.com/gophercloud/utils/v2 v2.0.0-20250212084022-725b94822eeb h1:TQTXVYXL3d0zRAybRUKKboO0z/XAsXEfU6Oax8n00kc=
 github.com/gophercloud/utils/v2 v2.0.0-20250212084022-725b94822eeb/go.mod h1:tIUw/gFHOB6lFV9LhzNZg5jfCLYMxI2lC1dZUa7NlHM=
 github.com/gorilla/mux v1.8.0 h1:i40aqfkR1h2SlN9hojwV5ZA91wcXFOvkdNIeFDP5koI=
@@ -2266,8 +2266,8 @@ github.com/stretchr/testify v1.10.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf
 github.com/substrait-io/substrait-go v0.4.2/go.mod h1:qhpnLmrcvAnlZsUyPXZRqldiHapPTXC3t7xFgDi3aQg=
 github.com/teekennedy/goldmark-markdown v0.3.0 h1:ik9/biVGCwGWFg8dQ3KVm2pQ/wiiG0whYiUcz9xH0W8=
 github.com/teekennedy/goldmark-markdown v0.3.0/go.mod h1:kMhDz8La77A9UHvJGsxejd0QUflN9sS+QXCqnhmxmNo=
-github.com/terraform-provider-openstack/terraform-provider-openstack/v3 v3.1.0 h1:e9MKTUMiWZUG5dKVOqJQ1d5ffJHrtyfEROppHTk1F04=
-github.com/terraform-provider-openstack/terraform-provider-openstack/v3 v3.1.0/go.mod h1:FN6Bkvbxtdw1yNMrs+2lrpVOc/gHFuOOnGWaGM1VmSg=
+github.com/terraform-provider-openstack/terraform-provider-openstack/v3 v3.2.0 h1:MZv6CdWWwKhXlMf0WZld3zlwP7daQdGGg2jegjPubEk=
+github.com/terraform-provider-openstack/terraform-provider-openstack/v3 v3.2.0/go.mod h1:O8sX0NnewwGOwpyBYIDH+vRT8px57DCaySF579ppwsM=
 github.com/texttheater/golang-levenshtein v1.0.1 h1:+cRNoVrfiwufQPhoMzB6N0Yf/Mqajr6t1lOv8GyGE2U=
 github.com/texttheater/golang-levenshtein v1.0.1/go.mod h1:PYAKrbF5sAiq9wd+H82hs7gNaen0CplQ9uvm6+enD/8=
 github.com/uber/jaeger-client-go v2.30.0+incompatible h1:D6wyKGCecFaSRUpo8lCVbaOOb6ThwMmTEbhRwtKR97o=
