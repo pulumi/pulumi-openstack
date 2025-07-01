@@ -75,7 +75,7 @@ export interface GetFlavorV2Result {
      * The name of the flavor.
      */
     readonly name: string;
-    readonly region?: string;
+    readonly region: string;
 }
 /**
  * Use this data source to get the ID of an OpenStack Load Balancer flavor.

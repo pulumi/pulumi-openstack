@@ -55,8 +55,11 @@ type LookupAggregateV2Args struct {
 	Hosts []string `pulumi:"hosts"`
 	// Metadata of the Host Aggregate
 	Metadata map[string]string `pulumi:"metadata"`
-	// The name of the host aggregate
+	// The name of the host aggregate.
 	Name string `pulumi:"name"`
+	// The region in which to obtain the V2 Compute client.
+	// If omitted, the `region` argument of the provider is used.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getAggregateV2.
@@ -69,6 +72,8 @@ type LookupAggregateV2Result struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// See Argument Reference above.
 	Name string `pulumi:"name"`
+	// See Argument Reference above.
+	Region string `pulumi:"region"`
 	// Availability zone of the Host Aggregate
 	Zone string `pulumi:"zone"`
 }
@@ -88,8 +93,11 @@ type LookupAggregateV2OutputArgs struct {
 	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
 	// Metadata of the Host Aggregate
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
-	// The name of the host aggregate
+	// The name of the host aggregate.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The region in which to obtain the V2 Compute client.
+	// If omitted, the `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (LookupAggregateV2OutputArgs) ElementType() reflect.Type {
@@ -129,6 +137,11 @@ func (o LookupAggregateV2ResultOutput) Metadata() pulumi.StringMapOutput {
 // See Argument Reference above.
 func (o LookupAggregateV2ResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAggregateV2Result) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupAggregateV2ResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAggregateV2Result) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // Availability zone of the Host Aggregate

@@ -84,6 +84,11 @@ export class RoleAssignment extends pulumi.CustomResource {
      * The project to assign the role in.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
+    /**
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used. Changing this
+     * creates a new role assignment.
+     */
     public readonly region!: pulumi.Output<string>;
     /**
      * The role to assign.
@@ -146,6 +151,11 @@ export interface RoleAssignmentState {
      * The project to assign the role in.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used. Changing this
+     * creates a new role assignment.
+     */
     region?: pulumi.Input<string>;
     /**
      * The role to assign.
@@ -173,6 +183,11 @@ export interface RoleAssignmentArgs {
      * The project to assign the role in.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used. Changing this
+     * creates a new role assignment.
+     */
     region?: pulumi.Input<string>;
     /**
      * The role to assign.

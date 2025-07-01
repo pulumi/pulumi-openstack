@@ -174,6 +174,14 @@ namespace Pulumi.OpenStack.Networking
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// The segment ID of the subnet. This is used to
+        /// specify which segment the subnet belongs to when using Neutron's routed
+        /// provider networks. Available when neutron segment extension is enabled.
+        /// </summary>
+        [Output("segmentId")]
+        public Output<string?> SegmentId { get; private set; } = null!;
+
+        /// <summary>
         /// An array of service types used by the subnet.
         /// Changing this updates the service types for the existing subnet.
         /// </summary>
@@ -381,6 +389,14 @@ namespace Pulumi.OpenStack.Networking
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// The segment ID of the subnet. This is used to
+        /// specify which segment the subnet belongs to when using Neutron's routed
+        /// provider networks. Available when neutron segment extension is enabled.
+        /// </summary>
+        [Input("segmentId")]
+        public Input<string>? SegmentId { get; set; }
+
         [Input("serviceTypes")]
         private InputList<string>? _serviceTypes;
 
@@ -581,6 +597,14 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The segment ID of the subnet. This is used to
+        /// specify which segment the subnet belongs to when using Neutron's routed
+        /// provider networks. Available when neutron segment extension is enabled.
+        /// </summary>
+        [Input("segmentId")]
+        public Input<string>? SegmentId { get; set; }
 
         [Input("serviceTypes")]
         private InputList<string>? _serviceTypes;

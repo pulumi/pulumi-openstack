@@ -92,6 +92,12 @@ export class FlavorprofileV2 extends pulumi.CustomResource {
      * Changing this updates the existing flavorprofile.
      */
     public readonly providerName!: pulumi.Output<string>;
+    /**
+     * The region in which to obtain the V2 Networking client.
+     * A Networking client is needed to create an LB member. If omitted, the
+     * `region` argument of the provider is used. Changing this creates a new
+     * LB flavorprofile.
+     */
     public readonly region!: pulumi.Output<string>;
 
     /**
@@ -152,6 +158,12 @@ export interface FlavorprofileV2State {
      * Changing this updates the existing flavorprofile.
      */
     providerName?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Networking client.
+     * A Networking client is needed to create an LB member. If omitted, the
+     * `region` argument of the provider is used. Changing this creates a new
+     * LB flavorprofile.
+     */
     region?: pulumi.Input<string>;
 }
 
@@ -176,5 +188,11 @@ export interface FlavorprofileV2Args {
      * Changing this updates the existing flavorprofile.
      */
     providerName: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Networking client.
+     * A Networking client is needed to create an LB member. If omitted, the
+     * `region` argument of the provider is used. Changing this creates a new
+     * LB flavorprofile.
+     */
     region?: pulumi.Input<string>;
 }

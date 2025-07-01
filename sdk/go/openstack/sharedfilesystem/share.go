@@ -108,9 +108,9 @@ type Share struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The owner of the Share.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// The region in which to obtain the V2 Shared File System client.
-	// A Shared File System client is needed to create a share. Changing this
-	// creates a new share.
+	// The region in which to obtain the V2 Shared File System
+	// client. A Shared File System client is needed to create a share. Changing
+	// this creates a new share.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The share replication type.
 	ReplicationType pulumi.StringOutput `pulumi:"replicationType"`
@@ -198,9 +198,9 @@ type shareState struct {
 	Name *string `pulumi:"name"`
 	// The owner of the Share.
 	ProjectId *string `pulumi:"projectId"`
-	// The region in which to obtain the V2 Shared File System client.
-	// A Shared File System client is needed to create a share. Changing this
-	// creates a new share.
+	// The region in which to obtain the V2 Shared File System
+	// client. A Shared File System client is needed to create a share. Changing
+	// this creates a new share.
 	Region *string `pulumi:"region"`
 	// The share replication type.
 	ReplicationType *string `pulumi:"replicationType"`
@@ -253,9 +253,9 @@ type ShareState struct {
 	Name pulumi.StringPtrInput
 	// The owner of the Share.
 	ProjectId pulumi.StringPtrInput
-	// The region in which to obtain the V2 Shared File System client.
-	// A Shared File System client is needed to create a share. Changing this
-	// creates a new share.
+	// The region in which to obtain the V2 Shared File System
+	// client. A Shared File System client is needed to create a share. Changing
+	// this creates a new share.
 	Region pulumi.StringPtrInput
 	// The share replication type.
 	ReplicationType pulumi.StringPtrInput
@@ -300,9 +300,9 @@ type shareArgs struct {
 	// The name of the share. Changing this updates the name
 	// of the existing share.
 	Name *string `pulumi:"name"`
-	// The region in which to obtain the V2 Shared File System client.
-	// A Shared File System client is needed to create a share. Changing this
-	// creates a new share.
+	// The region in which to obtain the V2 Shared File System
+	// client. A Shared File System client is needed to create a share. Changing
+	// this creates a new share.
 	Region *string `pulumi:"region"`
 	// The UUID of a share network where the share server exists
 	// or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
@@ -340,9 +340,9 @@ type ShareArgs struct {
 	// The name of the share. Changing this updates the name
 	// of the existing share.
 	Name pulumi.StringPtrInput
-	// The region in which to obtain the V2 Shared File System client.
-	// A Shared File System client is needed to create a share. Changing this
-	// creates a new share.
+	// The region in which to obtain the V2 Shared File System
+	// client. A Shared File System client is needed to create a share. Changing
+	// this creates a new share.
 	Region pulumi.StringPtrInput
 	// The UUID of a share network where the share server exists
 	// or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
@@ -507,9 +507,9 @@ func (o ShareOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// The region in which to obtain the V2 Shared File System client.
-// A Shared File System client is needed to create a share. Changing this
-// creates a new share.
+// The region in which to obtain the V2 Shared File System
+// client. A Shared File System client is needed to create a share. Changing
+// this creates a new share.
 func (o ShareOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

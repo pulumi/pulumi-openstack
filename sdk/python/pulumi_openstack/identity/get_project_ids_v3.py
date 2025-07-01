@@ -175,6 +175,8 @@ def get_project_ids_v3(domain_id: Optional[builtins.str] = None,
            `name_regex` filtering does by client on the result of OpenStack search
            query.
     :param builtins.str parent_id: The parent of the project.
+    :param builtins.str region: The region in which to obtain the V3 Keystone client.
+           If omitted, the `region` argument of the provider is used.
     :param Sequence[builtins.str] tags: Tags for the project.
     """
     __args__ = dict()
@@ -236,6 +238,8 @@ def get_project_ids_v3_output(domain_id: Optional[pulumi.Input[Optional[builtins
            `name_regex` filtering does by client on the result of OpenStack search
            query.
     :param builtins.str parent_id: The parent of the project.
+    :param builtins.str region: The region in which to obtain the V3 Keystone client.
+           If omitted, the `region` argument of the provider is used.
     :param Sequence[builtins.str] tags: Tags for the project.
     """
     __args__ = dict()

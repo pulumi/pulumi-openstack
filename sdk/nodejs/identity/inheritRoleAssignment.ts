@@ -90,6 +90,11 @@ export class InheritRoleAssignment extends pulumi.CustomResource {
      * The project should be able to containt child projects.
      */
     public readonly projectId!: pulumi.Output<string | undefined>;
+    /**
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used. Changing this
+     * creates a new inherit role assignment.
+     */
     public readonly region!: pulumi.Output<string>;
     /**
      * The role to assign.
@@ -153,6 +158,11 @@ export interface InheritRoleAssignmentState {
      * The project should be able to containt child projects.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used. Changing this
+     * creates a new inherit role assignment.
+     */
     region?: pulumi.Input<string>;
     /**
      * The role to assign.
@@ -181,6 +191,11 @@ export interface InheritRoleAssignmentArgs {
      * The project should be able to containt child projects.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used. Changing this
+     * creates a new inherit role assignment.
+     */
     region?: pulumi.Input<string>;
     /**
      * The role to assign.

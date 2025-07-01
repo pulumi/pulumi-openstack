@@ -117,6 +117,11 @@ type SecGroupRule struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// security group rule.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The remote address group id, the value
+	// needs to be an OpenStack ID of an address group in the same tenant. Changing
+	// this creates a new security group rule. This argument is mutually exclusive
+	// with `remoteIpPrefix` and `remoteGroupId`.
+	RemoteAddressGroupId pulumi.StringOutput `pulumi:"remoteAddressGroupId"`
 	// The remote group id, the value needs to be an
 	// Openstack ID of a security group in the same tenant. Changing this creates
 	// a new security group rule.
@@ -222,6 +227,11 @@ type secGroupRuleState struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// security group rule.
 	Region *string `pulumi:"region"`
+	// The remote address group id, the value
+	// needs to be an OpenStack ID of an address group in the same tenant. Changing
+	// this creates a new security group rule. This argument is mutually exclusive
+	// with `remoteIpPrefix` and `remoteGroupId`.
+	RemoteAddressGroupId *string `pulumi:"remoteAddressGroupId"`
 	// The remote group id, the value needs to be an
 	// Openstack ID of a security group in the same tenant. Changing this creates
 	// a new security group rule.
@@ -289,6 +299,11 @@ type SecGroupRuleState struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// security group rule.
 	Region pulumi.StringPtrInput
+	// The remote address group id, the value
+	// needs to be an OpenStack ID of an address group in the same tenant. Changing
+	// this creates a new security group rule. This argument is mutually exclusive
+	// with `remoteIpPrefix` and `remoteGroupId`.
+	RemoteAddressGroupId pulumi.StringPtrInput
 	// The remote group id, the value needs to be an
 	// Openstack ID of a security group in the same tenant. Changing this creates
 	// a new security group rule.
@@ -360,6 +375,11 @@ type secGroupRuleArgs struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// security group rule.
 	Region *string `pulumi:"region"`
+	// The remote address group id, the value
+	// needs to be an OpenStack ID of an address group in the same tenant. Changing
+	// this creates a new security group rule. This argument is mutually exclusive
+	// with `remoteIpPrefix` and `remoteGroupId`.
+	RemoteAddressGroupId *string `pulumi:"remoteAddressGroupId"`
 	// The remote group id, the value needs to be an
 	// Openstack ID of a security group in the same tenant. Changing this creates
 	// a new security group rule.
@@ -428,6 +448,11 @@ type SecGroupRuleArgs struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// security group rule.
 	Region pulumi.StringPtrInput
+	// The remote address group id, the value
+	// needs to be an OpenStack ID of an address group in the same tenant. Changing
+	// this creates a new security group rule. This argument is mutually exclusive
+	// with `remoteIpPrefix` and `remoteGroupId`.
+	RemoteAddressGroupId pulumi.StringPtrInput
 	// The remote group id, the value needs to be an
 	// Openstack ID of a security group in the same tenant. Changing this creates
 	// a new security group rule.
@@ -600,6 +625,14 @@ func (o SecGroupRuleOutput) Protocol() pulumi.StringPtrOutput {
 // security group rule.
 func (o SecGroupRuleOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecGroupRule) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The remote address group id, the value
+// needs to be an OpenStack ID of an address group in the same tenant. Changing
+// this creates a new security group rule. This argument is mutually exclusive
+// with `remoteIpPrefix` and `remoteGroupId`.
+func (o SecGroupRuleOutput) RemoteAddressGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecGroupRule) pulumi.StringOutput { return v.RemoteAddressGroupId }).(pulumi.StringOutput)
 }
 
 // The remote group id, the value needs to be an

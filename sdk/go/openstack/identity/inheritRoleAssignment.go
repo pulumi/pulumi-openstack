@@ -86,7 +86,10 @@ type InheritRoleAssignment struct {
 	// The project to assign the role in.
 	// The project should be able to containt child projects.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	Region    pulumi.StringOutput    `pulumi:"region"`
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used. Changing this
+	// creates a new inherit role assignment.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The role to assign.
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
 	// The user to assign the role to.
@@ -133,7 +136,10 @@ type inheritRoleAssignmentState struct {
 	// The project to assign the role in.
 	// The project should be able to containt child projects.
 	ProjectId *string `pulumi:"projectId"`
-	Region    *string `pulumi:"region"`
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used. Changing this
+	// creates a new inherit role assignment.
+	Region *string `pulumi:"region"`
 	// The role to assign.
 	RoleId *string `pulumi:"roleId"`
 	// The user to assign the role to.
@@ -148,7 +154,10 @@ type InheritRoleAssignmentState struct {
 	// The project to assign the role in.
 	// The project should be able to containt child projects.
 	ProjectId pulumi.StringPtrInput
-	Region    pulumi.StringPtrInput
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used. Changing this
+	// creates a new inherit role assignment.
+	Region pulumi.StringPtrInput
 	// The role to assign.
 	RoleId pulumi.StringPtrInput
 	// The user to assign the role to.
@@ -167,7 +176,10 @@ type inheritRoleAssignmentArgs struct {
 	// The project to assign the role in.
 	// The project should be able to containt child projects.
 	ProjectId *string `pulumi:"projectId"`
-	Region    *string `pulumi:"region"`
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used. Changing this
+	// creates a new inherit role assignment.
+	Region *string `pulumi:"region"`
 	// The role to assign.
 	RoleId string `pulumi:"roleId"`
 	// The user to assign the role to.
@@ -183,7 +195,10 @@ type InheritRoleAssignmentArgs struct {
 	// The project to assign the role in.
 	// The project should be able to containt child projects.
 	ProjectId pulumi.StringPtrInput
-	Region    pulumi.StringPtrInput
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used. Changing this
+	// creates a new inherit role assignment.
+	Region pulumi.StringPtrInput
 	// The role to assign.
 	RoleId pulumi.StringInput
 	// The user to assign the role to.
@@ -293,6 +308,9 @@ func (o InheritRoleAssignmentOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InheritRoleAssignment) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
+// The region in which to obtain the V3 Keystone client.
+// If omitted, the `region` argument of the provider is used. Changing this
+// creates a new inherit role assignment.
 func (o InheritRoleAssignmentOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *InheritRoleAssignment) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

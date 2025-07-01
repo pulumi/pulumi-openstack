@@ -36,6 +36,7 @@ export function getSubnetIdsV2(args?: GetSubnetIdsV2Args, opts?: pulumi.InvokeOp
         "nameRegex": args.nameRegex,
         "networkId": args.networkId,
         "region": args.region,
+        "segmentId": args.segmentId,
         "sortDirection": args.sortDirection,
         "sortKey": args.sortKey,
         "subnetpoolId": args.subnetpoolId,
@@ -98,6 +99,11 @@ export interface GetSubnetIdsV2Args {
      */
     region?: string;
     /**
+     * The ID of the segment the subnet belongs to.
+     * Available when neutron segment extension is enabled.
+     */
+    segmentId?: string;
+    /**
      * Order the results in either `asc` or `desc`.
      * Defaults to none.
      */
@@ -141,6 +147,7 @@ export interface GetSubnetIdsV2Result {
     readonly nameRegex?: string;
     readonly networkId?: string;
     readonly region: string;
+    readonly segmentId?: string;
     readonly sortDirection?: string;
     readonly sortKey?: string;
     readonly subnetpoolId?: string;
@@ -179,6 +186,7 @@ export function getSubnetIdsV2Output(args?: GetSubnetIdsV2OutputArgs, opts?: pul
         "nameRegex": args.nameRegex,
         "networkId": args.networkId,
         "region": args.region,
+        "segmentId": args.segmentId,
         "sortDirection": args.sortDirection,
         "sortKey": args.sortKey,
         "subnetpoolId": args.subnetpoolId,
@@ -240,6 +248,11 @@ export interface GetSubnetIdsV2OutputArgs {
      * `region` argument of the provider is used.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The ID of the segment the subnet belongs to.
+     * Available when neutron segment extension is enabled.
+     */
+    segmentId?: pulumi.Input<string>;
     /**
      * Order the results in either `asc` or `desc`.
      * Defaults to none.

@@ -63,7 +63,8 @@ export interface GetUserArgs {
      */
     protocolId?: string;
     /**
-     * The region the user is located in.
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used.
      */
     region?: string;
     /**
@@ -113,7 +114,7 @@ export interface GetUserResult {
      */
     readonly protocolId?: string;
     /**
-     * The region the user is located in.
+     * See Argument Reference above.
      */
     readonly region: string;
     /**
@@ -180,7 +181,8 @@ export interface GetUserOutputArgs {
      */
     protocolId?: pulumi.Input<string>;
     /**
-     * The region the user is located in.
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used.
      */
     region?: pulumi.Input<string>;
     /**

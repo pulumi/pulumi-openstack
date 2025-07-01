@@ -24,6 +24,7 @@ __all__ = [
     'ServerGroupRules',
     'VolumeAttachVendorOptions',
     'GetInstanceV2NetworkResult',
+    'GetServergroupV2RuleResult',
 ]
 
 @pulumi.output_type
@@ -743,5 +744,17 @@ class GetInstanceV2NetworkResult(dict):
         The UUID of the network
         """
         return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetServergroupV2RuleResult(dict):
+    def __init__(__self__, *,
+                 max_server_per_host: builtins.int):
+        pulumi.set(__self__, "max_server_per_host", max_server_per_host)
+
+    @property
+    @pulumi.getter(name="maxServerPerHost")
+    def max_server_per_host(self) -> builtins.int:
+        return pulumi.get(self, "max_server_per_host")
 
 

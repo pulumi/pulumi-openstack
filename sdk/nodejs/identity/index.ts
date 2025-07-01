@@ -70,10 +70,20 @@ export type InheritRoleAssignment = import("./inheritRoleAssignment").InheritRol
 export const InheritRoleAssignment: typeof import("./inheritRoleAssignment").InheritRoleAssignment = null as any;
 utilities.lazyLoad(exports, ["InheritRoleAssignment"], () => require("./inheritRoleAssignment"));
 
+export { LimitV3Args, LimitV3State } from "./limitV3";
+export type LimitV3 = import("./limitV3").LimitV3;
+export const LimitV3: typeof import("./limitV3").LimitV3 = null as any;
+utilities.lazyLoad(exports, ["LimitV3"], () => require("./limitV3"));
+
 export { ProjectArgs, ProjectState } from "./project";
 export type Project = import("./project").Project;
 export const Project: typeof import("./project").Project = null as any;
 utilities.lazyLoad(exports, ["Project"], () => require("./project"));
+
+export { RegisteredLimitV3Args, RegisteredLimitV3State } from "./registeredLimitV3";
+export type RegisteredLimitV3 = import("./registeredLimitV3").RegisteredLimitV3;
+export const RegisteredLimitV3: typeof import("./registeredLimitV3").RegisteredLimitV3 = null as any;
+utilities.lazyLoad(exports, ["RegisteredLimitV3"], () => require("./registeredLimitV3"));
 
 export { RoleArgs, RoleState } from "./role";
 export type Role = import("./role").Role;
@@ -115,8 +125,12 @@ const _module = {
                 return new GroupV3(name, <any>undefined, { urn })
             case "openstack:identity/inheritRoleAssignment:InheritRoleAssignment":
                 return new InheritRoleAssignment(name, <any>undefined, { urn })
+            case "openstack:identity/limitV3:LimitV3":
+                return new LimitV3(name, <any>undefined, { urn })
             case "openstack:identity/project:Project":
                 return new Project(name, <any>undefined, { urn })
+            case "openstack:identity/registeredLimitV3:RegisteredLimitV3":
+                return new RegisteredLimitV3(name, <any>undefined, { urn })
             case "openstack:identity/role:Role":
                 return new Role(name, <any>undefined, { urn })
             case "openstack:identity/roleAssignment:RoleAssignment":
@@ -137,7 +151,9 @@ pulumi.runtime.registerResourceModule("openstack", "identity/ec2CredentialV3", _
 pulumi.runtime.registerResourceModule("openstack", "identity/endpointV3", _module)
 pulumi.runtime.registerResourceModule("openstack", "identity/groupV3", _module)
 pulumi.runtime.registerResourceModule("openstack", "identity/inheritRoleAssignment", _module)
+pulumi.runtime.registerResourceModule("openstack", "identity/limitV3", _module)
 pulumi.runtime.registerResourceModule("openstack", "identity/project", _module)
+pulumi.runtime.registerResourceModule("openstack", "identity/registeredLimitV3", _module)
 pulumi.runtime.registerResourceModule("openstack", "identity/role", _module)
 pulumi.runtime.registerResourceModule("openstack", "identity/roleAssignment", _module)
 pulumi.runtime.registerResourceModule("openstack", "identity/serviceV3", _module)

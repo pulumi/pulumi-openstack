@@ -51,8 +51,11 @@ func GetHypervisorV2(ctx *pulumi.Context, args *GetHypervisorV2Args, opts ...pul
 
 // A collection of arguments for invoking getHypervisorV2.
 type GetHypervisorV2Args struct {
-	// The hostname of the hypervisor
+	// The hostname of the hypervisor.
 	Hostname *string `pulumi:"hostname"`
+	// The region in which to obtain the V2 Compute client.
+	// If omitted, the `region` argument of the provider is used.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getHypervisorV2.
@@ -67,6 +70,8 @@ type GetHypervisorV2Result struct {
 	Id string `pulumi:"id"`
 	// The number in MegaBytes of memory the hypervisor can provide
 	Memory int `pulumi:"memory"`
+	// See Argument Reference above.
+	Region string `pulumi:"region"`
 	// The state of the hypervisor (`up` or `down`)
 	State string `pulumi:"state"`
 	// The status of the hypervisor (`enabled` or `disabled`)
@@ -88,8 +93,11 @@ func GetHypervisorV2Output(ctx *pulumi.Context, args GetHypervisorV2OutputArgs, 
 
 // A collection of arguments for invoking getHypervisorV2.
 type GetHypervisorV2OutputArgs struct {
-	// The hostname of the hypervisor
+	// The hostname of the hypervisor.
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// The region in which to obtain the V2 Compute client.
+	// If omitted, the `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetHypervisorV2OutputArgs) ElementType() reflect.Type {
@@ -134,6 +142,11 @@ func (o GetHypervisorV2ResultOutput) Id() pulumi.StringOutput {
 // The number in MegaBytes of memory the hypervisor can provide
 func (o GetHypervisorV2ResultOutput) Memory() pulumi.IntOutput {
 	return o.ApplyT(func(v GetHypervisorV2Result) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+// See Argument Reference above.
+func (o GetHypervisorV2ResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHypervisorV2Result) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // The state of the hypervisor (`up` or `down`)

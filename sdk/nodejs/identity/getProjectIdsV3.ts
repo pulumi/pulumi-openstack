@@ -66,6 +66,10 @@ export interface GetProjectIdsV3Args {
      * The parent of the project.
      */
     parentId?: string;
+    /**
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used.
+     */
     region?: string;
     /**
      * Tags for the project.
@@ -154,6 +158,10 @@ export interface GetProjectIdsV3OutputArgs {
      * The parent of the project.
      */
     parentId?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used.
+     */
     region?: pulumi.Input<string>;
     /**
      * Tags for the project.

@@ -155,6 +155,12 @@ export class Subnet extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The segment ID of the subnet. This is used to
+     * specify which segment the subnet belongs to when using Neutron's routed
+     * provider networks. Available when neutron segment extension is enabled.
+     */
+    public readonly segmentId!: pulumi.Output<string | undefined>;
+    /**
      * An array of service types used by the subnet.
      * Changing this updates the service types for the existing subnet.
      */
@@ -206,6 +212,7 @@ export class Subnet extends pulumi.CustomResource {
             resourceInputs["noGateway"] = state ? state.noGateway : undefined;
             resourceInputs["prefixLength"] = state ? state.prefixLength : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["segmentId"] = state ? state.segmentId : undefined;
             resourceInputs["serviceTypes"] = state ? state.serviceTypes : undefined;
             resourceInputs["subnetpoolId"] = state ? state.subnetpoolId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -231,6 +238,7 @@ export class Subnet extends pulumi.CustomResource {
             resourceInputs["noGateway"] = args ? args.noGateway : undefined;
             resourceInputs["prefixLength"] = args ? args.prefixLength : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["segmentId"] = args ? args.segmentId : undefined;
             resourceInputs["serviceTypes"] = args ? args.serviceTypes : undefined;
             resourceInputs["subnetpoolId"] = args ? args.subnetpoolId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -340,6 +348,12 @@ export interface SubnetState {
      * subnet.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The segment ID of the subnet. This is used to
+     * specify which segment the subnet belongs to when using Neutron's routed
+     * provider networks. Available when neutron segment extension is enabled.
+     */
+    segmentId?: pulumi.Input<string>;
     /**
      * An array of service types used by the subnet.
      * Changing this updates the service types for the existing subnet.
@@ -456,6 +470,12 @@ export interface SubnetArgs {
      * subnet.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The segment ID of the subnet. This is used to
+     * specify which segment the subnet belongs to when using Neutron's routed
+     * provider networks. Available when neutron segment extension is enabled.
+     */
+    segmentId?: pulumi.Input<string>;
     /**
      * An array of service types used by the subnet.
      * Changing this updates the service types for the existing subnet.

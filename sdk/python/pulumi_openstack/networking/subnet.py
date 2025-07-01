@@ -37,6 +37,7 @@ class SubnetArgs:
                  no_gateway: Optional[pulumi.Input[builtins.bool]] = None,
                  prefix_length: Optional[pulumi.Input[builtins.int]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
+                 segment_id: Optional[pulumi.Input[builtins.str]] = None,
                  service_types: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  subnetpool_id: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -87,6 +88,9 @@ class SubnetArgs:
                A Networking client is needed to create a Neutron subnet. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                subnet.
+        :param pulumi.Input[builtins.str] segment_id: The segment ID of the subnet. This is used to
+               specify which segment the subnet belongs to when using Neutron's routed
+               provider networks. Available when neutron segment extension is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] service_types: An array of service types used by the subnet.
                Changing this updates the service types for the existing subnet.
         :param pulumi.Input[builtins.str] subnetpool_id: The ID of the subnetpool associated with the subnet.
@@ -124,6 +128,8 @@ class SubnetArgs:
             pulumi.set(__self__, "prefix_length", prefix_length)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if segment_id is not None:
+            pulumi.set(__self__, "segment_id", segment_id)
         if service_types is not None:
             pulumi.set(__self__, "service_types", service_types)
         if subnetpool_id is not None:
@@ -344,6 +350,20 @@ class SubnetArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="segmentId")
+    def segment_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The segment ID of the subnet. This is used to
+        specify which segment the subnet belongs to when using Neutron's routed
+        provider networks. Available when neutron segment extension is enabled.
+        """
+        return pulumi.get(self, "segment_id")
+
+    @segment_id.setter
+    def segment_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "segment_id", value)
+
+    @property
     @pulumi.getter(name="serviceTypes")
     def service_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
@@ -425,6 +445,7 @@ class _SubnetState:
                  no_gateway: Optional[pulumi.Input[builtins.bool]] = None,
                  prefix_length: Optional[pulumi.Input[builtins.int]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
+                 segment_id: Optional[pulumi.Input[builtins.str]] = None,
                  service_types: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  subnetpool_id: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -477,6 +498,9 @@ class _SubnetState:
                A Networking client is needed to create a Neutron subnet. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                subnet.
+        :param pulumi.Input[builtins.str] segment_id: The segment ID of the subnet. This is used to
+               specify which segment the subnet belongs to when using Neutron's routed
+               provider networks. Available when neutron segment extension is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] service_types: An array of service types used by the subnet.
                Changing this updates the service types for the existing subnet.
         :param pulumi.Input[builtins.str] subnetpool_id: The ID of the subnetpool associated with the subnet.
@@ -517,6 +541,8 @@ class _SubnetState:
             pulumi.set(__self__, "prefix_length", prefix_length)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if segment_id is not None:
+            pulumi.set(__self__, "segment_id", segment_id)
         if service_types is not None:
             pulumi.set(__self__, "service_types", service_types)
         if subnetpool_id is not None:
@@ -750,6 +776,20 @@ class _SubnetState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="segmentId")
+    def segment_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The segment ID of the subnet. This is used to
+        specify which segment the subnet belongs to when using Neutron's routed
+        provider networks. Available when neutron segment extension is enabled.
+        """
+        return pulumi.get(self, "segment_id")
+
+    @segment_id.setter
+    def segment_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "segment_id", value)
+
+    @property
     @pulumi.getter(name="serviceTypes")
     def service_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
@@ -833,6 +873,7 @@ class Subnet(pulumi.CustomResource):
                  no_gateway: Optional[pulumi.Input[builtins.bool]] = None,
                  prefix_length: Optional[pulumi.Input[builtins.int]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
+                 segment_id: Optional[pulumi.Input[builtins.str]] = None,
                  service_types: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  subnetpool_id: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -909,6 +950,9 @@ class Subnet(pulumi.CustomResource):
                A Networking client is needed to create a Neutron subnet. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                subnet.
+        :param pulumi.Input[builtins.str] segment_id: The segment ID of the subnet. This is used to
+               specify which segment the subnet belongs to when using Neutron's routed
+               provider networks. Available when neutron segment extension is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] service_types: An array of service types used by the subnet.
                Changing this updates the service types for the existing subnet.
         :param pulumi.Input[builtins.str] subnetpool_id: The ID of the subnetpool associated with the subnet.
@@ -978,6 +1022,7 @@ class Subnet(pulumi.CustomResource):
                  no_gateway: Optional[pulumi.Input[builtins.bool]] = None,
                  prefix_length: Optional[pulumi.Input[builtins.int]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
+                 segment_id: Optional[pulumi.Input[builtins.str]] = None,
                  service_types: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  subnetpool_id: Optional[pulumi.Input[builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -1009,6 +1054,7 @@ class Subnet(pulumi.CustomResource):
             __props__.__dict__["no_gateway"] = no_gateway
             __props__.__dict__["prefix_length"] = prefix_length
             __props__.__dict__["region"] = region
+            __props__.__dict__["segment_id"] = segment_id
             __props__.__dict__["service_types"] = service_types
             __props__.__dict__["subnetpool_id"] = subnetpool_id
             __props__.__dict__["tags"] = tags
@@ -1041,6 +1087,7 @@ class Subnet(pulumi.CustomResource):
             no_gateway: Optional[pulumi.Input[builtins.bool]] = None,
             prefix_length: Optional[pulumi.Input[builtins.int]] = None,
             region: Optional[pulumi.Input[builtins.str]] = None,
+            segment_id: Optional[pulumi.Input[builtins.str]] = None,
             service_types: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             subnetpool_id: Optional[pulumi.Input[builtins.str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -1098,6 +1145,9 @@ class Subnet(pulumi.CustomResource):
                A Networking client is needed to create a Neutron subnet. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                subnet.
+        :param pulumi.Input[builtins.str] segment_id: The segment ID of the subnet. This is used to
+               specify which segment the subnet belongs to when using Neutron's routed
+               provider networks. Available when neutron segment extension is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] service_types: An array of service types used by the subnet.
                Changing this updates the service types for the existing subnet.
         :param pulumi.Input[builtins.str] subnetpool_id: The ID of the subnetpool associated with the subnet.
@@ -1126,6 +1176,7 @@ class Subnet(pulumi.CustomResource):
         __props__.__dict__["no_gateway"] = no_gateway
         __props__.__dict__["prefix_length"] = prefix_length
         __props__.__dict__["region"] = region
+        __props__.__dict__["segment_id"] = segment_id
         __props__.__dict__["service_types"] = service_types
         __props__.__dict__["subnetpool_id"] = subnetpool_id
         __props__.__dict__["tags"] = tags
@@ -1289,6 +1340,16 @@ class Subnet(pulumi.CustomResource):
         subnet.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="segmentId")
+    def segment_id(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The segment ID of the subnet. This is used to
+        specify which segment the subnet belongs to when using Neutron's routed
+        provider networks. Available when neutron segment extension is enabled.
+        """
+        return pulumi.get(self, "segment_id")
 
     @property
     @pulumi.getter(name="serviceTypes")

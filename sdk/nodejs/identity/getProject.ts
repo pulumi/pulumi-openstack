@@ -64,7 +64,8 @@ export interface GetProjectArgs {
      */
     projectId?: string;
     /**
-     * The region the project is located in.
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used.
      */
     region?: string;
 }
@@ -106,7 +107,7 @@ export interface GetProjectResult {
      */
     readonly projectId?: string;
     /**
-     * The region the project is located in.
+     * See Argument Reference above.
      */
     readonly region: string;
     /**
@@ -174,7 +175,8 @@ export interface GetProjectOutputArgs {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * The region the project is located in.
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used.
      */
     region?: pulumi.Input<string>;
 }

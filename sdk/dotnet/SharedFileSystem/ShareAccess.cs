@@ -184,9 +184,9 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public Output<string> AccessType { get; private set; } = null!;
 
         /// <summary>
-        /// The region in which to obtain the V2 Shared File System client.
-        /// A Shared File System client is needed to create a share access. Changing this
-        /// creates a new share access.
+        /// The region in which to obtain the V2 Shared File System
+        /// client. A Shared File System client is needed to create a share access.
+        /// Changing this creates a new share access.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -275,9 +275,9 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public Input<string> AccessType { get; set; } = null!;
 
         /// <summary>
-        /// The region in which to obtain the V2 Shared File System client.
-        /// A Shared File System client is needed to create a share access. Changing this
-        /// creates a new share access.
+        /// The region in which to obtain the V2 Shared File System
+        /// client. A Shared File System client is needed to create a share access.
+        /// Changing this creates a new share access.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -334,9 +334,9 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public Input<string>? AccessType { get; set; }
 
         /// <summary>
-        /// The region in which to obtain the V2 Shared File System client.
-        /// A Shared File System client is needed to create a share access. Changing this
-        /// creates a new share access.
+        /// The region in which to obtain the V2 Shared File System
+        /// client. A Shared File System client is needed to create a share access.
+        /// Changing this creates a new share access.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

@@ -28,6 +28,7 @@ class SecGroupRuleArgs:
                  port_range_min: Optional[pulumi.Input[builtins.int]] = None,
                  protocol: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
+                 remote_address_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  remote_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  remote_ip_prefix: Optional[pulumi.Input[builtins.str]] = None,
                  tenant_id: Optional[pulumi.Input[builtins.str]] = None):
@@ -78,6 +79,10 @@ class SecGroupRuleArgs:
                A networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                security group rule.
+        :param pulumi.Input[builtins.str] remote_address_group_id: The remote address group id, the value
+               needs to be an OpenStack ID of an address group in the same tenant. Changing
+               this creates a new security group rule. This argument is mutually exclusive
+               with `remote_ip_prefix` and `remote_group_id`.
         :param pulumi.Input[builtins.str] remote_group_id: The remote group id, the value needs to be an
                Openstack ID of a security group in the same tenant. Changing this creates
                a new security group rule.
@@ -100,6 +105,8 @@ class SecGroupRuleArgs:
             pulumi.set(__self__, "protocol", protocol)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if remote_address_group_id is not None:
+            pulumi.set(__self__, "remote_address_group_id", remote_address_group_id)
         if remote_group_id is not None:
             pulumi.set(__self__, "remote_group_id", remote_group_id)
         if remote_ip_prefix is not None:
@@ -241,6 +248,21 @@ class SecGroupRuleArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="remoteAddressGroupId")
+    def remote_address_group_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The remote address group id, the value
+        needs to be an OpenStack ID of an address group in the same tenant. Changing
+        this creates a new security group rule. This argument is mutually exclusive
+        with `remote_ip_prefix` and `remote_group_id`.
+        """
+        return pulumi.get(self, "remote_address_group_id")
+
+    @remote_address_group_id.setter
+    def remote_address_group_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "remote_address_group_id", value)
+
+    @property
     @pulumi.getter(name="remoteGroupId")
     def remote_group_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -292,6 +314,7 @@ class _SecGroupRuleState:
                  port_range_min: Optional[pulumi.Input[builtins.int]] = None,
                  protocol: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
+                 remote_address_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  remote_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  remote_ip_prefix: Optional[pulumi.Input[builtins.str]] = None,
                  security_group_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -340,6 +363,10 @@ class _SecGroupRuleState:
                A networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                security group rule.
+        :param pulumi.Input[builtins.str] remote_address_group_id: The remote address group id, the value
+               needs to be an OpenStack ID of an address group in the same tenant. Changing
+               this creates a new security group rule. This argument is mutually exclusive
+               with `remote_ip_prefix` and `remote_group_id`.
         :param pulumi.Input[builtins.str] remote_group_id: The remote group id, the value needs to be an
                Openstack ID of a security group in the same tenant. Changing this creates
                a new security group rule.
@@ -366,6 +393,8 @@ class _SecGroupRuleState:
             pulumi.set(__self__, "protocol", protocol)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if remote_address_group_id is not None:
+            pulumi.set(__self__, "remote_address_group_id", remote_address_group_id)
         if remote_group_id is not None:
             pulumi.set(__self__, "remote_group_id", remote_group_id)
         if remote_ip_prefix is not None:
@@ -495,6 +524,21 @@ class _SecGroupRuleState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="remoteAddressGroupId")
+    def remote_address_group_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The remote address group id, the value
+        needs to be an OpenStack ID of an address group in the same tenant. Changing
+        this creates a new security group rule. This argument is mutually exclusive
+        with `remote_ip_prefix` and `remote_group_id`.
+        """
+        return pulumi.get(self, "remote_address_group_id")
+
+    @remote_address_group_id.setter
+    def remote_address_group_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "remote_address_group_id", value)
+
+    @property
     @pulumi.getter(name="remoteGroupId")
     def remote_group_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -563,6 +607,7 @@ class SecGroupRule(pulumi.CustomResource):
                  port_range_min: Optional[pulumi.Input[builtins.int]] = None,
                  protocol: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
+                 remote_address_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  remote_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  remote_ip_prefix: Optional[pulumi.Input[builtins.str]] = None,
                  security_group_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -647,6 +692,10 @@ class SecGroupRule(pulumi.CustomResource):
                A networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                security group rule.
+        :param pulumi.Input[builtins.str] remote_address_group_id: The remote address group id, the value
+               needs to be an OpenStack ID of an address group in the same tenant. Changing
+               this creates a new security group rule. This argument is mutually exclusive
+               with `remote_ip_prefix` and `remote_group_id`.
         :param pulumi.Input[builtins.str] remote_group_id: The remote group id, the value needs to be an
                Openstack ID of a security group in the same tenant. Changing this creates
                a new security group rule.
@@ -722,6 +771,7 @@ class SecGroupRule(pulumi.CustomResource):
                  port_range_min: Optional[pulumi.Input[builtins.int]] = None,
                  protocol: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
+                 remote_address_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  remote_group_id: Optional[pulumi.Input[builtins.str]] = None,
                  remote_ip_prefix: Optional[pulumi.Input[builtins.str]] = None,
                  security_group_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -746,6 +796,7 @@ class SecGroupRule(pulumi.CustomResource):
             __props__.__dict__["port_range_min"] = port_range_min
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["region"] = region
+            __props__.__dict__["remote_address_group_id"] = remote_address_group_id
             __props__.__dict__["remote_group_id"] = remote_group_id
             __props__.__dict__["remote_ip_prefix"] = remote_ip_prefix
             if security_group_id is None and not opts.urn:
@@ -769,6 +820,7 @@ class SecGroupRule(pulumi.CustomResource):
             port_range_min: Optional[pulumi.Input[builtins.int]] = None,
             protocol: Optional[pulumi.Input[builtins.str]] = None,
             region: Optional[pulumi.Input[builtins.str]] = None,
+            remote_address_group_id: Optional[pulumi.Input[builtins.str]] = None,
             remote_group_id: Optional[pulumi.Input[builtins.str]] = None,
             remote_ip_prefix: Optional[pulumi.Input[builtins.str]] = None,
             security_group_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -822,6 +874,10 @@ class SecGroupRule(pulumi.CustomResource):
                A networking client is needed to create a port. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                security group rule.
+        :param pulumi.Input[builtins.str] remote_address_group_id: The remote address group id, the value
+               needs to be an OpenStack ID of an address group in the same tenant. Changing
+               this creates a new security group rule. This argument is mutually exclusive
+               with `remote_ip_prefix` and `remote_group_id`.
         :param pulumi.Input[builtins.str] remote_group_id: The remote group id, the value needs to be an
                Openstack ID of a security group in the same tenant. Changing this creates
                a new security group rule.
@@ -845,6 +901,7 @@ class SecGroupRule(pulumi.CustomResource):
         __props__.__dict__["port_range_min"] = port_range_min
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["region"] = region
+        __props__.__dict__["remote_address_group_id"] = remote_address_group_id
         __props__.__dict__["remote_group_id"] = remote_group_id
         __props__.__dict__["remote_ip_prefix"] = remote_ip_prefix
         __props__.__dict__["security_group_id"] = security_group_id
@@ -941,6 +998,17 @@ class SecGroupRule(pulumi.CustomResource):
         security group rule.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="remoteAddressGroupId")
+    def remote_address_group_id(self) -> pulumi.Output[builtins.str]:
+        """
+        The remote address group id, the value
+        needs to be an OpenStack ID of an address group in the same tenant. Changing
+        this creates a new security group rule. This argument is mutually exclusive
+        with `remote_ip_prefix` and `remote_group_id`.
+        """
+        return pulumi.get(self, "remote_address_group_id")
 
     @property
     @pulumi.getter(name="remoteGroupId")

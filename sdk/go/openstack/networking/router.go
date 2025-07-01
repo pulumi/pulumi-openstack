@@ -85,6 +85,10 @@ type Router struct {
 	// compute instances or load balancers will be using floating IPs. Changing
 	// this updates the external gateway of the router.
 	ExternalNetworkId pulumi.StringOutput `pulumi:"externalNetworkId"`
+	// The QoS policy UUID that will be applied
+	// on the external gateway for the router. Changing this updates the external
+	// gateway of the router.
+	ExternalQosPolicyId pulumi.StringOutput `pulumi:"externalQosPolicyId"`
 	// A list of external subnet IDs to try over
 	// each to obtain a fixed IP for the router. If a subnet ID in a list has
 	// exhausted floating IP pool, the next subnet ID will be tried. This argument is
@@ -175,6 +179,10 @@ type routerState struct {
 	// compute instances or load balancers will be using floating IPs. Changing
 	// this updates the external gateway of the router.
 	ExternalNetworkId *string `pulumi:"externalNetworkId"`
+	// The QoS policy UUID that will be applied
+	// on the external gateway for the router. Changing this updates the external
+	// gateway of the router.
+	ExternalQosPolicyId *string `pulumi:"externalQosPolicyId"`
 	// A list of external subnet IDs to try over
 	// each to obtain a fixed IP for the router. If a subnet ID in a list has
 	// exhausted floating IP pool, the next subnet ID will be tried. This argument is
@@ -236,6 +244,10 @@ type RouterState struct {
 	// compute instances or load balancers will be using floating IPs. Changing
 	// this updates the external gateway of the router.
 	ExternalNetworkId pulumi.StringPtrInput
+	// The QoS policy UUID that will be applied
+	// on the external gateway for the router. Changing this updates the external
+	// gateway of the router.
+	ExternalQosPolicyId pulumi.StringPtrInput
 	// A list of external subnet IDs to try over
 	// each to obtain a fixed IP for the router. If a subnet ID in a list has
 	// exhausted floating IP pool, the next subnet ID will be tried. This argument is
@@ -298,6 +310,10 @@ type routerArgs struct {
 	// compute instances or load balancers will be using floating IPs. Changing
 	// this updates the external gateway of the router.
 	ExternalNetworkId *string `pulumi:"externalNetworkId"`
+	// The QoS policy UUID that will be applied
+	// on the external gateway for the router. Changing this updates the external
+	// gateway of the router.
+	ExternalQosPolicyId *string `pulumi:"externalQosPolicyId"`
 	// A list of external subnet IDs to try over
 	// each to obtain a fixed IP for the router. If a subnet ID in a list has
 	// exhausted floating IP pool, the next subnet ID will be tried. This argument is
@@ -357,6 +373,10 @@ type RouterArgs struct {
 	// compute instances or load balancers will be using floating IPs. Changing
 	// this updates the external gateway of the router.
 	ExternalNetworkId pulumi.StringPtrInput
+	// The QoS policy UUID that will be applied
+	// on the external gateway for the router. Changing this updates the external
+	// gateway of the router.
+	ExternalQosPolicyId pulumi.StringPtrInput
 	// A list of external subnet IDs to try over
 	// each to obtain a fixed IP for the router. If a subnet ID in a list has
 	// exhausted floating IP pool, the next subnet ID will be tried. This argument is
@@ -526,6 +546,13 @@ func (o RouterOutput) ExternalFixedIps() RouterExternalFixedIpArrayOutput {
 // this updates the external gateway of the router.
 func (o RouterOutput) ExternalNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.ExternalNetworkId }).(pulumi.StringOutput)
+}
+
+// The QoS policy UUID that will be applied
+// on the external gateway for the router. Changing this updates the external
+// gateway of the router.
+func (o RouterOutput) ExternalQosPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.ExternalQosPolicyId }).(pulumi.StringOutput)
 }
 
 // A list of external subnet IDs to try over

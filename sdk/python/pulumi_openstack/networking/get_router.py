@@ -28,7 +28,7 @@ class GetRouterResult:
     """
     A collection of values returned by getRouter.
     """
-    def __init__(__self__, admin_state_up=None, all_tags=None, availability_zone_hints=None, description=None, distributed=None, enable_snat=None, external_fixed_ips=None, external_network_id=None, id=None, name=None, region=None, router_id=None, status=None, tags=None, tenant_id=None):
+    def __init__(__self__, admin_state_up=None, all_tags=None, availability_zone_hints=None, description=None, distributed=None, enable_snat=None, external_fixed_ips=None, external_network_id=None, external_qos_policy_id=None, id=None, name=None, region=None, router_id=None, status=None, tags=None, tenant_id=None):
         if admin_state_up and not isinstance(admin_state_up, bool):
             raise TypeError("Expected argument 'admin_state_up' to be a bool")
         pulumi.set(__self__, "admin_state_up", admin_state_up)
@@ -53,6 +53,9 @@ class GetRouterResult:
         if external_network_id and not isinstance(external_network_id, str):
             raise TypeError("Expected argument 'external_network_id' to be a str")
         pulumi.set(__self__, "external_network_id", external_network_id)
+        if external_qos_policy_id and not isinstance(external_qos_policy_id, str):
+            raise TypeError("Expected argument 'external_qos_policy_id' to be a str")
+        pulumi.set(__self__, "external_qos_policy_id", external_qos_policy_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -131,6 +134,14 @@ class GetRouterResult:
         return pulumi.get(self, "external_network_id")
 
     @property
+    @pulumi.getter(name="externalQosPolicyId")
+    def external_qos_policy_id(self) -> builtins.str:
+        """
+        The QoS policy UUID applied on the external gateway for the router.
+        """
+        return pulumi.get(self, "external_qos_policy_id")
+
+    @property
     @pulumi.getter
     def id(self) -> builtins.str:
         """
@@ -183,6 +194,7 @@ class AwaitableGetRouterResult(GetRouterResult):
             enable_snat=self.enable_snat,
             external_fixed_ips=self.external_fixed_ips,
             external_network_id=self.external_network_id,
+            external_qos_policy_id=self.external_qos_policy_id,
             id=self.id,
             name=self.name,
             region=self.region,
@@ -252,6 +264,7 @@ def get_router(admin_state_up: Optional[builtins.bool] = None,
         enable_snat=pulumi.get(__ret__, 'enable_snat'),
         external_fixed_ips=pulumi.get(__ret__, 'external_fixed_ips'),
         external_network_id=pulumi.get(__ret__, 'external_network_id'),
+        external_qos_policy_id=pulumi.get(__ret__, 'external_qos_policy_id'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         region=pulumi.get(__ret__, 'region'),
@@ -318,6 +331,7 @@ def get_router_output(admin_state_up: Optional[pulumi.Input[Optional[builtins.bo
         enable_snat=pulumi.get(__response__, 'enable_snat'),
         external_fixed_ips=pulumi.get(__response__, 'external_fixed_ips'),
         external_network_id=pulumi.get(__response__, 'external_network_id'),
+        external_qos_policy_id=pulumi.get(__response__, 'external_qos_policy_id'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         region=pulumi.get(__response__, 'region'),

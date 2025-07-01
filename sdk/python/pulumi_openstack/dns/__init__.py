@@ -7,7 +7,9 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .get_dns_zone import *
+from .get_zone_share_v2 import *
 from .record_set import *
 from .transfer_accept import *
 from .transfer_request import *
 from .zone import *
+from .zone_share_v2 import *

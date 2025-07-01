@@ -414,10 +414,6 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// The first detected Fixed IPv4 address.
-	AccessIpV4 *string `pulumi:"accessIpV4"`
-	// The first detected Fixed IPv6 address.
-	AccessIpV6 *string `pulumi:"accessIpV6"`
 	// The administrative password to assign to the server.
 	// Changing this changes the root password on the existing server.
 	AdminPass *string `pulumi:"adminPass"`
@@ -527,10 +523,6 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// The first detected Fixed IPv4 address.
-	AccessIpV4 pulumi.StringPtrInput
-	// The first detected Fixed IPv6 address.
-	AccessIpV6 pulumi.StringPtrInput
 	// The administrative password to assign to the server.
 	// Changing this changes the root password on the existing server.
 	AdminPass pulumi.StringPtrInput

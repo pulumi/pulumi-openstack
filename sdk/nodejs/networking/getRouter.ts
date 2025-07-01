@@ -113,6 +113,10 @@ export interface GetRouterResult {
      */
     readonly externalNetworkId: string;
     /**
+     * The QoS policy UUID applied on the external gateway for the router.
+     */
+    readonly externalQosPolicyId: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

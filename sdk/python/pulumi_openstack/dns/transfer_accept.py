@@ -32,10 +32,9 @@ class TransferAcceptArgs:
         :param pulumi.Input[builtins.bool] disable_status_check: Disable wait for zone to reach ACTIVE
                status. The check is enabled by default. If this argument is true, zone
                will be considered as created/updated if OpenStack accept returned success.
-        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Compute client.
-               Keypairs are associated with accounts, but a Compute client is needed to
-               create one. If omitted, the `region` argument of the provider is used.
-               Changing this creates a new DNS zone.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 DNS client.
+               If omitted, the `region` argument of the provider is used.
+               Changing this creates a new DNS zone zone transfer accept.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] value_specs: Map of additional options. Changing this creates a
                new transfer accept.
         """
@@ -90,10 +89,9 @@ class TransferAcceptArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The region in which to obtain the V2 Compute client.
-        Keypairs are associated with accounts, but a Compute client is needed to
-        create one. If omitted, the `region` argument of the provider is used.
-        Changing this creates a new DNS zone.
+        The region in which to obtain the V2 DNS client.
+        If omitted, the `region` argument of the provider is used.
+        Changing this creates a new DNS zone zone transfer accept.
         """
         return pulumi.get(self, "region")
 
@@ -129,10 +127,9 @@ class _TransferAcceptState:
                status. The check is enabled by default. If this argument is true, zone
                will be considered as created/updated if OpenStack accept returned success.
         :param pulumi.Input[builtins.str] key: The transfer key.
-        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Compute client.
-               Keypairs are associated with accounts, but a Compute client is needed to
-               create one. If omitted, the `region` argument of the provider is used.
-               Changing this creates a new DNS zone.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 DNS client.
+               If omitted, the `region` argument of the provider is used.
+               Changing this creates a new DNS zone zone transfer accept.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] value_specs: Map of additional options. Changing this creates a
                new transfer accept.
         :param pulumi.Input[builtins.str] zone_transfer_request_id: The ID of the zone transfer request.
@@ -178,10 +175,9 @@ class _TransferAcceptState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The region in which to obtain the V2 Compute client.
-        Keypairs are associated with accounts, but a Compute client is needed to
-        create one. If omitted, the `region` argument of the provider is used.
-        Changing this creates a new DNS zone.
+        The region in which to obtain the V2 DNS client.
+        If omitted, the `region` argument of the provider is used.
+        Changing this creates a new DNS zone zone transfer accept.
         """
         return pulumi.get(self, "region")
 
@@ -266,10 +262,9 @@ class TransferAccept(pulumi.CustomResource):
                status. The check is enabled by default. If this argument is true, zone
                will be considered as created/updated if OpenStack accept returned success.
         :param pulumi.Input[builtins.str] key: The transfer key.
-        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Compute client.
-               Keypairs are associated with accounts, but a Compute client is needed to
-               create one. If omitted, the `region` argument of the provider is used.
-               Changing this creates a new DNS zone.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 DNS client.
+               If omitted, the `region` argument of the provider is used.
+               Changing this creates a new DNS zone zone transfer accept.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] value_specs: Map of additional options. Changing this creates a
                new transfer accept.
         :param pulumi.Input[builtins.str] zone_transfer_request_id: The ID of the zone transfer request.
@@ -377,10 +372,9 @@ class TransferAccept(pulumi.CustomResource):
                status. The check is enabled by default. If this argument is true, zone
                will be considered as created/updated if OpenStack accept returned success.
         :param pulumi.Input[builtins.str] key: The transfer key.
-        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Compute client.
-               Keypairs are associated with accounts, but a Compute client is needed to
-               create one. If omitted, the `region` argument of the provider is used.
-               Changing this creates a new DNS zone.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 DNS client.
+               If omitted, the `region` argument of the provider is used.
+               Changing this creates a new DNS zone zone transfer accept.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] value_specs: Map of additional options. Changing this creates a
                new transfer accept.
         :param pulumi.Input[builtins.str] zone_transfer_request_id: The ID of the zone transfer request.
@@ -418,10 +412,9 @@ class TransferAccept(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[builtins.str]:
         """
-        The region in which to obtain the V2 Compute client.
-        Keypairs are associated with accounts, but a Compute client is needed to
-        create one. If omitted, the `region` argument of the provider is used.
-        Changing this creates a new DNS zone.
+        The region in which to obtain the V2 DNS client.
+        If omitted, the `region` argument of the provider is used.
+        Changing this creates a new DNS zone zone transfer accept.
         """
         return pulumi.get(self, "region")
 

@@ -63,7 +63,8 @@ type LookupUserArgs struct {
 	PasswordExpiresAt *string `pulumi:"passwordExpiresAt"`
 	// The protocol ID of the user.
 	ProtocolId *string `pulumi:"protocolId"`
-	// The region the user is located in.
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used.
 	Region *string `pulumi:"region"`
 	// The unique ID of the user.
 	UniqueId *string `pulumi:"uniqueId"`
@@ -89,7 +90,7 @@ type LookupUserResult struct {
 	PasswordExpiresAt *string `pulumi:"passwordExpiresAt"`
 	// See Argument Reference above.
 	ProtocolId *string `pulumi:"protocolId"`
-	// The region the user is located in.
+	// See Argument Reference above.
 	Region string `pulumi:"region"`
 	// See Argument Reference above.
 	UniqueId *string `pulumi:"uniqueId"`
@@ -119,7 +120,8 @@ type LookupUserOutputArgs struct {
 	PasswordExpiresAt pulumi.StringPtrInput `pulumi:"passwordExpiresAt"`
 	// The protocol ID of the user.
 	ProtocolId pulumi.StringPtrInput `pulumi:"protocolId"`
-	// The region the user is located in.
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The unique ID of the user.
 	UniqueId pulumi.StringPtrInput `pulumi:"uniqueId"`
@@ -189,7 +191,7 @@ func (o LookupUserResultOutput) ProtocolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUserResult) *string { return v.ProtocolId }).(pulumi.StringPtrOutput)
 }
 
-// The region the user is located in.
+// See Argument Reference above.
 func (o LookupUserResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Region }).(pulumi.StringOutput)
 }

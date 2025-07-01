@@ -87,6 +87,11 @@ namespace Pulumi.OpenStack.Identity
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
 
+        /// <summary>
+        /// The region in which to obtain the V3 Keystone client.
+        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// creates a new inherit role assignment.
+        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
@@ -167,6 +172,11 @@ namespace Pulumi.OpenStack.Identity
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// The region in which to obtain the V3 Keystone client.
+        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// creates a new inherit role assignment.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -209,6 +219,11 @@ namespace Pulumi.OpenStack.Identity
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// The region in which to obtain the V3 Keystone client.
+        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// creates a new inherit role assignment.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 

@@ -22,8 +22,6 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 access_ip_v4: Optional[pulumi.Input[builtins.str]] = None,
-                 access_ip_v6: Optional[pulumi.Input[builtins.str]] = None,
                  admin_pass: Optional[pulumi.Input[builtins.str]] = None,
                  availability_zone: Optional[pulumi.Input[builtins.str]] = None,
                  availability_zone_hints: Optional[pulumi.Input[builtins.str]] = None,
@@ -51,8 +49,6 @@ class InstanceArgs:
                  vendor_options: Optional[pulumi.Input['InstanceVendorOptionsArgs']] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[builtins.str] access_ip_v4: The first detected Fixed IPv4 address.
-        :param pulumi.Input[builtins.str] access_ip_v6: The first detected Fixed IPv6 address.
         :param pulumi.Input[builtins.str] admin_pass: The administrative password to assign to the server.
                Changing this changes the root password on the existing server.
         :param pulumi.Input[builtins.str] availability_zone: The availability zone in which to create
@@ -134,10 +130,6 @@ class InstanceArgs:
         :param pulumi.Input['InstanceVendorOptionsArgs'] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         """
-        if access_ip_v4 is not None:
-            pulumi.set(__self__, "access_ip_v4", access_ip_v4)
-        if access_ip_v6 is not None:
-            pulumi.set(__self__, "access_ip_v6", access_ip_v6)
         if admin_pass is not None:
             pulumi.set(__self__, "admin_pass", admin_pass)
         if availability_zone is not None:
@@ -188,30 +180,6 @@ class InstanceArgs:
             pulumi.set(__self__, "user_data", user_data)
         if vendor_options is not None:
             pulumi.set(__self__, "vendor_options", vendor_options)
-
-    @property
-    @pulumi.getter(name="accessIpV4")
-    def access_ip_v4(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The first detected Fixed IPv4 address.
-        """
-        return pulumi.get(self, "access_ip_v4")
-
-    @access_ip_v4.setter
-    def access_ip_v4(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "access_ip_v4", value)
-
-    @property
-    @pulumi.getter(name="accessIpV6")
-    def access_ip_v6(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The first detected Fixed IPv6 address.
-        """
-        return pulumi.get(self, "access_ip_v6")
-
-    @access_ip_v6.setter
-    def access_ip_v6(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "access_ip_v6", value)
 
     @property
     @pulumi.getter(name="adminPass")
@@ -1187,8 +1155,6 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_ip_v4: Optional[pulumi.Input[builtins.str]] = None,
-                 access_ip_v6: Optional[pulumi.Input[builtins.str]] = None,
                  admin_pass: Optional[pulumi.Input[builtins.str]] = None,
                  availability_zone: Optional[pulumi.Input[builtins.str]] = None,
                  availability_zone_hints: Optional[pulumi.Input[builtins.str]] = None,
@@ -1219,8 +1185,6 @@ class Instance(pulumi.CustomResource):
         Create a Instance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] access_ip_v4: The first detected Fixed IPv4 address.
-        :param pulumi.Input[builtins.str] access_ip_v6: The first detected Fixed IPv6 address.
         :param pulumi.Input[builtins.str] admin_pass: The administrative password to assign to the server.
                Changing this changes the root password on the existing server.
         :param pulumi.Input[builtins.str] availability_zone: The availability zone in which to create
@@ -1325,8 +1289,6 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_ip_v4: Optional[pulumi.Input[builtins.str]] = None,
-                 access_ip_v6: Optional[pulumi.Input[builtins.str]] = None,
                  admin_pass: Optional[pulumi.Input[builtins.str]] = None,
                  availability_zone: Optional[pulumi.Input[builtins.str]] = None,
                  availability_zone_hints: Optional[pulumi.Input[builtins.str]] = None,
@@ -1361,8 +1323,6 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            __props__.__dict__["access_ip_v4"] = access_ip_v4
-            __props__.__dict__["access_ip_v6"] = access_ip_v6
             __props__.__dict__["admin_pass"] = None if admin_pass is None else pulumi.Output.secret(admin_pass)
             __props__.__dict__["availability_zone"] = availability_zone
             __props__.__dict__["availability_zone_hints"] = availability_zone_hints
@@ -1388,6 +1348,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["user_data"] = user_data
             __props__.__dict__["vendor_options"] = vendor_options
+            __props__.__dict__["access_ip_v4"] = None
+            __props__.__dict__["access_ip_v6"] = None
             __props__.__dict__["all_metadata"] = None
             __props__.__dict__["all_tags"] = None
             __props__.__dict__["created"] = None

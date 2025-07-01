@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AddressGroupV2Args, AddressGroupV2State } from "./addressGroupV2";
+export type AddressGroupV2 = import("./addressGroupV2").AddressGroupV2;
+export const AddressGroupV2: typeof import("./addressGroupV2").AddressGroupV2 = null as any;
+utilities.lazyLoad(exports, ["AddressGroupV2"], () => require("./addressGroupV2"));
+
 export { AddressScopeArgs, AddressScopeState } from "./addressScope";
 export type AddressScope = import("./addressScope").AddressScope;
 export const AddressScope: typeof import("./addressScope").AddressScope = null as any;
@@ -200,6 +205,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "openstack:networking/addressGroupV2:AddressGroupV2":
+                return new AddressGroupV2(name, <any>undefined, { urn })
             case "openstack:networking/addressScope:AddressScope":
                 return new AddressScope(name, <any>undefined, { urn })
             case "openstack:networking/floatingIp:FloatingIp":
@@ -249,6 +256,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("openstack", "networking/addressGroupV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/addressScope", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/floatingIp", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/floatingIpAssociate", _module)

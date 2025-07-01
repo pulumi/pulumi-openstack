@@ -6,8 +6,11 @@ import builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .flavor_v2 import *
 from .flavorprofile_v2 import *
 from .get_flavor_v2 import *
+from .get_flavorprofile_v2 import *
+from .get_lb_flavor_deprecated import *
 from .l7_policy_v2 import *
 from .l7_rule_v2 import *
 from .listener import *
