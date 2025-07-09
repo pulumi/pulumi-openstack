@@ -303,6 +303,25 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The segment ID of the subnet. This is used to
+     * specify which segment the subnet belongs to when using Neutron&#39;s routed
+     * provider networks. Available when neutron segment extension is enabled.
+     * 
+     */
+    @Import(name="segmentId")
+    private @Nullable Output<String> segmentId;
+
+    /**
+     * @return The segment ID of the subnet. This is used to
+     * specify which segment the subnet belongs to when using Neutron&#39;s routed
+     * provider networks. Available when neutron segment extension is enabled.
+     * 
+     */
+    public Optional<Output<String>> segmentId() {
+        return Optional.ofNullable(this.segmentId);
+    }
+
+    /**
      * An array of service types used by the subnet.
      * Changing this updates the service types for the existing subnet.
      * 
@@ -399,6 +418,7 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
         this.noGateway = $.noGateway;
         this.prefixLength = $.prefixLength;
         this.region = $.region;
+        this.segmentId = $.segmentId;
         this.serviceTypes = $.serviceTypes;
         this.subnetpoolId = $.subnetpoolId;
         this.tags = $.tags;
@@ -820,6 +840,31 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param segmentId The segment ID of the subnet. This is used to
+         * specify which segment the subnet belongs to when using Neutron&#39;s routed
+         * provider networks. Available when neutron segment extension is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder segmentId(@Nullable Output<String> segmentId) {
+            $.segmentId = segmentId;
+            return this;
+        }
+
+        /**
+         * @param segmentId The segment ID of the subnet. This is used to
+         * specify which segment the subnet belongs to when using Neutron&#39;s routed
+         * provider networks. Available when neutron segment extension is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder segmentId(String segmentId) {
+            return segmentId(Output.of(segmentId));
         }
 
         /**

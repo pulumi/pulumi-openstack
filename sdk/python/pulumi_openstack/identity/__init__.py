@@ -19,7 +19,9 @@ from .get_service import *
 from .get_user import *
 from .group_v3 import *
 from .inherit_role_assignment import *
+from .limit_v3 import *
 from .project import *
+from .registered_limit_v3 import *
 from .role import *
 from .role_assignment import *
 from .service_v3 import *

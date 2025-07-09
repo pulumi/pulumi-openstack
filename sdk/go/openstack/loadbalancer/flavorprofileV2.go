@@ -104,7 +104,11 @@ type FlavorprofileV2 struct {
 	// The providerName that the flavorProfile will use.
 	// Changing this updates the existing flavorprofile.
 	ProviderName pulumi.StringOutput `pulumi:"providerName"`
-	Region       pulumi.StringOutput `pulumi:"region"`
+	// The region in which to obtain the V2 Networking client.
+	// A Networking client is needed to create an LB member. If omitted, the
+	// `region` argument of the provider is used. Changing this creates a new
+	// LB flavorprofile.
+	Region pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewFlavorprofileV2 registers a new resource with the given unique name, arguments, and options.
@@ -160,7 +164,11 @@ type flavorprofileV2State struct {
 	// The providerName that the flavorProfile will use.
 	// Changing this updates the existing flavorprofile.
 	ProviderName *string `pulumi:"providerName"`
-	Region       *string `pulumi:"region"`
+	// The region in which to obtain the V2 Networking client.
+	// A Networking client is needed to create an LB member. If omitted, the
+	// `region` argument of the provider is used. Changing this creates a new
+	// LB flavorprofile.
+	Region *string `pulumi:"region"`
 }
 
 type FlavorprofileV2State struct {
@@ -175,7 +183,11 @@ type FlavorprofileV2State struct {
 	// The providerName that the flavorProfile will use.
 	// Changing this updates the existing flavorprofile.
 	ProviderName pulumi.StringPtrInput
-	Region       pulumi.StringPtrInput
+	// The region in which to obtain the V2 Networking client.
+	// A Networking client is needed to create an LB member. If omitted, the
+	// `region` argument of the provider is used. Changing this creates a new
+	// LB flavorprofile.
+	Region pulumi.StringPtrInput
 }
 
 func (FlavorprofileV2State) ElementType() reflect.Type {
@@ -193,8 +205,12 @@ type flavorprofileV2Args struct {
 	Name *string `pulumi:"name"`
 	// The providerName that the flavorProfile will use.
 	// Changing this updates the existing flavorprofile.
-	ProviderName string  `pulumi:"providerName"`
-	Region       *string `pulumi:"region"`
+	ProviderName string `pulumi:"providerName"`
+	// The region in which to obtain the V2 Networking client.
+	// A Networking client is needed to create an LB member. If omitted, the
+	// `region` argument of the provider is used. Changing this creates a new
+	// LB flavorprofile.
+	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a FlavorprofileV2 resource.
@@ -210,7 +226,11 @@ type FlavorprofileV2Args struct {
 	// The providerName that the flavorProfile will use.
 	// Changing this updates the existing flavorprofile.
 	ProviderName pulumi.StringInput
-	Region       pulumi.StringPtrInput
+	// The region in which to obtain the V2 Networking client.
+	// A Networking client is needed to create an LB member. If omitted, the
+	// `region` argument of the provider is used. Changing this creates a new
+	// LB flavorprofile.
+	Region pulumi.StringPtrInput
 }
 
 func (FlavorprofileV2Args) ElementType() reflect.Type {
@@ -320,6 +340,10 @@ func (o FlavorprofileV2Output) ProviderName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlavorprofileV2) pulumi.StringOutput { return v.ProviderName }).(pulumi.StringOutput)
 }
 
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create an LB member. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// LB flavorprofile.
 func (o FlavorprofileV2Output) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlavorprofileV2) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

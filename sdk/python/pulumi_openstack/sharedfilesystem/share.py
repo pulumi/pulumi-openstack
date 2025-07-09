@@ -50,9 +50,9 @@ class ShareArgs:
                strings.
         :param pulumi.Input[builtins.str] name: The name of the share. Changing this updates the name
                of the existing share.
-        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Shared File System client.
-               A Shared File System client is needed to create a share. Changing this
-               creates a new share.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Shared File System
+               client. A Shared File System client is needed to create a share. Changing
+               this creates a new share.
         :param pulumi.Input[builtins.str] share_network_id: The UUID of a share network where the share server exists
                or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
                the share_network_id value from the snapshot is used. Changing this creates a new share.
@@ -178,9 +178,9 @@ class ShareArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The region in which to obtain the V2 Shared File System client.
-        A Shared File System client is needed to create a share. Changing this
-        creates a new share.
+        The region in which to obtain the V2 Shared File System
+        client. A Shared File System client is needed to create a share. Changing
+        this creates a new share.
         """
         return pulumi.get(self, "region")
 
@@ -270,9 +270,9 @@ class _ShareState:
         :param pulumi.Input[builtins.str] name: The name of the share. Changing this updates the name
                of the existing share.
         :param pulumi.Input[builtins.str] project_id: The owner of the Share.
-        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Shared File System client.
-               A Shared File System client is needed to create a share. Changing this
-               creates a new share.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Shared File System
+               client. A Shared File System client is needed to create a share. Changing
+               this creates a new share.
         :param pulumi.Input[builtins.str] replication_type: The share replication type.
         :param pulumi.Input[builtins.str] share_network_id: The UUID of a share network where the share server exists
                or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
@@ -456,9 +456,9 @@ class _ShareState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The region in which to obtain the V2 Shared File System client.
-        A Shared File System client is needed to create a share. Changing this
-        creates a new share.
+        The region in which to obtain the V2 Shared File System
+        client. A Shared File System client is needed to create a share. Changing
+        this creates a new share.
         """
         return pulumi.get(self, "region")
 
@@ -626,9 +626,9 @@ class Share(pulumi.CustomResource):
                strings.
         :param pulumi.Input[builtins.str] name: The name of the share. Changing this updates the name
                of the existing share.
-        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Shared File System client.
-               A Shared File System client is needed to create a share. Changing this
-               creates a new share.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Shared File System
+               client. A Shared File System client is needed to create a share. Changing
+               this creates a new share.
         :param pulumi.Input[builtins.str] share_network_id: The UUID of a share network where the share server exists
                or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
                the share_network_id value from the snapshot is used. Changing this creates a new share.
@@ -795,9 +795,9 @@ class Share(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The name of the share. Changing this updates the name
                of the existing share.
         :param pulumi.Input[builtins.str] project_id: The owner of the Share.
-        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Shared File System client.
-               A Shared File System client is needed to create a share. Changing this
-               creates a new share.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Shared File System
+               client. A Shared File System client is needed to create a share. Changing
+               this creates a new share.
         :param pulumi.Input[builtins.str] replication_type: The share replication type.
         :param pulumi.Input[builtins.str] share_network_id: The UUID of a share network where the share server exists
                or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
@@ -928,9 +928,9 @@ class Share(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[builtins.str]:
         """
-        The region in which to obtain the V2 Shared File System client.
-        A Shared File System client is needed to create a share. Changing this
-        creates a new share.
+        The region in which to obtain the V2 Shared File System
+        client. A Shared File System client is needed to create a share. Changing
+        this creates a new share.
         """
         return pulumi.get(self, "region")
 

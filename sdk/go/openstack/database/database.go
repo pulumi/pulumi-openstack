@@ -57,7 +57,8 @@ type Database struct {
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// A unique name for the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Openstack region resource is created in.
+	// The region in which to create the database. Changing
+	// this creates a new database.
 	Region pulumi.StringOutput `pulumi:"region"`
 }
 
@@ -98,7 +99,8 @@ type databaseState struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// A unique name for the resource.
 	Name *string `pulumi:"name"`
-	// Openstack region resource is created in.
+	// The region in which to create the database. Changing
+	// this creates a new database.
 	Region *string `pulumi:"region"`
 }
 
@@ -107,7 +109,8 @@ type DatabaseState struct {
 	InstanceId pulumi.StringPtrInput
 	// A unique name for the resource.
 	Name pulumi.StringPtrInput
-	// Openstack region resource is created in.
+	// The region in which to create the database. Changing
+	// this creates a new database.
 	Region pulumi.StringPtrInput
 }
 
@@ -120,7 +123,8 @@ type databaseArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// A unique name for the resource.
 	Name *string `pulumi:"name"`
-	// Openstack region resource is created in.
+	// The region in which to create the database. Changing
+	// this creates a new database.
 	Region *string `pulumi:"region"`
 }
 
@@ -130,7 +134,8 @@ type DatabaseArgs struct {
 	InstanceId pulumi.StringInput
 	// A unique name for the resource.
 	Name pulumi.StringPtrInput
-	// Openstack region resource is created in.
+	// The region in which to create the database. Changing
+	// this creates a new database.
 	Region pulumi.StringPtrInput
 }
 
@@ -231,7 +236,8 @@ func (o DatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Openstack region resource is created in.
+// The region in which to create the database. Changing
+// this creates a new database.
 func (o DatabaseOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

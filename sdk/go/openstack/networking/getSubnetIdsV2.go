@@ -81,6 +81,9 @@ type GetSubnetIdsV2Args struct {
 	// A Neutron client is needed to retrieve subnet ids. If omitted, the
 	// `region` argument of the provider is used.
 	Region *string `pulumi:"region"`
+	// The ID of the segment the subnet belongs to.
+	// Available when neutron segment extension is enabled.
+	SegmentId *string `pulumi:"segmentId"`
 	// Order the results in either `asc` or `desc`.
 	// Defaults to none.
 	SortDirection *string `pulumi:"sortDirection"`
@@ -111,6 +114,7 @@ type GetSubnetIdsV2Result struct {
 	NameRegex       *string  `pulumi:"nameRegex"`
 	NetworkId       *string  `pulumi:"networkId"`
 	Region          string   `pulumi:"region"`
+	SegmentId       *string  `pulumi:"segmentId"`
 	SortDirection   *string  `pulumi:"sortDirection"`
 	SortKey         *string  `pulumi:"sortKey"`
 	SubnetpoolId    *string  `pulumi:"subnetpoolId"`
@@ -156,6 +160,9 @@ type GetSubnetIdsV2OutputArgs struct {
 	// A Neutron client is needed to retrieve subnet ids. If omitted, the
 	// `region` argument of the provider is used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The ID of the segment the subnet belongs to.
+	// Available when neutron segment extension is enabled.
+	SegmentId pulumi.StringPtrInput `pulumi:"segmentId"`
 	// Order the results in either `asc` or `desc`.
 	// Defaults to none.
 	SortDirection pulumi.StringPtrInput `pulumi:"sortDirection"`
@@ -243,6 +250,10 @@ func (o GetSubnetIdsV2ResultOutput) NetworkId() pulumi.StringPtrOutput {
 
 func (o GetSubnetIdsV2ResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetIdsV2Result) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o GetSubnetIdsV2ResultOutput) SegmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSubnetIdsV2Result) *string { return v.SegmentId }).(pulumi.StringPtrOutput)
 }
 
 func (o GetSubnetIdsV2ResultOutput) SortDirection() pulumi.StringPtrOutput {

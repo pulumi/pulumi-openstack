@@ -106,9 +106,19 @@ public final class GetProjectIdsV3PlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.parentId);
     }
 
+    /**
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used.
+     * 
+     */
     @Import(name="region")
     private @Nullable String region;
 
+    /**
+     * @return The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used.
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -223,6 +233,13 @@ public final class GetProjectIdsV3PlainArgs extends com.pulumi.resources.InvokeA
             return this;
         }
 
+        /**
+         * @param region The region in which to obtain the V3 Keystone client.
+         * If omitted, the `region` argument of the provider is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable String region) {
             $.region = region;
             return this;

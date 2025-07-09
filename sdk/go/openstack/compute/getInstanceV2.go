@@ -54,7 +54,9 @@ type GetInstanceV2Args struct {
 	Id string `pulumi:"id"`
 	// An array of maps, detailed below.
 	Networks []GetInstanceV2Network `pulumi:"networks"`
-	Region   *string                `pulumi:"region"`
+	// The region in which to obtain the V2 Compute client.
+	// If omitted, the `region` argument of the provider is used.
+	Region *string `pulumi:"region"`
 	// The user data added when the server was created.
 	UserData *string `pulumi:"userData"`
 }
@@ -87,7 +89,8 @@ type GetInstanceV2Result struct {
 	// An array of maps, detailed below.
 	Networks   []GetInstanceV2Network `pulumi:"networks"`
 	PowerState string                 `pulumi:"powerState"`
-	Region     string                 `pulumi:"region"`
+	// See Argument Reference above.
+	Region string `pulumi:"region"`
 	// An array of security group names associated with this server.
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// A set of string tags assigned to this server.
@@ -113,7 +116,9 @@ type GetInstanceV2OutputArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// An array of maps, detailed below.
 	Networks GetInstanceV2NetworkArrayInput `pulumi:"networks"`
-	Region   pulumi.StringPtrInput          `pulumi:"region"`
+	// The region in which to obtain the V2 Compute client.
+	// If omitted, the `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The user data added when the server was created.
 	UserData pulumi.StringPtrInput `pulumi:"userData"`
 }
@@ -205,6 +210,7 @@ func (o GetInstanceV2ResultOutput) PowerState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceV2Result) string { return v.PowerState }).(pulumi.StringOutput)
 }
 
+// See Argument Reference above.
 func (o GetInstanceV2ResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceV2Result) string { return v.Region }).(pulumi.StringOutput)
 }

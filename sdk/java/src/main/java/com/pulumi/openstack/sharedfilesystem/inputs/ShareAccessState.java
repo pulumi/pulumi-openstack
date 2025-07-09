@@ -82,18 +82,18 @@ public final class ShareAccessState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The region in which to obtain the V2 Shared File System client.
-     * A Shared File System client is needed to create a share access. Changing this
-     * creates a new share access.
+     * The region in which to obtain the V2 Shared File System
+     * client. A Shared File System client is needed to create a share access.
+     * Changing this creates a new share access.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region in which to obtain the V2 Shared File System client.
-     * A Shared File System client is needed to create a share access. Changing this
-     * creates a new share access.
+     * @return The region in which to obtain the V2 Shared File System
+     * client. A Shared File System client is needed to create a share access.
+     * Changing this creates a new share access.
      * 
      */
     public Optional<Output<String>> region() {
@@ -251,9 +251,9 @@ public final class ShareAccessState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region in which to obtain the V2 Shared File System client.
-         * A Shared File System client is needed to create a share access. Changing this
-         * creates a new share access.
+         * @param region The region in which to obtain the V2 Shared File System
+         * client. A Shared File System client is needed to create a share access.
+         * Changing this creates a new share access.
          * 
          * @return builder
          * 
@@ -264,9 +264,9 @@ public final class ShareAccessState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region in which to obtain the V2 Shared File System client.
-         * A Shared File System client is needed to create a share access. Changing this
-         * creates a new share access.
+         * @param region The region in which to obtain the V2 Shared File System
+         * client. A Shared File System client is needed to create a share access.
+         * Changing this creates a new share access.
          * 
          * @return builder
          * 

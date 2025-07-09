@@ -153,7 +153,7 @@ class GetShareResult:
     @pulumi.getter
     def region(self) -> builtins.str:
         """
-        The region in which to obtain the V2 Shared File System client.
+        See Argument Reference above.
         """
         return pulumi.get(self, "region")
 
@@ -252,7 +252,9 @@ def get_share(description: Optional[builtins.str] = None,
     :param Mapping[str, builtins.str] metadata: One or more metadata key and value pairs as a dictionary of
            strings.
     :param builtins.str name: The name of the share.
-    :param builtins.str region: The region in which to obtain the V2 Shared File System client.
+    :param builtins.str region: The region in which to obtain the V2 Shared File System
+           client. A Shared File System client is needed to read a share. If omitted,
+           the `region` argument of the provider is used.
     :param builtins.str share_network_id: The UUID of the share's share network.
     :param builtins.str snapshot_id: The UUID of the share's base snapshot.
     :param builtins.str status: A share status filter. A valid value is `creating`,
@@ -321,7 +323,9 @@ def get_share_output(description: Optional[pulumi.Input[Optional[builtins.str]]]
     :param Mapping[str, builtins.str] metadata: One or more metadata key and value pairs as a dictionary of
            strings.
     :param builtins.str name: The name of the share.
-    :param builtins.str region: The region in which to obtain the V2 Shared File System client.
+    :param builtins.str region: The region in which to obtain the V2 Shared File System
+           client. A Shared File System client is needed to read a share. If omitted,
+           the `region` argument of the provider is used.
     :param builtins.str share_network_id: The UUID of the share's share network.
     :param builtins.str snapshot_id: The UUID of the share's base snapshot.
     :param builtins.str status: A share status filter. A valid value is `creating`,

@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "openstack:loadbalancer/flavorV2:FlavorV2":
+		r = &FlavorV2{}
 	case "openstack:loadbalancer/flavorprofileV2:FlavorprofileV2":
 		r = &FlavorprofileV2{}
 	case "openstack:loadbalancer/l7PolicyV2:L7PolicyV2":
@@ -54,6 +56,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"loadbalancer/flavorV2",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"loadbalancer/flavorprofileV2",

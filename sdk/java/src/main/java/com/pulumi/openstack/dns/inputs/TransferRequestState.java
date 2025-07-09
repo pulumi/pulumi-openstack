@@ -59,20 +59,18 @@ public final class TransferRequestState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The region in which to obtain the V2 Compute client.
-     * Keypairs are associated with accounts, but a Compute client is needed to
-     * create one. If omitted, the `region` argument of the provider is used.
-     * Changing this creates a new DNS zone.
+     * The region in which to obtain the V2 DNS client.
+     * If omitted, the `region` argument of the provider is used.
+     * Changing this creates a new DNS zone zone transfer accept.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region in which to obtain the V2 Compute client.
-     * Keypairs are associated with accounts, but a Compute client is needed to
-     * create one. If omitted, the `region` argument of the provider is used.
-     * Changing this creates a new DNS zone.
+     * @return The region in which to obtain the V2 DNS client.
+     * If omitted, the `region` argument of the provider is used.
+     * Changing this creates a new DNS zone zone transfer accept.
      * 
      */
     public Optional<Output<String>> region() {
@@ -214,10 +212,9 @@ public final class TransferRequestState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param region The region in which to obtain the V2 Compute client.
-         * Keypairs are associated with accounts, but a Compute client is needed to
-         * create one. If omitted, the `region` argument of the provider is used.
-         * Changing this creates a new DNS zone.
+         * @param region The region in which to obtain the V2 DNS client.
+         * If omitted, the `region` argument of the provider is used.
+         * Changing this creates a new DNS zone zone transfer accept.
          * 
          * @return builder
          * 
@@ -228,10 +225,9 @@ public final class TransferRequestState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param region The region in which to obtain the V2 Compute client.
-         * Keypairs are associated with accounts, but a Compute client is needed to
-         * create one. If omitted, the `region` argument of the provider is used.
-         * Changing this creates a new DNS zone.
+         * @param region The region in which to obtain the V2 DNS client.
+         * If omitted, the `region` argument of the provider is used.
+         * Changing this creates a new DNS zone zone transfer accept.
          * 
          * @return builder
          * 

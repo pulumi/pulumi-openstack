@@ -136,6 +136,15 @@ namespace Pulumi.OpenStack.Networking
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// The remote address group id, the value
+        /// needs to be an OpenStack ID of an address group in the same tenant. Changing
+        /// this creates a new security group rule. This argument is mutually exclusive
+        /// with `remote_ip_prefix` and `remote_group_id`.
+        /// </summary>
+        [Output("remoteAddressGroupId")]
+        public Output<string> RemoteAddressGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The remote group id, the value needs to be an
         /// Openstack ID of a security group in the same tenant. Changing this creates
         /// a new security group rule.
@@ -290,6 +299,15 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? Region { get; set; }
 
         /// <summary>
+        /// The remote address group id, the value
+        /// needs to be an OpenStack ID of an address group in the same tenant. Changing
+        /// this creates a new security group rule. This argument is mutually exclusive
+        /// with `remote_ip_prefix` and `remote_group_id`.
+        /// </summary>
+        [Input("remoteAddressGroupId")]
+        public Input<string>? RemoteAddressGroupId { get; set; }
+
+        /// <summary>
         /// The remote group id, the value needs to be an
         /// Openstack ID of a security group in the same tenant. Changing this creates
         /// a new security group rule.
@@ -404,6 +422,15 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The remote address group id, the value
+        /// needs to be an OpenStack ID of an address group in the same tenant. Changing
+        /// this creates a new security group rule. This argument is mutually exclusive
+        /// with `remote_ip_prefix` and `remote_group_id`.
+        /// </summary>
+        [Input("remoteAddressGroupId")]
+        public Input<string>? RemoteAddressGroupId { get; set; }
 
         /// <summary>
         /// The remote group id, the value needs to be an

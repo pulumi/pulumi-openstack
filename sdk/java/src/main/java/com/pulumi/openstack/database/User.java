@@ -128,14 +128,16 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.password;
     }
     /**
-     * Openstack region resource is created in.
+     * The region in which to create the db user. Changing
+     * this creates a new user.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return Openstack region resource is created in.
+     * @return The region in which to create the db user. Changing
+     * this creates a new user.
      * 
      */
     public Output<String> region() {

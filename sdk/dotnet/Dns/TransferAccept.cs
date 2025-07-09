@@ -74,10 +74,9 @@ namespace Pulumi.OpenStack.Dns
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// The region in which to obtain the V2 Compute client.
-        /// Keypairs are associated with accounts, but a Compute client is needed to
-        /// create one. If omitted, the `region` argument of the provider is used.
-        /// Changing this creates a new DNS zone.
+        /// The region in which to obtain the V2 DNS client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// Changing this creates a new DNS zone zone transfer accept.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -156,10 +155,9 @@ namespace Pulumi.OpenStack.Dns
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// The region in which to obtain the V2 Compute client.
-        /// Keypairs are associated with accounts, but a Compute client is needed to
-        /// create one. If omitted, the `region` argument of the provider is used.
-        /// Changing this creates a new DNS zone.
+        /// The region in which to obtain the V2 DNS client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// Changing this creates a new DNS zone zone transfer accept.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -206,10 +204,9 @@ namespace Pulumi.OpenStack.Dns
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The region in which to obtain the V2 Compute client.
-        /// Keypairs are associated with accounts, but a Compute client is needed to
-        /// create one. If omitted, the `region` argument of the provider is used.
-        /// Changing this creates a new DNS zone.
+        /// The region in which to obtain the V2 DNS client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// Changing this creates a new DNS zone zone transfer accept.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

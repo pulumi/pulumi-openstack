@@ -127,7 +127,7 @@ class GetProjectResult:
     @pulumi.getter
     def region(self) -> builtins.str:
         """
-        The region the project is located in.
+        See Argument Reference above.
         """
         return pulumi.get(self, "region")
 
@@ -188,7 +188,8 @@ def get_project(domain_id: Optional[builtins.str] = None,
     :param builtins.str parent_id: The parent of this project.
     :param builtins.str project_id: The id of the project. Conflicts with any of the
            above arguments.
-    :param builtins.str region: The region the project is located in.
+    :param builtins.str region: The region in which to obtain the V3 Keystone client.
+           If omitted, the `region` argument of the provider is used.
     """
     __args__ = dict()
     __args__['domainId'] = domain_id
@@ -242,7 +243,8 @@ def get_project_output(domain_id: Optional[pulumi.Input[Optional[builtins.str]]]
     :param builtins.str parent_id: The parent of this project.
     :param builtins.str project_id: The id of the project. Conflicts with any of the
            above arguments.
-    :param builtins.str region: The region the project is located in.
+    :param builtins.str region: The region in which to obtain the V3 Keystone client.
+           If omitted, the `region` argument of the provider is used.
     """
     __args__ = dict()
     __args__['domainId'] = domain_id

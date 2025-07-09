@@ -192,9 +192,9 @@ type ShareAccess struct {
 	// cert, or cephx. cephx support requires an OpenStack environment that supports
 	// Shared Filesystem microversion 2.13 (Mitaka) or later.
 	AccessType pulumi.StringOutput `pulumi:"accessType"`
-	// The region in which to obtain the V2 Shared File System client.
-	// A Shared File System client is needed to create a share access. Changing this
-	// creates a new share access.
+	// The region in which to obtain the V2 Shared File System
+	// client. A Shared File System client is needed to create a share access.
+	// Changing this creates a new share access.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The UUID of the share to which you are granted access.
 	ShareId pulumi.StringOutput `pulumi:"shareId"`
@@ -259,9 +259,9 @@ type shareAccessState struct {
 	// cert, or cephx. cephx support requires an OpenStack environment that supports
 	// Shared Filesystem microversion 2.13 (Mitaka) or later.
 	AccessType *string `pulumi:"accessType"`
-	// The region in which to obtain the V2 Shared File System client.
-	// A Shared File System client is needed to create a share access. Changing this
-	// creates a new share access.
+	// The region in which to obtain the V2 Shared File System
+	// client. A Shared File System client is needed to create a share access.
+	// Changing this creates a new share access.
 	Region *string `pulumi:"region"`
 	// The UUID of the share to which you are granted access.
 	ShareId *string `pulumi:"shareId"`
@@ -281,9 +281,9 @@ type ShareAccessState struct {
 	// cert, or cephx. cephx support requires an OpenStack environment that supports
 	// Shared Filesystem microversion 2.13 (Mitaka) or later.
 	AccessType pulumi.StringPtrInput
-	// The region in which to obtain the V2 Shared File System client.
-	// A Shared File System client is needed to create a share access. Changing this
-	// creates a new share access.
+	// The region in which to obtain the V2 Shared File System
+	// client. A Shared File System client is needed to create a share access.
+	// Changing this creates a new share access.
 	Region pulumi.StringPtrInput
 	// The UUID of the share to which you are granted access.
 	ShareId pulumi.StringPtrInput
@@ -305,9 +305,9 @@ type shareAccessArgs struct {
 	// cert, or cephx. cephx support requires an OpenStack environment that supports
 	// Shared Filesystem microversion 2.13 (Mitaka) or later.
 	AccessType string `pulumi:"accessType"`
-	// The region in which to obtain the V2 Shared File System client.
-	// A Shared File System client is needed to create a share access. Changing this
-	// creates a new share access.
+	// The region in which to obtain the V2 Shared File System
+	// client. A Shared File System client is needed to create a share access.
+	// Changing this creates a new share access.
 	Region *string `pulumi:"region"`
 	// The UUID of the share to which you are granted access.
 	ShareId string `pulumi:"shareId"`
@@ -324,9 +324,9 @@ type ShareAccessArgs struct {
 	// cert, or cephx. cephx support requires an OpenStack environment that supports
 	// Shared Filesystem microversion 2.13 (Mitaka) or later.
 	AccessType pulumi.StringInput
-	// The region in which to obtain the V2 Shared File System client.
-	// A Shared File System client is needed to create a share access. Changing this
-	// creates a new share access.
+	// The region in which to obtain the V2 Shared File System
+	// client. A Shared File System client is needed to create a share access.
+	// Changing this creates a new share access.
 	Region pulumi.StringPtrInput
 	// The UUID of the share to which you are granted access.
 	ShareId pulumi.StringInput
@@ -442,9 +442,9 @@ func (o ShareAccessOutput) AccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShareAccess) pulumi.StringOutput { return v.AccessType }).(pulumi.StringOutput)
 }
 
-// The region in which to obtain the V2 Shared File System client.
-// A Shared File System client is needed to create a share access. Changing this
-// creates a new share access.
+// The region in which to obtain the V2 Shared File System
+// client. A Shared File System client is needed to create a share access.
+// Changing this creates a new share access.
 func (o ShareAccessOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShareAccess) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

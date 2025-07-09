@@ -73,7 +73,8 @@ namespace Pulumi.OpenStack.Database
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Openstack region resource is created in.
+        /// The region in which to create the db user. Changing
+        /// this creates a new user.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -172,7 +173,8 @@ namespace Pulumi.OpenStack.Database
         }
 
         /// <summary>
-        /// Openstack region resource is created in.
+        /// The region in which to create the db user. Changing
+        /// this creates a new user.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -229,7 +231,8 @@ namespace Pulumi.OpenStack.Database
         }
 
         /// <summary>
-        /// Openstack region resource is created in.
+        /// The region in which to create the db user. Changing
+        /// this creates a new user.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

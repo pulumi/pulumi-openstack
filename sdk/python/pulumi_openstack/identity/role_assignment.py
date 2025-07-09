@@ -32,6 +32,9 @@ class RoleAssignmentArgs:
         :param pulumi.Input[builtins.str] domain_id: The domain to assign the role in.
         :param pulumi.Input[builtins.str] group_id: The group to assign the role to.
         :param pulumi.Input[builtins.str] project_id: The project to assign the role in.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V3 Keystone client.
+               If omitted, the `region` argument of the provider is used. Changing this
+               creates a new role assignment.
         :param pulumi.Input[builtins.str] user_id: The user to assign the role to.
         """
         pulumi.set(__self__, "role_id", role_id)
@@ -97,6 +100,11 @@ class RoleAssignmentArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The region in which to obtain the V3 Keystone client.
+        If omitted, the `region` argument of the provider is used. Changing this
+        creates a new role assignment.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -130,6 +138,9 @@ class _RoleAssignmentState:
         :param pulumi.Input[builtins.str] domain_id: The domain to assign the role in.
         :param pulumi.Input[builtins.str] group_id: The group to assign the role to.
         :param pulumi.Input[builtins.str] project_id: The project to assign the role in.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V3 Keystone client.
+               If omitted, the `region` argument of the provider is used. Changing this
+               creates a new role assignment.
         :param pulumi.Input[builtins.str] role_id: The role to assign.
         :param pulumi.Input[builtins.str] user_id: The user to assign the role to.
         """
@@ -185,6 +196,11 @@ class _RoleAssignmentState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The region in which to obtain the V3 Keystone client.
+        If omitted, the `region` argument of the provider is used. Changing this
+        creates a new role assignment.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -272,6 +288,9 @@ class RoleAssignment(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] domain_id: The domain to assign the role in.
         :param pulumi.Input[builtins.str] group_id: The group to assign the role to.
         :param pulumi.Input[builtins.str] project_id: The project to assign the role in.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V3 Keystone client.
+               If omitted, the `region` argument of the provider is used. Changing this
+               creates a new role assignment.
         :param pulumi.Input[builtins.str] role_id: The role to assign.
         :param pulumi.Input[builtins.str] user_id: The user to assign the role to.
         """
@@ -383,6 +402,9 @@ class RoleAssignment(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] domain_id: The domain to assign the role in.
         :param pulumi.Input[builtins.str] group_id: The group to assign the role to.
         :param pulumi.Input[builtins.str] project_id: The project to assign the role in.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V3 Keystone client.
+               If omitted, the `region` argument of the provider is used. Changing this
+               creates a new role assignment.
         :param pulumi.Input[builtins.str] role_id: The role to assign.
         :param pulumi.Input[builtins.str] user_id: The user to assign the role to.
         """
@@ -425,6 +447,11 @@ class RoleAssignment(pulumi.CustomResource):
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[builtins.str]:
+        """
+        The region in which to obtain the V3 Keystone client.
+        If omitted, the `region` argument of the provider is used. Changing this
+        creates a new role assignment.
+        """
         return pulumi.get(self, "region")
 
     @property

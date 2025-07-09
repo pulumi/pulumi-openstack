@@ -24,36 +24,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
-     * The first detected Fixed IPv4 address.
-     * 
-     */
-    @Import(name="accessIpV4")
-    private @Nullable Output<String> accessIpV4;
-
-    /**
-     * @return The first detected Fixed IPv4 address.
-     * 
-     */
-    public Optional<Output<String>> accessIpV4() {
-        return Optional.ofNullable(this.accessIpV4);
-    }
-
-    /**
-     * The first detected Fixed IPv6 address.
-     * 
-     */
-    @Import(name="accessIpV6")
-    private @Nullable Output<String> accessIpV6;
-
-    /**
-     * @return The first detected Fixed IPv6 address.
-     * 
-     */
-    public Optional<Output<String>> accessIpV6() {
-        return Optional.ofNullable(this.accessIpV6);
-    }
-
-    /**
      * The administrative password to assign to the server.
      * Changing this changes the root password on the existing server.
      * 
@@ -541,8 +511,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceArgs() {}
 
     private InstanceArgs(InstanceArgs $) {
-        this.accessIpV4 = $.accessIpV4;
-        this.accessIpV6 = $.accessIpV6;
         this.adminPass = $.adminPass;
         this.availabilityZone = $.availabilityZone;
         this.availabilityZoneHints = $.availabilityZoneHints;
@@ -586,48 +554,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InstanceArgs defaults) {
             $ = new InstanceArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param accessIpV4 The first detected Fixed IPv4 address.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accessIpV4(@Nullable Output<String> accessIpV4) {
-            $.accessIpV4 = accessIpV4;
-            return this;
-        }
-
-        /**
-         * @param accessIpV4 The first detected Fixed IPv4 address.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accessIpV4(String accessIpV4) {
-            return accessIpV4(Output.of(accessIpV4));
-        }
-
-        /**
-         * @param accessIpV6 The first detected Fixed IPv6 address.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accessIpV6(@Nullable Output<String> accessIpV6) {
-            $.accessIpV6 = accessIpV6;
-            return this;
-        }
-
-        /**
-         * @param accessIpV6 The first detected Fixed IPv6 address.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accessIpV6(String accessIpV6) {
-            return accessIpV6(Output.of(accessIpV6));
         }
 
         /**

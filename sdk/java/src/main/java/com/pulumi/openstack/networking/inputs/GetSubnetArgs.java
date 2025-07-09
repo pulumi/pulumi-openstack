@@ -192,6 +192,23 @@ public final class GetSubnetArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * The ID of the segment the subnet belongs to.
+     * Available when neutron segment extension is enabled.
+     * 
+     */
+    @Import(name="segmentId")
+    private @Nullable Output<String> segmentId;
+
+    /**
+     * @return The ID of the segment the subnet belongs to.
+     * Available when neutron segment extension is enabled.
+     * 
+     */
+    public Optional<Output<String>> segmentId() {
+        return Optional.ofNullable(this.segmentId);
+    }
+
+    /**
      * The ID of the subnet.
      * 
      */
@@ -265,6 +282,7 @@ public final class GetSubnetArgs extends com.pulumi.resources.InvokeArgs {
         this.name = $.name;
         this.networkId = $.networkId;
         this.region = $.region;
+        this.segmentId = $.segmentId;
         this.subnetId = $.subnetId;
         this.subnetpoolId = $.subnetpoolId;
         this.tags = $.tags;
@@ -526,6 +544,29 @@ public final class GetSubnetArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param segmentId The ID of the segment the subnet belongs to.
+         * Available when neutron segment extension is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder segmentId(@Nullable Output<String> segmentId) {
+            $.segmentId = segmentId;
+            return this;
+        }
+
+        /**
+         * @param segmentId The ID of the segment the subnet belongs to.
+         * Available when neutron segment extension is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder segmentId(String segmentId) {
+            return segmentId(Output.of(segmentId));
         }
 
         /**

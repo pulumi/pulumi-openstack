@@ -27,7 +27,7 @@ class GetSubnetIdsV2Result:
     """
     A collection of values returned by getSubnetIdsV2.
     """
-    def __init__(__self__, cidr=None, description=None, dhcp_enabled=None, dns_publish_fixed_ip=None, gateway_ip=None, id=None, ids=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, name_regex=None, network_id=None, region=None, sort_direction=None, sort_key=None, subnetpool_id=None, tags=None, tenant_id=None):
+    def __init__(__self__, cidr=None, description=None, dhcp_enabled=None, dns_publish_fixed_ip=None, gateway_ip=None, id=None, ids=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, name_regex=None, network_id=None, region=None, segment_id=None, sort_direction=None, sort_key=None, subnetpool_id=None, tags=None, tenant_id=None):
         if cidr and not isinstance(cidr, str):
             raise TypeError("Expected argument 'cidr' to be a str")
         pulumi.set(__self__, "cidr", cidr)
@@ -70,6 +70,9 @@ class GetSubnetIdsV2Result:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if segment_id and not isinstance(segment_id, str):
+            raise TypeError("Expected argument 'segment_id' to be a str")
+        pulumi.set(__self__, "segment_id", segment_id)
         if sort_direction and not isinstance(sort_direction, str):
             raise TypeError("Expected argument 'sort_direction' to be a str")
         pulumi.set(__self__, "sort_direction", sort_direction)
@@ -160,6 +163,11 @@ class GetSubnetIdsV2Result:
         return pulumi.get(self, "region")
 
     @property
+    @pulumi.getter(name="segmentId")
+    def segment_id(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "segment_id")
+
+    @property
     @pulumi.getter(name="sortDirection")
     def sort_direction(self) -> Optional[builtins.str]:
         return pulumi.get(self, "sort_direction")
@@ -205,6 +213,7 @@ class AwaitableGetSubnetIdsV2Result(GetSubnetIdsV2Result):
             name_regex=self.name_regex,
             network_id=self.network_id,
             region=self.region,
+            segment_id=self.segment_id,
             sort_direction=self.sort_direction,
             sort_key=self.sort_key,
             subnetpool_id=self.subnetpool_id,
@@ -224,6 +233,7 @@ def get_subnet_ids_v2(cidr: Optional[builtins.str] = None,
                       name_regex: Optional[builtins.str] = None,
                       network_id: Optional[builtins.str] = None,
                       region: Optional[builtins.str] = None,
+                      segment_id: Optional[builtins.str] = None,
                       sort_direction: Optional[builtins.str] = None,
                       sort_key: Optional[builtins.str] = None,
                       subnetpool_id: Optional[builtins.str] = None,
@@ -260,6 +270,8 @@ def get_subnet_ids_v2(cidr: Optional[builtins.str] = None,
     :param builtins.str region: The region in which to obtain the V2 Neutron client.
            A Neutron client is needed to retrieve subnet ids. If omitted, the
            `region` argument of the provider is used.
+    :param builtins.str segment_id: The ID of the segment the subnet belongs to.
+           Available when neutron segment extension is enabled.
     :param builtins.str sort_direction: Order the results in either `asc` or `desc`.
            Defaults to none.
     :param builtins.str sort_key: Sort subnets based on a certain key. Defaults to none.
@@ -280,6 +292,7 @@ def get_subnet_ids_v2(cidr: Optional[builtins.str] = None,
     __args__['nameRegex'] = name_regex
     __args__['networkId'] = network_id
     __args__['region'] = region
+    __args__['segmentId'] = segment_id
     __args__['sortDirection'] = sort_direction
     __args__['sortKey'] = sort_key
     __args__['subnetpoolId'] = subnetpool_id
@@ -303,6 +316,7 @@ def get_subnet_ids_v2(cidr: Optional[builtins.str] = None,
         name_regex=pulumi.get(__ret__, 'name_regex'),
         network_id=pulumi.get(__ret__, 'network_id'),
         region=pulumi.get(__ret__, 'region'),
+        segment_id=pulumi.get(__ret__, 'segment_id'),
         sort_direction=pulumi.get(__ret__, 'sort_direction'),
         sort_key=pulumi.get(__ret__, 'sort_key'),
         subnetpool_id=pulumi.get(__ret__, 'subnetpool_id'),
@@ -320,6 +334,7 @@ def get_subnet_ids_v2_output(cidr: Optional[pulumi.Input[Optional[builtins.str]]
                              name_regex: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                              network_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                              region: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                             segment_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                              sort_direction: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                              sort_key: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                              subnetpool_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
@@ -356,6 +371,8 @@ def get_subnet_ids_v2_output(cidr: Optional[pulumi.Input[Optional[builtins.str]]
     :param builtins.str region: The region in which to obtain the V2 Neutron client.
            A Neutron client is needed to retrieve subnet ids. If omitted, the
            `region` argument of the provider is used.
+    :param builtins.str segment_id: The ID of the segment the subnet belongs to.
+           Available when neutron segment extension is enabled.
     :param builtins.str sort_direction: Order the results in either `asc` or `desc`.
            Defaults to none.
     :param builtins.str sort_key: Sort subnets based on a certain key. Defaults to none.
@@ -376,6 +393,7 @@ def get_subnet_ids_v2_output(cidr: Optional[pulumi.Input[Optional[builtins.str]]
     __args__['nameRegex'] = name_regex
     __args__['networkId'] = network_id
     __args__['region'] = region
+    __args__['segmentId'] = segment_id
     __args__['sortDirection'] = sort_direction
     __args__['sortKey'] = sort_key
     __args__['subnetpoolId'] = subnetpool_id
@@ -398,6 +416,7 @@ def get_subnet_ids_v2_output(cidr: Optional[pulumi.Input[Optional[builtins.str]]
         name_regex=pulumi.get(__response__, 'name_regex'),
         network_id=pulumi.get(__response__, 'network_id'),
         region=pulumi.get(__response__, 'region'),
+        segment_id=pulumi.get(__response__, 'segment_id'),
         sort_direction=pulumi.get(__response__, 'sort_direction'),
         sort_key=pulumi.get(__response__, 'sort_key'),
         subnetpool_id=pulumi.get(__response__, 'subnetpool_id'),

@@ -37,6 +37,11 @@ public final class GetHypervisorV2Result {
      */
     private Integer memory;
     /**
+     * @return See Argument Reference above.
+     * 
+     */
+    private String region;
+    /**
      * @return The state of the hypervisor (`up` or `down`)
      * 
      */
@@ -94,6 +99,13 @@ public final class GetHypervisorV2Result {
         return this.memory;
     }
     /**
+     * @return See Argument Reference above.
+     * 
+     */
+    public String region() {
+        return this.region;
+    }
+    /**
      * @return The state of the hypervisor (`up` or `down`)
      * 
      */
@@ -136,6 +148,7 @@ public final class GetHypervisorV2Result {
         private String hostname;
         private String id;
         private Integer memory;
+        private String region;
         private String state;
         private String status;
         private String type;
@@ -148,6 +161,7 @@ public final class GetHypervisorV2Result {
     	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
     	      this.memory = defaults.memory;
+    	      this.region = defaults.region;
     	      this.state = defaults.state;
     	      this.status = defaults.status;
     	      this.type = defaults.type;
@@ -195,6 +209,14 @@ public final class GetHypervisorV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder region(String region) {
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetHypervisorV2Result", "region");
+            }
+            this.region = region;
+            return this;
+        }
+        @CustomType.Setter
         public Builder state(String state) {
             if (state == null) {
               throw new MissingRequiredPropertyException("GetHypervisorV2Result", "state");
@@ -233,6 +255,7 @@ public final class GetHypervisorV2Result {
             _resultValue.hostname = hostname;
             _resultValue.id = id;
             _resultValue.memory = memory;
+            _resultValue.region = region;
             _resultValue.state = state;
             _resultValue.status = status;
             _resultValue.type = type;

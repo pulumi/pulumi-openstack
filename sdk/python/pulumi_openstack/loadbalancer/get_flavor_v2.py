@@ -100,7 +100,7 @@ class GetFlavorV2Result:
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[builtins.str]:
+    def region(self) -> builtins.str:
         return pulumi.get(self, "region")
 
 

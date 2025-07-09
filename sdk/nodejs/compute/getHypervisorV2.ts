@@ -24,6 +24,7 @@ export function getHypervisorV2(args?: GetHypervisorV2Args, opts?: pulumi.Invoke
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:compute/getHypervisorV2:getHypervisorV2", {
         "hostname": args.hostname,
+        "region": args.region,
     }, opts);
 }
 
@@ -32,9 +33,14 @@ export function getHypervisorV2(args?: GetHypervisorV2Args, opts?: pulumi.Invoke
  */
 export interface GetHypervisorV2Args {
     /**
-     * The hostname of the hypervisor
+     * The hostname of the hypervisor.
      */
     hostname?: string;
+    /**
+     * The region in which to obtain the V2 Compute client.
+     * If omitted, the `region` argument of the provider is used.
+     */
+    region?: string;
 }
 
 /**
@@ -61,6 +67,10 @@ export interface GetHypervisorV2Result {
      * The number in MegaBytes of memory the hypervisor can provide
      */
     readonly memory: number;
+    /**
+     * See Argument Reference above.
+     */
+    readonly region: string;
     /**
      * The state of the hypervisor (`up` or `down`)
      */
@@ -98,6 +108,7 @@ export function getHypervisorV2Output(args?: GetHypervisorV2OutputArgs, opts?: p
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:compute/getHypervisorV2:getHypervisorV2", {
         "hostname": args.hostname,
+        "region": args.region,
     }, opts);
 }
 
@@ -106,7 +117,12 @@ export function getHypervisorV2Output(args?: GetHypervisorV2OutputArgs, opts?: p
  */
 export interface GetHypervisorV2OutputArgs {
     /**
-     * The hostname of the hypervisor
+     * The hostname of the hypervisor.
      */
     hostname?: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Compute client.
+     * If omitted, the `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
 }

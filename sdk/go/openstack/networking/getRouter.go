@@ -89,6 +89,8 @@ type LookupRouterResult struct {
 	ExternalFixedIps []GetRouterExternalFixedIp `pulumi:"externalFixedIps"`
 	// The network UUID of an external gateway for the router.
 	ExternalNetworkId string `pulumi:"externalNetworkId"`
+	// The QoS policy UUID applied on the external gateway for the router.
+	ExternalQosPolicyId string `pulumi:"externalQosPolicyId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id       string   `pulumi:"id"`
 	Name     *string  `pulumi:"name"`
@@ -188,6 +190,11 @@ func (o LookupRouterResultOutput) ExternalFixedIps() GetRouterExternalFixedIpArr
 // The network UUID of an external gateway for the router.
 func (o LookupRouterResultOutput) ExternalNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouterResult) string { return v.ExternalNetworkId }).(pulumi.StringOutput)
+}
+
+// The QoS policy UUID applied on the external gateway for the router.
+func (o LookupRouterResultOutput) ExternalQosPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouterResult) string { return v.ExternalQosPolicyId }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

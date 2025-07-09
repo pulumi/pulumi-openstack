@@ -112,6 +112,12 @@ export class Instance extends pulumi.CustomResource {
      * object structure is documented below.
      */
     public readonly users!: pulumi.Output<outputs.database.InstanceUser[] | undefined>;
+    /**
+     * Specifies the volume type to use. If you want to
+     * specify a volume type, you must also specify a volume size. Changing this
+     * creates new instance.
+     */
+    public readonly volumeType!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -136,6 +142,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
             resourceInputs["users"] = state ? state.users : undefined;
+            resourceInputs["volumeType"] = state ? state.volumeType : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.datastore === undefined) && !opts.urn) {
@@ -153,6 +160,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["users"] = args ? args.users : undefined;
+            resourceInputs["volumeType"] = args ? args.volumeType : undefined;
             resourceInputs["addresses"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -212,6 +220,12 @@ export interface InstanceState {
      * object structure is documented below.
      */
     users?: pulumi.Input<pulumi.Input<inputs.database.InstanceUser>[]>;
+    /**
+     * Specifies the volume type to use. If you want to
+     * specify a volume type, you must also specify a volume size. Changing this
+     * creates new instance.
+     */
+    volumeType?: pulumi.Input<string>;
 }
 
 /**
@@ -262,4 +276,10 @@ export interface InstanceArgs {
      * object structure is documented below.
      */
     users?: pulumi.Input<pulumi.Input<inputs.database.InstanceUser>[]>;
+    /**
+     * Specifies the volume type to use. If you want to
+     * specify a volume type, you must also specify a volume size. Changing this
+     * creates new instance.
+     */
+    volumeType?: pulumi.Input<string>;
 }

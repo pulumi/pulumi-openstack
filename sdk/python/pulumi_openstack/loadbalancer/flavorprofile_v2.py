@@ -34,6 +34,10 @@ class FlavorprofileV2Args:
                Changing this updates the existing flavorprofile.
         :param pulumi.Input[builtins.str] name: Name of the flavorprofile. Changing this updates the existing
                flavorprofile.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create an LB member. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               LB flavorprofile.
         """
         pulumi.set(__self__, "flavor_data", flavor_data)
         pulumi.set(__self__, "provider_name", provider_name)
@@ -86,6 +90,12 @@ class FlavorprofileV2Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create an LB member. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        LB flavorprofile.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -110,6 +120,10 @@ class _FlavorprofileV2State:
                flavorprofile.
         :param pulumi.Input[builtins.str] provider_name: The provider_name that the flavor_profile will use.
                Changing this updates the existing flavorprofile.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create an LB member. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               LB flavorprofile.
         """
         if flavor_data is not None:
             pulumi.set(__self__, "flavor_data", flavor_data)
@@ -164,6 +178,12 @@ class _FlavorprofileV2State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create an LB member. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        LB flavorprofile.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -234,6 +254,10 @@ class FlavorprofileV2(pulumi.CustomResource):
                flavorprofile.
         :param pulumi.Input[builtins.str] provider_name: The provider_name that the flavor_profile will use.
                Changing this updates the existing flavorprofile.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create an LB member. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               LB flavorprofile.
         """
         ...
     @overload
@@ -350,6 +374,10 @@ class FlavorprofileV2(pulumi.CustomResource):
                flavorprofile.
         :param pulumi.Input[builtins.str] provider_name: The provider_name that the flavor_profile will use.
                Changing this updates the existing flavorprofile.
+        :param pulumi.Input[builtins.str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create an LB member. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               LB flavorprofile.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -393,5 +421,11 @@ class FlavorprofileV2(pulumi.CustomResource):
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[builtins.str]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create an LB member. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        LB flavorprofile.
+        """
         return pulumi.get(self, "region")
 

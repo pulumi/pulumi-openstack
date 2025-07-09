@@ -29,6 +29,7 @@ class RouterArgs:
                  enable_snat: Optional[pulumi.Input[builtins.bool]] = None,
                  external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]] = None,
                  external_network_id: Optional[pulumi.Input[builtins.str]] = None,
+                 external_qos_policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
@@ -41,7 +42,7 @@ class RouterArgs:
         :param pulumi.Input[builtins.bool] admin_state_up: Administrative up/down status for the router
                (must be "true" or "false" if provided). Changing this updates the
                `admin_state_up` of an existing router.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] availability_zone_hints: An availability zone is used to make 
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] availability_zone_hints: An availability zone is used to make
                network resources highly available. Used for resources with high availability
                so that they are scheduled on different availability zones. Changing this
                creates a new router.
@@ -62,6 +63,9 @@ class RouterArgs:
                for the router. A router with an external gateway is required if any
                compute instances or load balancers will be using floating IPs. Changing
                this updates the external gateway of the router.
+        :param pulumi.Input[builtins.str] external_qos_policy_id: The QoS policy UUID that will be applied
+               on the external gateway for the router. Changing this updates the external
+               gateway of the router.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] external_subnet_ids: A list of external subnet IDs to try over
                each to obtain a fixed IP for the router. If a subnet ID in a list has
                exhausted floating IP pool, the next subnet ID will be tried. This argument is
@@ -94,6 +98,8 @@ class RouterArgs:
             pulumi.set(__self__, "external_fixed_ips", external_fixed_ips)
         if external_network_id is not None:
             pulumi.set(__self__, "external_network_id", external_network_id)
+        if external_qos_policy_id is not None:
+            pulumi.set(__self__, "external_qos_policy_id", external_qos_policy_id)
         if external_subnet_ids is not None:
             pulumi.set(__self__, "external_subnet_ids", external_subnet_ids)
         if name is not None:
@@ -127,7 +133,7 @@ class RouterArgs:
     @pulumi.getter(name="availabilityZoneHints")
     def availability_zone_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        An availability zone is used to make 
+        An availability zone is used to make
         network resources highly available. Used for resources with high availability
         so that they are scheduled on different availability zones. Changing this
         creates a new router.
@@ -209,6 +215,20 @@ class RouterArgs:
     @external_network_id.setter
     def external_network_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "external_network_id", value)
+
+    @property
+    @pulumi.getter(name="externalQosPolicyId")
+    def external_qos_policy_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The QoS policy UUID that will be applied
+        on the external gateway for the router. Changing this updates the external
+        gateway of the router.
+        """
+        return pulumi.get(self, "external_qos_policy_id")
+
+    @external_qos_policy_id.setter
+    def external_qos_policy_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "external_qos_policy_id", value)
 
     @property
     @pulumi.getter(name="externalSubnetIds")
@@ -316,6 +336,7 @@ class _RouterState:
                  enable_snat: Optional[pulumi.Input[builtins.bool]] = None,
                  external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]] = None,
                  external_network_id: Optional[pulumi.Input[builtins.str]] = None,
+                 external_qos_policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
@@ -330,7 +351,7 @@ class _RouterState:
                `admin_state_up` of an existing router.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] all_tags: The collection of tags assigned on the router, which have been
                explicitly and implicitly added.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] availability_zone_hints: An availability zone is used to make 
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] availability_zone_hints: An availability zone is used to make
                network resources highly available. Used for resources with high availability
                so that they are scheduled on different availability zones. Changing this
                creates a new router.
@@ -351,6 +372,9 @@ class _RouterState:
                for the router. A router with an external gateway is required if any
                compute instances or load balancers will be using floating IPs. Changing
                this updates the external gateway of the router.
+        :param pulumi.Input[builtins.str] external_qos_policy_id: The QoS policy UUID that will be applied
+               on the external gateway for the router. Changing this updates the external
+               gateway of the router.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] external_subnet_ids: A list of external subnet IDs to try over
                each to obtain a fixed IP for the router. If a subnet ID in a list has
                exhausted floating IP pool, the next subnet ID will be tried. This argument is
@@ -385,6 +409,8 @@ class _RouterState:
             pulumi.set(__self__, "external_fixed_ips", external_fixed_ips)
         if external_network_id is not None:
             pulumi.set(__self__, "external_network_id", external_network_id)
+        if external_qos_policy_id is not None:
+            pulumi.set(__self__, "external_qos_policy_id", external_qos_policy_id)
         if external_subnet_ids is not None:
             pulumi.set(__self__, "external_subnet_ids", external_subnet_ids)
         if name is not None:
@@ -431,7 +457,7 @@ class _RouterState:
     @pulumi.getter(name="availabilityZoneHints")
     def availability_zone_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        An availability zone is used to make 
+        An availability zone is used to make
         network resources highly available. Used for resources with high availability
         so that they are scheduled on different availability zones. Changing this
         creates a new router.
@@ -513,6 +539,20 @@ class _RouterState:
     @external_network_id.setter
     def external_network_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "external_network_id", value)
+
+    @property
+    @pulumi.getter(name="externalQosPolicyId")
+    def external_qos_policy_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The QoS policy UUID that will be applied
+        on the external gateway for the router. Changing this updates the external
+        gateway of the router.
+        """
+        return pulumi.get(self, "external_qos_policy_id")
+
+    @external_qos_policy_id.setter
+    def external_qos_policy_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "external_qos_policy_id", value)
 
     @property
     @pulumi.getter(name="externalSubnetIds")
@@ -622,6 +662,7 @@ class Router(pulumi.CustomResource):
                  enable_snat: Optional[pulumi.Input[builtins.bool]] = None,
                  external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict']]]]] = None,
                  external_network_id: Optional[pulumi.Input[builtins.str]] = None,
+                 external_qos_policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
@@ -658,7 +699,7 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] admin_state_up: Administrative up/down status for the router
                (must be "true" or "false" if provided). Changing this updates the
                `admin_state_up` of an existing router.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] availability_zone_hints: An availability zone is used to make 
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] availability_zone_hints: An availability zone is used to make
                network resources highly available. Used for resources with high availability
                so that they are scheduled on different availability zones. Changing this
                creates a new router.
@@ -679,6 +720,9 @@ class Router(pulumi.CustomResource):
                for the router. A router with an external gateway is required if any
                compute instances or load balancers will be using floating IPs. Changing
                this updates the external gateway of the router.
+        :param pulumi.Input[builtins.str] external_qos_policy_id: The QoS policy UUID that will be applied
+               on the external gateway for the router. Changing this updates the external
+               gateway of the router.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] external_subnet_ids: A list of external subnet IDs to try over
                each to obtain a fixed IP for the router. If a subnet ID in a list has
                exhausted floating IP pool, the next subnet ID will be tried. This argument is
@@ -748,6 +792,7 @@ class Router(pulumi.CustomResource):
                  enable_snat: Optional[pulumi.Input[builtins.bool]] = None,
                  external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict']]]]] = None,
                  external_network_id: Optional[pulumi.Input[builtins.str]] = None,
+                 external_qos_policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
@@ -771,6 +816,7 @@ class Router(pulumi.CustomResource):
             __props__.__dict__["enable_snat"] = enable_snat
             __props__.__dict__["external_fixed_ips"] = external_fixed_ips
             __props__.__dict__["external_network_id"] = external_network_id
+            __props__.__dict__["external_qos_policy_id"] = external_qos_policy_id
             __props__.__dict__["external_subnet_ids"] = external_subnet_ids
             __props__.__dict__["name"] = name
             __props__.__dict__["region"] = region
@@ -797,6 +843,7 @@ class Router(pulumi.CustomResource):
             enable_snat: Optional[pulumi.Input[builtins.bool]] = None,
             external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict']]]]] = None,
             external_network_id: Optional[pulumi.Input[builtins.str]] = None,
+            external_qos_policy_id: Optional[pulumi.Input[builtins.str]] = None,
             external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             region: Optional[pulumi.Input[builtins.str]] = None,
@@ -816,7 +863,7 @@ class Router(pulumi.CustomResource):
                `admin_state_up` of an existing router.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] all_tags: The collection of tags assigned on the router, which have been
                explicitly and implicitly added.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] availability_zone_hints: An availability zone is used to make 
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] availability_zone_hints: An availability zone is used to make
                network resources highly available. Used for resources with high availability
                so that they are scheduled on different availability zones. Changing this
                creates a new router.
@@ -837,6 +884,9 @@ class Router(pulumi.CustomResource):
                for the router. A router with an external gateway is required if any
                compute instances or load balancers will be using floating IPs. Changing
                this updates the external gateway of the router.
+        :param pulumi.Input[builtins.str] external_qos_policy_id: The QoS policy UUID that will be applied
+               on the external gateway for the router. Changing this updates the external
+               gateway of the router.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] external_subnet_ids: A list of external subnet IDs to try over
                each to obtain a fixed IP for the router. If a subnet ID in a list has
                exhausted floating IP pool, the next subnet ID will be tried. This argument is
@@ -867,6 +917,7 @@ class Router(pulumi.CustomResource):
         __props__.__dict__["enable_snat"] = enable_snat
         __props__.__dict__["external_fixed_ips"] = external_fixed_ips
         __props__.__dict__["external_network_id"] = external_network_id
+        __props__.__dict__["external_qos_policy_id"] = external_qos_policy_id
         __props__.__dict__["external_subnet_ids"] = external_subnet_ids
         __props__.__dict__["name"] = name
         __props__.__dict__["region"] = region
@@ -899,7 +950,7 @@ class Router(pulumi.CustomResource):
     @pulumi.getter(name="availabilityZoneHints")
     def availability_zone_hints(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        An availability zone is used to make 
+        An availability zone is used to make
         network resources highly available. Used for resources with high availability
         so that they are scheduled on different availability zones. Changing this
         creates a new router.
@@ -957,6 +1008,16 @@ class Router(pulumi.CustomResource):
         this updates the external gateway of the router.
         """
         return pulumi.get(self, "external_network_id")
+
+    @property
+    @pulumi.getter(name="externalQosPolicyId")
+    def external_qos_policy_id(self) -> pulumi.Output[builtins.str]:
+        """
+        The QoS policy UUID that will be applied
+        on the external gateway for the router. Changing this updates the external
+        gateway of the router.
+        """
+        return pulumi.get(self, "external_qos_policy_id")
 
     @property
     @pulumi.getter(name="externalSubnetIds")

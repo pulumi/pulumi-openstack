@@ -187,6 +187,25 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.users);
     }
 
+    /**
+     * Specifies the volume type to use. If you want to
+     * specify a volume type, you must also specify a volume size. Changing this
+     * creates new instance.
+     * 
+     */
+    @Import(name="volumeType")
+    private @Nullable Output<String> volumeType;
+
+    /**
+     * @return Specifies the volume type to use. If you want to
+     * specify a volume type, you must also specify a volume size. Changing this
+     * creates new instance.
+     * 
+     */
+    public Optional<Output<String>> volumeType() {
+        return Optional.ofNullable(this.volumeType);
+    }
+
     private InstanceState() {}
 
     private InstanceState(InstanceState $) {
@@ -200,6 +219,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.region = $.region;
         this.size = $.size;
         this.users = $.users;
+        this.volumeType = $.volumeType;
     }
 
     public static Builder builder() {
@@ -488,6 +508,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder users(InstanceUserArgs... users) {
             return users(List.of(users));
+        }
+
+        /**
+         * @param volumeType Specifies the volume type to use. If you want to
+         * specify a volume type, you must also specify a volume size. Changing this
+         * creates new instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder volumeType(@Nullable Output<String> volumeType) {
+            $.volumeType = volumeType;
+            return this;
+        }
+
+        /**
+         * @param volumeType Specifies the volume type to use. If you want to
+         * specify a volume type, you must also specify a volume size. Changing this
+         * creates new instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder volumeType(String volumeType) {
+            return volumeType(Output.of(volumeType));
         }
 
         public InstanceState build() {

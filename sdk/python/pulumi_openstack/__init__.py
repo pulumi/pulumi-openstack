@@ -328,6 +328,14 @@ _utilities.register(
  },
  {
   "pkg": "openstack",
+  "mod": "dns/zoneShareV2",
+  "fqn": "pulumi_openstack.dns",
+  "classes": {
+   "openstack:dns/zoneShareV2:ZoneShareV2": "ZoneShareV2"
+  }
+ },
+ {
+  "pkg": "openstack",
   "mod": "firewall/groupV2",
   "fqn": "pulumi_openstack.firewall",
   "classes": {
@@ -392,10 +400,26 @@ _utilities.register(
  },
  {
   "pkg": "openstack",
+  "mod": "identity/limitV3",
+  "fqn": "pulumi_openstack.identity",
+  "classes": {
+   "openstack:identity/limitV3:LimitV3": "LimitV3"
+  }
+ },
+ {
+  "pkg": "openstack",
   "mod": "identity/project",
   "fqn": "pulumi_openstack.identity",
   "classes": {
    "openstack:identity/project:Project": "Project"
+  }
+ },
+ {
+  "pkg": "openstack",
+  "mod": "identity/registeredLimitV3",
+  "fqn": "pulumi_openstack.identity",
+  "classes": {
+   "openstack:identity/registeredLimitV3:RegisteredLimitV3": "RegisteredLimitV3"
   }
  },
  {
@@ -536,6 +560,14 @@ _utilities.register(
  },
  {
   "pkg": "openstack",
+  "mod": "loadbalancer/flavorV2",
+  "fqn": "pulumi_openstack.loadbalancer",
+  "classes": {
+   "openstack:loadbalancer/flavorV2:FlavorV2": "FlavorV2"
+  }
+ },
+ {
+  "pkg": "openstack",
   "mod": "loadbalancer/flavorprofileV2",
   "fqn": "pulumi_openstack.loadbalancer",
   "classes": {
@@ -612,6 +644,14 @@ _utilities.register(
   "fqn": "pulumi_openstack.loadbalancer",
   "classes": {
    "openstack:loadbalancer/quota:Quota": "Quota"
+  }
+ },
+ {
+  "pkg": "openstack",
+  "mod": "networking/addressGroupV2",
+  "fqn": "pulumi_openstack.networking",
+  "classes": {
+   "openstack:networking/addressGroupV2:AddressGroupV2": "AddressGroupV2"
   }
  },
  {

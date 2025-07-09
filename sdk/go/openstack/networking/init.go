@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "openstack:networking/addressGroupV2:AddressGroupV2":
+		r = &AddressGroupV2{}
 	case "openstack:networking/addressScope:AddressScope":
 		r = &AddressScope{}
 	case "openstack:networking/floatingIp:FloatingIp":
@@ -78,6 +80,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"networking/addressGroupV2",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"networking/addressScope",

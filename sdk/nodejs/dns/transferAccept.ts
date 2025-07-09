@@ -79,10 +79,9 @@ export class TransferAccept extends pulumi.CustomResource {
      */
     public readonly key!: pulumi.Output<string>;
     /**
-     * The region in which to obtain the V2 Compute client.
-     * Keypairs are associated with accounts, but a Compute client is needed to
-     * create one. If omitted, the `region` argument of the provider is used.
-     * Changing this creates a new DNS zone.
+     * The region in which to obtain the V2 DNS client.
+     * If omitted, the `region` argument of the provider is used.
+     * Changing this creates a new DNS zone zone transfer accept.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -147,10 +146,9 @@ export interface TransferAcceptState {
      */
     key?: pulumi.Input<string>;
     /**
-     * The region in which to obtain the V2 Compute client.
-     * Keypairs are associated with accounts, but a Compute client is needed to
-     * create one. If omitted, the `region` argument of the provider is used.
-     * Changing this creates a new DNS zone.
+     * The region in which to obtain the V2 DNS client.
+     * If omitted, the `region` argument of the provider is used.
+     * Changing this creates a new DNS zone zone transfer accept.
      */
     region?: pulumi.Input<string>;
     /**
@@ -179,10 +177,9 @@ export interface TransferAcceptArgs {
      */
     key: pulumi.Input<string>;
     /**
-     * The region in which to obtain the V2 Compute client.
-     * Keypairs are associated with accounts, but a Compute client is needed to
-     * create one. If omitted, the `region` argument of the provider is used.
-     * Changing this creates a new DNS zone.
+     * The region in which to obtain the V2 DNS client.
+     * If omitted, the `region` argument of the provider is used.
+     * Changing this creates a new DNS zone zone transfer accept.
      */
     region?: pulumi.Input<string>;
     /**

@@ -70,7 +70,7 @@ export class Router extends pulumi.CustomResource {
      */
     public /*out*/ readonly allTags!: pulumi.Output<string[]>;
     /**
-     * An availability zone is used to make 
+     * An availability zone is used to make
      * network resources highly available. Used for resources with high availability
      * so that they are scheduled on different availability zones. Changing this
      * creates a new router.
@@ -108,6 +108,12 @@ export class Router extends pulumi.CustomResource {
      * this updates the external gateway of the router.
      */
     public readonly externalNetworkId!: pulumi.Output<string>;
+    /**
+     * The QoS policy UUID that will be applied
+     * on the external gateway for the router. Changing this updates the external
+     * gateway of the router.
+     */
+    public readonly externalQosPolicyId!: pulumi.Output<string>;
     /**
      * A list of external subnet IDs to try over
      * each to obtain a fixed IP for the router. If a subnet ID in a list has
@@ -168,6 +174,7 @@ export class Router extends pulumi.CustomResource {
             resourceInputs["enableSnat"] = state ? state.enableSnat : undefined;
             resourceInputs["externalFixedIps"] = state ? state.externalFixedIps : undefined;
             resourceInputs["externalNetworkId"] = state ? state.externalNetworkId : undefined;
+            resourceInputs["externalQosPolicyId"] = state ? state.externalQosPolicyId : undefined;
             resourceInputs["externalSubnetIds"] = state ? state.externalSubnetIds : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
@@ -184,6 +191,7 @@ export class Router extends pulumi.CustomResource {
             resourceInputs["enableSnat"] = args ? args.enableSnat : undefined;
             resourceInputs["externalFixedIps"] = args ? args.externalFixedIps : undefined;
             resourceInputs["externalNetworkId"] = args ? args.externalNetworkId : undefined;
+            resourceInputs["externalQosPolicyId"] = args ? args.externalQosPolicyId : undefined;
             resourceInputs["externalSubnetIds"] = args ? args.externalSubnetIds : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
@@ -214,7 +222,7 @@ export interface RouterState {
      */
     allTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * An availability zone is used to make 
+     * An availability zone is used to make
      * network resources highly available. Used for resources with high availability
      * so that they are scheduled on different availability zones. Changing this
      * creates a new router.
@@ -252,6 +260,12 @@ export interface RouterState {
      * this updates the external gateway of the router.
      */
     externalNetworkId?: pulumi.Input<string>;
+    /**
+     * The QoS policy UUID that will be applied
+     * on the external gateway for the router. Changing this updates the external
+     * gateway of the router.
+     */
+    externalQosPolicyId?: pulumi.Input<string>;
     /**
      * A list of external subnet IDs to try over
      * each to obtain a fixed IP for the router. If a subnet ID in a list has
@@ -303,7 +317,7 @@ export interface RouterArgs {
      */
     adminStateUp?: pulumi.Input<boolean>;
     /**
-     * An availability zone is used to make 
+     * An availability zone is used to make
      * network resources highly available. Used for resources with high availability
      * so that they are scheduled on different availability zones. Changing this
      * creates a new router.
@@ -341,6 +355,12 @@ export interface RouterArgs {
      * this updates the external gateway of the router.
      */
     externalNetworkId?: pulumi.Input<string>;
+    /**
+     * The QoS policy UUID that will be applied
+     * on the external gateway for the router. Changing this updates the external
+     * gateway of the router.
+     */
+    externalQosPolicyId?: pulumi.Input<string>;
     /**
      * A list of external subnet IDs to try over
      * each to obtain a fixed IP for the router. If a subnet ID in a list has

@@ -133,6 +133,13 @@ export class SecGroupRule extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The remote address group id, the value
+     * needs to be an OpenStack ID of an address group in the same tenant. Changing
+     * this creates a new security group rule. This argument is mutually exclusive
+     * with `remoteIpPrefix` and `remoteGroupId`.
+     */
+    public readonly remoteAddressGroupId!: pulumi.Output<string>;
+    /**
      * The remote group id, the value needs to be an
      * Openstack ID of a security group in the same tenant. Changing this creates
      * a new security group rule.
@@ -176,6 +183,7 @@ export class SecGroupRule extends pulumi.CustomResource {
             resourceInputs["portRangeMin"] = state ? state.portRangeMin : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["remoteAddressGroupId"] = state ? state.remoteAddressGroupId : undefined;
             resourceInputs["remoteGroupId"] = state ? state.remoteGroupId : undefined;
             resourceInputs["remoteIpPrefix"] = state ? state.remoteIpPrefix : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
@@ -198,6 +206,7 @@ export class SecGroupRule extends pulumi.CustomResource {
             resourceInputs["portRangeMin"] = args ? args.portRangeMin : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["remoteAddressGroupId"] = args ? args.remoteAddressGroupId : undefined;
             resourceInputs["remoteGroupId"] = args ? args.remoteGroupId : undefined;
             resourceInputs["remoteIpPrefix"] = args ? args.remoteIpPrefix : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
@@ -275,6 +284,13 @@ export interface SecGroupRuleState {
      * security group rule.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The remote address group id, the value
+     * needs to be an OpenStack ID of an address group in the same tenant. Changing
+     * this creates a new security group rule. This argument is mutually exclusive
+     * with `remoteIpPrefix` and `remoteGroupId`.
+     */
+    remoteAddressGroupId?: pulumi.Input<string>;
     /**
      * The remote group id, the value needs to be an
      * Openstack ID of a security group in the same tenant. Changing this creates
@@ -367,6 +383,13 @@ export interface SecGroupRuleArgs {
      * security group rule.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The remote address group id, the value
+     * needs to be an OpenStack ID of an address group in the same tenant. Changing
+     * this creates a new security group rule. This argument is mutually exclusive
+     * with `remoteIpPrefix` and `remoteGroupId`.
+     */
+    remoteAddressGroupId?: pulumi.Input<string>;
     /**
      * The remote group id, the value needs to be an
      * Openstack ID of a security group in the same tenant. Changing this creates

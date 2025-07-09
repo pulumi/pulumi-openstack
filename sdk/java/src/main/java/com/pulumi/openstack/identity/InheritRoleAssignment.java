@@ -136,9 +136,21 @@ public class InheritRoleAssignment extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
+    /**
+     * The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used. Changing this
+     * creates a new inherit role assignment.
+     * 
+     */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
+    /**
+     * @return The region in which to obtain the V3 Keystone client.
+     * If omitted, the `region` argument of the provider is used. Changing this
+     * creates a new inherit role assignment.
+     * 
+     */
     public Output<String> region() {
         return this.region;
     }

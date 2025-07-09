@@ -59,7 +59,7 @@ public final class GetUserResult {
      */
     private @Nullable String protocolId;
     /**
-     * @return The region the user is located in.
+     * @return See Argument Reference above.
      * 
      */
     private String region;
@@ -134,7 +134,7 @@ public final class GetUserResult {
         return Optional.ofNullable(this.protocolId);
     }
     /**
-     * @return The region the user is located in.
+     * @return See Argument Reference above.
      * 
      */
     public String region() {

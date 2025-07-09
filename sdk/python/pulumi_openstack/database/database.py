@@ -27,7 +27,8 @@ class DatabaseArgs:
         The set of arguments for constructing a Database resource.
         :param pulumi.Input[builtins.str] instance_id: The ID for the database instance.
         :param pulumi.Input[builtins.str] name: A unique name for the resource.
-        :param pulumi.Input[builtins.str] region: Openstack region resource is created in.
+        :param pulumi.Input[builtins.str] region: The region in which to create the database. Changing
+               this creates a new database.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if name is not None:
@@ -63,7 +64,8 @@ class DatabaseArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Openstack region resource is created in.
+        The region in which to create the database. Changing
+        this creates a new database.
         """
         return pulumi.get(self, "region")
 
@@ -82,7 +84,8 @@ class _DatabaseState:
         Input properties used for looking up and filtering Database resources.
         :param pulumi.Input[builtins.str] instance_id: The ID for the database instance.
         :param pulumi.Input[builtins.str] name: A unique name for the resource.
-        :param pulumi.Input[builtins.str] region: Openstack region resource is created in.
+        :param pulumi.Input[builtins.str] region: The region in which to create the database. Changing
+               this creates a new database.
         """
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
@@ -119,7 +122,8 @@ class _DatabaseState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Openstack region resource is created in.
+        The region in which to create the database. Changing
+        this creates a new database.
         """
         return pulumi.get(self, "region")
 
@@ -166,7 +170,8 @@ class Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] instance_id: The ID for the database instance.
         :param pulumi.Input[builtins.str] name: A unique name for the resource.
-        :param pulumi.Input[builtins.str] region: Openstack region resource is created in.
+        :param pulumi.Input[builtins.str] region: The region in which to create the database. Changing
+               this creates a new database.
         """
         ...
     @overload
@@ -252,7 +257,8 @@ class Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] instance_id: The ID for the database instance.
         :param pulumi.Input[builtins.str] name: A unique name for the resource.
-        :param pulumi.Input[builtins.str] region: Openstack region resource is created in.
+        :param pulumi.Input[builtins.str] region: The region in which to create the database. Changing
+               this creates a new database.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -283,7 +289,8 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[builtins.str]:
         """
-        Openstack region resource is created in.
+        The region in which to create the database. Changing
+        this creates a new database.
         """
         return pulumi.get(self, "region")
 

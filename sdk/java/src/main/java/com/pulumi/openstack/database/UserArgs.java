@@ -85,14 +85,16 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Openstack region resource is created in.
+     * The region in which to create the db user. Changing
+     * this creates a new user.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return Openstack region resource is created in.
+     * @return The region in which to create the db user. Changing
+     * this creates a new user.
      * 
      */
     public Optional<Output<String>> region() {
@@ -232,7 +234,8 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region Openstack region resource is created in.
+         * @param region The region in which to create the db user. Changing
+         * this creates a new user.
          * 
          * @return builder
          * 
@@ -243,7 +246,8 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region Openstack region resource is created in.
+         * @param region The region in which to create the db user. Changing
+         * this creates a new user.
          * 
          * @return builder
          * 

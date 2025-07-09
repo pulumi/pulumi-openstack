@@ -69,7 +69,9 @@ type GetProjectIdsV3Args struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// The parent of the project.
 	ParentId *string `pulumi:"parentId"`
-	Region   *string `pulumi:"region"`
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used.
+	Region *string `pulumi:"region"`
 	// Tags for the project.
 	Tags []string `pulumi:"tags"`
 }
@@ -116,7 +118,9 @@ type GetProjectIdsV3OutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The parent of the project.
 	ParentId pulumi.StringPtrInput `pulumi:"parentId"`
-	Region   pulumi.StringPtrInput `pulumi:"region"`
+	// The region in which to obtain the V3 Keystone client.
+	// If omitted, the `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Tags for the project.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }

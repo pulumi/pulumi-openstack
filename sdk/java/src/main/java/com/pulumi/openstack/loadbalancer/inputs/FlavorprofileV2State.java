@@ -70,9 +70,23 @@ public final class FlavorprofileV2State extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.providerName);
     }
 
+    /**
+     * The region in which to obtain the V2 Networking client.
+     * A Networking client is needed to create an LB member. If omitted, the
+     * `region` argument of the provider is used. Changing this creates a new
+     * LB flavorprofile.
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return The region in which to obtain the V2 Networking client.
+     * A Networking client is needed to create an LB member. If omitted, the
+     * `region` argument of the provider is used. Changing this creates a new
+     * LB flavorprofile.
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
@@ -177,11 +191,29 @@ public final class FlavorprofileV2State extends com.pulumi.resources.ResourceArg
             return providerName(Output.of(providerName));
         }
 
+        /**
+         * @param region The region in which to obtain the V2 Networking client.
+         * A Networking client is needed to create an LB member. If omitted, the
+         * `region` argument of the provider is used. Changing this creates a new
+         * LB flavorprofile.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region The region in which to obtain the V2 Networking client.
+         * A Networking client is needed to create an LB member. If omitted, the
+         * `region` argument of the provider is used. Changing this creates a new
+         * LB flavorprofile.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }

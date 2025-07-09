@@ -11,7 +11,10 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.dns.inputs.GetDnsZoneArgs;
 import com.pulumi.openstack.dns.inputs.GetDnsZonePlainArgs;
+import com.pulumi.openstack.dns.inputs.GetZoneShareV2Args;
+import com.pulumi.openstack.dns.inputs.GetZoneShareV2PlainArgs;
 import com.pulumi.openstack.dns.outputs.GetDnsZoneResult;
+import com.pulumi.openstack.dns.outputs.GetZoneShareV2Result;
 import java.util.concurrent.CompletableFuture;
 
 public final class DnsFunctions {
@@ -308,5 +311,225 @@ public final class DnsFunctions {
      */
     public static CompletableFuture<GetDnsZoneResult> getDnsZonePlain(GetDnsZonePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:dns/getDnsZone:getDnsZone", TypeShape.of(GetDnsZoneResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a DNS zone share.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.dns.DnsFunctions;
+     * import com.pulumi.openstack.dns.inputs.GetZoneShareV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getZoneShareV2(GetZoneShareV2Args.builder()
+     *             .zoneId("00000000-0000-0000-0000-000000000000")
+     *             .targetProjectId("11111111-1111-1111-1111-111111111111")
+     *             .projectId("22222222-2222-2222-2222-222222222222")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZoneShareV2Result> getZoneShareV2(GetZoneShareV2Args args) {
+        return getZoneShareV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a DNS zone share.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.dns.DnsFunctions;
+     * import com.pulumi.openstack.dns.inputs.GetZoneShareV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getZoneShareV2(GetZoneShareV2Args.builder()
+     *             .zoneId("00000000-0000-0000-0000-000000000000")
+     *             .targetProjectId("11111111-1111-1111-1111-111111111111")
+     *             .projectId("22222222-2222-2222-2222-222222222222")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZoneShareV2Result> getZoneShareV2Plain(GetZoneShareV2PlainArgs args) {
+        return getZoneShareV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a DNS zone share.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.dns.DnsFunctions;
+     * import com.pulumi.openstack.dns.inputs.GetZoneShareV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getZoneShareV2(GetZoneShareV2Args.builder()
+     *             .zoneId("00000000-0000-0000-0000-000000000000")
+     *             .targetProjectId("11111111-1111-1111-1111-111111111111")
+     *             .projectId("22222222-2222-2222-2222-222222222222")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZoneShareV2Result> getZoneShareV2(GetZoneShareV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:dns/getZoneShareV2:getZoneShareV2", TypeShape.of(GetZoneShareV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a DNS zone share.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.dns.DnsFunctions;
+     * import com.pulumi.openstack.dns.inputs.GetZoneShareV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getZoneShareV2(GetZoneShareV2Args.builder()
+     *             .zoneId("00000000-0000-0000-0000-000000000000")
+     *             .targetProjectId("11111111-1111-1111-1111-111111111111")
+     *             .projectId("22222222-2222-2222-2222-222222222222")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZoneShareV2Result> getZoneShareV2(GetZoneShareV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:dns/getZoneShareV2:getZoneShareV2", TypeShape.of(GetZoneShareV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a DNS zone share.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.dns.DnsFunctions;
+     * import com.pulumi.openstack.dns.inputs.GetZoneShareV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsFunctions.getZoneShareV2(GetZoneShareV2Args.builder()
+     *             .zoneId("00000000-0000-0000-0000-000000000000")
+     *             .targetProjectId("11111111-1111-1111-1111-111111111111")
+     *             .projectId("22222222-2222-2222-2222-222222222222")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZoneShareV2Result> getZoneShareV2Plain(GetZoneShareV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("openstack:dns/getZoneShareV2:getZoneShareV2", TypeShape.of(GetZoneShareV2Result.class), args, Utilities.withVersion(options));
     }
 }

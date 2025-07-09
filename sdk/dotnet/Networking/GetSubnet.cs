@@ -158,6 +158,13 @@ namespace Pulumi.OpenStack.Networking
         public string? Region { get; set; }
 
         /// <summary>
+        /// The ID of the segment the subnet belongs to.
+        /// Available when neutron segment extension is enabled.
+        /// </summary>
+        [Input("segmentId")]
+        public string? SegmentId { get; set; }
+
+        /// <summary>
         /// The ID of the subnet.
         /// </summary>
         [Input("subnetId")]
@@ -266,6 +273,13 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? Region { get; set; }
 
         /// <summary>
+        /// The ID of the segment the subnet belongs to.
+        /// Available when neutron segment extension is enabled.
+        /// </summary>
+        [Input("segmentId")]
+        public Input<string>? SegmentId { get; set; }
+
+        /// <summary>
         /// The ID of the subnet.
         /// </summary>
         [Input("subnetId")]
@@ -343,6 +357,7 @@ namespace Pulumi.OpenStack.Networking
         /// See Argument Reference above.
         /// </summary>
         public readonly string Region;
+        public readonly string SegmentId;
         /// <summary>
         /// Service types of the subnet.
         /// </summary>
@@ -388,6 +403,8 @@ namespace Pulumi.OpenStack.Networking
 
             string region,
 
+            string segmentId,
+
             ImmutableArray<string> serviceTypes,
 
             string subnetId,
@@ -415,6 +432,7 @@ namespace Pulumi.OpenStack.Networking
             Name = name;
             NetworkId = networkId;
             Region = region;
+            SegmentId = segmentId;
             ServiceTypes = serviceTypes;
             SubnetId = subnetId;
             SubnetpoolId = subnetpoolId;

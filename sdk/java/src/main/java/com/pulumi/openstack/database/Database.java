@@ -94,14 +94,16 @@ public class Database extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Openstack region resource is created in.
+     * The region in which to create the database. Changing
+     * this creates a new database.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return Openstack region resource is created in.
+     * @return The region in which to create the database. Changing
+     * this creates a new database.
      * 
      */
     public Output<String> region() {

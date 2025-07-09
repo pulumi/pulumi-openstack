@@ -301,18 +301,6 @@ namespace Pulumi.OpenStack.Compute
 
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The first detected Fixed IPv4 address.
-        /// </summary>
-        [Input("accessIpV4")]
-        public Input<string>? AccessIpV4 { get; set; }
-
-        /// <summary>
-        /// The first detected Fixed IPv6 address.
-        /// </summary>
-        [Input("accessIpV6")]
-        public Input<string>? AccessIpV6 { get; set; }
-
         [Input("adminPass")]
         private Input<string>? _adminPass;
 

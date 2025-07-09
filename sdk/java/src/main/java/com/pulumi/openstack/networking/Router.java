@@ -219,6 +219,24 @@ public class Router extends com.pulumi.resources.CustomResource {
         return this.externalNetworkId;
     }
     /**
+     * The QoS policy UUID that will be applied
+     * on the external gateway for the router. Changing this updates the external
+     * gateway of the router.
+     * 
+     */
+    @Export(name="externalQosPolicyId", refs={String.class}, tree="[0]")
+    private Output<String> externalQosPolicyId;
+
+    /**
+     * @return The QoS policy UUID that will be applied
+     * on the external gateway for the router. Changing this updates the external
+     * gateway of the router.
+     * 
+     */
+    public Output<String> externalQosPolicyId() {
+        return this.externalQosPolicyId;
+    }
+    /**
      * A list of external subnet IDs to try over
      * each to obtain a fixed IP for the router. If a subnet ID in a list has
      * exhausted floating IP pool, the next subnet ID will be tried. This argument is

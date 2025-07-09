@@ -260,18 +260,18 @@ public class ShareAccess extends com.pulumi.resources.CustomResource {
         return this.accessType;
     }
     /**
-     * The region in which to obtain the V2 Shared File System client.
-     * A Shared File System client is needed to create a share access. Changing this
-     * creates a new share access.
+     * The region in which to obtain the V2 Shared File System
+     * client. A Shared File System client is needed to create a share access.
+     * Changing this creates a new share access.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return The region in which to obtain the V2 Shared File System client.
-     * A Shared File System client is needed to create a share access. Changing this
-     * creates a new share access.
+     * @return The region in which to obtain the V2 Shared File System
+     * client. A Shared File System client is needed to create a share access.
+     * Changing this creates a new share access.
      * 
      */
     public Output<String> region() {

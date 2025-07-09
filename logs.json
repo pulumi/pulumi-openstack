@@ -1,0 +1,271 @@
+{
+  "pipelines": [
+    {
+      "name": "Set Up Environment",
+      "steps": [
+        {
+          "name": "GOWORK=off",
+          "inputs": [
+            "GOWORK",
+            "off"
+          ],
+          "outputs": [
+            null
+          ],
+          "impure": true
+        },
+        {
+          "name": "PULUMI_MISSING_DOCS_ERROR=true",
+          "inputs": [
+            "PULUMI_MISSING_DOCS_ERROR",
+            "true"
+          ],
+          "outputs": [
+            null
+          ],
+          "impure": true
+        },
+        {
+          "name": "PULUMI_EXTRA_MAPPING_ERROR=true",
+          "inputs": [
+            "PULUMI_EXTRA_MAPPING_ERROR",
+            "true"
+          ],
+          "outputs": [
+            null
+          ],
+          "impure": true
+        }
+      ]
+    },
+    {
+      "name": "Discover Provider",
+      "steps": [
+        {
+          "name": "Ensure Repo in CWD",
+          "inputs": [
+            "pulumi-openstack"
+          ],
+          "outputs": [
+            "/Users/vvm/code/pulumi-openstack",
+            null
+          ]
+        },
+        {
+          "name": "GetCwd",
+          "inputs": [],
+          "outputs": [
+            "/Users/vvm/code/pulumi-openstack",
+            null
+          ],
+          "impure": true
+        },
+        {
+          "name": "Validate Repository",
+          "inputs": [
+            "/Users/vvm/code/pulumi-openstack"
+          ],
+          "outputs": [
+            null
+          ]
+        },
+        {
+          "name": "git",
+          "inputs": [
+            "git",
+            [
+              "status",
+              "--short"
+            ]
+          ],
+          "outputs": [
+            "?? logs.json\n",
+            null
+          ],
+          "impure": true
+        },
+        {
+          "name": "Find default Branch",
+          "inputs": [
+            "origin"
+          ],
+          "outputs": [
+            "master",
+            null
+          ]
+        },
+        {
+          "name": "git",
+          "inputs": [
+            "git",
+            [
+              "ls-remote",
+              "--heads",
+              "origin"
+            ]
+          ],
+          "outputs": [
+            "d0e7f6d6635528c01775ba8ddbd8cc2a134f97b4\trefs/heads/bridge-v2.3.0\n7520222a75453bc4726e6fee7b6d8119ae3310a7\trefs/heads/combined-pr-branch\nde6ba35dc0dd66507b18a35a399b5f8a86e4c6b3\trefs/heads/enable-ci-linter\n0798d52a3b96fa4007968c40c685c2f5aaf3c041\trefs/heads/features/2.0\n8cb121fb35cd490110dc8a90bc71e84c833d786a\trefs/heads/guin/automate-index-md\n94c9969660d609ca5ed7b328ae57f63b178ca698\trefs/heads/guin/test-installation-docs\nfb24b664771e3a3c690c8556be6f1b580260540c\trefs/heads/master\ncdf90fdf1f973cd63ca5ee49d496e6d31353c053\trefs/heads/release/0.15\n1c1ffa0c25731e8406a2e1f10eb6397848a48544\trefs/heads/release/0.16\n04a28a32995e0ccf815bf8bdbfa9b80930c3b869\trefs/heads/update-github-actions-workflows-100\n6c4705739c81fd855d0c5cde028e08174a7413b4\trefs/heads/update-github-actions-workflows-101\n0ab36443ddef6e6613556efd350855cf257ede33\trefs/heads/update-github-actions-workflows-102\nd3a41c1e483bdbe6bb9d21480b716b15ff0c6f9a\trefs/heads/update-github-actions-workflows-103\n676e5514fa846d149e414512b3b89c530d945785\trefs/heads/update-github-actions-workflows-104\n0e8a47d8ee92961686cb64f0a771b4e72b318cb2\trefs/heads/update-github-actions-workflows-105\n14a02540c323fb11eb3b890e3d6f0d985d82a84f\trefs/heads/update-github-actions-workflows-106\n7868f50ce055c7a615fac34fe0ae6dffe68ea724\trefs/heads/update-github-actions-workflows-107\n3fd60e4210be01c7a1529d67b5a7e71c2b70b9d6\trefs/heads/update-github-actions-workflows-108\na948516303418664ec7fb9b0005b64e8d0515902\trefs/heads/update-github-actions-workflows-109\n4421c803638cb3e8e100ec225c8f967960b0f683\trefs/heads/update-github-actions-workflows-110\ncec34a39e9f0975513b752f92dd3065305e162ad\trefs/heads/update-github-actions-workflows-111\nac24ee420fce668cfa393e5f744484df4158e970\trefs/heads/update-github-actions-workflows-112\n3edf2ea07b27dcce7b92170fedadbc56f0e06d77\trefs/heads/update-github-actions-workflows-113\ne1fcb4b1009f227d31be27d89b9637f77f0ad81c\trefs/heads/update-github-actions-workflows-114\n078c112cfdce35e629a246923e0f81321d59c1fa\trefs/heads/update-github-actions-workflows-115\n15307fa7134ce68a72c3f41a9c43ef5b5b0961e9\trefs/heads/update-github-actions-workflows-116\n3c5b3b16f530cdd7d8394c739d2508ee9c095b1a\trefs/heads/update-github-actions-workflows-117\n49ff688f803afd567672176852ab34d6c9337786\trefs/heads/update-github-actions-workflows-118\n45197747d61dcd571f538da2fb58a76816212738\trefs/heads/update-github-actions-workflows-120\n29bd18725a6d72c972acdebfbe3c237d233b89d1\trefs/heads/update-github-actions-workflows-121\n7923e5f873f0b9b380a0d5fe80afba1e64013353\trefs/heads/update-github-actions-workflows-122\n0fffcd0ffb385c8029785ce7e2763761d97170bc\trefs/heads/update-github-actions-workflows-123\n3ac77dab1d4fcd517cf792eeba76e53d4a088509\trefs/heads/update-github-actions-workflows-124\ne4a164a3b517ecf2206972c23efabd71726bedf3\trefs/heads/update-github-actions-workflows-125\nab078f4b4a74550dcc8bf04c47a6467521283339\trefs/heads/update-github-actions-workflows-126\nf8a6f0c58e155d96ecc64f6e11b920b463af08bc\trefs/heads/update-github-actions-workflows-127\n18695e0f77e63407f7aa0bf5852bc16b12afbe65\trefs/heads/update-github-actions-workflows-128\n7e34cd7654326077e80c2dc831286a3db2adba46\trefs/heads/update-github-actions-workflows-129\nf8a645ce97ea3f627db138b4afef271a1e7d864a\trefs/heads/update-github-actions-workflows-130\naa3dc1c362602928ba309e72eaf809019fb68a10\trefs/heads/update-github-actions-workflows-131\n4d03d81b15dd6058fa715b4ec01c548cbcc30e19\trefs/heads/update-github-actions-workflows-132\n212427dc022f9850259cdcb5b5af2114608069b3\trefs/heads/update-github-actions-workflows-133\nae48cdce873cbe456d58c3de1bae8583d2496e93\trefs/heads/update-github-actions-workflows-134\n6f90119f0d991c2a3124677becd923a8ecbee058\trefs/heads/update-github-actions-workflows-135\nfe0bd5cf7f02628799d359c026db8590dba5ee6c\trefs/heads/update-github-actions-workflows-136\nc02b9620d7ca469faec3eba29fe4fd7b1d0ed0ac\trefs/heads/update-github-actions-workflows-137\n2c1cadf2bddca8ea73b732f86affdae57ef107b8\trefs/heads/update-github-actions-workflows-138\nf885667764843ae02f093523753ea977b3cec530\trefs/heads/update-github-actions-workflows-139\na07299d240d8cc43e8a53e68e68fce688304866a\trefs/heads/update-github-actions-workflows-140\n44e792e82d634515b9f62dfe43f8e8779200b224\trefs/heads/update-github-actions-workflows-141\n1cd6b3d2471dc4795eff8d5edbb90f4f9f49a7bc\trefs/heads/update-github-actions-workflows-142\ne59c7bd80fa5916ea98478ce5e92c809ea5101ea\trefs/heads/update-github-actions-workflows-143\n1f4a9fe83b52d1252d4c356386bcdd671daaf83c\trefs/heads/update-github-actions-workflows-144\nf03b7008ed62bde55be09715aa0f14480a652c33\trefs/heads/update-github-actions-workflows-145\neaf9a2f1aa214b568609b4634a5955e31486326a\trefs/heads/update-github-actions-workflows-146\ne0744a159b0bf640ef823456decabb95373bb1da\trefs/heads/update-github-actions-workflows-147\n82e9835f70ef8bc971d2fc5d73ae69712e68a775\trefs/heads/update-github-actions-workflows-148\n5bf7ce7ca0fa2141e3688809ff182ebb808174e8\trefs/heads/update-github-actions-workflows-149\nf051b25ac7fc077acd3a6a1bcfd226f0dc99b1dd\trefs/heads/update-github-actions-workflows-150\n24d0a72211b02d31503baf33803c1e46a2d6e8c3\trefs/heads/update-github-actions-workflows-151\n72224a0628a0cab00c72a90c792991ed6695879e\trefs/heads/update-github-actions-workflows-152\nec6790114ecb5f1fdc3dd2aff151fd020b12392e\trefs/heads/update-github-actions-workflows-153\n2e9b9bfabc5468d582465627439b9d88faa6617c\trefs/heads/update-github-actions-workflows-154\n495c4c38d265e4375c27947661a8ca34130bc885\trefs/heads/update-github-actions-workflows-155\ne5a359aabaee5bbe8977c10178a857243028a52a\trefs/heads/update-github-actions-workflows-156\n79aaa6e2baa881b956a8b9882d8694720056be52\trefs/heads/update-github-actions-workflows-157\n7c144c76f7bae5c13d5d8f72caa26b82f91b1453\trefs/heads/update-github-actions-workflows-158\ne5ca0238fcdb48c5fdb0a03eda9efa092ff53faa\trefs/heads/update-github-actions-workflows-159\nf76646ddf4a897e17107481755d6e6c6f8be654f\trefs/heads/update-github-actions-workflows-160\ne3c4b76492e76426c2b577128fbb0c17f99b3ec1\trefs/heads/update-github-actions-workflows-161\n4a9eacd5286c078028de821e77ee809f6c65f575\trefs/heads/update-github-actions-workflows-162\ncbb204ca08707768a234f6bcc113310624d16847\trefs/heads/update-github-actions-workflows-163\n82bd38a1234fff3b29b79120f5e135c9a88fa339\trefs/heads/update-github-actions-workflows-164\nc1d592b2018516f77a32274844cc807ec3770162\trefs/heads/update-github-actions-workflows-165\n3fb155b03f5ad0eb30d55d23161d400f578bd1d5\trefs/heads/update-github-actions-workflows-166\nae3af7c1f7019e205399c991881b0a4c34ab9a9f\trefs/heads/update-github-actions-workflows-167\n066ccd6a03cd6a5f72758a7d05b608c718da2bda\trefs/heads/update-github-actions-workflows-183\nd6ce0335e1912e9c1278301eb14f3ec9a0d466bc\trefs/heads/update-github-actions-workflows-184\n8738c10c6f6697b67ddd8c9707b8c60e59120abf\trefs/heads/update-github-actions-workflows-186\n423eeca4085b79ce42a8ae5b1eeb9a7eb005efed\trefs/heads/update-github-actions-workflows-187\n18cb4ae755ac83cd68affff29ba977e8cab5024c\trefs/heads/update-github-actions-workflows-188\na3ab1067f0ac5334579323bf2a53750761ae117a\trefs/heads/update-github-actions-workflows-189\na3b157d860f42dc99e7b1aea452d1289b73e8139\trefs/heads/update-github-actions-workflows-192\n5e19c9e71acb4b80241eeb363317edaf0850d297\trefs/heads/update-github-actions-workflows-193\n10e988c5172ff5c2087827750074c66c6f62d9ea\trefs/heads/update-github-actions-workflows-200\n92cfcf06608a1475a80e7571442f39532dc6ba5d\trefs/heads/update-github-actions-workflows-21\n6c74825f5bd76a189f199ac022f0e74595ca9ea8\trefs/heads/update-github-actions-workflows-22\n2dc218bcf384fd1c264e1a4edcae272b308416c3\trefs/heads/update-github-actions-workflows-227\nf4c81fb31325bd054810433be3d48ec8ebb227fc\trefs/heads/update-github-actions-workflows-228\n27ed10b6a78bd6573104e150ab5139de0c0be1cf\trefs/heads/update-github-actions-workflows-229\ndc7995064995e91085e9875c61898fbcb81f4200\trefs/heads/update-github-actions-workflows-23\n8bca744b49fe8935c9b8882243e32ba38feeccf2\trefs/heads/update-github-actions-workflows-24\n2071427b7f6cd50aaa20765893fb9b691d7d3853\trefs/heads/update-github-actions-workflows-25\nede59c9a3ac22340741bb76ec289a272460ff9c1\trefs/heads/update-github-actions-workflows-26\ne2e8fecef3608295ee96be16d88f101065d4fe90\trefs/heads/update-github-actions-workflows-27\ncdb13dc5f56ebc6e9cba292369b8d1081c278aa0\trefs/heads/update-github-actions-workflows-28\nd466c2c451191b4deff8a41e60ddc6183d432ede\trefs/heads/update-github-actions-workflows-350\ne31b078389bcae3c36b4e0e87b0c650fab6ebb0c\trefs/heads/update-github-actions-workflows-37\na5be7226616a61832b9b0e592268297bda1b3858\trefs/heads/update-github-actions-workflows-379\n18e0196d6276ff1ec3217a5ae8002276ad6979a3\trefs/heads/update-github-actions-workflows-38\n49dd0a612cd9a7e632eb35a16e925cadc5ceec33\trefs/heads/update-github-actions-workflows-380\n19eb0a6d8109b25cc4e935d1a54a644f400bb3aa\trefs/heads/update-github-actions-workflows-381\n0c7643701e7bda617a9c5b91704005e0a0998249\trefs/heads/update-github-actions-workflows-382\nb1b51f4cbfa45c6aa1bccd4c82741505fd2dda2e\trefs/heads/update-github-actions-workflows-383\nffb4888188feca40f1e9a27d3ecfb78cee0342f2\trefs/heads/update-github-actions-workflows-384\nff22ba00ae674ddb466848690256758cbf687521\trefs/heads/update-github-actions-workflows-385\n2c694f4cb1cf51b5859aca830752cca2f27a78c0\trefs/heads/update-github-actions-workflows-386\nf1ccffad64e9831ac694bb34921d8836143fd0fe\trefs/heads/update-github-actions-workflows-387\n6d3972d4d87a051b15815e0572efb3b7ce7fc293\trefs/heads/update-github-actions-workflows-39\nf9b900ebc9bae0790550f46be14e1edd354f6b1a\trefs/heads/update-github-actions-workflows-499\ne09563fd1dde95699ca3426b8c7a56027354a6db\trefs/heads/update-github-actions-workflows-500\ndeb07dcdaf54b63a02634492eaa2bb576b2ab5f4\trefs/heads/update-github-actions-workflows-501\nd0bc4b3fd58eb3771fa631a62859e784ea6eab36\trefs/heads/update-github-actions-workflows-610\n60df947697ab632da717323ad68086922d1bfc88\trefs/heads/update-github-actions-workflows-65\n699e322044b88d22ddc7f33487b2d2ca5daf5f10\trefs/heads/update-github-actions-workflows-66\n12fd7668f4bf1cf1e430303c4995ea2c64416364\trefs/heads/update-github-actions-workflows-67\n737f5d5c121a845e9ce9935c31af78896528e4bc\trefs/heads/update-github-actions-workflows-73\n38867b63bf8154b28dd80104a3e03b65899a3268\trefs/heads/update-github-actions-workflows-74\ne7b5dab9401922b91ca82b9fc90f5d0b4e88cff0\trefs/heads/update-github-actions-workflows-75\n6d36c66fd16f18cdab8479959acbfac192d1cffd\trefs/heads/update-github-actions-workflows-76\nab8c69d8cdd6ce0fbfc8726ce636367eef485f11\trefs/heads/update-github-actions-workflows-77\nf93798012d0265224e0685e671bcbaf7a830a942\trefs/heads/update-github-actions-workflows-78\n684fff49c6b40dcb298a2da737558aa026f918fd\trefs/heads/update-github-actions-workflows-79\ne9c804453f0ae2e7754a5274be2fb912478065b5\trefs/heads/update-github-actions-workflows-80\n603f6dcc214dd9dcaed5e39d130c9e4d8d1b44bb\trefs/heads/update-github-actions-workflows-81\n4ddf9062b900ebd360dce31501b7459f6d9abb2b\trefs/heads/update-github-actions-workflows-82\n5f8689380ab46c9514823329261320933e902465\trefs/heads/update-github-actions-workflows-83\n654ba81b2118822fac9adc5407a3020b9f512440\trefs/heads/update-github-actions-workflows-84\nbd25635476966750347d906f8156e51738ae9883\trefs/heads/update-github-actions-workflows-85\ndd75df51d36c550894c50eec2b283f7fcdd9e26f\trefs/heads/update-github-actions-workflows-86\nea1f52f35d7570215454f7b9f5516140fb0f7a38\trefs/heads/update-github-actions-workflows-87\ne8a3259bb2839c8d9e27ef8c2a52c0cbb0c34a98\trefs/heads/update-github-actions-workflows-88\ncc6bdb9bd969a972ac49000c6b9f8e15f4ab24e7\trefs/heads/update-github-actions-workflows-89\n7dfd87577f54485616b27279d0a7bb84e3709fb0\trefs/heads/update-github-actions-workflows-90\n92bde04ffe07e4f077063dd75ac0f38afb4830de\trefs/heads/update-github-actions-workflows-91\n3459b8fdb309a864386fc35e56bf9aeb428e5489\trefs/heads/update-github-actions-workflows-92\n90548613f1560e761af31e9560e40b4819c00bb2\trefs/heads/update-github-actions-workflows-93\n89e707e47076b6420bb664e5d7d93509a6fd5826\trefs/heads/update-github-actions-workflows-94\n73d0a126a9c6ba238aebff491088a31f969c83a7\trefs/heads/update-github-actions-workflows-95\n5ca520c4e5b7cde4befa4ff78e02da843d62df6f\trefs/heads/update-github-actions-workflows-96\n6b51224ec955d40f0309efab0213caf1810bfe6d\trefs/heads/update-github-actions-workflows-97\n8897d261d80790a83319768f5731eb1d39f84e49\trefs/heads/update-github-actions-workflows-98\n7dbcbcfc7823fbb99107cabfa7db67fdccc98e22\trefs/heads/update-github-actions-workflows-99\n2c4039a86cd7bc75902c20de6963616ab39e9b4a\trefs/heads/upgrade-pulumi-terraform-bridge-to-012ac655189047bcd62bc4b7f25104d8f072da0d-44060445\nc691d3f8ea1ec5fa4ba8180a483d29a2bc75a9cb\trefs/heads/upgrade-pulumi-terraform-bridge-to-0441ef3e0b0128dc35c83cb50f3c4aabf22faa44-14576874\naf219f3402041ee8ee8a7388e167ecba1f49ad75\trefs/heads/upgrade-pulumi-terraform-bridge-to-0852d643b60d93da91993e93d195227da15ac207-ci\ne2e6f368870a3cf3b100f24bbdc4dfd3d1de46f9\trefs/heads/upgrade-pulumi-terraform-bridge-to-0c46ff573f44f3247a4d3e657cccac035010d682-ci\n58b4445ecbd9df9a725814da2da7e441661df20d\trefs/heads/upgrade-pulumi-terraform-bridge-to-0e0d2c4efa67e02bd9b45795d342a12946423e5b-67849635\nb538d8063a853d85233d1655d768db493de60a26\trefs/heads/upgrade-pulumi-terraform-bridge-to-0e6f548c1b53c5f41ea1619f481ec3a76cf699cb-44895658\n93dd4ba66e7c548468ffb5d4f469d28c1400eaa1\trefs/heads/upgrade-pulumi-terraform-bridge-to-100d649-11601558\ncdf12befaa8ecc55791075a26fc6a5daf1c1b0d4\trefs/heads/upgrade-pulumi-terraform-bridge-to-13ddb90279c4a38b7991241009ccf64918dea39c-downstreamtestbridge-ci\ne9b45871f02bebc23c36ca8b0c314a15677e3e63\trefs/heads/upgrade-pulumi-terraform-bridge-to-1e495a901b6d1ac26d801d856d937c9874db367e-10361406\n2f68ab76ef0c378142be93032936c4fbe78f21e6\trefs/heads/upgrade-pulumi-terraform-bridge-to-21b48c1-74845682\n38be7ed863df7c748fac361a655216b77854cf55\trefs/heads/upgrade-pulumi-terraform-bridge-to-23958975949c5dd66c86c2358a438256d178711a-downstreamtestbridge-ci\n62565b3d0af0e4919f9c5e0662e72c40eb2146fd\trefs/heads/upgrade-pulumi-terraform-bridge-to-27a2e69fd393ba6db99ed00fadf28ad0fae8e9b0-47896324\n64575cabe10789435133d142aa725d06afbec388\trefs/heads/upgrade-pulumi-terraform-bridge-to-27d43d67cd0ceb2ab2ae4043988adb39ae399506-downstreamtestbridge-ci\n02488a034916df071c89645c38ec1db1a8146e0f\trefs/heads/upgrade-pulumi-terraform-bridge-to-2890b4f76530ea13adb47fed931fb8899d28b44d-98188080\n96feb64f61920e48dfda6cfbe929c6e5fe21c4a5\trefs/heads/upgrade-pulumi-terraform-bridge-to-29d9870-82518021\n770047d704a1990d585eaaa8a096872e8d6c3adc\trefs/heads/upgrade-pulumi-terraform-bridge-to-2a95c03ab07ad7878dad3e13073d7c80df3bffbc-ci\n630376ef618655a8243e566306c1f879811dd592\trefs/heads/upgrade-pulumi-terraform-bridge-to-2bb619413b2cca3d6acec58c76acb25dbb844fcb-51013751\nde5a9df84a7c9444070c1486fb85e9f525156c7f\trefs/heads/upgrade-pulumi-terraform-bridge-to-2c55739033aa630e55e254ec3c9ecccdb11423e7-14604448\n6834c5a04323aa2bc957781bb118c5a10fb1b598\trefs/heads/upgrade-pulumi-terraform-bridge-to-2fc9d7a-22150226\nedc3944876a301e0af8a602fe2fc8ada114ede4d\trefs/heads/upgrade-pulumi-terraform-bridge-to-323f1229786a2ff6a3a8e74ab9cab175805196aa-40193837\n5feaa07283ceceeaff655a39e209ca2c68a1a32e\trefs/heads/upgrade-pulumi-terraform-bridge-to-3242c86-45671345\n8249c758b08f6f2a5bd03479d94aff3f20566c4d\trefs/heads/upgrade-pulumi-terraform-bridge-to-33763d1356a30f54bd243a52ebab0bbb87d68bc5-87995585\n76744398670a97e5f7ec67115c241718caebf39b\trefs/heads/upgrade-pulumi-terraform-bridge-to-35db03a789ec5a3568667d6b49ed697fa3e058f4-42926414\n95167fbd7cd26c4ffface8a683181a8b626cfc11\trefs/heads/upgrade-pulumi-terraform-bridge-to-36e3b4eea7abecb1bf65902dc47159fdd3478c9b-70335036\n2dc8d4af435c8a3bfa6bc3aa4f7f9de3860c41ea\trefs/heads/upgrade-pulumi-terraform-bridge-to-393cc55-09771719\n1ce36dff19b1a2d2db6fab9d47b46d5206a2905c\trefs/heads/upgrade-pulumi-terraform-bridge-to-3a73068346393560b63e4bbdc205158cc97b3b42-26358873\nac1f34216f47022597c750b3ae52db394714417d\trefs/heads/upgrade-pulumi-terraform-bridge-to-3e445c167ecf9cece506dc91c1d886551fdc348b-downstreamtestbridge-ci\n173ca4562d67e07f1cace47922addfd9588cf57d\trefs/heads/upgrade-pulumi-terraform-bridge-to-3ea1c58acb4bf972eee3ca11098e009f598bd5bb-52633373\n49865eca5389418a25b2799b9e687d1fb812fd3f\trefs/heads/upgrade-pulumi-terraform-bridge-to-40b530845390eafa21a233d2ce713a52a624024d-51419294\nff5f3679ffea3e8366833f054d4a0be26edb8b3b\trefs/heads/upgrade-pulumi-terraform-bridge-to-45cdb2507f387f34af187ca4021076549cbbf78e-39047935\nad1eacaf8fcce241ae0a3b397ecf2cb63931d159\trefs/heads/upgrade-pulumi-terraform-bridge-to-45cdb2507f387f34af187ca4021076549cbbf78e-52314588\nb1d343d05caa28c36dc0d0cf550d65777ebcae8a\trefs/heads/upgrade-pulumi-terraform-bridge-to-46d7e984a47432157ca5476a043269266a18015c-77640608\n743e15b5a1272052494522bc6125f27a35cd2721\trefs/heads/upgrade-pulumi-terraform-bridge-to-4b0f667-39387076\n71bf568bb0fcc5072f0bf41199ed8d3c99d1b29d\trefs/heads/upgrade-pulumi-terraform-bridge-to-4d763c1d83982f38be782d9195f3ace0a69f9525-17420224\n78262730f386e3dff4414f987585ae8dc154ea71\trefs/heads/upgrade-pulumi-terraform-bridge-to-4f80f091787a0ff798c99b42c8dc10b7ae1aa658-downstreamtestbridge-ci\nf71a8788668a8634eea1464af0aea0c9c950cee0\trefs/heads/upgrade-pulumi-terraform-bridge-to-50486d5517aea941fa9966b78dbc7614df2dabfb-downstreamtestbridge-ci\na69acc0d4cb942df7d1dbe3c1a94873099a466e1\trefs/heads/upgrade-pulumi-terraform-bridge-to-548e905-01415160\n45b083ab05e8a310009b1faec2d63ac65117c72c\trefs/heads/upgrade-pulumi-terraform-bridge-to-55d6d458e811e0435ec6d1fcccccc71f727283aa-downstreamtestbridge-ci\n56f6a2385c71a689a6aa54f387f947ce1ebae498\trefs/heads/upgrade-pulumi-terraform-bridge-to-5616df552557355738aa75dc06bd43a3819bca40-ci\ne7d6513b26943d8b427af30e1c2e667bd602e7a0\trefs/heads/upgrade-pulumi-terraform-bridge-to-5a498cc995699fbbf5dcdbc8d03d314b22ca5ae8-38731068\n0b8ffb7f0e982ca2a896ff0ee82d749f4a5a6f78\trefs/heads/upgrade-pulumi-terraform-bridge-to-5b45441dc7741dde4bc63920dc9d9c5ea49259df-ci\n78937d707cade093cab007c97c112fac36195463\trefs/heads/upgrade-pulumi-terraform-bridge-to-5b75c91691ebb718a0038d5908d395507b6aa816-62404607\n522187520343987062fda83dcdf2fb2f133e2d4b\trefs/heads/upgrade-pulumi-terraform-bridge-to-5dbe4a516710e758dec35845417551aecaf3dc32-downstreamtestbridge-ci\n97aeb58eea1664cd3693d5239740accad10c868c\trefs/heads/upgrade-pulumi-terraform-bridge-to-5e867e2c7bb714cc16014cd3ef8754750ebbaaab-downstreamtestbridge-ci\na5c98a1625f6165eb29a66f3a5aecbc7fc130b09\trefs/heads/upgrade-pulumi-terraform-bridge-to-5e9b1ba-62476142\n8a454b4482820b5fa3021af0c3aefd8e0cf63a9f\trefs/heads/upgrade-pulumi-terraform-bridge-to-5ede56d-ci\nd6e515767d15a4ab0339b0a8f6473b9ad6b412ff\trefs/heads/upgrade-pulumi-terraform-bridge-to-624167331a8fd049f2bf589865f7dcea19dd535e-67196213\nd32e322909d10663f67198f13adb56c0a2cdedb0\trefs/heads/upgrade-pulumi-terraform-bridge-to-653479861f304be7538da645377d9e2bf0bd786f-downstreamtestbridge-ci\n16dc2b6fd3981b069e87733524ab7e9e56993a61\trefs/heads/upgrade-pulumi-terraform-bridge-to-662459ee38cadb7a9313de061a4c4db2d75de5e4-63462772\nc41175de74b571670d4cec1edfb4867187eb60bf\trefs/heads/upgrade-pulumi-terraform-bridge-to-66adaaf8ffb36ab36fc91b512522379d869381e8-73411492\n110888c514e566050453ee72ae49b219d1a19910\trefs/heads/upgrade-pulumi-terraform-bridge-to-6b65634cd288c8454e9fca3ea50aa1979b21942b-downstreamtestbridge-ci\n41731a7df7684bb9af38ec94fb9a8818443a4371\trefs/heads/upgrade-pulumi-terraform-bridge-to-707c24697624cb49a00f22ec9cafff388e6e241b\na3ab85b4be68fb8691403a7b14b01f845fef37d7\trefs/heads/upgrade-pulumi-terraform-bridge-to-72d59646c73496d096625db431a267b1e404c17a-downstreamtestbridge-ci\n23b6ca5f33d223b463314f1a8ca4ba5382383e49\trefs/heads/upgrade-pulumi-terraform-bridge-to-7550624238512f1aedc608ee93b0deb8b8f18bb6-ci\nf7e2f0f10a8a10ca3b504a6780db5ede6ed15139\trefs/heads/upgrade-pulumi-terraform-bridge-to-792dd1fbd775c008edc1773a3b7bb798ce7e56d1-77591984\n78a519812a07546a84cff1da1b98259260a0aa44\trefs/heads/upgrade-pulumi-terraform-bridge-to-7a439ad045c686439f8637e1ddabdf568d390a7c-22268017\n766b83374019af4cac4ebb87e55dc0004ac3e479\trefs/heads/upgrade-pulumi-terraform-bridge-to-7d378f7-45415355\nd1cfd45ed14cbf738a51e53c19c73675c35f6cf6\trefs/heads/upgrade-pulumi-terraform-bridge-to-7eae696fa9b4a33ca793d17f3e6325db5043c399-59176089\n0256b7e075473e05f6e378c4db66deeb97b2a0b2\trefs/heads/upgrade-pulumi-terraform-bridge-to-7f92cef90263b40a36352480c376909f2eb02fe4-28788497\ndf7831844ffea6b3b54e1edc2d124a0ae45f0710\trefs/heads/upgrade-pulumi-terraform-bridge-to-84395afd32033dec60654f5bec178254d5a29bc4\n06b448f7017dc61bd8f5bc4af13bcd017f6748af\trefs/heads/upgrade-pulumi-terraform-bridge-to-91f57ce-24059685\nac2dada4dcb81d6fff86a6f873e6e1bd5dabc324\trefs/heads/upgrade-pulumi-terraform-bridge-to-935ad83-24116887\nceaaf7bbc0a4c9b9f57fdeba7b740e0cbec25eaa\trefs/heads/upgrade-pulumi-terraform-bridge-to-94c1de4f7880017730eda9d4613895ad52b07ca9-32385147\n669e8a5a82987b40afb6f2cf7b7e5306464169c8\trefs/heads/upgrade-pulumi-terraform-bridge-to-95a1f1d236ac2b4c5f8c2c35893e59c1751b2c1b-50825456\na30968f8fe73f264ae3dc26dcbe350b9e6f6d816\trefs/heads/upgrade-pulumi-terraform-bridge-to-9e3982a-91826973\na85456c89fe55a3ba5e835f323ad2507c3744682\trefs/heads/upgrade-pulumi-terraform-bridge-to-a167ccaf98c1d354d6fc4ca1c10a97803ed568d5-13903500\n06b1b0d77efb07f8a7e35fbd4bf93c2232de515e\trefs/heads/upgrade-pulumi-terraform-bridge-to-a427f7f8223c1ed8bb85ed7e5bdecee3ffff1e0d-downstreamtestbridge-ci\nf6ff238191949c34a029743b4f4703f9945dd126\trefs/heads/upgrade-pulumi-terraform-bridge-to-a7493edf6ed605b18ed87e818a027db5a08f318d-18242964\n880b21ddd7d6d8c37a11b1dc36d7077698deba4f\trefs/heads/upgrade-pulumi-terraform-bridge-to-ab5a954ee5fb82b4f6d961ab4f15e12c96f957df-28693823\n78df070e09fe8b87d42a4805cd8991f6fc527f5e\trefs/heads/upgrade-pulumi-terraform-bridge-to-ad62d4be0b936a3378852ca956f38cabedf4d7a8-downstreamtestbridge-ci\n3a554bcb09dfb632f13c3e332e8c6b47a9209984\trefs/heads/upgrade-pulumi-terraform-bridge-to-adb9875-08115051\n7267d62552716baa2c2e077971a69bfb02b486c0\trefs/heads/upgrade-pulumi-terraform-bridge-to-ae008d2ecb33f33a2dd95bb9c0b8a2af5811db2c-07165692\n26cefddbb34b927045d21e9d27126f8dc00c3a22\trefs/heads/upgrade-pulumi-terraform-bridge-to-ae899ede65411ce1f6370e80695509978885ff7e-08297811\nead98dc36c5cf20ede5de116607d1e976ef2f9c9\trefs/heads/upgrade-pulumi-terraform-bridge-to-af9ccb5aa38339dae61b914d496b0abc0bb3f723-43805617\n3e0258c8b9d6a5a5a2608feebbecdd8bab41ac48\trefs/heads/upgrade-pulumi-terraform-bridge-to-af9ccb5aa38339dae61b914d496b0abc0bb3f723-88384136\n8392e53f291a0d0a4a5ce7258ba3bfb3d78de443\trefs/heads/upgrade-pulumi-terraform-bridge-to-afedecf14723a4acc04df141e41c60e38739f8a5-54271354\n0b6cb4a065203a343ee063506fcb4e219b8a5e8c\trefs/heads/upgrade-pulumi-terraform-bridge-to-b3ecbf803ee0a7581198ade833d80147263d3095-81646755\n9e2097a0933d9755ddfdfcbc364a8a2ed6090804\trefs/heads/upgrade-pulumi-terraform-bridge-to-b4f028ac432eac21605f63fe37874cd2df23a24c\n80c560983376279bebd415ff80f1e78241246304\trefs/heads/upgrade-pulumi-terraform-bridge-to-b559de0e20dd276c145c5a65f3655ed4389f572d-52121783\nc6e7299007edbbe44f8c2085c6f81e1f50b0d475\trefs/heads/upgrade-pulumi-terraform-bridge-to-b57b829e4fb33421254a74ea65441019a97ddd87-92057057\n0746e18ff5eeb453b580186874e9b7019f3bb789\trefs/heads/upgrade-pulumi-terraform-bridge-to-b733e4cbd1fbdc802cb2659949b46ab2014b6ec1-downstreamtestbridge-ci\n57ff6ecf0b80bdd84025275d016d0e9fcac553e2\trefs/heads/upgrade-pulumi-terraform-bridge-to-ba3ef0bc9481818d1246cdc007ebed83e8451912-40380817\n4a50828b0f156c866c9e392379347b32b36cb5aa\trefs/heads/upgrade-pulumi-terraform-bridge-to-bb93a05df0d6bf5e3c1619b6c14e8f8965eab53c-06752682\nbf701081d0b4edefb785b2ed55f9067d5cd95d30\trefs/heads/upgrade-pulumi-terraform-bridge-to-be7f79a9478b202291c6d757f77192abacf77fba-06995982\n9fd3221b110f9911514b26b95bd8cdf5a550613c\trefs/heads/upgrade-pulumi-terraform-bridge-to-beec4df-24103457\n37ee93b7edf203c58a31b1d549e44f62f9d225ac\trefs/heads/upgrade-pulumi-terraform-bridge-to-c1171a037064551bcf35ff8b3f0c3cda0c4b6333-ci\nf4ebfaa3a6608ca4155319b31ff2ef9743731b56\trefs/heads/upgrade-pulumi-terraform-bridge-to-c47194b0897b2565b6d4a2bf6e7b95284de3f206-11277619\ne4d4f85093c465cf954cd025da5071929a668a15\trefs/heads/upgrade-pulumi-terraform-bridge-to-c76fc0f515a6613d5c538eeb102f43aed3e022cc-33621421\nf6654ef66908e23e939d14ba4d13246af213e15d\trefs/heads/upgrade-pulumi-terraform-bridge-to-c7b8ac4195f3fbceaf1acd5fab18c36d579fb7dc-downstreamtestbridge-ci\n8f0604fda3f8a2e7fd9980671a9314e9dc6339b5\trefs/heads/upgrade-pulumi-terraform-bridge-to-c7d87ed5f3f3c0591f6022f9505980e38c6d7e6b-ci\n45d7058652c4e1e112c946aafb2d162d2aaa94a3\trefs/heads/upgrade-pulumi-terraform-bridge-to-c8ee79b-26208217\nf207fd89df8a42509cd5e348729e1f2eda462906\trefs/heads/upgrade-pulumi-terraform-bridge-to-c975862f43cfa2964e0a89718d3a441bd4288198-97262102\n7bffb0ec33d7594b4846bb24320dc6ebedb11485\trefs/heads/upgrade-pulumi-terraform-bridge-to-cd5f02b099d0700be9a29cccd3aff2c2e4542880\n978b803da1f2225e203c73e1db2518c301cd88e1\trefs/heads/upgrade-pulumi-terraform-bridge-to-cd77457c247b6f0cb1650674d491a19c8e95e522-84146583\n7305644e163da2079e63a685cea61726b8616efa\trefs/heads/upgrade-pulumi-terraform-bridge-to-cefb369296c9f37ccbd0e3ac93332c810167445e\n7359f95e0e0c5794b66f1771eed9762791818e39\trefs/heads/upgrade-pulumi-terraform-bridge-to-cf13280e6fc314762d601a4ad06a96286a10326d-44204934\n0e3bd2becb5c894a7f81257fb6e7d11c77e76920\trefs/heads/upgrade-pulumi-terraform-bridge-to-d01e5d3-28831887\ne1767c7406769d7c5f5a51779f0b9c0524e4e14b\trefs/heads/upgrade-pulumi-terraform-bridge-to-d34757953e3225e957e2df98b93cf973d7a5ddab-downstreamtestbridge-ci\n72f6f7a3d10cae880669e4fa1fc30a1bed7fb4ae\trefs/heads/upgrade-pulumi-terraform-bridge-to-d35b543-31520653\n60c82825b519b8ad0ff22eaad1921f3e98a48f0f\trefs/heads/upgrade-pulumi-terraform-bridge-to-daafe0d49c40251d33290e8e12f8dc90d99eebe5-ci\n643894c940b1a1ee55d0296f8eb2c93d5cb57d68\trefs/heads/upgrade-pulumi-terraform-bridge-to-dc9754666f03452afbc5f93b86e251f7aba0108d-ci\n302edfe884da6a572a515a9388f2e6f2495fa338\trefs/heads/upgrade-pulumi-terraform-bridge-to-de5510662e1c87d0851b19405314503376fdb81b-downstreamtestbridge-ci\nfcc1f8e1705e3b8723bdeea0ec52ba5e09144f31\trefs/heads/upgrade-pulumi-terraform-bridge-to-e44360b2009d0a542d0e6fdfe815510e5b3cae7e-26724824\n4487c26d4f49b84d930e9a0447de49906f6701b8\trefs/heads/upgrade-pulumi-terraform-bridge-to-e5bd6caa57f93fc0cdf870b67f12f40af8e2adc3-ci\n7d4107e84ac29ed8919aaf69bab4520d8a523178\trefs/heads/upgrade-pulumi-terraform-bridge-to-e71c1a6dafa243907e0b67fa12f13ec8fd8ca76c-86824629\n246f58a62e0ceddd3086de79e5e77daa3a1eb263\trefs/heads/upgrade-pulumi-terraform-bridge-to-e9f3e15aa2e20be1451e01b5f8815d56e3516cea-21946678\n73feb182a1d7acd2536aeb1f2d65fdd1787cfb81\trefs/heads/upgrade-pulumi-terraform-bridge-to-eac88d721c48531d77bfc792af689e59ef92691f-downstreamtestbridge-ci\n160a09481e50692268917814e174310b6094dc46\trefs/heads/upgrade-pulumi-terraform-bridge-to-ebf4276b8dd1c1b74b038b2bb798e9648191a709-downstreamtestbridge-ci\n551314a1d85cafb4845fc46941a23fa56c241f84\trefs/heads/upgrade-pulumi-terraform-bridge-to-ec999392727d15e7be6ba77cb986d67dccb705b1-downstreamtestbridge-ci\nffa7bae76718711ae696cf0d93509583f66713b8\trefs/heads/upgrade-pulumi-terraform-bridge-to-ed56fc28cb643d23038a8b18a6e0e641c868960f-39146215\n49e4b72e1f0e561355808f8380e90254e6aaa8e7\trefs/heads/upgrade-pulumi-terraform-bridge-to-eff53780cae2a961ce8996fe539a721e63da9743-52396664\nf821821a3d8ddec96f9583629c7502022e988c7f\trefs/heads/upgrade-pulumi-terraform-bridge-to-f1ba9006ae47f792ac8f0bb857013d373cb00c7e-96715409\n6d4ae4e0cf926d0401dfccfdb4b71fc477421ac6\trefs/heads/upgrade-pulumi-terraform-bridge-to-f317dc4a503d3430fbe13f3af964207f0a17616e-37459867\nbb05582dab5fb83a7c272bd9ec9c992e23a52f7d\trefs/heads/upgrade-pulumi-terraform-bridge-to-f3f47188b9ee67062a7e43465717980ac12a3824-41112390\na3e6c38aeb3448d87840e3506110c46e43da16dd\trefs/heads/upgrade-pulumi-terraform-bridge-to-f64ee37d06c2a1e3edd44d105a88100bd181dbc8-41659932\nfa61087d52c3b4f02ac8ae9dae79dcd15e0ef04a\trefs/heads/upgrade-pulumi-terraform-bridge-to-f695bb1841ee250a6c3a9461e0892bf7f8ee11ac-downstreamtestbridge-ci\n6f986ef92709645d35193cec35dfab253452c629\trefs/heads/upgrade-pulumi-terraform-bridge-to-v3.59.0\n9d009f24ea6af53bf32aab0e3267b69a0a4e53ab\trefs/heads/upgrade-pulumi-version-to-v3.90.0\neda143b1a26d4bf92edde05fab18459047917530\trefs/heads/upgrade-terraform-provider-openstack-to-v3.2.0\n",
+            null
+          ],
+          "impure": true
+        },
+        {
+          "name": "Get Repo Kind",
+          "inputs": [
+            {
+              "Name": "pulumi-openstack",
+              "Org": "pulumi"
+            }
+          ],
+          "outputs": [
+            {
+              "Kind": "plain",
+              "Upstream": {
+                "Path": "github.com/terraform-provider-openstack/terraform-provider-openstack/v3",
+                "Version": "v3.2.0"
+              },
+              "Bridge": {
+                "Path": "github.com/pulumi/pulumi-terraform-bridge/v3",
+                "Version": "v3.110.0"
+              }
+            },
+            null
+          ]
+        },
+        {
+          "name": "/Users/vvm/code/pulumi-openstack/provider/go.mod",
+          "inputs": [
+            "/Users/vvm/code/pulumi-openstack/provider/go.mod"
+          ],
+          "outputs": [
+            "module github.com/pulumi/pulumi-openstack/provider/v5\n\ngo 1.24\n\ntoolchain go1.24.4\n\nrequire (\n\tgithub.com/pulumi/pulumi-terraform-bridge/v3 v3.110.0\n\tgithub.com/pulumi/pulumi/sdk/v3 v3.175.0\n\tgithub.com/terraform-provider-openstack/terraform-provider-openstack/v3 v3.2.0\n)\n\nreplace (\n\tgithub.com/hashicorp/go-getter v1.5.0 =\u003e github.com/hashicorp/go-getter v1.4.0\n\tgithub.com/hashicorp/terraform-plugin-sdk/v2 =\u003e github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20250530111747-935112552988\n\tgithub.com/hashicorp/terraform-plugin-test =\u003e github.com/hashicorp/terraform-plugin-test v1.3.0\n)\n\nrequire (\n\tcloud.google.com/go v0.112.1 // indirect\n\tcloud.google.com/go/compute/metadata v0.6.0 // indirect\n\tcloud.google.com/go/iam v1.1.6 // indirect\n\tcloud.google.com/go/storage v1.39.1 // indirect\n\tdario.cat/mergo v1.0.0 // indirect\n\tgithub.com/BurntSushi/toml v1.2.1 // indirect\n\tgithub.com/Masterminds/goutils v1.1.1 // indirect\n\tgithub.com/Masterminds/semver v1.5.0 // indirect\n\tgithub.com/Masterminds/semver/v3 v3.2.0 // indirect\n\tgithub.com/Masterminds/sprig/v3 v3.2.3 // indirect\n\tgithub.com/Microsoft/go-winio v0.6.2 // indirect\n\tgithub.com/ProtonMail/go-crypto v1.1.6 // indirect\n\tgithub.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect\n\tgithub.com/agext/levenshtein v1.2.3 // indirect\n\tgithub.com/apparentlymart/go-cidr v1.1.0 // indirect\n\tgithub.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect\n\tgithub.com/armon/go-radix v1.0.0 // indirect\n\tgithub.com/atotto/clipboard v0.1.4 // indirect\n\tgithub.com/aws/aws-sdk-go v1.50.36 // indirect\n\tgithub.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect\n\tgithub.com/bgentry/go-netrc v0.0.0-20140422174119-9fd32a8b3d3d // indirect\n\tgithub.com/bgentry/speakeasy v0.1.0 // indirect\n\tgithub.com/blang/semver v3.5.1+incompatible // indirect\n\tgithub.com/charmbracelet/bubbles v0.16.1 // indirect\n\tgithub.com/charmbracelet/bubbletea v0.25.0 // indirect\n\tgithub.com/charmbracelet/lipgloss v0.7.1 // indirect\n\tgithub.com/cheggaaa/pb v1.0.29 // indirect\n\tgithub.com/cloudflare/circl v1.6.1 // indirect\n\tgithub.com/containerd/console v1.0.4-0.20230313162750-1ae8d489ac81 // indirect\n\tgithub.com/cyphar/filepath-securejoin v0.4.1 // indirect\n\tgithub.com/deckarep/golang-set/v2 v2.5.0 // indirect\n\tgithub.com/djherbis/times v1.5.0 // indirect\n\tgithub.com/edsrzf/mmap-go v1.1.0 // indirect\n\tgithub.com/emirpasic/gods v1.18.1 // indirect\n\tgithub.com/ettle/strcase v0.1.1 // indirect\n\tgithub.com/fatih/color v1.16.0 // indirect\n\tgithub.com/felixge/httpsnoop v1.0.4 // indirect\n\tgithub.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect\n\tgithub.com/go-git/go-billy/v5 v5.6.2 // indirect\n\tgithub.com/go-git/go-git/v5 v5.16.0 // indirect\n\tgithub.com/go-logr/logr v1.4.2 // indirect\n\tgithub.com/go-logr/stdr v1.2.2 // indirect\n\tgithub.com/gofrs/uuid/v5 v5.3.0 // indirect\n\tgithub.com/gogo/protobuf v1.3.2 // indirect\n\tgithub.com/golang/glog v1.2.4 // indirect\n\tgithub.com/golang/groupcache v0.0.0-20241129210726-2c02b8208cf8 // indirect\n\tgithub.com/golang/protobuf v1.5.4 // indirect\n\tgithub.com/google/go-cmp v0.7.0 // indirect\n\tgithub.com/google/s2a-go v0.1.7 // indirect\n\tgithub.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect\n\tgithub.com/google/uuid v1.6.0 // indirect\n\tgithub.com/googleapis/enterprise-certificate-proxy v0.3.2 // indirect\n\tgithub.com/googleapis/gax-go/v2 v2.12.2 // indirect\n\tgithub.com/gophercloud/gophercloud/v2 v2.7.1-0.20250602133909-0c4819a8e5d3 // indirect\n\tgithub.com/gophercloud/utils/v2 v2.0.0-20250212084022-725b94822eeb // indirect\n\tgithub.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 // indirect\n\tgithub.com/hashicorp/errwrap v1.1.0 // indirect\n\tgithub.com/hashicorp/go-cleanhttp v0.5.2 // indirect\n\tgithub.com/hashicorp/go-cty v1.5.0 // indirect\n\tgithub.com/hashicorp/go-getter v1.7.5 // indirect\n\tgithub.com/hashicorp/go-hclog v1.6.3 // indirect\n\tgithub.com/hashicorp/go-multierror v1.1.1 // indirect\n\tgithub.com/hashicorp/go-safetemp v1.0.0 // indirect\n\tgithub.com/hashicorp/go-uuid v1.0.3 // indirect\n\tgithub.com/hashicorp/go-version v1.7.0 // indirect\n\tgithub.com/hashicorp/hcl v1.0.0 // indirect\n\tgithub.com/hashicorp/hcl/v2 v2.23.0 // indirect\n\tgithub.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect\n\tgithub.com/hashicorp/logutils v1.0.0 // indirect\n\tgithub.com/hashicorp/terraform-plugin-go v0.28.0 // indirect\n\tgithub.com/hashicorp/terraform-plugin-log v0.9.0 // indirect\n\tgithub.com/hashicorp/terraform-plugin-sdk/v2 v2.37.0 // indirect\n\tgithub.com/hashicorp/terraform-svchost v0.1.1 // indirect\n\tgithub.com/huandu/xstrings v1.3.3 // indirect\n\tgithub.com/iancoleman/strcase v0.3.0 // indirect\n\tgithub.com/imdario/mergo v0.3.15 // indirect\n\tgithub.com/inconshreveable/mousetrap v1.1.0 // indirect\n\tgithub.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 // indirect\n\tgithub.com/jmespath/go-jmespath v0.4.0 // indirect\n\tgithub.com/json-iterator/go v1.1.12 // indirect\n\tgithub.com/kevinburke/ssh_config v1.2.0 // indirect\n\tgithub.com/klauspost/compress v1.18.0 // indirect\n\tgithub.com/lucasb-eyer/go-colorful v1.2.0 // indirect\n\tgithub.com/mattn/go-colorable v0.1.13 // indirect\n\tgithub.com/mattn/go-isatty v0.0.20 // indirect\n\tgithub.com/mattn/go-localereader v0.0.1 // indirect\n\tgithub.com/mattn/go-runewidth v0.0.15 // indirect\n\tgithub.com/mitchellh/cli v1.1.5 // indirect\n\tgithub.com/mitchellh/copystructure v1.2.0 // indirect\n\tgithub.com/mitchellh/go-homedir v1.1.0 // indirect\n\tgithub.com/mitchellh/go-ps v1.0.0 // indirect\n\tgithub.com/mitchellh/go-testing-interface v1.14.1 // indirect\n\tgithub.com/mitchellh/go-wordwrap v1.0.1 // indirect\n\tgithub.com/mitchellh/hashstructure v1.0.0 // indirect\n\tgithub.com/mitchellh/mapstructure v1.5.0 // indirect\n\tgithub.com/mitchellh/reflectwalk v1.0.2 // indirect\n\tgithub.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect\n\tgithub.com/modern-go/reflect2 v1.0.2 // indirect\n\tgithub.com/muesli/ansi v0.0.0-20230316100256-276c6243b2f6 // indirect\n\tgithub.com/muesli/cancelreader v0.2.2 // indirect\n\tgithub.com/muesli/reflow v0.3.0 // indirect\n\tgithub.com/muesli/termenv v0.15.2 // indirect\n\tgithub.com/natefinch/atomic v1.0.1 // indirect\n\tgithub.com/olekukonko/tablewriter v0.0.5 // indirect\n\tgithub.com/opentracing/basictracer-go v1.1.0 // indirect\n\tgithub.com/opentracing/opentracing-go v1.2.0 // indirect\n\tgithub.com/pgavlin/fx v0.1.6 // indirect\n\tgithub.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386 // indirect\n\tgithub.com/pjbgf/sha1cd v0.3.2 // indirect\n\tgithub.com/pkg/errors v0.9.1 // indirect\n\tgithub.com/pkg/term v1.1.0 // indirect\n\tgithub.com/posener/complete v1.2.3 // indirect\n\tgithub.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect\n\tgithub.com/pulumi/esc v0.14.2 // indirect\n\tgithub.com/pulumi/inflector v0.1.1 // indirect\n\tgithub.com/pulumi/pulumi-java/pkg v1.12.0 // indirect\n\tgithub.com/pulumi/pulumi-yaml v1.19.1 // indirect\n\tgithub.com/pulumi/pulumi/pkg/v3 v3.175.0 // indirect\n\tgithub.com/pulumi/schema-tools v0.1.2 // indirect\n\tgithub.com/pulumi/terraform-diff-reader v0.0.2 // indirect\n\tgithub.com/rivo/uniseg v0.4.4 // indirect\n\tgithub.com/rogpeppe/go-internal v1.14.1 // indirect\n\tgithub.com/russross/blackfriday/v2 v2.1.0 // indirect\n\tgithub.com/sabhiram/go-gitignore v0.0.0-20210923224102-525f6e181f06 // indirect\n\tgithub.com/santhosh-tekuri/jsonschema/v5 v5.0.0 // indirect\n\tgithub.com/segmentio/asm v1.1.3 // indirect\n\tgithub.com/segmentio/encoding v0.3.5 // indirect\n\tgithub.com/sergi/go-diff v1.3.2-0.20230802210424-5b0b94c5c0d3 // indirect\n\tgithub.com/shopspring/decimal v1.3.1 // indirect\n\tgithub.com/skeema/knownhosts v1.3.1 // indirect\n\tgithub.com/spf13/afero v1.10.0 // indirect\n\tgithub.com/spf13/cast v1.5.0 // indirect\n\tgithub.com/spf13/cobra v1.9.1 // indirect\n\tgithub.com/spf13/pflag v1.0.6 // indirect\n\tgithub.com/teekennedy/goldmark-markdown v0.3.0 // indirect\n\tgithub.com/texttheater/golang-levenshtein v1.0.1 // indirect\n\tgithub.com/uber/jaeger-client-go v2.30.0+incompatible // indirect\n\tgithub.com/uber/jaeger-lib v2.4.1+incompatible // indirect\n\tgithub.com/ulikunitz/xz v0.5.12 // indirect\n\tgithub.com/vmihailenco/msgpack v4.0.4+incompatible // indirect\n\tgithub.com/vmihailenco/msgpack/v5 v5.4.1 // indirect\n\tgithub.com/vmihailenco/tagparser/v2 v2.0.0 // indirect\n\tgithub.com/xanzy/ssh-agent v0.3.3 // indirect\n\tgithub.com/yuin/goldmark v1.7.4 // indirect\n\tgithub.com/zclconf/go-cty v1.16.2 // indirect\n\tgo.opencensus.io v0.24.0 // indirect\n\tgo.opentelemetry.io/auto/sdk v1.1.0 // indirect\n\tgo.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.49.0 // indirect\n\tgo.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.49.0 // indirect\n\tgo.opentelemetry.io/otel v1.34.0 // indirect\n\tgo.opentelemetry.io/otel/metric v1.34.0 // indirect\n\tgo.opentelemetry.io/otel/trace v1.34.0 // indirect\n\tgo.uber.org/atomic v1.9.0 // indirect\n\tgolang.org/x/crypto v0.38.0 // indirect\n\tgolang.org/x/exp v0.0.0-20240719175910-8a7402abbf56 // indirect\n\tgolang.org/x/mod v0.24.0 // indirect\n\tgolang.org/x/net v0.40.0 // indirect\n\tgolang.org/x/oauth2 v0.26.0 // indirect\n\tgolang.org/x/sync v0.14.0 // indirect\n\tgolang.org/x/sys v0.33.0 // indirect\n\tgolang.org/x/term v0.32.0 // indirect\n\tgolang.org/x/text v0.25.0 // indirect\n\tgolang.org/x/time v0.5.0 // indirect\n\tgolang.org/x/tools v0.26.0 // indirect\n\tgoogle.golang.org/api v0.169.0 // indirect\n\tgoogle.golang.org/appengine v1.6.8 // indirect\n\tgoogle.golang.org/genproto v0.0.0-20240311173647-c811ad7063a7 // indirect\n\tgoogle.golang.org/genproto/googleapis/api v0.0.0-20250218202821-56aae31c358a // indirect\n\tgoogle.golang.org/genproto/googleapis/rpc v0.0.0-20250218202821-56aae31c358a // indirect\n\tgoogle.golang.org/grpc v1.72.1 // indirect\n\tgoogle.golang.org/protobuf v1.36.6 // indirect\n\tgopkg.in/warnings.v0 v0.1.2 // indirect\n\tgopkg.in/yaml.v2 v2.4.0 // indirect\n\tgopkg.in/yaml.v3 v3.0.1 // indirect\n\tlukechampine.com/frand v1.4.2 // indirect\n)\n",
+            null
+          ],
+          "impure": true
+        },
+        {
+          "name": "Stat",
+          "inputs": [
+            "/Users/vvm/code/pulumi-openstack/upstream"
+          ],
+          "outputs": [
+            {
+              "name": "",
+              "size": 0,
+              "mode": 0,
+              "isDir": false
+            },
+            false,
+            null
+          ],
+          "impure": true
+        },
+        {
+          "name": "Stat",
+          "inputs": [
+            "/Users/vvm/code/pulumi-openstack/provider/shim"
+          ],
+          "outputs": [
+            {
+              "name": "",
+              "size": 0,
+              "mode": 0,
+              "isDir": false
+            },
+            false,
+            null
+          ],
+          "impure": true
+        },
+        {
+          "name": "Plan Provider Upgrade",
+          "inputs": [
+            "pulumi",
+            "pulumi-openstack",
+            {
+              "Kind": "plain",
+              "Upstream": {
+                "Path": "github.com/terraform-provider-openstack/terraform-provider-openstack/v3",
+                "Version": "v3.2.0"
+              },
+              "Bridge": {
+                "Path": "github.com/pulumi/pulumi-terraform-bridge/v3",
+                "Version": "v3.110.0"
+              }
+            },
+            {
+              "Name": "pulumi-openstack",
+              "Org": "pulumi"
+            },
+            false
+          ],
+          "outputs": [
+            {
+              "Version": "3.2.0",
+              "GHIssues": [
+                {
+                  "number": 850
+                }
+              ]
+            },
+            null
+          ]
+        },
+        {
+          "name": "Get Expected Target",
+          "inputs": [
+            "pulumi/pulumi-openstack"
+          ],
+          "outputs": [
+            {
+              "Version": "3.2.0",
+              "GHIssues": [
+                {
+                  "number": 850
+                }
+              ]
+            },
+            null
+          ]
+        },
+        {
+          "name": "From Issues",
+          "inputs": [
+            "pulumi/pulumi-openstack"
+          ],
+          "outputs": [
+            {
+              "Version": "3.2.0",
+              "GHIssues": [
+                {
+                  "number": 850
+                }
+              ]
+            },
+            null
+          ]
+        },
+        {
+          "name": "gh",
+          "inputs": [
+            "gh",
+            [
+              "issue",
+              "list",
+              "--state=open",
+              "--repo=pulumi/pulumi-openstack",
+              "--limit=100",
+              "--json=title,number"
+            ]
+          ],
+          "outputs": [
+            "[{\"number\":850,\"title\":\"Upgrade terraform-provider-openstack to v3.2.0\"},{\"number\":651,\"title\":\"Re-enable tests when account issues resolved\"},{\"number\":487,\"title\":\"sdk.helper_schema: unable to require attribute replacement\"},{\"number\":353,\"title\":\"pulumi returns a warning: floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 - but there is none\"},{\"number\":236,\"title\":\"Cleanup the test OCI account\"},{\"number\":201,\"title\":\"Provider options don't appear to be working\"},{\"number\":130,\"title\":\"Instance.AccessIpV6 format isn't very useful\"},{\"number\":29,\"title\":\"Consider namespacing APIs by version\"}]\n",
+            null
+          ],
+          "impure": true
+        }
+      ]
+    }
+  ]
+}
