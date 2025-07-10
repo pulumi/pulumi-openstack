@@ -15,6 +15,16 @@ export type AddressScope = import("./addressScope").AddressScope;
 export const AddressScope: typeof import("./addressScope").AddressScope = null as any;
 utilities.lazyLoad(exports, ["AddressScope"], () => require("./addressScope"));
 
+export { BgpPeerV2Args, BgpPeerV2State } from "./bgpPeerV2";
+export type BgpPeerV2 = import("./bgpPeerV2").BgpPeerV2;
+export const BgpPeerV2: typeof import("./bgpPeerV2").BgpPeerV2 = null as any;
+utilities.lazyLoad(exports, ["BgpPeerV2"], () => require("./bgpPeerV2"));
+
+export { BgpSpeakerV2Args, BgpSpeakerV2State } from "./bgpSpeakerV2";
+export type BgpSpeakerV2 = import("./bgpSpeakerV2").BgpSpeakerV2;
+export const BgpSpeakerV2: typeof import("./bgpSpeakerV2").BgpSpeakerV2 = null as any;
+utilities.lazyLoad(exports, ["BgpSpeakerV2"], () => require("./bgpSpeakerV2"));
+
 export { FloatingIpArgs, FloatingIpState } from "./floatingIp";
 export type FloatingIp = import("./floatingIp").FloatingIp;
 export const FloatingIp: typeof import("./floatingIp").FloatingIp = null as any;
@@ -84,6 +94,11 @@ export { GetSecGroupArgs, GetSecGroupResult, GetSecGroupOutputArgs } from "./get
 export const getSecGroup: typeof import("./getSecGroup").getSecGroup = null as any;
 export const getSecGroupOutput: typeof import("./getSecGroup").getSecGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getSecGroup","getSecGroupOutput"], () => require("./getSecGroup"));
+
+export { GetSegmentV2Args, GetSegmentV2Result, GetSegmentV2OutputArgs } from "./getSegmentV2";
+export const getSegmentV2: typeof import("./getSegmentV2").getSegmentV2 = null as any;
+export const getSegmentV2Output: typeof import("./getSegmentV2").getSegmentV2Output = null as any;
+utilities.lazyLoad(exports, ["getSegmentV2","getSegmentV2Output"], () => require("./getSegmentV2"));
 
 export { GetSubnetArgs, GetSubnetResult, GetSubnetOutputArgs } from "./getSubnet";
 export const getSubnet: typeof import("./getSubnet").getSubnet = null as any;
@@ -170,6 +185,11 @@ export type RouterRoute = import("./routerRoute").RouterRoute;
 export const RouterRoute: typeof import("./routerRoute").RouterRoute = null as any;
 utilities.lazyLoad(exports, ["RouterRoute"], () => require("./routerRoute"));
 
+export { RouterRoutesV2Args, RouterRoutesV2State } from "./routerRoutesV2";
+export type RouterRoutesV2 = import("./routerRoutesV2").RouterRoutesV2;
+export const RouterRoutesV2: typeof import("./routerRoutesV2").RouterRoutesV2 = null as any;
+utilities.lazyLoad(exports, ["RouterRoutesV2"], () => require("./routerRoutesV2"));
+
 export { SecGroupArgs, SecGroupState } from "./secGroup";
 export type SecGroup = import("./secGroup").SecGroup;
 export const SecGroup: typeof import("./secGroup").SecGroup = null as any;
@@ -179,6 +199,11 @@ export { SecGroupRuleArgs, SecGroupRuleState } from "./secGroupRule";
 export type SecGroupRule = import("./secGroupRule").SecGroupRule;
 export const SecGroupRule: typeof import("./secGroupRule").SecGroupRule = null as any;
 utilities.lazyLoad(exports, ["SecGroupRule"], () => require("./secGroupRule"));
+
+export { SegmentV2Args, SegmentV2State } from "./segmentV2";
+export type SegmentV2 = import("./segmentV2").SegmentV2;
+export const SegmentV2: typeof import("./segmentV2").SegmentV2 = null as any;
+utilities.lazyLoad(exports, ["SegmentV2"], () => require("./segmentV2"));
 
 export { SubnetArgs, SubnetState } from "./subnet";
 export type Subnet = import("./subnet").Subnet;
@@ -209,6 +234,10 @@ const _module = {
                 return new AddressGroupV2(name, <any>undefined, { urn })
             case "openstack:networking/addressScope:AddressScope":
                 return new AddressScope(name, <any>undefined, { urn })
+            case "openstack:networking/bgpPeerV2:BgpPeerV2":
+                return new BgpPeerV2(name, <any>undefined, { urn })
+            case "openstack:networking/bgpSpeakerV2:BgpSpeakerV2":
+                return new BgpSpeakerV2(name, <any>undefined, { urn })
             case "openstack:networking/floatingIp:FloatingIp":
                 return new FloatingIp(name, <any>undefined, { urn })
             case "openstack:networking/floatingIpAssociate:FloatingIpAssociate":
@@ -239,10 +268,14 @@ const _module = {
                 return new RouterInterface(name, <any>undefined, { urn })
             case "openstack:networking/routerRoute:RouterRoute":
                 return new RouterRoute(name, <any>undefined, { urn })
+            case "openstack:networking/routerRoutesV2:RouterRoutesV2":
+                return new RouterRoutesV2(name, <any>undefined, { urn })
             case "openstack:networking/secGroup:SecGroup":
                 return new SecGroup(name, <any>undefined, { urn })
             case "openstack:networking/secGroupRule:SecGroupRule":
                 return new SecGroupRule(name, <any>undefined, { urn })
+            case "openstack:networking/segmentV2:SegmentV2":
+                return new SegmentV2(name, <any>undefined, { urn })
             case "openstack:networking/subnet:Subnet":
                 return new Subnet(name, <any>undefined, { urn })
             case "openstack:networking/subnetPool:SubnetPool":
@@ -258,6 +291,8 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("openstack", "networking/addressGroupV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/addressScope", _module)
+pulumi.runtime.registerResourceModule("openstack", "networking/bgpPeerV2", _module)
+pulumi.runtime.registerResourceModule("openstack", "networking/bgpSpeakerV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/floatingIp", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/floatingIpAssociate", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/network", _module)
@@ -273,8 +308,10 @@ pulumi.runtime.registerResourceModule("openstack", "networking/rbacPolicyV2", _m
 pulumi.runtime.registerResourceModule("openstack", "networking/router", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/routerInterface", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/routerRoute", _module)
+pulumi.runtime.registerResourceModule("openstack", "networking/routerRoutesV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/secGroup", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/secGroupRule", _module)
+pulumi.runtime.registerResourceModule("openstack", "networking/segmentV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/subnet", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/subnetPool", _module)
 pulumi.runtime.registerResourceModule("openstack", "networking/subnetRoute", _module)

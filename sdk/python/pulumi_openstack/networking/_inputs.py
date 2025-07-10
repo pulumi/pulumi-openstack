@@ -16,6 +16,8 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'BgpSpeakerV2AdvertisedRouteArgs',
+    'BgpSpeakerV2AdvertisedRouteArgsDict',
     'NetworkSegmentArgs',
     'NetworkSegmentArgsDict',
     'PortAllowedAddressPairArgs',
@@ -28,6 +30,8 @@ __all__ = [
     'PortFixedIpArgsDict',
     'RouterExternalFixedIpArgs',
     'RouterExternalFixedIpArgsDict',
+    'RouterRoutesV2RouteArgs',
+    'RouterRoutesV2RouteArgsDict',
     'RouterVendorOptionsArgs',
     'RouterVendorOptionsArgsDict',
     'SubnetAllocationPoolArgs',
@@ -37,6 +41,42 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class BgpSpeakerV2AdvertisedRouteArgsDict(TypedDict):
+        destination: NotRequired[pulumi.Input[builtins.str]]
+        next_hop: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    BgpSpeakerV2AdvertisedRouteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BgpSpeakerV2AdvertisedRouteArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[builtins.str]] = None,
+                 next_hop: Optional[pulumi.Input[builtins.str]] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if next_hop is not None:
+            pulumi.set(__self__, "next_hop", next_hop)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "destination", value)
+
+    @property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "next_hop")
+
+    @next_hop.setter
+    def next_hop(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "next_hop", value)
+
 
 if not MYPY:
     class NetworkSegmentArgsDict(TypedDict):
@@ -472,6 +512,59 @@ class RouterExternalFixedIpArgs:
     @subnet_id.setter
     def subnet_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "subnet_id", value)
+
+
+if not MYPY:
+    class RouterRoutesV2RouteArgsDict(TypedDict):
+        destination_cidr: pulumi.Input[builtins.str]
+        """
+        CIDR block to match on the packet’s
+        destination IP.
+        """
+        next_hop: pulumi.Input[builtins.str]
+        """
+        IP address of the next hop gateway.
+        """
+elif False:
+    RouterRoutesV2RouteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RouterRoutesV2RouteArgs:
+    def __init__(__self__, *,
+                 destination_cidr: pulumi.Input[builtins.str],
+                 next_hop: pulumi.Input[builtins.str]):
+        """
+        :param pulumi.Input[builtins.str] destination_cidr: CIDR block to match on the packet’s
+               destination IP.
+        :param pulumi.Input[builtins.str] next_hop: IP address of the next hop gateway.
+        """
+        pulumi.set(__self__, "destination_cidr", destination_cidr)
+        pulumi.set(__self__, "next_hop", next_hop)
+
+    @property
+    @pulumi.getter(name="destinationCidr")
+    def destination_cidr(self) -> pulumi.Input[builtins.str]:
+        """
+        CIDR block to match on the packet’s
+        destination IP.
+        """
+        return pulumi.get(self, "destination_cidr")
+
+    @destination_cidr.setter
+    def destination_cidr(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "destination_cidr", value)
+
+    @property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> pulumi.Input[builtins.str]:
+        """
+        IP address of the next hop gateway.
+        """
+        return pulumi.get(self, "next_hop")
+
+    @next_hop.setter
+    def next_hop(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "next_hop", value)
 
 
 if not MYPY:

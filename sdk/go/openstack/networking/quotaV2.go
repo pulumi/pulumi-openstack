@@ -20,10 +20,6 @@ import (
 //
 //	in case of delete call.
 //
-// > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
-//
-//	created with zero value.
-//
 // ## Import
 //
 // Quotas can be imported using the `project_id/region_name`, e.g.

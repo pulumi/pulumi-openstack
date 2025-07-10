@@ -123,6 +123,10 @@ export interface GetRouterResult {
     readonly name?: string;
     readonly region?: string;
     readonly routerId?: string;
+    /**
+     * The list of static routes set on the router.
+     */
+    readonly routes: outputs.networking.GetRouterRoute[];
     readonly status?: string;
     readonly tags?: string[];
     readonly tenantId?: string;

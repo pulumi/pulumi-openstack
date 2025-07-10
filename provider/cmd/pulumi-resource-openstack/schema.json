@@ -1297,6 +1297,25 @@
                 "type"
             ]
         },
+        "openstack:networking/BgpSpeakerV2AdvertisedRoute:BgpSpeakerV2AdvertisedRoute": {
+            "properties": {
+                "destination": {
+                    "type": "string"
+                },
+                "nextHop": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "destination",
+                        "nextHop"
+                    ]
+                }
+            }
+        },
         "openstack:networking/NetworkSegment:NetworkSegment": {
             "properties": {
                 "networkType": {
@@ -1423,10 +1442,28 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "ipAddress"
+                        "ipAddress",
+                        "subnetId"
                     ]
                 }
             }
+        },
+        "openstack:networking/RouterRoutesV2Route:RouterRoutesV2Route": {
+            "properties": {
+                "destinationCidr": {
+                    "type": "string",
+                    "description": "CIDR block to match on the packet’s\ndestination IP.\n"
+                },
+                "nextHop": {
+                    "type": "string",
+                    "description": "IP address of the next hop gateway.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "destinationCidr",
+                "nextHop"
+            ]
         },
         "openstack:networking/RouterVendorOptions:RouterVendorOptions": {
             "properties": {
@@ -1601,6 +1638,26 @@
                 }
             },
             "type": "object"
+        },
+        "openstack:networking/getRouterRoute:getRouterRoute": {
+            "properties": {
+                "destinationCidr": {
+                    "type": "string"
+                },
+                "nextHop": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "destinationCidr",
+                "nextHop"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "openstack:networking/getSubnetAllocationPool:getSubnetAllocationPool": {
             "properties": {
@@ -4674,7 +4731,7 @@
             }
         },
         "openstack:compute/quotaSetV2:QuotaSetV2": {
-            "description": "Manages a V2 compute quotaset resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API\n    in case of delete call.\n\n\u003e **Note:** This resource has all-in creation so all optional quota arguments that were not specified are\n    created with zero value.\n\n## Import\n\nQuotasets can be imported using the `project_id/region_name`, e.g.\n\n```sh\n$ pulumi import openstack:compute/quotaSetV2:QuotaSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1\n```\n",
+            "description": "Manages a V2 compute quotaset resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API\n    in case of delete call.\n\n## Import\n\nQuotasets can be imported using the `project_id/region_name`, e.g.\n\n```sh\n$ pulumi import openstack:compute/quotaSetV2:QuotaSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1\n```\n",
             "properties": {
                 "cores": {
                     "type": "integer",
@@ -6623,6 +6680,119 @@
                         "type": "string",
                         "description": "The region in which to create the db user. Changing\nthis creates a new user.\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "openstack:dns/quotaV2:QuotaV2": {
+            "description": "Manages DNS quota in OpenStack DNS Service.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be\ndone against the OpenStack API in case of delete call.\n\n## Import\n\nQuotas can be imported using the `project_id/region_name`, e.g.\n\n```sh\n$ pulumi import openstack:dns/quotaV2:QuotaV2 quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1\n```\n",
+            "properties": {
+                "apiExportSize": {
+                    "type": "integer",
+                    "description": "The maximum number of zones that can be\nexported via the API.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "ID of the project to manage quota. Changing this\ncreates new quota.\n"
+                },
+                "recordsetRecords": {
+                    "type": "integer",
+                    "description": "The maximum number of records in a\nrecordset.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 DNS client. If\nomitted, the `region` argument of the provider is used. Changing this creates\na new DNS quota.\n"
+                },
+                "zoneRecords": {
+                    "type": "integer",
+                    "description": "The maximum number of records in a zone.\n"
+                },
+                "zoneRecordsets": {
+                    "type": "integer",
+                    "description": "The maximum number of recordsets in a zone.\n"
+                },
+                "zones": {
+                    "type": "integer",
+                    "description": "The maximum number of zones that can be created.\n"
+                }
+            },
+            "required": [
+                "apiExportSize",
+                "projectId",
+                "recordsetRecords",
+                "region",
+                "zoneRecords",
+                "zoneRecordsets",
+                "zones"
+            ],
+            "inputProperties": {
+                "apiExportSize": {
+                    "type": "integer",
+                    "description": "The maximum number of zones that can be\nexported via the API.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "ID of the project to manage quota. Changing this\ncreates new quota.\n",
+                    "willReplaceOnChanges": true
+                },
+                "recordsetRecords": {
+                    "type": "integer",
+                    "description": "The maximum number of records in a\nrecordset.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 DNS client. If\nomitted, the `region` argument of the provider is used. Changing this creates\na new DNS quota.\n",
+                    "willReplaceOnChanges": true
+                },
+                "zoneRecords": {
+                    "type": "integer",
+                    "description": "The maximum number of records in a zone.\n"
+                },
+                "zoneRecordsets": {
+                    "type": "integer",
+                    "description": "The maximum number of recordsets in a zone.\n"
+                },
+                "zones": {
+                    "type": "integer",
+                    "description": "The maximum number of zones that can be created.\n"
+                }
+            },
+            "requiredInputs": [
+                "projectId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering QuotaV2 resources.\n",
+                "properties": {
+                    "apiExportSize": {
+                        "type": "integer",
+                        "description": "The maximum number of zones that can be\nexported via the API.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "ID of the project to manage quota. Changing this\ncreates new quota.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "recordsetRecords": {
+                        "type": "integer",
+                        "description": "The maximum number of records in a\nrecordset.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 DNS client. If\nomitted, the `region` argument of the provider is used. Changing this creates\na new DNS quota.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "zoneRecords": {
+                        "type": "integer",
+                        "description": "The maximum number of records in a zone.\n"
+                    },
+                    "zoneRecordsets": {
+                        "type": "integer",
+                        "description": "The maximum number of recordsets in a zone.\n"
+                    },
+                    "zones": {
+                        "type": "integer",
+                        "description": "The maximum number of zones that can be created.\n"
                     }
                 },
                 "type": "object"
@@ -13140,7 +13310,7 @@
             }
         },
         "openstack:loadbalancer/quota:Quota": {
-            "description": "Manages a V2 load balancer quota resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack\n   API in case of delete call.\n\n\u003e **Note:** This resource has all-in creation so all optional quota arguments that were not specified are\n   created with zero value.\n\n\u003e **Note:** This resource has attributes that depend on octavia minor versions.\nPlease ensure your Openstack cloud supports the required minor version.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst project1 = new openstack.identity.Project(\"project_1\", {name: \"project_1\"});\nconst quota1 = new openstack.loadbalancer.Quota(\"quota_1\", {\n    projectId: project1.id,\n    loadbalancer: 6,\n    listener: 7,\n    member: 8,\n    pool: 9,\n    healthMonitor: 10,\n    l7Policy: 11,\n    l7Rule: 12,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nproject1 = openstack.identity.Project(\"project_1\", name=\"project_1\")\nquota1 = openstack.loadbalancer.Quota(\"quota_1\",\n    project_id=project1.id,\n    loadbalancer=6,\n    listener=7,\n    member=8,\n    pool=9,\n    health_monitor=10,\n    l7_policy=11,\n    l7_rule=12)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var project1 = new OpenStack.Identity.Project(\"project_1\", new()\n    {\n        Name = \"project_1\",\n    });\n\n    var quota1 = new OpenStack.LoadBalancer.Quota(\"quota_1\", new()\n    {\n        ProjectId = project1.Id,\n        Loadbalancer = 6,\n        Listener = 7,\n        Member = 8,\n        Pool = 9,\n        HealthMonitor = 10,\n        L7Policy = 11,\n        L7Rule = 12,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tproject1, err := identity.NewProject(ctx, \"project_1\", \u0026identity.ProjectArgs{\n\t\t\tName: pulumi.String(\"project_1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = loadbalancer.NewQuota(ctx, \"quota_1\", \u0026loadbalancer.QuotaArgs{\n\t\t\tProjectId:     project1.ID(),\n\t\t\tLoadbalancer:  pulumi.Int(6),\n\t\t\tListener:      pulumi.Int(7),\n\t\t\tMember:        pulumi.Int(8),\n\t\t\tPool:          pulumi.Int(9),\n\t\t\tHealthMonitor: pulumi.Int(10),\n\t\t\tL7Policy:      pulumi.Int(11),\n\t\t\tL7Rule:        pulumi.Int(12),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.identity.Project;\nimport com.pulumi.openstack.identity.ProjectArgs;\nimport com.pulumi.openstack.loadbalancer.Quota;\nimport com.pulumi.openstack.loadbalancer.QuotaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var project1 = new Project(\"project1\", ProjectArgs.builder()\n            .name(\"project_1\")\n            .build());\n\n        var quota1 = new Quota(\"quota1\", QuotaArgs.builder()\n            .projectId(project1.id())\n            .loadbalancer(6)\n            .listener(7)\n            .member(8)\n            .pool(9)\n            .healthMonitor(10)\n            .l7Policy(11)\n            .l7Rule(12)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  project1:\n    type: openstack:identity:Project\n    name: project_1\n    properties:\n      name: project_1\n  quota1:\n    type: openstack:loadbalancer:Quota\n    name: quota_1\n    properties:\n      projectId: ${project1.id}\n      loadbalancer: 6\n      listener: 7\n      member: 8\n      pool: 9\n      healthMonitor: 10\n      l7Policy: 11\n      l7Rule: 12\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nQuotas can be imported using the `project_id/region_name`, where region_name is the\none defined is the Openstack credentials that are in use. E.g.\n\n```sh\n$ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1\n```\n",
+            "description": "Manages a V2 load balancer quota resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack\n   API in case of delete call.\n\n\u003e **Note:** This resource has attributes that depend on octavia minor versions.\nPlease ensure your Openstack cloud supports the required minor version.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst project1 = new openstack.identity.Project(\"project_1\", {name: \"project_1\"});\nconst quota1 = new openstack.loadbalancer.Quota(\"quota_1\", {\n    projectId: project1.id,\n    loadbalancer: 6,\n    listener: 7,\n    member: 8,\n    pool: 9,\n    healthMonitor: 10,\n    l7Policy: 11,\n    l7Rule: 12,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nproject1 = openstack.identity.Project(\"project_1\", name=\"project_1\")\nquota1 = openstack.loadbalancer.Quota(\"quota_1\",\n    project_id=project1.id,\n    loadbalancer=6,\n    listener=7,\n    member=8,\n    pool=9,\n    health_monitor=10,\n    l7_policy=11,\n    l7_rule=12)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var project1 = new OpenStack.Identity.Project(\"project_1\", new()\n    {\n        Name = \"project_1\",\n    });\n\n    var quota1 = new OpenStack.LoadBalancer.Quota(\"quota_1\", new()\n    {\n        ProjectId = project1.Id,\n        Loadbalancer = 6,\n        Listener = 7,\n        Member = 8,\n        Pool = 9,\n        HealthMonitor = 10,\n        L7Policy = 11,\n        L7Rule = 12,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/loadbalancer\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tproject1, err := identity.NewProject(ctx, \"project_1\", \u0026identity.ProjectArgs{\n\t\t\tName: pulumi.String(\"project_1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = loadbalancer.NewQuota(ctx, \"quota_1\", \u0026loadbalancer.QuotaArgs{\n\t\t\tProjectId:     project1.ID(),\n\t\t\tLoadbalancer:  pulumi.Int(6),\n\t\t\tListener:      pulumi.Int(7),\n\t\t\tMember:        pulumi.Int(8),\n\t\t\tPool:          pulumi.Int(9),\n\t\t\tHealthMonitor: pulumi.Int(10),\n\t\t\tL7Policy:      pulumi.Int(11),\n\t\t\tL7Rule:        pulumi.Int(12),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.identity.Project;\nimport com.pulumi.openstack.identity.ProjectArgs;\nimport com.pulumi.openstack.loadbalancer.Quota;\nimport com.pulumi.openstack.loadbalancer.QuotaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var project1 = new Project(\"project1\", ProjectArgs.builder()\n            .name(\"project_1\")\n            .build());\n\n        var quota1 = new Quota(\"quota1\", QuotaArgs.builder()\n            .projectId(project1.id())\n            .loadbalancer(6)\n            .listener(7)\n            .member(8)\n            .pool(9)\n            .healthMonitor(10)\n            .l7Policy(11)\n            .l7Rule(12)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  project1:\n    type: openstack:identity:Project\n    name: project_1\n    properties:\n      name: project_1\n  quota1:\n    type: openstack:loadbalancer:Quota\n    name: quota_1\n    properties:\n      projectId: ${project1.id}\n      loadbalancer: 6\n      listener: 7\n      member: 8\n      pool: 9\n      healthMonitor: 10\n      l7Policy: 11\n      l7Rule: 12\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nQuotas can be imported using the `project_id/region_name`, where region_name is the\none defined is the Openstack credentials that are in use. E.g.\n\n```sh\n$ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1\n```\n",
             "properties": {
                 "healthMonitor": {
                     "type": "integer",
@@ -13453,6 +13623,300 @@
                     "shared": {
                         "type": "boolean",
                         "description": "Indicates whether this address-scope is shared across\nall projects. Changing this updates the shared status of the existing\naddress-scope.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "openstack:networking/bgpPeerV2:BgpPeerV2": {
+            "description": "Manages a V2 Neutron BGP Peer resource within OpenStack.\n\nThis resource allows you to configure a BGP peer that can be associated with a\nBGP speaker to exchange routing information.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst peer1 = new openstack.networking.BgpPeerV2(\"peer_1\", {\n    name: \"bgp_peer_1\",\n    peerIp: \"192.0.2.10\",\n    remoteAs: 65001,\n    authType: \"md5\",\n    password: \"supersecret\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\npeer1 = openstack.networking.BgpPeerV2(\"peer_1\",\n    name=\"bgp_peer_1\",\n    peer_ip=\"192.0.2.10\",\n    remote_as=65001,\n    auth_type=\"md5\",\n    password=\"supersecret\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var peer1 = new OpenStack.Networking.BgpPeerV2(\"peer_1\", new()\n    {\n        Name = \"bgp_peer_1\",\n        PeerIp = \"192.0.2.10\",\n        RemoteAs = 65001,\n        AuthType = \"md5\",\n        Password = \"supersecret\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := networking.NewBgpPeerV2(ctx, \"peer_1\", \u0026networking.BgpPeerV2Args{\n\t\t\tName:     pulumi.String(\"bgp_peer_1\"),\n\t\t\tPeerIp:   pulumi.String(\"192.0.2.10\"),\n\t\t\tRemoteAs: pulumi.Int(65001),\n\t\t\tAuthType: pulumi.String(\"md5\"),\n\t\t\tPassword: pulumi.String(\"supersecret\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.networking.BgpPeerV2;\nimport com.pulumi.openstack.networking.BgpPeerV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var peer1 = new BgpPeerV2(\"peer1\", BgpPeerV2Args.builder()\n            .name(\"bgp_peer_1\")\n            .peerIp(\"192.0.2.10\")\n            .remoteAs(65001)\n            .authType(\"md5\")\n            .password(\"supersecret\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  peer1:\n    type: openstack:networking:BgpPeerV2\n    name: peer_1\n    properties:\n      name: bgp_peer_1\n      peerIp: 192.0.2.10\n      remoteAs: 65001\n      authType: md5\n      password: supersecret\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nBGP peers can be imported using their ID:\n\n```sh\n$ pulumi import openstack:networking/bgpPeerV2:BgpPeerV2 peer1 a1b2c3d4-e5f6-7890-abcd-1234567890ef\n```\n\n",
+            "properties": {
+                "authType": {
+                    "type": "string",
+                    "description": "The authentication type to use. Can be one of `none`\nor `md5`. Defaults to `none`. If set to not `none`, the `password` argument\nmust also be provided. Changing this creates a new BGP peer.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name for the BGP peer.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password used for MD5 authentication. Must be set\nonly when `auth_type` is not `none`.\n",
+                    "secret": true
+                },
+                "peerIp": {
+                    "type": "string",
+                    "description": "The IP address of the BGP peer. Must be a valid IP\naddress. Changing this creates a new BGP peer.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create a Neutron network. If omitted, the\n`region` argument of the provider is used. Changing this creates a new BGP\npeer.\n"
+                },
+                "remoteAs": {
+                    "type": "integer",
+                    "description": "The AS number of the BGP peer. Changing this\ncreates a new BGP peer.\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The tenant/project ID. Required if admin privileges\nare used. Changing this creates a new BGP peer.\n"
+                }
+            },
+            "required": [
+                "name",
+                "peerIp",
+                "region",
+                "remoteAs",
+                "tenantId"
+            ],
+            "inputProperties": {
+                "authType": {
+                    "type": "string",
+                    "description": "The authentication type to use. Can be one of `none`\nor `md5`. Defaults to `none`. If set to not `none`, the `password` argument\nmust also be provided. Changing this creates a new BGP peer.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name for the BGP peer.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password used for MD5 authentication. Must be set\nonly when `auth_type` is not `none`.\n",
+                    "secret": true
+                },
+                "peerIp": {
+                    "type": "string",
+                    "description": "The IP address of the BGP peer. Must be a valid IP\naddress. Changing this creates a new BGP peer.\n",
+                    "willReplaceOnChanges": true
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create a Neutron network. If omitted, the\n`region` argument of the provider is used. Changing this creates a new BGP\npeer.\n",
+                    "willReplaceOnChanges": true
+                },
+                "remoteAs": {
+                    "type": "integer",
+                    "description": "The AS number of the BGP peer. Changing this\ncreates a new BGP peer.\n",
+                    "willReplaceOnChanges": true
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The tenant/project ID. Required if admin privileges\nare used. Changing this creates a new BGP peer.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "peerIp",
+                "remoteAs"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering BgpPeerV2 resources.\n",
+                "properties": {
+                    "authType": {
+                        "type": "string",
+                        "description": "The authentication type to use. Can be one of `none`\nor `md5`. Defaults to `none`. If set to not `none`, the `password` argument\nmust also be provided. Changing this creates a new BGP peer.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A name for the BGP peer.\n"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "The password used for MD5 authentication. Must be set\nonly when `auth_type` is not `none`.\n",
+                        "secret": true
+                    },
+                    "peerIp": {
+                        "type": "string",
+                        "description": "The IP address of the BGP peer. Must be a valid IP\naddress. Changing this creates a new BGP peer.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create a Neutron network. If omitted, the\n`region` argument of the provider is used. Changing this creates a new BGP\npeer.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "remoteAs": {
+                        "type": "integer",
+                        "description": "The AS number of the BGP peer. Changing this\ncreates a new BGP peer.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "description": "The tenant/project ID. Required if admin privileges\nare used. Changing this creates a new BGP peer.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "openstack:networking/bgpSpeakerV2:BgpSpeakerV2": {
+            "description": "Manages a V2 Neutron BGP Speaker resource within OpenStack.\n\nThis resource allows you to configure a BGP speaker that can be associated with\na BGP peer to exchange routing information.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst network1 = new openstack.networking.Network(\"network1\", {name: \"network1\"});\nconst peer1 = new openstack.networking.BgpPeerV2(\"peer_1\", {\n    name: \"bgp_peer_1\",\n    peerIp: \"192.0.2.10\",\n    remoteAs: 65001,\n    authType: \"md5\",\n    password: \"supersecret\",\n});\nconst speaker1 = new openstack.networking.BgpSpeakerV2(\"speaker_1\", {\n    name: \"bgp_speaker_1\",\n    ipVersion: 4,\n    localAs: 65000,\n    networks: [network1.id],\n    peers: [peer1OpestackNetworkingBgpPeerV2.id],\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nnetwork1 = openstack.networking.Network(\"network1\", name=\"network1\")\npeer1 = openstack.networking.BgpPeerV2(\"peer_1\",\n    name=\"bgp_peer_1\",\n    peer_ip=\"192.0.2.10\",\n    remote_as=65001,\n    auth_type=\"md5\",\n    password=\"supersecret\")\nspeaker1 = openstack.networking.BgpSpeakerV2(\"speaker_1\",\n    name=\"bgp_speaker_1\",\n    ip_version=4,\n    local_as=65000,\n    networks=[network1.id],\n    peers=[peer1_opestack_networking_bgp_peer_v2[\"id\"]])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var network1 = new OpenStack.Networking.Network(\"network1\", new()\n    {\n        Name = \"network1\",\n    });\n\n    var peer1 = new OpenStack.Networking.BgpPeerV2(\"peer_1\", new()\n    {\n        Name = \"bgp_peer_1\",\n        PeerIp = \"192.0.2.10\",\n        RemoteAs = 65001,\n        AuthType = \"md5\",\n        Password = \"supersecret\",\n    });\n\n    var speaker1 = new OpenStack.Networking.BgpSpeakerV2(\"speaker_1\", new()\n    {\n        Name = \"bgp_speaker_1\",\n        IpVersion = 4,\n        LocalAs = 65000,\n        Networks = new[]\n        {\n            network1.Id,\n        },\n        Peers = new[]\n        {\n            peer1OpestackNetworkingBgpPeerV2.Id,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tnetwork1, err := networking.NewNetwork(ctx, \"network1\", \u0026networking.NetworkArgs{\n\t\t\tName: pulumi.String(\"network1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = networking.NewBgpPeerV2(ctx, \"peer_1\", \u0026networking.BgpPeerV2Args{\n\t\t\tName:     pulumi.String(\"bgp_peer_1\"),\n\t\t\tPeerIp:   pulumi.String(\"192.0.2.10\"),\n\t\t\tRemoteAs: pulumi.Int(65001),\n\t\t\tAuthType: pulumi.String(\"md5\"),\n\t\t\tPassword: pulumi.String(\"supersecret\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = networking.NewBgpSpeakerV2(ctx, \"speaker_1\", \u0026networking.BgpSpeakerV2Args{\n\t\t\tName:      pulumi.String(\"bgp_speaker_1\"),\n\t\t\tIpVersion: pulumi.Int(4),\n\t\t\tLocalAs:   pulumi.Int(65000),\n\t\t\tNetworks: pulumi.StringArray{\n\t\t\t\tnetwork1.ID(),\n\t\t\t},\n\t\t\tPeers: pulumi.StringArray{\n\t\t\t\tpeer1OpestackNetworkingBgpPeerV2.Id,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.networking.Network;\nimport com.pulumi.openstack.networking.NetworkArgs;\nimport com.pulumi.openstack.networking.BgpPeerV2;\nimport com.pulumi.openstack.networking.BgpPeerV2Args;\nimport com.pulumi.openstack.networking.BgpSpeakerV2;\nimport com.pulumi.openstack.networking.BgpSpeakerV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var network1 = new Network(\"network1\", NetworkArgs.builder()\n            .name(\"network1\")\n            .build());\n\n        var peer1 = new BgpPeerV2(\"peer1\", BgpPeerV2Args.builder()\n            .name(\"bgp_peer_1\")\n            .peerIp(\"192.0.2.10\")\n            .remoteAs(65001)\n            .authType(\"md5\")\n            .password(\"supersecret\")\n            .build());\n\n        var speaker1 = new BgpSpeakerV2(\"speaker1\", BgpSpeakerV2Args.builder()\n            .name(\"bgp_speaker_1\")\n            .ipVersion(4)\n            .localAs(65000)\n            .networks(network1.id())\n            .peers(peer1OpestackNetworkingBgpPeerV2.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  network1:\n    type: openstack:networking:Network\n    properties:\n      name: network1\n  peer1:\n    type: openstack:networking:BgpPeerV2\n    name: peer_1\n    properties:\n      name: bgp_peer_1\n      peerIp: 192.0.2.10\n      remoteAs: 65001\n      authType: md5\n      password: supersecret\n  speaker1:\n    type: openstack:networking:BgpSpeakerV2\n    name: speaker_1\n    properties:\n      name: bgp_speaker_1\n      ipVersion: 4\n      localAs: 65000\n      networks:\n        - ${network1.id}\n      peers:\n        - ${peer1OpestackNetworkingBgpPeerV2.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nBGP speakers can be imported using their ID:\n\n```sh\n$ pulumi import openstack:networking/bgpSpeakerV2:BgpSpeakerV2 speaker_1 8a2ad402-b805-46bf-a60b-008573ca2844\n```\n\n",
+            "properties": {
+                "advertiseFloatingIpHostRoutes": {
+                    "type": "boolean",
+                    "description": "A boolean value indicating\nwhether to advertise floating IP host routes. Defaults to `true`.\n"
+                },
+                "advertiseTenantNetworks": {
+                    "type": "boolean",
+                    "description": "A boolean value indicating whether to\nadvertise tenant networks. Defaults to `true`.\n"
+                },
+                "advertisedRoutes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/openstack:networking/BgpSpeakerV2AdvertisedRoute:BgpSpeakerV2AdvertisedRoute"
+                    },
+                    "description": "A list of dictionaries containing the `destination` and\n`next_hop` for each route advertised by the BGP speaker. This attribute is\nonly populated after the BGP speaker has been created and has established BGP\nsessions with its peers.\n"
+                },
+                "ipVersion": {
+                    "type": "integer",
+                    "description": "The IP version of the BGP speaker. Valid values are\n`4` or `6`. Defaults to `4`. Changing this creates a new BGP speaker.\n"
+                },
+                "localAs": {
+                    "type": "integer",
+                    "description": "The local autonomous system number (ASN) for the BGP\nspeaker. This is a mandatory field and must be specified. Changing this\ncreates a new BGP speaker.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name for the BGP speaker.\n"
+                },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of network IDs to associate with the BGP speaker.\n"
+                },
+                "peers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of BGP peer IDs to associate with the BGP speaker.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create a Neutron network. If omitted, the\n`region` argument of the provider is used. Changing this creates a new BGP\nspeaker.\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The tenant/project ID. Required if admin privileges\nare used. Changing this creates a new BGP speaker.\n"
+                }
+            },
+            "required": [
+                "advertiseFloatingIpHostRoutes",
+                "advertiseTenantNetworks",
+                "advertisedRoutes",
+                "localAs",
+                "name",
+                "region",
+                "tenantId"
+            ],
+            "inputProperties": {
+                "advertiseFloatingIpHostRoutes": {
+                    "type": "boolean",
+                    "description": "A boolean value indicating\nwhether to advertise floating IP host routes. Defaults to `true`.\n"
+                },
+                "advertiseTenantNetworks": {
+                    "type": "boolean",
+                    "description": "A boolean value indicating whether to\nadvertise tenant networks. Defaults to `true`.\n"
+                },
+                "ipVersion": {
+                    "type": "integer",
+                    "description": "The IP version of the BGP speaker. Valid values are\n`4` or `6`. Defaults to `4`. Changing this creates a new BGP speaker.\n",
+                    "willReplaceOnChanges": true
+                },
+                "localAs": {
+                    "type": "integer",
+                    "description": "The local autonomous system number (ASN) for the BGP\nspeaker. This is a mandatory field and must be specified. Changing this\ncreates a new BGP speaker.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name for the BGP speaker.\n"
+                },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of network IDs to associate with the BGP speaker.\n"
+                },
+                "peers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of BGP peer IDs to associate with the BGP speaker.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create a Neutron network. If omitted, the\n`region` argument of the provider is used. Changing this creates a new BGP\nspeaker.\n",
+                    "willReplaceOnChanges": true
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "The tenant/project ID. Required if admin privileges\nare used. Changing this creates a new BGP speaker.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "localAs"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering BgpSpeakerV2 resources.\n",
+                "properties": {
+                    "advertiseFloatingIpHostRoutes": {
+                        "type": "boolean",
+                        "description": "A boolean value indicating\nwhether to advertise floating IP host routes. Defaults to `true`.\n"
+                    },
+                    "advertiseTenantNetworks": {
+                        "type": "boolean",
+                        "description": "A boolean value indicating whether to\nadvertise tenant networks. Defaults to `true`.\n"
+                    },
+                    "advertisedRoutes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/openstack:networking/BgpSpeakerV2AdvertisedRoute:BgpSpeakerV2AdvertisedRoute"
+                        },
+                        "description": "A list of dictionaries containing the `destination` and\n`next_hop` for each route advertised by the BGP speaker. This attribute is\nonly populated after the BGP speaker has been created and has established BGP\nsessions with its peers.\n"
+                    },
+                    "ipVersion": {
+                        "type": "integer",
+                        "description": "The IP version of the BGP speaker. Valid values are\n`4` or `6`. Defaults to `4`. Changing this creates a new BGP speaker.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "localAs": {
+                        "type": "integer",
+                        "description": "The local autonomous system number (ASN) for the BGP\nspeaker. This is a mandatory field and must be specified. Changing this\ncreates a new BGP speaker.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A name for the BGP speaker.\n"
+                    },
+                    "networks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of network IDs to associate with the BGP speaker.\n"
+                    },
+                    "peers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of BGP peer IDs to associate with the BGP speaker.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create a Neutron network. If omitted, the\n`region` argument of the provider is used. Changing this creates a new BGP\nspeaker.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "description": "The tenant/project ID. Required if admin privileges\nare used. Changing this creates a new BGP speaker.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -15094,7 +15558,7 @@
             }
         },
         "openstack:networking/quotaV2:QuotaV2": {
-            "description": "Manages a V2 networking quota resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API\n    in case of delete call.\n\n\u003e **Note:** This resource has all-in creation so all optional quota arguments that were not specified are\n    created with zero value.\n\n## Import\n\nQuotas can be imported using the `project_id/region_name`, e.g.\n\n```sh\n$ pulumi import openstack:networking/quotaV2:QuotaV2 quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1\n```\n",
+            "description": "Manages a V2 networking quota resource within OpenStack.\n\n\u003e **Note:** This usually requires admin privileges.\n\n\u003e **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API\n    in case of delete call.\n\n## Import\n\nQuotas can be imported using the `project_id/region_name`, e.g.\n\n```sh\n$ pulumi import openstack:networking/quotaV2:QuotaV2 quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1\n```\n",
             "properties": {
                 "floatingip": {
                     "type": "integer",
@@ -15804,6 +16268,75 @@
                 "type": "object"
             }
         },
+        "openstack:networking/routerRoutesV2:RouterRoutesV2": {
+            "description": "Creates routing entries on a OpenStack V2 router.\n\n\u003e **Note:** This resource uses the OpenStack Neutron `extraroute-atomic`\nextension. If your environment does not have this extension, you should use the\n`openstack.networking.RouterRoute` resource to add routes instead.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst router1 = new openstack.networking.Router(\"router_1\", {\n    name: \"router_1\",\n    adminStateUp: true,\n});\nconst network1 = new openstack.networking.Network(\"network_1\", {\n    name: \"network_1\",\n    adminStateUp: true,\n});\nconst subnet1 = new openstack.networking.Subnet(\"subnet_1\", {\n    networkId: network1.id,\n    cidr: \"192.168.199.0/24\",\n    ipVersion: 4,\n});\nconst int1 = new openstack.networking.RouterInterface(\"int_1\", {\n    routerId: router1.id,\n    subnetId: subnet1.id,\n});\nconst routerRoutes1 = new openstack.networking.RouterRoutesV2(\"router_routes_1\", {\n    routerId: int1.routerId,\n    routes: [\n        {\n            destinationCidr: \"10.0.1.0/24\",\n            nextHop: \"192.168.199.254\",\n        },\n        {\n            destinationCidr: \"10.0.2.0/24\",\n            nextHop: \"192.168.199.254\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nrouter1 = openstack.networking.Router(\"router_1\",\n    name=\"router_1\",\n    admin_state_up=True)\nnetwork1 = openstack.networking.Network(\"network_1\",\n    name=\"network_1\",\n    admin_state_up=True)\nsubnet1 = openstack.networking.Subnet(\"subnet_1\",\n    network_id=network1.id,\n    cidr=\"192.168.199.0/24\",\n    ip_version=4)\nint1 = openstack.networking.RouterInterface(\"int_1\",\n    router_id=router1.id,\n    subnet_id=subnet1.id)\nrouter_routes1 = openstack.networking.RouterRoutesV2(\"router_routes_1\",\n    router_id=int1.router_id,\n    routes=[\n        {\n            \"destination_cidr\": \"10.0.1.0/24\",\n            \"next_hop\": \"192.168.199.254\",\n        },\n        {\n            \"destination_cidr\": \"10.0.2.0/24\",\n            \"next_hop\": \"192.168.199.254\",\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var router1 = new OpenStack.Networking.Router(\"router_1\", new()\n    {\n        Name = \"router_1\",\n        AdminStateUp = true,\n    });\n\n    var network1 = new OpenStack.Networking.Network(\"network_1\", new()\n    {\n        Name = \"network_1\",\n        AdminStateUp = true,\n    });\n\n    var subnet1 = new OpenStack.Networking.Subnet(\"subnet_1\", new()\n    {\n        NetworkId = network1.Id,\n        Cidr = \"192.168.199.0/24\",\n        IpVersion = 4,\n    });\n\n    var int1 = new OpenStack.Networking.RouterInterface(\"int_1\", new()\n    {\n        RouterId = router1.Id,\n        SubnetId = subnet1.Id,\n    });\n\n    var routerRoutes1 = new OpenStack.Networking.RouterRoutesV2(\"router_routes_1\", new()\n    {\n        RouterId = int1.RouterId,\n        Routes = new[]\n        {\n            new OpenStack.Networking.Inputs.RouterRoutesV2RouteArgs\n            {\n                DestinationCidr = \"10.0.1.0/24\",\n                NextHop = \"192.168.199.254\",\n            },\n            new OpenStack.Networking.Inputs.RouterRoutesV2RouteArgs\n            {\n                DestinationCidr = \"10.0.2.0/24\",\n                NextHop = \"192.168.199.254\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\trouter1, err := networking.NewRouter(ctx, \"router_1\", \u0026networking.RouterArgs{\n\t\t\tName:         pulumi.String(\"router_1\"),\n\t\t\tAdminStateUp: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tnetwork1, err := networking.NewNetwork(ctx, \"network_1\", \u0026networking.NetworkArgs{\n\t\t\tName:         pulumi.String(\"network_1\"),\n\t\t\tAdminStateUp: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tsubnet1, err := networking.NewSubnet(ctx, \"subnet_1\", \u0026networking.SubnetArgs{\n\t\t\tNetworkId: network1.ID(),\n\t\t\tCidr:      pulumi.String(\"192.168.199.0/24\"),\n\t\t\tIpVersion: pulumi.Int(4),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tint1, err := networking.NewRouterInterface(ctx, \"int_1\", \u0026networking.RouterInterfaceArgs{\n\t\t\tRouterId: router1.ID(),\n\t\t\tSubnetId: subnet1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = networking.NewRouterRoutesV2(ctx, \"router_routes_1\", \u0026networking.RouterRoutesV2Args{\n\t\t\tRouterId: int1.RouterId,\n\t\t\tRoutes: networking.RouterRoutesV2RouteArray{\n\t\t\t\t\u0026networking.RouterRoutesV2RouteArgs{\n\t\t\t\t\tDestinationCidr: pulumi.String(\"10.0.1.0/24\"),\n\t\t\t\t\tNextHop:         pulumi.String(\"192.168.199.254\"),\n\t\t\t\t},\n\t\t\t\t\u0026networking.RouterRoutesV2RouteArgs{\n\t\t\t\t\tDestinationCidr: pulumi.String(\"10.0.2.0/24\"),\n\t\t\t\t\tNextHop:         pulumi.String(\"192.168.199.254\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.networking.Router;\nimport com.pulumi.openstack.networking.RouterArgs;\nimport com.pulumi.openstack.networking.Network;\nimport com.pulumi.openstack.networking.NetworkArgs;\nimport com.pulumi.openstack.networking.Subnet;\nimport com.pulumi.openstack.networking.SubnetArgs;\nimport com.pulumi.openstack.networking.RouterInterface;\nimport com.pulumi.openstack.networking.RouterInterfaceArgs;\nimport com.pulumi.openstack.networking.RouterRoutesV2;\nimport com.pulumi.openstack.networking.RouterRoutesV2Args;\nimport com.pulumi.openstack.networking.inputs.RouterRoutesV2RouteArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var router1 = new Router(\"router1\", RouterArgs.builder()\n            .name(\"router_1\")\n            .adminStateUp(true)\n            .build());\n\n        var network1 = new Network(\"network1\", NetworkArgs.builder()\n            .name(\"network_1\")\n            .adminStateUp(true)\n            .build());\n\n        var subnet1 = new Subnet(\"subnet1\", SubnetArgs.builder()\n            .networkId(network1.id())\n            .cidr(\"192.168.199.0/24\")\n            .ipVersion(4)\n            .build());\n\n        var int1 = new RouterInterface(\"int1\", RouterInterfaceArgs.builder()\n            .routerId(router1.id())\n            .subnetId(subnet1.id())\n            .build());\n\n        var routerRoutes1 = new RouterRoutesV2(\"routerRoutes1\", RouterRoutesV2Args.builder()\n            .routerId(int1.routerId())\n            .routes(            \n                RouterRoutesV2RouteArgs.builder()\n                    .destinationCidr(\"10.0.1.0/24\")\n                    .nextHop(\"192.168.199.254\")\n                    .build(),\n                RouterRoutesV2RouteArgs.builder()\n                    .destinationCidr(\"10.0.2.0/24\")\n                    .nextHop(\"192.168.199.254\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  router1:\n    type: openstack:networking:Router\n    name: router_1\n    properties:\n      name: router_1\n      adminStateUp: 'true'\n  network1:\n    type: openstack:networking:Network\n    name: network_1\n    properties:\n      name: network_1\n      adminStateUp: 'true'\n  subnet1:\n    type: openstack:networking:Subnet\n    name: subnet_1\n    properties:\n      networkId: ${network1.id}\n      cidr: 192.168.199.0/24\n      ipVersion: 4\n  int1:\n    type: openstack:networking:RouterInterface\n    name: int_1\n    properties:\n      routerId: ${router1.id}\n      subnetId: ${subnet1.id}\n  routerRoutes1:\n    type: openstack:networking:RouterRoutesV2\n    name: router_routes_1\n    properties:\n      routerId: ${int1.routerId}\n      routes:\n        - destinationCidr: 10.0.1.0/24\n          nextHop: 192.168.199.254\n        - destinationCidr: 10.0.2.0/24\n          nextHop: 192.168.199.254\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Notes\n\nThe `next_hop` IP address must be directly reachable from the router at the\n``openstack.networking.RouterRoutesV2`` resource creation time.  You can\nensure that by explicitly specifying a dependency on the\n``openstack.networking.RouterInterface`` resource that connects the next\nhop to the router, as in the example above.\n\n## Import\n\nRouting entries can be imported using a router `id`:\n\n```sh\n$ pulumi import openstack:networking/routerRoutesV2:RouterRoutesV2 router_routes_1 686fe248-386c-4f70-9f6c-281607dad079\n```\n",
+            "properties": {
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 networking client.\nA networking client is needed to configure routing entres on a router. If\nomitted, the `region` argument of the provider is used. Changing this creates\nnew routing entries.\n"
+                },
+                "routerId": {
+                    "type": "string",
+                    "description": "ID of the router these routing entries belong to.\nChanging this creates new routing entries.\n"
+                },
+                "routes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/openstack:networking/RouterRoutesV2Route:RouterRoutesV2Route"
+                    },
+                    "description": "A set of routing entries to add to the router.\n"
+                }
+            },
+            "required": [
+                "region",
+                "routerId"
+            ],
+            "inputProperties": {
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 networking client.\nA networking client is needed to configure routing entres on a router. If\nomitted, the `region` argument of the provider is used. Changing this creates\nnew routing entries.\n",
+                    "willReplaceOnChanges": true
+                },
+                "routerId": {
+                    "type": "string",
+                    "description": "ID of the router these routing entries belong to.\nChanging this creates new routing entries.\n",
+                    "willReplaceOnChanges": true
+                },
+                "routes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/openstack:networking/RouterRoutesV2Route:RouterRoutesV2Route"
+                    },
+                    "description": "A set of routing entries to add to the router.\n"
+                }
+            },
+            "requiredInputs": [
+                "routerId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RouterRoutesV2 resources.\n",
+                "properties": {
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 networking client.\nA networking client is needed to configure routing entres on a router. If\nomitted, the `region` argument of the provider is used. Changing this creates\nnew routing entries.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "routerId": {
+                        "type": "string",
+                        "description": "ID of the router these routing entries belong to.\nChanging this creates new routing entries.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "routes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/openstack:networking/RouterRoutesV2Route:RouterRoutesV2Route"
+                        },
+                        "description": "A set of routing entries to add to the router.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "openstack:networking/secGroup:SecGroup": {
             "description": "\n\n## Import\n\nSecurity Groups can be imported using the `id`, e.g.\n\n```sh\n$ pulumi import openstack:networking/secGroup:SecGroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc\n```\n",
             "properties": {
@@ -16129,6 +16662,149 @@
                         "type": "string",
                         "description": "The owner of the security group. Required if admin\nwants to create a port for another tenant. Changing this creates a new\nsecurity group rule.\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "openstack:networking/segmentV2:SegmentV2": {
+            "description": "Manages a Neutron network segment resource within OpenStack.\n\n\u003e **Note:** This resource is only available if the Neutron service is\nconfigured with the `segments` extension.\n\n\u003e **Note:** This ussually requires admin privileges to create or manage\nsegments.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst net1 = new openstack.networking.Network(\"net_1\", {name: \"demo-net\"});\nconst segment1 = new openstack.networking.SegmentV2(\"segment_1\", {\n    name: \"flat-segment\",\n    description: \"Example flat segment\",\n    networkId: net1.id,\n    networkType: \"flat\",\n    physicalNetwork: \"public\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nnet1 = openstack.networking.Network(\"net_1\", name=\"demo-net\")\nsegment1 = openstack.networking.SegmentV2(\"segment_1\",\n    name=\"flat-segment\",\n    description=\"Example flat segment\",\n    network_id=net1.id,\n    network_type=\"flat\",\n    physical_network=\"public\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var net1 = new OpenStack.Networking.Network(\"net_1\", new()\n    {\n        Name = \"demo-net\",\n    });\n\n    var segment1 = new OpenStack.Networking.SegmentV2(\"segment_1\", new()\n    {\n        Name = \"flat-segment\",\n        Description = \"Example flat segment\",\n        NetworkId = net1.Id,\n        NetworkType = \"flat\",\n        PhysicalNetwork = \"public\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tnet1, err := networking.NewNetwork(ctx, \"net_1\", \u0026networking.NetworkArgs{\n\t\t\tName: pulumi.String(\"demo-net\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = networking.NewSegmentV2(ctx, \"segment_1\", \u0026networking.SegmentV2Args{\n\t\t\tName:            pulumi.String(\"flat-segment\"),\n\t\t\tDescription:     pulumi.String(\"Example flat segment\"),\n\t\t\tNetworkId:       net1.ID(),\n\t\t\tNetworkType:     pulumi.String(\"flat\"),\n\t\t\tPhysicalNetwork: pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.networking.Network;\nimport com.pulumi.openstack.networking.NetworkArgs;\nimport com.pulumi.openstack.networking.SegmentV2;\nimport com.pulumi.openstack.networking.SegmentV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var net1 = new Network(\"net1\", NetworkArgs.builder()\n            .name(\"demo-net\")\n            .build());\n\n        var segment1 = new SegmentV2(\"segment1\", SegmentV2Args.builder()\n            .name(\"flat-segment\")\n            .description(\"Example flat segment\")\n            .networkId(net1.id())\n            .networkType(\"flat\")\n            .physicalNetwork(\"public\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  net1:\n    type: openstack:networking:Network\n    name: net_1\n    properties:\n      name: demo-net\n  segment1:\n    type: openstack:networking:SegmentV2\n    name: segment_1\n    properties:\n      name: flat-segment\n      description: Example flat segment\n      networkId: ${net1.id}\n      networkType: flat\n      physicalNetwork: public\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the segment ID:\n\n```sh\n$ pulumi import openstack:networking/segmentV2:SegmentV2 segment1 a5e3a494-26ee-4fde-ad26-2d846c47072e\n```\n\n",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "Creation timestamp (RFC3339 format).\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description for the segment.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name for the segment.\n"
+                },
+                "networkId": {
+                    "type": "string",
+                    "description": "The UUID of the network this segment belongs to.\nChanging this will create a new segment.\n"
+                },
+                "networkType": {
+                    "type": "string",
+                    "description": "The network type. Valid values depend on the\nbackend (e.g., `vlan`, `vxlan`, `flat`, `gre`, `geneve`, `local`). Changing\nthis will create a new segment.\n"
+                },
+                "physicalNetwork": {
+                    "type": "string",
+                    "description": "The name of the physical network. Changing this\nwill create a new segment.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create a Neutron network. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nsegment.\n"
+                },
+                "revisionNumber": {
+                    "type": "integer",
+                    "description": "The revision number of the segment.\n"
+                },
+                "segmentationId": {
+                    "type": "integer",
+                    "description": "A segmentation identifier. Changing is allowed\nonly for `vlan`.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Last update timestamp (RFC3339 format).\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "name",
+                "networkId",
+                "networkType",
+                "region",
+                "revisionNumber",
+                "segmentationId",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "A description for the segment.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name for the segment.\n"
+                },
+                "networkId": {
+                    "type": "string",
+                    "description": "The UUID of the network this segment belongs to.\nChanging this will create a new segment.\n",
+                    "willReplaceOnChanges": true
+                },
+                "networkType": {
+                    "type": "string",
+                    "description": "The network type. Valid values depend on the\nbackend (e.g., `vlan`, `vxlan`, `flat`, `gre`, `geneve`, `local`). Changing\nthis will create a new segment.\n",
+                    "willReplaceOnChanges": true
+                },
+                "physicalNetwork": {
+                    "type": "string",
+                    "description": "The name of the physical network. Changing this\nwill create a new segment.\n",
+                    "willReplaceOnChanges": true
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create a Neutron network. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nsegment.\n",
+                    "willReplaceOnChanges": true
+                },
+                "segmentationId": {
+                    "type": "integer",
+                    "description": "A segmentation identifier. Changing is allowed\nonly for `vlan`.\n"
+                }
+            },
+            "requiredInputs": [
+                "networkId",
+                "networkType"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SegmentV2 resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Creation timestamp (RFC3339 format).\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description for the segment.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A name for the segment.\n"
+                    },
+                    "networkId": {
+                        "type": "string",
+                        "description": "The UUID of the network this segment belongs to.\nChanging this will create a new segment.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "networkType": {
+                        "type": "string",
+                        "description": "The network type. Valid values depend on the\nbackend (e.g., `vlan`, `vxlan`, `flat`, `gre`, `geneve`, `local`). Changing\nthis will create a new segment.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "physicalNetwork": {
+                        "type": "string",
+                        "description": "The name of the physical network. Changing this\nwill create a new segment.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create a Neutron network. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nsegment.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "revisionNumber": {
+                        "type": "integer",
+                        "description": "The revision number of the segment.\n"
+                    },
+                    "segmentationId": {
+                        "type": "integer",
+                        "description": "A segmentation identifier. Changing is allowed\nonly for `vlan`.\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "Last update timestamp (RFC3339 format).\n"
                     }
                 },
                 "type": "object"
@@ -25191,6 +25867,13 @@
                     "routerId": {
                         "type": "string"
                     },
+                    "routes": {
+                        "description": "The list of static routes set on the router.\n",
+                        "items": {
+                            "$ref": "#/types/openstack:networking/getRouterRoute:getRouterRoute"
+                        },
+                        "type": "array"
+                    },
                     "status": {
                         "type": "string"
                     },
@@ -25211,6 +25894,7 @@
                     "externalFixedIps",
                     "externalNetworkId",
                     "externalQosPolicyId",
+                    "routes",
                     "id"
                 ],
                 "type": "object"
@@ -25305,6 +25989,119 @@
                     "region",
                     "stateful",
                     "tenantId",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "openstack:networking/getSegmentV2:getSegmentV2": {
+            "description": "Use this data source to get the ID of an available OpenStack network.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst network = openstack.networking.getSegmentV2({\n    name: \"tf_test_segment\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nnetwork = openstack.networking.get_segment_v2(name=\"tf_test_segment\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var network = OpenStack.Networking.GetSegmentV2.Invoke(new()\n    {\n        Name = \"tf_test_segment\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := networking.LookupSegmentV2(ctx, \u0026networking.LookupSegmentV2Args{\n\t\t\tName: pulumi.StringRef(\"tf_test_segment\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.networking.NetworkingFunctions;\nimport com.pulumi.openstack.networking.inputs.GetSegmentV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var network = NetworkingFunctions.getSegmentV2(GetSegmentV2Args.builder()\n            .name(\"tf_test_segment\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  network:\n    fn::invoke:\n      function: openstack:networking:getSegmentV2\n      arguments:\n        name: tf_test_segment\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSegmentV2.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Human-readable description of the network segment.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the network segment.\n"
+                    },
+                    "networkId": {
+                        "type": "string",
+                        "description": "The ID of the network.\n"
+                    },
+                    "networkType": {
+                        "type": "string",
+                        "description": "The type of the network, such as `vlan`, `vxlan`,\n`flat`, `gre`, `geneve`, or `local`.\n"
+                    },
+                    "physicalNetwork": {
+                        "type": "string",
+                        "description": "The name of the physical network.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region in which to obtain the V2 Neutron client.\nA Neutron client is needed to retrieve networks ids. If omitted, the\n`region` argument of the provider is used.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "revisionNumber": {
+                        "type": "integer",
+                        "description": "See Argument Reference above.\n"
+                    },
+                    "segmentId": {
+                        "type": "string",
+                        "description": "The ID of the network segment\n"
+                    },
+                    "segmentationId": {
+                        "type": "integer",
+                        "description": "The segmentation ID of the network segment.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSegmentV2.\n",
+                "properties": {
+                    "createdAt": {
+                        "description": "The date and time when the network segment was created.\n",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "string"
+                    },
+                    "networkId": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "string"
+                    },
+                    "networkType": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "string"
+                    },
+                    "physicalNetwork": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "revisionNumber": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "integer"
+                    },
+                    "segmentId": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "string"
+                    },
+                    "segmentationId": {
+                        "description": "See Argument Reference above.\n",
+                        "type": "integer"
+                    },
+                    "updatedAt": {
+                        "description": "The date and time when the network segment was last updated.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "createdAt",
+                    "description",
+                    "name",
+                    "networkId",
+                    "networkType",
+                    "physicalNetwork",
+                    "region",
+                    "revisionNumber",
+                    "segmentId",
+                    "segmentationId",
+                    "updatedAt",
                     "id"
                 ],
                 "type": "object"

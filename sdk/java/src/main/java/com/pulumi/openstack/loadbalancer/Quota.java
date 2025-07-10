@@ -22,9 +22,6 @@ import javax.annotation.Nullable;
  * &gt; **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack
  *    API in case of delete call.
  * 
- * &gt; **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
- *    created with zero value.
- * 
  * &gt; **Note:** This resource has attributes that depend on octavia minor versions.
  * Please ensure your Openstack cloud supports the required minor version.
  * 

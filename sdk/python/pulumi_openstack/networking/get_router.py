@@ -28,7 +28,7 @@ class GetRouterResult:
     """
     A collection of values returned by getRouter.
     """
-    def __init__(__self__, admin_state_up=None, all_tags=None, availability_zone_hints=None, description=None, distributed=None, enable_snat=None, external_fixed_ips=None, external_network_id=None, external_qos_policy_id=None, id=None, name=None, region=None, router_id=None, status=None, tags=None, tenant_id=None):
+    def __init__(__self__, admin_state_up=None, all_tags=None, availability_zone_hints=None, description=None, distributed=None, enable_snat=None, external_fixed_ips=None, external_network_id=None, external_qos_policy_id=None, id=None, name=None, region=None, router_id=None, routes=None, status=None, tags=None, tenant_id=None):
         if admin_state_up and not isinstance(admin_state_up, bool):
             raise TypeError("Expected argument 'admin_state_up' to be a bool")
         pulumi.set(__self__, "admin_state_up", admin_state_up)
@@ -68,6 +68,9 @@ class GetRouterResult:
         if router_id and not isinstance(router_id, str):
             raise TypeError("Expected argument 'router_id' to be a str")
         pulumi.set(__self__, "router_id", router_id)
+        if routes and not isinstance(routes, list):
+            raise TypeError("Expected argument 'routes' to be a list")
+        pulumi.set(__self__, "routes", routes)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -166,6 +169,14 @@ class GetRouterResult:
 
     @property
     @pulumi.getter
+    def routes(self) -> Sequence['outputs.GetRouterRouteResult']:
+        """
+        The list of static routes set on the router.
+        """
+        return pulumi.get(self, "routes")
+
+    @property
+    @pulumi.getter
     def status(self) -> Optional[builtins.str]:
         return pulumi.get(self, "status")
 
@@ -199,6 +210,7 @@ class AwaitableGetRouterResult(GetRouterResult):
             name=self.name,
             region=self.region,
             router_id=self.router_id,
+            routes=self.routes,
             status=self.status,
             tags=self.tags,
             tenant_id=self.tenant_id)
@@ -269,6 +281,7 @@ def get_router(admin_state_up: Optional[builtins.bool] = None,
         name=pulumi.get(__ret__, 'name'),
         region=pulumi.get(__ret__, 'region'),
         router_id=pulumi.get(__ret__, 'router_id'),
+        routes=pulumi.get(__ret__, 'routes'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'))
@@ -336,6 +349,7 @@ def get_router_output(admin_state_up: Optional[pulumi.Input[Optional[builtins.bo
         name=pulumi.get(__response__, 'name'),
         region=pulumi.get(__response__, 'region'),
         router_id=pulumi.get(__response__, 'router_id'),
+        routes=pulumi.get(__response__, 'routes'),
         status=pulumi.get(__response__, 'status'),
         tags=pulumi.get(__response__, 'tags'),
         tenant_id=pulumi.get(__response__, 'tenant_id')))

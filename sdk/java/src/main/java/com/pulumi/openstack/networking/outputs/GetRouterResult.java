@@ -6,6 +6,7 @@ package com.pulumi.openstack.networking.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.networking.outputs.GetRouterExternalFixedIp;
+import com.pulumi.openstack.networking.outputs.GetRouterRoute;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -56,6 +57,11 @@ public final class GetRouterResult {
     private @Nullable String name;
     private @Nullable String region;
     private @Nullable String routerId;
+    /**
+     * @return The list of static routes set on the router.
+     * 
+     */
+    private List<GetRouterRoute> routes;
     private @Nullable String status;
     private @Nullable List<String> tags;
     private @Nullable String tenantId;
@@ -128,6 +134,13 @@ public final class GetRouterResult {
     public Optional<String> routerId() {
         return Optional.ofNullable(this.routerId);
     }
+    /**
+     * @return The list of static routes set on the router.
+     * 
+     */
+    public List<GetRouterRoute> routes() {
+        return this.routes;
+    }
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
@@ -160,6 +173,7 @@ public final class GetRouterResult {
         private @Nullable String name;
         private @Nullable String region;
         private @Nullable String routerId;
+        private List<GetRouterRoute> routes;
         private @Nullable String status;
         private @Nullable List<String> tags;
         private @Nullable String tenantId;
@@ -179,6 +193,7 @@ public final class GetRouterResult {
     	      this.name = defaults.name;
     	      this.region = defaults.region;
     	      this.routerId = defaults.routerId;
+    	      this.routes = defaults.routes;
     	      this.status = defaults.status;
     	      this.tags = defaults.tags;
     	      this.tenantId = defaults.tenantId;
@@ -286,6 +301,17 @@ public final class GetRouterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder routes(List<GetRouterRoute> routes) {
+            if (routes == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "routes");
+            }
+            this.routes = routes;
+            return this;
+        }
+        public Builder routes(GetRouterRoute... routes) {
+            return routes(List.of(routes));
+        }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
 
             this.status = status;
@@ -321,6 +347,7 @@ public final class GetRouterResult {
             _resultValue.name = name;
             _resultValue.region = region;
             _resultValue.routerId = routerId;
+            _resultValue.routes = routes;
             _resultValue.status = status;
             _resultValue.tags = tags;
             _resultValue.tenantId = tenantId;

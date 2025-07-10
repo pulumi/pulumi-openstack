@@ -33,6 +33,8 @@ import com.pulumi.openstack.networking.inputs.GetRouterArgs;
 import com.pulumi.openstack.networking.inputs.GetRouterPlainArgs;
 import com.pulumi.openstack.networking.inputs.GetSecGroupArgs;
 import com.pulumi.openstack.networking.inputs.GetSecGroupPlainArgs;
+import com.pulumi.openstack.networking.inputs.GetSegmentV2Args;
+import com.pulumi.openstack.networking.inputs.GetSegmentV2PlainArgs;
 import com.pulumi.openstack.networking.inputs.GetSubnetArgs;
 import com.pulumi.openstack.networking.inputs.GetSubnetIdsV2Args;
 import com.pulumi.openstack.networking.inputs.GetSubnetIdsV2PlainArgs;
@@ -53,6 +55,7 @@ import com.pulumi.openstack.networking.outputs.GetQosPolicyResult;
 import com.pulumi.openstack.networking.outputs.GetQuotaV2Result;
 import com.pulumi.openstack.networking.outputs.GetRouterResult;
 import com.pulumi.openstack.networking.outputs.GetSecGroupResult;
+import com.pulumi.openstack.networking.outputs.GetSegmentV2Result;
 import com.pulumi.openstack.networking.outputs.GetSubnetIdsV2Result;
 import com.pulumi.openstack.networking.outputs.GetSubnetPoolResult;
 import com.pulumi.openstack.networking.outputs.GetSubnetResult;
@@ -3272,6 +3275,300 @@ public final class NetworkingFunctions {
      */
     public static CompletableFuture<GetSecGroupResult> getSecGroupPlain(GetSecGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:networking/getSecGroup:getSecGroup", TypeShape.of(GetSecGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetSegmentV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var network = NetworkingFunctions.getSegmentV2(GetSegmentV2Args.builder()
+     *             .name("tf_test_segment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSegmentV2Result> getSegmentV2() {
+        return getSegmentV2(GetSegmentV2Args.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetSegmentV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var network = NetworkingFunctions.getSegmentV2(GetSegmentV2Args.builder()
+     *             .name("tf_test_segment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSegmentV2Result> getSegmentV2Plain() {
+        return getSegmentV2Plain(GetSegmentV2PlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetSegmentV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var network = NetworkingFunctions.getSegmentV2(GetSegmentV2Args.builder()
+     *             .name("tf_test_segment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSegmentV2Result> getSegmentV2(GetSegmentV2Args args) {
+        return getSegmentV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetSegmentV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var network = NetworkingFunctions.getSegmentV2(GetSegmentV2Args.builder()
+     *             .name("tf_test_segment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSegmentV2Result> getSegmentV2Plain(GetSegmentV2PlainArgs args) {
+        return getSegmentV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetSegmentV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var network = NetworkingFunctions.getSegmentV2(GetSegmentV2Args.builder()
+     *             .name("tf_test_segment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSegmentV2Result> getSegmentV2(GetSegmentV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:networking/getSegmentV2:getSegmentV2", TypeShape.of(GetSegmentV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetSegmentV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var network = NetworkingFunctions.getSegmentV2(GetSegmentV2Args.builder()
+     *             .name("tf_test_segment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSegmentV2Result> getSegmentV2(GetSegmentV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:networking/getSegmentV2:getSegmentV2", TypeShape.of(GetSegmentV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available OpenStack network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.networking.NetworkingFunctions;
+     * import com.pulumi.openstack.networking.inputs.GetSegmentV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var network = NetworkingFunctions.getSegmentV2(GetSegmentV2Args.builder()
+     *             .name("tf_test_segment")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSegmentV2Result> getSegmentV2Plain(GetSegmentV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("openstack:networking/getSegmentV2:getSegmentV2", TypeShape.of(GetSegmentV2Result.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get the ID of an available OpenStack subnet.

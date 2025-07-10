@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AddressGroupV2{}
 	case "openstack:networking/addressScope:AddressScope":
 		r = &AddressScope{}
+	case "openstack:networking/bgpPeerV2:BgpPeerV2":
+		r = &BgpPeerV2{}
+	case "openstack:networking/bgpSpeakerV2:BgpSpeakerV2":
+		r = &BgpSpeakerV2{}
 	case "openstack:networking/floatingIp:FloatingIp":
 		r = &FloatingIp{}
 	case "openstack:networking/floatingIpAssociate:FloatingIpAssociate":
@@ -55,10 +59,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RouterInterface{}
 	case "openstack:networking/routerRoute:RouterRoute":
 		r = &RouterRoute{}
+	case "openstack:networking/routerRoutesV2:RouterRoutesV2":
+		r = &RouterRoutesV2{}
 	case "openstack:networking/secGroup:SecGroup":
 		r = &SecGroup{}
 	case "openstack:networking/secGroupRule:SecGroupRule":
 		r = &SecGroupRule{}
+	case "openstack:networking/segmentV2:SegmentV2":
+		r = &SegmentV2{}
 	case "openstack:networking/subnet:Subnet":
 		r = &Subnet{}
 	case "openstack:networking/subnetPool:SubnetPool":
@@ -88,6 +96,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"networking/addressScope",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"networking/bgpPeerV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"networking/bgpSpeakerV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -167,12 +185,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"openstack",
+		"networking/routerRoutesV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
 		"networking/secGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"networking/secGroupRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"networking/segmentV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

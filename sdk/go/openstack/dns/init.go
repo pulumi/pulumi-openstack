@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "openstack:dns/quotaV2:QuotaV2":
+		r = &QuotaV2{}
 	case "openstack:dns/recordSet:RecordSet":
 		r = &RecordSet{}
 	case "openstack:dns/transferAccept:TransferAccept":
@@ -44,6 +46,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"dns/quotaV2",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"dns/recordSet",
