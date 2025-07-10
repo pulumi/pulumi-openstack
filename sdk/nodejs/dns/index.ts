@@ -15,6 +15,11 @@ export const getZoneShareV2: typeof import("./getZoneShareV2").getZoneShareV2 = 
 export const getZoneShareV2Output: typeof import("./getZoneShareV2").getZoneShareV2Output = null as any;
 utilities.lazyLoad(exports, ["getZoneShareV2","getZoneShareV2Output"], () => require("./getZoneShareV2"));
 
+export { QuotaV2Args, QuotaV2State } from "./quotaV2";
+export type QuotaV2 = import("./quotaV2").QuotaV2;
+export const QuotaV2: typeof import("./quotaV2").QuotaV2 = null as any;
+utilities.lazyLoad(exports, ["QuotaV2"], () => require("./quotaV2"));
+
 export { RecordSetArgs, RecordSetState } from "./recordSet";
 export type RecordSet = import("./recordSet").RecordSet;
 export const RecordSet: typeof import("./recordSet").RecordSet = null as any;
@@ -45,6 +50,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "openstack:dns/quotaV2:QuotaV2":
+                return new QuotaV2(name, <any>undefined, { urn })
             case "openstack:dns/recordSet:RecordSet":
                 return new RecordSet(name, <any>undefined, { urn })
             case "openstack:dns/transferAccept:TransferAccept":
@@ -60,6 +67,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("openstack", "dns/quotaV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "dns/recordSet", _module)
 pulumi.runtime.registerResourceModule("openstack", "dns/transferAccept", _module)
 pulumi.runtime.registerResourceModule("openstack", "dns/transferRequest", _module)

@@ -92,13 +92,15 @@ type LookupRouterResult struct {
 	// The QoS policy UUID applied on the external gateway for the router.
 	ExternalQosPolicyId string `pulumi:"externalQosPolicyId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string   `pulumi:"id"`
-	Name     *string  `pulumi:"name"`
-	Region   *string  `pulumi:"region"`
-	RouterId *string  `pulumi:"routerId"`
-	Status   *string  `pulumi:"status"`
-	Tags     []string `pulumi:"tags"`
-	TenantId *string  `pulumi:"tenantId"`
+	Id       string  `pulumi:"id"`
+	Name     *string `pulumi:"name"`
+	Region   *string `pulumi:"region"`
+	RouterId *string `pulumi:"routerId"`
+	// The list of static routes set on the router.
+	Routes   []GetRouterRouteType `pulumi:"routes"`
+	Status   *string              `pulumi:"status"`
+	Tags     []string             `pulumi:"tags"`
+	TenantId *string              `pulumi:"tenantId"`
 }
 
 func LookupRouterOutput(ctx *pulumi.Context, args LookupRouterOutputArgs, opts ...pulumi.InvokeOption) LookupRouterResultOutput {
@@ -212,6 +214,11 @@ func (o LookupRouterResultOutput) Region() pulumi.StringPtrOutput {
 
 func (o LookupRouterResultOutput) RouterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRouterResult) *string { return v.RouterId }).(pulumi.StringPtrOutput)
+}
+
+// The list of static routes set on the router.
+func (o LookupRouterResultOutput) Routes() GetRouterRouteTypeArrayOutput {
+	return o.ApplyT(func(v LookupRouterResult) []GetRouterRouteType { return v.Routes }).(GetRouterRouteTypeArrayOutput)
 }
 
 func (o LookupRouterResultOutput) Status() pulumi.StringPtrOutput {

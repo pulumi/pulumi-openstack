@@ -275,6 +275,10 @@ namespace Pulumi.OpenStack.Networking
         public readonly string? Name;
         public readonly string? Region;
         public readonly string? RouterId;
+        /// <summary>
+        /// The list of static routes set on the router.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRouterRouteResult> Routes;
         public readonly string? Status;
         public readonly ImmutableArray<string> Tags;
         public readonly string? TenantId;
@@ -307,6 +311,8 @@ namespace Pulumi.OpenStack.Networking
 
             string? routerId,
 
+            ImmutableArray<Outputs.GetRouterRouteResult> routes,
+
             string? status,
 
             ImmutableArray<string> tags,
@@ -326,6 +332,7 @@ namespace Pulumi.OpenStack.Networking
             Name = name;
             Region = region;
             RouterId = routerId;
+            Routes = routes;
             Status = status;
             Tags = tags;
             TenantId = tenantId;

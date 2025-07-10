@@ -16,12 +16,14 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'BgpSpeakerV2AdvertisedRoute',
     'NetworkSegment',
     'PortAllowedAddressPair',
     'PortBinding',
     'PortExtraDhcpOption',
     'PortFixedIp',
     'RouterExternalFixedIp',
+    'RouterRoutesV2Route',
     'RouterVendorOptions',
     'SubnetAllocationPool',
     'TrunkSubPort',
@@ -30,10 +32,49 @@ __all__ = [
     'GetPortBindingResult',
     'GetPortExtraDhcpOptionResult',
     'GetRouterExternalFixedIpResult',
+    'GetRouterRouteResult',
     'GetSubnetAllocationPoolResult',
     'GetSubnetHostRouteResult',
     'GetTrunkSubPortResult',
 ]
+
+@pulumi.output_type
+class BgpSpeakerV2AdvertisedRoute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nextHop":
+            suggest = "next_hop"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BgpSpeakerV2AdvertisedRoute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BgpSpeakerV2AdvertisedRoute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BgpSpeakerV2AdvertisedRoute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination: Optional[builtins.str] = None,
+                 next_hop: Optional[builtins.str] = None):
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if next_hop is not None:
+            pulumi.set(__self__, "next_hop", next_hop)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "next_hop")
+
 
 @pulumi.output_type
 class NetworkSegment(dict):
@@ -415,6 +456,56 @@ class RouterExternalFixedIp(dict):
 
 
 @pulumi.output_type
+class RouterRoutesV2Route(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationCidr":
+            suggest = "destination_cidr"
+        elif key == "nextHop":
+            suggest = "next_hop"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouterRoutesV2Route. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouterRoutesV2Route.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouterRoutesV2Route.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination_cidr: builtins.str,
+                 next_hop: builtins.str):
+        """
+        :param builtins.str destination_cidr: CIDR block to match on the packet’s
+               destination IP.
+        :param builtins.str next_hop: IP address of the next hop gateway.
+        """
+        pulumi.set(__self__, "destination_cidr", destination_cidr)
+        pulumi.set(__self__, "next_hop", next_hop)
+
+    @property
+    @pulumi.getter(name="destinationCidr")
+    def destination_cidr(self) -> builtins.str:
+        """
+        CIDR block to match on the packet’s
+        destination IP.
+        """
+        return pulumi.get(self, "destination_cidr")
+
+    @property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> builtins.str:
+        """
+        IP address of the next hop gateway.
+        """
+        return pulumi.get(self, "next_hop")
+
+
+@pulumi.output_type
 class RouterVendorOptions(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -730,6 +821,25 @@ class GetRouterExternalFixedIpResult(dict):
         Subnet in which the fixed IP belongs to.
         """
         return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class GetRouterRouteResult(dict):
+    def __init__(__self__, *,
+                 destination_cidr: builtins.str,
+                 next_hop: builtins.str):
+        pulumi.set(__self__, "destination_cidr", destination_cidr)
+        pulumi.set(__self__, "next_hop", next_hop)
+
+    @property
+    @pulumi.getter(name="destinationCidr")
+    def destination_cidr(self) -> builtins.str:
+        return pulumi.get(self, "destination_cidr")
+
+    @property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> builtins.str:
+        return pulumi.get(self, "next_hop")
 
 
 @pulumi.output_type

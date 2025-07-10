@@ -654,6 +654,11 @@ export namespace loadbalancer {
 }
 
 export namespace networking {
+    export interface BgpSpeakerV2AdvertisedRoute {
+        destination?: pulumi.Input<string>;
+        nextHop?: pulumi.Input<string>;
+    }
+
     export interface NetworkSegment {
         /**
          * The type of physical network.
@@ -747,6 +752,18 @@ export namespace networking {
          * Subnet in which the fixed IP belongs to.
          */
         subnetId?: pulumi.Input<string>;
+    }
+
+    export interface RouterRoutesV2Route {
+        /**
+         * CIDR block to match on the packet’s
+         * destination IP.
+         */
+        destinationCidr: pulumi.Input<string>;
+        /**
+         * IP address of the next hop gateway.
+         */
+        nextHop: pulumi.Input<string>;
     }
 
     export interface RouterVendorOptions {

@@ -13,6 +13,106 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type BgpSpeakerV2AdvertisedRoute struct {
+	Destination *string `pulumi:"destination"`
+	NextHop     *string `pulumi:"nextHop"`
+}
+
+// BgpSpeakerV2AdvertisedRouteInput is an input type that accepts BgpSpeakerV2AdvertisedRouteArgs and BgpSpeakerV2AdvertisedRouteOutput values.
+// You can construct a concrete instance of `BgpSpeakerV2AdvertisedRouteInput` via:
+//
+//	BgpSpeakerV2AdvertisedRouteArgs{...}
+type BgpSpeakerV2AdvertisedRouteInput interface {
+	pulumi.Input
+
+	ToBgpSpeakerV2AdvertisedRouteOutput() BgpSpeakerV2AdvertisedRouteOutput
+	ToBgpSpeakerV2AdvertisedRouteOutputWithContext(context.Context) BgpSpeakerV2AdvertisedRouteOutput
+}
+
+type BgpSpeakerV2AdvertisedRouteArgs struct {
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	NextHop     pulumi.StringPtrInput `pulumi:"nextHop"`
+}
+
+func (BgpSpeakerV2AdvertisedRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpSpeakerV2AdvertisedRoute)(nil)).Elem()
+}
+
+func (i BgpSpeakerV2AdvertisedRouteArgs) ToBgpSpeakerV2AdvertisedRouteOutput() BgpSpeakerV2AdvertisedRouteOutput {
+	return i.ToBgpSpeakerV2AdvertisedRouteOutputWithContext(context.Background())
+}
+
+func (i BgpSpeakerV2AdvertisedRouteArgs) ToBgpSpeakerV2AdvertisedRouteOutputWithContext(ctx context.Context) BgpSpeakerV2AdvertisedRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpSpeakerV2AdvertisedRouteOutput)
+}
+
+// BgpSpeakerV2AdvertisedRouteArrayInput is an input type that accepts BgpSpeakerV2AdvertisedRouteArray and BgpSpeakerV2AdvertisedRouteArrayOutput values.
+// You can construct a concrete instance of `BgpSpeakerV2AdvertisedRouteArrayInput` via:
+//
+//	BgpSpeakerV2AdvertisedRouteArray{ BgpSpeakerV2AdvertisedRouteArgs{...} }
+type BgpSpeakerV2AdvertisedRouteArrayInput interface {
+	pulumi.Input
+
+	ToBgpSpeakerV2AdvertisedRouteArrayOutput() BgpSpeakerV2AdvertisedRouteArrayOutput
+	ToBgpSpeakerV2AdvertisedRouteArrayOutputWithContext(context.Context) BgpSpeakerV2AdvertisedRouteArrayOutput
+}
+
+type BgpSpeakerV2AdvertisedRouteArray []BgpSpeakerV2AdvertisedRouteInput
+
+func (BgpSpeakerV2AdvertisedRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BgpSpeakerV2AdvertisedRoute)(nil)).Elem()
+}
+
+func (i BgpSpeakerV2AdvertisedRouteArray) ToBgpSpeakerV2AdvertisedRouteArrayOutput() BgpSpeakerV2AdvertisedRouteArrayOutput {
+	return i.ToBgpSpeakerV2AdvertisedRouteArrayOutputWithContext(context.Background())
+}
+
+func (i BgpSpeakerV2AdvertisedRouteArray) ToBgpSpeakerV2AdvertisedRouteArrayOutputWithContext(ctx context.Context) BgpSpeakerV2AdvertisedRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BgpSpeakerV2AdvertisedRouteArrayOutput)
+}
+
+type BgpSpeakerV2AdvertisedRouteOutput struct{ *pulumi.OutputState }
+
+func (BgpSpeakerV2AdvertisedRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BgpSpeakerV2AdvertisedRoute)(nil)).Elem()
+}
+
+func (o BgpSpeakerV2AdvertisedRouteOutput) ToBgpSpeakerV2AdvertisedRouteOutput() BgpSpeakerV2AdvertisedRouteOutput {
+	return o
+}
+
+func (o BgpSpeakerV2AdvertisedRouteOutput) ToBgpSpeakerV2AdvertisedRouteOutputWithContext(ctx context.Context) BgpSpeakerV2AdvertisedRouteOutput {
+	return o
+}
+
+func (o BgpSpeakerV2AdvertisedRouteOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BgpSpeakerV2AdvertisedRoute) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+func (o BgpSpeakerV2AdvertisedRouteOutput) NextHop() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BgpSpeakerV2AdvertisedRoute) *string { return v.NextHop }).(pulumi.StringPtrOutput)
+}
+
+type BgpSpeakerV2AdvertisedRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (BgpSpeakerV2AdvertisedRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BgpSpeakerV2AdvertisedRoute)(nil)).Elem()
+}
+
+func (o BgpSpeakerV2AdvertisedRouteArrayOutput) ToBgpSpeakerV2AdvertisedRouteArrayOutput() BgpSpeakerV2AdvertisedRouteArrayOutput {
+	return o
+}
+
+func (o BgpSpeakerV2AdvertisedRouteArrayOutput) ToBgpSpeakerV2AdvertisedRouteArrayOutputWithContext(ctx context.Context) BgpSpeakerV2AdvertisedRouteArrayOutput {
+	return o
+}
+
+func (o BgpSpeakerV2AdvertisedRouteArrayOutput) Index(i pulumi.IntInput) BgpSpeakerV2AdvertisedRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BgpSpeakerV2AdvertisedRoute {
+		return vs[0].([]BgpSpeakerV2AdvertisedRoute)[vs[1].(int)]
+	}).(BgpSpeakerV2AdvertisedRouteOutput)
+}
+
 type NetworkSegment struct {
 	// The type of physical network.
 	NetworkType *string `pulumi:"networkType"`
@@ -803,6 +903,115 @@ func (o RouterExternalFixedIpArrayOutput) Index(i pulumi.IntInput) RouterExterna
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterExternalFixedIp {
 		return vs[0].([]RouterExternalFixedIp)[vs[1].(int)]
 	}).(RouterExternalFixedIpOutput)
+}
+
+type RouterRoutesV2Route struct {
+	// CIDR block to match on the packet’s
+	// destination IP.
+	DestinationCidr string `pulumi:"destinationCidr"`
+	// IP address of the next hop gateway.
+	NextHop string `pulumi:"nextHop"`
+}
+
+// RouterRoutesV2RouteInput is an input type that accepts RouterRoutesV2RouteArgs and RouterRoutesV2RouteOutput values.
+// You can construct a concrete instance of `RouterRoutesV2RouteInput` via:
+//
+//	RouterRoutesV2RouteArgs{...}
+type RouterRoutesV2RouteInput interface {
+	pulumi.Input
+
+	ToRouterRoutesV2RouteOutput() RouterRoutesV2RouteOutput
+	ToRouterRoutesV2RouteOutputWithContext(context.Context) RouterRoutesV2RouteOutput
+}
+
+type RouterRoutesV2RouteArgs struct {
+	// CIDR block to match on the packet’s
+	// destination IP.
+	DestinationCidr pulumi.StringInput `pulumi:"destinationCidr"`
+	// IP address of the next hop gateway.
+	NextHop pulumi.StringInput `pulumi:"nextHop"`
+}
+
+func (RouterRoutesV2RouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterRoutesV2Route)(nil)).Elem()
+}
+
+func (i RouterRoutesV2RouteArgs) ToRouterRoutesV2RouteOutput() RouterRoutesV2RouteOutput {
+	return i.ToRouterRoutesV2RouteOutputWithContext(context.Background())
+}
+
+func (i RouterRoutesV2RouteArgs) ToRouterRoutesV2RouteOutputWithContext(ctx context.Context) RouterRoutesV2RouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterRoutesV2RouteOutput)
+}
+
+// RouterRoutesV2RouteArrayInput is an input type that accepts RouterRoutesV2RouteArray and RouterRoutesV2RouteArrayOutput values.
+// You can construct a concrete instance of `RouterRoutesV2RouteArrayInput` via:
+//
+//	RouterRoutesV2RouteArray{ RouterRoutesV2RouteArgs{...} }
+type RouterRoutesV2RouteArrayInput interface {
+	pulumi.Input
+
+	ToRouterRoutesV2RouteArrayOutput() RouterRoutesV2RouteArrayOutput
+	ToRouterRoutesV2RouteArrayOutputWithContext(context.Context) RouterRoutesV2RouteArrayOutput
+}
+
+type RouterRoutesV2RouteArray []RouterRoutesV2RouteInput
+
+func (RouterRoutesV2RouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterRoutesV2Route)(nil)).Elem()
+}
+
+func (i RouterRoutesV2RouteArray) ToRouterRoutesV2RouteArrayOutput() RouterRoutesV2RouteArrayOutput {
+	return i.ToRouterRoutesV2RouteArrayOutputWithContext(context.Background())
+}
+
+func (i RouterRoutesV2RouteArray) ToRouterRoutesV2RouteArrayOutputWithContext(ctx context.Context) RouterRoutesV2RouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterRoutesV2RouteArrayOutput)
+}
+
+type RouterRoutesV2RouteOutput struct{ *pulumi.OutputState }
+
+func (RouterRoutesV2RouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterRoutesV2Route)(nil)).Elem()
+}
+
+func (o RouterRoutesV2RouteOutput) ToRouterRoutesV2RouteOutput() RouterRoutesV2RouteOutput {
+	return o
+}
+
+func (o RouterRoutesV2RouteOutput) ToRouterRoutesV2RouteOutputWithContext(ctx context.Context) RouterRoutesV2RouteOutput {
+	return o
+}
+
+// CIDR block to match on the packet’s
+// destination IP.
+func (o RouterRoutesV2RouteOutput) DestinationCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterRoutesV2Route) string { return v.DestinationCidr }).(pulumi.StringOutput)
+}
+
+// IP address of the next hop gateway.
+func (o RouterRoutesV2RouteOutput) NextHop() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterRoutesV2Route) string { return v.NextHop }).(pulumi.StringOutput)
+}
+
+type RouterRoutesV2RouteArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterRoutesV2RouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterRoutesV2Route)(nil)).Elem()
+}
+
+func (o RouterRoutesV2RouteArrayOutput) ToRouterRoutesV2RouteArrayOutput() RouterRoutesV2RouteArrayOutput {
+	return o
+}
+
+func (o RouterRoutesV2RouteArrayOutput) ToRouterRoutesV2RouteArrayOutputWithContext(ctx context.Context) RouterRoutesV2RouteArrayOutput {
+	return o
+}
+
+func (o RouterRoutesV2RouteArrayOutput) Index(i pulumi.IntInput) RouterRoutesV2RouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterRoutesV2Route {
+		return vs[0].([]RouterRoutesV2Route)[vs[1].(int)]
+	}).(RouterRoutesV2RouteOutput)
 }
 
 type RouterVendorOptions struct {
@@ -1736,6 +1945,106 @@ func (o GetRouterExternalFixedIpArrayOutput) Index(i pulumi.IntInput) GetRouterE
 	}).(GetRouterExternalFixedIpOutput)
 }
 
+type GetRouterRouteType struct {
+	DestinationCidr string `pulumi:"destinationCidr"`
+	NextHop         string `pulumi:"nextHop"`
+}
+
+// GetRouterRouteTypeInput is an input type that accepts GetRouterRouteTypeArgs and GetRouterRouteTypeOutput values.
+// You can construct a concrete instance of `GetRouterRouteTypeInput` via:
+//
+//	GetRouterRouteTypeArgs{...}
+type GetRouterRouteTypeInput interface {
+	pulumi.Input
+
+	ToGetRouterRouteTypeOutput() GetRouterRouteTypeOutput
+	ToGetRouterRouteTypeOutputWithContext(context.Context) GetRouterRouteTypeOutput
+}
+
+type GetRouterRouteTypeArgs struct {
+	DestinationCidr pulumi.StringInput `pulumi:"destinationCidr"`
+	NextHop         pulumi.StringInput `pulumi:"nextHop"`
+}
+
+func (GetRouterRouteTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterRouteType)(nil)).Elem()
+}
+
+func (i GetRouterRouteTypeArgs) ToGetRouterRouteTypeOutput() GetRouterRouteTypeOutput {
+	return i.ToGetRouterRouteTypeOutputWithContext(context.Background())
+}
+
+func (i GetRouterRouteTypeArgs) ToGetRouterRouteTypeOutputWithContext(ctx context.Context) GetRouterRouteTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterRouteTypeOutput)
+}
+
+// GetRouterRouteTypeArrayInput is an input type that accepts GetRouterRouteTypeArray and GetRouterRouteTypeArrayOutput values.
+// You can construct a concrete instance of `GetRouterRouteTypeArrayInput` via:
+//
+//	GetRouterRouteTypeArray{ GetRouterRouteTypeArgs{...} }
+type GetRouterRouteTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterRouteTypeArrayOutput() GetRouterRouteTypeArrayOutput
+	ToGetRouterRouteTypeArrayOutputWithContext(context.Context) GetRouterRouteTypeArrayOutput
+}
+
+type GetRouterRouteTypeArray []GetRouterRouteTypeInput
+
+func (GetRouterRouteTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterRouteType)(nil)).Elem()
+}
+
+func (i GetRouterRouteTypeArray) ToGetRouterRouteTypeArrayOutput() GetRouterRouteTypeArrayOutput {
+	return i.ToGetRouterRouteTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterRouteTypeArray) ToGetRouterRouteTypeArrayOutputWithContext(ctx context.Context) GetRouterRouteTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterRouteTypeArrayOutput)
+}
+
+type GetRouterRouteTypeOutput struct{ *pulumi.OutputState }
+
+func (GetRouterRouteTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterRouteType)(nil)).Elem()
+}
+
+func (o GetRouterRouteTypeOutput) ToGetRouterRouteTypeOutput() GetRouterRouteTypeOutput {
+	return o
+}
+
+func (o GetRouterRouteTypeOutput) ToGetRouterRouteTypeOutputWithContext(ctx context.Context) GetRouterRouteTypeOutput {
+	return o
+}
+
+func (o GetRouterRouteTypeOutput) DestinationCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterRouteType) string { return v.DestinationCidr }).(pulumi.StringOutput)
+}
+
+func (o GetRouterRouteTypeOutput) NextHop() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterRouteType) string { return v.NextHop }).(pulumi.StringOutput)
+}
+
+type GetRouterRouteTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterRouteTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterRouteType)(nil)).Elem()
+}
+
+func (o GetRouterRouteTypeArrayOutput) ToGetRouterRouteTypeArrayOutput() GetRouterRouteTypeArrayOutput {
+	return o
+}
+
+func (o GetRouterRouteTypeArrayOutput) ToGetRouterRouteTypeArrayOutputWithContext(ctx context.Context) GetRouterRouteTypeArrayOutput {
+	return o
+}
+
+func (o GetRouterRouteTypeArrayOutput) Index(i pulumi.IntInput) GetRouterRouteTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterRouteType {
+		return vs[0].([]GetRouterRouteType)[vs[1].(int)]
+	}).(GetRouterRouteTypeOutput)
+}
+
 type GetSubnetAllocationPool struct {
 	End   string `pulumi:"end"`
 	Start string `pulumi:"start"`
@@ -2052,6 +2361,8 @@ func (o GetTrunkSubPortArrayOutput) Index(i pulumi.IntInput) GetTrunkSubPortOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BgpSpeakerV2AdvertisedRouteInput)(nil)).Elem(), BgpSpeakerV2AdvertisedRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BgpSpeakerV2AdvertisedRouteArrayInput)(nil)).Elem(), BgpSpeakerV2AdvertisedRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkSegmentInput)(nil)).Elem(), NetworkSegmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkSegmentArrayInput)(nil)).Elem(), NetworkSegmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PortAllowedAddressPairInput)(nil)).Elem(), PortAllowedAddressPairArgs{})
@@ -2064,6 +2375,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PortFixedIpArrayInput)(nil)).Elem(), PortFixedIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterExternalFixedIpInput)(nil)).Elem(), RouterExternalFixedIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterExternalFixedIpArrayInput)(nil)).Elem(), RouterExternalFixedIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterRoutesV2RouteInput)(nil)).Elem(), RouterRoutesV2RouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterRoutesV2RouteArrayInput)(nil)).Elem(), RouterRoutesV2RouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterVendorOptionsInput)(nil)).Elem(), RouterVendorOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterVendorOptionsPtrInput)(nil)).Elem(), RouterVendorOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetAllocationPoolInput)(nil)).Elem(), SubnetAllocationPoolArgs{})
@@ -2080,12 +2393,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortExtraDhcpOptionArrayInput)(nil)).Elem(), GetPortExtraDhcpOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterExternalFixedIpInput)(nil)).Elem(), GetRouterExternalFixedIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterExternalFixedIpArrayInput)(nil)).Elem(), GetRouterExternalFixedIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterRouteTypeInput)(nil)).Elem(), GetRouterRouteTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterRouteTypeArrayInput)(nil)).Elem(), GetRouterRouteTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetAllocationPoolInput)(nil)).Elem(), GetSubnetAllocationPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetAllocationPoolArrayInput)(nil)).Elem(), GetSubnetAllocationPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetHostRouteInput)(nil)).Elem(), GetSubnetHostRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetHostRouteArrayInput)(nil)).Elem(), GetSubnetHostRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTrunkSubPortInput)(nil)).Elem(), GetTrunkSubPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTrunkSubPortArrayInput)(nil)).Elem(), GetTrunkSubPortArray{})
+	pulumi.RegisterOutputType(BgpSpeakerV2AdvertisedRouteOutput{})
+	pulumi.RegisterOutputType(BgpSpeakerV2AdvertisedRouteArrayOutput{})
 	pulumi.RegisterOutputType(NetworkSegmentOutput{})
 	pulumi.RegisterOutputType(NetworkSegmentArrayOutput{})
 	pulumi.RegisterOutputType(PortAllowedAddressPairOutput{})
@@ -2098,6 +2415,8 @@ func init() {
 	pulumi.RegisterOutputType(PortFixedIpArrayOutput{})
 	pulumi.RegisterOutputType(RouterExternalFixedIpOutput{})
 	pulumi.RegisterOutputType(RouterExternalFixedIpArrayOutput{})
+	pulumi.RegisterOutputType(RouterRoutesV2RouteOutput{})
+	pulumi.RegisterOutputType(RouterRoutesV2RouteArrayOutput{})
 	pulumi.RegisterOutputType(RouterVendorOptionsOutput{})
 	pulumi.RegisterOutputType(RouterVendorOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SubnetAllocationPoolOutput{})
@@ -2114,6 +2433,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPortExtraDhcpOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterExternalFixedIpOutput{})
 	pulumi.RegisterOutputType(GetRouterExternalFixedIpArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterRouteTypeOutput{})
+	pulumi.RegisterOutputType(GetRouterRouteTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetSubnetAllocationPoolOutput{})
 	pulumi.RegisterOutputType(GetSubnetAllocationPoolArrayOutput{})
 	pulumi.RegisterOutputType(GetSubnetHostRouteOutput{})

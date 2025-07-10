@@ -296,6 +296,14 @@ _utilities.register(
  },
  {
   "pkg": "openstack",
+  "mod": "dns/quotaV2",
+  "fqn": "pulumi_openstack.dns",
+  "classes": {
+   "openstack:dns/quotaV2:QuotaV2": "QuotaV2"
+  }
+ },
+ {
+  "pkg": "openstack",
   "mod": "dns/recordSet",
   "fqn": "pulumi_openstack.dns",
   "classes": {
@@ -664,6 +672,22 @@ _utilities.register(
  },
  {
   "pkg": "openstack",
+  "mod": "networking/bgpPeerV2",
+  "fqn": "pulumi_openstack.networking",
+  "classes": {
+   "openstack:networking/bgpPeerV2:BgpPeerV2": "BgpPeerV2"
+  }
+ },
+ {
+  "pkg": "openstack",
+  "mod": "networking/bgpSpeakerV2",
+  "fqn": "pulumi_openstack.networking",
+  "classes": {
+   "openstack:networking/bgpSpeakerV2:BgpSpeakerV2": "BgpSpeakerV2"
+  }
+ },
+ {
+  "pkg": "openstack",
   "mod": "networking/floatingIp",
   "fqn": "pulumi_openstack.networking",
   "classes": {
@@ -784,6 +808,14 @@ _utilities.register(
  },
  {
   "pkg": "openstack",
+  "mod": "networking/routerRoutesV2",
+  "fqn": "pulumi_openstack.networking",
+  "classes": {
+   "openstack:networking/routerRoutesV2:RouterRoutesV2": "RouterRoutesV2"
+  }
+ },
+ {
+  "pkg": "openstack",
   "mod": "networking/secGroup",
   "fqn": "pulumi_openstack.networking",
   "classes": {
@@ -796,6 +828,14 @@ _utilities.register(
   "fqn": "pulumi_openstack.networking",
   "classes": {
    "openstack:networking/secGroupRule:SecGroupRule": "SecGroupRule"
+  }
+ },
+ {
+  "pkg": "openstack",
+  "mod": "networking/segmentV2",
+  "fqn": "pulumi_openstack.networking",
+  "classes": {
+   "openstack:networking/segmentV2:SegmentV2": "SegmentV2"
   }
  },
  {

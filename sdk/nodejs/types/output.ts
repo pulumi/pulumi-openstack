@@ -771,6 +771,11 @@ export namespace loadbalancer {
 }
 
 export namespace networking {
+    export interface BgpSpeakerV2AdvertisedRoute {
+        destination: string;
+        nextHop: string;
+    }
+
     export interface GetNetworkSegment {
         networkType: string;
         physicalNetwork: string;
@@ -836,6 +841,11 @@ export namespace networking {
          * Subnet in which the fixed IP belongs to.
          */
         subnetId?: string;
+    }
+
+    export interface GetRouterRoute {
+        destinationCidr: string;
+        nextHop: string;
     }
 
     export interface GetSubnetAllocationPool {
@@ -955,7 +965,19 @@ export namespace networking {
         /**
          * Subnet in which the fixed IP belongs to.
          */
-        subnetId?: string;
+        subnetId: string;
+    }
+
+    export interface RouterRoutesV2Route {
+        /**
+         * CIDR block to match on the packet’s
+         * destination IP.
+         */
+        destinationCidr: string;
+        /**
+         * IP address of the next hop gateway.
+         */
+        nextHop: string;
     }
 
     export interface RouterVendorOptions {

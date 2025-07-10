@@ -20,10 +20,6 @@ import (
 //
 //	API in case of delete call.
 //
-// > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
-//
-//	created with zero value.
-//
 // > **Note:** This resource has attributes that depend on octavia minor versions.
 // Please ensure your Openstack cloud supports the required minor version.
 //

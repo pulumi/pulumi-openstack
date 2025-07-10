@@ -8,6 +8,8 @@ import typing
 # Export this package's modules as members:
 from .address_group_v2 import *
 from .address_scope import *
+from .bgp_peer_v2 import *
+from .bgp_speaker_v2 import *
 from .floating_ip import *
 from .floating_ip_associate import *
 from .get_address_scope import *
@@ -22,6 +24,7 @@ from .get_qos_policy import *
 from .get_quota_v2 import *
 from .get_router import *
 from .get_sec_group import *
+from .get_segment_v2 import *
 from .get_subnet import *
 from .get_subnet_ids_v2 import *
 from .get_subnet_pool import *
@@ -39,8 +42,10 @@ from .rbac_policy_v2 import *
 from .router import *
 from .router_interface import *
 from .router_route import *
+from .router_routes_v2 import *
 from .sec_group import *
 from .sec_group_rule import *
+from .segment_v2 import *
 from .subnet import *
 from .subnet_pool import *
 from .subnet_route import *
