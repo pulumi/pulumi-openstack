@@ -296,6 +296,10 @@
                     }
                 }
             },
+            "openstack_dns_quota_v2": {
+                "current": "openstack:dns/quotaV2:QuotaV2",
+                "majorVersion": 5
+            },
             "openstack_dns_recordset_v2": {
                 "current": "openstack:dns/recordSet:RecordSet",
                 "majorVersion": 5,
@@ -623,6 +627,25 @@
                 "current": "openstack:networking/addressScope:AddressScope",
                 "majorVersion": 5
             },
+            "openstack_networking_bgp_peer_v2": {
+                "current": "openstack:networking/bgpPeerV2:BgpPeerV2",
+                "majorVersion": 5
+            },
+            "openstack_networking_bgp_speaker_v2": {
+                "current": "openstack:networking/bgpSpeakerV2:BgpSpeakerV2",
+                "majorVersion": 5,
+                "fields": {
+                    "advertised_routes": {
+                        "maxItemsOne": false
+                    },
+                    "networks": {
+                        "maxItemsOne": false
+                    },
+                    "peers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "openstack_networking_floatingip_associate_v2": {
                 "current": "openstack:networking/floatingIpAssociate:FloatingIpAssociate",
                 "majorVersion": 5
@@ -752,6 +775,15 @@
                 "current": "openstack:networking/routerRoute:RouterRoute",
                 "majorVersion": 5
             },
+            "openstack_networking_router_routes_v2": {
+                "current": "openstack:networking/routerRoutesV2:RouterRoutesV2",
+                "majorVersion": 5,
+                "fields": {
+                    "routes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "openstack_networking_router_v2": {
                 "current": "openstack:networking/router:Router",
                 "majorVersion": 5,
@@ -791,6 +823,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "openstack_networking_segment_v2": {
+                "current": "openstack:networking/segmentV2:SegmentV2",
+                "majorVersion": 5
             },
             "openstack_networking_subnet_route_v2": {
                 "current": "openstack:networking/subnetRoute:SubnetRoute",
@@ -1403,6 +1439,9 @@
                     "external_fixed_ip": {
                         "maxItemsOne": false
                     },
+                    "routes": {
+                        "maxItemsOne": false
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -1419,6 +1458,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "openstack_networking_segment_v2": {
+                "current": "openstack:networking/getSegmentV2:getSegmentV2",
+                "majorVersion": 5
             },
             "openstack_networking_subnet_ids_v2": {
                 "current": "openstack:networking/getSubnetIdsV2:getSubnetIdsV2",
