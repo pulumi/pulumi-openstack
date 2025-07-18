@@ -2266,10 +2266,10 @@ github.com/stretchr/testify v1.10.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf
 github.com/substrait-io/substrait-go v0.4.2/go.mod h1:qhpnLmrcvAnlZsUyPXZRqldiHapPTXC3t7xFgDi3aQg=
 github.com/teekennedy/goldmark-markdown v0.3.0 h1:ik9/biVGCwGWFg8dQ3KVm2pQ/wiiG0whYiUcz9xH0W8=
 github.com/teekennedy/goldmark-markdown v0.3.0/go.mod h1:kMhDz8La77A9UHvJGsxejd0QUflN9sS+QXCqnhmxmNo=
-github.com/terraform-provider-openstack/terraform-provider-openstack/v3 v3.3.1 h1:hQo/b9qP4ucM3e4pJ/9DR63j7xE+2p8Pr6zhVNWUE/8=
-github.com/terraform-provider-openstack/terraform-provider-openstack/v3 v3.3.1/go.mod h1:8coRX+D187yZVCpSOO21+7FGO+gKYzkbQde/kJ5Fj+M=
-github.com/terraform-provider-openstack/utils/v2 v2.0.0-20250716121629-738e4d5edfff h1:fSVAusFe/uuyV/JIKrsxKjsvzImFNwssY+r1+5Qk6zA=
-github.com/terraform-provider-openstack/utils/v2 v2.0.0-20250716121629-738e4d5edfff/go.mod h1:+QIVEo1bjR7v797mcW0ebuak7yi7enUGwQTr+Itt8rQ=
+github.com/terraform-provider-openstack/terraform-provider-openstack/v3 v3.3.2 h1:oRipNYRXyNLE3Wate4LrEQzKF0VAaz6Wfj/Bve2ifng=
+github.com/terraform-provider-openstack/terraform-provider-openstack/v3 v3.3.2/go.mod h1:2picbcqZ8khw3i3ZtteDiDTN9i3fz2yu4i42ipqWUUI=
+github.com/terraform-provider-openstack/utils/v2 v2.0.0-20250717163156-83cd74412d2e h1:57CFV+CNuEV2md5AgyuPD6goPEq1itzRQPMAI43kKPI=
+github.com/terraform-provider-openstack/utils/v2 v2.0.0-20250717163156-83cd74412d2e/go.mod h1:+QIVEo1bjR7v797mcW0ebuak7yi7enUGwQTr+Itt8rQ=
 github.com/texttheater/golang-levenshtein v1.0.1 h1:+cRNoVrfiwufQPhoMzB6N0Yf/Mqajr6t1lOv8GyGE2U=
 github.com/texttheater/golang-levenshtein v1.0.1/go.mod h1:PYAKrbF5sAiq9wd+H82hs7gNaen0CplQ9uvm6+enD/8=
 github.com/uber/jaeger-client-go v2.30.0+incompatible h1:D6wyKGCecFaSRUpo8lCVbaOOb6ThwMmTEbhRwtKR97o=
