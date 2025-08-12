@@ -11,8 +11,6 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   OS_AUTH_URL: https://auth.cloud.ovh.net/v3/
   OS_IDENTITY_API_VERSION: "3"
   OS_PASSWORD: ${{ secrets.OS_PASSWORD }}
@@ -25,8 +23,6 @@ env:
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
-  PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-  PYPI_USERNAME: __token__
   TF_APPEND_USER_AGENT: pulumi
 
 jobs:
