@@ -7,7 +7,6 @@ on:
     inputs: {}
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   OS_AUTH_URL: https://auth.cloud.ovh.net/v3/
   OS_IDENTITY_API_VERSION: "3"
   OS_PASSWORD: ${{ secrets.OS_PASSWORD }}
@@ -38,6 +37,8 @@ jobs:
           cache-go: false
       - run: make prepare_local_workspace
         continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: pulumi/license-check-action@main
         with:
           module-path: provider
