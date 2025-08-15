@@ -10,7 +10,6 @@ on:
         required: true
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   OS_AUTH_URL: https://auth.cloud.ovh.net/v3/
   OS_IDENTITY_API_VERSION: "3"
   OS_PASSWORD: ${{ secrets.OS_PASSWORD }}

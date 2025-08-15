@@ -20,7 +20,6 @@ on:
         value: ${{ jobs.prerequisites.outputs.version }}
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   OS_AUTH_URL: https://auth.cloud.ovh.net/v3/
   OS_IDENTITY_API_VERSION: "3"
   OS_PASSWORD: ${{ secrets.OS_PASSWORD }}
@@ -39,6 +38,9 @@ jobs:
   prerequisites:
     name: prerequisites
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     outputs:
       version: ${{ steps.provider-version.outputs.version }}
     steps:

@@ -2,7 +2,6 @@
 
 env:
   IS_PRERELEASE: true
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   OS_AUTH_URL: https://auth.cloud.ovh.net/v3/
   OS_IDENTITY_API_VERSION: "3"
   OS_PASSWORD: ${{ secrets.OS_PASSWORD }}
@@ -18,6 +17,9 @@ env:
   TF_APPEND_USER_AGENT: pulumi
 jobs:
   prerequisites:
+    permissions:
+      contents: read
+      pull-requests: write
     uses: ./.github/workflows/prerequisites.yml
     secrets: inherit
     with:
