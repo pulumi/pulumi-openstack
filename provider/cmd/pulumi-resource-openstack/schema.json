@@ -27157,7 +27157,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:openstack"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:openstack/terraformConfig",
