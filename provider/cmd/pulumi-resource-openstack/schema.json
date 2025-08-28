@@ -69,7 +69,7 @@
         "variables": {
             "allowReauth": {
                 "type": "boolean",
-                "description": "If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.\nDefaults to `true`\n",
+                "description": "If set to `false`, OpenStack authorization won't be perfomed\nautomatically, if the initial auth token get expired. Defaults to `true`",
                 "defaultInfo": {
                     "environment": [
                         "OS_ALLOW_REAUTH"
@@ -78,31 +78,31 @@
             },
             "applicationCredentialId": {
                 "type": "string",
-                "description": "Application Credential ID to login with.\n"
+                "description": "Application Credential ID to login with."
             },
             "applicationCredentialName": {
                 "type": "string",
-                "description": "Application Credential name to login with.\n"
+                "description": "Application Credential name to login with."
             },
             "applicationCredentialSecret": {
                 "type": "string",
-                "description": "Application Credential secret to login with.\n"
+                "description": "Application Credential secret to login with."
             },
             "authUrl": {
                 "type": "string",
-                "description": "The Identity authentication URL.\n"
+                "description": "The Identity authentication URL."
             },
             "cacertFile": {
                 "type": "string",
-                "description": "A Custom CA certificate.\n"
+                "description": "A Custom CA certificate."
             },
             "cert": {
                 "type": "string",
-                "description": "A client certificate to authenticate with.\n"
+                "description": "A client certificate to authenticate with."
             },
             "cloud": {
                 "type": "string",
-                "description": "An entry in a `clouds.yaml` file to use.\n",
+                "description": "An entry in a `clouds.yaml` file to use.",
                 "defaultInfo": {
                     "environment": [
                         "OS_CLOUD"
@@ -111,11 +111,11 @@
             },
             "defaultDomain": {
                 "type": "string",
-                "description": "The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).\n"
+                "description": "The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3)."
             },
             "delayedAuth": {
                 "type": "boolean",
-                "description": "If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults\nto `true`.\n",
+                "description": "If set to `false`, OpenStack authorization will be perfomed,\nevery time the service provider client is called. Defaults to `true`.",
                 "defaultInfo": {
                     "environment": [
                         "OS_DELAYED_AUTH"
@@ -124,26 +124,26 @@
             },
             "disableNoCacheHeader": {
                 "type": "boolean",
-                "description": "If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.\n"
+                "description": "If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests."
             },
             "domainId": {
                 "type": "string",
-                "description": "The ID of the Domain to scope to (Identity v3).\n"
+                "description": "The ID of the Domain to scope to (Identity v3)."
             },
             "domainName": {
                 "type": "string",
-                "description": "The name of the Domain to scope to (Identity v3).\n"
+                "description": "The name of the Domain to scope to (Identity v3)."
             },
             "enableLogging": {
                 "type": "boolean",
-                "description": "Outputs very verbose logs with all calls made to and responses from OpenStack\n"
+                "description": "Outputs very verbose logs with all calls made to and responses from OpenStack"
             },
             "endpointOverrides": {
                 "type": "object",
                 "additionalProperties": {
                     "type": "string"
                 },
-                "description": "A map of services with an endpoint to override what was from the Keystone catalog\n"
+                "description": "A map of services with an endpoint to override what was\nfrom the Keystone catalog"
             },
             "endpointType": {
                 "type": "string",
@@ -155,7 +155,7 @@
             },
             "insecure": {
                 "type": "boolean",
-                "description": "Trust self-signed certificates.\n",
+                "description": "Trust self-signed certificates.",
                 "defaultInfo": {
                     "environment": [
                         "OS_INSECURE"
@@ -164,28 +164,28 @@
             },
             "key": {
                 "type": "string",
-                "description": "A client private key to authenticate with.\n"
+                "description": "A client private key to authenticate with."
             },
             "maxRetries": {
                 "type": "integer",
-                "description": "How many times HTTP connection should be retried until giving up.\n"
+                "description": "How many times HTTP connection should be retried until giving up."
             },
             "password": {
                 "type": "string",
-                "description": "Password to login with.\n",
+                "description": "Password to login with.",
                 "secret": true
             },
             "projectDomainId": {
                 "type": "string",
-                "description": "The ID of the domain where the proejct resides (Identity v3).\n"
+                "description": "The ID of the domain where the proejct resides (Identity v3)."
             },
             "projectDomainName": {
                 "type": "string",
-                "description": "The name of the domain where the project resides (Identity v3).\n"
+                "description": "The name of the domain where the project resides (Identity v3)."
             },
             "region": {
                 "type": "string",
-                "description": "The OpenStack region to connect to.\n",
+                "description": "The OpenStack region to connect to.",
                 "defaultInfo": {
                     "environment": [
                         "OS_REGION_NAME"
@@ -194,7 +194,7 @@
             },
             "swauth": {
                 "type": "boolean",
-                "description": "Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.\n",
+                "description": "Use Swift's authentication system instead of Keystone. Only used for\ninteraction with Swift.",
                 "defaultInfo": {
                     "environment": [
                         "OS_SWAUTH"
@@ -203,35 +203,35 @@
             },
             "systemScope": {
                 "type": "boolean",
-                "description": "If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).\n"
+                "description": "If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3)."
             },
             "tenantId": {
                 "type": "string",
-                "description": "The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.\n"
+                "description": "The ID of the Tenant (Identity v2) or Project (Identity v3)\nto login with."
             },
             "tenantName": {
                 "type": "string",
-                "description": "The name of the Tenant (Identity v2) or Project (Identity v3) to login with.\n"
+                "description": "The name of the Tenant (Identity v2) or Project (Identity v3)\nto login with."
             },
             "token": {
                 "type": "string",
-                "description": "Authentication token to use as an alternative to username/password.\n"
+                "description": "Authentication token to use as an alternative to username/password."
             },
             "userDomainId": {
                 "type": "string",
-                "description": "The ID of the domain where the user resides (Identity v3).\n"
+                "description": "The ID of the domain where the user resides (Identity v3)."
             },
             "userDomainName": {
                 "type": "string",
-                "description": "The name of the domain where the user resides (Identity v3).\n"
+                "description": "The name of the domain where the user resides (Identity v3)."
             },
             "userId": {
                 "type": "string",
-                "description": "User ID to login with.\n"
+                "description": "User ID to login with."
             },
             "userName": {
                 "type": "string",
-                "description": "Username to login with.\n"
+                "description": "Username to login with."
             }
         }
     },
@@ -1882,140 +1882,140 @@
         "properties": {
             "allowReauth": {
                 "type": "boolean",
-                "description": "If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.\nDefaults to `true`\n"
+                "description": "If set to `false`, OpenStack authorization won't be perfomed\nautomatically, if the initial auth token get expired. Defaults to `true`"
             },
             "applicationCredentialId": {
                 "type": "string",
-                "description": "Application Credential ID to login with.\n"
+                "description": "Application Credential ID to login with."
             },
             "applicationCredentialName": {
                 "type": "string",
-                "description": "Application Credential name to login with.\n"
+                "description": "Application Credential name to login with."
             },
             "applicationCredentialSecret": {
                 "type": "string",
-                "description": "Application Credential secret to login with.\n"
+                "description": "Application Credential secret to login with."
             },
             "authUrl": {
                 "type": "string",
-                "description": "The Identity authentication URL.\n"
+                "description": "The Identity authentication URL."
             },
             "cacertFile": {
                 "type": "string",
-                "description": "A Custom CA certificate.\n"
+                "description": "A Custom CA certificate."
             },
             "cert": {
                 "type": "string",
-                "description": "A client certificate to authenticate with.\n"
+                "description": "A client certificate to authenticate with."
             },
             "cloud": {
                 "type": "string",
-                "description": "An entry in a `clouds.yaml` file to use.\n"
+                "description": "An entry in a `clouds.yaml` file to use."
             },
             "defaultDomain": {
                 "type": "string",
-                "description": "The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).\n"
+                "description": "The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3)."
             },
             "delayedAuth": {
                 "type": "boolean",
-                "description": "If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults\nto `true`.\n"
+                "description": "If set to `false`, OpenStack authorization will be perfomed,\nevery time the service provider client is called. Defaults to `true`."
             },
             "disableNoCacheHeader": {
                 "type": "boolean",
-                "description": "If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.\n"
+                "description": "If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests."
             },
             "domainId": {
                 "type": "string",
-                "description": "The ID of the Domain to scope to (Identity v3).\n"
+                "description": "The ID of the Domain to scope to (Identity v3)."
             },
             "domainName": {
                 "type": "string",
-                "description": "The name of the Domain to scope to (Identity v3).\n"
+                "description": "The name of the Domain to scope to (Identity v3)."
             },
             "enableLogging": {
                 "type": "boolean",
-                "description": "Outputs very verbose logs with all calls made to and responses from OpenStack\n"
+                "description": "Outputs very verbose logs with all calls made to and responses from OpenStack"
             },
             "endpointOverrides": {
                 "type": "object",
                 "additionalProperties": {
                     "type": "string"
                 },
-                "description": "A map of services with an endpoint to override what was from the Keystone catalog\n"
+                "description": "A map of services with an endpoint to override what was\nfrom the Keystone catalog"
             },
             "endpointType": {
                 "type": "string"
             },
             "insecure": {
                 "type": "boolean",
-                "description": "Trust self-signed certificates.\n"
+                "description": "Trust self-signed certificates."
             },
             "key": {
                 "type": "string",
-                "description": "A client private key to authenticate with.\n"
+                "description": "A client private key to authenticate with."
             },
             "maxRetries": {
                 "type": "integer",
-                "description": "How many times HTTP connection should be retried until giving up.\n"
+                "description": "How many times HTTP connection should be retried until giving up."
             },
             "password": {
                 "type": "string",
-                "description": "Password to login with.\n",
+                "description": "Password to login with.",
                 "secret": true
             },
             "projectDomainId": {
                 "type": "string",
-                "description": "The ID of the domain where the proejct resides (Identity v3).\n"
+                "description": "The ID of the domain where the proejct resides (Identity v3)."
             },
             "projectDomainName": {
                 "type": "string",
-                "description": "The name of the domain where the project resides (Identity v3).\n"
+                "description": "The name of the domain where the project resides (Identity v3)."
             },
             "region": {
                 "type": "string",
-                "description": "The OpenStack region to connect to.\n"
+                "description": "The OpenStack region to connect to."
             },
             "swauth": {
                 "type": "boolean",
-                "description": "Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.\n"
+                "description": "Use Swift's authentication system instead of Keystone. Only used for\ninteraction with Swift."
             },
             "systemScope": {
                 "type": "boolean",
-                "description": "If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).\n"
+                "description": "If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3)."
             },
             "tenantId": {
                 "type": "string",
-                "description": "The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.\n"
+                "description": "The ID of the Tenant (Identity v2) or Project (Identity v3)\nto login with."
             },
             "tenantName": {
                 "type": "string",
-                "description": "The name of the Tenant (Identity v2) or Project (Identity v3) to login with.\n"
+                "description": "The name of the Tenant (Identity v2) or Project (Identity v3)\nto login with."
             },
             "token": {
                 "type": "string",
-                "description": "Authentication token to use as an alternative to username/password.\n"
+                "description": "Authentication token to use as an alternative to username/password."
             },
             "userDomainId": {
                 "type": "string",
-                "description": "The ID of the domain where the user resides (Identity v3).\n"
+                "description": "The ID of the domain where the user resides (Identity v3)."
             },
             "userDomainName": {
                 "type": "string",
-                "description": "The name of the domain where the user resides (Identity v3).\n"
+                "description": "The name of the domain where the user resides (Identity v3)."
             },
             "userId": {
                 "type": "string",
-                "description": "User ID to login with.\n"
+                "description": "User ID to login with."
             },
             "userName": {
                 "type": "string",
-                "description": "Username to login with.\n"
+                "description": "Username to login with."
             }
         },
         "inputProperties": {
             "allowReauth": {
                 "type": "boolean",
-                "description": "If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.\nDefaults to `true`\n",
+                "description": "If set to `false`, OpenStack authorization won't be perfomed\nautomatically, if the initial auth token get expired. Defaults to `true`",
                 "defaultInfo": {
                     "environment": [
                         "OS_ALLOW_REAUTH"
@@ -2024,31 +2024,31 @@
             },
             "applicationCredentialId": {
                 "type": "string",
-                "description": "Application Credential ID to login with.\n"
+                "description": "Application Credential ID to login with."
             },
             "applicationCredentialName": {
                 "type": "string",
-                "description": "Application Credential name to login with.\n"
+                "description": "Application Credential name to login with."
             },
             "applicationCredentialSecret": {
                 "type": "string",
-                "description": "Application Credential secret to login with.\n"
+                "description": "Application Credential secret to login with."
             },
             "authUrl": {
                 "type": "string",
-                "description": "The Identity authentication URL.\n"
+                "description": "The Identity authentication URL."
             },
             "cacertFile": {
                 "type": "string",
-                "description": "A Custom CA certificate.\n"
+                "description": "A Custom CA certificate."
             },
             "cert": {
                 "type": "string",
-                "description": "A client certificate to authenticate with.\n"
+                "description": "A client certificate to authenticate with."
             },
             "cloud": {
                 "type": "string",
-                "description": "An entry in a `clouds.yaml` file to use.\n",
+                "description": "An entry in a `clouds.yaml` file to use.",
                 "defaultInfo": {
                     "environment": [
                         "OS_CLOUD"
@@ -2057,11 +2057,11 @@
             },
             "defaultDomain": {
                 "type": "string",
-                "description": "The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).\n"
+                "description": "The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3)."
             },
             "delayedAuth": {
                 "type": "boolean",
-                "description": "If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults\nto `true`.\n",
+                "description": "If set to `false`, OpenStack authorization will be perfomed,\nevery time the service provider client is called. Defaults to `true`.",
                 "defaultInfo": {
                     "environment": [
                         "OS_DELAYED_AUTH"
@@ -2070,26 +2070,26 @@
             },
             "disableNoCacheHeader": {
                 "type": "boolean",
-                "description": "If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.\n"
+                "description": "If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests."
             },
             "domainId": {
                 "type": "string",
-                "description": "The ID of the Domain to scope to (Identity v3).\n"
+                "description": "The ID of the Domain to scope to (Identity v3)."
             },
             "domainName": {
                 "type": "string",
-                "description": "The name of the Domain to scope to (Identity v3).\n"
+                "description": "The name of the Domain to scope to (Identity v3)."
             },
             "enableLogging": {
                 "type": "boolean",
-                "description": "Outputs very verbose logs with all calls made to and responses from OpenStack\n"
+                "description": "Outputs very verbose logs with all calls made to and responses from OpenStack"
             },
             "endpointOverrides": {
                 "type": "object",
                 "additionalProperties": {
                     "type": "string"
                 },
-                "description": "A map of services with an endpoint to override what was from the Keystone catalog\n"
+                "description": "A map of services with an endpoint to override what was\nfrom the Keystone catalog"
             },
             "endpointType": {
                 "type": "string",
@@ -2101,7 +2101,7 @@
             },
             "insecure": {
                 "type": "boolean",
-                "description": "Trust self-signed certificates.\n",
+                "description": "Trust self-signed certificates.",
                 "defaultInfo": {
                     "environment": [
                         "OS_INSECURE"
@@ -2110,28 +2110,28 @@
             },
             "key": {
                 "type": "string",
-                "description": "A client private key to authenticate with.\n"
+                "description": "A client private key to authenticate with."
             },
             "maxRetries": {
                 "type": "integer",
-                "description": "How many times HTTP connection should be retried until giving up.\n"
+                "description": "How many times HTTP connection should be retried until giving up."
             },
             "password": {
                 "type": "string",
-                "description": "Password to login with.\n",
+                "description": "Password to login with.",
                 "secret": true
             },
             "projectDomainId": {
                 "type": "string",
-                "description": "The ID of the domain where the proejct resides (Identity v3).\n"
+                "description": "The ID of the domain where the proejct resides (Identity v3)."
             },
             "projectDomainName": {
                 "type": "string",
-                "description": "The name of the domain where the project resides (Identity v3).\n"
+                "description": "The name of the domain where the project resides (Identity v3)."
             },
             "region": {
                 "type": "string",
-                "description": "The OpenStack region to connect to.\n",
+                "description": "The OpenStack region to connect to.",
                 "defaultInfo": {
                     "environment": [
                         "OS_REGION_NAME"
@@ -2140,7 +2140,7 @@
             },
             "swauth": {
                 "type": "boolean",
-                "description": "Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.\n",
+                "description": "Use Swift's authentication system instead of Keystone. Only used for\ninteraction with Swift.",
                 "defaultInfo": {
                     "environment": [
                         "OS_SWAUTH"
@@ -2149,35 +2149,35 @@
             },
             "systemScope": {
                 "type": "boolean",
-                "description": "If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).\n"
+                "description": "If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3)."
             },
             "tenantId": {
                 "type": "string",
-                "description": "The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.\n"
+                "description": "The ID of the Tenant (Identity v2) or Project (Identity v3)\nto login with."
             },
             "tenantName": {
                 "type": "string",
-                "description": "The name of the Tenant (Identity v2) or Project (Identity v3) to login with.\n"
+                "description": "The name of the Tenant (Identity v2) or Project (Identity v3)\nto login with."
             },
             "token": {
                 "type": "string",
-                "description": "Authentication token to use as an alternative to username/password.\n"
+                "description": "Authentication token to use as an alternative to username/password."
             },
             "userDomainId": {
                 "type": "string",
-                "description": "The ID of the domain where the user resides (Identity v3).\n"
+                "description": "The ID of the domain where the user resides (Identity v3)."
             },
             "userDomainName": {
                 "type": "string",
-                "description": "The name of the domain where the user resides (Identity v3).\n"
+                "description": "The name of the domain where the user resides (Identity v3)."
             },
             "userId": {
                 "type": "string",
-                "description": "User ID to login with.\n"
+                "description": "User ID to login with."
             },
             "userName": {
                 "type": "string",
-                "description": "Username to login with.\n"
+                "description": "Username to login with."
             }
         },
         "methods": {
@@ -20371,7 +20371,7 @@
                 "description": "A collection of values returned by getAvailabilityZonesV3.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "names": {
@@ -20439,7 +20439,7 @@
                         "type": "integer"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "perVolumeGigabytes": {
@@ -20522,7 +20522,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "metadata": {
@@ -20627,7 +20627,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "metadata": {
@@ -20722,7 +20722,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "metadata": {
@@ -20776,7 +20776,7 @@
                 "description": "A collection of values returned by getAvailabilityZones.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "names": {
@@ -20888,7 +20888,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "isPublic": {
@@ -20959,7 +20959,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "memory": {
@@ -21177,7 +21177,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -21233,7 +21233,7 @@
                 "description": "A collection of values returned by getLimitsV2.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maxImageMeta": {
@@ -21385,7 +21385,7 @@
                         "type": "integer"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "injectedFileContentBytes": {
@@ -21486,7 +21486,7 @@
                 "description": "A collection of values returned by getServergroupV2.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "members": {
@@ -21616,7 +21616,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "keypair": {
@@ -21809,7 +21809,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "image": {
@@ -21969,7 +21969,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "image": {
@@ -22144,7 +22144,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "masters": {
@@ -22258,7 +22258,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "projectId": {
@@ -22363,7 +22363,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ingressFirewallPolicyId": {
@@ -22467,7 +22467,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -22621,7 +22621,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ipVersion": {
@@ -22714,7 +22714,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -22846,7 +22846,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "interface": {
@@ -22922,7 +22922,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -22997,7 +22997,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "isDomain": {
@@ -23093,7 +23093,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ids": {
@@ -23166,7 +23166,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -23224,7 +23224,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -23308,7 +23308,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "idpId": {
@@ -23464,7 +23464,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "memberStatus": {
@@ -23662,7 +23662,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ids": {
@@ -23795,7 +23795,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ingressFirewallPolicyId": {
@@ -23900,7 +23900,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -24055,7 +24055,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ipVersion": {
@@ -24147,7 +24147,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "input": {
@@ -24243,7 +24243,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -24387,7 +24387,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "metadata": {
@@ -24503,7 +24503,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -24561,7 +24561,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -24629,7 +24629,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -24684,7 +24684,7 @@
                 "description": "A collection of values returned by getAddressScope.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ipVersion": {
@@ -24788,7 +24788,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "pool": {
@@ -24912,7 +24912,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "matchingSubnetCidr": {
@@ -25139,7 +25139,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "macAddress": {
@@ -25317,7 +25317,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ids": {
@@ -25410,7 +25410,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maxBurstKbps": {
@@ -25474,7 +25474,7 @@
                         "type": "integer"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "qosPolicyId": {
@@ -25530,7 +25530,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "minKbps": {
@@ -25616,7 +25616,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "isDefault": {
@@ -25698,7 +25698,7 @@
                         "type": "integer"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "network": {
@@ -25855,7 +25855,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -25956,7 +25956,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -26051,7 +26051,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -26236,7 +26236,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ipVersion": {
@@ -26423,7 +26423,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ids": {
@@ -26580,7 +26580,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ipVersion": {
@@ -26724,7 +26724,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -26786,7 +26786,7 @@
                 "description": "A collection of values returned by getAvailbilityZones.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "names": {
@@ -26879,7 +26879,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "isPublic": {
@@ -27001,7 +27001,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ipVersion": {
@@ -27101,7 +27101,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
