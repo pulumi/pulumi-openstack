@@ -98,48 +98,48 @@ export class Network extends pulumi.CustomResource {
      * Acceptable values are "true" and "false". Changing this value updates the
      * state of the existing network.
      */
-    public readonly adminStateUp!: pulumi.Output<boolean>;
+    declare public readonly adminStateUp: pulumi.Output<boolean>;
     /**
      * The collection of tags assigned on the network, which have been
      * explicitly and implicitly added.
      */
-    public /*out*/ readonly allTags!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly allTags: pulumi.Output<string[]>;
     /**
      * An availability zone is used to make
      * network resources highly available. Used for resources with high availability
      * so that they are scheduled on different availability zones. Changing this
      * creates a new network.
      */
-    public readonly availabilityZoneHints!: pulumi.Output<string[]>;
+    declare public readonly availabilityZoneHints: pulumi.Output<string[]>;
     /**
      * Human-readable description of the network. Changing this
      * updates the name of the existing network.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The network DNS domain. Available, when Neutron DNS
      * extension is enabled. The `dnsDomain` of a network in conjunction with the
      * `dnsName` attribute of its ports will be published in an external DNS
      * service when Neutron is configured to integrate with such a service.
      */
-    public readonly dnsDomain!: pulumi.Output<string>;
+    declare public readonly dnsDomain: pulumi.Output<string>;
     /**
      * Specifies whether the network resource has the
      * external routing facility. Valid values are true and false. Defaults to
      * false. Changing this updates the external attribute of the existing network.
      */
-    public readonly external!: pulumi.Output<boolean>;
+    declare public readonly external: pulumi.Output<boolean>;
     /**
      * The network MTU. Available for read-only, when Neutron
      * `net-mtu` extension is enabled. Available for the modification, when
      * Neutron `net-mtu-writable` extension is enabled.
      */
-    public readonly mtu!: pulumi.Output<number>;
+    declare public readonly mtu: pulumi.Output<number>;
     /**
      * The name of the network. Changing this updates the name of
      * the existing network.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Whether to explicitly enable or disable
      * port security on the network. Port Security is usually enabled by default, so
@@ -147,51 +147,51 @@ export class Network extends pulumi.CustomResource {
      * explicitly to `false` will disable port security. Valid values are `true` and
      * `false`.
      */
-    public readonly portSecurityEnabled!: pulumi.Output<boolean>;
+    declare public readonly portSecurityEnabled: pulumi.Output<boolean>;
     /**
      * Reference to the associated QoS policy.
      */
-    public readonly qosPolicyId!: pulumi.Output<string>;
+    declare public readonly qosPolicyId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron network. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * network.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * An array of one or more provider segment objects.
      * Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
      * updating any provider related segments attributes. Check your plug-in whether
      * it supports updating.
      */
-    public readonly segments!: pulumi.Output<outputs.networking.NetworkSegment[]>;
+    declare public readonly segments: pulumi.Output<outputs.networking.NetworkSegment[]>;
     /**
      * Specifies whether the network resource can be accessed
      * by any tenant or not. Changing this updates the sharing capabilities of the
      * existing network.
      */
-    public readonly shared!: pulumi.Output<boolean>;
+    declare public readonly shared: pulumi.Output<boolean>;
     /**
      * A set of string tags for the network.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The owner of the network. Required if admin wants to
      * create a network for another tenant. Changing this creates a new network.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
     /**
      * Specifies whether the network resource has the
      * VLAN transparent attribute set. Valid values are true and false. Defaults to
      * false. Changing this updates the `transparentVlan` attribute of the existing
      * network.
      */
-    public readonly transparentVlan!: pulumi.Output<boolean>;
+    declare public readonly transparentVlan: pulumi.Output<boolean>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly valueSpecs: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Network resource with the given unique name, arguments, and options.
@@ -206,41 +206,41 @@ export class Network extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkState | undefined;
-            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            resourceInputs["allTags"] = state ? state.allTags : undefined;
-            resourceInputs["availabilityZoneHints"] = state ? state.availabilityZoneHints : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dnsDomain"] = state ? state.dnsDomain : undefined;
-            resourceInputs["external"] = state ? state.external : undefined;
-            resourceInputs["mtu"] = state ? state.mtu : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["portSecurityEnabled"] = state ? state.portSecurityEnabled : undefined;
-            resourceInputs["qosPolicyId"] = state ? state.qosPolicyId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["segments"] = state ? state.segments : undefined;
-            resourceInputs["shared"] = state ? state.shared : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
-            resourceInputs["transparentVlan"] = state ? state.transparentVlan : undefined;
-            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["adminStateUp"] = state?.adminStateUp;
+            resourceInputs["allTags"] = state?.allTags;
+            resourceInputs["availabilityZoneHints"] = state?.availabilityZoneHints;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dnsDomain"] = state?.dnsDomain;
+            resourceInputs["external"] = state?.external;
+            resourceInputs["mtu"] = state?.mtu;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["portSecurityEnabled"] = state?.portSecurityEnabled;
+            resourceInputs["qosPolicyId"] = state?.qosPolicyId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["segments"] = state?.segments;
+            resourceInputs["shared"] = state?.shared;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["transparentVlan"] = state?.transparentVlan;
+            resourceInputs["valueSpecs"] = state?.valueSpecs;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
-            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            resourceInputs["availabilityZoneHints"] = args ? args.availabilityZoneHints : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dnsDomain"] = args ? args.dnsDomain : undefined;
-            resourceInputs["external"] = args ? args.external : undefined;
-            resourceInputs["mtu"] = args ? args.mtu : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["portSecurityEnabled"] = args ? args.portSecurityEnabled : undefined;
-            resourceInputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["segments"] = args ? args.segments : undefined;
-            resourceInputs["shared"] = args ? args.shared : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["transparentVlan"] = args ? args.transparentVlan : undefined;
-            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["adminStateUp"] = args?.adminStateUp;
+            resourceInputs["availabilityZoneHints"] = args?.availabilityZoneHints;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dnsDomain"] = args?.dnsDomain;
+            resourceInputs["external"] = args?.external;
+            resourceInputs["mtu"] = args?.mtu;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["portSecurityEnabled"] = args?.portSecurityEnabled;
+            resourceInputs["qosPolicyId"] = args?.qosPolicyId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["segments"] = args?.segments;
+            resourceInputs["shared"] = args?.shared;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tenantId"] = args?.tenantId;
+            resourceInputs["transparentVlan"] = args?.transparentVlan;
+            resourceInputs["valueSpecs"] = args?.valueSpecs;
             resourceInputs["allTags"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

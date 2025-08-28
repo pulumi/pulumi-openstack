@@ -83,37 +83,37 @@ export class PolicyV2 extends pulumi.CustomResource {
      * rules are changed. Changing this updates the `audited` status of an existing
      * firewall policy.
      */
-    public readonly audited!: pulumi.Output<boolean | undefined>;
+    declare public readonly audited: pulumi.Output<boolean | undefined>;
     /**
      * A description for the firewall policy. Changing
      * this updates the `description` of an existing firewall policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A name for the firewall policy. Changing this
      * updates the `name` of an existing firewall policy.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * This argument conflicts and is interchangeable
      * with `tenantId`. The owner of the firewall policy. Required if admin wants
      * to create a firewall policy for another project. Changing this creates a new
      * firewall policy.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the v2 networking client.
      * A networking client is needed to create a firewall policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * firewall policy.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * An array of one or more firewall rules that comprise
      * the policy. Changing this results in adding/removing rules from the
      * existing firewall policy.
      */
-    public readonly rules!: pulumi.Output<string[] | undefined>;
+    declare public readonly rules: pulumi.Output<string[] | undefined>;
     /**
      * Sharing status of the firewall policy (must be "true"
      * or "false" if provided). If this is "true" the policy is visible to, and
@@ -121,14 +121,14 @@ export class PolicyV2 extends pulumi.CustomResource {
      * `shared` status of an existing firewall policy. Only administrative users
      * can specify if the policy should be shared.
      */
-    public readonly shared!: pulumi.Output<boolean | undefined>;
+    declare public readonly shared: pulumi.Output<boolean | undefined>;
     /**
      * This argument conflicts and is interchangeable
      * with `projectId`. The owner of the firewall policy. Required if admin wants
      * to create a firewall policy for another tenant. Changing this creates a new
      * firewall policy.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
 
     /**
      * Create a PolicyV2 resource with the given unique name, arguments, and options.
@@ -143,24 +143,24 @@ export class PolicyV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyV2State | undefined;
-            resourceInputs["audited"] = state ? state.audited : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["shared"] = state ? state.shared : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["audited"] = state?.audited;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["shared"] = state?.shared;
+            resourceInputs["tenantId"] = state?.tenantId;
         } else {
             const args = argsOrState as PolicyV2Args | undefined;
-            resourceInputs["audited"] = args ? args.audited : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["shared"] = args ? args.shared : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["audited"] = args?.audited;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["shared"] = args?.shared;
+            resourceInputs["tenantId"] = args?.tenantId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PolicyV2.__pulumiType, name, resourceInputs, opts);

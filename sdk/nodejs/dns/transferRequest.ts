@@ -67,34 +67,34 @@ export class TransferRequest extends pulumi.CustomResource {
     /**
      * A description of the zone tranfer request.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Disable wait for zone to reach ACTIVE
      * status. The check is enabled by default. If this argument is true, zone
      * will be considered as created/updated if OpenStack request returned success.
      */
-    public readonly disableStatusCheck!: pulumi.Output<boolean | undefined>;
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly disableStatusCheck: pulumi.Output<boolean | undefined>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 DNS client.
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone zone transfer accept.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The target Project ID to transfer to.
      */
-    public readonly targetProjectId!: pulumi.Output<string>;
+    declare public readonly targetProjectId: pulumi.Output<string>;
     /**
      * Map of additional options. Changing this creates a
      * new transfer request.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly valueSpecs: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the zone for which to create the transfer
      * request.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a TransferRequest resource with the given unique name, arguments, and options.
@@ -109,25 +109,25 @@ export class TransferRequest extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransferRequestState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disableStatusCheck"] = state ? state.disableStatusCheck : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["targetProjectId"] = state ? state.targetProjectId : undefined;
-            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disableStatusCheck"] = state?.disableStatusCheck;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["targetProjectId"] = state?.targetProjectId;
+            resourceInputs["valueSpecs"] = state?.valueSpecs;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as TransferRequestArgs | undefined;
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disableStatusCheck"] = args ? args.disableStatusCheck : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["targetProjectId"] = args ? args.targetProjectId : undefined;
-            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disableStatusCheck"] = args?.disableStatusCheck;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["targetProjectId"] = args?.targetProjectId;
+            resourceInputs["valueSpecs"] = args?.valueSpecs;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TransferRequest.__pulumiType, name, resourceInputs, opts);

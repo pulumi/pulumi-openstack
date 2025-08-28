@@ -8,8 +8,8 @@ declare var exports: any;
 const __config = new pulumi.Config("openstack");
 
 /**
- * If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
- * Defaults to `true`
+ * If set to `false`, OpenStack authorization won't be perfomed
+ * automatically, if the initial auth token get expired. Defaults to `true`
  */
 export declare const allowReauth: boolean | undefined;
 Object.defineProperty(exports, "allowReauth", {
@@ -108,8 +108,8 @@ Object.defineProperty(exports, "defaultDomain", {
 });
 
 /**
- * If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
- * to `true`.
+ * If set to `false`, OpenStack authorization will be perfomed,
+ * every time the service provider client is called. Defaults to `true`.
  */
 export declare const delayedAuth: boolean | undefined;
 Object.defineProperty(exports, "delayedAuth", {
@@ -164,7 +164,8 @@ Object.defineProperty(exports, "enableLogging", {
 });
 
 /**
- * A map of services with an endpoint to override what was from the Keystone catalog
+ * A map of services with an endpoint to override what was
+ * from the Keystone catalog
  */
 export declare const endpointOverrides: {[key: string]: string} | undefined;
 Object.defineProperty(exports, "endpointOverrides", {
@@ -260,7 +261,8 @@ Object.defineProperty(exports, "region", {
 });
 
 /**
- * Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
+ * Use Swift's authentication system instead of Keystone. Only used for
+ * interaction with Swift.
  */
 export declare const swauth: boolean | undefined;
 Object.defineProperty(exports, "swauth", {
@@ -282,7 +284,8 @@ Object.defineProperty(exports, "systemScope", {
 });
 
 /**
- * The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+ * The ID of the Tenant (Identity v2) or Project (Identity v3)
+ * to login with.
  */
 export declare const tenantId: string | undefined;
 Object.defineProperty(exports, "tenantId", {
@@ -293,7 +296,8 @@ Object.defineProperty(exports, "tenantId", {
 });
 
 /**
- * The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+ * The name of the Tenant (Identity v2) or Project (Identity v3)
+ * to login with.
  */
 export declare const tenantName: string | undefined;
 Object.defineProperty(exports, "tenantName", {

@@ -23,8 +23,8 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def allow_reauth(self) -> Optional[bool]:
         """
-        If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
-        Defaults to `true`
+        If set to `false`, OpenStack authorization won't be perfomed
+        automatically, if the initial auth token get expired. Defaults to `true`
         """
         return __config__.get_bool('allowReauth') or _utilities.get_env_bool('OS_ALLOW_REAUTH')
 
@@ -87,8 +87,8 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def delayed_auth(self) -> Optional[bool]:
         """
-        If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
-        to `true`.
+        If set to `false`, OpenStack authorization will be perfomed,
+        every time the service provider client is called. Defaults to `true`.
         """
         return __config__.get_bool('delayedAuth') or _utilities.get_env_bool('OS_DELAYED_AUTH')
 
@@ -123,7 +123,8 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def endpoint_overrides(self) -> Optional[str]:
         """
-        A map of services with an endpoint to override what was from the Keystone catalog
+        A map of services with an endpoint to override what was
+        from the Keystone catalog
         """
         return __config__.get('endpointOverrides')
 
@@ -183,7 +184,8 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def swauth(self) -> Optional[bool]:
         """
-        Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
+        Use Swift's authentication system instead of Keystone. Only used for
+        interaction with Swift.
         """
         return __config__.get_bool('swauth') or _utilities.get_env_bool('OS_SWAUTH')
 
@@ -197,14 +199,16 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def tenant_id(self) -> Optional[str]:
         """
-        The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        The ID of the Tenant (Identity v2) or Project (Identity v3)
+        to login with.
         """
         return __config__.get('tenantId')
 
     @_builtins.property
     def tenant_name(self) -> Optional[str]:
         """
-        The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        The name of the Tenant (Identity v2) or Project (Identity v3)
+        to login with.
         """
         return __config__.get('tenantName')
 

@@ -68,51 +68,51 @@ export class SegmentV2 extends pulumi.CustomResource {
     /**
      * Creation timestamp (RFC3339 format).
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * A description for the segment.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A name for the segment.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The UUID of the network this segment belongs to.
      * Changing this will create a new segment.
      */
-    public readonly networkId!: pulumi.Output<string>;
+    declare public readonly networkId: pulumi.Output<string>;
     /**
      * The network type. Valid values depend on the
      * backend (e.g., `vlan`, `vxlan`, `flat`, `gre`, `geneve`, `local`). Changing
      * this will create a new segment.
      */
-    public readonly networkType!: pulumi.Output<string>;
+    declare public readonly networkType: pulumi.Output<string>;
     /**
      * The name of the physical network. Changing this
      * will create a new segment.
      */
-    public readonly physicalNetwork!: pulumi.Output<string | undefined>;
+    declare public readonly physicalNetwork: pulumi.Output<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron network. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * segment.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The revision number of the segment.
      */
-    public /*out*/ readonly revisionNumber!: pulumi.Output<number>;
+    declare public /*out*/ readonly revisionNumber: pulumi.Output<number>;
     /**
      * A segmentation identifier. Changing is allowed
      * only for `vlan`.
      */
-    public readonly segmentationId!: pulumi.Output<number>;
+    declare public readonly segmentationId: pulumi.Output<number>;
     /**
      * Last update timestamp (RFC3339 format).
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a SegmentV2 resource with the given unique name, arguments, and options.
@@ -127,31 +127,31 @@ export class SegmentV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SegmentV2State | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkId"] = state ? state.networkId : undefined;
-            resourceInputs["networkType"] = state ? state.networkType : undefined;
-            resourceInputs["physicalNetwork"] = state ? state.physicalNetwork : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["revisionNumber"] = state ? state.revisionNumber : undefined;
-            resourceInputs["segmentationId"] = state ? state.segmentationId : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkId"] = state?.networkId;
+            resourceInputs["networkType"] = state?.networkType;
+            resourceInputs["physicalNetwork"] = state?.physicalNetwork;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["revisionNumber"] = state?.revisionNumber;
+            resourceInputs["segmentationId"] = state?.segmentationId;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as SegmentV2Args | undefined;
-            if ((!args || args.networkId === undefined) && !opts.urn) {
+            if (args?.networkId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
-            if ((!args || args.networkType === undefined) && !opts.urn) {
+            if (args?.networkType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkType'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkId"] = args ? args.networkId : undefined;
-            resourceInputs["networkType"] = args ? args.networkType : undefined;
-            resourceInputs["physicalNetwork"] = args ? args.physicalNetwork : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["segmentationId"] = args ? args.segmentationId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkId"] = args?.networkId;
+            resourceInputs["networkType"] = args?.networkType;
+            resourceInputs["physicalNetwork"] = args?.physicalNetwork;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["segmentationId"] = args?.segmentationId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["revisionNumber"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

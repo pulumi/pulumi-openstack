@@ -60,53 +60,53 @@ export class Service extends pulumi.CustomResource {
      * The administrative state of the resource. Can either be up(true) or down(false).
      * Changing this updates the administrative state of the existing service.
      */
-    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
+    declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
     /**
      * The human-readable description for the service.
      * Changing this updates the description of the existing service.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The read-only external (public) IPv4 address that is used for the VPN service.
      */
-    public /*out*/ readonly externalV4Ip!: pulumi.Output<string>;
+    declare public /*out*/ readonly externalV4Ip: pulumi.Output<string>;
     /**
      * The read-only external (public) IPv6 address that is used for the VPN service.
      */
-    public /*out*/ readonly externalV6Ip!: pulumi.Output<string>;
+    declare public /*out*/ readonly externalV6Ip: pulumi.Output<string>;
     /**
      * The name of the service. Changing this updates the name of
      * the existing service.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a VPN service. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * service.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The ID of the router. Changing this creates a new service.
      */
-    public readonly routerId!: pulumi.Output<string>;
+    declare public readonly routerId: pulumi.Output<string>;
     /**
      * Indicates whether IPsec VPN service is currently operational. Values are ACTIVE, DOWN, BUILD, ERROR, PENDING_CREATE, PENDING_UPDATE, or PENDING_DELETE.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * SubnetID is the ID of the subnet. Default is null.
      */
-    public readonly subnetId!: pulumi.Output<string | undefined>;
+    declare public readonly subnetId: pulumi.Output<string | undefined>;
     /**
      * The owner of the service. Required if admin wants to
      * create a service for another project. Changing this creates a new service.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly valueSpecs: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -121,30 +121,30 @@ export class Service extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
-            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["externalV4Ip"] = state ? state.externalV4Ip : undefined;
-            resourceInputs["externalV6Ip"] = state ? state.externalV6Ip : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["routerId"] = state ? state.routerId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
-            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["adminStateUp"] = state?.adminStateUp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["externalV4Ip"] = state?.externalV4Ip;
+            resourceInputs["externalV6Ip"] = state?.externalV6Ip;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["routerId"] = state?.routerId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["valueSpecs"] = state?.valueSpecs;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
-            if ((!args || args.routerId === undefined) && !opts.urn) {
+            if (args?.routerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routerId'");
             }
-            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["routerId"] = args ? args.routerId : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["adminStateUp"] = args?.adminStateUp;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["routerId"] = args?.routerId;
+            resourceInputs["subnetId"] = args?.subnetId;
+            resourceInputs["tenantId"] = args?.tenantId;
+            resourceInputs["valueSpecs"] = args?.valueSpecs;
             resourceInputs["externalV4Ip"] = undefined /*out*/;
             resourceInputs["externalV6Ip"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

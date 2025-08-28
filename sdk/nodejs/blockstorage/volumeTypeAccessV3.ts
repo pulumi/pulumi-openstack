@@ -66,18 +66,18 @@ export class VolumeTypeAccessV3 extends pulumi.CustomResource {
      * ID of the project to give access to. Changing this
      * creates a new resource.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to create the volume. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new quotaset.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * ID of the volume type to give access to. Changing
      * this creates a new resource.
      */
-    public readonly volumeTypeId!: pulumi.Output<string>;
+    declare public readonly volumeTypeId: pulumi.Output<string>;
 
     /**
      * Create a VolumeTypeAccessV3 resource with the given unique name, arguments, and options.
@@ -92,20 +92,20 @@ export class VolumeTypeAccessV3 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeTypeAccessV3State | undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["volumeTypeId"] = state ? state.volumeTypeId : undefined;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["volumeTypeId"] = state?.volumeTypeId;
         } else {
             const args = argsOrState as VolumeTypeAccessV3Args | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.volumeTypeId === undefined) && !opts.urn) {
+            if (args?.volumeTypeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'volumeTypeId'");
             }
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["volumeTypeId"] = args ? args.volumeTypeId : undefined;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["volumeTypeId"] = args?.volumeTypeId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VolumeTypeAccessV3.__pulumiType, name, resourceInputs, opts);

@@ -63,29 +63,29 @@ export class Router extends pulumi.CustomResource {
      * (must be "true" or "false" if provided). Changing this updates the
      * `adminStateUp` of an existing router.
      */
-    public readonly adminStateUp!: pulumi.Output<boolean>;
+    declare public readonly adminStateUp: pulumi.Output<boolean>;
     /**
      * The collection of tags assigned on the router, which have been
      * explicitly and implicitly added.
      */
-    public /*out*/ readonly allTags!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly allTags: pulumi.Output<string[]>;
     /**
      * An availability zone is used to make
      * network resources highly available. Used for resources with high availability
      * so that they are scheduled on different availability zones. Changing this
      * creates a new router.
      */
-    public readonly availabilityZoneHints!: pulumi.Output<string[]>;
+    declare public readonly availabilityZoneHints: pulumi.Output<string[]>;
     /**
      * Human-readable description for the router.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Indicates whether or not to create a
      * distributed router. The default policy setting in Neutron restricts
      * usage of this property to administrative users only.
      */
-    public readonly distributed!: pulumi.Output<boolean>;
+    declare public readonly distributed: pulumi.Output<boolean>;
     /**
      * Enable Source NAT for the router. Valid values are
      * "true" or "false". An `externalNetworkId` has to be set in order to
@@ -93,27 +93,27 @@ export class Router extends pulumi.CustomResource {
      * Setting this value **requires** an **ext-gw-mode** extension to be enabled
      * in OpenStack Neutron.
      */
-    public readonly enableSnat!: pulumi.Output<boolean>;
+    declare public readonly enableSnat: pulumi.Output<boolean>;
     /**
      * An external fixed IP for the router. This
      * can be repeated. The structure is described below. An `externalNetworkId`
      * has to be set in order to set this property. Changing this updates the
      * external fixed IPs of the router.
      */
-    public readonly externalFixedIps!: pulumi.Output<outputs.networking.RouterExternalFixedIp[]>;
+    declare public readonly externalFixedIps: pulumi.Output<outputs.networking.RouterExternalFixedIp[]>;
     /**
      * The network UUID of an external gateway
      * for the router. A router with an external gateway is required if any
      * compute instances or load balancers will be using floating IPs. Changing
      * this updates the external gateway of the router.
      */
-    public readonly externalNetworkId!: pulumi.Output<string>;
+    declare public readonly externalNetworkId: pulumi.Output<string>;
     /**
      * The QoS policy UUID that will be applied
      * on the external gateway for the router. Changing this updates the external
      * gateway of the router.
      */
-    public readonly externalQosPolicyId!: pulumi.Output<string>;
+    declare public readonly externalQosPolicyId: pulumi.Output<string>;
     /**
      * A list of external subnet IDs to try over
      * each to obtain a fixed IP for the router. If a subnet ID in a list has
@@ -121,37 +121,37 @@ export class Router extends pulumi.CustomResource {
      * used only during the router creation and allows to set only one external fixed
      * IP. Conflicts with an `externalFixedIp` argument.
      */
-    public readonly externalSubnetIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly externalSubnetIds: pulumi.Output<string[] | undefined>;
     /**
      * A unique name for the router. Changing this
      * updates the `name` of an existing router.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a router. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * router.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * A set of string tags for the router.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The owner of the floating IP. Required if admin wants
      * to create a router for another tenant. Changing this creates a new router.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
     /**
      * Map of additional driver-specific options.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly valueSpecs: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Map of additional vendor-specific options.
      * Supported options are described below.
      */
-    public readonly vendorOptions!: pulumi.Output<outputs.networking.RouterVendorOptions | undefined>;
+    declare public readonly vendorOptions: pulumi.Output<outputs.networking.RouterVendorOptions | undefined>;
 
     /**
      * Create a Router resource with the given unique name, arguments, and options.
@@ -166,39 +166,39 @@ export class Router extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterState | undefined;
-            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            resourceInputs["allTags"] = state ? state.allTags : undefined;
-            resourceInputs["availabilityZoneHints"] = state ? state.availabilityZoneHints : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["distributed"] = state ? state.distributed : undefined;
-            resourceInputs["enableSnat"] = state ? state.enableSnat : undefined;
-            resourceInputs["externalFixedIps"] = state ? state.externalFixedIps : undefined;
-            resourceInputs["externalNetworkId"] = state ? state.externalNetworkId : undefined;
-            resourceInputs["externalQosPolicyId"] = state ? state.externalQosPolicyId : undefined;
-            resourceInputs["externalSubnetIds"] = state ? state.externalSubnetIds : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
-            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
-            resourceInputs["vendorOptions"] = state ? state.vendorOptions : undefined;
+            resourceInputs["adminStateUp"] = state?.adminStateUp;
+            resourceInputs["allTags"] = state?.allTags;
+            resourceInputs["availabilityZoneHints"] = state?.availabilityZoneHints;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["distributed"] = state?.distributed;
+            resourceInputs["enableSnat"] = state?.enableSnat;
+            resourceInputs["externalFixedIps"] = state?.externalFixedIps;
+            resourceInputs["externalNetworkId"] = state?.externalNetworkId;
+            resourceInputs["externalQosPolicyId"] = state?.externalQosPolicyId;
+            resourceInputs["externalSubnetIds"] = state?.externalSubnetIds;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["valueSpecs"] = state?.valueSpecs;
+            resourceInputs["vendorOptions"] = state?.vendorOptions;
         } else {
             const args = argsOrState as RouterArgs | undefined;
-            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            resourceInputs["availabilityZoneHints"] = args ? args.availabilityZoneHints : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["distributed"] = args ? args.distributed : undefined;
-            resourceInputs["enableSnat"] = args ? args.enableSnat : undefined;
-            resourceInputs["externalFixedIps"] = args ? args.externalFixedIps : undefined;
-            resourceInputs["externalNetworkId"] = args ? args.externalNetworkId : undefined;
-            resourceInputs["externalQosPolicyId"] = args ? args.externalQosPolicyId : undefined;
-            resourceInputs["externalSubnetIds"] = args ? args.externalSubnetIds : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
-            resourceInputs["vendorOptions"] = args ? args.vendorOptions : undefined;
+            resourceInputs["adminStateUp"] = args?.adminStateUp;
+            resourceInputs["availabilityZoneHints"] = args?.availabilityZoneHints;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["distributed"] = args?.distributed;
+            resourceInputs["enableSnat"] = args?.enableSnat;
+            resourceInputs["externalFixedIps"] = args?.externalFixedIps;
+            resourceInputs["externalNetworkId"] = args?.externalNetworkId;
+            resourceInputs["externalQosPolicyId"] = args?.externalQosPolicyId;
+            resourceInputs["externalSubnetIds"] = args?.externalSubnetIds;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tenantId"] = args?.tenantId;
+            resourceInputs["valueSpecs"] = args?.valueSpecs;
+            resourceInputs["vendorOptions"] = args?.vendorOptions;
             resourceInputs["allTags"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -69,29 +69,29 @@ export class FlavorV2 extends pulumi.CustomResource {
      * The description of the flavor. Changing this
      * updates the existing flavor.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the flavor is enabled or not. Defaults to `true`.
      * Changing this updates the existing flavor.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * The flavorProfileId that the flavor
      * will use. Changing this creates a new flavor.
      */
-    public readonly flavorProfileId!: pulumi.Output<string>;
+    declare public readonly flavorProfileId: pulumi.Output<string>;
     /**
      * Name of the flavor. Changing this updates the existing
      * flavor.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an LB member. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * LB flavor.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a FlavorV2 resource with the given unique name, arguments, and options.
@@ -106,21 +106,21 @@ export class FlavorV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlavorV2State | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["flavorProfileId"] = state ? state.flavorProfileId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["flavorProfileId"] = state?.flavorProfileId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as FlavorV2Args | undefined;
-            if ((!args || args.flavorProfileId === undefined) && !opts.urn) {
+            if (args?.flavorProfileId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'flavorProfileId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["flavorProfileId"] = args ? args.flavorProfileId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["flavorProfileId"] = args?.flavorProfileId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FlavorV2.__pulumiType, name, resourceInputs, opts);

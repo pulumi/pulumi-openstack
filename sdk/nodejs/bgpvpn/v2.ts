@@ -64,71 +64,71 @@ export class V2 extends pulumi.CustomResource {
      * A list of additional Route Targets that will be
      * used for export.
      */
-    public readonly exportTargets!: pulumi.Output<string[]>;
+    declare public readonly exportTargets: pulumi.Output<string[]>;
     /**
      * A list of additional Route Targets that will be
      * imported.
      */
-    public readonly importTargets!: pulumi.Output<string[]>;
+    declare public readonly importTargets: pulumi.Output<string[]>;
     /**
      * The default BGP LOCAL\_PREF of routes that will be
      * advertised to the BGP VPN, unless overridden per-route.
      */
-    public readonly localPref!: pulumi.Output<number | undefined>;
+    declare public readonly localPref: pulumi.Output<number | undefined>;
     /**
      * The name of the BGP VPN. Changing this updates the name of
      * the existing BGP VPN.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A list of network IDs that are associated with the BGP VPN.
      */
-    public /*out*/ readonly networks!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly networks: pulumi.Output<string[]>;
     /**
      * A list of port IDs that are associated with the BGP VPN.
      */
-    public /*out*/ readonly ports!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly ports: pulumi.Output<string[]>;
     /**
      * The ID of the project that owns the BGPVPN. Only
      * administrative and users with `advsvc` role can specify a project ID other
      * than their own. Changing this creates a new BGP VPN.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a BGP VPN service. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * BGP VPN.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * A list of route distinguisher strings. If
      * specified, one of these RDs will be used to advertise VPN routes.
      */
-    public readonly routeDistinguishers!: pulumi.Output<string[]>;
+    declare public readonly routeDistinguishers: pulumi.Output<string[]>;
     /**
      * A list of Route Targets that will be both
      * imported and used for export.
      */
-    public readonly routeTargets!: pulumi.Output<string[]>;
+    declare public readonly routeTargets: pulumi.Output<string[]>;
     /**
      * A list of router IDs that are associated with the BGP VPN.
      */
-    public /*out*/ readonly routers!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly routers: pulumi.Output<string[]>;
     /**
      * Indicates whether the BGP VPN is shared across projects.
      */
-    public /*out*/ readonly shared!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly shared: pulumi.Output<boolean>;
     /**
      * The type of the BGP VPN (either `l2` or `l3`). Changing this
      * creates a new BGP VPN. Defaults to `l3`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The globally-assigned VXLAN VNI for the BGP VPN. Changing
      * this creates a new BGP VPN.
      */
-    public readonly vni!: pulumi.Output<number | undefined>;
+    declare public readonly vni: pulumi.Output<number | undefined>;
 
     /**
      * Create a V2 resource with the given unique name, arguments, and options.
@@ -143,32 +143,32 @@ export class V2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V2State | undefined;
-            resourceInputs["exportTargets"] = state ? state.exportTargets : undefined;
-            resourceInputs["importTargets"] = state ? state.importTargets : undefined;
-            resourceInputs["localPref"] = state ? state.localPref : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networks"] = state ? state.networks : undefined;
-            resourceInputs["ports"] = state ? state.ports : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["routeDistinguishers"] = state ? state.routeDistinguishers : undefined;
-            resourceInputs["routeTargets"] = state ? state.routeTargets : undefined;
-            resourceInputs["routers"] = state ? state.routers : undefined;
-            resourceInputs["shared"] = state ? state.shared : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["vni"] = state ? state.vni : undefined;
+            resourceInputs["exportTargets"] = state?.exportTargets;
+            resourceInputs["importTargets"] = state?.importTargets;
+            resourceInputs["localPref"] = state?.localPref;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networks"] = state?.networks;
+            resourceInputs["ports"] = state?.ports;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["routeDistinguishers"] = state?.routeDistinguishers;
+            resourceInputs["routeTargets"] = state?.routeTargets;
+            resourceInputs["routers"] = state?.routers;
+            resourceInputs["shared"] = state?.shared;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["vni"] = state?.vni;
         } else {
             const args = argsOrState as V2Args | undefined;
-            resourceInputs["exportTargets"] = args ? args.exportTargets : undefined;
-            resourceInputs["importTargets"] = args ? args.importTargets : undefined;
-            resourceInputs["localPref"] = args ? args.localPref : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["routeDistinguishers"] = args ? args.routeDistinguishers : undefined;
-            resourceInputs["routeTargets"] = args ? args.routeTargets : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["vni"] = args ? args.vni : undefined;
+            resourceInputs["exportTargets"] = args?.exportTargets;
+            resourceInputs["importTargets"] = args?.importTargets;
+            resourceInputs["localPref"] = args?.localPref;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["routeDistinguishers"] = args?.routeDistinguishers;
+            resourceInputs["routeTargets"] = args?.routeTargets;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["vni"] = args?.vni;
             resourceInputs["networks"] = undefined /*out*/;
             resourceInputs["ports"] = undefined /*out*/;
             resourceInputs["routers"] = undefined /*out*/;

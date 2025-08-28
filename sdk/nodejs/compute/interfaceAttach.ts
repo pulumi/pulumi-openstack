@@ -117,27 +117,27 @@ export class InterfaceAttach extends pulumi.CustomResource {
      * An IP address to assosciate with the port.
      * _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
      */
-    public readonly fixedIp!: pulumi.Output<string>;
+    declare public readonly fixedIp: pulumi.Output<string>;
     /**
      * The ID of the Instance to attach the Port or Network to.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The ID of the Network to attach to an Instance. A port will be created automatically.
      * _NOTE_: This option and `portId` are mutually exclusive.
      */
-    public readonly networkId!: pulumi.Output<string>;
+    declare public readonly networkId: pulumi.Output<string>;
     /**
      * The ID of the Port to attach to an Instance.
      * _NOTE_: This option and `networkId` are mutually exclusive.
      */
-    public readonly portId!: pulumi.Output<string>;
+    declare public readonly portId: pulumi.Output<string>;
     /**
      * The region in which to create the interface attachment.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new attachment.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a InterfaceAttach resource with the given unique name, arguments, and options.
@@ -152,21 +152,21 @@ export class InterfaceAttach extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InterfaceAttachState | undefined;
-            resourceInputs["fixedIp"] = state ? state.fixedIp : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["networkId"] = state ? state.networkId : undefined;
-            resourceInputs["portId"] = state ? state.portId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["fixedIp"] = state?.fixedIp;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["networkId"] = state?.networkId;
+            resourceInputs["portId"] = state?.portId;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as InterfaceAttachArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["fixedIp"] = args ? args.fixedIp : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["networkId"] = args ? args.networkId : undefined;
-            resourceInputs["portId"] = args ? args.portId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["fixedIp"] = args?.fixedIp;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["networkId"] = args?.networkId;
+            resourceInputs["portId"] = args?.portId;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InterfaceAttach.__pulumiType, name, resourceInputs, opts);

@@ -80,90 +80,90 @@ export class Share extends pulumi.CustomResource {
      * The map of metadata, assigned on the share, which has been
      * explicitly and implicitly added.
      */
-    public /*out*/ readonly allMetadata!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly allMetadata: pulumi.Output<{[key: string]: string}>;
     /**
      * The share availability zone. Changing this creates a
      * new share.
      */
-    public readonly availabilityZone!: pulumi.Output<string>;
+    declare public readonly availabilityZone: pulumi.Output<string>;
     /**
      * The human-readable description for the share.
      * Changing this updates the description of the existing share.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A list of export locations. For example, when a share server
      * has more than one network interface, it can have multiple export locations.
      */
-    public /*out*/ readonly exportLocations!: pulumi.Output<outputs.sharedfilesystem.ShareExportLocation[]>;
+    declare public /*out*/ readonly exportLocations: pulumi.Output<outputs.sharedfilesystem.ShareExportLocation[]>;
     /**
      * Indicates whether a share has replicas or not.
      */
-    public /*out*/ readonly hasReplicas!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly hasReplicas: pulumi.Output<boolean>;
     /**
      * The share host name.
      */
-    public /*out*/ readonly host!: pulumi.Output<string>;
+    declare public /*out*/ readonly host: pulumi.Output<string>;
     /**
      * The level of visibility for the share. Set to true to make
      * share public. Set to false to make it private. Default value is false. Changing this
      * updates the existing share.
      */
-    public readonly isPublic!: pulumi.Output<boolean | undefined>;
+    declare public readonly isPublic: pulumi.Output<boolean | undefined>;
     /**
      * One or more metadata key and value pairs as a dictionary of
      * strings.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the share. Changing this updates the name
      * of the existing share.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The owner of the Share.
      */
-    public /*out*/ readonly projectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Shared File System
      * client. A Shared File System client is needed to create a share. Changing
      * this creates a new share.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The share replication type.
      */
-    public /*out*/ readonly replicationType!: pulumi.Output<string>;
+    declare public /*out*/ readonly replicationType: pulumi.Output<string>;
     /**
      * The UUID of a share network where the share server exists
      * or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
      * the shareNetworkId value from the snapshot is used. Changing this creates a new share.
      */
-    public readonly shareNetworkId!: pulumi.Output<string>;
+    declare public readonly shareNetworkId: pulumi.Output<string>;
     /**
      * The share protocol - can either be NFS, CIFS,
      * CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
      */
-    public readonly shareProto!: pulumi.Output<string>;
+    declare public readonly shareProto: pulumi.Output<string>;
     /**
      * The UUID of the share server.
      */
-    public /*out*/ readonly shareServerId!: pulumi.Output<string>;
+    declare public /*out*/ readonly shareServerId: pulumi.Output<string>;
     /**
      * The share type name. If you omit this parameter, the default
      * share type is used.
      */
-    public readonly shareType!: pulumi.Output<string>;
+    declare public readonly shareType: pulumi.Output<string>;
     /**
      * The share size, in GBs. The requested share size cannot be greater
      * than the allowed GB quota. Changing this resizes the existing share.
      */
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * The UUID of the share's base snapshot. Changing this creates
      * a new share.
      */
-    public readonly snapshotId!: pulumi.Output<string | undefined>;
+    declare public readonly snapshotId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Share resource with the given unique name, arguments, and options.
@@ -178,43 +178,43 @@ export class Share extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ShareState | undefined;
-            resourceInputs["allMetadata"] = state ? state.allMetadata : undefined;
-            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["exportLocations"] = state ? state.exportLocations : undefined;
-            resourceInputs["hasReplicas"] = state ? state.hasReplicas : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["isPublic"] = state ? state.isPublic : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["replicationType"] = state ? state.replicationType : undefined;
-            resourceInputs["shareNetworkId"] = state ? state.shareNetworkId : undefined;
-            resourceInputs["shareProto"] = state ? state.shareProto : undefined;
-            resourceInputs["shareServerId"] = state ? state.shareServerId : undefined;
-            resourceInputs["shareType"] = state ? state.shareType : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
+            resourceInputs["allMetadata"] = state?.allMetadata;
+            resourceInputs["availabilityZone"] = state?.availabilityZone;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["exportLocations"] = state?.exportLocations;
+            resourceInputs["hasReplicas"] = state?.hasReplicas;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["isPublic"] = state?.isPublic;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["replicationType"] = state?.replicationType;
+            resourceInputs["shareNetworkId"] = state?.shareNetworkId;
+            resourceInputs["shareProto"] = state?.shareProto;
+            resourceInputs["shareServerId"] = state?.shareServerId;
+            resourceInputs["shareType"] = state?.shareType;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["snapshotId"] = state?.snapshotId;
         } else {
             const args = argsOrState as ShareArgs | undefined;
-            if ((!args || args.shareProto === undefined) && !opts.urn) {
+            if (args?.shareProto === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shareProto'");
             }
-            if ((!args || args.size === undefined) && !opts.urn) {
+            if (args?.size === undefined && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["isPublic"] = args ? args.isPublic : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["shareNetworkId"] = args ? args.shareNetworkId : undefined;
-            resourceInputs["shareProto"] = args ? args.shareProto : undefined;
-            resourceInputs["shareType"] = args ? args.shareType : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
+            resourceInputs["availabilityZone"] = args?.availabilityZone;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["isPublic"] = args?.isPublic;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["shareNetworkId"] = args?.shareNetworkId;
+            resourceInputs["shareProto"] = args?.shareProto;
+            resourceInputs["shareType"] = args?.shareType;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["snapshotId"] = args?.snapshotId;
             resourceInputs["allMetadata"] = undefined /*out*/;
             resourceInputs["exportLocations"] = undefined /*out*/;
             resourceInputs["hasReplicas"] = undefined /*out*/;

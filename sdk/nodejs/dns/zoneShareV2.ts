@@ -67,22 +67,22 @@ export class ZoneShareV2 extends pulumi.CustomResource {
      * `X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target
      * project).
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 DNS client. If
      * omitted, the `region` argument of the provider is used. Changing this creates
      * a new DNS zone share.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The ID of the target project with which the
      * DNS zone will be shared.
      */
-    public readonly targetProjectId!: pulumi.Output<string>;
+    declare public readonly targetProjectId: pulumi.Output<string>;
     /**
      * The ID of the DNS zone to be shared.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ZoneShareV2 resource with the given unique name, arguments, and options.
@@ -97,22 +97,22 @@ export class ZoneShareV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneShareV2State | undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["targetProjectId"] = state ? state.targetProjectId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["targetProjectId"] = state?.targetProjectId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ZoneShareV2Args | undefined;
-            if ((!args || args.targetProjectId === undefined) && !opts.urn) {
+            if (args?.targetProjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetProjectId'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["targetProjectId"] = args ? args.targetProjectId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["targetProjectId"] = args?.targetProjectId;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZoneShareV2.__pulumiType, name, resourceInputs, opts);

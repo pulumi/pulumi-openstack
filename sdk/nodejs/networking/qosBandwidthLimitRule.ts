@@ -67,27 +67,27 @@ export class QosBandwidthLimitRule extends pulumi.CustomResource {
      * The direction of traffic. Defaults to "egress". Changing this updates the direction of the
      * existing QoS bandwidth limit rule.
      */
-    public readonly direction!: pulumi.Output<string | undefined>;
+    declare public readonly direction: pulumi.Output<string | undefined>;
     /**
      * The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
      * maximum burst size in kilobits of the existing QoS bandwidth limit rule.
      */
-    public readonly maxBurstKbps!: pulumi.Output<number | undefined>;
+    declare public readonly maxBurstKbps: pulumi.Output<number | undefined>;
     /**
      * The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
      * maximum kilobits per second of the existing QoS bandwidth limit rule.
      */
-    public readonly maxKbps!: pulumi.Output<number>;
+    declare public readonly maxKbps: pulumi.Output<number>;
     /**
      * The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
      */
-    public readonly qosPolicyId!: pulumi.Output<string>;
+    declare public readonly qosPolicyId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a QosBandwidthLimitRule resource with the given unique name, arguments, and options.
@@ -102,24 +102,24 @@ export class QosBandwidthLimitRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QosBandwidthLimitRuleState | undefined;
-            resourceInputs["direction"] = state ? state.direction : undefined;
-            resourceInputs["maxBurstKbps"] = state ? state.maxBurstKbps : undefined;
-            resourceInputs["maxKbps"] = state ? state.maxKbps : undefined;
-            resourceInputs["qosPolicyId"] = state ? state.qosPolicyId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["direction"] = state?.direction;
+            resourceInputs["maxBurstKbps"] = state?.maxBurstKbps;
+            resourceInputs["maxKbps"] = state?.maxKbps;
+            resourceInputs["qosPolicyId"] = state?.qosPolicyId;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as QosBandwidthLimitRuleArgs | undefined;
-            if ((!args || args.maxKbps === undefined) && !opts.urn) {
+            if (args?.maxKbps === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maxKbps'");
             }
-            if ((!args || args.qosPolicyId === undefined) && !opts.urn) {
+            if (args?.qosPolicyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'qosPolicyId'");
             }
-            resourceInputs["direction"] = args ? args.direction : undefined;
-            resourceInputs["maxBurstKbps"] = args ? args.maxBurstKbps : undefined;
-            resourceInputs["maxKbps"] = args ? args.maxKbps : undefined;
-            resourceInputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["direction"] = args?.direction;
+            resourceInputs["maxBurstKbps"] = args?.maxBurstKbps;
+            resourceInputs["maxKbps"] = args?.maxKbps;
+            resourceInputs["qosPolicyId"] = args?.qosPolicyId;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(QosBandwidthLimitRule.__pulumiType, name, resourceInputs, opts);

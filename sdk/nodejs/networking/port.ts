@@ -147,89 +147,89 @@ export class Port extends pulumi.CustomResource {
      * (must be `true` or `false` if provided). Changing this updates the
      * `adminStateUp` of an existing port.
      */
-    public readonly adminStateUp!: pulumi.Output<boolean>;
+    declare public readonly adminStateUp: pulumi.Output<boolean>;
     /**
      * The collection of Fixed IP addresses on the port in the
      * order returned by the Network v2 API.
      */
-    public /*out*/ readonly allFixedIps!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly allFixedIps: pulumi.Output<string[]>;
     /**
      * The collection of Security Group IDs on the port
      * which have been explicitly and implicitly added.
      */
-    public /*out*/ readonly allSecurityGroupIds!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly allSecurityGroupIds: pulumi.Output<string[]>;
     /**
      * The collection of tags assigned on the port, which have been
      * explicitly and implicitly added.
      */
-    public /*out*/ readonly allTags!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly allTags: pulumi.Output<string[]>;
     /**
      * An IP/MAC Address pair of additional IP
      * addresses that can be active on this port. The structure is described
      * below.
      */
-    public readonly allowedAddressPairs!: pulumi.Output<outputs.networking.PortAllowedAddressPair[] | undefined>;
+    declare public readonly allowedAddressPairs: pulumi.Output<outputs.networking.PortAllowedAddressPair[] | undefined>;
     /**
      * The port binding allows to specify binding information
      * for the port. The structure is described below.
      */
-    public readonly binding!: pulumi.Output<outputs.networking.PortBinding>;
+    declare public readonly binding: pulumi.Output<outputs.networking.PortBinding>;
     /**
      * Human-readable description of the port. Changing
      * this updates the `description` of an existing port.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the device attached to the port. Changing this
      * creates a new port.
      */
-    public readonly deviceId!: pulumi.Output<string>;
+    declare public readonly deviceId: pulumi.Output<string>;
     /**
      * The device owner of the port. Changing this creates
      * a new port.
      */
-    public readonly deviceOwner!: pulumi.Output<string>;
+    declare public readonly deviceOwner: pulumi.Output<string>;
     /**
      * The list of maps representing port DNS assignments.
      */
-    public /*out*/ readonly dnsAssignments!: pulumi.Output<{[key: string]: string}[]>;
+    declare public /*out*/ readonly dnsAssignments: pulumi.Output<{[key: string]: string}[]>;
     /**
      * The port DNS name. Available, when Neutron DNS extension
      * is enabled.
      */
-    public readonly dnsName!: pulumi.Output<string>;
+    declare public readonly dnsName: pulumi.Output<string>;
     /**
      * An extra DHCP option that needs to be configured
      * on the port. The structure is described below. Can be specified multiple
      * times.
      */
-    public readonly extraDhcpOptions!: pulumi.Output<outputs.networking.PortExtraDhcpOption[] | undefined>;
+    declare public readonly extraDhcpOptions: pulumi.Output<outputs.networking.PortExtraDhcpOption[] | undefined>;
     /**
      * An array of desired IPs for
      * this port. The structure is described below.
      */
-    public readonly fixedIps!: pulumi.Output<outputs.networking.PortFixedIp[] | undefined>;
+    declare public readonly fixedIps: pulumi.Output<outputs.networking.PortFixedIp[] | undefined>;
     /**
      * Specify a specific MAC address for the port. Changing
      * this creates a new port.
      */
-    public readonly macAddress!: pulumi.Output<string>;
+    declare public readonly macAddress: pulumi.Output<string>;
     /**
      * A unique name for the port. Changing this
      * updates the `name` of an existing port.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the network to attach the port to. Changing
      * this creates a new port.
      */
-    public readonly networkId!: pulumi.Output<string>;
+    declare public readonly networkId: pulumi.Output<string>;
     /**
      * Create a port with no fixed
      * IP address. This will also remove any fixed IPs previously set on a port. `true`
      * is the only valid value for this argument.
      */
-    public readonly noFixedIp!: pulumi.Output<boolean | undefined>;
+    declare public readonly noFixedIp: pulumi.Output<boolean | undefined>;
     /**
      * If set to
      * `true`, then no security groups are applied to the port. If set to `false` and
@@ -237,7 +237,7 @@ export class Port extends pulumi.CustomResource {
      * behavior of the Networking service, which is to usually apply the "default"
      * security group.
      */
-    public readonly noSecurityGroups!: pulumi.Output<boolean | undefined>;
+    declare public readonly noSecurityGroups: pulumi.Output<boolean | undefined>;
     /**
      * Whether to explicitly enable or disable
      * port security on the port. Port Security is usually enabled by default, so
@@ -246,38 +246,38 @@ export class Port extends pulumi.CustomResource {
      * security, the port must not have any security groups. Valid values are `true`
      * and `false`.
      */
-    public readonly portSecurityEnabled!: pulumi.Output<boolean>;
+    declare public readonly portSecurityEnabled: pulumi.Output<boolean>;
     /**
      * Reference to the associated QoS policy.
      */
-    public readonly qosPolicyId!: pulumi.Output<string>;
+    declare public readonly qosPolicyId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * port.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * A list
      * of security group IDs to apply to the port. The security groups must be
      * specified by ID and not name (as opposed to how they are configured with
      * the Compute Instance).
      */
-    public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly securityGroupIds: pulumi.Output<string[] | undefined>;
     /**
      * A set of string tags for the port.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The owner of the port. Required if admin wants
      * to create a port for another tenant. Changing this creates a new port.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly valueSpecs: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Port resource with the given unique name, arguments, and options.
@@ -292,57 +292,57 @@ export class Port extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PortState | undefined;
-            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            resourceInputs["allFixedIps"] = state ? state.allFixedIps : undefined;
-            resourceInputs["allSecurityGroupIds"] = state ? state.allSecurityGroupIds : undefined;
-            resourceInputs["allTags"] = state ? state.allTags : undefined;
-            resourceInputs["allowedAddressPairs"] = state ? state.allowedAddressPairs : undefined;
-            resourceInputs["binding"] = state ? state.binding : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["deviceId"] = state ? state.deviceId : undefined;
-            resourceInputs["deviceOwner"] = state ? state.deviceOwner : undefined;
-            resourceInputs["dnsAssignments"] = state ? state.dnsAssignments : undefined;
-            resourceInputs["dnsName"] = state ? state.dnsName : undefined;
-            resourceInputs["extraDhcpOptions"] = state ? state.extraDhcpOptions : undefined;
-            resourceInputs["fixedIps"] = state ? state.fixedIps : undefined;
-            resourceInputs["macAddress"] = state ? state.macAddress : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkId"] = state ? state.networkId : undefined;
-            resourceInputs["noFixedIp"] = state ? state.noFixedIp : undefined;
-            resourceInputs["noSecurityGroups"] = state ? state.noSecurityGroups : undefined;
-            resourceInputs["portSecurityEnabled"] = state ? state.portSecurityEnabled : undefined;
-            resourceInputs["qosPolicyId"] = state ? state.qosPolicyId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
-            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["adminStateUp"] = state?.adminStateUp;
+            resourceInputs["allFixedIps"] = state?.allFixedIps;
+            resourceInputs["allSecurityGroupIds"] = state?.allSecurityGroupIds;
+            resourceInputs["allTags"] = state?.allTags;
+            resourceInputs["allowedAddressPairs"] = state?.allowedAddressPairs;
+            resourceInputs["binding"] = state?.binding;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["deviceId"] = state?.deviceId;
+            resourceInputs["deviceOwner"] = state?.deviceOwner;
+            resourceInputs["dnsAssignments"] = state?.dnsAssignments;
+            resourceInputs["dnsName"] = state?.dnsName;
+            resourceInputs["extraDhcpOptions"] = state?.extraDhcpOptions;
+            resourceInputs["fixedIps"] = state?.fixedIps;
+            resourceInputs["macAddress"] = state?.macAddress;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkId"] = state?.networkId;
+            resourceInputs["noFixedIp"] = state?.noFixedIp;
+            resourceInputs["noSecurityGroups"] = state?.noSecurityGroups;
+            resourceInputs["portSecurityEnabled"] = state?.portSecurityEnabled;
+            resourceInputs["qosPolicyId"] = state?.qosPolicyId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["valueSpecs"] = state?.valueSpecs;
         } else {
             const args = argsOrState as PortArgs | undefined;
-            if ((!args || args.networkId === undefined) && !opts.urn) {
+            if (args?.networkId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
-            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            resourceInputs["allowedAddressPairs"] = args ? args.allowedAddressPairs : undefined;
-            resourceInputs["binding"] = args ? args.binding : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["deviceId"] = args ? args.deviceId : undefined;
-            resourceInputs["deviceOwner"] = args ? args.deviceOwner : undefined;
-            resourceInputs["dnsName"] = args ? args.dnsName : undefined;
-            resourceInputs["extraDhcpOptions"] = args ? args.extraDhcpOptions : undefined;
-            resourceInputs["fixedIps"] = args ? args.fixedIps : undefined;
-            resourceInputs["macAddress"] = args ? args.macAddress : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkId"] = args ? args.networkId : undefined;
-            resourceInputs["noFixedIp"] = args ? args.noFixedIp : undefined;
-            resourceInputs["noSecurityGroups"] = args ? args.noSecurityGroups : undefined;
-            resourceInputs["portSecurityEnabled"] = args ? args.portSecurityEnabled : undefined;
-            resourceInputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["adminStateUp"] = args?.adminStateUp;
+            resourceInputs["allowedAddressPairs"] = args?.allowedAddressPairs;
+            resourceInputs["binding"] = args?.binding;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["deviceId"] = args?.deviceId;
+            resourceInputs["deviceOwner"] = args?.deviceOwner;
+            resourceInputs["dnsName"] = args?.dnsName;
+            resourceInputs["extraDhcpOptions"] = args?.extraDhcpOptions;
+            resourceInputs["fixedIps"] = args?.fixedIps;
+            resourceInputs["macAddress"] = args?.macAddress;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkId"] = args?.networkId;
+            resourceInputs["noFixedIp"] = args?.noFixedIp;
+            resourceInputs["noSecurityGroups"] = args?.noSecurityGroups;
+            resourceInputs["portSecurityEnabled"] = args?.portSecurityEnabled;
+            resourceInputs["qosPolicyId"] = args?.qosPolicyId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tenantId"] = args?.tenantId;
+            resourceInputs["valueSpecs"] = args?.valueSpecs;
             resourceInputs["allFixedIps"] = undefined /*out*/;
             resourceInputs["allSecurityGroupIds"] = undefined /*out*/;
             resourceInputs["allTags"] = undefined /*out*/;

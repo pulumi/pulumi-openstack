@@ -80,17 +80,17 @@ export class UserMembershipV3 extends pulumi.CustomResource {
      * The UUID of group to which the user will be added.
      * Changing this creates a new user membership.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V3 Identity client.
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new user membership.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The UUID of user to use. Changing this creates a new user membership.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a UserMembershipV3 resource with the given unique name, arguments, and options.
@@ -105,20 +105,20 @@ export class UserMembershipV3 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserMembershipV3State | undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as UserMembershipV3Args | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UserMembershipV3.__pulumiType, name, resourceInputs, opts);

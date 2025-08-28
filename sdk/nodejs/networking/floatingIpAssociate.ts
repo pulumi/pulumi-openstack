@@ -58,16 +58,16 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
         return obj['__pulumiType'] === FloatingIpAssociate.__pulumiType;
     }
 
-    public readonly fixedIp!: pulumi.Output<string>;
+    declare public readonly fixedIp: pulumi.Output<string>;
     /**
      * IP Address of an existing floating IP.
      */
-    public readonly floatingIp!: pulumi.Output<string>;
+    declare public readonly floatingIp: pulumi.Output<string>;
     /**
      * ID of an existing port with at least one IP address to
      * associate with this floating IP.
      */
-    public readonly portId!: pulumi.Output<string>;
+    declare public readonly portId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a floating IP that can be used with
@@ -75,7 +75,7 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
      * `region` argument of the provider is used. Changing this creates a new
      * floating IP (which may or may not have a different address).
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a FloatingIpAssociate resource with the given unique name, arguments, and options.
@@ -90,22 +90,22 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FloatingIpAssociateState | undefined;
-            resourceInputs["fixedIp"] = state ? state.fixedIp : undefined;
-            resourceInputs["floatingIp"] = state ? state.floatingIp : undefined;
-            resourceInputs["portId"] = state ? state.portId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["fixedIp"] = state?.fixedIp;
+            resourceInputs["floatingIp"] = state?.floatingIp;
+            resourceInputs["portId"] = state?.portId;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as FloatingIpAssociateArgs | undefined;
-            if ((!args || args.floatingIp === undefined) && !opts.urn) {
+            if (args?.floatingIp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'floatingIp'");
             }
-            if ((!args || args.portId === undefined) && !opts.urn) {
+            if (args?.portId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'portId'");
             }
-            resourceInputs["fixedIp"] = args ? args.fixedIp : undefined;
-            resourceInputs["floatingIp"] = args ? args.floatingIp : undefined;
-            resourceInputs["portId"] = args ? args.portId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["fixedIp"] = args?.fixedIp;
+            resourceInputs["floatingIp"] = args?.floatingIp;
+            resourceInputs["portId"] = args?.portId;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FloatingIpAssociate.__pulumiType, name, resourceInputs, opts);

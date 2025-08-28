@@ -87,49 +87,49 @@ export class GroupV2 extends pulumi.CustomResource {
      * group (must be "true" or "false" if provided - defaults to "true").
      * Changing this updates the `adminStateUp` of an existing firewall group.
      */
-    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
+    declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
     /**
      * A description for the firewall group. Changing this
      * updates the `description` of an existing firewall group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The egress firewall policy resource
      * id for the firewall group. Changing this updates the
      * `egressFirewallPolicyId` of an existing firewall group.
      */
-    public readonly egressFirewallPolicyId!: pulumi.Output<string | undefined>;
+    declare public readonly egressFirewallPolicyId: pulumi.Output<string | undefined>;
     /**
      * The ingress firewall policy resource
      * id for the firewall group. Changing this updates the
      * `ingressFirewallPolicyId` of an existing firewall group.
      */
-    public readonly ingressFirewallPolicyId!: pulumi.Output<string | undefined>;
+    declare public readonly ingressFirewallPolicyId: pulumi.Output<string | undefined>;
     /**
      * A name for the firewall group. Changing this
      * updates the `name` of an existing firewall.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Port(s) to associate this firewall group
      * with. Must be a list of strings. Changing this updates the associated ports
      * of an existing firewall group.
      */
-    public readonly ports!: pulumi.Output<string[] | undefined>;
+    declare public readonly ports: pulumi.Output<string[] | undefined>;
     /**
      * This argument conflicts and  is interchangeable
      * with `tenantId`. The owner of the firewall group. Required if admin wants
      * to create a firewall group for another project. Changing this creates a new
      * firewall group.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the v2 networking client.
      * A networking client is needed to create a firewall group. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * firewall group.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Sharing status of the firewall group (must be "true"
      * or "false" if provided). If this is "true" the firewall group is visible to,
@@ -137,18 +137,18 @@ export class GroupV2 extends pulumi.CustomResource {
      * `shared` status of an existing firewall group. Only administrative users
      * can specify if the firewall group should be shared.
      */
-    public readonly shared!: pulumi.Output<boolean | undefined>;
+    declare public readonly shared: pulumi.Output<boolean | undefined>;
     /**
      * The status of the firewall group.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * This argument conflicts and is interchangeable with
      * `projectId`. The owner of the firewall group. Required if admin wants to
      * create a firewall group for another tenant. Changing this creates a new
      * firewall group.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
 
     /**
      * Create a GroupV2 resource with the given unique name, arguments, and options.
@@ -163,29 +163,29 @@ export class GroupV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupV2State | undefined;
-            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["egressFirewallPolicyId"] = state ? state.egressFirewallPolicyId : undefined;
-            resourceInputs["ingressFirewallPolicyId"] = state ? state.ingressFirewallPolicyId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["ports"] = state ? state.ports : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["shared"] = state ? state.shared : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["adminStateUp"] = state?.adminStateUp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["egressFirewallPolicyId"] = state?.egressFirewallPolicyId;
+            resourceInputs["ingressFirewallPolicyId"] = state?.ingressFirewallPolicyId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["ports"] = state?.ports;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["shared"] = state?.shared;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tenantId"] = state?.tenantId;
         } else {
             const args = argsOrState as GroupV2Args | undefined;
-            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["egressFirewallPolicyId"] = args ? args.egressFirewallPolicyId : undefined;
-            resourceInputs["ingressFirewallPolicyId"] = args ? args.ingressFirewallPolicyId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["ports"] = args ? args.ports : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["shared"] = args ? args.shared : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["adminStateUp"] = args?.adminStateUp;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["egressFirewallPolicyId"] = args?.egressFirewallPolicyId;
+            resourceInputs["ingressFirewallPolicyId"] = args?.ingressFirewallPolicyId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["ports"] = args?.ports;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["shared"] = args?.shared;
+            resourceInputs["tenantId"] = args?.tenantId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

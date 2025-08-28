@@ -60,16 +60,16 @@ export class Database extends pulumi.CustomResource {
     /**
      * The ID for the database instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * A unique name for the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region in which to create the database. Changing
      * this creates a new database.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -84,17 +84,17 @@ export class Database extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Database.__pulumiType, name, resourceInputs, opts);

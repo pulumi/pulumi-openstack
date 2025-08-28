@@ -61,70 +61,70 @@ export class Member extends pulumi.CustomResource {
      * The IP address of the member to receive traffic from
      * the load balancer. Changing this creates a new member.
      */
-    public readonly address!: pulumi.Output<string>;
+    declare public readonly address: pulumi.Output<string>;
     /**
      * The administrative state of the member.
      * A valid value is true (UP) or false (DOWN). Defaults to true.
      */
-    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
+    declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
     /**
      * Boolean that indicates whether that member works as a backup or not. Available 
      * only for Octavia >= 2.1.
      */
-    public readonly backup!: pulumi.Output<boolean | undefined>;
+    declare public readonly backup: pulumi.Output<boolean | undefined>;
     /**
      * An alternate IP address used for health monitoring a backend member.
      * Available only for Octavia
      */
-    public readonly monitorAddress!: pulumi.Output<string | undefined>;
+    declare public readonly monitorAddress: pulumi.Output<string | undefined>;
     /**
      * An alternate protocol port used for health monitoring a backend member.
      * Available only for Octavia
      */
-    public readonly monitorPort!: pulumi.Output<number | undefined>;
+    declare public readonly monitorPort: pulumi.Output<number | undefined>;
     /**
      * Human-readable name for the member.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The id of the pool that this member will be assigned
      * to. Changing this creates a new member.
      */
-    public readonly poolId!: pulumi.Output<string>;
+    declare public readonly poolId: pulumi.Output<string>;
     /**
      * The port on which to listen for client traffic.
      * Changing this creates a new member.
      */
-    public readonly protocolPort!: pulumi.Output<number>;
+    declare public readonly protocolPort: pulumi.Output<number>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a member. If omitted, the `region`
      * argument of the provider is used. Changing this creates a new member.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The subnet in which to access the member. Changing
      * this creates a new member.
      */
-    public readonly subnetId!: pulumi.Output<string | undefined>;
+    declare public readonly subnetId: pulumi.Output<string | undefined>;
     /**
      * A list of simple strings assigned to the member.
      * Available only for Octavia >= 2.5.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the member.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new member.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
     /**
      * A positive integer value that indicates the relative
      * portion of traffic that this member should receive from the pool. For
      * example, a member with a weight of 10 receives five times as much traffic
      * as a member with a weight of 2. Defaults to 1.
      */
-    public readonly weight!: pulumi.Output<number>;
+    declare public readonly weight: pulumi.Output<number>;
 
     /**
      * Create a Member resource with the given unique name, arguments, and options.
@@ -139,43 +139,43 @@ export class Member extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MemberState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            resourceInputs["backup"] = state ? state.backup : undefined;
-            resourceInputs["monitorAddress"] = state ? state.monitorAddress : undefined;
-            resourceInputs["monitorPort"] = state ? state.monitorPort : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["poolId"] = state ? state.poolId : undefined;
-            resourceInputs["protocolPort"] = state ? state.protocolPort : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["adminStateUp"] = state?.adminStateUp;
+            resourceInputs["backup"] = state?.backup;
+            resourceInputs["monitorAddress"] = state?.monitorAddress;
+            resourceInputs["monitorPort"] = state?.monitorPort;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["poolId"] = state?.poolId;
+            resourceInputs["protocolPort"] = state?.protocolPort;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as MemberArgs | undefined;
-            if ((!args || args.address === undefined) && !opts.urn) {
+            if (args?.address === undefined && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            if ((!args || args.poolId === undefined) && !opts.urn) {
+            if (args?.poolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'poolId'");
             }
-            if ((!args || args.protocolPort === undefined) && !opts.urn) {
+            if (args?.protocolPort === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocolPort'");
             }
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            resourceInputs["backup"] = args ? args.backup : undefined;
-            resourceInputs["monitorAddress"] = args ? args.monitorAddress : undefined;
-            resourceInputs["monitorPort"] = args ? args.monitorPort : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["poolId"] = args ? args.poolId : undefined;
-            resourceInputs["protocolPort"] = args ? args.protocolPort : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["adminStateUp"] = args?.adminStateUp;
+            resourceInputs["backup"] = args?.backup;
+            resourceInputs["monitorAddress"] = args?.monitorAddress;
+            resourceInputs["monitorPort"] = args?.monitorPort;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["poolId"] = args?.poolId;
+            resourceInputs["protocolPort"] = args?.protocolPort;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["subnetId"] = args?.subnetId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tenantId"] = args?.tenantId;
+            resourceInputs["weight"] = args?.weight;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Member.__pulumiType, name, resourceInputs, opts);

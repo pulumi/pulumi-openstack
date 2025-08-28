@@ -65,17 +65,17 @@ export class QosDscpMarkingRule extends pulumi.CustomResource {
      * The value of DSCP mark. Changing this updates the DSCP mark value existing
      * QoS DSCP marking rule.
      */
-    public readonly dscpMark!: pulumi.Output<number>;
+    declare public readonly dscpMark: pulumi.Output<number>;
     /**
      * The QoS policy reference. Changing this creates a new QoS DSCP marking rule.
      */
-    public readonly qosPolicyId!: pulumi.Output<string>;
+    declare public readonly qosPolicyId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new QoS DSCP marking rule.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a QosDscpMarkingRule resource with the given unique name, arguments, and options.
@@ -90,20 +90,20 @@ export class QosDscpMarkingRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QosDscpMarkingRuleState | undefined;
-            resourceInputs["dscpMark"] = state ? state.dscpMark : undefined;
-            resourceInputs["qosPolicyId"] = state ? state.qosPolicyId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["dscpMark"] = state?.dscpMark;
+            resourceInputs["qosPolicyId"] = state?.qosPolicyId;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as QosDscpMarkingRuleArgs | undefined;
-            if ((!args || args.dscpMark === undefined) && !opts.urn) {
+            if (args?.dscpMark === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dscpMark'");
             }
-            if ((!args || args.qosPolicyId === undefined) && !opts.urn) {
+            if (args?.qosPolicyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'qosPolicyId'");
             }
-            resourceInputs["dscpMark"] = args ? args.dscpMark : undefined;
-            resourceInputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["dscpMark"] = args?.dscpMark;
+            resourceInputs["qosPolicyId"] = args?.qosPolicyId;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(QosDscpMarkingRule.__pulumiType, name, resourceInputs, opts);

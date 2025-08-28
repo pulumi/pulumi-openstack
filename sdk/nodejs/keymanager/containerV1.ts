@@ -142,52 +142,52 @@ export class ContainerV1 extends pulumi.CustomResource {
      * the `read` operation is supported. If not specified, the container is
      * accessible project wide. The `read` structure is described below.
      */
-    public readonly acl!: pulumi.Output<outputs.keymanager.ContainerV1Acl>;
+    declare public readonly acl: pulumi.Output<outputs.keymanager.ContainerV1Acl>;
     /**
      * The list of the container consumers. The structure is described below.
      */
-    public /*out*/ readonly consumers!: pulumi.Output<outputs.keymanager.ContainerV1Consumer[]>;
+    declare public /*out*/ readonly consumers: pulumi.Output<outputs.keymanager.ContainerV1Consumer[]>;
     /**
      * The container reference / where to find the container.
      */
-    public /*out*/ readonly containerRef!: pulumi.Output<string>;
+    declare public /*out*/ readonly containerRef: pulumi.Output<string>;
     /**
      * The date the container was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The creator of the container.
      */
-    public /*out*/ readonly creatorId!: pulumi.Output<string>;
+    declare public /*out*/ readonly creatorId: pulumi.Output<string>;
     /**
      * Human-readable name for the Container. Does not have
      * to be unique.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region in which to obtain the V1 KeyManager client.
      * A KeyManager client is needed to create a container. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * V1 container.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * A set of dictionaries containing references to secrets. The structure is described
      * below.
      */
-    public readonly secretRefs!: pulumi.Output<outputs.keymanager.ContainerV1SecretRef[] | undefined>;
+    declare public readonly secretRefs: pulumi.Output<outputs.keymanager.ContainerV1SecretRef[] | undefined>;
     /**
      * The status of the container.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The date the container was last updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a ContainerV1 resource with the given unique name, arguments, and options.
@@ -202,27 +202,27 @@ export class ContainerV1 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContainerV1State | undefined;
-            resourceInputs["acl"] = state ? state.acl : undefined;
-            resourceInputs["consumers"] = state ? state.consumers : undefined;
-            resourceInputs["containerRef"] = state ? state.containerRef : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["creatorId"] = state ? state.creatorId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["secretRefs"] = state ? state.secretRefs : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["acl"] = state?.acl;
+            resourceInputs["consumers"] = state?.consumers;
+            resourceInputs["containerRef"] = state?.containerRef;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["creatorId"] = state?.creatorId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["secretRefs"] = state?.secretRefs;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ContainerV1Args | undefined;
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["acl"] = args ? args.acl : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["secretRefs"] = args ? args.secretRefs : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["acl"] = args?.acl;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["secretRefs"] = args?.secretRefs;
+            resourceInputs["type"] = args?.type;
             resourceInputs["consumers"] = undefined /*out*/;
             resourceInputs["containerRef"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;

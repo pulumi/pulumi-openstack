@@ -85,24 +85,24 @@ export class RouterRoute extends pulumi.CustomResource {
      * CIDR block to match on the packet’s destination IP. Changing
      * this creates a new routing entry.
      */
-    public readonly destinationCidr!: pulumi.Output<string>;
+    declare public readonly destinationCidr: pulumi.Output<string>;
     /**
      * IP address of the next hop gateway.  Changing
      * this creates a new routing entry.
      */
-    public readonly nextHop!: pulumi.Output<string>;
+    declare public readonly nextHop: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to configure a routing entry on a router. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * routing entry.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * ID of the router this routing entry belongs to. Changing
      * this creates a new routing entry.
      */
-    public readonly routerId!: pulumi.Output<string>;
+    declare public readonly routerId: pulumi.Output<string>;
 
     /**
      * Create a RouterRoute resource with the given unique name, arguments, and options.
@@ -117,25 +117,25 @@ export class RouterRoute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterRouteState | undefined;
-            resourceInputs["destinationCidr"] = state ? state.destinationCidr : undefined;
-            resourceInputs["nextHop"] = state ? state.nextHop : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["routerId"] = state ? state.routerId : undefined;
+            resourceInputs["destinationCidr"] = state?.destinationCidr;
+            resourceInputs["nextHop"] = state?.nextHop;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["routerId"] = state?.routerId;
         } else {
             const args = argsOrState as RouterRouteArgs | undefined;
-            if ((!args || args.destinationCidr === undefined) && !opts.urn) {
+            if (args?.destinationCidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationCidr'");
             }
-            if ((!args || args.nextHop === undefined) && !opts.urn) {
+            if (args?.nextHop === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nextHop'");
             }
-            if ((!args || args.routerId === undefined) && !opts.urn) {
+            if (args?.routerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routerId'");
             }
-            resourceInputs["destinationCidr"] = args ? args.destinationCidr : undefined;
-            resourceInputs["nextHop"] = args ? args.nextHop : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["routerId"] = args ? args.routerId : undefined;
+            resourceInputs["destinationCidr"] = args?.destinationCidr;
+            resourceInputs["nextHop"] = args?.nextHop;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["routerId"] = args?.routerId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RouterRoute.__pulumiType, name, resourceInputs, opts);

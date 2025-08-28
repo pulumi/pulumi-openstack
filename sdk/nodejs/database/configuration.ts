@@ -37,25 +37,25 @@ export class Configuration extends pulumi.CustomResource {
     /**
      * An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
      */
-    public readonly configurations!: pulumi.Output<outputs.database.ConfigurationConfiguration[] | undefined>;
+    declare public readonly configurations: pulumi.Output<outputs.database.ConfigurationConfiguration[] | undefined>;
     /**
      * An array of database engine type and version. The datastore
      * object structure is documented below. Changing this creates resource.
      */
-    public readonly datastore!: pulumi.Output<outputs.database.ConfigurationDatastore>;
+    declare public readonly datastore: pulumi.Output<outputs.database.ConfigurationDatastore>;
     /**
      * Description of the resource.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * A unique name for the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region in which to create the db instance. Changing this
      * creates a new instance.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a Configuration resource with the given unique name, arguments, and options.
@@ -70,24 +70,24 @@ export class Configuration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigurationState | undefined;
-            resourceInputs["configurations"] = state ? state.configurations : undefined;
-            resourceInputs["datastore"] = state ? state.datastore : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["configurations"] = state?.configurations;
+            resourceInputs["datastore"] = state?.datastore;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as ConfigurationArgs | undefined;
-            if ((!args || args.datastore === undefined) && !opts.urn) {
+            if (args?.datastore === undefined && !opts.urn) {
                 throw new Error("Missing required property 'datastore'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            resourceInputs["configurations"] = args ? args.configurations : undefined;
-            resourceInputs["datastore"] = args ? args.datastore : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["configurations"] = args?.configurations;
+            resourceInputs["datastore"] = args?.datastore;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Configuration.__pulumiType, name, resourceInputs, opts);

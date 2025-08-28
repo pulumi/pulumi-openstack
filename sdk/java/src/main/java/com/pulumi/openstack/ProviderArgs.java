@@ -20,16 +20,16 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProviderArgs Empty = new ProviderArgs();
 
     /**
-     * If set to `false`, OpenStack authorization won&#39;t be perfomed automatically, if the initial auth token get expired.
-     * Defaults to `true`
+     * If set to `false`, OpenStack authorization won&#39;t be perfomed
+     * automatically, if the initial auth token get expired. Defaults to `true`
      * 
      */
     @Import(name="allowReauth", json=true)
     private @Nullable Output<Boolean> allowReauth;
 
     /**
-     * @return If set to `false`, OpenStack authorization won&#39;t be perfomed automatically, if the initial auth token get expired.
-     * Defaults to `true`
+     * @return If set to `false`, OpenStack authorization won&#39;t be perfomed
+     * automatically, if the initial auth token get expired. Defaults to `true`
      * 
      */
     public Optional<Output<Boolean>> allowReauth() {
@@ -157,16 +157,16 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
-     * to `true`.
+     * If set to `false`, OpenStack authorization will be perfomed,
+     * every time the service provider client is called. Defaults to `true`.
      * 
      */
     @Import(name="delayedAuth", json=true)
     private @Nullable Output<Boolean> delayedAuth;
 
     /**
-     * @return If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
-     * to `true`.
+     * @return If set to `false`, OpenStack authorization will be perfomed,
+     * every time the service provider client is called. Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> delayedAuth() {
@@ -234,14 +234,16 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A map of services with an endpoint to override what was from the Keystone catalog
+     * A map of services with an endpoint to override what was
+     * from the Keystone catalog
      * 
      */
     @Import(name="endpointOverrides", json=true)
     private @Nullable Output<Map<String,String>> endpointOverrides;
 
     /**
-     * @return A map of services with an endpoint to override what was from the Keystone catalog
+     * @return A map of services with an endpoint to override what was
+     * from the Keystone catalog
      * 
      */
     public Optional<Output<Map<String,String>>> endpointOverrides() {
@@ -361,14 +363,16 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Use Swift&#39;s authentication system instead of Keystone. Only used for interaction with Swift.
+     * Use Swift&#39;s authentication system instead of Keystone. Only used for
+     * interaction with Swift.
      * 
      */
     @Import(name="swauth", json=true)
     private @Nullable Output<Boolean> swauth;
 
     /**
-     * @return Use Swift&#39;s authentication system instead of Keystone. Only used for interaction with Swift.
+     * @return Use Swift&#39;s authentication system instead of Keystone. Only used for
+     * interaction with Swift.
      * 
      */
     public Optional<Output<Boolean>> swauth() {
@@ -391,14 +395,16 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+     * The ID of the Tenant (Identity v2) or Project (Identity v3)
+     * to login with.
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+     * @return The ID of the Tenant (Identity v2) or Project (Identity v3)
+     * to login with.
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -406,14 +412,16 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+     * The name of the Tenant (Identity v2) or Project (Identity v3)
+     * to login with.
      * 
      */
     @Import(name="tenantName")
     private @Nullable Output<String> tenantName;
 
     /**
-     * @return The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+     * @return The name of the Tenant (Identity v2) or Project (Identity v3)
+     * to login with.
      * 
      */
     public Optional<Output<String>> tenantName() {
@@ -551,8 +559,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowReauth If set to `false`, OpenStack authorization won&#39;t be perfomed automatically, if the initial auth token get expired.
-         * Defaults to `true`
+         * @param allowReauth If set to `false`, OpenStack authorization won&#39;t be perfomed
+         * automatically, if the initial auth token get expired. Defaults to `true`
          * 
          * @return builder
          * 
@@ -563,8 +571,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowReauth If set to `false`, OpenStack authorization won&#39;t be perfomed automatically, if the initial auth token get expired.
-         * Defaults to `true`
+         * @param allowReauth If set to `false`, OpenStack authorization won&#39;t be perfomed
+         * automatically, if the initial auth token get expired. Defaults to `true`
          * 
          * @return builder
          * 
@@ -742,8 +750,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param delayedAuth If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
-         * to `true`.
+         * @param delayedAuth If set to `false`, OpenStack authorization will be perfomed,
+         * every time the service provider client is called. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -754,8 +762,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param delayedAuth If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
-         * to `true`.
+         * @param delayedAuth If set to `false`, OpenStack authorization will be perfomed,
+         * every time the service provider client is called. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -849,7 +857,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointOverrides A map of services with an endpoint to override what was from the Keystone catalog
+         * @param endpointOverrides A map of services with an endpoint to override what was
+         * from the Keystone catalog
          * 
          * @return builder
          * 
@@ -860,7 +869,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointOverrides A map of services with an endpoint to override what was from the Keystone catalog
+         * @param endpointOverrides A map of services with an endpoint to override what was
+         * from the Keystone catalog
          * 
          * @return builder
          * 
@@ -1026,7 +1036,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param swauth Use Swift&#39;s authentication system instead of Keystone. Only used for interaction with Swift.
+         * @param swauth Use Swift&#39;s authentication system instead of Keystone. Only used for
+         * interaction with Swift.
          * 
          * @return builder
          * 
@@ -1037,7 +1048,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param swauth Use Swift&#39;s authentication system instead of Keystone. Only used for interaction with Swift.
+         * @param swauth Use Swift&#39;s authentication system instead of Keystone. Only used for
+         * interaction with Swift.
          * 
          * @return builder
          * 
@@ -1068,7 +1080,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+         * @param tenantId The ID of the Tenant (Identity v2) or Project (Identity v3)
+         * to login with.
          * 
          * @return builder
          * 
@@ -1079,7 +1092,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+         * @param tenantId The ID of the Tenant (Identity v2) or Project (Identity v3)
+         * to login with.
          * 
          * @return builder
          * 
@@ -1089,7 +1103,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantName The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+         * @param tenantName The name of the Tenant (Identity v2) or Project (Identity v3)
+         * to login with.
          * 
          * @return builder
          * 
@@ -1100,7 +1115,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantName The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+         * @param tenantName The name of the Tenant (Identity v2) or Project (Identity v3)
+         * to login with.
          * 
          * @return builder
          * 

@@ -75,35 +75,35 @@ export class PortAssociateV2 extends pulumi.CustomResource {
      * A boolean flag indicating whether fixed
      * IPs should be advertised. Defaults to true.
      */
-    public readonly advertiseFixedIps!: pulumi.Output<boolean>;
+    declare public readonly advertiseFixedIps: pulumi.Output<boolean>;
     /**
      * The ID of the BGP VPN to which the port will be
      * associated. Changing this creates a new BGP VPN port association.
      */
-    public readonly bgpvpnId!: pulumi.Output<string>;
+    declare public readonly bgpvpnId: pulumi.Output<string>;
     /**
      * The ID of the port to be associated with the BGP VPN.
      * Changing this creates a new BGP VPN port association.
      */
-    public readonly portId!: pulumi.Output<string>;
+    declare public readonly portId: pulumi.Output<string>;
     /**
      * The ID of the project that owns the port
      * association. Only administrative and users with `advsvc` role can specify a
      * project ID other than their own. Changing this creates a new BGP VPN port
      * association.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a BGP VPN port association. If
      * omitted, the `region` argument of the provider is used. Changing this creates
      * a new BGP VPN port association.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * A list of dictionaries containing the following keys:
      */
-    public readonly routes!: pulumi.Output<outputs.bgpvpn.PortAssociateV2Route[] | undefined>;
+    declare public readonly routes: pulumi.Output<outputs.bgpvpn.PortAssociateV2Route[] | undefined>;
 
     /**
      * Create a PortAssociateV2 resource with the given unique name, arguments, and options.
@@ -118,26 +118,26 @@ export class PortAssociateV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PortAssociateV2State | undefined;
-            resourceInputs["advertiseFixedIps"] = state ? state.advertiseFixedIps : undefined;
-            resourceInputs["bgpvpnId"] = state ? state.bgpvpnId : undefined;
-            resourceInputs["portId"] = state ? state.portId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["routes"] = state ? state.routes : undefined;
+            resourceInputs["advertiseFixedIps"] = state?.advertiseFixedIps;
+            resourceInputs["bgpvpnId"] = state?.bgpvpnId;
+            resourceInputs["portId"] = state?.portId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["routes"] = state?.routes;
         } else {
             const args = argsOrState as PortAssociateV2Args | undefined;
-            if ((!args || args.bgpvpnId === undefined) && !opts.urn) {
+            if (args?.bgpvpnId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bgpvpnId'");
             }
-            if ((!args || args.portId === undefined) && !opts.urn) {
+            if (args?.portId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'portId'");
             }
-            resourceInputs["advertiseFixedIps"] = args ? args.advertiseFixedIps : undefined;
-            resourceInputs["bgpvpnId"] = args ? args.bgpvpnId : undefined;
-            resourceInputs["portId"] = args ? args.portId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["routes"] = args ? args.routes : undefined;
+            resourceInputs["advertiseFixedIps"] = args?.advertiseFixedIps;
+            resourceInputs["bgpvpnId"] = args?.bgpvpnId;
+            resourceInputs["portId"] = args?.portId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["routes"] = args?.routes;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2" }] };

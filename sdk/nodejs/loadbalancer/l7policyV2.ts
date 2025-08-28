@@ -89,65 +89,65 @@ export class L7PolicyV2 extends pulumi.CustomResource {
      * The L7 Policy action - can either be REDIRECT\_TO\_POOL,
      * REDIRECT\_TO\_URL or REJECT.
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * The administrative state of the L7 Policy.
      * A valid value is true (UP) or false (DOWN).
      */
-    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
+    declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
     /**
      * Human-readable description for the L7 Policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The Listener on which the L7 Policy will be associated with.
      * Changing this creates a new L7 Policy.
      */
-    public readonly listenerId!: pulumi.Output<string>;
+    declare public readonly listenerId: pulumi.Output<string>;
     /**
      * Human-readable name for the L7 Policy. Does not have
      * to be unique.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The position of this policy on the listener. Positions start at 1.
      */
-    public readonly position!: pulumi.Output<number>;
+    declare public readonly position: pulumi.Output<number>;
     /**
      * Integer. Requests matching this policy will be  
      * redirected to the specified URL or Prefix URL with the HTTP response code.
      * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
      * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
      */
-    public readonly redirectHttpCode!: pulumi.Output<number>;
+    declare public readonly redirectHttpCode: pulumi.Output<number>;
     /**
      * Requests matching this policy will be redirected to the
      * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
      */
-    public readonly redirectPoolId!: pulumi.Output<string | undefined>;
+    declare public readonly redirectPoolId: pulumi.Output<string | undefined>;
     /**
      * Requests matching this policy will be redirected to 
      * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
      */
-    public readonly redirectPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly redirectPrefix: pulumi.Output<string | undefined>;
     /**
      * Requests matching this policy will be redirected to this URL.
      * Only valid if action is REDIRECT\_TO\_URL.
      */
-    public readonly redirectUrl!: pulumi.Output<string | undefined>;
+    declare public readonly redirectUrl: pulumi.Output<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an L7 policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Policy.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the L7 Policy.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new L7 Policy.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
 
     /**
      * Create a L7PolicyV2 resource with the given unique name, arguments, and options.
@@ -162,38 +162,38 @@ export class L7PolicyV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as L7PolicyV2State | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["position"] = state ? state.position : undefined;
-            resourceInputs["redirectHttpCode"] = state ? state.redirectHttpCode : undefined;
-            resourceInputs["redirectPoolId"] = state ? state.redirectPoolId : undefined;
-            resourceInputs["redirectPrefix"] = state ? state.redirectPrefix : undefined;
-            resourceInputs["redirectUrl"] = state ? state.redirectUrl : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["adminStateUp"] = state?.adminStateUp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["listenerId"] = state?.listenerId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["position"] = state?.position;
+            resourceInputs["redirectHttpCode"] = state?.redirectHttpCode;
+            resourceInputs["redirectPoolId"] = state?.redirectPoolId;
+            resourceInputs["redirectPrefix"] = state?.redirectPrefix;
+            resourceInputs["redirectUrl"] = state?.redirectUrl;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["tenantId"] = state?.tenantId;
         } else {
             const args = argsOrState as L7PolicyV2Args | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.listenerId === undefined) && !opts.urn) {
+            if (args?.listenerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["position"] = args ? args.position : undefined;
-            resourceInputs["redirectHttpCode"] = args ? args.redirectHttpCode : undefined;
-            resourceInputs["redirectPoolId"] = args ? args.redirectPoolId : undefined;
-            resourceInputs["redirectPrefix"] = args ? args.redirectPrefix : undefined;
-            resourceInputs["redirectUrl"] = args ? args.redirectUrl : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["adminStateUp"] = args?.adminStateUp;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["listenerId"] = args?.listenerId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["position"] = args?.position;
+            resourceInputs["redirectHttpCode"] = args?.redirectHttpCode;
+            resourceInputs["redirectPoolId"] = args?.redirectPoolId;
+            resourceInputs["redirectPrefix"] = args?.redirectPrefix;
+            resourceInputs["redirectUrl"] = args?.redirectUrl;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tenantId"] = args?.tenantId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(L7PolicyV2.__pulumiType, name, resourceInputs, opts);

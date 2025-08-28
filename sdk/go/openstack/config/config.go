@@ -11,8 +11,8 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
-// Defaults to `true`
+// If set to `false`, OpenStack authorization won't be perfomed
+// automatically, if the initial auth token get expired. Defaults to `true`
 func GetAllowReauth(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "openstack:allowReauth")
 	if err == nil {
@@ -73,8 +73,8 @@ func GetDefaultDomain(ctx *pulumi.Context) string {
 	return config.Get(ctx, "openstack:defaultDomain")
 }
 
-// If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
-// to `true`.
+// If set to `false`, OpenStack authorization will be perfomed,
+// every time the service provider client is called. Defaults to `true`.
 func GetDelayedAuth(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "openstack:delayedAuth")
 	if err == nil {
@@ -107,7 +107,8 @@ func GetEnableLogging(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "openstack:enableLogging")
 }
 
-// A map of services with an endpoint to override what was from the Keystone catalog
+// A map of services with an endpoint to override what was
+// from the Keystone catalog
 func GetEndpointOverrides(ctx *pulumi.Context) string {
 	return config.Get(ctx, "openstack:endpointOverrides")
 }
@@ -174,7 +175,8 @@ func GetRegion(ctx *pulumi.Context) string {
 	return value
 }
 
-// Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
+// Use Swift's authentication system instead of Keystone. Only used for
+// interaction with Swift.
 func GetSwauth(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "openstack:swauth")
 	if err == nil {
@@ -192,12 +194,14 @@ func GetSystemScope(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "openstack:systemScope")
 }
 
-// The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+// The ID of the Tenant (Identity v2) or Project (Identity v3)
+// to login with.
 func GetTenantId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "openstack:tenantId")
 }
 
-// The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+// The name of the Tenant (Identity v2) or Project (Identity v3)
+// to login with.
 func GetTenantName(ctx *pulumi.Context) string {
 	return config.Get(ctx, "openstack:tenantName")
 }

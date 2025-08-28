@@ -63,38 +63,38 @@ export class EndpointGroup extends pulumi.CustomResource {
      * The human-readable description for the group.
      * Changing this updates the description of the existing group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * List of endpoints of the same type, for the endpoint group. The values will depend on the type.
      * Changing this creates a new group.
      */
-    public readonly endpoints!: pulumi.Output<string[] | undefined>;
+    declare public readonly endpoints: pulumi.Output<string[] | undefined>;
     /**
      * The name of the group. Changing this updates the name of
      * the existing group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an endpoint group. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * group.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The owner of the group. Required if admin wants to
      * create an endpoint group for another project. Changing this creates a new group.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
     /**
      * The type of the endpoints in the group. A valid value is subnet, cidr, network, router, or vlan.
      * Changing this creates a new group.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly valueSpecs: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a EndpointGroup resource with the given unique name, arguments, and options.
@@ -109,22 +109,22 @@ export class EndpointGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointGroupState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["endpoints"] = state ? state.endpoints : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["endpoints"] = state?.endpoints;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["valueSpecs"] = state?.valueSpecs;
         } else {
             const args = argsOrState as EndpointGroupArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["endpoints"] = args ? args.endpoints : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["endpoints"] = args?.endpoints;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tenantId"] = args?.tenantId;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["valueSpecs"] = args?.valueSpecs;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EndpointGroup.__pulumiType, name, resourceInputs, opts);

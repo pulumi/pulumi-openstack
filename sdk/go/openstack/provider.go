@@ -49,9 +49,11 @@ type Provider struct {
 	ProjectDomainName pulumi.StringPtrOutput `pulumi:"projectDomainName"`
 	// The OpenStack region to connect to.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
-	// The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+	// The ID of the Tenant (Identity v2) or Project (Identity v3)
+	// to login with.
 	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
-	// The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+	// The name of the Tenant (Identity v2) or Project (Identity v3)
+	// to login with.
 	TenantName pulumi.StringPtrOutput `pulumi:"tenantName"`
 	// Authentication token to use as an alternative to username/password.
 	Token pulumi.StringPtrOutput `pulumi:"token"`
@@ -124,8 +126,8 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
-	// Defaults to `true`
+	// If set to `false`, OpenStack authorization won't be perfomed
+	// automatically, if the initial auth token get expired. Defaults to `true`
 	AllowReauth *bool `pulumi:"allowReauth"`
 	// Application Credential ID to login with.
 	ApplicationCredentialId *string `pulumi:"applicationCredentialId"`
@@ -143,8 +145,8 @@ type providerArgs struct {
 	Cloud *string `pulumi:"cloud"`
 	// The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
 	DefaultDomain *string `pulumi:"defaultDomain"`
-	// If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
-	// to `true`.
+	// If set to `false`, OpenStack authorization will be perfomed,
+	// every time the service provider client is called. Defaults to `true`.
 	DelayedAuth *bool `pulumi:"delayedAuth"`
 	// If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
 	DisableNoCacheHeader *bool `pulumi:"disableNoCacheHeader"`
@@ -154,7 +156,8 @@ type providerArgs struct {
 	DomainName *string `pulumi:"domainName"`
 	// Outputs very verbose logs with all calls made to and responses from OpenStack
 	EnableLogging *bool `pulumi:"enableLogging"`
-	// A map of services with an endpoint to override what was from the Keystone catalog
+	// A map of services with an endpoint to override what was
+	// from the Keystone catalog
 	EndpointOverrides map[string]string `pulumi:"endpointOverrides"`
 	EndpointType      *string           `pulumi:"endpointType"`
 	// Trust self-signed certificates.
@@ -171,13 +174,16 @@ type providerArgs struct {
 	ProjectDomainName *string `pulumi:"projectDomainName"`
 	// The OpenStack region to connect to.
 	Region *string `pulumi:"region"`
-	// Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
+	// Use Swift's authentication system instead of Keystone. Only used for
+	// interaction with Swift.
 	Swauth *bool `pulumi:"swauth"`
 	// If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
 	SystemScope *bool `pulumi:"systemScope"`
-	// The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+	// The ID of the Tenant (Identity v2) or Project (Identity v3)
+	// to login with.
 	TenantId *string `pulumi:"tenantId"`
-	// The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+	// The name of the Tenant (Identity v2) or Project (Identity v3)
+	// to login with.
 	TenantName *string `pulumi:"tenantName"`
 	// Authentication token to use as an alternative to username/password.
 	Token *string `pulumi:"token"`
@@ -193,8 +199,8 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
-	// Defaults to `true`
+	// If set to `false`, OpenStack authorization won't be perfomed
+	// automatically, if the initial auth token get expired. Defaults to `true`
 	AllowReauth pulumi.BoolPtrInput
 	// Application Credential ID to login with.
 	ApplicationCredentialId pulumi.StringPtrInput
@@ -212,8 +218,8 @@ type ProviderArgs struct {
 	Cloud pulumi.StringPtrInput
 	// The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
 	DefaultDomain pulumi.StringPtrInput
-	// If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
-	// to `true`.
+	// If set to `false`, OpenStack authorization will be perfomed,
+	// every time the service provider client is called. Defaults to `true`.
 	DelayedAuth pulumi.BoolPtrInput
 	// If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
 	DisableNoCacheHeader pulumi.BoolPtrInput
@@ -223,7 +229,8 @@ type ProviderArgs struct {
 	DomainName pulumi.StringPtrInput
 	// Outputs very verbose logs with all calls made to and responses from OpenStack
 	EnableLogging pulumi.BoolPtrInput
-	// A map of services with an endpoint to override what was from the Keystone catalog
+	// A map of services with an endpoint to override what was
+	// from the Keystone catalog
 	EndpointOverrides pulumi.StringMapInput
 	EndpointType      pulumi.StringPtrInput
 	// Trust self-signed certificates.
@@ -240,13 +247,16 @@ type ProviderArgs struct {
 	ProjectDomainName pulumi.StringPtrInput
 	// The OpenStack region to connect to.
 	Region pulumi.StringPtrInput
-	// Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
+	// Use Swift's authentication system instead of Keystone. Only used for
+	// interaction with Swift.
 	Swauth pulumi.BoolPtrInput
 	// If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
 	SystemScope pulumi.BoolPtrInput
-	// The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+	// The ID of the Tenant (Identity v2) or Project (Identity v3)
+	// to login with.
 	TenantId pulumi.StringPtrInput
-	// The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+	// The name of the Tenant (Identity v2) or Project (Identity v3)
+	// to login with.
 	TenantName pulumi.StringPtrInput
 	// Authentication token to use as an alternative to username/password.
 	Token pulumi.StringPtrInput
@@ -399,12 +409,14 @@ func (o ProviderOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+// The ID of the Tenant (Identity v2) or Project (Identity v3)
+// to login with.
 func (o ProviderOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
-// The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+// The name of the Tenant (Identity v2) or Project (Identity v3)
+// to login with.
 func (o ProviderOutput) TenantName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TenantName }).(pulumi.StringPtrOutput)
 }

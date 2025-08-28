@@ -75,53 +75,53 @@ export class RecordSet extends pulumi.CustomResource {
     /**
      * A description of the  record set.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Disable wait for recordset to reach ACTIVE
      * status. This argumen is disabled by default. If it is set to true, the recordset
      * will be considered as created/updated/deleted if OpenStack request returned success.
      */
-    public readonly disableStatusCheck!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableStatusCheck: pulumi.Output<boolean | undefined>;
     /**
      * The name of the record set. Note the `.` at the end of the name.
      * Changing this creates a new DNS  record set.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project DNS zone is created
      * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
      * user role in target project)
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * An array of DNS records.
      */
-    public readonly records!: pulumi.Output<string[]>;
+    declare public readonly records: pulumi.Output<string[]>;
     /**
      * The region in which to obtain the V2 DNS client.
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS  record set.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The time to live (TTL) of the record set.
      */
-    public readonly ttl!: pulumi.Output<number>;
+    declare public readonly ttl: pulumi.Output<number>;
     /**
      * The type of record set. Examples: "A", "MX".
      * Changing this creates a new DNS  record set.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Map of additional options. Changing this creates a
      * new record set.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly valueSpecs: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the zone in which to create the record set.
      * Changing this creates a new DNS  record set.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a RecordSet resource with the given unique name, arguments, and options.
@@ -136,34 +136,34 @@ export class RecordSet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RecordSetState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disableStatusCheck"] = state ? state.disableStatusCheck : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["records"] = state ? state.records : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disableStatusCheck"] = state?.disableStatusCheck;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["records"] = state?.records;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["ttl"] = state?.ttl;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["valueSpecs"] = state?.valueSpecs;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as RecordSetArgs | undefined;
-            if ((!args || args.records === undefined) && !opts.urn) {
+            if (args?.records === undefined && !opts.urn) {
                 throw new Error("Missing required property 'records'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disableStatusCheck"] = args ? args.disableStatusCheck : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["records"] = args ? args.records : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disableStatusCheck"] = args?.disableStatusCheck;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["records"] = args?.records;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["ttl"] = args?.ttl;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["valueSpecs"] = args?.valueSpecs;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RecordSet.__pulumiType, name, resourceInputs, opts);

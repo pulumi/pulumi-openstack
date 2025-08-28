@@ -111,57 +111,57 @@ export class ShareNetwork extends pulumi.CustomResource {
     /**
      * The share network CIDR.
      */
-    public /*out*/ readonly cidr!: pulumi.Output<string>;
+    declare public /*out*/ readonly cidr: pulumi.Output<string>;
     /**
      * The human-readable description for the share network.
      * Changing this updates the description of the existing share network.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The IP version of the share network. Can either be 4 or 6.
      */
-    public /*out*/ readonly ipVersion!: pulumi.Output<number>;
+    declare public /*out*/ readonly ipVersion: pulumi.Output<number>;
     /**
      * The name for the share network. Changing this updates the name
      * of the existing share network.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The share network type. Can either be VLAN, VXLAN, GRE, or flat.
      */
-    public /*out*/ readonly networkType!: pulumi.Output<string>;
+    declare public /*out*/ readonly networkType: pulumi.Output<string>;
     /**
      * The UUID of a neutron network when setting up or updating
      * a share network. Changing this updates the existing share network if it's not used by
      * shares.
      */
-    public readonly neutronNetId!: pulumi.Output<string>;
+    declare public readonly neutronNetId: pulumi.Output<string>;
     /**
      * The UUID of the neutron subnet when setting up or
      * updating a share network. Changing this updates the existing share network if it's
      * not used by shares.
      */
-    public readonly neutronSubnetId!: pulumi.Output<string>;
+    declare public readonly neutronSubnetId: pulumi.Output<string>;
     /**
      * The owner of the Share Network.
      */
-    public /*out*/ readonly projectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Shared File System client.
      * A Shared File System client is needed to create a share network. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * share network.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The list of security service IDs to associate with
      * the share network. The security service must be specified by ID and not name.
      */
-    public readonly securityServiceIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly securityServiceIds: pulumi.Output<string[] | undefined>;
     /**
      * The share network segmentation ID.
      */
-    public /*out*/ readonly segmentationId!: pulumi.Output<number>;
+    declare public /*out*/ readonly segmentationId: pulumi.Output<number>;
 
     /**
      * Create a ShareNetwork resource with the given unique name, arguments, and options.
@@ -176,31 +176,31 @@ export class ShareNetwork extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ShareNetworkState | undefined;
-            resourceInputs["cidr"] = state ? state.cidr : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkType"] = state ? state.networkType : undefined;
-            resourceInputs["neutronNetId"] = state ? state.neutronNetId : undefined;
-            resourceInputs["neutronSubnetId"] = state ? state.neutronSubnetId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["securityServiceIds"] = state ? state.securityServiceIds : undefined;
-            resourceInputs["segmentationId"] = state ? state.segmentationId : undefined;
+            resourceInputs["cidr"] = state?.cidr;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkType"] = state?.networkType;
+            resourceInputs["neutronNetId"] = state?.neutronNetId;
+            resourceInputs["neutronSubnetId"] = state?.neutronSubnetId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["securityServiceIds"] = state?.securityServiceIds;
+            resourceInputs["segmentationId"] = state?.segmentationId;
         } else {
             const args = argsOrState as ShareNetworkArgs | undefined;
-            if ((!args || args.neutronNetId === undefined) && !opts.urn) {
+            if (args?.neutronNetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'neutronNetId'");
             }
-            if ((!args || args.neutronSubnetId === undefined) && !opts.urn) {
+            if (args?.neutronSubnetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'neutronSubnetId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["neutronNetId"] = args ? args.neutronNetId : undefined;
-            resourceInputs["neutronSubnetId"] = args ? args.neutronSubnetId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["securityServiceIds"] = args ? args.securityServiceIds : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["neutronNetId"] = args?.neutronNetId;
+            resourceInputs["neutronSubnetId"] = args?.neutronSubnetId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["securityServiceIds"] = args?.securityServiceIds;
             resourceInputs["cidr"] = undefined /*out*/;
             resourceInputs["ipVersion"] = undefined /*out*/;
             resourceInputs["networkType"] = undefined /*out*/;

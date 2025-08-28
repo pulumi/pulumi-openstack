@@ -100,115 +100,115 @@ export class Cluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === Cluster.__pulumiType;
     }
 
-    public /*out*/ readonly apiAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly apiAddress: pulumi.Output<string>;
     /**
      * The UUID of the V1 Container Infra cluster
      * template. Changing this creates a new cluster.
      */
-    public readonly clusterTemplateId!: pulumi.Output<string>;
-    public /*out*/ readonly coeVersion!: pulumi.Output<string>;
-    public /*out*/ readonly containerVersion!: pulumi.Output<string>;
+    declare public readonly clusterTemplateId: pulumi.Output<string>;
+    declare public /*out*/ readonly coeVersion: pulumi.Output<string>;
+    declare public /*out*/ readonly containerVersion: pulumi.Output<string>;
     /**
      * The timeout (in minutes) for creating the
      * cluster. Changing this creates a new cluster.
      */
-    public readonly createTimeout!: pulumi.Output<number>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public readonly createTimeout: pulumi.Output<number>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The URL used for cluster node discovery.
      * Changing this creates a new cluster.
      */
-    public readonly discoveryUrl!: pulumi.Output<string>;
+    declare public readonly discoveryUrl: pulumi.Output<string>;
     /**
      * The size (in GB) of the Docker volume.
      * Changing this creates a new cluster.
      */
-    public readonly dockerVolumeSize!: pulumi.Output<number>;
+    declare public readonly dockerVolumeSize: pulumi.Output<number>;
     /**
      * The fixed network that will be attached to the
      * cluster. Changing this creates a new cluster.
      */
-    public readonly fixedNetwork!: pulumi.Output<string>;
+    declare public readonly fixedNetwork: pulumi.Output<string>;
     /**
      * The fixed subnet that will be attached to the
      * cluster. Changing this creates a new cluster.
      */
-    public readonly fixedSubnet!: pulumi.Output<string>;
+    declare public readonly fixedSubnet: pulumi.Output<string>;
     /**
      * The flavor for the nodes of the cluster. Can be set via
      * the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
      * cluster.
      */
-    public readonly flavor!: pulumi.Output<string>;
+    declare public readonly flavor: pulumi.Output<string>;
     /**
      * Indicates whether floating IP should be
      * created for every cluster node. Changing this creates a new cluster.
      */
-    public readonly floatingIpEnabled!: pulumi.Output<boolean>;
+    declare public readonly floatingIpEnabled: pulumi.Output<boolean>;
     /**
      * The name of the Compute service SSH keypair. Changing
      * this creates a new cluster.
      */
-    public readonly keypair!: pulumi.Output<string>;
-    public /*out*/ readonly kubeconfig!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly keypair: pulumi.Output<string>;
+    declare public /*out*/ readonly kubeconfig: pulumi.Output<{[key: string]: string}>;
     /**
      * The list of key value pairs representing additional
      * properties of the cluster. Changing this creates a new cluster.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
-    public /*out*/ readonly masterAddresses!: pulumi.Output<string[]>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly masterAddresses: pulumi.Output<string[]>;
     /**
      * The number of master nodes for the cluster.
      * Changing this creates a new cluster.
      */
-    public readonly masterCount!: pulumi.Output<number>;
+    declare public readonly masterCount: pulumi.Output<number>;
     /**
      * The flavor for the master nodes. Can be set via
      * the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
      * new cluster.
      */
-    public readonly masterFlavor!: pulumi.Output<string>;
+    declare public readonly masterFlavor: pulumi.Output<string>;
     /**
      * Indicates whether to create a load balancer
      * for the master nodes. Changing this creates a new cluster.
      */
-    public readonly masterLbEnabled!: pulumi.Output<boolean>;
+    declare public readonly masterLbEnabled: pulumi.Output<boolean>;
     /**
      * Indicates whether the provided labels should be
      * merged with cluster template labels. Changing this creates a new cluster.
      */
-    public readonly mergeLabels!: pulumi.Output<boolean | undefined>;
+    declare public readonly mergeLabels: pulumi.Output<boolean | undefined>;
     /**
      * The name of the cluster. Changing this creates a new
      * cluster.
      */
-    public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly nodeAddresses!: pulumi.Output<string[]>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly nodeAddresses: pulumi.Output<string[]>;
     /**
      * The number of nodes for the cluster.
      */
-    public readonly nodeCount!: pulumi.Output<number | undefined>;
+    declare public readonly nodeCount: pulumi.Output<number | undefined>;
     /**
      * The project of the cluster. Required if admin wants
      * to create a cluster in another project. Changing this creates a new
      * cluster.
      */
-    public /*out*/ readonly projectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V1 Container Infra
      * client. A Container Infra client is needed to create a cluster. If omitted,
      * the `region` argument of the provider is used. Changing this creates a new
      * cluster.
      */
-    public readonly region!: pulumi.Output<string>;
-    public /*out*/ readonly stackId!: pulumi.Output<string>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
+    declare public /*out*/ readonly stackId: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * The user of the cluster. Required if admin wants to
      * create a cluster template for another user. Changing this creates a new
      * cluster.
      */
-    public /*out*/ readonly userId!: pulumi.Output<string>;
+    declare public /*out*/ readonly userId: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -223,53 +223,53 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["apiAddress"] = state ? state.apiAddress : undefined;
-            resourceInputs["clusterTemplateId"] = state ? state.clusterTemplateId : undefined;
-            resourceInputs["coeVersion"] = state ? state.coeVersion : undefined;
-            resourceInputs["containerVersion"] = state ? state.containerVersion : undefined;
-            resourceInputs["createTimeout"] = state ? state.createTimeout : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["discoveryUrl"] = state ? state.discoveryUrl : undefined;
-            resourceInputs["dockerVolumeSize"] = state ? state.dockerVolumeSize : undefined;
-            resourceInputs["fixedNetwork"] = state ? state.fixedNetwork : undefined;
-            resourceInputs["fixedSubnet"] = state ? state.fixedSubnet : undefined;
-            resourceInputs["flavor"] = state ? state.flavor : undefined;
-            resourceInputs["floatingIpEnabled"] = state ? state.floatingIpEnabled : undefined;
-            resourceInputs["keypair"] = state ? state.keypair : undefined;
-            resourceInputs["kubeconfig"] = state ? state.kubeconfig : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["masterAddresses"] = state ? state.masterAddresses : undefined;
-            resourceInputs["masterCount"] = state ? state.masterCount : undefined;
-            resourceInputs["masterFlavor"] = state ? state.masterFlavor : undefined;
-            resourceInputs["masterLbEnabled"] = state ? state.masterLbEnabled : undefined;
-            resourceInputs["mergeLabels"] = state ? state.mergeLabels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeAddresses"] = state ? state.nodeAddresses : undefined;
-            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["stackId"] = state ? state.stackId : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["apiAddress"] = state?.apiAddress;
+            resourceInputs["clusterTemplateId"] = state?.clusterTemplateId;
+            resourceInputs["coeVersion"] = state?.coeVersion;
+            resourceInputs["containerVersion"] = state?.containerVersion;
+            resourceInputs["createTimeout"] = state?.createTimeout;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["discoveryUrl"] = state?.discoveryUrl;
+            resourceInputs["dockerVolumeSize"] = state?.dockerVolumeSize;
+            resourceInputs["fixedNetwork"] = state?.fixedNetwork;
+            resourceInputs["fixedSubnet"] = state?.fixedSubnet;
+            resourceInputs["flavor"] = state?.flavor;
+            resourceInputs["floatingIpEnabled"] = state?.floatingIpEnabled;
+            resourceInputs["keypair"] = state?.keypair;
+            resourceInputs["kubeconfig"] = state?.kubeconfig;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["masterAddresses"] = state?.masterAddresses;
+            resourceInputs["masterCount"] = state?.masterCount;
+            resourceInputs["masterFlavor"] = state?.masterFlavor;
+            resourceInputs["masterLbEnabled"] = state?.masterLbEnabled;
+            resourceInputs["mergeLabels"] = state?.mergeLabels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeAddresses"] = state?.nodeAddresses;
+            resourceInputs["nodeCount"] = state?.nodeCount;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["stackId"] = state?.stackId;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            resourceInputs["clusterTemplateId"] = args ? args.clusterTemplateId : undefined;
-            resourceInputs["createTimeout"] = args ? args.createTimeout : undefined;
-            resourceInputs["discoveryUrl"] = args ? args.discoveryUrl : undefined;
-            resourceInputs["dockerVolumeSize"] = args ? args.dockerVolumeSize : undefined;
-            resourceInputs["fixedNetwork"] = args ? args.fixedNetwork : undefined;
-            resourceInputs["fixedSubnet"] = args ? args.fixedSubnet : undefined;
-            resourceInputs["flavor"] = args ? args.flavor : undefined;
-            resourceInputs["floatingIpEnabled"] = args ? args.floatingIpEnabled : undefined;
-            resourceInputs["keypair"] = args ? args.keypair : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["masterCount"] = args ? args.masterCount : undefined;
-            resourceInputs["masterFlavor"] = args ? args.masterFlavor : undefined;
-            resourceInputs["masterLbEnabled"] = args ? args.masterLbEnabled : undefined;
-            resourceInputs["mergeLabels"] = args ? args.mergeLabels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["clusterTemplateId"] = args?.clusterTemplateId;
+            resourceInputs["createTimeout"] = args?.createTimeout;
+            resourceInputs["discoveryUrl"] = args?.discoveryUrl;
+            resourceInputs["dockerVolumeSize"] = args?.dockerVolumeSize;
+            resourceInputs["fixedNetwork"] = args?.fixedNetwork;
+            resourceInputs["fixedSubnet"] = args?.fixedSubnet;
+            resourceInputs["flavor"] = args?.flavor;
+            resourceInputs["floatingIpEnabled"] = args?.floatingIpEnabled;
+            resourceInputs["keypair"] = args?.keypair;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["masterCount"] = args?.masterCount;
+            resourceInputs["masterFlavor"] = args?.masterFlavor;
+            resourceInputs["masterLbEnabled"] = args?.masterLbEnabled;
+            resourceInputs["mergeLabels"] = args?.mergeLabels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeCount"] = args?.nodeCount;
+            resourceInputs["region"] = args?.region;
             resourceInputs["apiAddress"] = undefined /*out*/;
             resourceInputs["coeVersion"] = undefined /*out*/;
             resourceInputs["containerVersion"] = undefined /*out*/;

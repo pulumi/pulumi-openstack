@@ -108,37 +108,37 @@ export class VolumeAttach extends pulumi.CustomResource {
         return obj['__pulumiType'] === VolumeAttach.__pulumiType;
     }
 
-    public readonly device!: pulumi.Output<string>;
+    declare public readonly device: pulumi.Output<string>;
     /**
      * The ID of the Instance to attach the Volume to.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Enable attachment of multiattach-capable volumes.
      */
-    public readonly multiattach!: pulumi.Output<boolean | undefined>;
+    declare public readonly multiattach: pulumi.Output<boolean | undefined>;
     /**
      * The region in which to obtain the V2 Compute client.
      * A Compute client is needed to create a volume attachment. If omitted, the
      * `region` argument of the provider is used. Changing this creates a
      * new volume attachment.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Add a device role tag that is applied to the volume when
      * attaching it to the VM. Changing this creates a new volume attachment with
      * the new tag. Requires microversion >= 2.49.
      */
-    public readonly tag!: pulumi.Output<string | undefined>;
+    declare public readonly tag: pulumi.Output<string | undefined>;
     /**
      * Map of additional vendor-specific options.
      * Supported options are described below.
      */
-    public readonly vendorOptions!: pulumi.Output<outputs.compute.VolumeAttachVendorOptions | undefined>;
+    declare public readonly vendorOptions: pulumi.Output<outputs.compute.VolumeAttachVendorOptions | undefined>;
     /**
      * The ID of the Volume to attach to an Instance.
      */
-    public readonly volumeId!: pulumi.Output<string>;
+    declare public readonly volumeId: pulumi.Output<string>;
 
     /**
      * Create a VolumeAttach resource with the given unique name, arguments, and options.
@@ -153,28 +153,28 @@ export class VolumeAttach extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeAttachState | undefined;
-            resourceInputs["device"] = state ? state.device : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["multiattach"] = state ? state.multiattach : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["tag"] = state ? state.tag : undefined;
-            resourceInputs["vendorOptions"] = state ? state.vendorOptions : undefined;
-            resourceInputs["volumeId"] = state ? state.volumeId : undefined;
+            resourceInputs["device"] = state?.device;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["multiattach"] = state?.multiattach;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["tag"] = state?.tag;
+            resourceInputs["vendorOptions"] = state?.vendorOptions;
+            resourceInputs["volumeId"] = state?.volumeId;
         } else {
             const args = argsOrState as VolumeAttachArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.volumeId === undefined) && !opts.urn) {
+            if (args?.volumeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'volumeId'");
             }
-            resourceInputs["device"] = args ? args.device : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["multiattach"] = args ? args.multiattach : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tag"] = args ? args.tag : undefined;
-            resourceInputs["vendorOptions"] = args ? args.vendorOptions : undefined;
-            resourceInputs["volumeId"] = args ? args.volumeId : undefined;
+            resourceInputs["device"] = args?.device;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["multiattach"] = args?.multiattach;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tag"] = args?.tag;
+            resourceInputs["vendorOptions"] = args?.vendorOptions;
+            resourceInputs["volumeId"] = args?.volumeId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VolumeAttach.__pulumiType, name, resourceInputs, opts);

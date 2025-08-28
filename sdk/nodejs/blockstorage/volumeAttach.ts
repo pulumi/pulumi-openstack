@@ -97,71 +97,71 @@ export class VolumeAttach extends pulumi.CustomResource {
      * (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
      * If left unspecified, the Block Storage API will apply a default of `rw`.
      */
-    public readonly attachMode!: pulumi.Output<string | undefined>;
+    declare public readonly attachMode: pulumi.Output<string | undefined>;
     /**
      * This is a map of key/value pairs that contain the connection
      * information. You will want to pass this information to a provisioner
      * script to finalize the connection. See below for more information.
      */
-    public /*out*/ readonly data!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly data: pulumi.Output<{[key: string]: string}>;
     /**
      * The device to tell the Block Storage service this
      * volume will be attached as. This is purely for informational purposes.
      * You can specify `auto` or a device such as `/dev/vdc`.
      */
-    public readonly device!: pulumi.Output<string | undefined>;
+    declare public readonly device: pulumi.Output<string | undefined>;
     /**
      * The storage driver that the volume is based on.
      */
-    public /*out*/ readonly driverVolumeType!: pulumi.Output<string>;
+    declare public /*out*/ readonly driverVolumeType: pulumi.Output<string>;
     /**
      * The host to attach the volume to.
      */
-    public readonly hostName!: pulumi.Output<string>;
+    declare public readonly hostName: pulumi.Output<string>;
     /**
      * The iSCSI initiator string to make the connection.
      */
-    public readonly initiator!: pulumi.Output<string | undefined>;
+    declare public readonly initiator: pulumi.Output<string | undefined>;
     /**
      * The IP address of the `hostName` above.
      */
-    public readonly ipAddress!: pulumi.Output<string | undefined>;
+    declare public readonly ipAddress: pulumi.Output<string | undefined>;
     /**
      * A mount point base name for shared storage.
      */
-    public /*out*/ readonly mountPointBase!: pulumi.Output<string>;
+    declare public /*out*/ readonly mountPointBase: pulumi.Output<string>;
     /**
      * Whether to connect to this volume via multipath.
      */
-    public readonly multipath!: pulumi.Output<boolean | undefined>;
+    declare public readonly multipath: pulumi.Output<boolean | undefined>;
     /**
      * The iSCSI initiator OS type.
      */
-    public readonly osType!: pulumi.Output<string | undefined>;
+    declare public readonly osType: pulumi.Output<string | undefined>;
     /**
      * The iSCSI initiator platform.
      */
-    public readonly platform!: pulumi.Output<string | undefined>;
+    declare public readonly platform: pulumi.Output<string | undefined>;
     /**
      * The region in which to obtain the V3 Block Storage
      * client. A Block Storage client is needed to create a volume attachment.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new volume attachment.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The ID of the Volume to attach to an Instance.
      */
-    public readonly volumeId!: pulumi.Output<string>;
+    declare public readonly volumeId: pulumi.Output<string>;
     /**
      * A wwnn name. Used for Fibre Channel connections.
      */
-    public readonly wwnn!: pulumi.Output<string | undefined>;
+    declare public readonly wwnn: pulumi.Output<string | undefined>;
     /**
      * An array of wwpn strings. Used for Fibre Channel
      * connections.
      */
-    public readonly wwpns!: pulumi.Output<string[] | undefined>;
+    declare public readonly wwpns: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a VolumeAttach resource with the given unique name, arguments, and options.
@@ -176,41 +176,41 @@ export class VolumeAttach extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeAttachState | undefined;
-            resourceInputs["attachMode"] = state ? state.attachMode : undefined;
-            resourceInputs["data"] = state ? state.data : undefined;
-            resourceInputs["device"] = state ? state.device : undefined;
-            resourceInputs["driverVolumeType"] = state ? state.driverVolumeType : undefined;
-            resourceInputs["hostName"] = state ? state.hostName : undefined;
-            resourceInputs["initiator"] = state ? state.initiator : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["mountPointBase"] = state ? state.mountPointBase : undefined;
-            resourceInputs["multipath"] = state ? state.multipath : undefined;
-            resourceInputs["osType"] = state ? state.osType : undefined;
-            resourceInputs["platform"] = state ? state.platform : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["volumeId"] = state ? state.volumeId : undefined;
-            resourceInputs["wwnn"] = state ? state.wwnn : undefined;
-            resourceInputs["wwpns"] = state ? state.wwpns : undefined;
+            resourceInputs["attachMode"] = state?.attachMode;
+            resourceInputs["data"] = state?.data;
+            resourceInputs["device"] = state?.device;
+            resourceInputs["driverVolumeType"] = state?.driverVolumeType;
+            resourceInputs["hostName"] = state?.hostName;
+            resourceInputs["initiator"] = state?.initiator;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["mountPointBase"] = state?.mountPointBase;
+            resourceInputs["multipath"] = state?.multipath;
+            resourceInputs["osType"] = state?.osType;
+            resourceInputs["platform"] = state?.platform;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["volumeId"] = state?.volumeId;
+            resourceInputs["wwnn"] = state?.wwnn;
+            resourceInputs["wwpns"] = state?.wwpns;
         } else {
             const args = argsOrState as VolumeAttachArgs | undefined;
-            if ((!args || args.hostName === undefined) && !opts.urn) {
+            if (args?.hostName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostName'");
             }
-            if ((!args || args.volumeId === undefined) && !opts.urn) {
+            if (args?.volumeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'volumeId'");
             }
-            resourceInputs["attachMode"] = args ? args.attachMode : undefined;
-            resourceInputs["device"] = args ? args.device : undefined;
-            resourceInputs["hostName"] = args ? args.hostName : undefined;
-            resourceInputs["initiator"] = args ? args.initiator : undefined;
-            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
-            resourceInputs["multipath"] = args ? args.multipath : undefined;
-            resourceInputs["osType"] = args ? args.osType : undefined;
-            resourceInputs["platform"] = args ? args.platform : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["volumeId"] = args ? args.volumeId : undefined;
-            resourceInputs["wwnn"] = args ? args.wwnn : undefined;
-            resourceInputs["wwpns"] = args ? args.wwpns : undefined;
+            resourceInputs["attachMode"] = args?.attachMode;
+            resourceInputs["device"] = args?.device;
+            resourceInputs["hostName"] = args?.hostName;
+            resourceInputs["initiator"] = args?.initiator;
+            resourceInputs["ipAddress"] = args?.ipAddress;
+            resourceInputs["multipath"] = args?.multipath;
+            resourceInputs["osType"] = args?.osType;
+            resourceInputs["platform"] = args?.platform;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["volumeId"] = args?.volumeId;
+            resourceInputs["wwnn"] = args?.wwnn;
+            resourceInputs["wwpns"] = args?.wwpns;
             resourceInputs["data"] = undefined /*out*/;
             resourceInputs["driverVolumeType"] = undefined /*out*/;
             resourceInputs["mountPointBase"] = undefined /*out*/;

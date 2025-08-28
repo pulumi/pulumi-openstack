@@ -240,28 +240,32 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.region);
     }
     /**
-     * The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+     * The ID of the Tenant (Identity v2) or Project (Identity v3)
+     * to login with.
      * 
      */
     @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tenantId;
 
     /**
-     * @return The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+     * @return The ID of the Tenant (Identity v2) or Project (Identity v3)
+     * to login with.
      * 
      */
     public Output<Optional<String>> tenantId() {
         return Codegen.optional(this.tenantId);
     }
     /**
-     * The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+     * The name of the Tenant (Identity v2) or Project (Identity v3)
+     * to login with.
      * 
      */
     @Export(name="tenantName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tenantName;
 
     /**
-     * @return The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+     * @return The name of the Tenant (Identity v2) or Project (Identity v3)
+     * to login with.
      * 
      */
     public Output<Optional<String>> tenantName() {
