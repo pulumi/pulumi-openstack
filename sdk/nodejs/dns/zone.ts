@@ -68,57 +68,57 @@ export class Zone extends pulumi.CustomResource {
      * Attributes for the DNS Service scheduler.
      * Changing this creates a new zone.
      */
-    public readonly attributes!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly attributes: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A description of the zone.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Disable wait for zone to reach ACTIVE
      * status. The check is enabled by default. If this argument is true, zone
      * will be considered as created/updated if OpenStack request returned success.
      */
-    public readonly disableStatusCheck!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableStatusCheck: pulumi.Output<boolean | undefined>;
     /**
      * The email contact for the zone record.
      */
-    public readonly email!: pulumi.Output<string | undefined>;
+    declare public readonly email: pulumi.Output<string | undefined>;
     /**
      * An array of master DNS servers. For when `type` is
      * `SECONDARY`.
      */
-    public readonly masters!: pulumi.Output<string[] | undefined>;
+    declare public readonly masters: pulumi.Output<string[] | undefined>;
     /**
      * The name of the zone. Note the `.` at the end of the name.
      * Changing this creates a new DNS zone.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the project DNS zone is created
      * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
      * user role in target project).
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 DNS client.
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The time to live (TTL) of the zone.
      */
-    public readonly ttl!: pulumi.Output<number>;
+    declare public readonly ttl: pulumi.Output<number>;
     /**
      * The type of zone. Can either be `PRIMARY` or `SECONDARY`.
      * Changing this creates a new zone.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Map of additional options. Changing this creates a
      * new zone.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly valueSpecs: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Zone resource with the given unique name, arguments, and options.
@@ -133,30 +133,30 @@ export class Zone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneState | undefined;
-            resourceInputs["attributes"] = state ? state.attributes : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disableStatusCheck"] = state ? state.disableStatusCheck : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["masters"] = state ? state.masters : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["attributes"] = state?.attributes;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disableStatusCheck"] = state?.disableStatusCheck;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["masters"] = state?.masters;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["ttl"] = state?.ttl;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["valueSpecs"] = state?.valueSpecs;
         } else {
             const args = argsOrState as ZoneArgs | undefined;
-            resourceInputs["attributes"] = args ? args.attributes : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disableStatusCheck"] = args ? args.disableStatusCheck : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["masters"] = args ? args.masters : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["attributes"] = args?.attributes;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disableStatusCheck"] = args?.disableStatusCheck;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["masters"] = args?.masters;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["ttl"] = args?.ttl;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["valueSpecs"] = args?.valueSpecs;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Zone.__pulumiType, name, resourceInputs, opts);

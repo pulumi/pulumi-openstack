@@ -67,37 +67,37 @@ export class EndpointV3 extends pulumi.CustomResource {
      * The endpoint region. The `region` and
      * `endpointRegion` can be different.
      */
-    public readonly endpointRegion!: pulumi.Output<string>;
+    declare public readonly endpointRegion: pulumi.Output<string>;
     /**
      * The endpoint interface. Valid values are `public`,
      * `internal` and `admin`. Default value is `public`
      */
-    public readonly interface!: pulumi.Output<string | undefined>;
+    declare public readonly interface: pulumi.Output<string | undefined>;
     /**
      * The endpoint name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The endpoint service ID.
      */
-    public readonly serviceId!: pulumi.Output<string>;
+    declare public readonly serviceId: pulumi.Output<string>;
     /**
      * The service name of the endpoint.
      */
-    public /*out*/ readonly serviceName!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceName: pulumi.Output<string>;
     /**
      * The service type of the endpoint.
      */
-    public /*out*/ readonly serviceType!: pulumi.Output<string>;
+    declare public /*out*/ readonly serviceType: pulumi.Output<string>;
     /**
      * The endpoint url.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
 
     /**
      * Create a EndpointV3 resource with the given unique name, arguments, and options.
@@ -112,31 +112,31 @@ export class EndpointV3 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointV3State | undefined;
-            resourceInputs["endpointRegion"] = state ? state.endpointRegion : undefined;
-            resourceInputs["interface"] = state ? state.interface : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
-            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
-            resourceInputs["serviceType"] = state ? state.serviceType : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["endpointRegion"] = state?.endpointRegion;
+            resourceInputs["interface"] = state?.interface;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["serviceId"] = state?.serviceId;
+            resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["serviceType"] = state?.serviceType;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as EndpointV3Args | undefined;
-            if ((!args || args.endpointRegion === undefined) && !opts.urn) {
+            if (args?.endpointRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointRegion'");
             }
-            if ((!args || args.serviceId === undefined) && !opts.urn) {
+            if (args?.serviceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["endpointRegion"] = args ? args.endpointRegion : undefined;
-            resourceInputs["interface"] = args ? args.interface : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["endpointRegion"] = args?.endpointRegion;
+            resourceInputs["interface"] = args?.interface;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["serviceId"] = args?.serviceId;
+            resourceInputs["url"] = args?.url;
             resourceInputs["serviceName"] = undefined /*out*/;
             resourceInputs["serviceType"] = undefined /*out*/;
         }

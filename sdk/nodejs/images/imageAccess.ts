@@ -102,35 +102,35 @@ export class ImageAccess extends pulumi.CustomResource {
     /**
      * The date the image access was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The image ID.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    declare public readonly imageId: pulumi.Output<string>;
     /**
      * The member ID, e.g. the target project ID.
      */
-    public readonly memberId!: pulumi.Output<string>;
+    declare public readonly memberId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Glance client.
      * A Glance client is needed to manage Image members. If omitted, the `region`
      * argument of the provider is used. Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The member schema.
      */
-    public /*out*/ readonly schema!: pulumi.Output<string>;
+    declare public /*out*/ readonly schema: pulumi.Output<string>;
     /**
      * The member proposal status. Optional if admin wants to
      * force the member proposal acceptance. Can either be `accepted`, `rejected` or
      * `pending`. Defaults to `pending`. Foridden for non-admin users.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The date the image access was last updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a ImageAccess resource with the given unique name, arguments, and options.
@@ -145,25 +145,25 @@ export class ImageAccess extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageAccessState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["memberId"] = state ? state.memberId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["schema"] = state ? state.schema : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["memberId"] = state?.memberId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["schema"] = state?.schema;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ImageAccessArgs | undefined;
-            if ((!args || args.imageId === undefined) && !opts.urn) {
+            if (args?.imageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
-            if ((!args || args.memberId === undefined) && !opts.urn) {
+            if (args?.memberId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'memberId'");
             }
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["memberId"] = args ? args.memberId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["memberId"] = args?.memberId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["status"] = args?.status;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["schema"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

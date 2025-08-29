@@ -93,26 +93,26 @@ export class AggregateV2 extends pulumi.CustomResource {
      * to Openstack and visible in the web interface, or the provider will fail to add them to the host
      * aggregate.
      */
-    public readonly hosts!: pulumi.Output<string[] | undefined>;
+    declare public readonly hosts: pulumi.Output<string[] | undefined>;
     /**
      * The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the Host Aggregate
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region in which to create the Host Aggregate. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new Host Aggregate.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The name of the Availability Zone to use. If ommited, it will take the default
      * availability zone.
      */
-    public readonly zone!: pulumi.Output<string | undefined>;
+    declare public readonly zone: pulumi.Output<string | undefined>;
 
     /**
      * Create a AggregateV2 resource with the given unique name, arguments, and options.
@@ -127,18 +127,18 @@ export class AggregateV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AggregateV2State | undefined;
-            resourceInputs["hosts"] = state ? state.hosts : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["hosts"] = state?.hosts;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as AggregateV2Args | undefined;
-            resourceInputs["hosts"] = args ? args.hosts : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["hosts"] = args?.hosts;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["zone"] = args?.zone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AggregateV2.__pulumiType, name, resourceInputs, opts);

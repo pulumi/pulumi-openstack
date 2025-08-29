@@ -66,36 +66,36 @@ export class ImageAccessAccept extends pulumi.CustomResource {
     /**
      * The date the image membership was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The proposed image ID.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    declare public readonly imageId: pulumi.Output<string>;
     /**
      * The member ID, e.g. the target project ID. Optional
      * for admin accounts. Defaults to the current scope project ID.
      */
-    public readonly memberId!: pulumi.Output<string>;
+    declare public readonly memberId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Glance client.
      * A Glance client is needed to manage Image memberships. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * membership.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The membership schema.
      */
-    public /*out*/ readonly schema!: pulumi.Output<string>;
+    declare public /*out*/ readonly schema: pulumi.Output<string>;
     /**
      * The membership proposal status. Can either be
      * `accepted`, `rejected` or `pending`.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The date the image membership was last updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a ImageAccessAccept resource with the given unique name, arguments, and options.
@@ -110,25 +110,25 @@ export class ImageAccessAccept extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageAccessAcceptState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["memberId"] = state ? state.memberId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["schema"] = state ? state.schema : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["memberId"] = state?.memberId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["schema"] = state?.schema;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ImageAccessAcceptArgs | undefined;
-            if ((!args || args.imageId === undefined) && !opts.urn) {
+            if (args?.imageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
-            if ((!args || args.status === undefined) && !opts.urn) {
+            if (args?.status === undefined && !opts.urn) {
                 throw new Error("Missing required property 'status'");
             }
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["memberId"] = args ? args.memberId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["memberId"] = args?.memberId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["status"] = args?.status;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["schema"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

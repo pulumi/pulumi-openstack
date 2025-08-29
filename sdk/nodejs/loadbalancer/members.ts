@@ -73,19 +73,19 @@ export class Members extends pulumi.CustomResource {
      * A set of dictionaries containing member parameters. The
      * structure is described below.
      */
-    public readonly members!: pulumi.Output<outputs.loadbalancer.MembersMember[] | undefined>;
+    declare public readonly members: pulumi.Output<outputs.loadbalancer.MembersMember[] | undefined>;
     /**
      * The id of the pool that members will be assigned to.
      * Changing this creates a new members resource.
      */
-    public readonly poolId!: pulumi.Output<string>;
+    declare public readonly poolId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create pool members. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * members resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a Members resource with the given unique name, arguments, and options.
@@ -100,17 +100,17 @@ export class Members extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MembersState | undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["poolId"] = state ? state.poolId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["poolId"] = state?.poolId;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as MembersArgs | undefined;
-            if ((!args || args.poolId === undefined) && !opts.urn) {
+            if (args?.poolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'poolId'");
             }
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["poolId"] = args ? args.poolId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["poolId"] = args?.poolId;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Members.__pulumiType, name, resourceInputs, opts);

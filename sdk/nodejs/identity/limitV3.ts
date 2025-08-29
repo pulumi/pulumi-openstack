@@ -68,37 +68,37 @@ export class LimitV3 extends pulumi.CustomResource {
     /**
      * Description of the limit.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The domain the limit applies to. Changing this
      * creates a new Limit.
      */
-    public readonly domainId!: pulumi.Output<string>;
+    declare public readonly domainId: pulumi.Output<string>;
     /**
      * The project the limit applies to. Changing this
      * creates a new Limit.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new Limit.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Integer for the actual limit.
      */
-    public readonly resourceLimit!: pulumi.Output<number>;
+    declare public readonly resourceLimit: pulumi.Output<number>;
     /**
      * The resource that the limit applies to. Changing
      * this creates a new Limit.
      */
-    public readonly resourceName!: pulumi.Output<string>;
+    declare public readonly resourceName: pulumi.Output<string>;
     /**
      * The service the limit applies to. Changing this
      * creates a new Limit.
      */
-    public readonly serviceId!: pulumi.Output<string>;
+    declare public readonly serviceId: pulumi.Output<string>;
 
     /**
      * Create a LimitV3 resource with the given unique name, arguments, and options.
@@ -113,31 +113,31 @@ export class LimitV3 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LimitV3State | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["domainId"] = state ? state.domainId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["resourceLimit"] = state ? state.resourceLimit : undefined;
-            resourceInputs["resourceName"] = state ? state.resourceName : undefined;
-            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["domainId"] = state?.domainId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["resourceLimit"] = state?.resourceLimit;
+            resourceInputs["resourceName"] = state?.resourceName;
+            resourceInputs["serviceId"] = state?.serviceId;
         } else {
             const args = argsOrState as LimitV3Args | undefined;
-            if ((!args || args.resourceLimit === undefined) && !opts.urn) {
+            if (args?.resourceLimit === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceLimit'");
             }
-            if ((!args || args.resourceName === undefined) && !opts.urn) {
+            if (args?.resourceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceName'");
             }
-            if ((!args || args.serviceId === undefined) && !opts.urn) {
+            if (args?.serviceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["domainId"] = args ? args.domainId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["resourceLimit"] = args ? args.resourceLimit : undefined;
-            resourceInputs["resourceName"] = args ? args.resourceName : undefined;
-            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["domainId"] = args?.domainId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["resourceLimit"] = args?.resourceLimit;
+            resourceInputs["resourceName"] = args?.resourceName;
+            resourceInputs["serviceId"] = args?.serviceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LimitV3.__pulumiType, name, resourceInputs, opts);

@@ -61,42 +61,42 @@ export class Project extends pulumi.CustomResource {
     /**
      * A description of the project.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The domain this project belongs to.
      */
-    public readonly domainId!: pulumi.Output<string>;
+    declare public readonly domainId: pulumi.Output<string>;
     /**
      * Whether the project is enabled or disabled. Valid
      * values are `true` and `false`. Default is `true`.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Whether this project is a domain. Valid values
      * are `true` and `false`. Default is `false`. Changing this creates a new
      * project/domain.
      */
-    public readonly isDomain!: pulumi.Output<boolean | undefined>;
+    declare public readonly isDomain: pulumi.Output<boolean | undefined>;
     /**
      * The name of the project.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The parent of this project. Changing this creates
      * a new project.
      */
-    public readonly parentId!: pulumi.Output<string>;
+    declare public readonly parentId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new project.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Tags for the project. Changing this updates the existing
      * project.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -111,24 +111,24 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["domainId"] = state ? state.domainId : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["isDomain"] = state ? state.isDomain : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parentId"] = state ? state.parentId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["domainId"] = state?.domainId;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["isDomain"] = state?.isDomain;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parentId"] = state?.parentId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["domainId"] = args ? args.domainId : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["isDomain"] = args ? args.isDomain : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parentId"] = args ? args.parentId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["domainId"] = args?.domainId;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["isDomain"] = args?.isDomain;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parentId"] = args?.parentId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Project.__pulumiType, name, resourceInputs, opts);

@@ -69,50 +69,50 @@ export class TempUrl extends pulumi.CustomResource {
     /**
      * The container name the object belongs to.
      */
-    public readonly container!: pulumi.Output<string>;
+    declare public readonly container: pulumi.Output<string>;
     /**
      * The digest to use when generating the tempurl.
      * Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
      */
-    public readonly digest!: pulumi.Output<string | undefined>;
+    declare public readonly digest: pulumi.Output<string | undefined>;
     /**
      * The key to use when generating the tempurl. If not
      * provided, the key will be read from the container or account metadata.
      */
-    public readonly key!: pulumi.Output<string | undefined>;
+    declare public readonly key: pulumi.Output<string | undefined>;
     /**
      * The method allowed when accessing this URL.
      * Valid values are `GET`, and `POST`. Default is `GET`.
      */
-    public readonly method!: pulumi.Output<string | undefined>;
+    declare public readonly method: pulumi.Output<string | undefined>;
     /**
      * The object name the tempurl is for.
      */
-    public readonly object!: pulumi.Output<string>;
+    declare public readonly object: pulumi.Output<string>;
     /**
      * Whether to automatically regenerate the URL when
      * it has expired. If set to true, this will create a new resource with a new
      * ID and new URL. Defaults to false.
      */
-    public readonly regenerate!: pulumi.Output<boolean | undefined>;
+    declare public readonly regenerate: pulumi.Output<boolean | undefined>;
     /**
      * The region the tempurl is located in.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Split is the string on which to split the object URL.
      * Default is `/v1/`.
      */
-    public readonly split!: pulumi.Output<string | undefined>;
+    declare public readonly split: pulumi.Output<string | undefined>;
     /**
      * The TTL, in seconds, for the URL. For how long it should
      * be valid.
      */
-    public readonly ttl!: pulumi.Output<number>;
+    declare public readonly ttl: pulumi.Output<number>;
     /**
      * The URL
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
 
     /**
      * Create a TempUrl resource with the given unique name, arguments, and options.
@@ -127,36 +127,36 @@ export class TempUrl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TempUrlState | undefined;
-            resourceInputs["container"] = state ? state.container : undefined;
-            resourceInputs["digest"] = state ? state.digest : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["method"] = state ? state.method : undefined;
-            resourceInputs["object"] = state ? state.object : undefined;
-            resourceInputs["regenerate"] = state ? state.regenerate : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["split"] = state ? state.split : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["container"] = state?.container;
+            resourceInputs["digest"] = state?.digest;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["method"] = state?.method;
+            resourceInputs["object"] = state?.object;
+            resourceInputs["regenerate"] = state?.regenerate;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["split"] = state?.split;
+            resourceInputs["ttl"] = state?.ttl;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as TempUrlArgs | undefined;
-            if ((!args || args.container === undefined) && !opts.urn) {
+            if (args?.container === undefined && !opts.urn) {
                 throw new Error("Missing required property 'container'");
             }
-            if ((!args || args.object === undefined) && !opts.urn) {
+            if (args?.object === undefined && !opts.urn) {
                 throw new Error("Missing required property 'object'");
             }
-            if ((!args || args.ttl === undefined) && !opts.urn) {
+            if (args?.ttl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ttl'");
             }
-            resourceInputs["container"] = args ? args.container : undefined;
-            resourceInputs["digest"] = args ? args.digest : undefined;
+            resourceInputs["container"] = args?.container;
+            resourceInputs["digest"] = args?.digest;
             resourceInputs["key"] = args?.key ? pulumi.secret(args.key) : undefined;
-            resourceInputs["method"] = args ? args.method : undefined;
-            resourceInputs["object"] = args ? args.object : undefined;
-            resourceInputs["regenerate"] = args ? args.regenerate : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["split"] = args ? args.split : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["method"] = args?.method;
+            resourceInputs["object"] = args?.object;
+            resourceInputs["regenerate"] = args?.regenerate;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["split"] = args?.split;
+            resourceInputs["ttl"] = args?.ttl;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -52,54 +52,54 @@ export class QuoteSetV3 extends pulumi.CustomResource {
      * Quota value for backup gigabytes. Changing
      * this updates the existing quotaset.
      */
-    public readonly backupGigabytes!: pulumi.Output<number>;
+    declare public readonly backupGigabytes: pulumi.Output<number>;
     /**
      * Quota value for backups. Changing this updates the
      * existing quotaset.
      */
-    public readonly backups!: pulumi.Output<number>;
+    declare public readonly backups: pulumi.Output<number>;
     /**
      * Quota value for gigabytes. Changing this updates the
      * existing quotaset.
      */
-    public readonly gigabytes!: pulumi.Output<number>;
+    declare public readonly gigabytes: pulumi.Output<number>;
     /**
      * Quota value for groups. Changing this updates the
      * existing quotaset.
      */
-    public readonly groups!: pulumi.Output<number>;
+    declare public readonly groups: pulumi.Output<number>;
     /**
      * Quota value for gigabytes per volume .
      * Changing this updates the existing quotaset.
      */
-    public readonly perVolumeGigabytes!: pulumi.Output<number>;
+    declare public readonly perVolumeGigabytes: pulumi.Output<number>;
     /**
      * ID of the project to manage quotas. Changing this
      * creates a new quotaset.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to create the volume. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new quotaset.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Quota value for snapshots. Changing this updates the
      * existing quotaset.
      */
-    public readonly snapshots!: pulumi.Output<number>;
+    declare public readonly snapshots: pulumi.Output<number>;
     /**
      * Key/Value pairs for setting quota for
      * volumes types. Possible keys are `snapshots_<volume_type_name>`,
      * `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
      */
-    public readonly volumeTypeQuota!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly volumeTypeQuota: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Quota value for volumes. Changing this updates the
      * existing quotaset.
      */
-    public readonly volumes!: pulumi.Output<number>;
+    declare public readonly volumes: pulumi.Output<number>;
 
     /**
      * Create a QuoteSetV3 resource with the given unique name, arguments, and options.
@@ -114,31 +114,31 @@ export class QuoteSetV3 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QuoteSetV3State | undefined;
-            resourceInputs["backupGigabytes"] = state ? state.backupGigabytes : undefined;
-            resourceInputs["backups"] = state ? state.backups : undefined;
-            resourceInputs["gigabytes"] = state ? state.gigabytes : undefined;
-            resourceInputs["groups"] = state ? state.groups : undefined;
-            resourceInputs["perVolumeGigabytes"] = state ? state.perVolumeGigabytes : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["snapshots"] = state ? state.snapshots : undefined;
-            resourceInputs["volumeTypeQuota"] = state ? state.volumeTypeQuota : undefined;
-            resourceInputs["volumes"] = state ? state.volumes : undefined;
+            resourceInputs["backupGigabytes"] = state?.backupGigabytes;
+            resourceInputs["backups"] = state?.backups;
+            resourceInputs["gigabytes"] = state?.gigabytes;
+            resourceInputs["groups"] = state?.groups;
+            resourceInputs["perVolumeGigabytes"] = state?.perVolumeGigabytes;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["snapshots"] = state?.snapshots;
+            resourceInputs["volumeTypeQuota"] = state?.volumeTypeQuota;
+            resourceInputs["volumes"] = state?.volumes;
         } else {
             const args = argsOrState as QuoteSetV3Args | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["backupGigabytes"] = args ? args.backupGigabytes : undefined;
-            resourceInputs["backups"] = args ? args.backups : undefined;
-            resourceInputs["gigabytes"] = args ? args.gigabytes : undefined;
-            resourceInputs["groups"] = args ? args.groups : undefined;
-            resourceInputs["perVolumeGigabytes"] = args ? args.perVolumeGigabytes : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["snapshots"] = args ? args.snapshots : undefined;
-            resourceInputs["volumeTypeQuota"] = args ? args.volumeTypeQuota : undefined;
-            resourceInputs["volumes"] = args ? args.volumes : undefined;
+            resourceInputs["backupGigabytes"] = args?.backupGigabytes;
+            resourceInputs["backups"] = args?.backups;
+            resourceInputs["gigabytes"] = args?.gigabytes;
+            resourceInputs["groups"] = args?.groups;
+            resourceInputs["perVolumeGigabytes"] = args?.perVolumeGigabytes;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["snapshots"] = args?.snapshots;
+            resourceInputs["volumeTypeQuota"] = args?.volumeTypeQuota;
+            resourceInputs["volumes"] = args?.volumes;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(QuoteSetV3.__pulumiType, name, resourceInputs, opts);

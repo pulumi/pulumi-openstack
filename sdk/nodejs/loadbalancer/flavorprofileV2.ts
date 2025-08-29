@@ -81,24 +81,24 @@ export class FlavorprofileV2 extends pulumi.CustomResource {
      * can be used for readability as shown in the example above.
      * Changing this updates the existing flavorprofile.
      */
-    public readonly flavorData!: pulumi.Output<string>;
+    declare public readonly flavorData: pulumi.Output<string>;
     /**
      * Name of the flavorprofile. Changing this updates the existing
      * flavorprofile.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The providerName that the flavorProfile will use.
      * Changing this updates the existing flavorprofile.
      */
-    public readonly providerName!: pulumi.Output<string>;
+    declare public readonly providerName: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an LB member. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * LB flavorprofile.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a FlavorprofileV2 resource with the given unique name, arguments, and options.
@@ -113,22 +113,22 @@ export class FlavorprofileV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlavorprofileV2State | undefined;
-            resourceInputs["flavorData"] = state ? state.flavorData : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["providerName"] = state ? state.providerName : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["flavorData"] = state?.flavorData;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["providerName"] = state?.providerName;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as FlavorprofileV2Args | undefined;
-            if ((!args || args.flavorData === undefined) && !opts.urn) {
+            if (args?.flavorData === undefined && !opts.urn) {
                 throw new Error("Missing required property 'flavorData'");
             }
-            if ((!args || args.providerName === undefined) && !opts.urn) {
+            if (args?.providerName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'providerName'");
             }
-            resourceInputs["flavorData"] = args ? args.flavorData : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["providerName"] = args ? args.providerName : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["flavorData"] = args?.flavorData;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["providerName"] = args?.providerName;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "openstack:index/lbFlavorprofileV2:LbFlavorprofileV2" }] };

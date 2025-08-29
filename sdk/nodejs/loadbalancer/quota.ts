@@ -75,49 +75,49 @@ export class Quota extends pulumi.CustomResource {
      * Quota value for health_monitors. Changing
      * this updates the existing quota. Omitting it sets it to 0.
      */
-    public readonly healthMonitor!: pulumi.Output<number>;
+    declare public readonly healthMonitor: pulumi.Output<number>;
     /**
      * Quota value for l7_policies. Changing this
      * updates the existing quota. Omitting it sets it to 0. Available in
      * **Octavia minor version 2.19**.
      */
-    public readonly l7Policy!: pulumi.Output<number>;
+    declare public readonly l7Policy: pulumi.Output<number>;
     /**
      * Quota value for l7_rules. Changing this
      * updates the existing quota. Omitting it sets it to 0. Available in
      * **Octavia minor version 2.19**.
      */
-    public readonly l7Rule!: pulumi.Output<number>;
+    declare public readonly l7Rule: pulumi.Output<number>;
     /**
      * Quota value for listeners. Changing this updates
      * the existing quota. Omitting it sets it to 0.
      */
-    public readonly listener!: pulumi.Output<number>;
+    declare public readonly listener: pulumi.Output<number>;
     /**
      * Quota value for loadbalancers. Changing this
      * updates the existing quota. Omitting it sets it to 0.
      */
-    public readonly loadbalancer!: pulumi.Output<number>;
+    declare public readonly loadbalancer: pulumi.Output<number>;
     /**
      * Quota value for members. Changing this updates
      * the existing quota. Omitting it sets it to 0.
      */
-    public readonly member!: pulumi.Output<number>;
+    declare public readonly member: pulumi.Output<number>;
     /**
      * Quota value for pools. Changing this updates the
      * the existing quota. Omitting it sets it to 0.
      */
-    public readonly pool!: pulumi.Output<number>;
+    declare public readonly pool: pulumi.Output<number>;
     /**
      * ID of the project to manage quotas. Changing this
      * creates a new quota.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Region in which to manage quotas. Changing this
      * creates a new quota. If ommited, the region of the credentials is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a Quota resource with the given unique name, arguments, and options.
@@ -132,29 +132,29 @@ export class Quota extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QuotaState | undefined;
-            resourceInputs["healthMonitor"] = state ? state.healthMonitor : undefined;
-            resourceInputs["l7Policy"] = state ? state.l7Policy : undefined;
-            resourceInputs["l7Rule"] = state ? state.l7Rule : undefined;
-            resourceInputs["listener"] = state ? state.listener : undefined;
-            resourceInputs["loadbalancer"] = state ? state.loadbalancer : undefined;
-            resourceInputs["member"] = state ? state.member : undefined;
-            resourceInputs["pool"] = state ? state.pool : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["healthMonitor"] = state?.healthMonitor;
+            resourceInputs["l7Policy"] = state?.l7Policy;
+            resourceInputs["l7Rule"] = state?.l7Rule;
+            resourceInputs["listener"] = state?.listener;
+            resourceInputs["loadbalancer"] = state?.loadbalancer;
+            resourceInputs["member"] = state?.member;
+            resourceInputs["pool"] = state?.pool;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as QuotaArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["healthMonitor"] = args ? args.healthMonitor : undefined;
-            resourceInputs["l7Policy"] = args ? args.l7Policy : undefined;
-            resourceInputs["l7Rule"] = args ? args.l7Rule : undefined;
-            resourceInputs["listener"] = args ? args.listener : undefined;
-            resourceInputs["loadbalancer"] = args ? args.loadbalancer : undefined;
-            resourceInputs["member"] = args ? args.member : undefined;
-            resourceInputs["pool"] = args ? args.pool : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["healthMonitor"] = args?.healthMonitor;
+            resourceInputs["l7Policy"] = args?.l7Policy;
+            resourceInputs["l7Rule"] = args?.l7Rule;
+            resourceInputs["listener"] = args?.listener;
+            resourceInputs["loadbalancer"] = args?.loadbalancer;
+            resourceInputs["member"] = args?.member;
+            resourceInputs["pool"] = args?.pool;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Quota.__pulumiType, name, resourceInputs, opts);

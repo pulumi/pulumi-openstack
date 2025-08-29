@@ -75,54 +75,54 @@ export class BgpSpeakerV2 extends pulumi.CustomResource {
      * A boolean value indicating
      * whether to advertise floating IP host routes. Defaults to `true`.
      */
-    public readonly advertiseFloatingIpHostRoutes!: pulumi.Output<boolean>;
+    declare public readonly advertiseFloatingIpHostRoutes: pulumi.Output<boolean>;
     /**
      * A boolean value indicating whether to
      * advertise tenant networks. Defaults to `true`.
      */
-    public readonly advertiseTenantNetworks!: pulumi.Output<boolean>;
+    declare public readonly advertiseTenantNetworks: pulumi.Output<boolean>;
     /**
      * A list of dictionaries containing the `destination` and
      * `nextHop` for each route advertised by the BGP speaker. This attribute is
      * only populated after the BGP speaker has been created and has established BGP
      * sessions with its peers.
      */
-    public /*out*/ readonly advertisedRoutes!: pulumi.Output<outputs.networking.BgpSpeakerV2AdvertisedRoute[]>;
+    declare public /*out*/ readonly advertisedRoutes: pulumi.Output<outputs.networking.BgpSpeakerV2AdvertisedRoute[]>;
     /**
      * The IP version of the BGP speaker. Valid values are
      * `4` or `6`. Defaults to `4`. Changing this creates a new BGP speaker.
      */
-    public readonly ipVersion!: pulumi.Output<number | undefined>;
+    declare public readonly ipVersion: pulumi.Output<number | undefined>;
     /**
      * The local autonomous system number (ASN) for the BGP
      * speaker. This is a mandatory field and must be specified. Changing this
      * creates a new BGP speaker.
      */
-    public readonly localAs!: pulumi.Output<number>;
+    declare public readonly localAs: pulumi.Output<number>;
     /**
      * A name for the BGP speaker.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A list of network IDs to associate with the BGP speaker.
      */
-    public readonly networks!: pulumi.Output<string[] | undefined>;
+    declare public readonly networks: pulumi.Output<string[] | undefined>;
     /**
      * A list of BGP peer IDs to associate with the BGP speaker.
      */
-    public readonly peers!: pulumi.Output<string[] | undefined>;
+    declare public readonly peers: pulumi.Output<string[] | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron network. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new BGP
      * speaker.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The tenant/project ID. Required if admin privileges
      * are used. Changing this creates a new BGP speaker.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
 
     /**
      * Create a BgpSpeakerV2 resource with the given unique name, arguments, and options.
@@ -137,30 +137,30 @@ export class BgpSpeakerV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BgpSpeakerV2State | undefined;
-            resourceInputs["advertiseFloatingIpHostRoutes"] = state ? state.advertiseFloatingIpHostRoutes : undefined;
-            resourceInputs["advertiseTenantNetworks"] = state ? state.advertiseTenantNetworks : undefined;
-            resourceInputs["advertisedRoutes"] = state ? state.advertisedRoutes : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["localAs"] = state ? state.localAs : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networks"] = state ? state.networks : undefined;
-            resourceInputs["peers"] = state ? state.peers : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["advertiseFloatingIpHostRoutes"] = state?.advertiseFloatingIpHostRoutes;
+            resourceInputs["advertiseTenantNetworks"] = state?.advertiseTenantNetworks;
+            resourceInputs["advertisedRoutes"] = state?.advertisedRoutes;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["localAs"] = state?.localAs;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networks"] = state?.networks;
+            resourceInputs["peers"] = state?.peers;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["tenantId"] = state?.tenantId;
         } else {
             const args = argsOrState as BgpSpeakerV2Args | undefined;
-            if ((!args || args.localAs === undefined) && !opts.urn) {
+            if (args?.localAs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'localAs'");
             }
-            resourceInputs["advertiseFloatingIpHostRoutes"] = args ? args.advertiseFloatingIpHostRoutes : undefined;
-            resourceInputs["advertiseTenantNetworks"] = args ? args.advertiseTenantNetworks : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["localAs"] = args ? args.localAs : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networks"] = args ? args.networks : undefined;
-            resourceInputs["peers"] = args ? args.peers : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["advertiseFloatingIpHostRoutes"] = args?.advertiseFloatingIpHostRoutes;
+            resourceInputs["advertiseTenantNetworks"] = args?.advertiseTenantNetworks;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["localAs"] = args?.localAs;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networks"] = args?.networks;
+            resourceInputs["peers"] = args?.peers;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tenantId"] = args?.tenantId;
             resourceInputs["advertisedRoutes"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

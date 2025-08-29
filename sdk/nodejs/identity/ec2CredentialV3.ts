@@ -75,34 +75,34 @@ export class Ec2CredentialV3 extends pulumi.CustomResource {
     /**
      * contains an EC2 credential access UUID
      */
-    public /*out*/ readonly access!: pulumi.Output<string>;
+    declare public /*out*/ readonly access: pulumi.Output<string>;
     /**
      * The ID of the project the EC2 credential is created
      * for and that authentication requests using this EC2 credential will
      * be scoped to. Only administrative users can specify a project ID different
      * from the current auth scope.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new EC2 credential.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * contains an EC2 credential secret UUID
      */
-    public /*out*/ readonly secret!: pulumi.Output<string>;
+    declare public /*out*/ readonly secret: pulumi.Output<string>;
     /**
      * contains an EC2 credential trust ID scope
      */
-    public /*out*/ readonly trustId!: pulumi.Output<string>;
+    declare public /*out*/ readonly trustId: pulumi.Output<string>;
     /**
      * The ID of the user the EC2 credential is created for.
      * Only administrative users can specify a user ID different from the current
      * auth scope.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a Ec2CredentialV3 resource with the given unique name, arguments, and options.
@@ -117,17 +117,17 @@ export class Ec2CredentialV3 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Ec2CredentialV3State | undefined;
-            resourceInputs["access"] = state ? state.access : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["trustId"] = state ? state.trustId : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["access"] = state?.access;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["trustId"] = state?.trustId;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as Ec2CredentialV3Args | undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["userId"] = args?.userId;
             resourceInputs["access"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
             resourceInputs["trustId"] = undefined /*out*/;

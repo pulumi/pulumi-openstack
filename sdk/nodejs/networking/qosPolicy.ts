@@ -61,61 +61,61 @@ export class QosPolicy extends pulumi.CustomResource {
      * The collection of tags assigned on the QoS policy, which have been
      * explicitly and implicitly added.
      */
-    public /*out*/ readonly allTags!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly allTags: pulumi.Output<string[]>;
     /**
      * The time at which QoS policy was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The human-readable description for the QoS policy.
      * Changing this updates the description of the existing QoS policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Indicates whether the QoS policy is default
      * QoS policy or not. Changing this updates the default status of the existing
      * QoS policy.
      */
-    public readonly isDefault!: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefault: pulumi.Output<boolean | undefined>;
     /**
      * The name of the QoS policy. Changing this updates the name of
      * the existing QoS policy.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The owner of the QoS policy. Required if admin wants to
      * create a QoS policy for another project. Changing this creates a new QoS policy.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron Qos policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * QoS policy.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The revision number of the QoS policy.
      */
-    public /*out*/ readonly revisionNumber!: pulumi.Output<number>;
+    declare public /*out*/ readonly revisionNumber: pulumi.Output<number>;
     /**
      * Indicates whether this QoS policy is shared across
      * all projects. Changing this updates the shared status of the existing
      * QoS policy.
      */
-    public readonly shared!: pulumi.Output<boolean | undefined>;
+    declare public readonly shared: pulumi.Output<boolean | undefined>;
     /**
      * A set of string tags for the QoS policy.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The time at which QoS policy was created.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly valueSpecs: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a QosPolicy resource with the given unique name, arguments, and options.
@@ -130,28 +130,28 @@ export class QosPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QosPolicyState | undefined;
-            resourceInputs["allTags"] = state ? state.allTags : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["revisionNumber"] = state ? state.revisionNumber : undefined;
-            resourceInputs["shared"] = state ? state.shared : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["allTags"] = state?.allTags;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["isDefault"] = state?.isDefault;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["revisionNumber"] = state?.revisionNumber;
+            resourceInputs["shared"] = state?.shared;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["valueSpecs"] = state?.valueSpecs;
         } else {
             const args = argsOrState as QosPolicyArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["shared"] = args ? args.shared : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["isDefault"] = args?.isDefault;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["shared"] = args?.shared;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["valueSpecs"] = args?.valueSpecs;
             resourceInputs["allTags"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["revisionNumber"] = undefined /*out*/;

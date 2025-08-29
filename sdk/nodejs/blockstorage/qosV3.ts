@@ -66,21 +66,21 @@ export class QosV3 extends pulumi.CustomResource {
      * `back-end` or `both`. Changing this updates the `consumer` of an
      * existing qos.
      */
-    public readonly consumer!: pulumi.Output<string | undefined>;
+    declare public readonly consumer: pulumi.Output<string | undefined>;
     /**
      * Name of the qos.  Changing this creates a new qos.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region in which to create the qos. If omitted,
      * the `region` argument of the provider is used. Changing this creates
      * a new qos.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Key/Value pairs of specs for the qos.
      */
-    public readonly specs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly specs: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a QosV3 resource with the given unique name, arguments, and options.
@@ -95,16 +95,16 @@ export class QosV3 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QosV3State | undefined;
-            resourceInputs["consumer"] = state ? state.consumer : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["specs"] = state ? state.specs : undefined;
+            resourceInputs["consumer"] = state?.consumer;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["specs"] = state?.specs;
         } else {
             const args = argsOrState as QosV3Args | undefined;
-            resourceInputs["consumer"] = args ? args.consumer : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["specs"] = args ? args.specs : undefined;
+            resourceInputs["consumer"] = args?.consumer;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["specs"] = args?.specs;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(QosV3.__pulumiType, name, resourceInputs, opts);

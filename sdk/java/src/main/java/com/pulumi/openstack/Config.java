@@ -15,8 +15,8 @@ public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("openstack");
 /**
- * If set to `false`, OpenStack authorization won&#39;t be perfomed automatically, if the initial auth token get expired.
- * Defaults to `true`
+ * If set to `false`, OpenStack authorization won&#39;t be perfomed
+ * automatically, if the initial auth token get expired. Defaults to `true`
  * 
  */
     public Optional<Boolean> allowReauth() {
@@ -79,8 +79,8 @@ public final class Config {
         return Codegen.stringProp("defaultDomain").config(config).get();
     }
 /**
- * If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
- * to `true`.
+ * If set to `false`, OpenStack authorization will be perfomed,
+ * every time the service provider client is called. Defaults to `true`.
  * 
  */
     public Optional<Boolean> delayedAuth() {
@@ -115,7 +115,8 @@ public final class Config {
         return Codegen.booleanProp("enableLogging").config(config).get();
     }
 /**
- * A map of services with an endpoint to override what was from the Keystone catalog
+ * A map of services with an endpoint to override what was
+ * from the Keystone catalog
  * 
  */
     public Optional<Map<String,String>> endpointOverrides() {
@@ -174,7 +175,8 @@ public final class Config {
         return Codegen.stringProp("region").config(config).env("OS_REGION_NAME").get();
     }
 /**
- * Use Swift&#39;s authentication system instead of Keystone. Only used for interaction with Swift.
+ * Use Swift&#39;s authentication system instead of Keystone. Only used for
+ * interaction with Swift.
  * 
  */
     public Optional<Boolean> swauth() {
@@ -188,14 +190,16 @@ public final class Config {
         return Codegen.booleanProp("systemScope").config(config).get();
     }
 /**
- * The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+ * The ID of the Tenant (Identity v2) or Project (Identity v3)
+ * to login with.
  * 
  */
     public Optional<String> tenantId() {
         return Codegen.stringProp("tenantId").config(config).get();
     }
 /**
- * The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+ * The name of the Tenant (Identity v2) or Project (Identity v3)
+ * to login with.
  * 
  */
     public Optional<String> tenantName() {

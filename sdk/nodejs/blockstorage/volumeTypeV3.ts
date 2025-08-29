@@ -82,27 +82,27 @@ export class VolumeTypeV3 extends pulumi.CustomResource {
      * Human-readable description of the port. Changing
      * this updates the `description` of an existing volume type.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Key/Value pairs of metadata for the volume type.
      */
-    public readonly extraSpecs!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly extraSpecs: pulumi.Output<{[key: string]: string}>;
     /**
      * Whether the volume type is public. Changing
      * this updates the `isPublic` of an existing volume type.
      */
-    public readonly isPublic!: pulumi.Output<boolean>;
+    declare public readonly isPublic: pulumi.Output<boolean>;
     /**
      * Name of the volume type.  Changing this
      * updates the `name` of an existing volume type.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region in which to create the volume. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new quotaset.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a VolumeTypeV3 resource with the given unique name, arguments, and options.
@@ -117,18 +117,18 @@ export class VolumeTypeV3 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeTypeV3State | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["extraSpecs"] = state ? state.extraSpecs : undefined;
-            resourceInputs["isPublic"] = state ? state.isPublic : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["extraSpecs"] = state?.extraSpecs;
+            resourceInputs["isPublic"] = state?.isPublic;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as VolumeTypeV3Args | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["extraSpecs"] = args ? args.extraSpecs : undefined;
-            resourceInputs["isPublic"] = args ? args.isPublic : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["extraSpecs"] = args?.extraSpecs;
+            resourceInputs["isPublic"] = args?.isPublic;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VolumeTypeV3.__pulumiType, name, resourceInputs, opts);

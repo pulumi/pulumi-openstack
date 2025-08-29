@@ -59,58 +59,58 @@ export class IpSecPolicy extends pulumi.CustomResource {
      * aes-xcbc, aes-cmac. Default is sha1.
      * Changing this updates the algorithm of the existing policy.
      */
-    public readonly authAlgorithm!: pulumi.Output<string>;
+    declare public readonly authAlgorithm: pulumi.Output<string>;
     /**
      * The human-readable description for the policy.
      * Changing this updates the description of the existing policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The encapsulation mode. Valid values are tunnel and transport. Default is tunnel.
      * Changing this updates the existing policy.
      */
-    public readonly encapsulationMode!: pulumi.Output<string>;
+    declare public readonly encapsulationMode: pulumi.Output<string>;
     /**
      * The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
      * aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
      * The default value is aes-128. Changing this updates the existing policy.
      */
-    public readonly encryptionAlgorithm!: pulumi.Output<string>;
+    declare public readonly encryptionAlgorithm: pulumi.Output<string>;
     /**
      * The lifetime of the security association. Consists of Unit and Value.
      */
-    public readonly lifetimes!: pulumi.Output<outputs.vpnaas.IpSecPolicyLifetime[]>;
+    declare public readonly lifetimes: pulumi.Output<outputs.vpnaas.IpSecPolicyLifetime[]>;
     /**
      * The name of the policy. Changing this updates the name of
      * the existing policy.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
      * Default is group5. Changing this updates the existing policy.
      */
-    public readonly pfs!: pulumi.Output<string>;
+    declare public readonly pfs: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an IPSec policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * policy.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The owner of the policy. Required if admin wants to
      * create a policy for another project. Changing this creates a new policy.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
     /**
      * The transform protocol. Valid values are esp, ah and ah-esp.
      * Changing this updates the existing policy. Default is ESP.
      */
-    public readonly transformProtocol!: pulumi.Output<string>;
+    declare public readonly transformProtocol: pulumi.Output<string>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly valueSpecs: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a IpSecPolicy resource with the given unique name, arguments, and options.
@@ -125,30 +125,30 @@ export class IpSecPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IpSecPolicyState | undefined;
-            resourceInputs["authAlgorithm"] = state ? state.authAlgorithm : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["encapsulationMode"] = state ? state.encapsulationMode : undefined;
-            resourceInputs["encryptionAlgorithm"] = state ? state.encryptionAlgorithm : undefined;
-            resourceInputs["lifetimes"] = state ? state.lifetimes : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pfs"] = state ? state.pfs : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
-            resourceInputs["transformProtocol"] = state ? state.transformProtocol : undefined;
-            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["authAlgorithm"] = state?.authAlgorithm;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["encapsulationMode"] = state?.encapsulationMode;
+            resourceInputs["encryptionAlgorithm"] = state?.encryptionAlgorithm;
+            resourceInputs["lifetimes"] = state?.lifetimes;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pfs"] = state?.pfs;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["transformProtocol"] = state?.transformProtocol;
+            resourceInputs["valueSpecs"] = state?.valueSpecs;
         } else {
             const args = argsOrState as IpSecPolicyArgs | undefined;
-            resourceInputs["authAlgorithm"] = args ? args.authAlgorithm : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["encapsulationMode"] = args ? args.encapsulationMode : undefined;
-            resourceInputs["encryptionAlgorithm"] = args ? args.encryptionAlgorithm : undefined;
-            resourceInputs["lifetimes"] = args ? args.lifetimes : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["pfs"] = args ? args.pfs : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["transformProtocol"] = args ? args.transformProtocol : undefined;
-            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["authAlgorithm"] = args?.authAlgorithm;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["encapsulationMode"] = args?.encapsulationMode;
+            resourceInputs["encryptionAlgorithm"] = args?.encryptionAlgorithm;
+            resourceInputs["lifetimes"] = args?.lifetimes;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["pfs"] = args?.pfs;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tenantId"] = args?.tenantId;
+            resourceInputs["transformProtocol"] = args?.transformProtocol;
+            resourceInputs["valueSpecs"] = args?.valueSpecs;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IpSecPolicy.__pulumiType, name, resourceInputs, opts);

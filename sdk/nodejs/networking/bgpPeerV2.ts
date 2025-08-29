@@ -66,38 +66,38 @@ export class BgpPeerV2 extends pulumi.CustomResource {
      * or `md5`. Defaults to `none`. If set to not `none`, the `password` argument
      * must also be provided. Changing this creates a new BGP peer.
      */
-    public readonly authType!: pulumi.Output<string | undefined>;
+    declare public readonly authType: pulumi.Output<string | undefined>;
     /**
      * A name for the BGP peer.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The password used for MD5 authentication. Must be set
      * only when `authType` is not `none`.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The IP address of the BGP peer. Must be a valid IP
      * address. Changing this creates a new BGP peer.
      */
-    public readonly peerIp!: pulumi.Output<string>;
+    declare public readonly peerIp: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron network. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new BGP
      * peer.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The AS number of the BGP peer. Changing this
      * creates a new BGP peer.
      */
-    public readonly remoteAs!: pulumi.Output<number>;
+    declare public readonly remoteAs: pulumi.Output<number>;
     /**
      * The tenant/project ID. Required if admin privileges
      * are used. Changing this creates a new BGP peer.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
 
     /**
      * Create a BgpPeerV2 resource with the given unique name, arguments, and options.
@@ -112,28 +112,28 @@ export class BgpPeerV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BgpPeerV2State | undefined;
-            resourceInputs["authType"] = state ? state.authType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["peerIp"] = state ? state.peerIp : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["remoteAs"] = state ? state.remoteAs : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["authType"] = state?.authType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["peerIp"] = state?.peerIp;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["remoteAs"] = state?.remoteAs;
+            resourceInputs["tenantId"] = state?.tenantId;
         } else {
             const args = argsOrState as BgpPeerV2Args | undefined;
-            if ((!args || args.peerIp === undefined) && !opts.urn) {
+            if (args?.peerIp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerIp'");
             }
-            if ((!args || args.remoteAs === undefined) && !opts.urn) {
+            if (args?.remoteAs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'remoteAs'");
             }
-            resourceInputs["authType"] = args ? args.authType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["authType"] = args?.authType;
+            resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["peerIp"] = args ? args.peerIp : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["remoteAs"] = args ? args.remoteAs : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["peerIp"] = args?.peerIp;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["remoteAs"] = args?.remoteAs;
+            resourceInputs["tenantId"] = args?.tenantId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

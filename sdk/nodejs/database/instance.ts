@@ -67,57 +67,57 @@ export class Instance extends pulumi.CustomResource {
     /**
      * A list of IP addresses assigned to the instance.
      */
-    public /*out*/ readonly addresses!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly addresses: pulumi.Output<string[]>;
     /**
      * Configuration ID to be attached to the instance. Database instance
      * will be rebooted when configuration is detached.
      */
-    public readonly configurationId!: pulumi.Output<string | undefined>;
+    declare public readonly configurationId: pulumi.Output<string | undefined>;
     /**
      * An array of database name, charset and collate. The database
      * object structure is documented below.
      */
-    public readonly databases!: pulumi.Output<outputs.database.InstanceDatabase[] | undefined>;
+    declare public readonly databases: pulumi.Output<outputs.database.InstanceDatabase[] | undefined>;
     /**
      * An array of database engine type and version. The datastore
      * object structure is documented below. Changing this creates a new instance.
      */
-    public readonly datastore!: pulumi.Output<outputs.database.InstanceDatastore>;
+    declare public readonly datastore: pulumi.Output<outputs.database.InstanceDatastore>;
     /**
      * The flavor ID of the desired flavor for the instance.
      * Changing this creates new instance.
      */
-    public readonly flavorId!: pulumi.Output<string>;
+    declare public readonly flavorId: pulumi.Output<string>;
     /**
      * A unique name for the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * An array of one or more networks to attach to the
      * instance. The network object structure is documented below. Changing this
      * creates a new instance.
      */
-    public readonly networks!: pulumi.Output<outputs.database.InstanceNetwork[] | undefined>;
+    declare public readonly networks: pulumi.Output<outputs.database.InstanceNetwork[] | undefined>;
     /**
      * The region in which to create the db instance. Changing this
      * creates a new instance.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the volume size in GB. Changing this creates new instance.
      */
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * An array of username, password, host and databases. The user
      * object structure is documented below.
      */
-    public readonly users!: pulumi.Output<outputs.database.InstanceUser[] | undefined>;
+    declare public readonly users: pulumi.Output<outputs.database.InstanceUser[] | undefined>;
     /**
      * Specifies the volume type to use. If you want to
      * specify a volume type, you must also specify a volume size. Changing this
      * creates new instance.
      */
-    public readonly volumeType!: pulumi.Output<string | undefined>;
+    declare public readonly volumeType: pulumi.Output<string | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -132,35 +132,35 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["addresses"] = state ? state.addresses : undefined;
-            resourceInputs["configurationId"] = state ? state.configurationId : undefined;
-            resourceInputs["databases"] = state ? state.databases : undefined;
-            resourceInputs["datastore"] = state ? state.datastore : undefined;
-            resourceInputs["flavorId"] = state ? state.flavorId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networks"] = state ? state.networks : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["users"] = state ? state.users : undefined;
-            resourceInputs["volumeType"] = state ? state.volumeType : undefined;
+            resourceInputs["addresses"] = state?.addresses;
+            resourceInputs["configurationId"] = state?.configurationId;
+            resourceInputs["databases"] = state?.databases;
+            resourceInputs["datastore"] = state?.datastore;
+            resourceInputs["flavorId"] = state?.flavorId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networks"] = state?.networks;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["users"] = state?.users;
+            resourceInputs["volumeType"] = state?.volumeType;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.datastore === undefined) && !opts.urn) {
+            if (args?.datastore === undefined && !opts.urn) {
                 throw new Error("Missing required property 'datastore'");
             }
-            if ((!args || args.size === undefined) && !opts.urn) {
+            if (args?.size === undefined && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            resourceInputs["configurationId"] = args ? args.configurationId : undefined;
-            resourceInputs["databases"] = args ? args.databases : undefined;
-            resourceInputs["datastore"] = args ? args.datastore : undefined;
-            resourceInputs["flavorId"] = args ? args.flavorId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networks"] = args ? args.networks : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["users"] = args ? args.users : undefined;
-            resourceInputs["volumeType"] = args ? args.volumeType : undefined;
+            resourceInputs["configurationId"] = args?.configurationId;
+            resourceInputs["databases"] = args?.databases;
+            resourceInputs["datastore"] = args?.datastore;
+            resourceInputs["flavorId"] = args?.flavorId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networks"] = args?.networks;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["users"] = args?.users;
+            resourceInputs["volumeType"] = args?.volumeType;
             resourceInputs["addresses"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

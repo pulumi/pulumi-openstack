@@ -28,92 +28,94 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * Application Credential ID to login with.
      */
-    public readonly applicationCredentialId!: pulumi.Output<string | undefined>;
+    declare public readonly applicationCredentialId: pulumi.Output<string | undefined>;
     /**
      * Application Credential name to login with.
      */
-    public readonly applicationCredentialName!: pulumi.Output<string | undefined>;
+    declare public readonly applicationCredentialName: pulumi.Output<string | undefined>;
     /**
      * Application Credential secret to login with.
      */
-    public readonly applicationCredentialSecret!: pulumi.Output<string | undefined>;
+    declare public readonly applicationCredentialSecret: pulumi.Output<string | undefined>;
     /**
      * The Identity authentication URL.
      */
-    public readonly authUrl!: pulumi.Output<string | undefined>;
+    declare public readonly authUrl: pulumi.Output<string | undefined>;
     /**
      * A Custom CA certificate.
      */
-    public readonly cacertFile!: pulumi.Output<string | undefined>;
+    declare public readonly cacertFile: pulumi.Output<string | undefined>;
     /**
      * A client certificate to authenticate with.
      */
-    public readonly cert!: pulumi.Output<string | undefined>;
+    declare public readonly cert: pulumi.Output<string | undefined>;
     /**
      * An entry in a `clouds.yaml` file to use.
      */
-    public readonly cloud!: pulumi.Output<string | undefined>;
+    declare public readonly cloud: pulumi.Output<string | undefined>;
     /**
      * The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
      */
-    public readonly defaultDomain!: pulumi.Output<string | undefined>;
+    declare public readonly defaultDomain: pulumi.Output<string | undefined>;
     /**
      * The ID of the Domain to scope to (Identity v3).
      */
-    public readonly domainId!: pulumi.Output<string | undefined>;
+    declare public readonly domainId: pulumi.Output<string | undefined>;
     /**
      * The name of the Domain to scope to (Identity v3).
      */
-    public readonly domainName!: pulumi.Output<string | undefined>;
-    public readonly endpointType!: pulumi.Output<string | undefined>;
+    declare public readonly domainName: pulumi.Output<string | undefined>;
+    declare public readonly endpointType: pulumi.Output<string | undefined>;
     /**
      * A client private key to authenticate with.
      */
-    public readonly key!: pulumi.Output<string | undefined>;
+    declare public readonly key: pulumi.Output<string | undefined>;
     /**
      * Password to login with.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The ID of the domain where the proejct resides (Identity v3).
      */
-    public readonly projectDomainId!: pulumi.Output<string | undefined>;
+    declare public readonly projectDomainId: pulumi.Output<string | undefined>;
     /**
      * The name of the domain where the project resides (Identity v3).
      */
-    public readonly projectDomainName!: pulumi.Output<string | undefined>;
+    declare public readonly projectDomainName: pulumi.Output<string | undefined>;
     /**
      * The OpenStack region to connect to.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
-     * The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+     * The ID of the Tenant (Identity v2) or Project (Identity v3)
+     * to login with.
      */
-    public readonly tenantId!: pulumi.Output<string | undefined>;
+    declare public readonly tenantId: pulumi.Output<string | undefined>;
     /**
-     * The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+     * The name of the Tenant (Identity v2) or Project (Identity v3)
+     * to login with.
      */
-    public readonly tenantName!: pulumi.Output<string | undefined>;
+    declare public readonly tenantName: pulumi.Output<string | undefined>;
     /**
      * Authentication token to use as an alternative to username/password.
      */
-    public readonly token!: pulumi.Output<string | undefined>;
+    declare public readonly token: pulumi.Output<string | undefined>;
     /**
      * The ID of the domain where the user resides (Identity v3).
      */
-    public readonly userDomainId!: pulumi.Output<string | undefined>;
+    declare public readonly userDomainId: pulumi.Output<string | undefined>;
     /**
      * The name of the domain where the user resides (Identity v3).
      */
-    public readonly userDomainName!: pulumi.Output<string | undefined>;
+    declare public readonly userDomainName: pulumi.Output<string | undefined>;
     /**
      * User ID to login with.
      */
-    public readonly userId!: pulumi.Output<string | undefined>;
+    declare public readonly userId: pulumi.Output<string | undefined>;
     /**
      * Username to login with.
      */
-    public readonly userName!: pulumi.Output<string | undefined>;
+    declare public readonly userName: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -126,38 +128,38 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["allowReauth"] = pulumi.output((args ? args.allowReauth : undefined) ?? utilities.getEnvBoolean("OS_ALLOW_REAUTH")).apply(JSON.stringify);
-            resourceInputs["applicationCredentialId"] = args ? args.applicationCredentialId : undefined;
-            resourceInputs["applicationCredentialName"] = args ? args.applicationCredentialName : undefined;
-            resourceInputs["applicationCredentialSecret"] = args ? args.applicationCredentialSecret : undefined;
-            resourceInputs["authUrl"] = args ? args.authUrl : undefined;
-            resourceInputs["cacertFile"] = args ? args.cacertFile : undefined;
-            resourceInputs["cert"] = args ? args.cert : undefined;
-            resourceInputs["cloud"] = (args ? args.cloud : undefined) ?? utilities.getEnv("OS_CLOUD");
-            resourceInputs["defaultDomain"] = args ? args.defaultDomain : undefined;
-            resourceInputs["delayedAuth"] = pulumi.output((args ? args.delayedAuth : undefined) ?? utilities.getEnvBoolean("OS_DELAYED_AUTH")).apply(JSON.stringify);
-            resourceInputs["disableNoCacheHeader"] = pulumi.output(args ? args.disableNoCacheHeader : undefined).apply(JSON.stringify);
-            resourceInputs["domainId"] = args ? args.domainId : undefined;
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["enableLogging"] = pulumi.output(args ? args.enableLogging : undefined).apply(JSON.stringify);
-            resourceInputs["endpointOverrides"] = pulumi.output(args ? args.endpointOverrides : undefined).apply(JSON.stringify);
-            resourceInputs["endpointType"] = (args ? args.endpointType : undefined) ?? utilities.getEnv("OS_ENDPOINT_TYPE");
-            resourceInputs["insecure"] = pulumi.output((args ? args.insecure : undefined) ?? utilities.getEnvBoolean("OS_INSECURE")).apply(JSON.stringify);
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["maxRetries"] = pulumi.output(args ? args.maxRetries : undefined).apply(JSON.stringify);
+            resourceInputs["allowReauth"] = pulumi.output((args?.allowReauth) ?? utilities.getEnvBoolean("OS_ALLOW_REAUTH")).apply(JSON.stringify);
+            resourceInputs["applicationCredentialId"] = args?.applicationCredentialId;
+            resourceInputs["applicationCredentialName"] = args?.applicationCredentialName;
+            resourceInputs["applicationCredentialSecret"] = args?.applicationCredentialSecret;
+            resourceInputs["authUrl"] = args?.authUrl;
+            resourceInputs["cacertFile"] = args?.cacertFile;
+            resourceInputs["cert"] = args?.cert;
+            resourceInputs["cloud"] = (args?.cloud) ?? utilities.getEnv("OS_CLOUD");
+            resourceInputs["defaultDomain"] = args?.defaultDomain;
+            resourceInputs["delayedAuth"] = pulumi.output((args?.delayedAuth) ?? utilities.getEnvBoolean("OS_DELAYED_AUTH")).apply(JSON.stringify);
+            resourceInputs["disableNoCacheHeader"] = pulumi.output(args?.disableNoCacheHeader).apply(JSON.stringify);
+            resourceInputs["domainId"] = args?.domainId;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["enableLogging"] = pulumi.output(args?.enableLogging).apply(JSON.stringify);
+            resourceInputs["endpointOverrides"] = pulumi.output(args?.endpointOverrides).apply(JSON.stringify);
+            resourceInputs["endpointType"] = (args?.endpointType) ?? utilities.getEnv("OS_ENDPOINT_TYPE");
+            resourceInputs["insecure"] = pulumi.output((args?.insecure) ?? utilities.getEnvBoolean("OS_INSECURE")).apply(JSON.stringify);
+            resourceInputs["key"] = args?.key;
+            resourceInputs["maxRetries"] = pulumi.output(args?.maxRetries).apply(JSON.stringify);
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["projectDomainId"] = args ? args.projectDomainId : undefined;
-            resourceInputs["projectDomainName"] = args ? args.projectDomainName : undefined;
-            resourceInputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("OS_REGION_NAME");
-            resourceInputs["swauth"] = pulumi.output((args ? args.swauth : undefined) ?? utilities.getEnvBoolean("OS_SWAUTH")).apply(JSON.stringify);
-            resourceInputs["systemScope"] = pulumi.output(args ? args.systemScope : undefined).apply(JSON.stringify);
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["tenantName"] = args ? args.tenantName : undefined;
-            resourceInputs["token"] = args ? args.token : undefined;
-            resourceInputs["userDomainId"] = args ? args.userDomainId : undefined;
-            resourceInputs["userDomainName"] = args ? args.userDomainName : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
-            resourceInputs["userName"] = args ? args.userName : undefined;
+            resourceInputs["projectDomainId"] = args?.projectDomainId;
+            resourceInputs["projectDomainName"] = args?.projectDomainName;
+            resourceInputs["region"] = (args?.region) ?? utilities.getEnv("OS_REGION_NAME");
+            resourceInputs["swauth"] = pulumi.output((args?.swauth) ?? utilities.getEnvBoolean("OS_SWAUTH")).apply(JSON.stringify);
+            resourceInputs["systemScope"] = pulumi.output(args?.systemScope).apply(JSON.stringify);
+            resourceInputs["tenantId"] = args?.tenantId;
+            resourceInputs["tenantName"] = args?.tenantName;
+            resourceInputs["token"] = args?.token;
+            resourceInputs["userDomainId"] = args?.userDomainId;
+            resourceInputs["userDomainName"] = args?.userDomainName;
+            resourceInputs["userId"] = args?.userId;
+            resourceInputs["userName"] = args?.userName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };
@@ -180,8 +182,8 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
-     * Defaults to `true`
+     * If set to `false`, OpenStack authorization won't be perfomed
+     * automatically, if the initial auth token get expired. Defaults to `true`
      */
     allowReauth?: pulumi.Input<boolean>;
     /**
@@ -217,8 +219,8 @@ export interface ProviderArgs {
      */
     defaultDomain?: pulumi.Input<string>;
     /**
-     * If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
-     * to `true`.
+     * If set to `false`, OpenStack authorization will be perfomed,
+     * every time the service provider client is called. Defaults to `true`.
      */
     delayedAuth?: pulumi.Input<boolean>;
     /**
@@ -238,7 +240,8 @@ export interface ProviderArgs {
      */
     enableLogging?: pulumi.Input<boolean>;
     /**
-     * A map of services with an endpoint to override what was from the Keystone catalog
+     * A map of services with an endpoint to override what was
+     * from the Keystone catalog
      */
     endpointOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     endpointType?: pulumi.Input<string>;
@@ -271,7 +274,8 @@ export interface ProviderArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
+     * Use Swift's authentication system instead of Keystone. Only used for
+     * interaction with Swift.
      */
     swauth?: pulumi.Input<boolean>;
     /**
@@ -279,11 +283,13 @@ export interface ProviderArgs {
      */
     systemScope?: pulumi.Input<boolean>;
     /**
-     * The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+     * The ID of the Tenant (Identity v2) or Project (Identity v3)
+     * to login with.
      */
     tenantId?: pulumi.Input<string>;
     /**
-     * The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+     * The name of the Tenant (Identity v2) or Project (Identity v3)
+     * to login with.
      */
     tenantName?: pulumi.Input<string>;
     /**

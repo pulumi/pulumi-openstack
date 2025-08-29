@@ -122,84 +122,84 @@ export class SecretV1 extends pulumi.CustomResource {
      * `read` operation is supported. If not specified, the secret is accessible
      * project wide.
      */
-    public readonly acl!: pulumi.Output<outputs.keymanager.SecretV1Acl>;
+    declare public readonly acl: pulumi.Output<outputs.keymanager.SecretV1Acl>;
     /**
      * Metadata provided by a user or system for informational purposes.
      */
-    public readonly algorithm!: pulumi.Output<string>;
+    declare public readonly algorithm: pulumi.Output<string>;
     /**
      * The map of metadata, assigned on the secret, which has been
      * explicitly and implicitly added.
      */
-    public /*out*/ readonly allMetadata!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly allMetadata: pulumi.Output<{[key: string]: string}>;
     /**
      * Metadata provided by a user or system for informational purposes.
      */
-    public readonly bitLength!: pulumi.Output<number>;
+    declare public readonly bitLength: pulumi.Output<number>;
     /**
      * The map of the content types, assigned on the secret.
      */
-    public /*out*/ readonly contentTypes!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly contentTypes: pulumi.Output<{[key: string]: string}>;
     /**
      * The date the secret was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The creator of the secret.
      */
-    public /*out*/ readonly creatorId!: pulumi.Output<string>;
+    declare public /*out*/ readonly creatorId: pulumi.Output<string>;
     /**
      * The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
      */
-    public readonly expiration!: pulumi.Output<string | undefined>;
+    declare public readonly expiration: pulumi.Output<string | undefined>;
     /**
      * Additional Metadata for the secret.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Metadata provided by a user or system for informational purposes.
      */
-    public readonly mode!: pulumi.Output<string>;
+    declare public readonly mode: pulumi.Output<string>;
     /**
      * Human-readable name for the Secret. Does not have
      * to be unique.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The secret's data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
      */
-    public readonly payload!: pulumi.Output<string | undefined>;
+    declare public readonly payload: pulumi.Output<string | undefined>;
     /**
      * (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
      */
-    public readonly payloadContentEncoding!: pulumi.Output<string | undefined>;
+    declare public readonly payloadContentEncoding: pulumi.Output<string | undefined>;
     /**
      * (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
      */
-    public readonly payloadContentType!: pulumi.Output<string | undefined>;
+    declare public readonly payloadContentType: pulumi.Output<string | undefined>;
     /**
      * The region in which to obtain the V1 KeyManager client.
      * A KeyManager client is needed to create a secret. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * V1 secret.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The secret reference / where to find the secret.
      */
-    public /*out*/ readonly secretRef!: pulumi.Output<string>;
+    declare public /*out*/ readonly secretRef: pulumi.Output<string>;
     /**
      * Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
      */
-    public readonly secretType!: pulumi.Output<string>;
+    declare public readonly secretType: pulumi.Output<string>;
     /**
      * The status of the secret.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The date the secret was last updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a SecretV1 resource with the given unique name, arguments, and options.
@@ -214,39 +214,39 @@ export class SecretV1 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretV1State | undefined;
-            resourceInputs["acl"] = state ? state.acl : undefined;
-            resourceInputs["algorithm"] = state ? state.algorithm : undefined;
-            resourceInputs["allMetadata"] = state ? state.allMetadata : undefined;
-            resourceInputs["bitLength"] = state ? state.bitLength : undefined;
-            resourceInputs["contentTypes"] = state ? state.contentTypes : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["creatorId"] = state ? state.creatorId : undefined;
-            resourceInputs["expiration"] = state ? state.expiration : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["payload"] = state ? state.payload : undefined;
-            resourceInputs["payloadContentEncoding"] = state ? state.payloadContentEncoding : undefined;
-            resourceInputs["payloadContentType"] = state ? state.payloadContentType : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["secretRef"] = state ? state.secretRef : undefined;
-            resourceInputs["secretType"] = state ? state.secretType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["acl"] = state?.acl;
+            resourceInputs["algorithm"] = state?.algorithm;
+            resourceInputs["allMetadata"] = state?.allMetadata;
+            resourceInputs["bitLength"] = state?.bitLength;
+            resourceInputs["contentTypes"] = state?.contentTypes;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["creatorId"] = state?.creatorId;
+            resourceInputs["expiration"] = state?.expiration;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["payload"] = state?.payload;
+            resourceInputs["payloadContentEncoding"] = state?.payloadContentEncoding;
+            resourceInputs["payloadContentType"] = state?.payloadContentType;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["secretRef"] = state?.secretRef;
+            resourceInputs["secretType"] = state?.secretType;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as SecretV1Args | undefined;
-            resourceInputs["acl"] = args ? args.acl : undefined;
-            resourceInputs["algorithm"] = args ? args.algorithm : undefined;
-            resourceInputs["bitLength"] = args ? args.bitLength : undefined;
-            resourceInputs["expiration"] = args ? args.expiration : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["acl"] = args?.acl;
+            resourceInputs["algorithm"] = args?.algorithm;
+            resourceInputs["bitLength"] = args?.bitLength;
+            resourceInputs["expiration"] = args?.expiration;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["name"] = args?.name;
             resourceInputs["payload"] = args?.payload ? pulumi.secret(args.payload) : undefined;
-            resourceInputs["payloadContentEncoding"] = args ? args.payloadContentEncoding : undefined;
-            resourceInputs["payloadContentType"] = args ? args.payloadContentType : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["secretType"] = args ? args.secretType : undefined;
+            resourceInputs["payloadContentEncoding"] = args?.payloadContentEncoding;
+            resourceInputs["payloadContentType"] = args?.payloadContentType;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["secretType"] = args?.secretType;
             resourceInputs["allMetadata"] = undefined /*out*/;
             resourceInputs["contentTypes"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;

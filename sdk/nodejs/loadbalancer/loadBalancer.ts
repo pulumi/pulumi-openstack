@@ -59,61 +59,61 @@ export class LoadBalancer extends pulumi.CustomResource {
      * The administrative state of the Loadbalancer.
      * A valid value is true (UP) or false (DOWN).
      */
-    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
+    declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
     /**
      * The availability zone of the Loadbalancer.
      * Changing this creates a new loadbalancer. Available only for Octavia
      * **minor version 2.14 or later**.
      */
-    public readonly availabilityZone!: pulumi.Output<string | undefined>;
+    declare public readonly availabilityZone: pulumi.Output<string | undefined>;
     /**
      * Human-readable description for the Loadbalancer.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The UUID of a flavor. Changing this creates a new
      * loadbalancer.
      */
-    public readonly flavorId!: pulumi.Output<string>;
+    declare public readonly flavorId: pulumi.Output<string>;
     /**
      * The name of the provider. Changing this
      * creates a new loadbalancer.
      */
-    public readonly loadbalancerProvider!: pulumi.Output<string>;
+    declare public readonly loadbalancerProvider: pulumi.Output<string>;
     /**
      * Human-readable name for the Loadbalancer. Does not have
      * to be unique.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an LB member. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * LB member.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * A list of security group IDs to apply to the
      * loadbalancer. The security groups must be specified by ID and not name (as
      * opposed to how they are configured with the Compute Instance).
      */
-    public readonly securityGroupIds!: pulumi.Output<string[]>;
+    declare public readonly securityGroupIds: pulumi.Output<string[]>;
     /**
      * A list of simple strings assigned to the loadbalancer.
      * Available only for Octavia **minor version 2.5 or later**.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the Loadbalancer.  Only administrative users can specify a tenant UUID
      * other than their own.  Changing this creates a new loadbalancer.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
     /**
      * The ip address of the load balancer.
      * Changing this creates a new loadbalancer.
      */
-    public readonly vipAddress!: pulumi.Output<string>;
+    declare public readonly vipAddress: pulumi.Output<string>;
     /**
      * The network on which to allocate the
      * Loadbalancer's address. A tenant can only create Loadbalancers on networks
@@ -121,18 +121,18 @@ export class LoadBalancer extends pulumi.CustomResource {
      * are shared).  Changing this creates a new loadbalancer. Exactly one of
      * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
      */
-    public readonly vipNetworkId!: pulumi.Output<string>;
+    declare public readonly vipNetworkId: pulumi.Output<string>;
     /**
      * The port UUID that the loadbalancer will use.
      * Changing this creates a new loadbalancer. Exactly one of
      * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
      */
-    public readonly vipPortId!: pulumi.Output<string>;
+    declare public readonly vipPortId: pulumi.Output<string>;
     /**
      * The ID of the QoS Policy which will 
      * be applied to the Virtual IP (VIP).
      */
-    public readonly vipQosPolicyId!: pulumi.Output<string | undefined>;
+    declare public readonly vipQosPolicyId: pulumi.Output<string | undefined>;
     /**
      * The subnet on which to allocate the
      * Loadbalancer's address. A tenant can only create Loadbalancers on networks
@@ -140,7 +140,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      * are shared).  Changing this creates a new loadbalancer. Exactly one of
      * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
      */
-    public readonly vipSubnetId!: pulumi.Output<string>;
+    declare public readonly vipSubnetId: pulumi.Output<string>;
 
     /**
      * Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -155,38 +155,38 @@ export class LoadBalancer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
-            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["flavorId"] = state ? state.flavorId : undefined;
-            resourceInputs["loadbalancerProvider"] = state ? state.loadbalancerProvider : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
-            resourceInputs["vipAddress"] = state ? state.vipAddress : undefined;
-            resourceInputs["vipNetworkId"] = state ? state.vipNetworkId : undefined;
-            resourceInputs["vipPortId"] = state ? state.vipPortId : undefined;
-            resourceInputs["vipQosPolicyId"] = state ? state.vipQosPolicyId : undefined;
-            resourceInputs["vipSubnetId"] = state ? state.vipSubnetId : undefined;
+            resourceInputs["adminStateUp"] = state?.adminStateUp;
+            resourceInputs["availabilityZone"] = state?.availabilityZone;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["flavorId"] = state?.flavorId;
+            resourceInputs["loadbalancerProvider"] = state?.loadbalancerProvider;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["vipAddress"] = state?.vipAddress;
+            resourceInputs["vipNetworkId"] = state?.vipNetworkId;
+            resourceInputs["vipPortId"] = state?.vipPortId;
+            resourceInputs["vipQosPolicyId"] = state?.vipQosPolicyId;
+            resourceInputs["vipSubnetId"] = state?.vipSubnetId;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["flavorId"] = args ? args.flavorId : undefined;
-            resourceInputs["loadbalancerProvider"] = args ? args.loadbalancerProvider : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["vipAddress"] = args ? args.vipAddress : undefined;
-            resourceInputs["vipNetworkId"] = args ? args.vipNetworkId : undefined;
-            resourceInputs["vipPortId"] = args ? args.vipPortId : undefined;
-            resourceInputs["vipQosPolicyId"] = args ? args.vipQosPolicyId : undefined;
-            resourceInputs["vipSubnetId"] = args ? args.vipSubnetId : undefined;
+            resourceInputs["adminStateUp"] = args?.adminStateUp;
+            resourceInputs["availabilityZone"] = args?.availabilityZone;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["flavorId"] = args?.flavorId;
+            resourceInputs["loadbalancerProvider"] = args?.loadbalancerProvider;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tenantId"] = args?.tenantId;
+            resourceInputs["vipAddress"] = args?.vipAddress;
+            resourceInputs["vipNetworkId"] = args?.vipNetworkId;
+            resourceInputs["vipPortId"] = args?.vipPortId;
+            resourceInputs["vipQosPolicyId"] = args?.vipQosPolicyId;
+            resourceInputs["vipSubnetId"] = args?.vipSubnetId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "openstack:index/lbLoadbalancerV2:LbLoadbalancerV2" }] };

@@ -65,63 +65,63 @@ export class Flavor extends pulumi.CustomResource {
      * The description of the flavor. Changing this
      * updates the description of the flavor. Requires microversion >= 2.55.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The amount of disk space in GiB to use for the root
      * (/) partition. Changing this creates a new flavor.
      */
-    public readonly disk!: pulumi.Output<number>;
+    declare public readonly disk: pulumi.Output<number>;
     /**
      * The amount of ephemeral in GiB. If unspecified,
      * the default is 0. Changing this creates a new flavor.
      */
-    public readonly ephemeral!: pulumi.Output<number | undefined>;
+    declare public readonly ephemeral: pulumi.Output<number | undefined>;
     /**
      * Key/Value pairs of metadata for the flavor.
      */
-    public readonly extraSpecs!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly extraSpecs: pulumi.Output<{[key: string]: string}>;
     /**
      * Unique ID (integer or UUID) of flavor to create. Changing
      * this creates a new flavor.
      */
-    public readonly flavorId!: pulumi.Output<string>;
+    declare public readonly flavorId: pulumi.Output<string>;
     /**
      * Whether the flavor is public. Changing this creates
      * a new flavor.
      */
-    public readonly isPublic!: pulumi.Output<boolean | undefined>;
+    declare public readonly isPublic: pulumi.Output<boolean | undefined>;
     /**
      * A unique name for the flavor. Changing this creates a new
      * flavor.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The amount of RAM to use, in megabytes. Changing this
      * creates a new flavor.
      */
-    public readonly ram!: pulumi.Output<number>;
+    declare public readonly ram: pulumi.Output<number>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Flavors are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new flavor.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * RX/TX bandwith factor. The default is 1. Changing
      * this creates a new flavor.
      */
-    public readonly rxTxFactor!: pulumi.Output<number | undefined>;
+    declare public readonly rxTxFactor: pulumi.Output<number | undefined>;
     /**
      * The amount of disk space in megabytes to use. If
      * unspecified, the default is 0. Changing this creates a new flavor.
      */
-    public readonly swap!: pulumi.Output<number | undefined>;
+    declare public readonly swap: pulumi.Output<number | undefined>;
     /**
      * The number of virtual CPUs to use. Changing this creates
      * a new flavor.
      */
-    public readonly vcpus!: pulumi.Output<number>;
+    declare public readonly vcpus: pulumi.Output<number>;
 
     /**
      * Create a Flavor resource with the given unique name, arguments, and options.
@@ -136,41 +136,41 @@ export class Flavor extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlavorState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disk"] = state ? state.disk : undefined;
-            resourceInputs["ephemeral"] = state ? state.ephemeral : undefined;
-            resourceInputs["extraSpecs"] = state ? state.extraSpecs : undefined;
-            resourceInputs["flavorId"] = state ? state.flavorId : undefined;
-            resourceInputs["isPublic"] = state ? state.isPublic : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["ram"] = state ? state.ram : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["rxTxFactor"] = state ? state.rxTxFactor : undefined;
-            resourceInputs["swap"] = state ? state.swap : undefined;
-            resourceInputs["vcpus"] = state ? state.vcpus : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disk"] = state?.disk;
+            resourceInputs["ephemeral"] = state?.ephemeral;
+            resourceInputs["extraSpecs"] = state?.extraSpecs;
+            resourceInputs["flavorId"] = state?.flavorId;
+            resourceInputs["isPublic"] = state?.isPublic;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["ram"] = state?.ram;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["rxTxFactor"] = state?.rxTxFactor;
+            resourceInputs["swap"] = state?.swap;
+            resourceInputs["vcpus"] = state?.vcpus;
         } else {
             const args = argsOrState as FlavorArgs | undefined;
-            if ((!args || args.disk === undefined) && !opts.urn) {
+            if (args?.disk === undefined && !opts.urn) {
                 throw new Error("Missing required property 'disk'");
             }
-            if ((!args || args.ram === undefined) && !opts.urn) {
+            if (args?.ram === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ram'");
             }
-            if ((!args || args.vcpus === undefined) && !opts.urn) {
+            if (args?.vcpus === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vcpus'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disk"] = args ? args.disk : undefined;
-            resourceInputs["ephemeral"] = args ? args.ephemeral : undefined;
-            resourceInputs["extraSpecs"] = args ? args.extraSpecs : undefined;
-            resourceInputs["flavorId"] = args ? args.flavorId : undefined;
-            resourceInputs["isPublic"] = args ? args.isPublic : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["ram"] = args ? args.ram : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["rxTxFactor"] = args ? args.rxTxFactor : undefined;
-            resourceInputs["swap"] = args ? args.swap : undefined;
-            resourceInputs["vcpus"] = args ? args.vcpus : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disk"] = args?.disk;
+            resourceInputs["ephemeral"] = args?.ephemeral;
+            resourceInputs["extraSpecs"] = args?.extraSpecs;
+            resourceInputs["flavorId"] = args?.flavorId;
+            resourceInputs["isPublic"] = args?.isPublic;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["ram"] = args?.ram;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["rxTxFactor"] = args?.rxTxFactor;
+            resourceInputs["swap"] = args?.swap;
+            resourceInputs["vcpus"] = args?.vcpus;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Flavor.__pulumiType, name, resourceInputs, opts);

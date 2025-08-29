@@ -58,25 +58,25 @@ export class User extends pulumi.CustomResource {
     /**
      * A list of database user should have access to.
      */
-    public readonly databases!: pulumi.Output<string[]>;
-    public readonly host!: pulumi.Output<string | undefined>;
+    declare public readonly databases: pulumi.Output<string[]>;
+    declare public readonly host: pulumi.Output<string | undefined>;
     /**
      * The ID for the database instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * A unique name for the resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * User's password.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * The region in which to create the db user. Changing
      * this creates a new user.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -91,26 +91,26 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["databases"] = state ? state.databases : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["databases"] = state?.databases;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.password === undefined) && !opts.urn) {
+            if (args?.password === undefined && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            resourceInputs["databases"] = args ? args.databases : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["databases"] = args?.databases;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

@@ -63,31 +63,31 @@ export class RouterAssociateV2 extends pulumi.CustomResource {
      * A boolean flag indicating whether extra
      * routes should be advertised. Defaults to true.
      */
-    public readonly advertiseExtraRoutes!: pulumi.Output<boolean>;
+    declare public readonly advertiseExtraRoutes: pulumi.Output<boolean>;
     /**
      * The ID of the BGP VPN to which the router will be
      * associated. Changing this creates a new BGP VPN router association.
      */
-    public readonly bgpvpnId!: pulumi.Output<string>;
+    declare public readonly bgpvpnId: pulumi.Output<string>;
     /**
      * The ID of the project that owns the BGP VPN router
      * association. Only administrative and users with `advsvc` role can specify a
      * project ID other than their own. Changing this creates a new BGP VPN router
      * association.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a BGP VPN router association. If
      * omitted, the `region` argument of the provider is used. Changing this creates
      * a new BGP VPN router association.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The ID of the router to be associated with the BGP
      * VPN. Changing this creates a new BGP VPN router association.
      */
-    public readonly routerId!: pulumi.Output<string>;
+    declare public readonly routerId: pulumi.Output<string>;
 
     /**
      * Create a RouterAssociateV2 resource with the given unique name, arguments, and options.
@@ -102,24 +102,24 @@ export class RouterAssociateV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterAssociateV2State | undefined;
-            resourceInputs["advertiseExtraRoutes"] = state ? state.advertiseExtraRoutes : undefined;
-            resourceInputs["bgpvpnId"] = state ? state.bgpvpnId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["routerId"] = state ? state.routerId : undefined;
+            resourceInputs["advertiseExtraRoutes"] = state?.advertiseExtraRoutes;
+            resourceInputs["bgpvpnId"] = state?.bgpvpnId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["routerId"] = state?.routerId;
         } else {
             const args = argsOrState as RouterAssociateV2Args | undefined;
-            if ((!args || args.bgpvpnId === undefined) && !opts.urn) {
+            if (args?.bgpvpnId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bgpvpnId'");
             }
-            if ((!args || args.routerId === undefined) && !opts.urn) {
+            if (args?.routerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routerId'");
             }
-            resourceInputs["advertiseExtraRoutes"] = args ? args.advertiseExtraRoutes : undefined;
-            resourceInputs["bgpvpnId"] = args ? args.bgpvpnId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["routerId"] = args ? args.routerId : undefined;
+            resourceInputs["advertiseExtraRoutes"] = args?.advertiseExtraRoutes;
+            resourceInputs["bgpvpnId"] = args?.bgpvpnId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["routerId"] = args?.routerId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "openstack:index/bgpvpnRouterAssociateV2:BgpvpnRouterAssociateV2" }] };

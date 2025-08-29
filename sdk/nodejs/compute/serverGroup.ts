@@ -117,33 +117,33 @@ export class ServerGroup extends pulumi.CustomResource {
     /**
      * The instances that are part of this server group.
      */
-    public /*out*/ readonly members!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly members: pulumi.Output<string[]>;
     /**
      * A unique name for the server group. Changing this creates
      * a new server group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A list of exactly one policy name to associate with
      * the server group. See the Policies section for more information. Changing this
      * creates a new server group.
      */
-    public readonly policies!: pulumi.Output<string | undefined>;
+    declare public readonly policies: pulumi.Output<string | undefined>;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used. Changing
      * this creates a new server group.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The rules which are applied to specified `policy`. Currently,
      * only the `maxServerPerHost` rule is supported for the `anti-affinity` policy.
      */
-    public readonly rules!: pulumi.Output<outputs.compute.ServerGroupRules>;
+    declare public readonly rules: pulumi.Output<outputs.compute.ServerGroupRules>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly valueSpecs: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a ServerGroup resource with the given unique name, arguments, and options.
@@ -158,19 +158,19 @@ export class ServerGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerGroupState | undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policies"] = state ? state.policies : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policies"] = state?.policies;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["valueSpecs"] = state?.valueSpecs;
         } else {
             const args = argsOrState as ServerGroupArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["policies"] = args ? args.policies : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["policies"] = args?.policies;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["valueSpecs"] = args?.valueSpecs;
             resourceInputs["members"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

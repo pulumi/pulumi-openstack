@@ -45,45 +45,45 @@ export class SecGroup extends pulumi.CustomResource {
      * The collection of tags assigned on the security group, which have
      * been explicitly and implicitly added.
      */
-    public /*out*/ readonly allTags!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly allTags: pulumi.Output<string[]>;
     /**
      * Whether or not to delete the default
      * egress security rules. This is `false` by default. See the below note
      * for more information.
      */
-    public readonly deleteDefaultRules!: pulumi.Output<boolean | undefined>;
+    declare public readonly deleteDefaultRules: pulumi.Output<boolean | undefined>;
     /**
      * A unique name for the security group.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * A unique name for the security group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security group.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Indicates if the security group is stateful or
      * stateless. Update of the stateful argument is allowed when there is no port
      * associated with the security group. Available only in OpenStack environments
      * with the `stateful-security-group` extension. Defaults to true.
      */
-    public readonly stateful!: pulumi.Output<boolean>;
+    declare public readonly stateful: pulumi.Output<boolean>;
     /**
      * A set of string tags for the security group.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The owner of the security group. Required if admin
      * wants to create a port for another tenant. Changing this creates a new
      * security group.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
 
     /**
      * Create a SecGroup resource with the given unique name, arguments, and options.
@@ -98,23 +98,23 @@ export class SecGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecGroupState | undefined;
-            resourceInputs["allTags"] = state ? state.allTags : undefined;
-            resourceInputs["deleteDefaultRules"] = state ? state.deleteDefaultRules : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["stateful"] = state ? state.stateful : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["allTags"] = state?.allTags;
+            resourceInputs["deleteDefaultRules"] = state?.deleteDefaultRules;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["stateful"] = state?.stateful;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tenantId"] = state?.tenantId;
         } else {
             const args = argsOrState as SecGroupArgs | undefined;
-            resourceInputs["deleteDefaultRules"] = args ? args.deleteDefaultRules : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["stateful"] = args ? args.stateful : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["deleteDefaultRules"] = args?.deleteDefaultRules;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["stateful"] = args?.stateful;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tenantId"] = args?.tenantId;
             resourceInputs["allTags"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

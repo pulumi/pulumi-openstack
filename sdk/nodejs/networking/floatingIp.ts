@@ -47,45 +47,45 @@ export class FloatingIp extends pulumi.CustomResource {
      * an admin user or have had a custom policy or role applied to your OpenStack
      * user or project.
      */
-    public readonly address!: pulumi.Output<string>;
+    declare public readonly address: pulumi.Output<string>;
     /**
      * The collection of tags assigned on the floating IP, which have
      * been explicitly and implicitly added.
      */
-    public /*out*/ readonly allTags!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly allTags: pulumi.Output<string[]>;
     /**
      * Human-readable description for the floating IP.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The floating IP DNS domain. Available, when Neutron
      * DNS extension is enabled. The data in this attribute will be published in an
      * external DNS service when Neutron is configured to integrate with such a
      * service. Changing this creates a new floating IP.
      */
-    public readonly dnsDomain!: pulumi.Output<string>;
+    declare public readonly dnsDomain: pulumi.Output<string>;
     /**
      * The floating IP DNS name. Available, when Neutron DNS
      * extension is enabled. The data in this attribute will be published in an
      * external DNS service when Neutron is configured to integrate with such a
      * service. Changing this creates a new floating IP.
      */
-    public readonly dnsName!: pulumi.Output<string>;
+    declare public readonly dnsName: pulumi.Output<string>;
     /**
      * Fixed IP of the port to associate with this floating IP. Required if
      * the port has multiple fixed IPs.
      */
-    public readonly fixedIp!: pulumi.Output<string>;
+    declare public readonly fixedIp: pulumi.Output<string>;
     /**
      * The name of the pool from which to obtain the floating
      * IP. Changing this creates a new floating IP.
      */
-    public readonly pool!: pulumi.Output<string>;
+    declare public readonly pool: pulumi.Output<string>;
     /**
      * ID of an existing port with at least one IP address to
      * associate with this floating IP.
      */
-    public readonly portId!: pulumi.Output<string>;
+    declare public readonly portId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a floating IP that can be used with
@@ -93,34 +93,34 @@ export class FloatingIp extends pulumi.CustomResource {
      * `region` argument of the provider is used. Changing this creates a new
      * floating IP (which may or may not have a different address).
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The subnet ID of the floating IP pool. Specify this if
      * the floating IP network has multiple subnets.
      */
-    public readonly subnetId!: pulumi.Output<string>;
+    declare public readonly subnetId: pulumi.Output<string>;
     /**
      * A list of external subnet IDs to try over each to
      * allocate a floating IP address. If a subnet ID in a list has exhausted
      * floating IP pool, the next subnet ID will be tried. This argument is used only
      * during the resource creation. Conflicts with a `subnetId` argument.
      */
-    public readonly subnetIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly subnetIds: pulumi.Output<string[] | undefined>;
     /**
      * A set of string tags for the floating IP.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The target tenant ID in which to allocate the floating
      * IP, if you specify this together with a port_id, make sure the target port
      * belongs to the same tenant. Changing this creates a new floating IP (which
      * may or may not have a different address)
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly valueSpecs: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a FloatingIp resource with the given unique name, arguments, and options.
@@ -135,35 +135,35 @@ export class FloatingIp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FloatingIpState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["allTags"] = state ? state.allTags : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dnsDomain"] = state ? state.dnsDomain : undefined;
-            resourceInputs["dnsName"] = state ? state.dnsName : undefined;
-            resourceInputs["fixedIp"] = state ? state.fixedIp : undefined;
-            resourceInputs["pool"] = state ? state.pool : undefined;
-            resourceInputs["portId"] = state ? state.portId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["subnetIds"] = state ? state.subnetIds : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
-            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["allTags"] = state?.allTags;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dnsDomain"] = state?.dnsDomain;
+            resourceInputs["dnsName"] = state?.dnsName;
+            resourceInputs["fixedIp"] = state?.fixedIp;
+            resourceInputs["pool"] = state?.pool;
+            resourceInputs["portId"] = state?.portId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["subnetIds"] = state?.subnetIds;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["valueSpecs"] = state?.valueSpecs;
         } else {
             const args = argsOrState as FloatingIpArgs | undefined;
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dnsDomain"] = args ? args.dnsDomain : undefined;
-            resourceInputs["dnsName"] = args ? args.dnsName : undefined;
-            resourceInputs["fixedIp"] = args ? args.fixedIp : undefined;
-            resourceInputs["pool"] = args ? args.pool : undefined;
-            resourceInputs["portId"] = args ? args.portId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
-            resourceInputs["subnetIds"] = args ? args.subnetIds : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dnsDomain"] = args?.dnsDomain;
+            resourceInputs["dnsName"] = args?.dnsName;
+            resourceInputs["fixedIp"] = args?.fixedIp;
+            resourceInputs["pool"] = args?.pool;
+            resourceInputs["portId"] = args?.portId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["subnetId"] = args?.subnetId;
+            resourceInputs["subnetIds"] = args?.subnetIds;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tenantId"] = args?.tenantId;
+            resourceInputs["valueSpecs"] = args?.valueSpecs;
             resourceInputs["allTags"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

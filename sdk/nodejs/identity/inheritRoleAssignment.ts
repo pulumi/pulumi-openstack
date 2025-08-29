@@ -80,30 +80,30 @@ export class InheritRoleAssignment extends pulumi.CustomResource {
     /**
      * The domain to assign the role in.
      */
-    public readonly domainId!: pulumi.Output<string | undefined>;
+    declare public readonly domainId: pulumi.Output<string | undefined>;
     /**
      * The group to assign the role to.
      */
-    public readonly groupId!: pulumi.Output<string | undefined>;
+    declare public readonly groupId: pulumi.Output<string | undefined>;
     /**
      * The project to assign the role in.
      * The project should be able to containt child projects.
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new inherit role assignment.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The role to assign.
      */
-    public readonly roleId!: pulumi.Output<string>;
+    declare public readonly roleId: pulumi.Output<string>;
     /**
      * The user to assign the role to.
      */
-    public readonly userId!: pulumi.Output<string | undefined>;
+    declare public readonly userId: pulumi.Output<string | undefined>;
 
     /**
      * Create a InheritRoleAssignment resource with the given unique name, arguments, and options.
@@ -118,23 +118,23 @@ export class InheritRoleAssignment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InheritRoleAssignmentState | undefined;
-            resourceInputs["domainId"] = state ? state.domainId : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["domainId"] = state?.domainId;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["roleId"] = state?.roleId;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as InheritRoleAssignmentArgs | undefined;
-            if ((!args || args.roleId === undefined) && !opts.urn) {
+            if (args?.roleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            resourceInputs["domainId"] = args ? args.domainId : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["roleId"] = args ? args.roleId : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["domainId"] = args?.domainId;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["roleId"] = args?.roleId;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InheritRoleAssignment.__pulumiType, name, resourceInputs, opts);

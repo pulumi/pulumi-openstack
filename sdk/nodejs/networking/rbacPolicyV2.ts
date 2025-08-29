@@ -77,32 +77,32 @@ export class RbacPolicyV2 extends pulumi.CustomResource {
      * Action for the RBAC policy. Can either be
      * `accessAsExternal` or `accessAsShared`.
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * The ID of the `objectType` resource. An
      * `objectType` of `network` returns a network ID and an `objectType` of
      * `qosPolicy` returns a QoS ID.
      */
-    public readonly objectId!: pulumi.Output<string>;
+    declare public readonly objectId: pulumi.Output<string>;
     /**
      * The type of the object that the RBAC policy
      * affects. Can be one of the following: `addressScope`, `addressGroup`,
      * `network`, `qosPolicy`, `securityGroup`, `subnetpool` or `bgpvpn`.
      */
-    public readonly objectType!: pulumi.Output<string>;
-    public /*out*/ readonly projectId!: pulumi.Output<string>;
+    declare public readonly objectType: pulumi.Output<string>;
+    declare public /*out*/ readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to configure a routing entry on a subnet. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * routing entry.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The ID of the tenant to which the RBAC policy
      * will be enforced.
      */
-    public readonly targetTenant!: pulumi.Output<string>;
+    declare public readonly targetTenant: pulumi.Output<string>;
 
     /**
      * Create a RbacPolicyV2 resource with the given unique name, arguments, and options.
@@ -117,31 +117,31 @@ export class RbacPolicyV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RbacPolicyV2State | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["objectType"] = state ? state.objectType : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["targetTenant"] = state ? state.targetTenant : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["objectType"] = state?.objectType;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["targetTenant"] = state?.targetTenant;
         } else {
             const args = argsOrState as RbacPolicyV2Args | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.objectId === undefined) && !opts.urn) {
+            if (args?.objectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'objectId'");
             }
-            if ((!args || args.objectType === undefined) && !opts.urn) {
+            if (args?.objectType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'objectType'");
             }
-            if ((!args || args.targetTenant === undefined) && !opts.urn) {
+            if (args?.targetTenant === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetTenant'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["objectId"] = args ? args.objectId : undefined;
-            resourceInputs["objectType"] = args ? args.objectType : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["targetTenant"] = args ? args.targetTenant : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["objectId"] = args?.objectId;
+            resourceInputs["objectType"] = args?.objectType;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["targetTenant"] = args?.targetTenant;
             resourceInputs["projectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
