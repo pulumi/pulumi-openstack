@@ -93,49 +93,49 @@ export class Trunk extends pulumi.CustomResource {
      * (must be "true" or "false" if provided). Changing this updates the
      * `adminStateUp` of an existing trunk.
      */
-    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
+    declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
     /**
      * The collection of tags assigned on the trunk, which have been
      * explicitly and implicitly added.
      */
-    public /*out*/ readonly allTags!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly allTags: pulumi.Output<string[]>;
     /**
      * Human-readable description of the trunk. Changing this
      * updates the name of the existing trunk.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A unique name for the trunk. Changing this
      * updates the `name` of an existing trunk.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the port to be used as the parent port of the
      * trunk. This is the port that should be used as the compute instance network
      * port. Changing this creates a new trunk.
      */
-    public readonly portId!: pulumi.Output<string>;
+    declare public readonly portId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a trunk. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * trunk.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The set of ports that will be made subports of the trunk.
      * The structure of each subport is described below.
      */
-    public readonly subPorts!: pulumi.Output<outputs.networking.TrunkSubPort[] | undefined>;
+    declare public readonly subPorts: pulumi.Output<outputs.networking.TrunkSubPort[] | undefined>;
     /**
      * A set of string tags for the port.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The owner of the Trunk. Required if admin wants
      * to create a trunk on behalf of another tenant. Changing this creates a new trunk.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
 
     /**
      * Create a Trunk resource with the given unique name, arguments, and options.
@@ -150,28 +150,28 @@ export class Trunk extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TrunkState | undefined;
-            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            resourceInputs["allTags"] = state ? state.allTags : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["portId"] = state ? state.portId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["subPorts"] = state ? state.subPorts : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["adminStateUp"] = state?.adminStateUp;
+            resourceInputs["allTags"] = state?.allTags;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["portId"] = state?.portId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["subPorts"] = state?.subPorts;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tenantId"] = state?.tenantId;
         } else {
             const args = argsOrState as TrunkArgs | undefined;
-            if ((!args || args.portId === undefined) && !opts.urn) {
+            if (args?.portId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'portId'");
             }
-            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["portId"] = args ? args.portId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["subPorts"] = args ? args.subPorts : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["adminStateUp"] = args?.adminStateUp;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["portId"] = args?.portId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["subPorts"] = args?.subPorts;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tenantId"] = args?.tenantId;
             resourceInputs["allTags"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

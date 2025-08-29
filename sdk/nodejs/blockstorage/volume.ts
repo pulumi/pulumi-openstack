@@ -64,92 +64,92 @@ export class Volume extends pulumi.CustomResource {
      * display the Attachment ID, Instance ID, and the Device as the Instance
      * sees it.
      */
-    public /*out*/ readonly attachments!: pulumi.Output<outputs.blockstorage.VolumeAttachment[]>;
+    declare public /*out*/ readonly attachments: pulumi.Output<outputs.blockstorage.VolumeAttachment[]>;
     /**
      * The availability zone for the volume.
      * Changing this creates a new volume.
      */
-    public readonly availabilityZone!: pulumi.Output<string>;
+    declare public readonly availabilityZone: pulumi.Output<string>;
     /**
      * The backup ID from which to create the volume.
      * Conflicts with `snapshotId`, `sourceVolId`, `imageId`. Changing this
      * creates a new volume. Requires microversion >= 3.47.
      */
-    public readonly backupId!: pulumi.Output<string | undefined>;
+    declare public readonly backupId: pulumi.Output<string | undefined>;
     /**
      * The consistency group to place the volume
      * in.
      */
-    public readonly consistencyGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly consistencyGroupId: pulumi.Output<string | undefined>;
     /**
      * A description of the volume. Changing this updates
      * the volume's description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * When this option is set it allows extending
      * attached volumes. Note: updating size of an attached volume requires Cinder
      * support for version 3.42 and a compatible storage driver.
      */
-    public readonly enableOnlineResize!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableOnlineResize: pulumi.Output<boolean | undefined>;
     /**
      * The image ID from which to create the volume.
      * Conflicts with `snapshotId`, `sourceVolId`, `backupId`. Changing this
      * creates a new volume.
      */
-    public readonly imageId!: pulumi.Output<string | undefined>;
+    declare public readonly imageId: pulumi.Output<string | undefined>;
     /**
      * Metadata key/value pairs to associate with the volume.
      * Changing this updates the existing volume metadata.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string}>;
     /**
      * A unique name for the volume. Changing this updates the
      * volume's name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region in which to create the volume. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new volume.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Provide the Cinder scheduler with hints on where
      * to instantiate a volume in the OpenStack cloud. The available hints are described below.
      */
-    public readonly schedulerHints!: pulumi.Output<outputs.blockstorage.VolumeSchedulerHint[] | undefined>;
+    declare public readonly schedulerHints: pulumi.Output<outputs.blockstorage.VolumeSchedulerHint[] | undefined>;
     /**
      * The size of the volume to create (in gigabytes).
      */
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * The snapshot ID from which to create the volume.
      * Conflicts with `sourceVolId`, `imageId`, `backupId`. Changing this
      * creates a new volume.
      */
-    public readonly snapshotId!: pulumi.Output<string | undefined>;
+    declare public readonly snapshotId: pulumi.Output<string | undefined>;
     /**
      * The volume ID to replicate with.
      */
-    public readonly sourceReplica!: pulumi.Output<string | undefined>;
+    declare public readonly sourceReplica: pulumi.Output<string | undefined>;
     /**
      * The volume ID from which to create the volume.
      * Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
      * creates a new volume.
      */
-    public readonly sourceVolId!: pulumi.Output<string | undefined>;
+    declare public readonly sourceVolId: pulumi.Output<string | undefined>;
     /**
      * Migration policy when changing `volumeType`.
      * `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
      * allows migration if needed. Applicable only when updating `volumeType`.
      */
-    public readonly volumeRetypePolicy!: pulumi.Output<string | undefined>;
+    declare public readonly volumeRetypePolicy: pulumi.Output<string | undefined>;
     /**
      * The type of volume to create or update.
      * Changing this will attempt an in-place retype operation; migration depends on `volumeRetypePolicy`.
      */
-    public readonly volumeType!: pulumi.Output<string>;
+    declare public readonly volumeType: pulumi.Output<string>;
 
     /**
      * Create a Volume resource with the given unique name, arguments, and options.
@@ -164,44 +164,44 @@ export class Volume extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeState | undefined;
-            resourceInputs["attachments"] = state ? state.attachments : undefined;
-            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            resourceInputs["backupId"] = state ? state.backupId : undefined;
-            resourceInputs["consistencyGroupId"] = state ? state.consistencyGroupId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enableOnlineResize"] = state ? state.enableOnlineResize : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["schedulerHints"] = state ? state.schedulerHints : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
-            resourceInputs["sourceReplica"] = state ? state.sourceReplica : undefined;
-            resourceInputs["sourceVolId"] = state ? state.sourceVolId : undefined;
-            resourceInputs["volumeRetypePolicy"] = state ? state.volumeRetypePolicy : undefined;
-            resourceInputs["volumeType"] = state ? state.volumeType : undefined;
+            resourceInputs["attachments"] = state?.attachments;
+            resourceInputs["availabilityZone"] = state?.availabilityZone;
+            resourceInputs["backupId"] = state?.backupId;
+            resourceInputs["consistencyGroupId"] = state?.consistencyGroupId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enableOnlineResize"] = state?.enableOnlineResize;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["schedulerHints"] = state?.schedulerHints;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["snapshotId"] = state?.snapshotId;
+            resourceInputs["sourceReplica"] = state?.sourceReplica;
+            resourceInputs["sourceVolId"] = state?.sourceVolId;
+            resourceInputs["volumeRetypePolicy"] = state?.volumeRetypePolicy;
+            resourceInputs["volumeType"] = state?.volumeType;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
-            if ((!args || args.size === undefined) && !opts.urn) {
+            if (args?.size === undefined && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            resourceInputs["backupId"] = args ? args.backupId : undefined;
-            resourceInputs["consistencyGroupId"] = args ? args.consistencyGroupId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enableOnlineResize"] = args ? args.enableOnlineResize : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["schedulerHints"] = args ? args.schedulerHints : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
-            resourceInputs["sourceReplica"] = args ? args.sourceReplica : undefined;
-            resourceInputs["sourceVolId"] = args ? args.sourceVolId : undefined;
-            resourceInputs["volumeRetypePolicy"] = args ? args.volumeRetypePolicy : undefined;
-            resourceInputs["volumeType"] = args ? args.volumeType : undefined;
+            resourceInputs["availabilityZone"] = args?.availabilityZone;
+            resourceInputs["backupId"] = args?.backupId;
+            resourceInputs["consistencyGroupId"] = args?.consistencyGroupId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enableOnlineResize"] = args?.enableOnlineResize;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["schedulerHints"] = args?.schedulerHints;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["snapshotId"] = args?.snapshotId;
+            resourceInputs["sourceReplica"] = args?.sourceReplica;
+            resourceInputs["sourceVolId"] = args?.sourceVolId;
+            resourceInputs["volumeRetypePolicy"] = args?.volumeRetypePolicy;
+            resourceInputs["volumeType"] = args?.volumeType;
             resourceInputs["attachments"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

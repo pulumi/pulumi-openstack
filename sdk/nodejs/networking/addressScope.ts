@@ -81,31 +81,31 @@ export class AddressScope extends pulumi.CustomResource {
      * IP version, either 4 (default) or 6. Changing this
      * creates a new address-scope.
      */
-    public readonly ipVersion!: pulumi.Output<number | undefined>;
+    declare public readonly ipVersion: pulumi.Output<number | undefined>;
     /**
      * The name of the address-scope. Changing this updates the
      * name of the existing address-scope.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The owner of the address-scope. Required if admin
      * wants to create a address-scope for another project. Changing this creates a
      * new address-scope.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron address-scope. If omitted,
      * the `region` argument of the provider is used. Changing this creates a new
      * address-scope.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Indicates whether this address-scope is shared across
      * all projects. Changing this updates the shared status of the existing
      * address-scope.
      */
-    public readonly shared!: pulumi.Output<boolean>;
+    declare public readonly shared: pulumi.Output<boolean>;
 
     /**
      * Create a AddressScope resource with the given unique name, arguments, and options.
@@ -120,18 +120,18 @@ export class AddressScope extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AddressScopeState | undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["shared"] = state ? state.shared : undefined;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["shared"] = state?.shared;
         } else {
             const args = argsOrState as AddressScopeArgs | undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["shared"] = args ? args.shared : undefined;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["shared"] = args?.shared;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AddressScope.__pulumiType, name, resourceInputs, opts);

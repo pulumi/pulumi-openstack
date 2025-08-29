@@ -52,83 +52,83 @@ export class QuotaSetV2 extends pulumi.CustomResource {
      * Quota value for cores.
      * Changing this updates the existing quotaset.
      */
-    public readonly cores!: pulumi.Output<number>;
+    declare public readonly cores: pulumi.Output<number>;
     /**
      * Quota value for fixed IPs.
      * Changing this updates the existing quotaset.
      */
-    public readonly fixedIps!: pulumi.Output<number>;
+    declare public readonly fixedIps: pulumi.Output<number>;
     /**
      * Quota value for floating IPs.
      * Changing this updates the existing quotaset.
      */
-    public readonly floatingIps!: pulumi.Output<number>;
+    declare public readonly floatingIps: pulumi.Output<number>;
     /**
      * Quota value for content bytes
      * of injected files. Changing this updates the existing quotaset.
      */
-    public readonly injectedFileContentBytes!: pulumi.Output<number>;
+    declare public readonly injectedFileContentBytes: pulumi.Output<number>;
     /**
      * Quota value for path bytes of
      * injected files. Changing this updates the existing quotaset.
      */
-    public readonly injectedFilePathBytes!: pulumi.Output<number>;
+    declare public readonly injectedFilePathBytes: pulumi.Output<number>;
     /**
      * Quota value for injected files.
      * Changing this updates the existing quotaset.
      */
-    public readonly injectedFiles!: pulumi.Output<number>;
+    declare public readonly injectedFiles: pulumi.Output<number>;
     /**
      * Quota value for instances.
      * Changing this updates the existing quotaset.
      */
-    public readonly instances!: pulumi.Output<number>;
+    declare public readonly instances: pulumi.Output<number>;
     /**
      * Quota value for key pairs.
      * Changing this updates the existing quotaset.
      */
-    public readonly keyPairs!: pulumi.Output<number>;
+    declare public readonly keyPairs: pulumi.Output<number>;
     /**
      * Quota value for metadata items.
      * Changing this updates the existing quotaset.
      */
-    public readonly metadataItems!: pulumi.Output<number>;
+    declare public readonly metadataItems: pulumi.Output<number>;
     /**
      * ID of the project to manage quotas.
      * Changing this creates a new quotaset.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Quota value for RAM.
      * Changing this updates the existing quotaset.
      */
-    public readonly ram!: pulumi.Output<number>;
+    declare public readonly ram: pulumi.Output<number>;
     /**
      * The region in which to create the volume. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new quotaset.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Quota value for security group rules.
      * Changing this updates the existing quotaset.
      */
-    public readonly securityGroupRules!: pulumi.Output<number>;
+    declare public readonly securityGroupRules: pulumi.Output<number>;
     /**
      * Quota value for security groups.
      * Changing this updates the existing quotaset.
      */
-    public readonly securityGroups!: pulumi.Output<number>;
+    declare public readonly securityGroups: pulumi.Output<number>;
     /**
      * Quota value for server groups members.
      * Changing this updates the existing quotaset.
      */
-    public readonly serverGroupMembers!: pulumi.Output<number>;
+    declare public readonly serverGroupMembers: pulumi.Output<number>;
     /**
      * Quota value for server groups.
      * Changing this updates the existing quotaset.
      */
-    public readonly serverGroups!: pulumi.Output<number>;
+    declare public readonly serverGroups: pulumi.Output<number>;
 
     /**
      * Create a QuotaSetV2 resource with the given unique name, arguments, and options.
@@ -143,43 +143,43 @@ export class QuotaSetV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QuotaSetV2State | undefined;
-            resourceInputs["cores"] = state ? state.cores : undefined;
-            resourceInputs["fixedIps"] = state ? state.fixedIps : undefined;
-            resourceInputs["floatingIps"] = state ? state.floatingIps : undefined;
-            resourceInputs["injectedFileContentBytes"] = state ? state.injectedFileContentBytes : undefined;
-            resourceInputs["injectedFilePathBytes"] = state ? state.injectedFilePathBytes : undefined;
-            resourceInputs["injectedFiles"] = state ? state.injectedFiles : undefined;
-            resourceInputs["instances"] = state ? state.instances : undefined;
-            resourceInputs["keyPairs"] = state ? state.keyPairs : undefined;
-            resourceInputs["metadataItems"] = state ? state.metadataItems : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["ram"] = state ? state.ram : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["securityGroupRules"] = state ? state.securityGroupRules : undefined;
-            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
-            resourceInputs["serverGroupMembers"] = state ? state.serverGroupMembers : undefined;
-            resourceInputs["serverGroups"] = state ? state.serverGroups : undefined;
+            resourceInputs["cores"] = state?.cores;
+            resourceInputs["fixedIps"] = state?.fixedIps;
+            resourceInputs["floatingIps"] = state?.floatingIps;
+            resourceInputs["injectedFileContentBytes"] = state?.injectedFileContentBytes;
+            resourceInputs["injectedFilePathBytes"] = state?.injectedFilePathBytes;
+            resourceInputs["injectedFiles"] = state?.injectedFiles;
+            resourceInputs["instances"] = state?.instances;
+            resourceInputs["keyPairs"] = state?.keyPairs;
+            resourceInputs["metadataItems"] = state?.metadataItems;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["ram"] = state?.ram;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["securityGroupRules"] = state?.securityGroupRules;
+            resourceInputs["securityGroups"] = state?.securityGroups;
+            resourceInputs["serverGroupMembers"] = state?.serverGroupMembers;
+            resourceInputs["serverGroups"] = state?.serverGroups;
         } else {
             const args = argsOrState as QuotaSetV2Args | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["cores"] = args ? args.cores : undefined;
-            resourceInputs["fixedIps"] = args ? args.fixedIps : undefined;
-            resourceInputs["floatingIps"] = args ? args.floatingIps : undefined;
-            resourceInputs["injectedFileContentBytes"] = args ? args.injectedFileContentBytes : undefined;
-            resourceInputs["injectedFilePathBytes"] = args ? args.injectedFilePathBytes : undefined;
-            resourceInputs["injectedFiles"] = args ? args.injectedFiles : undefined;
-            resourceInputs["instances"] = args ? args.instances : undefined;
-            resourceInputs["keyPairs"] = args ? args.keyPairs : undefined;
-            resourceInputs["metadataItems"] = args ? args.metadataItems : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["ram"] = args ? args.ram : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["securityGroupRules"] = args ? args.securityGroupRules : undefined;
-            resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
-            resourceInputs["serverGroupMembers"] = args ? args.serverGroupMembers : undefined;
-            resourceInputs["serverGroups"] = args ? args.serverGroups : undefined;
+            resourceInputs["cores"] = args?.cores;
+            resourceInputs["fixedIps"] = args?.fixedIps;
+            resourceInputs["floatingIps"] = args?.floatingIps;
+            resourceInputs["injectedFileContentBytes"] = args?.injectedFileContentBytes;
+            resourceInputs["injectedFilePathBytes"] = args?.injectedFilePathBytes;
+            resourceInputs["injectedFiles"] = args?.injectedFiles;
+            resourceInputs["instances"] = args?.instances;
+            resourceInputs["keyPairs"] = args?.keyPairs;
+            resourceInputs["metadataItems"] = args?.metadataItems;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["ram"] = args?.ram;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["securityGroupRules"] = args?.securityGroupRules;
+            resourceInputs["securityGroups"] = args?.securityGroups;
+            resourceInputs["serverGroupMembers"] = args?.serverGroupMembers;
+            resourceInputs["serverGroups"] = args?.serverGroups;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(QuotaSetV2.__pulumiType, name, resourceInputs, opts);

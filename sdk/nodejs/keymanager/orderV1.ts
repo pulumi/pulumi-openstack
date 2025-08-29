@@ -83,54 +83,54 @@ export class OrderV1 extends pulumi.CustomResource {
     /**
      * The container reference / where to find the container.
      */
-    public /*out*/ readonly containerRef!: pulumi.Output<string>;
+    declare public /*out*/ readonly containerRef: pulumi.Output<string>;
     /**
      * The date the order was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * The creator of the order.
      */
-    public /*out*/ readonly creatorId!: pulumi.Output<string>;
+    declare public /*out*/ readonly creatorId: pulumi.Output<string>;
     /**
      * Dictionary containing the order metadata used to generate the order. The structure is described below.
      */
-    public readonly meta!: pulumi.Output<outputs.keymanager.OrderV1Meta>;
+    declare public readonly meta: pulumi.Output<outputs.keymanager.OrderV1Meta>;
     /**
      * The order reference / where to find the order.
      */
-    public /*out*/ readonly orderRef!: pulumi.Output<string>;
+    declare public /*out*/ readonly orderRef: pulumi.Output<string>;
     /**
      * The region in which to obtain the V1 KeyManager client.
      * A KeyManager client is needed to create a order. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * V1 order.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The secret reference / where to find the secret.
      */
-    public /*out*/ readonly secretRef!: pulumi.Output<string>;
+    declare public /*out*/ readonly secretRef: pulumi.Output<string>;
     /**
      * The status of the order.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The sub status of the order.
      */
-    public /*out*/ readonly subStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly subStatus: pulumi.Output<string>;
     /**
      * The sub status message of the order.
      */
-    public /*out*/ readonly subStatusMessage!: pulumi.Output<string>;
+    declare public /*out*/ readonly subStatusMessage: pulumi.Output<string>;
     /**
      * The type of key to be generated. Must be one of `asymmetric`, `key`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The date the order was last updated.
      */
-    public /*out*/ readonly updated!: pulumi.Output<string>;
+    declare public /*out*/ readonly updated: pulumi.Output<string>;
 
     /**
      * Create a OrderV1 resource with the given unique name, arguments, and options.
@@ -145,29 +145,29 @@ export class OrderV1 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrderV1State | undefined;
-            resourceInputs["containerRef"] = state ? state.containerRef : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["creatorId"] = state ? state.creatorId : undefined;
-            resourceInputs["meta"] = state ? state.meta : undefined;
-            resourceInputs["orderRef"] = state ? state.orderRef : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["secretRef"] = state ? state.secretRef : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["subStatus"] = state ? state.subStatus : undefined;
-            resourceInputs["subStatusMessage"] = state ? state.subStatusMessage : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["containerRef"] = state?.containerRef;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["creatorId"] = state?.creatorId;
+            resourceInputs["meta"] = state?.meta;
+            resourceInputs["orderRef"] = state?.orderRef;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["secretRef"] = state?.secretRef;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["subStatus"] = state?.subStatus;
+            resourceInputs["subStatusMessage"] = state?.subStatusMessage;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updated"] = state?.updated;
         } else {
             const args = argsOrState as OrderV1Args | undefined;
-            if ((!args || args.meta === undefined) && !opts.urn) {
+            if (args?.meta === undefined && !opts.urn) {
                 throw new Error("Missing required property 'meta'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["meta"] = args ? args.meta : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["meta"] = args?.meta;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["type"] = args?.type;
             resourceInputs["containerRef"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["creatorId"] = undefined /*out*/;

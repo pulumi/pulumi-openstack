@@ -69,18 +69,18 @@ export class QosAssociationV3 extends pulumi.CustomResource {
      * ID of the qos to associate. Changing this creates
      * a new qos association.
      */
-    public readonly qosId!: pulumi.Output<string>;
+    declare public readonly qosId: pulumi.Output<string>;
     /**
      * The region in which to create the qos association.
      * If omitted, the `region` argument of the provider is used. Changing
      * this creates a new qos association.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * ID of the volumeType to associate.
      * Changing this creates a new qos association.
      */
-    public readonly volumeTypeId!: pulumi.Output<string>;
+    declare public readonly volumeTypeId: pulumi.Output<string>;
 
     /**
      * Create a QosAssociationV3 resource with the given unique name, arguments, and options.
@@ -95,20 +95,20 @@ export class QosAssociationV3 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QosAssociationV3State | undefined;
-            resourceInputs["qosId"] = state ? state.qosId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["volumeTypeId"] = state ? state.volumeTypeId : undefined;
+            resourceInputs["qosId"] = state?.qosId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["volumeTypeId"] = state?.volumeTypeId;
         } else {
             const args = argsOrState as QosAssociationV3Args | undefined;
-            if ((!args || args.qosId === undefined) && !opts.urn) {
+            if (args?.qosId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'qosId'");
             }
-            if ((!args || args.volumeTypeId === undefined) && !opts.urn) {
+            if (args?.volumeTypeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'volumeTypeId'");
             }
-            resourceInputs["qosId"] = args ? args.qosId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["volumeTypeId"] = args ? args.volumeTypeId : undefined;
+            resourceInputs["qosId"] = args?.qosId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["volumeTypeId"] = args?.volumeTypeId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(QosAssociationV3.__pulumiType, name, resourceInputs, opts);

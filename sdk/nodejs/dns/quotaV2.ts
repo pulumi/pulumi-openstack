@@ -52,35 +52,35 @@ export class QuotaV2 extends pulumi.CustomResource {
      * The maximum number of zones that can be
      * exported via the API.
      */
-    public readonly apiExportSize!: pulumi.Output<number>;
+    declare public readonly apiExportSize: pulumi.Output<number>;
     /**
      * ID of the project to manage quota. Changing this
      * creates new quota.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The maximum number of records in a
      * recordset.
      */
-    public readonly recordsetRecords!: pulumi.Output<number>;
+    declare public readonly recordsetRecords: pulumi.Output<number>;
     /**
      * The region in which to obtain the V2 DNS client. If
      * omitted, the `region` argument of the provider is used. Changing this creates
      * a new DNS quota.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The maximum number of records in a zone.
      */
-    public readonly zoneRecords!: pulumi.Output<number>;
+    declare public readonly zoneRecords: pulumi.Output<number>;
     /**
      * The maximum number of recordsets in a zone.
      */
-    public readonly zoneRecordsets!: pulumi.Output<number>;
+    declare public readonly zoneRecordsets: pulumi.Output<number>;
     /**
      * The maximum number of zones that can be created.
      */
-    public readonly zones!: pulumi.Output<number>;
+    declare public readonly zones: pulumi.Output<number>;
 
     /**
      * Create a QuotaV2 resource with the given unique name, arguments, and options.
@@ -95,25 +95,25 @@ export class QuotaV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QuotaV2State | undefined;
-            resourceInputs["apiExportSize"] = state ? state.apiExportSize : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["recordsetRecords"] = state ? state.recordsetRecords : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["zoneRecords"] = state ? state.zoneRecords : undefined;
-            resourceInputs["zoneRecordsets"] = state ? state.zoneRecordsets : undefined;
-            resourceInputs["zones"] = state ? state.zones : undefined;
+            resourceInputs["apiExportSize"] = state?.apiExportSize;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["recordsetRecords"] = state?.recordsetRecords;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["zoneRecords"] = state?.zoneRecords;
+            resourceInputs["zoneRecordsets"] = state?.zoneRecordsets;
+            resourceInputs["zones"] = state?.zones;
         } else {
             const args = argsOrState as QuotaV2Args | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["apiExportSize"] = args ? args.apiExportSize : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["recordsetRecords"] = args ? args.recordsetRecords : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["zoneRecords"] = args ? args.zoneRecords : undefined;
-            resourceInputs["zoneRecordsets"] = args ? args.zoneRecordsets : undefined;
-            resourceInputs["zones"] = args ? args.zones : undefined;
+            resourceInputs["apiExportSize"] = args?.apiExportSize;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["recordsetRecords"] = args?.recordsetRecords;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["zoneRecords"] = args?.zoneRecords;
+            resourceInputs["zoneRecordsets"] = args?.zoneRecordsets;
+            resourceInputs["zones"] = args?.zones;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(QuotaV2.__pulumiType, name, resourceInputs, opts);

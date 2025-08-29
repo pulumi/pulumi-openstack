@@ -109,26 +109,26 @@ export class Listener extends pulumi.CustomResource {
      * The administrative state of the Listener. A
      * valid value is true (UP) or false (DOWN).
      */
-    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
+    declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
     /**
      * A list of CIDR blocks that are permitted to
      * connect to this listener, denying all other source addresses. If not present,
      * defaults to allow all.
      */
-    public readonly allowedCidrs!: pulumi.Output<string[] | undefined>;
+    declare public readonly allowedCidrs: pulumi.Output<string[] | undefined>;
     /**
      * A list of ALPN protocols. Available protocols:
      * `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
      * 2.20**.
      */
-    public readonly alpnProtocols!: pulumi.Output<string[]>;
+    declare public readonly alpnProtocols: pulumi.Output<string[]>;
     /**
      * The TLS client authentication mode.
      * Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
      * `TERMINATED_HTTPS` listener protocol and the `clientCaTlsContainerRef`.
      * Supported only in **Octavia minor version >= 2.8**.
      */
-    public readonly clientAuthentication!: pulumi.Output<string | undefined>;
+    declare public readonly clientAuthentication: pulumi.Output<string | undefined>;
     /**
      * The ref of the key manager service
      * secret containing a PEM format client CA certificate bundle for
@@ -136,23 +136,23 @@ export class Listener extends pulumi.CustomResource {
      * `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version >=
      * 2.8**.
      */
-    public readonly clientCaTlsContainerRef!: pulumi.Output<string | undefined>;
+    declare public readonly clientCaTlsContainerRef: pulumi.Output<string | undefined>;
     /**
      * The URI of the key manager service
      * secret containing a PEM format CA revocation list file for `TERMINATED_HTTPS`
      * listeners. Supported only in **Octavia minor version >= 2.8**.
      */
-    public readonly clientCrlContainerRef!: pulumi.Output<string | undefined>;
+    declare public readonly clientCrlContainerRef: pulumi.Output<string | undefined>;
     /**
      * The maximum number of connections allowed for
      * the Listener.
      */
-    public readonly connectionLimit!: pulumi.Output<number>;
+    declare public readonly connectionLimit: pulumi.Output<number>;
     /**
      * The ID of the default pool with which the
      * Listener is associated.
      */
-    public readonly defaultPoolId!: pulumi.Output<string>;
+    declare public readonly defaultPoolId: pulumi.Output<string>;
     /**
      * A reference to a Barbican Secrets
      * container which stores TLS information. This is required if the protocol is
@@ -160,11 +160,11 @@ export class Listener extends pulumi.CustomResource {
      * [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
      * for more information.
      */
-    public readonly defaultTlsContainerRef!: pulumi.Output<string | undefined>;
+    declare public readonly defaultTlsContainerRef: pulumi.Output<string | undefined>;
     /**
      * Human-readable description for the Listener.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Defines whether the
      * **includeSubDomains** directive should be added to the
@@ -173,7 +173,7 @@ export class Listener extends pulumi.CustomResource {
      * `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
      * version >= 2.27**.
      */
-    public readonly hstsIncludeSubdomains!: pulumi.Output<boolean | undefined>;
+    declare public readonly hstsIncludeSubdomains: pulumi.Output<boolean | undefined>;
     /**
      * The value of the **max_age** directive for the
      * Strict-Transport-Security HTTP response header. Setting this enables HTTP
@@ -181,7 +181,7 @@ export class Listener extends pulumi.CustomResource {
      * `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
      * version >= 2.27**.
      */
-    public readonly hstsMaxAge!: pulumi.Output<number | undefined>;
+    declare public readonly hstsMaxAge: pulumi.Output<number | undefined>;
     /**
      * Defines whether the **preload** directive should
      * be added to the Strict-Transport-Security HTTP response header. This requires
@@ -189,92 +189,92 @@ export class Listener extends pulumi.CustomResource {
      * Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
      * minor version >= 2.27**.
      */
-    public readonly hstsPreload!: pulumi.Output<boolean | undefined>;
+    declare public readonly hstsPreload: pulumi.Output<boolean | undefined>;
     /**
      * The list of key value pairs representing
      * headers to insert into the request before it is sent to the backend members.
      * Changing this updates the headers of the existing listener.
      */
-    public readonly insertHeaders!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly insertHeaders: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The load balancer on which to provision this
      * Listener. Changing this creates a new Listener.
      */
-    public readonly loadbalancerId!: pulumi.Output<string>;
+    declare public readonly loadbalancerId: pulumi.Output<string>;
     /**
      * Human-readable name for the Listener. Does not have to be
      * unique.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The protocol can be either `TCP`, `HTTP`, `HTTPS`,
      * `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
      * \>= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version >=
      * 2.25**). Changing this creates a new Listener.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * The port on which to listen for client traffic.
      * * Changing this creates a new Listener.
      */
-    public readonly protocolPort!: pulumi.Output<number>;
+    declare public readonly protocolPort: pulumi.Output<number>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a listener. If omitted, the `region`
      * argument of the provider is used. Changing this creates a new Listener.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * A list of references to Barbican Secrets
      * containers which store SNI information. See
      * [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
      * for more information.
      */
-    public readonly sniContainerRefs!: pulumi.Output<string[] | undefined>;
+    declare public readonly sniContainerRefs: pulumi.Output<string[] | undefined>;
     /**
      * A list of simple strings assigned to the pool. Available
      * for Octavia **minor version 2.5 or later**.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the Listener.  Only administrative users can specify a tenant UUID other than
      * their own. Changing this creates a new Listener.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
     /**
      * The client inactivity timeout in
      * milliseconds.
      */
-    public readonly timeoutClientData!: pulumi.Output<number>;
+    declare public readonly timeoutClientData: pulumi.Output<number>;
     /**
      * The member connection timeout in
      * milliseconds.
      */
-    public readonly timeoutMemberConnect!: pulumi.Output<number>;
+    declare public readonly timeoutMemberConnect: pulumi.Output<number>;
     /**
      * The member inactivity timeout in
      * milliseconds.
      */
-    public readonly timeoutMemberData!: pulumi.Output<number>;
+    declare public readonly timeoutMemberData: pulumi.Output<number>;
     /**
      * The time in milliseconds, to wait for
      * additional TCP packets for content inspection.
      */
-    public readonly timeoutTcpInspect!: pulumi.Output<number>;
+    declare public readonly timeoutTcpInspect: pulumi.Output<number>;
     /**
      * List of ciphers in OpenSSL format
      * (colon-separated). See
      * https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
      * Supported only in **Octavia minor version >= 2.15**.
      */
-    public readonly tlsCiphers!: pulumi.Output<string>;
+    declare public readonly tlsCiphers: pulumi.Output<string>;
     /**
      * A list of TLS protocol versions. Available
      * versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
      * **Octavia minor version >= 2.17**.
      */
-    public readonly tlsVersions!: pulumi.Output<string[]>;
+    declare public readonly tlsVersions: pulumi.Output<string[]>;
 
     /**
      * Create a Listener resource with the given unique name, arguments, and options.
@@ -289,73 +289,73 @@ export class Listener extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListenerState | undefined;
-            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            resourceInputs["allowedCidrs"] = state ? state.allowedCidrs : undefined;
-            resourceInputs["alpnProtocols"] = state ? state.alpnProtocols : undefined;
-            resourceInputs["clientAuthentication"] = state ? state.clientAuthentication : undefined;
-            resourceInputs["clientCaTlsContainerRef"] = state ? state.clientCaTlsContainerRef : undefined;
-            resourceInputs["clientCrlContainerRef"] = state ? state.clientCrlContainerRef : undefined;
-            resourceInputs["connectionLimit"] = state ? state.connectionLimit : undefined;
-            resourceInputs["defaultPoolId"] = state ? state.defaultPoolId : undefined;
-            resourceInputs["defaultTlsContainerRef"] = state ? state.defaultTlsContainerRef : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["hstsIncludeSubdomains"] = state ? state.hstsIncludeSubdomains : undefined;
-            resourceInputs["hstsMaxAge"] = state ? state.hstsMaxAge : undefined;
-            resourceInputs["hstsPreload"] = state ? state.hstsPreload : undefined;
-            resourceInputs["insertHeaders"] = state ? state.insertHeaders : undefined;
-            resourceInputs["loadbalancerId"] = state ? state.loadbalancerId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["protocolPort"] = state ? state.protocolPort : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["sniContainerRefs"] = state ? state.sniContainerRefs : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
-            resourceInputs["timeoutClientData"] = state ? state.timeoutClientData : undefined;
-            resourceInputs["timeoutMemberConnect"] = state ? state.timeoutMemberConnect : undefined;
-            resourceInputs["timeoutMemberData"] = state ? state.timeoutMemberData : undefined;
-            resourceInputs["timeoutTcpInspect"] = state ? state.timeoutTcpInspect : undefined;
-            resourceInputs["tlsCiphers"] = state ? state.tlsCiphers : undefined;
-            resourceInputs["tlsVersions"] = state ? state.tlsVersions : undefined;
+            resourceInputs["adminStateUp"] = state?.adminStateUp;
+            resourceInputs["allowedCidrs"] = state?.allowedCidrs;
+            resourceInputs["alpnProtocols"] = state?.alpnProtocols;
+            resourceInputs["clientAuthentication"] = state?.clientAuthentication;
+            resourceInputs["clientCaTlsContainerRef"] = state?.clientCaTlsContainerRef;
+            resourceInputs["clientCrlContainerRef"] = state?.clientCrlContainerRef;
+            resourceInputs["connectionLimit"] = state?.connectionLimit;
+            resourceInputs["defaultPoolId"] = state?.defaultPoolId;
+            resourceInputs["defaultTlsContainerRef"] = state?.defaultTlsContainerRef;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["hstsIncludeSubdomains"] = state?.hstsIncludeSubdomains;
+            resourceInputs["hstsMaxAge"] = state?.hstsMaxAge;
+            resourceInputs["hstsPreload"] = state?.hstsPreload;
+            resourceInputs["insertHeaders"] = state?.insertHeaders;
+            resourceInputs["loadbalancerId"] = state?.loadbalancerId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["protocolPort"] = state?.protocolPort;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["sniContainerRefs"] = state?.sniContainerRefs;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["timeoutClientData"] = state?.timeoutClientData;
+            resourceInputs["timeoutMemberConnect"] = state?.timeoutMemberConnect;
+            resourceInputs["timeoutMemberData"] = state?.timeoutMemberData;
+            resourceInputs["timeoutTcpInspect"] = state?.timeoutTcpInspect;
+            resourceInputs["tlsCiphers"] = state?.tlsCiphers;
+            resourceInputs["tlsVersions"] = state?.tlsVersions;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
-            if ((!args || args.loadbalancerId === undefined) && !opts.urn) {
+            if (args?.loadbalancerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loadbalancerId'");
             }
-            if ((!args || args.protocol === undefined) && !opts.urn) {
+            if (args?.protocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if ((!args || args.protocolPort === undefined) && !opts.urn) {
+            if (args?.protocolPort === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocolPort'");
             }
-            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            resourceInputs["allowedCidrs"] = args ? args.allowedCidrs : undefined;
-            resourceInputs["alpnProtocols"] = args ? args.alpnProtocols : undefined;
-            resourceInputs["clientAuthentication"] = args ? args.clientAuthentication : undefined;
-            resourceInputs["clientCaTlsContainerRef"] = args ? args.clientCaTlsContainerRef : undefined;
-            resourceInputs["clientCrlContainerRef"] = args ? args.clientCrlContainerRef : undefined;
-            resourceInputs["connectionLimit"] = args ? args.connectionLimit : undefined;
-            resourceInputs["defaultPoolId"] = args ? args.defaultPoolId : undefined;
-            resourceInputs["defaultTlsContainerRef"] = args ? args.defaultTlsContainerRef : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["hstsIncludeSubdomains"] = args ? args.hstsIncludeSubdomains : undefined;
-            resourceInputs["hstsMaxAge"] = args ? args.hstsMaxAge : undefined;
-            resourceInputs["hstsPreload"] = args ? args.hstsPreload : undefined;
-            resourceInputs["insertHeaders"] = args ? args.insertHeaders : undefined;
-            resourceInputs["loadbalancerId"] = args ? args.loadbalancerId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["protocolPort"] = args ? args.protocolPort : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["sniContainerRefs"] = args ? args.sniContainerRefs : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["timeoutClientData"] = args ? args.timeoutClientData : undefined;
-            resourceInputs["timeoutMemberConnect"] = args ? args.timeoutMemberConnect : undefined;
-            resourceInputs["timeoutMemberData"] = args ? args.timeoutMemberData : undefined;
-            resourceInputs["timeoutTcpInspect"] = args ? args.timeoutTcpInspect : undefined;
-            resourceInputs["tlsCiphers"] = args ? args.tlsCiphers : undefined;
-            resourceInputs["tlsVersions"] = args ? args.tlsVersions : undefined;
+            resourceInputs["adminStateUp"] = args?.adminStateUp;
+            resourceInputs["allowedCidrs"] = args?.allowedCidrs;
+            resourceInputs["alpnProtocols"] = args?.alpnProtocols;
+            resourceInputs["clientAuthentication"] = args?.clientAuthentication;
+            resourceInputs["clientCaTlsContainerRef"] = args?.clientCaTlsContainerRef;
+            resourceInputs["clientCrlContainerRef"] = args?.clientCrlContainerRef;
+            resourceInputs["connectionLimit"] = args?.connectionLimit;
+            resourceInputs["defaultPoolId"] = args?.defaultPoolId;
+            resourceInputs["defaultTlsContainerRef"] = args?.defaultTlsContainerRef;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["hstsIncludeSubdomains"] = args?.hstsIncludeSubdomains;
+            resourceInputs["hstsMaxAge"] = args?.hstsMaxAge;
+            resourceInputs["hstsPreload"] = args?.hstsPreload;
+            resourceInputs["insertHeaders"] = args?.insertHeaders;
+            resourceInputs["loadbalancerId"] = args?.loadbalancerId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["protocolPort"] = args?.protocolPort;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["sniContainerRefs"] = args?.sniContainerRefs;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tenantId"] = args?.tenantId;
+            resourceInputs["timeoutClientData"] = args?.timeoutClientData;
+            resourceInputs["timeoutMemberConnect"] = args?.timeoutMemberConnect;
+            resourceInputs["timeoutMemberData"] = args?.timeoutMemberData;
+            resourceInputs["timeoutTcpInspect"] = args?.timeoutTcpInspect;
+            resourceInputs["tlsCiphers"] = args?.tlsCiphers;
+            resourceInputs["tlsVersions"] = args?.tlsVersions;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Listener.__pulumiType, name, resourceInputs, opts);

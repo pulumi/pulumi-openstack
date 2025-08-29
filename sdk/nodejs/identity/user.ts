@@ -86,65 +86,65 @@ export class User extends pulumi.CustomResource {
     /**
      * The default project this user belongs to.
      */
-    public readonly defaultProjectId!: pulumi.Output<string>;
+    declare public readonly defaultProjectId: pulumi.Output<string>;
     /**
      * A description of the user.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The domain this user belongs to.
      */
-    public readonly domainId!: pulumi.Output<string>;
+    declare public readonly domainId: pulumi.Output<string>;
     /**
      * Whether the user is enabled or disabled. Valid
      * values are `true` and `false`.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Free-form key/value pairs of extra information.
      */
-    public readonly extra!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly extra: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * User will not have to
      * change their password upon first use. Valid values are `true` and `false`.
      */
-    public readonly ignoreChangePasswordUponFirstUse!: pulumi.Output<boolean | undefined>;
+    declare public readonly ignoreChangePasswordUponFirstUse: pulumi.Output<boolean | undefined>;
     /**
      * User will not have a failure
      * lockout placed on their account. Valid values are `true` and `false`.
      */
-    public readonly ignoreLockoutFailureAttempts!: pulumi.Output<boolean | undefined>;
+    declare public readonly ignoreLockoutFailureAttempts: pulumi.Output<boolean | undefined>;
     /**
      * User's password will not expire.
      * Valid values are `true` and `false`.
      */
-    public readonly ignorePasswordExpiry!: pulumi.Output<boolean | undefined>;
+    declare public readonly ignorePasswordExpiry: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enable multi-factor
      * authentication. Valid values are `true` and `false`.
      */
-    public readonly multiFactorAuthEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly multiFactorAuthEnabled: pulumi.Output<boolean | undefined>;
     /**
      * A multi-factor authentication rule.
      * The structure is documented below. Please see the
      * [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
      * for more information on how to use mulit-factor rules.
      */
-    public readonly multiFactorAuthRules!: pulumi.Output<outputs.identity.UserMultiFactorAuthRule[] | undefined>;
+    declare public readonly multiFactorAuthRules: pulumi.Output<outputs.identity.UserMultiFactorAuthRule[] | undefined>;
     /**
      * The name of the user.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The password for the user.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new User.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -159,34 +159,34 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["defaultProjectId"] = state ? state.defaultProjectId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["domainId"] = state ? state.domainId : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["extra"] = state ? state.extra : undefined;
-            resourceInputs["ignoreChangePasswordUponFirstUse"] = state ? state.ignoreChangePasswordUponFirstUse : undefined;
-            resourceInputs["ignoreLockoutFailureAttempts"] = state ? state.ignoreLockoutFailureAttempts : undefined;
-            resourceInputs["ignorePasswordExpiry"] = state ? state.ignorePasswordExpiry : undefined;
-            resourceInputs["multiFactorAuthEnabled"] = state ? state.multiFactorAuthEnabled : undefined;
-            resourceInputs["multiFactorAuthRules"] = state ? state.multiFactorAuthRules : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["defaultProjectId"] = state?.defaultProjectId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["domainId"] = state?.domainId;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["extra"] = state?.extra;
+            resourceInputs["ignoreChangePasswordUponFirstUse"] = state?.ignoreChangePasswordUponFirstUse;
+            resourceInputs["ignoreLockoutFailureAttempts"] = state?.ignoreLockoutFailureAttempts;
+            resourceInputs["ignorePasswordExpiry"] = state?.ignorePasswordExpiry;
+            resourceInputs["multiFactorAuthEnabled"] = state?.multiFactorAuthEnabled;
+            resourceInputs["multiFactorAuthRules"] = state?.multiFactorAuthRules;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            resourceInputs["defaultProjectId"] = args ? args.defaultProjectId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["domainId"] = args ? args.domainId : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["extra"] = args ? args.extra : undefined;
-            resourceInputs["ignoreChangePasswordUponFirstUse"] = args ? args.ignoreChangePasswordUponFirstUse : undefined;
-            resourceInputs["ignoreLockoutFailureAttempts"] = args ? args.ignoreLockoutFailureAttempts : undefined;
-            resourceInputs["ignorePasswordExpiry"] = args ? args.ignorePasswordExpiry : undefined;
-            resourceInputs["multiFactorAuthEnabled"] = args ? args.multiFactorAuthEnabled : undefined;
-            resourceInputs["multiFactorAuthRules"] = args ? args.multiFactorAuthRules : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["defaultProjectId"] = args?.defaultProjectId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["domainId"] = args?.domainId;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["extra"] = args?.extra;
+            resourceInputs["ignoreChangePasswordUponFirstUse"] = args?.ignoreChangePasswordUponFirstUse;
+            resourceInputs["ignoreLockoutFailureAttempts"] = args?.ignoreLockoutFailureAttempts;
+            resourceInputs["ignorePasswordExpiry"] = args?.ignorePasswordExpiry;
+            resourceInputs["multiFactorAuthEnabled"] = args?.multiFactorAuthEnabled;
+            resourceInputs["multiFactorAuthRules"] = args?.multiFactorAuthRules;
+            resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

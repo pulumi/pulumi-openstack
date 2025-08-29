@@ -72,18 +72,18 @@ export class FlavorAccess extends pulumi.CustomResource {
     /**
      * The UUID of flavor to use. Changing this creates a new flavor access.
      */
-    public readonly flavorId!: pulumi.Output<string>;
+    declare public readonly flavorId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new flavor access.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The UUID of tenant which is allowed to use the flavor.
      * Changing this creates a new flavor access.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
 
     /**
      * Create a FlavorAccess resource with the given unique name, arguments, and options.
@@ -98,20 +98,20 @@ export class FlavorAccess extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlavorAccessState | undefined;
-            resourceInputs["flavorId"] = state ? state.flavorId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["flavorId"] = state?.flavorId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["tenantId"] = state?.tenantId;
         } else {
             const args = argsOrState as FlavorAccessArgs | undefined;
-            if ((!args || args.flavorId === undefined) && !opts.urn) {
+            if (args?.flavorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'flavorId'");
             }
-            if ((!args || args.tenantId === undefined) && !opts.urn) {
+            if (args?.tenantId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
-            resourceInputs["flavorId"] = args ? args.flavorId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["flavorId"] = args?.flavorId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tenantId"] = args?.tenantId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FlavorAccess.__pulumiType, name, resourceInputs, opts);

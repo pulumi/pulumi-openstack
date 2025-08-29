@@ -16,8 +16,8 @@ from .. import _utilities
 
 allowReauth: Optional[bool]
 """
-If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
-Defaults to `true`
+If set to `false`, OpenStack authorization won't be perfomed
+automatically, if the initial auth token get expired. Defaults to `true`
 """
 
 applicationCredentialId: Optional[str]
@@ -62,8 +62,8 @@ The name of the Domain ID to scope to if no other domain is specified. Defaults 
 
 delayedAuth: Optional[bool]
 """
-If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
-to `true`.
+If set to `false`, OpenStack authorization will be perfomed,
+every time the service provider client is called. Defaults to `true`.
 """
 
 disableNoCacheHeader: Optional[bool]
@@ -88,7 +88,8 @@ Outputs very verbose logs with all calls made to and responses from OpenStack
 
 endpointOverrides: Optional[str]
 """
-A map of services with an endpoint to override what was from the Keystone catalog
+A map of services with an endpoint to override what was
+from the Keystone catalog
 """
 
 endpointType: Optional[str]
@@ -130,7 +131,8 @@ The OpenStack region to connect to.
 
 swauth: Optional[bool]
 """
-Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
+Use Swift's authentication system instead of Keystone. Only used for
+interaction with Swift.
 """
 
 systemScope: Optional[bool]
@@ -140,12 +142,14 @@ If set to `true`, system scoped authorization will be enabled. Defaults to `fals
 
 tenantId: Optional[str]
 """
-The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+The ID of the Tenant (Identity v2) or Project (Identity v3)
+to login with.
 """
 
 tenantName: Optional[str]
 """
-The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+The name of the Tenant (Identity v2) or Project (Identity v3)
+to login with.
 """
 
 token: Optional[str]

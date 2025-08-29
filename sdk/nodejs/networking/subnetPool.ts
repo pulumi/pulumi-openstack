@@ -88,62 +88,62 @@ export class SubnetPool extends pulumi.CustomResource {
      * subnetpool. Changing this updates the address scope id of the existing
      * subnetpool.
      */
-    public readonly addressScopeId!: pulumi.Output<string | undefined>;
+    declare public readonly addressScopeId: pulumi.Output<string | undefined>;
     /**
      * The collection of tags assigned on the subnetpool, which have been
      * explicitly and implicitly added.
      */
-    public /*out*/ readonly allTags!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly allTags: pulumi.Output<string[]>;
     /**
      * The time at which subnetpool was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The size of the prefix to allocate when the cidr
      * or prefixlen attributes are omitted when you create the subnet. Defaults to the
      * MinPrefixLen. Changing this updates the default prefixlen of the existing
      * subnetpool.
      */
-    public readonly defaultPrefixlen!: pulumi.Output<number>;
+    declare public readonly defaultPrefixlen: pulumi.Output<number>;
     /**
      * The per-project quota on the prefix space that can be
      * allocated from the subnetpool for project subnets. Changing this updates the
      * default quota of the existing subnetpool.
      */
-    public readonly defaultQuota!: pulumi.Output<number | undefined>;
+    declare public readonly defaultQuota: pulumi.Output<number | undefined>;
     /**
      * The human-readable description for the subnetpool.
      * Changing this updates the description of the existing subnetpool.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The IP protocol version.
      */
-    public readonly ipVersion!: pulumi.Output<number>;
+    declare public readonly ipVersion: pulumi.Output<number>;
     /**
      * Indicates whether the subnetpool is default
      * subnetpool or not. Changing this updates the default status of the existing
      * subnetpool.
      */
-    public readonly isDefault!: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefault: pulumi.Output<boolean | undefined>;
     /**
      * The maximum prefix size that can be allocated from
      * the subnetpool. For IPv4 subnetpools, default is 32. For IPv6 subnetpools,
      * default is 128. Changing this updates the max prefixlen of the existing
      * subnetpool.
      */
-    public readonly maxPrefixlen!: pulumi.Output<number>;
+    declare public readonly maxPrefixlen: pulumi.Output<number>;
     /**
      * The smallest prefix that can be allocated from a
      * subnetpool. For IPv4 subnetpools, default is 8. For IPv6 subnetpools, default
      * is 64. Changing this updates the min prefixlen of the existing subnetpool.
      */
-    public readonly minPrefixlen!: pulumi.Output<number>;
+    declare public readonly minPrefixlen: pulumi.Output<number>;
     /**
      * The name of the subnetpool. Changing this updates the name of
      * the existing subnetpool.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A list of subnet prefixes to assign to the subnetpool.
      * Neutron API merges adjacent prefixes and treats them as a single prefix. Each
@@ -151,41 +151,41 @@ export class SubnetPool extends pulumi.CustomResource {
      * are associated with the address scope. Changing this updates the prefixes list
      * of the existing subnetpool.
      */
-    public readonly prefixes!: pulumi.Output<string[]>;
+    declare public readonly prefixes: pulumi.Output<string[]>;
     /**
      * The owner of the subnetpool. Required if admin wants to
      * create a subnetpool for another project. Changing this creates a new subnetpool.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron subnetpool. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * subnetpool.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The revision number of the subnetpool.
      */
-    public /*out*/ readonly revisionNumber!: pulumi.Output<number>;
+    declare public /*out*/ readonly revisionNumber: pulumi.Output<number>;
     /**
      * Indicates whether this subnetpool is shared across
      * all projects. Changing this updates the shared status of the existing
      * subnetpool.
      */
-    public readonly shared!: pulumi.Output<boolean | undefined>;
+    declare public readonly shared: pulumi.Output<boolean | undefined>;
     /**
      * A set of string tags for the subnetpool.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The time at which subnetpool was created.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * Map of additional options.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly valueSpecs: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a SubnetPool resource with the given unique name, arguments, and options.
@@ -200,45 +200,45 @@ export class SubnetPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubnetPoolState | undefined;
-            resourceInputs["addressScopeId"] = state ? state.addressScopeId : undefined;
-            resourceInputs["allTags"] = state ? state.allTags : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["defaultPrefixlen"] = state ? state.defaultPrefixlen : undefined;
-            resourceInputs["defaultQuota"] = state ? state.defaultQuota : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
-            resourceInputs["maxPrefixlen"] = state ? state.maxPrefixlen : undefined;
-            resourceInputs["minPrefixlen"] = state ? state.minPrefixlen : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["prefixes"] = state ? state.prefixes : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["revisionNumber"] = state ? state.revisionNumber : undefined;
-            resourceInputs["shared"] = state ? state.shared : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["addressScopeId"] = state?.addressScopeId;
+            resourceInputs["allTags"] = state?.allTags;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["defaultPrefixlen"] = state?.defaultPrefixlen;
+            resourceInputs["defaultQuota"] = state?.defaultQuota;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["isDefault"] = state?.isDefault;
+            resourceInputs["maxPrefixlen"] = state?.maxPrefixlen;
+            resourceInputs["minPrefixlen"] = state?.minPrefixlen;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["prefixes"] = state?.prefixes;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["revisionNumber"] = state?.revisionNumber;
+            resourceInputs["shared"] = state?.shared;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["valueSpecs"] = state?.valueSpecs;
         } else {
             const args = argsOrState as SubnetPoolArgs | undefined;
-            if ((!args || args.prefixes === undefined) && !opts.urn) {
+            if (args?.prefixes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'prefixes'");
             }
-            resourceInputs["addressScopeId"] = args ? args.addressScopeId : undefined;
-            resourceInputs["defaultPrefixlen"] = args ? args.defaultPrefixlen : undefined;
-            resourceInputs["defaultQuota"] = args ? args.defaultQuota : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
-            resourceInputs["maxPrefixlen"] = args ? args.maxPrefixlen : undefined;
-            resourceInputs["minPrefixlen"] = args ? args.minPrefixlen : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["prefixes"] = args ? args.prefixes : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["shared"] = args ? args.shared : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["addressScopeId"] = args?.addressScopeId;
+            resourceInputs["defaultPrefixlen"] = args?.defaultPrefixlen;
+            resourceInputs["defaultQuota"] = args?.defaultQuota;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["isDefault"] = args?.isDefault;
+            resourceInputs["maxPrefixlen"] = args?.maxPrefixlen;
+            resourceInputs["minPrefixlen"] = args?.minPrefixlen;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["prefixes"] = args?.prefixes;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["shared"] = args?.shared;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["valueSpecs"] = args?.valueSpecs;
             resourceInputs["allTags"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["revisionNumber"] = undefined /*out*/;

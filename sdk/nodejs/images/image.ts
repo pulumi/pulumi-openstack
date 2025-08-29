@@ -83,16 +83,16 @@ export class Image extends pulumi.CustomResource {
     /**
      * The checksum of the data associated with the image.
      */
-    public /*out*/ readonly checksum!: pulumi.Output<string>;
+    declare public /*out*/ readonly checksum: pulumi.Output<string>;
     /**
      * The container format. Must be one of "bare",
      * "ovf", "aki", "ari", "ami", "ova", "docker", "compressed".
      */
-    public readonly containerFormat!: pulumi.Output<string>;
+    declare public readonly containerFormat: pulumi.Output<string>;
     /**
      * The date the image was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * If true, this provider will decompress downloaded
      * image before uploading it to OpenStack. Decompression algorithm is chosen by
@@ -100,135 +100,135 @@ export class Image extends pulumi.CustomResource {
      * filename extension. Supported algorithms are: gzip, bzip2, xz and zst.
      * Defaults to false. Changing this creates a new Image.
      */
-    public readonly decompress!: pulumi.Output<boolean | undefined>;
+    declare public readonly decompress: pulumi.Output<boolean | undefined>;
     /**
      * The disk format. Must be one of "raw", "vhd",
      * "vhdx", "vmdk", "vdi", "iso", "ploop", "qcow2", "aki", "ari", "ami"
      */
-    public readonly diskFormat!: pulumi.Output<string>;
+    declare public readonly diskFormat: pulumi.Output<string>;
     /**
      * the trailing path after the glance
      * endpoint that represent the location of the image
      * or the path to retrieve it.
      */
-    public /*out*/ readonly file!: pulumi.Output<string>;
+    declare public /*out*/ readonly file: pulumi.Output<string>;
     /**
      * If true, image will be hidden from public list.
      * Defaults to false.
      */
-    public readonly hidden!: pulumi.Output<boolean | undefined>;
-    public readonly imageCachePath!: pulumi.Output<string | undefined>;
+    declare public readonly hidden: pulumi.Output<boolean | undefined>;
+    declare public readonly imageCachePath: pulumi.Output<string | undefined>;
     /**
      * Unique ID (valid UUID) of image to create. Changing
      * this creates a new image.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    declare public readonly imageId: pulumi.Output<string>;
     /**
      * The password of basic auth to download
      * `imageSourceUrl`.
      */
-    public readonly imageSourcePassword!: pulumi.Output<string | undefined>;
+    declare public readonly imageSourcePassword: pulumi.Output<string | undefined>;
     /**
      * This is the url of the raw image. If
      * `webDownload` is not used, then the image will be downloaded in the
      * `imageCachePath` before being uploaded to Glance. Conflicts with
      * `localFilePath`.
      */
-    public readonly imageSourceUrl!: pulumi.Output<string | undefined>;
+    declare public readonly imageSourceUrl: pulumi.Output<string | undefined>;
     /**
      * The username of basic auth to download
      * `imageSourceUrl`.
      */
-    public readonly imageSourceUsername!: pulumi.Output<string | undefined>;
+    declare public readonly imageSourceUsername: pulumi.Output<string | undefined>;
     /**
      * This is the filepath of the raw image file
      * that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
      * `webDownload`.
      */
-    public readonly localFilePath!: pulumi.Output<string | undefined>;
+    declare public readonly localFilePath: pulumi.Output<string | undefined>;
     /**
      * The metadata associated with the image.
      * Image metadata allow for meaningfully define the image properties
      * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      */
-    public /*out*/ readonly metadata!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly metadata: pulumi.Output<{[key: string]: string}>;
     /**
      * Amount of disk space (in GB) required to boot
      * image. Defaults to 0.
      */
-    public readonly minDiskGb!: pulumi.Output<number | undefined>;
+    declare public readonly minDiskGb: pulumi.Output<number | undefined>;
     /**
      * Amount of ram (in MB) required to boot image.
      * Defauts to 0.
      */
-    public readonly minRamMb!: pulumi.Output<number | undefined>;
+    declare public readonly minRamMb: pulumi.Output<number | undefined>;
     /**
      * The name of the image.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The id of the openstack user who owns the image.
      */
-    public /*out*/ readonly owner!: pulumi.Output<string>;
+    declare public /*out*/ readonly owner: pulumi.Output<string>;
     /**
      * A map of key/value pairs to set freeform
      * information about an image. See the "Notes" section for further information
      * about properties.
      */
-    public readonly properties!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly properties: pulumi.Output<{[key: string]: string}>;
     /**
      * If true, image will not be deletable. Defaults to
      * false.
      */
-    public readonly protected!: pulumi.Output<boolean | undefined>;
+    declare public readonly protected: pulumi.Output<boolean | undefined>;
     /**
      * The region in which to obtain the V2 Glance client. A
      * Glance client is needed to create an Image that can be used with a compute
      * instance. If omitted, the `region` argument of the provider is used. Changing
      * this creates a new Image.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The path to the JSON-schema that represent
      * the image or image
      */
-    public /*out*/ readonly schema!: pulumi.Output<string>;
+    declare public /*out*/ readonly schema: pulumi.Output<string>;
     /**
      * The size in bytes of the data associated with the image.
      */
-    public /*out*/ readonly sizeBytes!: pulumi.Output<number>;
+    declare public /*out*/ readonly sizeBytes: pulumi.Output<number>;
     /**
      * The status of the image. It can be "queued", "active"
      * or "saving".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The tags of the image. It must be a list of strings. At
      * this time, it is not possible to delete all tags of an image.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The date the image was last updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * If false, the checksum will not be verified
      * once the image is finished uploading. Conflicts with `webDownload`. Defaults
      * to true when not using `webDownload`.
      */
-    public readonly verifyChecksum!: pulumi.Output<boolean | undefined>;
+    declare public readonly verifyChecksum: pulumi.Output<boolean | undefined>;
     /**
      * The visibility of the image. Must be one of
      * "public", "private", "community", or "shared". The ability to set the
      * visibility depends upon the configuration of the OpenStack cloud.
      */
-    public readonly visibility!: pulumi.Output<string | undefined>;
+    declare public readonly visibility: pulumi.Output<string | undefined>;
     /**
      * If true, the "web-download" import method will be
      * used to let Openstack download the image directly from the remote source.
      * Conflicts with `localFilePath`. Defaults to false.
      */
-    public readonly webDownload!: pulumi.Output<boolean | undefined>;
+    declare public readonly webDownload: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -243,63 +243,63 @@ export class Image extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageState | undefined;
-            resourceInputs["checksum"] = state ? state.checksum : undefined;
-            resourceInputs["containerFormat"] = state ? state.containerFormat : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["decompress"] = state ? state.decompress : undefined;
-            resourceInputs["diskFormat"] = state ? state.diskFormat : undefined;
-            resourceInputs["file"] = state ? state.file : undefined;
-            resourceInputs["hidden"] = state ? state.hidden : undefined;
-            resourceInputs["imageCachePath"] = state ? state.imageCachePath : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["imageSourcePassword"] = state ? state.imageSourcePassword : undefined;
-            resourceInputs["imageSourceUrl"] = state ? state.imageSourceUrl : undefined;
-            resourceInputs["imageSourceUsername"] = state ? state.imageSourceUsername : undefined;
-            resourceInputs["localFilePath"] = state ? state.localFilePath : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["minDiskGb"] = state ? state.minDiskGb : undefined;
-            resourceInputs["minRamMb"] = state ? state.minRamMb : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["properties"] = state ? state.properties : undefined;
-            resourceInputs["protected"] = state ? state.protected : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["schema"] = state ? state.schema : undefined;
-            resourceInputs["sizeBytes"] = state ? state.sizeBytes : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["verifyChecksum"] = state ? state.verifyChecksum : undefined;
-            resourceInputs["visibility"] = state ? state.visibility : undefined;
-            resourceInputs["webDownload"] = state ? state.webDownload : undefined;
+            resourceInputs["checksum"] = state?.checksum;
+            resourceInputs["containerFormat"] = state?.containerFormat;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["decompress"] = state?.decompress;
+            resourceInputs["diskFormat"] = state?.diskFormat;
+            resourceInputs["file"] = state?.file;
+            resourceInputs["hidden"] = state?.hidden;
+            resourceInputs["imageCachePath"] = state?.imageCachePath;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["imageSourcePassword"] = state?.imageSourcePassword;
+            resourceInputs["imageSourceUrl"] = state?.imageSourceUrl;
+            resourceInputs["imageSourceUsername"] = state?.imageSourceUsername;
+            resourceInputs["localFilePath"] = state?.localFilePath;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["minDiskGb"] = state?.minDiskGb;
+            resourceInputs["minRamMb"] = state?.minRamMb;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["properties"] = state?.properties;
+            resourceInputs["protected"] = state?.protected;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["schema"] = state?.schema;
+            resourceInputs["sizeBytes"] = state?.sizeBytes;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["verifyChecksum"] = state?.verifyChecksum;
+            resourceInputs["visibility"] = state?.visibility;
+            resourceInputs["webDownload"] = state?.webDownload;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            if ((!args || args.containerFormat === undefined) && !opts.urn) {
+            if (args?.containerFormat === undefined && !opts.urn) {
                 throw new Error("Missing required property 'containerFormat'");
             }
-            if ((!args || args.diskFormat === undefined) && !opts.urn) {
+            if (args?.diskFormat === undefined && !opts.urn) {
                 throw new Error("Missing required property 'diskFormat'");
             }
-            resourceInputs["containerFormat"] = args ? args.containerFormat : undefined;
-            resourceInputs["decompress"] = args ? args.decompress : undefined;
-            resourceInputs["diskFormat"] = args ? args.diskFormat : undefined;
-            resourceInputs["hidden"] = args ? args.hidden : undefined;
-            resourceInputs["imageCachePath"] = args ? args.imageCachePath : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["containerFormat"] = args?.containerFormat;
+            resourceInputs["decompress"] = args?.decompress;
+            resourceInputs["diskFormat"] = args?.diskFormat;
+            resourceInputs["hidden"] = args?.hidden;
+            resourceInputs["imageCachePath"] = args?.imageCachePath;
+            resourceInputs["imageId"] = args?.imageId;
             resourceInputs["imageSourcePassword"] = args?.imageSourcePassword ? pulumi.secret(args.imageSourcePassword) : undefined;
-            resourceInputs["imageSourceUrl"] = args ? args.imageSourceUrl : undefined;
-            resourceInputs["imageSourceUsername"] = args ? args.imageSourceUsername : undefined;
-            resourceInputs["localFilePath"] = args ? args.localFilePath : undefined;
-            resourceInputs["minDiskGb"] = args ? args.minDiskGb : undefined;
-            resourceInputs["minRamMb"] = args ? args.minRamMb : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
-            resourceInputs["protected"] = args ? args.protected : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["verifyChecksum"] = args ? args.verifyChecksum : undefined;
-            resourceInputs["visibility"] = args ? args.visibility : undefined;
-            resourceInputs["webDownload"] = args ? args.webDownload : undefined;
+            resourceInputs["imageSourceUrl"] = args?.imageSourceUrl;
+            resourceInputs["imageSourceUsername"] = args?.imageSourceUsername;
+            resourceInputs["localFilePath"] = args?.localFilePath;
+            resourceInputs["minDiskGb"] = args?.minDiskGb;
+            resourceInputs["minRamMb"] = args?.minRamMb;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["properties"] = args?.properties;
+            resourceInputs["protected"] = args?.protected;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["verifyChecksum"] = args?.verifyChecksum;
+            resourceInputs["visibility"] = args?.visibility;
+            resourceInputs["webDownload"] = args?.webDownload;
             resourceInputs["checksum"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["file"] = undefined /*out*/;

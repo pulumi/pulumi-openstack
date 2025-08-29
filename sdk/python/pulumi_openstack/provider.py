@@ -53,8 +53,8 @@ class ProviderArgs:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[_builtins.bool] allow_reauth: If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
-               Defaults to `true`
+        :param pulumi.Input[_builtins.bool] allow_reauth: If set to `false`, OpenStack authorization won't be perfomed
+               automatically, if the initial auth token get expired. Defaults to `true`
         :param pulumi.Input[_builtins.str] application_credential_id: Application Credential ID to login with.
         :param pulumi.Input[_builtins.str] application_credential_name: Application Credential name to login with.
         :param pulumi.Input[_builtins.str] application_credential_secret: Application Credential secret to login with.
@@ -63,13 +63,14 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] cert: A client certificate to authenticate with.
         :param pulumi.Input[_builtins.str] cloud: An entry in a `clouds.yaml` file to use.
         :param pulumi.Input[_builtins.str] default_domain: The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
-        :param pulumi.Input[_builtins.bool] delayed_auth: If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
-               to `true`.
+        :param pulumi.Input[_builtins.bool] delayed_auth: If set to `false`, OpenStack authorization will be perfomed,
+               every time the service provider client is called. Defaults to `true`.
         :param pulumi.Input[_builtins.bool] disable_no_cache_header: If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
         :param pulumi.Input[_builtins.str] domain_id: The ID of the Domain to scope to (Identity v3).
         :param pulumi.Input[_builtins.str] domain_name: The name of the Domain to scope to (Identity v3).
         :param pulumi.Input[_builtins.bool] enable_logging: Outputs very verbose logs with all calls made to and responses from OpenStack
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] endpoint_overrides: A map of services with an endpoint to override what was from the Keystone catalog
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] endpoint_overrides: A map of services with an endpoint to override what was
+               from the Keystone catalog
         :param pulumi.Input[_builtins.bool] insecure: Trust self-signed certificates.
         :param pulumi.Input[_builtins.str] key: A client private key to authenticate with.
         :param pulumi.Input[_builtins.int] max_retries: How many times HTTP connection should be retried until giving up.
@@ -77,10 +78,13 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] project_domain_id: The ID of the domain where the proejct resides (Identity v3).
         :param pulumi.Input[_builtins.str] project_domain_name: The name of the domain where the project resides (Identity v3).
         :param pulumi.Input[_builtins.str] region: The OpenStack region to connect to.
-        :param pulumi.Input[_builtins.bool] swauth: Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
+        :param pulumi.Input[_builtins.bool] swauth: Use Swift's authentication system instead of Keystone. Only used for
+               interaction with Swift.
         :param pulumi.Input[_builtins.bool] system_scope: If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
-        :param pulumi.Input[_builtins.str] tenant_id: The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
-        :param pulumi.Input[_builtins.str] tenant_name: The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        :param pulumi.Input[_builtins.str] tenant_id: The ID of the Tenant (Identity v2) or Project (Identity v3)
+               to login with.
+        :param pulumi.Input[_builtins.str] tenant_name: The name of the Tenant (Identity v2) or Project (Identity v3)
+               to login with.
         :param pulumi.Input[_builtins.str] token: Authentication token to use as an alternative to username/password.
         :param pulumi.Input[_builtins.str] user_domain_id: The ID of the domain where the user resides (Identity v3).
         :param pulumi.Input[_builtins.str] user_domain_name: The name of the domain where the user resides (Identity v3).
@@ -170,8 +174,8 @@ class ProviderArgs:
     @pulumi.getter(name="allowReauth")
     def allow_reauth(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
-        Defaults to `true`
+        If set to `false`, OpenStack authorization won't be perfomed
+        automatically, if the initial auth token get expired. Defaults to `true`
         """
         return pulumi.get(self, "allow_reauth")
 
@@ -279,8 +283,8 @@ class ProviderArgs:
     @pulumi.getter(name="delayedAuth")
     def delayed_auth(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
-        to `true`.
+        If set to `false`, OpenStack authorization will be perfomed,
+        every time the service provider client is called. Defaults to `true`.
         """
         return pulumi.get(self, "delayed_auth")
 
@@ -340,7 +344,8 @@ class ProviderArgs:
     @pulumi.getter(name="endpointOverrides")
     def endpoint_overrides(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        A map of services with an endpoint to override what was from the Keystone catalog
+        A map of services with an endpoint to override what was
+        from the Keystone catalog
         """
         return pulumi.get(self, "endpoint_overrides")
 
@@ -445,7 +450,8 @@ class ProviderArgs:
     @pulumi.getter
     def swauth(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
+        Use Swift's authentication system instead of Keystone. Only used for
+        interaction with Swift.
         """
         return pulumi.get(self, "swauth")
 
@@ -469,7 +475,8 @@ class ProviderArgs:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        The ID of the Tenant (Identity v2) or Project (Identity v3)
+        to login with.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -481,7 +488,8 @@ class ProviderArgs:
     @pulumi.getter(name="tenantName")
     def tenant_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        The name of the Tenant (Identity v2) or Project (Identity v3)
+        to login with.
         """
         return pulumi.get(self, "tenant_name")
 
@@ -597,8 +605,8 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] allow_reauth: If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
-               Defaults to `true`
+        :param pulumi.Input[_builtins.bool] allow_reauth: If set to `false`, OpenStack authorization won't be perfomed
+               automatically, if the initial auth token get expired. Defaults to `true`
         :param pulumi.Input[_builtins.str] application_credential_id: Application Credential ID to login with.
         :param pulumi.Input[_builtins.str] application_credential_name: Application Credential name to login with.
         :param pulumi.Input[_builtins.str] application_credential_secret: Application Credential secret to login with.
@@ -607,13 +615,14 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] cert: A client certificate to authenticate with.
         :param pulumi.Input[_builtins.str] cloud: An entry in a `clouds.yaml` file to use.
         :param pulumi.Input[_builtins.str] default_domain: The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
-        :param pulumi.Input[_builtins.bool] delayed_auth: If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
-               to `true`.
+        :param pulumi.Input[_builtins.bool] delayed_auth: If set to `false`, OpenStack authorization will be perfomed,
+               every time the service provider client is called. Defaults to `true`.
         :param pulumi.Input[_builtins.bool] disable_no_cache_header: If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
         :param pulumi.Input[_builtins.str] domain_id: The ID of the Domain to scope to (Identity v3).
         :param pulumi.Input[_builtins.str] domain_name: The name of the Domain to scope to (Identity v3).
         :param pulumi.Input[_builtins.bool] enable_logging: Outputs very verbose logs with all calls made to and responses from OpenStack
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] endpoint_overrides: A map of services with an endpoint to override what was from the Keystone catalog
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] endpoint_overrides: A map of services with an endpoint to override what was
+               from the Keystone catalog
         :param pulumi.Input[_builtins.bool] insecure: Trust self-signed certificates.
         :param pulumi.Input[_builtins.str] key: A client private key to authenticate with.
         :param pulumi.Input[_builtins.int] max_retries: How many times HTTP connection should be retried until giving up.
@@ -621,10 +630,13 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] project_domain_id: The ID of the domain where the proejct resides (Identity v3).
         :param pulumi.Input[_builtins.str] project_domain_name: The name of the domain where the project resides (Identity v3).
         :param pulumi.Input[_builtins.str] region: The OpenStack region to connect to.
-        :param pulumi.Input[_builtins.bool] swauth: Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
+        :param pulumi.Input[_builtins.bool] swauth: Use Swift's authentication system instead of Keystone. Only used for
+               interaction with Swift.
         :param pulumi.Input[_builtins.bool] system_scope: If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
-        :param pulumi.Input[_builtins.str] tenant_id: The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
-        :param pulumi.Input[_builtins.str] tenant_name: The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        :param pulumi.Input[_builtins.str] tenant_id: The ID of the Tenant (Identity v2) or Project (Identity v3)
+               to login with.
+        :param pulumi.Input[_builtins.str] tenant_name: The name of the Tenant (Identity v2) or Project (Identity v3)
+               to login with.
         :param pulumi.Input[_builtins.str] token: Authentication token to use as an alternative to username/password.
         :param pulumi.Input[_builtins.str] user_domain_id: The ID of the domain where the user resides (Identity v3).
         :param pulumi.Input[_builtins.str] user_domain_name: The name of the domain where the user resides (Identity v3).
@@ -882,7 +894,8 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        The ID of the Tenant (Identity v2) or Project (Identity v3)
+        to login with.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -890,7 +903,8 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="tenantName")
     def tenant_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        The name of the Tenant (Identity v2) or Project (Identity v3)
+        to login with.
         """
         return pulumi.get(self, "tenant_name")
 

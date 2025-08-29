@@ -73,26 +73,26 @@ export class TransferAccept extends pulumi.CustomResource {
      * status. The check is enabled by default. If this argument is true, zone
      * will be considered as created/updated if OpenStack accept returned success.
      */
-    public readonly disableStatusCheck!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableStatusCheck: pulumi.Output<boolean | undefined>;
     /**
      * The transfer key.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 DNS client.
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone zone transfer accept.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Map of additional options. Changing this creates a
      * new transfer accept.
      */
-    public readonly valueSpecs!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly valueSpecs: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the zone transfer request.
      */
-    public readonly zoneTransferRequestId!: pulumi.Output<string>;
+    declare public readonly zoneTransferRequestId: pulumi.Output<string>;
 
     /**
      * Create a TransferAccept resource with the given unique name, arguments, and options.
@@ -107,24 +107,24 @@ export class TransferAccept extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransferAcceptState | undefined;
-            resourceInputs["disableStatusCheck"] = state ? state.disableStatusCheck : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
-            resourceInputs["zoneTransferRequestId"] = state ? state.zoneTransferRequestId : undefined;
+            resourceInputs["disableStatusCheck"] = state?.disableStatusCheck;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["valueSpecs"] = state?.valueSpecs;
+            resourceInputs["zoneTransferRequestId"] = state?.zoneTransferRequestId;
         } else {
             const args = argsOrState as TransferAcceptArgs | undefined;
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.zoneTransferRequestId === undefined) && !opts.urn) {
+            if (args?.zoneTransferRequestId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneTransferRequestId'");
             }
-            resourceInputs["disableStatusCheck"] = args ? args.disableStatusCheck : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
-            resourceInputs["zoneTransferRequestId"] = args ? args.zoneTransferRequestId : undefined;
+            resourceInputs["disableStatusCheck"] = args?.disableStatusCheck;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["valueSpecs"] = args?.valueSpecs;
+            resourceInputs["zoneTransferRequestId"] = args?.zoneTransferRequestId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TransferAccept.__pulumiType, name, resourceInputs, opts);

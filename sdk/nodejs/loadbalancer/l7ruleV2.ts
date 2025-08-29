@@ -96,54 +96,54 @@ export class L7RuleV2 extends pulumi.CustomResource {
      * The administrative state of the L7 Rule.
      * A valid value is true (UP) or false (DOWN).
      */
-    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
+    declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
     /**
      * The comparison type for the L7 rule - can either be
      * CONTAINS, STARTS\_WITH, ENDS_WITH, EQUAL_TO or REGEX
      */
-    public readonly compareType!: pulumi.Output<string>;
+    declare public readonly compareType: pulumi.Output<string>;
     /**
      * When true the logic of the rule is inverted. For example, with invert
      * true, equal to would become not equal to. Default is false.
      */
-    public readonly invert!: pulumi.Output<boolean | undefined>;
+    declare public readonly invert: pulumi.Output<boolean | undefined>;
     /**
      * The key to use for the comparison. For example, the name of the cookie to
      * evaluate. Valid when `type` is set to COOKIE or HEADER.
      */
-    public readonly key!: pulumi.Output<string | undefined>;
+    declare public readonly key: pulumi.Output<string | undefined>;
     /**
      * The ID of the L7 Policy to query. Changing this creates a new
      * L7 Rule.
      */
-    public readonly l7policyId!: pulumi.Output<string>;
+    declare public readonly l7policyId: pulumi.Output<string>;
     /**
      * The ID of the Listener owning this resource.
      */
-    public /*out*/ readonly listenerId!: pulumi.Output<string>;
+    declare public /*out*/ readonly listenerId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an L7 rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Rule.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the L7 Rule.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new L7 Rule.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
     /**
      * The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
      * HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The value to use for the comparison. For example, the file type to
      * compare.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a L7RuleV2 resource with the given unique name, arguments, and options.
@@ -158,39 +158,39 @@ export class L7RuleV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as L7RuleV2State | undefined;
-            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            resourceInputs["compareType"] = state ? state.compareType : undefined;
-            resourceInputs["invert"] = state ? state.invert : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["l7policyId"] = state ? state.l7policyId : undefined;
-            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["adminStateUp"] = state?.adminStateUp;
+            resourceInputs["compareType"] = state?.compareType;
+            resourceInputs["invert"] = state?.invert;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["l7policyId"] = state?.l7policyId;
+            resourceInputs["listenerId"] = state?.listenerId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as L7RuleV2Args | undefined;
-            if ((!args || args.compareType === undefined) && !opts.urn) {
+            if (args?.compareType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'compareType'");
             }
-            if ((!args || args.l7policyId === undefined) && !opts.urn) {
+            if (args?.l7policyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'l7policyId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            resourceInputs["compareType"] = args ? args.compareType : undefined;
-            resourceInputs["invert"] = args ? args.invert : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["l7policyId"] = args ? args.l7policyId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["adminStateUp"] = args?.adminStateUp;
+            resourceInputs["compareType"] = args?.compareType;
+            resourceInputs["invert"] = args?.invert;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["l7policyId"] = args?.l7policyId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tenantId"] = args?.tenantId;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["value"] = args?.value;
             resourceInputs["listenerId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

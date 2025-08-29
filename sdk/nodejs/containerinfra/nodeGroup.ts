@@ -81,74 +81,74 @@ export class NodeGroup extends pulumi.CustomResource {
      * The UUID of the V1 Container Infra cluster.
      * Changing this creates a new node group.
      */
-    public readonly clusterId!: pulumi.Output<string>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The size (in GB) of the Docker volume.
      * Changing this creates a new node group.
      */
-    public readonly dockerVolumeSize!: pulumi.Output<number>;
+    declare public readonly dockerVolumeSize: pulumi.Output<number>;
     /**
      * The flavor for the nodes of the node group. Can be set
      * via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
      * node group.
      */
-    public readonly flavorId!: pulumi.Output<string>;
+    declare public readonly flavorId: pulumi.Output<string>;
     /**
      * The reference to an image that is used for nodes of the
      * node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
      * Changing this updates the image attribute of the existing node group.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    declare public readonly imageId: pulumi.Output<string>;
     /**
      * The list of key value pairs representing additional
      * properties of the node group. Changing this creates a new node group.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * The maximum number of nodes for the node group.
      * Changing this update the maximum number of nodes of the node group.
      */
-    public readonly maxNodeCount!: pulumi.Output<number | undefined>;
+    declare public readonly maxNodeCount: pulumi.Output<number | undefined>;
     /**
      * Indicates whether the provided labels should be
      * merged with cluster labels. Changing this creates a new nodegroup.
      */
-    public readonly mergeLabels!: pulumi.Output<boolean | undefined>;
+    declare public readonly mergeLabels: pulumi.Output<boolean | undefined>;
     /**
      * The minimum number of nodes for the node group.
      * Changing this update the minimum number of nodes of the node group.
      */
-    public readonly minNodeCount!: pulumi.Output<number>;
+    declare public readonly minNodeCount: pulumi.Output<number>;
     /**
      * The name of the node group. Changing this creates a new
      * node group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The number of nodes for the node group. Changing
      * this update the number of nodes of the node group.
      */
-    public readonly nodeCount!: pulumi.Output<number | undefined>;
+    declare public readonly nodeCount: pulumi.Output<number | undefined>;
     /**
      * The project of the node group. Required if admin
      * wants to create a cluster in another project. Changing this creates a new
      * node group.
      */
-    public /*out*/ readonly projectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V1 Container Infra
      * client. A Container Infra client is needed to create a cluster. If omitted,
      * the `region` argument of the provider is used. Changing this creates a new
      * node group.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The role of nodes in the node group. Changing this
      * creates a new node group.
      */
-    public readonly role!: pulumi.Output<string>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public readonly role: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a NodeGroup resource with the given unique name, arguments, and options.
@@ -163,38 +163,38 @@ export class NodeGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeGroupState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["dockerVolumeSize"] = state ? state.dockerVolumeSize : undefined;
-            resourceInputs["flavorId"] = state ? state.flavorId : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["maxNodeCount"] = state ? state.maxNodeCount : undefined;
-            resourceInputs["mergeLabels"] = state ? state.mergeLabels : undefined;
-            resourceInputs["minNodeCount"] = state ? state.minNodeCount : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dockerVolumeSize"] = state?.dockerVolumeSize;
+            resourceInputs["flavorId"] = state?.flavorId;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["maxNodeCount"] = state?.maxNodeCount;
+            resourceInputs["mergeLabels"] = state?.mergeLabels;
+            resourceInputs["minNodeCount"] = state?.minNodeCount;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeCount"] = state?.nodeCount;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as NodeGroupArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["dockerVolumeSize"] = args ? args.dockerVolumeSize : undefined;
-            resourceInputs["flavorId"] = args ? args.flavorId : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["maxNodeCount"] = args ? args.maxNodeCount : undefined;
-            resourceInputs["mergeLabels"] = args ? args.mergeLabels : undefined;
-            resourceInputs["minNodeCount"] = args ? args.minNodeCount : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["dockerVolumeSize"] = args?.dockerVolumeSize;
+            resourceInputs["flavorId"] = args?.flavorId;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["maxNodeCount"] = args?.maxNodeCount;
+            resourceInputs["mergeLabels"] = args?.mergeLabels;
+            resourceInputs["minNodeCount"] = args?.minNodeCount;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeCount"] = args?.nodeCount;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["role"] = args?.role;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["projectId"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

@@ -56,43 +56,43 @@ export class PortForwardingV2 extends pulumi.CustomResource {
      * A text describing the port forwarding. Changing this
      * updates the `description` of an existing port forwarding.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The TCP/UDP/other protocol port number of the port forwarding. Changing this
      * updates the `externalPort` of an existing port forwarding.
      */
-    public readonly externalPort!: pulumi.Output<number>;
+    declare public readonly externalPort: pulumi.Output<number>;
     /**
      * The ID of the Neutron floating IP address. Changing this creates a new port forwarding.
      */
-    public readonly floatingipId!: pulumi.Output<string>;
+    declare public readonly floatingipId: pulumi.Output<string>;
     /**
      * The fixed IPv4 address of the Neutron port associated with the port forwarding.
      * Changing this updates the `internalIpAddress` of an existing port forwarding.
      */
-    public readonly internalIpAddress!: pulumi.Output<string>;
+    declare public readonly internalIpAddress: pulumi.Output<string>;
     /**
      * The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
      * port forwarding. Changing this updates the `internalPort` of an existing port forwarding.
      */
-    public readonly internalPort!: pulumi.Output<number>;
+    declare public readonly internalPort: pulumi.Output<number>;
     /**
      * The ID of the Neutron port associated with the port forwarding. Changing
      * this updates the `internalPortId` of an existing port forwarding.
      */
-    public readonly internalPortId!: pulumi.Output<string>;
+    declare public readonly internalPortId: pulumi.Output<string>;
     /**
      * The IP protocol used in the port forwarding. Changing this updates the `protocol`
      * of an existing port forwarding.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port forwarding. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * port forwarding.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a PortForwardingV2 resource with the given unique name, arguments, and options.
@@ -107,42 +107,42 @@ export class PortForwardingV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PortForwardingV2State | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["externalPort"] = state ? state.externalPort : undefined;
-            resourceInputs["floatingipId"] = state ? state.floatingipId : undefined;
-            resourceInputs["internalIpAddress"] = state ? state.internalIpAddress : undefined;
-            resourceInputs["internalPort"] = state ? state.internalPort : undefined;
-            resourceInputs["internalPortId"] = state ? state.internalPortId : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["externalPort"] = state?.externalPort;
+            resourceInputs["floatingipId"] = state?.floatingipId;
+            resourceInputs["internalIpAddress"] = state?.internalIpAddress;
+            resourceInputs["internalPort"] = state?.internalPort;
+            resourceInputs["internalPortId"] = state?.internalPortId;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as PortForwardingV2Args | undefined;
-            if ((!args || args.externalPort === undefined) && !opts.urn) {
+            if (args?.externalPort === undefined && !opts.urn) {
                 throw new Error("Missing required property 'externalPort'");
             }
-            if ((!args || args.floatingipId === undefined) && !opts.urn) {
+            if (args?.floatingipId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'floatingipId'");
             }
-            if ((!args || args.internalIpAddress === undefined) && !opts.urn) {
+            if (args?.internalIpAddress === undefined && !opts.urn) {
                 throw new Error("Missing required property 'internalIpAddress'");
             }
-            if ((!args || args.internalPort === undefined) && !opts.urn) {
+            if (args?.internalPort === undefined && !opts.urn) {
                 throw new Error("Missing required property 'internalPort'");
             }
-            if ((!args || args.internalPortId === undefined) && !opts.urn) {
+            if (args?.internalPortId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'internalPortId'");
             }
-            if ((!args || args.protocol === undefined) && !opts.urn) {
+            if (args?.protocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["externalPort"] = args ? args.externalPort : undefined;
-            resourceInputs["floatingipId"] = args ? args.floatingipId : undefined;
-            resourceInputs["internalIpAddress"] = args ? args.internalIpAddress : undefined;
-            resourceInputs["internalPort"] = args ? args.internalPort : undefined;
-            resourceInputs["internalPortId"] = args ? args.internalPortId : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["externalPort"] = args?.externalPort;
+            resourceInputs["floatingipId"] = args?.floatingipId;
+            resourceInputs["internalIpAddress"] = args?.internalIpAddress;
+            resourceInputs["internalPort"] = args?.internalPort;
+            resourceInputs["internalPortId"] = args?.internalPortId;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PortForwardingV2.__pulumiType, name, resourceInputs, opts);

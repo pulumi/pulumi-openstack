@@ -77,55 +77,55 @@ export class SecurityService extends pulumi.CustomResource {
      * The human-readable description for the security service.
      * Changing this updates the description of the existing security service.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The security service DNS IP address that is used inside the
      * tenant network.
      */
-    public readonly dnsIp!: pulumi.Output<string | undefined>;
+    declare public readonly dnsIp: pulumi.Output<string | undefined>;
     /**
      * The security service domain.
      */
-    public readonly domain!: pulumi.Output<string | undefined>;
+    declare public readonly domain: pulumi.Output<string | undefined>;
     /**
      * The name of the security service. Changing this updates the name
      * of the existing security service.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The security service ou. An organizational unit can be added to
      * specify where the share ends up. New in Manila microversion 2.44.
      */
-    public readonly ou!: pulumi.Output<string | undefined>;
+    declare public readonly ou: pulumi.Output<string | undefined>;
     /**
      * The user password, if you specify a user.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * The owner of the Security Service.
      */
-    public /*out*/ readonly projectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Shared File System client.
      * A Shared File System client is needed to create a security service. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security service.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The security service host name or IP address.
      */
-    public readonly server!: pulumi.Output<string | undefined>;
+    declare public readonly server: pulumi.Output<string | undefined>;
     /**
      * The security service type - can either be active\_directory,
      * kerberos or ldap.  Changing this updates the existing security service.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The security service user or group name that is used by the
      * tenant.
      */
-    public readonly user!: pulumi.Output<string | undefined>;
+    declare public readonly user: pulumi.Output<string | undefined>;
 
     /**
      * Create a SecurityService resource with the given unique name, arguments, and options.
@@ -140,32 +140,32 @@ export class SecurityService extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityServiceState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dnsIp"] = state ? state.dnsIp : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["ou"] = state ? state.ou : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["server"] = state ? state.server : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dnsIp"] = state?.dnsIp;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["ou"] = state?.ou;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["server"] = state?.server;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["user"] = state?.user;
         } else {
             const args = argsOrState as SecurityServiceArgs | undefined;
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dnsIp"] = args ? args.dnsIp : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["ou"] = args ? args.ou : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dnsIp"] = args?.dnsIp;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["ou"] = args?.ou;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["server"] = args ? args.server : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["user"] = args ? args.user : undefined;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["server"] = args?.server;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["user"] = args?.user;
             resourceInputs["projectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

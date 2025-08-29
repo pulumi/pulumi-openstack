@@ -66,29 +66,29 @@ export class RegisteredLimitV3 extends pulumi.CustomResource {
     /**
      * Integer for the actual limit.
      */
-    public readonly defaultLimit!: pulumi.Output<number>;
+    declare public readonly defaultLimit: pulumi.Output<number>;
     /**
      * Description of the limit
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new registered limit.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The resource that the limit applies to. On
      * updates, either service_id, resourceName or regionId must be different than
      * existing value otherwise it will raise 409.
      */
-    public readonly resourceName!: pulumi.Output<string>;
+    declare public readonly resourceName: pulumi.Output<string>;
     /**
      * The service the limit applies to. On updates,
      * either service_id, resourceName or regionId must be different than existing
      * value otherwise it will raise 409.
      */
-    public readonly serviceId!: pulumi.Output<string>;
+    declare public readonly serviceId: pulumi.Output<string>;
 
     /**
      * Create a RegisteredLimitV3 resource with the given unique name, arguments, and options.
@@ -103,27 +103,27 @@ export class RegisteredLimitV3 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegisteredLimitV3State | undefined;
-            resourceInputs["defaultLimit"] = state ? state.defaultLimit : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["resourceName"] = state ? state.resourceName : undefined;
-            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
+            resourceInputs["defaultLimit"] = state?.defaultLimit;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["resourceName"] = state?.resourceName;
+            resourceInputs["serviceId"] = state?.serviceId;
         } else {
             const args = argsOrState as RegisteredLimitV3Args | undefined;
-            if ((!args || args.defaultLimit === undefined) && !opts.urn) {
+            if (args?.defaultLimit === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defaultLimit'");
             }
-            if ((!args || args.resourceName === undefined) && !opts.urn) {
+            if (args?.resourceName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceName'");
             }
-            if ((!args || args.serviceId === undefined) && !opts.urn) {
+            if (args?.serviceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            resourceInputs["defaultLimit"] = args ? args.defaultLimit : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["resourceName"] = args ? args.resourceName : undefined;
-            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["defaultLimit"] = args?.defaultLimit;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["resourceName"] = args?.resourceName;
+            resourceInputs["serviceId"] = args?.serviceId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RegisteredLimitV3.__pulumiType, name, resourceInputs, opts);

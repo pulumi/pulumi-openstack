@@ -63,26 +63,26 @@ export class NetworkAssociateV2 extends pulumi.CustomResource {
      * The ID of the BGP VPN to which the network will be
      * associated. Changing this creates a new BGP VPN network association
      */
-    public readonly bgpvpnId!: pulumi.Output<string>;
+    declare public readonly bgpvpnId: pulumi.Output<string>;
     /**
      * The ID of the network to be associated with the BGP
      * VPN. Changing this creates a new BGP VPN network association.
      */
-    public readonly networkId!: pulumi.Output<string>;
+    declare public readonly networkId: pulumi.Output<string>;
     /**
      * The ID of the project that owns the BGP VPN network
      * association. Only administrative and users with `advsvc` role can specify a
      * project ID other than their own. Changing this creates a new BGP VPN network
      * association.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a BGP VPN network association. If
      * omitted, the `region` argument of the provider is used. Changing this creates
      * a new BGP VPN network association.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a NetworkAssociateV2 resource with the given unique name, arguments, and options.
@@ -97,22 +97,22 @@ export class NetworkAssociateV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkAssociateV2State | undefined;
-            resourceInputs["bgpvpnId"] = state ? state.bgpvpnId : undefined;
-            resourceInputs["networkId"] = state ? state.networkId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["bgpvpnId"] = state?.bgpvpnId;
+            resourceInputs["networkId"] = state?.networkId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as NetworkAssociateV2Args | undefined;
-            if ((!args || args.bgpvpnId === undefined) && !opts.urn) {
+            if (args?.bgpvpnId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bgpvpnId'");
             }
-            if ((!args || args.networkId === undefined) && !opts.urn) {
+            if (args?.networkId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
-            resourceInputs["bgpvpnId"] = args ? args.bgpvpnId : undefined;
-            resourceInputs["networkId"] = args ? args.networkId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["bgpvpnId"] = args?.bgpvpnId;
+            resourceInputs["networkId"] = args?.networkId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2" }] };

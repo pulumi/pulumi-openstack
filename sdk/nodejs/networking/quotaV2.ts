@@ -52,58 +52,58 @@ export class QuotaV2 extends pulumi.CustomResource {
      * Quota value for floating IPs. Changing this updates the
      * existing quota.
      */
-    public readonly floatingip!: pulumi.Output<number>;
+    declare public readonly floatingip: pulumi.Output<number>;
     /**
      * Quota value for networks. Changing this updates the
      * existing quota.
      */
-    public readonly network!: pulumi.Output<number>;
+    declare public readonly network: pulumi.Output<number>;
     /**
      * Quota value for ports. Changing this updates the
      * existing quota.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * ID of the project to manage quota. Changing this
      * creates new quota.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Quota value for RBAC policies.
      * Changing this updates the existing quota.
      */
-    public readonly rbacPolicy!: pulumi.Output<number>;
+    declare public readonly rbacPolicy: pulumi.Output<number>;
     /**
      * The region in which to create the quota. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates new quota.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Quota value for routers. Changing this updates the
      * existing quota.
      */
-    public readonly router!: pulumi.Output<number>;
+    declare public readonly router: pulumi.Output<number>;
     /**
      * Quota value for security groups. Changing
      * this updates the existing quota.
      */
-    public readonly securityGroup!: pulumi.Output<number>;
+    declare public readonly securityGroup: pulumi.Output<number>;
     /**
      * Quota value for security group rules.
      * Changing this updates the existing quota.
      */
-    public readonly securityGroupRule!: pulumi.Output<number>;
+    declare public readonly securityGroupRule: pulumi.Output<number>;
     /**
      * Quota value for subnets. Changing
      * this updates the existing quota.
      */
-    public readonly subnet!: pulumi.Output<number>;
+    declare public readonly subnet: pulumi.Output<number>;
     /**
      * Quota value for subnetpools.
      * Changing this updates the existing quota.
      */
-    public readonly subnetpool!: pulumi.Output<number>;
+    declare public readonly subnetpool: pulumi.Output<number>;
 
     /**
      * Create a QuotaV2 resource with the given unique name, arguments, and options.
@@ -118,33 +118,33 @@ export class QuotaV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QuotaV2State | undefined;
-            resourceInputs["floatingip"] = state ? state.floatingip : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["rbacPolicy"] = state ? state.rbacPolicy : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["router"] = state ? state.router : undefined;
-            resourceInputs["securityGroup"] = state ? state.securityGroup : undefined;
-            resourceInputs["securityGroupRule"] = state ? state.securityGroupRule : undefined;
-            resourceInputs["subnet"] = state ? state.subnet : undefined;
-            resourceInputs["subnetpool"] = state ? state.subnetpool : undefined;
+            resourceInputs["floatingip"] = state?.floatingip;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["rbacPolicy"] = state?.rbacPolicy;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["router"] = state?.router;
+            resourceInputs["securityGroup"] = state?.securityGroup;
+            resourceInputs["securityGroupRule"] = state?.securityGroupRule;
+            resourceInputs["subnet"] = state?.subnet;
+            resourceInputs["subnetpool"] = state?.subnetpool;
         } else {
             const args = argsOrState as QuotaV2Args | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["floatingip"] = args ? args.floatingip : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["rbacPolicy"] = args ? args.rbacPolicy : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["router"] = args ? args.router : undefined;
-            resourceInputs["securityGroup"] = args ? args.securityGroup : undefined;
-            resourceInputs["securityGroupRule"] = args ? args.securityGroupRule : undefined;
-            resourceInputs["subnet"] = args ? args.subnet : undefined;
-            resourceInputs["subnetpool"] = args ? args.subnetpool : undefined;
+            resourceInputs["floatingip"] = args?.floatingip;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["rbacPolicy"] = args?.rbacPolicy;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["router"] = args?.router;
+            resourceInputs["securityGroup"] = args?.securityGroup;
+            resourceInputs["securityGroupRule"] = args?.securityGroupRule;
+            resourceInputs["subnet"] = args?.subnet;
+            resourceInputs["subnetpool"] = args?.subnetpool;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(QuotaV2.__pulumiType, name, resourceInputs, opts);

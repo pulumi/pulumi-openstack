@@ -34,8 +34,8 @@ namespace Pulumi.OpenStack
 
         private static readonly __Value<bool?> _allowReauth = new __Value<bool?>(() => __config.GetBoolean("allowReauth") ?? Utilities.GetEnvBoolean("OS_ALLOW_REAUTH"));
         /// <summary>
-        /// If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
-        /// Defaults to `true`
+        /// If set to `false`, OpenStack authorization won't be perfomed
+        /// automatically, if the initial auth token get expired. Defaults to `true`
         /// </summary>
         public static bool? AllowReauth
         {
@@ -125,8 +125,8 @@ namespace Pulumi.OpenStack
 
         private static readonly __Value<bool?> _delayedAuth = new __Value<bool?>(() => __config.GetBoolean("delayedAuth") ?? Utilities.GetEnvBoolean("OS_DELAYED_AUTH"));
         /// <summary>
-        /// If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
-        /// to `true`.
+        /// If set to `false`, OpenStack authorization will be perfomed,
+        /// every time the service provider client is called. Defaults to `true`.
         /// </summary>
         public static bool? DelayedAuth
         {
@@ -176,7 +176,8 @@ namespace Pulumi.OpenStack
 
         private static readonly __Value<ImmutableDictionary<string, string>?> _endpointOverrides = new __Value<ImmutableDictionary<string, string>?>(() => __config.GetObject<ImmutableDictionary<string, string>>("endpointOverrides"));
         /// <summary>
-        /// A map of services with an endpoint to override what was from the Keystone catalog
+        /// A map of services with an endpoint to override what was
+        /// from the Keystone catalog
         /// </summary>
         public static ImmutableDictionary<string, string>? EndpointOverrides
         {
@@ -263,7 +264,8 @@ namespace Pulumi.OpenStack
 
         private static readonly __Value<bool?> _swauth = new __Value<bool?>(() => __config.GetBoolean("swauth") ?? Utilities.GetEnvBoolean("OS_SWAUTH"));
         /// <summary>
-        /// Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
+        /// Use Swift's authentication system instead of Keystone. Only used for
+        /// interaction with Swift.
         /// </summary>
         public static bool? Swauth
         {
@@ -283,7 +285,8 @@ namespace Pulumi.OpenStack
 
         private static readonly __Value<string?> _tenantId = new __Value<string?>(() => __config.Get("tenantId"));
         /// <summary>
-        /// The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        /// The ID of the Tenant (Identity v2) or Project (Identity v3)
+        /// to login with.
         /// </summary>
         public static string? TenantId
         {
@@ -293,7 +296,8 @@ namespace Pulumi.OpenStack
 
         private static readonly __Value<string?> _tenantName = new __Value<string?>(() => __config.Get("tenantName"));
         /// <summary>
-        /// The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        /// The name of the Tenant (Identity v2) or Project (Identity v3)
+        /// to login with.
         /// </summary>
         public static string? TenantName
         {

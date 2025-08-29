@@ -66,87 +66,87 @@ export class RuleV2 extends pulumi.CustomResource {
      * when the firewall rule matches. Changing this updates the `action` of an
      * existing firewall rule. Default is `deny`.
      */
-    public readonly action!: pulumi.Output<string | undefined>;
+    declare public readonly action: pulumi.Output<string | undefined>;
     /**
      * A description for the firewall rule. Changing this
      * updates the `description` of an existing firewall rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The destination IP address on which the
      * firewall rule operates. Changing this updates the `destinationIpAddress`
      * of an existing firewall rule.
      */
-    public readonly destinationIpAddress!: pulumi.Output<string | undefined>;
+    declare public readonly destinationIpAddress: pulumi.Output<string | undefined>;
     /**
      * The destination port on which the firewall
      * rule operates. Changing this updates the `destinationPort` of an existing
      * firewall rule. Require not `any` or empty protocol.
      */
-    public readonly destinationPort!: pulumi.Output<string | undefined>;
+    declare public readonly destinationPort: pulumi.Output<string | undefined>;
     /**
      * Enabled status for the firewall rule (must be "true"
      * or "false" if provided - defaults to "true"). Changing this updates the
      * `enabled` status of an existing firewall rule.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * IP version, either 4 or 6. Changing this
      * updates the `ipVersion` of an existing firewall rule. Default is `4`.
      */
-    public readonly ipVersion!: pulumi.Output<number | undefined>;
+    declare public readonly ipVersion: pulumi.Output<number | undefined>;
     /**
      * A unique name for the firewall rule. Changing this
      * updates the `name` of an existing firewall rule.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * This argument conflicts and is interchangeable
      * with `tenantId`. The owner of the firewall rule. Required if admin wants
      * to create a firewall rule for another project. Changing this creates a new
      * firewall rule.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * (Optional; Required if `sourcePort` or `destinationPort` is not
      * empty) The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
      * `protocol` of an existing firewall rule. Default is `any`.
      */
-    public readonly protocol!: pulumi.Output<string | undefined>;
+    declare public readonly protocol: pulumi.Output<string | undefined>;
     /**
      * The region in which to obtain the v2 networking client.
      * A networking client is needed to create a firewall rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * firewall rule.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Sharing status of the firewall rule (must be "true"
      * or "false" if provided). If this is "true" the policy is visible to, and
      * can be used in, firewalls in other tenants. Changing this updates the
      * `shared` status of an existing firewall policy. On
      */
-    public readonly shared!: pulumi.Output<boolean | undefined>;
+    declare public readonly shared: pulumi.Output<boolean | undefined>;
     /**
      * The source IP address on which the firewall
      * rule operates. Changing this updates the `sourceIpAddress` of an existing
      * firewall rule.
      */
-    public readonly sourceIpAddress!: pulumi.Output<string | undefined>;
+    declare public readonly sourceIpAddress: pulumi.Output<string | undefined>;
     /**
      * The source port on which the firewall
      * rule operates. Changing this updates the `sourcePort` of an existing
      * firewall rule. Require not `any` or empty protocol.
      */
-    public readonly sourcePort!: pulumi.Output<string | undefined>;
+    declare public readonly sourcePort: pulumi.Output<string | undefined>;
     /**
      * This argument conflicts and is interchangeable
      * with `projectId`. The owner of the firewall rule. Required if admin wants
      * to create a firewall rule for another tenant. Changing this creates a new
      * firewall rule.
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
 
     /**
      * Create a RuleV2 resource with the given unique name, arguments, and options.
@@ -161,36 +161,36 @@ export class RuleV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleV2State | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destinationIpAddress"] = state ? state.destinationIpAddress : undefined;
-            resourceInputs["destinationPort"] = state ? state.destinationPort : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["shared"] = state ? state.shared : undefined;
-            resourceInputs["sourceIpAddress"] = state ? state.sourceIpAddress : undefined;
-            resourceInputs["sourcePort"] = state ? state.sourcePort : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destinationIpAddress"] = state?.destinationIpAddress;
+            resourceInputs["destinationPort"] = state?.destinationPort;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["shared"] = state?.shared;
+            resourceInputs["sourceIpAddress"] = state?.sourceIpAddress;
+            resourceInputs["sourcePort"] = state?.sourcePort;
+            resourceInputs["tenantId"] = state?.tenantId;
         } else {
             const args = argsOrState as RuleV2Args | undefined;
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinationIpAddress"] = args ? args.destinationIpAddress : undefined;
-            resourceInputs["destinationPort"] = args ? args.destinationPort : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["shared"] = args ? args.shared : undefined;
-            resourceInputs["sourceIpAddress"] = args ? args.sourceIpAddress : undefined;
-            resourceInputs["sourcePort"] = args ? args.sourcePort : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinationIpAddress"] = args?.destinationIpAddress;
+            resourceInputs["destinationPort"] = args?.destinationPort;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["shared"] = args?.shared;
+            resourceInputs["sourceIpAddress"] = args?.sourceIpAddress;
+            resourceInputs["sourcePort"] = args?.sourcePort;
+            resourceInputs["tenantId"] = args?.tenantId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RuleV2.__pulumiType, name, resourceInputs, opts);

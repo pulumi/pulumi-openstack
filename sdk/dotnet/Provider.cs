@@ -112,13 +112,15 @@ namespace Pulumi.OpenStack
         public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        /// The ID of the Tenant (Identity v2) or Project (Identity v3)
+        /// to login with.
         /// </summary>
         [Output("tenantId")]
         public Output<string?> TenantId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        /// The name of the Tenant (Identity v2) or Project (Identity v3)
+        /// to login with.
         /// </summary>
         [Output("tenantName")]
         public Output<string?> TenantName { get; private set; } = null!;
@@ -192,8 +194,8 @@ namespace Pulumi.OpenStack
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
-        /// Defaults to `true`
+        /// If set to `false`, OpenStack authorization won't be perfomed
+        /// automatically, if the initial auth token get expired. Defaults to `true`
         /// </summary>
         [Input("allowReauth", json: true)]
         public Input<bool>? AllowReauth { get; set; }
@@ -247,8 +249,8 @@ namespace Pulumi.OpenStack
         public Input<string>? DefaultDomain { get; set; }
 
         /// <summary>
-        /// If set to `false`, OpenStack authorization will be perfomed, every time the service provider client is called. Defaults
-        /// to `true`.
+        /// If set to `false`, OpenStack authorization will be perfomed,
+        /// every time the service provider client is called. Defaults to `true`.
         /// </summary>
         [Input("delayedAuth", json: true)]
         public Input<bool>? DelayedAuth { get; set; }
@@ -281,7 +283,8 @@ namespace Pulumi.OpenStack
         private InputMap<string>? _endpointOverrides;
 
         /// <summary>
-        /// A map of services with an endpoint to override what was from the Keystone catalog
+        /// A map of services with an endpoint to override what was
+        /// from the Keystone catalog
         /// </summary>
         public InputMap<string> EndpointOverrides
         {
@@ -345,7 +348,8 @@ namespace Pulumi.OpenStack
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
+        /// Use Swift's authentication system instead of Keystone. Only used for
+        /// interaction with Swift.
         /// </summary>
         [Input("swauth", json: true)]
         public Input<bool>? Swauth { get; set; }
@@ -357,13 +361,15 @@ namespace Pulumi.OpenStack
         public Input<bool>? SystemScope { get; set; }
 
         /// <summary>
-        /// The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        /// The ID of the Tenant (Identity v2) or Project (Identity v3)
+        /// to login with.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
 
         /// <summary>
-        /// The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+        /// The name of the Tenant (Identity v2) or Project (Identity v3)
+        /// to login with.
         /// </summary>
         [Input("tenantName")]
         public Input<string>? TenantName { get; set; }

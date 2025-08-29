@@ -139,36 +139,36 @@ export class ShareAccess extends pulumi.CustomResource {
     /**
      * The access credential of the entity granted access.
      */
-    public /*out*/ readonly accessKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessKey: pulumi.Output<string>;
     /**
      * The access level to the share. Can either be `rw` or `ro`.
      */
-    public readonly accessLevel!: pulumi.Output<string>;
+    declare public readonly accessLevel: pulumi.Output<string>;
     /**
      * The value that defines the access. Can either be an IP
      * address or a username verified by configured Security Service of the Share Network.
      */
-    public readonly accessTo!: pulumi.Output<string>;
+    declare public readonly accessTo: pulumi.Output<string>;
     /**
      * The access rule type. Can either be an ip, user,
      * cert, or cephx. cephx support requires an OpenStack environment that supports
      * Shared Filesystem microversion 2.13 (Mitaka) or later.
      */
-    public readonly accessType!: pulumi.Output<string>;
+    declare public readonly accessType: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 Shared File System
      * client. A Shared File System client is needed to create a share access.
      * Changing this creates a new share access.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The UUID of the share to which you are granted access.
      */
-    public readonly shareId!: pulumi.Output<string>;
+    declare public readonly shareId: pulumi.Output<string>;
     /**
      * The share access state.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a ShareAccess resource with the given unique name, arguments, and options.
@@ -183,32 +183,32 @@ export class ShareAccess extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ShareAccessState | undefined;
-            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
-            resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
-            resourceInputs["accessTo"] = state ? state.accessTo : undefined;
-            resourceInputs["accessType"] = state ? state.accessType : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["shareId"] = state ? state.shareId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["accessKey"] = state?.accessKey;
+            resourceInputs["accessLevel"] = state?.accessLevel;
+            resourceInputs["accessTo"] = state?.accessTo;
+            resourceInputs["accessType"] = state?.accessType;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["shareId"] = state?.shareId;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as ShareAccessArgs | undefined;
-            if ((!args || args.accessLevel === undefined) && !opts.urn) {
+            if (args?.accessLevel === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessLevel'");
             }
-            if ((!args || args.accessTo === undefined) && !opts.urn) {
+            if (args?.accessTo === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessTo'");
             }
-            if ((!args || args.accessType === undefined) && !opts.urn) {
+            if (args?.accessType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessType'");
             }
-            if ((!args || args.shareId === undefined) && !opts.urn) {
+            if (args?.shareId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shareId'");
             }
-            resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
-            resourceInputs["accessTo"] = args ? args.accessTo : undefined;
-            resourceInputs["accessType"] = args ? args.accessType : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["shareId"] = args ? args.shareId : undefined;
+            resourceInputs["accessLevel"] = args?.accessLevel;
+            resourceInputs["accessTo"] = args?.accessTo;
+            resourceInputs["accessType"] = args?.accessType;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["shareId"] = args?.shareId;
             resourceInputs["accessKey"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

@@ -158,60 +158,60 @@ export class Container extends pulumi.CustomResource {
      * read the container (allows the GET method for all objects in the container).
      * Changing this updates the access control list read access.
      */
-    public readonly containerRead!: pulumi.Output<string | undefined>;
+    declare public readonly containerRead: pulumi.Output<string | undefined>;
     /**
      * The secret key for container
      * synchronization. Changing this updates container synchronization.
      */
-    public readonly containerSyncKey!: pulumi.Output<string | undefined>;
+    declare public readonly containerSyncKey: pulumi.Output<string | undefined>;
     /**
      * The destination for container
      * synchronization. Changing this updates container synchronization.
      */
-    public readonly containerSyncTo!: pulumi.Output<string | undefined>;
+    declare public readonly containerSyncTo: pulumi.Output<string | undefined>;
     /**
      * Sets an ACL that grants write access. Changing
      * this updates the access control list write access.
      */
-    public readonly containerWrite!: pulumi.Output<string | undefined>;
+    declare public readonly containerWrite: pulumi.Output<string | undefined>;
     /**
      * The MIME type for the container. Changing this
      * updates the MIME type.
      */
-    public readonly contentType!: pulumi.Output<string | undefined>;
+    declare public readonly contentType: pulumi.Output<string | undefined>;
     /**
      * A boolean that indicates all
      * objects should be deleted from the container so that the container can be
      * destroyed without error. These objects are not recoverable.
      */
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
     /**
      * Custom key/value pairs to associate with the
      * container. Changing this updates the existing container metadata.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A unique name for the container. Changing this creates a
      * new container.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region in which to create the container. If
      * omitted, the `region` argument of the provider is used. Changing this creates
      * a new container.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The storage class to be used for the container.
      * Changing this creates a new container. This option is only available in Ceph
      * RGW Swift API implementation.
      */
-    public readonly storageClass!: pulumi.Output<string>;
+    declare public readonly storageClass: pulumi.Output<string>;
     /**
      * The storage policy to be used for the
      * container. Changing this creates a new container.
      */
-    public readonly storagePolicy!: pulumi.Output<string>;
+    declare public readonly storagePolicy: pulumi.Output<string>;
     /**
      * A boolean that can enable or disable object
      * versioning. The default value is `false`. To use this feature, your Swift
@@ -222,14 +222,14 @@ export class Container extends pulumi.CustomResource {
      * configuration option in Swift. If you cannot set this versioning type, you
      * may want to consider using `versioningLegacy` instead.
      */
-    public readonly versioning!: pulumi.Output<boolean | undefined>;
+    declare public readonly versioning: pulumi.Output<boolean | undefined>;
     /**
      * Enable legacy object versioning. The
      * structure is described below.
      *
      * @deprecated Use newer "versioning" implementation
      */
-    public readonly versioningLegacy!: pulumi.Output<outputs.objectstorage.ContainerVersioningLegacy | undefined>;
+    declare public readonly versioningLegacy: pulumi.Output<outputs.objectstorage.ContainerVersioningLegacy | undefined>;
 
     /**
      * Create a Container resource with the given unique name, arguments, and options.
@@ -244,34 +244,34 @@ export class Container extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContainerState | undefined;
-            resourceInputs["containerRead"] = state ? state.containerRead : undefined;
-            resourceInputs["containerSyncKey"] = state ? state.containerSyncKey : undefined;
-            resourceInputs["containerSyncTo"] = state ? state.containerSyncTo : undefined;
-            resourceInputs["containerWrite"] = state ? state.containerWrite : undefined;
-            resourceInputs["contentType"] = state ? state.contentType : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["storageClass"] = state ? state.storageClass : undefined;
-            resourceInputs["storagePolicy"] = state ? state.storagePolicy : undefined;
-            resourceInputs["versioning"] = state ? state.versioning : undefined;
-            resourceInputs["versioningLegacy"] = state ? state.versioningLegacy : undefined;
+            resourceInputs["containerRead"] = state?.containerRead;
+            resourceInputs["containerSyncKey"] = state?.containerSyncKey;
+            resourceInputs["containerSyncTo"] = state?.containerSyncTo;
+            resourceInputs["containerWrite"] = state?.containerWrite;
+            resourceInputs["contentType"] = state?.contentType;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["storageClass"] = state?.storageClass;
+            resourceInputs["storagePolicy"] = state?.storagePolicy;
+            resourceInputs["versioning"] = state?.versioning;
+            resourceInputs["versioningLegacy"] = state?.versioningLegacy;
         } else {
             const args = argsOrState as ContainerArgs | undefined;
-            resourceInputs["containerRead"] = args ? args.containerRead : undefined;
-            resourceInputs["containerSyncKey"] = args ? args.containerSyncKey : undefined;
-            resourceInputs["containerSyncTo"] = args ? args.containerSyncTo : undefined;
-            resourceInputs["containerWrite"] = args ? args.containerWrite : undefined;
-            resourceInputs["contentType"] = args ? args.contentType : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["storageClass"] = args ? args.storageClass : undefined;
-            resourceInputs["storagePolicy"] = args ? args.storagePolicy : undefined;
-            resourceInputs["versioning"] = args ? args.versioning : undefined;
-            resourceInputs["versioningLegacy"] = args ? args.versioningLegacy : undefined;
+            resourceInputs["containerRead"] = args?.containerRead;
+            resourceInputs["containerSyncKey"] = args?.containerSyncKey;
+            resourceInputs["containerSyncTo"] = args?.containerSyncTo;
+            resourceInputs["containerWrite"] = args?.containerWrite;
+            resourceInputs["contentType"] = args?.contentType;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["storageClass"] = args?.storageClass;
+            resourceInputs["storagePolicy"] = args?.storagePolicy;
+            resourceInputs["versioning"] = args?.versioning;
+            resourceInputs["versioningLegacy"] = args?.versioningLegacy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Container.__pulumiType, name, resourceInputs, opts);

@@ -100,29 +100,29 @@ export class PortSecGroupAssociate extends pulumi.CustomResource {
      * The collection of Security Group IDs on the port
      * which have been explicitly and implicitly added.
      */
-    public /*out*/ readonly allSecurityGroupIds!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly allSecurityGroupIds: pulumi.Output<string[]>;
     /**
      * Whether to replace or append the list of security
      * groups, specified in the `securityGroupIds`. Defaults to `false`.
      */
-    public readonly enforce!: pulumi.Output<boolean | undefined>;
+    declare public readonly enforce: pulumi.Output<boolean | undefined>;
     /**
      * An UUID of the port to apply security groups to.
      */
-    public readonly portId!: pulumi.Output<string>;
+    declare public readonly portId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to manage a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * A list of security group IDs to apply to
      * the port. The security groups must be specified by ID and not name (as
      * opposed to how they are configured with the Compute Instance).
      */
-    public readonly securityGroupIds!: pulumi.Output<string[]>;
+    declare public readonly securityGroupIds: pulumi.Output<string[]>;
 
     /**
      * Create a PortSecGroupAssociate resource with the given unique name, arguments, and options.
@@ -137,23 +137,23 @@ export class PortSecGroupAssociate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PortSecGroupAssociateState | undefined;
-            resourceInputs["allSecurityGroupIds"] = state ? state.allSecurityGroupIds : undefined;
-            resourceInputs["enforce"] = state ? state.enforce : undefined;
-            resourceInputs["portId"] = state ? state.portId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["allSecurityGroupIds"] = state?.allSecurityGroupIds;
+            resourceInputs["enforce"] = state?.enforce;
+            resourceInputs["portId"] = state?.portId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
         } else {
             const args = argsOrState as PortSecGroupAssociateArgs | undefined;
-            if ((!args || args.portId === undefined) && !opts.urn) {
+            if (args?.portId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'portId'");
             }
-            if ((!args || args.securityGroupIds === undefined) && !opts.urn) {
+            if (args?.securityGroupIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupIds'");
             }
-            resourceInputs["enforce"] = args ? args.enforce : undefined;
-            resourceInputs["portId"] = args ? args.portId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["enforce"] = args?.enforce;
+            resourceInputs["portId"] = args?.portId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
             resourceInputs["allSecurityGroupIds"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

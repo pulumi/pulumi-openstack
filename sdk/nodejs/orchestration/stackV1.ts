@@ -81,89 +81,89 @@ export class StackV1 extends pulumi.CustomResource {
     /**
      * A list of stack outputs.
      */
-    public readonly StackOutputs!: pulumi.Output<outputs.orchestration.StackV1StackOutput[]>;
+    declare public readonly StackOutputs: pulumi.Output<outputs.orchestration.StackV1StackOutput[]>;
     /**
      * List of stack capabilities for stack.
      */
-    public readonly capabilities!: pulumi.Output<string[]>;
+    declare public readonly capabilities: pulumi.Output<string[]>;
     /**
      * The date and time when the resource was created. The date
      * and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
      * For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
      * is the time zone as an offset from UTC.
      */
-    public readonly creationTime!: pulumi.Output<string>;
+    declare public readonly creationTime: pulumi.Output<string>;
     /**
      * The description of the stack resource.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Enables or disables deletion of all stack
      * resources when a stack creation fails. Default is true, meaning all
      * resources are not deleted when stack creation fails.
      */
-    public readonly disableRollback!: pulumi.Output<boolean>;
+    declare public readonly disableRollback: pulumi.Output<boolean>;
     /**
      * Environment key/value pairs to associate with
      * the stack which contains details for the environment of the stack.
      * Allowed keys: Bin, URL, Files. Changing this updates the existing stack
      * Environment Opts.
      */
-    public readonly environmentOpts!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly environmentOpts: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A unique name for the stack. It must start with an
      * alphabetic character. Changing this updates the stack's name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * List of notification topics for stack.
      */
-    public readonly notificationTopics!: pulumi.Output<string[]>;
+    declare public readonly notificationTopics: pulumi.Output<string[]>;
     /**
      * User-defined key/value pairs as parameters to pass
      * to the template. Changing this updates the existing stack parameters.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly parameters: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The region in which to create the stack. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new stack.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The status of the stack.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The reason for the current status of the stack.
      */
-    public readonly statusReason!: pulumi.Output<string>;
+    declare public readonly statusReason: pulumi.Output<string>;
     /**
      * A list of tags to assosciate with the Stack
      */
-    public readonly tags!: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<string[]>;
     /**
      * The description of the stack template.
      */
-    public readonly templateDescription!: pulumi.Output<string>;
+    declare public readonly templateDescription: pulumi.Output<string>;
     /**
      * Template key/value pairs to associate with the
      * stack which contains either the template file or url.
      * Allowed keys: Bin, URL, Files. Changing this updates the existing stack
      * Template Opts.
      */
-    public readonly templateOpts!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly templateOpts: pulumi.Output<{[key: string]: string}>;
     /**
      * The timeout for stack action in minutes.
      */
-    public readonly timeout!: pulumi.Output<number>;
+    declare public readonly timeout: pulumi.Output<number>;
     /**
      * The date and time when the resource was updated. The date
      * and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
      * For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
      * is the time zone as an offset from UTC.
      */
-    public readonly updatedTime!: pulumi.Output<string>;
+    declare public readonly updatedTime: pulumi.Output<string>;
 
     /**
      * Create a StackV1 resource with the given unique name, arguments, and options.
@@ -178,45 +178,45 @@ export class StackV1 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StackV1State | undefined;
-            resourceInputs["StackOutputs"] = state ? state.StackOutputs : undefined;
-            resourceInputs["capabilities"] = state ? state.capabilities : undefined;
-            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disableRollback"] = state ? state.disableRollback : undefined;
-            resourceInputs["environmentOpts"] = state ? state.environmentOpts : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notificationTopics"] = state ? state.notificationTopics : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["statusReason"] = state ? state.statusReason : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["templateDescription"] = state ? state.templateDescription : undefined;
-            resourceInputs["templateOpts"] = state ? state.templateOpts : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
-            resourceInputs["updatedTime"] = state ? state.updatedTime : undefined;
+            resourceInputs["StackOutputs"] = state?.StackOutputs;
+            resourceInputs["capabilities"] = state?.capabilities;
+            resourceInputs["creationTime"] = state?.creationTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disableRollback"] = state?.disableRollback;
+            resourceInputs["environmentOpts"] = state?.environmentOpts;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notificationTopics"] = state?.notificationTopics;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["statusReason"] = state?.statusReason;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["templateDescription"] = state?.templateDescription;
+            resourceInputs["templateOpts"] = state?.templateOpts;
+            resourceInputs["timeout"] = state?.timeout;
+            resourceInputs["updatedTime"] = state?.updatedTime;
         } else {
             const args = argsOrState as StackV1Args | undefined;
-            if ((!args || args.templateOpts === undefined) && !opts.urn) {
+            if (args?.templateOpts === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateOpts'");
             }
-            resourceInputs["StackOutputs"] = args ? args.StackOutputs : undefined;
-            resourceInputs["capabilities"] = args ? args.capabilities : undefined;
-            resourceInputs["creationTime"] = args ? args.creationTime : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disableRollback"] = args ? args.disableRollback : undefined;
-            resourceInputs["environmentOpts"] = args ? args.environmentOpts : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notificationTopics"] = args ? args.notificationTopics : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["statusReason"] = args ? args.statusReason : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["templateDescription"] = args ? args.templateDescription : undefined;
-            resourceInputs["templateOpts"] = args ? args.templateOpts : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
-            resourceInputs["updatedTime"] = args ? args.updatedTime : undefined;
+            resourceInputs["StackOutputs"] = args?.StackOutputs;
+            resourceInputs["capabilities"] = args?.capabilities;
+            resourceInputs["creationTime"] = args?.creationTime;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disableRollback"] = args?.disableRollback;
+            resourceInputs["environmentOpts"] = args?.environmentOpts;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notificationTopics"] = args?.notificationTopics;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["statusReason"] = args?.statusReason;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["templateDescription"] = args?.templateDescription;
+            resourceInputs["templateOpts"] = args?.templateOpts;
+            resourceInputs["timeout"] = args?.timeout;
+            resourceInputs["updatedTime"] = args?.updatedTime;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StackV1.__pulumiType, name, resourceInputs, opts);

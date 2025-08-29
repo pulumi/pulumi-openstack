@@ -101,16 +101,16 @@ export class RouterRoutesV2 extends pulumi.CustomResource {
      * omitted, the `region` argument of the provider is used. Changing this creates
      * new routing entries.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * ID of the router these routing entries belong to.
      * Changing this creates new routing entries.
      */
-    public readonly routerId!: pulumi.Output<string>;
+    declare public readonly routerId: pulumi.Output<string>;
     /**
      * A set of routing entries to add to the router.
      */
-    public readonly routes!: pulumi.Output<outputs.networking.RouterRoutesV2Route[] | undefined>;
+    declare public readonly routes: pulumi.Output<outputs.networking.RouterRoutesV2Route[] | undefined>;
 
     /**
      * Create a RouterRoutesV2 resource with the given unique name, arguments, and options.
@@ -125,17 +125,17 @@ export class RouterRoutesV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterRoutesV2State | undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["routerId"] = state ? state.routerId : undefined;
-            resourceInputs["routes"] = state ? state.routes : undefined;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["routerId"] = state?.routerId;
+            resourceInputs["routes"] = state?.routes;
         } else {
             const args = argsOrState as RouterRoutesV2Args | undefined;
-            if ((!args || args.routerId === undefined) && !opts.urn) {
+            if (args?.routerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routerId'");
             }
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["routerId"] = args ? args.routerId : undefined;
-            resourceInputs["routes"] = args ? args.routes : undefined;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["routerId"] = args?.routerId;
+            resourceInputs["routes"] = args?.routes;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RouterRoutesV2.__pulumiType, name, resourceInputs, opts);

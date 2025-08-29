@@ -75,29 +75,29 @@ export class RouterInterface extends pulumi.CustomResource {
      * corresponding router ID should be deleted so that the router interface can
      * be destroyed without any errors. The default value is `false`.
      */
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
     /**
      * ID of the port this interface connects to. Changing
      * this creates a new router interface.
      */
-    public readonly portId!: pulumi.Output<string>;
+    declare public readonly portId: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a router. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * router interface.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * ID of the router this interface belongs to. Changing
      * this creates a new router interface.
      */
-    public readonly routerId!: pulumi.Output<string>;
+    declare public readonly routerId: pulumi.Output<string>;
     /**
      * ID of the subnet this interface connects to. Changing
      * this creates a new router interface.
      */
-    public readonly subnetId!: pulumi.Output<string>;
+    declare public readonly subnetId: pulumi.Output<string>;
 
     /**
      * Create a RouterInterface resource with the given unique name, arguments, and options.
@@ -112,21 +112,21 @@ export class RouterInterface extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterInterfaceState | undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["portId"] = state ? state.portId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["routerId"] = state ? state.routerId : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["portId"] = state?.portId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["routerId"] = state?.routerId;
+            resourceInputs["subnetId"] = state?.subnetId;
         } else {
             const args = argsOrState as RouterInterfaceArgs | undefined;
-            if ((!args || args.routerId === undefined) && !opts.urn) {
+            if (args?.routerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routerId'");
             }
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["portId"] = args ? args.portId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["routerId"] = args ? args.routerId : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["portId"] = args?.portId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["routerId"] = args?.routerId;
+            resourceInputs["subnetId"] = args?.subnetId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RouterInterface.__pulumiType, name, resourceInputs, opts);

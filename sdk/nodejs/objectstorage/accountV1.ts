@@ -61,40 +61,40 @@ export class AccountV1 extends pulumi.CustomResource {
     /**
      * The number of bytes used by the account.
      */
-    public /*out*/ readonly bytesUsed!: pulumi.Output<number>;
+    declare public /*out*/ readonly bytesUsed: pulumi.Output<number>;
     /**
      * The number of containers in the account.
      */
-    public /*out*/ readonly containerCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly containerCount: pulumi.Output<number>;
     /**
      * A map of headers returned for the account.
      */
-    public /*out*/ readonly headers!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly headers: pulumi.Output<{[key: string]: string}>;
     /**
      * A map of custom key/value pairs to associate with the
      * account metadata. Changing the `Quota-Bytes` key value is allowed to be
      * updated only by the cloud administrator.
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The number of objects in the account.
      */
-    public /*out*/ readonly objectCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly objectCount: pulumi.Output<number>;
     /**
      * The project ID of the corresponding account. If
      * omitted, the token's project ID is used. Changing this creates a new account.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The number of bytes allowed for the account.
      */
-    public /*out*/ readonly quotaBytes!: pulumi.Output<number>;
+    declare public /*out*/ readonly quotaBytes: pulumi.Output<number>;
     /**
      * The region in which to create the account. If omitted,
      * the `region` argument of the provider is used. Changing this creates a new
      * account.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a AccountV1 resource with the given unique name, arguments, and options.
@@ -109,19 +109,19 @@ export class AccountV1 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountV1State | undefined;
-            resourceInputs["bytesUsed"] = state ? state.bytesUsed : undefined;
-            resourceInputs["containerCount"] = state ? state.containerCount : undefined;
-            resourceInputs["headers"] = state ? state.headers : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["objectCount"] = state ? state.objectCount : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["quotaBytes"] = state ? state.quotaBytes : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["bytesUsed"] = state?.bytesUsed;
+            resourceInputs["containerCount"] = state?.containerCount;
+            resourceInputs["headers"] = state?.headers;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["objectCount"] = state?.objectCount;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["quotaBytes"] = state?.quotaBytes;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as AccountV1Args | undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["bytesUsed"] = undefined /*out*/;
             resourceInputs["containerCount"] = undefined /*out*/;
             resourceInputs["headers"] = undefined /*out*/;
