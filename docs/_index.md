@@ -1,18 +1,22 @@
 ---
+# *** WARNING: This file was auto-generated. Do not edit by hand unless you're certain you know what you are doing! ***
 title: Openstack Provider
 meta_desc: Provides an overview on how to configure the Pulumi Openstack provider.
 layout: package
 ---
+
 ## Installation
 
-The openstack provider is available as a package in all Pulumi languages:
+The Openstack provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/openstack`](https://www.npmjs.com/package/@pulumi/openstack)
 * Python: [`pulumi-openstack`](https://pypi.org/project/pulumi-openstack/)
-* Go: [`github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack`](https://github.com/pulumi/pulumi-openstack)
+* Go: [`github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack`](https://github.com/pulumi/pulumi-openstack)
 * .NET: [`Pulumi.Openstack`](https://www.nuget.org/packages/Pulumi.Openstack)
 * Java: [`com.pulumi/openstack`](https://central.sonatype.com/artifact/com.pulumi/openstack)
+
 ## Overview
+
 The OpenStack provider is used to interact with the
 many resources supported by OpenStack. The provider needs to be configured
 with the proper credentials before it can be used.
@@ -128,7 +132,7 @@ config:
 package main
 
 import (
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/compute"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -358,12 +362,10 @@ rather than use the endpoint which was returned to you in the service catalog.
 You can do this by configuring the `endpointOverrides` argument in the provider
 configuration:
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-{{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
 name: configuration-example
-runtime: nodejs
+runtime:
 config:
     openstack:endpointOverrides:
         value:
@@ -371,79 +373,6 @@ config:
             volumev2: https://volumes.example.com:8776/v2/3eb25ae78e7b42d68276e9bca66c8e44/
 
 ```
-
-{{% /choosable %}}
-{{% choosable language python %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: python
-config:
-    openstack:endpointOverrides:
-        value:
-            network: https://example.com:9696/v2.0/
-            volumev2: https://volumes.example.com:8776/v2/3eb25ae78e7b42d68276e9bca66c8e44/
-
-```
-
-{{% /choosable %}}
-{{% choosable language csharp %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: dotnet
-config:
-    openstack:endpointOverrides:
-        value:
-            network: https://example.com:9696/v2.0/
-            volumev2: https://volumes.example.com:8776/v2/3eb25ae78e7b42d68276e9bca66c8e44/
-
-```
-
-{{% /choosable %}}
-{{% choosable language go %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: go
-config:
-    openstack:endpointOverrides:
-        value:
-            network: https://example.com:9696/v2.0/
-            volumev2: https://volumes.example.com:8776/v2/3eb25ae78e7b42d68276e9bca66c8e44/
-
-```
-
-{{% /choosable %}}
-{{% choosable language yaml %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: yaml
-config:
-    openstack:endpointOverrides:
-        value:
-            network: https://example.com:9696/v2.0/
-            volumev2: https://volumes.example.com:8776/v2/3eb25ae78e7b42d68276e9bca66c8e44/
-
-```
-
-{{% /choosable %}}
-{{% choosable language java %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: java
-config:
-    openstack:endpointOverrides:
-        value:
-            network: https://example.com:9696/v2.0/
-            volumev2: https://volumes.example.com:8776/v2/3eb25ae78e7b42d68276e9bca66c8e44/
-
-```
-
-{{% /choosable %}}
-{{< /chooser >}}
 
 Note how each URL ends in a "/" and the `volumev2` service includes the
 tenant/project UUID. You must make sure you specify the full and complete
@@ -465,9 +394,29 @@ Identity/Keystone service catalog. This provider supports:
 * `volume`: Block Storage / Cinder v1
 * `volumev2`: Block Storage / Cinder v2
 * `volumev3`: Block Storage / Cinder v3
+* `workflowv2`: Workflow / Mistral v2
 
 Please use this feature at your own risk. If you are unsure about needing
 to override an endpoint, you most likely do not need to override one.
+### Overriding service types
+
+You can override service types if needed. For example, to use the
+`block-storage` service type instead of `volumev3`, configure the provider as
+follows:
+
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime:
+config:
+    openstack:endpointOverrides:
+        value:
+            volumev3: block-storage
+
+```
+
+This ensures that requests intended for `volumev3` are directed to the
+`block-storage` service.
 ## OpenStack Releases and Versions
 
 This provider aims to support "vanilla" OpenStack. This means that we do all
@@ -487,8 +436,9 @@ A simple way of checking which minor versions are supported on your Openstack
 cloud is the following:
 
 ```shell
-export OS_TOKEN=`openstack token issue -c id -f value`
-curl -s -H "X-Auth-Token: $OS_TOKEN"  "https://example.com:9876/"
+export OCTAVIA_URL=`openstack endpoint list --interface public --service octavia -f value -c URL`
+export OS_TOKEN=`openstack token issue -f value -c id`
+curl -s -H "X-Auth-Token: $OS_TOKEN" "$OCTAVIA_URL" | jq -r '.versions[]|select(.status=="SUPPORTED")|.id' | tail -1
 ```
 ### Rackspace Compatibility
 
@@ -607,7 +557,7 @@ return await Deployment.RunAsync(() =>
 package main
 
 import (
-	"github.com/pulumi/pulumi-openstack/sdk/v4/go/openstack/compute"
+	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
