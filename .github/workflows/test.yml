@@ -84,11 +84,13 @@ jobs:
       run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -skip TestPulumiExamples -parallel 4 .
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        OS_PASSWORD: ${{ steps.esc-secrets.outputs.OS_PASSWORD }}
     - name: Run pulumi/examples tests
       if: matrix.testTarget == 'pulumiExamples'
       run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -run TestPulumiExamples -parallel 4 .
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        OS_PASSWORD: ${{ steps.esc-secrets.outputs.OS_PASSWORD }}
     strategy:
       fail-fast: false
       matrix:
