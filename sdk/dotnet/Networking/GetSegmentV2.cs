@@ -106,8 +106,8 @@ namespace Pulumi.OpenStack.Networking
         public string? NetworkId { get; set; }
 
         /// <summary>
-        /// The type of the network, such as `vlan`, `vxlan`,
-        /// `flat`, `gre`, `geneve`, or `local`.
+        /// The type of the network, such as `Vlan`, `Vxlan`,
+        /// `Flat`, `Gre`, `Geneve`, or `Local`.
         /// </summary>
         [Input("networkType")]
         public string? NetworkType { get; set; }
@@ -121,7 +121,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Neutron client.
         /// A Neutron client is needed to retrieve networks ids. If omitted, the
-        /// `region` argument of the provider is used.
+        /// `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -171,8 +171,8 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
-        /// The type of the network, such as `vlan`, `vxlan`,
-        /// `flat`, `gre`, `geneve`, or `local`.
+        /// The type of the network, such as `Vlan`, `Vxlan`,
+        /// `Flat`, `Gre`, `Geneve`, or `Local`.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
@@ -186,7 +186,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Neutron client.
         /// A Neutron client is needed to retrieve networks ids. If omitted, the
-        /// `region` argument of the provider is used.
+        /// `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

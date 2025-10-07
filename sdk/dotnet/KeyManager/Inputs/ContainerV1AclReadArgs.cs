@@ -20,7 +20,7 @@ namespace Pulumi.OpenStack.KeyManager.Inputs
 
         /// <summary>
         /// Whether the container is accessible project wide.
-        /// Defaults to `true`.
+        /// Defaults to `True`.
         /// </summary>
         [Input("projectAccess")]
         public Input<bool>? ProjectAccess { get; set; }
@@ -36,7 +36,7 @@ namespace Pulumi.OpenStack.KeyManager.Inputs
 
         /// <summary>
         /// The list of user IDs, which are allowed to access the
-        /// container, when `project_access` is set to `false`.
+        /// container, when `ProjectAccess` is set to `False`.
         /// </summary>
         public InputList<string> Users
         {

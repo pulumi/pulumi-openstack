@@ -66,7 +66,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new registered limit.
         /// </summary>
         [Output("region")]
@@ -74,7 +74,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The resource that the limit applies to. On
-        /// updates, either service_id, resource_name or region_id must be different than
+        /// updates, either service_id, ResourceName or RegionId must be different than
         /// existing value otherwise it will raise 409.
         /// </summary>
         [Output("resourceName")]
@@ -82,7 +82,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The service the limit applies to. On updates,
-        /// either service_id, resource_name or region_id must be different than existing
+        /// either service_id, ResourceName or RegionId must be different than existing
         /// value otherwise it will raise 409.
         /// </summary>
         [Output("serviceId")]
@@ -148,7 +148,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new registered limit.
         /// </summary>
         [Input("region")]
@@ -156,7 +156,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The resource that the limit applies to. On
-        /// updates, either service_id, resource_name or region_id must be different than
+        /// updates, either service_id, ResourceName or RegionId must be different than
         /// existing value otherwise it will raise 409.
         /// </summary>
         [Input("resourceName", required: true)]
@@ -164,7 +164,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The service the limit applies to. On updates,
-        /// either service_id, resource_name or region_id must be different than existing
+        /// either service_id, ResourceName or RegionId must be different than existing
         /// value otherwise it will raise 409.
         /// </summary>
         [Input("serviceId", required: true)]
@@ -192,7 +192,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new registered limit.
         /// </summary>
         [Input("region")]
@@ -200,7 +200,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The resource that the limit applies to. On
-        /// updates, either service_id, resource_name or region_id must be different than
+        /// updates, either service_id, ResourceName or RegionId must be different than
         /// existing value otherwise it will raise 409.
         /// </summary>
         [Input("resourceName")]
@@ -208,7 +208,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The service the limit applies to. On updates,
-        /// either service_id, resource_name or region_id must be different than existing
+        /// either service_id, ResourceName or RegionId must be different than existing
         /// value otherwise it will raise 409.
         /// </summary>
         [Input("serviceId")]

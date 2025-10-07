@@ -25,7 +25,7 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// ### Predefined secret
     /// 
-    /// Application credential below will have only one `swiftoperator` role.
+    /// Application credential below will have only one `Swiftoperator` role.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -169,7 +169,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new application credential.
         /// </summary>
         [Output("region")]
@@ -290,7 +290,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new application credential.
         /// </summary>
         [Input("region")]
@@ -393,7 +393,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new application credential.
         /// </summary>
         [Input("region")]

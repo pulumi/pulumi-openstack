@@ -110,8 +110,8 @@ import javax.annotation.Nullable;
 @ResourceType(type="openstack:index/lbFlavorprofileV2:LbFlavorprofileV2")
 public class LbFlavorprofileV2 extends com.pulumi.resources.CustomResource {
     /**
-     * String that passes the flavor_data for the flavorprofile.
-     * The data that are allowed depend on the `provider_name` that is passed. jsonencode
+     * String that passes the flavorData for the flavorprofile.
+     * The data that are allowed depend on the `providerName` that is passed. jsonencode
      * can be used for readability as shown in the example above.
      * Changing this updates the existing flavorprofile.
      * 
@@ -120,8 +120,8 @@ public class LbFlavorprofileV2 extends com.pulumi.resources.CustomResource {
     private Output<String> flavorData;
 
     /**
-     * @return String that passes the flavor_data for the flavorprofile.
-     * The data that are allowed depend on the `provider_name` that is passed. jsonencode
+     * @return String that passes the flavorData for the flavorprofile.
+     * The data that are allowed depend on the `providerName` that is passed. jsonencode
      * can be used for readability as shown in the example above.
      * Changing this updates the existing flavorprofile.
      * 
@@ -146,7 +146,7 @@ public class LbFlavorprofileV2 extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The provider_name that the flavor_profile will use.
+     * The providerName that the flavorProfile will use.
      * Changing this updates the existing flavorprofile.
      * 
      */
@@ -154,7 +154,7 @@ public class LbFlavorprofileV2 extends com.pulumi.resources.CustomResource {
     private Output<String> providerName;
 
     /**
-     * @return The provider_name that the flavor_profile will use.
+     * @return The providerName that the flavorProfile will use.
      * Changing this updates the existing flavorprofile.
      * 
      */

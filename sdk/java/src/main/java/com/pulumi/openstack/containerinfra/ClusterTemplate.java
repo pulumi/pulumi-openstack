@@ -79,36 +79,36 @@ import javax.annotation.Nullable;
  * 
  * * `region` - See Argument Reference above.
  * * `name` - See Argument Reference above.
- * * `project_id` - See Argument Reference above.
- * * `created_at` - The time at which cluster template was created.
- * * `updated_at` - The time at which cluster template was created.
- * * `apiserver_port` - See Argument Reference above.
+ * * `projectId` - See Argument Reference above.
+ * * `createdAt` - The time at which cluster template was created.
+ * * `updatedAt` - The time at which cluster template was created.
+ * * `apiserverPort` - See Argument Reference above.
  * * `coe` - See Argument Reference above.
- * * `cluster_distro` - See Argument Reference above.
- * * `dns_nameserver` - See Argument Reference above.
- * * `docker_storage_driver` - See Argument Reference above.
- * * `docker_volume_size` - See Argument Reference above.
- * * `external_network_id` - See Argument Reference above.
- * * `fixed_network` - See Argument Reference above.
- * * `fixed_subnet` - See Argument Reference above.
+ * * `clusterDistro` - See Argument Reference above.
+ * * `dnsNameserver` - See Argument Reference above.
+ * * `dockerStorageDriver` - See Argument Reference above.
+ * * `dockerVolumeSize` - See Argument Reference above.
+ * * `externalNetworkId` - See Argument Reference above.
+ * * `fixedNetwork` - See Argument Reference above.
+ * * `fixedSubnet` - See Argument Reference above.
  * * `flavor` - See Argument Reference above.
- * * `master_flavor` - See Argument Reference above.
- * * `floating_ip_enabled` - See Argument Reference above.
- * * `http_proxy` - See Argument Reference above.
- * * `https_proxy` - See Argument Reference above.
+ * * `masterFlavor` - See Argument Reference above.
+ * * `floatingIpEnabled` - See Argument Reference above.
+ * * `httpProxy` - See Argument Reference above.
+ * * `httpsProxy` - See Argument Reference above.
  * * `image` - See Argument Reference above.
- * * `insecure_registry` - See Argument Reference above.
- * * `keypair_id` - See Argument Reference above.
+ * * `insecureRegistry` - See Argument Reference above.
+ * * `keypairId` - See Argument Reference above.
  * * `labels` - See Argument Reference above.
  * * `links` - A list containing associated cluster template links.
- * * `master_lb_enabled` - See Argument Reference above.
- * * `network_driver` - See Argument Reference above.
- * * `no_proxy` - See Argument Reference above.
+ * * `masterLbEnabled` - See Argument Reference above.
+ * * `networkDriver` - See Argument Reference above.
+ * * `noProxy` - See Argument Reference above.
  * * `public` - See Argument Reference above.
- * * `registry_enabled` - See Argument Reference above.
- * * `server_type` - See Argument Reference above.
- * * `tls_disabled` - See Argument Reference above.
- * * `volume_driver` - See Argument Reference above.
+ * * `registryEnabled` - See Argument Reference above.
+ * * `serverType` - See Argument Reference above.
+ * * `tlsDisabled` - See Argument Reference above.
+ * * `volumeDriver` - See Argument Reference above.
  * * `hidden` - See Argument Reference above.
  * 
  * ## Import

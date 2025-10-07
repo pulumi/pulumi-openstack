@@ -112,9 +112,9 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public string? ShareId { get; set; }
 
         /// <summary>
-        /// A snapshot status filter. A valid value is `available`, `error`,
-        /// `creating`, `deleting`, `manage_starting`, `manage_error`, `unmanage_starting`,
-        /// `unmanage_error` or `error_deleting`.
+        /// A snapshot status filter. A valid value is `Available`, `Error`,
+        /// `Creating`, `Deleting`, `ManageStarting`, `ManageError`, `UnmanageStarting`,
+        /// `UnmanageError` or `ErrorDeleting`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -152,9 +152,9 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public Input<string>? ShareId { get; set; }
 
         /// <summary>
-        /// A snapshot status filter. A valid value is `available`, `error`,
-        /// `creating`, `deleting`, `manage_starting`, `manage_error`, `unmanage_starting`,
-        /// `unmanage_error` or `error_deleting`.
+        /// A snapshot status filter. A valid value is `Available`, `Error`,
+        /// `Creating`, `Deleting`, `ManageStarting`, `ManageError`, `UnmanageStarting`,
+        /// `UnmanageError` or `ErrorDeleting`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -55,39 +55,39 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// 
     /// The following attributes are exported:
     /// 
-    /// * `region` - See Argument Reference above.
-    /// * `name` - See Argument Reference above.
-    /// * `project_id` - See Argument Reference above.
-    /// * `created_at` - The time at which cluster template was created.
-    /// * `updated_at` - The time at which cluster template was created.
-    /// * `apiserver_port` - See Argument Reference above.
-    /// * `coe` - See Argument Reference above.
-    /// * `cluster_distro` - See Argument Reference above.
-    /// * `dns_nameserver` - See Argument Reference above.
-    /// * `docker_storage_driver` - See Argument Reference above.
-    /// * `docker_volume_size` - See Argument Reference above.
-    /// * `external_network_id` - See Argument Reference above.
-    /// * `fixed_network` - See Argument Reference above.
-    /// * `fixed_subnet` - See Argument Reference above.
-    /// * `flavor` - See Argument Reference above.
-    /// * `master_flavor` - See Argument Reference above.
-    /// * `floating_ip_enabled` - See Argument Reference above.
-    /// * `http_proxy` - See Argument Reference above.
-    /// * `https_proxy` - See Argument Reference above.
-    /// * `image` - See Argument Reference above.
-    /// * `insecure_registry` - See Argument Reference above.
-    /// * `keypair_id` - See Argument Reference above.
-    /// * `labels` - See Argument Reference above.
-    /// * `links` - A list containing associated cluster template links.
-    /// * `master_lb_enabled` - See Argument Reference above.
-    /// * `network_driver` - See Argument Reference above.
-    /// * `no_proxy` - See Argument Reference above.
-    /// * `public` - See Argument Reference above.
-    /// * `registry_enabled` - See Argument Reference above.
-    /// * `server_type` - See Argument Reference above.
-    /// * `tls_disabled` - See Argument Reference above.
-    /// * `volume_driver` - See Argument Reference above.
-    /// * `hidden` - See Argument Reference above.
+    /// * `Region` - See Argument Reference above.
+    /// * `Name` - See Argument Reference above.
+    /// * `ProjectId` - See Argument Reference above.
+    /// * `CreatedAt` - The time at which cluster template was created.
+    /// * `UpdatedAt` - The time at which cluster template was created.
+    /// * `ApiserverPort` - See Argument Reference above.
+    /// * `Coe` - See Argument Reference above.
+    /// * `ClusterDistro` - See Argument Reference above.
+    /// * `DnsNameserver` - See Argument Reference above.
+    /// * `DockerStorageDriver` - See Argument Reference above.
+    /// * `DockerVolumeSize` - See Argument Reference above.
+    /// * `ExternalNetworkId` - See Argument Reference above.
+    /// * `FixedNetwork` - See Argument Reference above.
+    /// * `FixedSubnet` - See Argument Reference above.
+    /// * `Flavor` - See Argument Reference above.
+    /// * `MasterFlavor` - See Argument Reference above.
+    /// * `FloatingIpEnabled` - See Argument Reference above.
+    /// * `HttpProxy` - See Argument Reference above.
+    /// * `HttpsProxy` - See Argument Reference above.
+    /// * `Image` - See Argument Reference above.
+    /// * `InsecureRegistry` - See Argument Reference above.
+    /// * `KeypairId` - See Argument Reference above.
+    /// * `Labels` - See Argument Reference above.
+    /// * `Links` - A list containing associated cluster template links.
+    /// * `MasterLbEnabled` - See Argument Reference above.
+    /// * `NetworkDriver` - See Argument Reference above.
+    /// * `NoProxy` - See Argument Reference above.
+    /// * `Public` - See Argument Reference above.
+    /// * `RegistryEnabled` - See Argument Reference above.
+    /// * `ServerType` - See Argument Reference above.
+    /// * `TlsDisabled` - See Argument Reference above.
+    /// * `VolumeDriver` - See Argument Reference above.
+    /// * `Hidden` - See Argument Reference above.
     /// 
     /// ## Import
     /// 
@@ -303,7 +303,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// <summary>
         /// The region in which to obtain the V1 Container Infra
         /// client. A Container Infra client is needed to create a cluster template. If
-        /// omitted,the `region` argument of the provider is used. Changing this
+        /// omitted,the `Region` argument of the provider is used. Changing this
         /// creates a new cluster template.
         /// </summary>
         [Output("region")]
@@ -594,7 +594,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// <summary>
         /// The region in which to obtain the V1 Container Infra
         /// client. A Container Infra client is needed to create a cluster template. If
-        /// omitted,the `region` argument of the provider is used. Changing this
+        /// omitted,the `Region` argument of the provider is used. Changing this
         /// creates a new cluster template.
         /// </summary>
         [Input("region")]
@@ -847,7 +847,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// <summary>
         /// The region in which to obtain the V1 Container Infra
         /// client. A Container Infra client is needed to create a cluster template. If
-        /// omitted,the `region` argument of the provider is used. Changing this
+        /// omitted,the `Region` argument of the provider is used. Changing this
         /// creates a new cluster template.
         /// </summary>
         [Input("region")]

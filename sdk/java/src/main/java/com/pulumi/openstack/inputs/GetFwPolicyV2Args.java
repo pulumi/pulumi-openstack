@@ -78,7 +78,7 @@ public final class GetFwPolicyV2Args extends com.pulumi.resources.InvokeArgs {
 
     /**
      * This argument conflicts and is interchangeable
-     * with `tenant_id`. The owner of the firewall policy.
+     * with `tenantId`. The owner of the firewall policy.
      * 
      */
     @Import(name="projectId")
@@ -86,7 +86,7 @@ public final class GetFwPolicyV2Args extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return This argument conflicts and is interchangeable
-     * with `tenant_id`. The owner of the firewall policy.
+     * with `tenantId`. The owner of the firewall policy.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -129,7 +129,7 @@ public final class GetFwPolicyV2Args extends com.pulumi.resources.InvokeArgs {
 
     /**
      * This argument conflicts and is interchangeable
-     * with `project_id`. The owner of the firewall policy.
+     * with `projectId`. The owner of the firewall policy.
      * 
      */
     @Import(name="tenantId")
@@ -137,7 +137,7 @@ public final class GetFwPolicyV2Args extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return This argument conflicts and is interchangeable
-     * with `project_id`. The owner of the firewall policy.
+     * with `projectId`. The owner of the firewall policy.
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -261,7 +261,7 @@ public final class GetFwPolicyV2Args extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param projectId This argument conflicts and is interchangeable
-         * with `tenant_id`. The owner of the firewall policy.
+         * with `tenantId`. The owner of the firewall policy.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class GetFwPolicyV2Args extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param projectId This argument conflicts and is interchangeable
-         * with `tenant_id`. The owner of the firewall policy.
+         * with `tenantId`. The owner of the firewall policy.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class GetFwPolicyV2Args extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param tenantId This argument conflicts and is interchangeable
-         * with `project_id`. The owner of the firewall policy.
+         * with `projectId`. The owner of the firewall policy.
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class GetFwPolicyV2Args extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param tenantId This argument conflicts and is interchangeable
-         * with `project_id`. The owner of the firewall policy.
+         * with `projectId`. The owner of the firewall policy.
          * 
          * @return builder
          * 

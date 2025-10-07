@@ -95,7 +95,7 @@ namespace Pulumi.OpenStack.KeyManager
 
         /// <summary>
         /// The region in which to obtain the V1 KeyManager client.
-        /// A KeyManager client is needed to fetch a container. If omitted, the `region`
+        /// A KeyManager client is needed to fetch a container. If omitted, the `Region`
         /// argument of the provider is used.
         /// </summary>
         [Input("region")]
@@ -117,7 +117,7 @@ namespace Pulumi.OpenStack.KeyManager
 
         /// <summary>
         /// The region in which to obtain the V1 KeyManager client.
-        /// A KeyManager client is needed to fetch a container. If omitted, the `region`
+        /// A KeyManager client is needed to fetch a container. If omitted, the `Region`
         /// argument of the provider is used.
         /// </summary>
         [Input("region")]
@@ -134,7 +134,7 @@ namespace Pulumi.OpenStack.KeyManager
     public sealed class GetContainerResult
     {
         /// <summary>
-        /// The list of ACLs assigned to a container. The `read` structure is
+        /// The list of ACLs assigned to a container. The `Read` structure is
         /// described below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetContainerAclResult> Acls;

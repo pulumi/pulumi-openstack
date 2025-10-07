@@ -103,8 +103,8 @@ namespace Pulumi.OpenStack.Compute
         public int? Disk { get; set; }
 
         /// <summary>
-        /// The ID of the flavor. Conflicts with the `name`,
-        /// `min_ram` and `min_disk`
+        /// The ID of the flavor. Conflicts with the `Name`,
+        /// `MinRam` and `MinDisk`
         /// </summary>
         [Input("flavorId")]
         public string? FlavorId { get; set; }
@@ -117,20 +117,20 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The minimum amount of disk (in gigabytes). Conflicts
-        /// with the `flavor_id`.
+        /// with the `FlavorId`.
         /// </summary>
         [Input("minDisk")]
         public int? MinDisk { get; set; }
 
         /// <summary>
         /// The minimum amount of RAM (in megabytes). Conflicts
-        /// with the `flavor_id`.
+        /// with the `FlavorId`.
         /// </summary>
         [Input("minRam")]
         public int? MinRam { get; set; }
 
         /// <summary>
-        /// The name of the flavor. Conflicts with the `flavor_id`.
+        /// The name of the flavor. Conflicts with the `FlavorId`.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -143,13 +143,13 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
         /// <summary>
-        /// The `rx_tx_factor` of the flavor.
+        /// The `RxTxFactor` of the flavor.
         /// </summary>
         [Input("rxTxFactor")]
         public double? RxTxFactor { get; set; }
@@ -187,8 +187,8 @@ namespace Pulumi.OpenStack.Compute
         public Input<int>? Disk { get; set; }
 
         /// <summary>
-        /// The ID of the flavor. Conflicts with the `name`,
-        /// `min_ram` and `min_disk`
+        /// The ID of the flavor. Conflicts with the `Name`,
+        /// `MinRam` and `MinDisk`
         /// </summary>
         [Input("flavorId")]
         public Input<string>? FlavorId { get; set; }
@@ -201,20 +201,20 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The minimum amount of disk (in gigabytes). Conflicts
-        /// with the `flavor_id`.
+        /// with the `FlavorId`.
         /// </summary>
         [Input("minDisk")]
         public Input<int>? MinDisk { get; set; }
 
         /// <summary>
         /// The minimum amount of RAM (in megabytes). Conflicts
-        /// with the `flavor_id`.
+        /// with the `FlavorId`.
         /// </summary>
         [Input("minRam")]
         public Input<int>? MinRam { get; set; }
 
         /// <summary>
-        /// The name of the flavor. Conflicts with the `flavor_id`.
+        /// The name of the flavor. Conflicts with the `FlavorId`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -227,13 +227,13 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The `rx_tx_factor` of the flavor.
+        /// The `RxTxFactor` of the flavor.
         /// </summary>
         [Input("rxTxFactor")]
         public Input<double>? RxTxFactor { get; set; }

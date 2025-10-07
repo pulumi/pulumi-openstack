@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * &gt; **Note:** Ports do not get an IP if the network they are attached
  * to does not have a subnet. If you create the subnet resource in the
  * same run as the port, make sure to use `fixed_ip.subnet_id` or
- * `depends_on` to enforce the subnet resource creation before the port
+ * `dependsOn` to enforce the subnet resource creation before the port
  * creation is triggered. More info here
  * 
  * ## Example Usage
@@ -216,7 +216,7 @@ public class Port extends com.pulumi.resources.CustomResource {
     /**
      * Administrative up/down status for the port
      * (must be `true` or `false` if provided). Changing this updates the
-     * `admin_state_up` of an existing port.
+     * `adminStateUp` of an existing port.
      * 
      */
     @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
@@ -225,7 +225,7 @@ public class Port extends com.pulumi.resources.CustomResource {
     /**
      * @return Administrative up/down status for the port
      * (must be `true` or `false` if provided). Changing this updates the
-     * `admin_state_up` of an existing port.
+     * `adminStateUp` of an existing port.
      * 
      */
     public Output<Boolean> adminStateUp() {
@@ -494,7 +494,7 @@ public class Port extends com.pulumi.resources.CustomResource {
     /**
      * If set to
      * `true`, then no security groups are applied to the port. If set to `false` and
-     * no `security_group_ids` are specified, then the port will yield to the default
+     * no `securityGroupIds` are specified, then the port will yield to the default
      * behavior of the Networking service, which is to usually apply the &#34;default&#34;
      * security group.
      * 
@@ -505,7 +505,7 @@ public class Port extends com.pulumi.resources.CustomResource {
     /**
      * @return If set to
      * `true`, then no security groups are applied to the port. If set to `false` and
-     * no `security_group_ids` are specified, then the port will yield to the default
+     * no `securityGroupIds` are specified, then the port will yield to the default
      * behavior of the Networking service, which is to usually apply the &#34;default&#34;
      * security group.
      * 
