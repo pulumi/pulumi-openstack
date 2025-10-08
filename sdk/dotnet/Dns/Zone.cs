@@ -79,7 +79,7 @@ namespace Pulumi.OpenStack.Dns
         public Output<string?> Email { get; private set; } = null!;
 
         /// <summary>
-        /// An array of master DNS servers. For when `type` is
+        /// An array of master DNS servers. For when `Type` is
         /// `SECONDARY`.
         /// </summary>
         [Output("masters")]
@@ -102,7 +102,7 @@ namespace Pulumi.OpenStack.Dns
 
         /// <summary>
         /// The region in which to obtain the V2 DNS client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// Changing this creates a new DNS zone.
         /// </summary>
         [Output("region")]
@@ -211,7 +211,7 @@ namespace Pulumi.OpenStack.Dns
         private InputList<string>? _masters;
 
         /// <summary>
-        /// An array of master DNS servers. For when `type` is
+        /// An array of master DNS servers. For when `Type` is
         /// `SECONDARY`.
         /// </summary>
         public InputList<string> Masters
@@ -237,7 +237,7 @@ namespace Pulumi.OpenStack.Dns
 
         /// <summary>
         /// The region in which to obtain the V2 DNS client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// Changing this creates a new DNS zone.
         /// </summary>
         [Input("region")]
@@ -314,7 +314,7 @@ namespace Pulumi.OpenStack.Dns
         private InputList<string>? _masters;
 
         /// <summary>
-        /// An array of master DNS servers. For when `type` is
+        /// An array of master DNS servers. For when `Type` is
         /// `SECONDARY`.
         /// </summary>
         public InputList<string> Masters
@@ -340,7 +340,7 @@ namespace Pulumi.OpenStack.Dns
 
         /// <summary>
         /// The region in which to obtain the V2 DNS client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// Changing this creates a new DNS zone.
         /// </summary>
         [Input("region")]

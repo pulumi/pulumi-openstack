@@ -31,7 +31,7 @@ public final class GetContainerAclRead {
     private String updatedAt;
     /**
      * @return The list of user IDs, which are allowed to access the container,
-     * when `project_access` is set to `false`.
+     * when `projectAccess` is set to `false`.
      * 
      */
     private @Nullable List<String> users;
@@ -60,7 +60,7 @@ public final class GetContainerAclRead {
     }
     /**
      * @return The list of user IDs, which are allowed to access the container,
-     * when `project_access` is set to `false`.
+     * when `projectAccess` is set to `false`.
      * 
      */
     public List<String> users() {

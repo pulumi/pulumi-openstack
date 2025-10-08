@@ -15,14 +15,14 @@ public final class GetLbFlavorDeprecatedPlainArgs extends com.pulumi.resources.I
     public static final GetLbFlavorDeprecatedPlainArgs Empty = new GetLbFlavorDeprecatedPlainArgs();
 
     /**
-     * The ID of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+     * The ID of the flavor. Exactly one of `name`, `flavorId` is required to be set.
      * 
      */
     @Import(name="flavorId")
     private @Nullable String flavorId;
 
     /**
-     * @return The ID of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+     * @return The ID of the flavor. Exactly one of `name`, `flavorId` is required to be set.
      * 
      */
     public Optional<String> flavorId() {
@@ -30,14 +30,14 @@ public final class GetLbFlavorDeprecatedPlainArgs extends com.pulumi.resources.I
     }
 
     /**
-     * The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+     * The name of the flavor. Exactly one of `name`, `flavorId` is required to be set.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+     * @return The name of the flavor. Exactly one of `name`, `flavorId` is required to be set.
      * 
      */
     public Optional<String> name() {
@@ -88,7 +88,7 @@ public final class GetLbFlavorDeprecatedPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param flavorId The ID of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+         * @param flavorId The ID of the flavor. Exactly one of `name`, `flavorId` is required to be set.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class GetLbFlavorDeprecatedPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param name The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+         * @param name The name of the flavor. Exactly one of `name`, `flavorId` is required to be set.
          * 
          * @return builder
          * 

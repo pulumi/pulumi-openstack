@@ -99,7 +99,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron address-scope. If omitted,
-        /// the `region` argument of the provider is used. Changing this creates a new
+        /// the `Region` argument of the provider is used. Changing this creates a new
         /// address-scope.
         /// </summary>
         [Output("region")]
@@ -184,7 +184,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron address-scope. If omitted,
-        /// the `region` argument of the provider is used. Changing this creates a new
+        /// the `Region` argument of the provider is used. Changing this creates a new
         /// address-scope.
         /// </summary>
         [Input("region")]
@@ -231,7 +231,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron address-scope. If omitted,
-        /// the `region` argument of the provider is used. Changing this creates a new
+        /// the `Region` argument of the provider is used. Changing this creates a new
         /// address-scope.
         /// </summary>
         [Input("region")]

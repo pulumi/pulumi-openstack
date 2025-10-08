@@ -18,7 +18,7 @@ namespace Pulumi.OpenStack.Images
     /// ### Unprivileged user
     /// 
     /// Create a shared image and propose a membership to the
-    /// `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
+    /// `Bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -53,7 +53,7 @@ namespace Pulumi.OpenStack.Images
     /// ### Privileged user
     /// 
     /// Create a shared image and set a membership to the
-    /// `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
+    /// `Bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -119,7 +119,7 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// The region in which to obtain the V2 Glance client.
-        /// A Glance client is needed to manage Image members. If omitted, the `region`
+        /// A Glance client is needed to manage Image members. If omitted, the `Region`
         /// argument of the provider is used. Changing this creates a new resource.
         /// </summary>
         [Output("region")]
@@ -133,8 +133,8 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// The member proposal status. Optional if admin wants to
-        /// force the member proposal acceptance. Can either be `accepted`, `rejected` or
-        /// `pending`. Defaults to `pending`. Foridden for non-admin users.
+        /// force the member proposal acceptance. Can either be `Accepted`, `Rejected` or
+        /// `Pending`. Defaults to `Pending`. Foridden for non-admin users.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -205,7 +205,7 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// The region in which to obtain the V2 Glance client.
-        /// A Glance client is needed to manage Image members. If omitted, the `region`
+        /// A Glance client is needed to manage Image members. If omitted, the `Region`
         /// argument of the provider is used. Changing this creates a new resource.
         /// </summary>
         [Input("region")]
@@ -213,8 +213,8 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// The member proposal status. Optional if admin wants to
-        /// force the member proposal acceptance. Can either be `accepted`, `rejected` or
-        /// `pending`. Defaults to `pending`. Foridden for non-admin users.
+        /// force the member proposal acceptance. Can either be `Accepted`, `Rejected` or
+        /// `Pending`. Defaults to `Pending`. Foridden for non-admin users.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -247,7 +247,7 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// The region in which to obtain the V2 Glance client.
-        /// A Glance client is needed to manage Image members. If omitted, the `region`
+        /// A Glance client is needed to manage Image members. If omitted, the `Region`
         /// argument of the provider is used. Changing this creates a new resource.
         /// </summary>
         [Input("region")]
@@ -261,8 +261,8 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// The member proposal status. Optional if admin wants to
-        /// force the member proposal acceptance. Can either be `accepted`, `rejected` or
-        /// `pending`. Defaults to `pending`. Foridden for non-admin users.
+        /// force the member proposal acceptance. Can either be `Accepted`, `Rejected` or
+        /// `Pending`. Defaults to `Pending`. Foridden for non-admin users.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

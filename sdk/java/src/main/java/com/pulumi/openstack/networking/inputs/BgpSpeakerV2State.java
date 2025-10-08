@@ -55,7 +55,7 @@ public final class BgpSpeakerV2State extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A list of dictionaries containing the `destination` and
-     * `next_hop` for each route advertised by the BGP speaker. This attribute is
+     * `nextHop` for each route advertised by the BGP speaker. This attribute is
      * only populated after the BGP speaker has been created and has established BGP
      * sessions with its peers.
      * 
@@ -65,7 +65,7 @@ public final class BgpSpeakerV2State extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A list of dictionaries containing the `destination` and
-     * `next_hop` for each route advertised by the BGP speaker. This attribute is
+     * `nextHop` for each route advertised by the BGP speaker. This attribute is
      * only populated after the BGP speaker has been created and has established BGP
      * sessions with its peers.
      * 
@@ -274,7 +274,7 @@ public final class BgpSpeakerV2State extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param advertisedRoutes A list of dictionaries containing the `destination` and
-         * `next_hop` for each route advertised by the BGP speaker. This attribute is
+         * `nextHop` for each route advertised by the BGP speaker. This attribute is
          * only populated after the BGP speaker has been created and has established BGP
          * sessions with its peers.
          * 
@@ -288,7 +288,7 @@ public final class BgpSpeakerV2State extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param advertisedRoutes A list of dictionaries containing the `destination` and
-         * `next_hop` for each route advertised by the BGP speaker. This attribute is
+         * `nextHop` for each route advertised by the BGP speaker. This attribute is
          * only populated after the BGP speaker has been created and has established BGP
          * sessions with its peers.
          * 
@@ -301,7 +301,7 @@ public final class BgpSpeakerV2State extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param advertisedRoutes A list of dictionaries containing the `destination` and
-         * `next_hop` for each route advertised by the BGP speaker. This attribute is
+         * `nextHop` for each route advertised by the BGP speaker. This attribute is
          * only populated after the BGP speaker has been created and has established BGP
          * sessions with its peers.
          * 

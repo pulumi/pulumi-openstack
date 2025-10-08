@@ -25,7 +25,7 @@ public final class PortState extends com.pulumi.resources.ResourceArgs {
     /**
      * Administrative up/down status for the port
      * (must be `true` or `false` if provided). Changing this updates the
-     * `admin_state_up` of an existing port.
+     * `adminStateUp` of an existing port.
      * 
      */
     @Import(name="adminStateUp")
@@ -34,7 +34,7 @@ public final class PortState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Administrative up/down status for the port
      * (must be `true` or `false` if provided). Changing this updates the
-     * `admin_state_up` of an existing port.
+     * `adminStateUp` of an existing port.
      * 
      */
     public Optional<Output<Boolean>> adminStateUp() {
@@ -320,7 +320,7 @@ public final class PortState extends com.pulumi.resources.ResourceArgs {
     /**
      * If set to
      * `true`, then no security groups are applied to the port. If set to `false` and
-     * no `security_group_ids` are specified, then the port will yield to the default
+     * no `securityGroupIds` are specified, then the port will yield to the default
      * behavior of the Networking service, which is to usually apply the &#34;default&#34;
      * security group.
      * 
@@ -331,7 +331,7 @@ public final class PortState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return If set to
      * `true`, then no security groups are applied to the port. If set to `false` and
-     * no `security_group_ids` are specified, then the port will yield to the default
+     * no `securityGroupIds` are specified, then the port will yield to the default
      * behavior of the Networking service, which is to usually apply the &#34;default&#34;
      * security group.
      * 
@@ -520,7 +520,7 @@ public final class PortState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param adminStateUp Administrative up/down status for the port
          * (must be `true` or `false` if provided). Changing this updates the
-         * `admin_state_up` of an existing port.
+         * `adminStateUp` of an existing port.
          * 
          * @return builder
          * 
@@ -533,7 +533,7 @@ public final class PortState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param adminStateUp Administrative up/down status for the port
          * (must be `true` or `false` if provided). Changing this updates the
-         * `admin_state_up` of an existing port.
+         * `adminStateUp` of an existing port.
          * 
          * @return builder
          * 
@@ -995,7 +995,7 @@ public final class PortState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param noSecurityGroups If set to
          * `true`, then no security groups are applied to the port. If set to `false` and
-         * no `security_group_ids` are specified, then the port will yield to the default
+         * no `securityGroupIds` are specified, then the port will yield to the default
          * behavior of the Networking service, which is to usually apply the &#34;default&#34;
          * security group.
          * 
@@ -1010,7 +1010,7 @@ public final class PortState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param noSecurityGroups If set to
          * `true`, then no security groups are applied to the port. If set to `false` and
-         * no `security_group_ids` are specified, then the port will yield to the default
+         * no `securityGroupIds` are specified, then the port will yield to the default
          * behavior of the Networking service, which is to usually apply the &#34;default&#34;
          * security group.
          * 

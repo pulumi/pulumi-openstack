@@ -27,7 +27,7 @@ namespace Pulumi.OpenStack.KeyManager.Outputs
         public readonly string UpdatedAt;
         /// <summary>
         /// The list of user IDs, which are allowed to access the secret, when
-        /// `project_access` is set to `false`.
+        /// `ProjectAccess` is set to `False`.
         /// </summary>
         public readonly ImmutableArray<string> Users;
 

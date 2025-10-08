@@ -105,7 +105,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// <summary>
         /// The region in which to obtain the V1 Container Infra
         /// client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -133,7 +133,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// <summary>
         /// The region in which to obtain the V1 Container Infra
         /// client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

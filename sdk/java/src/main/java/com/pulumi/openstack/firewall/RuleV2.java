@@ -106,7 +106,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * The destination IP address on which the
-     * firewall rule operates. Changing this updates the `destination_ip_address`
+     * firewall rule operates. Changing this updates the `destinationIpAddress`
      * of an existing firewall rule.
      * 
      */
@@ -115,7 +115,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The destination IP address on which the
-     * firewall rule operates. Changing this updates the `destination_ip_address`
+     * firewall rule operates. Changing this updates the `destinationIpAddress`
      * of an existing firewall rule.
      * 
      */
@@ -124,7 +124,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * The destination port on which the firewall
-     * rule operates. Changing this updates the `destination_port` of an existing
+     * rule operates. Changing this updates the `destinationPort` of an existing
      * firewall rule. Require not `any` or empty protocol.
      * 
      */
@@ -133,7 +133,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The destination port on which the firewall
-     * rule operates. Changing this updates the `destination_port` of an existing
+     * rule operates. Changing this updates the `destinationPort` of an existing
      * firewall rule. Require not `any` or empty protocol.
      * 
      */
@@ -160,7 +160,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * IP version, either 4 or 6. Changing this
-     * updates the `ip_version` of an existing firewall rule. Default is `4`.
+     * updates the `ipVersion` of an existing firewall rule. Default is `4`.
      * 
      */
     @Export(name="ipVersion", refs={Integer.class}, tree="[0]")
@@ -168,7 +168,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return IP version, either 4 or 6. Changing this
-     * updates the `ip_version` of an existing firewall rule. Default is `4`.
+     * updates the `ipVersion` of an existing firewall rule. Default is `4`.
      * 
      */
     public Output<Optional<Integer>> ipVersion() {
@@ -192,7 +192,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * This argument conflicts and is interchangeable
-     * with `tenant_id`. The owner of the firewall rule. Required if admin wants
+     * with `tenantId`. The owner of the firewall rule. Required if admin wants
      * to create a firewall rule for another project. Changing this creates a new
      * firewall rule.
      * 
@@ -202,7 +202,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return This argument conflicts and is interchangeable
-     * with `tenant_id`. The owner of the firewall rule. Required if admin wants
+     * with `tenantId`. The owner of the firewall rule. Required if admin wants
      * to create a firewall rule for another project. Changing this creates a new
      * firewall rule.
      * 
@@ -211,7 +211,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
         return this.projectId;
     }
     /**
-     * (Optional; Required if `source_port` or `destination_port` is not
+     * (Optional; Required if `sourcePort` or `destinationPort` is not
      * empty) The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
      * `protocol` of an existing firewall rule. Default is `any`.
@@ -221,7 +221,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> protocol;
 
     /**
-     * @return (Optional; Required if `source_port` or `destination_port` is not
+     * @return (Optional; Required if `sourcePort` or `destinationPort` is not
      * empty) The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
      * `protocol` of an existing firewall rule. Default is `any`.
@@ -272,7 +272,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * The source IP address on which the firewall
-     * rule operates. Changing this updates the `source_ip_address` of an existing
+     * rule operates. Changing this updates the `sourceIpAddress` of an existing
      * firewall rule.
      * 
      */
@@ -281,7 +281,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The source IP address on which the firewall
-     * rule operates. Changing this updates the `source_ip_address` of an existing
+     * rule operates. Changing this updates the `sourceIpAddress` of an existing
      * firewall rule.
      * 
      */
@@ -290,7 +290,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * The source port on which the firewall
-     * rule operates. Changing this updates the `source_port` of an existing
+     * rule operates. Changing this updates the `sourcePort` of an existing
      * firewall rule. Require not `any` or empty protocol.
      * 
      */
@@ -299,7 +299,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The source port on which the firewall
-     * rule operates. Changing this updates the `source_port` of an existing
+     * rule operates. Changing this updates the `sourcePort` of an existing
      * firewall rule. Require not `any` or empty protocol.
      * 
      */
@@ -308,7 +308,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * This argument conflicts and is interchangeable
-     * with `project_id`. The owner of the firewall rule. Required if admin wants
+     * with `projectId`. The owner of the firewall rule. Required if admin wants
      * to create a firewall rule for another tenant. Changing this creates a new
      * firewall rule.
      * 
@@ -318,7 +318,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return This argument conflicts and is interchangeable
-     * with `project_id`. The owner of the firewall rule. Required if admin wants
+     * with `projectId`. The owner of the firewall rule. Required if admin wants
      * to create a firewall rule for another tenant. Changing this creates a new
      * firewall rule.
      * 

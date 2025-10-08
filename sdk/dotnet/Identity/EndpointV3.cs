@@ -53,15 +53,15 @@ namespace Pulumi.OpenStack.Identity
     public partial class EndpointV3 : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The endpoint region. The `region` and
-        /// `endpoint_region` can be different.
+        /// The endpoint region. The `Region` and
+        /// `EndpointRegion` can be different.
         /// </summary>
         [Output("endpointRegion")]
         public Output<string> EndpointRegion { get; private set; } = null!;
 
         /// <summary>
-        /// The endpoint interface. Valid values are `public`,
-        /// `internal` and `admin`. Default value is `public`
+        /// The endpoint interface. Valid values are `Public`,
+        /// `Internal` and `Admin`. Default value is `Public`
         /// </summary>
         [Output("interface")]
         public Output<string?> Interface { get; private set; } = null!;
@@ -74,7 +74,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -150,15 +150,15 @@ namespace Pulumi.OpenStack.Identity
     public sealed class EndpointV3Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The endpoint region. The `region` and
-        /// `endpoint_region` can be different.
+        /// The endpoint region. The `Region` and
+        /// `EndpointRegion` can be different.
         /// </summary>
         [Input("endpointRegion", required: true)]
         public Input<string> EndpointRegion { get; set; } = null!;
 
         /// <summary>
-        /// The endpoint interface. Valid values are `public`,
-        /// `internal` and `admin`. Default value is `public`
+        /// The endpoint interface. Valid values are `Public`,
+        /// `Internal` and `Admin`. Default value is `Public`
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
@@ -171,7 +171,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -197,15 +197,15 @@ namespace Pulumi.OpenStack.Identity
     public sealed class EndpointV3State : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The endpoint region. The `region` and
-        /// `endpoint_region` can be different.
+        /// The endpoint region. The `Region` and
+        /// `EndpointRegion` can be different.
         /// </summary>
         [Input("endpointRegion")]
         public Input<string>? EndpointRegion { get; set; }
 
         /// <summary>
-        /// The endpoint interface. Valid values are `public`,
-        /// `internal` and `admin`. Default value is `public`
+        /// The endpoint interface. Valid values are `Public`,
+        /// `Internal` and `Admin`. Default value is `Public`
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
@@ -218,7 +218,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

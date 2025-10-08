@@ -74,7 +74,7 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// The region in which to obtain the V2 Glance client.
         /// A Glance client is needed to manage Image memberships. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// membership.
         /// </summary>
         [Output("region")]
@@ -88,7 +88,7 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// The membership proposal status. Can either be
-        /// `accepted`, `rejected` or `pending`.
+        /// `Accepted`, `Rejected` or `Pending`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -161,7 +161,7 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// The region in which to obtain the V2 Glance client.
         /// A Glance client is needed to manage Image memberships. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// membership.
         /// </summary>
         [Input("region")]
@@ -169,7 +169,7 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// The membership proposal status. Can either be
-        /// `accepted`, `rejected` or `pending`.
+        /// `Accepted`, `Rejected` or `Pending`.
         /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
@@ -204,7 +204,7 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// The region in which to obtain the V2 Glance client.
         /// A Glance client is needed to manage Image memberships. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// membership.
         /// </summary>
         [Input("region")]
@@ -218,7 +218,7 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// The membership proposal status. Can either be
-        /// `accepted`, `rejected` or `pending`.
+        /// `Accepted`, `Rejected` or `Pending`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

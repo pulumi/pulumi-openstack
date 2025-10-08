@@ -76,7 +76,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The region in which to obtain the V2 networking client.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new address group.
         /// </summary>
         [Output("region")]
@@ -163,7 +163,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The region in which to obtain the V2 networking client.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new address group.
         /// </summary>
         [Input("region")]
@@ -212,7 +212,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The region in which to obtain the V2 networking client.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new address group.
         /// </summary>
         [Input("region")]

@@ -120,7 +120,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The password of basic auth to download
-     * `image_source_url`.
+     * `imageSourceUrl`.
      * 
      */
     @Import(name="imageSourcePassword")
@@ -128,7 +128,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The password of basic auth to download
-     * `image_source_url`.
+     * `imageSourceUrl`.
      * 
      */
     public Optional<Output<String>> imageSourcePassword() {
@@ -137,9 +137,9 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * This is the url of the raw image. If
-     * `web_download` is not used, then the image will be downloaded in the
-     * `image_cache_path` before being uploaded to Glance. Conflicts with
-     * `local_file_path`.
+     * `webDownload` is not used, then the image will be downloaded in the
+     * `imageCachePath` before being uploaded to Glance. Conflicts with
+     * `localFilePath`.
      * 
      */
     @Import(name="imageSourceUrl")
@@ -147,9 +147,9 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return This is the url of the raw image. If
-     * `web_download` is not used, then the image will be downloaded in the
-     * `image_cache_path` before being uploaded to Glance. Conflicts with
-     * `local_file_path`.
+     * `webDownload` is not used, then the image will be downloaded in the
+     * `imageCachePath` before being uploaded to Glance. Conflicts with
+     * `localFilePath`.
      * 
      */
     public Optional<Output<String>> imageSourceUrl() {
@@ -158,7 +158,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The username of basic auth to download
-     * `image_source_url`.
+     * `imageSourceUrl`.
      * 
      */
     @Import(name="imageSourceUsername")
@@ -166,7 +166,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The username of basic auth to download
-     * `image_source_url`.
+     * `imageSourceUrl`.
      * 
      */
     public Optional<Output<String>> imageSourceUsername() {
@@ -175,8 +175,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * This is the filepath of the raw image file
-     * that will be uploaded to Glance. Conflicts with `image_source_url` and
-     * `web_download`.
+     * that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
+     * `webDownload`.
      * 
      */
     @Import(name="localFilePath")
@@ -184,8 +184,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return This is the filepath of the raw image file
-     * that will be uploaded to Glance. Conflicts with `image_source_url` and
-     * `web_download`.
+     * that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
+     * `webDownload`.
      * 
      */
     public Optional<Output<String>> localFilePath() {
@@ -317,8 +317,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * If false, the checksum will not be verified
-     * once the image is finished uploading. Conflicts with `web_download`. Defaults
-     * to true when not using `web_download`.
+     * once the image is finished uploading. Conflicts with `webDownload`. Defaults
+     * to true when not using `webDownload`.
      * 
      */
     @Import(name="verifyChecksum")
@@ -326,8 +326,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return If false, the checksum will not be verified
-     * once the image is finished uploading. Conflicts with `web_download`. Defaults
-     * to true when not using `web_download`.
+     * once the image is finished uploading. Conflicts with `webDownload`. Defaults
+     * to true when not using `webDownload`.
      * 
      */
     public Optional<Output<Boolean>> verifyChecksum() {
@@ -356,7 +356,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * If true, the &#34;web-download&#34; import method will be
      * used to let Openstack download the image directly from the remote source.
-     * Conflicts with `local_file_path`. Defaults to false.
+     * Conflicts with `localFilePath`. Defaults to false.
      * 
      */
     @Import(name="webDownload")
@@ -365,7 +365,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return If true, the &#34;web-download&#34; import method will be
      * used to let Openstack download the image directly from the remote source.
-     * Conflicts with `local_file_path`. Defaults to false.
+     * Conflicts with `localFilePath`. Defaults to false.
      * 
      */
     public Optional<Output<Boolean>> webDownload() {
@@ -547,7 +547,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param imageSourcePassword The password of basic auth to download
-         * `image_source_url`.
+         * `imageSourceUrl`.
          * 
          * @return builder
          * 
@@ -559,7 +559,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param imageSourcePassword The password of basic auth to download
-         * `image_source_url`.
+         * `imageSourceUrl`.
          * 
          * @return builder
          * 
@@ -570,9 +570,9 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param imageSourceUrl This is the url of the raw image. If
-         * `web_download` is not used, then the image will be downloaded in the
-         * `image_cache_path` before being uploaded to Glance. Conflicts with
-         * `local_file_path`.
+         * `webDownload` is not used, then the image will be downloaded in the
+         * `imageCachePath` before being uploaded to Glance. Conflicts with
+         * `localFilePath`.
          * 
          * @return builder
          * 
@@ -584,9 +584,9 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param imageSourceUrl This is the url of the raw image. If
-         * `web_download` is not used, then the image will be downloaded in the
-         * `image_cache_path` before being uploaded to Glance. Conflicts with
-         * `local_file_path`.
+         * `webDownload` is not used, then the image will be downloaded in the
+         * `imageCachePath` before being uploaded to Glance. Conflicts with
+         * `localFilePath`.
          * 
          * @return builder
          * 
@@ -597,7 +597,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param imageSourceUsername The username of basic auth to download
-         * `image_source_url`.
+         * `imageSourceUrl`.
          * 
          * @return builder
          * 
@@ -609,7 +609,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param imageSourceUsername The username of basic auth to download
-         * `image_source_url`.
+         * `imageSourceUrl`.
          * 
          * @return builder
          * 
@@ -620,8 +620,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param localFilePath This is the filepath of the raw image file
-         * that will be uploaded to Glance. Conflicts with `image_source_url` and
-         * `web_download`.
+         * that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
+         * `webDownload`.
          * 
          * @return builder
          * 
@@ -633,8 +633,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param localFilePath This is the filepath of the raw image file
-         * that will be uploaded to Glance. Conflicts with `image_source_url` and
-         * `web_download`.
+         * that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
+         * `webDownload`.
          * 
          * @return builder
          * 
@@ -821,8 +821,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param verifyChecksum If false, the checksum will not be verified
-         * once the image is finished uploading. Conflicts with `web_download`. Defaults
-         * to true when not using `web_download`.
+         * once the image is finished uploading. Conflicts with `webDownload`. Defaults
+         * to true when not using `webDownload`.
          * 
          * @return builder
          * 
@@ -834,8 +834,8 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param verifyChecksum If false, the checksum will not be verified
-         * once the image is finished uploading. Conflicts with `web_download`. Defaults
-         * to true when not using `web_download`.
+         * once the image is finished uploading. Conflicts with `webDownload`. Defaults
+         * to true when not using `webDownload`.
          * 
          * @return builder
          * 
@@ -872,7 +872,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param webDownload If true, the &#34;web-download&#34; import method will be
          * used to let Openstack download the image directly from the remote source.
-         * Conflicts with `local_file_path`. Defaults to false.
+         * Conflicts with `localFilePath`. Defaults to false.
          * 
          * @return builder
          * 
@@ -885,7 +885,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param webDownload If true, the &#34;web-download&#34; import method will be
          * used to let Openstack download the image directly from the remote source.
-         * Conflicts with `local_file_path`. Defaults to false.
+         * Conflicts with `localFilePath`. Defaults to false.
          * 
          * @return builder
          * 

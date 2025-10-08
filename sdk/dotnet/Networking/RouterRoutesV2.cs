@@ -74,7 +74,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ## Notes
     /// 
-    /// The `next_hop` IP address must be directly reachable from the router at the
+    /// The `NextHop` IP address must be directly reachable from the router at the
     /// ``openstack.networking.RouterRoutesV2`` resource creation time.  You can
     /// ensure that by explicitly specifying a dependency on the
     /// ``openstack.networking.RouterInterface`` resource that connects the next
@@ -94,7 +94,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to configure routing entres on a router. If
-        /// omitted, the `region` argument of the provider is used. Changing this creates
+        /// omitted, the `Region` argument of the provider is used. Changing this creates
         /// new routing entries.
         /// </summary>
         [Output("region")]
@@ -162,7 +162,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to configure routing entres on a router. If
-        /// omitted, the `region` argument of the provider is used. Changing this creates
+        /// omitted, the `Region` argument of the provider is used. Changing this creates
         /// new routing entries.
         /// </summary>
         [Input("region")]
@@ -198,7 +198,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to configure routing entres on a router. If
-        /// omitted, the `region` argument of the provider is used. Changing this creates
+        /// omitted, the `Region` argument of the provider is used. Changing this creates
         /// new routing entries.
         /// </summary>
         [Input("region")]
