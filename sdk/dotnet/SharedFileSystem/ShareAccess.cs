@@ -163,7 +163,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public Output<string> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// The access level to the share. Can either be `rw` or `ro`.
+        /// The access level to the share. Can either be `Rw` or `Ro`.
         /// </summary>
         [Output("accessLevel")]
         public Output<string> AccessLevel { get; private set; } = null!;
@@ -254,7 +254,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     public sealed class ShareAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access level to the share. Can either be `rw` or `ro`.
+        /// The access level to the share. Can either be `Rw` or `Ro`.
         /// </summary>
         [Input("accessLevel", required: true)]
         public Input<string> AccessLevel { get; set; } = null!;
@@ -313,7 +313,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         }
 
         /// <summary>
-        /// The access level to the share. Can either be `rw` or `ro`.
+        /// The access level to the share. Can either be `Rw` or `Ro`.
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }

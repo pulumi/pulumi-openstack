@@ -51,7 +51,7 @@ namespace Pulumi.OpenStack.Identity
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The service status. Defaults to `true`.
+        /// The service status. Defaults to `True`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -128,7 +128,7 @@ namespace Pulumi.OpenStack.Identity
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The service status. Defaults to `true`.
+        /// The service status. Defaults to `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -141,7 +141,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -167,7 +167,7 @@ namespace Pulumi.OpenStack.Identity
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The service status. Defaults to `true`.
+        /// The service status. Defaults to `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -180,7 +180,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

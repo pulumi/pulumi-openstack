@@ -122,7 +122,7 @@ public class BgpSpeakerV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * A list of dictionaries containing the `destination` and
-     * `next_hop` for each route advertised by the BGP speaker. This attribute is
+     * `nextHop` for each route advertised by the BGP speaker. This attribute is
      * only populated after the BGP speaker has been created and has established BGP
      * sessions with its peers.
      * 
@@ -132,7 +132,7 @@ public class BgpSpeakerV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A list of dictionaries containing the `destination` and
-     * `next_hop` for each route advertised by the BGP speaker. This attribute is
+     * `nextHop` for each route advertised by the BGP speaker. This attribute is
      * only populated after the BGP speaker has been created and has established BGP
      * sessions with its peers.
      * 

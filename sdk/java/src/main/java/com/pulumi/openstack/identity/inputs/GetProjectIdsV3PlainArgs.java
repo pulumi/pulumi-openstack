@@ -73,7 +73,7 @@ public final class GetProjectIdsV3PlainArgs extends com.pulumi.resources.InvokeA
     /**
      * The regular expression of the name of the project.
      * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
-     * `name_regex` filtering does by client on the result of OpenStack search
+     * `nameRegex` filtering does by client on the result of OpenStack search
      * query.
      * 
      */
@@ -83,7 +83,7 @@ public final class GetProjectIdsV3PlainArgs extends com.pulumi.resources.InvokeA
     /**
      * @return The regular expression of the name of the project.
      * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
-     * `name_regex` filtering does by client on the result of OpenStack search
+     * `nameRegex` filtering does by client on the result of OpenStack search
      * query.
      * 
      */
@@ -211,7 +211,7 @@ public final class GetProjectIdsV3PlainArgs extends com.pulumi.resources.InvokeA
         /**
          * @param nameRegex The regular expression of the name of the project.
          * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
-         * `name_regex` filtering does by client on the result of OpenStack search
+         * `nameRegex` filtering does by client on the result of OpenStack search
          * query.
          * 
          * @return builder

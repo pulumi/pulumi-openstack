@@ -65,7 +65,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The region in which to create the quota. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates new quota.
         /// </summary>
         [Output("region")]
@@ -189,7 +189,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The region in which to create the quota. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates new quota.
         /// </summary>
         [Input("region")]
@@ -275,7 +275,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The region in which to create the quota. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates new quota.
         /// </summary>
         [Input("region")]

@@ -180,7 +180,7 @@ public class PortSecGroupAssociate extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether to replace or append the list of security
-     * groups, specified in the `security_group_ids`. Defaults to `false`.
+     * groups, specified in the `securityGroupIds`. Defaults to `false`.
      * 
      */
     @Export(name="enforce", refs={Boolean.class}, tree="[0]")
@@ -188,7 +188,7 @@ public class PortSecGroupAssociate extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether to replace or append the list of security
-     * groups, specified in the `security_group_ids`. Defaults to `false`.
+     * groups, specified in the `securityGroupIds`. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> enforce() {

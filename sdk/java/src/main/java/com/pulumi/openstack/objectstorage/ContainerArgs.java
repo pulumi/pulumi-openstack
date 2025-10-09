@@ -221,9 +221,9 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
      * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
      * release
      * notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
-     * and a cloud administrator must have set the `allow_object_versioning = true`
+     * and a cloud administrator must have set the `allowObjectVersioning = true`
      * configuration option in Swift. If you cannot set this versioning type, you
-     * may want to consider using `versioning_legacy` instead.
+     * may want to consider using `versioningLegacy` instead.
      * 
      */
     @Import(name="versioning")
@@ -235,9 +235,9 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
      * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
      * release
      * notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
-     * and a cloud administrator must have set the `allow_object_versioning = true`
+     * and a cloud administrator must have set the `allowObjectVersioning = true`
      * configuration option in Swift. If you cannot set this versioning type, you
-     * may want to consider using `versioning_legacy` instead.
+     * may want to consider using `versioningLegacy` instead.
      * 
      */
     public Optional<Output<Boolean>> versioning() {
@@ -574,9 +574,9 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
          * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
          * release
          * notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
-         * and a cloud administrator must have set the `allow_object_versioning = true`
+         * and a cloud administrator must have set the `allowObjectVersioning = true`
          * configuration option in Swift. If you cannot set this versioning type, you
-         * may want to consider using `versioning_legacy` instead.
+         * may want to consider using `versioningLegacy` instead.
          * 
          * @return builder
          * 
@@ -592,9 +592,9 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
          * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
          * release
          * notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
-         * and a cloud administrator must have set the `allow_object_versioning = true`
+         * and a cloud administrator must have set the `allowObjectVersioning = true`
          * configuration option in Swift. If you cannot set this versioning type, you
-         * may want to consider using `versioning_legacy` instead.
+         * may want to consider using `versioningLegacy` instead.
          * 
          * @return builder
          * 

@@ -129,7 +129,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// <summary>
         /// The region in which to obtain the V2 Shared File System
         /// client. A Shared File System client is needed to read a share. If omitted,
-        /// the `region` argument of the provider is used.
+        /// the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -147,11 +147,11 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public string? SnapshotId { get; set; }
 
         /// <summary>
-        /// A share status filter. A valid value is `creating`,
-        /// `error`, `available`, `deleting`, `error_deleting`, `manage_starting`,
-        /// `manage_error`, `unmanage_starting`, `unmanage_error`, `unmanaged`,
-        /// `extending`, `extending_error`, `shrinking`, `shrinking_error`, or
-        /// `shrinking_possible_data_loss_error`.
+        /// A share status filter. A valid value is `Creating`,
+        /// `Error`, `Available`, `Deleting`, `ErrorDeleting`, `ManageStarting`,
+        /// `ManageError`, `UnmanageStarting`, `UnmanageError`, `Unmanaged`,
+        /// `Extending`, `ExtendingError`, `Shrinking`, `ShrinkingError`, or
+        /// `ShrinkingPossibleDataLossError`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -206,7 +206,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// <summary>
         /// The region in which to obtain the V2 Shared File System
         /// client. A Shared File System client is needed to read a share. If omitted,
-        /// the `region` argument of the provider is used.
+        /// the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -224,11 +224,11 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// A share status filter. A valid value is `creating`,
-        /// `error`, `available`, `deleting`, `error_deleting`, `manage_starting`,
-        /// `manage_error`, `unmanage_starting`, `unmanage_error`, `unmanaged`,
-        /// `extending`, `extending_error`, `shrinking`, `shrinking_error`, or
-        /// `shrinking_possible_data_loss_error`.
+        /// A share status filter. A valid value is `Creating`,
+        /// `Error`, `Available`, `Deleting`, `ErrorDeleting`, `ManageStarting`,
+        /// `ManageError`, `UnmanageStarting`, `UnmanageError`, `Unmanaged`,
+        /// `Extending`, `ExtendingError`, `Shrinking`, `ShrinkingError`, or
+        /// `ShrinkingPossibleDataLossError`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

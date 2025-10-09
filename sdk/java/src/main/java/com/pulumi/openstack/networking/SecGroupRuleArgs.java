@@ -196,7 +196,7 @@ public final class SecGroupRuleArgs extends com.pulumi.resources.ResourceArgs {
      * The remote address group id, the value
      * needs to be an OpenStack ID of an address group in the same tenant. Changing
      * this creates a new security group rule. This argument is mutually exclusive
-     * with `remote_ip_prefix` and `remote_group_id`.
+     * with `remoteIpPrefix` and `remoteGroupId`.
      * 
      */
     @Import(name="remoteAddressGroupId")
@@ -206,7 +206,7 @@ public final class SecGroupRuleArgs extends com.pulumi.resources.ResourceArgs {
      * @return The remote address group id, the value
      * needs to be an OpenStack ID of an address group in the same tenant. Changing
      * this creates a new security group rule. This argument is mutually exclusive
-     * with `remote_ip_prefix` and `remote_group_id`.
+     * with `remoteIpPrefix` and `remoteGroupId`.
      * 
      */
     public Optional<Output<String>> remoteAddressGroupId() {
@@ -543,7 +543,7 @@ public final class SecGroupRuleArgs extends com.pulumi.resources.ResourceArgs {
          * @param remoteAddressGroupId The remote address group id, the value
          * needs to be an OpenStack ID of an address group in the same tenant. Changing
          * this creates a new security group rule. This argument is mutually exclusive
-         * with `remote_ip_prefix` and `remote_group_id`.
+         * with `remoteIpPrefix` and `remoteGroupId`.
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class SecGroupRuleArgs extends com.pulumi.resources.ResourceArgs {
          * @param remoteAddressGroupId The remote address group id, the value
          * needs to be an OpenStack ID of an address group in the same tenant. Changing
          * this creates a new security group rule. This argument is mutually exclusive
-         * with `remote_ip_prefix` and `remote_group_id`.
+         * with `remoteIpPrefix` and `remoteGroupId`.
          * 
          * @return builder
          * 

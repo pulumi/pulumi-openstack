@@ -70,35 +70,35 @@ import javax.annotation.Nullable;
  * 
  * * `region` - See Argument Reference above.
  * * `name` - See Argument Reference above.
- * * `project_id` - See Argument Reference above.
- * * `created_at` - The time at which cluster was created.
- * * `updated_at` - The time at which cluster was created.
- * * `api_address` - COE API address.
- * * `coe_version` - COE software version.
- * * `cluster_template_id` - See Argument Reference above.
- * * `container_version` - Container software version.
- * * `create_timeout` - See Argument Reference above.
- * * `discovery_url` - See Argument Reference above.
- * * `docker_volume_size` - See Argument Reference above.
+ * * `projectId` - See Argument Reference above.
+ * * `createdAt` - The time at which cluster was created.
+ * * `updatedAt` - The time at which cluster was created.
+ * * `apiAddress` - COE API address.
+ * * `coeVersion` - COE software version.
+ * * `clusterTemplateId` - See Argument Reference above.
+ * * `containerVersion` - Container software version.
+ * * `createTimeout` - See Argument Reference above.
+ * * `discoveryUrl` - See Argument Reference above.
+ * * `dockerVolumeSize` - See Argument Reference above.
  * * `flavor` - See Argument Reference above.
- * * `master_flavor` - See Argument Reference above.
+ * * `masterFlavor` - See Argument Reference above.
  * * `keypair` - See Argument Reference above.
  * * `labels` - See Argument Reference above.
- * * `merge_labels` - See Argument Reference above.
- * * `master_count` - See Argument Reference above.
- * * `node_count` - See Argument Reference above.
- * * `fixed_network` - See Argument Reference above.
- * * `fixed_subnet` - See Argument Reference above.
- * * `floating_ip_enabled` - See Argument Reference above.
- * * `master_addresses` - IP addresses of the master node of the cluster.
- * * `node_addresses` - IP addresses of the node of the cluster.
- * * `stack_id` - UUID of the Orchestration service stack.
+ * * `mergeLabels` - See Argument Reference above.
+ * * `masterCount` - See Argument Reference above.
+ * * `nodeCount` - See Argument Reference above.
+ * * `fixedNetwork` - See Argument Reference above.
+ * * `fixedSubnet` - See Argument Reference above.
+ * * `floatingIpEnabled` - See Argument Reference above.
+ * * `masterAddresses` - IP addresses of the master node of the cluster.
+ * * `nodeAddresses` - IP addresses of the node of the cluster.
+ * * `stackId` - UUID of the Orchestration service stack.
  * * `kubeconfig` - The Kubernetes cluster&#39;s credentials
- *   * `raw_config` - The raw kubeconfig file
+ *   * `rawConfig` - The raw kubeconfig file
  *   * `host` - The cluster&#39;s API server URL
- *   * `cluster_ca_certificate` - The cluster&#39;s CA certificate
- *   * `client_key` - The client&#39;s RSA key
- *   * `client_certificate` - The client&#39;s certificate
+ *   * `clusterCaCertificate` - The cluster&#39;s CA certificate
+ *   * `clientKey` - The client&#39;s RSA key
+ *   * `clientCertificate` - The client&#39;s certificate
  * 
  * ## Import
  * 

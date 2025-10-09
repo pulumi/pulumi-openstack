@@ -79,8 +79,8 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The network DNS domain. Available, when Neutron DNS
-     * extension is enabled. The `dns_domain` of a network in conjunction with the
-     * `dns_name` attribute of its ports will be published in an external DNS
+     * extension is enabled. The `dnsDomain` of a network in conjunction with the
+     * `dnsName` attribute of its ports will be published in an external DNS
      * service when Neutron is configured to integrate with such a service.
      * 
      */
@@ -89,8 +89,8 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The network DNS domain. Available, when Neutron DNS
-     * extension is enabled. The `dns_domain` of a network in conjunction with the
-     * `dns_name` attribute of its ports will be published in an external DNS
+     * extension is enabled. The `dnsDomain` of a network in conjunction with the
+     * `dnsName` attribute of its ports will be published in an external DNS
      * service when Neutron is configured to integrate with such a service.
      * 
      */
@@ -287,7 +287,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Specifies whether the network resource has the
      * VLAN transparent attribute set. Valid values are true and false. Defaults to
-     * false. Changing this updates the `transparent_vlan` attribute of the existing
+     * false. Changing this updates the `transparentVlan` attribute of the existing
      * network.
      * 
      */
@@ -297,7 +297,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Specifies whether the network resource has the
      * VLAN transparent attribute set. Valid values are true and false. Defaults to
-     * false. Changing this updates the `transparent_vlan` attribute of the existing
+     * false. Changing this updates the `transparentVlan` attribute of the existing
      * network.
      * 
      */
@@ -449,8 +449,8 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dnsDomain The network DNS domain. Available, when Neutron DNS
-         * extension is enabled. The `dns_domain` of a network in conjunction with the
-         * `dns_name` attribute of its ports will be published in an external DNS
+         * extension is enabled. The `dnsDomain` of a network in conjunction with the
+         * `dnsName` attribute of its ports will be published in an external DNS
          * service when Neutron is configured to integrate with such a service.
          * 
          * @return builder
@@ -463,8 +463,8 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dnsDomain The network DNS domain. Available, when Neutron DNS
-         * extension is enabled. The `dns_domain` of a network in conjunction with the
-         * `dns_name` attribute of its ports will be published in an external DNS
+         * extension is enabled. The `dnsDomain` of a network in conjunction with the
+         * `dnsName` attribute of its ports will be published in an external DNS
          * service when Neutron is configured to integrate with such a service.
          * 
          * @return builder
@@ -746,7 +746,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param transparentVlan Specifies whether the network resource has the
          * VLAN transparent attribute set. Valid values are true and false. Defaults to
-         * false. Changing this updates the `transparent_vlan` attribute of the existing
+         * false. Changing this updates the `transparentVlan` attribute of the existing
          * network.
          * 
          * @return builder
@@ -760,7 +760,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param transparentVlan Specifies whether the network resource has the
          * VLAN transparent attribute set. Valid values are true and false. Defaults to
-         * false. Changing this updates the `transparent_vlan` attribute of the existing
+         * false. Changing this updates the `transparentVlan` attribute of the existing
          * network.
          * 
          * @return builder

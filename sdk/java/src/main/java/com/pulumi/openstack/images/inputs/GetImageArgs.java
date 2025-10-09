@@ -100,7 +100,7 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The name of the image. Cannot be used simultaneously with
-     * `name_regex`.
+     * `nameRegex`.
      * 
      */
     @Import(name="name")
@@ -108,7 +108,7 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The name of the image. Cannot be used simultaneously with
-     * `name_regex`.
+     * `nameRegex`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -118,7 +118,7 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The regular expressian of the name of the image.
      * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
-     * `name_regex` filtering does by client on the result of OpenStack search
+     * `nameRegex` filtering does by client on the result of OpenStack search
      * query.
      * 
      */
@@ -128,7 +128,7 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return The regular expressian of the name of the image.
      * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
-     * `name_regex` filtering does by client on the result of OpenStack search
+     * `nameRegex` filtering does by client on the result of OpenStack search
      * query.
      * 
      */
@@ -445,7 +445,7 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param name The name of the image. Cannot be used simultaneously with
-         * `name_regex`.
+         * `nameRegex`.
          * 
          * @return builder
          * 
@@ -457,7 +457,7 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param name The name of the image. Cannot be used simultaneously with
-         * `name_regex`.
+         * `nameRegex`.
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param nameRegex The regular expressian of the name of the image.
          * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
-         * `name_regex` filtering does by client on the result of OpenStack search
+         * `nameRegex` filtering does by client on the result of OpenStack search
          * query.
          * 
          * @return builder
@@ -483,7 +483,7 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param nameRegex The regular expressian of the name of the image.
          * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
-         * `name_regex` filtering does by client on the result of OpenStack search
+         * `nameRegex` filtering does by client on the result of OpenStack search
          * query.
          * 
          * @return builder

@@ -60,7 +60,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// A list of ALPN protocols. Available protocols:
-        /// `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
+        /// `http/1.0`, `http/1.1`, `H2`. Supported only in **Octavia minor version &gt;=
         /// 2.24**.
         /// </summary>
         [Output("alpnProtocols")]
@@ -68,7 +68,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The reference of the key manager service
-        /// secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
+        /// secret containing a PEM format CA certificate bundle for `TlsEnabled` pools.
         /// Supported only in **Octavia minor version &gt;= 2.8**.
         /// </summary>
         [Output("caTlsContainerRef")]
@@ -76,7 +76,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The reference of the key manager service
-        /// secret containing a PEM format CA revocation list file for `tls_enabled`
+        /// secret containing a PEM format CA revocation list file for `TlsEnabled`
         /// pools. Supported only in **Octavia minor version &gt;= 2.8**.
         /// </summary>
         [Output("crlContainerRef")]
@@ -136,7 +136,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
-        /// A Networking client is needed to create a pool. If omitted, the `region`
+        /// A Networking client is needed to create a pool. If omitted, the `Region`
         /// argument of the provider is used. Changing this creates a new pool.
         /// </summary>
         [Output("region")]
@@ -164,7 +164,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The reference to the key manager service
-        /// secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
+        /// secret containing a PKCS12 format certificate/key bundle for `TlsEnabled`
         /// pools for TLS client authentication to the member servers. Supported only in
         /// **Octavia minor version &gt;= 2.8**.
         /// </summary>
@@ -245,7 +245,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// A list of ALPN protocols. Available protocols:
-        /// `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
+        /// `http/1.0`, `http/1.1`, `H2`. Supported only in **Octavia minor version &gt;=
         /// 2.24**.
         /// </summary>
         public InputList<string> AlpnProtocols
@@ -256,7 +256,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The reference of the key manager service
-        /// secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
+        /// secret containing a PEM format CA certificate bundle for `TlsEnabled` pools.
         /// Supported only in **Octavia minor version &gt;= 2.8**.
         /// </summary>
         [Input("caTlsContainerRef")]
@@ -264,7 +264,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The reference of the key manager service
-        /// secret containing a PEM format CA revocation list file for `tls_enabled`
+        /// secret containing a PEM format CA revocation list file for `TlsEnabled`
         /// pools. Supported only in **Octavia minor version &gt;= 2.8**.
         /// </summary>
         [Input("crlContainerRef")]
@@ -324,7 +324,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
-        /// A Networking client is needed to create a pool. If omitted, the `region`
+        /// A Networking client is needed to create a pool. If omitted, the `Region`
         /// argument of the provider is used. Changing this creates a new pool.
         /// </summary>
         [Input("region")]
@@ -357,7 +357,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The reference to the key manager service
-        /// secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
+        /// secret containing a PKCS12 format certificate/key bundle for `TlsEnabled`
         /// pools for TLS client authentication to the member servers. Supported only in
         /// **Octavia minor version &gt;= 2.8**.
         /// </summary>
@@ -406,7 +406,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// A list of ALPN protocols. Available protocols:
-        /// `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
+        /// `http/1.0`, `http/1.1`, `H2`. Supported only in **Octavia minor version &gt;=
         /// 2.24**.
         /// </summary>
         public InputList<string> AlpnProtocols
@@ -417,7 +417,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The reference of the key manager service
-        /// secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
+        /// secret containing a PEM format CA certificate bundle for `TlsEnabled` pools.
         /// Supported only in **Octavia minor version &gt;= 2.8**.
         /// </summary>
         [Input("caTlsContainerRef")]
@@ -425,7 +425,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The reference of the key manager service
-        /// secret containing a PEM format CA revocation list file for `tls_enabled`
+        /// secret containing a PEM format CA revocation list file for `TlsEnabled`
         /// pools. Supported only in **Octavia minor version &gt;= 2.8**.
         /// </summary>
         [Input("crlContainerRef")]
@@ -485,7 +485,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
-        /// A Networking client is needed to create a pool. If omitted, the `region`
+        /// A Networking client is needed to create a pool. If omitted, the `Region`
         /// argument of the provider is used. Changing this creates a new pool.
         /// </summary>
         [Input("region")]
@@ -518,7 +518,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The reference to the key manager service
-        /// secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
+        /// secret containing a PKCS12 format certificate/key bundle for `TlsEnabled`
         /// pools for TLS client authentication to the member servers. Supported only in
         /// **Octavia minor version &gt;= 2.8**.
         /// </summary>

@@ -43,7 +43,7 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The availability zone in which to create
-        /// the server. Conflicts with `availability_zone_hints`. Changing this creates
+        /// the server. Conflicts with `AvailabilityZoneHints`. Changing this creates
         /// a new server.
         /// </summary>
         [Output("availabilityZone")]
@@ -51,17 +51,17 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The availability zone in which to
-        /// create the server. This argument is preferred to `availability_zone`, when
+        /// create the server. This argument is preferred to `AvailabilityZone`, when
         /// scheduling the server on a
         /// [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
-        /// host or node. Conflicts with `availability_zone`. Changing this creates a
+        /// host or node. Conflicts with `AvailabilityZone`. Changing this creates a
         /// new server.
         /// </summary>
         [Output("availabilityZoneHints")]
         public Output<string?> AvailabilityZoneHints { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration of block devices. The block_device
+        /// Configuration of block devices. The BlockDevice
         /// structure is documented below. Changing this creates a new server.
         /// You can specify multiple block devices which will create an instance with
         /// multiple disks. This configuration is very flexible, so please see the
@@ -72,7 +72,7 @@ namespace Pulumi.OpenStack.Compute
         public Output<ImmutableArray<Outputs.InstanceBlockDevice>> BlockDevices { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to use the config_drive feature to
+        /// Whether to use the ConfigDrive feature to
         /// configure the instance. Changing this creates a new server.
         /// </summary>
         [Output("configDrive")]
@@ -111,14 +111,14 @@ namespace Pulumi.OpenStack.Compute
         /// which to create the instance. When provided, this parameter is included in
         /// the request to Nova, directing the scheduler to launch the instance on the
         /// specified host. Note: This option requires administrative privileges and a
-        /// Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+        /// Nova microversion of 2.74 or later. Conflicts with `Personality`. Changing
         /// this value forces a new instance to be created.
         /// </summary>
         [Output("hypervisorHostname")]
         public Output<string> HypervisorHostname { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional; Required if `image_name` is empty and not booting
+        /// (Optional; Required if `ImageName` is empty and not booting
         /// from a volume. Do not specify if booting from a volume.) The image ID of
         /// the desired image for the server. Changing this rebuilds the existing
         /// server.
@@ -127,7 +127,7 @@ namespace Pulumi.OpenStack.Compute
         public Output<string> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional; Required if `image_id` is empty and not booting
+        /// (Optional; Required if `ImageId` is empty and not booting
         /// from a volume. Do not specify if booting from a volume.) The name of the
         /// desired image for the server. Changing this rebuilds the existing server.
         /// </summary>
@@ -156,9 +156,9 @@ namespace Pulumi.OpenStack.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Special string for `network` option to create
-        /// the server. `network_mode` can be `"auto"` or `"none"`.
-        /// Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
+        /// Special string for `Network` option to create
+        /// the server. `NetworkMode` can be `"auto"` or `"none"`.
+        /// Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `Network`.
         /// </summary>
         [Output("networkMode")]
         public Output<string?> NetworkMode { get; private set; } = null!;
@@ -174,7 +174,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// Customize the personality of an instance by
         /// defining one or more files and their contents. The personality structure is
-        /// described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+        /// described below. Conflicts with `HypervisorHostname`. Changing this rebuilds
         /// the existing server.
         /// </summary>
         [Output("personalities")]
@@ -183,7 +183,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// Provide the VM state. Only 'active', 'shutoff', 'paused'
         /// and 'shelved_offloaded' are supported values.
-        /// *Note*: If the initial power_state is the shutoff or paused
+        /// *Note*: If the initial PowerState is the shutoff or paused
         /// the VM will be stopped immediately after build and the provisioners like
         /// remote-exec or files are not supported.
         /// </summary>
@@ -192,7 +192,7 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The region in which to create the server instance. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new server.
         /// </summary>
         [Output("region")]
@@ -320,7 +320,7 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The availability zone in which to create
-        /// the server. Conflicts with `availability_zone_hints`. Changing this creates
+        /// the server. Conflicts with `AvailabilityZoneHints`. Changing this creates
         /// a new server.
         /// </summary>
         [Input("availabilityZone")]
@@ -328,10 +328,10 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The availability zone in which to
-        /// create the server. This argument is preferred to `availability_zone`, when
+        /// create the server. This argument is preferred to `AvailabilityZone`, when
         /// scheduling the server on a
         /// [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
-        /// host or node. Conflicts with `availability_zone`. Changing this creates a
+        /// host or node. Conflicts with `AvailabilityZone`. Changing this creates a
         /// new server.
         /// </summary>
         [Input("availabilityZoneHints")]
@@ -341,7 +341,7 @@ namespace Pulumi.OpenStack.Compute
         private InputList<Inputs.InstanceBlockDeviceArgs>? _blockDevices;
 
         /// <summary>
-        /// Configuration of block devices. The block_device
+        /// Configuration of block devices. The BlockDevice
         /// structure is documented below. Changing this creates a new server.
         /// You can specify multiple block devices which will create an instance with
         /// multiple disks. This configuration is very flexible, so please see the
@@ -355,7 +355,7 @@ namespace Pulumi.OpenStack.Compute
         }
 
         /// <summary>
-        /// Whether to use the config_drive feature to
+        /// Whether to use the ConfigDrive feature to
         /// configure the instance. Changing this creates a new server.
         /// </summary>
         [Input("configDrive")]
@@ -388,14 +388,14 @@ namespace Pulumi.OpenStack.Compute
         /// which to create the instance. When provided, this parameter is included in
         /// the request to Nova, directing the scheduler to launch the instance on the
         /// specified host. Note: This option requires administrative privileges and a
-        /// Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+        /// Nova microversion of 2.74 or later. Conflicts with `Personality`. Changing
         /// this value forces a new instance to be created.
         /// </summary>
         [Input("hypervisorHostname")]
         public Input<string>? HypervisorHostname { get; set; }
 
         /// <summary>
-        /// (Optional; Required if `image_name` is empty and not booting
+        /// (Optional; Required if `ImageName` is empty and not booting
         /// from a volume. Do not specify if booting from a volume.) The image ID of
         /// the desired image for the server. Changing this rebuilds the existing
         /// server.
@@ -404,7 +404,7 @@ namespace Pulumi.OpenStack.Compute
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// (Optional; Required if `image_id` is empty and not booting
+        /// (Optional; Required if `ImageId` is empty and not booting
         /// from a volume. Do not specify if booting from a volume.) The name of the
         /// desired image for the server. Changing this rebuilds the existing server.
         /// </summary>
@@ -439,9 +439,9 @@ namespace Pulumi.OpenStack.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Special string for `network` option to create
-        /// the server. `network_mode` can be `"auto"` or `"none"`.
-        /// Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
+        /// Special string for `Network` option to create
+        /// the server. `NetworkMode` can be `"auto"` or `"none"`.
+        /// Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `Network`.
         /// </summary>
         [Input("networkMode")]
         public Input<string>? NetworkMode { get; set; }
@@ -466,7 +466,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// Customize the personality of an instance by
         /// defining one or more files and their contents. The personality structure is
-        /// described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+        /// described below. Conflicts with `HypervisorHostname`. Changing this rebuilds
         /// the existing server.
         /// </summary>
         public InputList<Inputs.InstancePersonalityArgs> Personalities
@@ -478,7 +478,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// Provide the VM state. Only 'active', 'shutoff', 'paused'
         /// and 'shelved_offloaded' are supported values.
-        /// *Note*: If the initial power_state is the shutoff or paused
+        /// *Note*: If the initial PowerState is the shutoff or paused
         /// the VM will be stopped immediately after build and the provisioners like
         /// remote-exec or files are not supported.
         /// </summary>
@@ -487,7 +487,7 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The region in which to create the server instance. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new server.
         /// </summary>
         [Input("region")]
@@ -618,7 +618,7 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The availability zone in which to create
-        /// the server. Conflicts with `availability_zone_hints`. Changing this creates
+        /// the server. Conflicts with `AvailabilityZoneHints`. Changing this creates
         /// a new server.
         /// </summary>
         [Input("availabilityZone")]
@@ -626,10 +626,10 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The availability zone in which to
-        /// create the server. This argument is preferred to `availability_zone`, when
+        /// create the server. This argument is preferred to `AvailabilityZone`, when
         /// scheduling the server on a
         /// [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
-        /// host or node. Conflicts with `availability_zone`. Changing this creates a
+        /// host or node. Conflicts with `AvailabilityZone`. Changing this creates a
         /// new server.
         /// </summary>
         [Input("availabilityZoneHints")]
@@ -639,7 +639,7 @@ namespace Pulumi.OpenStack.Compute
         private InputList<Inputs.InstanceBlockDeviceGetArgs>? _blockDevices;
 
         /// <summary>
-        /// Configuration of block devices. The block_device
+        /// Configuration of block devices. The BlockDevice
         /// structure is documented below. Changing this creates a new server.
         /// You can specify multiple block devices which will create an instance with
         /// multiple disks. This configuration is very flexible, so please see the
@@ -653,7 +653,7 @@ namespace Pulumi.OpenStack.Compute
         }
 
         /// <summary>
-        /// Whether to use the config_drive feature to
+        /// Whether to use the ConfigDrive feature to
         /// configure the instance. Changing this creates a new server.
         /// </summary>
         [Input("configDrive")]
@@ -692,14 +692,14 @@ namespace Pulumi.OpenStack.Compute
         /// which to create the instance. When provided, this parameter is included in
         /// the request to Nova, directing the scheduler to launch the instance on the
         /// specified host. Note: This option requires administrative privileges and a
-        /// Nova microversion of 2.74 or later. Conflicts with `personality`. Changing
+        /// Nova microversion of 2.74 or later. Conflicts with `Personality`. Changing
         /// this value forces a new instance to be created.
         /// </summary>
         [Input("hypervisorHostname")]
         public Input<string>? HypervisorHostname { get; set; }
 
         /// <summary>
-        /// (Optional; Required if `image_name` is empty and not booting
+        /// (Optional; Required if `ImageName` is empty and not booting
         /// from a volume. Do not specify if booting from a volume.) The image ID of
         /// the desired image for the server. Changing this rebuilds the existing
         /// server.
@@ -708,7 +708,7 @@ namespace Pulumi.OpenStack.Compute
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// (Optional; Required if `image_id` is empty and not booting
+        /// (Optional; Required if `ImageId` is empty and not booting
         /// from a volume. Do not specify if booting from a volume.) The name of the
         /// desired image for the server. Changing this rebuilds the existing server.
         /// </summary>
@@ -743,9 +743,9 @@ namespace Pulumi.OpenStack.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Special string for `network` option to create
-        /// the server. `network_mode` can be `"auto"` or `"none"`.
-        /// Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
+        /// Special string for `Network` option to create
+        /// the server. `NetworkMode` can be `"auto"` or `"none"`.
+        /// Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `Network`.
         /// </summary>
         [Input("networkMode")]
         public Input<string>? NetworkMode { get; set; }
@@ -770,7 +770,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// Customize the personality of an instance by
         /// defining one or more files and their contents. The personality structure is
-        /// described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+        /// described below. Conflicts with `HypervisorHostname`. Changing this rebuilds
         /// the existing server.
         /// </summary>
         public InputList<Inputs.InstancePersonalityGetArgs> Personalities
@@ -782,7 +782,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// Provide the VM state. Only 'active', 'shutoff', 'paused'
         /// and 'shelved_offloaded' are supported values.
-        /// *Note*: If the initial power_state is the shutoff or paused
+        /// *Note*: If the initial PowerState is the shutoff or paused
         /// the VM will be stopped immediately after build and the provisioners like
         /// remote-exec or files are not supported.
         /// </summary>
@@ -791,7 +791,7 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The region in which to create the server instance. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new server.
         /// </summary>
         [Input("region")]

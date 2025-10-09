@@ -90,7 +90,7 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create an LB member. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// LB member.
         /// </summary>
         [Output("region")]
@@ -131,7 +131,7 @@ namespace Pulumi.OpenStack
         /// Loadbalancer's address. A tenant can only create Loadbalancers on networks
         /// authorized by policy (e.g. networks that belong to them or networks that
         /// are shared).  Changing this creates a new loadbalancer. Exactly one of
-        /// `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+        /// `VipSubnetId`, `VipNetworkId` or `VipPortId` has to be defined.
         /// </summary>
         [Output("vipNetworkId")]
         public Output<string> VipNetworkId { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// The port UUID that the loadbalancer will use.
         /// Changing this creates a new loadbalancer. Exactly one of
-        /// `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+        /// `VipSubnetId`, `VipNetworkId` or `VipPortId` has to be defined.
         /// </summary>
         [Output("vipPortId")]
         public Output<string> VipPortId { get; private set; } = null!;
@@ -156,7 +156,7 @@ namespace Pulumi.OpenStack
         /// Loadbalancer's address. A tenant can only create Loadbalancers on networks
         /// authorized by policy (e.g. networks that belong to them or networks that
         /// are shared).  Changing this creates a new loadbalancer. Exactly one of
-        /// `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+        /// `VipSubnetId`, `VipNetworkId` or `VipPortId` has to be defined.
         /// </summary>
         [Output("vipSubnetId")]
         public Output<string> VipSubnetId { get; private set; } = null!;
@@ -252,7 +252,7 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create an LB member. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// LB member.
         /// </summary>
         [Input("region")]
@@ -305,7 +305,7 @@ namespace Pulumi.OpenStack
         /// Loadbalancer's address. A tenant can only create Loadbalancers on networks
         /// authorized by policy (e.g. networks that belong to them or networks that
         /// are shared).  Changing this creates a new loadbalancer. Exactly one of
-        /// `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+        /// `VipSubnetId`, `VipNetworkId` or `VipPortId` has to be defined.
         /// </summary>
         [Input("vipNetworkId")]
         public Input<string>? VipNetworkId { get; set; }
@@ -313,7 +313,7 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// The port UUID that the loadbalancer will use.
         /// Changing this creates a new loadbalancer. Exactly one of
-        /// `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+        /// `VipSubnetId`, `VipNetworkId` or `VipPortId` has to be defined.
         /// </summary>
         [Input("vipPortId")]
         public Input<string>? VipPortId { get; set; }
@@ -330,7 +330,7 @@ namespace Pulumi.OpenStack
         /// Loadbalancer's address. A tenant can only create Loadbalancers on networks
         /// authorized by policy (e.g. networks that belong to them or networks that
         /// are shared).  Changing this creates a new loadbalancer. Exactly one of
-        /// `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+        /// `VipSubnetId`, `VipNetworkId` or `VipPortId` has to be defined.
         /// </summary>
         [Input("vipSubnetId")]
         public Input<string>? VipSubnetId { get; set; }
@@ -388,7 +388,7 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create an LB member. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// LB member.
         /// </summary>
         [Input("region")]
@@ -441,7 +441,7 @@ namespace Pulumi.OpenStack
         /// Loadbalancer's address. A tenant can only create Loadbalancers on networks
         /// authorized by policy (e.g. networks that belong to them or networks that
         /// are shared).  Changing this creates a new loadbalancer. Exactly one of
-        /// `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+        /// `VipSubnetId`, `VipNetworkId` or `VipPortId` has to be defined.
         /// </summary>
         [Input("vipNetworkId")]
         public Input<string>? VipNetworkId { get; set; }
@@ -449,7 +449,7 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// The port UUID that the loadbalancer will use.
         /// Changing this creates a new loadbalancer. Exactly one of
-        /// `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+        /// `VipSubnetId`, `VipNetworkId` or `VipPortId` has to be defined.
         /// </summary>
         [Input("vipPortId")]
         public Input<string>? VipPortId { get; set; }
@@ -466,7 +466,7 @@ namespace Pulumi.OpenStack
         /// Loadbalancer's address. A tenant can only create Loadbalancers on networks
         /// authorized by policy (e.g. networks that belong to them or networks that
         /// are shared).  Changing this creates a new loadbalancer. Exactly one of
-        /// `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+        /// `VipSubnetId`, `VipNetworkId` or `VipPortId` has to be defined.
         /// </summary>
         [Input("vipSubnetId")]
         public Input<string>? VipSubnetId { get; set; }
