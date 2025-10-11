@@ -61,7 +61,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The backup ID from which to create the volume.
-        /// Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+        /// Conflicts with `SnapshotId`, `SourceVolId`, `ImageId`. Changing this
         /// creates a new volume. Requires microversion &gt;= 3.47.
         /// </summary>
         [Output("backupId")]
@@ -91,7 +91,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The image ID from which to create the volume.
-        /// Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+        /// Conflicts with `SnapshotId`, `SourceVolId`, `BackupId`. Changing this
         /// creates a new volume.
         /// </summary>
         [Output("imageId")]
@@ -113,7 +113,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The region in which to create the volume. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new volume.
         /// </summary>
         [Output("region")]
@@ -134,7 +134,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The snapshot ID from which to create the volume.
-        /// Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+        /// Conflicts with `SourceVolId`, `ImageId`, `BackupId`. Changing this
         /// creates a new volume.
         /// </summary>
         [Output("snapshotId")]
@@ -148,23 +148,23 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The volume ID from which to create the volume.
-        /// Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+        /// Conflicts with `SnapshotId`, `ImageId`, `BackupId`. Changing this
         /// creates a new volume.
         /// </summary>
         [Output("sourceVolId")]
         public Output<string?> SourceVolId { get; private set; } = null!;
 
         /// <summary>
-        /// Migration policy when changing `volume_type`.
+        /// Migration policy when changing `VolumeType`.
         /// `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
-        /// allows migration if needed. Applicable only when updating `volume_type`.
+        /// allows migration if needed. Applicable only when updating `VolumeType`.
         /// </summary>
         [Output("volumeRetypePolicy")]
         public Output<string?> VolumeRetypePolicy { get; private set; } = null!;
 
         /// <summary>
         /// The type of volume to create or update.
-        /// Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
+        /// Changing this will attempt an in-place retype operation; migration depends on `VolumeRetypePolicy`.
         /// </summary>
         [Output("volumeType")]
         public Output<string> VolumeType { get; private set; } = null!;
@@ -224,7 +224,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The backup ID from which to create the volume.
-        /// Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+        /// Conflicts with `SnapshotId`, `SourceVolId`, `ImageId`. Changing this
         /// creates a new volume. Requires microversion &gt;= 3.47.
         /// </summary>
         [Input("backupId")]
@@ -254,7 +254,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The image ID from which to create the volume.
-        /// Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+        /// Conflicts with `SnapshotId`, `SourceVolId`, `BackupId`. Changing this
         /// creates a new volume.
         /// </summary>
         [Input("imageId")]
@@ -282,7 +282,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The region in which to create the volume. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new volume.
         /// </summary>
         [Input("region")]
@@ -309,7 +309,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The snapshot ID from which to create the volume.
-        /// Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+        /// Conflicts with `SourceVolId`, `ImageId`, `BackupId`. Changing this
         /// creates a new volume.
         /// </summary>
         [Input("snapshotId")]
@@ -323,23 +323,23 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The volume ID from which to create the volume.
-        /// Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+        /// Conflicts with `SnapshotId`, `ImageId`, `BackupId`. Changing this
         /// creates a new volume.
         /// </summary>
         [Input("sourceVolId")]
         public Input<string>? SourceVolId { get; set; }
 
         /// <summary>
-        /// Migration policy when changing `volume_type`.
+        /// Migration policy when changing `VolumeType`.
         /// `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
-        /// allows migration if needed. Applicable only when updating `volume_type`.
+        /// allows migration if needed. Applicable only when updating `VolumeType`.
         /// </summary>
         [Input("volumeRetypePolicy")]
         public Input<string>? VolumeRetypePolicy { get; set; }
 
         /// <summary>
         /// The type of volume to create or update.
-        /// Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
+        /// Changing this will attempt an in-place retype operation; migration depends on `VolumeRetypePolicy`.
         /// </summary>
         [Input("volumeType")]
         public Input<string>? VolumeType { get; set; }
@@ -375,7 +375,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The backup ID from which to create the volume.
-        /// Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+        /// Conflicts with `SnapshotId`, `SourceVolId`, `ImageId`. Changing this
         /// creates a new volume. Requires microversion &gt;= 3.47.
         /// </summary>
         [Input("backupId")]
@@ -405,7 +405,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The image ID from which to create the volume.
-        /// Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+        /// Conflicts with `SnapshotId`, `SourceVolId`, `BackupId`. Changing this
         /// creates a new volume.
         /// </summary>
         [Input("imageId")]
@@ -433,7 +433,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The region in which to create the volume. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new volume.
         /// </summary>
         [Input("region")]
@@ -460,7 +460,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The snapshot ID from which to create the volume.
-        /// Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+        /// Conflicts with `SourceVolId`, `ImageId`, `BackupId`. Changing this
         /// creates a new volume.
         /// </summary>
         [Input("snapshotId")]
@@ -474,23 +474,23 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The volume ID from which to create the volume.
-        /// Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+        /// Conflicts with `SnapshotId`, `ImageId`, `BackupId`. Changing this
         /// creates a new volume.
         /// </summary>
         [Input("sourceVolId")]
         public Input<string>? SourceVolId { get; set; }
 
         /// <summary>
-        /// Migration policy when changing `volume_type`.
+        /// Migration policy when changing `VolumeType`.
         /// `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
-        /// allows migration if needed. Applicable only when updating `volume_type`.
+        /// allows migration if needed. Applicable only when updating `VolumeType`.
         /// </summary>
         [Input("volumeRetypePolicy")]
         public Input<string>? VolumeRetypePolicy { get; set; }
 
         /// <summary>
         /// The type of volume to create or update.
-        /// Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
+        /// Changing this will attempt an in-place retype operation; migration depends on `VolumeRetypePolicy`.
         /// </summary>
         [Input("volumeType")]
         public Input<string>? VolumeType { get; set; }

@@ -22,6 +22,10 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Example with simple content
+ * 
+ * ### Example with content from file
+ * 
  */
 @ResourceType(type="openstack:objectstorage/containerObject:ContainerObject")
 public class ContainerObject extends com.pulumi.resources.CustomResource {
@@ -51,7 +55,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
     }
     /**
      * A string representing the content of the object. Conflicts with
-     * `source` and `copy_from`.
+     * `source` and `copyFrom`.
      * 
      */
     @Export(name="content", refs={String.class}, tree="[0]")
@@ -59,7 +63,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A string representing the content of the object. Conflicts with
-     * `source` and `copy_from`.
+     * `source` and `copyFrom`.
      * 
      */
     public Output<Optional<String>> content() {
@@ -131,7 +135,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
     }
     /**
      * A string representing the name of an object
-     * used to create the new object by copying the `copy_from` object. The value is in form
+     * used to create the new object by copying the `copyFrom` object. The value is in form
      * {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
      * container and object before you include them in the header. Conflicts with `source` and
      * `content`.
@@ -142,7 +146,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A string representing the name of an object
-     * used to create the new object by copying the `copy_from` object. The value is in form
+     * used to create the new object by copying the `copyFrom` object. The value is in form
      * {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
      * container and object before you include them in the header. Conflicts with `source` and
      * `content`.
@@ -321,7 +325,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
     }
     /**
      * A string representing the local path of a file which will be used
-     * as the object&#39;s content. Conflicts with `source` and `copy_from`.
+     * as the object&#39;s content. Conflicts with `source` and `copyFrom`.
      * 
      */
     @Export(name="source", refs={String.class}, tree="[0]")
@@ -329,7 +333,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A string representing the local path of a file which will be used
-     * as the object&#39;s content. Conflicts with `source` and `copy_from`.
+     * as the object&#39;s content. Conflicts with `source` and `copyFrom`.
      * 
      */
     public Output<Optional<String>> source() {

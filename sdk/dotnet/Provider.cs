@@ -61,7 +61,7 @@ namespace Pulumi.OpenStack
         public Output<string?> Cloud { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
+        /// The name of the Domain ID to scope to if no other domain is specified. Defaults to `Default` (Identity v3).
         /// </summary>
         [Output("defaultDomain")]
         public Output<string?> DefaultDomain { get; private set; } = null!;
@@ -194,8 +194,8 @@ namespace Pulumi.OpenStack
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set to `false`, OpenStack authorization won't be perfomed
-        /// automatically, if the initial auth token get expired. Defaults to `true`
+        /// If set to `False`, OpenStack authorization won't be perfomed
+        /// automatically, if the initial auth token get expired. Defaults to `True`
         /// </summary>
         [Input("allowReauth", json: true)]
         public Input<bool>? AllowReauth { get; set; }
@@ -243,20 +243,20 @@ namespace Pulumi.OpenStack
         public Input<string>? Cloud { get; set; }
 
         /// <summary>
-        /// The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
+        /// The name of the Domain ID to scope to if no other domain is specified. Defaults to `Default` (Identity v3).
         /// </summary>
         [Input("defaultDomain")]
         public Input<string>? DefaultDomain { get; set; }
 
         /// <summary>
-        /// If set to `false`, OpenStack authorization will be perfomed,
-        /// every time the service provider client is called. Defaults to `true`.
+        /// If set to `False`, OpenStack authorization will be perfomed,
+        /// every time the service provider client is called. Defaults to `True`.
         /// </summary>
         [Input("delayedAuth", json: true)]
         public Input<bool>? DelayedAuth { get; set; }
 
         /// <summary>
-        /// If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
+        /// If set to `True`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
         /// </summary>
         [Input("disableNoCacheHeader", json: true)]
         public Input<bool>? DisableNoCacheHeader { get; set; }
@@ -355,7 +355,7 @@ namespace Pulumi.OpenStack
         public Input<bool>? Swauth { get; set; }
 
         /// <summary>
-        /// If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
+        /// If set to `True`, system scoped authorization will be enabled. Defaults to `False` (Identity v3).
         /// </summary>
         [Input("systemScope", json: true)]
         public Input<bool>? SystemScope { get; set; }

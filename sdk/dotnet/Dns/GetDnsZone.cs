@@ -128,7 +128,7 @@ namespace Pulumi.OpenStack.Dns
         private List<string>? _masters;
 
         /// <summary>
-        /// An array of master DNS servers. When `type` is  `SECONDARY`.
+        /// An array of master DNS servers. When `Type` is  `SECONDARY`.
         /// </summary>
         public List<string> Masters
         {
@@ -158,7 +158,7 @@ namespace Pulumi.OpenStack.Dns
         /// <summary>
         /// The region in which to obtain the V2 DNS client.
         /// A DNS client is needed to retrieve zone ids. If omitted, the
-        /// `region` argument of the provider is used.
+        /// `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -254,7 +254,7 @@ namespace Pulumi.OpenStack.Dns
         private InputList<string>? _masters;
 
         /// <summary>
-        /// An array of master DNS servers. When `type` is  `SECONDARY`.
+        /// An array of master DNS servers. When `Type` is  `SECONDARY`.
         /// </summary>
         public InputList<string> Masters
         {
@@ -284,7 +284,7 @@ namespace Pulumi.OpenStack.Dns
         /// <summary>
         /// The region in which to obtain the V2 DNS client.
         /// A DNS client is needed to retrieve zone ids. If omitted, the
-        /// `region` argument of the provider is used.
+        /// `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -363,7 +363,7 @@ namespace Pulumi.OpenStack.Dns
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// An array of master DNS servers. When `type` is  `SECONDARY`.
+        /// An array of master DNS servers. When `Type` is  `SECONDARY`.
         /// </summary>
         public readonly ImmutableArray<string> Masters;
         /// <summary>

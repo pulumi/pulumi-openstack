@@ -77,7 +77,7 @@ public final class GetFwPolicyV2PlainArgs extends com.pulumi.resources.InvokeArg
 
     /**
      * This argument conflicts and is interchangeable
-     * with `tenant_id`. The owner of the firewall policy.
+     * with `tenantId`. The owner of the firewall policy.
      * 
      */
     @Import(name="projectId")
@@ -85,7 +85,7 @@ public final class GetFwPolicyV2PlainArgs extends com.pulumi.resources.InvokeArg
 
     /**
      * @return This argument conflicts and is interchangeable
-     * with `tenant_id`. The owner of the firewall policy.
+     * with `tenantId`. The owner of the firewall policy.
      * 
      */
     public Optional<String> projectId() {
@@ -128,7 +128,7 @@ public final class GetFwPolicyV2PlainArgs extends com.pulumi.resources.InvokeArg
 
     /**
      * This argument conflicts and is interchangeable
-     * with `project_id`. The owner of the firewall policy.
+     * with `projectId`. The owner of the firewall policy.
      * 
      */
     @Import(name="tenantId")
@@ -136,7 +136,7 @@ public final class GetFwPolicyV2PlainArgs extends com.pulumi.resources.InvokeArg
 
     /**
      * @return This argument conflicts and is interchangeable
-     * with `project_id`. The owner of the firewall policy.
+     * with `projectId`. The owner of the firewall policy.
      * 
      */
     public Optional<String> tenantId() {
@@ -220,7 +220,7 @@ public final class GetFwPolicyV2PlainArgs extends com.pulumi.resources.InvokeArg
 
         /**
          * @param projectId This argument conflicts and is interchangeable
-         * with `tenant_id`. The owner of the firewall policy.
+         * with `tenantId`. The owner of the firewall policy.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class GetFwPolicyV2PlainArgs extends com.pulumi.resources.InvokeArg
 
         /**
          * @param tenantId This argument conflicts and is interchangeable
-         * with `project_id`. The owner of the firewall policy.
+         * with `projectId`. The owner of the firewall policy.
          * 
          * @return builder
          * 

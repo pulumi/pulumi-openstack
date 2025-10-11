@@ -101,7 +101,7 @@ namespace Pulumi.OpenStack.BGPVPN
 
         /// <summary>
         /// The ID of the project that owns the BGPVPN. Only
-        /// administrative and users with `advsvc` role can specify a project ID other
+        /// administrative and users with `Advsvc` role can specify a project ID other
         /// than their own. Changing this creates a new BGP VPN.
         /// </summary>
         [Output("projectId")]
@@ -110,7 +110,7 @@ namespace Pulumi.OpenStack.BGPVPN
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a BGP VPN service. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// BGP VPN.
         /// </summary>
         [Output("region")]
@@ -143,8 +143,8 @@ namespace Pulumi.OpenStack.BGPVPN
         public Output<bool> Shared { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the BGP VPN (either `l2` or `l3`). Changing this
-        /// creates a new BGP VPN. Defaults to `l3`.
+        /// The type of the BGP VPN (either `L2` or `L3`). Changing this
+        /// creates a new BGP VPN. Defaults to `L3`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -248,7 +248,7 @@ namespace Pulumi.OpenStack.BGPVPN
 
         /// <summary>
         /// The ID of the project that owns the BGPVPN. Only
-        /// administrative and users with `advsvc` role can specify a project ID other
+        /// administrative and users with `Advsvc` role can specify a project ID other
         /// than their own. Changing this creates a new BGP VPN.
         /// </summary>
         [Input("projectId")]
@@ -257,7 +257,7 @@ namespace Pulumi.OpenStack.BGPVPN
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a BGP VPN service. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// BGP VPN.
         /// </summary>
         [Input("region")]
@@ -290,8 +290,8 @@ namespace Pulumi.OpenStack.BGPVPN
         }
 
         /// <summary>
-        /// The type of the BGP VPN (either `l2` or `l3`). Changing this
-        /// creates a new BGP VPN. Defaults to `l3`.
+        /// The type of the BGP VPN (either `L2` or `L3`). Changing this
+        /// creates a new BGP VPN. Defaults to `L3`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -377,7 +377,7 @@ namespace Pulumi.OpenStack.BGPVPN
 
         /// <summary>
         /// The ID of the project that owns the BGPVPN. Only
-        /// administrative and users with `advsvc` role can specify a project ID other
+        /// administrative and users with `Advsvc` role can specify a project ID other
         /// than their own. Changing this creates a new BGP VPN.
         /// </summary>
         [Input("projectId")]
@@ -386,7 +386,7 @@ namespace Pulumi.OpenStack.BGPVPN
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a BGP VPN service. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// BGP VPN.
         /// </summary>
         [Input("region")]
@@ -437,8 +437,8 @@ namespace Pulumi.OpenStack.BGPVPN
         public Input<bool>? Shared { get; set; }
 
         /// <summary>
-        /// The type of the BGP VPN (either `l2` or `l3`). Changing this
-        /// creates a new BGP VPN. Defaults to `l3`.
+        /// The type of the BGP VPN (either `L2` or `L3`). Changing this
+        /// creates a new BGP VPN. Defaults to `L3`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

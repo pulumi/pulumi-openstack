@@ -66,7 +66,7 @@ public final class ContainerV1AclReadArgs extends com.pulumi.resources.ResourceA
 
     /**
      * The list of user IDs, which are allowed to access the
-     * container, when `project_access` is set to `false`.
+     * container, when `projectAccess` is set to `false`.
      * 
      */
     @Import(name="users")
@@ -74,7 +74,7 @@ public final class ContainerV1AclReadArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return The list of user IDs, which are allowed to access the
-     * container, when `project_access` is set to `false`.
+     * container, when `projectAccess` is set to `false`.
      * 
      */
     public Optional<Output<List<String>>> users() {
@@ -175,7 +175,7 @@ public final class ContainerV1AclReadArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param users The list of user IDs, which are allowed to access the
-         * container, when `project_access` is set to `false`.
+         * container, when `projectAccess` is set to `false`.
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class ContainerV1AclReadArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param users The list of user IDs, which are allowed to access the
-         * container, when `project_access` is set to `false`.
+         * container, when `projectAccess` is set to `false`.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class ContainerV1AclReadArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param users The list of user IDs, which are allowed to access the
-         * container, when `project_access` is set to `false`.
+         * container, when `projectAccess` is set to `false`.
          * 
          * @return builder
          * 

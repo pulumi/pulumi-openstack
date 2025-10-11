@@ -112,7 +112,7 @@ public class QosAssociationV3 extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * ID of the volume_type to associate.
+     * ID of the volumeType to associate.
      * Changing this creates a new qos association.
      * 
      */
@@ -120,7 +120,7 @@ public class QosAssociationV3 extends com.pulumi.resources.CustomResource {
     private Output<String> volumeTypeId;
 
     /**
-     * @return ID of the volume_type to associate.
+     * @return ID of the volumeType to associate.
      * Changing this creates a new qos association.
      * 
      */

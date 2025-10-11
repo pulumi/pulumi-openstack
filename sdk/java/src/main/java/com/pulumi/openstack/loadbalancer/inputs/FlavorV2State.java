@@ -51,7 +51,7 @@ public final class FlavorV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The flavor_profile_id that the flavor
+     * The flavorProfileId that the flavor
      * will use. Changing this creates a new flavor.
      * 
      */
@@ -59,7 +59,7 @@ public final class FlavorV2State extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> flavorProfileId;
 
     /**
-     * @return The flavor_profile_id that the flavor
+     * @return The flavorProfileId that the flavor
      * will use. Changing this creates a new flavor.
      * 
      */
@@ -180,7 +180,7 @@ public final class FlavorV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flavorProfileId The flavor_profile_id that the flavor
+         * @param flavorProfileId The flavorProfileId that the flavor
          * will use. Changing this creates a new flavor.
          * 
          * @return builder
@@ -192,7 +192,7 @@ public final class FlavorV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flavorProfileId The flavor_profile_id that the flavor
+         * @param flavorProfileId The flavorProfileId that the flavor
          * will use. Changing this creates a new flavor.
          * 
          * @return builder

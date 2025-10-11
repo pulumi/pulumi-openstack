@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * this resource will automatically reconcile these with the user-provided
  * properties.
  * 
- * In addition, the `direct_url` and `stores` properties are also automatically reconciled if the
+ * In addition, the `directUrl` and `stores` properties are also automatically reconciled if the
  * Image Service set it.
  * 
  * ## Import
@@ -229,7 +229,7 @@ public class Image extends com.pulumi.resources.CustomResource {
     }
     /**
      * The password of basic auth to download
-     * `image_source_url`.
+     * `imageSourceUrl`.
      * 
      */
     @Export(name="imageSourcePassword", refs={String.class}, tree="[0]")
@@ -237,7 +237,7 @@ public class Image extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The password of basic auth to download
-     * `image_source_url`.
+     * `imageSourceUrl`.
      * 
      */
     public Output<Optional<String>> imageSourcePassword() {
@@ -245,9 +245,9 @@ public class Image extends com.pulumi.resources.CustomResource {
     }
     /**
      * This is the url of the raw image. If
-     * `web_download` is not used, then the image will be downloaded in the
-     * `image_cache_path` before being uploaded to Glance. Conflicts with
-     * `local_file_path`.
+     * `webDownload` is not used, then the image will be downloaded in the
+     * `imageCachePath` before being uploaded to Glance. Conflicts with
+     * `localFilePath`.
      * 
      */
     @Export(name="imageSourceUrl", refs={String.class}, tree="[0]")
@@ -255,9 +255,9 @@ public class Image extends com.pulumi.resources.CustomResource {
 
     /**
      * @return This is the url of the raw image. If
-     * `web_download` is not used, then the image will be downloaded in the
-     * `image_cache_path` before being uploaded to Glance. Conflicts with
-     * `local_file_path`.
+     * `webDownload` is not used, then the image will be downloaded in the
+     * `imageCachePath` before being uploaded to Glance. Conflicts with
+     * `localFilePath`.
      * 
      */
     public Output<Optional<String>> imageSourceUrl() {
@@ -265,7 +265,7 @@ public class Image extends com.pulumi.resources.CustomResource {
     }
     /**
      * The username of basic auth to download
-     * `image_source_url`.
+     * `imageSourceUrl`.
      * 
      */
     @Export(name="imageSourceUsername", refs={String.class}, tree="[0]")
@@ -273,7 +273,7 @@ public class Image extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The username of basic auth to download
-     * `image_source_url`.
+     * `imageSourceUrl`.
      * 
      */
     public Output<Optional<String>> imageSourceUsername() {
@@ -281,8 +281,8 @@ public class Image extends com.pulumi.resources.CustomResource {
     }
     /**
      * This is the filepath of the raw image file
-     * that will be uploaded to Glance. Conflicts with `image_source_url` and
-     * `web_download`.
+     * that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
+     * `webDownload`.
      * 
      */
     @Export(name="localFilePath", refs={String.class}, tree="[0]")
@@ -290,8 +290,8 @@ public class Image extends com.pulumi.resources.CustomResource {
 
     /**
      * @return This is the filepath of the raw image file
-     * that will be uploaded to Glance. Conflicts with `image_source_url` and
-     * `web_download`.
+     * that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
+     * `webDownload`.
      * 
      */
     public Output<Optional<String>> localFilePath() {
@@ -507,8 +507,8 @@ public class Image extends com.pulumi.resources.CustomResource {
     }
     /**
      * If false, the checksum will not be verified
-     * once the image is finished uploading. Conflicts with `web_download`. Defaults
-     * to true when not using `web_download`.
+     * once the image is finished uploading. Conflicts with `webDownload`. Defaults
+     * to true when not using `webDownload`.
      * 
      */
     @Export(name="verifyChecksum", refs={Boolean.class}, tree="[0]")
@@ -516,8 +516,8 @@ public class Image extends com.pulumi.resources.CustomResource {
 
     /**
      * @return If false, the checksum will not be verified
-     * once the image is finished uploading. Conflicts with `web_download`. Defaults
-     * to true when not using `web_download`.
+     * once the image is finished uploading. Conflicts with `webDownload`. Defaults
+     * to true when not using `webDownload`.
      * 
      */
     public Output<Optional<Boolean>> verifyChecksum() {
@@ -544,7 +544,7 @@ public class Image extends com.pulumi.resources.CustomResource {
     /**
      * If true, the &#34;web-download&#34; import method will be
      * used to let Openstack download the image directly from the remote source.
-     * Conflicts with `local_file_path`. Defaults to false.
+     * Conflicts with `localFilePath`. Defaults to false.
      * 
      */
     @Export(name="webDownload", refs={Boolean.class}, tree="[0]")
@@ -553,7 +553,7 @@ public class Image extends com.pulumi.resources.CustomResource {
     /**
      * @return If true, the &#34;web-download&#34; import method will be
      * used to let Openstack download the image directly from the remote source.
-     * Conflicts with `local_file_path`. Defaults to false.
+     * Conflicts with `localFilePath`. Defaults to false.
      * 
      */
     public Output<Optional<Boolean>> webDownload() {

@@ -51,7 +51,7 @@ public final class VolumeTypeV3State extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Whether the volume type is public. Changing
-     * this updates the `is_public` of an existing volume type.
+     * this updates the `isPublic` of an existing volume type.
      * 
      */
     @Import(name="isPublic")
@@ -59,7 +59,7 @@ public final class VolumeTypeV3State extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether the volume type is public. Changing
-     * this updates the `is_public` of an existing volume type.
+     * this updates the `isPublic` of an existing volume type.
      * 
      */
     public Optional<Output<Boolean>> isPublic() {
@@ -176,7 +176,7 @@ public final class VolumeTypeV3State extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param isPublic Whether the volume type is public. Changing
-         * this updates the `is_public` of an existing volume type.
+         * this updates the `isPublic` of an existing volume type.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class VolumeTypeV3State extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param isPublic Whether the volume type is public. Changing
-         * this updates the `is_public` of an existing volume type.
+         * this updates the `isPublic` of an existing volume type.
          * 
          * @return builder
          * 

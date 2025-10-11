@@ -105,7 +105,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Administrative up/down status for the trunk
         /// (must be "true" or "false" if provided). Changing this updates the
-        /// `admin_state_up` of an existing trunk.
+        /// `AdminStateUp` of an existing trunk.
         /// </summary>
         [Output("adminStateUp")]
         public Output<bool?> AdminStateUp { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// A unique name for the trunk. Changing this
-        /// updates the `name` of an existing trunk.
+        /// updates the `Name` of an existing trunk.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to create a trunk. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// trunk.
         /// </summary>
         [Output("region")]
@@ -217,7 +217,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Administrative up/down status for the trunk
         /// (must be "true" or "false" if provided). Changing this updates the
-        /// `admin_state_up` of an existing trunk.
+        /// `AdminStateUp` of an existing trunk.
         /// </summary>
         [Input("adminStateUp")]
         public Input<bool>? AdminStateUp { get; set; }
@@ -231,7 +231,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// A unique name for the trunk. Changing this
-        /// updates the `name` of an existing trunk.
+        /// updates the `Name` of an existing trunk.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -247,7 +247,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to create a trunk. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// trunk.
         /// </summary>
         [Input("region")]
@@ -296,7 +296,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Administrative up/down status for the trunk
         /// (must be "true" or "false" if provided). Changing this updates the
-        /// `admin_state_up` of an existing trunk.
+        /// `AdminStateUp` of an existing trunk.
         /// </summary>
         [Input("adminStateUp")]
         public Input<bool>? AdminStateUp { get; set; }
@@ -323,7 +323,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// A unique name for the trunk. Changing this
-        /// updates the `name` of an existing trunk.
+        /// updates the `Name` of an existing trunk.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -339,7 +339,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to create a trunk. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// trunk.
         /// </summary>
         [Input("region")]

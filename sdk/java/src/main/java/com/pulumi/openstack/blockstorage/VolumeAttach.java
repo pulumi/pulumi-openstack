@@ -202,14 +202,14 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.initiator);
     }
     /**
-     * The IP address of the `host_name` above.
+     * The IP address of the `hostName` above.
      * 
      */
     @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipAddress;
 
     /**
-     * @return The IP address of the `host_name` above.
+     * @return The IP address of the `hostName` above.
      * 
      */
     public Output<Optional<String>> ipAddress() {

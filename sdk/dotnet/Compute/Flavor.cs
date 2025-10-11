@@ -107,7 +107,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
         /// Flavors are associated with accounts, but a Compute client is needed to
-        /// create one. If omitted, the `region` argument of the provider is used.
+        /// create one. If omitted, the `Region` argument of the provider is used.
         /// Changing this creates a new flavor.
         /// </summary>
         [Output("region")]
@@ -244,7 +244,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
         /// Flavors are associated with accounts, but a Compute client is needed to
-        /// create one. If omitted, the `region` argument of the provider is used.
+        /// create one. If omitted, the `Region` argument of the provider is used.
         /// Changing this creates a new flavor.
         /// </summary>
         [Input("region")]
@@ -343,7 +343,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
         /// Flavors are associated with accounts, but a Compute client is needed to
-        /// create one. If omitted, the `region` argument of the provider is used.
+        /// create one. If omitted, the `Region` argument of the provider is used.
         /// Changing this creates a new flavor.
         /// </summary>
         [Input("region")]

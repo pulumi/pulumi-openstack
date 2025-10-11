@@ -52,7 +52,7 @@ namespace Pulumi.OpenStack.Compute
     /// ### Using Multiattach-enabled volumes
     /// 
     /// Multiattach Volumes are dependent upon your OpenStack cloud and not all
-    /// clouds support multiattach. Multiattach volumes require a volume_type that has [multiattach enabled](https://docs.openstack.org/cinder/latest/admin/volume-multiattach.html#multiattach-volume-type).
+    /// clouds support multiattach. Multiattach volumes require a VolumeType that has [multiattach enabled](https://docs.openstack.org/cinder/latest/admin/volume-multiattach.html#multiattach-volume-type).
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -110,7 +110,7 @@ namespace Pulumi.OpenStack.Compute
     /// });
     /// ```
     /// 
-    /// It is recommended to use `depends_on` for the attach resources
+    /// It is recommended to use `DependsOn` for the attach resources
     /// to enforce the volume attachments to happen one at a time.
     /// 
     /// ## Import
@@ -143,7 +143,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
         /// A Compute client is needed to create a volume attachment. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a
+        /// `Region` argument of the provider is used. Changing this creates a
         /// new volume attachment.
         /// </summary>
         [Output("region")]
@@ -234,7 +234,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
         /// A Compute client is needed to create a volume attachment. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a
+        /// `Region` argument of the provider is used. Changing this creates a
         /// new volume attachment.
         /// </summary>
         [Input("region")]
@@ -287,7 +287,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
         /// A Compute client is needed to create a volume attachment. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a
+        /// `Region` argument of the provider is used. Changing this creates a
         /// new volume attachment.
         /// </summary>
         [Input("region")]

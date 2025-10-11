@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
 public class EndpointV3 extends com.pulumi.resources.CustomResource {
     /**
      * The endpoint region. The `region` and
-     * `endpoint_region` can be different.
+     * `endpointRegion` can be different.
      * 
      */
     @Export(name="endpointRegion", refs={String.class}, tree="[0]")
@@ -83,7 +83,7 @@ public class EndpointV3 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The endpoint region. The `region` and
-     * `endpoint_region` can be different.
+     * `endpointRegion` can be different.
      * 
      */
     public Output<String> endpointRegion() {

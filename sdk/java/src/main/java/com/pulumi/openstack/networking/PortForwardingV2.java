@@ -78,7 +78,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * The TCP/UDP/other protocol port number of the port forwarding. Changing this
-     * updates the `external_port` of an existing port forwarding.
+     * updates the `externalPort` of an existing port forwarding.
      * 
      */
     @Export(name="externalPort", refs={Integer.class}, tree="[0]")
@@ -86,7 +86,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The TCP/UDP/other protocol port number of the port forwarding. Changing this
-     * updates the `external_port` of an existing port forwarding.
+     * updates the `externalPort` of an existing port forwarding.
      * 
      */
     public Output<Integer> externalPort() {
@@ -108,7 +108,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * The fixed IPv4 address of the Neutron port associated with the port forwarding.
-     * Changing this updates the `internal_ip_address` of an existing port forwarding.
+     * Changing this updates the `internalIpAddress` of an existing port forwarding.
      * 
      */
     @Export(name="internalIpAddress", refs={String.class}, tree="[0]")
@@ -116,7 +116,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The fixed IPv4 address of the Neutron port associated with the port forwarding.
-     * Changing this updates the `internal_ip_address` of an existing port forwarding.
+     * Changing this updates the `internalIpAddress` of an existing port forwarding.
      * 
      */
     public Output<String> internalIpAddress() {
@@ -124,7 +124,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
-     * port forwarding. Changing this updates the `internal_port` of an existing port forwarding.
+     * port forwarding. Changing this updates the `internalPort` of an existing port forwarding.
      * 
      */
     @Export(name="internalPort", refs={Integer.class}, tree="[0]")
@@ -132,7 +132,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
-     * port forwarding. Changing this updates the `internal_port` of an existing port forwarding.
+     * port forwarding. Changing this updates the `internalPort` of an existing port forwarding.
      * 
      */
     public Output<Integer> internalPort() {
@@ -140,7 +140,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * The ID of the Neutron port associated with the port forwarding. Changing
-     * this updates the `internal_port_id` of an existing port forwarding.
+     * this updates the `internalPortId` of an existing port forwarding.
      * 
      */
     @Export(name="internalPortId", refs={String.class}, tree="[0]")
@@ -148,7 +148,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID of the Neutron port associated with the port forwarding. Changing
-     * this updates the `internal_port_id` of an existing port forwarding.
+     * this updates the `internalPortId` of an existing port forwarding.
      * 
      */
     public Output<String> internalPortId() {

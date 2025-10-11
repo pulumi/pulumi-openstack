@@ -12,7 +12,7 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// <summary>
     /// Manages a V1 Magnum cluster resource within OpenStack.
     /// 
-    /// &gt; **Note:** All arguments including the `kubeconfig` computed attribute will be
+    /// &gt; **Note:** All arguments including the `Kubeconfig` computed attribute will be
     /// stored in the raw state as plain-text. Read more about sensitive data in
     /// state.
     /// 
@@ -44,37 +44,37 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// 
     /// The following attributes are exported:
     /// 
-    /// * `region` - See Argument Reference above.
-    /// * `name` - See Argument Reference above.
-    /// * `project_id` - See Argument Reference above.
-    /// * `created_at` - The time at which cluster was created.
-    /// * `updated_at` - The time at which cluster was created.
-    /// * `api_address` - COE API address.
-    /// * `coe_version` - COE software version.
-    /// * `cluster_template_id` - See Argument Reference above.
-    /// * `container_version` - Container software version.
-    /// * `create_timeout` - See Argument Reference above.
-    /// * `discovery_url` - See Argument Reference above.
-    /// * `docker_volume_size` - See Argument Reference above.
-    /// * `flavor` - See Argument Reference above.
-    /// * `master_flavor` - See Argument Reference above.
-    /// * `keypair` - See Argument Reference above.
-    /// * `labels` - See Argument Reference above.
-    /// * `merge_labels` - See Argument Reference above.
-    /// * `master_count` - See Argument Reference above.
-    /// * `node_count` - See Argument Reference above.
-    /// * `fixed_network` - See Argument Reference above.
-    /// * `fixed_subnet` - See Argument Reference above.
-    /// * `floating_ip_enabled` - See Argument Reference above.
-    /// * `master_addresses` - IP addresses of the master node of the cluster.
-    /// * `node_addresses` - IP addresses of the node of the cluster.
-    /// * `stack_id` - UUID of the Orchestration service stack.
-    /// * `kubeconfig` - The Kubernetes cluster's credentials
-    ///   * `raw_config` - The raw kubeconfig file
-    ///   * `host` - The cluster's API server URL
-    ///   * `cluster_ca_certificate` - The cluster's CA certificate
-    ///   * `client_key` - The client's RSA key
-    ///   * `client_certificate` - The client's certificate
+    /// * `Region` - See Argument Reference above.
+    /// * `Name` - See Argument Reference above.
+    /// * `ProjectId` - See Argument Reference above.
+    /// * `CreatedAt` - The time at which cluster was created.
+    /// * `UpdatedAt` - The time at which cluster was created.
+    /// * `ApiAddress` - COE API address.
+    /// * `CoeVersion` - COE software version.
+    /// * `ClusterTemplateId` - See Argument Reference above.
+    /// * `ContainerVersion` - Container software version.
+    /// * `CreateTimeout` - See Argument Reference above.
+    /// * `DiscoveryUrl` - See Argument Reference above.
+    /// * `DockerVolumeSize` - See Argument Reference above.
+    /// * `Flavor` - See Argument Reference above.
+    /// * `MasterFlavor` - See Argument Reference above.
+    /// * `Keypair` - See Argument Reference above.
+    /// * `Labels` - See Argument Reference above.
+    /// * `MergeLabels` - See Argument Reference above.
+    /// * `MasterCount` - See Argument Reference above.
+    /// * `NodeCount` - See Argument Reference above.
+    /// * `FixedNetwork` - See Argument Reference above.
+    /// * `FixedSubnet` - See Argument Reference above.
+    /// * `FloatingIpEnabled` - See Argument Reference above.
+    /// * `MasterAddresses` - IP addresses of the master node of the cluster.
+    /// * `NodeAddresses` - IP addresses of the node of the cluster.
+    /// * `StackId` - UUID of the Orchestration service stack.
+    /// * `Kubeconfig` - The Kubernetes cluster's credentials
+    ///   * `RawConfig` - The raw kubeconfig file
+    ///   * `Host` - The cluster's API server URL
+    ///   * `ClusterCaCertificate` - The cluster's CA certificate
+    ///   * `ClientKey` - The client's RSA key
+    ///   * `ClientCertificate` - The client's certificate
     /// 
     /// ## Import
     /// 
@@ -232,7 +232,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// <summary>
         /// The region in which to obtain the V1 Container Infra
         /// client. A Container Infra client is needed to create a cluster. If omitted,
-        /// the `region` argument of the provider is used. Changing this creates a new
+        /// the `Region` argument of the provider is used. Changing this creates a new
         /// cluster.
         /// </summary>
         [Output("region")]
@@ -424,7 +424,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// <summary>
         /// The region in which to obtain the V1 Container Infra
         /// client. A Container Infra client is needed to create a cluster. If omitted,
-        /// the `region` argument of the provider is used. Changing this creates a new
+        /// the `Region` argument of the provider is used. Changing this creates a new
         /// cluster.
         /// </summary>
         [Input("region")]
@@ -608,7 +608,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// <summary>
         /// The region in which to obtain the V1 Container Infra
         /// client. A Container Infra client is needed to create a cluster. If omitted,
-        /// the `region` argument of the provider is used. Changing this creates a new
+        /// the `Region` argument of the provider is used. Changing this creates a new
         /// cluster.
         /// </summary>
         [Input("region")]

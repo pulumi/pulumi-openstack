@@ -17,7 +17,7 @@ public final class GetFlavorprofileV2Args extends com.pulumi.resources.InvokeArg
 
     /**
      * The ID of the flavorprofile. Conflicts with `name` and
-     * `provider_name`.
+     * `providerName`.
      * 
      */
     @Import(name="flavorprofileId")
@@ -25,7 +25,7 @@ public final class GetFlavorprofileV2Args extends com.pulumi.resources.InvokeArg
 
     /**
      * @return The ID of the flavorprofile. Conflicts with `name` and
-     * `provider_name`.
+     * `providerName`.
      * 
      */
     public Optional<Output<String>> flavorprofileId() {
@@ -33,14 +33,14 @@ public final class GetFlavorprofileV2Args extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The name of the flavorprofile. Conflicts with `flavorprofile_id`.
+     * The name of the flavorprofile. Conflicts with `flavorprofileId`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the flavorprofile. Conflicts with `flavorprofile_id`.
+     * @return The name of the flavorprofile. Conflicts with `flavorprofileId`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -49,7 +49,7 @@ public final class GetFlavorprofileV2Args extends com.pulumi.resources.InvokeArg
 
     /**
      * The name of the provider that the flavorprofile uses. Conflicts
-     * with `flavorprofile_id`.
+     * with `flavorprofileId`.
      * 
      */
     @Import(name="providerName")
@@ -57,7 +57,7 @@ public final class GetFlavorprofileV2Args extends com.pulumi.resources.InvokeArg
 
     /**
      * @return The name of the provider that the flavorprofile uses. Conflicts
-     * with `flavorprofile_id`.
+     * with `flavorprofileId`.
      * 
      */
     public Optional<Output<String>> providerName() {
@@ -110,7 +110,7 @@ public final class GetFlavorprofileV2Args extends com.pulumi.resources.InvokeArg
 
         /**
          * @param flavorprofileId The ID of the flavorprofile. Conflicts with `name` and
-         * `provider_name`.
+         * `providerName`.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class GetFlavorprofileV2Args extends com.pulumi.resources.InvokeArg
 
         /**
          * @param flavorprofileId The ID of the flavorprofile. Conflicts with `name` and
-         * `provider_name`.
+         * `providerName`.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class GetFlavorprofileV2Args extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param name The name of the flavorprofile. Conflicts with `flavorprofile_id`.
+         * @param name The name of the flavorprofile. Conflicts with `flavorprofileId`.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class GetFlavorprofileV2Args extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param name The name of the flavorprofile. Conflicts with `flavorprofile_id`.
+         * @param name The name of the flavorprofile. Conflicts with `flavorprofileId`.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class GetFlavorprofileV2Args extends com.pulumi.resources.InvokeArg
 
         /**
          * @param providerName The name of the provider that the flavorprofile uses. Conflicts
-         * with `flavorprofile_id`.
+         * with `flavorprofileId`.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class GetFlavorprofileV2Args extends com.pulumi.resources.InvokeArg
 
         /**
          * @param providerName The name of the provider that the flavorprofile uses. Conflicts
-         * with `flavorprofile_id`.
+         * with `flavorprofileId`.
          * 
          * @return builder
          * 

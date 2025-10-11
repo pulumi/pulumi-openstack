@@ -145,7 +145,7 @@ namespace Pulumi.OpenStack.Firewall
 
         /// <summary>
         /// This argument conflicts and is interchangeable
-        /// with `tenant_id`. The owner of the firewall rule.
+        /// with `TenantId`. The owner of the firewall rule.
         /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
@@ -159,7 +159,7 @@ namespace Pulumi.OpenStack.Firewall
         /// <summary>
         /// The region in which to obtain the V2 Neutron client.
         /// A Neutron client is needed to retrieve firewall policy ids. If omitted, the
-        /// `region` argument of the provider is used.
+        /// `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -192,7 +192,7 @@ namespace Pulumi.OpenStack.Firewall
 
         /// <summary>
         /// This argument conflicts and is interchangeable
-        /// with `project_id`. The owner of the firewall rule.
+        /// with `ProjectId`. The owner of the firewall rule.
         /// </summary>
         [Input("tenantId")]
         public string? TenantId { get; set; }
@@ -263,7 +263,7 @@ namespace Pulumi.OpenStack.Firewall
 
         /// <summary>
         /// This argument conflicts and is interchangeable
-        /// with `tenant_id`. The owner of the firewall rule.
+        /// with `TenantId`. The owner of the firewall rule.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -277,7 +277,7 @@ namespace Pulumi.OpenStack.Firewall
         /// <summary>
         /// The region in which to obtain the V2 Neutron client.
         /// A Neutron client is needed to retrieve firewall policy ids. If omitted, the
-        /// `region` argument of the provider is used.
+        /// `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -310,7 +310,7 @@ namespace Pulumi.OpenStack.Firewall
 
         /// <summary>
         /// This argument conflicts and is interchangeable
-        /// with `project_id`. The owner of the firewall rule.
+        /// with `ProjectId`. The owner of the firewall rule.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }

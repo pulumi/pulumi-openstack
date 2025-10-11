@@ -53,7 +53,7 @@ public final class BgpvpnPortAssociateV2RouteArgs extends com.pulumi.resources.R
 
     /**
      * The CIDR prefix (v4 or v6) to be advertised. Required
-     * if `type` is `prefix`. Conflicts with `bgpvpn_id`.
+     * if `type` is `prefix`. Conflicts with `bgpvpnId`.
      * 
      */
     @Import(name="prefix")
@@ -61,7 +61,7 @@ public final class BgpvpnPortAssociateV2RouteArgs extends com.pulumi.resources.R
 
     /**
      * @return The CIDR prefix (v4 or v6) to be advertised. Required
-     * if `type` is `prefix`. Conflicts with `bgpvpn_id`.
+     * if `type` is `prefix`. Conflicts with `bgpvpnId`.
      * 
      */
     public Optional<Output<String>> prefix() {
@@ -71,7 +71,7 @@ public final class BgpvpnPortAssociateV2RouteArgs extends com.pulumi.resources.R
     /**
      * Can be `prefix` or `bgpvpn`. For the `prefix` type, the
      * CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
-     * `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpn_id` key.
+     * `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpnId` key.
      * 
      */
     @Import(name="type", required=true)
@@ -80,7 +80,7 @@ public final class BgpvpnPortAssociateV2RouteArgs extends com.pulumi.resources.R
     /**
      * @return Can be `prefix` or `bgpvpn`. For the `prefix` type, the
      * CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
-     * `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpn_id` key.
+     * `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpnId` key.
      * 
      */
     public Output<String> type() {
@@ -162,7 +162,7 @@ public final class BgpvpnPortAssociateV2RouteArgs extends com.pulumi.resources.R
 
         /**
          * @param prefix The CIDR prefix (v4 or v6) to be advertised. Required
-         * if `type` is `prefix`. Conflicts with `bgpvpn_id`.
+         * if `type` is `prefix`. Conflicts with `bgpvpnId`.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class BgpvpnPortAssociateV2RouteArgs extends com.pulumi.resources.R
 
         /**
          * @param prefix The CIDR prefix (v4 or v6) to be advertised. Required
-         * if `type` is `prefix`. Conflicts with `bgpvpn_id`.
+         * if `type` is `prefix`. Conflicts with `bgpvpnId`.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class BgpvpnPortAssociateV2RouteArgs extends com.pulumi.resources.R
         /**
          * @param type Can be `prefix` or `bgpvpn`. For the `prefix` type, the
          * CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
-         * `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpn_id` key.
+         * `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpnId` key.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class BgpvpnPortAssociateV2RouteArgs extends com.pulumi.resources.R
         /**
          * @param type Can be `prefix` or `bgpvpn`. For the `prefix` type, the
          * CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
-         * `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpn_id` key.
+         * `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpnId` key.
          * 
          * @return builder
          * 

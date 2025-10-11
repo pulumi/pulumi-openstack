@@ -15,11 +15,11 @@ namespace Pulumi.OpenStack.Networking
     /// operators and users to grant access to resources for specific projects.
     /// 
     /// Sharing an object with a specific project is accomplished by creating a
-    /// policy entry that permits the target project the `access_as_shared` action
+    /// policy entry that permits the target project the `AccessAsShared` action
     /// on that object.
     /// 
     /// To make a network available as an external network for specific projects
-    /// rather than all projects, use the `access_as_external` action.
+    /// rather than all projects, use the `AccessAsExternal` action.
     /// If a network is marked as external during creation, it now implicitly creates
     /// a wildcard RBAC policy granting everyone access to preserve previous behavior
     /// before this feature was added.
@@ -64,23 +64,23 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// Action for the RBAC policy. Can either be
-        /// `access_as_external` or `access_as_shared`.
+        /// `AccessAsExternal` or `AccessAsShared`.
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the `object_type` resource. An
-        /// `object_type` of `network` returns a network ID and an `object_type` of
-        /// `qos_policy` returns a QoS ID.
+        /// The ID of the `ObjectType` resource. An
+        /// `ObjectType` of `Network` returns a network ID and an `ObjectType` of
+        /// `QosPolicy` returns a QoS ID.
         /// </summary>
         [Output("objectId")]
         public Output<string> ObjectId { get; private set; } = null!;
 
         /// <summary>
         /// The type of the object that the RBAC policy
-        /// affects. Can be one of the following: `address_scope`, `address_group`,
-        /// `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
+        /// affects. Can be one of the following: `AddressScope`, `AddressGroup`,
+        /// `Network`, `QosPolicy`, `SecurityGroup`, `Subnetpool` or `Bgpvpn`.
         /// </summary>
         [Output("objectType")]
         public Output<string> ObjectType { get; private set; } = null!;
@@ -91,7 +91,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to configure a routing entry on a subnet. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// routing entry.
         /// </summary>
         [Output("region")]
@@ -152,23 +152,23 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// Action for the RBAC policy. Can either be
-        /// `access_as_external` or `access_as_shared`.
+        /// `AccessAsExternal` or `AccessAsShared`.
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the `object_type` resource. An
-        /// `object_type` of `network` returns a network ID and an `object_type` of
-        /// `qos_policy` returns a QoS ID.
+        /// The ID of the `ObjectType` resource. An
+        /// `ObjectType` of `Network` returns a network ID and an `ObjectType` of
+        /// `QosPolicy` returns a QoS ID.
         /// </summary>
         [Input("objectId", required: true)]
         public Input<string> ObjectId { get; set; } = null!;
 
         /// <summary>
         /// The type of the object that the RBAC policy
-        /// affects. Can be one of the following: `address_scope`, `address_group`,
-        /// `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
+        /// affects. Can be one of the following: `AddressScope`, `AddressGroup`,
+        /// `Network`, `QosPolicy`, `SecurityGroup`, `Subnetpool` or `Bgpvpn`.
         /// </summary>
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to configure a routing entry on a subnet. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// routing entry.
         /// </summary>
         [Input("region")]
@@ -199,23 +199,23 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// Action for the RBAC policy. Can either be
-        /// `access_as_external` or `access_as_shared`.
+        /// `AccessAsExternal` or `AccessAsShared`.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
         /// <summary>
-        /// The ID of the `object_type` resource. An
-        /// `object_type` of `network` returns a network ID and an `object_type` of
-        /// `qos_policy` returns a QoS ID.
+        /// The ID of the `ObjectType` resource. An
+        /// `ObjectType` of `Network` returns a network ID and an `ObjectType` of
+        /// `QosPolicy` returns a QoS ID.
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
 
         /// <summary>
         /// The type of the object that the RBAC policy
-        /// affects. Can be one of the following: `address_scope`, `address_group`,
-        /// `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
+        /// affects. Can be one of the following: `AddressScope`, `AddressGroup`,
+        /// `Network`, `QosPolicy`, `SecurityGroup`, `Subnetpool` or `Bgpvpn`.
         /// </summary>
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }
@@ -226,7 +226,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to configure a routing entry on a subnet. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// routing entry.
         /// </summary>
         [Input("region")]

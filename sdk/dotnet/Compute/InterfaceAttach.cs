@@ -152,21 +152,21 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The ID of the Network to attach to an Instance. A port will be created automatically.
-        /// _NOTE_: This option and `port_id` are mutually exclusive.
+        /// _NOTE_: This option and `PortId` are mutually exclusive.
         /// </summary>
         [Output("networkId")]
         public Output<string> NetworkId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the Port to attach to an Instance.
-        /// _NOTE_: This option and `network_id` are mutually exclusive.
+        /// _NOTE_: This option and `NetworkId` are mutually exclusive.
         /// </summary>
         [Output("portId")]
         public Output<string> PortId { get; private set; } = null!;
 
         /// <summary>
         /// The region in which to create the interface attachment.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new attachment.
         /// </summary>
         [Output("region")]
@@ -233,21 +233,21 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The ID of the Network to attach to an Instance. A port will be created automatically.
-        /// _NOTE_: This option and `port_id` are mutually exclusive.
+        /// _NOTE_: This option and `PortId` are mutually exclusive.
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
         /// The ID of the Port to attach to an Instance.
-        /// _NOTE_: This option and `network_id` are mutually exclusive.
+        /// _NOTE_: This option and `NetworkId` are mutually exclusive.
         /// </summary>
         [Input("portId")]
         public Input<string>? PortId { get; set; }
 
         /// <summary>
         /// The region in which to create the interface attachment.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new attachment.
         /// </summary>
         [Input("region")]
@@ -276,21 +276,21 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The ID of the Network to attach to an Instance. A port will be created automatically.
-        /// _NOTE_: This option and `port_id` are mutually exclusive.
+        /// _NOTE_: This option and `PortId` are mutually exclusive.
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
         /// The ID of the Port to attach to an Instance.
-        /// _NOTE_: This option and `network_id` are mutually exclusive.
+        /// _NOTE_: This option and `NetworkId` are mutually exclusive.
         /// </summary>
         [Input("portId")]
         public Input<string>? PortId { get; set; }
 
         /// <summary>
         /// The region in which to create the interface attachment.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new attachment.
         /// </summary>
         [Input("region")]

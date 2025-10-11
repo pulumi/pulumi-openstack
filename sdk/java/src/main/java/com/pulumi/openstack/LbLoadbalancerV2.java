@@ -259,7 +259,7 @@ public class LbLoadbalancerV2 extends com.pulumi.resources.CustomResource {
      * Loadbalancer&#39;s address. A tenant can only create Loadbalancers on networks
      * authorized by policy (e.g. networks that belong to them or networks that
      * are shared).  Changing this creates a new loadbalancer. Exactly one of
-     * `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+     * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
      * 
      */
     @Export(name="vipNetworkId", refs={String.class}, tree="[0]")
@@ -270,7 +270,7 @@ public class LbLoadbalancerV2 extends com.pulumi.resources.CustomResource {
      * Loadbalancer&#39;s address. A tenant can only create Loadbalancers on networks
      * authorized by policy (e.g. networks that belong to them or networks that
      * are shared).  Changing this creates a new loadbalancer. Exactly one of
-     * `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+     * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
      * 
      */
     public Output<String> vipNetworkId() {
@@ -279,7 +279,7 @@ public class LbLoadbalancerV2 extends com.pulumi.resources.CustomResource {
     /**
      * The port UUID that the loadbalancer will use.
      * Changing this creates a new loadbalancer. Exactly one of
-     * `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+     * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
      * 
      */
     @Export(name="vipPortId", refs={String.class}, tree="[0]")
@@ -288,7 +288,7 @@ public class LbLoadbalancerV2 extends com.pulumi.resources.CustomResource {
     /**
      * @return The port UUID that the loadbalancer will use.
      * Changing this creates a new loadbalancer. Exactly one of
-     * `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+     * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
      * 
      */
     public Output<String> vipPortId() {
@@ -315,7 +315,7 @@ public class LbLoadbalancerV2 extends com.pulumi.resources.CustomResource {
      * Loadbalancer&#39;s address. A tenant can only create Loadbalancers on networks
      * authorized by policy (e.g. networks that belong to them or networks that
      * are shared).  Changing this creates a new loadbalancer. Exactly one of
-     * `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+     * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
      * 
      */
     @Export(name="vipSubnetId", refs={String.class}, tree="[0]")
@@ -326,7 +326,7 @@ public class LbLoadbalancerV2 extends com.pulumi.resources.CustomResource {
      * Loadbalancer&#39;s address. A tenant can only create Loadbalancers on networks
      * authorized by policy (e.g. networks that belong to them or networks that
      * are shared).  Changing this creates a new loadbalancer. Exactly one of
-     * `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+     * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
      * 
      */
     public Output<String> vipSubnetId() {

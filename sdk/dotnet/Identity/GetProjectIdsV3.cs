@@ -107,7 +107,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// Whether the project is enabled or disabled. Valid
-        /// values are `true` and `false`. Default is `true`.
+        /// values are `True` and `False`. Default is `True`.
         /// </summary>
         [Input("enabled")]
         public bool? Enabled { get; set; }
@@ -123,8 +123,8 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The regular expression of the name of the project.
-        /// Cannot be used simultaneously with `name`. Unlike filtering by `name` the
-        /// `name_regex` filtering does by client on the result of OpenStack search
+        /// Cannot be used simultaneously with `Name`. Unlike filtering by `Name` the
+        /// `NameRegex` filtering does by client on the result of OpenStack search
         /// query.
         /// </summary>
         [Input("nameRegex")]
@@ -138,7 +138,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -171,7 +171,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// Whether the project is enabled or disabled. Valid
-        /// values are `true` and `false`. Default is `true`.
+        /// values are `True` and `False`. Default is `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -187,8 +187,8 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The regular expression of the name of the project.
-        /// Cannot be used simultaneously with `name`. Unlike filtering by `name` the
-        /// `name_regex` filtering does by client on the result of OpenStack search
+        /// Cannot be used simultaneously with `Name`. Unlike filtering by `Name` the
+        /// `NameRegex` filtering does by client on the result of OpenStack search
         /// query.
         /// </summary>
         [Input("nameRegex")]
@@ -202,7 +202,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

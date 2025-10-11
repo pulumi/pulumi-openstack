@@ -238,7 +238,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// The region in which to create the container. If
-        /// omitted, the `region` argument of the provider is used. Changing this creates
+        /// omitted, the `Region` argument of the provider is used. Changing this creates
         /// a new container.
         /// </summary>
         [Output("region")]
@@ -261,13 +261,13 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// A boolean that can enable or disable object
-        /// versioning. The default value is `false`. To use this feature, your Swift
+        /// versioning. The default value is `False`. To use this feature, your Swift
         /// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
         /// release
         /// notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
-        /// and a cloud administrator must have set the `allow_object_versioning = true`
+        /// and a cloud administrator must have set the `AllowObjectVersioning = true`
         /// configuration option in Swift. If you cannot set this versioning type, you
-        /// may want to consider using `versioning_legacy` instead.
+        /// may want to consider using `VersioningLegacy` instead.
         /// </summary>
         [Output("versioning")]
         public Output<bool?> Versioning { get; private set; } = null!;
@@ -392,7 +392,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// The region in which to create the container. If
-        /// omitted, the `region` argument of the provider is used. Changing this creates
+        /// omitted, the `Region` argument of the provider is used. Changing this creates
         /// a new container.
         /// </summary>
         [Input("region")]
@@ -415,13 +415,13 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// A boolean that can enable or disable object
-        /// versioning. The default value is `false`. To use this feature, your Swift
+        /// versioning. The default value is `False`. To use this feature, your Swift
         /// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
         /// release
         /// notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
-        /// and a cloud administrator must have set the `allow_object_versioning = true`
+        /// and a cloud administrator must have set the `AllowObjectVersioning = true`
         /// configuration option in Swift. If you cannot set this versioning type, you
-        /// may want to consider using `versioning_legacy` instead.
+        /// may want to consider using `VersioningLegacy` instead.
         /// </summary>
         [Input("versioning")]
         public Input<bool>? Versioning { get; set; }
@@ -508,7 +508,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// The region in which to create the container. If
-        /// omitted, the `region` argument of the provider is used. Changing this creates
+        /// omitted, the `Region` argument of the provider is used. Changing this creates
         /// a new container.
         /// </summary>
         [Input("region")]
@@ -531,13 +531,13 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// A boolean that can enable or disable object
-        /// versioning. The default value is `false`. To use this feature, your Swift
+        /// versioning. The default value is `False`. To use this feature, your Swift
         /// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
         /// release
         /// notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
-        /// and a cloud administrator must have set the `allow_object_versioning = true`
+        /// and a cloud administrator must have set the `AllowObjectVersioning = true`
         /// configuration option in Swift. If you cannot set this versioning type, you
-        /// may want to consider using `versioning_legacy` instead.
+        /// may want to consider using `VersioningLegacy` instead.
         /// </summary>
         [Input("versioning")]
         public Input<bool>? Versioning { get; set; }

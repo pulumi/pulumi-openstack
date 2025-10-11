@@ -122,7 +122,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// Whether to replace or append the list of security
-        /// groups, specified in the `security_group_ids`. Defaults to `false`.
+        /// groups, specified in the `SecurityGroupIds`. Defaults to `False`.
         /// </summary>
         [Output("enforce")]
         public Output<bool?> Enforce { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to manage a port. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// resource.
         /// </summary>
         [Output("region")]
@@ -198,7 +198,7 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// Whether to replace or append the list of security
-        /// groups, specified in the `security_group_ids`. Defaults to `false`.
+        /// groups, specified in the `SecurityGroupIds`. Defaults to `False`.
         /// </summary>
         [Input("enforce")]
         public Input<bool>? Enforce { get; set; }
@@ -212,7 +212,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to manage a port. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// resource.
         /// </summary>
         [Input("region")]
@@ -255,7 +255,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// Whether to replace or append the list of security
-        /// groups, specified in the `security_group_ids`. Defaults to `false`.
+        /// groups, specified in the `SecurityGroupIds`. Defaults to `False`.
         /// </summary>
         [Input("enforce")]
         public Input<bool>? Enforce { get; set; }
@@ -269,7 +269,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to manage a port. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// resource.
         /// </summary>
         [Input("region")]

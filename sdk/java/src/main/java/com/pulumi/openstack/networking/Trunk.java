@@ -115,7 +115,7 @@ public class Trunk extends com.pulumi.resources.CustomResource {
     /**
      * Administrative up/down status for the trunk
      * (must be &#34;true&#34; or &#34;false&#34; if provided). Changing this updates the
-     * `admin_state_up` of an existing trunk.
+     * `adminStateUp` of an existing trunk.
      * 
      */
     @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
@@ -124,7 +124,7 @@ public class Trunk extends com.pulumi.resources.CustomResource {
     /**
      * @return Administrative up/down status for the trunk
      * (must be &#34;true&#34; or &#34;false&#34; if provided). Changing this updates the
-     * `admin_state_up` of an existing trunk.
+     * `adminStateUp` of an existing trunk.
      * 
      */
     public Output<Optional<Boolean>> adminStateUp() {

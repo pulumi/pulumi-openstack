@@ -94,28 +94,28 @@ namespace Pulumi.OpenStack.LoadBalancer
     public sealed class GetFlavorprofileV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the flavorprofile. Conflicts with `name` and
-        /// `provider_name`.
+        /// The ID of the flavorprofile. Conflicts with `Name` and
+        /// `ProviderName`.
         /// </summary>
         [Input("flavorprofileId")]
         public string? FlavorprofileId { get; set; }
 
         /// <summary>
-        /// The name of the flavorprofile. Conflicts with `flavorprofile_id`.
+        /// The name of the flavorprofile. Conflicts with `FlavorprofileId`.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         /// <summary>
         /// The name of the provider that the flavorprofile uses. Conflicts
-        /// with `flavorprofile_id`.
+        /// with `FlavorprofileId`.
         /// </summary>
         [Input("providerName")]
         public string? ProviderName { get; set; }
 
         /// <summary>
         /// The region in which to obtain the V2 Load Balancer client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -129,28 +129,28 @@ namespace Pulumi.OpenStack.LoadBalancer
     public sealed class GetFlavorprofileV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the flavorprofile. Conflicts with `name` and
-        /// `provider_name`.
+        /// The ID of the flavorprofile. Conflicts with `Name` and
+        /// `ProviderName`.
         /// </summary>
         [Input("flavorprofileId")]
         public Input<string>? FlavorprofileId { get; set; }
 
         /// <summary>
-        /// The name of the flavorprofile. Conflicts with `flavorprofile_id`.
+        /// The name of the flavorprofile. Conflicts with `FlavorprofileId`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The name of the provider that the flavorprofile uses. Conflicts
-        /// with `flavorprofile_id`.
+        /// with `FlavorprofileId`.
         /// </summary>
         [Input("providerName")]
         public Input<string>? ProviderName { get; set; }
 
         /// <summary>
         /// The region in which to obtain the V2 Load Balancer client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

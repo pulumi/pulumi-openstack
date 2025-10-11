@@ -14,7 +14,7 @@ namespace Pulumi.OpenStack.BGPVPN.Inputs
     {
         /// <summary>
         /// The ID of the BGP VPN to be advertised. Required
-        /// if `type` is `bgpvpn`. Conflicts with `prefix`.
+        /// if `Type` is `Bgpvpn`. Conflicts with `Prefix`.
         /// </summary>
         [Input("bgpvpnId")]
         public Input<string>? BgpvpnId { get; set; }
@@ -28,15 +28,15 @@ namespace Pulumi.OpenStack.BGPVPN.Inputs
 
         /// <summary>
         /// The CIDR prefix (v4 or v6) to be advertised. Required
-        /// if `type` is `prefix`. Conflicts with `bgpvpn_id`.
+        /// if `Type` is `Prefix`. Conflicts with `BgpvpnId`.
         /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
         /// <summary>
-        /// Can be `prefix` or `bgpvpn`. For the `prefix` type, the
-        /// CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
-        /// `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpn_id` key.
+        /// Can be `Prefix` or `Bgpvpn`. For the `Prefix` type, the
+        /// CIDR prefix (v4 or v6) must be specified in the `Prefix` key. For the
+        /// `Bgpvpn` type, the BGP VPN ID must be specified in the `BgpvpnId` key.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

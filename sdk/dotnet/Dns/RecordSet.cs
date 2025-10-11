@@ -101,7 +101,7 @@ namespace Pulumi.OpenStack.Dns
 
         /// <summary>
         /// The region in which to obtain the V2 DNS client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// Changing this creates a new DNS  record set.
         /// </summary>
         [Output("region")]
@@ -223,7 +223,7 @@ namespace Pulumi.OpenStack.Dns
 
         /// <summary>
         /// The region in which to obtain the V2 DNS client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// Changing this creates a new DNS  record set.
         /// </summary>
         [Input("region")]
@@ -313,7 +313,7 @@ namespace Pulumi.OpenStack.Dns
 
         /// <summary>
         /// The region in which to obtain the V2 DNS client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// Changing this creates a new DNS  record set.
         /// </summary>
         [Input("region")]

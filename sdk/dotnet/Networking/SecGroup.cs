@@ -30,7 +30,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// Whether or not to delete the default
-        /// egress security rules. This is `false` by default. See the below note
+        /// egress security rules. This is `False` by default. See the below note
         /// for more information.
         /// </summary>
         [Output("deleteDefaultRules")]
@@ -51,7 +51,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to create a port. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// security group.
         /// </summary>
         [Output("region")]
@@ -128,7 +128,7 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// Whether or not to delete the default
-        /// egress security rules. This is `false` by default. See the below note
+        /// egress security rules. This is `False` by default. See the below note
         /// for more information.
         /// </summary>
         [Input("deleteDefaultRules")]
@@ -149,7 +149,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to create a port. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// security group.
         /// </summary>
         [Input("region")]
@@ -207,7 +207,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// Whether or not to delete the default
-        /// egress security rules. This is `false` by default. See the below note
+        /// egress security rules. This is `False` by default. See the below note
         /// for more information.
         /// </summary>
         [Input("deleteDefaultRules")]
@@ -228,7 +228,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to create a port. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// security group.
         /// </summary>
         [Input("region")]

@@ -222,8 +222,8 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The UUID of a share network where the share server exists
-     * or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-     * the share_network_id value from the snapshot is used. Changing this creates a new share.
+     * or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
+     * the shareNetworkId value from the snapshot is used. Changing this creates a new share.
      * 
      */
     @Import(name="shareNetworkId")
@@ -231,8 +231,8 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The UUID of a share network where the share server exists
-     * or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-     * the share_network_id value from the snapshot is used. Changing this creates a new share.
+     * or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
+     * the shareNetworkId value from the snapshot is used. Changing this creates a new share.
      * 
      */
     public Optional<Output<String>> shareNetworkId() {
@@ -648,8 +648,8 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param shareNetworkId The UUID of a share network where the share server exists
-         * or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-         * the share_network_id value from the snapshot is used. Changing this creates a new share.
+         * or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
+         * the shareNetworkId value from the snapshot is used. Changing this creates a new share.
          * 
          * @return builder
          * 
@@ -661,8 +661,8 @@ public final class ShareState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param shareNetworkId The UUID of a share network where the share server exists
-         * or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-         * the share_network_id value from the snapshot is used. Changing this creates a new share.
+         * or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
+         * the shareNetworkId value from the snapshot is used. Changing this creates a new share.
          * 
          * @return builder
          * 

@@ -38,20 +38,20 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// 
     /// The following attributes are exported:
     /// 
-    /// * `region` - See Argument Reference above.
-    /// * `name` - See Argument Reference above.
-    /// * `project_id` - See Argument Reference above.
-    /// * `created_at` - The time at which node group was created.
-    /// * `updated_at` - The time at which node group was created.
-    /// * `docker_volume_size` - See Argument Reference above.
-    /// * `role` - See Argument Reference above.
-    /// * `image_id` - See Argument Reference above.
-    /// * `flavor_id` - See Argument Reference above.
-    /// * `labels` - See Argument Reference above.
-    /// * `node_count` - See Argument Reference above.
-    /// * `min_node_count` - See Argument Reference above.
-    /// * `max_node_count` - See Argument Reference above.
-    /// * `role` - See Argument Reference above.
+    /// * `Region` - See Argument Reference above.
+    /// * `Name` - See Argument Reference above.
+    /// * `ProjectId` - See Argument Reference above.
+    /// * `CreatedAt` - The time at which node group was created.
+    /// * `UpdatedAt` - The time at which node group was created.
+    /// * `DockerVolumeSize` - See Argument Reference above.
+    /// * `Role` - See Argument Reference above.
+    /// * `ImageId` - See Argument Reference above.
+    /// * `FlavorId` - See Argument Reference above.
+    /// * `Labels` - See Argument Reference above.
+    /// * `NodeCount` - See Argument Reference above.
+    /// * `MinNodeCount` - See Argument Reference above.
+    /// * `MaxNodeCount` - See Argument Reference above.
+    /// * `Role` - See Argument Reference above.
     /// 
     /// ## Import
     /// 
@@ -150,7 +150,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// <summary>
         /// The region in which to obtain the V1 Container Infra
         /// client. A Container Infra client is needed to create a cluster. If omitted,
-        /// the `region` argument of the provider is used. Changing this creates a new
+        /// the `Region` argument of the provider is used. Changing this creates a new
         /// node group.
         /// </summary>
         [Output("region")]
@@ -293,7 +293,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// <summary>
         /// The region in which to obtain the V1 Container Infra
         /// client. A Container Infra client is needed to create a cluster. If omitted,
-        /// the `region` argument of the provider is used. Changing this creates a new
+        /// the `Region` argument of the provider is used. Changing this creates a new
         /// node group.
         /// </summary>
         [Input("region")]
@@ -406,7 +406,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// <summary>
         /// The region in which to obtain the V1 Container Infra
         /// client. A Container Infra client is needed to create a cluster. If omitted,
-        /// the `region` argument of the provider is used. Changing this creates a new
+        /// the `Region` argument of the provider is used. Changing this creates a new
         /// node group.
         /// </summary>
         [Input("region")]

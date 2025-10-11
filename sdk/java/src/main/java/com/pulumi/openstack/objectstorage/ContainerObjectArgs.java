@@ -46,7 +46,7 @@ public final class ContainerObjectArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * A string representing the content of the object. Conflicts with
-     * `source` and `copy_from`.
+     * `source` and `copyFrom`.
      * 
      */
     @Import(name="content")
@@ -54,7 +54,7 @@ public final class ContainerObjectArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return A string representing the content of the object. Conflicts with
-     * `source` and `copy_from`.
+     * `source` and `copyFrom`.
      * 
      */
     public Optional<Output<String>> content() {
@@ -114,7 +114,7 @@ public final class ContainerObjectArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * A string representing the name of an object
-     * used to create the new object by copying the `copy_from` object. The value is in form
+     * used to create the new object by copying the `copyFrom` object. The value is in form
      * {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
      * container and object before you include them in the header. Conflicts with `source` and
      * `content`.
@@ -125,7 +125,7 @@ public final class ContainerObjectArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return A string representing the name of an object
-     * used to create the new object by copying the `copy_from` object. The value is in form
+     * used to create the new object by copying the `copyFrom` object. The value is in form
      * {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
      * container and object before you include them in the header. Conflicts with `source` and
      * `content`.
@@ -271,7 +271,7 @@ public final class ContainerObjectArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * A string representing the local path of a file which will be used
-     * as the object&#39;s content. Conflicts with `source` and `copy_from`.
+     * as the object&#39;s content. Conflicts with `source` and `copyFrom`.
      * 
      */
     @Import(name="source")
@@ -279,7 +279,7 @@ public final class ContainerObjectArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return A string representing the local path of a file which will be used
-     * as the object&#39;s content. Conflicts with `source` and `copy_from`.
+     * as the object&#39;s content. Conflicts with `source` and `copyFrom`.
      * 
      */
     public Optional<Output<String>> source() {
@@ -357,7 +357,7 @@ public final class ContainerObjectArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param content A string representing the content of the object. Conflicts with
-         * `source` and `copy_from`.
+         * `source` and `copyFrom`.
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class ContainerObjectArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param content A string representing the content of the object. Conflicts with
-         * `source` and `copy_from`.
+         * `source` and `copyFrom`.
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class ContainerObjectArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param copyFrom A string representing the name of an object
-         * used to create the new object by copying the `copy_from` object. The value is in form
+         * used to create the new object by copying the `copyFrom` object. The value is in form
          * {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
          * container and object before you include them in the header. Conflicts with `source` and
          * `content`.
@@ -464,7 +464,7 @@ public final class ContainerObjectArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param copyFrom A string representing the name of an object
-         * used to create the new object by copying the `copy_from` object. The value is in form
+         * used to create the new object by copying the `copyFrom` object. The value is in form
          * {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
          * container and object before you include them in the header. Conflicts with `source` and
          * `content`.
@@ -656,7 +656,7 @@ public final class ContainerObjectArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param source A string representing the local path of a file which will be used
-         * as the object&#39;s content. Conflicts with `source` and `copy_from`.
+         * as the object&#39;s content. Conflicts with `source` and `copyFrom`.
          * 
          * @return builder
          * 
@@ -668,7 +668,7 @@ public final class ContainerObjectArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param source A string representing the local path of a file which will be used
-         * as the object&#39;s content. Conflicts with `source` and `copy_from`.
+         * as the object&#39;s content. Conflicts with `source` and `copyFrom`.
          * 
          * @return builder
          * 

@@ -169,8 +169,8 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
     }
     /**
      * The ID for the endpoint group that contains private subnets for the local side of the connection.
-     * You must specify this parameter with the peer_ep_group_id parameter unless
-     * in backward- compatible mode where peer_cidrs is provided with a subnet_id for the VPN service.
+     * You must specify this parameter with the peerEpGroupId parameter unless
+     * in backward- compatible mode where peerCidrs is provided with a subnetId for the VPN service.
      * Changing this updates the existing connection.
      * 
      */
@@ -179,8 +179,8 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID for the endpoint group that contains private subnets for the local side of the connection.
-     * You must specify this parameter with the peer_ep_group_id parameter unless
-     * in backward- compatible mode where peer_cidrs is provided with a subnet_id for the VPN service.
+     * You must specify this parameter with the peerEpGroupId parameter unless
+     * in backward- compatible mode where peerCidrs is provided with a subnetId for the VPN service.
      * Changing this updates the existing connection.
      * 
      */
@@ -252,32 +252,32 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
         return this.peerAddress;
     }
     /**
-     * Unique list of valid peer private CIDRs in the form &lt; net_address &gt; / &lt; prefix &gt; .
+     * Unique list of valid peer private CIDRs in the form &lt; netAddress &gt; / &lt; prefix &gt; .
      * 
      */
     @Export(name="peerCidrs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> peerCidrs;
 
     /**
-     * @return Unique list of valid peer private CIDRs in the form &lt; net_address &gt; / &lt; prefix &gt; .
+     * @return Unique list of valid peer private CIDRs in the form &lt; netAddress &gt; / &lt; prefix &gt; .
      * 
      */
     public Output<Optional<List<String>>> peerCidrs() {
         return Codegen.optional(this.peerCidrs);
     }
     /**
-     * The ID for the endpoint group that contains private CIDRs in the form &lt; net_address &gt; / &lt; prefix &gt; for the peer side of the connection.
-     * You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
-     * where peer_cidrs is provided with a subnet_id for the VPN service.
+     * The ID for the endpoint group that contains private CIDRs in the form &lt; netAddress &gt; / &lt; prefix &gt; for the peer side of the connection.
+     * You must specify this parameter with the localEpGroupId parameter unless in backward-compatible mode
+     * where peerCidrs is provided with a subnetId for the VPN service.
      * 
      */
     @Export(name="peerEpGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peerEpGroupId;
 
     /**
-     * @return The ID for the endpoint group that contains private CIDRs in the form &lt; net_address &gt; / &lt; prefix &gt; for the peer side of the connection.
-     * You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
-     * where peer_cidrs is provided with a subnet_id for the VPN service.
+     * @return The ID for the endpoint group that contains private CIDRs in the form &lt; netAddress &gt; / &lt; prefix &gt; for the peer side of the connection.
+     * You must specify this parameter with the localEpGroupId parameter unless in backward-compatible mode
+     * where peerCidrs is provided with a subnetId for the VPN service.
      * 
      */
     public Output<Optional<String>> peerEpGroupId() {
@@ -285,7 +285,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
     }
     /**
      * The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
-     * Typically, this value matches the peer_address value.
+     * Typically, this value matches the peerAddress value.
      * Changing this updates the existing policy.
      * 
      */
@@ -294,7 +294,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
-     * Typically, this value matches the peer_address value.
+     * Typically, this value matches the peerAddress value.
      * Changing this updates the existing policy.
      * 
      */

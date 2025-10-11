@@ -59,7 +59,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The backup ID from which to create the volume.
-     * Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+     * Conflicts with `snapshotId`, `sourceVolId`, `imageId`. Changing this
      * creates a new volume. Requires microversion &gt;= 3.47.
      * 
      */
@@ -68,7 +68,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The backup ID from which to create the volume.
-     * Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+     * Conflicts with `snapshotId`, `sourceVolId`, `imageId`. Changing this
      * creates a new volume. Requires microversion &gt;= 3.47.
      * 
      */
@@ -131,7 +131,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The image ID from which to create the volume.
-     * Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+     * Conflicts with `snapshotId`, `sourceVolId`, `backupId`. Changing this
      * creates a new volume.
      * 
      */
@@ -140,7 +140,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The image ID from which to create the volume.
-     * Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+     * Conflicts with `snapshotId`, `sourceVolId`, `backupId`. Changing this
      * creates a new volume.
      * 
      */
@@ -235,7 +235,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The snapshot ID from which to create the volume.
-     * Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+     * Conflicts with `sourceVolId`, `imageId`, `backupId`. Changing this
      * creates a new volume.
      * 
      */
@@ -244,7 +244,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The snapshot ID from which to create the volume.
-     * Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+     * Conflicts with `sourceVolId`, `imageId`, `backupId`. Changing this
      * creates a new volume.
      * 
      */
@@ -269,7 +269,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The volume ID from which to create the volume.
-     * Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+     * Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
      * creates a new volume.
      * 
      */
@@ -278,7 +278,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The volume ID from which to create the volume.
-     * Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+     * Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
      * creates a new volume.
      * 
      */
@@ -287,18 +287,18 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Migration policy when changing `volume_type`.
+     * Migration policy when changing `volumeType`.
      * `&#34;never&#34;` *(default)* prevents migration to another storage backend, while `&#34;on-demand&#34;`
-     * allows migration if needed. Applicable only when updating `volume_type`.
+     * allows migration if needed. Applicable only when updating `volumeType`.
      * 
      */
     @Import(name="volumeRetypePolicy")
     private @Nullable Output<String> volumeRetypePolicy;
 
     /**
-     * @return Migration policy when changing `volume_type`.
+     * @return Migration policy when changing `volumeType`.
      * `&#34;never&#34;` *(default)* prevents migration to another storage backend, while `&#34;on-demand&#34;`
-     * allows migration if needed. Applicable only when updating `volume_type`.
+     * allows migration if needed. Applicable only when updating `volumeType`.
      * 
      */
     public Optional<Output<String>> volumeRetypePolicy() {
@@ -307,7 +307,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of volume to create or update.
-     * Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
+     * Changing this will attempt an in-place retype operation; migration depends on `volumeRetypePolicy`.
      * 
      */
     @Import(name="volumeType")
@@ -315,7 +315,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of volume to create or update.
-     * Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
+     * Changing this will attempt an in-place retype operation; migration depends on `volumeRetypePolicy`.
      * 
      */
     public Optional<Output<String>> volumeType() {
@@ -424,7 +424,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param backupId The backup ID from which to create the volume.
-         * Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+         * Conflicts with `snapshotId`, `sourceVolId`, `imageId`. Changing this
          * creates a new volume. Requires microversion &gt;= 3.47.
          * 
          * @return builder
@@ -437,7 +437,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param backupId The backup ID from which to create the volume.
-         * Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+         * Conflicts with `snapshotId`, `sourceVolId`, `imageId`. Changing this
          * creates a new volume. Requires microversion &gt;= 3.47.
          * 
          * @return builder
@@ -520,7 +520,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param imageId The image ID from which to create the volume.
-         * Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+         * Conflicts with `snapshotId`, `sourceVolId`, `backupId`. Changing this
          * creates a new volume.
          * 
          * @return builder
@@ -533,7 +533,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param imageId The image ID from which to create the volume.
-         * Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+         * Conflicts with `snapshotId`, `sourceVolId`, `backupId`. Changing this
          * creates a new volume.
          * 
          * @return builder
@@ -671,7 +671,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param snapshotId The snapshot ID from which to create the volume.
-         * Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+         * Conflicts with `sourceVolId`, `imageId`, `backupId`. Changing this
          * creates a new volume.
          * 
          * @return builder
@@ -684,7 +684,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param snapshotId The snapshot ID from which to create the volume.
-         * Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+         * Conflicts with `sourceVolId`, `imageId`, `backupId`. Changing this
          * creates a new volume.
          * 
          * @return builder
@@ -717,7 +717,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sourceVolId The volume ID from which to create the volume.
-         * Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+         * Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
          * creates a new volume.
          * 
          * @return builder
@@ -730,7 +730,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sourceVolId The volume ID from which to create the volume.
-         * Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+         * Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
          * creates a new volume.
          * 
          * @return builder
@@ -741,9 +741,9 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeRetypePolicy Migration policy when changing `volume_type`.
+         * @param volumeRetypePolicy Migration policy when changing `volumeType`.
          * `&#34;never&#34;` *(default)* prevents migration to another storage backend, while `&#34;on-demand&#34;`
-         * allows migration if needed. Applicable only when updating `volume_type`.
+         * allows migration if needed. Applicable only when updating `volumeType`.
          * 
          * @return builder
          * 
@@ -754,9 +754,9 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeRetypePolicy Migration policy when changing `volume_type`.
+         * @param volumeRetypePolicy Migration policy when changing `volumeType`.
          * `&#34;never&#34;` *(default)* prevents migration to another storage backend, while `&#34;on-demand&#34;`
-         * allows migration if needed. Applicable only when updating `volume_type`.
+         * allows migration if needed. Applicable only when updating `volumeType`.
          * 
          * @return builder
          * 
@@ -767,7 +767,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param volumeType The type of volume to create or update.
-         * Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
+         * Changing this will attempt an in-place retype operation; migration depends on `volumeRetypePolicy`.
          * 
          * @return builder
          * 
@@ -779,7 +779,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param volumeType The type of volume to create or update.
-         * Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
+         * Changing this will attempt an in-place retype operation; migration depends on `volumeRetypePolicy`.
          * 
          * @return builder
          * 

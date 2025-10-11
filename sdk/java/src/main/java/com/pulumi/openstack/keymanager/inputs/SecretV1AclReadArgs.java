@@ -66,7 +66,7 @@ public final class SecretV1AclReadArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * The list of user IDs, which are allowed to access the
-     * secret, when `project_access` is set to `false`.
+     * secret, when `projectAccess` is set to `false`.
      * 
      */
     @Import(name="users")
@@ -74,7 +74,7 @@ public final class SecretV1AclReadArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The list of user IDs, which are allowed to access the
-     * secret, when `project_access` is set to `false`.
+     * secret, when `projectAccess` is set to `false`.
      * 
      */
     public Optional<Output<List<String>>> users() {
@@ -175,7 +175,7 @@ public final class SecretV1AclReadArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param users The list of user IDs, which are allowed to access the
-         * secret, when `project_access` is set to `false`.
+         * secret, when `projectAccess` is set to `false`.
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class SecretV1AclReadArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param users The list of user IDs, which are allowed to access the
-         * secret, when `project_access` is set to `false`.
+         * secret, when `projectAccess` is set to `false`.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class SecretV1AclReadArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param users The list of user IDs, which are allowed to access the
-         * secret, when `project_access` is set to `false`.
+         * secret, when `projectAccess` is set to `false`.
          * 
          * @return builder
          * 

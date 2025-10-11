@@ -125,14 +125,14 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The IPv6 address mode. Valid values are
-        /// `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+        /// `dhcpv6-stateful`, `dhcpv6-stateless`, or `Slaac`.
         /// </summary>
         [Input("ipv6AddressMode")]
         public string? Ipv6AddressMode { get; set; }
 
         /// <summary>
         /// The IPv6 Router Advertisement mode. Valid values
-        /// are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+        /// are `dhcpv6-stateful`, `dhcpv6-stateless`, or `Slaac`.
         /// </summary>
         [Input("ipv6RaMode")]
         public string? Ipv6RaMode { get; set; }
@@ -152,7 +152,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Neutron client.
         /// A Neutron client is needed to retrieve subnet ids. If omitted, the
-        /// `region` argument of the provider is used.
+        /// `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -240,14 +240,14 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The IPv6 address mode. Valid values are
-        /// `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+        /// `dhcpv6-stateful`, `dhcpv6-stateless`, or `Slaac`.
         /// </summary>
         [Input("ipv6AddressMode")]
         public Input<string>? Ipv6AddressMode { get; set; }
 
         /// <summary>
         /// The IPv6 Router Advertisement mode. Valid values
-        /// are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+        /// are `dhcpv6-stateful`, `dhcpv6-stateless`, or `Slaac`.
         /// </summary>
         [Input("ipv6RaMode")]
         public Input<string>? Ipv6RaMode { get; set; }
@@ -267,7 +267,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Neutron client.
         /// A Neutron client is needed to retrieve subnet ids. If omitted, the
-        /// `region` argument of the provider is used.
+        /// `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

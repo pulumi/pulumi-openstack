@@ -106,7 +106,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
     }
     /**
      * The backup ID from which to create the volume.
-     * Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+     * Conflicts with `snapshotId`, `sourceVolId`, `imageId`. Changing this
      * creates a new volume. Requires microversion &gt;= 3.47.
      * 
      */
@@ -115,7 +115,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The backup ID from which to create the volume.
-     * Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+     * Conflicts with `snapshotId`, `sourceVolId`, `imageId`. Changing this
      * creates a new volume. Requires microversion &gt;= 3.47.
      * 
      */
@@ -174,7 +174,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
     }
     /**
      * The image ID from which to create the volume.
-     * Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+     * Conflicts with `snapshotId`, `sourceVolId`, `backupId`. Changing this
      * creates a new volume.
      * 
      */
@@ -183,7 +183,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The image ID from which to create the volume.
-     * Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+     * Conflicts with `snapshotId`, `sourceVolId`, `backupId`. Changing this
      * creates a new volume.
      * 
      */
@@ -272,7 +272,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
     }
     /**
      * The snapshot ID from which to create the volume.
-     * Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+     * Conflicts with `sourceVolId`, `imageId`, `backupId`. Changing this
      * creates a new volume.
      * 
      */
@@ -281,7 +281,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The snapshot ID from which to create the volume.
-     * Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+     * Conflicts with `sourceVolId`, `imageId`, `backupId`. Changing this
      * creates a new volume.
      * 
      */
@@ -304,7 +304,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
     }
     /**
      * The volume ID from which to create the volume.
-     * Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+     * Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
      * creates a new volume.
      * 
      */
@@ -313,7 +313,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The volume ID from which to create the volume.
-     * Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+     * Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
      * creates a new volume.
      * 
      */
@@ -321,18 +321,18 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceVolId);
     }
     /**
-     * Migration policy when changing `volume_type`.
+     * Migration policy when changing `volumeType`.
      * `&#34;never&#34;` *(default)* prevents migration to another storage backend, while `&#34;on-demand&#34;`
-     * allows migration if needed. Applicable only when updating `volume_type`.
+     * allows migration if needed. Applicable only when updating `volumeType`.
      * 
      */
     @Export(name="volumeRetypePolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> volumeRetypePolicy;
 
     /**
-     * @return Migration policy when changing `volume_type`.
+     * @return Migration policy when changing `volumeType`.
      * `&#34;never&#34;` *(default)* prevents migration to another storage backend, while `&#34;on-demand&#34;`
-     * allows migration if needed. Applicable only when updating `volume_type`.
+     * allows migration if needed. Applicable only when updating `volumeType`.
      * 
      */
     public Output<Optional<String>> volumeRetypePolicy() {
@@ -340,7 +340,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of volume to create or update.
-     * Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
+     * Changing this will attempt an in-place retype operation; migration depends on `volumeRetypePolicy`.
      * 
      */
     @Export(name="volumeType", refs={String.class}, tree="[0]")
@@ -348,7 +348,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of volume to create or update.
-     * Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
+     * Changing this will attempt an in-place retype operation; migration depends on `volumeRetypePolicy`.
      * 
      */
     public Output<String> volumeType() {

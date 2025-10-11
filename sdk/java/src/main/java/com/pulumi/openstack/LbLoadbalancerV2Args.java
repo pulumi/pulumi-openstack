@@ -217,7 +217,7 @@ public final class LbLoadbalancerV2Args extends com.pulumi.resources.ResourceArg
      * Loadbalancer&#39;s address. A tenant can only create Loadbalancers on networks
      * authorized by policy (e.g. networks that belong to them or networks that
      * are shared).  Changing this creates a new loadbalancer. Exactly one of
-     * `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+     * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
      * 
      */
     @Import(name="vipNetworkId")
@@ -228,7 +228,7 @@ public final class LbLoadbalancerV2Args extends com.pulumi.resources.ResourceArg
      * Loadbalancer&#39;s address. A tenant can only create Loadbalancers on networks
      * authorized by policy (e.g. networks that belong to them or networks that
      * are shared).  Changing this creates a new loadbalancer. Exactly one of
-     * `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+     * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
      * 
      */
     public Optional<Output<String>> vipNetworkId() {
@@ -238,7 +238,7 @@ public final class LbLoadbalancerV2Args extends com.pulumi.resources.ResourceArg
     /**
      * The port UUID that the loadbalancer will use.
      * Changing this creates a new loadbalancer. Exactly one of
-     * `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+     * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
      * 
      */
     @Import(name="vipPortId")
@@ -247,7 +247,7 @@ public final class LbLoadbalancerV2Args extends com.pulumi.resources.ResourceArg
     /**
      * @return The port UUID that the loadbalancer will use.
      * Changing this creates a new loadbalancer. Exactly one of
-     * `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+     * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
      * 
      */
     public Optional<Output<String>> vipPortId() {
@@ -276,7 +276,7 @@ public final class LbLoadbalancerV2Args extends com.pulumi.resources.ResourceArg
      * Loadbalancer&#39;s address. A tenant can only create Loadbalancers on networks
      * authorized by policy (e.g. networks that belong to them or networks that
      * are shared).  Changing this creates a new loadbalancer. Exactly one of
-     * `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+     * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
      * 
      */
     @Import(name="vipSubnetId")
@@ -287,7 +287,7 @@ public final class LbLoadbalancerV2Args extends com.pulumi.resources.ResourceArg
      * Loadbalancer&#39;s address. A tenant can only create Loadbalancers on networks
      * authorized by policy (e.g. networks that belong to them or networks that
      * are shared).  Changing this creates a new loadbalancer. Exactly one of
-     * `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+     * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
      * 
      */
     public Optional<Output<String>> vipSubnetId() {
@@ -621,7 +621,7 @@ public final class LbLoadbalancerV2Args extends com.pulumi.resources.ResourceArg
          * Loadbalancer&#39;s address. A tenant can only create Loadbalancers on networks
          * authorized by policy (e.g. networks that belong to them or networks that
          * are shared).  Changing this creates a new loadbalancer. Exactly one of
-         * `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+         * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
          * 
          * @return builder
          * 
@@ -636,7 +636,7 @@ public final class LbLoadbalancerV2Args extends com.pulumi.resources.ResourceArg
          * Loadbalancer&#39;s address. A tenant can only create Loadbalancers on networks
          * authorized by policy (e.g. networks that belong to them or networks that
          * are shared).  Changing this creates a new loadbalancer. Exactly one of
-         * `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+         * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
          * 
          * @return builder
          * 
@@ -648,7 +648,7 @@ public final class LbLoadbalancerV2Args extends com.pulumi.resources.ResourceArg
         /**
          * @param vipPortId The port UUID that the loadbalancer will use.
          * Changing this creates a new loadbalancer. Exactly one of
-         * `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+         * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
          * 
          * @return builder
          * 
@@ -661,7 +661,7 @@ public final class LbLoadbalancerV2Args extends com.pulumi.resources.ResourceArg
         /**
          * @param vipPortId The port UUID that the loadbalancer will use.
          * Changing this creates a new loadbalancer. Exactly one of
-         * `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+         * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
          * 
          * @return builder
          * 
@@ -698,7 +698,7 @@ public final class LbLoadbalancerV2Args extends com.pulumi.resources.ResourceArg
          * Loadbalancer&#39;s address. A tenant can only create Loadbalancers on networks
          * authorized by policy (e.g. networks that belong to them or networks that
          * are shared).  Changing this creates a new loadbalancer. Exactly one of
-         * `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+         * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
          * 
          * @return builder
          * 
@@ -713,7 +713,7 @@ public final class LbLoadbalancerV2Args extends com.pulumi.resources.ResourceArg
          * Loadbalancer&#39;s address. A tenant can only create Loadbalancers on networks
          * authorized by policy (e.g. networks that belong to them or networks that
          * are shared).  Changing this creates a new loadbalancer. Exactly one of
-         * `vip_subnet_id`, `vip_network_id` or `vip_port_id` has to be defined.
+         * `vipSubnetId`, `vipNetworkId` or `vipPortId` has to be defined.
          * 
          * @return builder
          * 

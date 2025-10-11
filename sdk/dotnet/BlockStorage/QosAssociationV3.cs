@@ -68,14 +68,14 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The region in which to create the qos association.
-        /// If omitted, the `region` argument of the provider is used. Changing
+        /// If omitted, the `Region` argument of the provider is used. Changing
         /// this creates a new qos association.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the volume_type to associate.
+        /// ID of the VolumeType to associate.
         /// Changing this creates a new qos association.
         /// </summary>
         [Output("volumeTypeId")]
@@ -136,14 +136,14 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The region in which to create the qos association.
-        /// If omitted, the `region` argument of the provider is used. Changing
+        /// If omitted, the `Region` argument of the provider is used. Changing
         /// this creates a new qos association.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// ID of the volume_type to associate.
+        /// ID of the VolumeType to associate.
         /// Changing this creates a new qos association.
         /// </summary>
         [Input("volumeTypeId", required: true)]
@@ -166,14 +166,14 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The region in which to create the qos association.
-        /// If omitted, the `region` argument of the provider is used. Changing
+        /// If omitted, the `Region` argument of the provider is used. Changing
         /// this creates a new qos association.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// ID of the volume_type to associate.
+        /// ID of the VolumeType to associate.
         /// Changing this creates a new qos association.
         /// </summary>
         [Input("volumeTypeId")]

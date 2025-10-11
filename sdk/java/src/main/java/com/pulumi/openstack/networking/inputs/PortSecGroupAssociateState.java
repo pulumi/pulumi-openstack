@@ -36,7 +36,7 @@ public final class PortSecGroupAssociateState extends com.pulumi.resources.Resou
 
     /**
      * Whether to replace or append the list of security
-     * groups, specified in the `security_group_ids`. Defaults to `false`.
+     * groups, specified in the `securityGroupIds`. Defaults to `false`.
      * 
      */
     @Import(name="enforce")
@@ -44,7 +44,7 @@ public final class PortSecGroupAssociateState extends com.pulumi.resources.Resou
 
     /**
      * @return Whether to replace or append the list of security
-     * groups, specified in the `security_group_ids`. Defaults to `false`.
+     * groups, specified in the `securityGroupIds`. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> enforce() {
@@ -170,7 +170,7 @@ public final class PortSecGroupAssociateState extends com.pulumi.resources.Resou
 
         /**
          * @param enforce Whether to replace or append the list of security
-         * groups, specified in the `security_group_ids`. Defaults to `false`.
+         * groups, specified in the `securityGroupIds`. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class PortSecGroupAssociateState extends com.pulumi.resources.Resou
 
         /**
          * @param enforce Whether to replace or append the list of security
-         * groups, specified in the `security_group_ids`. Defaults to `false`.
+         * groups, specified in the `securityGroupIds`. Defaults to `false`.
          * 
          * @return builder
          * 

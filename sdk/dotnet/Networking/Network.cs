@@ -135,8 +135,8 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The network DNS domain. Available, when Neutron DNS
-        /// extension is enabled. The `dns_domain` of a network in conjunction with the
-        /// `dns_name` attribute of its ports will be published in an external DNS
+        /// extension is enabled. The `DnsDomain` of a network in conjunction with the
+        /// `DnsName` attribute of its ports will be published in an external DNS
         /// service when Neutron is configured to integrate with such a service.
         /// </summary>
         [Output("dnsDomain")]
@@ -169,8 +169,8 @@ namespace Pulumi.OpenStack.Networking
         /// Whether to explicitly enable or disable
         /// port security on the network. Port Security is usually enabled by default, so
         /// omitting this argument will usually result in a value of "true". Setting this
-        /// explicitly to `false` will disable port security. Valid values are `true` and
-        /// `false`.
+        /// explicitly to `False` will disable port security. Valid values are `True` and
+        /// `False`.
         /// </summary>
         [Output("portSecurityEnabled")]
         public Output<bool> PortSecurityEnabled { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron network. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// network.
         /// </summary>
         [Output("region")]
@@ -223,7 +223,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Specifies whether the network resource has the
         /// VLAN transparent attribute set. Valid values are true and false. Defaults to
-        /// false. Changing this updates the `transparent_vlan` attribute of the existing
+        /// false. Changing this updates the `TransparentVlan` attribute of the existing
         /// network.
         /// </summary>
         [Output("transparentVlan")]
@@ -313,8 +313,8 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The network DNS domain. Available, when Neutron DNS
-        /// extension is enabled. The `dns_domain` of a network in conjunction with the
-        /// `dns_name` attribute of its ports will be published in an external DNS
+        /// extension is enabled. The `DnsDomain` of a network in conjunction with the
+        /// `DnsName` attribute of its ports will be published in an external DNS
         /// service when Neutron is configured to integrate with such a service.
         /// </summary>
         [Input("dnsDomain")]
@@ -347,8 +347,8 @@ namespace Pulumi.OpenStack.Networking
         /// Whether to explicitly enable or disable
         /// port security on the network. Port Security is usually enabled by default, so
         /// omitting this argument will usually result in a value of "true". Setting this
-        /// explicitly to `false` will disable port security. Valid values are `true` and
-        /// `false`.
+        /// explicitly to `False` will disable port security. Valid values are `True` and
+        /// `False`.
         /// </summary>
         [Input("portSecurityEnabled")]
         public Input<bool>? PortSecurityEnabled { get; set; }
@@ -362,7 +362,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron network. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// network.
         /// </summary>
         [Input("region")]
@@ -413,7 +413,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Specifies whether the network resource has the
         /// VLAN transparent attribute set. Valid values are true and false. Defaults to
-        /// false. Changing this updates the `transparent_vlan` attribute of the existing
+        /// false. Changing this updates the `TransparentVlan` attribute of the existing
         /// network.
         /// </summary>
         [Input("transparentVlan")]
@@ -484,8 +484,8 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The network DNS domain. Available, when Neutron DNS
-        /// extension is enabled. The `dns_domain` of a network in conjunction with the
-        /// `dns_name` attribute of its ports will be published in an external DNS
+        /// extension is enabled. The `DnsDomain` of a network in conjunction with the
+        /// `DnsName` attribute of its ports will be published in an external DNS
         /// service when Neutron is configured to integrate with such a service.
         /// </summary>
         [Input("dnsDomain")]
@@ -518,8 +518,8 @@ namespace Pulumi.OpenStack.Networking
         /// Whether to explicitly enable or disable
         /// port security on the network. Port Security is usually enabled by default, so
         /// omitting this argument will usually result in a value of "true". Setting this
-        /// explicitly to `false` will disable port security. Valid values are `true` and
-        /// `false`.
+        /// explicitly to `False` will disable port security. Valid values are `True` and
+        /// `False`.
         /// </summary>
         [Input("portSecurityEnabled")]
         public Input<bool>? PortSecurityEnabled { get; set; }
@@ -533,7 +533,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron network. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// network.
         /// </summary>
         [Input("region")]
@@ -584,7 +584,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Specifies whether the network resource has the
         /// VLAN transparent attribute set. Valid values are true and false. Defaults to
-        /// false. Changing this updates the `transparent_vlan` attribute of the existing
+        /// false. Changing this updates the `TransparentVlan` attribute of the existing
         /// network.
         /// </summary>
         [Input("transparentVlan")]

@@ -13,10 +13,10 @@ import javax.annotation.Nullable;
 public final class PortFixedIp {
     /**
      * @return IP address desired in the subnet for this port. If
-     * you don&#39;t specify `ip_address`, an available IP address from the specified
+     * you don&#39;t specify `ipAddress`, an available IP address from the specified
      * subnet will be allocated to this port. This field will not be populated if it
      * is left blank or omitted. To retrieve the assigned IP address, use the
-     * `all_fixed_ips` attribute.
+     * `allFixedIps` attribute.
      * 
      */
     private @Nullable String ipAddress;
@@ -30,10 +30,10 @@ public final class PortFixedIp {
     private PortFixedIp() {}
     /**
      * @return IP address desired in the subnet for this port. If
-     * you don&#39;t specify `ip_address`, an available IP address from the specified
+     * you don&#39;t specify `ipAddress`, an available IP address from the specified
      * subnet will be allocated to this port. This field will not be populated if it
      * is left blank or omitted. To retrieve the assigned IP address, use the
-     * `all_fixed_ips` attribute.
+     * `allFixedIps` attribute.
      * 
      */
     public Optional<String> ipAddress() {

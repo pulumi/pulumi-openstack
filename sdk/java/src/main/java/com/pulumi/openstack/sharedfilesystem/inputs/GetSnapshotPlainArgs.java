@@ -76,8 +76,8 @@ public final class GetSnapshotPlainArgs extends com.pulumi.resources.InvokeArgs 
 
     /**
      * A snapshot status filter. A valid value is `available`, `error`,
-     * `creating`, `deleting`, `manage_starting`, `manage_error`, `unmanage_starting`,
-     * `unmanage_error` or `error_deleting`.
+     * `creating`, `deleting`, `manageStarting`, `manageError`, `unmanageStarting`,
+     * `unmanageError` or `errorDeleting`.
      * 
      */
     @Import(name="status")
@@ -85,8 +85,8 @@ public final class GetSnapshotPlainArgs extends com.pulumi.resources.InvokeArgs 
 
     /**
      * @return A snapshot status filter. A valid value is `available`, `error`,
-     * `creating`, `deleting`, `manage_starting`, `manage_error`, `unmanage_starting`,
-     * `unmanage_error` or `error_deleting`.
+     * `creating`, `deleting`, `manageStarting`, `manageError`, `unmanageStarting`,
+     * `unmanageError` or `errorDeleting`.
      * 
      */
     public Optional<String> status() {
@@ -167,8 +167,8 @@ public final class GetSnapshotPlainArgs extends com.pulumi.resources.InvokeArgs 
 
         /**
          * @param status A snapshot status filter. A valid value is `available`, `error`,
-         * `creating`, `deleting`, `manage_starting`, `manage_error`, `unmanage_starting`,
-         * `unmanage_error` or `error_deleting`.
+         * `creating`, `deleting`, `manageStarting`, `manageError`, `unmanageStarting`,
+         * `unmanageError` or `errorDeleting`.
          * 
          * @return builder
          * 

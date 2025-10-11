@@ -335,8 +335,8 @@ public final class KeymanagerFunctions {
      * 
      * ## Date Filters
      * 
-     * The values for the `expiration_filter`, `created_at_filter`, and
-     * `updated_at_filter` parameters are comma-separated lists of time stamps in
+     * The values for the `expirationFilter`, `createdAtFilter`, and
+     * `updatedAtFilter` parameters are comma-separated lists of time stamps in
      * RFC3339 format. The time stamps can be prefixed with any of these comparison
      * operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
      * (less-than), *lte:* (less-than-or-equal).
@@ -418,8 +418,8 @@ public final class KeymanagerFunctions {
      * 
      * ## Date Filters
      * 
-     * The values for the `expiration_filter`, `created_at_filter`, and
-     * `updated_at_filter` parameters are comma-separated lists of time stamps in
+     * The values for the `expirationFilter`, `createdAtFilter`, and
+     * `updatedAtFilter` parameters are comma-separated lists of time stamps in
      * RFC3339 format. The time stamps can be prefixed with any of these comparison
      * operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
      * (less-than), *lte:* (less-than-or-equal).
@@ -501,8 +501,8 @@ public final class KeymanagerFunctions {
      * 
      * ## Date Filters
      * 
-     * The values for the `expiration_filter`, `created_at_filter`, and
-     * `updated_at_filter` parameters are comma-separated lists of time stamps in
+     * The values for the `expirationFilter`, `createdAtFilter`, and
+     * `updatedAtFilter` parameters are comma-separated lists of time stamps in
      * RFC3339 format. The time stamps can be prefixed with any of these comparison
      * operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
      * (less-than), *lte:* (less-than-or-equal).
@@ -584,8 +584,8 @@ public final class KeymanagerFunctions {
      * 
      * ## Date Filters
      * 
-     * The values for the `expiration_filter`, `created_at_filter`, and
-     * `updated_at_filter` parameters are comma-separated lists of time stamps in
+     * The values for the `expirationFilter`, `createdAtFilter`, and
+     * `updatedAtFilter` parameters are comma-separated lists of time stamps in
      * RFC3339 format. The time stamps can be prefixed with any of these comparison
      * operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
      * (less-than), *lte:* (less-than-or-equal).
@@ -667,8 +667,8 @@ public final class KeymanagerFunctions {
      * 
      * ## Date Filters
      * 
-     * The values for the `expiration_filter`, `created_at_filter`, and
-     * `updated_at_filter` parameters are comma-separated lists of time stamps in
+     * The values for the `expirationFilter`, `createdAtFilter`, and
+     * `updatedAtFilter` parameters are comma-separated lists of time stamps in
      * RFC3339 format. The time stamps can be prefixed with any of these comparison
      * operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
      * (less-than), *lte:* (less-than-or-equal).
@@ -750,8 +750,8 @@ public final class KeymanagerFunctions {
      * 
      * ## Date Filters
      * 
-     * The values for the `expiration_filter`, `created_at_filter`, and
-     * `updated_at_filter` parameters are comma-separated lists of time stamps in
+     * The values for the `expirationFilter`, `createdAtFilter`, and
+     * `updatedAtFilter` parameters are comma-separated lists of time stamps in
      * RFC3339 format. The time stamps can be prefixed with any of these comparison
      * operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
      * (less-than), *lte:* (less-than-or-equal).
@@ -833,8 +833,8 @@ public final class KeymanagerFunctions {
      * 
      * ## Date Filters
      * 
-     * The values for the `expiration_filter`, `created_at_filter`, and
-     * `updated_at_filter` parameters are comma-separated lists of time stamps in
+     * The values for the `expirationFilter`, `createdAtFilter`, and
+     * `updatedAtFilter` parameters are comma-separated lists of time stamps in
      * RFC3339 format. The time stamps can be prefixed with any of these comparison
      * operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
      * (less-than), *lte:* (less-than-or-equal).

@@ -147,7 +147,7 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
     /**
      * Number of permissible ping failures before
      * changing the member&#39;s status to ERROR. Must be a number between 1 and 10.
-     * The default is 3. Changing this updates the max_retries_down of the
+     * The default is 3. Changing this updates the maxRetriesDown of the
      * existing monitor.
      * 
      */
@@ -157,7 +157,7 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Number of permissible ping failures before
      * changing the member&#39;s status to ERROR. Must be a number between 1 and 10.
-     * The default is 3. Changing this updates the max_retries_down of the
+     * The default is 3. Changing this updates the maxRetriesDown of the
      * existing monitor.
      * 
      */
@@ -500,7 +500,7 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param maxRetriesDown Number of permissible ping failures before
          * changing the member&#39;s status to ERROR. Must be a number between 1 and 10.
-         * The default is 3. Changing this updates the max_retries_down of the
+         * The default is 3. Changing this updates the maxRetriesDown of the
          * existing monitor.
          * 
          * @return builder
@@ -514,7 +514,7 @@ public final class MonitorState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param maxRetriesDown Number of permissible ping failures before
          * changing the member&#39;s status to ERROR. Must be a number between 1 and 10.
-         * The default is 3. Changing this updates the max_retries_down of the
+         * The default is 3. Changing this updates the maxRetriesDown of the
          * existing monitor.
          * 
          * @return builder

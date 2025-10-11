@@ -65,7 +65,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new group.
         /// </summary>
         [Output("region")]
@@ -137,7 +137,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new group.
         /// </summary>
         [Input("region")]
@@ -171,7 +171,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new group.
         /// </summary>
         [Input("region")]

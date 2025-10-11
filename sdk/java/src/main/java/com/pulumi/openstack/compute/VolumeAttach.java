@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * ### Using Multiattach-enabled volumes
  * 
  * Multiattach Volumes are dependent upon your OpenStack cloud and not all
- * clouds support multiattach. Multiattach volumes require a volume_type that has [multiattach enabled](https://docs.openstack.org/cinder/latest/admin/volume-multiattach.html#multiattach-volume-type).
+ * clouds support multiattach. Multiattach volumes require a volumeType that has [multiattach enabled](https://docs.openstack.org/cinder/latest/admin/volume-multiattach.html#multiattach-volume-type).
  * 
  * <pre>
  * {@code
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * It is recommended to use `depends_on` for the attach resources
+ * It is recommended to use `dependsOn` for the attach resources
  * to enforce the volume attachments to happen one at a time.
  * 
  * ## Import

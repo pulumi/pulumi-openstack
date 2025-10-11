@@ -17,10 +17,10 @@ public final class PortFixedIpArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * IP address desired in the subnet for this port. If
-     * you don&#39;t specify `ip_address`, an available IP address from the specified
+     * you don&#39;t specify `ipAddress`, an available IP address from the specified
      * subnet will be allocated to this port. This field will not be populated if it
      * is left blank or omitted. To retrieve the assigned IP address, use the
-     * `all_fixed_ips` attribute.
+     * `allFixedIps` attribute.
      * 
      */
     @Import(name="ipAddress")
@@ -28,10 +28,10 @@ public final class PortFixedIpArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return IP address desired in the subnet for this port. If
-     * you don&#39;t specify `ip_address`, an available IP address from the specified
+     * you don&#39;t specify `ipAddress`, an available IP address from the specified
      * subnet will be allocated to this port. This field will not be populated if it
      * is left blank or omitted. To retrieve the assigned IP address, use the
-     * `all_fixed_ips` attribute.
+     * `allFixedIps` attribute.
      * 
      */
     public Optional<Output<String>> ipAddress() {
@@ -82,10 +82,10 @@ public final class PortFixedIpArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipAddress IP address desired in the subnet for this port. If
-         * you don&#39;t specify `ip_address`, an available IP address from the specified
+         * you don&#39;t specify `ipAddress`, an available IP address from the specified
          * subnet will be allocated to this port. This field will not be populated if it
          * is left blank or omitted. To retrieve the assigned IP address, use the
-         * `all_fixed_ips` attribute.
+         * `allFixedIps` attribute.
          * 
          * @return builder
          * 
@@ -97,10 +97,10 @@ public final class PortFixedIpArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipAddress IP address desired in the subnet for this port. If
-         * you don&#39;t specify `ip_address`, an available IP address from the specified
+         * you don&#39;t specify `ipAddress`, an available IP address from the specified
          * subnet will be allocated to this port. This field will not be populated if it
          * is left blank or omitted. To retrieve the assigned IP address, use the
-         * `all_fixed_ips` attribute.
+         * `allFixedIps` attribute.
          * 
          * @return builder
          * 

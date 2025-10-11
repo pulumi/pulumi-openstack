@@ -148,10 +148,10 @@ public final class GetSharePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * A share status filter. A valid value is `creating`,
-     * `error`, `available`, `deleting`, `error_deleting`, `manage_starting`,
-     * `manage_error`, `unmanage_starting`, `unmanage_error`, `unmanaged`,
-     * `extending`, `extending_error`, `shrinking`, `shrinking_error`, or
-     * `shrinking_possible_data_loss_error`.
+     * `error`, `available`, `deleting`, `errorDeleting`, `manageStarting`,
+     * `manageError`, `unmanageStarting`, `unmanageError`, `unmanaged`,
+     * `extending`, `extendingError`, `shrinking`, `shrinkingError`, or
+     * `shrinkingPossibleDataLossError`.
      * 
      */
     @Import(name="status")
@@ -159,10 +159,10 @@ public final class GetSharePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return A share status filter. A valid value is `creating`,
-     * `error`, `available`, `deleting`, `error_deleting`, `manage_starting`,
-     * `manage_error`, `unmanage_starting`, `unmanage_error`, `unmanaged`,
-     * `extending`, `extending_error`, `shrinking`, `shrinking_error`, or
-     * `shrinking_possible_data_loss_error`.
+     * `error`, `available`, `deleting`, `errorDeleting`, `manageStarting`,
+     * `manageError`, `unmanageStarting`, `unmanageError`, `unmanaged`,
+     * `extending`, `extendingError`, `shrinking`, `shrinkingError`, or
+     * `shrinkingPossibleDataLossError`.
      * 
      */
     public Optional<String> status() {
@@ -296,10 +296,10 @@ public final class GetSharePlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param status A share status filter. A valid value is `creating`,
-         * `error`, `available`, `deleting`, `error_deleting`, `manage_starting`,
-         * `manage_error`, `unmanage_starting`, `unmanage_error`, `unmanaged`,
-         * `extending`, `extending_error`, `shrinking`, `shrinking_error`, or
-         * `shrinking_possible_data_loss_error`.
+         * `error`, `available`, `deleting`, `errorDeleting`, `manageStarting`,
+         * `manageError`, `unmanageStarting`, `unmanageError`, `unmanaged`,
+         * `extending`, `extendingError`, `shrinking`, `shrinkingError`, or
+         * `shrinkingPossibleDataLossError`.
          * 
          * @return builder
          * 

@@ -97,8 +97,8 @@ namespace Pulumi.OpenStack.VPNaaS
 
         /// <summary>
         /// The ID for the endpoint group that contains private subnets for the local side of the connection.
-        /// You must specify this parameter with the peer_ep_group_id parameter unless
-        /// in backward- compatible mode where peer_cidrs is provided with a subnet_id for the VPN service.
+        /// You must specify this parameter with the PeerEpGroupId parameter unless
+        /// in backward- compatible mode where PeerCidrs is provided with a SubnetId for the VPN service.
         /// Changing this updates the existing connection.
         /// </summary>
         [Output("localEpGroupId")]
@@ -133,22 +133,22 @@ namespace Pulumi.OpenStack.VPNaaS
         public Output<string> PeerAddress { get; private set; } = null!;
 
         /// <summary>
-        /// Unique list of valid peer private CIDRs in the form &lt; net_address &gt; / &lt; prefix &gt; .
+        /// Unique list of valid peer private CIDRs in the form &lt; NetAddress &gt; / &lt; prefix &gt; .
         /// </summary>
         [Output("peerCidrs")]
         public Output<ImmutableArray<string>> PeerCidrs { get; private set; } = null!;
 
         /// <summary>
-        /// The ID for the endpoint group that contains private CIDRs in the form &lt; net_address &gt; / &lt; prefix &gt; for the peer side of the connection.
-        /// You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
-        /// where peer_cidrs is provided with a subnet_id for the VPN service.
+        /// The ID for the endpoint group that contains private CIDRs in the form &lt; NetAddress &gt; / &lt; prefix &gt; for the peer side of the connection.
+        /// You must specify this parameter with the LocalEpGroupId parameter unless in backward-compatible mode
+        /// where PeerCidrs is provided with a SubnetId for the VPN service.
         /// </summary>
         [Output("peerEpGroupId")]
         public Output<string?> PeerEpGroupId { get; private set; } = null!;
 
         /// <summary>
         /// The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
-        /// Typically, this value matches the peer_address value.
+        /// Typically, this value matches the PeerAddress value.
         /// Changing this updates the existing policy.
         /// </summary>
         [Output("peerId")]
@@ -163,7 +163,7 @@ namespace Pulumi.OpenStack.VPNaaS
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create an IPSec site connection. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// site connection.
         /// </summary>
         [Output("region")]
@@ -280,8 +280,8 @@ namespace Pulumi.OpenStack.VPNaaS
 
         /// <summary>
         /// The ID for the endpoint group that contains private subnets for the local side of the connection.
-        /// You must specify this parameter with the peer_ep_group_id parameter unless
-        /// in backward- compatible mode where peer_cidrs is provided with a subnet_id for the VPN service.
+        /// You must specify this parameter with the PeerEpGroupId parameter unless
+        /// in backward- compatible mode where PeerCidrs is provided with a SubnetId for the VPN service.
         /// Changing this updates the existing connection.
         /// </summary>
         [Input("localEpGroupId")]
@@ -319,7 +319,7 @@ namespace Pulumi.OpenStack.VPNaaS
         private InputList<string>? _peerCidrs;
 
         /// <summary>
-        /// Unique list of valid peer private CIDRs in the form &lt; net_address &gt; / &lt; prefix &gt; .
+        /// Unique list of valid peer private CIDRs in the form &lt; NetAddress &gt; / &lt; prefix &gt; .
         /// </summary>
         public InputList<string> PeerCidrs
         {
@@ -328,16 +328,16 @@ namespace Pulumi.OpenStack.VPNaaS
         }
 
         /// <summary>
-        /// The ID for the endpoint group that contains private CIDRs in the form &lt; net_address &gt; / &lt; prefix &gt; for the peer side of the connection.
-        /// You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
-        /// where peer_cidrs is provided with a subnet_id for the VPN service.
+        /// The ID for the endpoint group that contains private CIDRs in the form &lt; NetAddress &gt; / &lt; prefix &gt; for the peer side of the connection.
+        /// You must specify this parameter with the LocalEpGroupId parameter unless in backward-compatible mode
+        /// where PeerCidrs is provided with a SubnetId for the VPN service.
         /// </summary>
         [Input("peerEpGroupId")]
         public Input<string>? PeerEpGroupId { get; set; }
 
         /// <summary>
         /// The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
-        /// Typically, this value matches the peer_address value.
+        /// Typically, this value matches the PeerAddress value.
         /// Changing this updates the existing policy.
         /// </summary>
         [Input("peerId", required: true)]
@@ -352,7 +352,7 @@ namespace Pulumi.OpenStack.VPNaaS
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create an IPSec site connection. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// site connection.
         /// </summary>
         [Input("region")]
@@ -437,8 +437,8 @@ namespace Pulumi.OpenStack.VPNaaS
 
         /// <summary>
         /// The ID for the endpoint group that contains private subnets for the local side of the connection.
-        /// You must specify this parameter with the peer_ep_group_id parameter unless
-        /// in backward- compatible mode where peer_cidrs is provided with a subnet_id for the VPN service.
+        /// You must specify this parameter with the PeerEpGroupId parameter unless
+        /// in backward- compatible mode where PeerCidrs is provided with a SubnetId for the VPN service.
         /// Changing this updates the existing connection.
         /// </summary>
         [Input("localEpGroupId")]
@@ -476,7 +476,7 @@ namespace Pulumi.OpenStack.VPNaaS
         private InputList<string>? _peerCidrs;
 
         /// <summary>
-        /// Unique list of valid peer private CIDRs in the form &lt; net_address &gt; / &lt; prefix &gt; .
+        /// Unique list of valid peer private CIDRs in the form &lt; NetAddress &gt; / &lt; prefix &gt; .
         /// </summary>
         public InputList<string> PeerCidrs
         {
@@ -485,16 +485,16 @@ namespace Pulumi.OpenStack.VPNaaS
         }
 
         /// <summary>
-        /// The ID for the endpoint group that contains private CIDRs in the form &lt; net_address &gt; / &lt; prefix &gt; for the peer side of the connection.
-        /// You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
-        /// where peer_cidrs is provided with a subnet_id for the VPN service.
+        /// The ID for the endpoint group that contains private CIDRs in the form &lt; NetAddress &gt; / &lt; prefix &gt; for the peer side of the connection.
+        /// You must specify this parameter with the LocalEpGroupId parameter unless in backward-compatible mode
+        /// where PeerCidrs is provided with a SubnetId for the VPN service.
         /// </summary>
         [Input("peerEpGroupId")]
         public Input<string>? PeerEpGroupId { get; set; }
 
         /// <summary>
         /// The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
-        /// Typically, this value matches the peer_address value.
+        /// Typically, this value matches the PeerAddress value.
         /// Changing this updates the existing policy.
         /// </summary>
         [Input("peerId")]
@@ -509,7 +509,7 @@ namespace Pulumi.OpenStack.VPNaaS
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create an IPSec site connection. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// site connection.
         /// </summary>
         [Input("region")]

@@ -24,7 +24,7 @@ namespace Pulumi.OpenStack.Identity.Outputs
         /// <summary>
         /// The region in which to obtain the V3 Identity client.
         /// A Identity client is needed to retrieve tokens IDs. If omitted, the
-        /// `region` argument of the provider is used.
+        /// `Region` argument of the provider is used.
         /// </summary>
         public readonly string Region;
         /// <summary>

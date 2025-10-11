@@ -31,7 +31,7 @@ public final class SecretV1AclRead {
     private @Nullable String updatedAt;
     /**
      * @return The list of user IDs, which are allowed to access the
-     * secret, when `project_access` is set to `false`.
+     * secret, when `projectAccess` is set to `false`.
      * 
      */
     private @Nullable List<String> users;
@@ -61,7 +61,7 @@ public final class SecretV1AclRead {
     }
     /**
      * @return The list of user IDs, which are allowed to access the
-     * secret, when `project_access` is set to `false`.
+     * secret, when `projectAccess` is set to `false`.
      * 
      */
     public List<String> users() {

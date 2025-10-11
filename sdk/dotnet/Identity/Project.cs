@@ -59,14 +59,14 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// Whether the project is enabled or disabled. Valid
-        /// values are `true` and `false`. Default is `true`.
+        /// values are `True` and `False`. Default is `True`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
         /// Whether this project is a domain. Valid values
-        /// are `true` and `false`. Default is `false`. Changing this creates a new
+        /// are `True` and `False`. Default is `False`. Changing this creates a new
         /// project/domain.
         /// </summary>
         [Output("isDomain")]
@@ -87,7 +87,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new project.
         /// </summary>
         [Output("region")]
@@ -160,14 +160,14 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// Whether the project is enabled or disabled. Valid
-        /// values are `true` and `false`. Default is `true`.
+        /// values are `True` and `False`. Default is `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// Whether this project is a domain. Valid values
-        /// are `true` and `false`. Default is `false`. Changing this creates a new
+        /// are `True` and `False`. Default is `False`. Changing this creates a new
         /// project/domain.
         /// </summary>
         [Input("isDomain")]
@@ -188,7 +188,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new project.
         /// </summary>
         [Input("region")]
@@ -229,14 +229,14 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// Whether the project is enabled or disabled. Valid
-        /// values are `true` and `false`. Default is `true`.
+        /// values are `True` and `False`. Default is `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// Whether this project is a domain. Valid values
-        /// are `true` and `false`. Default is `false`. Changing this creates a new
+        /// are `True` and `False`. Default is `False`. Changing this creates a new
         /// project/domain.
         /// </summary>
         [Input("isDomain")]
@@ -257,7 +257,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new project.
         /// </summary>
         [Input("region")]

@@ -18,7 +18,7 @@ public final class RbacPolicyV2Args extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Action for the RBAC policy. Can either be
-     * `access_as_external` or `access_as_shared`.
+     * `accessAsExternal` or `accessAsShared`.
      * 
      */
     @Import(name="action", required=true)
@@ -26,7 +26,7 @@ public final class RbacPolicyV2Args extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Action for the RBAC policy. Can either be
-     * `access_as_external` or `access_as_shared`.
+     * `accessAsExternal` or `accessAsShared`.
      * 
      */
     public Output<String> action() {
@@ -34,18 +34,18 @@ public final class RbacPolicyV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the `object_type` resource. An
-     * `object_type` of `network` returns a network ID and an `object_type` of
-     * `qos_policy` returns a QoS ID.
+     * The ID of the `objectType` resource. An
+     * `objectType` of `network` returns a network ID and an `objectType` of
+     * `qosPolicy` returns a QoS ID.
      * 
      */
     @Import(name="objectId", required=true)
     private Output<String> objectId;
 
     /**
-     * @return The ID of the `object_type` resource. An
-     * `object_type` of `network` returns a network ID and an `object_type` of
-     * `qos_policy` returns a QoS ID.
+     * @return The ID of the `objectType` resource. An
+     * `objectType` of `network` returns a network ID and an `objectType` of
+     * `qosPolicy` returns a QoS ID.
      * 
      */
     public Output<String> objectId() {
@@ -54,8 +54,8 @@ public final class RbacPolicyV2Args extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of the object that the RBAC policy
-     * affects. Can be one of the following: `address_scope`, `address_group`,
-     * `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
+     * affects. Can be one of the following: `addressScope`, `addressGroup`,
+     * `network`, `qosPolicy`, `securityGroup`, `subnetpool` or `bgpvpn`.
      * 
      */
     @Import(name="objectType", required=true)
@@ -63,8 +63,8 @@ public final class RbacPolicyV2Args extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of the object that the RBAC policy
-     * affects. Can be one of the following: `address_scope`, `address_group`,
-     * `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
+     * affects. Can be one of the following: `addressScope`, `addressGroup`,
+     * `network`, `qosPolicy`, `securityGroup`, `subnetpool` or `bgpvpn`.
      * 
      */
     public Output<String> objectType() {
@@ -139,7 +139,7 @@ public final class RbacPolicyV2Args extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param action Action for the RBAC policy. Can either be
-         * `access_as_external` or `access_as_shared`.
+         * `accessAsExternal` or `accessAsShared`.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class RbacPolicyV2Args extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param action Action for the RBAC policy. Can either be
-         * `access_as_external` or `access_as_shared`.
+         * `accessAsExternal` or `accessAsShared`.
          * 
          * @return builder
          * 
@@ -161,9 +161,9 @@ public final class RbacPolicyV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objectId The ID of the `object_type` resource. An
-         * `object_type` of `network` returns a network ID and an `object_type` of
-         * `qos_policy` returns a QoS ID.
+         * @param objectId The ID of the `objectType` resource. An
+         * `objectType` of `network` returns a network ID and an `objectType` of
+         * `qosPolicy` returns a QoS ID.
          * 
          * @return builder
          * 
@@ -174,9 +174,9 @@ public final class RbacPolicyV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objectId The ID of the `object_type` resource. An
-         * `object_type` of `network` returns a network ID and an `object_type` of
-         * `qos_policy` returns a QoS ID.
+         * @param objectId The ID of the `objectType` resource. An
+         * `objectType` of `network` returns a network ID and an `objectType` of
+         * `qosPolicy` returns a QoS ID.
          * 
          * @return builder
          * 
@@ -187,8 +187,8 @@ public final class RbacPolicyV2Args extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param objectType The type of the object that the RBAC policy
-         * affects. Can be one of the following: `address_scope`, `address_group`,
-         * `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
+         * affects. Can be one of the following: `addressScope`, `addressGroup`,
+         * `network`, `qosPolicy`, `securityGroup`, `subnetpool` or `bgpvpn`.
          * 
          * @return builder
          * 
@@ -200,8 +200,8 @@ public final class RbacPolicyV2Args extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param objectType The type of the object that the RBAC policy
-         * affects. Can be one of the following: `address_scope`, `address_group`,
-         * `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
+         * affects. Can be one of the following: `addressScope`, `addressGroup`,
+         * `network`, `qosPolicy`, `securityGroup`, `subnetpool` or `bgpvpn`.
          * 
          * @return builder
          * 

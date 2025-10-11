@@ -151,8 +151,8 @@ namespace Pulumi.OpenStack.KeyManager
     {
         /// <summary>
         /// Allows to control an access to a container. Currently only
-        /// the `read` operation is supported. If not specified, the container is
-        /// accessible project wide. The `read` structure is described below.
+        /// the `Read` operation is supported. If not specified, the container is
+        /// accessible project wide. The `Read` structure is described below.
         /// </summary>
         [Output("acl")]
         public Output<Outputs.ContainerV1Acl> Acl { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// <summary>
         /// The region in which to obtain the V1 KeyManager client.
         /// A KeyManager client is needed to create a container. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// V1 container.
         /// </summary>
         [Output("region")]
@@ -211,7 +211,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
+        /// Used to indicate the type of container. Must be one of `Generic`, `Rsa` or `Certificate`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -270,8 +270,8 @@ namespace Pulumi.OpenStack.KeyManager
     {
         /// <summary>
         /// Allows to control an access to a container. Currently only
-        /// the `read` operation is supported. If not specified, the container is
-        /// accessible project wide. The `read` structure is described below.
+        /// the `Read` operation is supported. If not specified, the container is
+        /// accessible project wide. The `Read` structure is described below.
         /// </summary>
         [Input("acl")]
         public Input<Inputs.ContainerV1AclArgs>? Acl { get; set; }
@@ -286,7 +286,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// <summary>
         /// The region in which to obtain the V1 KeyManager client.
         /// A KeyManager client is needed to create a container. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// V1 container.
         /// </summary>
         [Input("region")]
@@ -306,7 +306,7 @@ namespace Pulumi.OpenStack.KeyManager
         }
 
         /// <summary>
-        /// Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
+        /// Used to indicate the type of container. Must be one of `Generic`, `Rsa` or `Certificate`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -321,8 +321,8 @@ namespace Pulumi.OpenStack.KeyManager
     {
         /// <summary>
         /// Allows to control an access to a container. Currently only
-        /// the `read` operation is supported. If not specified, the container is
-        /// accessible project wide. The `read` structure is described below.
+        /// the `Read` operation is supported. If not specified, the container is
+        /// accessible project wide. The `Read` structure is described below.
         /// </summary>
         [Input("acl")]
         public Input<Inputs.ContainerV1AclGetArgs>? Acl { get; set; }
@@ -367,7 +367,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// <summary>
         /// The region in which to obtain the V1 KeyManager client.
         /// A KeyManager client is needed to create a container. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// V1 container.
         /// </summary>
         [Input("region")]
@@ -393,7 +393,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
+        /// Used to indicate the type of container. Must be one of `Generic`, `Rsa` or `Certificate`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -95,14 +95,14 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// Whether the project is enabled or disabled. Valid
-        /// values are `true` and `false`.
+        /// values are `True` and `False`.
         /// </summary>
         [Input("enabled")]
         public bool? Enabled { get; set; }
 
         /// <summary>
         /// Whether this project is a domain. Valid values
-        /// are `true` and `false`.
+        /// are `True` and `False`.
         /// </summary>
         [Input("isDomain")]
         public bool? IsDomain { get; set; }
@@ -128,7 +128,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -149,14 +149,14 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// Whether the project is enabled or disabled. Valid
-        /// values are `true` and `false`.
+        /// values are `True` and `False`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// Whether this project is a domain. Valid values
-        /// are `true` and `false`.
+        /// are `True` and `False`.
         /// </summary>
         [Input("isDomain")]
         public Input<bool>? IsDomain { get; set; }
@@ -182,7 +182,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

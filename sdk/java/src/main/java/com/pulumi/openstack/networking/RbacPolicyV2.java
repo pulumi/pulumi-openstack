@@ -19,11 +19,11 @@ import javax.annotation.Nullable;
  * operators and users to grant access to resources for specific projects.
  * 
  * Sharing an object with a specific project is accomplished by creating a
- * policy entry that permits the target project the `access_as_shared` action
+ * policy entry that permits the target project the `accessAsShared` action
  * on that object.
  * 
  * To make a network available as an external network for specific projects
- * rather than all projects, use the `access_as_external` action.
+ * rather than all projects, use the `accessAsExternal` action.
  * If a network is marked as external during creation, it now implicitly creates
  * a wildcard RBAC policy granting everyone access to preserve previous behavior
  * before this feature was added.
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
 public class RbacPolicyV2 extends com.pulumi.resources.CustomResource {
     /**
      * Action for the RBAC policy. Can either be
-     * `access_as_external` or `access_as_shared`.
+     * `accessAsExternal` or `accessAsShared`.
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
@@ -92,25 +92,25 @@ public class RbacPolicyV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Action for the RBAC policy. Can either be
-     * `access_as_external` or `access_as_shared`.
+     * `accessAsExternal` or `accessAsShared`.
      * 
      */
     public Output<String> action() {
         return this.action;
     }
     /**
-     * The ID of the `object_type` resource. An
-     * `object_type` of `network` returns a network ID and an `object_type` of
-     * `qos_policy` returns a QoS ID.
+     * The ID of the `objectType` resource. An
+     * `objectType` of `network` returns a network ID and an `objectType` of
+     * `qosPolicy` returns a QoS ID.
      * 
      */
     @Export(name="objectId", refs={String.class}, tree="[0]")
     private Output<String> objectId;
 
     /**
-     * @return The ID of the `object_type` resource. An
-     * `object_type` of `network` returns a network ID and an `object_type` of
-     * `qos_policy` returns a QoS ID.
+     * @return The ID of the `objectType` resource. An
+     * `objectType` of `network` returns a network ID and an `objectType` of
+     * `qosPolicy` returns a QoS ID.
      * 
      */
     public Output<String> objectId() {
@@ -118,8 +118,8 @@ public class RbacPolicyV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the object that the RBAC policy
-     * affects. Can be one of the following: `address_scope`, `address_group`,
-     * `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
+     * affects. Can be one of the following: `addressScope`, `addressGroup`,
+     * `network`, `qosPolicy`, `securityGroup`, `subnetpool` or `bgpvpn`.
      * 
      */
     @Export(name="objectType", refs={String.class}, tree="[0]")
@@ -127,8 +127,8 @@ public class RbacPolicyV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the object that the RBAC policy
-     * affects. Can be one of the following: `address_scope`, `address_group`,
-     * `network`, `qos_policy`, `security_group`, `subnetpool` or `bgpvpn`.
+     * affects. Can be one of the following: `addressScope`, `addressGroup`,
+     * `network`, `qosPolicy`, `securityGroup`, `subnetpool` or `bgpvpn`.
      * 
      */
     public Output<String> objectType() {

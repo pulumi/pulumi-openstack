@@ -712,6 +712,10 @@ class ContainerObject(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Example with simple content
+
+        ### Example with content from file
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] container_name: A unique (within an account) name for the container. 
@@ -764,6 +768,10 @@ class ContainerObject(pulumi.CustomResource):
         Manages a V1 container object resource within OpenStack.
 
         ## Example Usage
+
+        ### Example with simple content
+
+        ### Example with content from file
 
         :param str resource_name: The name of the resource.
         :param ContainerObjectArgs args: The arguments to use to populate this resource's properties.

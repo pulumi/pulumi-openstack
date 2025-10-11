@@ -88,20 +88,20 @@ namespace Pulumi.OpenStack.LoadBalancer
     public sealed class GetFlavorV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+        /// The ID of the flavor. Exactly one of `Name`, `FlavorId` is required to be set.
         /// </summary>
         [Input("flavorId")]
         public string? FlavorId { get; set; }
 
         /// <summary>
-        /// The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+        /// The name of the flavor. Exactly one of `Name`, `FlavorId` is required to be set.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         /// <summary>
         /// The region in which to obtain the V2 Load Balancer client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -115,20 +115,20 @@ namespace Pulumi.OpenStack.LoadBalancer
     public sealed class GetFlavorV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+        /// The ID of the flavor. Exactly one of `Name`, `FlavorId` is required to be set.
         /// </summary>
         [Input("flavorId")]
         public Input<string>? FlavorId { get; set; }
 
         /// <summary>
-        /// The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+        /// The name of the flavor. Exactly one of `Name`, `FlavorId` is required to be set.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The region in which to obtain the V2 Load Balancer client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

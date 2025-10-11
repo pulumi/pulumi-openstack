@@ -172,7 +172,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// <summary>
         /// The region in which to obtain the V2 Shared File System client.
         /// A Shared File System client is needed to create a share network. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// share network.
         /// </summary>
         [Output("region")]
@@ -270,7 +270,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// <summary>
         /// The region in which to obtain the V2 Shared File System client.
         /// A Shared File System client is needed to create a share network. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// share network.
         /// </summary>
         [Input("region")]
@@ -354,7 +354,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// <summary>
         /// The region in which to obtain the V2 Shared File System client.
         /// A Shared File System client is needed to create a share network. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// share network.
         /// </summary>
         [Input("region")]

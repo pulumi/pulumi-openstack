@@ -95,7 +95,7 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -116,7 +116,7 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

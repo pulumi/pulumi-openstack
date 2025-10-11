@@ -55,7 +55,7 @@ public final class GetAuthScopeArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * A boolean argument that determines whether to
-     * export the current auth scope token ID. When set to `true`, the `token_id`
+     * export the current auth scope token ID. When set to `true`, the `tokenId`
      * attribute will contain an unencrypted token that can be used for further API
      * calls. **Warning**: please note that the leaked token may allow unauthorized
      * access to other OpenStack services within the current auth scope, so use this
@@ -67,7 +67,7 @@ public final class GetAuthScopeArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return A boolean argument that determines whether to
-     * export the current auth scope token ID. When set to `true`, the `token_id`
+     * export the current auth scope token ID. When set to `true`, the `tokenId`
      * attribute will contain an unencrypted token that can be used for further API
      * calls. **Warning**: please note that the leaked token may allow unauthorized
      * access to other OpenStack services within the current auth scope, so use this
@@ -154,7 +154,7 @@ public final class GetAuthScopeArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param setTokenId A boolean argument that determines whether to
-         * export the current auth scope token ID. When set to `true`, the `token_id`
+         * export the current auth scope token ID. When set to `true`, the `tokenId`
          * attribute will contain an unencrypted token that can be used for further API
          * calls. **Warning**: please note that the leaked token may allow unauthorized
          * access to other OpenStack services within the current auth scope, so use this
@@ -170,7 +170,7 @@ public final class GetAuthScopeArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param setTokenId A boolean argument that determines whether to
-         * export the current auth scope token ID. When set to `true`, the `token_id`
+         * export the current auth scope token ID. When set to `true`, the `tokenId`
          * attribute will contain an unencrypted token that can be used for further API
          * calls. **Warning**: please note that the leaked token may allow unauthorized
          * access to other OpenStack services within the current auth scope, so use this

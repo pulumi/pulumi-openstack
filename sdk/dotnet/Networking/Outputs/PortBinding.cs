@@ -32,9 +32,9 @@ namespace Pulumi.OpenStack.Networking.Outputs
         /// </summary>
         public readonly string? VifType;
         /// <summary>
-        /// VNIC type for the port. Can either be `direct`,
-        /// `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
-        /// Default value is `normal`. It can be updated on unbound ports only.
+        /// VNIC type for the port. Can either be `Direct`,
+        /// `direct-physical`, `Macvtap`, `Normal`, `Baremetal` or `virtio-forwarder`.
+        /// Default value is `Normal`. It can be updated on unbound ports only.
         /// </summary>
         public readonly string? VnicType;
 

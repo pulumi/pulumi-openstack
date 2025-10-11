@@ -27,14 +27,14 @@ public final class BgpvpnPortAssociateV2Route {
     private @Nullable Integer localPref;
     /**
      * @return The CIDR prefix (v4 or v6) to be advertised. Required
-     * if `type` is `prefix`. Conflicts with `bgpvpn_id`.
+     * if `type` is `prefix`. Conflicts with `bgpvpnId`.
      * 
      */
     private @Nullable String prefix;
     /**
      * @return Can be `prefix` or `bgpvpn`. For the `prefix` type, the
      * CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
-     * `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpn_id` key.
+     * `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpnId` key.
      * 
      */
     private String type;
@@ -58,7 +58,7 @@ public final class BgpvpnPortAssociateV2Route {
     }
     /**
      * @return The CIDR prefix (v4 or v6) to be advertised. Required
-     * if `type` is `prefix`. Conflicts with `bgpvpn_id`.
+     * if `type` is `prefix`. Conflicts with `bgpvpnId`.
      * 
      */
     public Optional<String> prefix() {
@@ -67,7 +67,7 @@ public final class BgpvpnPortAssociateV2Route {
     /**
      * @return Can be `prefix` or `bgpvpn`. For the `prefix` type, the
      * CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
-     * `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpn_id` key.
+     * `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpnId` key.
      * 
      */
     public String type() {

@@ -100,7 +100,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// Whether the user is enabled or disabled. Valid
-        /// values are `true` and `false`.
+        /// values are `True` and `False`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -113,28 +113,28 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// User will not have to
-        /// change their password upon first use. Valid values are `true` and `false`.
+        /// change their password upon first use. Valid values are `True` and `False`.
         /// </summary>
         [Output("ignoreChangePasswordUponFirstUse")]
         public Output<bool?> IgnoreChangePasswordUponFirstUse { get; private set; } = null!;
 
         /// <summary>
         /// User will not have a failure
-        /// lockout placed on their account. Valid values are `true` and `false`.
+        /// lockout placed on their account. Valid values are `True` and `False`.
         /// </summary>
         [Output("ignoreLockoutFailureAttempts")]
         public Output<bool?> IgnoreLockoutFailureAttempts { get; private set; } = null!;
 
         /// <summary>
         /// User's password will not expire.
-        /// Valid values are `true` and `false`.
+        /// Valid values are `True` and `False`.
         /// </summary>
         [Output("ignorePasswordExpiry")]
         public Output<bool?> IgnorePasswordExpiry { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable multi-factor
-        /// authentication. Valid values are `true` and `false`.
+        /// authentication. Valid values are `True` and `False`.
         /// </summary>
         [Output("multiFactorAuthEnabled")]
         public Output<bool?> MultiFactorAuthEnabled { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new User.
         /// </summary>
         [Output("region")]
@@ -238,7 +238,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// Whether the user is enabled or disabled. Valid
-        /// values are `true` and `false`.
+        /// values are `True` and `False`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -257,28 +257,28 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// User will not have to
-        /// change their password upon first use. Valid values are `true` and `false`.
+        /// change their password upon first use. Valid values are `True` and `False`.
         /// </summary>
         [Input("ignoreChangePasswordUponFirstUse")]
         public Input<bool>? IgnoreChangePasswordUponFirstUse { get; set; }
 
         /// <summary>
         /// User will not have a failure
-        /// lockout placed on their account. Valid values are `true` and `false`.
+        /// lockout placed on their account. Valid values are `True` and `False`.
         /// </summary>
         [Input("ignoreLockoutFailureAttempts")]
         public Input<bool>? IgnoreLockoutFailureAttempts { get; set; }
 
         /// <summary>
         /// User's password will not expire.
-        /// Valid values are `true` and `false`.
+        /// Valid values are `True` and `False`.
         /// </summary>
         [Input("ignorePasswordExpiry")]
         public Input<bool>? IgnorePasswordExpiry { get; set; }
 
         /// <summary>
         /// Whether to enable multi-factor
-        /// authentication. Valid values are `true` and `false`.
+        /// authentication. Valid values are `True` and `False`.
         /// </summary>
         [Input("multiFactorAuthEnabled")]
         public Input<bool>? MultiFactorAuthEnabled { get; set; }
@@ -322,7 +322,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new User.
         /// </summary>
         [Input("region")]
@@ -356,7 +356,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// Whether the user is enabled or disabled. Valid
-        /// values are `true` and `false`.
+        /// values are `True` and `False`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -375,28 +375,28 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// User will not have to
-        /// change their password upon first use. Valid values are `true` and `false`.
+        /// change their password upon first use. Valid values are `True` and `False`.
         /// </summary>
         [Input("ignoreChangePasswordUponFirstUse")]
         public Input<bool>? IgnoreChangePasswordUponFirstUse { get; set; }
 
         /// <summary>
         /// User will not have a failure
-        /// lockout placed on their account. Valid values are `true` and `false`.
+        /// lockout placed on their account. Valid values are `True` and `False`.
         /// </summary>
         [Input("ignoreLockoutFailureAttempts")]
         public Input<bool>? IgnoreLockoutFailureAttempts { get; set; }
 
         /// <summary>
         /// User's password will not expire.
-        /// Valid values are `true` and `false`.
+        /// Valid values are `True` and `False`.
         /// </summary>
         [Input("ignorePasswordExpiry")]
         public Input<bool>? IgnorePasswordExpiry { get; set; }
 
         /// <summary>
         /// Whether to enable multi-factor
-        /// authentication. Valid values are `true` and `false`.
+        /// authentication. Valid values are `True` and `False`.
         /// </summary>
         [Input("multiFactorAuthEnabled")]
         public Input<bool>? MultiFactorAuthEnabled { get; set; }
@@ -440,7 +440,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new User.
         /// </summary>
         [Input("region")]

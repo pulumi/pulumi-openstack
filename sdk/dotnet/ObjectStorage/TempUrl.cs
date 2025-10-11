@@ -15,7 +15,7 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// The temporary URL will be valid for as long as TTL is set to (in seconds).
     /// Once the URL has expired, it will no longer be valid, but the resource
     /// will remain in place. If you wish to automatically regenerate a URL, set
-    /// the `regenerate` argument to `true`. This will create a new resource with
+    /// the `Regenerate` argument to `True`. This will create a new resource with
     /// a new ID and URL.
     /// 
     /// ## Example Usage
@@ -66,7 +66,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// The digest to use when generating the tempurl.
-        /// Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+        /// Supported values are `Sha1`, `Sha256` and `Sha512`. Default is `Sha1`.
         /// </summary>
         [Output("digest")]
         public Output<string?> Digest { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// The digest to use when generating the tempurl.
-        /// Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+        /// Supported values are `Sha1`, `Sha256` and `Sha512`. Default is `Sha1`.
         /// </summary>
         [Input("digest")]
         public Input<string>? Digest { get; set; }
@@ -263,7 +263,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// The digest to use when generating the tempurl.
-        /// Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
+        /// Supported values are `Sha1`, `Sha256` and `Sha512`. Default is `Sha1`.
         /// </summary>
         [Input("digest")]
         public Input<string>? Digest { get; set; }

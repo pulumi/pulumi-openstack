@@ -22,7 +22,7 @@ public final class TrunkArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Administrative up/down status for the trunk
      * (must be &#34;true&#34; or &#34;false&#34; if provided). Changing this updates the
-     * `admin_state_up` of an existing trunk.
+     * `adminStateUp` of an existing trunk.
      * 
      */
     @Import(name="adminStateUp")
@@ -31,7 +31,7 @@ public final class TrunkArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Administrative up/down status for the trunk
      * (must be &#34;true&#34; or &#34;false&#34; if provided). Changing this updates the
-     * `admin_state_up` of an existing trunk.
+     * `adminStateUp` of an existing trunk.
      * 
      */
     public Optional<Output<Boolean>> adminStateUp() {
@@ -195,7 +195,7 @@ public final class TrunkArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param adminStateUp Administrative up/down status for the trunk
          * (must be &#34;true&#34; or &#34;false&#34; if provided). Changing this updates the
-         * `admin_state_up` of an existing trunk.
+         * `adminStateUp` of an existing trunk.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class TrunkArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param adminStateUp Administrative up/down status for the trunk
          * (must be &#34;true&#34; or &#34;false&#34; if provided). Changing this updates the
-         * `admin_state_up` of an existing trunk.
+         * `adminStateUp` of an existing trunk.
          * 
          * @return builder
          * 

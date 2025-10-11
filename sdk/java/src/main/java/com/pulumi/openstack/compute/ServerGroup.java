@@ -223,7 +223,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The rules which are applied to specified `policy`. Currently,
-     * only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
+     * only the `maxServerPerHost` rule is supported for the `anti-affinity` policy.
      * 
      */
     @Export(name="rules", refs={ServerGroupRules.class}, tree="[0]")
@@ -231,7 +231,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The rules which are applied to specified `policy`. Currently,
-     * only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
+     * only the `maxServerPerHost` rule is supported for the `anti-affinity` policy.
      * 
      */
     public Output<ServerGroupRules> rules() {

@@ -46,7 +46,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Administrative up/down status for the router
         /// (must be "true" or "false" if provided). Changing this updates the
-        /// `admin_state_up` of an existing router.
+        /// `AdminStateUp` of an existing router.
         /// </summary>
         [Output("adminStateUp")]
         public Output<bool> AdminStateUp { get; private set; } = null!;
@@ -83,8 +83,8 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// Enable Source NAT for the router. Valid values are
-        /// "true" or "false". An `external_network_id` has to be set in order to
-        /// set this property. Changing this updates the `enable_snat` of the router.
+        /// "true" or "false". An `ExternalNetworkId` has to be set in order to
+        /// set this property. Changing this updates the `EnableSnat` of the router.
         /// Setting this value **requires** an **ext-gw-mode** extension to be enabled
         /// in OpenStack Neutron.
         /// </summary>
@@ -93,7 +93,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// An external fixed IP for the router. This
-        /// can be repeated. The structure is described below. An `external_network_id`
+        /// can be repeated. The structure is described below. An `ExternalNetworkId`
         /// has to be set in order to set this property. Changing this updates the
         /// external fixed IPs of the router.
         /// </summary>
@@ -122,14 +122,14 @@ namespace Pulumi.OpenStack.Networking
         /// each to obtain a fixed IP for the router. If a subnet ID in a list has
         /// exhausted floating IP pool, the next subnet ID will be tried. This argument is
         /// used only during the router creation and allows to set only one external fixed
-        /// IP. Conflicts with an `external_fixed_ip` argument.
+        /// IP. Conflicts with an `ExternalFixedIp` argument.
         /// </summary>
         [Output("externalSubnetIds")]
         public Output<ImmutableArray<string>> ExternalSubnetIds { get; private set; } = null!;
 
         /// <summary>
         /// A unique name for the router. Changing this
-        /// updates the `name` of an existing router.
+        /// updates the `Name` of an existing router.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to create a router. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// router.
         /// </summary>
         [Output("region")]
@@ -218,7 +218,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Administrative up/down status for the router
         /// (must be "true" or "false" if provided). Changing this updates the
-        /// `admin_state_up` of an existing router.
+        /// `AdminStateUp` of an existing router.
         /// </summary>
         [Input("adminStateUp")]
         public Input<bool>? AdminStateUp { get; set; }
@@ -254,8 +254,8 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// Enable Source NAT for the router. Valid values are
-        /// "true" or "false". An `external_network_id` has to be set in order to
-        /// set this property. Changing this updates the `enable_snat` of the router.
+        /// "true" or "false". An `ExternalNetworkId` has to be set in order to
+        /// set this property. Changing this updates the `EnableSnat` of the router.
         /// Setting this value **requires** an **ext-gw-mode** extension to be enabled
         /// in OpenStack Neutron.
         /// </summary>
@@ -267,7 +267,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// An external fixed IP for the router. This
-        /// can be repeated. The structure is described below. An `external_network_id`
+        /// can be repeated. The structure is described below. An `ExternalNetworkId`
         /// has to be set in order to set this property. Changing this updates the
         /// external fixed IPs of the router.
         /// </summary>
@@ -302,7 +302,7 @@ namespace Pulumi.OpenStack.Networking
         /// each to obtain a fixed IP for the router. If a subnet ID in a list has
         /// exhausted floating IP pool, the next subnet ID will be tried. This argument is
         /// used only during the router creation and allows to set only one external fixed
-        /// IP. Conflicts with an `external_fixed_ip` argument.
+        /// IP. Conflicts with an `ExternalFixedIp` argument.
         /// </summary>
         public InputList<string> ExternalSubnetIds
         {
@@ -312,7 +312,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// A unique name for the router. Changing this
-        /// updates the `name` of an existing router.
+        /// updates the `Name` of an existing router.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -320,7 +320,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to create a router. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// router.
         /// </summary>
         [Input("region")]
@@ -375,7 +375,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Administrative up/down status for the router
         /// (must be "true" or "false" if provided). Changing this updates the
-        /// `admin_state_up` of an existing router.
+        /// `AdminStateUp` of an existing router.
         /// </summary>
         [Input("adminStateUp")]
         public Input<bool>? AdminStateUp { get; set; }
@@ -424,8 +424,8 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// Enable Source NAT for the router. Valid values are
-        /// "true" or "false". An `external_network_id` has to be set in order to
-        /// set this property. Changing this updates the `enable_snat` of the router.
+        /// "true" or "false". An `ExternalNetworkId` has to be set in order to
+        /// set this property. Changing this updates the `EnableSnat` of the router.
         /// Setting this value **requires** an **ext-gw-mode** extension to be enabled
         /// in OpenStack Neutron.
         /// </summary>
@@ -437,7 +437,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// An external fixed IP for the router. This
-        /// can be repeated. The structure is described below. An `external_network_id`
+        /// can be repeated. The structure is described below. An `ExternalNetworkId`
         /// has to be set in order to set this property. Changing this updates the
         /// external fixed IPs of the router.
         /// </summary>
@@ -472,7 +472,7 @@ namespace Pulumi.OpenStack.Networking
         /// each to obtain a fixed IP for the router. If a subnet ID in a list has
         /// exhausted floating IP pool, the next subnet ID will be tried. This argument is
         /// used only during the router creation and allows to set only one external fixed
-        /// IP. Conflicts with an `external_fixed_ip` argument.
+        /// IP. Conflicts with an `ExternalFixedIp` argument.
         /// </summary>
         public InputList<string> ExternalSubnetIds
         {
@@ -482,7 +482,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// A unique name for the router. Changing this
-        /// updates the `name` of an existing router.
+        /// updates the `Name` of an existing router.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -490,7 +490,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to create a router. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// router.
         /// </summary>
         [Input("region")]

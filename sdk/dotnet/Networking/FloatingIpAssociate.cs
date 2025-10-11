@@ -69,7 +69,7 @@ namespace Pulumi.OpenStack.Networking
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a floating IP that can be used with
         /// another networking resource, such as a load balancer. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// floating IP (which may or may not have a different address).
         /// </summary>
         [Output("region")]
@@ -141,7 +141,7 @@ namespace Pulumi.OpenStack.Networking
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a floating IP that can be used with
         /// another networking resource, such as a load balancer. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// floating IP (which may or may not have a different address).
         /// </summary>
         [Input("region")]
@@ -175,7 +175,7 @@ namespace Pulumi.OpenStack.Networking
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a floating IP that can be used with
         /// another networking resource, such as a load balancer. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// floating IP (which may or may not have a different address).
         /// </summary>
         [Input("region")]

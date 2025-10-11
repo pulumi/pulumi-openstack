@@ -33,8 +33,8 @@ namespace Pulumi.OpenStack.KeyManager
         /// 
         /// ## Date Filters
         /// 
-        /// The values for the `expiration_filter`, `created_at_filter`, and
-        /// `updated_at_filter` parameters are comma-separated lists of time stamps in
+        /// The values for the `ExpirationFilter`, `CreatedAtFilter`, and
+        /// `UpdatedAtFilter` parameters are comma-separated lists of time stamps in
         /// RFC3339 format. The time stamps can be prefixed with any of these comparison
         /// operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
         /// (less-than), *lte:* (less-than-or-equal).
@@ -85,8 +85,8 @@ namespace Pulumi.OpenStack.KeyManager
         /// 
         /// ## Date Filters
         /// 
-        /// The values for the `expiration_filter`, `created_at_filter`, and
-        /// `updated_at_filter` parameters are comma-separated lists of time stamps in
+        /// The values for the `ExpirationFilter`, `CreatedAtFilter`, and
+        /// `UpdatedAtFilter` parameters are comma-separated lists of time stamps in
         /// RFC3339 format. The time stamps can be prefixed with any of these comparison
         /// operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
         /// (less-than), *lte:* (less-than-or-equal).
@@ -137,8 +137,8 @@ namespace Pulumi.OpenStack.KeyManager
         /// 
         /// ## Date Filters
         /// 
-        /// The values for the `expiration_filter`, `created_at_filter`, and
-        /// `updated_at_filter` parameters are comma-separated lists of time stamps in
+        /// The values for the `ExpirationFilter`, `CreatedAtFilter`, and
+        /// `UpdatedAtFilter` parameters are comma-separated lists of time stamps in
         /// RFC3339 format. The time stamps can be prefixed with any of these comparison
         /// operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
         /// (less-than), *lte:* (less-than-or-equal).
@@ -173,7 +173,7 @@ namespace Pulumi.OpenStack.KeyManager
     {
         /// <summary>
         /// Select the Secret with an ACL that contains the user.
-        /// Project scope is ignored. Defaults to `false`.
+        /// Project scope is ignored. Defaults to `False`.
         /// </summary>
         [Input("aclOnly")]
         public bool? AclOnly { get; set; }
@@ -220,7 +220,7 @@ namespace Pulumi.OpenStack.KeyManager
 
         /// <summary>
         /// The region in which to obtain the V1 KeyManager client.
-        /// A KeyManager client is needed to fetch a secret. If omitted, the `region`
+        /// A KeyManager client is needed to fetch a secret. If omitted, the `Region`
         /// argument of the provider is used.
         /// </summary>
         [Input("region")]
@@ -251,7 +251,7 @@ namespace Pulumi.OpenStack.KeyManager
     {
         /// <summary>
         /// Select the Secret with an ACL that contains the user.
-        /// Project scope is ignored. Defaults to `false`.
+        /// Project scope is ignored. Defaults to `False`.
         /// </summary>
         [Input("aclOnly")]
         public Input<bool>? AclOnly { get; set; }
@@ -298,7 +298,7 @@ namespace Pulumi.OpenStack.KeyManager
 
         /// <summary>
         /// The region in which to obtain the V1 KeyManager client.
-        /// A KeyManager client is needed to fetch a secret. If omitted, the `region`
+        /// A KeyManager client is needed to fetch a secret. If omitted, the `Region`
         /// argument of the provider is used.
         /// </summary>
         [Input("region")]
@@ -334,7 +334,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// </summary>
         public readonly bool? AclOnly;
         /// <summary>
-        /// The list of ACLs assigned to a secret. The `read` structure is described below.
+        /// The list of ACLs assigned to a secret. The `Read` structure is described below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSecretAclResult> Acls;
         /// <summary>

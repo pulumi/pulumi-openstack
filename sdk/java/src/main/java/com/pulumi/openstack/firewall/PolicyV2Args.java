@@ -76,7 +76,7 @@ public final class PolicyV2Args extends com.pulumi.resources.ResourceArgs {
 
     /**
      * This argument conflicts and is interchangeable
-     * with `tenant_id`. The owner of the firewall policy. Required if admin wants
+     * with `tenantId`. The owner of the firewall policy. Required if admin wants
      * to create a firewall policy for another project. Changing this creates a new
      * firewall policy.
      * 
@@ -86,7 +86,7 @@ public final class PolicyV2Args extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return This argument conflicts and is interchangeable
-     * with `tenant_id`. The owner of the firewall policy. Required if admin wants
+     * with `tenantId`. The owner of the firewall policy. Required if admin wants
      * to create a firewall policy for another project. Changing this creates a new
      * firewall policy.
      * 
@@ -160,7 +160,7 @@ public final class PolicyV2Args extends com.pulumi.resources.ResourceArgs {
 
     /**
      * This argument conflicts and is interchangeable
-     * with `project_id`. The owner of the firewall policy. Required if admin wants
+     * with `projectId`. The owner of the firewall policy. Required if admin wants
      * to create a firewall policy for another tenant. Changing this creates a new
      * firewall policy.
      * 
@@ -170,7 +170,7 @@ public final class PolicyV2Args extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return This argument conflicts and is interchangeable
-     * with `project_id`. The owner of the firewall policy. Required if admin wants
+     * with `projectId`. The owner of the firewall policy. Required if admin wants
      * to create a firewall policy for another tenant. Changing this creates a new
      * firewall policy.
      * 
@@ -287,7 +287,7 @@ public final class PolicyV2Args extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param projectId This argument conflicts and is interchangeable
-         * with `tenant_id`. The owner of the firewall policy. Required if admin wants
+         * with `tenantId`. The owner of the firewall policy. Required if admin wants
          * to create a firewall policy for another project. Changing this creates a new
          * firewall policy.
          * 
@@ -301,7 +301,7 @@ public final class PolicyV2Args extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param projectId This argument conflicts and is interchangeable
-         * with `tenant_id`. The owner of the firewall policy. Required if admin wants
+         * with `tenantId`. The owner of the firewall policy. Required if admin wants
          * to create a firewall policy for another project. Changing this creates a new
          * firewall policy.
          * 
@@ -407,7 +407,7 @@ public final class PolicyV2Args extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tenantId This argument conflicts and is interchangeable
-         * with `project_id`. The owner of the firewall policy. Required if admin wants
+         * with `projectId`. The owner of the firewall policy. Required if admin wants
          * to create a firewall policy for another tenant. Changing this creates a new
          * firewall policy.
          * 
@@ -421,7 +421,7 @@ public final class PolicyV2Args extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tenantId This argument conflicts and is interchangeable
-         * with `project_id`. The owner of the firewall policy. Required if admin wants
+         * with `projectId`. The owner of the firewall policy. Required if admin wants
          * to create a firewall policy for another tenant. Changing this creates a new
          * firewall policy.
          * 

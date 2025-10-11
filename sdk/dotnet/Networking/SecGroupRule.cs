@@ -44,8 +44,8 @@ namespace Pulumi.OpenStack.Networking
     /// });
     /// ```
     /// 
-    /// &gt; **Note:** To expose the full port-range 1:65535, use `0` for `port_range_min`
-    /// and `port_range_max`.
+    /// &gt; **Note:** To expose the full port-range 1:65535, use `0` for `PortRangeMin`
+    /// and `PortRangeMax`.
     /// 
     /// ## Import
     /// 
@@ -129,7 +129,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to create a port. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// security group rule.
         /// </summary>
         [Output("region")]
@@ -139,7 +139,7 @@ namespace Pulumi.OpenStack.Networking
         /// The remote address group id, the value
         /// needs to be an OpenStack ID of an address group in the same tenant. Changing
         /// this creates a new security group rule. This argument is mutually exclusive
-        /// with `remote_ip_prefix` and `remote_group_id`.
+        /// with `RemoteIpPrefix` and `RemoteGroupId`.
         /// </summary>
         [Output("remoteAddressGroupId")]
         public Output<string> RemoteAddressGroupId { get; private set; } = null!;
@@ -292,7 +292,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to create a port. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// security group rule.
         /// </summary>
         [Input("region")]
@@ -302,7 +302,7 @@ namespace Pulumi.OpenStack.Networking
         /// The remote address group id, the value
         /// needs to be an OpenStack ID of an address group in the same tenant. Changing
         /// this creates a new security group rule. This argument is mutually exclusive
-        /// with `remote_ip_prefix` and `remote_group_id`.
+        /// with `RemoteIpPrefix` and `RemoteGroupId`.
         /// </summary>
         [Input("remoteAddressGroupId")]
         public Input<string>? RemoteAddressGroupId { get; set; }
@@ -417,7 +417,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to create a port. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// security group rule.
         /// </summary>
         [Input("region")]
@@ -427,7 +427,7 @@ namespace Pulumi.OpenStack.Networking
         /// The remote address group id, the value
         /// needs to be an OpenStack ID of an address group in the same tenant. Changing
         /// this creates a new security group rule. This argument is mutually exclusive
-        /// with `remote_ip_prefix` and `remote_group_id`.
+        /// with `RemoteIpPrefix` and `RemoteGroupId`.
         /// </summary>
         [Input("remoteAddressGroupId")]
         public Input<string>? RemoteAddressGroupId { get; set; }

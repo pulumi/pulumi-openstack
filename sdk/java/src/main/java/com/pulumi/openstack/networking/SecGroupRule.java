@@ -66,8 +66,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * &gt; **Note:** To expose the full port-range 1:65535, use `0` for `port_range_min`
- * and `port_range_max`.
+ * &gt; **Note:** To expose the full port-range 1:65535, use `0` for `portRangeMin`
+ * and `portRangeMax`.
  * 
  * ## Import
  * 
@@ -252,7 +252,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * The remote address group id, the value
      * needs to be an OpenStack ID of an address group in the same tenant. Changing
      * this creates a new security group rule. This argument is mutually exclusive
-     * with `remote_ip_prefix` and `remote_group_id`.
+     * with `remoteIpPrefix` and `remoteGroupId`.
      * 
      */
     @Export(name="remoteAddressGroupId", refs={String.class}, tree="[0]")
@@ -262,7 +262,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * @return The remote address group id, the value
      * needs to be an OpenStack ID of an address group in the same tenant. Changing
      * this creates a new security group rule. This argument is mutually exclusive
-     * with `remote_ip_prefix` and `remote_group_id`.
+     * with `remoteIpPrefix` and `remoteGroupId`.
      * 
      */
     public Output<String> remoteAddressGroupId() {

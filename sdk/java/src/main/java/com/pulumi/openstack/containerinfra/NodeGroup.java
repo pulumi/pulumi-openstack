@@ -63,17 +63,17 @@ import javax.annotation.Nullable;
  * 
  * * `region` - See Argument Reference above.
  * * `name` - See Argument Reference above.
- * * `project_id` - See Argument Reference above.
- * * `created_at` - The time at which node group was created.
- * * `updated_at` - The time at which node group was created.
- * * `docker_volume_size` - See Argument Reference above.
+ * * `projectId` - See Argument Reference above.
+ * * `createdAt` - The time at which node group was created.
+ * * `updatedAt` - The time at which node group was created.
+ * * `dockerVolumeSize` - See Argument Reference above.
  * * `role` - See Argument Reference above.
- * * `image_id` - See Argument Reference above.
- * * `flavor_id` - See Argument Reference above.
+ * * `imageId` - See Argument Reference above.
+ * * `flavorId` - See Argument Reference above.
  * * `labels` - See Argument Reference above.
- * * `node_count` - See Argument Reference above.
- * * `min_node_count` - See Argument Reference above.
- * * `max_node_count` - See Argument Reference above.
+ * * `nodeCount` - See Argument Reference above.
+ * * `minNodeCount` - See Argument Reference above.
+ * * `maxNodeCount` - See Argument Reference above.
  * * `role` - See Argument Reference above.
  * 
  * ## Import

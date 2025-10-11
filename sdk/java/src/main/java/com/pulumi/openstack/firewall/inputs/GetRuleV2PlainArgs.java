@@ -143,7 +143,7 @@ public final class GetRuleV2PlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * This argument conflicts and is interchangeable
-     * with `tenant_id`. The owner of the firewall rule.
+     * with `tenantId`. The owner of the firewall rule.
      * 
      */
     @Import(name="projectId")
@@ -151,7 +151,7 @@ public final class GetRuleV2PlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return This argument conflicts and is interchangeable
-     * with `tenant_id`. The owner of the firewall rule.
+     * with `tenantId`. The owner of the firewall rule.
      * 
      */
     public Optional<String> projectId() {
@@ -258,7 +258,7 @@ public final class GetRuleV2PlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * This argument conflicts and is interchangeable
-     * with `project_id`. The owner of the firewall rule.
+     * with `projectId`. The owner of the firewall rule.
      * 
      */
     @Import(name="tenantId")
@@ -266,7 +266,7 @@ public final class GetRuleV2PlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return This argument conflicts and is interchangeable
-     * with `project_id`. The owner of the firewall rule.
+     * with `projectId`. The owner of the firewall rule.
      * 
      */
     public Optional<String> tenantId() {
@@ -414,7 +414,7 @@ public final class GetRuleV2PlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param projectId This argument conflicts and is interchangeable
-         * with `tenant_id`. The owner of the firewall rule.
+         * with `tenantId`. The owner of the firewall rule.
          * 
          * @return builder
          * 
@@ -496,7 +496,7 @@ public final class GetRuleV2PlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param tenantId This argument conflicts and is interchangeable
-         * with `project_id`. The owner of the firewall rule.
+         * with `projectId`. The owner of the firewall rule.
          * 
          * @return builder
          * 

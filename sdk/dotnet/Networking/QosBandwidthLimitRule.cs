@@ -82,7 +82,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
+        /// `Region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
+        /// `Region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -206,7 +206,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
+        /// `Region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

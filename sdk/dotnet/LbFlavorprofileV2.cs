@@ -73,8 +73,8 @@ namespace Pulumi.OpenStack
     public partial class LbFlavorprofileV2 : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// String that passes the flavor_data for the flavorprofile.
-        /// The data that are allowed depend on the `provider_name` that is passed. jsonencode
+        /// String that passes the FlavorData for the flavorprofile.
+        /// The data that are allowed depend on the `ProviderName` that is passed. jsonencode
         /// can be used for readability as shown in the example above.
         /// Changing this updates the existing flavorprofile.
         /// </summary>
@@ -89,7 +89,7 @@ namespace Pulumi.OpenStack
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The provider_name that the flavor_profile will use.
+        /// The ProviderName that the FlavorProfile will use.
         /// Changing this updates the existing flavorprofile.
         /// </summary>
         [Output("providerName")]
@@ -98,7 +98,7 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create an LB member. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// LB flavorprofile.
         /// </summary>
         [Output("region")]
@@ -151,8 +151,8 @@ namespace Pulumi.OpenStack
     public sealed class LbFlavorprofileV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String that passes the flavor_data for the flavorprofile.
-        /// The data that are allowed depend on the `provider_name` that is passed. jsonencode
+        /// String that passes the FlavorData for the flavorprofile.
+        /// The data that are allowed depend on the `ProviderName` that is passed. jsonencode
         /// can be used for readability as shown in the example above.
         /// Changing this updates the existing flavorprofile.
         /// </summary>
@@ -167,7 +167,7 @@ namespace Pulumi.OpenStack
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The provider_name that the flavor_profile will use.
+        /// The ProviderName that the FlavorProfile will use.
         /// Changing this updates the existing flavorprofile.
         /// </summary>
         [Input("providerName", required: true)]
@@ -176,7 +176,7 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create an LB member. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// LB flavorprofile.
         /// </summary>
         [Input("region")]
@@ -191,8 +191,8 @@ namespace Pulumi.OpenStack
     public sealed class LbFlavorprofileV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String that passes the flavor_data for the flavorprofile.
-        /// The data that are allowed depend on the `provider_name` that is passed. jsonencode
+        /// String that passes the FlavorData for the flavorprofile.
+        /// The data that are allowed depend on the `ProviderName` that is passed. jsonencode
         /// can be used for readability as shown in the example above.
         /// Changing this updates the existing flavorprofile.
         /// </summary>
@@ -207,7 +207,7 @@ namespace Pulumi.OpenStack
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The provider_name that the flavor_profile will use.
+        /// The ProviderName that the FlavorProfile will use.
         /// Changing this updates the existing flavorprofile.
         /// </summary>
         [Input("providerName")]
@@ -216,7 +216,7 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create an LB member. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// LB flavorprofile.
         /// </summary>
         [Input("region")]

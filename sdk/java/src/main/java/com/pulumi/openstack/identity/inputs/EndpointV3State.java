@@ -17,7 +17,7 @@ public final class EndpointV3State extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The endpoint region. The `region` and
-     * `endpoint_region` can be different.
+     * `endpointRegion` can be different.
      * 
      */
     @Import(name="endpointRegion")
@@ -25,7 +25,7 @@ public final class EndpointV3State extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The endpoint region. The `region` and
-     * `endpoint_region` can be different.
+     * `endpointRegion` can be different.
      * 
      */
     public Optional<Output<String>> endpointRegion() {
@@ -174,7 +174,7 @@ public final class EndpointV3State extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param endpointRegion The endpoint region. The `region` and
-         * `endpoint_region` can be different.
+         * `endpointRegion` can be different.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class EndpointV3State extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param endpointRegion The endpoint region. The `region` and
-         * `endpoint_region` can be different.
+         * `endpointRegion` can be different.
          * 
          * @return builder
          * 

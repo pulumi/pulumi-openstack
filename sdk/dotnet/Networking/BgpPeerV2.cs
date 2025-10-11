@@ -49,8 +49,8 @@ namespace Pulumi.OpenStack.Networking
     public partial class BgpPeerV2 : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The authentication type to use. Can be one of `none`
-        /// or `md5`. Defaults to `none`. If set to not `none`, the `password` argument
+        /// The authentication type to use. Can be one of `None`
+        /// or `Md5`. Defaults to `None`. If set to not `None`, the `Password` argument
         /// must also be provided. Changing this creates a new BGP peer.
         /// </summary>
         [Output("authType")]
@@ -64,7 +64,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The password used for MD5 authentication. Must be set
-        /// only when `auth_type` is not `none`.
+        /// only when `AuthType` is not `None`.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -79,7 +79,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron network. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new BGP
+        /// `Region` argument of the provider is used. Changing this creates a new BGP
         /// peer.
         /// </summary>
         [Output("region")]
@@ -150,8 +150,8 @@ namespace Pulumi.OpenStack.Networking
     public sealed class BgpPeerV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The authentication type to use. Can be one of `none`
-        /// or `md5`. Defaults to `none`. If set to not `none`, the `password` argument
+        /// The authentication type to use. Can be one of `None`
+        /// or `Md5`. Defaults to `None`. If set to not `None`, the `Password` argument
         /// must also be provided. Changing this creates a new BGP peer.
         /// </summary>
         [Input("authType")]
@@ -168,7 +168,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The password used for MD5 authentication. Must be set
-        /// only when `auth_type` is not `none`.
+        /// only when `AuthType` is not `None`.
         /// </summary>
         public Input<string>? Password
         {
@@ -190,7 +190,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron network. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new BGP
+        /// `Region` argument of the provider is used. Changing this creates a new BGP
         /// peer.
         /// </summary>
         [Input("region")]
@@ -219,8 +219,8 @@ namespace Pulumi.OpenStack.Networking
     public sealed class BgpPeerV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The authentication type to use. Can be one of `none`
-        /// or `md5`. Defaults to `none`. If set to not `none`, the `password` argument
+        /// The authentication type to use. Can be one of `None`
+        /// or `Md5`. Defaults to `None`. If set to not `None`, the `Password` argument
         /// must also be provided. Changing this creates a new BGP peer.
         /// </summary>
         [Input("authType")]
@@ -237,7 +237,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The password used for MD5 authentication. Must be set
-        /// only when `auth_type` is not `none`.
+        /// only when `AuthType` is not `None`.
         /// </summary>
         public Input<string>? Password
         {
@@ -259,7 +259,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron network. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new BGP
+        /// `Region` argument of the provider is used. Changing this creates a new BGP
         /// peer.
         /// </summary>
         [Input("region")]

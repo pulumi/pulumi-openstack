@@ -46,7 +46,7 @@ namespace Pulumi.OpenStack.KeyManager
     /// it's recommended to store it in a base64 encoding. Plain text payload can also
     /// work, but further addind or removing of the leading or trailing whitespaces
     /// won't be detected as a state change, e.g. changing plain text payload from
-    /// ` password  ` to `password` won't recreate the secret.
+    /// ` password  ` to `Password` won't recreate the secret.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -124,7 +124,7 @@ namespace Pulumi.OpenStack.KeyManager
     {
         /// <summary>
         /// Allows to control an access to a secret. Currently only the
-        /// `read` operation is supported. If not specified, the secret is accessible
+        /// `Read` operation is supported. If not specified, the secret is accessible
         /// project wide.
         /// </summary>
         [Output("acl")]
@@ -199,7 +199,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Output<string?> Payload { get; private set; } = null!;
 
         /// <summary>
-        /// (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+        /// (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `Base64` or `Binary`.
         /// </summary>
         [Output("payloadContentEncoding")]
         public Output<string?> PayloadContentEncoding { get; private set; } = null!;
@@ -213,7 +213,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// <summary>
         /// The region in which to obtain the V1 KeyManager client.
         /// A KeyManager client is needed to create a secret. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// V1 secret.
         /// </summary>
         [Output("region")]
@@ -295,7 +295,7 @@ namespace Pulumi.OpenStack.KeyManager
     {
         /// <summary>
         /// Allows to control an access to a secret. Currently only the
-        /// `read` operation is supported. If not specified, the secret is accessible
+        /// `Read` operation is supported. If not specified, the secret is accessible
         /// project wide.
         /// </summary>
         [Input("acl")]
@@ -361,7 +361,7 @@ namespace Pulumi.OpenStack.KeyManager
         }
 
         /// <summary>
-        /// (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+        /// (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `Base64` or `Binary`.
         /// </summary>
         [Input("payloadContentEncoding")]
         public Input<string>? PayloadContentEncoding { get; set; }
@@ -375,7 +375,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// <summary>
         /// The region in which to obtain the V1 KeyManager client.
         /// A KeyManager client is needed to create a secret. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// V1 secret.
         /// </summary>
         [Input("region")]
@@ -397,7 +397,7 @@ namespace Pulumi.OpenStack.KeyManager
     {
         /// <summary>
         /// Allows to control an access to a secret. Currently only the
-        /// `read` operation is supported. If not specified, the secret is accessible
+        /// `Read` operation is supported. If not specified, the secret is accessible
         /// project wide.
         /// </summary>
         [Input("acl")]
@@ -500,7 +500,7 @@ namespace Pulumi.OpenStack.KeyManager
         }
 
         /// <summary>
-        /// (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+        /// (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `Base64` or `Binary`.
         /// </summary>
         [Input("payloadContentEncoding")]
         public Input<string>? PayloadContentEncoding { get; set; }
@@ -514,7 +514,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// <summary>
         /// The region in which to obtain the V1 KeyManager client.
         /// A KeyManager client is needed to create a secret. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// V1 secret.
         /// </summary>
         [Input("region")]

@@ -50,8 +50,8 @@ namespace Pulumi.OpenStack.Compute.Inputs
 
         /// <summary>
         /// Specifies the guest server disk file system format,
-        /// such as `ext2`, `ext3`, `ext4`, `xfs` or `swap`. Swap block device mappings
-        /// have the following restrictions: source_type must be blank and destination_type
+        /// such as `Ext2`, `Ext3`, `Ext4`, `Xfs` or `Swap`. Swap block device mappings
+        /// have the following restrictions: SourceType must be blank and DestinationType
         /// must be local and only one swap disk per server and the size of the swap disk
         /// must be less than or equal to the swap size of the flavor. Changing this
         /// creates a new server.

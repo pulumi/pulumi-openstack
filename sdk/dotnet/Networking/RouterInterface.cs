@@ -66,7 +66,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// A boolean indicating whether the routes from the
         /// corresponding router ID should be deleted so that the router interface can
-        /// be destroyed without any errors. The default value is `false`.
+        /// be destroyed without any errors. The default value is `False`.
         /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
@@ -81,7 +81,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to create a router. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// router interface.
         /// </summary>
         [Output("region")]
@@ -150,7 +150,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// A boolean indicating whether the routes from the
         /// corresponding router ID should be deleted so that the router interface can
-        /// be destroyed without any errors. The default value is `false`.
+        /// be destroyed without any errors. The default value is `False`.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
@@ -165,7 +165,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to create a router. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// router interface.
         /// </summary>
         [Input("region")]
@@ -196,7 +196,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// A boolean indicating whether the routes from the
         /// corresponding router ID should be deleted so that the router interface can
-        /// be destroyed without any errors. The default value is `false`.
+        /// be destroyed without any errors. The default value is `False`.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
@@ -211,7 +211,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to create a router. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// router interface.
         /// </summary>
         [Input("region")]

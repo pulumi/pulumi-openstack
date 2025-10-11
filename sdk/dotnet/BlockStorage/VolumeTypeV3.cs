@@ -76,7 +76,7 @@ namespace Pulumi.OpenStack.BlockStorage
     {
         /// <summary>
         /// Human-readable description of the port. Changing
-        /// this updates the `description` of an existing volume type.
+        /// this updates the `Description` of an existing volume type.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -89,21 +89,21 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// Whether the volume type is public. Changing
-        /// this updates the `is_public` of an existing volume type.
+        /// this updates the `IsPublic` of an existing volume type.
         /// </summary>
         [Output("isPublic")]
         public Output<bool> IsPublic { get; private set; } = null!;
 
         /// <summary>
         /// Name of the volume type.  Changing this
-        /// updates the `name` of an existing volume type.
+        /// updates the `Name` of an existing volume type.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
         /// The region in which to create the volume. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new quotaset.
         /// </summary>
         [Output("region")]
@@ -157,7 +157,7 @@ namespace Pulumi.OpenStack.BlockStorage
     {
         /// <summary>
         /// Human-readable description of the port. Changing
-        /// this updates the `description` of an existing volume type.
+        /// this updates the `Description` of an existing volume type.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -176,21 +176,21 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// Whether the volume type is public. Changing
-        /// this updates the `is_public` of an existing volume type.
+        /// this updates the `IsPublic` of an existing volume type.
         /// </summary>
         [Input("isPublic")]
         public Input<bool>? IsPublic { get; set; }
 
         /// <summary>
         /// Name of the volume type.  Changing this
-        /// updates the `name` of an existing volume type.
+        /// updates the `Name` of an existing volume type.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The region in which to create the volume. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new quotaset.
         /// </summary>
         [Input("region")]
@@ -206,7 +206,7 @@ namespace Pulumi.OpenStack.BlockStorage
     {
         /// <summary>
         /// Human-readable description of the port. Changing
-        /// this updates the `description` of an existing volume type.
+        /// this updates the `Description` of an existing volume type.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -225,21 +225,21 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// Whether the volume type is public. Changing
-        /// this updates the `is_public` of an existing volume type.
+        /// this updates the `IsPublic` of an existing volume type.
         /// </summary>
         [Input("isPublic")]
         public Input<bool>? IsPublic { get; set; }
 
         /// <summary>
         /// Name of the volume type.  Changing this
-        /// updates the `name` of an existing volume type.
+        /// updates the `Name` of an existing volume type.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The region in which to create the volume. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new quotaset.
         /// </summary>
         [Input("region")]

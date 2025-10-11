@@ -114,7 +114,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The key to use for the comparison. For example, the name of the cookie to
-        /// evaluate. Valid when `type` is set to COOKIE or HEADER.
+        /// evaluate. Valid when `Type` is set to COOKIE or HEADER.
         /// </summary>
         [Output("key")]
         public Output<string?> Key { get; private set; } = null!;
@@ -135,7 +135,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create an L7 rule. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// L7 Rule.
         /// </summary>
         [Output("region")]
@@ -232,7 +232,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The key to use for the comparison. For example, the name of the cookie to
-        /// evaluate. Valid when `type` is set to COOKIE or HEADER.
+        /// evaluate. Valid when `Type` is set to COOKIE or HEADER.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -247,7 +247,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create an L7 rule. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// L7 Rule.
         /// </summary>
         [Input("region")]
@@ -306,7 +306,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The key to use for the comparison. For example, the name of the cookie to
-        /// evaluate. Valid when `type` is set to COOKIE or HEADER.
+        /// evaluate. Valid when `Type` is set to COOKIE or HEADER.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -327,7 +327,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create an L7 rule. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// L7 Rule.
         /// </summary>
         [Input("region")]
