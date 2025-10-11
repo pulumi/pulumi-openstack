@@ -74,7 +74,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create pool members. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// members resource.
         /// </summary>
         [Output("region")]
@@ -149,7 +149,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create pool members. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// members resource.
         /// </summary>
         [Input("region")]
@@ -186,7 +186,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create pool members. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// members resource.
         /// </summary>
         [Input("region")]

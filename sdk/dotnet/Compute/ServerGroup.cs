@@ -100,7 +100,7 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// ## Policies
     /// 
-    /// * `affinity` - All instances/servers launched in this group will be hosted on
+    /// * `Affinity` - All instances/servers launched in this group will be hosted on
     ///   the same compute node.
     /// 
     /// * `anti-affinity` - All instances/servers launched in this group will be
@@ -150,15 +150,15 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
-        /// If omitted, the `region` argument of the provider is used. Changing
+        /// If omitted, the `Region` argument of the provider is used. Changing
         /// this creates a new server group.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The rules which are applied to specified `policy`. Currently,
-        /// only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
+        /// The rules which are applied to specified `Policy`. Currently,
+        /// only the `MaxServerPerHost` rule is supported for the `anti-affinity` policy.
         /// </summary>
         [Output("rules")]
         public Output<Outputs.ServerGroupRules> Rules { get; private set; } = null!;
@@ -232,15 +232,15 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
-        /// If omitted, the `region` argument of the provider is used. Changing
+        /// If omitted, the `Region` argument of the provider is used. Changing
         /// this creates a new server group.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The rules which are applied to specified `policy`. Currently,
-        /// only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
+        /// The rules which are applied to specified `Policy`. Currently,
+        /// only the `MaxServerPerHost` rule is supported for the `anti-affinity` policy.
         /// </summary>
         [Input("rules")]
         public Input<Inputs.ServerGroupRulesArgs>? Rules { get; set; }
@@ -294,15 +294,15 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
-        /// If omitted, the `region` argument of the provider is used. Changing
+        /// If omitted, the `Region` argument of the provider is used. Changing
         /// this creates a new server group.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The rules which are applied to specified `policy`. Currently,
-        /// only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
+        /// The rules which are applied to specified `Policy`. Currently,
+        /// only the `MaxServerPerHost` rule is supported for the `anti-affinity` policy.
         /// </summary>
         [Input("rules")]
         public Input<Inputs.ServerGroupRulesGetArgs>? Rules { get; set; }

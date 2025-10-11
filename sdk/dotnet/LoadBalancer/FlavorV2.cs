@@ -64,14 +64,14 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the flavor is enabled or not. Defaults to `true`.
+        /// Whether the flavor is enabled or not. Defaults to `True`.
         /// Changing this updates the existing flavor.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The flavor_profile_id that the flavor
+        /// The FlavorProfileId that the flavor
         /// will use. Changing this creates a new flavor.
         /// </summary>
         [Output("flavorProfileId")]
@@ -87,7 +87,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create an LB member. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// LB flavor.
         /// </summary>
         [Output("region")]
@@ -147,14 +147,14 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether the flavor is enabled or not. Defaults to `true`.
+        /// Whether the flavor is enabled or not. Defaults to `True`.
         /// Changing this updates the existing flavor.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The flavor_profile_id that the flavor
+        /// The FlavorProfileId that the flavor
         /// will use. Changing this creates a new flavor.
         /// </summary>
         [Input("flavorProfileId", required: true)]
@@ -170,7 +170,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create an LB member. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// LB flavor.
         /// </summary>
         [Input("region")]
@@ -192,14 +192,14 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether the flavor is enabled or not. Defaults to `true`.
+        /// Whether the flavor is enabled or not. Defaults to `True`.
         /// Changing this updates the existing flavor.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The flavor_profile_id that the flavor
+        /// The FlavorProfileId that the flavor
         /// will use. Changing this creates a new flavor.
         /// </summary>
         [Input("flavorProfileId")]
@@ -215,7 +215,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create an LB member. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// LB flavor.
         /// </summary>
         [Input("region")]

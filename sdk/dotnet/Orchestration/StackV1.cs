@@ -133,7 +133,7 @@ namespace Pulumi.OpenStack.Orchestration
 
         /// <summary>
         /// The region in which to create the stack. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new stack.
         /// </summary>
         [Output("region")]
@@ -329,7 +329,7 @@ namespace Pulumi.OpenStack.Orchestration
 
         /// <summary>
         /// The region in which to create the stack. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new stack.
         /// </summary>
         [Input("region")]
@@ -499,7 +499,7 @@ namespace Pulumi.OpenStack.Orchestration
 
         /// <summary>
         /// The region in which to create the stack. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new stack.
         /// </summary>
         [Input("region")]

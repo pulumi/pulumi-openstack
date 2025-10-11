@@ -16,7 +16,7 @@ public final class GetEndpointPlainArgs extends com.pulumi.resources.InvokeArgs 
 
     /**
      * The region the endpoint is assigned to. The
-     * `region` and `endpoint_region` can be different.
+     * `region` and `endpointRegion` can be different.
      * 
      */
     @Import(name="endpointRegion")
@@ -24,7 +24,7 @@ public final class GetEndpointPlainArgs extends com.pulumi.resources.InvokeArgs 
 
     /**
      * @return The region the endpoint is assigned to. The
-     * `region` and `endpoint_region` can be different.
+     * `region` and `endpointRegion` can be different.
      * 
      */
     public Optional<String> endpointRegion() {
@@ -157,7 +157,7 @@ public final class GetEndpointPlainArgs extends com.pulumi.resources.InvokeArgs 
 
         /**
          * @param endpointRegion The region the endpoint is assigned to. The
-         * `region` and `endpoint_region` can be different.
+         * `region` and `endpointRegion` can be different.
          * 
          * @return builder
          * 

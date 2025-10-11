@@ -13,6 +13,10 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// Manages a V1 container object resource within OpenStack.
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Example with simple content
+    /// 
+    /// ### Example with content from file
     /// </summary>
     [OpenStackResourceType("openstack:objectstorage/containerObject:ContainerObject")]
     public partial class ContainerObject : global::Pulumi.CustomResource
@@ -30,7 +34,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// A string representing the content of the object. Conflicts with
-        /// `source` and `copy_from`.
+        /// `Source` and `CopyFrom`.
         /// </summary>
         [Output("content")]
         public Output<string?> Content { get; private set; } = null!;
@@ -65,10 +69,10 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// A string representing the name of an object 
-        /// used to create the new object by copying the `copy_from` object. The value is in form
+        /// used to create the new object by copying the `CopyFrom` object. The value is in form
         /// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
-        /// container and object before you include them in the header. Conflicts with `source` and
-        /// `content`.
+        /// container and object before you include them in the header. Conflicts with `Source` and
+        /// `Content`.
         /// </summary>
         [Output("copyFrom")]
         public Output<string?> CopyFrom { get; private set; } = null!;
@@ -142,7 +146,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// The region in which to create the container. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new container.
         /// </summary>
         [Output("region")]
@@ -150,7 +154,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// A string representing the local path of a file which will be used
-        /// as the object's content. Conflicts with `source` and `copy_from`.
+        /// as the object's content. Conflicts with `Source` and `CopyFrom`.
         /// </summary>
         [Output("source")]
         public Output<string?> Source { get; private set; } = null!;
@@ -221,7 +225,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// A string representing the content of the object. Conflicts with
-        /// `source` and `copy_from`.
+        /// `Source` and `CopyFrom`.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
@@ -249,10 +253,10 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// A string representing the name of an object 
-        /// used to create the new object by copying the `copy_from` object. The value is in form
+        /// used to create the new object by copying the `CopyFrom` object. The value is in form
         /// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
-        /// container and object before you include them in the header. Conflicts with `source` and
-        /// `content`.
+        /// container and object before you include them in the header. Conflicts with `Source` and
+        /// `Content`.
         /// </summary>
         [Input("copyFrom")]
         public Input<string>? CopyFrom { get; set; }
@@ -312,7 +316,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// The region in which to create the container. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new container.
         /// </summary>
         [Input("region")]
@@ -320,7 +324,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// A string representing the local path of a file which will be used
-        /// as the object's content. Conflicts with `source` and `copy_from`.
+        /// as the object's content. Conflicts with `Source` and `CopyFrom`.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
@@ -346,7 +350,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// A string representing the content of the object. Conflicts with
-        /// `source` and `copy_from`.
+        /// `Source` and `CopyFrom`.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
@@ -381,10 +385,10 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// A string representing the name of an object 
-        /// used to create the new object by copying the `copy_from` object. The value is in form
+        /// used to create the new object by copying the `CopyFrom` object. The value is in form
         /// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
-        /// container and object before you include them in the header. Conflicts with `source` and
-        /// `content`.
+        /// container and object before you include them in the header. Conflicts with `Source` and
+        /// `Content`.
         /// </summary>
         [Input("copyFrom")]
         public Input<string>? CopyFrom { get; set; }
@@ -463,7 +467,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// The region in which to create the container. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new container.
         /// </summary>
         [Input("region")]
@@ -471,7 +475,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// A string representing the local path of a file which will be used
-        /// as the object's content. Conflicts with `source` and `copy_from`.
+        /// as the object's content. Conflicts with `Source` and `CopyFrom`.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }

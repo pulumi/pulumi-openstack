@@ -51,7 +51,7 @@ namespace Pulumi.OpenStack.BlockStorage
     {
         /// <summary>
         /// The consumer of qos. Can be one of `front-end`,
-        /// `back-end` or `both`. Changing this updates the `consumer` of an
+        /// `back-end` or `Both`. Changing this updates the `Consumer` of an
         /// existing qos.
         /// </summary>
         [Output("consumer")]
@@ -65,7 +65,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The region in which to create the qos. If omitted,
-        /// the `region` argument of the provider is used. Changing this creates
+        /// the `Region` argument of the provider is used. Changing this creates
         /// a new qos.
         /// </summary>
         [Output("region")]
@@ -125,7 +125,7 @@ namespace Pulumi.OpenStack.BlockStorage
     {
         /// <summary>
         /// The consumer of qos. Can be one of `front-end`,
-        /// `back-end` or `both`. Changing this updates the `consumer` of an
+        /// `back-end` or `Both`. Changing this updates the `Consumer` of an
         /// existing qos.
         /// </summary>
         [Input("consumer")]
@@ -139,7 +139,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The region in which to create the qos. If omitted,
-        /// the `region` argument of the provider is used. Changing this creates
+        /// the `Region` argument of the provider is used. Changing this creates
         /// a new qos.
         /// </summary>
         [Input("region")]
@@ -167,7 +167,7 @@ namespace Pulumi.OpenStack.BlockStorage
     {
         /// <summary>
         /// The consumer of qos. Can be one of `front-end`,
-        /// `back-end` or `both`. Changing this updates the `consumer` of an
+        /// `back-end` or `Both`. Changing this updates the `Consumer` of an
         /// existing qos.
         /// </summary>
         [Input("consumer")]
@@ -181,7 +181,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The region in which to create the qos. If omitted,
-        /// the `region` argument of the provider is used. Changing this creates
+        /// the `Region` argument of the provider is used. Changing this creates
         /// a new qos.
         /// </summary>
         [Input("region")]

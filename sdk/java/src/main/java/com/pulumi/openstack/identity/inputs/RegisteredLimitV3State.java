@@ -67,7 +67,7 @@ public final class RegisteredLimitV3State extends com.pulumi.resources.ResourceA
 
     /**
      * The resource that the limit applies to. On
-     * updates, either service_id, resource_name or region_id must be different than
+     * updates, either service_id, resourceName or regionId must be different than
      * existing value otherwise it will raise 409.
      * 
      */
@@ -76,7 +76,7 @@ public final class RegisteredLimitV3State extends com.pulumi.resources.ResourceA
 
     /**
      * @return The resource that the limit applies to. On
-     * updates, either service_id, resource_name or region_id must be different than
+     * updates, either service_id, resourceName or regionId must be different than
      * existing value otherwise it will raise 409.
      * 
      */
@@ -86,7 +86,7 @@ public final class RegisteredLimitV3State extends com.pulumi.resources.ResourceA
 
     /**
      * The service the limit applies to. On updates,
-     * either service_id, resource_name or region_id must be different than existing
+     * either service_id, resourceName or regionId must be different than existing
      * value otherwise it will raise 409.
      * 
      */
@@ -95,7 +95,7 @@ public final class RegisteredLimitV3State extends com.pulumi.resources.ResourceA
 
     /**
      * @return The service the limit applies to. On updates,
-     * either service_id, resource_name or region_id must be different than existing
+     * either service_id, resourceName or regionId must be different than existing
      * value otherwise it will raise 409.
      * 
      */
@@ -200,7 +200,7 @@ public final class RegisteredLimitV3State extends com.pulumi.resources.ResourceA
 
         /**
          * @param resourceName The resource that the limit applies to. On
-         * updates, either service_id, resource_name or region_id must be different than
+         * updates, either service_id, resourceName or regionId must be different than
          * existing value otherwise it will raise 409.
          * 
          * @return builder
@@ -213,7 +213,7 @@ public final class RegisteredLimitV3State extends com.pulumi.resources.ResourceA
 
         /**
          * @param resourceName The resource that the limit applies to. On
-         * updates, either service_id, resource_name or region_id must be different than
+         * updates, either service_id, resourceName or regionId must be different than
          * existing value otherwise it will raise 409.
          * 
          * @return builder
@@ -225,7 +225,7 @@ public final class RegisteredLimitV3State extends com.pulumi.resources.ResourceA
 
         /**
          * @param serviceId The service the limit applies to. On updates,
-         * either service_id, resource_name or region_id must be different than existing
+         * either service_id, resourceName or regionId must be different than existing
          * value otherwise it will raise 409.
          * 
          * @return builder
@@ -238,7 +238,7 @@ public final class RegisteredLimitV3State extends com.pulumi.resources.ResourceA
 
         /**
          * @param serviceId The service the limit applies to. On updates,
-         * either service_id, resource_name or region_id must be different than existing
+         * either service_id, resourceName or regionId must be different than existing
          * value otherwise it will raise 409.
          * 
          * @return builder

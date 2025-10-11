@@ -107,7 +107,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// <summary>
         /// The region in which to obtain the V1 KeyManager client.
         /// A KeyManager client is needed to create a order. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// V1 order.
         /// </summary>
         [Output("region")]
@@ -138,7 +138,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Output<string> SubStatusMessage { get; private set; } = null!;
 
         /// <summary>
-        /// The type of key to be generated. Must be one of `asymmetric`, `key`.
+        /// The type of key to be generated. Must be one of `Asymmetric`, `Key`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -204,14 +204,14 @@ namespace Pulumi.OpenStack.KeyManager
         /// <summary>
         /// The region in which to obtain the V1 KeyManager client.
         /// A KeyManager client is needed to create a order. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// V1 order.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The type of key to be generated. Must be one of `asymmetric`, `key`.
+        /// The type of key to be generated. Must be one of `Asymmetric`, `Key`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -257,7 +257,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// <summary>
         /// The region in which to obtain the V1 KeyManager client.
         /// A KeyManager client is needed to create a order. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// V1 order.
         /// </summary>
         [Input("region")]
@@ -288,7 +288,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Input<string>? SubStatusMessage { get; set; }
 
         /// <summary>
-        /// The type of key to be generated. Must be one of `asymmetric`, `key`.
+        /// The type of key to be generated. Must be one of `Asymmetric`, `Key`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -15,7 +15,7 @@ namespace Pulumi.OpenStack.Networking
     /// &gt; **Note:** Ports do not get an IP if the network they are attached
     /// to does not have a subnet. If you create the subnet resource in the
     /// same run as the port, make sure to use `fixed_ip.subnet_id` or
-    /// `depends_on` to enforce the subnet resource creation before the port
+    /// `DependsOn` to enforce the subnet resource creation before the port
     /// creation is triggered. More info here
     /// 
     /// ## Example Usage
@@ -156,8 +156,8 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// Administrative up/down status for the port
-        /// (must be `true` or `false` if provided). Changing this updates the
-        /// `admin_state_up` of an existing port.
+        /// (must be `True` or `False` if provided). Changing this updates the
+        /// `AdminStateUp` of an existing port.
         /// </summary>
         [Output("adminStateUp")]
         public Output<bool> AdminStateUp { get; private set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// Human-readable description of the port. Changing
-        /// this updates the `description` of an existing port.
+        /// this updates the `Description` of an existing port.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -256,7 +256,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// A unique name for the port. Changing this
-        /// updates the `name` of an existing port.
+        /// updates the `Name` of an existing port.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -270,7 +270,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// Create a port with no fixed
-        /// IP address. This will also remove any fixed IPs previously set on a port. `true`
+        /// IP address. This will also remove any fixed IPs previously set on a port. `True`
         /// is the only valid value for this argument.
         /// </summary>
         [Output("noFixedIp")]
@@ -278,8 +278,8 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// If set to
-        /// `true`, then no security groups are applied to the port. If set to `false` and
-        /// no `security_group_ids` are specified, then the port will yield to the default
+        /// `True`, then no security groups are applied to the port. If set to `False` and
+        /// no `SecurityGroupIds` are specified, then the port will yield to the default
         /// behavior of the Networking service, which is to usually apply the "default"
         /// security group.
         /// </summary>
@@ -289,10 +289,10 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Whether to explicitly enable or disable
         /// port security on the port. Port Security is usually enabled by default, so
-        /// omitting argument will usually result in a value of `true`. Setting this
-        /// explicitly to `false` will disable port security. In order to disable port
-        /// security, the port must not have any security groups. Valid values are `true`
-        /// and `false`.
+        /// omitting argument will usually result in a value of `True`. Setting this
+        /// explicitly to `False` will disable port security. In order to disable port
+        /// security, the port must not have any security groups. Valid values are `True`
+        /// and `False`.
         /// </summary>
         [Output("portSecurityEnabled")]
         public Output<bool> PortSecurityEnabled { get; private set; } = null!;
@@ -306,7 +306,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a port. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// port.
         /// </summary>
         [Output("region")]
@@ -388,8 +388,8 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// Administrative up/down status for the port
-        /// (must be `true` or `false` if provided). Changing this updates the
-        /// `admin_state_up` of an existing port.
+        /// (must be `True` or `False` if provided). Changing this updates the
+        /// `AdminStateUp` of an existing port.
         /// </summary>
         [Input("adminStateUp")]
         public Input<bool>? AdminStateUp { get; set; }
@@ -417,7 +417,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// Human-readable description of the port. Changing
-        /// this updates the `description` of an existing port.
+        /// this updates the `Description` of an existing port.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -479,7 +479,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// A unique name for the port. Changing this
-        /// updates the `name` of an existing port.
+        /// updates the `Name` of an existing port.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -493,7 +493,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// Create a port with no fixed
-        /// IP address. This will also remove any fixed IPs previously set on a port. `true`
+        /// IP address. This will also remove any fixed IPs previously set on a port. `True`
         /// is the only valid value for this argument.
         /// </summary>
         [Input("noFixedIp")]
@@ -501,8 +501,8 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// If set to
-        /// `true`, then no security groups are applied to the port. If set to `false` and
-        /// no `security_group_ids` are specified, then the port will yield to the default
+        /// `True`, then no security groups are applied to the port. If set to `False` and
+        /// no `SecurityGroupIds` are specified, then the port will yield to the default
         /// behavior of the Networking service, which is to usually apply the "default"
         /// security group.
         /// </summary>
@@ -512,10 +512,10 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Whether to explicitly enable or disable
         /// port security on the port. Port Security is usually enabled by default, so
-        /// omitting argument will usually result in a value of `true`. Setting this
-        /// explicitly to `false` will disable port security. In order to disable port
-        /// security, the port must not have any security groups. Valid values are `true`
-        /// and `false`.
+        /// omitting argument will usually result in a value of `True`. Setting this
+        /// explicitly to `False` will disable port security. In order to disable port
+        /// security, the port must not have any security groups. Valid values are `True`
+        /// and `False`.
         /// </summary>
         [Input("portSecurityEnabled")]
         public Input<bool>? PortSecurityEnabled { get; set; }
@@ -529,7 +529,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a port. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// port.
         /// </summary>
         [Input("region")]
@@ -591,8 +591,8 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// Administrative up/down status for the port
-        /// (must be `true` or `false` if provided). Changing this updates the
-        /// `admin_state_up` of an existing port.
+        /// (must be `True` or `False` if provided). Changing this updates the
+        /// `AdminStateUp` of an existing port.
         /// </summary>
         [Input("adminStateUp")]
         public Input<bool>? AdminStateUp { get; set; }
@@ -659,7 +659,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// Human-readable description of the port. Changing
-        /// this updates the `description` of an existing port.
+        /// this updates the `Description` of an existing port.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -733,7 +733,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// A unique name for the port. Changing this
-        /// updates the `name` of an existing port.
+        /// updates the `Name` of an existing port.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -747,7 +747,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// Create a port with no fixed
-        /// IP address. This will also remove any fixed IPs previously set on a port. `true`
+        /// IP address. This will also remove any fixed IPs previously set on a port. `True`
         /// is the only valid value for this argument.
         /// </summary>
         [Input("noFixedIp")]
@@ -755,8 +755,8 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// If set to
-        /// `true`, then no security groups are applied to the port. If set to `false` and
-        /// no `security_group_ids` are specified, then the port will yield to the default
+        /// `True`, then no security groups are applied to the port. If set to `False` and
+        /// no `SecurityGroupIds` are specified, then the port will yield to the default
         /// behavior of the Networking service, which is to usually apply the "default"
         /// security group.
         /// </summary>
@@ -766,10 +766,10 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Whether to explicitly enable or disable
         /// port security on the port. Port Security is usually enabled by default, so
-        /// omitting argument will usually result in a value of `true`. Setting this
-        /// explicitly to `false` will disable port security. In order to disable port
-        /// security, the port must not have any security groups. Valid values are `true`
-        /// and `false`.
+        /// omitting argument will usually result in a value of `True`. Setting this
+        /// explicitly to `False` will disable port security. In order to disable port
+        /// security, the port must not have any security groups. Valid values are `True`
+        /// and `False`.
         /// </summary>
         [Input("portSecurityEnabled")]
         public Input<bool>? PortSecurityEnabled { get; set; }
@@ -783,7 +783,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a port. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// port.
         /// </summary>
         [Input("region")]

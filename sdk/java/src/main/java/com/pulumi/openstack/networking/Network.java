@@ -192,8 +192,8 @@ public class Network extends com.pulumi.resources.CustomResource {
     }
     /**
      * The network DNS domain. Available, when Neutron DNS
-     * extension is enabled. The `dns_domain` of a network in conjunction with the
-     * `dns_name` attribute of its ports will be published in an external DNS
+     * extension is enabled. The `dnsDomain` of a network in conjunction with the
+     * `dnsName` attribute of its ports will be published in an external DNS
      * service when Neutron is configured to integrate with such a service.
      * 
      */
@@ -202,8 +202,8 @@ public class Network extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The network DNS domain. Available, when Neutron DNS
-     * extension is enabled. The `dns_domain` of a network in conjunction with the
-     * `dns_name` attribute of its ports will be published in an external DNS
+     * extension is enabled. The `dnsDomain` of a network in conjunction with the
+     * `dnsName` attribute of its ports will be published in an external DNS
      * service when Neutron is configured to integrate with such a service.
      * 
      */
@@ -389,7 +389,7 @@ public class Network extends com.pulumi.resources.CustomResource {
     /**
      * Specifies whether the network resource has the
      * VLAN transparent attribute set. Valid values are true and false. Defaults to
-     * false. Changing this updates the `transparent_vlan` attribute of the existing
+     * false. Changing this updates the `transparentVlan` attribute of the existing
      * network.
      * 
      */
@@ -399,7 +399,7 @@ public class Network extends com.pulumi.resources.CustomResource {
     /**
      * @return Specifies whether the network resource has the
      * VLAN transparent attribute set. Valid values are true and false. Defaults to
-     * false. Changing this updates the `transparent_vlan` attribute of the existing
+     * false. Changing this updates the `transparentVlan` attribute of the existing
      * network.
      * 
      */

@@ -72,7 +72,7 @@ namespace Pulumi.OpenStack.Firewall
         /// Audit status of the firewall policy
         /// (must be "true" or "false" if provided - defaults to "false").
         /// This status is set to "false" whenever the firewall policy or any of its
-        /// rules are changed. Changing this updates the `audited` status of an existing
+        /// rules are changed. Changing this updates the `Audited` status of an existing
         /// firewall policy.
         /// </summary>
         [Output("audited")]
@@ -80,21 +80,21 @@ namespace Pulumi.OpenStack.Firewall
 
         /// <summary>
         /// A description for the firewall policy. Changing
-        /// this updates the `description` of an existing firewall policy.
+        /// this updates the `Description` of an existing firewall policy.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// A name for the firewall policy. Changing this
-        /// updates the `name` of an existing firewall policy.
+        /// updates the `Name` of an existing firewall policy.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
         /// This argument conflicts and is interchangeable
-        /// with `tenant_id`. The owner of the firewall policy. Required if admin wants
+        /// with `TenantId`. The owner of the firewall policy. Required if admin wants
         /// to create a firewall policy for another project. Changing this creates a new
         /// firewall policy.
         /// </summary>
@@ -104,7 +104,7 @@ namespace Pulumi.OpenStack.Firewall
         /// <summary>
         /// The region in which to obtain the v2 networking client.
         /// A networking client is needed to create a firewall policy. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// firewall policy.
         /// </summary>
         [Output("region")]
@@ -122,7 +122,7 @@ namespace Pulumi.OpenStack.Firewall
         /// Sharing status of the firewall policy (must be "true"
         /// or "false" if provided). If this is "true" the policy is visible to, and
         /// can be used in, firewalls in other tenants. Changing this updates the
-        /// `shared` status of an existing firewall policy. Only administrative users
+        /// `Shared` status of an existing firewall policy. Only administrative users
         /// can specify if the policy should be shared.
         /// </summary>
         [Output("shared")]
@@ -130,7 +130,7 @@ namespace Pulumi.OpenStack.Firewall
 
         /// <summary>
         /// This argument conflicts and is interchangeable
-        /// with `project_id`. The owner of the firewall policy. Required if admin wants
+        /// with `ProjectId`. The owner of the firewall policy. Required if admin wants
         /// to create a firewall policy for another tenant. Changing this creates a new
         /// firewall policy.
         /// </summary>
@@ -187,7 +187,7 @@ namespace Pulumi.OpenStack.Firewall
         /// Audit status of the firewall policy
         /// (must be "true" or "false" if provided - defaults to "false").
         /// This status is set to "false" whenever the firewall policy or any of its
-        /// rules are changed. Changing this updates the `audited` status of an existing
+        /// rules are changed. Changing this updates the `Audited` status of an existing
         /// firewall policy.
         /// </summary>
         [Input("audited")]
@@ -195,21 +195,21 @@ namespace Pulumi.OpenStack.Firewall
 
         /// <summary>
         /// A description for the firewall policy. Changing
-        /// this updates the `description` of an existing firewall policy.
+        /// this updates the `Description` of an existing firewall policy.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
         /// A name for the firewall policy. Changing this
-        /// updates the `name` of an existing firewall policy.
+        /// updates the `Name` of an existing firewall policy.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
         /// This argument conflicts and is interchangeable
-        /// with `tenant_id`. The owner of the firewall policy. Required if admin wants
+        /// with `TenantId`. The owner of the firewall policy. Required if admin wants
         /// to create a firewall policy for another project. Changing this creates a new
         /// firewall policy.
         /// </summary>
@@ -219,7 +219,7 @@ namespace Pulumi.OpenStack.Firewall
         /// <summary>
         /// The region in which to obtain the v2 networking client.
         /// A networking client is needed to create a firewall policy. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// firewall policy.
         /// </summary>
         [Input("region")]
@@ -243,7 +243,7 @@ namespace Pulumi.OpenStack.Firewall
         /// Sharing status of the firewall policy (must be "true"
         /// or "false" if provided). If this is "true" the policy is visible to, and
         /// can be used in, firewalls in other tenants. Changing this updates the
-        /// `shared` status of an existing firewall policy. Only administrative users
+        /// `Shared` status of an existing firewall policy. Only administrative users
         /// can specify if the policy should be shared.
         /// </summary>
         [Input("shared")]
@@ -251,7 +251,7 @@ namespace Pulumi.OpenStack.Firewall
 
         /// <summary>
         /// This argument conflicts and is interchangeable
-        /// with `project_id`. The owner of the firewall policy. Required if admin wants
+        /// with `ProjectId`. The owner of the firewall policy. Required if admin wants
         /// to create a firewall policy for another tenant. Changing this creates a new
         /// firewall policy.
         /// </summary>
@@ -270,7 +270,7 @@ namespace Pulumi.OpenStack.Firewall
         /// Audit status of the firewall policy
         /// (must be "true" or "false" if provided - defaults to "false").
         /// This status is set to "false" whenever the firewall policy or any of its
-        /// rules are changed. Changing this updates the `audited` status of an existing
+        /// rules are changed. Changing this updates the `Audited` status of an existing
         /// firewall policy.
         /// </summary>
         [Input("audited")]
@@ -278,21 +278,21 @@ namespace Pulumi.OpenStack.Firewall
 
         /// <summary>
         /// A description for the firewall policy. Changing
-        /// this updates the `description` of an existing firewall policy.
+        /// this updates the `Description` of an existing firewall policy.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
         /// A name for the firewall policy. Changing this
-        /// updates the `name` of an existing firewall policy.
+        /// updates the `Name` of an existing firewall policy.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
         /// This argument conflicts and is interchangeable
-        /// with `tenant_id`. The owner of the firewall policy. Required if admin wants
+        /// with `TenantId`. The owner of the firewall policy. Required if admin wants
         /// to create a firewall policy for another project. Changing this creates a new
         /// firewall policy.
         /// </summary>
@@ -302,7 +302,7 @@ namespace Pulumi.OpenStack.Firewall
         /// <summary>
         /// The region in which to obtain the v2 networking client.
         /// A networking client is needed to create a firewall policy. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// firewall policy.
         /// </summary>
         [Input("region")]
@@ -326,7 +326,7 @@ namespace Pulumi.OpenStack.Firewall
         /// Sharing status of the firewall policy (must be "true"
         /// or "false" if provided). If this is "true" the policy is visible to, and
         /// can be used in, firewalls in other tenants. Changing this updates the
-        /// `shared` status of an existing firewall policy. Only administrative users
+        /// `Shared` status of an existing firewall policy. Only administrative users
         /// can specify if the policy should be shared.
         /// </summary>
         [Input("shared")]
@@ -334,7 +334,7 @@ namespace Pulumi.OpenStack.Firewall
 
         /// <summary>
         /// This argument conflicts and is interchangeable
-        /// with `project_id`. The owner of the firewall policy. Required if admin wants
+        /// with `ProjectId`. The owner of the firewall policy. Required if admin wants
         /// to create a firewall policy for another tenant. Changing this creates a new
         /// firewall policy.
         /// </summary>

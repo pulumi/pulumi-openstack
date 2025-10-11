@@ -111,7 +111,7 @@ public class FlavorV2 extends com.pulumi.resources.CustomResource {
         return this.enabled;
     }
     /**
-     * The flavor_profile_id that the flavor
+     * The flavorProfileId that the flavor
      * will use. Changing this creates a new flavor.
      * 
      */
@@ -119,7 +119,7 @@ public class FlavorV2 extends com.pulumi.resources.CustomResource {
     private Output<String> flavorProfileId;
 
     /**
-     * @return The flavor_profile_id that the flavor
+     * @return The flavorProfileId that the flavor
      * will use. Changing this creates a new flavor.
      * 
      */

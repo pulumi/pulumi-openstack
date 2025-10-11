@@ -19,7 +19,7 @@ namespace Pulumi.OpenStack.ObjectStorage.Inputs
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Versioning type which can be `versions` or `history`
+        /// Versioning type which can be `Versions` or `History`
         /// according to [OpenStack
         /// documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
         /// </summary>

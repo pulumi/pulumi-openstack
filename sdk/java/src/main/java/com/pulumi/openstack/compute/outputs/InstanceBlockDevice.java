@@ -48,7 +48,7 @@ public final class InstanceBlockDevice {
     /**
      * @return Specifies the guest server disk file system format,
      * such as `ext2`, `ext3`, `ext4`, `xfs` or `swap`. Swap block device mappings
-     * have the following restrictions: source_type must be blank and destination_type
+     * have the following restrictions: sourceType must be blank and destinationType
      * must be local and only one swap disk per server and the size of the swap disk
      * must be less than or equal to the swap size of the flavor. Changing this
      * creates a new server.
@@ -136,7 +136,7 @@ public final class InstanceBlockDevice {
     /**
      * @return Specifies the guest server disk file system format,
      * such as `ext2`, `ext3`, `ext4`, `xfs` or `swap`. Swap block device mappings
-     * have the following restrictions: source_type must be blank and destination_type
+     * have the following restrictions: sourceType must be blank and destinationType
      * must be local and only one swap disk per server and the size of the swap disk
      * must be less than or equal to the swap size of the flavor. Changing this
      * creates a new server.

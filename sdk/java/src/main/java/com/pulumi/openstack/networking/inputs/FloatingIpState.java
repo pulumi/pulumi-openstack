@@ -207,7 +207,7 @@ public final class FloatingIpState extends com.pulumi.resources.ResourceArgs {
      * A list of external subnet IDs to try over each to
      * allocate a floating IP address. If a subnet ID in a list has exhausted
      * floating IP pool, the next subnet ID will be tried. This argument is used only
-     * during the resource creation. Conflicts with a `subnet_id` argument.
+     * during the resource creation. Conflicts with a `subnetId` argument.
      * 
      */
     @Import(name="subnetIds")
@@ -217,7 +217,7 @@ public final class FloatingIpState extends com.pulumi.resources.ResourceArgs {
      * @return A list of external subnet IDs to try over each to
      * allocate a floating IP address. If a subnet ID in a list has exhausted
      * floating IP pool, the next subnet ID will be tried. This argument is used only
-     * during the resource creation. Conflicts with a `subnet_id` argument.
+     * during the resource creation. Conflicts with a `subnetId` argument.
      * 
      */
     public Optional<Output<List<String>>> subnetIds() {
@@ -573,7 +573,7 @@ public final class FloatingIpState extends com.pulumi.resources.ResourceArgs {
          * @param subnetIds A list of external subnet IDs to try over each to
          * allocate a floating IP address. If a subnet ID in a list has exhausted
          * floating IP pool, the next subnet ID will be tried. This argument is used only
-         * during the resource creation. Conflicts with a `subnet_id` argument.
+         * during the resource creation. Conflicts with a `subnetId` argument.
          * 
          * @return builder
          * 
@@ -587,7 +587,7 @@ public final class FloatingIpState extends com.pulumi.resources.ResourceArgs {
          * @param subnetIds A list of external subnet IDs to try over each to
          * allocate a floating IP address. If a subnet ID in a list has exhausted
          * floating IP pool, the next subnet ID will be tried. This argument is used only
-         * during the resource creation. Conflicts with a `subnet_id` argument.
+         * during the resource creation. Conflicts with a `subnetId` argument.
          * 
          * @return builder
          * 
@@ -600,7 +600,7 @@ public final class FloatingIpState extends com.pulumi.resources.ResourceArgs {
          * @param subnetIds A list of external subnet IDs to try over each to
          * allocate a floating IP address. If a subnet ID in a list has exhausted
          * floating IP pool, the next subnet ID will be tried. This argument is used only
-         * during the resource creation. Conflicts with a `subnet_id` argument.
+         * during the resource creation. Conflicts with a `subnetId` argument.
          * 
          * @return builder
          * 

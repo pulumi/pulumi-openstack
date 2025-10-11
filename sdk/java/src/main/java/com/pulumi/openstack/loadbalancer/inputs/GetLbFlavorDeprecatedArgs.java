@@ -16,14 +16,14 @@ public final class GetLbFlavorDeprecatedArgs extends com.pulumi.resources.Invoke
     public static final GetLbFlavorDeprecatedArgs Empty = new GetLbFlavorDeprecatedArgs();
 
     /**
-     * The ID of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+     * The ID of the flavor. Exactly one of `name`, `flavorId` is required to be set.
      * 
      */
     @Import(name="flavorId")
     private @Nullable Output<String> flavorId;
 
     /**
-     * @return The ID of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+     * @return The ID of the flavor. Exactly one of `name`, `flavorId` is required to be set.
      * 
      */
     public Optional<Output<String>> flavorId() {
@@ -31,14 +31,14 @@ public final class GetLbFlavorDeprecatedArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+     * The name of the flavor. Exactly one of `name`, `flavorId` is required to be set.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+     * @return The name of the flavor. Exactly one of `name`, `flavorId` is required to be set.
      * 
      */
     public Optional<Output<String>> name() {
@@ -89,7 +89,7 @@ public final class GetLbFlavorDeprecatedArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param flavorId The ID of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+         * @param flavorId The ID of the flavor. Exactly one of `name`, `flavorId` is required to be set.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class GetLbFlavorDeprecatedArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param flavorId The ID of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+         * @param flavorId The ID of the flavor. Exactly one of `name`, `flavorId` is required to be set.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class GetLbFlavorDeprecatedArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param name The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+         * @param name The name of the flavor. Exactly one of `name`, `flavorId` is required to be set.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class GetLbFlavorDeprecatedArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param name The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
+         * @param name The name of the flavor. Exactly one of `name`, `flavorId` is required to be set.
          * 
          * @return builder
          * 

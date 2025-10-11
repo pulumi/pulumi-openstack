@@ -53,7 +53,7 @@ public final class QosAssociationV3Args extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * ID of the volume_type to associate.
+     * ID of the volumeType to associate.
      * Changing this creates a new qos association.
      * 
      */
@@ -61,7 +61,7 @@ public final class QosAssociationV3Args extends com.pulumi.resources.ResourceArg
     private Output<String> volumeTypeId;
 
     /**
-     * @return ID of the volume_type to associate.
+     * @return ID of the volumeType to associate.
      * Changing this creates a new qos association.
      * 
      */
@@ -144,7 +144,7 @@ public final class QosAssociationV3Args extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param volumeTypeId ID of the volume_type to associate.
+         * @param volumeTypeId ID of the volumeType to associate.
          * Changing this creates a new qos association.
          * 
          * @return builder
@@ -156,7 +156,7 @@ public final class QosAssociationV3Args extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param volumeTypeId ID of the volume_type to associate.
+         * @param volumeTypeId ID of the volumeType to associate.
          * Changing this creates a new qos association.
          * 
          * @return builder
