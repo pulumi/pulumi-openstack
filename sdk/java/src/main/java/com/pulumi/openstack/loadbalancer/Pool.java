@@ -110,7 +110,7 @@ public class Pool extends com.pulumi.resources.CustomResource {
     }
     /**
      * The reference of the key manager service
-     * secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
+     * secret containing a PEM format CA certificate bundle for `tlsEnabled` pools.
      * Supported only in **Octavia minor version &gt;= 2.8**.
      * 
      */
@@ -119,7 +119,7 @@ public class Pool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The reference of the key manager service
-     * secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
+     * secret containing a PEM format CA certificate bundle for `tlsEnabled` pools.
      * Supported only in **Octavia minor version &gt;= 2.8**.
      * 
      */
@@ -128,7 +128,7 @@ public class Pool extends com.pulumi.resources.CustomResource {
     }
     /**
      * The reference of the key manager service
-     * secret containing a PEM format CA revocation list file for `tls_enabled`
+     * secret containing a PEM format CA revocation list file for `tlsEnabled`
      * pools. Supported only in **Octavia minor version &gt;= 2.8**.
      * 
      */
@@ -137,7 +137,7 @@ public class Pool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The reference of the key manager service
-     * secret containing a PEM format CA revocation list file for `tls_enabled`
+     * secret containing a PEM format CA revocation list file for `tlsEnabled`
      * pools. Supported only in **Octavia minor version &gt;= 2.8**.
      * 
      */
@@ -326,7 +326,7 @@ public class Pool extends com.pulumi.resources.CustomResource {
     }
     /**
      * The reference to the key manager service
-     * secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
+     * secret containing a PKCS12 format certificate/key bundle for `tlsEnabled`
      * pools for TLS client authentication to the member servers. Supported only in
      * **Octavia minor version &gt;= 2.8**.
      * 
@@ -336,7 +336,7 @@ public class Pool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The reference to the key manager service
-     * secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
+     * secret containing a PKCS12 format certificate/key bundle for `tlsEnabled`
      * pools for TLS client authentication to the member servers. Supported only in
      * **Octavia minor version &gt;= 2.8**.
      * 

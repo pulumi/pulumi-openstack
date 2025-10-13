@@ -24,10 +24,10 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A block declaring the start and end range of
      * the IP addresses available for use with DHCP in this subnet. Multiple
-     * `allocation_pool` blocks can be declared, providing the subnet with more
+     * `allocationPool` blocks can be declared, providing the subnet with more
      * than one range of IP addresses to use with DHCP. However, each IP range
      * must be from the same CIDR that the subnet is part of.
-     * The `allocation_pool` block is documented below.
+     * The `allocationPool` block is documented below.
      * 
      */
     @Import(name="allocationPools")
@@ -36,10 +36,10 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A block declaring the start and end range of
      * the IP addresses available for use with DHCP in this subnet. Multiple
-     * `allocation_pool` blocks can be declared, providing the subnet with more
+     * `allocationPool` blocks can be declared, providing the subnet with more
      * than one range of IP addresses to use with DHCP. However, each IP range
      * must be from the same CIDR that the subnet is part of.
-     * The `allocation_pool` block is documented below.
+     * The `allocationPool` block is documented below.
      * 
      */
     public Optional<Output<List<SubnetAllocationPoolArgs>>> allocationPools() {
@@ -139,7 +139,7 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Default gateway used by devices in this subnet.
-     * Leaving this blank and not setting `no_gateway` will cause a default
+     * Leaving this blank and not setting `noGateway` will cause a default
      * gateway of `.1` to be used. Changing this updates the gateway IP of the
      * existing subnet.
      * 
@@ -149,7 +149,7 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Default gateway used by devices in this subnet.
-     * Leaving this blank and not setting `no_gateway` will cause a default
+     * Leaving this blank and not setting `noGateway` will cause a default
      * gateway of `.1` to be used. Changing this updates the gateway IP of the
      * existing subnet.
      * 
@@ -447,10 +447,10 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param allocationPools A block declaring the start and end range of
          * the IP addresses available for use with DHCP in this subnet. Multiple
-         * `allocation_pool` blocks can be declared, providing the subnet with more
+         * `allocationPool` blocks can be declared, providing the subnet with more
          * than one range of IP addresses to use with DHCP. However, each IP range
          * must be from the same CIDR that the subnet is part of.
-         * The `allocation_pool` block is documented below.
+         * The `allocationPool` block is documented below.
          * 
          * @return builder
          * 
@@ -463,10 +463,10 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param allocationPools A block declaring the start and end range of
          * the IP addresses available for use with DHCP in this subnet. Multiple
-         * `allocation_pool` blocks can be declared, providing the subnet with more
+         * `allocationPool` blocks can be declared, providing the subnet with more
          * than one range of IP addresses to use with DHCP. However, each IP range
          * must be from the same CIDR that the subnet is part of.
-         * The `allocation_pool` block is documented below.
+         * The `allocationPool` block is documented below.
          * 
          * @return builder
          * 
@@ -478,10 +478,10 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param allocationPools A block declaring the start and end range of
          * the IP addresses available for use with DHCP in this subnet. Multiple
-         * `allocation_pool` blocks can be declared, providing the subnet with more
+         * `allocationPool` blocks can be declared, providing the subnet with more
          * than one range of IP addresses to use with DHCP. However, each IP range
          * must be from the same CIDR that the subnet is part of.
-         * The `allocation_pool` block is documented below.
+         * The `allocationPool` block is documented below.
          * 
          * @return builder
          * 
@@ -625,7 +625,7 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param gatewayIp Default gateway used by devices in this subnet.
-         * Leaving this blank and not setting `no_gateway` will cause a default
+         * Leaving this blank and not setting `noGateway` will cause a default
          * gateway of `.1` to be used. Changing this updates the gateway IP of the
          * existing subnet.
          * 
@@ -639,7 +639,7 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param gatewayIp Default gateway used by devices in this subnet.
-         * Leaving this blank and not setting `no_gateway` will cause a default
+         * Leaving this blank and not setting `noGateway` will cause a default
          * gateway of `.1` to be used. Changing this updates the gateway IP of the
          * existing subnet.
          * 

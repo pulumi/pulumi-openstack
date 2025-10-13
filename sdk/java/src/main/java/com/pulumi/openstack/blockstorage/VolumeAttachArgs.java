@@ -87,14 +87,14 @@ public final class VolumeAttachArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IP address of the `host_name` above.
+     * The IP address of the `hostName` above.
      * 
      */
     @Import(name="ipAddress")
     private @Nullable Output<String> ipAddress;
 
     /**
-     * @return The IP address of the `host_name` above.
+     * @return The IP address of the `hostName` above.
      * 
      */
     public Optional<Output<String>> ipAddress() {
@@ -342,7 +342,7 @@ public final class VolumeAttachArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddress The IP address of the `host_name` above.
+         * @param ipAddress The IP address of the `hostName` above.
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class VolumeAttachArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddress The IP address of the `host_name` above.
+         * @param ipAddress The IP address of the `hostName` above.
          * 
          * @return builder
          * 

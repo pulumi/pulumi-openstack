@@ -65,7 +65,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ## Notes
     /// 
-    /// The `next_hop` IP address must be directly reachable from the router at the ``openstack.networking.RouterRoute``
+    /// The `NextHop` IP address must be directly reachable from the router at the ``openstack.networking.RouterRoute``
     /// resource creation time.  You can ensure that by explicitly specifying a dependency on the ``openstack.networking.RouterInterface``
     /// resource that connects the next hop to the router, as in the example above.
     /// 
@@ -97,7 +97,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to configure a routing entry on a router. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// routing entry.
         /// </summary>
         [Output("region")]
@@ -173,7 +173,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to configure a routing entry on a router. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// routing entry.
         /// </summary>
         [Input("region")]
@@ -211,7 +211,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to configure a routing entry on a router. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// routing entry.
         /// </summary>
         [Input("region")]

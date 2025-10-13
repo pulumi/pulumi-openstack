@@ -13,7 +13,7 @@ namespace Pulumi.OpenStack.Networking
     /// Manages a Neutron network segment resource within OpenStack.
     /// 
     /// &gt; **Note:** This resource is only available if the Neutron service is
-    /// configured with the `segments` extension.
+    /// configured with the `Segments` extension.
     /// 
     /// &gt; **Note:** This ussually requires admin privileges to create or manage
     /// segments.
@@ -83,7 +83,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The network type. Valid values depend on the
-        /// backend (e.g., `vlan`, `vxlan`, `flat`, `gre`, `geneve`, `local`). Changing
+        /// backend (e.g., `Vlan`, `Vxlan`, `Flat`, `Gre`, `Geneve`, `Local`). Changing
         /// this will create a new segment.
         /// </summary>
         [Output("networkType")]
@@ -99,7 +99,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron network. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// segment.
         /// </summary>
         [Output("region")]
@@ -113,7 +113,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// A segmentation identifier. Changing is allowed
-        /// only for `vlan`.
+        /// only for `Vlan`.
         /// </summary>
         [Output("segmentationId")]
         public Output<int> SegmentationId { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The network type. Valid values depend on the
-        /// backend (e.g., `vlan`, `vxlan`, `flat`, `gre`, `geneve`, `local`). Changing
+        /// backend (e.g., `Vlan`, `Vxlan`, `Flat`, `Gre`, `Geneve`, `Local`). Changing
         /// this will create a new segment.
         /// </summary>
         [Input("networkType", required: true)]
@@ -207,7 +207,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron network. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// segment.
         /// </summary>
         [Input("region")]
@@ -215,7 +215,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// A segmentation identifier. Changing is allowed
-        /// only for `vlan`.
+        /// only for `Vlan`.
         /// </summary>
         [Input("segmentationId")]
         public Input<int>? SegmentationId { get; set; }
@@ -255,7 +255,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The network type. Valid values depend on the
-        /// backend (e.g., `vlan`, `vxlan`, `flat`, `gre`, `geneve`, `local`). Changing
+        /// backend (e.g., `Vlan`, `Vxlan`, `Flat`, `Gre`, `Geneve`, `Local`). Changing
         /// this will create a new segment.
         /// </summary>
         [Input("networkType")]
@@ -271,7 +271,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron network. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// segment.
         /// </summary>
         [Input("region")]
@@ -285,7 +285,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// A segmentation identifier. Changing is allowed
-        /// only for `vlan`.
+        /// only for `Vlan`.
         /// </summary>
         [Input("segmentationId")]
         public Input<int>? SegmentationId { get; set; }

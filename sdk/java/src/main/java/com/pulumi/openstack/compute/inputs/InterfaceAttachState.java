@@ -49,7 +49,7 @@ public final class InterfaceAttachState extends com.pulumi.resources.ResourceArg
 
     /**
      * The ID of the Network to attach to an Instance. A port will be created automatically.
-     * _NOTE_: This option and `port_id` are mutually exclusive.
+     * _NOTE_: This option and `portId` are mutually exclusive.
      * 
      */
     @Import(name="networkId")
@@ -57,7 +57,7 @@ public final class InterfaceAttachState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The ID of the Network to attach to an Instance. A port will be created automatically.
-     * _NOTE_: This option and `port_id` are mutually exclusive.
+     * _NOTE_: This option and `portId` are mutually exclusive.
      * 
      */
     public Optional<Output<String>> networkId() {
@@ -66,7 +66,7 @@ public final class InterfaceAttachState extends com.pulumi.resources.ResourceArg
 
     /**
      * The ID of the Port to attach to an Instance.
-     * _NOTE_: This option and `network_id` are mutually exclusive.
+     * _NOTE_: This option and `networkId` are mutually exclusive.
      * 
      */
     @Import(name="portId")
@@ -74,7 +74,7 @@ public final class InterfaceAttachState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The ID of the Port to attach to an Instance.
-     * _NOTE_: This option and `network_id` are mutually exclusive.
+     * _NOTE_: This option and `networkId` are mutually exclusive.
      * 
      */
     public Optional<Output<String>> portId() {
@@ -174,7 +174,7 @@ public final class InterfaceAttachState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param networkId The ID of the Network to attach to an Instance. A port will be created automatically.
-         * _NOTE_: This option and `port_id` are mutually exclusive.
+         * _NOTE_: This option and `portId` are mutually exclusive.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class InterfaceAttachState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param networkId The ID of the Network to attach to an Instance. A port will be created automatically.
-         * _NOTE_: This option and `port_id` are mutually exclusive.
+         * _NOTE_: This option and `portId` are mutually exclusive.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class InterfaceAttachState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param portId The ID of the Port to attach to an Instance.
-         * _NOTE_: This option and `network_id` are mutually exclusive.
+         * _NOTE_: This option and `networkId` are mutually exclusive.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class InterfaceAttachState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param portId The ID of the Port to attach to an Instance.
-         * _NOTE_: This option and `network_id` are mutually exclusive.
+         * _NOTE_: This option and `networkId` are mutually exclusive.
          * 
          * @return builder
          * 

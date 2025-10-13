@@ -203,7 +203,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
     /**
      * The TLS client authentication mode.
      * Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
-     * `TERMINATED_HTTPS` listener protocol and the `client_ca_tls_container_ref`.
+     * `TERMINATED_HTTPS` listener protocol and the `clientCaTlsContainerRef`.
      * Supported only in **Octavia minor version &gt;= 2.8**.
      * 
      */
@@ -213,7 +213,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
     /**
      * @return The TLS client authentication mode.
      * Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
-     * `TERMINATED_HTTPS` listener protocol and the `client_ca_tls_container_ref`.
+     * `TERMINATED_HTTPS` listener protocol and the `clientCaTlsContainerRef`.
      * Supported only in **Octavia minor version &gt;= 2.8**.
      * 
      */
@@ -223,7 +223,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
     /**
      * The ref of the key manager service
      * secret containing a PEM format client CA certificate bundle for
-     * `TERMINATED_HTTPS` listeners. Required if `client_authentication` is
+     * `TERMINATED_HTTPS` listeners. Required if `clientAuthentication` is
      * `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version &gt;=
      * 2.8**.
      * 
@@ -234,7 +234,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
     /**
      * @return The ref of the key manager service
      * secret containing a PEM format client CA certificate bundle for
-     * `TERMINATED_HTTPS` listeners. Required if `client_authentication` is
+     * `TERMINATED_HTTPS` listeners. Required if `clientAuthentication` is
      * `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version &gt;=
      * 2.8**.
      * 
@@ -332,7 +332,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Defines whether the
      * **includeSubDomains** directive should be added to the
      * Strict-Transport-Security HTTP response header. This requires setting the
-     * `hsts_max_age` option as well in order to become effective. Requires
+     * `hstsMaxAge` option as well in order to become effective. Requires
      * `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
      * version &gt;= 2.27**.
      * 
@@ -344,7 +344,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * @return Defines whether the
      * **includeSubDomains** directive should be added to the
      * Strict-Transport-Security HTTP response header. This requires setting the
-     * `hsts_max_age` option as well in order to become effective. Requires
+     * `hstsMaxAge` option as well in order to become effective. Requires
      * `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
      * version &gt;= 2.27**.
      * 
@@ -377,7 +377,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
     /**
      * Defines whether the **preload** directive should
      * be added to the Strict-Transport-Security HTTP response header. This requires
-     * setting the `hsts_max_age` option as well in order to become effective.
+     * setting the `hstsMaxAge` option as well in order to become effective.
      * Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
      * minor version &gt;= 2.27**.
      * 
@@ -388,7 +388,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
     /**
      * @return Defines whether the **preload** directive should
      * be added to the Strict-Transport-Security HTTP response header. This requires
-     * setting the `hsts_max_age` option as well in order to become effective.
+     * setting the `hstsMaxAge` option as well in order to become effective.
      * Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
      * minor version &gt;= 2.27**.
      * 

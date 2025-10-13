@@ -15,6 +15,10 @@ import (
 // Manages a V1 container object resource within OpenStack.
 //
 // ## Example Usage
+//
+// ### Example with simple content
+//
+// ### Example with content from file
 type ContainerObject struct {
 	pulumi.CustomResourceState
 

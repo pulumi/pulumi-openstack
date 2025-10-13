@@ -127,7 +127,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// A list of ALPN protocols. Available protocols:
-        /// `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
+        /// `http/1.0`, `http/1.1`, `H2`. Supported only in **Octavia minor version &gt;=
         /// 2.20**.
         /// </summary>
         [Output("alpnProtocols")]
@@ -136,7 +136,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The TLS client authentication mode.
         /// Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
-        /// `TERMINATED_HTTPS` listener protocol and the `client_ca_tls_container_ref`.
+        /// `TERMINATED_HTTPS` listener protocol and the `ClientCaTlsContainerRef`.
         /// Supported only in **Octavia minor version &gt;= 2.8**.
         /// </summary>
         [Output("clientAuthentication")]
@@ -145,7 +145,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The ref of the key manager service
         /// secret containing a PEM format client CA certificate bundle for
-        /// `TERMINATED_HTTPS` listeners. Required if `client_authentication` is
+        /// `TERMINATED_HTTPS` listeners. Required if `ClientAuthentication` is
         /// `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version &gt;=
         /// 2.8**.
         /// </summary>
@@ -194,7 +194,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// Defines whether the
         /// **includeSubDomains** directive should be added to the
         /// Strict-Transport-Security HTTP response header. This requires setting the
-        /// `hsts_max_age` option as well in order to become effective. Requires
+        /// `HstsMaxAge` option as well in order to become effective. Requires
         /// `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
         /// version &gt;= 2.27**.
         /// </summary>
@@ -214,7 +214,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// Defines whether the **preload** directive should
         /// be added to the Strict-Transport-Security HTTP response header. This requires
-        /// setting the `hsts_max_age` option as well in order to become effective.
+        /// setting the `HstsMaxAge` option as well in order to become effective.
         /// Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
         /// minor version &gt;= 2.27**.
         /// </summary>
@@ -261,7 +261,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
-        /// A Networking client is needed to create a listener. If omitted, the `region`
+        /// A Networking client is needed to create a listener. If omitted, the `Region`
         /// argument of the provider is used. Changing this creates a new Listener.
         /// </summary>
         [Output("region")]
@@ -408,7 +408,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// A list of ALPN protocols. Available protocols:
-        /// `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
+        /// `http/1.0`, `http/1.1`, `H2`. Supported only in **Octavia minor version &gt;=
         /// 2.20**.
         /// </summary>
         public InputList<string> AlpnProtocols
@@ -420,7 +420,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The TLS client authentication mode.
         /// Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
-        /// `TERMINATED_HTTPS` listener protocol and the `client_ca_tls_container_ref`.
+        /// `TERMINATED_HTTPS` listener protocol and the `ClientCaTlsContainerRef`.
         /// Supported only in **Octavia minor version &gt;= 2.8**.
         /// </summary>
         [Input("clientAuthentication")]
@@ -429,7 +429,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The ref of the key manager service
         /// secret containing a PEM format client CA certificate bundle for
-        /// `TERMINATED_HTTPS` listeners. Required if `client_authentication` is
+        /// `TERMINATED_HTTPS` listeners. Required if `ClientAuthentication` is
         /// `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version &gt;=
         /// 2.8**.
         /// </summary>
@@ -478,7 +478,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// Defines whether the
         /// **includeSubDomains** directive should be added to the
         /// Strict-Transport-Security HTTP response header. This requires setting the
-        /// `hsts_max_age` option as well in order to become effective. Requires
+        /// `HstsMaxAge` option as well in order to become effective. Requires
         /// `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
         /// version &gt;= 2.27**.
         /// </summary>
@@ -498,7 +498,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// Defines whether the **preload** directive should
         /// be added to the Strict-Transport-Security HTTP response header. This requires
-        /// setting the `hsts_max_age` option as well in order to become effective.
+        /// setting the `HstsMaxAge` option as well in order to become effective.
         /// Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
         /// minor version &gt;= 2.27**.
         /// </summary>
@@ -551,7 +551,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
-        /// A Networking client is needed to create a listener. If omitted, the `region`
+        /// A Networking client is needed to create a listener. If omitted, the `Region`
         /// argument of the provider is used. Changing this creates a new Listener.
         /// </summary>
         [Input("region")]
@@ -678,7 +678,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// A list of ALPN protocols. Available protocols:
-        /// `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version &gt;=
+        /// `http/1.0`, `http/1.1`, `H2`. Supported only in **Octavia minor version &gt;=
         /// 2.20**.
         /// </summary>
         public InputList<string> AlpnProtocols
@@ -690,7 +690,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The TLS client authentication mode.
         /// Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
-        /// `TERMINATED_HTTPS` listener protocol and the `client_ca_tls_container_ref`.
+        /// `TERMINATED_HTTPS` listener protocol and the `ClientCaTlsContainerRef`.
         /// Supported only in **Octavia minor version &gt;= 2.8**.
         /// </summary>
         [Input("clientAuthentication")]
@@ -699,7 +699,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The ref of the key manager service
         /// secret containing a PEM format client CA certificate bundle for
-        /// `TERMINATED_HTTPS` listeners. Required if `client_authentication` is
+        /// `TERMINATED_HTTPS` listeners. Required if `ClientAuthentication` is
         /// `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version &gt;=
         /// 2.8**.
         /// </summary>
@@ -748,7 +748,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// Defines whether the
         /// **includeSubDomains** directive should be added to the
         /// Strict-Transport-Security HTTP response header. This requires setting the
-        /// `hsts_max_age` option as well in order to become effective. Requires
+        /// `HstsMaxAge` option as well in order to become effective. Requires
         /// `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
         /// version &gt;= 2.27**.
         /// </summary>
@@ -768,7 +768,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// Defines whether the **preload** directive should
         /// be added to the Strict-Transport-Security HTTP response header. This requires
-        /// setting the `hsts_max_age` option as well in order to become effective.
+        /// setting the `HstsMaxAge` option as well in order to become effective.
         /// Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
         /// minor version &gt;= 2.27**.
         /// </summary>
@@ -821,7 +821,7 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
-        /// A Networking client is needed to create a listener. If omitted, the `region`
+        /// A Networking client is needed to create a listener. If omitted, the `Region`
         /// argument of the provider is used. Changing this creates a new Listener.
         /// </summary>
         [Input("region")]

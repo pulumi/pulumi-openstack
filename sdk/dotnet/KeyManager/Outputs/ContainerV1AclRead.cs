@@ -19,7 +19,7 @@ namespace Pulumi.OpenStack.KeyManager.Outputs
         public readonly string? CreatedAt;
         /// <summary>
         /// Whether the container is accessible project wide.
-        /// Defaults to `true`.
+        /// Defaults to `True`.
         /// </summary>
         public readonly bool? ProjectAccess;
         /// <summary>
@@ -28,7 +28,7 @@ namespace Pulumi.OpenStack.KeyManager.Outputs
         public readonly string? UpdatedAt;
         /// <summary>
         /// The list of user IDs, which are allowed to access the
-        /// container, when `project_access` is set to `false`.
+        /// container, when `ProjectAccess` is set to `False`.
         /// </summary>
         public readonly ImmutableArray<string> Users;
 

@@ -16,8 +16,8 @@ public final class LbFlavorprofileV2State extends com.pulumi.resources.ResourceA
     public static final LbFlavorprofileV2State Empty = new LbFlavorprofileV2State();
 
     /**
-     * String that passes the flavor_data for the flavorprofile.
-     * The data that are allowed depend on the `provider_name` that is passed. jsonencode
+     * String that passes the flavorData for the flavorprofile.
+     * The data that are allowed depend on the `providerName` that is passed. jsonencode
      * can be used for readability as shown in the example above.
      * Changing this updates the existing flavorprofile.
      * 
@@ -26,8 +26,8 @@ public final class LbFlavorprofileV2State extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> flavorData;
 
     /**
-     * @return String that passes the flavor_data for the flavorprofile.
-     * The data that are allowed depend on the `provider_name` that is passed. jsonencode
+     * @return String that passes the flavorData for the flavorprofile.
+     * The data that are allowed depend on the `providerName` that is passed. jsonencode
      * can be used for readability as shown in the example above.
      * Changing this updates the existing flavorprofile.
      * 
@@ -54,7 +54,7 @@ public final class LbFlavorprofileV2State extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The provider_name that the flavor_profile will use.
+     * The providerName that the flavorProfile will use.
      * Changing this updates the existing flavorprofile.
      * 
      */
@@ -62,7 +62,7 @@ public final class LbFlavorprofileV2State extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> providerName;
 
     /**
-     * @return The provider_name that the flavor_profile will use.
+     * @return The providerName that the flavorProfile will use.
      * Changing this updates the existing flavorprofile.
      * 
      */
@@ -119,8 +119,8 @@ public final class LbFlavorprofileV2State extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param flavorData String that passes the flavor_data for the flavorprofile.
-         * The data that are allowed depend on the `provider_name` that is passed. jsonencode
+         * @param flavorData String that passes the flavorData for the flavorprofile.
+         * The data that are allowed depend on the `providerName` that is passed. jsonencode
          * can be used for readability as shown in the example above.
          * Changing this updates the existing flavorprofile.
          * 
@@ -133,8 +133,8 @@ public final class LbFlavorprofileV2State extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param flavorData String that passes the flavor_data for the flavorprofile.
-         * The data that are allowed depend on the `provider_name` that is passed. jsonencode
+         * @param flavorData String that passes the flavorData for the flavorprofile.
+         * The data that are allowed depend on the `providerName` that is passed. jsonencode
          * can be used for readability as shown in the example above.
          * Changing this updates the existing flavorprofile.
          * 
@@ -169,7 +169,7 @@ public final class LbFlavorprofileV2State extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param providerName The provider_name that the flavor_profile will use.
+         * @param providerName The providerName that the flavorProfile will use.
          * Changing this updates the existing flavorprofile.
          * 
          * @return builder
@@ -181,7 +181,7 @@ public final class LbFlavorprofileV2State extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param providerName The provider_name that the flavor_profile will use.
+         * @param providerName The providerName that the flavorProfile will use.
          * Changing this updates the existing flavorprofile.
          * 
          * @return builder

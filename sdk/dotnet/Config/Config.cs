@@ -34,8 +34,8 @@ namespace Pulumi.OpenStack
 
         private static readonly __Value<bool?> _allowReauth = new __Value<bool?>(() => __config.GetBoolean("allowReauth") ?? Utilities.GetEnvBoolean("OS_ALLOW_REAUTH"));
         /// <summary>
-        /// If set to `false`, OpenStack authorization won't be perfomed
-        /// automatically, if the initial auth token get expired. Defaults to `true`
+        /// If set to `False`, OpenStack authorization won't be perfomed
+        /// automatically, if the initial auth token get expired. Defaults to `True`
         /// </summary>
         public static bool? AllowReauth
         {
@@ -115,7 +115,7 @@ namespace Pulumi.OpenStack
 
         private static readonly __Value<string?> _defaultDomain = new __Value<string?>(() => __config.Get("defaultDomain"));
         /// <summary>
-        /// The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
+        /// The name of the Domain ID to scope to if no other domain is specified. Defaults to `Default` (Identity v3).
         /// </summary>
         public static string? DefaultDomain
         {
@@ -125,8 +125,8 @@ namespace Pulumi.OpenStack
 
         private static readonly __Value<bool?> _delayedAuth = new __Value<bool?>(() => __config.GetBoolean("delayedAuth") ?? Utilities.GetEnvBoolean("OS_DELAYED_AUTH"));
         /// <summary>
-        /// If set to `false`, OpenStack authorization will be perfomed,
-        /// every time the service provider client is called. Defaults to `true`.
+        /// If set to `False`, OpenStack authorization will be perfomed,
+        /// every time the service provider client is called. Defaults to `True`.
         /// </summary>
         public static bool? DelayedAuth
         {
@@ -136,7 +136,7 @@ namespace Pulumi.OpenStack
 
         private static readonly __Value<bool?> _disableNoCacheHeader = new __Value<bool?>(() => __config.GetBoolean("disableNoCacheHeader"));
         /// <summary>
-        /// If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
+        /// If set to `True`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
         /// </summary>
         public static bool? DisableNoCacheHeader
         {
@@ -275,7 +275,7 @@ namespace Pulumi.OpenStack
 
         private static readonly __Value<bool?> _systemScope = new __Value<bool?>(() => __config.GetBoolean("systemScope"));
         /// <summary>
-        /// If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
+        /// If set to `True`, system scoped authorization will be enabled. Defaults to `False` (Identity v3).
         /// </summary>
         public static bool? SystemScope
         {

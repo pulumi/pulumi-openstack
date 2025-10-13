@@ -53,7 +53,7 @@ public final class BgpPeerV2Args extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The password used for MD5 authentication. Must be set
-     * only when `auth_type` is not `none`.
+     * only when `authType` is not `none`.
      * 
      */
     @Import(name="password")
@@ -61,7 +61,7 @@ public final class BgpPeerV2Args extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The password used for MD5 authentication. Must be set
-     * only when `auth_type` is not `none`.
+     * only when `authType` is not `none`.
      * 
      */
     public Optional<Output<String>> password() {
@@ -218,7 +218,7 @@ public final class BgpPeerV2Args extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param password The password used for MD5 authentication. Must be set
-         * only when `auth_type` is not `none`.
+         * only when `authType` is not `none`.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class BgpPeerV2Args extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param password The password used for MD5 authentication. Must be set
-         * only when `auth_type` is not `none`.
+         * only when `authType` is not `none`.
          * 
          * @return builder
          * 

@@ -54,7 +54,7 @@ namespace Pulumi.OpenStack.Images
     /// this resource will automatically reconcile these with the user-provided
     /// properties.
     /// 
-    /// In addition, the `direct_url` and `stores` properties are also automatically reconciled if the
+    /// In addition, the `DirectUrl` and `Stores` properties are also automatically reconciled if the
     /// Image Service set it.
     /// 
     /// ## Import
@@ -131,31 +131,31 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// The password of basic auth to download
-        /// `image_source_url`.
+        /// `ImageSourceUrl`.
         /// </summary>
         [Output("imageSourcePassword")]
         public Output<string?> ImageSourcePassword { get; private set; } = null!;
 
         /// <summary>
         /// This is the url of the raw image. If
-        /// `web_download` is not used, then the image will be downloaded in the
-        /// `image_cache_path` before being uploaded to Glance. Conflicts with
-        /// `local_file_path`.
+        /// `WebDownload` is not used, then the image will be downloaded in the
+        /// `ImageCachePath` before being uploaded to Glance. Conflicts with
+        /// `LocalFilePath`.
         /// </summary>
         [Output("imageSourceUrl")]
         public Output<string?> ImageSourceUrl { get; private set; } = null!;
 
         /// <summary>
         /// The username of basic auth to download
-        /// `image_source_url`.
+        /// `ImageSourceUrl`.
         /// </summary>
         [Output("imageSourceUsername")]
         public Output<string?> ImageSourceUsername { get; private set; } = null!;
 
         /// <summary>
         /// This is the filepath of the raw image file
-        /// that will be uploaded to Glance. Conflicts with `image_source_url` and
-        /// `web_download`.
+        /// that will be uploaded to Glance. Conflicts with `ImageSourceUrl` and
+        /// `WebDownload`.
         /// </summary>
         [Output("localFilePath")]
         public Output<string?> LocalFilePath { get; private set; } = null!;
@@ -212,7 +212,7 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// The region in which to obtain the V2 Glance client. A
         /// Glance client is needed to create an Image that can be used with a compute
-        /// instance. If omitted, the `region` argument of the provider is used. Changing
+        /// instance. If omitted, the `Region` argument of the provider is used. Changing
         /// this creates a new Image.
         /// </summary>
         [Output("region")]
@@ -253,8 +253,8 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// If false, the checksum will not be verified
-        /// once the image is finished uploading. Conflicts with `web_download`. Defaults
-        /// to true when not using `web_download`.
+        /// once the image is finished uploading. Conflicts with `WebDownload`. Defaults
+        /// to true when not using `WebDownload`.
         /// </summary>
         [Output("verifyChecksum")]
         public Output<bool?> VerifyChecksum { get; private set; } = null!;
@@ -270,7 +270,7 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// If true, the "web-download" import method will be
         /// used to let Openstack download the image directly from the remote source.
-        /// Conflicts with `local_file_path`. Defaults to false.
+        /// Conflicts with `LocalFilePath`. Defaults to false.
         /// </summary>
         [Output("webDownload")]
         public Output<bool?> WebDownload { get; private set; } = null!;
@@ -371,7 +371,7 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// The password of basic auth to download
-        /// `image_source_url`.
+        /// `ImageSourceUrl`.
         /// </summary>
         public Input<string>? ImageSourcePassword
         {
@@ -385,24 +385,24 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// This is the url of the raw image. If
-        /// `web_download` is not used, then the image will be downloaded in the
-        /// `image_cache_path` before being uploaded to Glance. Conflicts with
-        /// `local_file_path`.
+        /// `WebDownload` is not used, then the image will be downloaded in the
+        /// `ImageCachePath` before being uploaded to Glance. Conflicts with
+        /// `LocalFilePath`.
         /// </summary>
         [Input("imageSourceUrl")]
         public Input<string>? ImageSourceUrl { get; set; }
 
         /// <summary>
         /// The username of basic auth to download
-        /// `image_source_url`.
+        /// `ImageSourceUrl`.
         /// </summary>
         [Input("imageSourceUsername")]
         public Input<string>? ImageSourceUsername { get; set; }
 
         /// <summary>
         /// This is the filepath of the raw image file
-        /// that will be uploaded to Glance. Conflicts with `image_source_url` and
-        /// `web_download`.
+        /// that will be uploaded to Glance. Conflicts with `ImageSourceUrl` and
+        /// `WebDownload`.
         /// </summary>
         [Input("localFilePath")]
         public Input<string>? LocalFilePath { get; set; }
@@ -451,7 +451,7 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// The region in which to obtain the V2 Glance client. A
         /// Glance client is needed to create an Image that can be used with a compute
-        /// instance. If omitted, the `region` argument of the provider is used. Changing
+        /// instance. If omitted, the `Region` argument of the provider is used. Changing
         /// this creates a new Image.
         /// </summary>
         [Input("region")]
@@ -472,8 +472,8 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// If false, the checksum will not be verified
-        /// once the image is finished uploading. Conflicts with `web_download`. Defaults
-        /// to true when not using `web_download`.
+        /// once the image is finished uploading. Conflicts with `WebDownload`. Defaults
+        /// to true when not using `WebDownload`.
         /// </summary>
         [Input("verifyChecksum")]
         public Input<bool>? VerifyChecksum { get; set; }
@@ -489,7 +489,7 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// If true, the "web-download" import method will be
         /// used to let Openstack download the image directly from the remote source.
-        /// Conflicts with `local_file_path`. Defaults to false.
+        /// Conflicts with `LocalFilePath`. Defaults to false.
         /// </summary>
         [Input("webDownload")]
         public Input<bool>? WebDownload { get; set; }
@@ -568,7 +568,7 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// The password of basic auth to download
-        /// `image_source_url`.
+        /// `ImageSourceUrl`.
         /// </summary>
         public Input<string>? ImageSourcePassword
         {
@@ -582,24 +582,24 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// This is the url of the raw image. If
-        /// `web_download` is not used, then the image will be downloaded in the
-        /// `image_cache_path` before being uploaded to Glance. Conflicts with
-        /// `local_file_path`.
+        /// `WebDownload` is not used, then the image will be downloaded in the
+        /// `ImageCachePath` before being uploaded to Glance. Conflicts with
+        /// `LocalFilePath`.
         /// </summary>
         [Input("imageSourceUrl")]
         public Input<string>? ImageSourceUrl { get; set; }
 
         /// <summary>
         /// The username of basic auth to download
-        /// `image_source_url`.
+        /// `ImageSourceUrl`.
         /// </summary>
         [Input("imageSourceUsername")]
         public Input<string>? ImageSourceUsername { get; set; }
 
         /// <summary>
         /// This is the filepath of the raw image file
-        /// that will be uploaded to Glance. Conflicts with `image_source_url` and
-        /// `web_download`.
+        /// that will be uploaded to Glance. Conflicts with `ImageSourceUrl` and
+        /// `WebDownload`.
         /// </summary>
         [Input("localFilePath")]
         public Input<string>? LocalFilePath { get; set; }
@@ -668,7 +668,7 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// The region in which to obtain the V2 Glance client. A
         /// Glance client is needed to create an Image that can be used with a compute
-        /// instance. If omitted, the `region` argument of the provider is used. Changing
+        /// instance. If omitted, the `Region` argument of the provider is used. Changing
         /// this creates a new Image.
         /// </summary>
         [Input("region")]
@@ -715,8 +715,8 @@ namespace Pulumi.OpenStack.Images
 
         /// <summary>
         /// If false, the checksum will not be verified
-        /// once the image is finished uploading. Conflicts with `web_download`. Defaults
-        /// to true when not using `web_download`.
+        /// once the image is finished uploading. Conflicts with `WebDownload`. Defaults
+        /// to true when not using `WebDownload`.
         /// </summary>
         [Input("verifyChecksum")]
         public Input<bool>? VerifyChecksum { get; set; }
@@ -732,7 +732,7 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// If true, the "web-download" import method will be
         /// used to let Openstack download the image directly from the remote source.
-        /// Conflicts with `local_file_path`. Defaults to false.
+        /// Conflicts with `LocalFilePath`. Defaults to false.
         /// </summary>
         [Input("webDownload")]
         public Input<bool>? WebDownload { get; set; }

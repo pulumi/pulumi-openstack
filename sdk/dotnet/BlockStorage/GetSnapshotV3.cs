@@ -105,7 +105,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The region in which to obtain the V3 Block Storage
-        /// client. If omitted, the `region` argument of the provider is used.
+        /// client. If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -145,7 +145,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The region in which to obtain the V3 Block Storage
-        /// client. If omitted, the `region` argument of the provider is used.
+        /// client. If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

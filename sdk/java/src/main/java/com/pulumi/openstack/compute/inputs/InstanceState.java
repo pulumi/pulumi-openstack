@@ -96,7 +96,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The availability zone in which to create
-     * the server. Conflicts with `availability_zone_hints`. Changing this creates
+     * the server. Conflicts with `availabilityZoneHints`. Changing this creates
      * a new server.
      * 
      */
@@ -105,7 +105,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The availability zone in which to create
-     * the server. Conflicts with `availability_zone_hints`. Changing this creates
+     * the server. Conflicts with `availabilityZoneHints`. Changing this creates
      * a new server.
      * 
      */
@@ -115,10 +115,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The availability zone in which to
-     * create the server. This argument is preferred to `availability_zone`, when
+     * create the server. This argument is preferred to `availabilityZone`, when
      * scheduling the server on a
      * [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
-     * host or node. Conflicts with `availability_zone`. Changing this creates a
+     * host or node. Conflicts with `availabilityZone`. Changing this creates a
      * new server.
      * 
      */
@@ -127,10 +127,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The availability zone in which to
-     * create the server. This argument is preferred to `availability_zone`, when
+     * create the server. This argument is preferred to `availabilityZone`, when
      * scheduling the server on a
      * [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
-     * host or node. Conflicts with `availability_zone`. Changing this creates a
+     * host or node. Conflicts with `availabilityZone`. Changing this creates a
      * new server.
      * 
      */
@@ -139,7 +139,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration of block devices. The block_device
+     * Configuration of block devices. The blockDevice
      * structure is documented below. Changing this creates a new server.
      * You can specify multiple block devices which will create an instance with
      * multiple disks. This configuration is very flexible, so please see the
@@ -151,7 +151,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<InstanceBlockDeviceArgs>> blockDevices;
 
     /**
-     * @return Configuration of block devices. The block_device
+     * @return Configuration of block devices. The blockDevice
      * structure is documented below. Changing this creates a new server.
      * You can specify multiple block devices which will create an instance with
      * multiple disks. This configuration is very flexible, so please see the
@@ -164,7 +164,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to use the config_drive feature to
+     * Whether to use the configDrive feature to
      * configure the instance. Changing this creates a new server.
      * 
      */
@@ -172,7 +172,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> configDrive;
 
     /**
-     * @return Whether to use the config_drive feature to
+     * @return Whether to use the configDrive feature to
      * configure the instance. Changing this creates a new server.
      * 
      */
@@ -274,7 +274,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional; Required if `image_name` is empty and not booting
+     * (Optional; Required if `imageName` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The image ID of
      * the desired image for the server. Changing this rebuilds the existing
      * server.
@@ -284,7 +284,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> imageId;
 
     /**
-     * @return (Optional; Required if `image_name` is empty and not booting
+     * @return (Optional; Required if `imageName` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The image ID of
      * the desired image for the server. Changing this rebuilds the existing
      * server.
@@ -295,7 +295,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional; Required if `image_id` is empty and not booting
+     * (Optional; Required if `imageId` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The name of the
      * desired image for the server. Changing this rebuilds the existing server.
      * 
@@ -304,7 +304,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> imageName;
 
     /**
-     * @return (Optional; Required if `image_id` is empty and not booting
+     * @return (Optional; Required if `imageId` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The name of the
      * desired image for the server. Changing this rebuilds the existing server.
      * 
@@ -366,7 +366,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Special string for `network` option to create
-     * the server. `network_mode` can be `&#34;auto&#34;` or `&#34;none&#34;`.
+     * the server. `networkMode` can be `&#34;auto&#34;` or `&#34;none&#34;`.
      * Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
      * 
      */
@@ -375,7 +375,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Special string for `network` option to create
-     * the server. `network_mode` can be `&#34;auto&#34;` or `&#34;none&#34;`.
+     * the server. `networkMode` can be `&#34;auto&#34;` or `&#34;none&#34;`.
      * Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
      * 
      */
@@ -405,7 +405,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Customize the personality of an instance by
      * defining one or more files and their contents. The personality structure is
-     * described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+     * described below. Conflicts with `hypervisorHostname`. Changing this rebuilds
      * the existing server.
      * 
      */
@@ -415,7 +415,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Customize the personality of an instance by
      * defining one or more files and their contents. The personality structure is
-     * described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+     * described below. Conflicts with `hypervisorHostname`. Changing this rebuilds
      * the existing server.
      * 
      */
@@ -426,7 +426,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Provide the VM state. Only &#39;active&#39;, &#39;shutoff&#39;, &#39;paused&#39;
      * and &#39;shelved_offloaded&#39; are supported values.
-     * *Note*: If the initial power_state is the shutoff or paused
+     * *Note*: If the initial powerState is the shutoff or paused
      * the VM will be stopped immediately after build and the provisioners like
      * remote-exec or files are not supported.
      * 
@@ -437,7 +437,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Provide the VM state. Only &#39;active&#39;, &#39;shutoff&#39;, &#39;paused&#39;
      * and &#39;shelved_offloaded&#39; are supported values.
-     * *Note*: If the initial power_state is the shutoff or paused
+     * *Note*: If the initial powerState is the shutoff or paused
      * the VM will be stopped immediately after build and the provisioners like
      * remote-exec or files are not supported.
      * 
@@ -756,7 +756,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param availabilityZone The availability zone in which to create
-         * the server. Conflicts with `availability_zone_hints`. Changing this creates
+         * the server. Conflicts with `availabilityZoneHints`. Changing this creates
          * a new server.
          * 
          * @return builder
@@ -769,7 +769,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param availabilityZone The availability zone in which to create
-         * the server. Conflicts with `availability_zone_hints`. Changing this creates
+         * the server. Conflicts with `availabilityZoneHints`. Changing this creates
          * a new server.
          * 
          * @return builder
@@ -781,10 +781,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param availabilityZoneHints The availability zone in which to
-         * create the server. This argument is preferred to `availability_zone`, when
+         * create the server. This argument is preferred to `availabilityZone`, when
          * scheduling the server on a
          * [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
-         * host or node. Conflicts with `availability_zone`. Changing this creates a
+         * host or node. Conflicts with `availabilityZone`. Changing this creates a
          * new server.
          * 
          * @return builder
@@ -797,10 +797,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param availabilityZoneHints The availability zone in which to
-         * create the server. This argument is preferred to `availability_zone`, when
+         * create the server. This argument is preferred to `availabilityZone`, when
          * scheduling the server on a
          * [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
-         * host or node. Conflicts with `availability_zone`. Changing this creates a
+         * host or node. Conflicts with `availabilityZone`. Changing this creates a
          * new server.
          * 
          * @return builder
@@ -811,7 +811,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockDevices Configuration of block devices. The block_device
+         * @param blockDevices Configuration of block devices. The blockDevice
          * structure is documented below. Changing this creates a new server.
          * You can specify multiple block devices which will create an instance with
          * multiple disks. This configuration is very flexible, so please see the
@@ -827,7 +827,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockDevices Configuration of block devices. The block_device
+         * @param blockDevices Configuration of block devices. The blockDevice
          * structure is documented below. Changing this creates a new server.
          * You can specify multiple block devices which will create an instance with
          * multiple disks. This configuration is very flexible, so please see the
@@ -842,7 +842,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param blockDevices Configuration of block devices. The block_device
+         * @param blockDevices Configuration of block devices. The blockDevice
          * structure is documented below. Changing this creates a new server.
          * You can specify multiple block devices which will create an instance with
          * multiple disks. This configuration is very flexible, so please see the
@@ -857,7 +857,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configDrive Whether to use the config_drive feature to
+         * @param configDrive Whether to use the configDrive feature to
          * configure the instance. Changing this creates a new server.
          * 
          * @return builder
@@ -869,7 +869,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configDrive Whether to use the config_drive feature to
+         * @param configDrive Whether to use the configDrive feature to
          * configure the instance. Changing this creates a new server.
          * 
          * @return builder
@@ -1003,7 +1003,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId (Optional; Required if `image_name` is empty and not booting
+         * @param imageId (Optional; Required if `imageName` is empty and not booting
          * from a volume. Do not specify if booting from a volume.) The image ID of
          * the desired image for the server. Changing this rebuilds the existing
          * server.
@@ -1017,7 +1017,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId (Optional; Required if `image_name` is empty and not booting
+         * @param imageId (Optional; Required if `imageName` is empty and not booting
          * from a volume. Do not specify if booting from a volume.) The image ID of
          * the desired image for the server. Changing this rebuilds the existing
          * server.
@@ -1030,7 +1030,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageName (Optional; Required if `image_id` is empty and not booting
+         * @param imageName (Optional; Required if `imageId` is empty and not booting
          * from a volume. Do not specify if booting from a volume.) The name of the
          * desired image for the server. Changing this rebuilds the existing server.
          * 
@@ -1043,7 +1043,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageName (Optional; Required if `image_id` is empty and not booting
+         * @param imageName (Optional; Required if `imageId` is empty and not booting
          * from a volume. Do not specify if booting from a volume.) The name of the
          * desired image for the server. Changing this rebuilds the existing server.
          * 
@@ -1125,7 +1125,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkMode Special string for `network` option to create
-         * the server. `network_mode` can be `&#34;auto&#34;` or `&#34;none&#34;`.
+         * the server. `networkMode` can be `&#34;auto&#34;` or `&#34;none&#34;`.
          * Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
          * 
          * @return builder
@@ -1138,7 +1138,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkMode Special string for `network` option to create
-         * the server. `network_mode` can be `&#34;auto&#34;` or `&#34;none&#34;`.
+         * the server. `networkMode` can be `&#34;auto&#34;` or `&#34;none&#34;`.
          * Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
          * 
          * @return builder
@@ -1188,7 +1188,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param personalities Customize the personality of an instance by
          * defining one or more files and their contents. The personality structure is
-         * described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+         * described below. Conflicts with `hypervisorHostname`. Changing this rebuilds
          * the existing server.
          * 
          * @return builder
@@ -1202,7 +1202,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param personalities Customize the personality of an instance by
          * defining one or more files and their contents. The personality structure is
-         * described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+         * described below. Conflicts with `hypervisorHostname`. Changing this rebuilds
          * the existing server.
          * 
          * @return builder
@@ -1215,7 +1215,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param personalities Customize the personality of an instance by
          * defining one or more files and their contents. The personality structure is
-         * described below. Conflicts with `hypervisor_hostname`. Changing this rebuilds
+         * described below. Conflicts with `hypervisorHostname`. Changing this rebuilds
          * the existing server.
          * 
          * @return builder
@@ -1228,7 +1228,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param powerState Provide the VM state. Only &#39;active&#39;, &#39;shutoff&#39;, &#39;paused&#39;
          * and &#39;shelved_offloaded&#39; are supported values.
-         * *Note*: If the initial power_state is the shutoff or paused
+         * *Note*: If the initial powerState is the shutoff or paused
          * the VM will be stopped immediately after build and the provisioners like
          * remote-exec or files are not supported.
          * 
@@ -1243,7 +1243,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param powerState Provide the VM state. Only &#39;active&#39;, &#39;shutoff&#39;, &#39;paused&#39;
          * and &#39;shelved_offloaded&#39; are supported values.
-         * *Note*: If the initial power_state is the shutoff or paused
+         * *Note*: If the initial powerState is the shutoff or paused
          * the VM will be stopped immediately after build and the provisioners like
          * remote-exec or files are not supported.
          * 

@@ -80,14 +80,14 @@ namespace Pulumi.OpenStack.BlockStorage
     {
         /// <summary>
         /// The region in which to obtain the Block Storage client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
         /// <summary>
-        /// The `state` of the availability zones to match. Can
-        /// either be `available` or `unavailable`. Default is `available`.
+        /// The `State` of the availability zones to match. Can
+        /// either be `Available` or `Unavailable`. Default is `Available`.
         /// </summary>
         [Input("state")]
         public string? State { get; set; }
@@ -102,14 +102,14 @@ namespace Pulumi.OpenStack.BlockStorage
     {
         /// <summary>
         /// The region in which to obtain the Block Storage client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The `state` of the availability zones to match. Can
-        /// either be `available` or `unavailable`. Default is `available`.
+        /// The `State` of the availability zones to match. Can
+        /// either be `Available` or `Unavailable`. Default is `Available`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -130,7 +130,7 @@ namespace Pulumi.OpenStack.BlockStorage
         public readonly string Id;
         /// <summary>
         /// The names of the availability zones, ordered alphanumerically, that
-        /// match the queried `state`.
+        /// match the queried `State`.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         /// <summary>

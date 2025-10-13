@@ -106,7 +106,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// Number of permissible ping failures before 
         /// changing the member's status to ERROR. Must be a number between 1 and 10.
-        /// The default is 3. Changing this updates the max_retries_down of the
+        /// The default is 3. Changing this updates the MaxRetriesDown of the
         /// existing monitor.
         /// </summary>
         [Output("maxRetriesDown")]
@@ -127,7 +127,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a monitor. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// monitor.
         /// </summary>
         [Output("region")]
@@ -266,7 +266,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// Number of permissible ping failures before 
         /// changing the member's status to ERROR. Must be a number between 1 and 10.
-        /// The default is 3. Changing this updates the max_retries_down of the
+        /// The default is 3. Changing this updates the MaxRetriesDown of the
         /// existing monitor.
         /// </summary>
         [Input("maxRetriesDown")]
@@ -287,7 +287,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a monitor. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// monitor.
         /// </summary>
         [Input("region")]
@@ -388,7 +388,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// Number of permissible ping failures before 
         /// changing the member's status to ERROR. Must be a number between 1 and 10.
-        /// The default is 3. Changing this updates the max_retries_down of the
+        /// The default is 3. Changing this updates the MaxRetriesDown of the
         /// existing monitor.
         /// </summary>
         [Input("maxRetriesDown")]
@@ -409,7 +409,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a monitor. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// monitor.
         /// </summary>
         [Input("region")]

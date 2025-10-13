@@ -79,13 +79,13 @@ namespace Pulumi.OpenStack.Compute
     public sealed class GetAvailabilityZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The `region` to fetch availability zones from, defaults to the provider's `region`
+        /// The `Region` to fetch availability zones from, defaults to the provider's `Region`
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
         /// <summary>
-        /// The `state` of the availability zones to match, default ("available").
+        /// The `State` of the availability zones to match, default ("available").
         /// </summary>
         [Input("state")]
         public string? State { get; set; }
@@ -99,13 +99,13 @@ namespace Pulumi.OpenStack.Compute
     public sealed class GetAvailabilityZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The `region` to fetch availability zones from, defaults to the provider's `region`
+        /// The `Region` to fetch availability zones from, defaults to the provider's `Region`
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The `state` of the availability zones to match, default ("available").
+        /// The `State` of the availability zones to match, default ("available").
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -125,7 +125,7 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The names of the availability zones, ordered alphanumerically, that match the queried `state`
+        /// The names of the availability zones, ordered alphanumerically, that match the queried `State`
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string Region;
