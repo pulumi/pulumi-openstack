@@ -462,9 +462,9 @@ public class Container extends com.pulumi.resources.CustomResource {
      * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
      * release
      * notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
-     * and a cloud administrator must have set the `allow_object_versioning = true`
+     * and a cloud administrator must have set the `allowObjectVersioning = true`
      * configuration option in Swift. If you cannot set this versioning type, you
-     * may want to consider using `versioning_legacy` instead.
+     * may want to consider using `versioningLegacy` instead.
      * 
      */
     @Export(name="versioning", refs={Boolean.class}, tree="[0]")
@@ -476,9 +476,9 @@ public class Container extends com.pulumi.resources.CustomResource {
      * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri
      * release
      * notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
-     * and a cloud administrator must have set the `allow_object_versioning = true`
+     * and a cloud administrator must have set the `allowObjectVersioning = true`
      * configuration option in Swift. If you cannot set this versioning type, you
-     * may want to consider using `versioning_legacy` instead.
+     * may want to consider using `versioningLegacy` instead.
      * 
      */
     public Output<Optional<Boolean>> versioning() {

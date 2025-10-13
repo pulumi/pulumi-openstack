@@ -62,7 +62,7 @@ namespace Pulumi.OpenStack.BGPVPN
 
         /// <summary>
         /// The ID of the project that owns the BGP VPN network
-        /// association. Only administrative and users with `advsvc` role can specify a
+        /// association. Only administrative and users with `Advsvc` role can specify a
         /// project ID other than their own. Changing this creates a new BGP VPN network
         /// association.
         /// </summary>
@@ -72,7 +72,7 @@ namespace Pulumi.OpenStack.BGPVPN
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a BGP VPN network association. If
-        /// omitted, the `region` argument of the provider is used. Changing this creates
+        /// omitted, the `Region` argument of the provider is used. Changing this creates
         /// a new BGP VPN network association.
         /// </summary>
         [Output("region")]
@@ -144,7 +144,7 @@ namespace Pulumi.OpenStack.BGPVPN
 
         /// <summary>
         /// The ID of the project that owns the BGP VPN network
-        /// association. Only administrative and users with `advsvc` role can specify a
+        /// association. Only administrative and users with `Advsvc` role can specify a
         /// project ID other than their own. Changing this creates a new BGP VPN network
         /// association.
         /// </summary>
@@ -154,7 +154,7 @@ namespace Pulumi.OpenStack.BGPVPN
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a BGP VPN network association. If
-        /// omitted, the `region` argument of the provider is used. Changing this creates
+        /// omitted, the `Region` argument of the provider is used. Changing this creates
         /// a new BGP VPN network association.
         /// </summary>
         [Input("region")]
@@ -184,7 +184,7 @@ namespace Pulumi.OpenStack.BGPVPN
 
         /// <summary>
         /// The ID of the project that owns the BGP VPN network
-        /// association. Only administrative and users with `advsvc` role can specify a
+        /// association. Only administrative and users with `Advsvc` role can specify a
         /// project ID other than their own. Changing this creates a new BGP VPN network
         /// association.
         /// </summary>
@@ -194,7 +194,7 @@ namespace Pulumi.OpenStack.BGPVPN
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a BGP VPN network association. If
-        /// omitted, the `region` argument of the provider is used. Changing this creates
+        /// omitted, the `Region` argument of the provider is used. Changing this creates
         /// a new BGP VPN network association.
         /// </summary>
         [Input("region")]

@@ -285,8 +285,8 @@ public class Share extends com.pulumi.resources.CustomResource {
     }
     /**
      * The UUID of a share network where the share server exists
-     * or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-     * the share_network_id value from the snapshot is used. Changing this creates a new share.
+     * or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
+     * the shareNetworkId value from the snapshot is used. Changing this creates a new share.
      * 
      */
     @Export(name="shareNetworkId", refs={String.class}, tree="[0]")
@@ -294,8 +294,8 @@ public class Share extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The UUID of a share network where the share server exists
-     * or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-     * the share_network_id value from the snapshot is used. Changing this creates a new share.
+     * or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
+     * the shareNetworkId value from the snapshot is used. Changing this creates a new share.
      * 
      */
     public Output<String> shareNetworkId() {

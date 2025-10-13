@@ -86,14 +86,14 @@ namespace Pulumi.OpenStack.Firewall
         /// <summary>
         /// Administrative up/down status for the firewall
         /// group (must be "true" or "false" if provided - defaults to "true").
-        /// Changing this updates the `admin_state_up` of an existing firewall group.
+        /// Changing this updates the `AdminStateUp` of an existing firewall group.
         /// </summary>
         [Output("adminStateUp")]
         public Output<bool?> AdminStateUp { get; private set; } = null!;
 
         /// <summary>
         /// A description for the firewall group. Changing this
-        /// updates the `description` of an existing firewall group.
+        /// updates the `Description` of an existing firewall group.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -101,7 +101,7 @@ namespace Pulumi.OpenStack.Firewall
         /// <summary>
         /// The egress firewall policy resource
         /// id for the firewall group. Changing this updates the
-        /// `egress_firewall_policy_id` of an existing firewall group.
+        /// `EgressFirewallPolicyId` of an existing firewall group.
         /// </summary>
         [Output("egressFirewallPolicyId")]
         public Output<string?> EgressFirewallPolicyId { get; private set; } = null!;
@@ -109,14 +109,14 @@ namespace Pulumi.OpenStack.Firewall
         /// <summary>
         /// The ingress firewall policy resource
         /// id for the firewall group. Changing this updates the
-        /// `ingress_firewall_policy_id` of an existing firewall group.
+        /// `IngressFirewallPolicyId` of an existing firewall group.
         /// </summary>
         [Output("ingressFirewallPolicyId")]
         public Output<string?> IngressFirewallPolicyId { get; private set; } = null!;
 
         /// <summary>
         /// A name for the firewall group. Changing this
-        /// updates the `name` of an existing firewall.
+        /// updates the `Name` of an existing firewall.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -131,7 +131,7 @@ namespace Pulumi.OpenStack.Firewall
 
         /// <summary>
         /// This argument conflicts and  is interchangeable
-        /// with `tenant_id`. The owner of the firewall group. Required if admin wants
+        /// with `TenantId`. The owner of the firewall group. Required if admin wants
         /// to create a firewall group for another project. Changing this creates a new
         /// firewall group.
         /// </summary>
@@ -141,7 +141,7 @@ namespace Pulumi.OpenStack.Firewall
         /// <summary>
         /// The region in which to obtain the v2 networking client.
         /// A networking client is needed to create a firewall group. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// firewall group.
         /// </summary>
         [Output("region")]
@@ -151,7 +151,7 @@ namespace Pulumi.OpenStack.Firewall
         /// Sharing status of the firewall group (must be "true"
         /// or "false" if provided). If this is "true" the firewall group is visible to,
         /// and can be used in, firewalls in other tenants. Changing this updates the
-        /// `shared` status of an existing firewall group. Only administrative users
+        /// `Shared` status of an existing firewall group. Only administrative users
         /// can specify if the firewall group should be shared.
         /// </summary>
         [Output("shared")]
@@ -165,7 +165,7 @@ namespace Pulumi.OpenStack.Firewall
 
         /// <summary>
         /// This argument conflicts and is interchangeable with
-        /// `project_id`. The owner of the firewall group. Required if admin wants to
+        /// `ProjectId`. The owner of the firewall group. Required if admin wants to
         /// create a firewall group for another tenant. Changing this creates a new
         /// firewall group.
         /// </summary>
@@ -221,14 +221,14 @@ namespace Pulumi.OpenStack.Firewall
         /// <summary>
         /// Administrative up/down status for the firewall
         /// group (must be "true" or "false" if provided - defaults to "true").
-        /// Changing this updates the `admin_state_up` of an existing firewall group.
+        /// Changing this updates the `AdminStateUp` of an existing firewall group.
         /// </summary>
         [Input("adminStateUp")]
         public Input<bool>? AdminStateUp { get; set; }
 
         /// <summary>
         /// A description for the firewall group. Changing this
-        /// updates the `description` of an existing firewall group.
+        /// updates the `Description` of an existing firewall group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -236,7 +236,7 @@ namespace Pulumi.OpenStack.Firewall
         /// <summary>
         /// The egress firewall policy resource
         /// id for the firewall group. Changing this updates the
-        /// `egress_firewall_policy_id` of an existing firewall group.
+        /// `EgressFirewallPolicyId` of an existing firewall group.
         /// </summary>
         [Input("egressFirewallPolicyId")]
         public Input<string>? EgressFirewallPolicyId { get; set; }
@@ -244,14 +244,14 @@ namespace Pulumi.OpenStack.Firewall
         /// <summary>
         /// The ingress firewall policy resource
         /// id for the firewall group. Changing this updates the
-        /// `ingress_firewall_policy_id` of an existing firewall group.
+        /// `IngressFirewallPolicyId` of an existing firewall group.
         /// </summary>
         [Input("ingressFirewallPolicyId")]
         public Input<string>? IngressFirewallPolicyId { get; set; }
 
         /// <summary>
         /// A name for the firewall group. Changing this
-        /// updates the `name` of an existing firewall.
+        /// updates the `Name` of an existing firewall.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -272,7 +272,7 @@ namespace Pulumi.OpenStack.Firewall
 
         /// <summary>
         /// This argument conflicts and  is interchangeable
-        /// with `tenant_id`. The owner of the firewall group. Required if admin wants
+        /// with `TenantId`. The owner of the firewall group. Required if admin wants
         /// to create a firewall group for another project. Changing this creates a new
         /// firewall group.
         /// </summary>
@@ -282,7 +282,7 @@ namespace Pulumi.OpenStack.Firewall
         /// <summary>
         /// The region in which to obtain the v2 networking client.
         /// A networking client is needed to create a firewall group. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// firewall group.
         /// </summary>
         [Input("region")]
@@ -292,7 +292,7 @@ namespace Pulumi.OpenStack.Firewall
         /// Sharing status of the firewall group (must be "true"
         /// or "false" if provided). If this is "true" the firewall group is visible to,
         /// and can be used in, firewalls in other tenants. Changing this updates the
-        /// `shared` status of an existing firewall group. Only administrative users
+        /// `Shared` status of an existing firewall group. Only administrative users
         /// can specify if the firewall group should be shared.
         /// </summary>
         [Input("shared")]
@@ -300,7 +300,7 @@ namespace Pulumi.OpenStack.Firewall
 
         /// <summary>
         /// This argument conflicts and is interchangeable with
-        /// `project_id`. The owner of the firewall group. Required if admin wants to
+        /// `ProjectId`. The owner of the firewall group. Required if admin wants to
         /// create a firewall group for another tenant. Changing this creates a new
         /// firewall group.
         /// </summary>
@@ -318,14 +318,14 @@ namespace Pulumi.OpenStack.Firewall
         /// <summary>
         /// Administrative up/down status for the firewall
         /// group (must be "true" or "false" if provided - defaults to "true").
-        /// Changing this updates the `admin_state_up` of an existing firewall group.
+        /// Changing this updates the `AdminStateUp` of an existing firewall group.
         /// </summary>
         [Input("adminStateUp")]
         public Input<bool>? AdminStateUp { get; set; }
 
         /// <summary>
         /// A description for the firewall group. Changing this
-        /// updates the `description` of an existing firewall group.
+        /// updates the `Description` of an existing firewall group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -333,7 +333,7 @@ namespace Pulumi.OpenStack.Firewall
         /// <summary>
         /// The egress firewall policy resource
         /// id for the firewall group. Changing this updates the
-        /// `egress_firewall_policy_id` of an existing firewall group.
+        /// `EgressFirewallPolicyId` of an existing firewall group.
         /// </summary>
         [Input("egressFirewallPolicyId")]
         public Input<string>? EgressFirewallPolicyId { get; set; }
@@ -341,14 +341,14 @@ namespace Pulumi.OpenStack.Firewall
         /// <summary>
         /// The ingress firewall policy resource
         /// id for the firewall group. Changing this updates the
-        /// `ingress_firewall_policy_id` of an existing firewall group.
+        /// `IngressFirewallPolicyId` of an existing firewall group.
         /// </summary>
         [Input("ingressFirewallPolicyId")]
         public Input<string>? IngressFirewallPolicyId { get; set; }
 
         /// <summary>
         /// A name for the firewall group. Changing this
-        /// updates the `name` of an existing firewall.
+        /// updates the `Name` of an existing firewall.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -369,7 +369,7 @@ namespace Pulumi.OpenStack.Firewall
 
         /// <summary>
         /// This argument conflicts and  is interchangeable
-        /// with `tenant_id`. The owner of the firewall group. Required if admin wants
+        /// with `TenantId`. The owner of the firewall group. Required if admin wants
         /// to create a firewall group for another project. Changing this creates a new
         /// firewall group.
         /// </summary>
@@ -379,7 +379,7 @@ namespace Pulumi.OpenStack.Firewall
         /// <summary>
         /// The region in which to obtain the v2 networking client.
         /// A networking client is needed to create a firewall group. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// firewall group.
         /// </summary>
         [Input("region")]
@@ -389,7 +389,7 @@ namespace Pulumi.OpenStack.Firewall
         /// Sharing status of the firewall group (must be "true"
         /// or "false" if provided). If this is "true" the firewall group is visible to,
         /// and can be used in, firewalls in other tenants. Changing this updates the
-        /// `shared` status of an existing firewall group. Only administrative users
+        /// `Shared` status of an existing firewall group. Only administrative users
         /// can specify if the firewall group should be shared.
         /// </summary>
         [Input("shared")]
@@ -403,7 +403,7 @@ namespace Pulumi.OpenStack.Firewall
 
         /// <summary>
         /// This argument conflicts and is interchangeable with
-        /// `project_id`. The owner of the firewall group. Required if admin wants to
+        /// `ProjectId`. The owner of the firewall group. Required if admin wants to
         /// create a firewall group for another tenant. Changing this creates a new
         /// firewall group.
         /// </summary>

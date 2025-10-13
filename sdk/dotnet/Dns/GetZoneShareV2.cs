@@ -94,9 +94,9 @@ namespace Pulumi.OpenStack.Dns
     public sealed class GetZoneShareV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// If set to `true`, the data source will search
-        /// across all projects. If set to `false`, it will only search within the
-        /// current project. Defaults to `false`.
+        /// If set to `True`, the data source will search
+        /// across all projects. If set to `False`, it will only search within the
+        /// current project. Defaults to `False`.
         /// </summary>
         [Input("allProjects")]
         public string? AllProjects { get; set; }
@@ -110,7 +110,7 @@ namespace Pulumi.OpenStack.Dns
 
         /// <summary>
         /// The region in which to obtain the V2 DNS client. If
-        /// omitted, the `region` argument of the provider is used. Changing this creates
+        /// omitted, the `Region` argument of the provider is used. Changing this creates
         /// a new DNS zone share data source.
         /// </summary>
         [Input("region")]
@@ -145,9 +145,9 @@ namespace Pulumi.OpenStack.Dns
     public sealed class GetZoneShareV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// If set to `true`, the data source will search
-        /// across all projects. If set to `false`, it will only search within the
-        /// current project. Defaults to `false`.
+        /// If set to `True`, the data source will search
+        /// across all projects. If set to `False`, it will only search within the
+        /// current project. Defaults to `False`.
         /// </summary>
         [Input("allProjects")]
         public Input<string>? AllProjects { get; set; }
@@ -161,7 +161,7 @@ namespace Pulumi.OpenStack.Dns
 
         /// <summary>
         /// The region in which to obtain the V2 DNS client. If
-        /// omitted, the `region` argument of the provider is used. Changing this creates
+        /// omitted, the `Region` argument of the provider is used. Changing this creates
         /// a new DNS zone share data source.
         /// </summary>
         [Input("region")]

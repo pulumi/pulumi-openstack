@@ -41,14 +41,14 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// A text describing the port forwarding. Changing this
-        /// updates the `description` of an existing port forwarding.
+        /// updates the `Description` of an existing port forwarding.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// The TCP/UDP/other protocol port number of the port forwarding. Changing this
-        /// updates the `external_port` of an existing port forwarding.
+        /// updates the `ExternalPort` of an existing port forwarding.
         /// </summary>
         [Output("externalPort")]
         public Output<int> ExternalPort { get; private set; } = null!;
@@ -61,27 +61,27 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The fixed IPv4 address of the Neutron port associated with the port forwarding.
-        /// Changing this updates the `internal_ip_address` of an existing port forwarding.
+        /// Changing this updates the `InternalIpAddress` of an existing port forwarding.
         /// </summary>
         [Output("internalIpAddress")]
         public Output<string> InternalIpAddress { get; private set; } = null!;
 
         /// <summary>
         /// The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
-        /// port forwarding. Changing this updates the `internal_port` of an existing port forwarding.
+        /// port forwarding. Changing this updates the `InternalPort` of an existing port forwarding.
         /// </summary>
         [Output("internalPort")]
         public Output<int> InternalPort { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the Neutron port associated with the port forwarding. Changing
-        /// this updates the `internal_port_id` of an existing port forwarding.
+        /// this updates the `InternalPortId` of an existing port forwarding.
         /// </summary>
         [Output("internalPortId")]
         public Output<string> InternalPortId { get; private set; } = null!;
 
         /// <summary>
-        /// The IP protocol used in the port forwarding. Changing this updates the `protocol`
+        /// The IP protocol used in the port forwarding. Changing this updates the `Protocol`
         /// of an existing port forwarding.
         /// </summary>
         [Output("protocol")]
@@ -90,7 +90,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to create a port forwarding. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// port forwarding.
         /// </summary>
         [Output("region")]
@@ -144,14 +144,14 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// A text describing the port forwarding. Changing this
-        /// updates the `description` of an existing port forwarding.
+        /// updates the `Description` of an existing port forwarding.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
         /// The TCP/UDP/other protocol port number of the port forwarding. Changing this
-        /// updates the `external_port` of an existing port forwarding.
+        /// updates the `ExternalPort` of an existing port forwarding.
         /// </summary>
         [Input("externalPort", required: true)]
         public Input<int> ExternalPort { get; set; } = null!;
@@ -164,27 +164,27 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The fixed IPv4 address of the Neutron port associated with the port forwarding.
-        /// Changing this updates the `internal_ip_address` of an existing port forwarding.
+        /// Changing this updates the `InternalIpAddress` of an existing port forwarding.
         /// </summary>
         [Input("internalIpAddress", required: true)]
         public Input<string> InternalIpAddress { get; set; } = null!;
 
         /// <summary>
         /// The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
-        /// port forwarding. Changing this updates the `internal_port` of an existing port forwarding.
+        /// port forwarding. Changing this updates the `InternalPort` of an existing port forwarding.
         /// </summary>
         [Input("internalPort", required: true)]
         public Input<int> InternalPort { get; set; } = null!;
 
         /// <summary>
         /// The ID of the Neutron port associated with the port forwarding. Changing
-        /// this updates the `internal_port_id` of an existing port forwarding.
+        /// this updates the `InternalPortId` of an existing port forwarding.
         /// </summary>
         [Input("internalPortId", required: true)]
         public Input<string> InternalPortId { get; set; } = null!;
 
         /// <summary>
-        /// The IP protocol used in the port forwarding. Changing this updates the `protocol`
+        /// The IP protocol used in the port forwarding. Changing this updates the `Protocol`
         /// of an existing port forwarding.
         /// </summary>
         [Input("protocol", required: true)]
@@ -193,7 +193,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to create a port forwarding. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// port forwarding.
         /// </summary>
         [Input("region")]
@@ -209,14 +209,14 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// A text describing the port forwarding. Changing this
-        /// updates the `description` of an existing port forwarding.
+        /// updates the `Description` of an existing port forwarding.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
         /// The TCP/UDP/other protocol port number of the port forwarding. Changing this
-        /// updates the `external_port` of an existing port forwarding.
+        /// updates the `ExternalPort` of an existing port forwarding.
         /// </summary>
         [Input("externalPort")]
         public Input<int>? ExternalPort { get; set; }
@@ -229,27 +229,27 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The fixed IPv4 address of the Neutron port associated with the port forwarding.
-        /// Changing this updates the `internal_ip_address` of an existing port forwarding.
+        /// Changing this updates the `InternalIpAddress` of an existing port forwarding.
         /// </summary>
         [Input("internalIpAddress")]
         public Input<string>? InternalIpAddress { get; set; }
 
         /// <summary>
         /// The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
-        /// port forwarding. Changing this updates the `internal_port` of an existing port forwarding.
+        /// port forwarding. Changing this updates the `InternalPort` of an existing port forwarding.
         /// </summary>
         [Input("internalPort")]
         public Input<int>? InternalPort { get; set; }
 
         /// <summary>
         /// The ID of the Neutron port associated with the port forwarding. Changing
-        /// this updates the `internal_port_id` of an existing port forwarding.
+        /// this updates the `InternalPortId` of an existing port forwarding.
         /// </summary>
         [Input("internalPortId")]
         public Input<string>? InternalPortId { get; set; }
 
         /// <summary>
-        /// The IP protocol used in the port forwarding. Changing this updates the `protocol`
+        /// The IP protocol used in the port forwarding. Changing this updates the `Protocol`
         /// of an existing port forwarding.
         /// </summary>
         [Input("protocol")]
@@ -258,7 +258,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 networking client.
         /// A networking client is needed to create a port forwarding. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// port forwarding.
         /// </summary>
         [Input("region")]

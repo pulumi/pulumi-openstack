@@ -98,7 +98,7 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -119,7 +119,7 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -159,11 +159,11 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// The state of the hypervisor (`up` or `down`)
+        /// The state of the hypervisor (`Up` or `Down`)
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The status of the hypervisor (`enabled` or `disabled`)
+        /// The status of the hypervisor (`Enabled` or `Disabled`)
         /// </summary>
         public readonly string Status;
         /// <summary>

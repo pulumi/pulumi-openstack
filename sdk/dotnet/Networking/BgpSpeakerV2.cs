@@ -70,21 +70,21 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// A boolean value indicating
-        /// whether to advertise floating IP host routes. Defaults to `true`.
+        /// whether to advertise floating IP host routes. Defaults to `True`.
         /// </summary>
         [Output("advertiseFloatingIpHostRoutes")]
         public Output<bool> AdvertiseFloatingIpHostRoutes { get; private set; } = null!;
 
         /// <summary>
         /// A boolean value indicating whether to
-        /// advertise tenant networks. Defaults to `true`.
+        /// advertise tenant networks. Defaults to `True`.
         /// </summary>
         [Output("advertiseTenantNetworks")]
         public Output<bool> AdvertiseTenantNetworks { get; private set; } = null!;
 
         /// <summary>
-        /// A list of dictionaries containing the `destination` and
-        /// `next_hop` for each route advertised by the BGP speaker. This attribute is
+        /// A list of dictionaries containing the `Destination` and
+        /// `NextHop` for each route advertised by the BGP speaker. This attribute is
         /// only populated after the BGP speaker has been created and has established BGP
         /// sessions with its peers.
         /// </summary>
@@ -127,7 +127,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron network. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new BGP
+        /// `Region` argument of the provider is used. Changing this creates a new BGP
         /// speaker.
         /// </summary>
         [Output("region")]
@@ -188,14 +188,14 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// A boolean value indicating
-        /// whether to advertise floating IP host routes. Defaults to `true`.
+        /// whether to advertise floating IP host routes. Defaults to `True`.
         /// </summary>
         [Input("advertiseFloatingIpHostRoutes")]
         public Input<bool>? AdvertiseFloatingIpHostRoutes { get; set; }
 
         /// <summary>
         /// A boolean value indicating whether to
-        /// advertise tenant networks. Defaults to `true`.
+        /// advertise tenant networks. Defaults to `True`.
         /// </summary>
         [Input("advertiseTenantNetworks")]
         public Input<bool>? AdvertiseTenantNetworks { get; set; }
@@ -248,7 +248,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron network. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new BGP
+        /// `Region` argument of the provider is used. Changing this creates a new BGP
         /// speaker.
         /// </summary>
         [Input("region")]
@@ -271,14 +271,14 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// A boolean value indicating
-        /// whether to advertise floating IP host routes. Defaults to `true`.
+        /// whether to advertise floating IP host routes. Defaults to `True`.
         /// </summary>
         [Input("advertiseFloatingIpHostRoutes")]
         public Input<bool>? AdvertiseFloatingIpHostRoutes { get; set; }
 
         /// <summary>
         /// A boolean value indicating whether to
-        /// advertise tenant networks. Defaults to `true`.
+        /// advertise tenant networks. Defaults to `True`.
         /// </summary>
         [Input("advertiseTenantNetworks")]
         public Input<bool>? AdvertiseTenantNetworks { get; set; }
@@ -287,8 +287,8 @@ namespace Pulumi.OpenStack.Networking
         private InputList<Inputs.BgpSpeakerV2AdvertisedRouteGetArgs>? _advertisedRoutes;
 
         /// <summary>
-        /// A list of dictionaries containing the `destination` and
-        /// `next_hop` for each route advertised by the BGP speaker. This attribute is
+        /// A list of dictionaries containing the `Destination` and
+        /// `NextHop` for each route advertised by the BGP speaker. This attribute is
         /// only populated after the BGP speaker has been created and has established BGP
         /// sessions with its peers.
         /// </summary>
@@ -346,7 +346,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron network. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new BGP
+        /// `Region` argument of the provider is used. Changing this creates a new BGP
         /// speaker.
         /// </summary>
         [Input("region")]

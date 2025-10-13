@@ -102,7 +102,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
     /**
      * Administrative up/down status for the firewall
      * group (must be &#34;true&#34; or &#34;false&#34; if provided - defaults to &#34;true&#34;).
-     * Changing this updates the `admin_state_up` of an existing firewall group.
+     * Changing this updates the `adminStateUp` of an existing firewall group.
      * 
      */
     @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
@@ -111,7 +111,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
     /**
      * @return Administrative up/down status for the firewall
      * group (must be &#34;true&#34; or &#34;false&#34; if provided - defaults to &#34;true&#34;).
-     * Changing this updates the `admin_state_up` of an existing firewall group.
+     * Changing this updates the `adminStateUp` of an existing firewall group.
      * 
      */
     public Output<Optional<Boolean>> adminStateUp() {
@@ -136,7 +136,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
     /**
      * The egress firewall policy resource
      * id for the firewall group. Changing this updates the
-     * `egress_firewall_policy_id` of an existing firewall group.
+     * `egressFirewallPolicyId` of an existing firewall group.
      * 
      */
     @Export(name="egressFirewallPolicyId", refs={String.class}, tree="[0]")
@@ -145,7 +145,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
     /**
      * @return The egress firewall policy resource
      * id for the firewall group. Changing this updates the
-     * `egress_firewall_policy_id` of an existing firewall group.
+     * `egressFirewallPolicyId` of an existing firewall group.
      * 
      */
     public Output<Optional<String>> egressFirewallPolicyId() {
@@ -154,7 +154,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
     /**
      * The ingress firewall policy resource
      * id for the firewall group. Changing this updates the
-     * `ingress_firewall_policy_id` of an existing firewall group.
+     * `ingressFirewallPolicyId` of an existing firewall group.
      * 
      */
     @Export(name="ingressFirewallPolicyId", refs={String.class}, tree="[0]")
@@ -163,7 +163,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
     /**
      * @return The ingress firewall policy resource
      * id for the firewall group. Changing this updates the
-     * `ingress_firewall_policy_id` of an existing firewall group.
+     * `ingressFirewallPolicyId` of an existing firewall group.
      * 
      */
     public Output<Optional<String>> ingressFirewallPolicyId() {
@@ -205,7 +205,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * This argument conflicts and  is interchangeable
-     * with `tenant_id`. The owner of the firewall group. Required if admin wants
+     * with `tenantId`. The owner of the firewall group. Required if admin wants
      * to create a firewall group for another project. Changing this creates a new
      * firewall group.
      * 
@@ -215,7 +215,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return This argument conflicts and  is interchangeable
-     * with `tenant_id`. The owner of the firewall group. Required if admin wants
+     * with `tenantId`. The owner of the firewall group. Required if admin wants
      * to create a firewall group for another project. Changing this creates a new
      * firewall group.
      * 
@@ -281,7 +281,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * This argument conflicts and is interchangeable with
-     * `project_id`. The owner of the firewall group. Required if admin wants to
+     * `projectId`. The owner of the firewall group. Required if admin wants to
      * create a firewall group for another tenant. Changing this creates a new
      * firewall group.
      * 
@@ -291,7 +291,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return This argument conflicts and is interchangeable with
-     * `project_id`. The owner of the firewall group. Required if admin wants to
+     * `projectId`. The owner of the firewall group. Required if admin wants to
      * create a firewall group for another tenant. Changing this creates a new
      * firewall group.
      * 

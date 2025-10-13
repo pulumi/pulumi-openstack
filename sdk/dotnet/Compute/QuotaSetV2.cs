@@ -107,7 +107,7 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The region in which to create the volume. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new quotaset.
         /// </summary>
         [Output("region")]
@@ -266,7 +266,7 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The region in which to create the volume. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new quotaset.
         /// </summary>
         [Input("region")]
@@ -387,7 +387,7 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The region in which to create the volume. If
-        /// omitted, the `region` argument of the provider is used. Changing this
+        /// omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new quotaset.
         /// </summary>
         [Input("region")]

@@ -151,8 +151,8 @@ namespace Pulumi.OpenStack.SharedFileSystem
 
         /// <summary>
         /// The UUID of a share network where the share server exists
-        /// or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-        /// the share_network_id value from the snapshot is used. Changing this creates a new share.
+        /// or will be created. If `ShareNetworkId` is not set and you provide a `SnapshotId`,
+        /// the ShareNetworkId value from the snapshot is used. Changing this creates a new share.
         /// </summary>
         [Output("shareNetworkId")]
         public Output<string> ShareNetworkId { get; private set; } = null!;
@@ -289,8 +289,8 @@ namespace Pulumi.OpenStack.SharedFileSystem
 
         /// <summary>
         /// The UUID of a share network where the share server exists
-        /// or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-        /// the share_network_id value from the snapshot is used. Changing this creates a new share.
+        /// or will be created. If `ShareNetworkId` is not set and you provide a `SnapshotId`,
+        /// the ShareNetworkId value from the snapshot is used. Changing this creates a new share.
         /// </summary>
         [Input("shareNetworkId")]
         public Input<string>? ShareNetworkId { get; set; }
@@ -433,8 +433,8 @@ namespace Pulumi.OpenStack.SharedFileSystem
 
         /// <summary>
         /// The UUID of a share network where the share server exists
-        /// or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-        /// the share_network_id value from the snapshot is used. Changing this creates a new share.
+        /// or will be created. If `ShareNetworkId` is not set and you provide a `SnapshotId`,
+        /// the ShareNetworkId value from the snapshot is used. Changing this creates a new share.
         /// </summary>
         [Input("shareNetworkId")]
         public Input<string>? ShareNetworkId { get; set; }

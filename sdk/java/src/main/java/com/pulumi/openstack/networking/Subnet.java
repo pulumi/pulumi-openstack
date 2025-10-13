@@ -93,10 +93,10 @@ public class Subnet extends com.pulumi.resources.CustomResource {
     /**
      * A block declaring the start and end range of
      * the IP addresses available for use with DHCP in this subnet. Multiple
-     * `allocation_pool` blocks can be declared, providing the subnet with more
+     * `allocationPool` blocks can be declared, providing the subnet with more
      * than one range of IP addresses to use with DHCP. However, each IP range
      * must be from the same CIDR that the subnet is part of.
-     * The `allocation_pool` block is documented below.
+     * The `allocationPool` block is documented below.
      * 
      */
     @Export(name="allocationPools", refs={List.class,SubnetAllocationPool.class}, tree="[0,1]")
@@ -105,10 +105,10 @@ public class Subnet extends com.pulumi.resources.CustomResource {
     /**
      * @return A block declaring the start and end range of
      * the IP addresses available for use with DHCP in this subnet. Multiple
-     * `allocation_pool` blocks can be declared, providing the subnet with more
+     * `allocationPool` blocks can be declared, providing the subnet with more
      * than one range of IP addresses to use with DHCP. However, each IP range
      * must be from the same CIDR that the subnet is part of.
-     * The `allocation_pool` block is documented below.
+     * The `allocationPool` block is documented below.
      * 
      */
     public Output<List<SubnetAllocationPool>> allocationPools() {
@@ -202,7 +202,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
     }
     /**
      * Default gateway used by devices in this subnet.
-     * Leaving this blank and not setting `no_gateway` will cause a default
+     * Leaving this blank and not setting `noGateway` will cause a default
      * gateway of `.1` to be used. Changing this updates the gateway IP of the
      * existing subnet.
      * 
@@ -212,7 +212,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Default gateway used by devices in this subnet.
-     * Leaving this blank and not setting `no_gateway` will cause a default
+     * Leaving this blank and not setting `noGateway` will cause a default
      * gateway of `.1` to be used. Changing this updates the gateway IP of the
      * existing subnet.
      * 

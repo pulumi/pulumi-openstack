@@ -58,10 +58,10 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// A block declaring the start and end range of
         /// the IP addresses available for use with DHCP in this subnet. Multiple
-        /// `allocation_pool` blocks can be declared, providing the subnet with more
+        /// `AllocationPool` blocks can be declared, providing the subnet with more
         /// than one range of IP addresses to use with DHCP. However, each IP range
         /// must be from the same CIDR that the subnet is part of.
-        /// The `allocation_pool` block is documented below.
+        /// The `AllocationPool` block is documented below.
         /// </summary>
         [Output("allocationPools")]
         public Output<ImmutableArray<Outputs.SubnetAllocationPool>> AllocationPools { get; private set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// Default gateway used by devices in this subnet.
-        /// Leaving this blank and not setting `no_gateway` will cause a default
+        /// Leaving this blank and not setting `NoGateway` will cause a default
         /// gateway of `.1` to be used. Changing this updates the gateway IP of the
         /// existing subnet.
         /// </summary>
@@ -122,14 +122,14 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The IPv6 address mode. Valid values are
-        /// `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+        /// `dhcpv6-stateful`, `dhcpv6-stateless`, or `Slaac`.
         /// </summary>
         [Output("ipv6AddressMode")]
         public Output<string> Ipv6AddressMode { get; private set; } = null!;
 
         /// <summary>
         /// The IPv6 Router Advertisement mode. Valid values
-        /// are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+        /// are `dhcpv6-stateful`, `dhcpv6-stateless`, or `Slaac`.
         /// </summary>
         [Output("ipv6RaMode")]
         public Output<string> Ipv6RaMode { get; private set; } = null!;
@@ -167,7 +167,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron subnet. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// subnet.
         /// </summary>
         [Output("region")]
@@ -265,10 +265,10 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// A block declaring the start and end range of
         /// the IP addresses available for use with DHCP in this subnet. Multiple
-        /// `allocation_pool` blocks can be declared, providing the subnet with more
+        /// `AllocationPool` blocks can be declared, providing the subnet with more
         /// than one range of IP addresses to use with DHCP. However, each IP range
         /// must be from the same CIDR that the subnet is part of.
-        /// The `allocation_pool` block is documented below.
+        /// The `AllocationPool` block is documented below.
         /// </summary>
         public InputList<Inputs.SubnetAllocationPoolArgs> AllocationPools
         {
@@ -322,7 +322,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// Default gateway used by devices in this subnet.
-        /// Leaving this blank and not setting `no_gateway` will cause a default
+        /// Leaving this blank and not setting `NoGateway` will cause a default
         /// gateway of `.1` to be used. Changing this updates the gateway IP of the
         /// existing subnet.
         /// </summary>
@@ -338,14 +338,14 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The IPv6 address mode. Valid values are
-        /// `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+        /// `dhcpv6-stateful`, `dhcpv6-stateless`, or `Slaac`.
         /// </summary>
         [Input("ipv6AddressMode")]
         public Input<string>? Ipv6AddressMode { get; set; }
 
         /// <summary>
         /// The IPv6 Router Advertisement mode. Valid values
-        /// are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+        /// are `dhcpv6-stateful`, `dhcpv6-stateless`, or `Slaac`.
         /// </summary>
         [Input("ipv6RaMode")]
         public Input<string>? Ipv6RaMode { get; set; }
@@ -383,7 +383,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron subnet. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// subnet.
         /// </summary>
         [Input("region")]
@@ -474,10 +474,10 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// A block declaring the start and end range of
         /// the IP addresses available for use with DHCP in this subnet. Multiple
-        /// `allocation_pool` blocks can be declared, providing the subnet with more
+        /// `AllocationPool` blocks can be declared, providing the subnet with more
         /// than one range of IP addresses to use with DHCP. However, each IP range
         /// must be from the same CIDR that the subnet is part of.
-        /// The `allocation_pool` block is documented below.
+        /// The `AllocationPool` block is documented below.
         /// </summary>
         public InputList<Inputs.SubnetAllocationPoolGetArgs> AllocationPools
         {
@@ -531,7 +531,7 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// Default gateway used by devices in this subnet.
-        /// Leaving this blank and not setting `no_gateway` will cause a default
+        /// Leaving this blank and not setting `NoGateway` will cause a default
         /// gateway of `.1` to be used. Changing this updates the gateway IP of the
         /// existing subnet.
         /// </summary>
@@ -547,14 +547,14 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// The IPv6 address mode. Valid values are
-        /// `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+        /// `dhcpv6-stateful`, `dhcpv6-stateless`, or `Slaac`.
         /// </summary>
         [Input("ipv6AddressMode")]
         public Input<string>? Ipv6AddressMode { get; set; }
 
         /// <summary>
         /// The IPv6 Router Advertisement mode. Valid values
-        /// are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+        /// are `dhcpv6-stateful`, `dhcpv6-stateless`, or `Slaac`.
         /// </summary>
         [Input("ipv6RaMode")]
         public Input<string>? Ipv6RaMode { get; set; }
@@ -592,7 +592,7 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// The region in which to obtain the V2 Networking client.
         /// A Networking client is needed to create a Neutron subnet. If omitted, the
-        /// `region` argument of the provider is used. Changing this creates a new
+        /// `Region` argument of the provider is used. Changing this creates a new
         /// subnet.
         /// </summary>
         [Input("region")]

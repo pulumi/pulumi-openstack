@@ -15,7 +15,7 @@ namespace Pulumi.OpenStack.BlockStorage
     /// &gt; **Note:** This resource does not actually attach a volume to an instance.
     /// Please use the `openstack.compute.VolumeAttach` resource for that.
     /// 
-    /// &gt; **Note:** All arguments including the `data` computed attribute will be
+    /// &gt; **Note:** All arguments including the `Data` computed attribute will be
     /// stored in the raw state as plain-text. Read more about sensitive data in
     /// state.
     /// 
@@ -59,7 +59,7 @@ namespace Pulumi.OpenStack.BlockStorage
     /// 
     /// ## Volume Connection Data
     /// 
-    /// Upon creation of this resource, a `data` exported attribute will be available.
+    /// Upon creation of this resource, a `Data` exported attribute will be available.
     /// This attribute is a set of key/value pairs that contains the information
     /// required to complete the block storage connection.
     /// 
@@ -68,7 +68,7 @@ namespace Pulumi.OpenStack.BlockStorage
     /// This information can then be fed into a provisioner or a template shell script,
     /// where the final result would look something like:
     /// 
-    /// The contents of `data` will vary from each Block Storage service. You must have
+    /// The contents of `Data` will vary from each Block Storage service. You must have
     /// a good understanding of how the service is configured and how to make the
     /// appropriate final connection. However, if used correctly, this has the
     /// flexibility to be able to attach OpenStack Block Storage volumes to
@@ -83,8 +83,8 @@ namespace Pulumi.OpenStack.BlockStorage
     {
         /// <summary>
         /// Specify whether to attach the volume as Read-Only
-        /// (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
-        /// If left unspecified, the Block Storage API will apply a default of `rw`.
+        /// (`Ro`) or Read-Write (`Rw`). Only values of `Ro` and `Rw` are accepted.
+        /// If left unspecified, the Block Storage API will apply a default of `Rw`.
         /// </summary>
         [Output("attachMode")]
         public Output<string?> AttachMode { get; private set; } = null!;
@@ -100,7 +100,7 @@ namespace Pulumi.OpenStack.BlockStorage
         /// <summary>
         /// The device to tell the Block Storage service this
         /// volume will be attached as. This is purely for informational purposes.
-        /// You can specify `auto` or a device such as `/dev/vdc`.
+        /// You can specify `Auto` or a device such as `/dev/vdc`.
         /// </summary>
         [Output("device")]
         public Output<string?> Device { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.OpenStack.BlockStorage
         public Output<string?> Initiator { get; private set; } = null!;
 
         /// <summary>
-        /// The IP address of the `host_name` above.
+        /// The IP address of the `HostName` above.
         /// </summary>
         [Output("ipAddress")]
         public Output<string?> IpAddress { get; private set; } = null!;
@@ -156,7 +156,7 @@ namespace Pulumi.OpenStack.BlockStorage
         /// <summary>
         /// The region in which to obtain the V3 Block Storage
         /// client. A Block Storage client is needed to create a volume attachment.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new volume attachment.
         /// </summary>
         [Output("region")]
@@ -233,8 +233,8 @@ namespace Pulumi.OpenStack.BlockStorage
     {
         /// <summary>
         /// Specify whether to attach the volume as Read-Only
-        /// (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
-        /// If left unspecified, the Block Storage API will apply a default of `rw`.
+        /// (`Ro`) or Read-Write (`Rw`). Only values of `Ro` and `Rw` are accepted.
+        /// If left unspecified, the Block Storage API will apply a default of `Rw`.
         /// </summary>
         [Input("attachMode")]
         public Input<string>? AttachMode { get; set; }
@@ -242,7 +242,7 @@ namespace Pulumi.OpenStack.BlockStorage
         /// <summary>
         /// The device to tell the Block Storage service this
         /// volume will be attached as. This is purely for informational purposes.
-        /// You can specify `auto` or a device such as `/dev/vdc`.
+        /// You can specify `Auto` or a device such as `/dev/vdc`.
         /// </summary>
         [Input("device")]
         public Input<string>? Device { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.OpenStack.BlockStorage
         public Input<string>? Initiator { get; set; }
 
         /// <summary>
-        /// The IP address of the `host_name` above.
+        /// The IP address of the `HostName` above.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -286,7 +286,7 @@ namespace Pulumi.OpenStack.BlockStorage
         /// <summary>
         /// The region in which to obtain the V3 Block Storage
         /// client. A Block Storage client is needed to create a volume attachment.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new volume attachment.
         /// </summary>
         [Input("region")]
@@ -327,8 +327,8 @@ namespace Pulumi.OpenStack.BlockStorage
     {
         /// <summary>
         /// Specify whether to attach the volume as Read-Only
-        /// (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
-        /// If left unspecified, the Block Storage API will apply a default of `rw`.
+        /// (`Ro`) or Read-Write (`Rw`). Only values of `Ro` and `Rw` are accepted.
+        /// If left unspecified, the Block Storage API will apply a default of `Rw`.
         /// </summary>
         [Input("attachMode")]
         public Input<string>? AttachMode { get; set; }
@@ -354,7 +354,7 @@ namespace Pulumi.OpenStack.BlockStorage
         /// <summary>
         /// The device to tell the Block Storage service this
         /// volume will be attached as. This is purely for informational purposes.
-        /// You can specify `auto` or a device such as `/dev/vdc`.
+        /// You can specify `Auto` or a device such as `/dev/vdc`.
         /// </summary>
         [Input("device")]
         public Input<string>? Device { get; set; }
@@ -378,7 +378,7 @@ namespace Pulumi.OpenStack.BlockStorage
         public Input<string>? Initiator { get; set; }
 
         /// <summary>
-        /// The IP address of the `host_name` above.
+        /// The IP address of the `HostName` above.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -410,7 +410,7 @@ namespace Pulumi.OpenStack.BlockStorage
         /// <summary>
         /// The region in which to obtain the V3 Block Storage
         /// client. A Block Storage client is needed to create a volume attachment.
-        /// If omitted, the `region` argument of the provider is used. Changing this
+        /// If omitted, the `Region` argument of the provider is used. Changing this
         /// creates a new volume attachment.
         /// </summary>
         [Input("region")]

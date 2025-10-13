@@ -71,7 +71,7 @@ public class Router extends com.pulumi.resources.CustomResource {
     /**
      * Administrative up/down status for the router
      * (must be &#34;true&#34; or &#34;false&#34; if provided). Changing this updates the
-     * `admin_state_up` of an existing router.
+     * `adminStateUp` of an existing router.
      * 
      */
     @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
@@ -80,7 +80,7 @@ public class Router extends com.pulumi.resources.CustomResource {
     /**
      * @return Administrative up/down status for the router
      * (must be &#34;true&#34; or &#34;false&#34; if provided). Changing this updates the
-     * `admin_state_up` of an existing router.
+     * `adminStateUp` of an existing router.
      * 
      */
     public Output<Boolean> adminStateUp() {
@@ -156,8 +156,8 @@ public class Router extends com.pulumi.resources.CustomResource {
     }
     /**
      * Enable Source NAT for the router. Valid values are
-     * &#34;true&#34; or &#34;false&#34;. An `external_network_id` has to be set in order to
-     * set this property. Changing this updates the `enable_snat` of the router.
+     * &#34;true&#34; or &#34;false&#34;. An `externalNetworkId` has to be set in order to
+     * set this property. Changing this updates the `enableSnat` of the router.
      * Setting this value **requires** an **ext-gw-mode** extension to be enabled
      * in OpenStack Neutron.
      * 
@@ -167,8 +167,8 @@ public class Router extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Enable Source NAT for the router. Valid values are
-     * &#34;true&#34; or &#34;false&#34;. An `external_network_id` has to be set in order to
-     * set this property. Changing this updates the `enable_snat` of the router.
+     * &#34;true&#34; or &#34;false&#34;. An `externalNetworkId` has to be set in order to
+     * set this property. Changing this updates the `enableSnat` of the router.
      * Setting this value **requires** an **ext-gw-mode** extension to be enabled
      * in OpenStack Neutron.
      * 
@@ -178,7 +178,7 @@ public class Router extends com.pulumi.resources.CustomResource {
     }
     /**
      * An external fixed IP for the router. This
-     * can be repeated. The structure is described below. An `external_network_id`
+     * can be repeated. The structure is described below. An `externalNetworkId`
      * has to be set in order to set this property. Changing this updates the
      * external fixed IPs of the router.
      * 
@@ -188,7 +188,7 @@ public class Router extends com.pulumi.resources.CustomResource {
 
     /**
      * @return An external fixed IP for the router. This
-     * can be repeated. The structure is described below. An `external_network_id`
+     * can be repeated. The structure is described below. An `externalNetworkId`
      * has to be set in order to set this property. Changing this updates the
      * external fixed IPs of the router.
      * 
@@ -239,7 +239,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * each to obtain a fixed IP for the router. If a subnet ID in a list has
      * exhausted floating IP pool, the next subnet ID will be tried. This argument is
      * used only during the router creation and allows to set only one external fixed
-     * IP. Conflicts with an `external_fixed_ip` argument.
+     * IP. Conflicts with an `externalFixedIp` argument.
      * 
      */
     @Export(name="externalSubnetIds", refs={List.class,String.class}, tree="[0,1]")
@@ -250,7 +250,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * each to obtain a fixed IP for the router. If a subnet ID in a list has
      * exhausted floating IP pool, the next subnet ID will be tried. This argument is
      * used only during the router creation and allows to set only one external fixed
-     * IP. Conflicts with an `external_fixed_ip` argument.
+     * IP. Conflicts with an `externalFixedIp` argument.
      * 
      */
     public Output<Optional<List<String>>> externalSubnetIds() {

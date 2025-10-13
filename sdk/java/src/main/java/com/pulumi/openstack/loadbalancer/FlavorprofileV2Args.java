@@ -17,8 +17,8 @@ public final class FlavorprofileV2Args extends com.pulumi.resources.ResourceArgs
     public static final FlavorprofileV2Args Empty = new FlavorprofileV2Args();
 
     /**
-     * String that passes the flavor_data for the flavorprofile.
-     * The data that are allowed depend on the `provider_name` that is passed. jsonencode
+     * String that passes the flavorData for the flavorprofile.
+     * The data that are allowed depend on the `providerName` that is passed. jsonencode
      * can be used for readability as shown in the example above.
      * Changing this updates the existing flavorprofile.
      * 
@@ -27,8 +27,8 @@ public final class FlavorprofileV2Args extends com.pulumi.resources.ResourceArgs
     private Output<String> flavorData;
 
     /**
-     * @return String that passes the flavor_data for the flavorprofile.
-     * The data that are allowed depend on the `provider_name` that is passed. jsonencode
+     * @return String that passes the flavorData for the flavorprofile.
+     * The data that are allowed depend on the `providerName` that is passed. jsonencode
      * can be used for readability as shown in the example above.
      * Changing this updates the existing flavorprofile.
      * 
@@ -55,7 +55,7 @@ public final class FlavorprofileV2Args extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The provider_name that the flavor_profile will use.
+     * The providerName that the flavorProfile will use.
      * Changing this updates the existing flavorprofile.
      * 
      */
@@ -63,7 +63,7 @@ public final class FlavorprofileV2Args extends com.pulumi.resources.ResourceArgs
     private Output<String> providerName;
 
     /**
-     * @return The provider_name that the flavor_profile will use.
+     * @return The providerName that the flavorProfile will use.
      * Changing this updates the existing flavorprofile.
      * 
      */
@@ -120,8 +120,8 @@ public final class FlavorprofileV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param flavorData String that passes the flavor_data for the flavorprofile.
-         * The data that are allowed depend on the `provider_name` that is passed. jsonencode
+         * @param flavorData String that passes the flavorData for the flavorprofile.
+         * The data that are allowed depend on the `providerName` that is passed. jsonencode
          * can be used for readability as shown in the example above.
          * Changing this updates the existing flavorprofile.
          * 
@@ -134,8 +134,8 @@ public final class FlavorprofileV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param flavorData String that passes the flavor_data for the flavorprofile.
-         * The data that are allowed depend on the `provider_name` that is passed. jsonencode
+         * @param flavorData String that passes the flavorData for the flavorprofile.
+         * The data that are allowed depend on the `providerName` that is passed. jsonencode
          * can be used for readability as shown in the example above.
          * Changing this updates the existing flavorprofile.
          * 
@@ -170,7 +170,7 @@ public final class FlavorprofileV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param providerName The provider_name that the flavor_profile will use.
+         * @param providerName The providerName that the flavorProfile will use.
          * Changing this updates the existing flavorprofile.
          * 
          * @return builder
@@ -182,7 +182,7 @@ public final class FlavorprofileV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param providerName The provider_name that the flavor_profile will use.
+         * @param providerName The providerName that the flavorProfile will use.
          * Changing this updates the existing flavorprofile.
          * 
          * @return builder

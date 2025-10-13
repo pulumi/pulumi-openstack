@@ -34,14 +34,14 @@ namespace Pulumi.OpenStack.Identity
         /// <summary>
         /// The region in which to obtain the V3 Identity client.
         /// A Identity client is needed to retrieve tokens IDs. If omitted, the
-        /// `region` argument of the provider is used.
+        /// `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
         /// <summary>
         /// A boolean argument that determines whether to
-        /// export the current auth scope token ID. When set to `true`, the `token_id`
+        /// export the current auth scope token ID. When set to `True`, the `TokenId`
         /// attribute will contain an unencrypted token that can be used for further API
         /// calls. **Warning**: please note that the leaked token may allow unauthorized
         /// access to other OpenStack services within the current auth scope, so use this
@@ -68,14 +68,14 @@ namespace Pulumi.OpenStack.Identity
         /// <summary>
         /// The region in which to obtain the V3 Identity client.
         /// A Identity client is needed to retrieve tokens IDs. If omitted, the
-        /// `region` argument of the provider is used.
+        /// `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
         /// A boolean argument that determines whether to
-        /// export the current auth scope token ID. When set to `true`, the `token_id`
+        /// export the current auth scope token ID. When set to `True`, the `TokenId`
         /// attribute will contain an unencrypted token that can be used for further API
         /// calls. **Warning**: please note that the leaked token may allow unauthorized
         /// access to other OpenStack services within the current auth scope, so use this

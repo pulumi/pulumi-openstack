@@ -49,7 +49,7 @@ public final class GetFlavorPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The ID of the flavor. Conflicts with the `name`,
-     * `min_ram` and `min_disk`
+     * `minRam` and `minDisk`
      * 
      */
     @Import(name="flavorId")
@@ -57,7 +57,7 @@ public final class GetFlavorPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The ID of the flavor. Conflicts with the `name`,
-     * `min_ram` and `min_disk`
+     * `minRam` and `minDisk`
      * 
      */
     public Optional<String> flavorId() {
@@ -81,7 +81,7 @@ public final class GetFlavorPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The minimum amount of disk (in gigabytes). Conflicts
-     * with the `flavor_id`.
+     * with the `flavorId`.
      * 
      */
     @Import(name="minDisk")
@@ -89,7 +89,7 @@ public final class GetFlavorPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The minimum amount of disk (in gigabytes). Conflicts
-     * with the `flavor_id`.
+     * with the `flavorId`.
      * 
      */
     public Optional<Integer> minDisk() {
@@ -98,7 +98,7 @@ public final class GetFlavorPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The minimum amount of RAM (in megabytes). Conflicts
-     * with the `flavor_id`.
+     * with the `flavorId`.
      * 
      */
     @Import(name="minRam")
@@ -106,7 +106,7 @@ public final class GetFlavorPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The minimum amount of RAM (in megabytes). Conflicts
-     * with the `flavor_id`.
+     * with the `flavorId`.
      * 
      */
     public Optional<Integer> minRam() {
@@ -114,14 +114,14 @@ public final class GetFlavorPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the flavor. Conflicts with the `flavor_id`.
+     * The name of the flavor. Conflicts with the `flavorId`.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return The name of the flavor. Conflicts with the `flavor_id`.
+     * @return The name of the flavor. Conflicts with the `flavorId`.
      * 
      */
     public Optional<String> name() {
@@ -161,14 +161,14 @@ public final class GetFlavorPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The `rx_tx_factor` of the flavor.
+     * The `rxTxFactor` of the flavor.
      * 
      */
     @Import(name="rxTxFactor")
     private @Nullable Double rxTxFactor;
 
     /**
-     * @return The `rx_tx_factor` of the flavor.
+     * @return The `rxTxFactor` of the flavor.
      * 
      */
     public Optional<Double> rxTxFactor() {
@@ -264,7 +264,7 @@ public final class GetFlavorPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param flavorId The ID of the flavor. Conflicts with the `name`,
-         * `min_ram` and `min_disk`
+         * `minRam` and `minDisk`
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class GetFlavorPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param minDisk The minimum amount of disk (in gigabytes). Conflicts
-         * with the `flavor_id`.
+         * with the `flavorId`.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class GetFlavorPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param minRam The minimum amount of RAM (in megabytes). Conflicts
-         * with the `flavor_id`.
+         * with the `flavorId`.
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class GetFlavorPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The name of the flavor. Conflicts with the `flavor_id`.
+         * @param name The name of the flavor. Conflicts with the `flavorId`.
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class GetFlavorPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param rxTxFactor The `rx_tx_factor` of the flavor.
+         * @param rxTxFactor The `rxTxFactor` of the flavor.
          * 
          * @return builder
          * 

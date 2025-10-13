@@ -138,7 +138,7 @@ public class VolumeTypeV3 extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether the volume type is public. Changing
-     * this updates the `is_public` of an existing volume type.
+     * this updates the `isPublic` of an existing volume type.
      * 
      */
     @Export(name="isPublic", refs={Boolean.class}, tree="[0]")
@@ -146,7 +146,7 @@ public class VolumeTypeV3 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether the volume type is public. Changing
-     * this updates the `is_public` of an existing volume type.
+     * this updates the `isPublic` of an existing volume type.
      * 
      */
     public Output<Boolean> isPublic() {

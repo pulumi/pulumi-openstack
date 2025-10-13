@@ -95,14 +95,14 @@ namespace Pulumi.OpenStack.Identity
     {
         /// <summary>
         /// The region the endpoint is assigned to. The
-        /// `region` and `endpoint_region` can be different.
+        /// `Region` and `EndpointRegion` can be different.
         /// </summary>
         [Input("endpointRegion")]
         public string? EndpointRegion { get; set; }
 
         /// <summary>
-        /// The endpoint interface. Valid values are `public`,
-        /// `internal`, and `admin`. Default value is `public`
+        /// The endpoint interface. Valid values are `Public`,
+        /// `Internal`, and `Admin`. Default value is `Public`
         /// </summary>
         [Input("interface")]
         public string? Interface { get; set; }
@@ -115,7 +115,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -148,14 +148,14 @@ namespace Pulumi.OpenStack.Identity
     {
         /// <summary>
         /// The region the endpoint is assigned to. The
-        /// `region` and `endpoint_region` can be different.
+        /// `Region` and `EndpointRegion` can be different.
         /// </summary>
         [Input("endpointRegion")]
         public Input<string>? EndpointRegion { get; set; }
 
         /// <summary>
-        /// The endpoint interface. Valid values are `public`,
-        /// `internal`, and `admin`. Default value is `public`
+        /// The endpoint interface. Valid values are `Public`,
+        /// `Internal`, and `Admin`. Default value is `Public`
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
@@ -168,7 +168,7 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
-        /// If omitted, the `region` argument of the provider is used.
+        /// If omitted, the `Region` argument of the provider is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
