@@ -152,9 +152,185 @@ func (o BgpvpnPortAssociateV2RouteArrayOutput) Index(i pulumi.IntInput) BgpvpnPo
 	}).(BgpvpnPortAssociateV2RouteOutput)
 }
 
+type TaasTapMirrorV2Directions struct {
+	// Declares ingress traffic to the port will be mirrored. The value
+	// is the identifier of the ERSPAN or GRE session between the source and destination,
+	// this must be unique within the project.
+	In *int `pulumi:"in"`
+	// Declares egress traffic will be mirrored. The value is the
+	// identifier of the ERSPAN or GRE session between the source and destination,
+	// this must be unique within the project.
+	Out *int `pulumi:"out"`
+}
+
+// TaasTapMirrorV2DirectionsInput is an input type that accepts TaasTapMirrorV2DirectionsArgs and TaasTapMirrorV2DirectionsOutput values.
+// You can construct a concrete instance of `TaasTapMirrorV2DirectionsInput` via:
+//
+//	TaasTapMirrorV2DirectionsArgs{...}
+type TaasTapMirrorV2DirectionsInput interface {
+	pulumi.Input
+
+	ToTaasTapMirrorV2DirectionsOutput() TaasTapMirrorV2DirectionsOutput
+	ToTaasTapMirrorV2DirectionsOutputWithContext(context.Context) TaasTapMirrorV2DirectionsOutput
+}
+
+type TaasTapMirrorV2DirectionsArgs struct {
+	// Declares ingress traffic to the port will be mirrored. The value
+	// is the identifier of the ERSPAN or GRE session between the source and destination,
+	// this must be unique within the project.
+	In pulumi.IntPtrInput `pulumi:"in"`
+	// Declares egress traffic will be mirrored. The value is the
+	// identifier of the ERSPAN or GRE session between the source and destination,
+	// this must be unique within the project.
+	Out pulumi.IntPtrInput `pulumi:"out"`
+}
+
+func (TaasTapMirrorV2DirectionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaasTapMirrorV2Directions)(nil)).Elem()
+}
+
+func (i TaasTapMirrorV2DirectionsArgs) ToTaasTapMirrorV2DirectionsOutput() TaasTapMirrorV2DirectionsOutput {
+	return i.ToTaasTapMirrorV2DirectionsOutputWithContext(context.Background())
+}
+
+func (i TaasTapMirrorV2DirectionsArgs) ToTaasTapMirrorV2DirectionsOutputWithContext(ctx context.Context) TaasTapMirrorV2DirectionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaasTapMirrorV2DirectionsOutput)
+}
+
+func (i TaasTapMirrorV2DirectionsArgs) ToTaasTapMirrorV2DirectionsPtrOutput() TaasTapMirrorV2DirectionsPtrOutput {
+	return i.ToTaasTapMirrorV2DirectionsPtrOutputWithContext(context.Background())
+}
+
+func (i TaasTapMirrorV2DirectionsArgs) ToTaasTapMirrorV2DirectionsPtrOutputWithContext(ctx context.Context) TaasTapMirrorV2DirectionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaasTapMirrorV2DirectionsOutput).ToTaasTapMirrorV2DirectionsPtrOutputWithContext(ctx)
+}
+
+// TaasTapMirrorV2DirectionsPtrInput is an input type that accepts TaasTapMirrorV2DirectionsArgs, TaasTapMirrorV2DirectionsPtr and TaasTapMirrorV2DirectionsPtrOutput values.
+// You can construct a concrete instance of `TaasTapMirrorV2DirectionsPtrInput` via:
+//
+//	        TaasTapMirrorV2DirectionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaasTapMirrorV2DirectionsPtrInput interface {
+	pulumi.Input
+
+	ToTaasTapMirrorV2DirectionsPtrOutput() TaasTapMirrorV2DirectionsPtrOutput
+	ToTaasTapMirrorV2DirectionsPtrOutputWithContext(context.Context) TaasTapMirrorV2DirectionsPtrOutput
+}
+
+type taasTapMirrorV2DirectionsPtrType TaasTapMirrorV2DirectionsArgs
+
+func TaasTapMirrorV2DirectionsPtr(v *TaasTapMirrorV2DirectionsArgs) TaasTapMirrorV2DirectionsPtrInput {
+	return (*taasTapMirrorV2DirectionsPtrType)(v)
+}
+
+func (*taasTapMirrorV2DirectionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaasTapMirrorV2Directions)(nil)).Elem()
+}
+
+func (i *taasTapMirrorV2DirectionsPtrType) ToTaasTapMirrorV2DirectionsPtrOutput() TaasTapMirrorV2DirectionsPtrOutput {
+	return i.ToTaasTapMirrorV2DirectionsPtrOutputWithContext(context.Background())
+}
+
+func (i *taasTapMirrorV2DirectionsPtrType) ToTaasTapMirrorV2DirectionsPtrOutputWithContext(ctx context.Context) TaasTapMirrorV2DirectionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaasTapMirrorV2DirectionsPtrOutput)
+}
+
+type TaasTapMirrorV2DirectionsOutput struct{ *pulumi.OutputState }
+
+func (TaasTapMirrorV2DirectionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaasTapMirrorV2Directions)(nil)).Elem()
+}
+
+func (o TaasTapMirrorV2DirectionsOutput) ToTaasTapMirrorV2DirectionsOutput() TaasTapMirrorV2DirectionsOutput {
+	return o
+}
+
+func (o TaasTapMirrorV2DirectionsOutput) ToTaasTapMirrorV2DirectionsOutputWithContext(ctx context.Context) TaasTapMirrorV2DirectionsOutput {
+	return o
+}
+
+func (o TaasTapMirrorV2DirectionsOutput) ToTaasTapMirrorV2DirectionsPtrOutput() TaasTapMirrorV2DirectionsPtrOutput {
+	return o.ToTaasTapMirrorV2DirectionsPtrOutputWithContext(context.Background())
+}
+
+func (o TaasTapMirrorV2DirectionsOutput) ToTaasTapMirrorV2DirectionsPtrOutputWithContext(ctx context.Context) TaasTapMirrorV2DirectionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaasTapMirrorV2Directions) *TaasTapMirrorV2Directions {
+		return &v
+	}).(TaasTapMirrorV2DirectionsPtrOutput)
+}
+
+// Declares ingress traffic to the port will be mirrored. The value
+// is the identifier of the ERSPAN or GRE session between the source and destination,
+// this must be unique within the project.
+func (o TaasTapMirrorV2DirectionsOutput) In() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TaasTapMirrorV2Directions) *int { return v.In }).(pulumi.IntPtrOutput)
+}
+
+// Declares egress traffic will be mirrored. The value is the
+// identifier of the ERSPAN or GRE session between the source and destination,
+// this must be unique within the project.
+func (o TaasTapMirrorV2DirectionsOutput) Out() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TaasTapMirrorV2Directions) *int { return v.Out }).(pulumi.IntPtrOutput)
+}
+
+type TaasTapMirrorV2DirectionsPtrOutput struct{ *pulumi.OutputState }
+
+func (TaasTapMirrorV2DirectionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaasTapMirrorV2Directions)(nil)).Elem()
+}
+
+func (o TaasTapMirrorV2DirectionsPtrOutput) ToTaasTapMirrorV2DirectionsPtrOutput() TaasTapMirrorV2DirectionsPtrOutput {
+	return o
+}
+
+func (o TaasTapMirrorV2DirectionsPtrOutput) ToTaasTapMirrorV2DirectionsPtrOutputWithContext(ctx context.Context) TaasTapMirrorV2DirectionsPtrOutput {
+	return o
+}
+
+func (o TaasTapMirrorV2DirectionsPtrOutput) Elem() TaasTapMirrorV2DirectionsOutput {
+	return o.ApplyT(func(v *TaasTapMirrorV2Directions) TaasTapMirrorV2Directions {
+		if v != nil {
+			return *v
+		}
+		var ret TaasTapMirrorV2Directions
+		return ret
+	}).(TaasTapMirrorV2DirectionsOutput)
+}
+
+// Declares ingress traffic to the port will be mirrored. The value
+// is the identifier of the ERSPAN or GRE session between the source and destination,
+// this must be unique within the project.
+func (o TaasTapMirrorV2DirectionsPtrOutput) In() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TaasTapMirrorV2Directions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.In
+	}).(pulumi.IntPtrOutput)
+}
+
+// Declares egress traffic will be mirrored. The value is the
+// identifier of the ERSPAN or GRE session between the source and destination,
+// this must be unique within the project.
+func (o TaasTapMirrorV2DirectionsPtrOutput) Out() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TaasTapMirrorV2Directions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Out
+	}).(pulumi.IntPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BgpvpnPortAssociateV2RouteInput)(nil)).Elem(), BgpvpnPortAssociateV2RouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BgpvpnPortAssociateV2RouteArrayInput)(nil)).Elem(), BgpvpnPortAssociateV2RouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaasTapMirrorV2DirectionsInput)(nil)).Elem(), TaasTapMirrorV2DirectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaasTapMirrorV2DirectionsPtrInput)(nil)).Elem(), TaasTapMirrorV2DirectionsArgs{})
 	pulumi.RegisterOutputType(BgpvpnPortAssociateV2RouteOutput{})
 	pulumi.RegisterOutputType(BgpvpnPortAssociateV2RouteArrayOutput{})
+	pulumi.RegisterOutputType(TaasTapMirrorV2DirectionsOutput{})
+	pulumi.RegisterOutputType(TaasTapMirrorV2DirectionsPtrOutput{})
 }

@@ -16,6 +16,7 @@ from .get_fw_rule_v2 import *
 from .lb_flavorprofile_v2 import *
 from .lb_loadbalancer_v2 import *
 from .provider import *
+from .taas_tap_mirror_v2 import *
 from .workflow_workflow_v2 import *
 from ._inputs import *
 from . import outputs
@@ -540,6 +541,14 @@ _utilities.register(
   "fqn": "pulumi_openstack",
   "classes": {
    "openstack:index/lbLoadbalancerV2:LbLoadbalancerV2": "LbLoadbalancerV2"
+  }
+ },
+ {
+  "pkg": "openstack",
+  "mod": "index/taasTapMirrorV2",
+  "fqn": "pulumi_openstack",
+  "classes": {
+   "openstack:index/taasTapMirrorV2:TaasTapMirrorV2": "TaasTapMirrorV2"
   }
  },
  {

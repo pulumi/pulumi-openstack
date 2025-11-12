@@ -53,6 +53,11 @@ utilities.lazyLoad(exports, ["LbLoadbalancerV2"], () => require("./lbLoadbalance
 export * from "./provider";
 import { Provider } from "./provider";
 
+export { TaasTapMirrorV2Args, TaasTapMirrorV2State } from "./taasTapMirrorV2";
+export type TaasTapMirrorV2 = import("./taasTapMirrorV2").TaasTapMirrorV2;
+export const TaasTapMirrorV2: typeof import("./taasTapMirrorV2").TaasTapMirrorV2 = null as any;
+utilities.lazyLoad(exports, ["TaasTapMirrorV2"], () => require("./taasTapMirrorV2"));
+
 export { WorkflowWorkflowV2Args, WorkflowWorkflowV2Result, WorkflowWorkflowV2OutputArgs } from "./workflowWorkflowV2";
 export const workflowWorkflowV2: typeof import("./workflowWorkflowV2").workflowWorkflowV2 = null as any;
 export const workflowWorkflowV2Output: typeof import("./workflowWorkflowV2").workflowWorkflowV2Output = null as any;
@@ -116,6 +121,8 @@ const _module = {
                 return new LbFlavorprofileV2(name, <any>undefined, { urn })
             case "openstack:index/lbLoadbalancerV2:LbLoadbalancerV2":
                 return new LbLoadbalancerV2(name, <any>undefined, { urn })
+            case "openstack:index/taasTapMirrorV2:TaasTapMirrorV2":
+                return new TaasTapMirrorV2(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -127,6 +134,7 @@ pulumi.runtime.registerResourceModule("openstack", "index/bgpvpnRouterAssociateV
 pulumi.runtime.registerResourceModule("openstack", "index/bgpvpnV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "index/lbFlavorprofileV2", _module)
 pulumi.runtime.registerResourceModule("openstack", "index/lbLoadbalancerV2", _module)
+pulumi.runtime.registerResourceModule("openstack", "index/taasTapMirrorV2", _module)
 pulumi.runtime.registerResourcePackage("openstack", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

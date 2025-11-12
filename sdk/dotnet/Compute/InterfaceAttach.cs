@@ -125,6 +125,127 @@ namespace Pulumi.OpenStack.Compute
     /// });
     /// ```
     /// 
+    /// ### Attaching Multiple Interfaces
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
+    ///     {
+    ///         Name = "network_1",
+    ///         AdminStateUp = true,
+    ///     });
+    /// 
+    ///     var ports = new List&lt;OpenStack.Networking.Port&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         ports.Add(new OpenStack.Networking.Port($"ports-{range.Value}", new()
+    ///         {
+    ///             Name = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "port-%02d",
+    ///                 Args = new[]
+    ///                 {
+    ///                     range.Value + 1,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             NetworkId = network1.Id,
+    ///             AdminStateUp = true,
+    ///         }));
+    ///     }
+    ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
+    ///     {
+    ///         Name = "instance_1",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///     });
+    /// 
+    ///     var attachments = new List&lt;OpenStack.Compute.InterfaceAttach&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         attachments.Add(new OpenStack.Compute.InterfaceAttach($"attachments-{range.Value}", new()
+    ///         {
+    ///             PortId = ports[range.Value].Id,
+    ///             InstanceId = instance1.Id,
+    ///         }));
+    ///     }
+    /// });
+    /// ```
+    /// 
+    /// Note that the above example will not guarantee that the ports are attached in
+    /// a deterministic manner. The ports will be attached in a seemingly random
+    /// order.
+    /// 
+    /// If you want to ensure that the ports are attached in a given order, create
+    /// explicit dependencies between the ports, such as:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
+    ///     {
+    ///         Name = "network_1",
+    ///         AdminStateUp = true,
+    ///     });
+    /// 
+    ///     var ports = new List&lt;OpenStack.Networking.Port&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         ports.Add(new OpenStack.Networking.Port($"ports-{range.Value}", new()
+    ///         {
+    ///             Name = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "port-%02d",
+    ///                 Args = new[]
+    ///                 {
+    ///                     range.Value + 1,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             NetworkId = network1.Id,
+    ///             AdminStateUp = true,
+    ///         }));
+    ///     }
+    ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
+    ///     {
+    ///         Name = "instance_1",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///     });
+    /// 
+    ///     var ai1 = new OpenStack.Compute.InterfaceAttach("ai_1", new()
+    ///     {
+    ///         InstanceId = instance1.Id,
+    ///         PortId = ports[0].Id,
+    ///     });
+    /// 
+    ///     var ai2 = new OpenStack.Compute.InterfaceAttach("ai_2", new()
+    ///     {
+    ///         InstanceId = instance1.Id,
+    ///         PortId = ports[1].Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Interface Attachments can be imported using the Instance ID and Port ID

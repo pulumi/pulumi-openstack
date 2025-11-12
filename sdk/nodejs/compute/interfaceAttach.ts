@@ -76,6 +76,82 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Attaching Multiple Interfaces
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * import * as std from "@pulumi/std";
+ *
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     name: "network_1",
+ *     adminStateUp: true,
+ * });
+ * const ports: openstack.networking.Port[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     ports.push(new openstack.networking.Port(`ports-${range.value}`, {
+ *         name: std.format({
+ *             input: "port-%02d",
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *         networkId: network1.id,
+ *         adminStateUp: true,
+ *     }));
+ * }
+ * const instance1 = new openstack.compute.Instance("instance_1", {
+ *     name: "instance_1",
+ *     securityGroups: ["default"],
+ * });
+ * const attachments: openstack.compute.InterfaceAttach[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     attachments.push(new openstack.compute.InterfaceAttach(`attachments-${range.value}`, {
+ *         portId: ports[range.value].id,
+ *         instanceId: instance1.id,
+ *     }));
+ * }
+ * ```
+ *
+ * Note that the above example will not guarantee that the ports are attached in
+ * a deterministic manner. The ports will be attached in a seemingly random
+ * order.
+ *
+ * If you want to ensure that the ports are attached in a given order, create
+ * explicit dependencies between the ports, such as:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * import * as std from "@pulumi/std";
+ *
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     name: "network_1",
+ *     adminStateUp: true,
+ * });
+ * const ports: openstack.networking.Port[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     ports.push(new openstack.networking.Port(`ports-${range.value}`, {
+ *         name: std.format({
+ *             input: "port-%02d",
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *         networkId: network1.id,
+ *         adminStateUp: true,
+ *     }));
+ * }
+ * const instance1 = new openstack.compute.Instance("instance_1", {
+ *     name: "instance_1",
+ *     securityGroups: ["default"],
+ * });
+ * const ai1 = new openstack.compute.InterfaceAttach("ai_1", {
+ *     instanceId: instance1.id,
+ *     portId: ports[0].id,
+ * });
+ * const ai2 = new openstack.compute.InterfaceAttach("ai_2", {
+ *     instanceId: instance1.id,
+ *     portId: ports[1].id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Interface Attachments can be imported using the Instance ID and Port ID

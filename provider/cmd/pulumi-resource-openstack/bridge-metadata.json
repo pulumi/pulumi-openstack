@@ -948,6 +948,15 @@
                     }
                 }
             },
+            "openstack_taas_tap_mirror_v2": {
+                "current": "openstack:index/taasTapMirrorV2:TaasTapMirrorV2",
+                "majorVersion": 5,
+                "fields": {
+                    "directions": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "openstack_vpnaas_endpoint_group_v2": {
                 "current": "openstack:vpnaas/endpointGroup:EndpointGroup",
                 "majorVersion": 5,
@@ -1308,6 +1317,97 @@
             "openstack_lb_flavorprofile_v2": {
                 "current": "openstack:loadbalancer/getFlavorprofileV2:getFlavorprofileV2",
                 "majorVersion": 5
+            },
+            "openstack_lb_listener_v2": {
+                "current": "openstack:loadbalancer/getListenerV2:getListenerV2",
+                "majorVersion": 5,
+                "fields": {
+                    "allowed_cidrs": {
+                        "maxItemsOne": false
+                    },
+                    "alpn_protocols": {
+                        "maxItemsOne": false
+                    },
+                    "l7policies": {
+                        "maxItemsOne": false
+                    },
+                    "loadbalancers": {
+                        "maxItemsOne": false
+                    },
+                    "pools": {
+                        "maxItemsOne": false
+                    },
+                    "sni_container_refs": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "tls_versions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "openstack_lb_loadbalancer_v2": {
+                "current": "openstack:loadbalancer/getLoadbalancerV2:getLoadbalancerV2",
+                "majorVersion": 5,
+                "fields": {
+                    "additional_vips": {
+                        "maxItemsOne": false
+                    },
+                    "listeners": {
+                        "maxItemsOne": false
+                    },
+                    "pools": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "tags_any": {
+                        "maxItemsOne": false
+                    },
+                    "tags_not": {
+                        "maxItemsOne": false
+                    },
+                    "tags_not_any": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "openstack_lb_pool_v2": {
+                "current": "openstack:loadbalancer/getPoolV2:getPoolV2",
+                "majorVersion": 5,
+                "fields": {
+                    "alpn_protocols": {
+                        "maxItemsOne": false
+                    },
+                    "listeners": {
+                        "maxItemsOne": false
+                    },
+                    "loadbalancers": {
+                        "maxItemsOne": false
+                    },
+                    "members": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "session_persistence": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "tls_versions": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "openstack_loadbalancer_flavor_v2": {
                 "current": "openstack:loadbalancer/getLbFlavorDeprecated:getLbFlavorDeprecated",

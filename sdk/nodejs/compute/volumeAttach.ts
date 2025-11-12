@@ -32,6 +32,76 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Attaching multiple volumes to a single instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * import * as std from "@pulumi/std";
+ *
+ * const volumes: openstack.blockstorage.Volume[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     volumes.push(new openstack.blockstorage.Volume(`volumes-${range.value}`, {
+ *         name: std.format({
+ *             input: "vol-%02d",
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *         size: 1,
+ *     }));
+ * }
+ * const instance1 = new openstack.compute.Instance("instance_1", {
+ *     name: "instance_1",
+ *     securityGroups: ["default"],
+ * });
+ * const attachments: openstack.compute.VolumeAttach[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     attachments.push(new openstack.compute.VolumeAttach(`attachments-${range.value}`, {
+ *         instanceId: instance1.id,
+ *         volumeId: volumes[range.value].id,
+ *     }));
+ * }
+ * export const volumeDevices = attachments.map(__item => __item.device);
+ * ```
+ *
+ * Note that the above example will not guarantee that the volumes are attached in
+ * a deterministic manner. The volumes will be attached in a seemingly random
+ * order.
+ *
+ * If you want to ensure that the volumes are attached in a given order, create
+ * explicit dependencies between the volumes, such as:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * import * as std from "@pulumi/std";
+ *
+ * const volumes: openstack.blockstorage.Volume[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     volumes.push(new openstack.blockstorage.Volume(`volumes-${range.value}`, {
+ *         name: std.format({
+ *             input: "vol-%02d",
+ *             args: [range.value + 1],
+ *         }).then(invoke => invoke.result),
+ *         size: 1,
+ *     }));
+ * }
+ * const instance1 = new openstack.compute.Instance("instance_1", {
+ *     name: "instance_1",
+ *     securityGroups: ["default"],
+ * });
+ * const attach1 = new openstack.compute.VolumeAttach("attach_1", {
+ *     instanceId: instance1.id,
+ *     volumeId: volumes[0].id,
+ * });
+ * const attach2 = new openstack.compute.VolumeAttach("attach_2", {
+ *     instanceId: instance1.id,
+ *     volumeId: volumes[1].id,
+ * }, {
+ *     dependsOn: [attach1],
+ * });
+ * export const volumeDevices = attachments.map(__item => __item.device);
+ * ```
+ *
  * ### Using Multiattach-enabled volumes
  *
  * Multiattach Volumes are dependent upon your OpenStack cloud and not all

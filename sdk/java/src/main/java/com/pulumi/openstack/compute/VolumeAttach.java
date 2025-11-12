@@ -70,6 +70,138 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Attaching multiple volumes to a single instance
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.blockstorage.Volume;
+ * import com.pulumi.openstack.blockstorage.VolumeArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.VolumeAttach;
+ * import com.pulumi.openstack.compute.VolumeAttachArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         for (var i = 0; i < 2; i++) {
+ *             new Volume("volumes-" + i, VolumeArgs.builder()
+ *                 .name(StdFunctions.format(FormatArgs.builder()
+ *                     .input("vol-%02d")
+ *                     .args(range.value() + 1)
+ *                     .build()).result())
+ *                 .size(1)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()
+ *             .name("instance_1")
+ *             .securityGroups("default")
+ *             .build());
+ * 
+ *         for (var i = 0; i < 2; i++) {
+ *             new VolumeAttach("attachments-" + i, VolumeAttachArgs.builder()
+ *                 .instanceId(instance1.id())
+ *                 .volumeId(volumes[range.value()].id())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         ctx.export("volumeDevices", attachments.stream().map(element -> element.device()).collect(toList()));
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Note that the above example will not guarantee that the volumes are attached in
+ * a deterministic manner. The volumes will be attached in a seemingly random
+ * order.
+ * 
+ * If you want to ensure that the volumes are attached in a given order, create
+ * explicit dependencies between the volumes, such as:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.blockstorage.Volume;
+ * import com.pulumi.openstack.blockstorage.VolumeArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.VolumeAttach;
+ * import com.pulumi.openstack.compute.VolumeAttachArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         for (var i = 0; i < 2; i++) {
+ *             new Volume("volumes-" + i, VolumeArgs.builder()
+ *                 .name(StdFunctions.format(FormatArgs.builder()
+ *                     .input("vol-%02d")
+ *                     .args(range.value() + 1)
+ *                     .build()).result())
+ *                 .size(1)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()
+ *             .name("instance_1")
+ *             .securityGroups("default")
+ *             .build());
+ * 
+ *         var attach1 = new VolumeAttach("attach1", VolumeAttachArgs.builder()
+ *             .instanceId(instance1.id())
+ *             .volumeId(volumes[0].id())
+ *             .build());
+ * 
+ *         var attach2 = new VolumeAttach("attach2", VolumeAttachArgs.builder()
+ *             .instanceId(instance1.id())
+ *             .volumeId(volumes[1].id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(attach1)
+ *                 .build());
+ * 
+ *         ctx.export("volumeDevices", attachments.stream().map(element -> element.device()).collect(toList()));
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ### Using Multiattach-enabled volumes
  * 
  * Multiattach Volumes are dependent upon your OpenStack cloud and not all

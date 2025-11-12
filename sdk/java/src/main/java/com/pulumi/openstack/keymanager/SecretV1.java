@@ -108,6 +108,57 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Secret with the expiration date
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.keymanager.SecretV1;
+ * import com.pulumi.openstack.keymanager.SecretV1Args;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
+ * import com.pulumi.std.inputs.TimestampArgs;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.std.inputs.TimeaddArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secret1 = new SecretV1("secret1", SecretV1Args.builder()
+ *             .name("certificate")
+ *             .payload(StdFunctions.file(FileArgs.builder()
+ *                 .input("certificate.pem")
+ *                 .build()).result())
+ *             .secretType("certificate")
+ *             .payloadContentType("text/plain")
+ *             .expiration(StdFunctions.timeadd(TimeaddArgs.builder()
+ *                 .duration(StdFunctions.timestamp(TimestampArgs.builder()
+ *                     .build()).result())
+ *                 .timestamp(StdFunctions.format(FormatArgs.builder()
+ *                     .input("%dh")
+ *                     .args(8760)
+ *                     .build()).result())
+ *                 .build()).result())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ### Secret with the ACL
  * 
  * &gt; **Note** Only read ACLs are supported

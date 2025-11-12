@@ -30,6 +30,21 @@ export const getLbFlavorDeprecated: typeof import("./getLbFlavorDeprecated").get
 export const getLbFlavorDeprecatedOutput: typeof import("./getLbFlavorDeprecated").getLbFlavorDeprecatedOutput = null as any;
 utilities.lazyLoad(exports, ["getLbFlavorDeprecated","getLbFlavorDeprecatedOutput"], () => require("./getLbFlavorDeprecated"));
 
+export { GetListenerV2Args, GetListenerV2Result, GetListenerV2OutputArgs } from "./getListenerV2";
+export const getListenerV2: typeof import("./getListenerV2").getListenerV2 = null as any;
+export const getListenerV2Output: typeof import("./getListenerV2").getListenerV2Output = null as any;
+utilities.lazyLoad(exports, ["getListenerV2","getListenerV2Output"], () => require("./getListenerV2"));
+
+export { GetLoadbalancerV2Args, GetLoadbalancerV2Result, GetLoadbalancerV2OutputArgs } from "./getLoadbalancerV2";
+export const getLoadbalancerV2: typeof import("./getLoadbalancerV2").getLoadbalancerV2 = null as any;
+export const getLoadbalancerV2Output: typeof import("./getLoadbalancerV2").getLoadbalancerV2Output = null as any;
+utilities.lazyLoad(exports, ["getLoadbalancerV2","getLoadbalancerV2Output"], () => require("./getLoadbalancerV2"));
+
+export { GetPoolV2Args, GetPoolV2Result, GetPoolV2OutputArgs } from "./getPoolV2";
+export const getPoolV2: typeof import("./getPoolV2").getPoolV2 = null as any;
+export const getPoolV2Output: typeof import("./getPoolV2").getPoolV2Output = null as any;
+utilities.lazyLoad(exports, ["getPoolV2","getPoolV2Output"], () => require("./getPoolV2"));
+
 export { L7PolicyV2Args, L7PolicyV2State } from "./l7policyV2";
 export type L7PolicyV2 = import("./l7policyV2").L7PolicyV2;
 export const L7PolicyV2: typeof import("./l7policyV2").L7PolicyV2 = null as any;

@@ -309,6 +309,61 @@ class VolumeAttach(pulumi.CustomResource):
             volume_id=volume1.id)
         ```
 
+        ### Attaching multiple volumes to a single instance
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+        import pulumi_std as std
+
+        volumes = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            volumes.append(openstack.blockstorage.Volume(f"volumes-{range['value']}",
+                name=std.format(input="vol-%02d",
+                    args=[range["value"] + 1]).result,
+                size=1))
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
+            security_groups=["default"])
+        attachments = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            attachments.append(openstack.compute.VolumeAttach(f"attachments-{range['value']}",
+                instance_id=instance1.id,
+                volume_id=volumes[range["value"]].id))
+        pulumi.export("volumeDevices", [__item.device for __item in attachments])
+        ```
+
+        Note that the above example will not guarantee that the volumes are attached in
+        a deterministic manner. The volumes will be attached in a seemingly random
+        order.
+
+        If you want to ensure that the volumes are attached in a given order, create
+        explicit dependencies between the volumes, such as:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+        import pulumi_std as std
+
+        volumes = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            volumes.append(openstack.blockstorage.Volume(f"volumes-{range['value']}",
+                name=std.format(input="vol-%02d",
+                    args=[range["value"] + 1]).result,
+                size=1))
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
+            security_groups=["default"])
+        attach1 = openstack.compute.VolumeAttach("attach_1",
+            instance_id=instance1.id,
+            volume_id=volumes[0].id)
+        attach2 = openstack.compute.VolumeAttach("attach_2",
+            instance_id=instance1.id,
+            volume_id=volumes[1].id,
+            opts = pulumi.ResourceOptions(depends_on=[attach1]))
+        pulumi.export("volumeDevices", [__item["device"] for __item in attachments])
+        ```
+
         ### Using Multiattach-enabled volumes
 
         Multiattach Volumes are dependent upon your OpenStack cloud and not all
@@ -393,6 +448,61 @@ class VolumeAttach(pulumi.CustomResource):
         va1 = openstack.compute.VolumeAttach("va_1",
             instance_id=instance1.id,
             volume_id=volume1.id)
+        ```
+
+        ### Attaching multiple volumes to a single instance
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+        import pulumi_std as std
+
+        volumes = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            volumes.append(openstack.blockstorage.Volume(f"volumes-{range['value']}",
+                name=std.format(input="vol-%02d",
+                    args=[range["value"] + 1]).result,
+                size=1))
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
+            security_groups=["default"])
+        attachments = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            attachments.append(openstack.compute.VolumeAttach(f"attachments-{range['value']}",
+                instance_id=instance1.id,
+                volume_id=volumes[range["value"]].id))
+        pulumi.export("volumeDevices", [__item.device for __item in attachments])
+        ```
+
+        Note that the above example will not guarantee that the volumes are attached in
+        a deterministic manner. The volumes will be attached in a seemingly random
+        order.
+
+        If you want to ensure that the volumes are attached in a given order, create
+        explicit dependencies between the volumes, such as:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+        import pulumi_std as std
+
+        volumes = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            volumes.append(openstack.blockstorage.Volume(f"volumes-{range['value']}",
+                name=std.format(input="vol-%02d",
+                    args=[range["value"] + 1]).result,
+                size=1))
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
+            security_groups=["default"])
+        attach1 = openstack.compute.VolumeAttach("attach_1",
+            instance_id=instance1.id,
+            volume_id=volumes[0].id)
+        attach2 = openstack.compute.VolumeAttach("attach_2",
+            instance_id=instance1.id,
+            volume_id=volumes[1].id,
+            opts = pulumi.ResourceOptions(depends_on=[attach1]))
+        pulumi.export("volumeDevices", [__item["device"] for __item in attachments])
         ```
 
         ### Using Multiattach-enabled volumes

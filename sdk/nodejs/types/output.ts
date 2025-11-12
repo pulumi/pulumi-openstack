@@ -29,6 +29,21 @@ export interface BgpvpnPortAssociateV2Route {
     type: string;
 }
 
+export interface TaasTapMirrorV2Directions {
+    /**
+     * Declares ingress traffic to the port will be mirrored. The value
+     * is the identifier of the ERSPAN or GRE session between the source and destination,
+     * this must be unique within the project.
+     */
+    in?: number;
+    /**
+     * Declares egress traffic will be mirrored. The value is the
+     * identifier of the ERSPAN or GRE session between the source and destination,
+     * this must be unique within the project.
+     */
+    out?: number;
+}
+
 export namespace bgpvpn {
     export interface PortAssociateV2Route {
         /**
@@ -704,6 +719,82 @@ export namespace keymanager {
 }
 
 export namespace loadbalancer {
+    export interface GetListenerV2L7policy {
+        id: string;
+    }
+
+    export interface GetListenerV2Loadbalancer {
+        id: string;
+    }
+
+    export interface GetListenerV2Pool {
+        id: string;
+    }
+
+    export interface GetLoadbalancerV2Listener {
+        id: string;
+    }
+
+    export interface GetLoadbalancerV2Pool {
+        id: string;
+    }
+
+    export interface GetPoolV2Listener {
+        id: string;
+    }
+
+    export interface GetPoolV2Loadbalancer {
+        id: string;
+    }
+
+    export interface GetPoolV2Member {
+        address: string;
+        /**
+         * The administrative state of the Pool, which is up (true)
+         * or down (false).
+         */
+        adminStateUp: boolean;
+        backup: boolean;
+        id: string;
+        monitorAddress: string;
+        monitorPort: number;
+        /**
+         * The name of the pool. Exactly one of `name`, `poolId`
+         * is required to be set.
+         */
+        name: string;
+        /**
+         * The operating status of the pool.
+         */
+        operatingStatus: string;
+        /**
+         * The ID of the pool. Exactly one of `name`, `poolId`
+         * is required to be set.
+         */
+        poolId: string;
+        /**
+         * The owner (project/tenant) ID of the pool.
+         */
+        projectId: string;
+        protocolPort: number;
+        /**
+         * The provisioning status of the pool.
+         */
+        provisioningStatus: string;
+        subnetId: string;
+        /**
+         * A set of tags applied to the loadbalancer's pool. The
+         * loadbalancer' pool will be returned if it has all of the specified tags.
+         */
+        tags: string[];
+        weight: number;
+    }
+
+    export interface GetPoolV2SessionPersistence {
+        cookieName: string;
+        type: string;
+    }
+
     export interface MembersMember {
         /**
          * The IP address of the members to receive traffic from

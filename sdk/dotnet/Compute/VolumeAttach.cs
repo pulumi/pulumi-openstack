@@ -49,6 +49,127 @@ namespace Pulumi.OpenStack.Compute
     /// });
     /// ```
     /// 
+    /// ### Attaching multiple volumes to a single instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var volumes = new List&lt;OpenStack.BlockStorage.Volume&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         volumes.Add(new OpenStack.BlockStorage.Volume($"volumes-{range.Value}", new()
+    ///         {
+    ///             Name = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "vol-%02d",
+    ///                 Args = new[]
+    ///                 {
+    ///                     range.Value + 1,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             Size = 1,
+    ///         }));
+    ///     }
+    ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
+    ///     {
+    ///         Name = "instance_1",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///     });
+    /// 
+    ///     var attachments = new List&lt;OpenStack.Compute.VolumeAttach&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         attachments.Add(new OpenStack.Compute.VolumeAttach($"attachments-{range.Value}", new()
+    ///         {
+    ///             InstanceId = instance1.Id,
+    ///             VolumeId = volumes[range.Value].Id,
+    ///         }));
+    ///     }
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["volumeDevices"] = attachments.Select(__item =&gt; __item.Device).ToList(),
+    ///     };
+    /// });
+    /// ```
+    /// 
+    /// Note that the above example will not guarantee that the volumes are attached in
+    /// a deterministic manner. The volumes will be attached in a seemingly random
+    /// order.
+    /// 
+    /// If you want to ensure that the volumes are attached in a given order, create
+    /// explicit dependencies between the volumes, such as:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var volumes = new List&lt;OpenStack.BlockStorage.Volume&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         volumes.Add(new OpenStack.BlockStorage.Volume($"volumes-{range.Value}", new()
+    ///         {
+    ///             Name = Std.Format.Invoke(new()
+    ///             {
+    ///                 Input = "vol-%02d",
+    ///                 Args = new[]
+    ///                 {
+    ///                     range.Value + 1,
+    ///                 },
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             Size = 1,
+    ///         }));
+    ///     }
+    ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
+    ///     {
+    ///         Name = "instance_1",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///     });
+    /// 
+    ///     var attach1 = new OpenStack.Compute.VolumeAttach("attach_1", new()
+    ///     {
+    ///         InstanceId = instance1.Id,
+    ///         VolumeId = volumes[0].Id,
+    ///     });
+    /// 
+    ///     var attach2 = new OpenStack.Compute.VolumeAttach("attach_2", new()
+    ///     {
+    ///         InstanceId = instance1.Id,
+    ///         VolumeId = volumes[1].Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             attach1,
+    ///         },
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["volumeDevices"] = attachments.Select(__item =&gt; __item.Device).ToList(),
+    ///     };
+    /// });
+    /// ```
+    /// 
     /// ### Using Multiattach-enabled volumes
     /// 
     /// Multiattach Volumes are dependent upon your OpenStack cloud and not all

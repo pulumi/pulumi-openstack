@@ -61,6 +61,150 @@ import (
 //
 // ```
 //
+// ### Attaching multiple volumes to a single instance
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+// Input: "vol-%02d",
+// Args: []float64{
+// val0 + 1,
+// },
+// }, nil)
+// if err != nil {
+// return err
+// }
+// var volumes []*blockstorage.Volume
+//
+//	for index := 0; index < 2; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := blockstorage.NewVolume(ctx, fmt.Sprintf("volumes-%v", key0), &blockstorage.VolumeArgs{
+// Name: pulumi.String(invokeFormat.Result),
+// Size: pulumi.Int(1),
+// })
+// if err != nil {
+// return err
+// }
+// volumes = append(volumes, __res)
+// }
+// instance1, err := compute.NewInstance(ctx, "instance_1", &compute.InstanceArgs{
+// Name: pulumi.String("instance_1"),
+// SecurityGroups: pulumi.StringArray{
+// pulumi.String("default"),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// var attachments []*compute.VolumeAttach
+//
+//	for index := 0; index < 2; index++ {
+//	    key0 := index
+//	    val0 := index
+//
+// __res, err := compute.NewVolumeAttach(ctx, fmt.Sprintf("attachments-%v", key0), &compute.VolumeAttachArgs{
+// InstanceId: instance1.ID(),
+// VolumeId: volumes[val0].ID(),
+// })
+// if err != nil {
+// return err
+// }
+// attachments = append(attachments, __res)
+// }
+// ctx.Export("volumeDevices", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:26,11-32)))
+// return nil
+// })
+// }
+// ```
+//
+// Note that the above example will not guarantee that the volumes are attached in
+// a deterministic manner. The volumes will be attached in a seemingly random
+// order.
+//
+// If you want to ensure that the volumes are attached in a given order, create
+// explicit dependencies between the volumes, such as:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+// Input: "vol-%02d",
+// Args: []float64{
+// val0 + 1,
+// },
+// }, nil)
+// if err != nil {
+// return err
+// }
+// var volumes []*blockstorage.Volume
+//
+//	for index := 0; index < 2; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := blockstorage.NewVolume(ctx, fmt.Sprintf("volumes-%v", key0), &blockstorage.VolumeArgs{
+// Name: pulumi.String(invokeFormat.Result),
+// Size: pulumi.Int(1),
+// })
+// if err != nil {
+// return err
+// }
+// volumes = append(volumes, __res)
+// }
+// instance1, err := compute.NewInstance(ctx, "instance_1", &compute.InstanceArgs{
+// Name: pulumi.String("instance_1"),
+// SecurityGroups: pulumi.StringArray{
+// pulumi.String("default"),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// attach1, err := compute.NewVolumeAttach(ctx, "attach_1", &compute.VolumeAttachArgs{
+// InstanceId: instance1.ID(),
+// VolumeId: volumes[0].ID(),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = compute.NewVolumeAttach(ctx, "attach_2", &compute.VolumeAttachArgs{
+// InstanceId: instance1.ID(),
+// VolumeId: volumes[1].ID(),
+// }, pulumi.DependsOn([]pulumi.Resource{
+// attach1,
+// }))
+// if err != nil {
+// return err
+// }
+// ctx.Export("volumeDevices", pulumi.Array(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:33,11-32)))
+// return nil
+// })
+// }
+// ```
+//
 // ### Using Multiattach-enabled volumes
 //
 // Multiattach Volumes are dependent upon your OpenStack cloud and not all

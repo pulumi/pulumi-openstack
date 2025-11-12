@@ -114,19 +114,19 @@ namespace Pulumi.OpenStack.Networking
     ///             HostId = "b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
     ///             VnicType = "baremetal",
     ///             Profile = @"{
-    ///   ""local_link_information"": [
+    ///   \""local_link_information\"": [
     ///     {
-    ///       ""switch_info"": ""info1"",
-    ///       ""port_id"": ""Ethernet3/4"",
-    ///       ""switch_id"": ""12:34:56:78:9A:BC""
+    ///       \""switch_info\"": \""info1\"",
+    ///       \""port_id\"": \""Ethernet3/4\"",
+    ///       \""switch_id\"": \""12:34:56:78:9A:BC\""
     ///     },
     ///     {
-    ///       ""switch_info"": ""info2"",
-    ///       ""port_id"": ""Ethernet3/4"",
-    ///       ""switch_id"": ""12:34:56:78:9A:BD""
+    ///       \""switch_info\"": \""info2\"",
+    ///       \""port_id\"": \""Ethernet3/4\"",
+    ///       \""switch_id\"": \""12:34:56:78:9A:BD\""
     ///     }
     ///   ],
-    ///   ""vlan_type"": ""allowed""
+    ///   \""vlan_type\"": \""allowed\""
     /// }
     /// ",
     ///         },

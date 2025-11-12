@@ -158,6 +158,160 @@ import (
 //
 // ```
 //
+// ### Attaching Multiple Interfaces
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
+//				Name:         pulumi.String("network_1"),
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "port-%02d",
+//				Args: []float64{
+//					val0 + 1,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var ports []*networking.Port
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := networking.NewPort(ctx, fmt.Sprintf("ports-%v", key0), &networking.PortArgs{
+//					Name:         pulumi.String(invokeFormat.Result),
+//					NetworkId:    network1.ID(),
+//					AdminStateUp: pulumi.Bool(true),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				ports = append(ports, __res)
+//			}
+//			instance1, err := compute.NewInstance(ctx, "instance_1", &compute.InstanceArgs{
+//				Name: pulumi.String("instance_1"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			var attachments []*compute.InterfaceAttach
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := compute.NewInterfaceAttach(ctx, fmt.Sprintf("attachments-%v", key0), &compute.InterfaceAttachArgs{
+//					PortId:     ports[val0].ID(),
+//					InstanceId: instance1.ID(),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				attachments = append(attachments, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Note that the above example will not guarantee that the ports are attached in
+// a deterministic manner. The ports will be attached in a seemingly random
+// order.
+//
+// If you want to ensure that the ports are attached in a given order, create
+// explicit dependencies between the ports, such as:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
+//				Name:         pulumi.String("network_1"),
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "port-%02d",
+//				Args: []float64{
+//					val0 + 1,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var ports []*networking.Port
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := networking.NewPort(ctx, fmt.Sprintf("ports-%v", key0), &networking.PortArgs{
+//					Name:         pulumi.String(invokeFormat.Result),
+//					NetworkId:    network1.ID(),
+//					AdminStateUp: pulumi.Bool(true),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				ports = append(ports, __res)
+//			}
+//			instance1, err := compute.NewInstance(ctx, "instance_1", &compute.InstanceArgs{
+//				Name: pulumi.String("instance_1"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInterfaceAttach(ctx, "ai_1", &compute.InterfaceAttachArgs{
+//				InstanceId: instance1.ID(),
+//				PortId:     ports[0].ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInterfaceAttach(ctx, "ai_2", &compute.InterfaceAttachArgs{
+//				InstanceId: instance1.ID(),
+//				PortId:     ports[1].ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Interface Attachments can be imported using the Instance ID and Port ID
