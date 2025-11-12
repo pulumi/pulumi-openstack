@@ -15,9 +15,18 @@ import com.pulumi.openstack.loadbalancer.inputs.GetFlavorprofileV2Args;
 import com.pulumi.openstack.loadbalancer.inputs.GetFlavorprofileV2PlainArgs;
 import com.pulumi.openstack.loadbalancer.inputs.GetLbFlavorDeprecatedArgs;
 import com.pulumi.openstack.loadbalancer.inputs.GetLbFlavorDeprecatedPlainArgs;
+import com.pulumi.openstack.loadbalancer.inputs.GetListenerV2Args;
+import com.pulumi.openstack.loadbalancer.inputs.GetListenerV2PlainArgs;
+import com.pulumi.openstack.loadbalancer.inputs.GetLoadbalancerV2Args;
+import com.pulumi.openstack.loadbalancer.inputs.GetLoadbalancerV2PlainArgs;
+import com.pulumi.openstack.loadbalancer.inputs.GetPoolV2Args;
+import com.pulumi.openstack.loadbalancer.inputs.GetPoolV2PlainArgs;
 import com.pulumi.openstack.loadbalancer.outputs.GetFlavorV2Result;
 import com.pulumi.openstack.loadbalancer.outputs.GetFlavorprofileV2Result;
 import com.pulumi.openstack.loadbalancer.outputs.GetLbFlavorDeprecatedResult;
+import com.pulumi.openstack.loadbalancer.outputs.GetListenerV2Result;
+import com.pulumi.openstack.loadbalancer.outputs.GetLoadbalancerV2Result;
+import com.pulumi.openstack.loadbalancer.outputs.GetPoolV2Result;
 import java.util.concurrent.CompletableFuture;
 
 public final class LoadbalancerFunctions {
@@ -888,5 +897,845 @@ public final class LoadbalancerFunctions {
      */
     public static CompletableFuture<GetLbFlavorDeprecatedResult> getLbFlavorDeprecatedPlain(GetLbFlavorDeprecatedPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:loadbalancer/getLbFlavorDeprecated:getLbFlavorDeprecated", TypeShape.of(GetLbFlavorDeprecatedResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer listener.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetListenerV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listener1 = LoadbalancerFunctions.getListenerV2(GetListenerV2Args.builder()
+     *             .name("listener_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetListenerV2Result> getListenerV2() {
+        return getListenerV2(GetListenerV2Args.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer listener.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetListenerV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listener1 = LoadbalancerFunctions.getListenerV2(GetListenerV2Args.builder()
+     *             .name("listener_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetListenerV2Result> getListenerV2Plain() {
+        return getListenerV2Plain(GetListenerV2PlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer listener.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetListenerV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listener1 = LoadbalancerFunctions.getListenerV2(GetListenerV2Args.builder()
+     *             .name("listener_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetListenerV2Result> getListenerV2(GetListenerV2Args args) {
+        return getListenerV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer listener.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetListenerV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listener1 = LoadbalancerFunctions.getListenerV2(GetListenerV2Args.builder()
+     *             .name("listener_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetListenerV2Result> getListenerV2Plain(GetListenerV2PlainArgs args) {
+        return getListenerV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer listener.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetListenerV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listener1 = LoadbalancerFunctions.getListenerV2(GetListenerV2Args.builder()
+     *             .name("listener_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetListenerV2Result> getListenerV2(GetListenerV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:loadbalancer/getListenerV2:getListenerV2", TypeShape.of(GetListenerV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer listener.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetListenerV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listener1 = LoadbalancerFunctions.getListenerV2(GetListenerV2Args.builder()
+     *             .name("listener_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetListenerV2Result> getListenerV2(GetListenerV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:loadbalancer/getListenerV2:getListenerV2", TypeShape.of(GetListenerV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer listener.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetListenerV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listener1 = LoadbalancerFunctions.getListenerV2(GetListenerV2Args.builder()
+     *             .name("listener_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetListenerV2Result> getListenerV2Plain(GetListenerV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("openstack:loadbalancer/getListenerV2:getListenerV2", TypeShape.of(GetListenerV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetLoadbalancerV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var loadbalancer1 = LoadbalancerFunctions.getLoadbalancerV2(GetLoadbalancerV2Args.builder()
+     *             .name("loadbalancer_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLoadbalancerV2Result> getLoadbalancerV2() {
+        return getLoadbalancerV2(GetLoadbalancerV2Args.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetLoadbalancerV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var loadbalancer1 = LoadbalancerFunctions.getLoadbalancerV2(GetLoadbalancerV2Args.builder()
+     *             .name("loadbalancer_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetLoadbalancerV2Result> getLoadbalancerV2Plain() {
+        return getLoadbalancerV2Plain(GetLoadbalancerV2PlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetLoadbalancerV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var loadbalancer1 = LoadbalancerFunctions.getLoadbalancerV2(GetLoadbalancerV2Args.builder()
+     *             .name("loadbalancer_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLoadbalancerV2Result> getLoadbalancerV2(GetLoadbalancerV2Args args) {
+        return getLoadbalancerV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetLoadbalancerV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var loadbalancer1 = LoadbalancerFunctions.getLoadbalancerV2(GetLoadbalancerV2Args.builder()
+     *             .name("loadbalancer_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetLoadbalancerV2Result> getLoadbalancerV2Plain(GetLoadbalancerV2PlainArgs args) {
+        return getLoadbalancerV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetLoadbalancerV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var loadbalancer1 = LoadbalancerFunctions.getLoadbalancerV2(GetLoadbalancerV2Args.builder()
+     *             .name("loadbalancer_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLoadbalancerV2Result> getLoadbalancerV2(GetLoadbalancerV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:loadbalancer/getLoadbalancerV2:getLoadbalancerV2", TypeShape.of(GetLoadbalancerV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetLoadbalancerV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var loadbalancer1 = LoadbalancerFunctions.getLoadbalancerV2(GetLoadbalancerV2Args.builder()
+     *             .name("loadbalancer_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLoadbalancerV2Result> getLoadbalancerV2(GetLoadbalancerV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:loadbalancer/getLoadbalancerV2:getLoadbalancerV2", TypeShape.of(GetLoadbalancerV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetLoadbalancerV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var loadbalancer1 = LoadbalancerFunctions.getLoadbalancerV2(GetLoadbalancerV2Args.builder()
+     *             .name("loadbalancer_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetLoadbalancerV2Result> getLoadbalancerV2Plain(GetLoadbalancerV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("openstack:loadbalancer/getLoadbalancerV2:getLoadbalancerV2", TypeShape.of(GetLoadbalancerV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer pool.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetPoolV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pool1 = LoadbalancerFunctions.getPoolV2(GetPoolV2Args.builder()
+     *             .name("pool_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPoolV2Result> getPoolV2() {
+        return getPoolV2(GetPoolV2Args.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer pool.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetPoolV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pool1 = LoadbalancerFunctions.getPoolV2(GetPoolV2Args.builder()
+     *             .name("pool_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPoolV2Result> getPoolV2Plain() {
+        return getPoolV2Plain(GetPoolV2PlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer pool.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetPoolV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pool1 = LoadbalancerFunctions.getPoolV2(GetPoolV2Args.builder()
+     *             .name("pool_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPoolV2Result> getPoolV2(GetPoolV2Args args) {
+        return getPoolV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer pool.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetPoolV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pool1 = LoadbalancerFunctions.getPoolV2(GetPoolV2Args.builder()
+     *             .name("pool_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPoolV2Result> getPoolV2Plain(GetPoolV2PlainArgs args) {
+        return getPoolV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer pool.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetPoolV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pool1 = LoadbalancerFunctions.getPoolV2(GetPoolV2Args.builder()
+     *             .name("pool_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPoolV2Result> getPoolV2(GetPoolV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:loadbalancer/getPoolV2:getPoolV2", TypeShape.of(GetPoolV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer pool.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetPoolV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pool1 = LoadbalancerFunctions.getPoolV2(GetPoolV2Args.builder()
+     *             .name("pool_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPoolV2Result> getPoolV2(GetPoolV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:loadbalancer/getPoolV2:getPoolV2", TypeShape.of(GetPoolV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an OpenStack Load Balancer pool.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
+     * import com.pulumi.openstack.loadbalancer.inputs.GetPoolV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pool1 = LoadbalancerFunctions.getPoolV2(GetPoolV2Args.builder()
+     *             .name("pool_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPoolV2Result> getPoolV2Plain(GetPoolV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("openstack:loadbalancer/getPoolV2:getPoolV2", TypeShape.of(GetPoolV2Result.class), args, Utilities.withVersion(options));
     }
 }

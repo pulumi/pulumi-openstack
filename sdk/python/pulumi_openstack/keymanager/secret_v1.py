@@ -618,6 +618,23 @@ class SecretV1(pulumi.CustomResource):
             payload_content_encoding="base64")
         ```
 
+        ### Secret with the expiration date
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+        import pulumi_std as std
+
+        secret1 = openstack.keymanager.SecretV1("secret_1",
+            name="certificate",
+            payload=std.file(input="certificate.pem").result,
+            secret_type="certificate",
+            payload_content_type="text/plain",
+            expiration=std.timeadd(duration=std.timestamp().result,
+                timestamp=std.format(input="%dh",
+                    args=[8760]).result).result)
+        ```
+
         ### Secret with the ACL
 
         > **Note** Only read ACLs are supported
@@ -719,6 +736,23 @@ class SecretV1(pulumi.CustomResource):
             secret_type="passphrase",
             payload_content_type="application/octet-stream",
             payload_content_encoding="base64")
+        ```
+
+        ### Secret with the expiration date
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+        import pulumi_std as std
+
+        secret1 = openstack.keymanager.SecretV1("secret_1",
+            name="certificate",
+            payload=std.file(input="certificate.pem").result,
+            secret_type="certificate",
+            payload_content_type="text/plain",
+            expiration=std.timeadd(duration=std.timestamp().result,
+                timestamp=std.format(input="%dh",
+                    args=[8760]).result).result)
         ```
 
         ### Secret with the ACL

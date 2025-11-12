@@ -28,6 +28,21 @@ export interface BgpvpnPortAssociateV2Route {
      */
     type: pulumi.Input<string>;
 }
+
+export interface TaasTapMirrorV2Directions {
+    /**
+     * Declares ingress traffic to the port will be mirrored. The value
+     * is the identifier of the ERSPAN or GRE session between the source and destination,
+     * this must be unique within the project.
+     */
+    in?: pulumi.Input<number>;
+    /**
+     * Declares egress traffic will be mirrored. The value is the
+     * identifier of the ERSPAN or GRE session between the source and destination,
+     * this must be unique within the project.
+     */
+    out?: pulumi.Input<number>;
+}
 export namespace bgpvpn {
     export interface PortAssociateV2Route {
         /**

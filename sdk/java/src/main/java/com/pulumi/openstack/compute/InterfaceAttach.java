@@ -172,6 +172,149 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Attaching Multiple Interfaces
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.networking.Network;
+ * import com.pulumi.openstack.networking.NetworkArgs;
+ * import com.pulumi.openstack.networking.Port;
+ * import com.pulumi.openstack.networking.PortArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.InterfaceAttach;
+ * import com.pulumi.openstack.compute.InterfaceAttachArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network1 = new Network("network1", NetworkArgs.builder()
+ *             .name("network_1")
+ *             .adminStateUp(true)
+ *             .build());
+ * 
+ *         for (var i = 0; i < 2; i++) {
+ *             new Port("ports-" + i, PortArgs.builder()
+ *                 .name(StdFunctions.format(FormatArgs.builder()
+ *                     .input("port-%02d")
+ *                     .args(range.value() + 1)
+ *                     .build()).result())
+ *                 .networkId(network1.id())
+ *                 .adminStateUp(true)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()
+ *             .name("instance_1")
+ *             .securityGroups("default")
+ *             .build());
+ * 
+ *         for (var i = 0; i < 2; i++) {
+ *             new InterfaceAttach("attachments-" + i, InterfaceAttachArgs.builder()
+ *                 .portId(ports[range.value()].id())
+ *                 .instanceId(instance1.id())
+ *                 .build());
+ * 
+ *         
+ * }
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Note that the above example will not guarantee that the ports are attached in
+ * a deterministic manner. The ports will be attached in a seemingly random
+ * order.
+ * 
+ * If you want to ensure that the ports are attached in a given order, create
+ * explicit dependencies between the ports, such as:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.networking.Network;
+ * import com.pulumi.openstack.networking.NetworkArgs;
+ * import com.pulumi.openstack.networking.Port;
+ * import com.pulumi.openstack.networking.PortArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.InterfaceAttach;
+ * import com.pulumi.openstack.compute.InterfaceAttachArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network1 = new Network("network1", NetworkArgs.builder()
+ *             .name("network_1")
+ *             .adminStateUp(true)
+ *             .build());
+ * 
+ *         for (var i = 0; i < 2; i++) {
+ *             new Port("ports-" + i, PortArgs.builder()
+ *                 .name(StdFunctions.format(FormatArgs.builder()
+ *                     .input("port-%02d")
+ *                     .args(range.value() + 1)
+ *                     .build()).result())
+ *                 .networkId(network1.id())
+ *                 .adminStateUp(true)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()
+ *             .name("instance_1")
+ *             .securityGroups("default")
+ *             .build());
+ * 
+ *         var ai1 = new InterfaceAttach("ai1", InterfaceAttachArgs.builder()
+ *             .instanceId(instance1.id())
+ *             .portId(ports[0].id())
+ *             .build());
+ * 
+ *         var ai2 = new InterfaceAttach("ai2", InterfaceAttachArgs.builder()
+ *             .instanceId(instance1.id())
+ *             .portId(ports[1].id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Interface Attachments can be imported using the Instance ID and Port ID

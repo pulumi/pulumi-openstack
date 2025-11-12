@@ -53,6 +53,30 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Secret with the expiration date
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * import * as std from "@pulumi/std";
+ *
+ * const secret1 = new openstack.keymanager.SecretV1("secret_1", {
+ *     name: "certificate",
+ *     payload: std.file({
+ *         input: "certificate.pem",
+ *     }).then(invoke => invoke.result),
+ *     secretType: "certificate",
+ *     payloadContentType: "text/plain",
+ *     expiration: Promise.all([std.timestamp({}), std.format({
+ *         input: "%dh",
+ *         args: [8760],
+ *     })]).then(([invoke, invoke1]) => std.timeadd({
+ *         duration: invoke.result,
+ *         timestamp: invoke1.result,
+ *     })).then(invoke => invoke.result),
+ * });
+ * ```
+ *
  * ### Secret with the ACL
  *
  * > **Note** Only read ACLs are supported

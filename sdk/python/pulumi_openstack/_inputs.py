@@ -17,6 +17,8 @@ from . import _utilities
 __all__ = [
     'BgpvpnPortAssociateV2RouteArgs',
     'BgpvpnPortAssociateV2RouteArgsDict',
+    'TaasTapMirrorV2DirectionsArgs',
+    'TaasTapMirrorV2DirectionsArgsDict',
 ]
 
 MYPY = False
@@ -125,5 +127,69 @@ class BgpvpnPortAssociateV2RouteArgs:
     @prefix.setter
     def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "prefix", value)
+
+
+if not MYPY:
+    class TaasTapMirrorV2DirectionsArgsDict(TypedDict):
+        in_: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Declares ingress traffic to the port will be mirrored. The value
+        is the identifier of the ERSPAN or GRE session between the source and destination,
+        this must be unique within the project.
+        """
+        out: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Declares egress traffic will be mirrored. The value is the
+        identifier of the ERSPAN or GRE session between the source and destination,
+        this must be unique within the project.
+        """
+elif False:
+    TaasTapMirrorV2DirectionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TaasTapMirrorV2DirectionsArgs:
+    def __init__(__self__, *,
+                 in_: Optional[pulumi.Input[_builtins.int]] = None,
+                 out: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] in_: Declares ingress traffic to the port will be mirrored. The value
+               is the identifier of the ERSPAN or GRE session between the source and destination,
+               this must be unique within the project.
+        :param pulumi.Input[_builtins.int] out: Declares egress traffic will be mirrored. The value is the
+               identifier of the ERSPAN or GRE session between the source and destination,
+               this must be unique within the project.
+        """
+        if in_ is not None:
+            pulumi.set(__self__, "in_", in_)
+        if out is not None:
+            pulumi.set(__self__, "out", out)
+
+    @_builtins.property
+    @pulumi.getter(name="in")
+    def in_(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Declares ingress traffic to the port will be mirrored. The value
+        is the identifier of the ERSPAN or GRE session between the source and destination,
+        this must be unique within the project.
+        """
+        return pulumi.get(self, "in_")
+
+    @in_.setter
+    def in_(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "in_", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def out(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Declares egress traffic will be mirrored. The value is the
+        identifier of the ERSPAN or GRE session between the source and destination,
+        this must be unique within the project.
+        """
+        return pulumi.get(self, "out")
+
+    @out.setter
+    def out(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "out", value)
 
 

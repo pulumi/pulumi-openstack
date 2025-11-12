@@ -91,6 +91,55 @@ import (
 //
 // ```
 //
+// ### Secret with the expiration date
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "certificate.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeTimeadd1, err := std.Timeadd(ctx, &std.TimeaddArgs{
+//				Duration: std.Timestamp(ctx, &std.TimestampArgs{}, nil).Result,
+//				Timestamp: std.Format(ctx, &std.FormatArgs{
+//					Input: "%dh",
+//					Args: []float64{
+//						8760,
+//					},
+//				}, nil).Result,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = keymanager.NewSecretV1(ctx, "secret_1", &keymanager.SecretV1Args{
+//				Name:               pulumi.String("certificate"),
+//				Payload:            pulumi.String(invokeFile.Result),
+//				SecretType:         pulumi.String("certificate"),
+//				PayloadContentType: pulumi.String("text/plain"),
+//				Expiration:         pulumi.String(invokeTimeadd1.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Secret with the ACL
 //
 // > **Note** Only read ACLs are supported

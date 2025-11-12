@@ -17,6 +17,15 @@ from .. import _utilities
 __all__ = [
     'MembersMember',
     'PoolPersistence',
+    'GetListenerV2L7policyResult',
+    'GetListenerV2LoadbalancerResult',
+    'GetListenerV2PoolResult',
+    'GetLoadbalancerV2ListenerResult',
+    'GetLoadbalancerV2PoolResult',
+    'GetPoolV2ListenerResult',
+    'GetPoolV2LoadbalancerResult',
+    'GetPoolV2MemberResult',
+    'GetPoolV2SessionPersistenceResult',
 ]
 
 @pulumi.output_type
@@ -234,5 +243,256 @@ class PoolPersistence(dict):
         appropriately. Required if `type = APP_COOKIE`.
         """
         return pulumi.get(self, "cookie_name")
+
+
+@pulumi.output_type
+class GetListenerV2L7policyResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetListenerV2LoadbalancerResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetListenerV2PoolResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetLoadbalancerV2ListenerResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetLoadbalancerV2PoolResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetPoolV2ListenerResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetPoolV2LoadbalancerResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetPoolV2MemberResult(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 admin_state_up: _builtins.bool,
+                 backup: _builtins.bool,
+                 id: _builtins.str,
+                 monitor_address: _builtins.str,
+                 monitor_port: _builtins.int,
+                 name: _builtins.str,
+                 operating_status: _builtins.str,
+                 pool_id: _builtins.str,
+                 project_id: _builtins.str,
+                 protocol_port: _builtins.int,
+                 provisioning_status: _builtins.str,
+                 subnet_id: _builtins.str,
+                 tags: Sequence[_builtins.str],
+                 weight: _builtins.int):
+        """
+        :param _builtins.bool admin_state_up: The administrative state of the Pool, which is up (true)
+               or down (false).
+        :param _builtins.str name: The name of the pool. Exactly one of `name`, `pool_id`
+               is required to be set.
+        :param _builtins.str operating_status: The operating status of the pool.
+        :param _builtins.str pool_id: The ID of the pool. Exactly one of `name`, `pool_id`
+               is required to be set.
+        :param _builtins.str project_id: The owner (project/tenant) ID of the pool.
+        :param _builtins.str provisioning_status: The provisioning status of the pool.
+        :param Sequence[_builtins.str] tags: A set of tags applied to the loadbalancer's pool. The
+               loadbalancer' pool will be returned if it has all of the specified tags.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "admin_state_up", admin_state_up)
+        pulumi.set(__self__, "backup", backup)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "monitor_address", monitor_address)
+        pulumi.set(__self__, "monitor_port", monitor_port)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operating_status", operating_status)
+        pulumi.set(__self__, "pool_id", pool_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "protocol_port", protocol_port)
+        pulumi.set(__self__, "provisioning_status", provisioning_status)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "weight", weight)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter(name="adminStateUp")
+    def admin_state_up(self) -> _builtins.bool:
+        """
+        The administrative state of the Pool, which is up (true)
+        or down (false).
+        """
+        return pulumi.get(self, "admin_state_up")
+
+    @_builtins.property
+    @pulumi.getter
+    def backup(self) -> _builtins.bool:
+        return pulumi.get(self, "backup")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="monitorAddress")
+    def monitor_address(self) -> _builtins.str:
+        return pulumi.get(self, "monitor_address")
+
+    @_builtins.property
+    @pulumi.getter(name="monitorPort")
+    def monitor_port(self) -> _builtins.int:
+        return pulumi.get(self, "monitor_port")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the pool. Exactly one of `name`, `pool_id`
+        is required to be set.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> _builtins.str:
+        """
+        The operating status of the pool.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter(name="poolId")
+    def pool_id(self) -> _builtins.str:
+        """
+        The ID of the pool. Exactly one of `name`, `pool_id`
+        is required to be set.
+        """
+        return pulumi.get(self, "pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        The owner (project/tenant) ID of the pool.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="protocolPort")
+    def protocol_port(self) -> _builtins.int:
+        return pulumi.get(self, "protocol_port")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> _builtins.str:
+        """
+        The provisioning status of the pool.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.str:
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Sequence[_builtins.str]:
+        """
+        A set of tags applied to the loadbalancer's pool. The
+        loadbalancer' pool will be returned if it has all of the specified tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> _builtins.int:
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GetPoolV2SessionPersistenceResult(dict):
+    def __init__(__self__, *,
+                 cookie_name: _builtins.str,
+                 type: _builtins.str):
+        pulumi.set(__self__, "cookie_name", cookie_name)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="cookieName")
+    def cookie_name(self) -> _builtins.str:
+        return pulumi.get(self, "cookie_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        return pulumi.get(self, "type")
 
 

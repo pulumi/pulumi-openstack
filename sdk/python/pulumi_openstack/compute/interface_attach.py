@@ -285,6 +285,66 @@ class InterfaceAttach(pulumi.CustomResource):
             port_id=port1.id)
         ```
 
+        ### Attaching Multiple Interfaces
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+        import pulumi_std as std
+
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        ports = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            ports.append(openstack.networking.Port(f"ports-{range['value']}",
+                name=std.format(input="port-%02d",
+                    args=[range["value"] + 1]).result,
+                network_id=network1.id,
+                admin_state_up=True))
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
+            security_groups=["default"])
+        attachments = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            attachments.append(openstack.compute.InterfaceAttach(f"attachments-{range['value']}",
+                port_id=ports[range["value"]].id,
+                instance_id=instance1.id))
+        ```
+
+        Note that the above example will not guarantee that the ports are attached in
+        a deterministic manner. The ports will be attached in a seemingly random
+        order.
+
+        If you want to ensure that the ports are attached in a given order, create
+        explicit dependencies between the ports, such as:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+        import pulumi_std as std
+
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        ports = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            ports.append(openstack.networking.Port(f"ports-{range['value']}",
+                name=std.format(input="port-%02d",
+                    args=[range["value"] + 1]).result,
+                network_id=network1.id,
+                admin_state_up=True))
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
+            security_groups=["default"])
+        ai1 = openstack.compute.InterfaceAttach("ai_1",
+            instance_id=instance1.id,
+            port_id=ports[0].id)
+        ai2 = openstack.compute.InterfaceAttach("ai_2",
+            instance_id=instance1.id,
+            port_id=ports[1].id)
+        ```
+
         ## Import
 
         Interface Attachments can be imported using the Instance ID and Port ID
@@ -373,6 +433,66 @@ class InterfaceAttach(pulumi.CustomResource):
         ai1 = openstack.compute.InterfaceAttach("ai_1",
             instance_id=instance1.id,
             port_id=port1.id)
+        ```
+
+        ### Attaching Multiple Interfaces
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+        import pulumi_std as std
+
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        ports = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            ports.append(openstack.networking.Port(f"ports-{range['value']}",
+                name=std.format(input="port-%02d",
+                    args=[range["value"] + 1]).result,
+                network_id=network1.id,
+                admin_state_up=True))
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
+            security_groups=["default"])
+        attachments = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            attachments.append(openstack.compute.InterfaceAttach(f"attachments-{range['value']}",
+                port_id=ports[range["value"]].id,
+                instance_id=instance1.id))
+        ```
+
+        Note that the above example will not guarantee that the ports are attached in
+        a deterministic manner. The ports will be attached in a seemingly random
+        order.
+
+        If you want to ensure that the ports are attached in a given order, create
+        explicit dependencies between the ports, such as:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+        import pulumi_std as std
+
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        ports = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            ports.append(openstack.networking.Port(f"ports-{range['value']}",
+                name=std.format(input="port-%02d",
+                    args=[range["value"] + 1]).result,
+                network_id=network1.id,
+                admin_state_up=True))
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
+            security_groups=["default"])
+        ai1 = openstack.compute.InterfaceAttach("ai_1",
+            instance_id=instance1.id,
+            port_id=ports[0].id)
+        ai2 = openstack.compute.InterfaceAttach("ai_2",
+            instance_id=instance1.id,
+            port_id=ports[1].id)
         ```
 
         ## Import

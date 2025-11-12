@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LbFlavorprofileV2{}
 	case "openstack:index/lbLoadbalancerV2:LbLoadbalancerV2":
 		r = &LbLoadbalancerV2{}
+	case "openstack:index/taasTapMirrorV2:TaasTapMirrorV2":
+		r = &TaasTapMirrorV2{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -92,6 +94,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"index/lbLoadbalancerV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"index/taasTapMirrorV2",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

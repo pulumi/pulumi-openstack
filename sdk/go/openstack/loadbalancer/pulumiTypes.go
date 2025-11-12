@@ -379,13 +379,1018 @@ func (o PoolPersistencePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetListenerV2L7policy struct {
+	Id string `pulumi:"id"`
+}
+
+// GetListenerV2L7policyInput is an input type that accepts GetListenerV2L7policyArgs and GetListenerV2L7policyOutput values.
+// You can construct a concrete instance of `GetListenerV2L7policyInput` via:
+//
+//	GetListenerV2L7policyArgs{...}
+type GetListenerV2L7policyInput interface {
+	pulumi.Input
+
+	ToGetListenerV2L7policyOutput() GetListenerV2L7policyOutput
+	ToGetListenerV2L7policyOutputWithContext(context.Context) GetListenerV2L7policyOutput
+}
+
+type GetListenerV2L7policyArgs struct {
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetListenerV2L7policyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenerV2L7policy)(nil)).Elem()
+}
+
+func (i GetListenerV2L7policyArgs) ToGetListenerV2L7policyOutput() GetListenerV2L7policyOutput {
+	return i.ToGetListenerV2L7policyOutputWithContext(context.Background())
+}
+
+func (i GetListenerV2L7policyArgs) ToGetListenerV2L7policyOutputWithContext(ctx context.Context) GetListenerV2L7policyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenerV2L7policyOutput)
+}
+
+// GetListenerV2L7policyArrayInput is an input type that accepts GetListenerV2L7policyArray and GetListenerV2L7policyArrayOutput values.
+// You can construct a concrete instance of `GetListenerV2L7policyArrayInput` via:
+//
+//	GetListenerV2L7policyArray{ GetListenerV2L7policyArgs{...} }
+type GetListenerV2L7policyArrayInput interface {
+	pulumi.Input
+
+	ToGetListenerV2L7policyArrayOutput() GetListenerV2L7policyArrayOutput
+	ToGetListenerV2L7policyArrayOutputWithContext(context.Context) GetListenerV2L7policyArrayOutput
+}
+
+type GetListenerV2L7policyArray []GetListenerV2L7policyInput
+
+func (GetListenerV2L7policyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenerV2L7policy)(nil)).Elem()
+}
+
+func (i GetListenerV2L7policyArray) ToGetListenerV2L7policyArrayOutput() GetListenerV2L7policyArrayOutput {
+	return i.ToGetListenerV2L7policyArrayOutputWithContext(context.Background())
+}
+
+func (i GetListenerV2L7policyArray) ToGetListenerV2L7policyArrayOutputWithContext(ctx context.Context) GetListenerV2L7policyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenerV2L7policyArrayOutput)
+}
+
+type GetListenerV2L7policyOutput struct{ *pulumi.OutputState }
+
+func (GetListenerV2L7policyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenerV2L7policy)(nil)).Elem()
+}
+
+func (o GetListenerV2L7policyOutput) ToGetListenerV2L7policyOutput() GetListenerV2L7policyOutput {
+	return o
+}
+
+func (o GetListenerV2L7policyOutput) ToGetListenerV2L7policyOutputWithContext(ctx context.Context) GetListenerV2L7policyOutput {
+	return o
+}
+
+func (o GetListenerV2L7policyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenerV2L7policy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetListenerV2L7policyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetListenerV2L7policyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenerV2L7policy)(nil)).Elem()
+}
+
+func (o GetListenerV2L7policyArrayOutput) ToGetListenerV2L7policyArrayOutput() GetListenerV2L7policyArrayOutput {
+	return o
+}
+
+func (o GetListenerV2L7policyArrayOutput) ToGetListenerV2L7policyArrayOutputWithContext(ctx context.Context) GetListenerV2L7policyArrayOutput {
+	return o
+}
+
+func (o GetListenerV2L7policyArrayOutput) Index(i pulumi.IntInput) GetListenerV2L7policyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListenerV2L7policy {
+		return vs[0].([]GetListenerV2L7policy)[vs[1].(int)]
+	}).(GetListenerV2L7policyOutput)
+}
+
+type GetListenerV2Loadbalancer struct {
+	Id string `pulumi:"id"`
+}
+
+// GetListenerV2LoadbalancerInput is an input type that accepts GetListenerV2LoadbalancerArgs and GetListenerV2LoadbalancerOutput values.
+// You can construct a concrete instance of `GetListenerV2LoadbalancerInput` via:
+//
+//	GetListenerV2LoadbalancerArgs{...}
+type GetListenerV2LoadbalancerInput interface {
+	pulumi.Input
+
+	ToGetListenerV2LoadbalancerOutput() GetListenerV2LoadbalancerOutput
+	ToGetListenerV2LoadbalancerOutputWithContext(context.Context) GetListenerV2LoadbalancerOutput
+}
+
+type GetListenerV2LoadbalancerArgs struct {
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetListenerV2LoadbalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenerV2Loadbalancer)(nil)).Elem()
+}
+
+func (i GetListenerV2LoadbalancerArgs) ToGetListenerV2LoadbalancerOutput() GetListenerV2LoadbalancerOutput {
+	return i.ToGetListenerV2LoadbalancerOutputWithContext(context.Background())
+}
+
+func (i GetListenerV2LoadbalancerArgs) ToGetListenerV2LoadbalancerOutputWithContext(ctx context.Context) GetListenerV2LoadbalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenerV2LoadbalancerOutput)
+}
+
+// GetListenerV2LoadbalancerArrayInput is an input type that accepts GetListenerV2LoadbalancerArray and GetListenerV2LoadbalancerArrayOutput values.
+// You can construct a concrete instance of `GetListenerV2LoadbalancerArrayInput` via:
+//
+//	GetListenerV2LoadbalancerArray{ GetListenerV2LoadbalancerArgs{...} }
+type GetListenerV2LoadbalancerArrayInput interface {
+	pulumi.Input
+
+	ToGetListenerV2LoadbalancerArrayOutput() GetListenerV2LoadbalancerArrayOutput
+	ToGetListenerV2LoadbalancerArrayOutputWithContext(context.Context) GetListenerV2LoadbalancerArrayOutput
+}
+
+type GetListenerV2LoadbalancerArray []GetListenerV2LoadbalancerInput
+
+func (GetListenerV2LoadbalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenerV2Loadbalancer)(nil)).Elem()
+}
+
+func (i GetListenerV2LoadbalancerArray) ToGetListenerV2LoadbalancerArrayOutput() GetListenerV2LoadbalancerArrayOutput {
+	return i.ToGetListenerV2LoadbalancerArrayOutputWithContext(context.Background())
+}
+
+func (i GetListenerV2LoadbalancerArray) ToGetListenerV2LoadbalancerArrayOutputWithContext(ctx context.Context) GetListenerV2LoadbalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenerV2LoadbalancerArrayOutput)
+}
+
+type GetListenerV2LoadbalancerOutput struct{ *pulumi.OutputState }
+
+func (GetListenerV2LoadbalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenerV2Loadbalancer)(nil)).Elem()
+}
+
+func (o GetListenerV2LoadbalancerOutput) ToGetListenerV2LoadbalancerOutput() GetListenerV2LoadbalancerOutput {
+	return o
+}
+
+func (o GetListenerV2LoadbalancerOutput) ToGetListenerV2LoadbalancerOutputWithContext(ctx context.Context) GetListenerV2LoadbalancerOutput {
+	return o
+}
+
+func (o GetListenerV2LoadbalancerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenerV2Loadbalancer) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetListenerV2LoadbalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetListenerV2LoadbalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenerV2Loadbalancer)(nil)).Elem()
+}
+
+func (o GetListenerV2LoadbalancerArrayOutput) ToGetListenerV2LoadbalancerArrayOutput() GetListenerV2LoadbalancerArrayOutput {
+	return o
+}
+
+func (o GetListenerV2LoadbalancerArrayOutput) ToGetListenerV2LoadbalancerArrayOutputWithContext(ctx context.Context) GetListenerV2LoadbalancerArrayOutput {
+	return o
+}
+
+func (o GetListenerV2LoadbalancerArrayOutput) Index(i pulumi.IntInput) GetListenerV2LoadbalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListenerV2Loadbalancer {
+		return vs[0].([]GetListenerV2Loadbalancer)[vs[1].(int)]
+	}).(GetListenerV2LoadbalancerOutput)
+}
+
+type GetListenerV2Pool struct {
+	Id string `pulumi:"id"`
+}
+
+// GetListenerV2PoolInput is an input type that accepts GetListenerV2PoolArgs and GetListenerV2PoolOutput values.
+// You can construct a concrete instance of `GetListenerV2PoolInput` via:
+//
+//	GetListenerV2PoolArgs{...}
+type GetListenerV2PoolInput interface {
+	pulumi.Input
+
+	ToGetListenerV2PoolOutput() GetListenerV2PoolOutput
+	ToGetListenerV2PoolOutputWithContext(context.Context) GetListenerV2PoolOutput
+}
+
+type GetListenerV2PoolArgs struct {
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetListenerV2PoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenerV2Pool)(nil)).Elem()
+}
+
+func (i GetListenerV2PoolArgs) ToGetListenerV2PoolOutput() GetListenerV2PoolOutput {
+	return i.ToGetListenerV2PoolOutputWithContext(context.Background())
+}
+
+func (i GetListenerV2PoolArgs) ToGetListenerV2PoolOutputWithContext(ctx context.Context) GetListenerV2PoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenerV2PoolOutput)
+}
+
+// GetListenerV2PoolArrayInput is an input type that accepts GetListenerV2PoolArray and GetListenerV2PoolArrayOutput values.
+// You can construct a concrete instance of `GetListenerV2PoolArrayInput` via:
+//
+//	GetListenerV2PoolArray{ GetListenerV2PoolArgs{...} }
+type GetListenerV2PoolArrayInput interface {
+	pulumi.Input
+
+	ToGetListenerV2PoolArrayOutput() GetListenerV2PoolArrayOutput
+	ToGetListenerV2PoolArrayOutputWithContext(context.Context) GetListenerV2PoolArrayOutput
+}
+
+type GetListenerV2PoolArray []GetListenerV2PoolInput
+
+func (GetListenerV2PoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenerV2Pool)(nil)).Elem()
+}
+
+func (i GetListenerV2PoolArray) ToGetListenerV2PoolArrayOutput() GetListenerV2PoolArrayOutput {
+	return i.ToGetListenerV2PoolArrayOutputWithContext(context.Background())
+}
+
+func (i GetListenerV2PoolArray) ToGetListenerV2PoolArrayOutputWithContext(ctx context.Context) GetListenerV2PoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListenerV2PoolArrayOutput)
+}
+
+type GetListenerV2PoolOutput struct{ *pulumi.OutputState }
+
+func (GetListenerV2PoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListenerV2Pool)(nil)).Elem()
+}
+
+func (o GetListenerV2PoolOutput) ToGetListenerV2PoolOutput() GetListenerV2PoolOutput {
+	return o
+}
+
+func (o GetListenerV2PoolOutput) ToGetListenerV2PoolOutputWithContext(ctx context.Context) GetListenerV2PoolOutput {
+	return o
+}
+
+func (o GetListenerV2PoolOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListenerV2Pool) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetListenerV2PoolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetListenerV2PoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListenerV2Pool)(nil)).Elem()
+}
+
+func (o GetListenerV2PoolArrayOutput) ToGetListenerV2PoolArrayOutput() GetListenerV2PoolArrayOutput {
+	return o
+}
+
+func (o GetListenerV2PoolArrayOutput) ToGetListenerV2PoolArrayOutputWithContext(ctx context.Context) GetListenerV2PoolArrayOutput {
+	return o
+}
+
+func (o GetListenerV2PoolArrayOutput) Index(i pulumi.IntInput) GetListenerV2PoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListenerV2Pool {
+		return vs[0].([]GetListenerV2Pool)[vs[1].(int)]
+	}).(GetListenerV2PoolOutput)
+}
+
+type GetLoadbalancerV2Listener struct {
+	Id string `pulumi:"id"`
+}
+
+// GetLoadbalancerV2ListenerInput is an input type that accepts GetLoadbalancerV2ListenerArgs and GetLoadbalancerV2ListenerOutput values.
+// You can construct a concrete instance of `GetLoadbalancerV2ListenerInput` via:
+//
+//	GetLoadbalancerV2ListenerArgs{...}
+type GetLoadbalancerV2ListenerInput interface {
+	pulumi.Input
+
+	ToGetLoadbalancerV2ListenerOutput() GetLoadbalancerV2ListenerOutput
+	ToGetLoadbalancerV2ListenerOutputWithContext(context.Context) GetLoadbalancerV2ListenerOutput
+}
+
+type GetLoadbalancerV2ListenerArgs struct {
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetLoadbalancerV2ListenerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadbalancerV2Listener)(nil)).Elem()
+}
+
+func (i GetLoadbalancerV2ListenerArgs) ToGetLoadbalancerV2ListenerOutput() GetLoadbalancerV2ListenerOutput {
+	return i.ToGetLoadbalancerV2ListenerOutputWithContext(context.Background())
+}
+
+func (i GetLoadbalancerV2ListenerArgs) ToGetLoadbalancerV2ListenerOutputWithContext(ctx context.Context) GetLoadbalancerV2ListenerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadbalancerV2ListenerOutput)
+}
+
+// GetLoadbalancerV2ListenerArrayInput is an input type that accepts GetLoadbalancerV2ListenerArray and GetLoadbalancerV2ListenerArrayOutput values.
+// You can construct a concrete instance of `GetLoadbalancerV2ListenerArrayInput` via:
+//
+//	GetLoadbalancerV2ListenerArray{ GetLoadbalancerV2ListenerArgs{...} }
+type GetLoadbalancerV2ListenerArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadbalancerV2ListenerArrayOutput() GetLoadbalancerV2ListenerArrayOutput
+	ToGetLoadbalancerV2ListenerArrayOutputWithContext(context.Context) GetLoadbalancerV2ListenerArrayOutput
+}
+
+type GetLoadbalancerV2ListenerArray []GetLoadbalancerV2ListenerInput
+
+func (GetLoadbalancerV2ListenerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadbalancerV2Listener)(nil)).Elem()
+}
+
+func (i GetLoadbalancerV2ListenerArray) ToGetLoadbalancerV2ListenerArrayOutput() GetLoadbalancerV2ListenerArrayOutput {
+	return i.ToGetLoadbalancerV2ListenerArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadbalancerV2ListenerArray) ToGetLoadbalancerV2ListenerArrayOutputWithContext(ctx context.Context) GetLoadbalancerV2ListenerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadbalancerV2ListenerArrayOutput)
+}
+
+type GetLoadbalancerV2ListenerOutput struct{ *pulumi.OutputState }
+
+func (GetLoadbalancerV2ListenerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadbalancerV2Listener)(nil)).Elem()
+}
+
+func (o GetLoadbalancerV2ListenerOutput) ToGetLoadbalancerV2ListenerOutput() GetLoadbalancerV2ListenerOutput {
+	return o
+}
+
+func (o GetLoadbalancerV2ListenerOutput) ToGetLoadbalancerV2ListenerOutputWithContext(ctx context.Context) GetLoadbalancerV2ListenerOutput {
+	return o
+}
+
+func (o GetLoadbalancerV2ListenerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadbalancerV2Listener) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetLoadbalancerV2ListenerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadbalancerV2ListenerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadbalancerV2Listener)(nil)).Elem()
+}
+
+func (o GetLoadbalancerV2ListenerArrayOutput) ToGetLoadbalancerV2ListenerArrayOutput() GetLoadbalancerV2ListenerArrayOutput {
+	return o
+}
+
+func (o GetLoadbalancerV2ListenerArrayOutput) ToGetLoadbalancerV2ListenerArrayOutputWithContext(ctx context.Context) GetLoadbalancerV2ListenerArrayOutput {
+	return o
+}
+
+func (o GetLoadbalancerV2ListenerArrayOutput) Index(i pulumi.IntInput) GetLoadbalancerV2ListenerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadbalancerV2Listener {
+		return vs[0].([]GetLoadbalancerV2Listener)[vs[1].(int)]
+	}).(GetLoadbalancerV2ListenerOutput)
+}
+
+type GetLoadbalancerV2Pool struct {
+	Id string `pulumi:"id"`
+}
+
+// GetLoadbalancerV2PoolInput is an input type that accepts GetLoadbalancerV2PoolArgs and GetLoadbalancerV2PoolOutput values.
+// You can construct a concrete instance of `GetLoadbalancerV2PoolInput` via:
+//
+//	GetLoadbalancerV2PoolArgs{...}
+type GetLoadbalancerV2PoolInput interface {
+	pulumi.Input
+
+	ToGetLoadbalancerV2PoolOutput() GetLoadbalancerV2PoolOutput
+	ToGetLoadbalancerV2PoolOutputWithContext(context.Context) GetLoadbalancerV2PoolOutput
+}
+
+type GetLoadbalancerV2PoolArgs struct {
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetLoadbalancerV2PoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadbalancerV2Pool)(nil)).Elem()
+}
+
+func (i GetLoadbalancerV2PoolArgs) ToGetLoadbalancerV2PoolOutput() GetLoadbalancerV2PoolOutput {
+	return i.ToGetLoadbalancerV2PoolOutputWithContext(context.Background())
+}
+
+func (i GetLoadbalancerV2PoolArgs) ToGetLoadbalancerV2PoolOutputWithContext(ctx context.Context) GetLoadbalancerV2PoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadbalancerV2PoolOutput)
+}
+
+// GetLoadbalancerV2PoolArrayInput is an input type that accepts GetLoadbalancerV2PoolArray and GetLoadbalancerV2PoolArrayOutput values.
+// You can construct a concrete instance of `GetLoadbalancerV2PoolArrayInput` via:
+//
+//	GetLoadbalancerV2PoolArray{ GetLoadbalancerV2PoolArgs{...} }
+type GetLoadbalancerV2PoolArrayInput interface {
+	pulumi.Input
+
+	ToGetLoadbalancerV2PoolArrayOutput() GetLoadbalancerV2PoolArrayOutput
+	ToGetLoadbalancerV2PoolArrayOutputWithContext(context.Context) GetLoadbalancerV2PoolArrayOutput
+}
+
+type GetLoadbalancerV2PoolArray []GetLoadbalancerV2PoolInput
+
+func (GetLoadbalancerV2PoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadbalancerV2Pool)(nil)).Elem()
+}
+
+func (i GetLoadbalancerV2PoolArray) ToGetLoadbalancerV2PoolArrayOutput() GetLoadbalancerV2PoolArrayOutput {
+	return i.ToGetLoadbalancerV2PoolArrayOutputWithContext(context.Background())
+}
+
+func (i GetLoadbalancerV2PoolArray) ToGetLoadbalancerV2PoolArrayOutputWithContext(ctx context.Context) GetLoadbalancerV2PoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadbalancerV2PoolArrayOutput)
+}
+
+type GetLoadbalancerV2PoolOutput struct{ *pulumi.OutputState }
+
+func (GetLoadbalancerV2PoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadbalancerV2Pool)(nil)).Elem()
+}
+
+func (o GetLoadbalancerV2PoolOutput) ToGetLoadbalancerV2PoolOutput() GetLoadbalancerV2PoolOutput {
+	return o
+}
+
+func (o GetLoadbalancerV2PoolOutput) ToGetLoadbalancerV2PoolOutputWithContext(ctx context.Context) GetLoadbalancerV2PoolOutput {
+	return o
+}
+
+func (o GetLoadbalancerV2PoolOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadbalancerV2Pool) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetLoadbalancerV2PoolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLoadbalancerV2PoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLoadbalancerV2Pool)(nil)).Elem()
+}
+
+func (o GetLoadbalancerV2PoolArrayOutput) ToGetLoadbalancerV2PoolArrayOutput() GetLoadbalancerV2PoolArrayOutput {
+	return o
+}
+
+func (o GetLoadbalancerV2PoolArrayOutput) ToGetLoadbalancerV2PoolArrayOutputWithContext(ctx context.Context) GetLoadbalancerV2PoolArrayOutput {
+	return o
+}
+
+func (o GetLoadbalancerV2PoolArrayOutput) Index(i pulumi.IntInput) GetLoadbalancerV2PoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadbalancerV2Pool {
+		return vs[0].([]GetLoadbalancerV2Pool)[vs[1].(int)]
+	}).(GetLoadbalancerV2PoolOutput)
+}
+
+type GetPoolV2Listener struct {
+	Id string `pulumi:"id"`
+}
+
+// GetPoolV2ListenerInput is an input type that accepts GetPoolV2ListenerArgs and GetPoolV2ListenerOutput values.
+// You can construct a concrete instance of `GetPoolV2ListenerInput` via:
+//
+//	GetPoolV2ListenerArgs{...}
+type GetPoolV2ListenerInput interface {
+	pulumi.Input
+
+	ToGetPoolV2ListenerOutput() GetPoolV2ListenerOutput
+	ToGetPoolV2ListenerOutputWithContext(context.Context) GetPoolV2ListenerOutput
+}
+
+type GetPoolV2ListenerArgs struct {
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetPoolV2ListenerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPoolV2Listener)(nil)).Elem()
+}
+
+func (i GetPoolV2ListenerArgs) ToGetPoolV2ListenerOutput() GetPoolV2ListenerOutput {
+	return i.ToGetPoolV2ListenerOutputWithContext(context.Background())
+}
+
+func (i GetPoolV2ListenerArgs) ToGetPoolV2ListenerOutputWithContext(ctx context.Context) GetPoolV2ListenerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPoolV2ListenerOutput)
+}
+
+// GetPoolV2ListenerArrayInput is an input type that accepts GetPoolV2ListenerArray and GetPoolV2ListenerArrayOutput values.
+// You can construct a concrete instance of `GetPoolV2ListenerArrayInput` via:
+//
+//	GetPoolV2ListenerArray{ GetPoolV2ListenerArgs{...} }
+type GetPoolV2ListenerArrayInput interface {
+	pulumi.Input
+
+	ToGetPoolV2ListenerArrayOutput() GetPoolV2ListenerArrayOutput
+	ToGetPoolV2ListenerArrayOutputWithContext(context.Context) GetPoolV2ListenerArrayOutput
+}
+
+type GetPoolV2ListenerArray []GetPoolV2ListenerInput
+
+func (GetPoolV2ListenerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPoolV2Listener)(nil)).Elem()
+}
+
+func (i GetPoolV2ListenerArray) ToGetPoolV2ListenerArrayOutput() GetPoolV2ListenerArrayOutput {
+	return i.ToGetPoolV2ListenerArrayOutputWithContext(context.Background())
+}
+
+func (i GetPoolV2ListenerArray) ToGetPoolV2ListenerArrayOutputWithContext(ctx context.Context) GetPoolV2ListenerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPoolV2ListenerArrayOutput)
+}
+
+type GetPoolV2ListenerOutput struct{ *pulumi.OutputState }
+
+func (GetPoolV2ListenerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPoolV2Listener)(nil)).Elem()
+}
+
+func (o GetPoolV2ListenerOutput) ToGetPoolV2ListenerOutput() GetPoolV2ListenerOutput {
+	return o
+}
+
+func (o GetPoolV2ListenerOutput) ToGetPoolV2ListenerOutputWithContext(ctx context.Context) GetPoolV2ListenerOutput {
+	return o
+}
+
+func (o GetPoolV2ListenerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoolV2Listener) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetPoolV2ListenerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPoolV2ListenerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPoolV2Listener)(nil)).Elem()
+}
+
+func (o GetPoolV2ListenerArrayOutput) ToGetPoolV2ListenerArrayOutput() GetPoolV2ListenerArrayOutput {
+	return o
+}
+
+func (o GetPoolV2ListenerArrayOutput) ToGetPoolV2ListenerArrayOutputWithContext(ctx context.Context) GetPoolV2ListenerArrayOutput {
+	return o
+}
+
+func (o GetPoolV2ListenerArrayOutput) Index(i pulumi.IntInput) GetPoolV2ListenerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPoolV2Listener {
+		return vs[0].([]GetPoolV2Listener)[vs[1].(int)]
+	}).(GetPoolV2ListenerOutput)
+}
+
+type GetPoolV2Loadbalancer struct {
+	Id string `pulumi:"id"`
+}
+
+// GetPoolV2LoadbalancerInput is an input type that accepts GetPoolV2LoadbalancerArgs and GetPoolV2LoadbalancerOutput values.
+// You can construct a concrete instance of `GetPoolV2LoadbalancerInput` via:
+//
+//	GetPoolV2LoadbalancerArgs{...}
+type GetPoolV2LoadbalancerInput interface {
+	pulumi.Input
+
+	ToGetPoolV2LoadbalancerOutput() GetPoolV2LoadbalancerOutput
+	ToGetPoolV2LoadbalancerOutputWithContext(context.Context) GetPoolV2LoadbalancerOutput
+}
+
+type GetPoolV2LoadbalancerArgs struct {
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetPoolV2LoadbalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPoolV2Loadbalancer)(nil)).Elem()
+}
+
+func (i GetPoolV2LoadbalancerArgs) ToGetPoolV2LoadbalancerOutput() GetPoolV2LoadbalancerOutput {
+	return i.ToGetPoolV2LoadbalancerOutputWithContext(context.Background())
+}
+
+func (i GetPoolV2LoadbalancerArgs) ToGetPoolV2LoadbalancerOutputWithContext(ctx context.Context) GetPoolV2LoadbalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPoolV2LoadbalancerOutput)
+}
+
+// GetPoolV2LoadbalancerArrayInput is an input type that accepts GetPoolV2LoadbalancerArray and GetPoolV2LoadbalancerArrayOutput values.
+// You can construct a concrete instance of `GetPoolV2LoadbalancerArrayInput` via:
+//
+//	GetPoolV2LoadbalancerArray{ GetPoolV2LoadbalancerArgs{...} }
+type GetPoolV2LoadbalancerArrayInput interface {
+	pulumi.Input
+
+	ToGetPoolV2LoadbalancerArrayOutput() GetPoolV2LoadbalancerArrayOutput
+	ToGetPoolV2LoadbalancerArrayOutputWithContext(context.Context) GetPoolV2LoadbalancerArrayOutput
+}
+
+type GetPoolV2LoadbalancerArray []GetPoolV2LoadbalancerInput
+
+func (GetPoolV2LoadbalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPoolV2Loadbalancer)(nil)).Elem()
+}
+
+func (i GetPoolV2LoadbalancerArray) ToGetPoolV2LoadbalancerArrayOutput() GetPoolV2LoadbalancerArrayOutput {
+	return i.ToGetPoolV2LoadbalancerArrayOutputWithContext(context.Background())
+}
+
+func (i GetPoolV2LoadbalancerArray) ToGetPoolV2LoadbalancerArrayOutputWithContext(ctx context.Context) GetPoolV2LoadbalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPoolV2LoadbalancerArrayOutput)
+}
+
+type GetPoolV2LoadbalancerOutput struct{ *pulumi.OutputState }
+
+func (GetPoolV2LoadbalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPoolV2Loadbalancer)(nil)).Elem()
+}
+
+func (o GetPoolV2LoadbalancerOutput) ToGetPoolV2LoadbalancerOutput() GetPoolV2LoadbalancerOutput {
+	return o
+}
+
+func (o GetPoolV2LoadbalancerOutput) ToGetPoolV2LoadbalancerOutputWithContext(ctx context.Context) GetPoolV2LoadbalancerOutput {
+	return o
+}
+
+func (o GetPoolV2LoadbalancerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoolV2Loadbalancer) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetPoolV2LoadbalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPoolV2LoadbalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPoolV2Loadbalancer)(nil)).Elem()
+}
+
+func (o GetPoolV2LoadbalancerArrayOutput) ToGetPoolV2LoadbalancerArrayOutput() GetPoolV2LoadbalancerArrayOutput {
+	return o
+}
+
+func (o GetPoolV2LoadbalancerArrayOutput) ToGetPoolV2LoadbalancerArrayOutputWithContext(ctx context.Context) GetPoolV2LoadbalancerArrayOutput {
+	return o
+}
+
+func (o GetPoolV2LoadbalancerArrayOutput) Index(i pulumi.IntInput) GetPoolV2LoadbalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPoolV2Loadbalancer {
+		return vs[0].([]GetPoolV2Loadbalancer)[vs[1].(int)]
+	}).(GetPoolV2LoadbalancerOutput)
+}
+
+type GetPoolV2Member struct {
+	Address string `pulumi:"address"`
+	// The administrative state of the Pool, which is up (true)
+	// or down (false).
+	AdminStateUp   bool   `pulumi:"adminStateUp"`
+	Backup         bool   `pulumi:"backup"`
+	Id             string `pulumi:"id"`
+	MonitorAddress string `pulumi:"monitorAddress"`
+	MonitorPort    int    `pulumi:"monitorPort"`
+	// The name of the pool. Exactly one of `name`, `poolId`
+	// is required to be set.
+	Name string `pulumi:"name"`
+	// The operating status of the pool.
+	OperatingStatus string `pulumi:"operatingStatus"`
+	// The ID of the pool. Exactly one of `name`, `poolId`
+	// is required to be set.
+	PoolId string `pulumi:"poolId"`
+	// The owner (project/tenant) ID of the pool.
+	ProjectId    string `pulumi:"projectId"`
+	ProtocolPort int    `pulumi:"protocolPort"`
+	// The provisioning status of the pool.
+	ProvisioningStatus string `pulumi:"provisioningStatus"`
+	SubnetId           string `pulumi:"subnetId"`
+	// A set of tags applied to the loadbalancer's pool. The
+	// loadbalancer' pool will be returned if it has all of the specified tags.
+	Tags   []string `pulumi:"tags"`
+	Weight int      `pulumi:"weight"`
+}
+
+// GetPoolV2MemberInput is an input type that accepts GetPoolV2MemberArgs and GetPoolV2MemberOutput values.
+// You can construct a concrete instance of `GetPoolV2MemberInput` via:
+//
+//	GetPoolV2MemberArgs{...}
+type GetPoolV2MemberInput interface {
+	pulumi.Input
+
+	ToGetPoolV2MemberOutput() GetPoolV2MemberOutput
+	ToGetPoolV2MemberOutputWithContext(context.Context) GetPoolV2MemberOutput
+}
+
+type GetPoolV2MemberArgs struct {
+	Address pulumi.StringInput `pulumi:"address"`
+	// The administrative state of the Pool, which is up (true)
+	// or down (false).
+	AdminStateUp   pulumi.BoolInput   `pulumi:"adminStateUp"`
+	Backup         pulumi.BoolInput   `pulumi:"backup"`
+	Id             pulumi.StringInput `pulumi:"id"`
+	MonitorAddress pulumi.StringInput `pulumi:"monitorAddress"`
+	MonitorPort    pulumi.IntInput    `pulumi:"monitorPort"`
+	// The name of the pool. Exactly one of `name`, `poolId`
+	// is required to be set.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The operating status of the pool.
+	OperatingStatus pulumi.StringInput `pulumi:"operatingStatus"`
+	// The ID of the pool. Exactly one of `name`, `poolId`
+	// is required to be set.
+	PoolId pulumi.StringInput `pulumi:"poolId"`
+	// The owner (project/tenant) ID of the pool.
+	ProjectId    pulumi.StringInput `pulumi:"projectId"`
+	ProtocolPort pulumi.IntInput    `pulumi:"protocolPort"`
+	// The provisioning status of the pool.
+	ProvisioningStatus pulumi.StringInput `pulumi:"provisioningStatus"`
+	SubnetId           pulumi.StringInput `pulumi:"subnetId"`
+	// A set of tags applied to the loadbalancer's pool. The
+	// loadbalancer' pool will be returned if it has all of the specified tags.
+	Tags   pulumi.StringArrayInput `pulumi:"tags"`
+	Weight pulumi.IntInput         `pulumi:"weight"`
+}
+
+func (GetPoolV2MemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPoolV2Member)(nil)).Elem()
+}
+
+func (i GetPoolV2MemberArgs) ToGetPoolV2MemberOutput() GetPoolV2MemberOutput {
+	return i.ToGetPoolV2MemberOutputWithContext(context.Background())
+}
+
+func (i GetPoolV2MemberArgs) ToGetPoolV2MemberOutputWithContext(ctx context.Context) GetPoolV2MemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPoolV2MemberOutput)
+}
+
+// GetPoolV2MemberArrayInput is an input type that accepts GetPoolV2MemberArray and GetPoolV2MemberArrayOutput values.
+// You can construct a concrete instance of `GetPoolV2MemberArrayInput` via:
+//
+//	GetPoolV2MemberArray{ GetPoolV2MemberArgs{...} }
+type GetPoolV2MemberArrayInput interface {
+	pulumi.Input
+
+	ToGetPoolV2MemberArrayOutput() GetPoolV2MemberArrayOutput
+	ToGetPoolV2MemberArrayOutputWithContext(context.Context) GetPoolV2MemberArrayOutput
+}
+
+type GetPoolV2MemberArray []GetPoolV2MemberInput
+
+func (GetPoolV2MemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPoolV2Member)(nil)).Elem()
+}
+
+func (i GetPoolV2MemberArray) ToGetPoolV2MemberArrayOutput() GetPoolV2MemberArrayOutput {
+	return i.ToGetPoolV2MemberArrayOutputWithContext(context.Background())
+}
+
+func (i GetPoolV2MemberArray) ToGetPoolV2MemberArrayOutputWithContext(ctx context.Context) GetPoolV2MemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPoolV2MemberArrayOutput)
+}
+
+type GetPoolV2MemberOutput struct{ *pulumi.OutputState }
+
+func (GetPoolV2MemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPoolV2Member)(nil)).Elem()
+}
+
+func (o GetPoolV2MemberOutput) ToGetPoolV2MemberOutput() GetPoolV2MemberOutput {
+	return o
+}
+
+func (o GetPoolV2MemberOutput) ToGetPoolV2MemberOutputWithContext(ctx context.Context) GetPoolV2MemberOutput {
+	return o
+}
+
+func (o GetPoolV2MemberOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoolV2Member) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The administrative state of the Pool, which is up (true)
+// or down (false).
+func (o GetPoolV2MemberOutput) AdminStateUp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPoolV2Member) bool { return v.AdminStateUp }).(pulumi.BoolOutput)
+}
+
+func (o GetPoolV2MemberOutput) Backup() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPoolV2Member) bool { return v.Backup }).(pulumi.BoolOutput)
+}
+
+func (o GetPoolV2MemberOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoolV2Member) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPoolV2MemberOutput) MonitorAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoolV2Member) string { return v.MonitorAddress }).(pulumi.StringOutput)
+}
+
+func (o GetPoolV2MemberOutput) MonitorPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPoolV2Member) int { return v.MonitorPort }).(pulumi.IntOutput)
+}
+
+// The name of the pool. Exactly one of `name`, `poolId`
+// is required to be set.
+func (o GetPoolV2MemberOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoolV2Member) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The operating status of the pool.
+func (o GetPoolV2MemberOutput) OperatingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoolV2Member) string { return v.OperatingStatus }).(pulumi.StringOutput)
+}
+
+// The ID of the pool. Exactly one of `name`, `poolId`
+// is required to be set.
+func (o GetPoolV2MemberOutput) PoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoolV2Member) string { return v.PoolId }).(pulumi.StringOutput)
+}
+
+// The owner (project/tenant) ID of the pool.
+func (o GetPoolV2MemberOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoolV2Member) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func (o GetPoolV2MemberOutput) ProtocolPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPoolV2Member) int { return v.ProtocolPort }).(pulumi.IntOutput)
+}
+
+// The provisioning status of the pool.
+func (o GetPoolV2MemberOutput) ProvisioningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoolV2Member) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
+}
+
+func (o GetPoolV2MemberOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoolV2Member) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// A set of tags applied to the loadbalancer's pool. The
+// loadbalancer' pool will be returned if it has all of the specified tags.
+func (o GetPoolV2MemberOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPoolV2Member) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o GetPoolV2MemberOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPoolV2Member) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GetPoolV2MemberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPoolV2MemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPoolV2Member)(nil)).Elem()
+}
+
+func (o GetPoolV2MemberArrayOutput) ToGetPoolV2MemberArrayOutput() GetPoolV2MemberArrayOutput {
+	return o
+}
+
+func (o GetPoolV2MemberArrayOutput) ToGetPoolV2MemberArrayOutputWithContext(ctx context.Context) GetPoolV2MemberArrayOutput {
+	return o
+}
+
+func (o GetPoolV2MemberArrayOutput) Index(i pulumi.IntInput) GetPoolV2MemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPoolV2Member {
+		return vs[0].([]GetPoolV2Member)[vs[1].(int)]
+	}).(GetPoolV2MemberOutput)
+}
+
+type GetPoolV2SessionPersistence struct {
+	CookieName string `pulumi:"cookieName"`
+	Type       string `pulumi:"type"`
+}
+
+// GetPoolV2SessionPersistenceInput is an input type that accepts GetPoolV2SessionPersistenceArgs and GetPoolV2SessionPersistenceOutput values.
+// You can construct a concrete instance of `GetPoolV2SessionPersistenceInput` via:
+//
+//	GetPoolV2SessionPersistenceArgs{...}
+type GetPoolV2SessionPersistenceInput interface {
+	pulumi.Input
+
+	ToGetPoolV2SessionPersistenceOutput() GetPoolV2SessionPersistenceOutput
+	ToGetPoolV2SessionPersistenceOutputWithContext(context.Context) GetPoolV2SessionPersistenceOutput
+}
+
+type GetPoolV2SessionPersistenceArgs struct {
+	CookieName pulumi.StringInput `pulumi:"cookieName"`
+	Type       pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetPoolV2SessionPersistenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPoolV2SessionPersistence)(nil)).Elem()
+}
+
+func (i GetPoolV2SessionPersistenceArgs) ToGetPoolV2SessionPersistenceOutput() GetPoolV2SessionPersistenceOutput {
+	return i.ToGetPoolV2SessionPersistenceOutputWithContext(context.Background())
+}
+
+func (i GetPoolV2SessionPersistenceArgs) ToGetPoolV2SessionPersistenceOutputWithContext(ctx context.Context) GetPoolV2SessionPersistenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPoolV2SessionPersistenceOutput)
+}
+
+// GetPoolV2SessionPersistenceArrayInput is an input type that accepts GetPoolV2SessionPersistenceArray and GetPoolV2SessionPersistenceArrayOutput values.
+// You can construct a concrete instance of `GetPoolV2SessionPersistenceArrayInput` via:
+//
+//	GetPoolV2SessionPersistenceArray{ GetPoolV2SessionPersistenceArgs{...} }
+type GetPoolV2SessionPersistenceArrayInput interface {
+	pulumi.Input
+
+	ToGetPoolV2SessionPersistenceArrayOutput() GetPoolV2SessionPersistenceArrayOutput
+	ToGetPoolV2SessionPersistenceArrayOutputWithContext(context.Context) GetPoolV2SessionPersistenceArrayOutput
+}
+
+type GetPoolV2SessionPersistenceArray []GetPoolV2SessionPersistenceInput
+
+func (GetPoolV2SessionPersistenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPoolV2SessionPersistence)(nil)).Elem()
+}
+
+func (i GetPoolV2SessionPersistenceArray) ToGetPoolV2SessionPersistenceArrayOutput() GetPoolV2SessionPersistenceArrayOutput {
+	return i.ToGetPoolV2SessionPersistenceArrayOutputWithContext(context.Background())
+}
+
+func (i GetPoolV2SessionPersistenceArray) ToGetPoolV2SessionPersistenceArrayOutputWithContext(ctx context.Context) GetPoolV2SessionPersistenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPoolV2SessionPersistenceArrayOutput)
+}
+
+type GetPoolV2SessionPersistenceOutput struct{ *pulumi.OutputState }
+
+func (GetPoolV2SessionPersistenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPoolV2SessionPersistence)(nil)).Elem()
+}
+
+func (o GetPoolV2SessionPersistenceOutput) ToGetPoolV2SessionPersistenceOutput() GetPoolV2SessionPersistenceOutput {
+	return o
+}
+
+func (o GetPoolV2SessionPersistenceOutput) ToGetPoolV2SessionPersistenceOutputWithContext(ctx context.Context) GetPoolV2SessionPersistenceOutput {
+	return o
+}
+
+func (o GetPoolV2SessionPersistenceOutput) CookieName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoolV2SessionPersistence) string { return v.CookieName }).(pulumi.StringOutput)
+}
+
+func (o GetPoolV2SessionPersistenceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoolV2SessionPersistence) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetPoolV2SessionPersistenceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPoolV2SessionPersistenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPoolV2SessionPersistence)(nil)).Elem()
+}
+
+func (o GetPoolV2SessionPersistenceArrayOutput) ToGetPoolV2SessionPersistenceArrayOutput() GetPoolV2SessionPersistenceArrayOutput {
+	return o
+}
+
+func (o GetPoolV2SessionPersistenceArrayOutput) ToGetPoolV2SessionPersistenceArrayOutputWithContext(ctx context.Context) GetPoolV2SessionPersistenceArrayOutput {
+	return o
+}
+
+func (o GetPoolV2SessionPersistenceArrayOutput) Index(i pulumi.IntInput) GetPoolV2SessionPersistenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPoolV2SessionPersistence {
+		return vs[0].([]GetPoolV2SessionPersistence)[vs[1].(int)]
+	}).(GetPoolV2SessionPersistenceOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MembersMemberInput)(nil)).Elem(), MembersMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembersMemberArrayInput)(nil)).Elem(), MembersMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PoolPersistenceInput)(nil)).Elem(), PoolPersistenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PoolPersistencePtrInput)(nil)).Elem(), PoolPersistenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenerV2L7policyInput)(nil)).Elem(), GetListenerV2L7policyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenerV2L7policyArrayInput)(nil)).Elem(), GetListenerV2L7policyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenerV2LoadbalancerInput)(nil)).Elem(), GetListenerV2LoadbalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenerV2LoadbalancerArrayInput)(nil)).Elem(), GetListenerV2LoadbalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenerV2PoolInput)(nil)).Elem(), GetListenerV2PoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListenerV2PoolArrayInput)(nil)).Elem(), GetListenerV2PoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerV2ListenerInput)(nil)).Elem(), GetLoadbalancerV2ListenerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerV2ListenerArrayInput)(nil)).Elem(), GetLoadbalancerV2ListenerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerV2PoolInput)(nil)).Elem(), GetLoadbalancerV2PoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerV2PoolArrayInput)(nil)).Elem(), GetLoadbalancerV2PoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPoolV2ListenerInput)(nil)).Elem(), GetPoolV2ListenerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPoolV2ListenerArrayInput)(nil)).Elem(), GetPoolV2ListenerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPoolV2LoadbalancerInput)(nil)).Elem(), GetPoolV2LoadbalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPoolV2LoadbalancerArrayInput)(nil)).Elem(), GetPoolV2LoadbalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPoolV2MemberInput)(nil)).Elem(), GetPoolV2MemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPoolV2MemberArrayInput)(nil)).Elem(), GetPoolV2MemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPoolV2SessionPersistenceInput)(nil)).Elem(), GetPoolV2SessionPersistenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPoolV2SessionPersistenceArrayInput)(nil)).Elem(), GetPoolV2SessionPersistenceArray{})
 	pulumi.RegisterOutputType(MembersMemberOutput{})
 	pulumi.RegisterOutputType(MembersMemberArrayOutput{})
 	pulumi.RegisterOutputType(PoolPersistenceOutput{})
 	pulumi.RegisterOutputType(PoolPersistencePtrOutput{})
+	pulumi.RegisterOutputType(GetListenerV2L7policyOutput{})
+	pulumi.RegisterOutputType(GetListenerV2L7policyArrayOutput{})
+	pulumi.RegisterOutputType(GetListenerV2LoadbalancerOutput{})
+	pulumi.RegisterOutputType(GetListenerV2LoadbalancerArrayOutput{})
+	pulumi.RegisterOutputType(GetListenerV2PoolOutput{})
+	pulumi.RegisterOutputType(GetListenerV2PoolArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadbalancerV2ListenerOutput{})
+	pulumi.RegisterOutputType(GetLoadbalancerV2ListenerArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadbalancerV2PoolOutput{})
+	pulumi.RegisterOutputType(GetLoadbalancerV2PoolArrayOutput{})
+	pulumi.RegisterOutputType(GetPoolV2ListenerOutput{})
+	pulumi.RegisterOutputType(GetPoolV2ListenerArrayOutput{})
+	pulumi.RegisterOutputType(GetPoolV2LoadbalancerOutput{})
+	pulumi.RegisterOutputType(GetPoolV2LoadbalancerArrayOutput{})
+	pulumi.RegisterOutputType(GetPoolV2MemberOutput{})
+	pulumi.RegisterOutputType(GetPoolV2MemberArrayOutput{})
+	pulumi.RegisterOutputType(GetPoolV2SessionPersistenceOutput{})
+	pulumi.RegisterOutputType(GetPoolV2SessionPersistenceArrayOutput{})
 }

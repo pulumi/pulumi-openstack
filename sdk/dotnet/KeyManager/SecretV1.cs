@@ -72,6 +72,48 @@ namespace Pulumi.OpenStack.KeyManager
     /// });
     /// ```
     /// 
+    /// ### Secret with the expiration date
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secret1 = new OpenStack.KeyManager.SecretV1("secret_1", new()
+    ///     {
+    ///         Name = "certificate",
+    ///         Payload = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "certificate.pem",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         SecretType = "certificate",
+    ///         PayloadContentType = "text/plain",
+    ///         Expiration = Output.Tuple(Std.Timestamp.Invoke(), Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "%dh",
+    ///             Args = new[]
+    ///             {
+    ///                 8760,
+    ///             },
+    ///         })).Apply(values =&gt;
+    ///         {
+    ///             var invoke = values.Item1;
+    ///             var invoke1 = values.Item2;
+    ///             return Std.Timeadd.Invoke(new()
+    ///             {
+    ///                 Duration = invoke.Result,
+    ///                 Timestamp = invoke1.Result,
+    ///             });
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Secret with the ACL
     /// 
     /// &gt; **Note** Only read ACLs are supported
