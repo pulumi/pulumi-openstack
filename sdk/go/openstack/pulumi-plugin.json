@@ -1,5 +1,5 @@
 {
   "resource": true,
   "name": "openstack",
-  "version": "5.0.0-alpha.0+dev"
+  "version": "5.4.0"
 }
