@@ -43,6 +43,7 @@ config:
         value: admin
 
 ```
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as openstack from "@pulumi/openstack";
@@ -50,6 +51,7 @@ import * as openstack from "@pulumi/openstack";
 // Create a web server
 const test_server = new openstack.compute.Instance("test-server", {});
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -69,6 +71,7 @@ config:
         value: admin
 
 ```
+
 ```python
 import pulumi
 import pulumi_openstack as openstack
@@ -76,6 +79,7 @@ import pulumi_openstack as openstack
 # Create a web server
 test_server = openstack.compute.Instance("test-server")
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -95,6 +99,7 @@ config:
         value: admin
 
 ```
+
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -109,6 +114,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -128,6 +134,7 @@ config:
         value: admin
 
 ```
+
 ```go
 package main
 
@@ -147,6 +154,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -166,12 +174,14 @@ config:
         value: admin
 
 ```
+
 ```yaml
 resources:
   # Create a web server
   test-server:
     type: openstack:compute:Instance
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -191,6 +201,7 @@ config:
         value: admin
 
 ```
+
 ```java
 package generated_program;
 
@@ -217,6 +228,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 ## Configuration Reference
@@ -493,6 +505,7 @@ const myInstance = new openstack.compute.Instance("my_instance", {
     ],
 });
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```python
@@ -516,6 +529,7 @@ my_instance = openstack.compute.Instance("my_instance",
         },
     ])
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```csharp
@@ -551,6 +565,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```go
@@ -587,6 +602,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -606,6 +622,7 @@ resources:
         - uuid: 11111111-1111-1111-1111-111111111111
           name: private
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```java
@@ -650,6 +667,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 
