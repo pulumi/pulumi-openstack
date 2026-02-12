@@ -29,24 +29,19 @@ __all__ = [
     'InstanceUserArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ConfigurationConfigurationArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Configuration parameter name. Changing this creates a new resource.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        Configuration parameter value. Changing this creates a new resource.
-        """
-        string_type: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
-        """
-elif False:
-    ConfigurationConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigurationConfigurationArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Configuration parameter name. Changing this creates a new resource.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Configuration parameter value. Changing this creates a new resource.
+    """
+    string_type: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
+    """
 
 @pulumi.input_type
 class ConfigurationConfigurationArgs:
@@ -101,18 +96,15 @@ class ConfigurationConfigurationArgs:
         pulumi.set(self, "string_type", value)
 
 
-if not MYPY:
-    class ConfigurationDatastoreArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        Database engine type to be used with this configuration. Changing this creates a new resource.
-        """
-        version: pulumi.Input[_builtins.str]
-        """
-        Version of database engine type to be used with this configuration. Changing this creates a new resource.
-        """
-elif False:
-    ConfigurationDatastoreArgsDict: TypeAlias = Mapping[str, Any]
+class ConfigurationDatastoreArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    Database engine type to be used with this configuration. Changing this creates a new resource.
+    """
+    version: pulumi.Input[_builtins.str]
+    """
+    Version of database engine type to be used with this configuration. Changing this creates a new resource.
+    """
 
 @pulumi.input_type
 class ConfigurationDatastoreArgs:
@@ -151,24 +143,21 @@ class ConfigurationDatastoreArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class InstanceDatabaseArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Database to be created on new instance. Changing this creates a
-        new instance.
-        """
-        charset: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Database character set. Changing this creates a
-        new instance.
-        """
-        collate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Database collation. Changing this creates a new instance.
-        """
-elif False:
-    InstanceDatabaseArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDatabaseArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Database to be created on new instance. Changing this creates a
+    new instance.
+    """
+    charset: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Database character set. Changing this creates a
+    new instance.
+    """
+    collate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Database collation. Changing this creates a new instance.
+    """
 
 @pulumi.input_type
 class InstanceDatabaseArgs:
@@ -228,20 +217,17 @@ class InstanceDatabaseArgs:
         pulumi.set(self, "collate", value)
 
 
-if not MYPY:
-    class InstanceDatastoreArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        Database engine type to be used in new instance. Changing this
-        creates a new instance.
-        """
-        version: pulumi.Input[_builtins.str]
-        """
-        Version of database engine type to be used in new instance.
-        Changing this creates a new instance.
-        """
-elif False:
-    InstanceDatastoreArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDatastoreArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    Database engine type to be used in new instance. Changing this
+    creates a new instance.
+    """
+    version: pulumi.Input[_builtins.str]
+    """
+    Version of database engine type to be used in new instance.
+    Changing this creates a new instance.
+    """
 
 @pulumi.input_type
 class InstanceDatastoreArgs:
@@ -284,30 +270,27 @@ class InstanceDatastoreArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class InstanceNetworkArgsDict(TypedDict):
-        fixed_ip_v4: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies a fixed IPv4 address to be used on this
-        network. Changing this creates a new instance.
-        """
-        fixed_ip_v6: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies a fixed IPv6 address to be used on this
-        network. Changing this creates a new instance.
-        """
-        port: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The port UUID of a
-        network to attach to the instance. Changing this creates a new instance.
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The network UUID to
-        attach to the instance. Changing this creates a new instance.
-        """
-elif False:
-    InstanceNetworkArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceNetworkArgsDict(TypedDict):
+    fixed_ip_v4: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies a fixed IPv4 address to be used on this
+    network. Changing this creates a new instance.
+    """
+    fixed_ip_v6: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies a fixed IPv6 address to be used on this
+    network. Changing this creates a new instance.
+    """
+    port: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The port UUID of a
+    network to attach to the instance. Changing this creates a new instance.
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The network UUID to
+    attach to the instance. Changing this creates a new instance.
+    """
 
 @pulumi.input_type
 class InstanceNetworkArgs:
@@ -388,30 +371,27 @@ class InstanceNetworkArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class InstanceUserArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Username to be created on new instance. Changing this creates a
-        new instance.
-        """
-        databases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of databases that user will have access to. If not specified,
-        user has access to all databases on th einstance. Changing this creates a new instance.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An ip address or % sign indicating what ip addresses can connect with
-        this user credentials. Changing this creates a new instance.
-        """
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        User's password. Changing this creates a
-        new instance.
-        """
-elif False:
-    InstanceUserArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceUserArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Username to be created on new instance. Changing this creates a
+    new instance.
+    """
+    databases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of databases that user will have access to. If not specified,
+    user has access to all databases on th einstance. Changing this creates a new instance.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An ip address or % sign indicating what ip addresses can connect with
+    this user credentials. Changing this creates a new instance.
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    User's password. Changing this creates a
+    new instance.
+    """
 
 @pulumi.input_type
 class InstanceUserArgs:

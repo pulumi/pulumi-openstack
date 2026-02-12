@@ -17,6 +17,97 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages a V2 neutron security group resource within OpenStack.
+ * Unlike Nova security groups, neutron separates the group from the rules
+ * and also allows an admin to target a specific tenant_id.
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.networking.SecGroup;
+ * import com.pulumi.openstack.networking.SecGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secgroup1 = new SecGroup("secgroup1", SecGroupArgs.builder()
+ *             .name("secgroup_1")
+ *             .description("My neutron security group")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Default Security Group Rules
+ * 
+ * In most cases, OpenStack will create some egress security group rules for each
+ * new security group. These security group rules will not be managed by
+ * Terraform, so if you prefer to have *all* aspects of your infrastructure
+ * managed by Terraform, set `deleteDefaultRules` to `true` and then create
+ * separate security group rules such as the following:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.networking.SecGroupRule;
+ * import com.pulumi.openstack.networking.SecGroupRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secgroupRuleV4 = new SecGroupRule("secgroupRuleV4", SecGroupRuleArgs.builder()
+ *             .direction("egress")
+ *             .ethertype("IPv4")
+ *             .securityGroupId(secgroup.id())
+ *             .build());
+ * 
+ *         var secgroupRuleV6 = new SecGroupRule("secgroupRuleV6", SecGroupRuleArgs.builder()
+ *             .direction("egress")
+ *             .ethertype("IPv6")
+ *             .securityGroupId(secgroup.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Please note that this behavior may differ depending on the configuration of
+ * the OpenStack cloud. The above illustrates the current default Neutron
+ * behavior. Some OpenStack clouds might provide additional rules and some might
+ * not provide any rules at all (in which case the `deleteDefaultRules` setting
+ * is moot).
+ * 
  * ## Import
  * 
  * Security Groups can be imported using the `id`, e.g.

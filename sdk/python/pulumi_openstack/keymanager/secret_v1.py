@@ -576,6 +576,13 @@ class SecretV1(pulumi.CustomResource):
                  secret_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Manages a V1 Barbican secret resource within OpenStack.
+
+        > **Important Security Notice** The payload of this resource will be stored
+        *unencrypted* in your Terraform state file. **Use of this resource for production
+        deployments is *not* recommended**. Read more about sensitive data in
+        state.
+
         ## Example Usage
 
         ### Simple secret
@@ -696,6 +703,13 @@ class SecretV1(pulumi.CustomResource):
                  args: Optional[SecretV1Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a V1 Barbican secret resource within OpenStack.
+
+        > **Important Security Notice** The payload of this resource will be stored
+        *unencrypted* in your Terraform state file. **Use of this resource for production
+        deployments is *not* recommended**. Read more about sensitive data in
+        state.
+
         ## Example Usage
 
         ### Simple secret

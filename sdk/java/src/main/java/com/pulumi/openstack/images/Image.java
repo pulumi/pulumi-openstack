@@ -205,9 +205,21 @@ public class Image extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> hidden() {
         return Codegen.optional(this.hidden);
     }
+    /**
+     * This is the directory where the images will
+     * be downloaded. Images will be stored with a filename corresponding to the
+     * url&#39;s md5 hash. Defaults to &#34;$HOME/.terraform/image_cache&#34;
+     * 
+     */
     @Export(name="imageCachePath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageCachePath;
 
+    /**
+     * @return This is the directory where the images will
+     * be downloaded. Images will be stored with a filename corresponding to the
+     * url&#39;s md5 hash. Defaults to &#34;$HOME/.terraform/image_cache&#34;
+     * 
+     */
     public Output<Optional<String>> imageCachePath() {
         return Codegen.optional(this.imageCachePath);
     }

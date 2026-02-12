@@ -21,16 +21,6 @@ import * as utilities from "../utilities";
  *     exportTargets: ["64512:3"],
  * });
  * ```
- *
- * ## Import
- *
- * BGP VPNs can be imported using the `id`, e.g.
- *
- * hcl
- *
- * ```sh
- * $ pulumi import openstack:bgpvpn/v2:V2 bgpvpn_1 1eec2c66-6be2-4305-af3f-354c9b81f18c
- * ```
  */
 export class V2 extends pulumi.CustomResource {
     /**

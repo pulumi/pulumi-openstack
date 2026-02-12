@@ -99,7 +99,6 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * flavorprofiles can be imported using their `id`. Example:
- * 
  * ```sh
  * $ pulumi import openstack:loadbalancer/flavorprofileV2:FlavorprofileV2 flavorprofile_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
  * ```

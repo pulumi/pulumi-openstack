@@ -9,6 +9,871 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Compute
 {
+    /// <summary>
+    /// Manages a V2 VM instance resource within OpenStack.
+    /// 
+    /// &gt; **Note:** All arguments including the instance admin password will be stored
+    /// in the raw state as plain-text. Read more about sensitive data in
+    /// state.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Basic Instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basic = new OpenStack.Compute.Instance("basic", new()
+    ///     {
+    ///         Name = "basic",
+    ///         ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
+    ///         FlavorId = "3",
+    ///         KeyPair = "my_key_pair_name",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "this", "that" },
+    ///         },
+    ///         Networks = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Name = "my_network",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Instance With Attached Volume
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myvol = new OpenStack.BlockStorage.Volume("myvol", new()
+    ///     {
+    ///         Name = "myvol",
+    ///         Size = 1,
+    ///     });
+    /// 
+    ///     var myinstance = new OpenStack.Compute.Instance("myinstance", new()
+    ///     {
+    ///         Name = "myinstance",
+    ///         ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
+    ///         FlavorId = "3",
+    ///         KeyPair = "my_key_pair_name",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///         Networks = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Name = "my_network",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var attached = new OpenStack.Compute.VolumeAttach("attached", new()
+    ///     {
+    ///         InstanceId = myinstance.Id,
+    ///         VolumeId = myvol.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Boot From Volume
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var boot_from_volume = new OpenStack.Compute.Instance("boot-from-volume", new()
+    ///     {
+    ///         Name = "boot-from-volume",
+    ///         FlavorId = "3",
+    ///         KeyPair = "my_key_pair_name",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///         BlockDevices = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceBlockDeviceArgs
+    ///             {
+    ///                 Uuid = "&lt;image-id&gt;",
+    ///                 SourceType = "image",
+    ///                 VolumeSize = 5,
+    ///                 BootIndex = 0,
+    ///                 DestinationType = "volume",
+    ///                 DeleteOnTermination = true,
+    ///             },
+    ///         },
+    ///         Networks = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Name = "my_network",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Boot From an Existing Volume
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myvol = new OpenStack.BlockStorage.Volume("myvol", new()
+    ///     {
+    ///         Name = "myvol",
+    ///         Size = 5,
+    ///         ImageId = "&lt;image-id&gt;",
+    ///     });
+    /// 
+    ///     var boot_from_volume = new OpenStack.Compute.Instance("boot-from-volume", new()
+    ///     {
+    ///         Name = "bootfromvolume",
+    ///         FlavorId = "3",
+    ///         KeyPair = "my_key_pair_name",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///         BlockDevices = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceBlockDeviceArgs
+    ///             {
+    ///                 Uuid = myvol.Id,
+    ///                 SourceType = "volume",
+    ///                 BootIndex = 0,
+    ///                 DestinationType = "volume",
+    ///                 DeleteOnTermination = true,
+    ///             },
+    ///         },
+    ///         Networks = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Name = "my_network",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Boot Instance, Create Volume, and Attach Volume as a Block Device
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
+    ///     {
+    ///         Name = "instance_1",
+    ///         ImageId = "&lt;image-id&gt;",
+    ///         FlavorId = "3",
+    ///         KeyPair = "my_key_pair_name",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///         BlockDevices = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceBlockDeviceArgs
+    ///             {
+    ///                 Uuid = "&lt;image-id&gt;",
+    ///                 SourceType = "image",
+    ///                 DestinationType = "local",
+    ///                 BootIndex = 0,
+    ///                 DeleteOnTermination = true,
+    ///             },
+    ///             new OpenStack.Compute.Inputs.InstanceBlockDeviceArgs
+    ///             {
+    ///                 SourceType = "blank",
+    ///                 DestinationType = "volume",
+    ///                 VolumeSize = 1,
+    ///                 BootIndex = 1,
+    ///                 DeleteOnTermination = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Boot Instance and Attach Existing Volume as a Block Device
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var volume1 = new OpenStack.BlockStorage.Volume("volume_1", new()
+    ///     {
+    ///         Name = "volume_1",
+    ///         Size = 1,
+    ///     });
+    /// 
+    ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
+    ///     {
+    ///         Name = "instance_1",
+    ///         ImageId = "&lt;image-id&gt;",
+    ///         FlavorId = "3",
+    ///         KeyPair = "my_key_pair_name",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///         BlockDevices = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceBlockDeviceArgs
+    ///             {
+    ///                 Uuid = "&lt;image-id&gt;",
+    ///                 SourceType = "image",
+    ///                 DestinationType = "local",
+    ///                 BootIndex = 0,
+    ///                 DeleteOnTermination = true,
+    ///             },
+    ///             new OpenStack.Compute.Inputs.InstanceBlockDeviceArgs
+    ///             {
+    ///                 Uuid = volume1.Id,
+    ///                 SourceType = "volume",
+    ///                 DestinationType = "volume",
+    ///                 BootIndex = 1,
+    ///                 DeleteOnTermination = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Instance With Multiple Networks
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myip = new OpenStack.Networking.FloatingIp("myip", new()
+    ///     {
+    ///         Pool = "my_pool",
+    ///     });
+    /// 
+    ///     var multi_net = new OpenStack.Compute.Instance("multi-net", new()
+    ///     {
+    ///         Name = "multi-net",
+    ///         ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
+    ///         FlavorId = "3",
+    ///         KeyPair = "my_key_pair_name",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///         Networks = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Name = "my_first_network",
+    ///             },
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Name = "my_second_network",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var vm_port = OpenStack.Networking.GetPort.Invoke(new()
+    ///     {
+    ///         DeviceId = multi_net.Id,
+    ///         NetworkId = multi_net.Networks[1].Uuid,
+    ///     });
+    /// 
+    ///     var fipVm = new OpenStack.Networking.FloatingIpAssociate("fip_vm", new()
+    ///     {
+    ///         FloatingIp = myip.Address,
+    ///         PortId = vm_port.Apply(vm_port =&gt; vm_port.Apply(getPortResult =&gt; getPortResult.Id)),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Instance With Personality
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var personality = new OpenStack.Compute.Instance("personality", new()
+    ///     {
+    ///         Name = "personality",
+    ///         ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
+    ///         FlavorId = "3",
+    ///         KeyPair = "my_key_pair_name",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///         Personalities = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstancePersonalityArgs
+    ///             {
+    ///                 File = "/path/to/file/on/instance.txt",
+    ///                 Content = "contents of file",
+    ///             },
+    ///         },
+    ///         Networks = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Name = "my_network",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Instance with Multiple Ephemeral Disks
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var multi_eph = new OpenStack.Compute.Instance("multi-eph", new()
+    ///     {
+    ///         Name = "multi_eph",
+    ///         ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
+    ///         FlavorId = "3",
+    ///         KeyPair = "my_key_pair_name",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///         BlockDevices = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceBlockDeviceArgs
+    ///             {
+    ///                 BootIndex = 0,
+    ///                 DeleteOnTermination = true,
+    ///                 DestinationType = "local",
+    ///                 SourceType = "image",
+    ///                 Uuid = "&lt;image-id&gt;",
+    ///             },
+    ///             new OpenStack.Compute.Inputs.InstanceBlockDeviceArgs
+    ///             {
+    ///                 BootIndex = -1,
+    ///                 DeleteOnTermination = true,
+    ///                 DestinationType = "local",
+    ///                 SourceType = "blank",
+    ///                 VolumeSize = 1,
+    ///                 GuestFormat = "ext4",
+    ///             },
+    ///             new OpenStack.Compute.Inputs.InstanceBlockDeviceArgs
+    ///             {
+    ///                 BootIndex = -1,
+    ///                 DeleteOnTermination = true,
+    ///                 DestinationType = "local",
+    ///                 SourceType = "blank",
+    ///                 VolumeSize = 1,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Instance with Boot Disk and Swap Disk
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var flavor_with_swap = new OpenStack.Compute.Flavor("flavor-with-swap", new()
+    ///     {
+    ///         Name = "flavor-with-swap",
+    ///         Ram = 8096,
+    ///         Vcpus = 2,
+    ///         Disk = 20,
+    ///         Swap = 4096,
+    ///     });
+    /// 
+    ///     var vm_swap = new OpenStack.Compute.Instance("vm-swap", new()
+    ///     {
+    ///         Name = "vm_swap",
+    ///         FlavorId = flavor_with_swap.Id,
+    ///         KeyPair = "my_key_pair_name",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///         BlockDevices = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceBlockDeviceArgs
+    ///             {
+    ///                 BootIndex = 0,
+    ///                 DeleteOnTermination = true,
+    ///                 DestinationType = "local",
+    ///                 SourceType = "image",
+    ///                 Uuid = "&lt;image-id&gt;",
+    ///             },
+    ///             new OpenStack.Compute.Inputs.InstanceBlockDeviceArgs
+    ///             {
+    ///                 BootIndex = -1,
+    ///                 DeleteOnTermination = true,
+    ///                 DestinationType = "local",
+    ///                 SourceType = "blank",
+    ///                 GuestFormat = "swap",
+    ///                 VolumeSize = 4,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Instance with User Data (cloud-init)
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
+    ///     {
+    ///         Name = "basic",
+    ///         ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
+    ///         FlavorId = "3",
+    ///         KeyPair = "my_key_pair_name",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///         UserData = @"#cloud-config
+    /// hostname: instance_1.example.com
+    /// fqdn: instance_1.example.com",
+    ///         Networks = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Name = "my_network",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// `UserData` can come from a variety of sources: inline, read in from the `File`
+    /// function, or the `TemplateCloudinitConfig` resource.
+    /// 
+    /// ## Notes
+    /// 
+    /// ### Multiple Ephemeral Disks
+    /// 
+    /// It's possible to specify multiple `BlockDevice` entries to create an instance
+    /// with multiple ephemeral (local) disks. In order to create multiple ephemeral
+    /// disks, the sum of the total amount of ephemeral space must be less than or
+    /// equal to what the chosen flavor supports.
+    /// 
+    /// The following example shows how to create an instance with multiple ephemeral
+    /// disks:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new OpenStack.Compute.Instance("foo", new()
+    ///     {
+    ///         Name = "terraform-test",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///         BlockDevices = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceBlockDeviceArgs
+    ///             {
+    ///                 BootIndex = 0,
+    ///                 DeleteOnTermination = true,
+    ///                 DestinationType = "local",
+    ///                 SourceType = "image",
+    ///                 Uuid = "&lt;image uuid&gt;",
+    ///             },
+    ///             new OpenStack.Compute.Inputs.InstanceBlockDeviceArgs
+    ///             {
+    ///                 BootIndex = -1,
+    ///                 DeleteOnTermination = true,
+    ///                 DestinationType = "local",
+    ///                 SourceType = "blank",
+    ///                 VolumeSize = 1,
+    ///             },
+    ///             new OpenStack.Compute.Inputs.InstanceBlockDeviceArgs
+    ///             {
+    ///                 BootIndex = -1,
+    ///                 DeleteOnTermination = true,
+    ///                 DestinationType = "local",
+    ///                 SourceType = "blank",
+    ///                 VolumeSize = 1,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Instances and Security Groups
+    /// 
+    /// When referencing a security group resource in an instance resource, always
+    /// use the _name_ of the security group. If you specify the ID of the security
+    /// group, Terraform will remove and reapply the security group upon each call.
+    /// This is because the OpenStack Compute API returns the names of the associated
+    /// security groups and not their IDs.
+    /// 
+    /// Note the following example:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sg1 = new OpenStack.Networking.SecGroup("sg_1", new()
+    ///     {
+    ///         Name = "sg_1",
+    ///     });
+    /// 
+    ///     var foo = new OpenStack.Compute.Instance("foo", new()
+    ///     {
+    ///         Name = "terraform-test",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             sg1.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Instances and Ports
+    /// 
+    /// Neutron Ports are a great feature and provide a lot of functionality. However,
+    /// there are some notes to be aware of when mixing Instances and Ports:
+    /// 
+    /// * In OpenStack environments prior to the Kilo release, deleting or recreating
+    /// an Instance will cause the Instance's Port(s) to be deleted. One way of working
+    /// around this is to taint any Port(s) used in Instances which are to be recreated.
+    /// See [here](https://review.openstack.org/#/c/126309/) for further information.
+    /// 
+    /// * When attaching an Instance to one or more networks using Ports, place the
+    /// security groups on the Port and not the Instance. If you place the security
+    /// groups on the Instance, the security groups will not be applied upon creation,
+    /// but they will be applied upon a refresh. This is a known OpenStack bug.
+    /// 
+    /// * Network IP information is not available within an instance for networks that
+    /// are attached with Ports. This is mostly due to the flexibility Neutron Ports
+    /// provide when it comes to IP addresses. For example, a Neutron Port can have
+    /// multiple Fixed IP addresses associated with it. It's not possible to know which
+    /// single IP address the user would want returned to the Instance's state
+    /// information. Therefore, in order for a Provisioner to connect to an Instance
+    /// via it's network Port, customize the `Connection` information:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var port1 = new OpenStack.Networking.Port("port_1", new()
+    ///     {
+    ///         Name = "port_1",
+    ///         AdminStateUp = true,
+    ///         NetworkId = "0a1d0a27-cffa-4de3-92c5-9d3fd3f2e74d",
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             "2f02d20a-8dca-49b7-b26f-b6ce9fddaf4f",
+    ///             "ca1e5ed7-dae8-4605-987b-fadaeeb30461",
+    ///         },
+    ///     });
+    /// 
+    ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
+    ///     {
+    ///         Name = "instance_1",
+    ///         Networks = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Port = port1.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Instances and Networks
+    /// 
+    /// Instances almost always require a network. Here are some notes to be aware of
+    /// with how Instances and Networks relate:
+    /// 
+    /// * In scenarios where you only have one network available, you can create an
+    /// instance without specifying a `Network` block. OpenStack will automatically
+    /// launch the instance on this network.
+    /// 
+    /// * If you have access to more than one network, you will need to specify a network
+    /// with a `Network` block. Not specifying a network will result in the following
+    /// error:
+    /// 
+    /// * If you intend to use the `openstack.compute.InterfaceAttach` resource,
+    ///   you still need to make sure one of the above points is satisfied. An instance
+    ///   cannot be created without a valid network configuration even if you intend to
+    ///   use `openstack.compute.InterfaceAttach` after the instance has been created.
+    /// 
+    /// ## Importing instances
+    /// 
+    /// Importing instances can be tricky, since the nova api does not offer all
+    /// information provided at creation time for later retrieval.
+    /// Network interface attachment order, and number and sizes of ephemeral
+    /// disks are examples of this.
+    /// 
+    /// ### Importing basic instance
+    /// Assume you want to import an instance with one ephemeral root disk,
+    /// and one network interface.
+    /// 
+    /// Your configuration would look like the following:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basicInstance = new OpenStack.Compute.Instance("basic_instance", new()
+    ///     {
+    ///         Name = "basic",
+    ///         FlavorId = "&lt;flavor_id&gt;",
+    ///         KeyPair = "&lt;keyname&gt;",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///         ImageId = "&lt;image_id&gt;",
+    ///         Networks = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Name = "&lt;network_name&gt;",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// Then you execute
+    /// 
+    /// ### Importing an instance with multiple emphemeral disks
+    /// 
+    /// The importer cannot read the emphemeral disk configuration
+    /// of an instance, so just specify ImageId as in the configuration
+    /// of the basic instance example.
+    /// 
+    /// ### Importing instance with multiple network interfaces.
+    /// 
+    /// Nova returns the network interfaces grouped by network, thus not in creation
+    /// order.
+    /// That means that if you have multiple network interfaces you must take
+    /// care of the order of networks in your configuration.
+    /// 
+    /// As example we want to import an instance with one ephemeral root disk,
+    /// and 3 network interfaces.
+    /// 
+    /// Examples
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var boot_from_volume = new OpenStack.Compute.Instance("boot-from-volume", new()
+    ///     {
+    ///         Name = "boot-from-volume",
+    ///         FlavorId = "&lt;flavor_id",
+    ///         KeyPair = "&lt;keyname&gt;",
+    ///         ImageId = "&lt;image_id&gt;",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///         Networks = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Name = "&lt;network1&gt;",
+    ///             },
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Name = "&lt;network2&gt;",
+    ///             },
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Name = "&lt;network1&gt;",
+    ///                 FixedIpV4 = "&lt;fixed_ip_v4&gt;",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// In the above configuration the networks are out of order compared to what nova
+    /// and thus the import code returns, which means the plan will not
+    /// be empty after import.
+    /// 
+    /// So either with care check the plan and modify configuration, or read the
+    /// network order in the state file after import and modify your
+    /// configuration accordingly.
+    /// 
+    ///  * A note on ports. If you have created a neutron port independent of an
+    ///     instance, then the import code has no way to detect that the port is created
+    ///     idenpendently, and therefore on deletion of imported instances you might have
+    ///     port resources in your project, which you expected to be created by the
+    ///     instance and thus to also be deleted with the instance.
+    /// 
+    /// ### Importing instances with multiple block storage volumes.
+    /// 
+    /// We have an instance with two block storage volumes, one bootable and one
+    /// non-bootable.
+    /// Note that we only configure the bootable device as block_device.
+    /// The other volumes can be specified as `openstack.blockstorage.Volume`
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance2 = new OpenStack.Compute.Instance("instance_2", new()
+    ///     {
+    ///         Name = "instance_2",
+    ///         ImageId = "&lt;image_id&gt;",
+    ///         FlavorId = "&lt;flavor_id&gt;",
+    ///         KeyPair = "&lt;keyname&gt;",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///         BlockDevices = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceBlockDeviceArgs
+    ///             {
+    ///                 Uuid = "&lt;image_id&gt;",
+    ///                 SourceType = "image",
+    ///                 DestinationType = "volume",
+    ///                 BootIndex = 0,
+    ///                 DeleteOnTermination = true,
+    ///             },
+    ///         },
+    ///         Networks = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Name = "&lt;network_name&gt;",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var volume1 = new OpenStack.BlockStorage.Volume("volume_1", new()
+    ///     {
+    ///         Size = 1,
+    ///         Name = "&lt;vol_name&gt;",
+    ///     });
+    /// 
+    ///     var va1 = new OpenStack.Compute.VolumeAttach("va_1", new()
+    ///     {
+    ///         VolumeId = volume1.Id,
+    ///         InstanceId = instance2.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// To import the instance outlined in the above configuration
+    /// do the following:
+    /// 
+    /// * A note on block storage volumes, the importer does not read
+    ///   DeleteOnTermination flag, and always assumes true. If you
+    ///   import an instance created with DeleteOnTermination false,
+    ///   you end up with "orphaned" volumes after destruction of
+    ///   instances.
+    /// </summary>
     [OpenStackResourceType("openstack:compute/instance:Instance")]
     public partial class Instance : global::Pulumi.CustomResource
     {
@@ -31,6 +896,10 @@ namespace Pulumi.OpenStack.Compute
         [Output("adminPass")]
         public Output<string?> AdminPass { get; private set; } = null!;
 
+        /// <summary>
+        /// Contains all instance metadata, even metadata not set
+        /// by Terraform.
+        /// </summary>
         [Output("allMetadata")]
         public Output<ImmutableDictionary<string, string>> AllMetadata { get; private set; } = null!;
 
@@ -597,6 +1466,11 @@ namespace Pulumi.OpenStack.Compute
 
         [Input("allMetadata")]
         private InputMap<string>? _allMetadata;
+
+        /// <summary>
+        /// Contains all instance metadata, even metadata not set
+        /// by Terraform.
+        /// </summary>
         public InputMap<string> AllMetadata
         {
             get => _allMetadata ?? (_allMetadata = new InputMap<string>());

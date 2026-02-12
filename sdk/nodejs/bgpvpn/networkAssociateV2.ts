@@ -18,18 +18,6 @@ import * as utilities from "../utilities";
  *     networkId: "de83d56c-4d2f-44f7-ac24-af393252204f",
  * });
  * ```
- *
- * ## Import
- *
- * BGP VPN network associations can be imported using the BGP VPN ID and BGP VPN
- *
- * network association ID separated by a slash, e.g.:
- *
- * hcl
- *
- * ```sh
- * $ pulumi import openstack:bgpvpn/networkAssociateV2:NetworkAssociateV2 association_1 2145aaa9-edaa-44fb-9815-e47a96677a72/67bb952a-f9d1-4fc8-ae84-082253a879d4
- * ```
  */
 export class NetworkAssociateV2 extends pulumi.CustomResource {
     /**

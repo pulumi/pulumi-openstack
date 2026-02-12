@@ -45,16 +45,6 @@ import (
 // ## Import
 //
 // DNS zone share can be imported by specifying the zone ID with share ID and optional project ID:
-//
-// bash
-//
-// ```sh
-// $ pulumi import openstack:dns/zoneShareV2:ZoneShareV2 share_1 60cbdc69-64f9-49ee-b294-352e71e22827/0e1dae51-aee2-4b44-962f-885bb69f3a5c
-// ```
-//
-// ```sh
-// $ pulumi import openstack:dns/zoneShareV2:ZoneShareV2 share_1 60cbdc69-64f9-49ee-b294-352e71e22827/0e1dae51-aee2-4b44-962f-885bb69f3a5c/eb92139f6c054a878852ac9e8cbe612a
-// ```
 type ZoneShareV2 struct {
 	pulumi.CustomResourceState
 

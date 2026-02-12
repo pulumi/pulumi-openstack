@@ -17,9 +17,27 @@ public final class VolumeAttachState extends com.pulumi.resources.ResourceArgs {
 
     public static final VolumeAttachState Empty = new VolumeAttachState();
 
+    /**
+     * The device of the volume attachment (ex: `/dev/vdc`).
+     * _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+     * use. There is a chance that the device specified in Terraform will not be
+     * the same device the hypervisor chose. If this happens, Terraform will wish
+     * to update the device upon subsequent applying which will cause the volume
+     * to be detached and reattached indefinitely. Please use with caution.
+     * 
+     */
     @Import(name="device")
     private @Nullable Output<String> device;
 
+    /**
+     * @return The device of the volume attachment (ex: `/dev/vdc`).
+     * _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+     * use. There is a chance that the device specified in Terraform will not be
+     * the same device the hypervisor chose. If this happens, Terraform will wish
+     * to update the device upon subsequent applying which will cause the volume
+     * to be detached and reattached indefinitely. Please use with caution.
+     * 
+     */
     public Optional<Output<String>> device() {
         return Optional.ofNullable(this.device);
     }
@@ -156,11 +174,33 @@ public final class VolumeAttachState extends com.pulumi.resources.ResourceArgs {
             $ = new VolumeAttachState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param device The device of the volume attachment (ex: `/dev/vdc`).
+         * _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+         * use. There is a chance that the device specified in Terraform will not be
+         * the same device the hypervisor chose. If this happens, Terraform will wish
+         * to update the device upon subsequent applying which will cause the volume
+         * to be detached and reattached indefinitely. Please use with caution.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(@Nullable Output<String> device) {
             $.device = device;
             return this;
         }
 
+        /**
+         * @param device The device of the volume attachment (ex: `/dev/vdc`).
+         * _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+         * use. There is a chance that the device specified in Terraform will not be
+         * the same device the hypervisor chose. If this happens, Terraform will wish
+         * to update the device upon subsequent applying which will cause the volume
+         * to be detached and reattached indefinitely. Please use with caution.
+         * 
+         * @return builder
+         * 
+         */
         public Builder device(String device) {
             return device(Output.of(device));
         }

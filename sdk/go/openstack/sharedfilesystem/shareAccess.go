@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this resource to control the share access lists.
+//
+// > **Important Security Notice** The access key assigned by this resource will
+// be stored *unencrypted* in your Terraform state file. If you use this resource
+// in production, please make sure your state file is sufficiently protected.
+// Read more about sensitive data in
+// state.
+//
 // ## Example Usage
 //
 // ### NFS

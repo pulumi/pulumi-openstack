@@ -94,9 +94,21 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.hidden);
     }
 
+    /**
+     * This is the directory where the images will
+     * be downloaded. Images will be stored with a filename corresponding to the
+     * url&#39;s md5 hash. Defaults to &#34;$HOME/.terraform/image_cache&#34;
+     * 
+     */
     @Import(name="imageCachePath")
     private @Nullable Output<String> imageCachePath;
 
+    /**
+     * @return This is the directory where the images will
+     * be downloaded. Images will be stored with a filename corresponding to the
+     * url&#39;s md5 hash. Defaults to &#34;$HOME/.terraform/image_cache&#34;
+     * 
+     */
     public Optional<Output<String>> imageCachePath() {
         return Optional.ofNullable(this.imageCachePath);
     }
@@ -513,11 +525,27 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
             return hidden(Output.of(hidden));
         }
 
+        /**
+         * @param imageCachePath This is the directory where the images will
+         * be downloaded. Images will be stored with a filename corresponding to the
+         * url&#39;s md5 hash. Defaults to &#34;$HOME/.terraform/image_cache&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageCachePath(@Nullable Output<String> imageCachePath) {
             $.imageCachePath = imageCachePath;
             return this;
         }
 
+        /**
+         * @param imageCachePath This is the directory where the images will
+         * be downloaded. Images will be stored with a filename corresponding to the
+         * url&#39;s md5 hash. Defaults to &#34;$HOME/.terraform/image_cache&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageCachePath(String imageCachePath) {
             return imageCachePath(Output.of(imageCachePath));
         }

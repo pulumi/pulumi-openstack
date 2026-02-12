@@ -7,6 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Use this data source to get the ID and the payload of an available Barbican
+ * secret
+ *
+ * > **Important Security Notice** The payload of this data source will be stored
+ * *unencrypted* in your Terraform state file. **Use of this resource for
+ * production deployments is *not* recommended**. Read more about sensitive data
+ * in state.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -213,6 +221,14 @@ export interface GetSecretResult {
     readonly updatedAtFilter?: string;
 }
 /**
+ * Use this data source to get the ID and the payload of an available Barbican
+ * secret
+ *
+ * > **Important Security Notice** The payload of this data source will be stored
+ * *unencrypted* in your Terraform state file. **Use of this resource for
+ * production deployments is *not* recommended**. Read more about sensitive data
+ * in state.
+ *
  * ## Example Usage
  *
  * ```typescript

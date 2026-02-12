@@ -19,22 +19,17 @@ __all__ = [
     'ContainerVersioningLegacyArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ContainerVersioningLegacyArgsDict(TypedDict):
-        location: pulumi.Input[_builtins.str]
-        """
-        Container in which versions will be stored.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Versioning type which can be `versions` or `history`
-        according to [OpenStack
-        documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
-        """
-elif False:
-    ContainerVersioningLegacyArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerVersioningLegacyArgsDict(TypedDict):
+    location: pulumi.Input[_builtins.str]
+    """
+    Container in which versions will be stored.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Versioning type which can be `versions` or `history`
+    according to [OpenStack
+    documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+    """
 
 @pulumi.input_type
 class ContainerVersioningLegacyArgs:

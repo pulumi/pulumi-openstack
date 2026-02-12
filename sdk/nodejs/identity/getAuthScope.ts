@@ -6,6 +6,54 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to get authentication information about the current
+ * auth scope in use. This can be used as self-discovery or introspection of
+ * the username or project name currently in use as well as the service catalog.
+ *
+ * > **Important Security Notice** While the `setTokenId` is `true` this data
+ * source will store an *unencrypted* session token in your Terraform state file.
+ * **Use of this data source with `setTokenId = true` in production deployments
+ * is *not* recommended**.
+ * Read more about sensitive data in state.
+ *
+ * ## Example Usage
+ *
+ * ### Simple
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const scope = openstack.identity.getAuthScope({
+ *     name: "my_scope",
+ * });
+ * ```
+ *
+ * To find the the public object storage endpoint for "region1" as listed in the
+ * service catalog:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * const objectStoreService = .filter(entry => entry.type == "object-store").map(entry => (entry))[0];
+ * const objectStoreEndpoint = .filter(endpoint => endpoint["interface"] == "public" && endpoint.region == "region1").map(endpoint => (endpoint))[0];
+ * const objectStorePublicUrl = objectStoreEndpoint.url;
+ * ```
+ *
+ * ### In a combination with an http data source provider
+ *
+ * See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const scope = openstack.identity.getAuthScope({
+ *     name: "my_scope",
+ * });
+ * ```
+ */
 export function getAuthScope(args: GetAuthScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthScopeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:identity/getAuthScope:getAuthScope", {
@@ -111,6 +159,54 @@ export interface GetAuthScopeResult {
      */
     readonly userName: string;
 }
+/**
+ * Use this data source to get authentication information about the current
+ * auth scope in use. This can be used as self-discovery or introspection of
+ * the username or project name currently in use as well as the service catalog.
+ *
+ * > **Important Security Notice** While the `setTokenId` is `true` this data
+ * source will store an *unencrypted* session token in your Terraform state file.
+ * **Use of this data source with `setTokenId = true` in production deployments
+ * is *not* recommended**.
+ * Read more about sensitive data in state.
+ *
+ * ## Example Usage
+ *
+ * ### Simple
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const scope = openstack.identity.getAuthScope({
+ *     name: "my_scope",
+ * });
+ * ```
+ *
+ * To find the the public object storage endpoint for "region1" as listed in the
+ * service catalog:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * const objectStoreService = .filter(entry => entry.type == "object-store").map(entry => (entry))[0];
+ * const objectStoreEndpoint = .filter(endpoint => endpoint["interface"] == "public" && endpoint.region == "region1").map(endpoint => (endpoint))[0];
+ * const objectStorePublicUrl = objectStoreEndpoint.url;
+ * ```
+ *
+ * ### In a combination with an http data source provider
+ *
+ * See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const scope = openstack.identity.getAuthScope({
+ *     name: "my_scope",
+ * });
+ * ```
+ */
 export function getAuthScopeOutput(args: GetAuthScopeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuthScopeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("openstack:identity/getAuthScope:getAuthScope", {

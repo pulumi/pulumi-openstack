@@ -10,9 +10,66 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Networking
 {
     /// <summary>
+    /// Manages a V2 floating IP resource within OpenStack Neutron (networking)
+    /// that can be used for load balancers.
+    /// These are similar to Nova (compute) floating IP resources,
+    /// but only compute floating IPs can be used with compute instances.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Simple floating IP allocation
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var floatip1 = new OpenStack.Networking.FloatingIp("floatip_1", new()
+    ///     {
+    ///         Pool = "public",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Floating IP allocation using a list of subnets
+    /// 
+    /// If one of the subnets in a list has an exhausted pool, terraform will try the
+    /// next subnet ID from the list.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var extNetwork = OpenStack.Networking.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "public",
+    ///     });
+    /// 
+    ///     var extSubnets = OpenStack.Networking.GetSubnetIdsV2.Invoke(new()
+    ///     {
+    ///         NetworkId = extNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
+    ///     });
+    /// 
+    ///     var floatip1 = new OpenStack.Networking.FloatingIp("floatip_1", new()
+    ///     {
+    ///         Pool = extNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Name),
+    ///         SubnetIds = extSubnets.Apply(getSubnetIdsV2Result =&gt; getSubnetIdsV2Result.Ids),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// Floating IPs can be imported using the `id`, e.g.
+    /// Floating IPs can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import openstack:networking/floatingIp:FloatingIp floatip_1 2c7f39f3-702b-48d1-940c-b50384177ee1

@@ -302,18 +302,6 @@ class BgpvpnPortAssociateV2(pulumi.CustomResource):
             ])
         ```
 
-        ## Import
-
-        BGP VPN port associations can be imported using the BGP VPN ID and BGP VPN port
-
-        association ID separated by a slash, e.g.:
-
-        hcl
-
-        ```sh
-        $ pulumi import openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2 association_1 5bb44ecf-f8fe-4d75-8fc5-313f96ee2696/8f8fc660-3f28-414e-896a-0c7c51162fcf
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] advertise_fixed_ips: A boolean flag indicating whether fixed
@@ -360,18 +348,6 @@ class BgpvpnPortAssociateV2(pulumi.CustomResource):
                     "bgpvpn_id": "35af1cc6-3d0f-4c5d-86f8-8cdb508d3f0c",
                 },
             ])
-        ```
-
-        ## Import
-
-        BGP VPN port associations can be imported using the BGP VPN ID and BGP VPN port
-
-        association ID separated by a slash, e.g.:
-
-        hcl
-
-        ```sh
-        $ pulumi import openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2 association_1 5bb44ecf-f8fe-4d75-8fc5-313f96ee2696/8f8fc660-3f28-414e-896a-0c7c51162fcf
         ```
 
         :param str resource_name: The name of the resource.

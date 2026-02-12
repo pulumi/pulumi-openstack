@@ -21,33 +21,28 @@ __all__ = [
     'TaasTapMirrorV2DirectionsArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class BgpvpnPortAssociateV2RouteArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        Can be `prefix` or `bgpvpn`. For the `prefix` type, the
-        CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
-        `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpn_id` key.
-        """
-        bgpvpn_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the BGP VPN to be advertised. Required
-        if `type` is `bgpvpn`. Conflicts with `prefix`.
-        """
-        local_pref: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The BGP LOCAL\\_PREF value of the routes that will
-        be advertised.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The CIDR prefix (v4 or v6) to be advertised. Required
-        if `type` is `prefix`. Conflicts with `bgpvpn_id`.
-        """
-elif False:
-    BgpvpnPortAssociateV2RouteArgsDict: TypeAlias = Mapping[str, Any]
+class BgpvpnPortAssociateV2RouteArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    Can be `prefix` or `bgpvpn`. For the `prefix` type, the
+    CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
+    `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpn_id` key.
+    """
+    bgpvpn_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the BGP VPN to be advertised. Required
+    if `type` is `bgpvpn`. Conflicts with `prefix`.
+    """
+    local_pref: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The BGP LOCAL\\_PREF value of the routes that will
+    be advertised.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The CIDR prefix (v4 or v6) to be advertised. Required
+    if `type` is `prefix`. Conflicts with `bgpvpn_id`.
+    """
 
 @pulumi.input_type
 class BgpvpnPortAssociateV2RouteArgs:
@@ -129,22 +124,19 @@ class BgpvpnPortAssociateV2RouteArgs:
         pulumi.set(self, "prefix", value)
 
 
-if not MYPY:
-    class TaasTapMirrorV2DirectionsArgsDict(TypedDict):
-        in_: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Declares ingress traffic to the port will be mirrored. The value
-        is the identifier of the ERSPAN or GRE session between the source and destination,
-        this must be unique within the project.
-        """
-        out: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Declares egress traffic will be mirrored. The value is the
-        identifier of the ERSPAN or GRE session between the source and destination,
-        this must be unique within the project.
-        """
-elif False:
-    TaasTapMirrorV2DirectionsArgsDict: TypeAlias = Mapping[str, Any]
+class TaasTapMirrorV2DirectionsArgsDict(TypedDict):
+    in_: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Declares ingress traffic to the port will be mirrored. The value
+    is the identifier of the ERSPAN or GRE session between the source and destination,
+    this must be unique within the project.
+    """
+    out: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Declares egress traffic will be mirrored. The value is the
+    identifier of the ERSPAN or GRE session between the source and destination,
+    this must be unique within the project.
+    """
 
 @pulumi.input_type
 class TaasTapMirrorV2DirectionsArgs:

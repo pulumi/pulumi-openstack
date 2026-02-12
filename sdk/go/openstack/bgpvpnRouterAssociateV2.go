@@ -41,18 +41,6 @@ import (
 //
 // ```
 //
-// ## Import
-//
-// # BGP VPN router associations can be imported using the BGP VPN ID and BGP VPN
-//
-// router association ID separated by a slash, e.g.:
-//
-// hcl
-//
-// ```sh
-// $ pulumi import openstack:index/bgpvpnRouterAssociateV2:BgpvpnRouterAssociateV2 association_1 e26d509e-fc2d-4fb5-8562-619911a9a6bc/3cc9df2d-80db-4536-8ba6-295d1d0f723f
-// ```
-//
 // Deprecated: openstack.index/bgpvpnrouterassociatev2.BgpvpnRouterAssociateV2 has been deprecated in favor of openstack.bgpvpn/routerassociatev2.RouterAssociateV2
 type BgpvpnRouterAssociateV2 struct {
 	pulumi.CustomResourceState

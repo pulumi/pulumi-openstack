@@ -58,7 +58,7 @@ namespace Pulumi.OpenStack.Orchestration
     /// 
     /// ## Import
     /// 
-    /// stacks can be imported using the `id`, e.g.
+    /// stacks can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import openstack:orchestration/stackV1:StackV1 stack_1 ea257959-eeb1-4c10-8d33-26f0409a755d

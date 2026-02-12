@@ -17,6 +17,61 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages a V1 DB configuration resource within OpenStack.
+ * 
+ * ## Example Usage
+ * 
+ * ### Configuration
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.database.Configuration;
+ * import com.pulumi.openstack.database.ConfigurationArgs;
+ * import com.pulumi.openstack.database.inputs.ConfigurationDatastoreArgs;
+ * import com.pulumi.openstack.database.inputs.ConfigurationConfigurationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new Configuration("test", ConfigurationArgs.builder()
+ *             .name("test")
+ *             .description("description")
+ *             .datastore(ConfigurationDatastoreArgs.builder()
+ *                 .version("mysql-5.7")
+ *                 .type("mysql")
+ *                 .build())
+ *             .configurations(ConfigurationConfigurationArgs.builder()
+ *                 .name("max_connections")
+ *                 .value("200")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Types of configuration parameter values
+ * 
+ * Openstack API requires to store some database configuration parameter&#39;s values as strings, even if they contain numbers.
+ * To force store their values as strings set `stringType` to `true`. Otherwise Terraform will try to store them as number what can cause error from Openstack API like below:
+ * 
+ */
 @ResourceType(type="openstack:database/configuration:Configuration")
 public class Configuration extends com.pulumi.resources.CustomResource {
     /**

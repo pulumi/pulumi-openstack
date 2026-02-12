@@ -579,6 +579,38 @@ class FloatingIp(pulumi.CustomResource):
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Manages a V2 floating IP resource within OpenStack Neutron (networking)
+        that can be used for load balancers.
+        These are similar to Nova (compute) floating IP resources,
+        but only compute floating IPs can be used with compute instances.
+
+        ## Example Usage
+
+        ### Simple floating IP allocation
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        floatip1 = openstack.networking.FloatingIp("floatip_1", pool="public")
+        ```
+
+        ### Floating IP allocation using a list of subnets
+
+        If one of the subnets in a list has an exhausted pool, terraform will try the
+        next subnet ID from the list.
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        ext_network = openstack.networking.get_network(name="public")
+        ext_subnets = openstack.networking.get_subnet_ids_v2(network_id=ext_network.id)
+        floatip1 = openstack.networking.FloatingIp("floatip_1",
+            pool=ext_network.name,
+            subnet_ids=ext_subnets.ids)
+        ```
+
         ## Import
 
         Floating IPs can be imported using the `id`, e.g.
@@ -633,6 +665,38 @@ class FloatingIp(pulumi.CustomResource):
                  args: Optional[FloatingIpArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a V2 floating IP resource within OpenStack Neutron (networking)
+        that can be used for load balancers.
+        These are similar to Nova (compute) floating IP resources,
+        but only compute floating IPs can be used with compute instances.
+
+        ## Example Usage
+
+        ### Simple floating IP allocation
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        floatip1 = openstack.networking.FloatingIp("floatip_1", pool="public")
+        ```
+
+        ### Floating IP allocation using a list of subnets
+
+        If one of the subnets in a list has an exhausted pool, terraform will try the
+        next subnet ID from the list.
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        ext_network = openstack.networking.get_network(name="public")
+        ext_subnets = openstack.networking.get_subnet_ids_v2(network_id=ext_network.id)
+        floatip1 = openstack.networking.FloatingIp("floatip_1",
+            pool=ext_network.name,
+            subnet_ids=ext_subnets.ids)
+        ```
+
         ## Import
 
         Floating IPs can be imported using the `id`, e.g.

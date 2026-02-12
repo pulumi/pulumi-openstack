@@ -81,7 +81,7 @@ import (
 //
 // ## Import
 //
-// Routing entries can be imported using a combined ID using the following format: `<router_id>-route-<destination_cidr>-<next_hop>`
+// Routing entries can be imported using a combined ID using the following format: “<router_id>-route-<destination_cidr>-<next_hop>“
 //
 // ```sh
 // $ pulumi import openstack:networking/routerRoute:RouterRoute router_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25

@@ -33,77 +33,72 @@ __all__ = [
     'GetInstanceV2NetworkArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class InstanceBlockDeviceArgsDict(TypedDict):
-        source_type: pulumi.Input[_builtins.str]
-        """
-        The source type of the device. Must be one of
-        "blank", "image", "volume", or "snapshot". Changing this creates a new
-        server.
-        """
-        boot_index: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The boot index of the volume. It defaults to 0.
-        Changing this creates a new server.
-        """
-        delete_on_termination: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Delete the volume / block device upon
-        termination of the instance. Defaults to false. Changing this creates a
-        new server.
-        """
-        destination_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type that gets created. Possible values
-        are "volume" and "local". Changing this creates a new server.
-        """
-        device_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The low-level device type that will be used. Most
-        common thing is to leave this empty. Changing this creates a new server.
-        """
-        disk_bus: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The low-level disk bus that will be used. Most common
-        thing is to leave this empty. Changing this creates a new server.
-        """
-        guest_format: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the guest server disk file system format,
-        such as `ext2`, `ext3`, `ext4`, `xfs` or `swap`. Swap block device mappings
-        have the following restrictions: source_type must be blank and destination_type
-        must be local and only one swap disk per server and the size of the swap disk
-        must be less than or equal to the swap size of the flavor. Changing this
-        creates a new server.
-        """
-        multiattach: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable the attachment of multiattach-capable
-        volumes.
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The UUID of
-        the image, volume, or snapshot. Changing this creates a new server.
-        """
-        volume_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The size of the volume to create (in gigabytes). Required
-        in the following combinations: source=image and destination=volume,
-        source=blank and destination=local, and source=blank and destination=volume.
-        Changing this creates a new server.
-        """
-        volume_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The volume type that will be used, for example SSD
-        or HDD storage. The available options depend on how your specific OpenStack
-        cloud is configured and what classes of storage are provided. Changing this
-        creates a new server.
-        """
-elif False:
-    InstanceBlockDeviceArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceBlockDeviceArgsDict(TypedDict):
+    source_type: pulumi.Input[_builtins.str]
+    """
+    The source type of the device. Must be one of
+    "blank", "image", "volume", or "snapshot". Changing this creates a new
+    server.
+    """
+    boot_index: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The boot index of the volume. It defaults to 0.
+    Changing this creates a new server.
+    """
+    delete_on_termination: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Delete the volume / block device upon
+    termination of the instance. Defaults to false. Changing this creates a
+    new server.
+    """
+    destination_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type that gets created. Possible values
+    are "volume" and "local". Changing this creates a new server.
+    """
+    device_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The low-level device type that will be used. Most
+    common thing is to leave this empty. Changing this creates a new server.
+    """
+    disk_bus: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The low-level disk bus that will be used. Most common
+    thing is to leave this empty. Changing this creates a new server.
+    """
+    guest_format: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the guest server disk file system format,
+    such as `ext2`, `ext3`, `ext4`, `xfs` or `swap`. Swap block device mappings
+    have the following restrictions: source_type must be blank and destination_type
+    must be local and only one swap disk per server and the size of the swap disk
+    must be less than or equal to the swap size of the flavor. Changing this
+    creates a new server.
+    """
+    multiattach: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable the attachment of multiattach-capable
+    volumes.
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The UUID of
+    the image, volume, or snapshot. Changing this creates a new server.
+    """
+    volume_size: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The size of the volume to create (in gigabytes). Required
+    in the following combinations: source=image and destination=volume,
+    source=blank and destination=local, and source=blank and destination=volume.
+    Changing this creates a new server.
+    """
+    volume_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The volume type that will be used, for example SSD
+    or HDD storage. The available options depend on how your specific OpenStack
+    cloud is configured and what classes of storage are provided. Changing this
+    creates a new server.
+    """
 
 @pulumi.input_type
 class InstanceBlockDeviceArgs:
@@ -329,37 +324,34 @@ class InstanceBlockDeviceArgs:
         pulumi.set(self, "volume_type", value)
 
 
-if not MYPY:
-    class InstanceNetworkArgsDict(TypedDict):
-        access_network: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies if this network should be used for
-        provisioning access. Accepts true or false. Defaults to false.
-        """
-        fixed_ip_v4: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies a fixed IPv4 address to be used on this
-        network. Changing this creates a new server.
-        """
-        fixed_ip_v6: NotRequired[pulumi.Input[_builtins.str]]
-        mac: NotRequired[pulumi.Input[_builtins.str]]
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The human-readable
-        name of the network. Changing this creates a new server.
-        """
-        port: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The port UUID of a
-        network to attach to the server. Changing this creates a new server.
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The network UUID to
-        attach to the server. Changing this creates a new server.
-        """
-elif False:
-    InstanceNetworkArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceNetworkArgsDict(TypedDict):
+    access_network: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Specifies if this network should be used for
+    provisioning access. Accepts true or false. Defaults to false.
+    """
+    fixed_ip_v4: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies a fixed IPv4 address to be used on this
+    network. Changing this creates a new server.
+    """
+    fixed_ip_v6: NotRequired[pulumi.Input[_builtins.str]]
+    mac: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The human-readable
+    name of the network. Changing this creates a new server.
+    """
+    port: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The port UUID of a
+    network to attach to the server. Changing this creates a new server.
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The network UUID to
+    attach to the server. Changing this creates a new server.
+    """
 
 @pulumi.input_type
 class InstanceNetworkArgs:
@@ -482,18 +474,15 @@ class InstanceNetworkArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class InstancePersonalityArgsDict(TypedDict):
-        content: pulumi.Input[_builtins.str]
-        """
-        The contents of the file. Limited to 255 bytes.
-        """
-        file: pulumi.Input[_builtins.str]
-        """
-        The absolute path of the destination file.
-        """
-elif False:
-    InstancePersonalityArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePersonalityArgsDict(TypedDict):
+    content: pulumi.Input[_builtins.str]
+    """
+    The contents of the file. Limited to 255 bytes.
+    """
+    file: pulumi.Input[_builtins.str]
+    """
+    The absolute path of the destination file.
+    """
 
 @pulumi.input_type
 class InstancePersonalityArgs:
@@ -532,57 +521,54 @@ class InstancePersonalityArgs:
         pulumi.set(self, "file", value)
 
 
-if not MYPY:
-    class InstanceSchedulerHintArgsDict(TypedDict):
-        additional_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Arbitrary key/value pairs of additional
-        properties to pass to the scheduler.
-        """
-        build_near_host_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An IP Address in CIDR form. The instance
-        will be placed on a compute node that is in the same subnet.
-        """
-        different_cells: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The names of cells where not to build the instance.
-        """
-        different_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of instance UUIDs. The instance will
-        be scheduled on a different host than all other instances.
-        """
-        group: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A UUID of a Server Group. The instance will be placed
-        into that group. See reference
-        for details on managing servergroup resources
-        """
-        queries: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A conditional query that a compute node must pass in
-        order to host an instance. The query must use the `JsonFilter` syntax
-        which is described
-        [here](https://docs.openstack.org/nova/latest/admin/configuration/schedulers.html#jsonfilter).
-        At this time, only simple queries are supported. Compound queries using
-        `and`, `or`, or `not` are not supported. An example of a simple query is:
+class InstanceSchedulerHintArgsDict(TypedDict):
+    additional_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Arbitrary key/value pairs of additional
+    properties to pass to the scheduler.
+    """
+    build_near_host_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An IP Address in CIDR form. The instance
+    will be placed on a compute node that is in the same subnet.
+    """
+    different_cells: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The names of cells where not to build the instance.
+    """
+    different_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of instance UUIDs. The instance will
+    be scheduled on a different host than all other instances.
+    """
+    group: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A UUID of a Server Group. The instance will be placed
+    into that group. See reference
+    for details on managing servergroup resources
+    """
+    queries: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A conditional query that a compute node must pass in
+    order to host an instance. The query must use the `JsonFilter` syntax
+    which is described
+    [here](https://docs.openstack.org/nova/latest/admin/configuration/schedulers.html#jsonfilter).
+    At this time, only simple queries are supported. Compound queries using
+    `and`, `or`, or `not` are not supported. An example of a simple query is:
 
-        ```
-        [">=", "$free_ram_mb", "1024"]
-        ```
-        """
-        same_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of instance UUIDs. The instance will be
-        scheduled on the same host of those specified.
-        """
-        target_cell: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of a cell to host the instance.
-        """
-elif False:
-    InstanceSchedulerHintArgsDict: TypeAlias = Mapping[str, Any]
+    ```
+    [">=", "$free_ram_mb", "1024"]
+    ```
+    """
+    same_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of instance UUIDs. The instance will be
+    scheduled on the same host of those specified.
+    """
+    target_cell: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of a cell to host the instance.
+    """
 
 @pulumi.input_type
 class InstanceSchedulerHintArgs:
@@ -749,23 +735,20 @@ class InstanceSchedulerHintArgs:
         pulumi.set(self, "target_cell", value)
 
 
-if not MYPY:
-    class InstanceVendorOptionsArgsDict(TypedDict):
-        detach_ports_before_destroy: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to try to detach all attached
-        ports to the vm before destroying it to make sure the port state is correct
-        after the vm destruction. This is helpful when the port is not deleted.
-        """
-        ignore_resize_confirmation: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Boolean to control whether
-        to ignore manual confirmation of the instance resizing. This can be helpful
-        to work with some OpenStack clouds which automatically confirm resizing of
-        instances after some timeout.
-        """
-elif False:
-    InstanceVendorOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceVendorOptionsArgsDict(TypedDict):
+    detach_ports_before_destroy: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to try to detach all attached
+    ports to the vm before destroying it to make sure the port state is correct
+    after the vm destruction. This is helpful when the port is not deleted.
+    """
+    ignore_resize_confirmation: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Boolean to control whether
+    to ignore manual confirmation of the instance resizing. This can be helpful
+    to work with some OpenStack clouds which automatically confirm resizing of
+    instances after some timeout.
+    """
 
 @pulumi.input_type
 class InstanceVendorOptionsArgs:
@@ -816,11 +799,8 @@ class InstanceVendorOptionsArgs:
         pulumi.set(self, "ignore_resize_confirmation", value)
 
 
-if not MYPY:
-    class ServerGroupRulesArgsDict(TypedDict):
-        max_server_per_host: NotRequired[pulumi.Input[_builtins.int]]
-elif False:
-    ServerGroupRulesArgsDict: TypeAlias = Mapping[str, Any]
+class ServerGroupRulesArgsDict(TypedDict):
+    max_server_per_host: NotRequired[pulumi.Input[_builtins.int]]
 
 @pulumi.input_type
 class ServerGroupRulesArgs:
@@ -839,16 +819,13 @@ class ServerGroupRulesArgs:
         pulumi.set(self, "max_server_per_host", value)
 
 
-if not MYPY:
-    class VolumeAttachVendorOptionsArgsDict(TypedDict):
-        ignore_volume_confirmation: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Boolean to control whether
-        to ignore volume status confirmation of the attached volume. This can be helpful
-        to work with some OpenStack clouds which don't have the Block Storage V3 API available.
-        """
-elif False:
-    VolumeAttachVendorOptionsArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeAttachVendorOptionsArgsDict(TypedDict):
+    ignore_volume_confirmation: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Boolean to control whether
+    to ignore volume status confirmation of the attached volume. This can be helpful
+    to work with some OpenStack clouds which don't have the Block Storage V3 API available.
+    """
 
 @pulumi.input_type
 class VolumeAttachVendorOptionsArgs:
@@ -877,34 +854,31 @@ class VolumeAttachVendorOptionsArgs:
         pulumi.set(self, "ignore_volume_confirmation", value)
 
 
-if not MYPY:
-    class GetInstanceV2NetworkArgsDict(TypedDict):
-        fixed_ip_v4: _builtins.str
-        """
-        The IPv4 address assigned to this network port.
-        """
-        fixed_ip_v6: _builtins.str
-        """
-        The IPv6 address assigned to this network port.
-        """
-        mac: _builtins.str
-        """
-        The MAC address assigned to this network interface.
-        """
-        name: _builtins.str
-        """
-        The name of the network
-        """
-        port: _builtins.str
-        """
-        The port UUID for this network
-        """
-        uuid: _builtins.str
-        """
-        The UUID of the network
-        """
-elif False:
-    GetInstanceV2NetworkArgsDict: TypeAlias = Mapping[str, Any]
+class GetInstanceV2NetworkArgsDict(TypedDict):
+    fixed_ip_v4: _builtins.str
+    """
+    The IPv4 address assigned to this network port.
+    """
+    fixed_ip_v6: _builtins.str
+    """
+    The IPv6 address assigned to this network port.
+    """
+    mac: _builtins.str
+    """
+    The MAC address assigned to this network interface.
+    """
+    name: _builtins.str
+    """
+    The name of the network
+    """
+    port: _builtins.str
+    """
+    The port UUID for this network
+    """
+    uuid: _builtins.str
+    """
+    The UUID of the network
+    """
 
 @pulumi.input_type
 class GetInstanceV2NetworkArgs:

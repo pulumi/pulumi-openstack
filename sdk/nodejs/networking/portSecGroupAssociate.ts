@@ -5,6 +5,18 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Manages a V2 port's security groups within OpenStack. Useful, when the port was
+ * not created by Terraform (e.g. Manila or LBaaS).
+ *
+ * When the resource is deleted, Terraform doesn't delete the port, but unsets the
+ * list of user defined security group IDs.  However, if `enforce` is set to `true`
+ * and the resource is deleted, Terraform will remove all assigned security group
+ * IDs.
+ *
+ * > **Warning:** This resource should **not** be used when the
+ * port was created directly within Terraform. If it is, it can lead\
+ * to **security problems** with incorrect security groups on ports
+ *
  * ## Example Usage
  *
  * ### Append a security group to an existing port

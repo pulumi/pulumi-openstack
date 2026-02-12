@@ -38,7 +38,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ## Import
     /// 
-    /// Address Groups can be imported using the `id`, e.g.
+    /// Address Groups can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import openstack:networking/addressGroupV2:AddressGroupV2 group_1 782fef9c-d03c-400a-9735-2f9af5681cb3

@@ -178,6 +178,14 @@ export class VolumeAttach extends pulumi.CustomResource {
         return obj['__pulumiType'] === VolumeAttach.__pulumiType;
     }
 
+    /**
+     * The device of the volume attachment (ex: `/dev/vdc`).
+     * _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+     * use. There is a chance that the device specified in Terraform will not be
+     * the same device the hypervisor chose. If this happens, Terraform will wish
+     * to update the device upon subsequent applying which will cause the volume
+     * to be detached and reattached indefinitely. Please use with caution.
+     */
     declare public readonly device: pulumi.Output<string>;
     /**
      * The ID of the Instance to attach the Volume to.
@@ -255,6 +263,14 @@ export class VolumeAttach extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VolumeAttach resources.
  */
 export interface VolumeAttachState {
+    /**
+     * The device of the volume attachment (ex: `/dev/vdc`).
+     * _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+     * use. There is a chance that the device specified in Terraform will not be
+     * the same device the hypervisor chose. If this happens, Terraform will wish
+     * to update the device upon subsequent applying which will cause the volume
+     * to be detached and reattached indefinitely. Please use with caution.
+     */
     device?: pulumi.Input<string>;
     /**
      * The ID of the Instance to attach the Volume to.
@@ -292,6 +308,14 @@ export interface VolumeAttachState {
  * The set of arguments for constructing a VolumeAttach resource.
  */
 export interface VolumeAttachArgs {
+    /**
+     * The device of the volume attachment (ex: `/dev/vdc`).
+     * _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+     * use. There is a chance that the device specified in Terraform will not be
+     * the same device the hypervisor chose. If this happens, Terraform will wish
+     * to update the device upon subsequent applying which will cause the volume
+     * to be detached and reattached indefinitely. Please use with caution.
+     */
     device?: pulumi.Input<string>;
     /**
      * The ID of the Instance to attach the Volume to.

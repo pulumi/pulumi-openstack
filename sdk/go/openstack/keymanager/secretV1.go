@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a V1 Barbican secret resource within OpenStack.
+//
+// > **Important Security Notice** The payload of this resource will be stored
+// *unencrypted* in your Terraform state file. **Use of this resource for production
+// deployments is *not* recommended**. Read more about sensitive data in
+// state.
+//
 // ## Example Usage
 //
 // ### Simple secret

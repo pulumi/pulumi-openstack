@@ -96,24 +96,19 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * You can import an existing Host Aggregate by their ID.
- * 
  * ```sh
  * $ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24
  * ```
  * 
  * The ID can be obtained with an openstack command:
- * 
+ * ```sh
  * $ openstack aggregate list
- * 
  * +----+------+-------------------+
- * 
  * | ID | Name | Availability Zone |
- * 
  * +----+------+-------------------+
- * 
  * | 59 | test | None              |
- * 
  * +----+------+-------------------+
+ * ```
  * 
  */
 @ResourceType(type="openstack:compute/aggregateV2:AggregateV2")

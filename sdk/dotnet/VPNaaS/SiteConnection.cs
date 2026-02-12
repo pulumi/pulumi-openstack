@@ -48,7 +48,7 @@ namespace Pulumi.OpenStack.VPNaaS
     /// 
     /// ## Import
     /// 
-    /// Site Connections can be imported using the `id`, e.g.
+    /// Site Connections can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import openstack:vpnaas/siteConnection:SiteConnection conn_1 832cb7f3-59fe-40cf-8f64-8350ffc03272

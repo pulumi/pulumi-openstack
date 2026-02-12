@@ -31,13 +31,8 @@ __all__ = [
     'SecretV1AclReadArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ContainerV1AclArgsDict(TypedDict):
-        read: NotRequired[pulumi.Input['ContainerV1AclReadArgsDict']]
-elif False:
-    ContainerV1AclArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerV1AclArgsDict(TypedDict):
+    read: NotRequired[pulumi.Input['ContainerV1AclReadArgsDict']]
 
 @pulumi.input_type
 class ContainerV1AclArgs:
@@ -56,28 +51,25 @@ class ContainerV1AclArgs:
         pulumi.set(self, "read", value)
 
 
-if not MYPY:
-    class ContainerV1AclReadArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date the container was created.
-        """
-        project_access: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the container is accessible project wide.
-        Defaults to `true`.
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date the container was last updated.
-        """
-        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of user IDs, which are allowed to access the
-        container, when `project_access` is set to `false`.
-        """
-elif False:
-    ContainerV1AclReadArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerV1AclReadArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The date the container was created.
+    """
+    project_access: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the container is accessible project wide.
+    Defaults to `true`.
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The date the container was last updated.
+    """
+    users: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of user IDs, which are allowed to access the
+    container, when `project_access` is set to `false`.
+    """
 
 @pulumi.input_type
 class ContainerV1AclReadArgs:
@@ -154,19 +146,16 @@ class ContainerV1AclReadArgs:
         pulumi.set(self, "users", value)
 
 
-if not MYPY:
-    class ContainerV1ConsumerArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Human-readable name for the Container. Does not have
-        to be unique.
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The consumer URL.
-        """
-elif False:
-    ContainerV1ConsumerArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerV1ConsumerArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Human-readable name for the Container. Does not have
+    to be unique.
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The consumer URL.
+    """
 
 @pulumi.input_type
 class ContainerV1ConsumerArgs:
@@ -209,18 +198,15 @@ class ContainerV1ConsumerArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class ContainerV1SecretRefArgsDict(TypedDict):
-        secret_ref: pulumi.Input[_builtins.str]
-        """
-        The secret reference / where to find the secret, URL.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
-        """
-elif False:
-    ContainerV1SecretRefArgsDict: TypeAlias = Mapping[str, Any]
+class ContainerV1SecretRefArgsDict(TypedDict):
+    secret_ref: pulumi.Input[_builtins.str]
+    """
+    The secret reference / where to find the secret, URL.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+    """
 
 @pulumi.input_type
 class ContainerV1SecretRefArgs:
@@ -260,34 +246,31 @@ class ContainerV1SecretRefArgs:
         pulumi.set(self, "name", value)
 
 
-if not MYPY:
-    class OrderV1MetaArgsDict(TypedDict):
-        algorithm: pulumi.Input[_builtins.str]
-        """
-        Algorithm to use for key generation.
-        """
-        bit_length: pulumi.Input[_builtins.int]
-        """
-        Bit lenght of key to be generated.
-        """
-        expiration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
-        """
-        mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The mode to use for key generation.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the secret set by the user.
-        """
-        payload_content_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The media type for the content of the secrets payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
-        """
-elif False:
-    OrderV1MetaArgsDict: TypeAlias = Mapping[str, Any]
+class OrderV1MetaArgsDict(TypedDict):
+    algorithm: pulumi.Input[_builtins.str]
+    """
+    Algorithm to use for key generation.
+    """
+    bit_length: pulumi.Input[_builtins.int]
+    """
+    Bit lenght of key to be generated.
+    """
+    expiration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
+    """
+    mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The mode to use for key generation.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the secret set by the user.
+    """
+    payload_content_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The media type for the content of the secrets payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+    """
 
 @pulumi.input_type
 class OrderV1MetaArgs:
@@ -390,11 +373,8 @@ class OrderV1MetaArgs:
         pulumi.set(self, "payload_content_type", value)
 
 
-if not MYPY:
-    class SecretV1AclArgsDict(TypedDict):
-        read: NotRequired[pulumi.Input['SecretV1AclReadArgsDict']]
-elif False:
-    SecretV1AclArgsDict: TypeAlias = Mapping[str, Any]
+class SecretV1AclArgsDict(TypedDict):
+    read: NotRequired[pulumi.Input['SecretV1AclReadArgsDict']]
 
 @pulumi.input_type
 class SecretV1AclArgs:
@@ -413,28 +393,25 @@ class SecretV1AclArgs:
         pulumi.set(self, "read", value)
 
 
-if not MYPY:
-    class SecretV1AclReadArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date the secret was created.
-        """
-        project_access: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the secret is accessible project wide.
-        Defaults to `true`.
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date the secret was last updated.
-        """
-        users: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The list of user IDs, which are allowed to access the
-        secret, when `project_access` is set to `false`.
-        """
-elif False:
-    SecretV1AclReadArgsDict: TypeAlias = Mapping[str, Any]
+class SecretV1AclReadArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The date the secret was created.
+    """
+    project_access: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the secret is accessible project wide.
+    Defaults to `true`.
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The date the secret was last updated.
+    """
+    users: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The list of user IDs, which are allowed to access the
+    secret, when `project_access` is set to `false`.
+    """
 
 @pulumi.input_type
 class SecretV1AclReadArgs:

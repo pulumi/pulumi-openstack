@@ -55,9 +55,6 @@ namespace Pulumi.OpenStack.Dns
     /// 
     /// ```sh
     /// $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 project_id/zone_id/recordset_id
-    /// ```
-    /// 
-    /// ```sh
     /// $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 zone_id/recordset_id
     /// ```
     /// </summary>

@@ -162,11 +162,11 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// This resource can be imported by specifying the name of the container:
     /// 
     /// Some attributes can't be imported :
-    /// * `force_destroy`
-    /// * `content_type`
-    /// * `metadata`
-    /// * `container_sync_to`
-    /// * `container_sync_key`
+    /// * `ForceDestroy`
+    /// * `ContentType`
+    /// * `Metadata`
+    /// * `ContainerSyncTo`
+    /// * `ContainerSyncKey`
     /// 
     /// So you'll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.
     /// 

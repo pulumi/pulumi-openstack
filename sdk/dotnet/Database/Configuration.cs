@@ -9,6 +9,48 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Database
 {
+    /// <summary>
+    /// Manages a V1 DB configuration resource within OpenStack.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Configuration
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new OpenStack.Database.Configuration("test", new()
+    ///     {
+    ///         Name = "test",
+    ///         Description = "description",
+    ///         Datastore = new OpenStack.Database.Inputs.ConfigurationDatastoreArgs
+    ///         {
+    ///             Version = "mysql-5.7",
+    ///             Type = "mysql",
+    ///         },
+    ///         Configurations = new[]
+    ///         {
+    ///             new OpenStack.Database.Inputs.ConfigurationConfigurationArgs
+    ///             {
+    ///                 Name = "max_connections",
+    ///                 Value = "200",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Types of configuration parameter values
+    /// 
+    /// Openstack API requires to store some database configuration parameter's values as strings, even if they contain numbers.
+    /// To force store their values as strings set `StringType` to `True`. Otherwise Terraform will try to store them as number what can cause error from Openstack API like below:
+    /// </summary>
     [OpenStackResourceType("openstack:database/configuration:Configuration")]
     public partial class Configuration : global::Pulumi.CustomResource
     {

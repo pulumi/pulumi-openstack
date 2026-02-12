@@ -53,18 +53,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * BGP VPN router associations can be imported using the BGP VPN ID and BGP VPN
- * 
- * router association ID separated by a slash, e.g.:
- * 
- * hcl
- * 
- * ```sh
- * $ pulumi import openstack:bgpvpn/routerAssociateV2:RouterAssociateV2 association_1 e26d509e-fc2d-4fb5-8562-619911a9a6bc/3cc9df2d-80db-4536-8ba6-295d1d0f723f
- * ```
- * 
  */
 @ResourceType(type="openstack:bgpvpn/routerAssociateV2:RouterAssociateV2")
 public class RouterAssociateV2 extends com.pulumi.resources.CustomResource {

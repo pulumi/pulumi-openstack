@@ -82,7 +82,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ## Import
     /// 
-    /// Routing entries can be imported using a router `id`:
+    /// Routing entries can be imported using a router `Id`:
     /// 
     /// ```sh
     /// $ pulumi import openstack:networking/routerRoutesV2:RouterRoutesV2 router_routes_1 686fe248-386c-4f70-9f6c-281607dad079

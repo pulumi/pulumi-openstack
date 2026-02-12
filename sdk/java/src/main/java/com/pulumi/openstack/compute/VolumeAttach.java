@@ -284,9 +284,27 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="openstack:compute/volumeAttach:VolumeAttach")
 public class VolumeAttach extends com.pulumi.resources.CustomResource {
+    /**
+     * The device of the volume attachment (ex: `/dev/vdc`).
+     * _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+     * use. There is a chance that the device specified in Terraform will not be
+     * the same device the hypervisor chose. If this happens, Terraform will wish
+     * to update the device upon subsequent applying which will cause the volume
+     * to be detached and reattached indefinitely. Please use with caution.
+     * 
+     */
     @Export(name="device", refs={String.class}, tree="[0]")
     private Output<String> device;
 
+    /**
+     * @return The device of the volume attachment (ex: `/dev/vdc`).
+     * _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+     * use. There is a chance that the device specified in Terraform will not be
+     * the same device the hypervisor chose. If this happens, Terraform will wish
+     * to update the device upon subsequent applying which will cause the volume
+     * to be detached and reattached indefinitely. Please use with caution.
+     * 
+     */
     public Output<String> device() {
         return this.device;
     }

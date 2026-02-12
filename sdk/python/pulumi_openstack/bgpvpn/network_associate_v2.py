@@ -215,18 +215,6 @@ class NetworkAssociateV2(pulumi.CustomResource):
             network_id="de83d56c-4d2f-44f7-ac24-af393252204f")
         ```
 
-        ## Import
-
-        BGP VPN network associations can be imported using the BGP VPN ID and BGP VPN
-
-        network association ID separated by a slash, e.g.:
-
-        hcl
-
-        ```sh
-        $ pulumi import openstack:bgpvpn/networkAssociateV2:NetworkAssociateV2 association_1 2145aaa9-edaa-44fb-9815-e47a96677a72/67bb952a-f9d1-4fc8-ae84-082253a879d4
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bgpvpn_id: The ID of the BGP VPN to which the network will be
@@ -260,18 +248,6 @@ class NetworkAssociateV2(pulumi.CustomResource):
         association1 = openstack.bgpvpn.NetworkAssociateV2("association_1",
             bgpvpn_id="e7189337-5684-46ee-bcb1-44f1a57066c9",
             network_id="de83d56c-4d2f-44f7-ac24-af393252204f")
-        ```
-
-        ## Import
-
-        BGP VPN network associations can be imported using the BGP VPN ID and BGP VPN
-
-        network association ID separated by a slash, e.g.:
-
-        hcl
-
-        ```sh
-        $ pulumi import openstack:bgpvpn/networkAssociateV2:NetworkAssociateV2 association_1 2145aaa9-edaa-44fb-9815-e47a96677a72/67bb952a-f9d1-4fc8-ae84-082253a879d4
         ```
 
         :param str resource_name: The name of the resource.

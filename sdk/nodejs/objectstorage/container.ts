@@ -112,11 +112,11 @@ import * as utilities from "../utilities";
  * This resource can be imported by specifying the name of the container:
  *
  * Some attributes can't be imported :
- * * `force_destroy`
- * * `content_type`
+ * * `forceDestroy`
+ * * `contentType`
  * * `metadata`
- * * `container_sync_to`
- * * `container_sync_key`
+ * * `containerSyncTo`
+ * * `containerSyncKey`
  *
  * So you'll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.
  *

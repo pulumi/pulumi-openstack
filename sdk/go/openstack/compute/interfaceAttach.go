@@ -165,6 +165,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
 //	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
@@ -243,6 +245,8 @@ import (
 // package main
 //
 // import (
+//
+//	"fmt"
 //
 //	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
 //	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking"

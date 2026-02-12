@@ -117,6 +117,11 @@ export class Image extends pulumi.CustomResource {
      * Defaults to false.
      */
     declare public readonly hidden: pulumi.Output<boolean | undefined>;
+    /**
+     * This is the directory where the images will
+     * be downloaded. Images will be stored with a filename corresponding to the
+     * url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
+     */
     declare public readonly imageCachePath: pulumi.Output<string | undefined>;
     /**
      * Unique ID (valid UUID) of image to create. Changing
@@ -358,6 +363,11 @@ export interface ImageState {
      * Defaults to false.
      */
     hidden?: pulumi.Input<boolean>;
+    /**
+     * This is the directory where the images will
+     * be downloaded. Images will be stored with a filename corresponding to the
+     * url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
+     */
     imageCachePath?: pulumi.Input<string>;
     /**
      * Unique ID (valid UUID) of image to create. Changing
@@ -499,6 +509,11 @@ export interface ImageArgs {
      * Defaults to false.
      */
     hidden?: pulumi.Input<boolean>;
+    /**
+     * This is the directory where the images will
+     * be downloaded. Images will be stored with a filename corresponding to the
+     * url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
+     */
     imageCachePath?: pulumi.Input<string>;
     /**
      * Unique ID (valid UUID) of image to create. Changing

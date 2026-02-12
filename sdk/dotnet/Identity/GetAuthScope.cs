@@ -11,12 +11,240 @@ namespace Pulumi.OpenStack.Identity
 {
     public static class GetAuthScope
     {
+        /// <summary>
+        /// Use this data source to get authentication information about the current
+        /// auth scope in use. This can be used as self-discovery or introspection of
+        /// the username or project name currently in use as well as the service catalog.
+        /// 
+        /// &gt; **Important Security Notice** While the `SetTokenId` is `True` this data
+        /// source will store an *unencrypted* session token in your Terraform state file.
+        /// **Use of this data source with `SetTokenId = true` in production deployments
+        /// is *not* recommended**.
+        /// Read more about sensitive data in state.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Simple
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var scope = OpenStack.Identity.GetAuthScope.Invoke(new()
+        ///     {
+        ///         Name = "my_scope",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// To find the the public object storage endpoint for "region1" as listed in the
+        /// service catalog:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var objectStoreService = .Where(entry =&gt; entry.Type == "object-store").Select(entry =&gt; 
+        ///     {
+        ///         return entry;
+        ///     }).ToList()[0];
+        /// 
+        ///     var objectStoreEndpoint = .Where(endpoint =&gt; endpoint.Interface == "public" &amp;&amp; endpoint.Region == "region1").Select(endpoint =&gt; 
+        ///     {
+        ///         return endpoint;
+        ///     }).ToList()[0];
+        /// 
+        ///     var objectStorePublicUrl = objectStoreEndpoint.Url;
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### In a combination with an http data source provider
+        /// 
+        /// See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var scope = OpenStack.Identity.GetAuthScope.Invoke(new()
+        ///     {
+        ///         Name = "my_scope",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetAuthScopeResult> InvokeAsync(GetAuthScopeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args ?? new GetAuthScopeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get authentication information about the current
+        /// auth scope in use. This can be used as self-discovery or introspection of
+        /// the username or project name currently in use as well as the service catalog.
+        /// 
+        /// &gt; **Important Security Notice** While the `SetTokenId` is `True` this data
+        /// source will store an *unencrypted* session token in your Terraform state file.
+        /// **Use of this data source with `SetTokenId = true` in production deployments
+        /// is *not* recommended**.
+        /// Read more about sensitive data in state.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Simple
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var scope = OpenStack.Identity.GetAuthScope.Invoke(new()
+        ///     {
+        ///         Name = "my_scope",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// To find the the public object storage endpoint for "region1" as listed in the
+        /// service catalog:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var objectStoreService = .Where(entry =&gt; entry.Type == "object-store").Select(entry =&gt; 
+        ///     {
+        ///         return entry;
+        ///     }).ToList()[0];
+        /// 
+        ///     var objectStoreEndpoint = .Where(endpoint =&gt; endpoint.Interface == "public" &amp;&amp; endpoint.Region == "region1").Select(endpoint =&gt; 
+        ///     {
+        ///         return endpoint;
+        ///     }).ToList()[0];
+        /// 
+        ///     var objectStorePublicUrl = objectStoreEndpoint.Url;
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### In a combination with an http data source provider
+        /// 
+        /// See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var scope = OpenStack.Identity.GetAuthScope.Invoke(new()
+        ///     {
+        ///         Name = "my_scope",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetAuthScopeResult> Invoke(GetAuthScopeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args ?? new GetAuthScopeInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get authentication information about the current
+        /// auth scope in use. This can be used as self-discovery or introspection of
+        /// the username or project name currently in use as well as the service catalog.
+        /// 
+        /// &gt; **Important Security Notice** While the `SetTokenId` is `True` this data
+        /// source will store an *unencrypted* session token in your Terraform state file.
+        /// **Use of this data source with `SetTokenId = true` in production deployments
+        /// is *not* recommended**.
+        /// Read more about sensitive data in state.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Simple
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var scope = OpenStack.Identity.GetAuthScope.Invoke(new()
+        ///     {
+        ///         Name = "my_scope",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// To find the the public object storage endpoint for "region1" as listed in the
+        /// service catalog:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var objectStoreService = .Where(entry =&gt; entry.Type == "object-store").Select(entry =&gt; 
+        ///     {
+        ///         return entry;
+        ///     }).ToList()[0];
+        /// 
+        ///     var objectStoreEndpoint = .Where(endpoint =&gt; endpoint.Interface == "public" &amp;&amp; endpoint.Region == "region1").Select(endpoint =&gt; 
+        ///     {
+        ///         return endpoint;
+        ///     }).ToList()[0];
+        /// 
+        ///     var objectStorePublicUrl = objectStoreEndpoint.Url;
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### In a combination with an http data source provider
+        /// 
+        /// See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var scope = OpenStack.Identity.GetAuthScope.Invoke(new()
+        ///     {
+        ///         Name = "my_scope",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetAuthScopeResult> Invoke(GetAuthScopeInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args ?? new GetAuthScopeInvokeArgs(), options.WithDefaults());
     }

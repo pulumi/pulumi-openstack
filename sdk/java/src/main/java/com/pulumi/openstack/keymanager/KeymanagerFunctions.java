@@ -299,6 +299,14 @@ public final class KeymanagerFunctions {
         return Deployment.getInstance().invokeAsync("openstack:keymanager/getContainer:getContainer", TypeShape.of(GetContainerResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to get the ID and the payload of an available Barbican
+     * secret
+     * 
+     * &gt; **Important Security Notice** The payload of this data source will be stored
+     * *unencrypted* in your Terraform state file. **Use of this resource for
+     * production deployments is *not* recommended**. Read more about sensitive data
+     * in state.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -382,6 +390,14 @@ public final class KeymanagerFunctions {
         return getSecret(GetSecretArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to get the ID and the payload of an available Barbican
+     * secret
+     * 
+     * &gt; **Important Security Notice** The payload of this data source will be stored
+     * *unencrypted* in your Terraform state file. **Use of this resource for
+     * production deployments is *not* recommended**. Read more about sensitive data
+     * in state.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -465,6 +481,14 @@ public final class KeymanagerFunctions {
         return getSecretPlain(GetSecretPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to get the ID and the payload of an available Barbican
+     * secret
+     * 
+     * &gt; **Important Security Notice** The payload of this data source will be stored
+     * *unencrypted* in your Terraform state file. **Use of this resource for
+     * production deployments is *not* recommended**. Read more about sensitive data
+     * in state.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -548,6 +572,14 @@ public final class KeymanagerFunctions {
         return getSecret(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to get the ID and the payload of an available Barbican
+     * secret
+     * 
+     * &gt; **Important Security Notice** The payload of this data source will be stored
+     * *unencrypted* in your Terraform state file. **Use of this resource for
+     * production deployments is *not* recommended**. Read more about sensitive data
+     * in state.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -631,6 +663,14 @@ public final class KeymanagerFunctions {
         return getSecretPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to get the ID and the payload of an available Barbican
+     * secret
+     * 
+     * &gt; **Important Security Notice** The payload of this data source will be stored
+     * *unencrypted* in your Terraform state file. **Use of this resource for
+     * production deployments is *not* recommended**. Read more about sensitive data
+     * in state.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -714,6 +754,14 @@ public final class KeymanagerFunctions {
         return Deployment.getInstance().invoke("openstack:keymanager/getSecret:getSecret", TypeShape.of(GetSecretResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to get the ID and the payload of an available Barbican
+     * secret
+     * 
+     * &gt; **Important Security Notice** The payload of this data source will be stored
+     * *unencrypted* in your Terraform state file. **Use of this resource for
+     * production deployments is *not* recommended**. Read more about sensitive data
+     * in state.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -797,6 +845,14 @@ public final class KeymanagerFunctions {
         return Deployment.getInstance().invoke("openstack:keymanager/getSecret:getSecret", TypeShape.of(GetSecretResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to get the ID and the payload of an available Barbican
+     * secret
+     * 
+     * &gt; **Important Security Notice** The payload of this data source will be stored
+     * *unencrypted* in your Terraform state file. **Use of this resource for
+     * production deployments is *not* recommended**. Read more about sensitive data
+     * in state.
+     * 
      * ## Example Usage
      * 
      * <pre>

@@ -253,6 +253,14 @@ class ShareAccess(pulumi.CustomResource):
                  share_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Use this resource to control the share access lists.
+
+        > **Important Security Notice** The access key assigned by this resource will
+        be stored *unencrypted* in your Terraform state file. If you use this resource
+        in production, please make sure your state file is sufficiently protected.
+        Read more about sensitive data in
+        state.
+
         ## Example Usage
 
         ### NFS
@@ -364,6 +372,14 @@ class ShareAccess(pulumi.CustomResource):
                  args: ShareAccessArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Use this resource to control the share access lists.
+
+        > **Important Security Notice** The access key assigned by this resource will
+        be stored *unencrypted* in your Terraform state file. If you use this resource
+        in production, please make sure your state file is sufficiently protected.
+        Read more about sensitive data in
+        state.
+
         ## Example Usage
 
         ### NFS

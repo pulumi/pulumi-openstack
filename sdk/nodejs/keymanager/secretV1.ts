@@ -7,6 +7,13 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Manages a V1 Barbican secret resource within OpenStack.
+ *
+ * > **Important Security Notice** The payload of this resource will be stored
+ * *unencrypted* in your Terraform state file. **Use of this resource for production
+ * deployments is *not* recommended**. Read more about sensitive data in
+ * state.
+ *
  * ## Example Usage
  *
  * ### Simple secret

@@ -507,16 +507,6 @@ class BgpvpnV2(pulumi.CustomResource):
             export_targets=["64512:3"])
         ```
 
-        ## Import
-
-        BGP VPNs can be imported using the `id`, e.g.
-
-        hcl
-
-        ```sh
-        $ pulumi import openstack:index/bgpvpnV2:BgpvpnV2 bgpvpn_1 1eec2c66-6be2-4305-af3f-354c9b81f18c
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] export_targets: A list of additional Route Targets that will be
@@ -564,16 +554,6 @@ class BgpvpnV2(pulumi.CustomResource):
             route_targets=["64512:1"],
             import_targets=["64512:2"],
             export_targets=["64512:3"])
-        ```
-
-        ## Import
-
-        BGP VPNs can be imported using the `id`, e.g.
-
-        hcl
-
-        ```sh
-        $ pulumi import openstack:index/bgpvpnV2:BgpvpnV2 bgpvpn_1 1eec2c66-6be2-4305-af3f-354c9b81f18c
         ```
 
         :param str resource_name: The name of the resource.

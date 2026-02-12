@@ -5,6 +5,52 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Manages a V2 neutron security group resource within OpenStack.
+ * Unlike Nova security groups, neutron separates the group from the rules
+ * and also allows an admin to target a specific tenant_id.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const secgroup1 = new openstack.networking.SecGroup("secgroup_1", {
+ *     name: "secgroup_1",
+ *     description: "My neutron security group",
+ * });
+ * ```
+ *
+ * ## Default Security Group Rules
+ *
+ * In most cases, OpenStack will create some egress security group rules for each
+ * new security group. These security group rules will not be managed by
+ * Terraform, so if you prefer to have *all* aspects of your infrastructure
+ * managed by Terraform, set `deleteDefaultRules` to `true` and then create
+ * separate security group rules such as the following:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const secgroupRuleV4 = new openstack.networking.SecGroupRule("secgroup_rule_v4", {
+ *     direction: "egress",
+ *     ethertype: "IPv4",
+ *     securityGroupId: secgroup.id,
+ * });
+ * const secgroupRuleV6 = new openstack.networking.SecGroupRule("secgroup_rule_v6", {
+ *     direction: "egress",
+ *     ethertype: "IPv6",
+ *     securityGroupId: secgroup.id,
+ * });
+ * ```
+ *
+ * Please note that this behavior may differ depending on the configuration of
+ * the OpenStack cloud. The above illustrates the current default Neutron
+ * behavior. Some OpenStack clouds might provide additional rules and some might
+ * not provide any rules at all (in which case the `deleteDefaultRules` setting
+ * is moot).
+ *
  * ## Import
  *
  * Security Groups can be imported using the `id`, e.g.

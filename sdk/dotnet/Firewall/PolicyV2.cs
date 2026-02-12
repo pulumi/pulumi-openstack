@@ -59,7 +59,7 @@ namespace Pulumi.OpenStack.Firewall
     /// 
     /// ## Import
     /// 
-    /// Firewall Policies can be imported using the `id`, e.g.
+    /// Firewall Policies can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import openstack:firewall/policyV2:PolicyV2 policy_1 07f422e6-c596-474b-8b94-fe2c12506ce0

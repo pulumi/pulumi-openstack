@@ -49,7 +49,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ## Import
     /// 
-    /// Security Group Rules can be imported using the `id`, e.g.
+    /// Security Group Rules can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745

@@ -147,8 +147,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/identity"
 //	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/objectstorage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -212,11 +210,11 @@ import (
 // This resource can be imported by specifying the name of the container:
 //
 // Some attributes can't be imported :
-// * `force_destroy`
-// * `content_type`
+// * `forceDestroy`
+// * `contentType`
 // * `metadata`
-// * `container_sync_to`
-// * `container_sync_key`
+// * `containerSyncTo`
+// * `containerSyncKey`
 //
 // So you'll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.
 //

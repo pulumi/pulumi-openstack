@@ -19,18 +19,13 @@ __all__ = [
     'StackV1StackOutputArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class StackV1StackOutputArgsDict(TypedDict):
-        output_key: pulumi.Input[_builtins.str]
-        output_value: pulumi.Input[_builtins.str]
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the stack resource.
-        """
-elif False:
-    StackV1StackOutputArgsDict: TypeAlias = Mapping[str, Any]
+class StackV1StackOutputArgsDict(TypedDict):
+    output_key: pulumi.Input[_builtins.str]
+    output_value: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the stack resource.
+    """
 
 @pulumi.input_type
 class StackV1StackOutputArgs:

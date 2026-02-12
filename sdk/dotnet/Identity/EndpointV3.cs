@@ -43,7 +43,7 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// ## Import
     /// 
-    /// Endpoints can be imported using the `id`, e.g.
+    /// Endpoints can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import openstack:identity/endpointV3:EndpointV3 endpoint_1 5392472b-106a-4845-90c6-7c8445f18770

@@ -80,7 +80,7 @@ import (
 //
 // ## Import
 //
-// Volume types can be imported using the `volume_type_id`, e.g.
+// Volume types can be imported using the `volumeTypeId`, e.g.
 //
 // ```sh
 // $ pulumi import openstack:blockstorage/volumeTypeV3:VolumeTypeV3 volume_type_1 941793f0-0a34-4bc4-b72e-a6326ae58283
