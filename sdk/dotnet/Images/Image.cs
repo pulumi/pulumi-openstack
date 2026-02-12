@@ -59,7 +59,7 @@ namespace Pulumi.OpenStack.Images
     /// 
     /// ## Import
     /// 
-    /// Images can be imported using the `id`, e.g.
+    /// Images can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import openstack:images/image:Image rancheros 89c60255-9bd6-460c-822a-e2b959ede9d2
@@ -119,6 +119,11 @@ namespace Pulumi.OpenStack.Images
         [Output("hidden")]
         public Output<bool?> Hidden { get; private set; } = null!;
 
+        /// <summary>
+        /// This is the directory where the images will
+        /// be downloaded. Images will be stored with a filename corresponding to the
+        /// url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
+        /// </summary>
         [Output("imageCachePath")]
         public Output<string?> ImageCachePath { get; private set; } = null!;
 
@@ -356,6 +361,11 @@ namespace Pulumi.OpenStack.Images
         [Input("hidden")]
         public Input<bool>? Hidden { get; set; }
 
+        /// <summary>
+        /// This is the directory where the images will
+        /// be downloaded. Images will be stored with a filename corresponding to the
+        /// url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
+        /// </summary>
         [Input("imageCachePath")]
         public Input<string>? ImageCachePath { get; set; }
 
@@ -553,6 +563,11 @@ namespace Pulumi.OpenStack.Images
         [Input("hidden")]
         public Input<bool>? Hidden { get; set; }
 
+        /// <summary>
+        /// This is the directory where the images will
+        /// be downloaded. Images will be stored with a filename corresponding to the
+        /// url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
+        /// </summary>
         [Input("imageCachePath")]
         public Input<string>? ImageCachePath { get; set; }
 

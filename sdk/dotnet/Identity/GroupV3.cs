@@ -36,7 +36,7 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// ## Import
     /// 
-    /// groups can be imported using the `id`, e.g.
+    /// groups can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import openstack:identity/groupV3:GroupV3 group_1 89c60255-9bd6-460c-822a-e2b959ede9d2

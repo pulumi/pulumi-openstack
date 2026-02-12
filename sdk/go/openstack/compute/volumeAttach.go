@@ -68,6 +68,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/blockstorage"
 //	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
@@ -141,6 +143,8 @@ import (
 // package main
 //
 // import (
+//
+//	"fmt"
 //
 //	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/blockstorage"
 //	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
@@ -287,6 +291,12 @@ import (
 type VolumeAttach struct {
 	pulumi.CustomResourceState
 
+	// The device of the volume attachment (ex: `/dev/vdc`).
+	// _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+	// use. There is a chance that the device specified in Terraform will not be
+	// the same device the hypervisor chose. If this happens, Terraform will wish
+	// to update the device upon subsequent applying which will cause the volume
+	// to be detached and reattached indefinitely. Please use with caution.
 	Device pulumi.StringOutput `pulumi:"device"`
 	// The ID of the Instance to attach the Volume to.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
@@ -344,6 +354,12 @@ func GetVolumeAttach(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VolumeAttach resources.
 type volumeAttachState struct {
+	// The device of the volume attachment (ex: `/dev/vdc`).
+	// _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+	// use. There is a chance that the device specified in Terraform will not be
+	// the same device the hypervisor chose. If this happens, Terraform will wish
+	// to update the device upon subsequent applying which will cause the volume
+	// to be detached and reattached indefinitely. Please use with caution.
 	Device *string `pulumi:"device"`
 	// The ID of the Instance to attach the Volume to.
 	InstanceId *string `pulumi:"instanceId"`
@@ -366,6 +382,12 @@ type volumeAttachState struct {
 }
 
 type VolumeAttachState struct {
+	// The device of the volume attachment (ex: `/dev/vdc`).
+	// _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+	// use. There is a chance that the device specified in Terraform will not be
+	// the same device the hypervisor chose. If this happens, Terraform will wish
+	// to update the device upon subsequent applying which will cause the volume
+	// to be detached and reattached indefinitely. Please use with caution.
 	Device pulumi.StringPtrInput
 	// The ID of the Instance to attach the Volume to.
 	InstanceId pulumi.StringPtrInput
@@ -392,6 +414,12 @@ func (VolumeAttachState) ElementType() reflect.Type {
 }
 
 type volumeAttachArgs struct {
+	// The device of the volume attachment (ex: `/dev/vdc`).
+	// _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+	// use. There is a chance that the device specified in Terraform will not be
+	// the same device the hypervisor chose. If this happens, Terraform will wish
+	// to update the device upon subsequent applying which will cause the volume
+	// to be detached and reattached indefinitely. Please use with caution.
 	Device *string `pulumi:"device"`
 	// The ID of the Instance to attach the Volume to.
 	InstanceId string `pulumi:"instanceId"`
@@ -415,6 +443,12 @@ type volumeAttachArgs struct {
 
 // The set of arguments for constructing a VolumeAttach resource.
 type VolumeAttachArgs struct {
+	// The device of the volume attachment (ex: `/dev/vdc`).
+	// _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+	// use. There is a chance that the device specified in Terraform will not be
+	// the same device the hypervisor chose. If this happens, Terraform will wish
+	// to update the device upon subsequent applying which will cause the volume
+	// to be detached and reattached indefinitely. Please use with caution.
 	Device pulumi.StringPtrInput
 	// The ID of the Instance to attach the Volume to.
 	InstanceId pulumi.StringInput
@@ -523,6 +557,12 @@ func (o VolumeAttachOutput) ToVolumeAttachOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The device of the volume attachment (ex: `/dev/vdc`).
+// _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+// use. There is a chance that the device specified in Terraform will not be
+// the same device the hypervisor chose. If this happens, Terraform will wish
+// to update the device upon subsequent applying which will cause the volume
+// to be detached and reattached indefinitely. Please use with caution.
 func (o VolumeAttachOutput) Device() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeAttach) pulumi.StringOutput { return v.Device }).(pulumi.StringOutput)
 }

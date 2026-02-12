@@ -11,6 +11,81 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a V2 floating IP resource within OpenStack Neutron (networking)
+// that can be used for load balancers.
+// These are similar to Nova (compute) floating IP resources,
+// but only compute floating IPs can be used with compute instances.
+//
+// ## Example Usage
+//
+// ### Simple floating IP allocation
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.NewFloatingIp(ctx, "floatip_1", &networking.FloatingIpArgs{
+//				Pool: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Floating IP allocation using a list of subnets
+//
+// If one of the subnets in a list has an exhausted pool, terraform will try the
+// next subnet ID from the list.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			extNetwork, err := networking.LookupNetwork(ctx, &networking.LookupNetworkArgs{
+//				Name: pulumi.StringRef("public"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			extSubnets, err := networking.GetSubnetIdsV2(ctx, &networking.GetSubnetIdsV2Args{
+//				NetworkId: pulumi.StringRef(extNetwork.Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewFloatingIp(ctx, "floatip_1", &networking.FloatingIpArgs{
+//				Pool:      pulumi.String(extNetwork.Name),
+//				SubnetIds: interface{}(extSubnets.Ids),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Floating IPs can be imported using the `id`, e.g.

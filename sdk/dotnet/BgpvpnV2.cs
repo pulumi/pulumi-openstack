@@ -45,16 +45,6 @@ namespace Pulumi.OpenStack
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// BGP VPNs can be imported using the `id`, e.g.
-    /// 
-    /// hcl
-    /// 
-    /// ```sh
-    /// $ pulumi import openstack:index/bgpvpnV2:BgpvpnV2 bgpvpn_1 1eec2c66-6be2-4305-af3f-354c9b81f18c
-    /// ```
     /// </summary>
     [Obsolete(@"openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2")]
     [OpenStackResourceType("openstack:index/bgpvpnV2:BgpvpnV2")]

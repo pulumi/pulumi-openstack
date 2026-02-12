@@ -246,6 +246,14 @@ namespace Pulumi.OpenStack.Compute
     [OpenStackResourceType("openstack:compute/volumeAttach:VolumeAttach")]
     public partial class VolumeAttach : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The device of the volume attachment (ex: `/dev/vdc`).
+        /// _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+        /// use. There is a chance that the device specified in Terraform will not be
+        /// the same device the hypervisor chose. If this happens, Terraform will wish
+        /// to update the device upon subsequent applying which will cause the volume
+        /// to be detached and reattached indefinitely. Please use with caution.
+        /// </summary>
         [Output("device")]
         public Output<string> Device { get; private set; } = null!;
 
@@ -337,6 +345,14 @@ namespace Pulumi.OpenStack.Compute
 
     public sealed class VolumeAttachArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The device of the volume attachment (ex: `/dev/vdc`).
+        /// _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+        /// use. There is a chance that the device specified in Terraform will not be
+        /// the same device the hypervisor chose. If this happens, Terraform will wish
+        /// to update the device upon subsequent applying which will cause the volume
+        /// to be detached and reattached indefinitely. Please use with caution.
+        /// </summary>
         [Input("device")]
         public Input<string>? Device { get; set; }
 
@@ -390,6 +406,14 @@ namespace Pulumi.OpenStack.Compute
 
     public sealed class VolumeAttachState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The device of the volume attachment (ex: `/dev/vdc`).
+        /// _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+        /// use. There is a chance that the device specified in Terraform will not be
+        /// the same device the hypervisor chose. If this happens, Terraform will wish
+        /// to update the device upon subsequent applying which will cause the volume
+        /// to be detached and reattached indefinitely. Please use with caution.
+        /// </summary>
         [Input("device")]
         public Input<string>? Device { get; set; }
 

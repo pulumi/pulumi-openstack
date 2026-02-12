@@ -255,11 +255,11 @@ import javax.annotation.Nullable;
  * This resource can be imported by specifying the name of the container:
  * 
  * Some attributes can&#39;t be imported :
- * * `force_destroy`
- * * `content_type`
+ * * `forceDestroy`
+ * * `contentType`
  * * `metadata`
- * * `container_sync_to`
- * * `container_sync_key`
+ * * `containerSyncTo`
+ * * `containerSyncKey`
  * 
  * So you&#39;ll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.
  * 

@@ -329,6 +329,49 @@ class SecGroup(pulumi.CustomResource):
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Manages a V2 neutron security group resource within OpenStack.
+        Unlike Nova security groups, neutron separates the group from the rules
+        and also allows an admin to target a specific tenant_id.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        secgroup1 = openstack.networking.SecGroup("secgroup_1",
+            name="secgroup_1",
+            description="My neutron security group")
+        ```
+
+        ## Default Security Group Rules
+
+        In most cases, OpenStack will create some egress security group rules for each
+        new security group. These security group rules will not be managed by
+        Terraform, so if you prefer to have *all* aspects of your infrastructure
+        managed by Terraform, set `delete_default_rules` to `true` and then create
+        separate security group rules such as the following:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        secgroup_rule_v4 = openstack.networking.SecGroupRule("secgroup_rule_v4",
+            direction="egress",
+            ethertype="IPv4",
+            security_group_id=secgroup["id"])
+        secgroup_rule_v6 = openstack.networking.SecGroupRule("secgroup_rule_v6",
+            direction="egress",
+            ethertype="IPv6",
+            security_group_id=secgroup["id"])
+        ```
+
+        Please note that this behavior may differ depending on the configuration of
+        the OpenStack cloud. The above illustrates the current default Neutron
+        behavior. Some OpenStack clouds might provide additional rules and some might
+        not provide any rules at all (in which case the `delete_default_rules` setting
+        is moot).
+
         ## Import
 
         Security Groups can be imported using the `id`, e.g.
@@ -364,6 +407,49 @@ class SecGroup(pulumi.CustomResource):
                  args: Optional[SecGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a V2 neutron security group resource within OpenStack.
+        Unlike Nova security groups, neutron separates the group from the rules
+        and also allows an admin to target a specific tenant_id.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        secgroup1 = openstack.networking.SecGroup("secgroup_1",
+            name="secgroup_1",
+            description="My neutron security group")
+        ```
+
+        ## Default Security Group Rules
+
+        In most cases, OpenStack will create some egress security group rules for each
+        new security group. These security group rules will not be managed by
+        Terraform, so if you prefer to have *all* aspects of your infrastructure
+        managed by Terraform, set `delete_default_rules` to `true` and then create
+        separate security group rules such as the following:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        secgroup_rule_v4 = openstack.networking.SecGroupRule("secgroup_rule_v4",
+            direction="egress",
+            ethertype="IPv4",
+            security_group_id=secgroup["id"])
+        secgroup_rule_v6 = openstack.networking.SecGroupRule("secgroup_rule_v6",
+            direction="egress",
+            ethertype="IPv6",
+            security_group_id=secgroup["id"])
+        ```
+
+        Please note that this behavior may differ depending on the configuration of
+        the OpenStack cloud. The above illustrates the current default Neutron
+        behavior. Some OpenStack clouds might provide additional rules and some might
+        not provide any rules at all (in which case the `delete_default_rules` setting
+        is moot).
+
         ## Import
 
         Security Groups can be imported using the `id`, e.g.

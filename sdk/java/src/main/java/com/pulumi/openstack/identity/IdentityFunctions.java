@@ -36,18 +36,443 @@ import com.pulumi.openstack.identity.outputs.GetUserResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class IdentityFunctions {
+    /**
+     * Use this data source to get authentication information about the current
+     * auth scope in use. This can be used as self-discovery or introspection of
+     * the username or project name currently in use as well as the service catalog.
+     * 
+     * &gt; **Important Security Notice** While the `setTokenId` is `true` this data
+     * source will store an *unencrypted* session token in your Terraform state file.
+     * **Use of this data source with `setTokenId = true` in production deployments
+     * is *not* recommended**.
+     * Read more about sensitive data in state.
+     * 
+     * ## Example Usage
+     * 
+     * ### Simple
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scope = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()
+     *             .name("my_scope")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * To find the the public object storage endpoint for &#34;region1&#34; as listed in the
+     * service catalog:
+     * 
+     * ### In a combination with an http data source provider
+     * 
+     * See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scope = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()
+     *             .name("my_scope")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetAuthScopeResult> getAuthScope(GetAuthScopeArgs args) {
         return getAuthScope(args, InvokeOptions.Empty);
     }
+    /**
+     * Use this data source to get authentication information about the current
+     * auth scope in use. This can be used as self-discovery or introspection of
+     * the username or project name currently in use as well as the service catalog.
+     * 
+     * &gt; **Important Security Notice** While the `setTokenId` is `true` this data
+     * source will store an *unencrypted* session token in your Terraform state file.
+     * **Use of this data source with `setTokenId = true` in production deployments
+     * is *not* recommended**.
+     * Read more about sensitive data in state.
+     * 
+     * ## Example Usage
+     * 
+     * ### Simple
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scope = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()
+     *             .name("my_scope")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * To find the the public object storage endpoint for &#34;region1&#34; as listed in the
+     * service catalog:
+     * 
+     * ### In a combination with an http data source provider
+     * 
+     * See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scope = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()
+     *             .name("my_scope")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetAuthScopeResult> getAuthScopePlain(GetAuthScopePlainArgs args) {
         return getAuthScopePlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Use this data source to get authentication information about the current
+     * auth scope in use. This can be used as self-discovery or introspection of
+     * the username or project name currently in use as well as the service catalog.
+     * 
+     * &gt; **Important Security Notice** While the `setTokenId` is `true` this data
+     * source will store an *unencrypted* session token in your Terraform state file.
+     * **Use of this data source with `setTokenId = true` in production deployments
+     * is *not* recommended**.
+     * Read more about sensitive data in state.
+     * 
+     * ## Example Usage
+     * 
+     * ### Simple
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scope = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()
+     *             .name("my_scope")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * To find the the public object storage endpoint for &#34;region1&#34; as listed in the
+     * service catalog:
+     * 
+     * ### In a combination with an http data source provider
+     * 
+     * See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scope = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()
+     *             .name("my_scope")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetAuthScopeResult> getAuthScope(GetAuthScopeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("openstack:identity/getAuthScope:getAuthScope", TypeShape.of(GetAuthScopeResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Use this data source to get authentication information about the current
+     * auth scope in use. This can be used as self-discovery or introspection of
+     * the username or project name currently in use as well as the service catalog.
+     * 
+     * &gt; **Important Security Notice** While the `setTokenId` is `true` this data
+     * source will store an *unencrypted* session token in your Terraform state file.
+     * **Use of this data source with `setTokenId = true` in production deployments
+     * is *not* recommended**.
+     * Read more about sensitive data in state.
+     * 
+     * ## Example Usage
+     * 
+     * ### Simple
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scope = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()
+     *             .name("my_scope")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * To find the the public object storage endpoint for &#34;region1&#34; as listed in the
+     * service catalog:
+     * 
+     * ### In a combination with an http data source provider
+     * 
+     * See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scope = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()
+     *             .name("my_scope")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetAuthScopeResult> getAuthScope(GetAuthScopeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:identity/getAuthScope:getAuthScope", TypeShape.of(GetAuthScopeResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Use this data source to get authentication information about the current
+     * auth scope in use. This can be used as self-discovery or introspection of
+     * the username or project name currently in use as well as the service catalog.
+     * 
+     * &gt; **Important Security Notice** While the `setTokenId` is `true` this data
+     * source will store an *unencrypted* session token in your Terraform state file.
+     * **Use of this data source with `setTokenId = true` in production deployments
+     * is *not* recommended**.
+     * Read more about sensitive data in state.
+     * 
+     * ## Example Usage
+     * 
+     * ### Simple
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scope = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()
+     *             .name("my_scope")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * To find the the public object storage endpoint for &#34;region1&#34; as listed in the
+     * service catalog:
+     * 
+     * ### In a combination with an http data source provider
+     * 
+     * See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scope = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()
+     *             .name("my_scope")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetAuthScopeResult> getAuthScopePlain(GetAuthScopePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:identity/getAuthScope:getAuthScope", TypeShape.of(GetAuthScopeResult.class), args, Utilities.withVersion(options));
     }

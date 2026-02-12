@@ -19,14 +19,9 @@ __all__ = [
     'ShareExportLocationArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class ShareExportLocationArgsDict(TypedDict):
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        preferred: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    ShareExportLocationArgsDict: TypeAlias = Mapping[str, Any]
+class ShareExportLocationArgsDict(TypedDict):
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    preferred: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class ShareExportLocationArgs:

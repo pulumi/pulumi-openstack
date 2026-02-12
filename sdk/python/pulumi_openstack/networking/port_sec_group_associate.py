@@ -212,6 +212,18 @@ class PortSecGroupAssociate(pulumi.CustomResource):
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Manages a V2 port's security groups within OpenStack. Useful, when the port was
+        not created by Terraform (e.g. Manila or LBaaS).
+
+        When the resource is deleted, Terraform doesn't delete the port, but unsets the
+        list of user defined security group IDs.  However, if `enforce` is set to `true`
+        and the resource is deleted, Terraform will remove all assigned security group
+        IDs.
+
+        > **Warning:** This resource should **not** be used when the
+        port was created directly within Terraform. If it is, it can lead\\
+        to **security problems** with incorrect security groups on ports
+
         ## Example Usage
 
         ### Append a security group to an existing port
@@ -282,6 +294,18 @@ class PortSecGroupAssociate(pulumi.CustomResource):
                  args: PortSecGroupAssociateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a V2 port's security groups within OpenStack. Useful, when the port was
+        not created by Terraform (e.g. Manila or LBaaS).
+
+        When the resource is deleted, Terraform doesn't delete the port, but unsets the
+        list of user defined security group IDs.  However, if `enforce` is set to `true`
+        and the resource is deleted, Terraform will remove all assigned security group
+        IDs.
+
+        > **Warning:** This resource should **not** be used when the
+        port was created directly within Terraform. If it is, it can lead\\
+        to **security problems** with incorrect security groups on ports
+
         ## Example Usage
 
         ### Append a security group to an existing port

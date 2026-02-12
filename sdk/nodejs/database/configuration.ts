@@ -6,6 +6,36 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Manages a V1 DB configuration resource within OpenStack.
+ *
+ * ## Example Usage
+ *
+ * ### Configuration
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const test = new openstack.database.Configuration("test", {
+ *     name: "test",
+ *     description: "description",
+ *     datastore: {
+ *         version: "mysql-5.7",
+ *         type: "mysql",
+ *     },
+ *     configurations: [{
+ *         name: "max_connections",
+ *         value: "200",
+ *     }],
+ * });
+ * ```
+ *
+ * ## Types of configuration parameter values
+ *
+ * Openstack API requires to store some database configuration parameter's values as strings, even if they contain numbers.
+ * To force store their values as strings set `stringType` to `true`. Otherwise Terraform will try to store them as number what can cause error from Openstack API like below:
+ */
 export class Configuration extends pulumi.CustomResource {
     /**
      * Get an existing Configuration resource's state with the given name, ID, and optional extra

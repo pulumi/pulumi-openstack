@@ -12,6 +12,14 @@ namespace Pulumi.OpenStack.KeyManager
     public static class GetSecret
     {
         /// <summary>
+        /// Use this data source to get the ID and the payload of an available Barbican
+        /// secret
+        /// 
+        /// &gt; **Important Security Notice** The payload of this data source will be stored
+        /// *unencrypted* in your Terraform state file. **Use of this resource for
+        /// production deployments is *not* recommended**. Read more about sensitive data
+        /// in state.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -64,6 +72,14 @@ namespace Pulumi.OpenStack.KeyManager
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("openstack:keymanager/getSecret:getSecret", args ?? new GetSecretArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Use this data source to get the ID and the payload of an available Barbican
+        /// secret
+        /// 
+        /// &gt; **Important Security Notice** The payload of this data source will be stored
+        /// *unencrypted* in your Terraform state file. **Use of this resource for
+        /// production deployments is *not* recommended**. Read more about sensitive data
+        /// in state.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -116,6 +132,14 @@ namespace Pulumi.OpenStack.KeyManager
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretResult>("openstack:keymanager/getSecret:getSecret", args ?? new GetSecretInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Use this data source to get the ID and the payload of an available Barbican
+        /// secret
+        /// 
+        /// &gt; **Important Security Notice** The payload of this data source will be stored
+        /// *unencrypted* in your Terraform state file. **Use of this resource for
+        /// production deployments is *not* recommended**. Read more about sensitive data
+        /// in state.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

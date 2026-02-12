@@ -70,9 +70,19 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.adminPass);
     }
 
+    /**
+     * Contains all instance metadata, even metadata not set
+     * by Terraform.
+     * 
+     */
     @Import(name="allMetadata")
     private @Nullable Output<Map<String,String>> allMetadata;
 
+    /**
+     * @return Contains all instance metadata, even metadata not set
+     * by Terraform.
+     * 
+     */
     public Optional<Output<Map<String,String>>> allMetadata() {
         return Optional.ofNullable(this.allMetadata);
     }
@@ -711,11 +721,25 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return adminPass(Output.of(adminPass));
         }
 
+        /**
+         * @param allMetadata Contains all instance metadata, even metadata not set
+         * by Terraform.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allMetadata(@Nullable Output<Map<String,String>> allMetadata) {
             $.allMetadata = allMetadata;
             return this;
         }
 
+        /**
+         * @param allMetadata Contains all instance metadata, even metadata not set
+         * by Terraform.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allMetadata(Map<String,String> allMetadata) {
             return allMetadata(Output.of(allMetadata));
         }

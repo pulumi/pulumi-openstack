@@ -11,6 +11,74 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get authentication information about the current
+// auth scope in use. This can be used as self-discovery or introspection of
+// the username or project name currently in use as well as the service catalog.
+//
+// > **Important Security Notice** While the `setTokenId` is `true` this data
+// source will store an *unencrypted* session token in your Terraform state file.
+// **Use of this data source with `setTokenId = true` in production deployments
+// is *not* recommended**.
+// Read more about sensitive data in state.
+//
+// ## Example Usage
+//
+// ### Simple
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := identity.GetAuthScope(ctx, &identity.GetAuthScopeArgs{
+//				Name: "my_scope",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// To find the the public object storage endpoint for "region1" as listed in the
+// service catalog:
+//
+// ### In a combination with an http data source provider
+//
+// See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := identity.GetAuthScope(ctx, &identity.GetAuthScopeArgs{
+//				Name: "my_scope",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAuthScope(ctx *pulumi.Context, args *GetAuthScopeArgs, opts ...pulumi.InvokeOption) (*GetAuthScopeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAuthScopeResult

@@ -39,7 +39,7 @@ namespace Pulumi.OpenStack
     /// 
     /// ## Import
     /// 
-    /// Tap Mirrors can be imported using the `id`, e.g.
+    /// Tap Mirrors can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import openstack:index/taasTapMirrorV2:TaasTapMirrorV2 tap_mirror_1 0837b488-f0e2-4689-99b3-e3ed531f9b10

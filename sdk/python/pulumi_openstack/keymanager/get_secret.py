@@ -327,6 +327,14 @@ def get_secret(acl_only: Optional[_builtins.bool] = None,
                updated_at_filter: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretResult:
     """
+    Use this data source to get the ID and the payload of an available Barbican
+    secret
+
+    > **Important Security Notice** The payload of this data source will be stored
+    *unencrypted* in your Terraform state file. **Use of this resource for
+    production deployments is *not* recommended**. Read more about sensitive data
+    in state.
+
     ## Example Usage
 
     ```python
@@ -429,6 +437,14 @@ def get_secret_output(acl_only: Optional[pulumi.Input[Optional[_builtins.bool]]]
                       updated_at_filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretResult]:
     """
+    Use this data source to get the ID and the payload of an available Barbican
+    secret
+
+    > **Important Security Notice** The payload of this data source will be stored
+    *unencrypted* in your Terraform state file. **Use of this resource for
+    production deployments is *not* recommended**. Read more about sensitive data
+    in state.
+
     ## Example Usage
 
     ```python

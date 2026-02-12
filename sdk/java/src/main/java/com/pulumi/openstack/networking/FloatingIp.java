@@ -17,6 +17,94 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages a V2 floating IP resource within OpenStack Neutron (networking)
+ * that can be used for load balancers.
+ * These are similar to Nova (compute) floating IP resources,
+ * but only compute floating IPs can be used with compute instances.
+ * 
+ * ## Example Usage
+ * 
+ * ### Simple floating IP allocation
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.networking.FloatingIp;
+ * import com.pulumi.openstack.networking.FloatingIpArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var floatip1 = new FloatingIp("floatip1", FloatingIpArgs.builder()
+ *             .pool("public")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Floating IP allocation using a list of subnets
+ * 
+ * If one of the subnets in a list has an exhausted pool, terraform will try the
+ * next subnet ID from the list.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.networking.NetworkingFunctions;
+ * import com.pulumi.openstack.networking.inputs.GetNetworkArgs;
+ * import com.pulumi.openstack.networking.inputs.GetSubnetIdsV2Args;
+ * import com.pulumi.openstack.networking.FloatingIp;
+ * import com.pulumi.openstack.networking.FloatingIpArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var extNetwork = NetworkingFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name("public")
+ *             .build());
+ * 
+ *         final var extSubnets = NetworkingFunctions.getSubnetIdsV2(GetSubnetIdsV2Args.builder()
+ *             .networkId(extNetwork.id())
+ *             .build());
+ * 
+ *         var floatip1 = new FloatingIp("floatip1", FloatingIpArgs.builder()
+ *             .pool(extNetwork.name())
+ *             .subnetIds(extSubnets.ids())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Floating IPs can be imported using the `id`, e.g.

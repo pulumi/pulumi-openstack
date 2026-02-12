@@ -5,6 +5,43 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Manages a V2 floating IP resource within OpenStack Neutron (networking)
+ * that can be used for load balancers.
+ * These are similar to Nova (compute) floating IP resources,
+ * but only compute floating IPs can be used with compute instances.
+ *
+ * ## Example Usage
+ *
+ * ### Simple floating IP allocation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const floatip1 = new openstack.networking.FloatingIp("floatip_1", {pool: "public"});
+ * ```
+ *
+ * ### Floating IP allocation using a list of subnets
+ *
+ * If one of the subnets in a list has an exhausted pool, terraform will try the
+ * next subnet ID from the list.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const extNetwork = openstack.networking.getNetwork({
+ *     name: "public",
+ * });
+ * const extSubnets = extNetwork.then(extNetwork => openstack.networking.getSubnetIdsV2({
+ *     networkId: extNetwork.id,
+ * }));
+ * const floatip1 = new openstack.networking.FloatingIp("floatip_1", {
+ *     pool: extNetwork.then(extNetwork => extNetwork.name),
+ *     subnetIds: extSubnets.then(extSubnets => extSubnets.ids),
+ * });
+ * ```
+ *
  * ## Import
  *
  * Floating IPs can be imported using the `id`, e.g.

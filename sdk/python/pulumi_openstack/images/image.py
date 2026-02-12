@@ -52,6 +52,9 @@ class ImageArgs:
                Defaults to false. Changing this creates a new Image.
         :param pulumi.Input[_builtins.bool] hidden: If true, image will be hidden from public list.
                Defaults to false.
+        :param pulumi.Input[_builtins.str] image_cache_path: This is the directory where the images will
+               be downloaded. Images will be stored with a filename corresponding to the
+               url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
         :param pulumi.Input[_builtins.str] image_id: Unique ID (valid UUID) of image to create. Changing
                this creates a new image.
         :param pulumi.Input[_builtins.str] image_source_password: The password of basic auth to download
@@ -188,6 +191,11 @@ class ImageArgs:
     @_builtins.property
     @pulumi.getter(name="imageCachePath")
     def image_cache_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This is the directory where the images will
+        be downloaded. Images will be stored with a filename corresponding to the
+        url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
+        """
         return pulumi.get(self, "image_cache_path")
 
     @image_cache_path.setter
@@ -448,6 +456,9 @@ class _ImageState:
                or the path to retrieve it.
         :param pulumi.Input[_builtins.bool] hidden: If true, image will be hidden from public list.
                Defaults to false.
+        :param pulumi.Input[_builtins.str] image_cache_path: This is the directory where the images will
+               be downloaded. Images will be stored with a filename corresponding to the
+               url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
         :param pulumi.Input[_builtins.str] image_id: Unique ID (valid UUID) of image to create. Changing
                this creates a new image.
         :param pulumi.Input[_builtins.str] image_source_password: The password of basic auth to download
@@ -652,6 +663,11 @@ class _ImageState:
     @_builtins.property
     @pulumi.getter(name="imageCachePath")
     def image_cache_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This is the directory where the images will
+        be downloaded. Images will be stored with a filename corresponding to the
+        url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
+        """
         return pulumi.get(self, "image_cache_path")
 
     @image_cache_path.setter
@@ -1025,6 +1041,9 @@ class Image(pulumi.CustomResource):
                "vhdx", "vmdk", "vdi", "iso", "ploop", "qcow2", "aki", "ari", "ami"
         :param pulumi.Input[_builtins.bool] hidden: If true, image will be hidden from public list.
                Defaults to false.
+        :param pulumi.Input[_builtins.str] image_cache_path: This is the directory where the images will
+               be downloaded. Images will be stored with a filename corresponding to the
+               url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
         :param pulumi.Input[_builtins.str] image_id: Unique ID (valid UUID) of image to create. Changing
                this creates a new image.
         :param pulumi.Input[_builtins.str] image_source_password: The password of basic auth to download
@@ -1258,6 +1277,9 @@ class Image(pulumi.CustomResource):
                or the path to retrieve it.
         :param pulumi.Input[_builtins.bool] hidden: If true, image will be hidden from public list.
                Defaults to false.
+        :param pulumi.Input[_builtins.str] image_cache_path: This is the directory where the images will
+               be downloaded. Images will be stored with a filename corresponding to the
+               url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
         :param pulumi.Input[_builtins.str] image_id: Unique ID (valid UUID) of image to create. Changing
                this creates a new image.
         :param pulumi.Input[_builtins.str] image_source_password: The password of basic auth to download
@@ -1410,6 +1432,11 @@ class Image(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="imageCachePath")
     def image_cache_path(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        This is the directory where the images will
+        be downloaded. Images will be stored with a filename corresponding to the
+        url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
+        """
         return pulumi.get(self, "image_cache_path")
 
     @_builtins.property

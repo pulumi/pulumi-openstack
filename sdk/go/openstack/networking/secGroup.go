@@ -11,6 +11,85 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a V2 neutron security group resource within OpenStack.
+// Unlike Nova security groups, neutron separates the group from the rules
+// and also allows an admin to target a specific tenant_id.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.NewSecGroup(ctx, "secgroup_1", &networking.SecGroupArgs{
+//				Name:        pulumi.String("secgroup_1"),
+//				Description: pulumi.String("My neutron security group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Default Security Group Rules
+//
+// In most cases, OpenStack will create some egress security group rules for each
+// new security group. These security group rules will not be managed by
+// Terraform, so if you prefer to have *all* aspects of your infrastructure
+// managed by Terraform, set `deleteDefaultRules` to `true` and then create
+// separate security group rules such as the following:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.NewSecGroupRule(ctx, "secgroup_rule_v4", &networking.SecGroupRuleArgs{
+//				Direction:       pulumi.String("egress"),
+//				Ethertype:       pulumi.String("IPv4"),
+//				SecurityGroupId: pulumi.Any(secgroup.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewSecGroupRule(ctx, "secgroup_rule_v6", &networking.SecGroupRuleArgs{
+//				Direction:       pulumi.String("egress"),
+//				Ethertype:       pulumi.String("IPv6"),
+//				SecurityGroupId: pulumi.Any(secgroup.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Please note that this behavior may differ depending on the configuration of
+// the OpenStack cloud. The above illustrates the current default Neutron
+// behavior. Some OpenStack clouds might provide additional rules and some might
+// not provide any rules at all (in which case the `deleteDefaultRules` setting
+// is moot).
+//
 // ## Import
 //
 // Security Groups can be imported using the `id`, e.g.

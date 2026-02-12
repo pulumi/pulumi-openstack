@@ -12,6 +12,51 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a V1 DB configuration resource within OpenStack.
+//
+// ## Example Usage
+//
+// ### Configuration
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/database"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := database.NewConfiguration(ctx, "test", &database.ConfigurationArgs{
+//				Name:        pulumi.String("test"),
+//				Description: pulumi.String("description"),
+//				Datastore: &database.ConfigurationDatastoreArgs{
+//					Version: pulumi.String("mysql-5.7"),
+//					Type:    pulumi.String("mysql"),
+//				},
+//				Configurations: database.ConfigurationConfigurationArray{
+//					&database.ConfigurationConfigurationArgs{
+//						Name:  pulumi.String("max_connections"),
+//						Value: pulumi.String("200"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Types of configuration parameter values
+//
+// Openstack API requires to store some database configuration parameter's values as strings, even if they contain numbers.
+// To force store their values as strings set `stringType` to `true`. Otherwise Terraform will try to store them as number what can cause error from Openstack API like below:
 type Configuration struct {
 	pulumi.CustomResourceState
 

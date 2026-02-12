@@ -57,16 +57,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * BGP VPNs can be imported using the `id`, e.g.
- * 
- * hcl
- * 
- * ```sh
- * $ pulumi import openstack:index/bgpvpnV2:BgpvpnV2 bgpvpn_1 1eec2c66-6be2-4305-af3f-354c9b81f18c
- * ```
- * 
  * @deprecated
  * openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2
  * 

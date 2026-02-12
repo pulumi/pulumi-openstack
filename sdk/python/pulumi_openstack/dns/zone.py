@@ -471,9 +471,6 @@ class Zone(pulumi.CustomResource):
 
         ```sh
         $ pulumi import openstack:dns/zone:Zone zone_1 zone_id
-        ```
-
-        ```sh
         $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
         ```
 
@@ -533,9 +530,6 @@ class Zone(pulumi.CustomResource):
 
         ```sh
         $ pulumi import openstack:dns/zone:Zone zone_1 zone_id
-        ```
-
-        ```sh
         $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
         ```
 

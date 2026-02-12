@@ -21,15 +21,10 @@ __all__ = [
     'VolumeSchedulerHintArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class VolumeAttachmentArgsDict(TypedDict):
-        device: NotRequired[pulumi.Input[_builtins.str]]
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        instance_id: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    VolumeAttachmentArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeAttachmentArgsDict(TypedDict):
+    device: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    instance_id: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class VolumeAttachmentArgs:
@@ -72,43 +67,40 @@ class VolumeAttachmentArgs:
         pulumi.set(self, "instance_id", value)
 
 
-if not MYPY:
-    class VolumeSchedulerHintArgsDict(TypedDict):
-        additional_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Arbitrary key/value pairs of additional
-        properties to pass to the scheduler.
-        """
-        different_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The volume should be scheduled on a 
-        different host from the set of volumes specified in the list provided.
-        """
-        local_to_instance: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An instance UUID. The volume should be 
-        scheduled on the same host as the instance.
-        """
-        query: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A conditional query that a back-end must pass in
-        order to host a volume. The query must use the `JsonFilter` syntax
-        which is described
-        [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
-        At this time, only simple queries are supported. Compound queries using
-        `and`, `or`, or `not` are not supported. An example of a simple query is:
+class VolumeSchedulerHintArgsDict(TypedDict):
+    additional_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    Arbitrary key/value pairs of additional
+    properties to pass to the scheduler.
+    """
+    different_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The volume should be scheduled on a 
+    different host from the set of volumes specified in the list provided.
+    """
+    local_to_instance: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An instance UUID. The volume should be 
+    scheduled on the same host as the instance.
+    """
+    query: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A conditional query that a back-end must pass in
+    order to host a volume. The query must use the `JsonFilter` syntax
+    which is described
+    [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
+    At this time, only simple queries are supported. Compound queries using
+    `and`, `or`, or `not` are not supported. An example of a simple query is:
 
-        ```
-        [“=”, “$backend_id”, “rbd:vol@ceph#cloud”]
-        ```
-        """
-        same_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of volume UUIDs. The volume should be
-        scheduled on the same host as another volume specified in the list provided.
-        """
-elif False:
-    VolumeSchedulerHintArgsDict: TypeAlias = Mapping[str, Any]
+    ```
+    [“=”, “$backend_id”, “rbd:vol@ceph#cloud”]
+    ```
+    """
+    same_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of volume UUIDs. The volume should be
+    scheduled on the same host as another volume specified in the list provided.
+    """
 
 @pulumi.input_type
 class VolumeSchedulerHintArgs:

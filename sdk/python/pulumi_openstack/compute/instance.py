@@ -576,6 +576,8 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] access_ip_v6: The first detected Fixed IPv6 address.
         :param pulumi.Input[_builtins.str] admin_pass: The administrative password to assign to the server.
                Changing this changes the root password on the existing server.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] all_metadata: Contains all instance metadata, even metadata not set
+               by Terraform.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] all_tags: The collection of tags assigned on the instance, which have
                been explicitly and implicitly added.
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone in which to create
@@ -762,6 +764,10 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="allMetadata")
     def all_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Contains all instance metadata, even metadata not set
+        by Terraform.
+        """
         return pulumi.get(self, "all_metadata")
 
     @all_metadata.setter
@@ -1181,7 +1187,573 @@ class Instance(pulumi.CustomResource):
                  vendor_options: Optional[pulumi.Input[Union['InstanceVendorOptionsArgs', 'InstanceVendorOptionsArgsDict']]] = None,
                  __props__=None):
         """
-        Create a Instance resource with the given unique name, props, and options.
+        Manages a V2 VM instance resource within OpenStack.
+
+        > **Note:** All arguments including the instance admin password will be stored
+        in the raw state as plain-text. Read more about sensitive data in
+        state.
+
+        ## Example Usage
+
+        ### Basic Instance
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        basic = openstack.compute.Instance("basic",
+            name="basic",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            metadata={
+                "this": "that",
+            },
+            networks=[{
+                "name": "my_network",
+            }])
+        ```
+
+        ### Instance With Attached Volume
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        myvol = openstack.blockstorage.Volume("myvol",
+            name="myvol",
+            size=1)
+        myinstance = openstack.compute.Instance("myinstance",
+            name="myinstance",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            networks=[{
+                "name": "my_network",
+            }])
+        attached = openstack.compute.VolumeAttach("attached",
+            instance_id=myinstance.id,
+            volume_id=myvol.id)
+        ```
+
+        ### Boot From Volume
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        boot_from_volume = openstack.compute.Instance("boot-from-volume",
+            name="boot-from-volume",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            block_devices=[{
+                "uuid": "<image-id>",
+                "source_type": "image",
+                "volume_size": 5,
+                "boot_index": 0,
+                "destination_type": "volume",
+                "delete_on_termination": True,
+            }],
+            networks=[{
+                "name": "my_network",
+            }])
+        ```
+
+        ### Boot From an Existing Volume
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        myvol = openstack.blockstorage.Volume("myvol",
+            name="myvol",
+            size=5,
+            image_id="<image-id>")
+        boot_from_volume = openstack.compute.Instance("boot-from-volume",
+            name="bootfromvolume",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            block_devices=[{
+                "uuid": myvol.id,
+                "source_type": "volume",
+                "boot_index": 0,
+                "destination_type": "volume",
+                "delete_on_termination": True,
+            }],
+            networks=[{
+                "name": "my_network",
+            }])
+        ```
+
+        ### Boot Instance, Create Volume, and Attach Volume as a Block Device
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
+            image_id="<image-id>",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            block_devices=[
+                {
+                    "uuid": "<image-id>",
+                    "source_type": "image",
+                    "destination_type": "local",
+                    "boot_index": 0,
+                    "delete_on_termination": True,
+                },
+                {
+                    "source_type": "blank",
+                    "destination_type": "volume",
+                    "volume_size": 1,
+                    "boot_index": 1,
+                    "delete_on_termination": True,
+                },
+            ])
+        ```
+
+        ### Boot Instance and Attach Existing Volume as a Block Device
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        volume1 = openstack.blockstorage.Volume("volume_1",
+            name="volume_1",
+            size=1)
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
+            image_id="<image-id>",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            block_devices=[
+                {
+                    "uuid": "<image-id>",
+                    "source_type": "image",
+                    "destination_type": "local",
+                    "boot_index": 0,
+                    "delete_on_termination": True,
+                },
+                {
+                    "uuid": volume1.id,
+                    "source_type": "volume",
+                    "destination_type": "volume",
+                    "boot_index": 1,
+                    "delete_on_termination": True,
+                },
+            ])
+        ```
+
+        ### Instance With Multiple Networks
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        myip = openstack.networking.FloatingIp("myip", pool="my_pool")
+        multi_net = openstack.compute.Instance("multi-net",
+            name="multi-net",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            networks=[
+                {
+                    "name": "my_first_network",
+                },
+                {
+                    "name": "my_second_network",
+                },
+            ])
+        vm_port = pulumi.Output.all(
+            id=multi_net.id,
+            networks=multi_net.networks
+        ).apply(lambda resolved_outputs: openstack.networking.get_port_output(device_id=resolved_outputs['id'],
+            network_id=networks[1].uuid))
+
+        fip_vm = openstack.networking.FloatingIpAssociate("fip_vm",
+            floating_ip=myip.address,
+            port_id=vm_port.id)
+        ```
+
+        ### Instance With Personality
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        personality = openstack.compute.Instance("personality",
+            name="personality",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            personalities=[{
+                "file": "/path/to/file/on/instance.txt",
+                "content": "contents of file",
+            }],
+            networks=[{
+                "name": "my_network",
+            }])
+        ```
+
+        ### Instance with Multiple Ephemeral Disks
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        multi_eph = openstack.compute.Instance("multi-eph",
+            name="multi_eph",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            block_devices=[
+                {
+                    "boot_index": 0,
+                    "delete_on_termination": True,
+                    "destination_type": "local",
+                    "source_type": "image",
+                    "uuid": "<image-id>",
+                },
+                {
+                    "boot_index": -1,
+                    "delete_on_termination": True,
+                    "destination_type": "local",
+                    "source_type": "blank",
+                    "volume_size": 1,
+                    "guest_format": "ext4",
+                },
+                {
+                    "boot_index": -1,
+                    "delete_on_termination": True,
+                    "destination_type": "local",
+                    "source_type": "blank",
+                    "volume_size": 1,
+                },
+            ])
+        ```
+
+        ### Instance with Boot Disk and Swap Disk
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        flavor_with_swap = openstack.compute.Flavor("flavor-with-swap",
+            name="flavor-with-swap",
+            ram=8096,
+            vcpus=2,
+            disk=20,
+            swap=4096)
+        vm_swap = openstack.compute.Instance("vm-swap",
+            name="vm_swap",
+            flavor_id=flavor_with_swap.id,
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            block_devices=[
+                {
+                    "boot_index": 0,
+                    "delete_on_termination": True,
+                    "destination_type": "local",
+                    "source_type": "image",
+                    "uuid": "<image-id>",
+                },
+                {
+                    "boot_index": -1,
+                    "delete_on_termination": True,
+                    "destination_type": "local",
+                    "source_type": "blank",
+                    "guest_format": "swap",
+                    "volume_size": 4,
+                },
+            ])
+        ```
+
+        ### Instance with User Data (cloud-init)
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        instance1 = openstack.compute.Instance("instance_1",
+            name="basic",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            user_data=\"\"\"#cloud-config
+        hostname: instance_1.example.com
+        fqdn: instance_1.example.com\"\"\",
+            networks=[{
+                "name": "my_network",
+            }])
+        ```
+
+        `user_data` can come from a variety of sources: inline, read in from the `file`
+        function, or the `template_cloudinit_config` resource.
+
+        ## Notes
+
+        ### Multiple Ephemeral Disks
+
+        It's possible to specify multiple `block_device` entries to create an instance
+        with multiple ephemeral (local) disks. In order to create multiple ephemeral
+        disks, the sum of the total amount of ephemeral space must be less than or
+        equal to what the chosen flavor supports.
+
+        The following example shows how to create an instance with multiple ephemeral
+        disks:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        foo = openstack.compute.Instance("foo",
+            name="terraform-test",
+            security_groups=["default"],
+            block_devices=[
+                {
+                    "boot_index": 0,
+                    "delete_on_termination": True,
+                    "destination_type": "local",
+                    "source_type": "image",
+                    "uuid": "<image uuid>",
+                },
+                {
+                    "boot_index": -1,
+                    "delete_on_termination": True,
+                    "destination_type": "local",
+                    "source_type": "blank",
+                    "volume_size": 1,
+                },
+                {
+                    "boot_index": -1,
+                    "delete_on_termination": True,
+                    "destination_type": "local",
+                    "source_type": "blank",
+                    "volume_size": 1,
+                },
+            ])
+        ```
+
+        ### Instances and Security Groups
+
+        When referencing a security group resource in an instance resource, always
+        use the _name_ of the security group. If you specify the ID of the security
+        group, Terraform will remove and reapply the security group upon each call.
+        This is because the OpenStack Compute API returns the names of the associated
+        security groups and not their IDs.
+
+        Note the following example:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        sg1 = openstack.networking.SecGroup("sg_1", name="sg_1")
+        foo = openstack.compute.Instance("foo",
+            name="terraform-test",
+            security_groups=[sg1.name])
+        ```
+
+        ### Instances and Ports
+
+        Neutron Ports are a great feature and provide a lot of functionality. However,
+        there are some notes to be aware of when mixing Instances and Ports:
+
+        * In OpenStack environments prior to the Kilo release, deleting or recreating
+        an Instance will cause the Instance's Port(s) to be deleted. One way of working
+        around this is to taint any Port(s) used in Instances which are to be recreated.
+        See [here](https://review.openstack.org/#/c/126309/) for further information.
+
+        * When attaching an Instance to one or more networks using Ports, place the
+        security groups on the Port and not the Instance. If you place the security
+        groups on the Instance, the security groups will not be applied upon creation,
+        but they will be applied upon a refresh. This is a known OpenStack bug.
+
+        * Network IP information is not available within an instance for networks that
+        are attached with Ports. This is mostly due to the flexibility Neutron Ports
+        provide when it comes to IP addresses. For example, a Neutron Port can have
+        multiple Fixed IP addresses associated with it. It's not possible to know which
+        single IP address the user would want returned to the Instance's state
+        information. Therefore, in order for a Provisioner to connect to an Instance
+        via it's network Port, customize the `connection` information:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        port1 = openstack.networking.Port("port_1",
+            name="port_1",
+            admin_state_up=True,
+            network_id="0a1d0a27-cffa-4de3-92c5-9d3fd3f2e74d",
+            security_group_ids=[
+                "2f02d20a-8dca-49b7-b26f-b6ce9fddaf4f",
+                "ca1e5ed7-dae8-4605-987b-fadaeeb30461",
+            ])
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
+            networks=[{
+                "port": port1.id,
+            }])
+        ```
+
+        ### Instances and Networks
+
+        Instances almost always require a network. Here are some notes to be aware of
+        with how Instances and Networks relate:
+
+        * In scenarios where you only have one network available, you can create an
+        instance without specifying a `network` block. OpenStack will automatically
+        launch the instance on this network.
+
+        * If you have access to more than one network, you will need to specify a network
+        with a `network` block. Not specifying a network will result in the following
+        error:
+
+        * If you intend to use the `compute.InterfaceAttach` resource,
+          you still need to make sure one of the above points is satisfied. An instance
+          cannot be created without a valid network configuration even if you intend to
+          use `compute.InterfaceAttach` after the instance has been created.
+
+        ## Importing instances
+
+        Importing instances can be tricky, since the nova api does not offer all
+        information provided at creation time for later retrieval.
+        Network interface attachment order, and number and sizes of ephemeral
+        disks are examples of this.
+
+        ### Importing basic instance
+        Assume you want to import an instance with one ephemeral root disk,
+        and one network interface.
+
+        Your configuration would look like the following:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        basic_instance = openstack.compute.Instance("basic_instance",
+            name="basic",
+            flavor_id="<flavor_id>",
+            key_pair="<keyname>",
+            security_groups=["default"],
+            image_id="<image_id>",
+            networks=[{
+                "name": "<network_name>",
+            }])
+        ```
+        Then you execute
+
+        ### Importing an instance with multiple emphemeral disks
+
+        The importer cannot read the emphemeral disk configuration
+        of an instance, so just specify image_id as in the configuration
+        of the basic instance example.
+
+        ### Importing instance with multiple network interfaces.
+
+        Nova returns the network interfaces grouped by network, thus not in creation
+        order.
+        That means that if you have multiple network interfaces you must take
+        care of the order of networks in your configuration.
+
+        As example we want to import an instance with one ephemeral root disk,
+        and 3 network interfaces.
+
+        Examples
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        boot_from_volume = openstack.compute.Instance("boot-from-volume",
+            name="boot-from-volume",
+            flavor_id="<flavor_id",
+            key_pair="<keyname>",
+            image_id="<image_id>",
+            security_groups=["default"],
+            networks=[
+                {
+                    "name": "<network1>",
+                },
+                {
+                    "name": "<network2>",
+                },
+                {
+                    "name": "<network1>",
+                    "fixed_ip_v4": "<fixed_ip_v4>",
+                },
+            ])
+        ```
+
+        In the above configuration the networks are out of order compared to what nova
+        and thus the import code returns, which means the plan will not
+        be empty after import.
+
+        So either with care check the plan and modify configuration, or read the
+        network order in the state file after import and modify your
+        configuration accordingly.
+
+         * A note on ports. If you have created a neutron port independent of an
+            instance, then the import code has no way to detect that the port is created
+            idenpendently, and therefore on deletion of imported instances you might have
+            port resources in your project, which you expected to be created by the
+            instance and thus to also be deleted with the instance.
+
+        ### Importing instances with multiple block storage volumes.
+
+        We have an instance with two block storage volumes, one bootable and one
+        non-bootable.
+        Note that we only configure the bootable device as block_device.
+        The other volumes can be specified as `blockstorage.Volume`
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        instance2 = openstack.compute.Instance("instance_2",
+            name="instance_2",
+            image_id="<image_id>",
+            flavor_id="<flavor_id>",
+            key_pair="<keyname>",
+            security_groups=["default"],
+            block_devices=[{
+                "uuid": "<image_id>",
+                "source_type": "image",
+                "destination_type": "volume",
+                "boot_index": 0,
+                "delete_on_termination": True,
+            }],
+            networks=[{
+                "name": "<network_name>",
+            }])
+        volume1 = openstack.blockstorage.Volume("volume_1",
+            size=1,
+            name="<vol_name>")
+        va1 = openstack.compute.VolumeAttach("va_1",
+            volume_id=volume1.id,
+            instance_id=instance2.id)
+        ```
+        To import the instance outlined in the above configuration
+        do the following:
+
+        * A note on block storage volumes, the importer does not read
+          delete_on_termination flag, and always assumes true. If you
+          import an instance created with delete_on_termination false,
+          you end up with "orphaned" volumes after destruction of
+          instances.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] admin_pass: The administrative password to assign to the server.
@@ -1272,7 +1844,573 @@ class Instance(pulumi.CustomResource):
                  args: Optional[InstanceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Instance resource with the given unique name, props, and options.
+        Manages a V2 VM instance resource within OpenStack.
+
+        > **Note:** All arguments including the instance admin password will be stored
+        in the raw state as plain-text. Read more about sensitive data in
+        state.
+
+        ## Example Usage
+
+        ### Basic Instance
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        basic = openstack.compute.Instance("basic",
+            name="basic",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            metadata={
+                "this": "that",
+            },
+            networks=[{
+                "name": "my_network",
+            }])
+        ```
+
+        ### Instance With Attached Volume
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        myvol = openstack.blockstorage.Volume("myvol",
+            name="myvol",
+            size=1)
+        myinstance = openstack.compute.Instance("myinstance",
+            name="myinstance",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            networks=[{
+                "name": "my_network",
+            }])
+        attached = openstack.compute.VolumeAttach("attached",
+            instance_id=myinstance.id,
+            volume_id=myvol.id)
+        ```
+
+        ### Boot From Volume
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        boot_from_volume = openstack.compute.Instance("boot-from-volume",
+            name="boot-from-volume",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            block_devices=[{
+                "uuid": "<image-id>",
+                "source_type": "image",
+                "volume_size": 5,
+                "boot_index": 0,
+                "destination_type": "volume",
+                "delete_on_termination": True,
+            }],
+            networks=[{
+                "name": "my_network",
+            }])
+        ```
+
+        ### Boot From an Existing Volume
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        myvol = openstack.blockstorage.Volume("myvol",
+            name="myvol",
+            size=5,
+            image_id="<image-id>")
+        boot_from_volume = openstack.compute.Instance("boot-from-volume",
+            name="bootfromvolume",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            block_devices=[{
+                "uuid": myvol.id,
+                "source_type": "volume",
+                "boot_index": 0,
+                "destination_type": "volume",
+                "delete_on_termination": True,
+            }],
+            networks=[{
+                "name": "my_network",
+            }])
+        ```
+
+        ### Boot Instance, Create Volume, and Attach Volume as a Block Device
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
+            image_id="<image-id>",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            block_devices=[
+                {
+                    "uuid": "<image-id>",
+                    "source_type": "image",
+                    "destination_type": "local",
+                    "boot_index": 0,
+                    "delete_on_termination": True,
+                },
+                {
+                    "source_type": "blank",
+                    "destination_type": "volume",
+                    "volume_size": 1,
+                    "boot_index": 1,
+                    "delete_on_termination": True,
+                },
+            ])
+        ```
+
+        ### Boot Instance and Attach Existing Volume as a Block Device
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        volume1 = openstack.blockstorage.Volume("volume_1",
+            name="volume_1",
+            size=1)
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
+            image_id="<image-id>",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            block_devices=[
+                {
+                    "uuid": "<image-id>",
+                    "source_type": "image",
+                    "destination_type": "local",
+                    "boot_index": 0,
+                    "delete_on_termination": True,
+                },
+                {
+                    "uuid": volume1.id,
+                    "source_type": "volume",
+                    "destination_type": "volume",
+                    "boot_index": 1,
+                    "delete_on_termination": True,
+                },
+            ])
+        ```
+
+        ### Instance With Multiple Networks
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        myip = openstack.networking.FloatingIp("myip", pool="my_pool")
+        multi_net = openstack.compute.Instance("multi-net",
+            name="multi-net",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            networks=[
+                {
+                    "name": "my_first_network",
+                },
+                {
+                    "name": "my_second_network",
+                },
+            ])
+        vm_port = pulumi.Output.all(
+            id=multi_net.id,
+            networks=multi_net.networks
+        ).apply(lambda resolved_outputs: openstack.networking.get_port_output(device_id=resolved_outputs['id'],
+            network_id=networks[1].uuid))
+
+        fip_vm = openstack.networking.FloatingIpAssociate("fip_vm",
+            floating_ip=myip.address,
+            port_id=vm_port.id)
+        ```
+
+        ### Instance With Personality
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        personality = openstack.compute.Instance("personality",
+            name="personality",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            personalities=[{
+                "file": "/path/to/file/on/instance.txt",
+                "content": "contents of file",
+            }],
+            networks=[{
+                "name": "my_network",
+            }])
+        ```
+
+        ### Instance with Multiple Ephemeral Disks
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        multi_eph = openstack.compute.Instance("multi-eph",
+            name="multi_eph",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            block_devices=[
+                {
+                    "boot_index": 0,
+                    "delete_on_termination": True,
+                    "destination_type": "local",
+                    "source_type": "image",
+                    "uuid": "<image-id>",
+                },
+                {
+                    "boot_index": -1,
+                    "delete_on_termination": True,
+                    "destination_type": "local",
+                    "source_type": "blank",
+                    "volume_size": 1,
+                    "guest_format": "ext4",
+                },
+                {
+                    "boot_index": -1,
+                    "delete_on_termination": True,
+                    "destination_type": "local",
+                    "source_type": "blank",
+                    "volume_size": 1,
+                },
+            ])
+        ```
+
+        ### Instance with Boot Disk and Swap Disk
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        flavor_with_swap = openstack.compute.Flavor("flavor-with-swap",
+            name="flavor-with-swap",
+            ram=8096,
+            vcpus=2,
+            disk=20,
+            swap=4096)
+        vm_swap = openstack.compute.Instance("vm-swap",
+            name="vm_swap",
+            flavor_id=flavor_with_swap.id,
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            block_devices=[
+                {
+                    "boot_index": 0,
+                    "delete_on_termination": True,
+                    "destination_type": "local",
+                    "source_type": "image",
+                    "uuid": "<image-id>",
+                },
+                {
+                    "boot_index": -1,
+                    "delete_on_termination": True,
+                    "destination_type": "local",
+                    "source_type": "blank",
+                    "guest_format": "swap",
+                    "volume_size": 4,
+                },
+            ])
+        ```
+
+        ### Instance with User Data (cloud-init)
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        instance1 = openstack.compute.Instance("instance_1",
+            name="basic",
+            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
+            key_pair="my_key_pair_name",
+            security_groups=["default"],
+            user_data=\"\"\"#cloud-config
+        hostname: instance_1.example.com
+        fqdn: instance_1.example.com\"\"\",
+            networks=[{
+                "name": "my_network",
+            }])
+        ```
+
+        `user_data` can come from a variety of sources: inline, read in from the `file`
+        function, or the `template_cloudinit_config` resource.
+
+        ## Notes
+
+        ### Multiple Ephemeral Disks
+
+        It's possible to specify multiple `block_device` entries to create an instance
+        with multiple ephemeral (local) disks. In order to create multiple ephemeral
+        disks, the sum of the total amount of ephemeral space must be less than or
+        equal to what the chosen flavor supports.
+
+        The following example shows how to create an instance with multiple ephemeral
+        disks:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        foo = openstack.compute.Instance("foo",
+            name="terraform-test",
+            security_groups=["default"],
+            block_devices=[
+                {
+                    "boot_index": 0,
+                    "delete_on_termination": True,
+                    "destination_type": "local",
+                    "source_type": "image",
+                    "uuid": "<image uuid>",
+                },
+                {
+                    "boot_index": -1,
+                    "delete_on_termination": True,
+                    "destination_type": "local",
+                    "source_type": "blank",
+                    "volume_size": 1,
+                },
+                {
+                    "boot_index": -1,
+                    "delete_on_termination": True,
+                    "destination_type": "local",
+                    "source_type": "blank",
+                    "volume_size": 1,
+                },
+            ])
+        ```
+
+        ### Instances and Security Groups
+
+        When referencing a security group resource in an instance resource, always
+        use the _name_ of the security group. If you specify the ID of the security
+        group, Terraform will remove and reapply the security group upon each call.
+        This is because the OpenStack Compute API returns the names of the associated
+        security groups and not their IDs.
+
+        Note the following example:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        sg1 = openstack.networking.SecGroup("sg_1", name="sg_1")
+        foo = openstack.compute.Instance("foo",
+            name="terraform-test",
+            security_groups=[sg1.name])
+        ```
+
+        ### Instances and Ports
+
+        Neutron Ports are a great feature and provide a lot of functionality. However,
+        there are some notes to be aware of when mixing Instances and Ports:
+
+        * In OpenStack environments prior to the Kilo release, deleting or recreating
+        an Instance will cause the Instance's Port(s) to be deleted. One way of working
+        around this is to taint any Port(s) used in Instances which are to be recreated.
+        See [here](https://review.openstack.org/#/c/126309/) for further information.
+
+        * When attaching an Instance to one or more networks using Ports, place the
+        security groups on the Port and not the Instance. If you place the security
+        groups on the Instance, the security groups will not be applied upon creation,
+        but they will be applied upon a refresh. This is a known OpenStack bug.
+
+        * Network IP information is not available within an instance for networks that
+        are attached with Ports. This is mostly due to the flexibility Neutron Ports
+        provide when it comes to IP addresses. For example, a Neutron Port can have
+        multiple Fixed IP addresses associated with it. It's not possible to know which
+        single IP address the user would want returned to the Instance's state
+        information. Therefore, in order for a Provisioner to connect to an Instance
+        via it's network Port, customize the `connection` information:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        port1 = openstack.networking.Port("port_1",
+            name="port_1",
+            admin_state_up=True,
+            network_id="0a1d0a27-cffa-4de3-92c5-9d3fd3f2e74d",
+            security_group_ids=[
+                "2f02d20a-8dca-49b7-b26f-b6ce9fddaf4f",
+                "ca1e5ed7-dae8-4605-987b-fadaeeb30461",
+            ])
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
+            networks=[{
+                "port": port1.id,
+            }])
+        ```
+
+        ### Instances and Networks
+
+        Instances almost always require a network. Here are some notes to be aware of
+        with how Instances and Networks relate:
+
+        * In scenarios where you only have one network available, you can create an
+        instance without specifying a `network` block. OpenStack will automatically
+        launch the instance on this network.
+
+        * If you have access to more than one network, you will need to specify a network
+        with a `network` block. Not specifying a network will result in the following
+        error:
+
+        * If you intend to use the `compute.InterfaceAttach` resource,
+          you still need to make sure one of the above points is satisfied. An instance
+          cannot be created without a valid network configuration even if you intend to
+          use `compute.InterfaceAttach` after the instance has been created.
+
+        ## Importing instances
+
+        Importing instances can be tricky, since the nova api does not offer all
+        information provided at creation time for later retrieval.
+        Network interface attachment order, and number and sizes of ephemeral
+        disks are examples of this.
+
+        ### Importing basic instance
+        Assume you want to import an instance with one ephemeral root disk,
+        and one network interface.
+
+        Your configuration would look like the following:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        basic_instance = openstack.compute.Instance("basic_instance",
+            name="basic",
+            flavor_id="<flavor_id>",
+            key_pair="<keyname>",
+            security_groups=["default"],
+            image_id="<image_id>",
+            networks=[{
+                "name": "<network_name>",
+            }])
+        ```
+        Then you execute
+
+        ### Importing an instance with multiple emphemeral disks
+
+        The importer cannot read the emphemeral disk configuration
+        of an instance, so just specify image_id as in the configuration
+        of the basic instance example.
+
+        ### Importing instance with multiple network interfaces.
+
+        Nova returns the network interfaces grouped by network, thus not in creation
+        order.
+        That means that if you have multiple network interfaces you must take
+        care of the order of networks in your configuration.
+
+        As example we want to import an instance with one ephemeral root disk,
+        and 3 network interfaces.
+
+        Examples
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        boot_from_volume = openstack.compute.Instance("boot-from-volume",
+            name="boot-from-volume",
+            flavor_id="<flavor_id",
+            key_pair="<keyname>",
+            image_id="<image_id>",
+            security_groups=["default"],
+            networks=[
+                {
+                    "name": "<network1>",
+                },
+                {
+                    "name": "<network2>",
+                },
+                {
+                    "name": "<network1>",
+                    "fixed_ip_v4": "<fixed_ip_v4>",
+                },
+            ])
+        ```
+
+        In the above configuration the networks are out of order compared to what nova
+        and thus the import code returns, which means the plan will not
+        be empty after import.
+
+        So either with care check the plan and modify configuration, or read the
+        network order in the state file after import and modify your
+        configuration accordingly.
+
+         * A note on ports. If you have created a neutron port independent of an
+            instance, then the import code has no way to detect that the port is created
+            idenpendently, and therefore on deletion of imported instances you might have
+            port resources in your project, which you expected to be created by the
+            instance and thus to also be deleted with the instance.
+
+        ### Importing instances with multiple block storage volumes.
+
+        We have an instance with two block storage volumes, one bootable and one
+        non-bootable.
+        Note that we only configure the bootable device as block_device.
+        The other volumes can be specified as `blockstorage.Volume`
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        instance2 = openstack.compute.Instance("instance_2",
+            name="instance_2",
+            image_id="<image_id>",
+            flavor_id="<flavor_id>",
+            key_pair="<keyname>",
+            security_groups=["default"],
+            block_devices=[{
+                "uuid": "<image_id>",
+                "source_type": "image",
+                "destination_type": "volume",
+                "boot_index": 0,
+                "delete_on_termination": True,
+            }],
+            networks=[{
+                "name": "<network_name>",
+            }])
+        volume1 = openstack.blockstorage.Volume("volume_1",
+            size=1,
+            name="<vol_name>")
+        va1 = openstack.compute.VolumeAttach("va_1",
+            volume_id=volume1.id,
+            instance_id=instance2.id)
+        ```
+        To import the instance outlined in the above configuration
+        do the following:
+
+        * A note on block storage volumes, the importer does not read
+          delete_on_termination flag, and always assumes true. If you
+          import an instance created with delete_on_termination false,
+          you end up with "orphaned" volumes after destruction of
+          instances.
+
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1407,6 +2545,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] access_ip_v6: The first detected Fixed IPv6 address.
         :param pulumi.Input[_builtins.str] admin_pass: The administrative password to assign to the server.
                Changing this changes the root password on the existing server.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] all_metadata: Contains all instance metadata, even metadata not set
+               by Terraform.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] all_tags: The collection of tags assigned on the instance, which have
                been explicitly and implicitly added.
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone in which to create
@@ -1555,6 +2695,10 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="allMetadata")
     def all_metadata(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        Contains all instance metadata, even metadata not set
+        by Terraform.
+        """
         return pulumi.get(self, "all_metadata")
 
     @_builtins.property

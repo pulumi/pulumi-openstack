@@ -78,7 +78,7 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// 
     /// ## Import
     /// 
-    /// Clusters can be imported using the `id`, e.g.
+    /// Clusters can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b

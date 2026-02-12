@@ -32,6 +32,12 @@ class VolumeAttachArgs:
         The set of arguments for constructing a VolumeAttach resource.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Instance to attach the Volume to.
         :param pulumi.Input[_builtins.str] volume_id: The ID of the Volume to attach to an Instance.
+        :param pulumi.Input[_builtins.str] device: The device of the volume attachment (ex: `/dev/vdc`).
+               _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+               use. There is a chance that the device specified in Terraform will not be
+               the same device the hypervisor chose. If this happens, Terraform will wish
+               to update the device upon subsequent applying which will cause the volume
+               to be detached and reattached indefinitely. Please use with caution.
         :param pulumi.Input[_builtins.bool] multiattach: Enable attachment of multiattach-capable volumes.
         :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 Compute client.
                A Compute client is needed to create a volume attachment. If omitted, the
@@ -83,6 +89,14 @@ class VolumeAttachArgs:
     @_builtins.property
     @pulumi.getter
     def device(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The device of the volume attachment (ex: `/dev/vdc`).
+        _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+        use. There is a chance that the device specified in Terraform will not be
+        the same device the hypervisor chose. If this happens, Terraform will wish
+        to update the device upon subsequent applying which will cause the volume
+        to be detached and reattached indefinitely. Please use with caution.
+        """
         return pulumi.get(self, "device")
 
     @device.setter
@@ -156,6 +170,12 @@ class _VolumeAttachState:
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VolumeAttach resources.
+        :param pulumi.Input[_builtins.str] device: The device of the volume attachment (ex: `/dev/vdc`).
+               _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+               use. There is a chance that the device specified in Terraform will not be
+               the same device the hypervisor chose. If this happens, Terraform will wish
+               to update the device upon subsequent applying which will cause the volume
+               to be detached and reattached indefinitely. Please use with caution.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Instance to attach the Volume to.
         :param pulumi.Input[_builtins.bool] multiattach: Enable attachment of multiattach-capable volumes.
         :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 Compute client.
@@ -187,6 +207,14 @@ class _VolumeAttachState:
     @_builtins.property
     @pulumi.getter
     def device(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The device of the volume attachment (ex: `/dev/vdc`).
+        _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+        use. There is a chance that the device specified in Terraform will not be
+        the same device the hypervisor chose. If this happens, Terraform will wish
+        to update the device upon subsequent applying which will cause the volume
+        to be detached and reattached indefinitely. Please use with caution.
+        """
         return pulumi.get(self, "device")
 
     @device.setter
@@ -408,6 +436,12 @@ class VolumeAttach(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] device: The device of the volume attachment (ex: `/dev/vdc`).
+               _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+               use. There is a chance that the device specified in Terraform will not be
+               the same device the hypervisor chose. If this happens, Terraform will wish
+               to update the device upon subsequent applying which will cause the volume
+               to be detached and reattached indefinitely. Please use with caution.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Instance to attach the Volume to.
         :param pulumi.Input[_builtins.bool] multiattach: Enable attachment of multiattach-capable volumes.
         :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 Compute client.
@@ -613,6 +647,12 @@ class VolumeAttach(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] device: The device of the volume attachment (ex: `/dev/vdc`).
+               _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+               use. There is a chance that the device specified in Terraform will not be
+               the same device the hypervisor chose. If this happens, Terraform will wish
+               to update the device upon subsequent applying which will cause the volume
+               to be detached and reattached indefinitely. Please use with caution.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Instance to attach the Volume to.
         :param pulumi.Input[_builtins.bool] multiattach: Enable attachment of multiattach-capable volumes.
         :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 Compute client.
@@ -642,6 +682,14 @@ class VolumeAttach(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def device(self) -> pulumi.Output[_builtins.str]:
+        """
+        The device of the volume attachment (ex: `/dev/vdc`).
+        _NOTE_: Being able to specify a device is dependent upon the hypervisor in
+        use. There is a chance that the device specified in Terraform will not be
+        the same device the hypervisor chose. If this happens, Terraform will wish
+        to update the device upon subsequent applying which will cause the volume
+        to be detached and reattached indefinitely. Please use with caution.
+        """
         return pulumi.get(self, "device")
 
     @_builtins.property

@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Qos can be imported using the `qos_id`, e.g.
+ * Qos can be imported using the `qosId`, e.g.
  *
  * ```sh
  * $ pulumi import openstack:blockstorage/qosV3:QosV3 qos 941793f0-0a34-4bc4-b72e-a6326ae58283

@@ -213,7 +213,34 @@ class Configuration(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a Configuration resource with the given unique name, props, and options.
+        Manages a V1 DB configuration resource within OpenStack.
+
+        ## Example Usage
+
+        ### Configuration
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        test = openstack.database.Configuration("test",
+            name="test",
+            description="description",
+            datastore={
+                "version": "mysql-5.7",
+                "type": "mysql",
+            },
+            configurations=[{
+                "name": "max_connections",
+                "value": "200",
+            }])
+        ```
+
+        ## Types of configuration parameter values
+
+        Openstack API requires to store some database configuration parameter's values as strings, even if they contain numbers.
+        To force store their values as strings set `string_type` to `true`. Otherwise Terraform will try to store them as number what can cause error from Openstack API like below:
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict']]]] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
@@ -231,7 +258,34 @@ class Configuration(pulumi.CustomResource):
                  args: ConfigurationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Configuration resource with the given unique name, props, and options.
+        Manages a V1 DB configuration resource within OpenStack.
+
+        ## Example Usage
+
+        ### Configuration
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        test = openstack.database.Configuration("test",
+            name="test",
+            description="description",
+            datastore={
+                "version": "mysql-5.7",
+                "type": "mysql",
+            },
+            configurations=[{
+                "name": "max_connections",
+                "value": "200",
+            }])
+        ```
+
+        ## Types of configuration parameter values
+
+        Openstack API requires to store some database configuration parameter's values as strings, even if they contain numbers.
+        To force store their values as strings set `string_type` to `true`. Otherwise Terraform will try to store them as number what can cause error from Openstack API like below:
+
         :param str resource_name: The name of the resource.
         :param ConfigurationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

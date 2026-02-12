@@ -66,9 +66,6 @@ import javax.annotation.Nullable;
  * 
  * ```sh
  * $ pulumi import openstack:dns/zone:Zone zone_1 zone_id
- * ```
- * 
- * ```sh
  * $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
  * ```
  * 

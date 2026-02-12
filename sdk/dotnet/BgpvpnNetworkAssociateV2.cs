@@ -30,18 +30,6 @@ namespace Pulumi.OpenStack
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// BGP VPN network associations can be imported using the BGP VPN ID and BGP VPN
-    /// 
-    /// network association ID separated by a slash, e.g.:
-    /// 
-    /// hcl
-    /// 
-    /// ```sh
-    /// $ pulumi import openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2 association_1 2145aaa9-edaa-44fb-9815-e47a96677a72/67bb952a-f9d1-4fc8-ae84-082253a879d4
-    /// ```
     /// </summary>
     [Obsolete(@"openstack.index/bgpvpnnetworkassociatev2.BgpvpnNetworkAssociateV2 has been deprecated in favor of openstack.bgpvpn/networkassociatev2.NetworkAssociateV2")]
     [OpenStackResourceType("openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2")]

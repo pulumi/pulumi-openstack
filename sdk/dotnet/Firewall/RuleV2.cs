@@ -39,7 +39,7 @@ namespace Pulumi.OpenStack.Firewall
     /// 
     /// ## Import
     /// 
-    /// Firewall Rules can be imported using the `id`, e.g.
+    /// Firewall Rules can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import openstack:firewall/ruleV2:RuleV2 rule_1 8dbc0c28-e49c-463f-b712-5c5d1bbac327

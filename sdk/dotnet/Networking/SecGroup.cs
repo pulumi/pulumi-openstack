@@ -10,9 +10,71 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Networking
 {
     /// <summary>
+    /// Manages a V2 neutron security group resource within OpenStack.
+    /// Unlike Nova security groups, neutron separates the group from the rules
+    /// and also allows an admin to target a specific tenant_id.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secgroup1 = new OpenStack.Networking.SecGroup("secgroup_1", new()
+    ///     {
+    ///         Name = "secgroup_1",
+    ///         Description = "My neutron security group",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Default Security Group Rules
+    /// 
+    /// In most cases, OpenStack will create some egress security group rules for each
+    /// new security group. These security group rules will not be managed by
+    /// Terraform, so if you prefer to have *all* aspects of your infrastructure
+    /// managed by Terraform, set `DeleteDefaultRules` to `True` and then create
+    /// separate security group rules such as the following:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secgroupRuleV4 = new OpenStack.Networking.SecGroupRule("secgroup_rule_v4", new()
+    ///     {
+    ///         Direction = "egress",
+    ///         Ethertype = "IPv4",
+    ///         SecurityGroupId = secgroup.Id,
+    ///     });
+    /// 
+    ///     var secgroupRuleV6 = new OpenStack.Networking.SecGroupRule("secgroup_rule_v6", new()
+    ///     {
+    ///         Direction = "egress",
+    ///         Ethertype = "IPv6",
+    ///         SecurityGroupId = secgroup.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Please note that this behavior may differ depending on the configuration of
+    /// the OpenStack cloud. The above illustrates the current default Neutron
+    /// behavior. Some OpenStack clouds might provide additional rules and some might
+    /// not provide any rules at all (in which case the `DeleteDefaultRules` setting
+    /// is moot).
+    /// 
     /// ## Import
     /// 
-    /// Security Groups can be imported using the `id`, e.g.
+    /// Security Groups can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import openstack:networking/secGroup:SecGroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc

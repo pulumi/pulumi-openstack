@@ -118,7 +118,7 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// ## Import
     /// 
-    /// Server Groups can be imported using the `id`, e.g.
+    /// Server Groups can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf

@@ -22,6 +22,1028 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Manages a V2 VM instance resource within OpenStack.
+ * 
+ * &gt; **Note:** All arguments including the instance admin password will be stored
+ * in the raw state as plain-text. Read more about sensitive data in
+ * state.
+ * 
+ * ## Example Usage
+ * 
+ * ### Basic Instance
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basic = new Instance("basic", InstanceArgs.builder()
+ *             .name("basic")
+ *             .imageId("ad091b52-742f-469e-8f3c-fd81cadf0743")
+ *             .flavorId("3")
+ *             .keyPair("my_key_pair_name")
+ *             .securityGroups("default")
+ *             .metadata(Map.of("this", "that"))
+ *             .networks(InstanceNetworkArgs.builder()
+ *                 .name("my_network")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Instance With Attached Volume
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.blockstorage.Volume;
+ * import com.pulumi.openstack.blockstorage.VolumeArgs;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceNetworkArgs;
+ * import com.pulumi.openstack.compute.VolumeAttach;
+ * import com.pulumi.openstack.compute.VolumeAttachArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myvol = new Volume("myvol", VolumeArgs.builder()
+ *             .name("myvol")
+ *             .size(1)
+ *             .build());
+ * 
+ *         var myinstance = new Instance("myinstance", InstanceArgs.builder()
+ *             .name("myinstance")
+ *             .imageId("ad091b52-742f-469e-8f3c-fd81cadf0743")
+ *             .flavorId("3")
+ *             .keyPair("my_key_pair_name")
+ *             .securityGroups("default")
+ *             .networks(InstanceNetworkArgs.builder()
+ *                 .name("my_network")
+ *                 .build())
+ *             .build());
+ * 
+ *         var attached = new VolumeAttach("attached", VolumeAttachArgs.builder()
+ *             .instanceId(myinstance.id())
+ *             .volumeId(myvol.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Boot From Volume
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceBlockDeviceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var boot_from_volume = new Instance("boot-from-volume", InstanceArgs.builder()
+ *             .name("boot-from-volume")
+ *             .flavorId("3")
+ *             .keyPair("my_key_pair_name")
+ *             .securityGroups("default")
+ *             .blockDevices(InstanceBlockDeviceArgs.builder()
+ *                 .uuid("<image-id>")
+ *                 .sourceType("image")
+ *                 .volumeSize(5)
+ *                 .bootIndex(0)
+ *                 .destinationType("volume")
+ *                 .deleteOnTermination(true)
+ *                 .build())
+ *             .networks(InstanceNetworkArgs.builder()
+ *                 .name("my_network")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Boot From an Existing Volume
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.blockstorage.Volume;
+ * import com.pulumi.openstack.blockstorage.VolumeArgs;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceBlockDeviceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myvol = new Volume("myvol", VolumeArgs.builder()
+ *             .name("myvol")
+ *             .size(5)
+ *             .imageId("<image-id>")
+ *             .build());
+ * 
+ *         var boot_from_volume = new Instance("boot-from-volume", InstanceArgs.builder()
+ *             .name("bootfromvolume")
+ *             .flavorId("3")
+ *             .keyPair("my_key_pair_name")
+ *             .securityGroups("default")
+ *             .blockDevices(InstanceBlockDeviceArgs.builder()
+ *                 .uuid(myvol.id())
+ *                 .sourceType("volume")
+ *                 .bootIndex(0)
+ *                 .destinationType("volume")
+ *                 .deleteOnTermination(true)
+ *                 .build())
+ *             .networks(InstanceNetworkArgs.builder()
+ *                 .name("my_network")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Boot Instance, Create Volume, and Attach Volume as a Block Device
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceBlockDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()
+ *             .name("instance_1")
+ *             .imageId("<image-id>")
+ *             .flavorId("3")
+ *             .keyPair("my_key_pair_name")
+ *             .securityGroups("default")
+ *             .blockDevices(            
+ *                 InstanceBlockDeviceArgs.builder()
+ *                     .uuid("<image-id>")
+ *                     .sourceType("image")
+ *                     .destinationType("local")
+ *                     .bootIndex(0)
+ *                     .deleteOnTermination(true)
+ *                     .build(),
+ *                 InstanceBlockDeviceArgs.builder()
+ *                     .sourceType("blank")
+ *                     .destinationType("volume")
+ *                     .volumeSize(1)
+ *                     .bootIndex(1)
+ *                     .deleteOnTermination(true)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Boot Instance and Attach Existing Volume as a Block Device
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.blockstorage.Volume;
+ * import com.pulumi.openstack.blockstorage.VolumeArgs;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceBlockDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var volume1 = new Volume("volume1", VolumeArgs.builder()
+ *             .name("volume_1")
+ *             .size(1)
+ *             .build());
+ * 
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()
+ *             .name("instance_1")
+ *             .imageId("<image-id>")
+ *             .flavorId("3")
+ *             .keyPair("my_key_pair_name")
+ *             .securityGroups("default")
+ *             .blockDevices(            
+ *                 InstanceBlockDeviceArgs.builder()
+ *                     .uuid("<image-id>")
+ *                     .sourceType("image")
+ *                     .destinationType("local")
+ *                     .bootIndex(0)
+ *                     .deleteOnTermination(true)
+ *                     .build(),
+ *                 InstanceBlockDeviceArgs.builder()
+ *                     .uuid(volume1.id())
+ *                     .sourceType("volume")
+ *                     .destinationType("volume")
+ *                     .bootIndex(1)
+ *                     .deleteOnTermination(true)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Instance With Multiple Networks
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.networking.FloatingIp;
+ * import com.pulumi.openstack.networking.FloatingIpArgs;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceNetworkArgs;
+ * import com.pulumi.openstack.networking.NetworkingFunctions;
+ * import com.pulumi.openstack.networking.inputs.GetPortArgs;
+ * import com.pulumi.openstack.networking.FloatingIpAssociate;
+ * import com.pulumi.openstack.networking.FloatingIpAssociateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myip = new FloatingIp("myip", FloatingIpArgs.builder()
+ *             .pool("my_pool")
+ *             .build());
+ * 
+ *         var multi_net = new Instance("multi-net", InstanceArgs.builder()
+ *             .name("multi-net")
+ *             .imageId("ad091b52-742f-469e-8f3c-fd81cadf0743")
+ *             .flavorId("3")
+ *             .keyPair("my_key_pair_name")
+ *             .securityGroups("default")
+ *             .networks(            
+ *                 InstanceNetworkArgs.builder()
+ *                     .name("my_first_network")
+ *                     .build(),
+ *                 InstanceNetworkArgs.builder()
+ *                     .name("my_second_network")
+ *                     .build())
+ *             .build());
+ * 
+ *         final var vm-port = Output.tuple(multi_net.id(), multi_net.networks()).applyValue(values -> {
+ *             var id = values.t1;
+ *             var networks = values.t2;
+ *             return NetworkingFunctions.getPort(GetPortArgs.builder()
+ *                 .deviceId(id)
+ *                 .networkId(networks[1].uuid())
+ *                 .build());
+ *         });
+ * 
+ *         var fipVm = new FloatingIpAssociate("fipVm", FloatingIpAssociateArgs.builder()
+ *             .floatingIp(myip.address())
+ *             .portId(vm_port.applyValue(_vm_port -> _vm_port.id()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Instance With Personality
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstancePersonalityArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var personality = new Instance("personality", InstanceArgs.builder()
+ *             .name("personality")
+ *             .imageId("ad091b52-742f-469e-8f3c-fd81cadf0743")
+ *             .flavorId("3")
+ *             .keyPair("my_key_pair_name")
+ *             .securityGroups("default")
+ *             .personalities(InstancePersonalityArgs.builder()
+ *                 .file("/path/to/file/on/instance.txt")
+ *                 .content("contents of file")
+ *                 .build())
+ *             .networks(InstanceNetworkArgs.builder()
+ *                 .name("my_network")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Instance with Multiple Ephemeral Disks
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceBlockDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var multi_eph = new Instance("multi-eph", InstanceArgs.builder()
+ *             .name("multi_eph")
+ *             .imageId("ad091b52-742f-469e-8f3c-fd81cadf0743")
+ *             .flavorId("3")
+ *             .keyPair("my_key_pair_name")
+ *             .securityGroups("default")
+ *             .blockDevices(            
+ *                 InstanceBlockDeviceArgs.builder()
+ *                     .bootIndex(0)
+ *                     .deleteOnTermination(true)
+ *                     .destinationType("local")
+ *                     .sourceType("image")
+ *                     .uuid("<image-id>")
+ *                     .build(),
+ *                 InstanceBlockDeviceArgs.builder()
+ *                     .bootIndex(-1)
+ *                     .deleteOnTermination(true)
+ *                     .destinationType("local")
+ *                     .sourceType("blank")
+ *                     .volumeSize(1)
+ *                     .guestFormat("ext4")
+ *                     .build(),
+ *                 InstanceBlockDeviceArgs.builder()
+ *                     .bootIndex(-1)
+ *                     .deleteOnTermination(true)
+ *                     .destinationType("local")
+ *                     .sourceType("blank")
+ *                     .volumeSize(1)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Instance with Boot Disk and Swap Disk
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.compute.Flavor;
+ * import com.pulumi.openstack.compute.FlavorArgs;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceBlockDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var flavor_with_swap = new Flavor("flavor-with-swap", FlavorArgs.builder()
+ *             .name("flavor-with-swap")
+ *             .ram(8096)
+ *             .vcpus(2)
+ *             .disk(20)
+ *             .swap(4096)
+ *             .build());
+ * 
+ *         var vm_swap = new Instance("vm-swap", InstanceArgs.builder()
+ *             .name("vm_swap")
+ *             .flavorId(flavor_with_swap.id())
+ *             .keyPair("my_key_pair_name")
+ *             .securityGroups("default")
+ *             .blockDevices(            
+ *                 InstanceBlockDeviceArgs.builder()
+ *                     .bootIndex(0)
+ *                     .deleteOnTermination(true)
+ *                     .destinationType("local")
+ *                     .sourceType("image")
+ *                     .uuid("<image-id>")
+ *                     .build(),
+ *                 InstanceBlockDeviceArgs.builder()
+ *                     .bootIndex(-1)
+ *                     .deleteOnTermination(true)
+ *                     .destinationType("local")
+ *                     .sourceType("blank")
+ *                     .guestFormat("swap")
+ *                     .volumeSize(4)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Instance with User Data (cloud-init)
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()
+ *             .name("basic")
+ *             .imageId("ad091b52-742f-469e-8f3c-fd81cadf0743")
+ *             .flavorId("3")
+ *             .keyPair("my_key_pair_name")
+ *             .securityGroups("default")
+ *             .userData("""
+ * #cloud-config
+ * hostname: instance_1.example.com
+ * fqdn: instance_1.example.com            """)
+ *             .networks(InstanceNetworkArgs.builder()
+ *                 .name("my_network")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * `userData` can come from a variety of sources: inline, read in from the `file`
+ * function, or the `templateCloudinitConfig` resource.
+ * 
+ * ## Notes
+ * 
+ * ### Multiple Ephemeral Disks
+ * 
+ * It&#39;s possible to specify multiple `blockDevice` entries to create an instance
+ * with multiple ephemeral (local) disks. In order to create multiple ephemeral
+ * disks, the sum of the total amount of ephemeral space must be less than or
+ * equal to what the chosen flavor supports.
+ * 
+ * The following example shows how to create an instance with multiple ephemeral
+ * disks:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceBlockDeviceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new Instance("foo", InstanceArgs.builder()
+ *             .name("terraform-test")
+ *             .securityGroups("default")
+ *             .blockDevices(            
+ *                 InstanceBlockDeviceArgs.builder()
+ *                     .bootIndex(0)
+ *                     .deleteOnTermination(true)
+ *                     .destinationType("local")
+ *                     .sourceType("image")
+ *                     .uuid("<image uuid>")
+ *                     .build(),
+ *                 InstanceBlockDeviceArgs.builder()
+ *                     .bootIndex(-1)
+ *                     .deleteOnTermination(true)
+ *                     .destinationType("local")
+ *                     .sourceType("blank")
+ *                     .volumeSize(1)
+ *                     .build(),
+ *                 InstanceBlockDeviceArgs.builder()
+ *                     .bootIndex(-1)
+ *                     .deleteOnTermination(true)
+ *                     .destinationType("local")
+ *                     .sourceType("blank")
+ *                     .volumeSize(1)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Instances and Security Groups
+ * 
+ * When referencing a security group resource in an instance resource, always
+ * use the _name_ of the security group. If you specify the ID of the security
+ * group, Terraform will remove and reapply the security group upon each call.
+ * This is because the OpenStack Compute API returns the names of the associated
+ * security groups and not their IDs.
+ * 
+ * Note the following example:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.networking.SecGroup;
+ * import com.pulumi.openstack.networking.SecGroupArgs;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sg1 = new SecGroup("sg1", SecGroupArgs.builder()
+ *             .name("sg_1")
+ *             .build());
+ * 
+ *         var foo = new Instance("foo", InstanceArgs.builder()
+ *             .name("terraform-test")
+ *             .securityGroups(sg1.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Instances and Ports
+ * 
+ * Neutron Ports are a great feature and provide a lot of functionality. However,
+ * there are some notes to be aware of when mixing Instances and Ports:
+ * 
+ * * In OpenStack environments prior to the Kilo release, deleting or recreating
+ * an Instance will cause the Instance&#39;s Port(s) to be deleted. One way of working
+ * around this is to taint any Port(s) used in Instances which are to be recreated.
+ * See [here](https://review.openstack.org/#/c/126309/) for further information.
+ * 
+ * * When attaching an Instance to one or more networks using Ports, place the
+ * security groups on the Port and not the Instance. If you place the security
+ * groups on the Instance, the security groups will not be applied upon creation,
+ * but they will be applied upon a refresh. This is a known OpenStack bug.
+ * 
+ * * Network IP information is not available within an instance for networks that
+ * are attached with Ports. This is mostly due to the flexibility Neutron Ports
+ * provide when it comes to IP addresses. For example, a Neutron Port can have
+ * multiple Fixed IP addresses associated with it. It&#39;s not possible to know which
+ * single IP address the user would want returned to the Instance&#39;s state
+ * information. Therefore, in order for a Provisioner to connect to an Instance
+ * via it&#39;s network Port, customize the `connection` information:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.networking.Port;
+ * import com.pulumi.openstack.networking.PortArgs;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var port1 = new Port("port1", PortArgs.builder()
+ *             .name("port_1")
+ *             .adminStateUp(true)
+ *             .networkId("0a1d0a27-cffa-4de3-92c5-9d3fd3f2e74d")
+ *             .securityGroupIds(            
+ *                 "2f02d20a-8dca-49b7-b26f-b6ce9fddaf4f",
+ *                 "ca1e5ed7-dae8-4605-987b-fadaeeb30461")
+ *             .build());
+ * 
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()
+ *             .name("instance_1")
+ *             .networks(InstanceNetworkArgs.builder()
+ *                 .port(port1.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Instances and Networks
+ * 
+ * Instances almost always require a network. Here are some notes to be aware of
+ * with how Instances and Networks relate:
+ * 
+ * * In scenarios where you only have one network available, you can create an
+ * instance without specifying a `network` block. OpenStack will automatically
+ * launch the instance on this network.
+ * 
+ * * If you have access to more than one network, you will need to specify a network
+ * with a `network` block. Not specifying a network will result in the following
+ * error:
+ * 
+ * * If you intend to use the `openstack.compute.InterfaceAttach` resource,
+ *   you still need to make sure one of the above points is satisfied. An instance
+ *   cannot be created without a valid network configuration even if you intend to
+ *   use `openstack.compute.InterfaceAttach` after the instance has been created.
+ * 
+ * ## Importing instances
+ * 
+ * Importing instances can be tricky, since the nova api does not offer all
+ * information provided at creation time for later retrieval.
+ * Network interface attachment order, and number and sizes of ephemeral
+ * disks are examples of this.
+ * 
+ * ### Importing basic instance
+ * Assume you want to import an instance with one ephemeral root disk,
+ * and one network interface.
+ * 
+ * Your configuration would look like the following:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basicInstance = new Instance("basicInstance", InstanceArgs.builder()
+ *             .name("basic")
+ *             .flavorId("<flavor_id>")
+ *             .keyPair("<keyname>")
+ *             .securityGroups("default")
+ *             .imageId("<image_id>")
+ *             .networks(InstanceNetworkArgs.builder()
+ *                 .name("<network_name>")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * Then you execute
+ * 
+ * ### Importing an instance with multiple emphemeral disks
+ * 
+ * The importer cannot read the emphemeral disk configuration
+ * of an instance, so just specify imageId as in the configuration
+ * of the basic instance example.
+ * 
+ * ### Importing instance with multiple network interfaces.
+ * 
+ * Nova returns the network interfaces grouped by network, thus not in creation
+ * order.
+ * That means that if you have multiple network interfaces you must take
+ * care of the order of networks in your configuration.
+ * 
+ * As example we want to import an instance with one ephemeral root disk,
+ * and 3 network interfaces.
+ * 
+ * Examples
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var boot_from_volume = new Instance("boot-from-volume", InstanceArgs.builder()
+ *             .name("boot-from-volume")
+ *             .flavorId("<flavor_id")
+ *             .keyPair("<keyname>")
+ *             .imageId("<image_id>")
+ *             .securityGroups("default")
+ *             .networks(            
+ *                 InstanceNetworkArgs.builder()
+ *                     .name("<network1>")
+ *                     .build(),
+ *                 InstanceNetworkArgs.builder()
+ *                     .name("<network2>")
+ *                     .build(),
+ *                 InstanceNetworkArgs.builder()
+ *                     .name("<network1>")
+ *                     .fixedIpV4("<fixed_ip_v4>")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * In the above configuration the networks are out of order compared to what nova
+ * and thus the import code returns, which means the plan will not
+ * be empty after import.
+ * 
+ * So either with care check the plan and modify configuration, or read the
+ * network order in the state file after import and modify your
+ * configuration accordingly.
+ * 
+ *  * A note on ports. If you have created a neutron port independent of an
+ *     instance, then the import code has no way to detect that the port is created
+ *     idenpendently, and therefore on deletion of imported instances you might have
+ *     port resources in your project, which you expected to be created by the
+ *     instance and thus to also be deleted with the instance.
+ * 
+ * ### Importing instances with multiple block storage volumes.
+ * 
+ * We have an instance with two block storage volumes, one bootable and one
+ * non-bootable.
+ * Note that we only configure the bootable device as block_device.
+ * The other volumes can be specified as `openstack.blockstorage.Volume`
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.compute.Instance;
+ * import com.pulumi.openstack.compute.InstanceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceBlockDeviceArgs;
+ * import com.pulumi.openstack.compute.inputs.InstanceNetworkArgs;
+ * import com.pulumi.openstack.blockstorage.Volume;
+ * import com.pulumi.openstack.blockstorage.VolumeArgs;
+ * import com.pulumi.openstack.compute.VolumeAttach;
+ * import com.pulumi.openstack.compute.VolumeAttachArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance2 = new Instance("instance2", InstanceArgs.builder()
+ *             .name("instance_2")
+ *             .imageId("<image_id>")
+ *             .flavorId("<flavor_id>")
+ *             .keyPair("<keyname>")
+ *             .securityGroups("default")
+ *             .blockDevices(InstanceBlockDeviceArgs.builder()
+ *                 .uuid("<image_id>")
+ *                 .sourceType("image")
+ *                 .destinationType("volume")
+ *                 .bootIndex(0)
+ *                 .deleteOnTermination(true)
+ *                 .build())
+ *             .networks(InstanceNetworkArgs.builder()
+ *                 .name("<network_name>")
+ *                 .build())
+ *             .build());
+ * 
+ *         var volume1 = new Volume("volume1", VolumeArgs.builder()
+ *             .size(1)
+ *             .name("<vol_name>")
+ *             .build());
+ * 
+ *         var va1 = new VolumeAttach("va1", VolumeAttachArgs.builder()
+ *             .volumeId(volume1.id())
+ *             .instanceId(instance2.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * To import the instance outlined in the above configuration
+ * do the following:
+ * 
+ * * A note on block storage volumes, the importer does not read
+ *   deleteOnTermination flag, and always assumes true. If you
+ *   import an instance created with deleteOnTermination false,
+ *   you end up with &#34;orphaned&#34; volumes after destruction of
+ *   instances.
+ * 
+ */
 @ResourceType(type="openstack:compute/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
@@ -68,9 +1090,19 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> adminPass() {
         return Codegen.optional(this.adminPass);
     }
+    /**
+     * Contains all instance metadata, even metadata not set
+     * by Terraform.
+     * 
+     */
     @Export(name="allMetadata", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> allMetadata;
 
+    /**
+     * @return Contains all instance metadata, even metadata not set
+     * by Terraform.
+     * 
+     */
     public Output<Map<String,String>> allMetadata() {
         return this.allMetadata;
     }

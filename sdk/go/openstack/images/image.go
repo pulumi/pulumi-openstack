@@ -98,7 +98,10 @@ type Image struct {
 	File pulumi.StringOutput `pulumi:"file"`
 	// If true, image will be hidden from public list.
 	// Defaults to false.
-	Hidden         pulumi.BoolPtrOutput   `pulumi:"hidden"`
+	Hidden pulumi.BoolPtrOutput `pulumi:"hidden"`
+	// This is the directory where the images will
+	// be downloaded. Images will be stored with a filename corresponding to the
+	// url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
 	ImageCachePath pulumi.StringPtrOutput `pulumi:"imageCachePath"`
 	// Unique ID (valid UUID) of image to create. Changing
 	// this creates a new image.
@@ -236,7 +239,10 @@ type imageState struct {
 	File *string `pulumi:"file"`
 	// If true, image will be hidden from public list.
 	// Defaults to false.
-	Hidden         *bool   `pulumi:"hidden"`
+	Hidden *bool `pulumi:"hidden"`
+	// This is the directory where the images will
+	// be downloaded. Images will be stored with a filename corresponding to the
+	// url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
 	ImageCachePath *string `pulumi:"imageCachePath"`
 	// Unique ID (valid UUID) of image to create. Changing
 	// this creates a new image.
@@ -332,7 +338,10 @@ type ImageState struct {
 	File pulumi.StringPtrInput
 	// If true, image will be hidden from public list.
 	// Defaults to false.
-	Hidden         pulumi.BoolPtrInput
+	Hidden pulumi.BoolPtrInput
+	// This is the directory where the images will
+	// be downloaded. Images will be stored with a filename corresponding to the
+	// url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
 	ImageCachePath pulumi.StringPtrInput
 	// Unique ID (valid UUID) of image to create. Changing
 	// this creates a new image.
@@ -424,7 +433,10 @@ type imageArgs struct {
 	DiskFormat string `pulumi:"diskFormat"`
 	// If true, image will be hidden from public list.
 	// Defaults to false.
-	Hidden         *bool   `pulumi:"hidden"`
+	Hidden *bool `pulumi:"hidden"`
+	// This is the directory where the images will
+	// be downloaded. Images will be stored with a filename corresponding to the
+	// url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
 	ImageCachePath *string `pulumi:"imageCachePath"`
 	// Unique ID (valid UUID) of image to create. Changing
 	// this creates a new image.
@@ -497,7 +509,10 @@ type ImageArgs struct {
 	DiskFormat pulumi.StringInput
 	// If true, image will be hidden from public list.
 	// Defaults to false.
-	Hidden         pulumi.BoolPtrInput
+	Hidden pulumi.BoolPtrInput
+	// This is the directory where the images will
+	// be downloaded. Images will be stored with a filename corresponding to the
+	// url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
 	ImageCachePath pulumi.StringPtrInput
 	// Unique ID (valid UUID) of image to create. Changing
 	// this creates a new image.
@@ -685,6 +700,9 @@ func (o ImageOutput) Hidden() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.BoolPtrOutput { return v.Hidden }).(pulumi.BoolPtrOutput)
 }
 
+// This is the directory where the images will
+// be downloaded. Images will be stored with a filename corresponding to the
+// url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
 func (o ImageOutput) ImageCachePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.ImageCachePath }).(pulumi.StringPtrOutput)
 }

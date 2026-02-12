@@ -19,6 +19,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages a V1 Barbican secret resource within OpenStack.
+ * 
+ * &gt; **Important Security Notice** The payload of this resource will be stored
+ * *unencrypted* in your Terraform state file. **Use of this resource for production
+ * deployments is *not* recommended**. Read more about sensitive data in
+ * state.
+ * 
  * ## Example Usage
  * 
  * ### Simple secret

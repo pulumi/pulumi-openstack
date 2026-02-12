@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get the ID and the payload of an available Barbican
+// secret
+//
+// > **Important Security Notice** The payload of this data source will be stored
+// *unencrypted* in your Terraform state file. **Use of this resource for
+// production deployments is *not* recommended**. Read more about sensitive data
+// in state.
+//
 // ## Example Usage
 //
 // ```go

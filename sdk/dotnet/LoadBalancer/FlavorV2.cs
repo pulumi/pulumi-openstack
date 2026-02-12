@@ -47,7 +47,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// ## Import
     /// 
-    /// flavors can be imported using their `id`. Example:
+    /// flavors can be imported using their `Id`. Example:
     /// 
     /// ```sh
     /// $ pulumi import openstack:loadbalancer/flavorV2:FlavorV2 flavor_1 2a0f2240-c5e6-41de-896d-e80d97428d6b

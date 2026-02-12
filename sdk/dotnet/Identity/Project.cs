@@ -36,7 +36,7 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// ## Import
     /// 
-    /// Projects can be imported using the `id`, e.g.
+    /// Projects can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import openstack:identity/project:Project project_1 89c60255-9bd6-460c-822a-e2b959ede9d2

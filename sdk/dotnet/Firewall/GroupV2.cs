@@ -74,7 +74,7 @@ namespace Pulumi.OpenStack.Firewall
     /// 
     /// ## Import
     /// 
-    /// Firewall groups can be imported using the `id`, e.g.
+    /// Firewall groups can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import openstack:firewall/groupV2:GroupV2 group_1 c9e39fb2-ce20-46c8-a964-25f3898c7a97

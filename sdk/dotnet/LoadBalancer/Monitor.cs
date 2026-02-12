@@ -41,6 +41,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ```sh
     /// $ pulumi import openstack:loadbalancer/monitor:Monitor monitor_1 47c26fc3-2403-427a-8c79-1589bd0533c2
     /// ```
+    /// 
     /// In case of using OpenContrail, the import may not work properly. If you face an issue, try to import the monitor providing its parent pool ID:
     /// 
     /// ```sh

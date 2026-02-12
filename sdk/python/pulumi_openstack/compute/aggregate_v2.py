@@ -260,24 +260,19 @@ class AggregateV2(pulumi.CustomResource):
         ## Import
 
         You can import an existing Host Aggregate by their ID.
-
         ```sh
         $ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24
         ```
 
         The ID can be obtained with an openstack command:
-
+        ```sh
         $ openstack aggregate list
-
         +----+------+-------------------+
-
         | ID | Name | Availability Zone |
-
         +----+------+-------------------+
-
         | 59 | test | None              |
-
         +----+------+-------------------+
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -334,24 +329,19 @@ class AggregateV2(pulumi.CustomResource):
         ## Import
 
         You can import an existing Host Aggregate by their ID.
-
         ```sh
         $ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24
         ```
 
         The ID can be obtained with an openstack command:
-
+        ```sh
         $ openstack aggregate list
-
         +----+------+-------------------+
-
         | ID | Name | Availability Zone |
-
         +----+------+-------------------+
-
         | 59 | test | None              |
-
         +----+------+-------------------+
+        ```
 
         :param str resource_name: The name of the resource.
         :param AggregateV2Args args: The arguments to use to populate this resource's properties.

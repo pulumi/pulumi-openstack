@@ -6,6 +6,598 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Manages a V2 VM instance resource within OpenStack.
+ *
+ * > **Note:** All arguments including the instance admin password will be stored
+ * in the raw state as plain-text. Read more about sensitive data in
+ * state.
+ *
+ * ## Example Usage
+ *
+ * ### Basic Instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const basic = new openstack.compute.Instance("basic", {
+ *     name: "basic",
+ *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
+ *     flavorId: "3",
+ *     keyPair: "my_key_pair_name",
+ *     securityGroups: ["default"],
+ *     metadata: {
+ *         "this": "that",
+ *     },
+ *     networks: [{
+ *         name: "my_network",
+ *     }],
+ * });
+ * ```
+ *
+ * ### Instance With Attached Volume
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const myvol = new openstack.blockstorage.Volume("myvol", {
+ *     name: "myvol",
+ *     size: 1,
+ * });
+ * const myinstance = new openstack.compute.Instance("myinstance", {
+ *     name: "myinstance",
+ *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
+ *     flavorId: "3",
+ *     keyPair: "my_key_pair_name",
+ *     securityGroups: ["default"],
+ *     networks: [{
+ *         name: "my_network",
+ *     }],
+ * });
+ * const attached = new openstack.compute.VolumeAttach("attached", {
+ *     instanceId: myinstance.id,
+ *     volumeId: myvol.id,
+ * });
+ * ```
+ *
+ * ### Boot From Volume
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const boot_from_volume = new openstack.compute.Instance("boot-from-volume", {
+ *     name: "boot-from-volume",
+ *     flavorId: "3",
+ *     keyPair: "my_key_pair_name",
+ *     securityGroups: ["default"],
+ *     blockDevices: [{
+ *         uuid: "<image-id>",
+ *         sourceType: "image",
+ *         volumeSize: 5,
+ *         bootIndex: 0,
+ *         destinationType: "volume",
+ *         deleteOnTermination: true,
+ *     }],
+ *     networks: [{
+ *         name: "my_network",
+ *     }],
+ * });
+ * ```
+ *
+ * ### Boot From an Existing Volume
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const myvol = new openstack.blockstorage.Volume("myvol", {
+ *     name: "myvol",
+ *     size: 5,
+ *     imageId: "<image-id>",
+ * });
+ * const boot_from_volume = new openstack.compute.Instance("boot-from-volume", {
+ *     name: "bootfromvolume",
+ *     flavorId: "3",
+ *     keyPair: "my_key_pair_name",
+ *     securityGroups: ["default"],
+ *     blockDevices: [{
+ *         uuid: myvol.id,
+ *         sourceType: "volume",
+ *         bootIndex: 0,
+ *         destinationType: "volume",
+ *         deleteOnTermination: true,
+ *     }],
+ *     networks: [{
+ *         name: "my_network",
+ *     }],
+ * });
+ * ```
+ *
+ * ### Boot Instance, Create Volume, and Attach Volume as a Block Device
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const instance1 = new openstack.compute.Instance("instance_1", {
+ *     name: "instance_1",
+ *     imageId: "<image-id>",
+ *     flavorId: "3",
+ *     keyPair: "my_key_pair_name",
+ *     securityGroups: ["default"],
+ *     blockDevices: [
+ *         {
+ *             uuid: "<image-id>",
+ *             sourceType: "image",
+ *             destinationType: "local",
+ *             bootIndex: 0,
+ *             deleteOnTermination: true,
+ *         },
+ *         {
+ *             sourceType: "blank",
+ *             destinationType: "volume",
+ *             volumeSize: 1,
+ *             bootIndex: 1,
+ *             deleteOnTermination: true,
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ### Boot Instance and Attach Existing Volume as a Block Device
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const volume1 = new openstack.blockstorage.Volume("volume_1", {
+ *     name: "volume_1",
+ *     size: 1,
+ * });
+ * const instance1 = new openstack.compute.Instance("instance_1", {
+ *     name: "instance_1",
+ *     imageId: "<image-id>",
+ *     flavorId: "3",
+ *     keyPair: "my_key_pair_name",
+ *     securityGroups: ["default"],
+ *     blockDevices: [
+ *         {
+ *             uuid: "<image-id>",
+ *             sourceType: "image",
+ *             destinationType: "local",
+ *             bootIndex: 0,
+ *             deleteOnTermination: true,
+ *         },
+ *         {
+ *             uuid: volume1.id,
+ *             sourceType: "volume",
+ *             destinationType: "volume",
+ *             bootIndex: 1,
+ *             deleteOnTermination: true,
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ### Instance With Multiple Networks
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const myip = new openstack.networking.FloatingIp("myip", {pool: "my_pool"});
+ * const multi_net = new openstack.compute.Instance("multi-net", {
+ *     name: "multi-net",
+ *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
+ *     flavorId: "3",
+ *     keyPair: "my_key_pair_name",
+ *     securityGroups: ["default"],
+ *     networks: [
+ *         {
+ *             name: "my_first_network",
+ *         },
+ *         {
+ *             name: "my_second_network",
+ *         },
+ *     ],
+ * });
+ * const vm_port = pulumi.all([multi_net.id, multi_net.networks]).apply(([id, networks]) => openstack.networking.getPortOutput({
+ *     deviceId: id,
+ *     networkId: networks[1].uuid,
+ * }));
+ * const fipVm = new openstack.networking.FloatingIpAssociate("fip_vm", {
+ *     floatingIp: myip.address,
+ *     portId: vm_port.apply(vm_port => vm_port.id),
+ * });
+ * ```
+ *
+ * ### Instance With Personality
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const personality = new openstack.compute.Instance("personality", {
+ *     name: "personality",
+ *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
+ *     flavorId: "3",
+ *     keyPair: "my_key_pair_name",
+ *     securityGroups: ["default"],
+ *     personalities: [{
+ *         file: "/path/to/file/on/instance.txt",
+ *         content: "contents of file",
+ *     }],
+ *     networks: [{
+ *         name: "my_network",
+ *     }],
+ * });
+ * ```
+ *
+ * ### Instance with Multiple Ephemeral Disks
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const multi_eph = new openstack.compute.Instance("multi-eph", {
+ *     name: "multi_eph",
+ *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
+ *     flavorId: "3",
+ *     keyPair: "my_key_pair_name",
+ *     securityGroups: ["default"],
+ *     blockDevices: [
+ *         {
+ *             bootIndex: 0,
+ *             deleteOnTermination: true,
+ *             destinationType: "local",
+ *             sourceType: "image",
+ *             uuid: "<image-id>",
+ *         },
+ *         {
+ *             bootIndex: -1,
+ *             deleteOnTermination: true,
+ *             destinationType: "local",
+ *             sourceType: "blank",
+ *             volumeSize: 1,
+ *             guestFormat: "ext4",
+ *         },
+ *         {
+ *             bootIndex: -1,
+ *             deleteOnTermination: true,
+ *             destinationType: "local",
+ *             sourceType: "blank",
+ *             volumeSize: 1,
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ### Instance with Boot Disk and Swap Disk
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const flavor_with_swap = new openstack.compute.Flavor("flavor-with-swap", {
+ *     name: "flavor-with-swap",
+ *     ram: 8096,
+ *     vcpus: 2,
+ *     disk: 20,
+ *     swap: 4096,
+ * });
+ * const vm_swap = new openstack.compute.Instance("vm-swap", {
+ *     name: "vm_swap",
+ *     flavorId: flavor_with_swap.id,
+ *     keyPair: "my_key_pair_name",
+ *     securityGroups: ["default"],
+ *     blockDevices: [
+ *         {
+ *             bootIndex: 0,
+ *             deleteOnTermination: true,
+ *             destinationType: "local",
+ *             sourceType: "image",
+ *             uuid: "<image-id>",
+ *         },
+ *         {
+ *             bootIndex: -1,
+ *             deleteOnTermination: true,
+ *             destinationType: "local",
+ *             sourceType: "blank",
+ *             guestFormat: "swap",
+ *             volumeSize: 4,
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ### Instance with User Data (cloud-init)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const instance1 = new openstack.compute.Instance("instance_1", {
+ *     name: "basic",
+ *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
+ *     flavorId: "3",
+ *     keyPair: "my_key_pair_name",
+ *     securityGroups: ["default"],
+ *     userData: `#cloud-config
+ * hostname: instance_1.example.com
+ * fqdn: instance_1.example.com`,
+ *     networks: [{
+ *         name: "my_network",
+ *     }],
+ * });
+ * ```
+ *
+ * `userData` can come from a variety of sources: inline, read in from the `file`
+ * function, or the `templateCloudinitConfig` resource.
+ *
+ * ## Notes
+ *
+ * ### Multiple Ephemeral Disks
+ *
+ * It's possible to specify multiple `blockDevice` entries to create an instance
+ * with multiple ephemeral (local) disks. In order to create multiple ephemeral
+ * disks, the sum of the total amount of ephemeral space must be less than or
+ * equal to what the chosen flavor supports.
+ *
+ * The following example shows how to create an instance with multiple ephemeral
+ * disks:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const foo = new openstack.compute.Instance("foo", {
+ *     name: "terraform-test",
+ *     securityGroups: ["default"],
+ *     blockDevices: [
+ *         {
+ *             bootIndex: 0,
+ *             deleteOnTermination: true,
+ *             destinationType: "local",
+ *             sourceType: "image",
+ *             uuid: "<image uuid>",
+ *         },
+ *         {
+ *             bootIndex: -1,
+ *             deleteOnTermination: true,
+ *             destinationType: "local",
+ *             sourceType: "blank",
+ *             volumeSize: 1,
+ *         },
+ *         {
+ *             bootIndex: -1,
+ *             deleteOnTermination: true,
+ *             destinationType: "local",
+ *             sourceType: "blank",
+ *             volumeSize: 1,
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ### Instances and Security Groups
+ *
+ * When referencing a security group resource in an instance resource, always
+ * use the _name_ of the security group. If you specify the ID of the security
+ * group, Terraform will remove and reapply the security group upon each call.
+ * This is because the OpenStack Compute API returns the names of the associated
+ * security groups and not their IDs.
+ *
+ * Note the following example:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const sg1 = new openstack.networking.SecGroup("sg_1", {name: "sg_1"});
+ * const foo = new openstack.compute.Instance("foo", {
+ *     name: "terraform-test",
+ *     securityGroups: [sg1.name],
+ * });
+ * ```
+ *
+ * ### Instances and Ports
+ *
+ * Neutron Ports are a great feature and provide a lot of functionality. However,
+ * there are some notes to be aware of when mixing Instances and Ports:
+ *
+ * * In OpenStack environments prior to the Kilo release, deleting or recreating
+ * an Instance will cause the Instance's Port(s) to be deleted. One way of working
+ * around this is to taint any Port(s) used in Instances which are to be recreated.
+ * See [here](https://review.openstack.org/#/c/126309/) for further information.
+ *
+ * * When attaching an Instance to one or more networks using Ports, place the
+ * security groups on the Port and not the Instance. If you place the security
+ * groups on the Instance, the security groups will not be applied upon creation,
+ * but they will be applied upon a refresh. This is a known OpenStack bug.
+ *
+ * * Network IP information is not available within an instance for networks that
+ * are attached with Ports. This is mostly due to the flexibility Neutron Ports
+ * provide when it comes to IP addresses. For example, a Neutron Port can have
+ * multiple Fixed IP addresses associated with it. It's not possible to know which
+ * single IP address the user would want returned to the Instance's state
+ * information. Therefore, in order for a Provisioner to connect to an Instance
+ * via it's network Port, customize the `connection` information:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const port1 = new openstack.networking.Port("port_1", {
+ *     name: "port_1",
+ *     adminStateUp: true,
+ *     networkId: "0a1d0a27-cffa-4de3-92c5-9d3fd3f2e74d",
+ *     securityGroupIds: [
+ *         "2f02d20a-8dca-49b7-b26f-b6ce9fddaf4f",
+ *         "ca1e5ed7-dae8-4605-987b-fadaeeb30461",
+ *     ],
+ * });
+ * const instance1 = new openstack.compute.Instance("instance_1", {
+ *     name: "instance_1",
+ *     networks: [{
+ *         port: port1.id,
+ *     }],
+ * });
+ * ```
+ *
+ * ### Instances and Networks
+ *
+ * Instances almost always require a network. Here are some notes to be aware of
+ * with how Instances and Networks relate:
+ *
+ * * In scenarios where you only have one network available, you can create an
+ * instance without specifying a `network` block. OpenStack will automatically
+ * launch the instance on this network.
+ *
+ * * If you have access to more than one network, you will need to specify a network
+ * with a `network` block. Not specifying a network will result in the following
+ * error:
+ *
+ * * If you intend to use the `openstack.compute.InterfaceAttach` resource,
+ *   you still need to make sure one of the above points is satisfied. An instance
+ *   cannot be created without a valid network configuration even if you intend to
+ *   use `openstack.compute.InterfaceAttach` after the instance has been created.
+ *
+ * ## Importing instances
+ *
+ * Importing instances can be tricky, since the nova api does not offer all
+ * information provided at creation time for later retrieval.
+ * Network interface attachment order, and number and sizes of ephemeral
+ * disks are examples of this.
+ *
+ * ### Importing basic instance
+ * Assume you want to import an instance with one ephemeral root disk,
+ * and one network interface.
+ *
+ * Your configuration would look like the following:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const basicInstance = new openstack.compute.Instance("basic_instance", {
+ *     name: "basic",
+ *     flavorId: "<flavor_id>",
+ *     keyPair: "<keyname>",
+ *     securityGroups: ["default"],
+ *     imageId: "<image_id>",
+ *     networks: [{
+ *         name: "<network_name>",
+ *     }],
+ * });
+ * ```
+ * Then you execute
+ *
+ * ### Importing an instance with multiple emphemeral disks
+ *
+ * The importer cannot read the emphemeral disk configuration
+ * of an instance, so just specify imageId as in the configuration
+ * of the basic instance example.
+ *
+ * ### Importing instance with multiple network interfaces.
+ *
+ * Nova returns the network interfaces grouped by network, thus not in creation
+ * order.
+ * That means that if you have multiple network interfaces you must take
+ * care of the order of networks in your configuration.
+ *
+ * As example we want to import an instance with one ephemeral root disk,
+ * and 3 network interfaces.
+ *
+ * Examples
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const boot_from_volume = new openstack.compute.Instance("boot-from-volume", {
+ *     name: "boot-from-volume",
+ *     flavorId: "<flavor_id",
+ *     keyPair: "<keyname>",
+ *     imageId: "<image_id>",
+ *     securityGroups: ["default"],
+ *     networks: [
+ *         {
+ *             name: "<network1>",
+ *         },
+ *         {
+ *             name: "<network2>",
+ *         },
+ *         {
+ *             name: "<network1>",
+ *             fixedIpV4: "<fixed_ip_v4>",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * In the above configuration the networks are out of order compared to what nova
+ * and thus the import code returns, which means the plan will not
+ * be empty after import.
+ *
+ * So either with care check the plan and modify configuration, or read the
+ * network order in the state file after import and modify your
+ * configuration accordingly.
+ *
+ *  * A note on ports. If you have created a neutron port independent of an
+ *     instance, then the import code has no way to detect that the port is created
+ *     idenpendently, and therefore on deletion of imported instances you might have
+ *     port resources in your project, which you expected to be created by the
+ *     instance and thus to also be deleted with the instance.
+ *
+ * ### Importing instances with multiple block storage volumes.
+ *
+ * We have an instance with two block storage volumes, one bootable and one
+ * non-bootable.
+ * Note that we only configure the bootable device as block_device.
+ * The other volumes can be specified as `openstack.blockstorage.Volume`
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const instance2 = new openstack.compute.Instance("instance_2", {
+ *     name: "instance_2",
+ *     imageId: "<image_id>",
+ *     flavorId: "<flavor_id>",
+ *     keyPair: "<keyname>",
+ *     securityGroups: ["default"],
+ *     blockDevices: [{
+ *         uuid: "<image_id>",
+ *         sourceType: "image",
+ *         destinationType: "volume",
+ *         bootIndex: 0,
+ *         deleteOnTermination: true,
+ *     }],
+ *     networks: [{
+ *         name: "<network_name>",
+ *     }],
+ * });
+ * const volume1 = new openstack.blockstorage.Volume("volume_1", {
+ *     size: 1,
+ *     name: "<vol_name>",
+ * });
+ * const va1 = new openstack.compute.VolumeAttach("va_1", {
+ *     volumeId: volume1.id,
+ *     instanceId: instance2.id,
+ * });
+ * ```
+ * To import the instance outlined in the above configuration
+ * do the following:
+ *
+ * * A note on block storage volumes, the importer does not read
+ *   deleteOnTermination flag, and always assumes true. If you
+ *   import an instance created with deleteOnTermination false,
+ *   you end up with "orphaned" volumes after destruction of
+ *   instances.
+ */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra
@@ -47,6 +639,10 @@ export class Instance extends pulumi.CustomResource {
      * Changing this changes the root password on the existing server.
      */
     declare public readonly adminPass: pulumi.Output<string | undefined>;
+    /**
+     * Contains all instance metadata, even metadata not set
+     * by Terraform.
+     */
     declare public /*out*/ readonly allMetadata: pulumi.Output<{[key: string]: string}>;
     /**
      * The collection of tags assigned on the instance, which have
@@ -314,6 +910,10 @@ export interface InstanceState {
      * Changing this changes the root password on the existing server.
      */
     adminPass?: pulumi.Input<string>;
+    /**
+     * Contains all instance metadata, even metadata not set
+     * by Terraform.
+     */
     allMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The collection of tags assigned on the instance, which have

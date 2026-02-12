@@ -11,6 +11,957 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a V2 VM instance resource within OpenStack.
+//
+// > **Note:** All arguments including the instance admin password will be stored
+// in the raw state as plain-text. Read more about sensitive data in
+// state.
+//
+// ## Example Usage
+//
+// ### Basic Instance
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewInstance(ctx, "basic", &compute.InstanceArgs{
+//				Name:     pulumi.String("basic"),
+//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
+//				FlavorId: pulumi.String("3"),
+//				KeyPair:  pulumi.String("my_key_pair_name"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//				Metadata: pulumi.StringMap{
+//					"this": pulumi.String("that"),
+//				},
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Name: pulumi.String("my_network"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Instance With Attached Volume
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myvol, err := blockstorage.NewVolume(ctx, "myvol", &blockstorage.VolumeArgs{
+//				Name: pulumi.String("myvol"),
+//				Size: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myinstance, err := compute.NewInstance(ctx, "myinstance", &compute.InstanceArgs{
+//				Name:     pulumi.String("myinstance"),
+//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
+//				FlavorId: pulumi.String("3"),
+//				KeyPair:  pulumi.String("my_key_pair_name"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Name: pulumi.String("my_network"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewVolumeAttach(ctx, "attached", &compute.VolumeAttachArgs{
+//				InstanceId: myinstance.ID(),
+//				VolumeId:   myvol.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Boot From Volume
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewInstance(ctx, "boot-from-volume", &compute.InstanceArgs{
+//				Name:     pulumi.String("boot-from-volume"),
+//				FlavorId: pulumi.String("3"),
+//				KeyPair:  pulumi.String("my_key_pair_name"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//				BlockDevices: compute.InstanceBlockDeviceArray{
+//					&compute.InstanceBlockDeviceArgs{
+//						Uuid:                pulumi.String("<image-id>"),
+//						SourceType:          pulumi.String("image"),
+//						VolumeSize:          pulumi.Int(5),
+//						BootIndex:           pulumi.Int(0),
+//						DestinationType:     pulumi.String("volume"),
+//						DeleteOnTermination: pulumi.Bool(true),
+//					},
+//				},
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Name: pulumi.String("my_network"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Boot From an Existing Volume
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myvol, err := blockstorage.NewVolume(ctx, "myvol", &blockstorage.VolumeArgs{
+//				Name:    pulumi.String("myvol"),
+//				Size:    pulumi.Int(5),
+//				ImageId: pulumi.String("<image-id>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "boot-from-volume", &compute.InstanceArgs{
+//				Name:     pulumi.String("bootfromvolume"),
+//				FlavorId: pulumi.String("3"),
+//				KeyPair:  pulumi.String("my_key_pair_name"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//				BlockDevices: compute.InstanceBlockDeviceArray{
+//					&compute.InstanceBlockDeviceArgs{
+//						Uuid:                myvol.ID(),
+//						SourceType:          pulumi.String("volume"),
+//						BootIndex:           pulumi.Int(0),
+//						DestinationType:     pulumi.String("volume"),
+//						DeleteOnTermination: pulumi.Bool(true),
+//					},
+//				},
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Name: pulumi.String("my_network"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Boot Instance, Create Volume, and Attach Volume as a Block Device
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewInstance(ctx, "instance_1", &compute.InstanceArgs{
+//				Name:     pulumi.String("instance_1"),
+//				ImageId:  pulumi.String("<image-id>"),
+//				FlavorId: pulumi.String("3"),
+//				KeyPair:  pulumi.String("my_key_pair_name"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//				BlockDevices: compute.InstanceBlockDeviceArray{
+//					&compute.InstanceBlockDeviceArgs{
+//						Uuid:                pulumi.String("<image-id>"),
+//						SourceType:          pulumi.String("image"),
+//						DestinationType:     pulumi.String("local"),
+//						BootIndex:           pulumi.Int(0),
+//						DeleteOnTermination: pulumi.Bool(true),
+//					},
+//					&compute.InstanceBlockDeviceArgs{
+//						SourceType:          pulumi.String("blank"),
+//						DestinationType:     pulumi.String("volume"),
+//						VolumeSize:          pulumi.Int(1),
+//						BootIndex:           pulumi.Int(1),
+//						DeleteOnTermination: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Boot Instance and Attach Existing Volume as a Block Device
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			volume1, err := blockstorage.NewVolume(ctx, "volume_1", &blockstorage.VolumeArgs{
+//				Name: pulumi.String("volume_1"),
+//				Size: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "instance_1", &compute.InstanceArgs{
+//				Name:     pulumi.String("instance_1"),
+//				ImageId:  pulumi.String("<image-id>"),
+//				FlavorId: pulumi.String("3"),
+//				KeyPair:  pulumi.String("my_key_pair_name"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//				BlockDevices: compute.InstanceBlockDeviceArray{
+//					&compute.InstanceBlockDeviceArgs{
+//						Uuid:                pulumi.String("<image-id>"),
+//						SourceType:          pulumi.String("image"),
+//						DestinationType:     pulumi.String("local"),
+//						BootIndex:           pulumi.Int(0),
+//						DeleteOnTermination: pulumi.Bool(true),
+//					},
+//					&compute.InstanceBlockDeviceArgs{
+//						Uuid:                volume1.ID(),
+//						SourceType:          pulumi.String("volume"),
+//						DestinationType:     pulumi.String("volume"),
+//						BootIndex:           pulumi.Int(1),
+//						DeleteOnTermination: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Instance With Multiple Networks
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myip, err := networking.NewFloatingIp(ctx, "myip", &networking.FloatingIpArgs{
+//				Pool: pulumi.String("my_pool"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			multi_net, err := compute.NewInstance(ctx, "multi-net", &compute.InstanceArgs{
+//				Name:     pulumi.String("multi-net"),
+//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
+//				FlavorId: pulumi.String("3"),
+//				KeyPair:  pulumi.String("my_key_pair_name"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Name: pulumi.String("my_first_network"),
+//					},
+//					&compute.InstanceNetworkArgs{
+//						Name: pulumi.String("my_second_network"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vm_port := pulumi.All(multi_net.ID(), multi_net.Networks).ApplyT(func(_args []interface{}) (networking.GetPortResult, error) {
+//				id := _args[0].(string)
+//				networks := _args[1].([]compute.InstanceNetwork)
+//				return networking.GetPortResult(interface{}(networking.LookupPort(ctx, &networking.LookupPortArgs{
+//					DeviceId:  pulumi.StringRef(pulumi.StringRef(id)),
+//					NetworkId: pulumi.StringRef(pulumi.StringRef(networks[1].Uuid)),
+//				}, nil))), nil
+//			}).(networking.GetPortResultOutput)
+//			_, err = networking.NewFloatingIpAssociate(ctx, "fip_vm", &networking.FloatingIpAssociateArgs{
+//				FloatingIp: myip.Address,
+//				PortId: pulumi.String(vm_port.ApplyT(func(vm_port networking.GetPortResult) (*string, error) {
+//					return &vm_port.Id, nil
+//				}).(pulumi.StringPtrOutput)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Instance With Personality
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewInstance(ctx, "personality", &compute.InstanceArgs{
+//				Name:     pulumi.String("personality"),
+//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
+//				FlavorId: pulumi.String("3"),
+//				KeyPair:  pulumi.String("my_key_pair_name"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//				Personalities: compute.InstancePersonalityArray{
+//					&compute.InstancePersonalityArgs{
+//						File:    pulumi.String("/path/to/file/on/instance.txt"),
+//						Content: pulumi.String("contents of file"),
+//					},
+//				},
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Name: pulumi.String("my_network"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Instance with Multiple Ephemeral Disks
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewInstance(ctx, "multi-eph", &compute.InstanceArgs{
+//				Name:     pulumi.String("multi_eph"),
+//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
+//				FlavorId: pulumi.String("3"),
+//				KeyPair:  pulumi.String("my_key_pair_name"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//				BlockDevices: compute.InstanceBlockDeviceArray{
+//					&compute.InstanceBlockDeviceArgs{
+//						BootIndex:           pulumi.Int(0),
+//						DeleteOnTermination: pulumi.Bool(true),
+//						DestinationType:     pulumi.String("local"),
+//						SourceType:          pulumi.String("image"),
+//						Uuid:                pulumi.String("<image-id>"),
+//					},
+//					&compute.InstanceBlockDeviceArgs{
+//						BootIndex:           pulumi.Int(-1),
+//						DeleteOnTermination: pulumi.Bool(true),
+//						DestinationType:     pulumi.String("local"),
+//						SourceType:          pulumi.String("blank"),
+//						VolumeSize:          pulumi.Int(1),
+//						GuestFormat:         pulumi.String("ext4"),
+//					},
+//					&compute.InstanceBlockDeviceArgs{
+//						BootIndex:           pulumi.Int(-1),
+//						DeleteOnTermination: pulumi.Bool(true),
+//						DestinationType:     pulumi.String("local"),
+//						SourceType:          pulumi.String("blank"),
+//						VolumeSize:          pulumi.Int(1),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Instance with Boot Disk and Swap Disk
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			flavor_with_swap, err := compute.NewFlavor(ctx, "flavor-with-swap", &compute.FlavorArgs{
+//				Name:  pulumi.String("flavor-with-swap"),
+//				Ram:   pulumi.Int(8096),
+//				Vcpus: pulumi.Int(2),
+//				Disk:  pulumi.Int(20),
+//				Swap:  pulumi.Int(4096),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "vm-swap", &compute.InstanceArgs{
+//				Name:     pulumi.String("vm_swap"),
+//				FlavorId: flavor_with_swap.ID(),
+//				KeyPair:  pulumi.String("my_key_pair_name"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//				BlockDevices: compute.InstanceBlockDeviceArray{
+//					&compute.InstanceBlockDeviceArgs{
+//						BootIndex:           pulumi.Int(0),
+//						DeleteOnTermination: pulumi.Bool(true),
+//						DestinationType:     pulumi.String("local"),
+//						SourceType:          pulumi.String("image"),
+//						Uuid:                pulumi.String("<image-id>"),
+//					},
+//					&compute.InstanceBlockDeviceArgs{
+//						BootIndex:           pulumi.Int(-1),
+//						DeleteOnTermination: pulumi.Bool(true),
+//						DestinationType:     pulumi.String("local"),
+//						SourceType:          pulumi.String("blank"),
+//						GuestFormat:         pulumi.String("swap"),
+//						VolumeSize:          pulumi.Int(4),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Instance with User Data (cloud-init)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewInstance(ctx, "instance_1", &compute.InstanceArgs{
+//				Name:     pulumi.String("basic"),
+//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
+//				FlavorId: pulumi.String("3"),
+//				KeyPair:  pulumi.String("my_key_pair_name"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//				UserData: pulumi.String("#cloud-config\nhostname: instance_1.example.com\nfqdn: instance_1.example.com"),
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Name: pulumi.String("my_network"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// `userData` can come from a variety of sources: inline, read in from the `file`
+// function, or the `templateCloudinitConfig` resource.
+//
+// ## Notes
+//
+// ### Multiple Ephemeral Disks
+//
+// It's possible to specify multiple `blockDevice` entries to create an instance
+// with multiple ephemeral (local) disks. In order to create multiple ephemeral
+// disks, the sum of the total amount of ephemeral space must be less than or
+// equal to what the chosen flavor supports.
+//
+// The following example shows how to create an instance with multiple ephemeral
+// disks:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewInstance(ctx, "foo", &compute.InstanceArgs{
+//				Name: pulumi.String("terraform-test"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//				BlockDevices: compute.InstanceBlockDeviceArray{
+//					&compute.InstanceBlockDeviceArgs{
+//						BootIndex:           pulumi.Int(0),
+//						DeleteOnTermination: pulumi.Bool(true),
+//						DestinationType:     pulumi.String("local"),
+//						SourceType:          pulumi.String("image"),
+//						Uuid:                pulumi.String("<image uuid>"),
+//					},
+//					&compute.InstanceBlockDeviceArgs{
+//						BootIndex:           pulumi.Int(-1),
+//						DeleteOnTermination: pulumi.Bool(true),
+//						DestinationType:     pulumi.String("local"),
+//						SourceType:          pulumi.String("blank"),
+//						VolumeSize:          pulumi.Int(1),
+//					},
+//					&compute.InstanceBlockDeviceArgs{
+//						BootIndex:           pulumi.Int(-1),
+//						DeleteOnTermination: pulumi.Bool(true),
+//						DestinationType:     pulumi.String("local"),
+//						SourceType:          pulumi.String("blank"),
+//						VolumeSize:          pulumi.Int(1),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Instances and Security Groups
+//
+// When referencing a security group resource in an instance resource, always
+// use the _name_ of the security group. If you specify the ID of the security
+// group, Terraform will remove and reapply the security group upon each call.
+// This is because the OpenStack Compute API returns the names of the associated
+// security groups and not their IDs.
+//
+// Note the following example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			sg1, err := networking.NewSecGroup(ctx, "sg_1", &networking.SecGroupArgs{
+//				Name: pulumi.String("sg_1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "foo", &compute.InstanceArgs{
+//				Name: pulumi.String("terraform-test"),
+//				SecurityGroups: pulumi.StringArray{
+//					sg1.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Instances and Ports
+//
+// Neutron Ports are a great feature and provide a lot of functionality. However,
+// there are some notes to be aware of when mixing Instances and Ports:
+//
+// * In OpenStack environments prior to the Kilo release, deleting or recreating
+// an Instance will cause the Instance's Port(s) to be deleted. One way of working
+// around this is to taint any Port(s) used in Instances which are to be recreated.
+// See [here](https://review.openstack.org/#/c/126309/) for further information.
+//
+// * When attaching an Instance to one or more networks using Ports, place the
+// security groups on the Port and not the Instance. If you place the security
+// groups on the Instance, the security groups will not be applied upon creation,
+// but they will be applied upon a refresh. This is a known OpenStack bug.
+//
+// * Network IP information is not available within an instance for networks that
+// are attached with Ports. This is mostly due to the flexibility Neutron Ports
+// provide when it comes to IP addresses. For example, a Neutron Port can have
+// multiple Fixed IP addresses associated with it. It's not possible to know which
+// single IP address the user would want returned to the Instance's state
+// information. Therefore, in order for a Provisioner to connect to an Instance
+// via it's network Port, customize the `connection` information:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			port1, err := networking.NewPort(ctx, "port_1", &networking.PortArgs{
+//				Name:         pulumi.String("port_1"),
+//				AdminStateUp: pulumi.Bool(true),
+//				NetworkId:    pulumi.String("0a1d0a27-cffa-4de3-92c5-9d3fd3f2e74d"),
+//				SecurityGroupIds: pulumi.StringArray{
+//					pulumi.String("2f02d20a-8dca-49b7-b26f-b6ce9fddaf4f"),
+//					pulumi.String("ca1e5ed7-dae8-4605-987b-fadaeeb30461"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "instance_1", &compute.InstanceArgs{
+//				Name: pulumi.String("instance_1"),
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Port: port1.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Instances and Networks
+//
+// Instances almost always require a network. Here are some notes to be aware of
+// with how Instances and Networks relate:
+//
+// * In scenarios where you only have one network available, you can create an
+// instance without specifying a `network` block. OpenStack will automatically
+// launch the instance on this network.
+//
+// * If you have access to more than one network, you will need to specify a network
+// with a `network` block. Not specifying a network will result in the following
+// error:
+//
+//   - If you intend to use the `compute.InterfaceAttach` resource,
+//     you still need to make sure one of the above points is satisfied. An instance
+//     cannot be created without a valid network configuration even if you intend to
+//     use `compute.InterfaceAttach` after the instance has been created.
+//
+// ## Importing instances
+//
+// Importing instances can be tricky, since the nova api does not offer all
+// information provided at creation time for later retrieval.
+// Network interface attachment order, and number and sizes of ephemeral
+// disks are examples of this.
+//
+// ### Importing basic instance
+// Assume you want to import an instance with one ephemeral root disk,
+// and one network interface.
+//
+// Your configuration would look like the following:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewInstance(ctx, "basic_instance", &compute.InstanceArgs{
+//				Name:     pulumi.String("basic"),
+//				FlavorId: pulumi.String("<flavor_id>"),
+//				KeyPair:  pulumi.String("<keyname>"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//				ImageId: pulumi.String("<image_id>"),
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Name: pulumi.String("<network_name>"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// Then you execute
+//
+// ### Importing an instance with multiple emphemeral disks
+//
+// The importer cannot read the emphemeral disk configuration
+// of an instance, so just specify imageId as in the configuration
+// of the basic instance example.
+//
+// ### Importing instance with multiple network interfaces.
+//
+// Nova returns the network interfaces grouped by network, thus not in creation
+// order.
+// That means that if you have multiple network interfaces you must take
+// care of the order of networks in your configuration.
+//
+// As example we want to import an instance with one ephemeral root disk,
+// and 3 network interfaces.
+//
+// # Examples
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewInstance(ctx, "boot-from-volume", &compute.InstanceArgs{
+//				Name:     pulumi.String("boot-from-volume"),
+//				FlavorId: pulumi.String("<flavor_id"),
+//				KeyPair:  pulumi.String("<keyname>"),
+//				ImageId:  pulumi.String("<image_id>"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Name: pulumi.String("<network1>"),
+//					},
+//					&compute.InstanceNetworkArgs{
+//						Name: pulumi.String("<network2>"),
+//					},
+//					&compute.InstanceNetworkArgs{
+//						Name:      pulumi.String("<network1>"),
+//						FixedIpV4: pulumi.String("<fixed_ip_v4>"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// In the above configuration the networks are out of order compared to what nova
+// and thus the import code returns, which means the plan will not
+// be empty after import.
+//
+// So either with care check the plan and modify configuration, or read the
+// network order in the state file after import and modify your
+// configuration accordingly.
+//
+//   - A note on ports. If you have created a neutron port independent of an
+//     instance, then the import code has no way to detect that the port is created
+//     idenpendently, and therefore on deletion of imported instances you might have
+//     port resources in your project, which you expected to be created by the
+//     instance and thus to also be deleted with the instance.
+//
+// ### Importing instances with multiple block storage volumes.
+//
+// We have an instance with two block storage volumes, one bootable and one
+// non-bootable.
+// Note that we only configure the bootable device as block_device.
+// The other volumes can be specified as `blockstorage.Volume`
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi-openstack/sdk/v5/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance2, err := compute.NewInstance(ctx, "instance_2", &compute.InstanceArgs{
+//				Name:     pulumi.String("instance_2"),
+//				ImageId:  pulumi.String("<image_id>"),
+//				FlavorId: pulumi.String("<flavor_id>"),
+//				KeyPair:  pulumi.String("<keyname>"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//				BlockDevices: compute.InstanceBlockDeviceArray{
+//					&compute.InstanceBlockDeviceArgs{
+//						Uuid:                pulumi.String("<image_id>"),
+//						SourceType:          pulumi.String("image"),
+//						DestinationType:     pulumi.String("volume"),
+//						BootIndex:           pulumi.Int(0),
+//						DeleteOnTermination: pulumi.Bool(true),
+//					},
+//				},
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Name: pulumi.String("<network_name>"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			volume1, err := blockstorage.NewVolume(ctx, "volume_1", &blockstorage.VolumeArgs{
+//				Size: pulumi.Int(1),
+//				Name: pulumi.String("<vol_name>"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewVolumeAttach(ctx, "va_1", &compute.VolumeAttachArgs{
+//				VolumeId:   volume1.ID(),
+//				InstanceId: instance2.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// To import the instance outlined in the above configuration
+// do the following:
+//
+//   - A note on block storage volumes, the importer does not read
+//     deleteOnTermination flag, and always assumes true. If you
+//     import an instance created with deleteOnTermination false,
+//     you end up with "orphaned" volumes after destruction of
+//     instances.
 type Instance struct {
 	pulumi.CustomResourceState
 
@@ -20,7 +971,9 @@ type Instance struct {
 	AccessIpV6 pulumi.StringOutput `pulumi:"accessIpV6"`
 	// The administrative password to assign to the server.
 	// Changing this changes the root password on the existing server.
-	AdminPass   pulumi.StringPtrOutput `pulumi:"adminPass"`
+	AdminPass pulumi.StringPtrOutput `pulumi:"adminPass"`
+	// Contains all instance metadata, even metadata not set
+	// by Terraform.
 	AllMetadata pulumi.StringMapOutput `pulumi:"allMetadata"`
 	// The collection of tags assigned on the instance, which have
 	// been explicitly and implicitly added.
@@ -176,7 +1129,9 @@ type instanceState struct {
 	AccessIpV6 *string `pulumi:"accessIpV6"`
 	// The administrative password to assign to the server.
 	// Changing this changes the root password on the existing server.
-	AdminPass   *string           `pulumi:"adminPass"`
+	AdminPass *string `pulumi:"adminPass"`
+	// Contains all instance metadata, even metadata not set
+	// by Terraform.
 	AllMetadata map[string]string `pulumi:"allMetadata"`
 	// The collection of tags assigned on the instance, which have
 	// been explicitly and implicitly added.
@@ -296,7 +1251,9 @@ type InstanceState struct {
 	AccessIpV6 pulumi.StringPtrInput
 	// The administrative password to assign to the server.
 	// Changing this changes the root password on the existing server.
-	AdminPass   pulumi.StringPtrInput
+	AdminPass pulumi.StringPtrInput
+	// Contains all instance metadata, even metadata not set
+	// by Terraform.
 	AllMetadata pulumi.StringMapInput
 	// The collection of tags assigned on the instance, which have
 	// been explicitly and implicitly added.
@@ -733,6 +1690,8 @@ func (o InstanceOutput) AdminPass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.AdminPass }).(pulumi.StringPtrOutput)
 }
 
+// Contains all instance metadata, even metadata not set
+// by Terraform.
 func (o InstanceOutput) AllMetadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.AllMetadata }).(pulumi.StringMapOutput)
 }

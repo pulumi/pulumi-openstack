@@ -43,18 +43,6 @@ namespace Pulumi.OpenStack
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// BGP VPN port associations can be imported using the BGP VPN ID and BGP VPN port
-    /// 
-    /// association ID separated by a slash, e.g.:
-    /// 
-    /// hcl
-    /// 
-    /// ```sh
-    /// $ pulumi import openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2 association_1 5bb44ecf-f8fe-4d75-8fc5-313f96ee2696/8f8fc660-3f28-414e-896a-0c7c51162fcf
-    /// ```
     /// </summary>
     [Obsolete(@"openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2")]
     [OpenStackResourceType("openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2")]

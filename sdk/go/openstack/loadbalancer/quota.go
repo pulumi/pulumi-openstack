@@ -65,7 +65,7 @@ import (
 //
 // ## Import
 //
-// Quotas can be imported using the `project_id/region_name`, where region_name is the
+// Quotas can be imported using the `project_id/region_name`, where regionName is the
 // one defined is the Openstack credentials that are in use. E.g.
 //
 // ```sh
