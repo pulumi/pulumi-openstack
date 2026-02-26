@@ -28,6 +28,7 @@ class BgpPeerV2Args:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BgpPeerV2 resource.
+
         :param pulumi.Input[_builtins.str] peer_ip: The IP address of the BGP peer. Must be a valid IP
                address. Changing this creates a new BGP peer.
         :param pulumi.Input[_builtins.int] remote_as: The AS number of the BGP peer. Changing this
@@ -164,6 +165,7 @@ class _BgpPeerV2State:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BgpPeerV2 resources.
+
         :param pulumi.Input[_builtins.str] auth_type: The authentication type to use. Can be one of `none`
                or `md5`. Defaults to `none`. If set to not `none`, the `password` argument
                must also be provided. Changing this creates a new BGP peer.
@@ -332,6 +334,7 @@ class BgpPeerV2(pulumi.CustomResource):
         $ pulumi import openstack:networking/bgpPeerV2:BgpPeerV2 peer1 a1b2c3d4-e5f6-7890-abcd-1234567890ef
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_type: The authentication type to use. Can be one of `none`
@@ -384,6 +387,7 @@ class BgpPeerV2(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/bgpPeerV2:BgpPeerV2 peer1 a1b2c3d4-e5f6-7890-abcd-1234567890ef
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BgpPeerV2Args args: The arguments to use to populate this resource's properties.

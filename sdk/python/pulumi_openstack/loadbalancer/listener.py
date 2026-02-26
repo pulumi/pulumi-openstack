@@ -49,6 +49,7 @@ class ListenerArgs:
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Listener resource.
+
         :param pulumi.Input[_builtins.str] loadbalancer_id: The load balancer on which to provision this
                Listener. Changing this creates a new Listener.
         :param pulumi.Input[_builtins.str] protocol: The protocol can be either `TCP`, `HTTP`, `HTTPS`,
@@ -618,6 +619,7 @@ class _ListenerState:
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Listener resources.
+
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the Listener. A
                valid value is true (UP) or false (DOWN).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_cidrs: A list of CIDR blocks that are permitted to
@@ -1254,6 +1256,7 @@ class Listener(pulumi.CustomResource):
         $ pulumi import openstack:loadbalancer/listener:Listener listener_1 b67ce64e-8b26-405d-afeb-4a078901f15a
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the Listener. A
@@ -1410,6 +1413,7 @@ class Listener(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:loadbalancer/listener:Listener listener_1 b67ce64e-8b26-405d-afeb-4a078901f15a
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ListenerArgs args: The arguments to use to populate this resource's properties.

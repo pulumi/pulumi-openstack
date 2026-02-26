@@ -26,6 +26,7 @@ class VolumeTypeV3Args:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VolumeTypeV3 resource.
+
         :param pulumi.Input[_builtins.str] description: Human-readable description of the port. Changing
                this updates the `description` of an existing volume type.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_specs: Key/Value pairs of metadata for the volume type.
@@ -124,6 +125,7 @@ class _VolumeTypeV3State:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VolumeTypeV3 resources.
+
         :param pulumi.Input[_builtins.str] description: Human-readable description of the port. Changing
                this updates the `description` of an existing volume type.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_specs: Key/Value pairs of metadata for the volume type.
@@ -268,6 +270,7 @@ class VolumeTypeV3(pulumi.CustomResource):
         $ pulumi import openstack:blockstorage/volumeTypeV3:VolumeTypeV3 volume_type_1 941793f0-0a34-4bc4-b72e-a6326ae58283
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the port. Changing
@@ -330,6 +333,7 @@ class VolumeTypeV3(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:blockstorage/volumeTypeV3:VolumeTypeV3 volume_type_1 941793f0-0a34-4bc4-b72e-a6326ae58283
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VolumeTypeV3Args args: The arguments to use to populate this resource's properties.

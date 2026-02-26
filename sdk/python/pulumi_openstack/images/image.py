@@ -41,6 +41,7 @@ class ImageArgs:
                  web_download: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Image resource.
+
         :param pulumi.Input[_builtins.str] container_format: The container format. Must be one of "bare",
                "ovf", "aki", "ari", "ami", "ova", "docker", "compressed".
         :param pulumi.Input[_builtins.str] disk_format: The disk format. Must be one of "raw", "vhd",
@@ -440,6 +441,7 @@ class _ImageState:
                  web_download: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Image resources.
+
         :param pulumi.Input[_builtins.str] checksum: The checksum of the data associated with the image.
         :param pulumi.Input[_builtins.str] container_format: The container format. Must be one of "bare",
                "ovf", "aki", "ari", "ami", "ova", "docker", "compressed".
@@ -1028,6 +1030,7 @@ class Image(pulumi.CustomResource):
         $ pulumi import openstack:images/image:Image rancheros 89c60255-9bd6-460c-822a-e2b959ede9d2
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] container_format: The container format. Must be one of "bare",
@@ -1135,6 +1138,7 @@ class Image(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:images/image:Image rancheros 89c60255-9bd6-460c-822a-e2b959ede9d2
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageArgs args: The arguments to use to populate this resource's properties.

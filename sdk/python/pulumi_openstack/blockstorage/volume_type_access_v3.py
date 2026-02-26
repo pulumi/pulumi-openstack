@@ -24,6 +24,7 @@ class VolumeTypeAccessV3Args:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VolumeTypeAccessV3 resource.
+
         :param pulumi.Input[_builtins.str] project_id: ID of the project to give access to. Changing this
                creates a new resource.
         :param pulumi.Input[_builtins.str] volume_type_id: ID of the volume type to give access to. Changing
@@ -86,6 +87,7 @@ class _VolumeTypeAccessV3State:
                  volume_type_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VolumeTypeAccessV3 resources.
+
         :param pulumi.Input[_builtins.str] project_id: ID of the project to give access to. Changing this
                creates a new resource.
         :param pulumi.Input[_builtins.str] region: The region in which to create the volume. If
@@ -180,6 +182,7 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
         $ pulumi import openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3 volume_type_access 941793f0-0a34-4bc4-b72e-a6326ae58283/ed498e81f0cc448bae0ad4f8f21bf67f
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project_id: ID of the project to give access to. Changing this
@@ -223,6 +226,7 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3 volume_type_access 941793f0-0a34-4bc4-b72e-a6326ae58283/ed498e81f0cc448bae0ad4f8f21bf67f
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VolumeTypeAccessV3Args args: The arguments to use to populate this resource's properties.

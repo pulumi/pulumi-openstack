@@ -28,6 +28,7 @@ class QuotaV2Args:
                  zones: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a QuotaV2 resource.
+
         :param pulumi.Input[_builtins.str] project_id: ID of the project to manage quota. Changing this
                creates new quota.
         :param pulumi.Input[_builtins.int] api_export_size: The maximum number of zones that can be
@@ -157,6 +158,7 @@ class _QuotaV2State:
                  zones: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering QuotaV2 resources.
+
         :param pulumi.Input[_builtins.int] api_export_size: The maximum number of zones that can be
                exported via the API.
         :param pulumi.Input[_builtins.str] project_id: ID of the project to manage quota. Changing this
@@ -305,6 +307,7 @@ class QuotaV2(pulumi.CustomResource):
         $ pulumi import openstack:dns/quotaV2:QuotaV2 quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] api_export_size: The maximum number of zones that can be
@@ -341,6 +344,7 @@ class QuotaV2(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:dns/quotaV2:QuotaV2 quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QuotaV2Args args: The arguments to use to populate this resource's properties.

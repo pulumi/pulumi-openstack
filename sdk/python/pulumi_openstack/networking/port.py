@@ -44,6 +44,7 @@ class PortArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Port resource.
+
         :param pulumi.Input[_builtins.str] network_id: The ID of the network to attach the port to. Changing
                this creates a new port.
         :param pulumi.Input[_builtins.bool] admin_state_up: Administrative up/down status for the port
@@ -457,6 +458,7 @@ class _PortState:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Port resources.
+
         :param pulumi.Input[_builtins.bool] admin_state_up: Administrative up/down status for the port
                (must be `true` or `false` if provided). Changing this updates the
                `admin_state_up` of an existing port.
@@ -1036,6 +1038,7 @@ class Port(pulumi.CustomResource):
         $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] admin_state_up: Administrative up/down status for the port
@@ -1199,6 +1202,7 @@ class Port(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PortArgs args: The arguments to use to populate this resource's properties.

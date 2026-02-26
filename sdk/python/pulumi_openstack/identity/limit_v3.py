@@ -28,6 +28,7 @@ class LimitV3Args:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LimitV3 resource.
+
         :param pulumi.Input[_builtins.int] resource_limit: Integer for the actual limit.
         :param pulumi.Input[_builtins.str] resource_name: The resource that the limit applies to. Changing
                this creates a new Limit.
@@ -157,6 +158,7 @@ class _LimitV3State:
                  service_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LimitV3 resources.
+
         :param pulumi.Input[_builtins.str] description: Description of the limit.
         :param pulumi.Input[_builtins.str] domain_id: The domain the limit applies to. Changing this
                creates a new Limit.
@@ -321,6 +323,7 @@ class LimitV3(pulumi.CustomResource):
         $ pulumi import openstack:identity/limitV3:LimitV3 limit_1 89c60255-9bd6-460c-822a-e2b959ede9d2
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the limit.
@@ -372,6 +375,7 @@ class LimitV3(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:identity/limitV3:LimitV3 limit_1 89c60255-9bd6-460c-822a-e2b959ede9d2
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LimitV3Args args: The arguments to use to populate this resource's properties.

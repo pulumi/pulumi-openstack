@@ -29,6 +29,7 @@ class ProjectArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Project resource.
+
         :param pulumi.Input[_builtins.str] description: A description of the project.
         :param pulumi.Input[_builtins.str] domain_id: The domain this project belongs to.
         :param pulumi.Input[_builtins.bool] enabled: Whether the project is enabled or disabled. Valid
@@ -179,6 +180,7 @@ class _ProjectState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+
         :param pulumi.Input[_builtins.str] description: A description of the project.
         :param pulumi.Input[_builtins.str] domain_id: The domain this project belongs to.
         :param pulumi.Input[_builtins.bool] enabled: Whether the project is enabled or disabled. Valid
@@ -356,6 +358,7 @@ class Project(pulumi.CustomResource):
         $ pulumi import openstack:identity/project:Project project_1 89c60255-9bd6-460c-822a-e2b959ede9d2
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the project.
@@ -404,6 +407,7 @@ class Project(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:identity/project:Project project_1 89c60255-9bd6-460c-822a-e2b959ede9d2
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

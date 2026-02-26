@@ -26,6 +26,7 @@ class RouterInterfaceArgs:
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouterInterface resource.
+
         :param pulumi.Input[_builtins.str] router_id: ID of the router this interface belongs to. Changing
                this creates a new router interface.
         :param pulumi.Input[_builtins.bool] force_destroy: A boolean indicating whether the routes from the
@@ -129,6 +130,7 @@ class _RouterInterfaceState:
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterInterface resources.
+
         :param pulumi.Input[_builtins.bool] force_destroy: A boolean indicating whether the routes from the
                corresponding router ID should be deleted so that the router interface can
                be destroyed without any errors. The default value is `false`.
@@ -268,6 +270,7 @@ class RouterInterface(pulumi.CustomResource):
         $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 port_id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] force_destroy: A boolean indicating whether the routes from the
@@ -322,6 +325,7 @@ class RouterInterface(pulumi.CustomResource):
         $ openstack port list --router <router name or id>
         $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 port_id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouterInterfaceArgs args: The arguments to use to populate this resource's properties.

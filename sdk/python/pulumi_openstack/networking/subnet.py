@@ -44,6 +44,7 @@ class SubnetArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Subnet resource.
+
         :param pulumi.Input[_builtins.str] network_id: The UUID of the parent network. Changing this
                creates a new subnet.
         :param pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]] allocation_pools: A block declaring the start and end range of
@@ -452,6 +453,7 @@ class _SubnetState:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Subnet resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] all_tags: The collection of ags assigned on the subnet, which have been
                explicitly and implicitly added.
         :param pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]] allocation_pools: A block declaring the start and end range of
@@ -904,6 +906,7 @@ class Subnet(pulumi.CustomResource):
         $ pulumi import openstack:networking/subnet:Subnet subnet_1 da4faf16-5546-41e4-8330-4d0002b74048
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SubnetAllocationPoolArgs', 'SubnetAllocationPoolArgsDict']]]] allocation_pools: A block declaring the start and end range of
@@ -990,6 +993,7 @@ class Subnet(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/subnet:Subnet subnet_1 da4faf16-5546-41e4-8330-4d0002b74048
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SubnetArgs args: The arguments to use to populate this resource's properties.

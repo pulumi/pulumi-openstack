@@ -27,6 +27,7 @@ class ShareNetworkArgs:
                  security_service_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ShareNetwork resource.
+
         :param pulumi.Input[_builtins.str] neutron_net_id: The UUID of a neutron network when setting up or updating
                a share network. Changing this updates the existing share network if it's not used by
                shares.
@@ -154,6 +155,7 @@ class _ShareNetworkState:
                  segmentation_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ShareNetwork resources.
+
         :param pulumi.Input[_builtins.str] cidr: The share network CIDR.
         :param pulumi.Input[_builtins.str] description: The human-readable description for the share network.
                Changing this updates the description of the existing share network.
@@ -424,6 +426,7 @@ class ShareNetwork(pulumi.CustomResource):
         $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The human-readable description for the share network.
@@ -517,6 +520,7 @@ class ShareNetwork(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ShareNetworkArgs args: The arguments to use to populate this resource's properties.

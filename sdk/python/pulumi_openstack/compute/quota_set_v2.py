@@ -37,6 +37,7 @@ class QuotaSetV2Args:
                  server_groups: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a QuotaSetV2 resource.
+
         :param pulumi.Input[_builtins.str] project_id: ID of the project to manage quotas.
                Changing this creates a new quotaset.
         :param pulumi.Input[_builtins.int] cores: Quota value for cores.
@@ -334,6 +335,7 @@ class _QuotaSetV2State:
                  server_groups: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering QuotaSetV2 resources.
+
         :param pulumi.Input[_builtins.int] cores: Quota value for cores.
                Changing this updates the existing quotaset.
         :param pulumi.Input[_builtins.int] fixed_ips: Quota value for fixed IPs.
@@ -650,6 +652,7 @@ class QuotaSetV2(pulumi.CustomResource):
         $ pulumi import openstack:compute/quotaSetV2:QuotaSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] cores: Quota value for cores.
@@ -707,6 +710,7 @@ class QuotaSetV2(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:compute/quotaSetV2:QuotaSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QuotaSetV2Args args: The arguments to use to populate this resource's properties.

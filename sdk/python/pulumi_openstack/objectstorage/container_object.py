@@ -36,6 +36,7 @@ class ContainerObjectArgs:
                  source: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ContainerObject resource.
+
         :param pulumi.Input[_builtins.str] container_name: A unique (within an account) name for the container. 
                The container name must be from 1 to 256 characters long and can start
                with any character and contain any pattern. Character set must be UTF-8.
@@ -333,6 +334,7 @@ class _ContainerObjectState:
                  trans_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ContainerObject resources.
+
         :param pulumi.Input[_builtins.str] container_name: A unique (within an account) name for the container. 
                The container name must be from 1 to 256 characters long and can start
                with any character and contain any pattern. Character set must be UTF-8.
@@ -716,6 +718,7 @@ class ContainerObject(pulumi.CustomResource):
 
         ### Example with content from file
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] container_name: A unique (within an account) name for the container. 
@@ -772,6 +775,7 @@ class ContainerObject(pulumi.CustomResource):
         ### Example with simple content
 
         ### Example with content from file
+
 
         :param str resource_name: The name of the resource.
         :param ContainerObjectArgs args: The arguments to use to populate this resource's properties.

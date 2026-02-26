@@ -29,6 +29,7 @@ class PolicyV2Args:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PolicyV2 resource.
+
         :param pulumi.Input[_builtins.bool] audited: Audit status of the firewall policy
                (must be "true" or "false" if provided - defaults to "false").
                This status is set to "false" whenever the firewall policy or any of its
@@ -207,6 +208,7 @@ class _PolicyV2State:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolicyV2 resources.
+
         :param pulumi.Input[_builtins.bool] audited: Audit status of the firewall policy
                (must be "true" or "false" if provided - defaults to "false").
                This status is set to "false" whenever the firewall policy or any of its
@@ -428,6 +430,7 @@ class PolicyV2(pulumi.CustomResource):
         $ pulumi import openstack:firewall/policyV2:PolicyV2 policy_1 07f422e6-c596-474b-8b94-fe2c12506ce0
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] audited: Audit status of the firewall policy
@@ -506,6 +509,7 @@ class PolicyV2(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:firewall/policyV2:PolicyV2 policy_1 07f422e6-c596-474b-8b94-fe2c12506ce0
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PolicyV2Args args: The arguments to use to populate this resource's properties.

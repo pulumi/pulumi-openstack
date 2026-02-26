@@ -33,6 +33,7 @@ class FlavorArgs:
                  swap: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Flavor resource.
+
         :param pulumi.Input[_builtins.int] disk: The amount of disk space in GiB to use for the root
                (/) partition. Changing this creates a new flavor.
         :param pulumi.Input[_builtins.int] ram: The amount of RAM to use, in megabytes. Changing this
@@ -256,6 +257,7 @@ class _FlavorState:
                  vcpus: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Flavor resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the flavor. Changing this
                updates the description of the flavor. Requires microversion >= 2.55.
         :param pulumi.Input[_builtins.int] disk: The amount of disk space in GiB to use for the root
@@ -512,6 +514,7 @@ class Flavor(pulumi.CustomResource):
         $ pulumi import openstack:compute/flavor:Flavor my-flavor 4142e64b-1b35-44a0-9b1e-5affc7af1106
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the flavor. Changing this
@@ -573,6 +576,7 @@ class Flavor(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:compute/flavor:Flavor my-flavor 4142e64b-1b35-44a0-9b1e-5affc7af1106
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FlavorArgs args: The arguments to use to populate this resource's properties.

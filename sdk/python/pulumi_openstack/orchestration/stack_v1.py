@@ -40,6 +40,7 @@ class StackV1Args:
                  updated_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StackV1 resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] template_opts: Template key/value pairs to associate with the
                stack which contains either the template file or url.
                Allowed keys: Bin, URL, Files. Changing this updates the existing stack
@@ -355,6 +356,7 @@ class _StackV1State:
                  updated_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StackV1 resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['StackV1StackOutputArgs']]] stack_outputs: A list of stack outputs.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] capabilities: List of stack capabilities for stack.
         :param pulumi.Input[_builtins.str] creation_time: The date and time when the resource was created. The date
@@ -716,6 +718,7 @@ class StackV1(pulumi.CustomResource):
         $ pulumi import openstack:orchestration/stackV1:StackV1 stack_1 ea257959-eeb1-4c10-8d33-26f0409a755d
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict']]]] stack_outputs: A list of stack outputs.
@@ -802,6 +805,7 @@ class StackV1(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:orchestration/stackV1:StackV1 stack_1 ea257959-eeb1-4c10-8d33-26f0409a755d
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StackV1Args args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class QosAssociationV3Args:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a QosAssociationV3 resource.
+
         :param pulumi.Input[_builtins.str] qos_id: ID of the qos to associate. Changing this creates
                a new qos association.
         :param pulumi.Input[_builtins.str] volume_type_id: ID of the volume_type to associate.
@@ -86,6 +87,7 @@ class _QosAssociationV3State:
                  volume_type_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering QosAssociationV3 resources.
+
         :param pulumi.Input[_builtins.str] qos_id: ID of the qos to associate. Changing this creates
                a new qos association.
         :param pulumi.Input[_builtins.str] region: The region in which to create the qos association.
@@ -183,6 +185,7 @@ class QosAssociationV3(pulumi.CustomResource):
         $ pulumi import openstack:blockstorage/qosAssociationV3:QosAssociationV3 qos_association 941793f0-0a34-4bc4-b72e-a6326ae58283/ea257959-eeb1-4c10-8d33-26f0409a755d
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] qos_id: ID of the qos to associate. Changing this creates
@@ -229,6 +232,7 @@ class QosAssociationV3(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:blockstorage/qosAssociationV3:QosAssociationV3 qos_association 941793f0-0a34-4bc4-b72e-a6326ae58283/ea257959-eeb1-4c10-8d33-26f0409a755d
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QosAssociationV3Args args: The arguments to use to populate this resource's properties.

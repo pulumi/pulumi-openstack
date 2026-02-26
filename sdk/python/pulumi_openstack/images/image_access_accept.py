@@ -25,6 +25,7 @@ class ImageAccessAcceptArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ImageAccessAccept resource.
+
         :param pulumi.Input[_builtins.str] image_id: The proposed image ID.
         :param pulumi.Input[_builtins.str] status: The membership proposal status. Can either be
                `accepted`, `rejected` or `pending`.
@@ -108,6 +109,7 @@ class _ImageAccessAcceptState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ImageAccessAccept resources.
+
         :param pulumi.Input[_builtins.str] created_at: The date the image membership was created.
         :param pulumi.Input[_builtins.str] image_id: The proposed image ID.
         :param pulumi.Input[_builtins.str] member_id: The member ID, e.g. the target project ID. Optional
@@ -265,6 +267,7 @@ class ImageAccessAccept(pulumi.CustomResource):
         $ terraform import openstack_images_image_access_accept_v2 89c60255-9bd6-460c-822a-e2b959ede9d2
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] image_id: The proposed image ID.
@@ -310,6 +313,7 @@ class ImageAccessAccept(pulumi.CustomResource):
         ```sh
         $ terraform import openstack_images_image_access_accept_v2 89c60255-9bd6-460c-822a-e2b959ede9d2
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageAccessAcceptArgs args: The arguments to use to populate this resource's properties.

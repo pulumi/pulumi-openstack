@@ -25,6 +25,7 @@ class ImageAccessArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ImageAccess resource.
+
         :param pulumi.Input[_builtins.str] image_id: The image ID.
         :param pulumi.Input[_builtins.str] member_id: The member ID, e.g. the target project ID.
         :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 Glance client.
@@ -106,6 +107,7 @@ class _ImageAccessState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ImageAccess resources.
+
         :param pulumi.Input[_builtins.str] created_at: The date the image access was created.
         :param pulumi.Input[_builtins.str] image_id: The image ID.
         :param pulumi.Input[_builtins.str] member_id: The member ID, e.g. the target project ID.
@@ -295,6 +297,7 @@ class ImageAccess(pulumi.CustomResource):
         $ terraform import openstack_images_image_access_v2 89c60255-9bd6-460c-822a-e2b959ede9d2/bed6b6cbb86a4e2d8dc2735c2f1000e4
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] image_id: The image ID.
@@ -373,6 +376,7 @@ class ImageAccess(pulumi.CustomResource):
         ```sh
         $ terraform import openstack_images_image_access_v2 89c60255-9bd6-460c-822a-e2b959ede9d2/bed6b6cbb86a4e2d8dc2735c2f1000e4
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageAccessArgs args: The arguments to use to populate this resource's properties.

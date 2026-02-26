@@ -26,6 +26,7 @@ class RbacPolicyV2Args:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RbacPolicyV2 resource.
+
         :param pulumi.Input[_builtins.str] action: Action for the RBAC policy. Can either be
                `access_as_external` or `access_as_shared`.
         :param pulumi.Input[_builtins.str] object_id: The ID of the `object_type` resource. An
@@ -129,6 +130,7 @@ class _RbacPolicyV2State:
                  target_tenant: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RbacPolicyV2 resources.
+
         :param pulumi.Input[_builtins.str] action: Action for the RBAC policy. Can either be
                `access_as_external` or `access_as_shared`.
         :param pulumi.Input[_builtins.str] object_id: The ID of the `object_type` resource. An
@@ -287,6 +289,7 @@ class RbacPolicyV2(pulumi.CustomResource):
         $ pulumi import openstack:networking/rbacPolicyV2:RbacPolicyV2 rbac_policy_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: Action for the RBAC policy. Can either be
@@ -348,6 +351,7 @@ class RbacPolicyV2(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/rbacPolicyV2:RbacPolicyV2 rbac_policy_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RbacPolicyV2Args args: The arguments to use to populate this resource's properties.

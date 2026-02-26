@@ -29,6 +29,7 @@ class PortForwardingV2Args:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PortForwardingV2 resource.
+
         :param pulumi.Input[_builtins.int] external_port: The TCP/UDP/other protocol port number of the port forwarding. Changing this
                updates the `external_port` of an existing port forwarding.
         :param pulumi.Input[_builtins.str] floatingip_id: The ID of the Neutron floating IP address. Changing this creates a new port forwarding.
@@ -177,6 +178,7 @@ class _PortForwardingV2State:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PortForwardingV2 resources.
+
         :param pulumi.Input[_builtins.str] description: A text describing the port forwarding. Changing this
                updates the `description` of an existing port forwarding.
         :param pulumi.Input[_builtins.int] external_port: The TCP/UDP/other protocol port number of the port forwarding. Changing this
@@ -352,6 +354,7 @@ class PortForwardingV2(pulumi.CustomResource):
             protocol="tcp")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A text describing the port forwarding. Changing this
@@ -396,6 +399,7 @@ class PortForwardingV2(pulumi.CustomResource):
             internal_port_id="b930d7f6-ceb7-40a0-8b81-a425dd994ccf",
             protocol="tcp")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PortForwardingV2Args args: The arguments to use to populate this resource's properties.

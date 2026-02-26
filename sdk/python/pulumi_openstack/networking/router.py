@@ -38,6 +38,7 @@ class RouterArgs:
                  vendor_options: Optional[pulumi.Input['RouterVendorOptionsArgs']] = None):
         """
         The set of arguments for constructing a Router resource.
+
         :param pulumi.Input[_builtins.bool] admin_state_up: Administrative up/down status for the router
                (must be "true" or "false" if provided). Changing this updates the
                `admin_state_up` of an existing router.
@@ -345,6 +346,7 @@ class _RouterState:
                  vendor_options: Optional[pulumi.Input['RouterVendorOptionsArgs']] = None):
         """
         Input properties used for looking up and filtering Router resources.
+
         :param pulumi.Input[_builtins.bool] admin_state_up: Administrative up/down status for the router
                (must be "true" or "false" if provided). Changing this updates the
                `admin_state_up` of an existing router.
@@ -693,6 +695,7 @@ class Router(pulumi.CustomResource):
         $ pulumi import openstack:networking/router:Router router_1 014395cd-89fc-4c9b-96b7-13d1ee79dad2
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] admin_state_up: Administrative up/down status for the router
@@ -768,6 +771,7 @@ class Router(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/router:Router router_1 014395cd-89fc-4c9b-96b7-13d1ee79dad2
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouterArgs args: The arguments to use to populate this resource's properties.

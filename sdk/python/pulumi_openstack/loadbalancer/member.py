@@ -34,6 +34,7 @@ class MemberArgs:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Member resource.
+
         :param pulumi.Input[_builtins.str] address: The IP address of the member to receive traffic from
                the load balancer. Changing this creates a new member.
         :param pulumi.Input[_builtins.str] pool_id: The id of the pool that this member will be assigned
@@ -279,6 +280,7 @@ class _MemberState:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Member resources.
+
         :param pulumi.Input[_builtins.str] address: The IP address of the member to receive traffic from
                the load balancer. Changing this creates a new member.
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the member.
@@ -553,6 +555,7 @@ class Member(pulumi.CustomResource):
         $ pulumi import openstack:loadbalancer/member:Member member_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5/9563b79c-8460-47da-8a95-2711b746510f
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The IP address of the member to receive traffic from
@@ -614,6 +617,7 @@ class Member(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:loadbalancer/member:Member member_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5/9563b79c-8460-47da-8a95-2711b746510f
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MemberArgs args: The arguments to use to populate this resource's properties.

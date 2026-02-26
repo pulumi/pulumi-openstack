@@ -33,6 +33,7 @@ class SecGroupRuleArgs:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecGroupRule resource.
+
         :param pulumi.Input[_builtins.str] direction: The direction of the rule, valid values are __ingress__
                or __egress__. Changing this creates a new security group rule.
         :param pulumi.Input[_builtins.str] ethertype: The layer 3 protocol type, valid values are __IPv4__
@@ -320,6 +321,7 @@ class _SecGroupRuleState:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecGroupRule resources.
+
         :param pulumi.Input[_builtins.str] description: A description of the rule. Changing this creates a new security group rule.
         :param pulumi.Input[_builtins.str] direction: The direction of the rule, valid values are __ingress__
                or __egress__. Changing this creates a new security group rule.
@@ -647,6 +649,7 @@ class SecGroupRule(pulumi.CustomResource):
         $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the rule. Changing this creates a new security group rule.
@@ -747,6 +750,7 @@ class SecGroupRule(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecGroupRuleArgs args: The arguments to use to populate this resource's properties.

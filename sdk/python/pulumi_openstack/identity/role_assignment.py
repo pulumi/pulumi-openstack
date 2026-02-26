@@ -27,6 +27,7 @@ class RoleAssignmentArgs:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RoleAssignment resource.
+
         :param pulumi.Input[_builtins.str] role_id: The role to assign.
         :param pulumi.Input[_builtins.str] domain_id: The domain to assign the role in.
         :param pulumi.Input[_builtins.str] group_id: The group to assign the role to.
@@ -134,6 +135,7 @@ class _RoleAssignmentState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RoleAssignment resources.
+
         :param pulumi.Input[_builtins.str] domain_id: The domain to assign the role in.
         :param pulumi.Input[_builtins.str] group_id: The group to assign the role to.
         :param pulumi.Input[_builtins.str] project_id: The project to assign the role in.
@@ -282,6 +284,7 @@ class RoleAssignment(pulumi.CustomResource):
         $ pulumi import openstack:identity/roleAssignment:RoleAssignment role_assignment_1 /014395cd-89fc-4c9b-96b7-13d1ee79dad2//4142e64b-1b35-44a0-9b1e-5affc7af1106/ea257959-eeb1-4c10-8d33-26f0409a755d
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain_id: The domain to assign the role in.
@@ -336,6 +339,7 @@ class RoleAssignment(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:identity/roleAssignment:RoleAssignment role_assignment_1 /014395cd-89fc-4c9b-96b7-13d1ee79dad2//4142e64b-1b35-44a0-9b1e-5affc7af1106/ea257959-eeb1-4c10-8d33-26f0409a755d
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RoleAssignmentArgs args: The arguments to use to populate this resource's properties.

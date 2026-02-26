@@ -26,6 +26,7 @@ class QosBandwidthLimitRuleArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a QosBandwidthLimitRule resource.
+
         :param pulumi.Input[_builtins.int] max_kbps: The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
                maximum kilobits per second of the existing QoS bandwidth limit rule.
         :param pulumi.Input[_builtins.str] qos_policy_id: The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
@@ -122,6 +123,7 @@ class _QosBandwidthLimitRuleState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering QosBandwidthLimitRule resources.
+
         :param pulumi.Input[_builtins.str] direction: The direction of traffic. Defaults to "egress". Changing this updates the direction of the
                existing QoS bandwidth limit rule.
         :param pulumi.Input[_builtins.int] max_burst_kbps: The maximum burst size in kilobits of a QoS bandwidth limit rule. Changing this updates the
@@ -251,6 +253,7 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
         $ pulumi import openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule bw_limit_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] direction: The direction of traffic. Defaults to "egress". Changing this updates the direction of the
@@ -298,6 +301,7 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule bw_limit_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QosBandwidthLimitRuleArgs args: The arguments to use to populate this resource's properties.

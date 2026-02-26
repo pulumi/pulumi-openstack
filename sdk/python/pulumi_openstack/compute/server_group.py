@@ -28,6 +28,7 @@ class ServerGroupArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ServerGroup resource.
+
         :param pulumi.Input[_builtins.str] name: A unique name for the server group. Changing this creates
                a new server group.
         :param pulumi.Input[_builtins.str] policies: A list of exactly one policy name to associate with
@@ -129,6 +130,7 @@ class _ServerGroupState:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ServerGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: The instances that are part of this server group.
         :param pulumi.Input[_builtins.str] name: A unique name for the server group. Changing this creates
                a new server group.
@@ -322,6 +324,7 @@ class ServerGroup(pulumi.CustomResource):
         $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: A unique name for the server group. Changing this creates
@@ -417,6 +420,7 @@ class ServerGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServerGroupArgs args: The arguments to use to populate this resource's properties.

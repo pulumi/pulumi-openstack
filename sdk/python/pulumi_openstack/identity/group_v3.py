@@ -25,6 +25,7 @@ class GroupV3Args:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GroupV3 resource.
+
         :param pulumi.Input[_builtins.str] description: A description of the group.
         :param pulumi.Input[_builtins.str] domain_id: The domain the group belongs to.
         :param pulumi.Input[_builtins.str] name: The name of the group.
@@ -101,6 +102,7 @@ class _GroupV3State:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupV3 resources.
+
         :param pulumi.Input[_builtins.str] description: A description of the group.
         :param pulumi.Input[_builtins.str] domain_id: The domain the group belongs to.
         :param pulumi.Input[_builtins.str] name: The name of the group.
@@ -204,6 +206,7 @@ class GroupV3(pulumi.CustomResource):
         $ pulumi import openstack:identity/groupV3:GroupV3 group_1 89c60255-9bd6-460c-822a-e2b959ede9d2
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the group.
@@ -243,6 +246,7 @@ class GroupV3(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:identity/groupV3:GroupV3 group_1 89c60255-9bd6-460c-822a-e2b959ede9d2
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupV3Args args: The arguments to use to populate this resource's properties.

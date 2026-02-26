@@ -36,6 +36,7 @@ class MonitorArgs:
                  url_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Monitor resource.
+
         :param pulumi.Input[_builtins.int] delay: The time, in seconds, between sending probes to members.
         :param pulumi.Input[_builtins.int] max_retries: Number of permissible ping failures before
                changing the member's status to INACTIVE. Must be a number between 1
@@ -327,6 +328,7 @@ class _MonitorState:
                  url_path: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Monitor resources.
+
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the monitor.
                A valid value is true (UP) or false (DOWN).
         :param pulumi.Input[_builtins.int] delay: The time, in seconds, between sending probes to members.
@@ -656,6 +658,7 @@ class Monitor(pulumi.CustomResource):
         $ pulumi import openstack:loadbalancer/monitor:Monitor monitor_1 47c26fc3-2403-427a-8c79-1589bd0533c2/708bc224-0f8c-4981-ac82-97095fe051b6
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the monitor.
@@ -734,6 +737,7 @@ class Monitor(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:loadbalancer/monitor:Monitor monitor_1 47c26fc3-2403-427a-8c79-1589bd0533c2/708bc224-0f8c-4981-ac82-97095fe051b6
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MonitorArgs args: The arguments to use to populate this resource's properties.

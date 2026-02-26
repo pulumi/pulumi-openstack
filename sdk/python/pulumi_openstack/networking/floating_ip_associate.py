@@ -25,6 +25,7 @@ class FloatingIpAssociateArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FloatingIpAssociate resource.
+
         :param pulumi.Input[_builtins.str] floating_ip: IP Address of an existing floating IP.
         :param pulumi.Input[_builtins.str] port_id: ID of an existing port with at least one IP address to
                associate with this floating IP.
@@ -101,6 +102,7 @@ class _FloatingIpAssociateState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FloatingIpAssociate resources.
+
         :param pulumi.Input[_builtins.str] floating_ip: IP Address of an existing floating IP.
         :param pulumi.Input[_builtins.str] port_id: ID of an existing port with at least one IP address to
                associate with this floating IP.
@@ -206,6 +208,7 @@ class FloatingIpAssociate(pulumi.CustomResource):
         $ pulumi import openstack:networking/floatingIpAssociate:FloatingIpAssociate fip 2c7f39f3-702b-48d1-940c-b50384177ee1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] floating_ip: IP Address of an existing floating IP.
@@ -247,6 +250,7 @@ class FloatingIpAssociate(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/floatingIpAssociate:FloatingIpAssociate fip 2c7f39f3-702b-48d1-940c-b50384177ee1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FloatingIpAssociateArgs args: The arguments to use to populate this resource's properties.

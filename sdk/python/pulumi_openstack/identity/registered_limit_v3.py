@@ -26,6 +26,7 @@ class RegisteredLimitV3Args:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegisteredLimitV3 resource.
+
         :param pulumi.Input[_builtins.int] default_limit: Integer for the actual limit.
         :param pulumi.Input[_builtins.str] resource_name: The resource that the limit applies to. On
                updates, either service_id, resource_name or region_id must be different than
@@ -123,6 +124,7 @@ class _RegisteredLimitV3State:
                  service_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegisteredLimitV3 resources.
+
         :param pulumi.Input[_builtins.int] default_limit: Integer for the actual limit.
         :param pulumi.Input[_builtins.str] description: Description of the limit
         :param pulumi.Input[_builtins.str] region: The region in which to obtain the V3 Keystone client.
@@ -253,6 +255,7 @@ class RegisteredLimitV3(pulumi.CustomResource):
         $ pulumi import openstack:identity/registeredLimitV3:RegisteredLimitV3 limit_1 89c60255-9bd6-460c-822a-e2b959ede9d2
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] default_limit: Integer for the actual limit.
@@ -300,6 +303,7 @@ class RegisteredLimitV3(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:identity/registeredLimitV3:RegisteredLimitV3 limit_1 89c60255-9bd6-460c-822a-e2b959ede9d2
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RegisteredLimitV3Args args: The arguments to use to populate this resource's properties.

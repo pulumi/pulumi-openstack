@@ -26,6 +26,7 @@ class RouterRoutesV2Args:
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input['RouterRoutesV2RouteArgs']]]] = None):
         """
         The set of arguments for constructing a RouterRoutesV2 resource.
+
         :param pulumi.Input[_builtins.str] router_id: ID of the router these routing entries belong to.
                Changing this creates new routing entries.
         :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 networking client.
@@ -89,6 +90,7 @@ class _RouterRoutesV2State:
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input['RouterRoutesV2RouteArgs']]]] = None):
         """
         Input properties used for looking up and filtering RouterRoutesV2 resources.
+
         :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to configure routing entres on a router. If
                omitted, the `region` argument of the provider is used. Changing this creates
@@ -211,6 +213,7 @@ class RouterRoutesV2(pulumi.CustomResource):
         $ pulumi import openstack:networking/routerRoutesV2:RouterRoutesV2 router_routes_1 686fe248-386c-4f70-9f6c-281607dad079
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 networking client.
@@ -282,6 +285,7 @@ class RouterRoutesV2(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/routerRoutesV2:RouterRoutesV2 router_routes_1 686fe248-386c-4f70-9f6c-281607dad079
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouterRoutesV2Args args: The arguments to use to populate this resource's properties.

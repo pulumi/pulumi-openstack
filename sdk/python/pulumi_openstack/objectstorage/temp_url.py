@@ -30,6 +30,7 @@ class TempUrlArgs:
                  split: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TempUrl resource.
+
         :param pulumi.Input[_builtins.str] container: The container name the object belongs to.
         :param pulumi.Input[_builtins.str] object: The object name the tempurl is for.
         :param pulumi.Input[_builtins.int] ttl: The TTL, in seconds, for the URL. For how long it should
@@ -194,6 +195,7 @@ class _TempUrlState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TempUrl resources.
+
         :param pulumi.Input[_builtins.str] container: The container name the object belongs to.
         :param pulumi.Input[_builtins.str] digest: The digest to use when generating the tempurl.
                Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
@@ -408,6 +410,7 @@ class TempUrl(pulumi.CustomResource):
             ttl=20)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] container: The container name the object belongs to.
@@ -463,6 +466,7 @@ class TempUrl(pulumi.CustomResource):
             method="post",
             ttl=20)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TempUrlArgs args: The arguments to use to populate this resource's properties.

@@ -33,6 +33,7 @@ class L7PolicyV2Args:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a L7PolicyV2 resource.
+
         :param pulumi.Input[_builtins.str] action: The L7 Policy action - can either be REDIRECT\\_TO\\_POOL,
                REDIRECT\\_TO\\_URL or REJECT.
         :param pulumi.Input[_builtins.str] listener_id: The Listener on which the L7 Policy will be associated with.
@@ -261,6 +262,7 @@ class _L7PolicyV2State:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering L7PolicyV2 resources.
+
         :param pulumi.Input[_builtins.str] action: The L7 Policy action - can either be REDIRECT\\_TO\\_POOL,
                REDIRECT\\_TO\\_URL or REJECT.
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the L7 Policy.
@@ -540,6 +542,7 @@ class L7PolicyV2(pulumi.CustomResource):
         $ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The L7 Policy action - can either be REDIRECT\\_TO\\_POOL,
@@ -622,6 +625,7 @@ class L7PolicyV2(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
         ```
+
 
         :param str resource_name: The name of the resource.
         :param L7PolicyV2Args args: The arguments to use to populate this resource's properties.

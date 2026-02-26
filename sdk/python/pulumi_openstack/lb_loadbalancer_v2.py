@@ -36,6 +36,7 @@ class LbLoadbalancerV2Args:
                  vip_subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LbLoadbalancerV2 resource.
+
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the Loadbalancer.
                A valid value is true (UP) or false (DOWN).
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the Loadbalancer.
@@ -336,6 +337,7 @@ class _LbLoadbalancerV2State:
                  vip_subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LbLoadbalancerV2 resources.
+
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the Loadbalancer.
                A valid value is true (UP) or false (DOWN).
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the Loadbalancer.
@@ -666,6 +668,7 @@ class LbLoadbalancerV2(pulumi.CustomResource):
         $ pulumi import openstack:index/lbLoadbalancerV2:LbLoadbalancerV2 loadbalancer_1 19bcfdc7-c521-4a7e-9459-6750bd16df76
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the Loadbalancer.
@@ -738,6 +741,7 @@ class LbLoadbalancerV2(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:index/lbLoadbalancerV2:LbLoadbalancerV2 loadbalancer_1 19bcfdc7-c521-4a7e-9459-6750bd16df76
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LbLoadbalancerV2Args args: The arguments to use to populate this resource's properties.

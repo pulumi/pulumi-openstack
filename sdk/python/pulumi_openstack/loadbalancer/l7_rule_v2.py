@@ -30,6 +30,7 @@ class L7RuleV2Args:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a L7RuleV2 resource.
+
         :param pulumi.Input[_builtins.str] compare_type: The comparison type for the L7 rule - can either be
                CONTAINS, STARTS\\_WITH, ENDS_WITH, EQUAL_TO or REGEX
         :param pulumi.Input[_builtins.str] l7policy_id: The ID of the L7 Policy to query. Changing this creates a new
@@ -203,6 +204,7 @@ class _L7RuleV2State:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering L7RuleV2 resources.
+
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the L7 Rule.
                A valid value is true (UP) or false (DOWN).
         :param pulumi.Input[_builtins.str] compare_type: The comparison type for the L7 rule - can either be
@@ -449,6 +451,7 @@ class L7RuleV2(pulumi.CustomResource):
         $ pulumi import openstack:loadbalancer/l7RuleV2:L7RuleV2 l7rule_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the L7 Rule.
@@ -531,6 +534,7 @@ class L7RuleV2(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:loadbalancer/l7RuleV2:L7RuleV2 l7rule_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
         ```
+
 
         :param str resource_name: The name of the resource.
         :param L7RuleV2Args args: The arguments to use to populate this resource's properties.

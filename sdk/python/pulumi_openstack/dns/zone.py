@@ -32,6 +32,7 @@ class ZoneArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Zone resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] attributes: Attributes for the DNS Service scheduler.
                Changing this creates a new zone.
         :param pulumi.Input[_builtins.str] description: A description of the zone.
@@ -238,6 +239,7 @@ class _ZoneState:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Zone resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] attributes: Attributes for the DNS Service scheduler.
                Changing this creates a new zone.
         :param pulumi.Input[_builtins.str] description: A description of the zone.
@@ -474,6 +476,7 @@ class Zone(pulumi.CustomResource):
         $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] attributes: Attributes for the DNS Service scheduler.
@@ -532,6 +535,7 @@ class Zone(pulumi.CustomResource):
         $ pulumi import openstack:dns/zone:Zone zone_1 zone_id
         $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ZoneArgs args: The arguments to use to populate this resource's properties.

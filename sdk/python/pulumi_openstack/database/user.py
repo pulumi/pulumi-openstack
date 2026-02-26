@@ -27,6 +27,7 @@ class UserArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID for the database instance.
         :param pulumi.Input[_builtins.str] password: User's password.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] databases: A list of database user should have access to.
@@ -127,6 +128,7 @@ class _UserState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] databases: A list of database user should have access to.
         :param pulumi.Input[_builtins.str] instance_id: The ID for the database instance.
         :param pulumi.Input[_builtins.str] name: A unique name for the resource.
@@ -253,6 +255,7 @@ class User(pulumi.CustomResource):
             databases=["testdb"])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] databases: A list of database user should have access to.
@@ -289,6 +292,7 @@ class User(pulumi.CustomResource):
             password="password",
             databases=["testdb"])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

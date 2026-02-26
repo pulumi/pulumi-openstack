@@ -25,6 +25,7 @@ class PortSecGroupAssociateArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PortSecGroupAssociate resource.
+
         :param pulumi.Input[_builtins.str] port_id: An UUID of the port to apply security groups to.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: A list of security group IDs to apply to
                the port. The security groups must be specified by ID and not name (as
@@ -108,6 +109,7 @@ class _PortSecGroupAssociateState:
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering PortSecGroupAssociate resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] all_security_group_ids: The collection of Security Group IDs on the port
                which have been explicitly and implicitly added.
         :param pulumi.Input[_builtins.bool] enforce: Whether to replace or append the list of security
@@ -274,6 +276,7 @@ class PortSecGroupAssociate(pulumi.CustomResource):
         $ pulumi import openstack:networking/portSecGroupAssociate:PortSecGroupAssociate port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enforce: Whether to replace or append the list of security
@@ -355,6 +358,7 @@ class PortSecGroupAssociate(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/portSecGroupAssociate:PortSecGroupAssociate port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PortSecGroupAssociateArgs args: The arguments to use to populate this resource's properties.

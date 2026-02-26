@@ -31,6 +31,7 @@ class QuoteSetV3Args:
                  volumes: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a QuoteSetV3 resource.
+
         :param pulumi.Input[_builtins.str] project_id: ID of the project to manage quotas. Changing this
                creates a new quotaset.
         :param pulumi.Input[_builtins.int] backup_gigabytes: Quota value for backup gigabytes. Changing
@@ -222,6 +223,7 @@ class _QuoteSetV3State:
                  volumes: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering QuoteSetV3 resources.
+
         :param pulumi.Input[_builtins.int] backup_gigabytes: Quota value for backup gigabytes. Changing
                this updates the existing quotaset.
         :param pulumi.Input[_builtins.int] backups: Quota value for backups. Changing this updates the
@@ -432,6 +434,7 @@ class QuoteSetV3(pulumi.CustomResource):
         $ pulumi import openstack:blockstorage/quoteSetV3:QuoteSetV3 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] backup_gigabytes: Quota value for backup gigabytes. Changing
@@ -478,6 +481,7 @@ class QuoteSetV3(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:blockstorage/quoteSetV3:QuoteSetV3 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QuoteSetV3Args args: The arguments to use to populate this resource's properties.

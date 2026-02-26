@@ -33,6 +33,7 @@ class InstanceArgs:
                  volume_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input['InstanceDatastoreArgs'] datastore: An array of database engine type and version. The datastore
                object structure is documented below. Changing this creates a new instance.
         :param pulumi.Input[_builtins.int] size: Specifies the volume size in GB. Changing this creates new instance.
@@ -220,6 +221,7 @@ class _InstanceState:
                  volume_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: A list of IP addresses assigned to the instance.
         :param pulumi.Input[_builtins.str] configuration_id: Configuration ID to be attached to the instance. Database instance
                will be rebooted when configuration is detached.
@@ -454,6 +456,7 @@ class Instance(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] configuration_id: Configuration ID to be attached to the instance. Database instance
@@ -511,6 +514,7 @@ class Instance(pulumi.CustomResource):
                 "type": "mysql",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

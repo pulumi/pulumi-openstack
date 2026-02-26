@@ -33,6 +33,7 @@ class NodeGroupArgs:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NodeGroup resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The UUID of the V1 Container Infra cluster.
                Changing this creates a new node group.
         :param pulumi.Input[_builtins.int] docker_volume_size: The size (in GB) of the Docker volume.
@@ -267,6 +268,7 @@ class _NodeGroupState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NodeGroup resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The UUID of the V1 Container Infra cluster.
                Changing this creates a new node group.
         :param pulumi.Input[_builtins.int] docker_volume_size: The size (in GB) of the Docker volume.
@@ -586,6 +588,7 @@ class NodeGroup(pulumi.CustomResource):
         $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922/ce0f9463-dd25-474b-9fe8-94de63e5e42b
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The UUID of the V1 Container Infra cluster.
@@ -666,6 +669,7 @@ class NodeGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922/ce0f9463-dd25-474b-9fe8-94de63e5e42b
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NodeGroupArgs args: The arguments to use to populate this resource's properties.

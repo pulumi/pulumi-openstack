@@ -24,6 +24,7 @@ class Ec2CredentialV3Args:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Ec2CredentialV3 resource.
+
         :param pulumi.Input[_builtins.str] project_id: The ID of the project the EC2 credential is created
                for and that authentication requests using this EC2 credential will
                be scoped to. Only administrative users can specify a project ID different
@@ -97,6 +98,7 @@ class _Ec2CredentialV3State:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ec2CredentialV3 resources.
+
         :param pulumi.Input[_builtins.str] access: contains an EC2 credential access UUID
         :param pulumi.Input[_builtins.str] project_id: The ID of the project the EC2 credential is created
                for and that authentication requests using this EC2 credential will
@@ -254,6 +256,7 @@ class Ec2CredentialV3(pulumi.CustomResource):
         $ pulumi import openstack:identity/ec2CredentialV3:Ec2CredentialV3 ec2_cred_1 2d0ac4a2f81b4b0f9513ee49e780647d
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project the EC2 credential is created
@@ -312,6 +315,7 @@ class Ec2CredentialV3(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:identity/ec2CredentialV3:Ec2CredentialV3 ec2_cred_1 2d0ac4a2f81b4b0f9513ee49e780647d
         ```
+
 
         :param str resource_name: The name of the resource.
         :param Ec2CredentialV3Args args: The arguments to use to populate this resource's properties.

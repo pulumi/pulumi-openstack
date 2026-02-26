@@ -28,6 +28,7 @@ class TransferRequestArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TransferRequest resource.
+
         :param pulumi.Input[_builtins.str] zone_id: The ID of the zone for which to create the transfer
                request.
         :param pulumi.Input[_builtins.str] description: A description of the zone tranfer request.
@@ -155,6 +156,7 @@ class _TransferRequestState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransferRequest resources.
+
         :param pulumi.Input[_builtins.str] description: A description of the zone tranfer request.
         :param pulumi.Input[_builtins.bool] disable_status_check: Disable wait for zone to reach ACTIVE
                status. The check is enabled by default. If this argument is true, zone
@@ -315,6 +317,7 @@ class TransferRequest(pulumi.CustomResource):
         $ pulumi import openstack:dns/transferRequest:TransferRequest request_1 request_id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the zone tranfer request.
@@ -365,6 +368,7 @@ class TransferRequest(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:dns/transferRequest:TransferRequest request_1 request_id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransferRequestArgs args: The arguments to use to populate this resource's properties.

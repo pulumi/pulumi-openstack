@@ -48,6 +48,7 @@ class InstanceArgs:
                  vendor_options: Optional[pulumi.Input['InstanceVendorOptionsArgs']] = None):
         """
         The set of arguments for constructing a Instance resource.
+
         :param pulumi.Input[_builtins.str] admin_pass: The administrative password to assign to the server.
                Changing this changes the root password on the existing server.
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone in which to create
@@ -572,6 +573,7 @@ class _InstanceState:
                  vendor_options: Optional[pulumi.Input['InstanceVendorOptionsArgs']] = None):
         """
         Input properties used for looking up and filtering Instance resources.
+
         :param pulumi.Input[_builtins.str] access_ip_v4: The first detected Fixed IPv4 address.
         :param pulumi.Input[_builtins.str] access_ip_v6: The first detected Fixed IPv6 address.
         :param pulumi.Input[_builtins.str] admin_pass: The administrative password to assign to the server.
@@ -1754,6 +1756,7 @@ class Instance(pulumi.CustomResource):
           you end up with "orphaned" volumes after destruction of
           instances.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] admin_pass: The administrative password to assign to the server.
@@ -2410,6 +2413,7 @@ class Instance(pulumi.CustomResource):
           import an instance created with delete_on_termination false,
           you end up with "orphaned" volumes after destruction of
           instances.
+
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

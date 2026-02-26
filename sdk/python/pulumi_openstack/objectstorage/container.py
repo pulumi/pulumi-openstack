@@ -36,6 +36,7 @@ class ContainerArgs:
                  versioning_legacy: Optional[pulumi.Input['ContainerVersioningLegacyArgs']] = None):
         """
         The set of arguments for constructing a Container resource.
+
         :param pulumi.Input[_builtins.str] container_read: Sets an access control list (ACL) that grants
                read access. This header can contain a comma-delimited list of users that can
                read the container (allows the GET method for all objects in the container).
@@ -304,6 +305,7 @@ class _ContainerState:
                  versioning_legacy: Optional[pulumi.Input['ContainerVersioningLegacyArgs']] = None):
         """
         Input properties used for looking up and filtering Container resources.
+
         :param pulumi.Input[_builtins.str] container_read: Sets an access control list (ACL) that grants
                read access. This header can contain a comma-delimited list of users that can
                read the container (allows the GET method for all objects in the container).
@@ -684,6 +686,7 @@ class Container(pulumi.CustomResource):
         $ pulumi import openstack:objectstorage/container:Container container_1 container_name
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] container_read: Sets an access control list (ACL) that grants
@@ -839,6 +842,7 @@ class Container(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:objectstorage/container:Container container_1 container_name
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ContainerArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class SegmentV2Args:
                  segmentation_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a SegmentV2 resource.
+
         :param pulumi.Input[_builtins.str] network_id: The UUID of the network this segment belongs to.
                Changing this will create a new segment.
         :param pulumi.Input[_builtins.str] network_type: The network type. Valid values depend on the
@@ -165,6 +166,7 @@ class _SegmentV2State:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SegmentV2 resources.
+
         :param pulumi.Input[_builtins.str] created_at: Creation timestamp (RFC3339 format).
         :param pulumi.Input[_builtins.str] description: A description for the segment.
         :param pulumi.Input[_builtins.str] name: A name for the segment.
@@ -380,6 +382,7 @@ class SegmentV2(pulumi.CustomResource):
         $ pulumi import openstack:networking/segmentV2:SegmentV2 segment1 a5e3a494-26ee-4fde-ad26-2d846c47072e
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description for the segment.
@@ -435,6 +438,7 @@ class SegmentV2(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/segmentV2:SegmentV2 segment1 a5e3a494-26ee-4fde-ad26-2d846c47072e
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SegmentV2Args args: The arguments to use to populate this resource's properties.

@@ -39,6 +39,7 @@ class NetworkArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Network resource.
+
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the network.
                Acceptable values are "true" and "false". Changing this value updates the
                state of the existing network.
@@ -364,6 +365,7 @@ class _NetworkState:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Network resources.
+
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the network.
                Acceptable values are "true" and "false". Changing this value updates the
                state of the existing network.
@@ -760,6 +762,7 @@ class Network(pulumi.CustomResource):
         $ pulumi import openstack:networking/network:Network network_1 d90ce693-5ccf-4136-a0ed-152ce412b6b9
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the network.
@@ -867,6 +870,7 @@ class Network(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/network:Network network_1 d90ce693-5ccf-4136-a0ed-152ce412b6b9
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class FlavorAccessArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FlavorAccess resource.
+
         :param pulumi.Input[_builtins.str] flavor_id: The UUID of flavor to use. Changing this creates a new flavor access.
         :param pulumi.Input[_builtins.str] tenant_id: The UUID of tenant which is allowed to use the flavor.
                Changing this creates a new flavor access.
@@ -84,6 +85,7 @@ class _FlavorAccessState:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlavorAccess resources.
+
         :param pulumi.Input[_builtins.str] flavor_id: The UUID of flavor to use. Changing this creates a new flavor access.
         :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 Compute client.
                If omitted, the `region` argument of the provider is used.
@@ -183,6 +185,7 @@ class FlavorAccess(pulumi.CustomResource):
         $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 flavor_id/tenant_id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] flavor_id: The UUID of flavor to use. Changing this creates a new flavor access.
@@ -232,6 +235,7 @@ class FlavorAccess(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 flavor_id/tenant_id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FlavorAccessArgs args: The arguments to use to populate this resource's properties.
