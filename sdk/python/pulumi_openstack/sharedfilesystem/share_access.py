@@ -26,6 +26,7 @@ class ShareAccessArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ShareAccess resource.
+
         :param pulumi.Input[_builtins.str] access_level: The access level to the share. Can either be `rw` or `ro`.
         :param pulumi.Input[_builtins.str] access_to: The value that defines the access. Can either be an IP
                address or a username verified by configured Security Service of the Share Network.
@@ -122,6 +123,7 @@ class _ShareAccessState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ShareAccess resources.
+
         :param pulumi.Input[_builtins.str] access_key: The access credential of the entity granted access.
         :param pulumi.Input[_builtins.str] access_level: The access level to the share. Can either be `rw` or `ro`.
         :param pulumi.Input[_builtins.str] access_to: The value that defines the access. Can either be an IP
@@ -352,6 +354,7 @@ class ShareAccess(pulumi.CustomResource):
         $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 share_id/share_access_id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_level: The access level to the share. Can either be `rw` or `ro`.
@@ -470,6 +473,7 @@ class ShareAccess(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 share_id/share_access_id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ShareAccessArgs args: The arguments to use to populate this resource's properties.

@@ -50,6 +50,7 @@ class ClusterTemplateArgs:
                  volume_driver: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClusterTemplate resource.
+
         :param pulumi.Input[_builtins.str] coe: The Container Orchestration Engine for this cluster
                template. Changing this updates the engine of the existing cluster
                template.
@@ -633,6 +634,7 @@ class _ClusterTemplateState:
                  volume_driver: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClusterTemplate resources.
+
         :param pulumi.Input[_builtins.int] apiserver_port: The API server port for the Container
                Orchestration Engine for this cluster template. Changing this updates the
                API server port of the existing cluster template.
@@ -1354,6 +1356,7 @@ class ClusterTemplate(pulumi.CustomResource):
         $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] apiserver_port: The API server port for the Container
@@ -1524,6 +1527,7 @@ class ClusterTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterTemplateArgs args: The arguments to use to populate this resource's properties.

@@ -24,6 +24,7 @@ class QosDscpMarkingRuleArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a QosDscpMarkingRule resource.
+
         :param pulumi.Input[_builtins.int] dscp_mark: The value of DSCP mark. Changing this updates the DSCP mark value existing
                QoS DSCP marking rule.
         :param pulumi.Input[_builtins.str] qos_policy_id: The QoS policy reference. Changing this creates a new QoS DSCP marking rule.
@@ -84,6 +85,7 @@ class _QosDscpMarkingRuleState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering QosDscpMarkingRule resources.
+
         :param pulumi.Input[_builtins.int] dscp_mark: The value of DSCP mark. Changing this updates the DSCP mark value existing
                QoS DSCP marking rule.
         :param pulumi.Input[_builtins.str] qos_policy_id: The QoS policy reference. Changing this creates a new QoS DSCP marking rule.
@@ -175,6 +177,7 @@ class QosDscpMarkingRule(pulumi.CustomResource):
         $ pulumi import openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule dscp_marking_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] dscp_mark: The value of DSCP mark. Changing this updates the DSCP mark value existing
@@ -216,6 +219,7 @@ class QosDscpMarkingRule(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule dscp_marking_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QosDscpMarkingRuleArgs args: The arguments to use to populate this resource's properties.

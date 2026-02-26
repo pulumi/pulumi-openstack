@@ -24,6 +24,7 @@ class DatabaseArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID for the database instance.
         :param pulumi.Input[_builtins.str] name: A unique name for the resource.
         :param pulumi.Input[_builtins.str] region: The region in which to create the database. Changing
@@ -81,6 +82,7 @@ class _DatabaseState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID for the database instance.
         :param pulumi.Input[_builtins.str] name: A unique name for the resource.
         :param pulumi.Input[_builtins.str] region: The region in which to create the database. Changing
@@ -165,6 +167,7 @@ class Database(pulumi.CustomResource):
         $ pulumi import openstack:database/database:Database mydb 7b9e3cd3-00d9-449c-b074-8439f8e274fa/mydb
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: The ID for the database instance.
@@ -201,6 +204,7 @@ class Database(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:database/database:Database mydb 7b9e3cd3-00d9-449c-b074-8439f8e274fa/mydb
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.

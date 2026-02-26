@@ -31,6 +31,7 @@ class GroupV2Args:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GroupV2 resource.
+
         :param pulumi.Input[_builtins.bool] admin_state_up: Administrative up/down status for the firewall
                group (must be "true" or "false" if provided - defaults to "true").
                Changing this updates the `admin_state_up` of an existing firewall group.
@@ -246,6 +247,7 @@ class _GroupV2State:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupV2 resources.
+
         :param pulumi.Input[_builtins.bool] admin_state_up: Administrative up/down status for the firewall
                group (must be "true" or "false" if provided - defaults to "true").
                Changing this updates the `admin_state_up` of an existing firewall group.
@@ -522,6 +524,7 @@ class GroupV2(pulumi.CustomResource):
         $ pulumi import openstack:firewall/groupV2:GroupV2 group_1 c9e39fb2-ce20-46c8-a964-25f3898c7a97
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] admin_state_up: Administrative up/down status for the firewall
@@ -608,6 +611,7 @@ class GroupV2(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:firewall/groupV2:GroupV2 group_1 c9e39fb2-ce20-46c8-a964-25f3898c7a97
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupV2Args args: The arguments to use to populate this resource's properties.

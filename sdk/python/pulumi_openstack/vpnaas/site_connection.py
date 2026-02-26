@@ -42,6 +42,7 @@ class SiteConnectionArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SiteConnection resource.
+
         :param pulumi.Input[_builtins.str] ikepolicy_id: The ID of the IKE policy. Changing this creates a new connection.
         :param pulumi.Input[_builtins.str] ipsecpolicy_id: The ID of the IPsec policy. Changing this creates a new connection.
         :param pulumi.Input[_builtins.str] peer_address: The peer gateway public IPv4 or IPv6 address or FQDN.
@@ -382,6 +383,7 @@ class _SiteConnectionState:
                  vpnservice_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SiteConnection resources.
+
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the resource. Can either be up(true) or down(false).
                Changing this updates the administrative state of the existing connection.
         :param pulumi.Input[_builtins.str] description: The human-readable description for the connection.
@@ -763,6 +765,7 @@ class SiteConnection(pulumi.CustomResource):
         $ pulumi import openstack:vpnaas/siteConnection:SiteConnection conn_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the resource. Can either be up(true) or down(false).
@@ -840,6 +843,7 @@ class SiteConnection(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:vpnaas/siteConnection:SiteConnection conn_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SiteConnectionArgs args: The arguments to use to populate this resource's properties.

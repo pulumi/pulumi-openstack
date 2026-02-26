@@ -27,6 +27,7 @@ class EndpointV3Args:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EndpointV3 resource.
+
         :param pulumi.Input[_builtins.str] endpoint_region: The endpoint region. The `region` and
                `endpoint_region` can be different.
         :param pulumi.Input[_builtins.str] service_id: The endpoint service ID.
@@ -136,6 +137,7 @@ class _EndpointV3State:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EndpointV3 resources.
+
         :param pulumi.Input[_builtins.str] endpoint_region: The endpoint region. The `region` and
                `endpoint_region` can be different.
         :param pulumi.Input[_builtins.str] interface: The endpoint interface. Valid values are `public`,
@@ -307,6 +309,7 @@ class EndpointV3(pulumi.CustomResource):
         $ pulumi import openstack:identity/endpointV3:EndpointV3 endpoint_1 5392472b-106a-4845-90c6-7c8445f18770
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] endpoint_region: The endpoint region. The `region` and
@@ -353,6 +356,7 @@ class EndpointV3(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:identity/endpointV3:EndpointV3 endpoint_1 5392472b-106a-4845-90c6-7c8445f18770
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EndpointV3Args args: The arguments to use to populate this resource's properties.

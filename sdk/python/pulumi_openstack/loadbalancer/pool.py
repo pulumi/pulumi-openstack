@@ -41,6 +41,7 @@ class PoolArgs:
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Pool resource.
+
         :param pulumi.Input[_builtins.str] lb_method: The load balancing algorithm to distribute traffic
                to the pool's members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
                SOURCE_IP, or SOURCE_IP_PORT.
@@ -393,6 +394,7 @@ class _PoolState:
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Pool resources.
+
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the pool. A valid
                value is true (UP) or false (DOWN).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alpn_protocols: A list of ALPN protocols. Available protocols:
@@ -779,6 +781,7 @@ class Pool(pulumi.CustomResource):
         $ pulumi import openstack:loadbalancer/pool:Pool pool_1 60ad9ee4-249a-4d60-a45b-aa60e046c513
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the pool. A valid
@@ -865,6 +868,7 @@ class Pool(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:loadbalancer/pool:Pool pool_1 60ad9ee4-249a-4d60-a45b-aa60e046c513
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PoolArgs args: The arguments to use to populate this resource's properties.

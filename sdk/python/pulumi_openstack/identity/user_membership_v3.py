@@ -24,6 +24,7 @@ class UserMembershipV3Args:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a UserMembershipV3 resource.
+
         :param pulumi.Input[_builtins.str] group_id: The UUID of group to which the user will be added.
                Changing this creates a new user membership.
         :param pulumi.Input[_builtins.str] user_id: The UUID of user to use. Changing this creates a new user membership.
@@ -84,6 +85,7 @@ class _UserMembershipV3State:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserMembershipV3 resources.
+
         :param pulumi.Input[_builtins.str] group_id: The UUID of group to which the user will be added.
                Changing this creates a new user membership.
         :param pulumi.Input[_builtins.str] region: The region in which to obtain the V3 Identity client.
@@ -188,6 +190,7 @@ class UserMembershipV3(pulumi.CustomResource):
         $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: The UUID of group to which the user will be added.
@@ -242,6 +245,7 @@ class UserMembershipV3(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserMembershipV3Args args: The arguments to use to populate this resource's properties.

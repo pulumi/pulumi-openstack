@@ -31,6 +31,7 @@ class ApplicationCredentialArgs:
                  unrestricted: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ApplicationCredential resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationCredentialAccessRuleArgs']]] access_rules: A collection of one or more access rules, which
                this application credential allows to follow. The structure is described
                below. Changing this creates a new application credential.
@@ -202,6 +203,7 @@ class _ApplicationCredentialState:
                  unrestricted: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ApplicationCredential resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationCredentialAccessRuleArgs']]] access_rules: A collection of one or more access rules, which
                this application credential allows to follow. The structure is described
                below. Changing this creates a new application credential.
@@ -476,6 +478,7 @@ class ApplicationCredential(pulumi.CustomResource):
         $ pulumi import openstack:identity/applicationCredential:ApplicationCredential application_credential_1 c17304b7-0953-4738-abb0-67005882b0a0
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationCredentialAccessRuleArgs', 'ApplicationCredentialAccessRuleArgsDict']]]] access_rules: A collection of one or more access rules, which
@@ -592,6 +595,7 @@ class ApplicationCredential(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:identity/applicationCredential:ApplicationCredential application_credential_1 c17304b7-0953-4738-abb0-67005882b0a0
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationCredentialArgs args: The arguments to use to populate this resource's properties.

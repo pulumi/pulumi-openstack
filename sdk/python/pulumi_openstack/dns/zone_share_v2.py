@@ -25,6 +25,7 @@ class ZoneShareV2Args:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZoneShareV2 resource.
+
         :param pulumi.Input[_builtins.str] target_project_id: The ID of the target project with which the
                DNS zone will be shared.
         :param pulumi.Input[_builtins.str] zone_id: The ID of the DNS zone to be shared.
@@ -105,6 +106,7 @@ class _ZoneShareV2State:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneShareV2 resources.
+
         :param pulumi.Input[_builtins.str] project_id: The ID of the project DNS zone is created for, sets
                `X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target
                project).
@@ -208,6 +210,12 @@ class ZoneShareV2(pulumi.CustomResource):
 
         DNS zone share can be imported by specifying the zone ID with share ID and optional project ID:
 
+        ```sh
+        $ pulumi import openstack:dns/zoneShareV2:ZoneShareV2 share_1 60cbdc69-64f9-49ee-b294-352e71e22827/0e1dae51-aee2-4b44-962f-885bb69f3a5c
+        $ pulumi import openstack:dns/zoneShareV2:ZoneShareV2 share_1 60cbdc69-64f9-49ee-b294-352e71e22827/0e1dae51-aee2-4b44-962f-885bb69f3a5c/eb92139f6c054a878852ac9e8cbe612a
+        ```
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project DNS zone is created for, sets
@@ -244,6 +252,12 @@ class ZoneShareV2(pulumi.CustomResource):
         ## Import
 
         DNS zone share can be imported by specifying the zone ID with share ID and optional project ID:
+
+        ```sh
+        $ pulumi import openstack:dns/zoneShareV2:ZoneShareV2 share_1 60cbdc69-64f9-49ee-b294-352e71e22827/0e1dae51-aee2-4b44-962f-885bb69f3a5c
+        $ pulumi import openstack:dns/zoneShareV2:ZoneShareV2 share_1 60cbdc69-64f9-49ee-b294-352e71e22827/0e1dae51-aee2-4b44-962f-885bb69f3a5c/eb92139f6c054a878852ac9e8cbe612a
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param ZoneShareV2Args args: The arguments to use to populate this resource's properties.

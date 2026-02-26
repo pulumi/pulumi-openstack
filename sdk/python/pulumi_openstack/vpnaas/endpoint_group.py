@@ -28,6 +28,7 @@ class EndpointGroupArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a EndpointGroup resource.
+
         :param pulumi.Input[_builtins.str] description: The human-readable description for the group.
                Changing this updates the description of the existing group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] endpoints: List of endpoints of the same type, for the endpoint group. The values will depend on the type.
@@ -164,6 +165,7 @@ class _EndpointGroupState:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering EndpointGroup resources.
+
         :param pulumi.Input[_builtins.str] description: The human-readable description for the group.
                Changing this updates the description of the existing group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] endpoints: List of endpoints of the same type, for the endpoint group. The values will depend on the type.
@@ -328,6 +330,7 @@ class EndpointGroup(pulumi.CustomResource):
         $ pulumi import openstack:vpnaas/endpointGroup:EndpointGroup group_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The human-readable description for the group.
@@ -377,6 +380,7 @@ class EndpointGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:vpnaas/endpointGroup:EndpointGroup group_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
         ```
+
 
         :param str resource_name: The name of the resource.
         :param EndpointGroupArgs args: The arguments to use to populate this resource's properties.

@@ -31,6 +31,7 @@ class TrunkArgs:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Trunk resource.
+
         :param pulumi.Input[_builtins.str] port_id: The ID of the port to be used as the parent port of the
                trunk. This is the port that should be used as the compute instance network
                port. Changing this creates a new trunk.
@@ -189,6 +190,7 @@ class _TrunkState:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Trunk resources.
+
         :param pulumi.Input[_builtins.bool] admin_state_up: Administrative up/down status for the trunk
                (must be "true" or "false" if provided). Changing this updates the
                `admin_state_up` of an existing trunk.
@@ -412,6 +414,7 @@ class Trunk(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] admin_state_up: Administrative up/down status for the trunk
@@ -485,6 +488,7 @@ class Trunk(pulumi.CustomResource):
                 "port": trunk1.port_id,
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TrunkArgs args: The arguments to use to populate this resource's properties.

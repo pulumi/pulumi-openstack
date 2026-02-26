@@ -35,6 +35,7 @@ class SecretV1Args:
                  secret_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecretV1 resource.
+
         :param pulumi.Input['SecretV1AclArgs'] acl: Allows to control an access to a secret. Currently only the
                `read` operation is supported. If not specified, the secret is accessible
                project wide.
@@ -254,6 +255,7 @@ class _SecretV1State:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecretV1 resources.
+
         :param pulumi.Input['SecretV1AclArgs'] acl: Allows to control an access to a secret. Currently only the
                `read` operation is supported. If not specified, the secret is accessible
                project wide.
@@ -675,6 +677,7 @@ class SecretV1(pulumi.CustomResource):
         $ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SecretV1AclArgs', 'SecretV1AclArgsDict']] acl: Allows to control an access to a secret. Currently only the
@@ -801,6 +804,7 @@ class SecretV1(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecretV1Args args: The arguments to use to populate this resource's properties.

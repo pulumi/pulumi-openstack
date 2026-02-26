@@ -28,6 +28,7 @@ class ContainerV1Args:
                  secret_refs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]] = None):
         """
         The set of arguments for constructing a ContainerV1 resource.
+
         :param pulumi.Input[_builtins.str] type: Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
         :param pulumi.Input['ContainerV1AclArgs'] acl: Allows to control an access to a container. Currently only
                the `read` operation is supported. If not specified, the container is
@@ -135,6 +136,7 @@ class _ContainerV1State:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ContainerV1 resources.
+
         :param pulumi.Input['ContainerV1AclArgs'] acl: Allows to control an access to a container. Currently only
                the `read` operation is supported. If not specified, the container is
                accessible project wide. The `read` structure is described below.
@@ -421,6 +423,7 @@ class ContainerV1(pulumi.CustomResource):
         $ pulumi import openstack:keymanager/containerV1:ContainerV1 container_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ContainerV1AclArgs', 'ContainerV1AclArgsDict']] acl: Allows to control an access to a container. Currently only
@@ -533,6 +536,7 @@ class ContainerV1(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:keymanager/containerV1:ContainerV1 container_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ContainerV1Args args: The arguments to use to populate this resource's properties.

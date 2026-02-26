@@ -34,6 +34,7 @@ class FloatingIpArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a FloatingIp resource.
+
         :param pulumi.Input[_builtins.str] address: The actual/specific floating IP to obtain. By default,
                non-admin users are not able to specify a floating IP, so you must either be
                an admin user or have had a custom policy or role applied to your OpenStack
@@ -297,6 +298,7 @@ class _FloatingIpState:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering FloatingIp resources.
+
         :param pulumi.Input[_builtins.str] address: The actual/specific floating IP to obtain. By default,
                non-admin users are not able to specify a floating IP, so you must either be
                an admin user or have had a custom policy or role applied to your OpenStack
@@ -619,6 +621,7 @@ class FloatingIp(pulumi.CustomResource):
         $ pulumi import openstack:networking/floatingIp:FloatingIp floatip_1 2c7f39f3-702b-48d1-940c-b50384177ee1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The actual/specific floating IP to obtain. By default,
@@ -704,6 +707,7 @@ class FloatingIp(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/floatingIp:FloatingIp floatip_1 2c7f39f3-702b-48d1-940c-b50384177ee1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FloatingIpArgs args: The arguments to use to populate this resource's properties.

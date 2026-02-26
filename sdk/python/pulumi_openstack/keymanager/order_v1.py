@@ -26,6 +26,7 @@ class OrderV1Args:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OrderV1 resource.
+
         :param pulumi.Input['OrderV1MetaArgs'] meta: Dictionary containing the order metadata used to generate the order. The structure is described below.
         :param pulumi.Input[_builtins.str] type: The type of key to be generated. Must be one of `asymmetric`, `key`.
         :param pulumi.Input[_builtins.str] region: The region in which to obtain the V1 KeyManager client.
@@ -95,6 +96,7 @@ class _OrderV1State:
                  updated: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrderV1 resources.
+
         :param pulumi.Input[_builtins.str] container_ref: The container reference / where to find the container.
         :param pulumi.Input[_builtins.str] created: The date the order was created.
         :param pulumi.Input[_builtins.str] creator_id: The creator of the order.
@@ -338,6 +340,7 @@ class OrderV1(pulumi.CustomResource):
         $ pulumi import openstack:keymanager/orderV1:OrderV1 order_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['OrderV1MetaArgs', 'OrderV1MetaArgsDict']] meta: Dictionary containing the order metadata used to generate the order. The structure is described below.
@@ -396,6 +399,7 @@ class OrderV1(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:keymanager/orderV1:OrderV1 order_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
         ```
+
 
         :param str resource_name: The name of the resource.
         :param OrderV1Args args: The arguments to use to populate this resource's properties.

@@ -30,6 +30,7 @@ class VolumeAttachArgs:
                  vendor_options: Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']] = None):
         """
         The set of arguments for constructing a VolumeAttach resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Instance to attach the Volume to.
         :param pulumi.Input[_builtins.str] volume_id: The ID of the Volume to attach to an Instance.
         :param pulumi.Input[_builtins.str] device: The device of the volume attachment (ex: `/dev/vdc`).
@@ -170,6 +171,7 @@ class _VolumeAttachState:
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VolumeAttach resources.
+
         :param pulumi.Input[_builtins.str] device: The device of the volume attachment (ex: `/dev/vdc`).
                _NOTE_: Being able to specify a device is dependent upon the hypervisor in
                use. There is a chance that the device specified in Terraform will not be
@@ -434,6 +436,7 @@ class VolumeAttach(pulumi.CustomResource):
         $ pulumi import openstack:compute/volumeAttach:VolumeAttach va_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] device: The device of the volume attachment (ex: `/dev/vdc`).
@@ -580,6 +583,7 @@ class VolumeAttach(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:compute/volumeAttach:VolumeAttach va_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VolumeAttachArgs args: The arguments to use to populate this resource's properties.

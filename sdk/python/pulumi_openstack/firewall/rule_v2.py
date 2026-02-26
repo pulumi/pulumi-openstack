@@ -35,6 +35,7 @@ class RuleV2Args:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RuleV2 resource.
+
         :param pulumi.Input[_builtins.str] action: Action to be taken (must be "allow", "deny" or "reject")
                when the firewall rule matches. Changing this updates the `action` of an
                existing firewall rule. Default is `deny`.
@@ -327,6 +328,7 @@ class _RuleV2State:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RuleV2 resources.
+
         :param pulumi.Input[_builtins.str] action: Action to be taken (must be "allow", "deny" or "reject")
                when the firewall rule matches. Changing this updates the `action` of an
                existing firewall rule. Default is `deny`.
@@ -649,6 +651,7 @@ class RuleV2(pulumi.CustomResource):
         $ pulumi import openstack:firewall/ruleV2:RuleV2 rule_1 8dbc0c28-e49c-463f-b712-5c5d1bbac327
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: Action to be taken (must be "allow", "deny" or "reject")
@@ -729,6 +732,7 @@ class RuleV2(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:firewall/ruleV2:RuleV2 rule_1 8dbc0c28-e49c-463f-b712-5c5d1bbac327
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RuleV2Args args: The arguments to use to populate this resource's properties.

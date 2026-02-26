@@ -26,6 +26,7 @@ class AddressGroupV2Args:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AddressGroupV2 resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: A list of CIDR blocks that define the addresses in
                the address group. Each address must be a valid IPv4 or IPv6 CIDR block.
         :param pulumi.Input[_builtins.str] description: A description of the address group.
@@ -123,6 +124,7 @@ class _AddressGroupV2State:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AddressGroupV2 resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: A list of CIDR blocks that define the addresses in
                the address group. Each address must be a valid IPv4 or IPv6 CIDR block.
         :param pulumi.Input[_builtins.str] description: A description of the address group.
@@ -249,6 +251,7 @@ class AddressGroupV2(pulumi.CustomResource):
         $ pulumi import openstack:networking/addressGroupV2:AddressGroupV2 group_1 782fef9c-d03c-400a-9735-2f9af5681cb3
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: A list of CIDR blocks that define the addresses in
@@ -293,6 +296,7 @@ class AddressGroupV2(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/addressGroupV2:AddressGroupV2 group_1 782fef9c-d03c-400a-9735-2f9af5681cb3
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AddressGroupV2Args args: The arguments to use to populate this resource's properties.

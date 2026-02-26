@@ -31,6 +31,7 @@ class RecordSetArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a RecordSet resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] records: An array of DNS records.
         :param pulumi.Input[_builtins.str] zone_id: The ID of the zone in which to create the record set.
                Changing this creates a new DNS  record set.
@@ -217,6 +218,7 @@ class _RecordSetState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RecordSet resources.
+
         :param pulumi.Input[_builtins.str] description: A description of the  record set.
         :param pulumi.Input[_builtins.bool] disable_status_check: Disable wait for recordset to reach ACTIVE
                status. This argumen is disabled by default. If it is set to true, the recordset
@@ -442,6 +444,7 @@ class RecordSet(pulumi.CustomResource):
         $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 zone_id/recordset_id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the  record set.
@@ -505,6 +508,7 @@ class RecordSet(pulumi.CustomResource):
         $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 project_id/zone_id/recordset_id
         $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 zone_id/recordset_id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RecordSetArgs args: The arguments to use to populate this resource's properties.

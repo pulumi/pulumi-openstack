@@ -24,6 +24,7 @@ class AccountV1Args:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountV1 resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A map of custom key/value pairs to associate with the
                account metadata. Changing the `Quota-Bytes` key value is allowed to be
                updated only by the cloud administrator.
@@ -95,6 +96,7 @@ class _AccountV1State:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountV1 resources.
+
         :param pulumi.Input[_builtins.int] bytes_used: The number of bytes used by the account.
         :param pulumi.Input[_builtins.int] container_count: The number of containers in the account.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: A map of headers returned for the account.
@@ -263,6 +265,7 @@ class AccountV1(pulumi.CustomResource):
         $ pulumi import openstack:objectstorage/accountV1:AccountV1 account_1 1202b3d0aaa44cfc8b79475c007b0711
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A map of custom key/value pairs to associate with the
@@ -304,6 +307,7 @@ class AccountV1(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:objectstorage/accountV1:AccountV1 account_1 1202b3d0aaa44cfc8b79475c007b0711
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccountV1Args args: The arguments to use to populate this resource's properties.

@@ -32,6 +32,7 @@ class QuotaV2Args:
                  subnetpool: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a QuotaV2 resource.
+
         :param pulumi.Input[_builtins.str] project_id: ID of the project to manage quota. Changing this
                creates new quota.
         :param pulumi.Input[_builtins.int] floatingip: Quota value for floating IPs. Changing this updates the
@@ -239,6 +240,7 @@ class _QuotaV2State:
                  subnetpool: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering QuotaV2 resources.
+
         :param pulumi.Input[_builtins.int] floatingip: Quota value for floating IPs. Changing this updates the
                existing quota.
         :param pulumi.Input[_builtins.int] network: Quota value for networks. Changing this updates the
@@ -465,6 +467,7 @@ class QuotaV2(pulumi.CustomResource):
         $ pulumi import openstack:networking/quotaV2:QuotaV2 quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] floatingip: Quota value for floating IPs. Changing this updates the
@@ -512,6 +515,7 @@ class QuotaV2(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/quotaV2:QuotaV2 quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QuotaV2Args args: The arguments to use to populate this resource's properties.

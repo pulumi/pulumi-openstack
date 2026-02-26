@@ -26,6 +26,7 @@ class ServiceV3Args:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceV3 resource.
+
         :param pulumi.Input[_builtins.str] type: The service type.
         :param pulumi.Input[_builtins.str] description: The service description.
         :param pulumi.Input[_builtins.bool] enabled: The service status. Defaults to `true`.
@@ -115,6 +116,7 @@ class _ServiceV3State:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceV3 resources.
+
         :param pulumi.Input[_builtins.str] description: The service description.
         :param pulumi.Input[_builtins.bool] enabled: The service status. Defaults to `true`.
         :param pulumi.Input[_builtins.str] name: The service name.
@@ -231,6 +233,7 @@ class ServiceV3(pulumi.CustomResource):
         $ pulumi import openstack:identity/serviceV3:ServiceV3 service_1 6688e967-158a-496f-a224-cae3414e6b61
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The service description.
@@ -269,6 +272,7 @@ class ServiceV3(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:identity/serviceV3:ServiceV3 service_1 6688e967-158a-496f-a224-cae3414e6b61
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServiceV3Args args: The arguments to use to populate this resource's properties.

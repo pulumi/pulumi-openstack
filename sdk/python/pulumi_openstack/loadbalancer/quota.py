@@ -30,6 +30,7 @@ class QuotaArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Quota resource.
+
         :param pulumi.Input[_builtins.str] project_id: ID of the project to manage quotas. Changing this
                creates a new quota.
         :param pulumi.Input[_builtins.int] health_monitor: Quota value for health_monitors. Changing
@@ -203,6 +204,7 @@ class _QuotaState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Quota resources.
+
         :param pulumi.Input[_builtins.int] health_monitor: Quota value for health_monitors. Changing
                this updates the existing quota. Omitting it sets it to 0.
         :param pulumi.Input[_builtins.int] l7_policy: Quota value for l7_policies. Changing this
@@ -417,6 +419,7 @@ class Quota(pulumi.CustomResource):
         $ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] health_monitor: Quota value for health_monitors. Changing
@@ -483,6 +486,7 @@ class Quota(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QuotaArgs args: The arguments to use to populate this resource's properties.

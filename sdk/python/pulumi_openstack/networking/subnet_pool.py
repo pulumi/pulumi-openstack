@@ -36,6 +36,7 @@ class SubnetPoolArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SubnetPool resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] prefixes: A list of subnet prefixes to assign to the subnetpool.
                Neutron API merges adjacent prefixes and treats them as a single prefix. Each
                subnet prefix must be unique among all subnet prefixes in all subnetpools that
@@ -339,6 +340,7 @@ class _SubnetPoolState:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SubnetPool resources.
+
         :param pulumi.Input[_builtins.str] address_scope_id: The Neutron address scope to assign to the
                subnetpool. Changing this updates the address scope id of the existing
                subnetpool.
@@ -750,6 +752,7 @@ class SubnetPool(pulumi.CustomResource):
         $ pulumi import openstack:networking/subnetPool:SubnetPool subnetpool_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address_scope_id: The Neutron address scope to assign to the
@@ -846,6 +849,7 @@ class SubnetPool(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/subnetPool:SubnetPool subnetpool_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SubnetPoolArgs args: The arguments to use to populate this resource's properties.

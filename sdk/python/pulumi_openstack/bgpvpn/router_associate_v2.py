@@ -26,6 +26,7 @@ class RouterAssociateV2Args:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouterAssociateV2 resource.
+
         :param pulumi.Input[_builtins.str] bgpvpn_id: The ID of the BGP VPN to which the router will be
                associated. Changing this creates a new BGP VPN router association.
         :param pulumi.Input[_builtins.str] router_id: The ID of the router to be associated with the BGP
@@ -130,6 +131,7 @@ class _RouterAssociateV2State:
                  router_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterAssociateV2 resources.
+
         :param pulumi.Input[_builtins.bool] advertise_extra_routes: A boolean flag indicating whether extra
                routes should be advertised. Defaults to true.
         :param pulumi.Input[_builtins.str] bgpvpn_id: The ID of the BGP VPN to which the router will be
@@ -252,6 +254,7 @@ class RouterAssociateV2(pulumi.CustomResource):
             router_id="423fa80f-e0d7-4d02-a9a5-8b8c05812bf6")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] advertise_extra_routes: A boolean flag indicating whether extra
@@ -288,6 +291,7 @@ class RouterAssociateV2(pulumi.CustomResource):
             bgpvpn_id="d57d39e1-dc63-44fd-8cbd-a4e1488100c5",
             router_id="423fa80f-e0d7-4d02-a9a5-8b8c05812bf6")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouterAssociateV2Args args: The arguments to use to populate this resource's properties.

@@ -31,6 +31,7 @@ class TaasTapMirrorV2Args:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TaasTapMirrorV2 resource.
+
         :param pulumi.Input['TaasTapMirrorV2DirectionsArgs'] directions: A block declaring the directions to be mirrored and their
                identifiers. One block has to be declared with at least one direction. Changing
                this creates a new Tap Mirror.
@@ -190,6 +191,7 @@ class _TaasTapMirrorV2State:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TaasTapMirrorV2 resources.
+
         :param pulumi.Input[_builtins.str] description: The human-readable description for the Tap Mirror.
                Changing this updates the description of the existing Tap Mirror.
         :param pulumi.Input['TaasTapMirrorV2DirectionsArgs'] directions: A block declaring the directions to be mirrored and their
@@ -396,6 +398,7 @@ class TaasTapMirrorV2(pulumi.CustomResource):
         $ pulumi import openstack:index/taasTapMirrorV2:TaasTapMirrorV2 tap_mirror_1 0837b488-f0e2-4689-99b3-e3ed531f9b10
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The human-readable description for the Tap Mirror.
@@ -452,6 +455,7 @@ class TaasTapMirrorV2(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:index/taasTapMirrorV2:TaasTapMirrorV2 tap_mirror_1 0837b488-f0e2-4689-99b3-e3ed531f9b10
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TaasTapMirrorV2Args args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class AggregateV2Args:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AggregateV2 resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: The list of hosts contained in the Host Aggregate. The hosts must be added
                to Openstack and visible in the web interface, or the provider will fail to add them to the host
                aggregate.
@@ -124,6 +125,7 @@ class _AggregateV2State:
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AggregateV2 resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: The list of hosts contained in the Host Aggregate. The hosts must be added
                to Openstack and visible in the web interface, or the provider will fail to add them to the host
                aggregate.
@@ -274,6 +276,7 @@ class AggregateV2(pulumi.CustomResource):
         +----+------+-------------------+
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: The list of hosts contained in the Host Aggregate. The hosts must be added
@@ -342,6 +345,7 @@ class AggregateV2(pulumi.CustomResource):
         | 59 | test | None              |
         +----+------+-------------------+
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AggregateV2Args args: The arguments to use to populate this resource's properties.

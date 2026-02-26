@@ -32,6 +32,7 @@ class BgpSpeakerV2Args:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BgpSpeakerV2 resource.
+
         :param pulumi.Input[_builtins.int] local_as: The local autonomous system number (ASN) for the BGP
                speaker. This is a mandatory field and must be specified. Changing this
                creates a new BGP speaker.
@@ -202,6 +203,7 @@ class _BgpSpeakerV2State:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BgpSpeakerV2 resources.
+
         :param pulumi.Input[_builtins.bool] advertise_floating_ip_host_routes: A boolean value indicating
                whether to advertise floating IP host routes. Defaults to `true`.
         :param pulumi.Input[_builtins.bool] advertise_tenant_networks: A boolean value indicating whether to
@@ -430,6 +432,7 @@ class BgpSpeakerV2(pulumi.CustomResource):
         $ pulumi import openstack:networking/bgpSpeakerV2:BgpSpeakerV2 speaker_1 8a2ad402-b805-46bf-a60b-008573ca2844
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] advertise_floating_ip_host_routes: A boolean value indicating
@@ -491,6 +494,7 @@ class BgpSpeakerV2(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/bgpSpeakerV2:BgpSpeakerV2 speaker_1 8a2ad402-b805-46bf-a60b-008573ca2844
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BgpSpeakerV2Args args: The arguments to use to populate this resource's properties.

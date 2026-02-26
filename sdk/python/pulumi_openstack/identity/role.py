@@ -24,6 +24,7 @@ class RoleArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Role resource.
+
         :param pulumi.Input[_builtins.str] domain_id: The domain the role belongs to.
         :param pulumi.Input[_builtins.str] name: The name of the role.
         :param pulumi.Input[_builtins.str] region: The region in which to obtain the V3 Keystone client.
@@ -84,6 +85,7 @@ class _RoleState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Role resources.
+
         :param pulumi.Input[_builtins.str] domain_id: The domain the role belongs to.
         :param pulumi.Input[_builtins.str] name: The name of the role.
         :param pulumi.Input[_builtins.str] region: The region in which to obtain the V3 Keystone client.
@@ -169,6 +171,7 @@ class Role(pulumi.CustomResource):
         $ pulumi import openstack:identity/role:Role role_1 89c60255-9bd6-460c-822a-e2b959ede9d2
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain_id: The domain the role belongs to.
@@ -205,6 +208,7 @@ class Role(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:identity/role:Role role_1 89c60255-9bd6-460c-822a-e2b959ede9d2
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RoleArgs args: The arguments to use to populate this resource's properties.

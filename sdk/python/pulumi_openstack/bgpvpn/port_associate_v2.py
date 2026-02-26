@@ -29,6 +29,7 @@ class PortAssociateV2Args:
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input['PortAssociateV2RouteArgs']]]] = None):
         """
         The set of arguments for constructing a PortAssociateV2 resource.
+
         :param pulumi.Input[_builtins.str] bgpvpn_id: The ID of the BGP VPN to which the port will be
                associated. Changing this creates a new BGP VPN port association.
         :param pulumi.Input[_builtins.str] port_id: The ID of the port to be associated with the BGP VPN.
@@ -149,6 +150,7 @@ class _PortAssociateV2State:
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input['PortAssociateV2RouteArgs']]]] = None):
         """
         Input properties used for looking up and filtering PortAssociateV2 resources.
+
         :param pulumi.Input[_builtins.bool] advertise_fixed_ips: A boolean flag indicating whether fixed
                IPs should be advertised. Defaults to true.
         :param pulumi.Input[_builtins.str] bgpvpn_id: The ID of the BGP VPN to which the port will be
@@ -297,6 +299,7 @@ class PortAssociateV2(pulumi.CustomResource):
             ])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] advertise_fixed_ips: A boolean flag indicating whether fixed
@@ -344,6 +347,7 @@ class PortAssociateV2(pulumi.CustomResource):
                 },
             ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PortAssociateV2Args args: The arguments to use to populate this resource's properties.

@@ -36,6 +36,7 @@ class UserArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] default_project_id: The default project this user belongs to.
         :param pulumi.Input[_builtins.str] description: A description of the user.
         :param pulumi.Input[_builtins.str] domain_id: The domain this user belongs to.
@@ -272,6 +273,7 @@ class _UserState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[_builtins.str] default_project_id: The default project this user belongs to.
         :param pulumi.Input[_builtins.str] description: A description of the user.
         :param pulumi.Input[_builtins.str] domain_id: The domain this user belongs to.
@@ -558,6 +560,7 @@ class User(pulumi.CustomResource):
         $ pulumi import openstack:identity/user:User user_1 89c60255-9bd6-460c-822a-e2b959ede9d2
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] default_project_id: The default project this user belongs to.
@@ -637,6 +640,7 @@ class User(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:identity/user:User user_1 89c60255-9bd6-460c-822a-e2b959ede9d2
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

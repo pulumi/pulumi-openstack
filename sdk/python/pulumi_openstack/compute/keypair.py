@@ -26,6 +26,7 @@ class KeypairArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Keypair resource.
+
         :param pulumi.Input[_builtins.str] name: A unique name for the keypair. Changing this creates a new
                keypair.
         :param pulumi.Input[_builtins.str] public_key: A pregenerated OpenSSH-formatted public key.
@@ -136,6 +137,7 @@ class _KeypairState:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Keypair resources.
+
         :param pulumi.Input[_builtins.str] fingerprint: The fingerprint of the public key.
         :param pulumi.Input[_builtins.str] name: A unique name for the keypair. Changing this creates a new
                keypair.
@@ -315,6 +317,7 @@ class Keypair(pulumi.CustomResource):
         $ pulumi import openstack:compute/keypair:Keypair my-keypair test-keypair
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: A unique name for the keypair. Changing this creates a new
@@ -377,6 +380,7 @@ class Keypair(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:compute/keypair:Keypair my-keypair test-keypair
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KeypairArgs args: The arguments to use to populate this resource's properties.

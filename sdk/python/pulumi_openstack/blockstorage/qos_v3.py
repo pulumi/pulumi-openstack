@@ -25,6 +25,7 @@ class QosV3Args:
                  specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a QosV3 resource.
+
         :param pulumi.Input[_builtins.str] consumer: The consumer of qos. Can be one of `front-end`,
                `back-end` or `both`. Changing this updates the `consumer` of an
                existing qos.
@@ -105,6 +106,7 @@ class _QosV3State:
                  specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering QosV3 resources.
+
         :param pulumi.Input[_builtins.str] consumer: The consumer of qos. Can be one of `front-end`,
                `back-end` or `both`. Changing this updates the `consumer` of an
                existing qos.
@@ -215,6 +217,7 @@ class QosV3(pulumi.CustomResource):
         $ pulumi import openstack:blockstorage/qosV3:QosV3 qos 941793f0-0a34-4bc4-b72e-a6326ae58283
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] consumer: The consumer of qos. Can be one of `front-end`,
@@ -259,6 +262,7 @@ class QosV3(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:blockstorage/qosV3:QosV3 qos 941793f0-0a34-4bc4-b72e-a6326ae58283
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QosV3Args args: The arguments to use to populate this resource's properties.

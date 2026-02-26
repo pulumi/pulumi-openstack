@@ -38,6 +38,7 @@ class ClusterArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input[_builtins.str] cluster_template_id: The UUID of the V1 Container Infra cluster
                template. Changing this creates a new cluster.
         :param pulumi.Input[_builtins.int] create_timeout: The timeout (in minutes) for creating the
@@ -369,6 +370,7 @@ class _ClusterState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input[_builtins.str] cluster_template_id: The UUID of the V1 Container Infra cluster
                template. Changing this creates a new cluster.
         :param pulumi.Input[_builtins.int] create_timeout: The timeout (in minutes) for creating the
@@ -895,6 +897,7 @@ class Cluster(pulumi.CustomResource):
         $ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_template_id: The UUID of the V1 Container Infra cluster
@@ -1007,6 +1010,7 @@ class Cluster(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

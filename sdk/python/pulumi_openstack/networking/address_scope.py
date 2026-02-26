@@ -26,6 +26,7 @@ class AddressScopeArgs:
                  shared: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AddressScope resource.
+
         :param pulumi.Input[_builtins.int] ip_version: IP version, either 4 (default) or 6. Changing this
                creates a new address-scope.
         :param pulumi.Input[_builtins.str] name: The name of the address-scope. Changing this updates the
@@ -132,6 +133,7 @@ class _AddressScopeState:
                  shared: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AddressScope resources.
+
         :param pulumi.Input[_builtins.int] ip_version: IP version, either 4 (default) or 6. Changing this
                creates a new address-scope.
         :param pulumi.Input[_builtins.str] name: The name of the address-scope. Changing this updates the
@@ -282,6 +284,7 @@ class AddressScope(pulumi.CustomResource):
         $ pulumi import openstack:networking/addressScope:AddressScope addressscope_1 9cc35860-522a-4d35-974d-51d4b011801e
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] ip_version: IP version, either 4 (default) or 6. Changing this
@@ -346,6 +349,7 @@ class AddressScope(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/addressScope:AddressScope addressscope_1 9cc35860-522a-4d35-974d-51d4b011801e
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AddressScopeArgs args: The arguments to use to populate this resource's properties.

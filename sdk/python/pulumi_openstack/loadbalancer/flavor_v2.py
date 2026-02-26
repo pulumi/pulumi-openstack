@@ -26,6 +26,7 @@ class FlavorV2Args:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FlavorV2 resource.
+
         :param pulumi.Input[_builtins.str] flavor_profile_id: The flavor_profile_id that the flavor
                will use. Changing this creates a new flavor.
         :param pulumi.Input[_builtins.str] description: The description of the flavor. Changing this
@@ -127,6 +128,7 @@ class _FlavorV2State:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlavorV2 resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the flavor. Changing this
                updates the existing flavor.
         :param pulumi.Input[_builtins.bool] enabled: Whether the flavor is enabled or not. Defaults to `true`.
@@ -263,6 +265,7 @@ class FlavorV2(pulumi.CustomResource):
         $ pulumi import openstack:loadbalancer/flavorV2:FlavorV2 flavor_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the flavor. Changing this
@@ -315,6 +318,7 @@ class FlavorV2(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:loadbalancer/flavorV2:FlavorV2 flavor_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FlavorV2Args args: The arguments to use to populate this resource's properties.

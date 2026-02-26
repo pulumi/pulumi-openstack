@@ -34,6 +34,7 @@ class ShareArgs:
                  snapshot_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Share resource.
+
         :param pulumi.Input[_builtins.str] share_proto: The share protocol - can either be NFS, CIFS,
                CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
         :param pulumi.Input[_builtins.int] size: The share size, in GBs. The requested share size cannot be greater
@@ -251,6 +252,7 @@ class _ShareState:
                  snapshot_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Share resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] all_metadata: The map of metadata, assigned on the share, which has been
                explicitly and implicitly added.
         :param pulumi.Input[_builtins.str] availability_zone: The share availability zone. Changing this creates a
@@ -612,6 +614,7 @@ class Share(pulumi.CustomResource):
         $ pulumi import openstack:sharedfilesystem/share:Share share_1 id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: The share availability zone. Changing this creates a
@@ -683,6 +686,7 @@ class Share(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:sharedfilesystem/share:Share share_1 id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ShareArgs args: The arguments to use to populate this resource's properties.

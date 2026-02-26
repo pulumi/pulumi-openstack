@@ -29,6 +29,7 @@ class QosPolicyArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a QosPolicy resource.
+
         :param pulumi.Input[_builtins.str] description: The human-readable description for the QoS policy.
                Changing this updates the description of the existing QoS policy.
         :param pulumi.Input[_builtins.bool] is_default: Indicates whether the QoS policy is default
@@ -189,6 +190,7 @@ class _QosPolicyState:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering QosPolicy resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] all_tags: The collection of tags assigned on the QoS policy, which have been
                explicitly and implicitly added.
         :param pulumi.Input[_builtins.str] created_at: The time at which QoS policy was created.
@@ -433,6 +435,7 @@ class QosPolicy(pulumi.CustomResource):
         $ pulumi import openstack:networking/qosPolicy:QosPolicy qos_policy_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The human-readable description for the QoS policy.
@@ -483,6 +486,7 @@ class QosPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/qosPolicy:QosPolicy qos_policy_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QosPolicyArgs args: The arguments to use to populate this resource's properties.

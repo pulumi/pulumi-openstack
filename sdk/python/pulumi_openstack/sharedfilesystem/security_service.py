@@ -31,6 +31,7 @@ class SecurityServiceArgs:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityService resource.
+
         :param pulumi.Input[_builtins.str] type: The security service type - can either be active\\_directory,
                kerberos or ldap.  Changing this updates the existing security service.
         :param pulumi.Input[_builtins.str] description: The human-readable description for the security service.
@@ -217,6 +218,7 @@ class _SecurityServiceState:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityService resources.
+
         :param pulumi.Input[_builtins.str] description: The human-readable description for the security service.
                Changing this updates the description of the existing security service.
         :param pulumi.Input[_builtins.str] dns_ip: The security service DNS IP address that is used inside the
@@ -460,6 +462,7 @@ class SecurityService(pulumi.CustomResource):
         $ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The human-readable description for the security service.
@@ -527,6 +530,7 @@ class SecurityService(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecurityServiceArgs args: The arguments to use to populate this resource's properties.

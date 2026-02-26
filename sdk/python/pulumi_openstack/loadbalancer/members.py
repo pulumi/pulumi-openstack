@@ -26,6 +26,7 @@ class MembersArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Members resource.
+
         :param pulumi.Input[_builtins.str] pool_id: The id of the pool that members will be assigned to.
                Changing this creates a new members resource.
         :param pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]] members: A set of dictionaries containing member parameters. The
@@ -91,6 +92,7 @@ class _MembersState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Members resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]] members: A set of dictionaries containing member parameters. The
                structure is described below.
         :param pulumi.Input[_builtins.str] pool_id: The id of the pool that members will be assigned to.
@@ -193,6 +195,7 @@ class Members(pulumi.CustomResource):
         $ pulumi import openstack:loadbalancer/members:Members members_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MembersMemberArgs', 'MembersMemberArgsDict']]]] members: A set of dictionaries containing member parameters. The
@@ -243,6 +246,7 @@ class Members(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:loadbalancer/members:Members members_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MembersArgs args: The arguments to use to populate this resource's properties.

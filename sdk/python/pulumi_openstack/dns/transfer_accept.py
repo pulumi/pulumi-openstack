@@ -26,6 +26,7 @@ class TransferAcceptArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TransferAccept resource.
+
         :param pulumi.Input[_builtins.str] key: The transfer key.
         :param pulumi.Input[_builtins.str] zone_transfer_request_id: The ID of the zone transfer request.
         :param pulumi.Input[_builtins.bool] disable_status_check: Disable wait for zone to reach ACTIVE
@@ -122,6 +123,7 @@ class _TransferAcceptState:
                  zone_transfer_request_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransferAccept resources.
+
         :param pulumi.Input[_builtins.bool] disable_status_check: Disable wait for zone to reach ACTIVE
                status. The check is enabled by default. If this argument is true, zone
                will be considered as created/updated if OpenStack accept returned success.
@@ -255,6 +257,7 @@ class TransferAccept(pulumi.CustomResource):
         $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 accept_id
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disable_status_check: Disable wait for zone to reach ACTIVE
@@ -306,6 +309,7 @@ class TransferAccept(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 accept_id
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TransferAcceptArgs args: The arguments to use to populate this resource's properties.

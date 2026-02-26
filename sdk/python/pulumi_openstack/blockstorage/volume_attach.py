@@ -33,6 +33,7 @@ class VolumeAttachArgs:
                  wwpns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a VolumeAttach resource.
+
         :param pulumi.Input[_builtins.str] host_name: The host to attach the volume to.
         :param pulumi.Input[_builtins.str] volume_id: The ID of the Volume to attach to an Instance.
         :param pulumi.Input[_builtins.str] attach_mode: Specify whether to attach the volume as Read-Only
@@ -250,6 +251,7 @@ class _VolumeAttachState:
                  wwpns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering VolumeAttach resources.
+
         :param pulumi.Input[_builtins.str] attach_mode: Specify whether to attach the volume as Read-Only
                (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
                If left unspecified, the Block Storage API will apply a default of `rw`.
@@ -575,6 +577,7 @@ class VolumeAttach(pulumi.CustomResource):
 
         It is not possible to import this resource.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] attach_mode: Specify whether to attach the volume as Read-Only
@@ -661,6 +664,7 @@ class VolumeAttach(pulumi.CustomResource):
         ## Import
 
         It is not possible to import this resource.
+
 
         :param str resource_name: The name of the resource.
         :param VolumeAttachArgs args: The arguments to use to populate this resource's properties.

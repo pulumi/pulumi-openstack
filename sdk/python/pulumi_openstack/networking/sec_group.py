@@ -28,6 +28,7 @@ class SecGroupArgs:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecGroup resource.
+
         :param pulumi.Input[_builtins.bool] delete_default_rules: Whether or not to delete the default
                egress security rules. This is `false` by default. See the below note
                for more information.
@@ -169,6 +170,7 @@ class _SecGroupState:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecGroup resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] all_tags: The collection of tags assigned on the security group, which have
                been explicitly and implicitly added.
         :param pulumi.Input[_builtins.bool] delete_default_rules: Whether or not to delete the default
@@ -380,6 +382,7 @@ class SecGroup(pulumi.CustomResource):
         $ pulumi import openstack:networking/secGroup:SecGroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] delete_default_rules: Whether or not to delete the default
@@ -457,6 +460,7 @@ class SecGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/secGroup:SecGroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecGroupArgs args: The arguments to use to populate this resource's properties.

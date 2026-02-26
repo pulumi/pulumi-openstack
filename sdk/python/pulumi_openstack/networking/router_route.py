@@ -25,6 +25,7 @@ class RouterRouteArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouterRoute resource.
+
         :param pulumi.Input[_builtins.str] destination_cidr: CIDR block to match on the packet’s destination IP. Changing
                this creates a new routing entry.
         :param pulumi.Input[_builtins.str] next_hop: IP address of the next hop gateway.  Changing
@@ -106,6 +107,7 @@ class _RouterRouteState:
                  router_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterRoute resources.
+
         :param pulumi.Input[_builtins.str] destination_cidr: CIDR block to match on the packet’s destination IP. Changing
                this creates a new routing entry.
         :param pulumi.Input[_builtins.str] next_hop: IP address of the next hop gateway.  Changing
@@ -235,6 +237,7 @@ class RouterRoute(pulumi.CustomResource):
         $ pulumi import openstack:networking/routerRoute:RouterRoute router_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] destination_cidr: CIDR block to match on the packet’s destination IP. Changing
@@ -296,6 +299,7 @@ class RouterRoute(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/routerRoute:RouterRoute router_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouterRouteArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class ConfigurationArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Configuration resource.
+
         :param pulumi.Input['ConfigurationDatastoreArgs'] datastore: An array of database engine type and version. The datastore
                object structure is documented below. Changing this creates resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
@@ -118,6 +119,7 @@ class _ConfigurationState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Configuration resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
         :param pulumi.Input['ConfigurationDatastoreArgs'] datastore: An array of database engine type and version. The datastore
                object structure is documented below. Changing this creates resource.
@@ -241,6 +243,7 @@ class Configuration(pulumi.CustomResource):
         Openstack API requires to store some database configuration parameter's values as strings, even if they contain numbers.
         To force store their values as strings set `string_type` to `true`. Otherwise Terraform will try to store them as number what can cause error from Openstack API like below:
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict']]]] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
@@ -285,6 +288,7 @@ class Configuration(pulumi.CustomResource):
 
         Openstack API requires to store some database configuration parameter's values as strings, even if they contain numbers.
         To force store their values as strings set `string_type` to `true`. Otherwise Terraform will try to store them as number what can cause error from Openstack API like below:
+
 
         :param str resource_name: The name of the resource.
         :param ConfigurationArgs args: The arguments to use to populate this resource's properties.

@@ -25,6 +25,7 @@ class QosMinimumBandwidthRuleArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a QosMinimumBandwidthRule resource.
+
         :param pulumi.Input[_builtins.int] min_kbps: The minimum kilobits per second. Changing this updates the min kbps value of the existing
                QoS minimum bandwidth rule.
         :param pulumi.Input[_builtins.str] qos_policy_id: The QoS policy reference. Changing this creates a new QoS minimum bandwidth rule.
@@ -103,6 +104,7 @@ class _QosMinimumBandwidthRuleState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering QosMinimumBandwidthRule resources.
+
         :param pulumi.Input[_builtins.str] direction: The direction of traffic. Defaults to "egress". Changing this updates the direction of the
                existing QoS minimum bandwidth rule.
         :param pulumi.Input[_builtins.int] min_kbps: The minimum kilobits per second. Changing this updates the min kbps value of the existing
@@ -212,6 +214,7 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
         $ pulumi import openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule minimum_bandwidth_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] direction: The direction of traffic. Defaults to "egress". Changing this updates the direction of the
@@ -255,6 +258,7 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule minimum_bandwidth_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QosMinimumBandwidthRuleArgs args: The arguments to use to populate this resource's properties.

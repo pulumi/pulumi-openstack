@@ -26,6 +26,7 @@ class InterfaceAttachArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InterfaceAttach resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Instance to attach the Port or Network to.
         :param pulumi.Input[_builtins.str] fixed_ip: An IP address to assosciate with the port.
                _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
@@ -123,6 +124,7 @@ class _InterfaceAttachState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InterfaceAttach resources.
+
         :param pulumi.Input[_builtins.str] fixed_ip: An IP address to assosciate with the port.
                _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Instance to attach the Port or Network to.
@@ -354,6 +356,7 @@ class InterfaceAttach(pulumi.CustomResource):
         $ pulumi import openstack:compute/interfaceAttach:InterfaceAttach ai_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] fixed_ip: An IP address to assosciate with the port.
@@ -503,6 +506,7 @@ class InterfaceAttach(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:compute/interfaceAttach:InterfaceAttach ai_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InterfaceAttachArgs args: The arguments to use to populate this resource's properties.

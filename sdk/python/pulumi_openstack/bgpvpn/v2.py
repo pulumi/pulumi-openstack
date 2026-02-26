@@ -31,6 +31,7 @@ class V2Args:
                  vni: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a V2 resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] export_targets: A list of additional Route Targets that will be
                used for export.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] import_targets: A list of additional Route Targets that will be
@@ -229,6 +230,7 @@ class _V2State:
                  vni: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering V2 resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] export_targets: A list of additional Route Targets that will be
                used for export.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] import_targets: A list of additional Route Targets that will be
@@ -502,6 +504,7 @@ class V2(pulumi.CustomResource):
             export_targets=["64512:3"])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] export_targets: A list of additional Route Targets that will be
@@ -550,6 +553,7 @@ class V2(pulumi.CustomResource):
             import_targets=["64512:2"],
             export_targets=["64512:3"])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param V2Args args: The arguments to use to populate this resource's properties.

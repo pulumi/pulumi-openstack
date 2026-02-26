@@ -34,6 +34,7 @@ class IkePolicyArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a IkePolicy resource.
+
         :param pulumi.Input[_builtins.str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
                aes-xcbc, aes-cmac. Default is sha1.
                Changing this updates the algorithm of the existing policy.
@@ -244,6 +245,7 @@ class _IkePolicyState:
                  value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering IkePolicy resources.
+
         :param pulumi.Input[_builtins.str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
                aes-xcbc, aes-cmac. Default is sha1.
                Changing this updates the algorithm of the existing policy.
@@ -476,6 +478,7 @@ class IkePolicy(pulumi.CustomResource):
         $ pulumi import openstack:vpnaas/ikePolicy:IkePolicy policy_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_algorithm: The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
@@ -528,6 +531,7 @@ class IkePolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import openstack:vpnaas/ikePolicy:IkePolicy policy_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IkePolicyArgs args: The arguments to use to populate this resource's properties.
