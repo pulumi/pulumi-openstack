@@ -42,7 +42,7 @@ import (
 //			fp1, err := loadbalancer.NewFlavorprofileV2(ctx, "fp_1", &loadbalancer.FlavorprofileV2Args{
 //				Name:         pulumi.String("test"),
 //				ProviderName: pulumi.String("amphora"),
-//				FlavorData:   pulumi.String(json0),
+//				FlavorData:   pulumi.String(pulumi.String(json0)),
 //			})
 //			if err != nil {
 //				return err

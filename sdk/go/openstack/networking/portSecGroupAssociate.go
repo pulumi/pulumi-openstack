@@ -53,9 +53,9 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewPortSecGroupAssociate(ctx, "port_1", &networking.PortSecGroupAssociateArgs{
-//				PortId: pulumi.String(systemPort.Id),
+//				PortId: pulumi.String(pulumi.String(systemPort.Id)),
 //				SecurityGroupIds: pulumi.StringArray{
-//					pulumi.String(secgroup.Id),
+//					pulumi.String(pulumi.String(secgroup.Id)),
 //				},
 //			})
 //			if err != nil {
@@ -94,10 +94,10 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewPortSecGroupAssociate(ctx, "port_1", &networking.PortSecGroupAssociateArgs{
-//				PortId:  pulumi.String(systemPort.Id),
+//				PortId:  pulumi.String(pulumi.String(systemPort.Id)),
 //				Enforce: pulumi.Bool(true),
 //				SecurityGroupIds: pulumi.StringArray{
-//					pulumi.String(secgroup.Id),
+//					pulumi.String(pulumi.String(secgroup.Id)),
 //				},
 //			})
 //			if err != nil {
@@ -130,7 +130,7 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewPortSecGroupAssociate(ctx, "port_1", &networking.PortSecGroupAssociateArgs{
-//				PortId:           pulumi.String(systemPort.Id),
+//				PortId:           pulumi.String(pulumi.String(systemPort.Id)),
 //				Enforce:          pulumi.Bool(true),
 //				SecurityGroupIds: pulumi.StringArray{},
 //			})

@@ -38,7 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = identity.NewRegisteredLimitV3(ctx, "limit_1", &identity.RegisteredLimitV3Args{
-//				ServiceId:    pulumi.String(glance.Id),
+//				ServiceId:    pulumi.String(pulumi.String(glance.Id)),
 //				ResourceName: pulumi.String("image_count_total"),
 //				DefaultLimit: pulumi.Int(10),
 //				Description:  pulumi.String("foo"),
