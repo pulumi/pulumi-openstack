@@ -74,7 +74,7 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewFloatingIp(ctx, "floatip_1", &networking.FloatingIpArgs{
-//				Pool:      pulumi.String(extNetwork.Name),
+//				Pool:      pulumi.String(pulumi.String(extNetwork.Name)),
 //				SubnetIds: interface{}(extSubnets.Ids),
 //			})
 //			if err != nil {

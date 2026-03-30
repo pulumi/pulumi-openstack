@@ -105,7 +105,7 @@ import (
 //			}
 //			lb1, err := loadbalancer.NewLoadBalancer(ctx, "lb_1", &loadbalancer.LoadBalancerArgs{
 //				Name:        pulumi.String("loadbalancer"),
-//				VipSubnetId: pulumi.String(subnet1.Id),
+//				VipSubnetId: pulumi.String(pulumi.String(subnet1.Id)),
 //			})
 //			if err != nil {
 //				return err

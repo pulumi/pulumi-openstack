@@ -361,7 +361,7 @@ import (
 //				networks := _args[1].([]compute.InstanceNetwork)
 //				return networking.GetPortResult(interface{}(networking.LookupPort(ctx, &networking.LookupPortArgs{
 //					DeviceId:  pulumi.StringRef(pulumi.StringRef(id)),
-//					NetworkId: pulumi.StringRef(pulumi.StringRef(networks[1].Uuid)),
+//					NetworkId: pulumi.StringRef(pulumi.StringRef(pulumi.String(networks[1].Uuid))),
 //				}, nil))), nil
 //			}).(networking.GetPortResultOutput)
 //			_, err = networking.NewFloatingIpAssociate(ctx, "fip_vm", &networking.FloatingIpAssociateArgs{

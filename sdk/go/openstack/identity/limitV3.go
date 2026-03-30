@@ -45,7 +45,7 @@ import (
 //			}
 //			_, err = identity.NewLimitV3(ctx, "limit_1", &identity.LimitV3Args{
 //				ProjectId:     project1.ID(),
-//				ServiceId:     pulumi.String(glance.Id),
+//				ServiceId:     pulumi.String(pulumi.String(glance.Id)),
 //				ResourceName:  pulumi.String("image_count_total"),
 //				ResourceLimit: pulumi.Int(10),
 //				Description:   pulumi.String("foo"),
