@@ -22,7 +22,7 @@ namespace Pulumi.OpenStack
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tapMirror1 = new OpenStack.TaasTapMirrorV2("tap_mirror_1", new()
+    ///     var tapMirror1 = new OpenStack.Index.TaasTapMirrorV2("tap_mirror_1", new()
     ///     {
     ///         MirrorType = "erspanv1",
     ///         PortId = "a25290e9-1a54-4c26-a5b3-34458d122acc",

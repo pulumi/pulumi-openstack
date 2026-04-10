@@ -55,7 +55,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     ///     var certificate1 = new OpenStack.KeyManager.SecretV1("certificate_1", new()
     ///     {
     ///         Name = "certificate",
-    ///         Payload = Std.Filebase64.Invoke(new()
+    ///         Payload = Std.Index.Filebase64.Invoke(new()
     ///         {
     ///             Input = "snakeoil.p12",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -66,7 +66,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     ///     var caCertificate1 = new OpenStack.KeyManager.SecretV1("ca_certificate_1", new()
     ///     {
     ///         Name = "certificate",
-    ///         Payload = Std.File.Invoke(new()
+    ///         Payload = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "CA.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),

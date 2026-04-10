@@ -24,7 +24,7 @@ namespace Pulumi.OpenStack
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var workflow1 = OpenStack.WorkflowWorkflowV2.Invoke(new()
+        ///     var workflow1 = OpenStack.Index.WorkflowWorkflowV2.Invoke(new()
         ///     {
         ///         Name = "workflow_1",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.OpenStack
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var workflow1 = OpenStack.WorkflowWorkflowV2.Invoke(new()
+        ///     var workflow1 = OpenStack.Index.WorkflowWorkflowV2.Invoke(new()
         ///     {
         ///         Name = "workflow_1",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.OpenStack
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var workflow1 = OpenStack.WorkflowWorkflowV2.Invoke(new()
+        ///     var workflow1 = OpenStack.Index.WorkflowWorkflowV2.Invoke(new()
         ///     {
         ///         Name = "workflow_1",
         ///     });

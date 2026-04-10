@@ -67,7 +67,7 @@ namespace Pulumi.OpenStack.KeyManager
     ///     var secret1 = new OpenStack.KeyManager.SecretV1("secret_1", new()
     ///     {
     ///         Name = "password",
-    ///         Payload = Std.Base64encode.Invoke(new()
+    ///         Payload = Std.Index.Base64encode.Invoke(new()
     ///         {
     ///             Input = "password with the whitespace at the end ",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -93,13 +93,13 @@ namespace Pulumi.OpenStack.KeyManager
     ///     var secret1 = new OpenStack.KeyManager.SecretV1("secret_1", new()
     ///     {
     ///         Name = "certificate",
-    ///         Payload = Std.File.Invoke(new()
+    ///         Payload = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "certificate.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///         SecretType = "certificate",
     ///         PayloadContentType = "text/plain",
-    ///         Expiration = Output.Tuple(Std.Timestamp.Invoke(), Std.Format.Invoke(new()
+    ///         Expiration = Output.Tuple(Std.Index.Timestamp.Invoke(), Std.Index.Format.Invoke(new()
     ///         {
     ///             Input = "%dh",
     ///             Args = new[]
@@ -110,7 +110,7 @@ namespace Pulumi.OpenStack.KeyManager
     ///         {
     ///             var invoke = values.Item1;
     ///             var invoke1 = values.Item2;
-    ///             return Std.Timeadd.Invoke(new()
+    ///             return Std.Index.Timeadd.Invoke(new()
     ///             {
     ///                 Duration = invoke.Result,
     ///                 Timestamp = invoke1.Result,
@@ -137,7 +137,7 @@ namespace Pulumi.OpenStack.KeyManager
     ///     var secret1 = new OpenStack.KeyManager.SecretV1("secret_1", new()
     ///     {
     ///         Name = "certificate",
-    ///         Payload = Std.File.Invoke(new()
+    ///         Payload = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "certificate.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),

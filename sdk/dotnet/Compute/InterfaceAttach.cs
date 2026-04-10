@@ -148,7 +148,7 @@ namespace Pulumi.OpenStack.Compute
     ///         var range = new { Value = rangeIndex };
     ///         ports.Add(new OpenStack.Networking.Port($"ports-{range.Value}", new()
     ///         {
-    ///             Name = Std.Format.Invoke(new()
+    ///             Name = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = "port-%02d",
     ///                 Args = new[]
@@ -210,7 +210,7 @@ namespace Pulumi.OpenStack.Compute
     ///         var range = new { Value = rangeIndex };
     ///         ports.Add(new OpenStack.Networking.Port($"ports-{range.Value}", new()
     ///         {
-    ///             Name = Std.Format.Invoke(new()
+    ///             Name = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = "port-%02d",
     ///                 Args = new[]
