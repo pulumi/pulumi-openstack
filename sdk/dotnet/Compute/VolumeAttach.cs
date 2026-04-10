@@ -66,7 +66,7 @@ namespace Pulumi.OpenStack.Compute
     ///         var range = new { Value = rangeIndex };
     ///         volumes.Add(new OpenStack.BlockStorage.Volume($"volumes-{range.Value}", new()
     ///         {
-    ///             Name = Std.Format.Invoke(new()
+    ///             Name = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = "vol-%02d",
     ///                 Args = new[]
@@ -125,7 +125,7 @@ namespace Pulumi.OpenStack.Compute
     ///         var range = new { Value = rangeIndex };
     ///         volumes.Add(new OpenStack.BlockStorage.Volume($"volumes-{range.Value}", new()
     ///         {
-    ///             Name = Std.Format.Invoke(new()
+    ///             Name = Std.Index.Format.Invoke(new()
     ///             {
     ///                 Input = "vol-%02d",
     ///                 Args = new[]

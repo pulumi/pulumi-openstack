@@ -30,7 +30,7 @@ namespace Pulumi.OpenStack.KeyManager
     ///     var certificate1 = new OpenStack.KeyManager.SecretV1("certificate_1", new()
     ///     {
     ///         Name = "certificate",
-    ///         Payload = Std.File.Invoke(new()
+    ///         Payload = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "cert.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -41,7 +41,7 @@ namespace Pulumi.OpenStack.KeyManager
     ///     var privateKey1 = new OpenStack.KeyManager.SecretV1("private_key_1", new()
     ///     {
     ///         Name = "private_key",
-    ///         Payload = Std.File.Invoke(new()
+    ///         Payload = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "cert-key.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -52,7 +52,7 @@ namespace Pulumi.OpenStack.KeyManager
     ///     var intermediate1 = new OpenStack.KeyManager.SecretV1("intermediate_1", new()
     ///     {
     ///         Name = "intermediate",
-    ///         Payload = Std.File.Invoke(new()
+    ///         Payload = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "intermediate-ca.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),
