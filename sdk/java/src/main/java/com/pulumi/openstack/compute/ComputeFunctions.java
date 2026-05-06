@@ -54,8 +54,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetAggregateV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -95,8 +95,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetAggregateV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -136,8 +136,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetAggregateV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -177,8 +177,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetAggregateV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -218,8 +218,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetAggregateV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -258,8 +258,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetAvailabilityZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -297,8 +297,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetAvailabilityZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -336,8 +336,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetAvailabilityZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -375,8 +375,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetAvailabilityZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -414,8 +414,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetAvailabilityZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -453,8 +453,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetAvailabilityZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -492,8 +492,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetAvailabilityZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -531,8 +531,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetFlavorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -572,8 +572,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetFlavorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -613,8 +613,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetFlavorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -654,8 +654,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetFlavorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -695,8 +695,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetFlavorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -736,8 +736,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetFlavorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -777,8 +777,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetFlavorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -819,8 +819,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetHypervisorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -860,8 +860,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetHypervisorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -901,8 +901,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetHypervisorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -942,8 +942,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetHypervisorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -983,8 +983,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetHypervisorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1024,8 +1024,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetHypervisorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1065,8 +1065,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetHypervisorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1105,8 +1105,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetInstanceV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1145,8 +1145,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetInstanceV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1185,8 +1185,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetInstanceV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1225,8 +1225,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetInstanceV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1265,8 +1265,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetInstanceV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1305,8 +1305,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetKeypairArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1345,8 +1345,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetKeypairArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1385,8 +1385,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetKeypairArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1425,8 +1425,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetKeypairArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1465,8 +1465,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetKeypairArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1505,8 +1505,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetLimitsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1545,8 +1545,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetLimitsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1585,8 +1585,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetLimitsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1625,8 +1625,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetLimitsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1665,8 +1665,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetLimitsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1705,8 +1705,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetQuotaSetV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1745,8 +1745,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetQuotaSetV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1785,8 +1785,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetQuotaSetV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1825,8 +1825,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetQuotaSetV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1865,8 +1865,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetQuotaSetV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1906,8 +1906,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetServergroupV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1947,8 +1947,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetServergroupV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1988,8 +1988,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetServergroupV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2029,8 +2029,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetServergroupV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2070,8 +2070,8 @@ public final class ComputeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.compute.ComputeFunctions;
      * import com.pulumi.openstack.compute.inputs.GetServergroupV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -35,8 +35,8 @@ public final class ContainerinfraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.containerinfra.ContainerinfraFunctions;
      * import com.pulumi.openstack.containerinfra.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -75,8 +75,8 @@ public final class ContainerinfraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.containerinfra.ContainerinfraFunctions;
      * import com.pulumi.openstack.containerinfra.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -115,8 +115,8 @@ public final class ContainerinfraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.containerinfra.ContainerinfraFunctions;
      * import com.pulumi.openstack.containerinfra.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -155,8 +155,8 @@ public final class ContainerinfraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.containerinfra.ContainerinfraFunctions;
      * import com.pulumi.openstack.containerinfra.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -195,8 +195,8 @@ public final class ContainerinfraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.containerinfra.ContainerinfraFunctions;
      * import com.pulumi.openstack.containerinfra.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -236,8 +236,8 @@ public final class ContainerinfraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.containerinfra.ContainerinfraFunctions;
      * import com.pulumi.openstack.containerinfra.inputs.GetClusterTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -277,8 +277,8 @@ public final class ContainerinfraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.containerinfra.ContainerinfraFunctions;
      * import com.pulumi.openstack.containerinfra.inputs.GetClusterTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -318,8 +318,8 @@ public final class ContainerinfraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.containerinfra.ContainerinfraFunctions;
      * import com.pulumi.openstack.containerinfra.inputs.GetClusterTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -359,8 +359,8 @@ public final class ContainerinfraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.containerinfra.ContainerinfraFunctions;
      * import com.pulumi.openstack.containerinfra.inputs.GetClusterTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -400,8 +400,8 @@ public final class ContainerinfraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.containerinfra.ContainerinfraFunctions;
      * import com.pulumi.openstack.containerinfra.inputs.GetClusterTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -440,8 +440,8 @@ public final class ContainerinfraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.containerinfra.ContainerinfraFunctions;
      * import com.pulumi.openstack.containerinfra.inputs.GetNodeGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -481,8 +481,8 @@ public final class ContainerinfraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.containerinfra.ContainerinfraFunctions;
      * import com.pulumi.openstack.containerinfra.inputs.GetNodeGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -522,8 +522,8 @@ public final class ContainerinfraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.containerinfra.ContainerinfraFunctions;
      * import com.pulumi.openstack.containerinfra.inputs.GetNodeGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -563,8 +563,8 @@ public final class ContainerinfraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.containerinfra.ContainerinfraFunctions;
      * import com.pulumi.openstack.containerinfra.inputs.GetNodeGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -604,8 +604,8 @@ public final class ContainerinfraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.containerinfra.ContainerinfraFunctions;
      * import com.pulumi.openstack.containerinfra.inputs.GetNodeGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

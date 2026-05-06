@@ -123,7 +123,7 @@ import (
 //				Duration: std.Timestamp(ctx, &std.TimestampArgs{}, nil).Result,
 //				Timestamp: std.Format(ctx, &std.FormatArgs{
 //					Input: "%dh",
-//					Args: []float64{
+//					Args: []int{
 //						8760,
 //					},
 //				}, nil).Result,
