@@ -107,7 +107,7 @@ export interface GetGroupOutputArgs {
     /**
      * The domain the group belongs to.
      */
-    domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string | undefined>;
     /**
      * The name of the group.
      */
@@ -116,5 +116,5 @@ export interface GetGroupOutputArgs {
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

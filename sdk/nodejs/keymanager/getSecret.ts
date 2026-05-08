@@ -288,50 +288,50 @@ export interface GetSecretOutputArgs {
      * Select the Secret with an ACL that contains the user.
      * Project scope is ignored. Defaults to `false`.
      */
-    aclOnly?: pulumi.Input<boolean>;
+    aclOnly?: pulumi.Input<boolean | undefined>;
     /**
      * The Secret algorithm.
      */
-    algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
     /**
      * The Secret bit length.
      */
-    bitLength?: pulumi.Input<number>;
+    bitLength?: pulumi.Input<number | undefined>;
     /**
      * Date filter to select the Secret with
      * created matching the specified criteria. See Date Filters below for more
      * detail.
      */
-    createdAtFilter?: pulumi.Input<string>;
+    createdAtFilter?: pulumi.Input<string | undefined>;
     /**
      * Date filter to select the Secret with
      * expiration matching the specified criteria. See Date Filters below for more
      * detail.
      */
-    expirationFilter?: pulumi.Input<string>;
+    expirationFilter?: pulumi.Input<string | undefined>;
     /**
      * The Secret mode.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The Secret name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V1 KeyManager client.
      * A KeyManager client is needed to fetch a secret. If omitted, the `region`
      * argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The Secret type. For more information see
      * [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
      */
-    secretType?: pulumi.Input<string>;
+    secretType?: pulumi.Input<string | undefined>;
     /**
      * Date filter to select the Secret with
      * updated matching the specified criteria. See Date Filters below for more
      * detail.
      */
-    updatedAtFilter?: pulumi.Input<string>;
+    updatedAtFilter?: pulumi.Input<string | undefined>;
 }

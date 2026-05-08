@@ -114,19 +114,19 @@ export interface GetFlavorprofileV2OutputArgs {
      * The ID of the flavorprofile. Conflicts with `name` and
      * `providerName`.
      */
-    flavorprofileId?: pulumi.Input<string>;
+    flavorprofileId?: pulumi.Input<string | undefined>;
     /**
      * The name of the flavorprofile. Conflicts with `flavorprofileId`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the provider that the flavorprofile uses. Conflicts
      * with `flavorprofileId`.
      */
-    providerName?: pulumi.Input<string>;
+    providerName?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Load Balancer client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

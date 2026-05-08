@@ -199,49 +199,49 @@ export interface GetNetworkOutputArgs {
     /**
      * Human-readable description of the network.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The external routing facility of the network.
      */
-    external?: pulumi.Input<boolean>;
+    external?: pulumi.Input<boolean | undefined>;
     /**
      * The CIDR of a subnet within the network.
      */
-    matchingSubnetCidr?: pulumi.Input<string>;
+    matchingSubnetCidr?: pulumi.Input<string | undefined>;
     /**
      * The network MTU to filter. Available, when Neutron `net-mtu`
      * extension is enabled.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The name of the network.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the network.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve networks ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The status of the network.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The list of network tags to filter.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The owner of the network.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * The VLAN transparent attribute for the
      * network.
      */
-    transparentVlan?: pulumi.Input<boolean>;
+    transparentVlan?: pulumi.Input<boolean | undefined>;
 }

@@ -153,37 +153,37 @@ export interface EndpointV3State {
      * The endpoint region. The `region` and
      * `endpointRegion` can be different.
      */
-    endpointRegion?: pulumi.Input<string>;
+    endpointRegion?: pulumi.Input<string | undefined>;
     /**
      * The endpoint interface. Valid values are `public`,
      * `internal` and `admin`. Default value is `public`
      */
-    interface?: pulumi.Input<string>;
+    interface?: pulumi.Input<string | undefined>;
     /**
      * The endpoint name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The endpoint service ID.
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
     /**
      * The service name of the endpoint.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * The service type of the endpoint.
      */
-    serviceType?: pulumi.Input<string>;
+    serviceType?: pulumi.Input<string | undefined>;
     /**
      * The endpoint url.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -199,16 +199,16 @@ export interface EndpointV3Args {
      * The endpoint interface. Valid values are `public`,
      * `internal` and `admin`. Default value is `public`
      */
-    interface?: pulumi.Input<string>;
+    interface?: pulumi.Input<string | undefined>;
     /**
      * The endpoint name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The endpoint service ID.
      */

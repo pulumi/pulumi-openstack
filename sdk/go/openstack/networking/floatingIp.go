@@ -75,13 +75,21 @@ import (
 //			}
 //			_, err = networking.NewFloatingIp(ctx, "floatip_1", &networking.FloatingIpArgs{
 //				Pool:      pulumi.String(pulumi.String(extNetwork.Name)),
-//				SubnetIds: interface{}(extSubnets.Ids),
+//				SubnetIds: toPulumiStringArray(extSubnets.Ids),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			return nil
 //		})
+//	}
+//
+//	func toPulumiStringArray(arr []string) pulumi.StringArray {
+//		var pulumiArr pulumi.StringArray
+//		for _, v := range arr {
+//			pulumiArr = append(pulumiArr, pulumi.String(v))
+//		}
+//		return pulumiArr
 //	}
 //
 // ```

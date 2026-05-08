@@ -38,8 +38,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetAvailabilityZonesV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -77,8 +77,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetAvailabilityZonesV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -116,8 +116,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetAvailabilityZonesV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -155,8 +155,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetAvailabilityZonesV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -194,8 +194,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetAvailabilityZonesV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -233,8 +233,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetAvailabilityZonesV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -272,8 +272,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetAvailabilityZonesV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -311,8 +311,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetQuotasetV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -351,8 +351,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetQuotasetV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -391,8 +391,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetQuotasetV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -431,8 +431,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetQuotasetV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -471,8 +471,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetQuotasetV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -511,8 +511,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetSnapshotV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -552,8 +552,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetSnapshotV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -593,8 +593,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetSnapshotV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -634,8 +634,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetSnapshotV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -675,8 +675,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetSnapshotV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -716,8 +716,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetSnapshotV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -757,8 +757,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetSnapshotV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -798,8 +798,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetVolumeV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -838,8 +838,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetVolumeV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -878,8 +878,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetVolumeV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -918,8 +918,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetVolumeV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -958,8 +958,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetVolumeV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -998,8 +998,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetVolumeV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1038,8 +1038,8 @@ public final class BlockstorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.blockstorage.BlockstorageFunctions;
      * import com.pulumi.openstack.blockstorage.inputs.GetVolumeV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

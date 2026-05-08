@@ -44,8 +44,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -84,8 +84,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -124,8 +124,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -164,8 +164,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -204,8 +204,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -244,8 +244,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -284,8 +284,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -326,8 +326,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorprofileV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -368,8 +368,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorprofileV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -410,8 +410,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorprofileV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -452,8 +452,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorprofileV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -494,8 +494,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorprofileV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -536,8 +536,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorprofileV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -578,8 +578,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetFlavorprofileV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -620,8 +620,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetLbFlavorDeprecatedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -662,8 +662,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetLbFlavorDeprecatedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -704,8 +704,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetLbFlavorDeprecatedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -746,8 +746,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetLbFlavorDeprecatedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -788,8 +788,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetLbFlavorDeprecatedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -830,8 +830,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetLbFlavorDeprecatedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -872,8 +872,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetLbFlavorDeprecatedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -912,8 +912,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetListenerV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -952,8 +952,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetListenerV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -992,8 +992,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetListenerV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1032,8 +1032,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetListenerV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1072,8 +1072,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetListenerV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1112,8 +1112,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetListenerV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1152,8 +1152,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetListenerV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1192,8 +1192,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetLoadbalancerV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1232,8 +1232,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetLoadbalancerV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1272,8 +1272,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetLoadbalancerV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1312,8 +1312,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetLoadbalancerV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1352,8 +1352,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetLoadbalancerV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1392,8 +1392,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetLoadbalancerV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1432,8 +1432,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetLoadbalancerV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1472,8 +1472,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetPoolV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1512,8 +1512,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetPoolV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1552,8 +1552,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetPoolV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1592,8 +1592,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetPoolV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1632,8 +1632,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetPoolV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1672,8 +1672,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetPoolV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1712,8 +1712,8 @@ public final class LoadbalancerFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.loadbalancer.LoadbalancerFunctions;
      * import com.pulumi.openstack.loadbalancer.inputs.GetPoolV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -24,16 +24,16 @@ class MonitorArgs:
                  pool_id: pulumi.Input[_builtins.str],
                  timeout: pulumi.Input[_builtins.int],
                  type: pulumi.Input[_builtins.str],
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 expected_codes: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_retries_down: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 expected_codes: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_retries_down: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Monitor resource.
 
@@ -171,7 +171,7 @@ class MonitorArgs:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the monitor.
         A valid value is true (UP) or false (DOWN).
@@ -179,12 +179,12 @@ class MonitorArgs:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name to use in the HTTP host header
         health monitor requests. Supported in Octavia API version 2.10 or later.
@@ -192,12 +192,12 @@ class MonitorArgs:
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="expectedCodes")
-    def expected_codes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expected_codes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for HTTP(S) types. Expected HTTP codes
         for a passing HTTP(S) monitor. You can either specify a single status like
@@ -206,12 +206,12 @@ class MonitorArgs:
         return pulumi.get(self, "expected_codes")
 
     @expected_codes.setter
-    def expected_codes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expected_codes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expected_codes", value)
 
     @_builtins.property
     @pulumi.getter(name="httpMethod")
-    def http_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for HTTP(S) types. The HTTP method that 
         the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
@@ -220,12 +220,12 @@ class MonitorArgs:
         return pulumi.get(self, "http_method")
 
     @http_method.setter
-    def http_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_method", value)
 
     @_builtins.property
     @pulumi.getter(name="httpVersion")
-    def http_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for HTTP(S) types. The HTTP version that
         the health monitor uses for requests. One of `1.0` or 1.1` is supported
@@ -235,12 +235,12 @@ class MonitorArgs:
         return pulumi.get(self, "http_version")
 
     @http_version.setter
-    def http_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_version", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRetriesDown")
-    def max_retries_down(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_retries_down(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of permissible ping failures before 
         changing the member's status to ERROR. Must be a number between 1 and 10.
@@ -250,24 +250,24 @@ class MonitorArgs:
         return pulumi.get(self, "max_retries_down")
 
     @max_retries_down.setter
-    def max_retries_down(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_retries_down(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_retries_down", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Name of the Monitor.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a monitor. If omitted, the
@@ -277,12 +277,12 @@ class MonitorArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for admins. The UUID of the tenant who owns
         the monitor.  Only administrative users can specify a tenant UUID
@@ -291,12 +291,12 @@ class MonitorArgs:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="urlPath")
-    def url_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for HTTP(S) types. URI path that will be
         accessed if monitor type is HTTP or HTTPS. Default is `/`.
@@ -304,28 +304,28 @@ class MonitorArgs:
         return pulumi.get(self, "url_path")
 
     @url_path.setter
-    def url_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_path", value)
 
 
 @pulumi.input_type
 class _MonitorState:
     def __init__(__self__, *,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 expected_codes: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_retries_down: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 expected_codes: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_retries_down: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Monitor resources.
 
@@ -402,7 +402,7 @@ class _MonitorState:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the monitor.
         A valid value is true (UP) or false (DOWN).
@@ -410,24 +410,24 @@ class _MonitorState:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter
-    def delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time, in seconds, between sending probes to members.
         """
         return pulumi.get(self, "delay")
 
     @delay.setter
-    def delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "delay", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name to use in the HTTP host header
         health monitor requests. Supported in Octavia API version 2.10 or later.
@@ -435,12 +435,12 @@ class _MonitorState:
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="expectedCodes")
-    def expected_codes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expected_codes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for HTTP(S) types. Expected HTTP codes
         for a passing HTTP(S) monitor. You can either specify a single status like
@@ -449,12 +449,12 @@ class _MonitorState:
         return pulumi.get(self, "expected_codes")
 
     @expected_codes.setter
-    def expected_codes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expected_codes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expected_codes", value)
 
     @_builtins.property
     @pulumi.getter(name="httpMethod")
-    def http_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for HTTP(S) types. The HTTP method that 
         the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
@@ -463,12 +463,12 @@ class _MonitorState:
         return pulumi.get(self, "http_method")
 
     @http_method.setter
-    def http_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_method", value)
 
     @_builtins.property
     @pulumi.getter(name="httpVersion")
-    def http_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for HTTP(S) types. The HTTP version that
         the health monitor uses for requests. One of `1.0` or 1.1` is supported
@@ -478,12 +478,12 @@ class _MonitorState:
         return pulumi.get(self, "http_version")
 
     @http_version.setter
-    def http_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_version", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRetries")
-    def max_retries(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_retries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of permissible ping failures before
         changing the member's status to INACTIVE. Must be a number between 1
@@ -492,12 +492,12 @@ class _MonitorState:
         return pulumi.get(self, "max_retries")
 
     @max_retries.setter
-    def max_retries(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_retries(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_retries", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRetriesDown")
-    def max_retries_down(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_retries_down(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of permissible ping failures before 
         changing the member's status to ERROR. Must be a number between 1 and 10.
@@ -507,36 +507,36 @@ class _MonitorState:
         return pulumi.get(self, "max_retries_down")
 
     @max_retries_down.setter
-    def max_retries_down(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_retries_down(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_retries_down", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Name of the Monitor.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="poolId")
-    def pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the pool that this monitor will be assigned to.
         """
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
-    def pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pool_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a monitor. If omitted, the
@@ -546,12 +546,12 @@ class _MonitorState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for admins. The UUID of the tenant who owns
         the monitor.  Only administrative users can specify a tenant UUID
@@ -560,12 +560,12 @@ class _MonitorState:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of seconds for a monitor to wait for a
         ping reply before it times out. The value must be less than the delay
@@ -574,12 +574,12 @@ class _MonitorState:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of probe, which is PING, TCP, HTTP, HTTPS,
         TLS-HELLO, SCTP or UDP-CONNECT, that is sent by the loadbalancer to
@@ -588,12 +588,12 @@ class _MonitorState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="urlPath")
-    def url_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for HTTP(S) types. URI path that will be
         accessed if monitor type is HTTP or HTTPS. Default is `/`.
@@ -601,7 +601,7 @@ class _MonitorState:
         return pulumi.get(self, "url_path")
 
     @url_path.setter
-    def url_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_path", value)
 
 
@@ -611,21 +611,21 @@ class Monitor(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 expected_codes: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_retries_down: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 expected_codes: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_retries_down: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_path: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V2 monitor resource within OpenStack.
@@ -754,21 +754,21 @@ class Monitor(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 expected_codes: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_retries_down: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 expected_codes: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_retries_down: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_path: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -813,21 +813,21 @@ class Monitor(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-            delay: Optional[pulumi.Input[_builtins.int]] = None,
-            domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            expected_codes: Optional[pulumi.Input[_builtins.str]] = None,
-            http_method: Optional[pulumi.Input[_builtins.str]] = None,
-            http_version: Optional[pulumi.Input[_builtins.str]] = None,
-            max_retries: Optional[pulumi.Input[_builtins.int]] = None,
-            max_retries_down: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            url_path: Optional[pulumi.Input[_builtins.str]] = None) -> 'Monitor':
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            delay: pulumi.Input[Optional[_builtins.int]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            expected_codes: pulumi.Input[Optional[_builtins.str]] = None,
+            http_method: pulumi.Input[Optional[_builtins.str]] = None,
+            http_version: pulumi.Input[Optional[_builtins.str]] = None,
+            max_retries: pulumi.Input[Optional[_builtins.int]] = None,
+            max_retries_down: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            url_path: pulumi.Input[Optional[_builtins.str]] = None) -> 'Monitor':
         """
         Get an existing Monitor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

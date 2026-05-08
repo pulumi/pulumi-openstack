@@ -153,54 +153,54 @@ export interface QuoteSetV3State {
      * Quota value for backup gigabytes. Changing
      * this updates the existing quotaset.
      */
-    backupGigabytes?: pulumi.Input<number>;
+    backupGigabytes?: pulumi.Input<number | undefined>;
     /**
      * Quota value for backups. Changing this updates the
      * existing quotaset.
      */
-    backups?: pulumi.Input<number>;
+    backups?: pulumi.Input<number | undefined>;
     /**
      * Quota value for gigabytes. Changing this updates the
      * existing quotaset.
      */
-    gigabytes?: pulumi.Input<number>;
+    gigabytes?: pulumi.Input<number | undefined>;
     /**
      * Quota value for groups. Changing this updates the
      * existing quotaset.
      */
-    groups?: pulumi.Input<number>;
+    groups?: pulumi.Input<number | undefined>;
     /**
      * Quota value for gigabytes per volume .
      * Changing this updates the existing quotaset.
      */
-    perVolumeGigabytes?: pulumi.Input<number>;
+    perVolumeGigabytes?: pulumi.Input<number | undefined>;
     /**
      * ID of the project to manage quotas. Changing this
      * creates a new quotaset.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the volume. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new quotaset.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Quota value for snapshots. Changing this updates the
      * existing quotaset.
      */
-    snapshots?: pulumi.Input<number>;
+    snapshots?: pulumi.Input<number | undefined>;
     /**
      * Key/Value pairs for setting quota for
      * volumes types. Possible keys are `snapshots_<volume_type_name>`,
      * `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
      */
-    volumeTypeQuota?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    volumeTypeQuota?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Quota value for volumes. Changing this updates the
      * existing quotaset.
      */
-    volumes?: pulumi.Input<number>;
+    volumes?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -211,27 +211,27 @@ export interface QuoteSetV3Args {
      * Quota value for backup gigabytes. Changing
      * this updates the existing quotaset.
      */
-    backupGigabytes?: pulumi.Input<number>;
+    backupGigabytes?: pulumi.Input<number | undefined>;
     /**
      * Quota value for backups. Changing this updates the
      * existing quotaset.
      */
-    backups?: pulumi.Input<number>;
+    backups?: pulumi.Input<number | undefined>;
     /**
      * Quota value for gigabytes. Changing this updates the
      * existing quotaset.
      */
-    gigabytes?: pulumi.Input<number>;
+    gigabytes?: pulumi.Input<number | undefined>;
     /**
      * Quota value for groups. Changing this updates the
      * existing quotaset.
      */
-    groups?: pulumi.Input<number>;
+    groups?: pulumi.Input<number | undefined>;
     /**
      * Quota value for gigabytes per volume .
      * Changing this updates the existing quotaset.
      */
-    perVolumeGigabytes?: pulumi.Input<number>;
+    perVolumeGigabytes?: pulumi.Input<number | undefined>;
     /**
      * ID of the project to manage quotas. Changing this
      * creates a new quotaset.
@@ -242,21 +242,21 @@ export interface QuoteSetV3Args {
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new quotaset.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Quota value for snapshots. Changing this updates the
      * existing quotaset.
      */
-    snapshots?: pulumi.Input<number>;
+    snapshots?: pulumi.Input<number | undefined>;
     /**
      * Key/Value pairs for setting quota for
      * volumes types. Possible keys are `snapshots_<volume_type_name>`,
      * `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
      */
-    volumeTypeQuota?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    volumeTypeQuota?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Quota value for volumes. Changing this updates the
      * existing quotaset.
      */
-    volumes?: pulumi.Input<number>;
+    volumes?: pulumi.Input<number | undefined>;
 }

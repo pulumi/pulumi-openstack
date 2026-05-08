@@ -200,13 +200,13 @@ def get_endpoint(endpoint_region: Optional[_builtins.str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         service_type=pulumi.get(__ret__, 'service_type'),
         url=pulumi.get(__ret__, 'url'))
-def get_endpoint_output(endpoint_region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        interface: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        service_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        service_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        service_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_endpoint_output(endpoint_region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        interface: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        service_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        service_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        service_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEndpointResult]:
     """
     Use this data source to get the ID of an OpenStack endpoint.

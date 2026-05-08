@@ -112,11 +112,11 @@ export interface GetQosBandwidthLimitRuleOutputArgs {
     /**
      * The maximum burst size in kilobits of a QoS bandwidth limit rule.
      */
-    maxBurstKbps?: pulumi.Input<number>;
+    maxBurstKbps?: pulumi.Input<number | undefined>;
     /**
      * The maximum kilobits per second of a QoS bandwidth limit rule.
      */
-    maxKbps?: pulumi.Input<number>;
+    maxKbps?: pulumi.Input<number | undefined>;
     /**
      * The QoS policy reference.
      */
@@ -126,5 +126,5 @@ export interface GetQosBandwidthLimitRuleOutputArgs {
      * A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
      * `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

@@ -92,10 +92,10 @@ export interface GetAvailabilityZonesV3OutputArgs {
      * The region in which to obtain the Block Storage client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The `state` of the availability zones to match. Can
      * either be `available` or `unavailable`. Default is `available`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }

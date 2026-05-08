@@ -183,55 +183,55 @@ export interface SecurityServiceState {
      * The human-readable description for the security service.
      * Changing this updates the description of the existing security service.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The security service DNS IP address that is used inside the
      * tenant network.
      */
-    dnsIp?: pulumi.Input<string>;
+    dnsIp?: pulumi.Input<string | undefined>;
     /**
      * The security service domain.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The name of the security service. Changing this updates the name
      * of the existing security service.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The security service ou. An organizational unit can be added to
      * specify where the share ends up. New in Manila microversion 2.44.
      */
-    ou?: pulumi.Input<string>;
+    ou?: pulumi.Input<string | undefined>;
     /**
      * The user password, if you specify a user.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The owner of the Security Service.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Shared File System client.
      * A Shared File System client is needed to create a security service. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security service.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The security service host name or IP address.
      */
-    server?: pulumi.Input<string>;
+    server?: pulumi.Input<string | undefined>;
     /**
      * The security service type - can either be active\_directory,
      * kerberos or ldap.  Changing this updates the existing security service.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The security service user or group name that is used by the
      * tenant.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -242,41 +242,41 @@ export interface SecurityServiceArgs {
      * The human-readable description for the security service.
      * Changing this updates the description of the existing security service.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The security service DNS IP address that is used inside the
      * tenant network.
      */
-    dnsIp?: pulumi.Input<string>;
+    dnsIp?: pulumi.Input<string | undefined>;
     /**
      * The security service domain.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The name of the security service. Changing this updates the name
      * of the existing security service.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The security service ou. An organizational unit can be added to
      * specify where the share ends up. New in Manila microversion 2.44.
      */
-    ou?: pulumi.Input<string>;
+    ou?: pulumi.Input<string | undefined>;
     /**
      * The user password, if you specify a user.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Shared File System client.
      * A Shared File System client is needed to create a security service. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security service.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The security service host name or IP address.
      */
-    server?: pulumi.Input<string>;
+    server?: pulumi.Input<string | undefined>;
     /**
      * The security service type - can either be active\_directory,
      * kerberos or ldap.  Changing this updates the existing security service.
@@ -286,5 +286,5 @@ export interface SecurityServiceArgs {
      * The security service user or group name that is used by the
      * tenant.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }

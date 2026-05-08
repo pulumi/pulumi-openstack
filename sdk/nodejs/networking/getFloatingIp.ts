@@ -147,39 +147,39 @@ export interface GetFloatingIpOutputArgs {
     /**
      * The IP address of the floating IP.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * Human-readable description of the floating IP.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The specific IP address of the internal port which should be associated with the floating IP.
      */
-    fixedIp?: pulumi.Input<string>;
+    fixedIp?: pulumi.Input<string | undefined>;
     /**
      * The ID of the network from which the floating IP belongs to.
      */
-    pool?: pulumi.Input<string>;
+    pool?: pulumi.Input<string | undefined>;
     /**
      * The ID of the port the floating IP is attached.
      */
-    portId?: pulumi.Input<string>;
+    portId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve floating IP ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * status of the floating IP (ACTIVE/DOWN).
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The list of floating IP tags to filter.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The owner of the floating IP.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

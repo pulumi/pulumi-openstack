@@ -133,17 +133,17 @@ export interface UserMembershipV3State {
      * The UUID of group to which the user will be added.
      * Changing this creates a new user membership.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V3 Identity client.
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new user membership.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The UUID of user to use. Changing this creates a new user membership.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -160,7 +160,7 @@ export interface UserMembershipV3Args {
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new user membership.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The UUID of user to use. Changing this creates a new user membership.
      */

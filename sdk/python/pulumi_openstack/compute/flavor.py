@@ -22,15 +22,15 @@ class FlavorArgs:
                  disk: pulumi.Input[_builtins.int],
                  ram: pulumi.Input[_builtins.int],
                  vcpus: pulumi.Input[_builtins.int],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ephemeral: Optional[pulumi.Input[_builtins.int]] = None,
-                 extra_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 rx_tx_factor: Optional[pulumi.Input[_builtins.float]] = None,
-                 swap: Optional[pulumi.Input[_builtins.int]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ephemeral: pulumi.Input[Optional[_builtins.int]] = None,
+                 extra_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rx_tx_factor: pulumi.Input[Optional[_builtins.float]] = None,
+                 swap: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Flavor resource.
 
@@ -123,7 +123,7 @@ class FlavorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the flavor. Changing this
         updates the description of the flavor. Requires microversion >= 2.55.
@@ -131,12 +131,12 @@ class FlavorArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def ephemeral(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ephemeral(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of ephemeral in GiB. If unspecified,
         the default is 0. Changing this creates a new flavor.
@@ -144,24 +144,24 @@ class FlavorArgs:
         return pulumi.get(self, "ephemeral")
 
     @ephemeral.setter
-    def ephemeral(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ephemeral(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ephemeral", value)
 
     @_builtins.property
     @pulumi.getter(name="extraSpecs")
-    def extra_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def extra_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Key/Value pairs of metadata for the flavor.
         """
         return pulumi.get(self, "extra_specs")
 
     @extra_specs.setter
-    def extra_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def extra_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "extra_specs", value)
 
     @_builtins.property
     @pulumi.getter(name="flavorId")
-    def flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flavor_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique ID (integer or UUID) of flavor to create. Changing
         this creates a new flavor.
@@ -169,12 +169,12 @@ class FlavorArgs:
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
-    def flavor_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flavor_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flavor_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isPublic")
-    def is_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the flavor is public. Changing this creates
         a new flavor.
@@ -182,12 +182,12 @@ class FlavorArgs:
         return pulumi.get(self, "is_public")
 
     @is_public.setter
-    def is_public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_public", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the flavor. Changing this creates a new
         flavor.
@@ -195,12 +195,12 @@ class FlavorArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Compute client.
         Flavors are associated with accounts, but a Compute client is needed to
@@ -210,12 +210,12 @@ class FlavorArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="rxTxFactor")
-    def rx_tx_factor(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def rx_tx_factor(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         RX/TX bandwith factor. The default is 1. Changing
         this creates a new flavor.
@@ -223,12 +223,12 @@ class FlavorArgs:
         return pulumi.get(self, "rx_tx_factor")
 
     @rx_tx_factor.setter
-    def rx_tx_factor(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def rx_tx_factor(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "rx_tx_factor", value)
 
     @_builtins.property
     @pulumi.getter
-    def swap(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def swap(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of disk space in megabytes to use. If
         unspecified, the default is 0. Changing this creates a new flavor.
@@ -236,25 +236,25 @@ class FlavorArgs:
         return pulumi.get(self, "swap")
 
     @swap.setter
-    def swap(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def swap(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "swap", value)
 
 
 @pulumi.input_type
 class _FlavorState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk: Optional[pulumi.Input[_builtins.int]] = None,
-                 ephemeral: Optional[pulumi.Input[_builtins.int]] = None,
-                 extra_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 rx_tx_factor: Optional[pulumi.Input[_builtins.float]] = None,
-                 swap: Optional[pulumi.Input[_builtins.int]] = None,
-                 vcpus: Optional[pulumi.Input[_builtins.int]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk: pulumi.Input[Optional[_builtins.int]] = None,
+                 ephemeral: pulumi.Input[Optional[_builtins.int]] = None,
+                 extra_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rx_tx_factor: pulumi.Input[Optional[_builtins.float]] = None,
+                 swap: pulumi.Input[Optional[_builtins.int]] = None,
+                 vcpus: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Flavor resources.
 
@@ -311,7 +311,7 @@ class _FlavorState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the flavor. Changing this
         updates the description of the flavor. Requires microversion >= 2.55.
@@ -319,12 +319,12 @@ class _FlavorState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disk(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of disk space in GiB to use for the root
         (/) partition. Changing this creates a new flavor.
@@ -332,12 +332,12 @@ class _FlavorState:
         return pulumi.get(self, "disk")
 
     @disk.setter
-    def disk(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk", value)
 
     @_builtins.property
     @pulumi.getter
-    def ephemeral(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ephemeral(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of ephemeral in GiB. If unspecified,
         the default is 0. Changing this creates a new flavor.
@@ -345,24 +345,24 @@ class _FlavorState:
         return pulumi.get(self, "ephemeral")
 
     @ephemeral.setter
-    def ephemeral(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ephemeral(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ephemeral", value)
 
     @_builtins.property
     @pulumi.getter(name="extraSpecs")
-    def extra_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def extra_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Key/Value pairs of metadata for the flavor.
         """
         return pulumi.get(self, "extra_specs")
 
     @extra_specs.setter
-    def extra_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def extra_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "extra_specs", value)
 
     @_builtins.property
     @pulumi.getter(name="flavorId")
-    def flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flavor_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique ID (integer or UUID) of flavor to create. Changing
         this creates a new flavor.
@@ -370,12 +370,12 @@ class _FlavorState:
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
-    def flavor_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flavor_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flavor_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isPublic")
-    def is_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the flavor is public. Changing this creates
         a new flavor.
@@ -383,12 +383,12 @@ class _FlavorState:
         return pulumi.get(self, "is_public")
 
     @is_public.setter
-    def is_public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_public", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the flavor. Changing this creates a new
         flavor.
@@ -396,12 +396,12 @@ class _FlavorState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def ram(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ram(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of RAM to use, in megabytes. Changing this
         creates a new flavor.
@@ -409,12 +409,12 @@ class _FlavorState:
         return pulumi.get(self, "ram")
 
     @ram.setter
-    def ram(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ram(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ram", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Compute client.
         Flavors are associated with accounts, but a Compute client is needed to
@@ -424,12 +424,12 @@ class _FlavorState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="rxTxFactor")
-    def rx_tx_factor(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def rx_tx_factor(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         RX/TX bandwith factor. The default is 1. Changing
         this creates a new flavor.
@@ -437,12 +437,12 @@ class _FlavorState:
         return pulumi.get(self, "rx_tx_factor")
 
     @rx_tx_factor.setter
-    def rx_tx_factor(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def rx_tx_factor(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "rx_tx_factor", value)
 
     @_builtins.property
     @pulumi.getter
-    def swap(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def swap(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of disk space in megabytes to use. If
         unspecified, the default is 0. Changing this creates a new flavor.
@@ -450,12 +450,12 @@ class _FlavorState:
         return pulumi.get(self, "swap")
 
     @swap.setter
-    def swap(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def swap(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "swap", value)
 
     @_builtins.property
     @pulumi.getter
-    def vcpus(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vcpus(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of virtual CPUs to use. Changing this creates
         a new flavor.
@@ -463,7 +463,7 @@ class _FlavorState:
         return pulumi.get(self, "vcpus")
 
     @vcpus.setter
-    def vcpus(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vcpus(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vcpus", value)
 
 
@@ -473,18 +473,18 @@ class Flavor(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk: Optional[pulumi.Input[_builtins.int]] = None,
-                 ephemeral: Optional[pulumi.Input[_builtins.int]] = None,
-                 extra_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 rx_tx_factor: Optional[pulumi.Input[_builtins.float]] = None,
-                 swap: Optional[pulumi.Input[_builtins.int]] = None,
-                 vcpus: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk: pulumi.Input[Optional[_builtins.int]] = None,
+                 ephemeral: pulumi.Input[Optional[_builtins.int]] = None,
+                 extra_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rx_tx_factor: pulumi.Input[Optional[_builtins.float]] = None,
+                 swap: pulumi.Input[Optional[_builtins.int]] = None,
+                 vcpus: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages a V2 flavor resource within OpenStack.
@@ -593,18 +593,18 @@ class Flavor(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk: Optional[pulumi.Input[_builtins.int]] = None,
-                 ephemeral: Optional[pulumi.Input[_builtins.int]] = None,
-                 extra_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 rx_tx_factor: Optional[pulumi.Input[_builtins.float]] = None,
-                 swap: Optional[pulumi.Input[_builtins.int]] = None,
-                 vcpus: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk: pulumi.Input[Optional[_builtins.int]] = None,
+                 ephemeral: pulumi.Input[Optional[_builtins.int]] = None,
+                 extra_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rx_tx_factor: pulumi.Input[Optional[_builtins.float]] = None,
+                 swap: pulumi.Input[Optional[_builtins.int]] = None,
+                 vcpus: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -642,18 +642,18 @@ class Flavor(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disk: Optional[pulumi.Input[_builtins.int]] = None,
-            ephemeral: Optional[pulumi.Input[_builtins.int]] = None,
-            extra_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-            is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            ram: Optional[pulumi.Input[_builtins.int]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            rx_tx_factor: Optional[pulumi.Input[_builtins.float]] = None,
-            swap: Optional[pulumi.Input[_builtins.int]] = None,
-            vcpus: Optional[pulumi.Input[_builtins.int]] = None) -> 'Flavor':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk: pulumi.Input[Optional[_builtins.int]] = None,
+            ephemeral: pulumi.Input[Optional[_builtins.int]] = None,
+            extra_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ram: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            rx_tx_factor: pulumi.Input[Optional[_builtins.float]] = None,
+            swap: pulumi.Input[Optional[_builtins.int]] = None,
+            vcpus: pulumi.Input[Optional[_builtins.int]] = None) -> 'Flavor':
         """
         Get an existing Flavor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -20,12 +20,12 @@ __all__ = ['QuotaV2Args', 'QuotaV2']
 class QuotaV2Args:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
-                 api_export_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 recordset_records: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_records: Optional[pulumi.Input[_builtins.int]] = None,
-                 zone_recordsets: Optional[pulumi.Input[_builtins.int]] = None,
-                 zones: Optional[pulumi.Input[_builtins.int]] = None):
+                 api_export_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 recordset_records: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_records: pulumi.Input[Optional[_builtins.int]] = None,
+                 zone_recordsets: pulumi.Input[Optional[_builtins.int]] = None,
+                 zones: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a QuotaV2 resource.
 
@@ -71,7 +71,7 @@ class QuotaV2Args:
 
     @_builtins.property
     @pulumi.getter(name="apiExportSize")
-    def api_export_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def api_export_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of zones that can be
         exported via the API.
@@ -79,12 +79,12 @@ class QuotaV2Args:
         return pulumi.get(self, "api_export_size")
 
     @api_export_size.setter
-    def api_export_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def api_export_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "api_export_size", value)
 
     @_builtins.property
     @pulumi.getter(name="recordsetRecords")
-    def recordset_records(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def recordset_records(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of records in a
         recordset.
@@ -92,12 +92,12 @@ class QuotaV2Args:
         return pulumi.get(self, "recordset_records")
 
     @recordset_records.setter
-    def recordset_records(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def recordset_records(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "recordset_records", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 DNS client. If
         omitted, the `region` argument of the provider is used. Changing this creates
@@ -106,56 +106,56 @@ class QuotaV2Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneRecords")
-    def zone_records(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def zone_records(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of records in a zone.
         """
         return pulumi.get(self, "zone_records")
 
     @zone_records.setter
-    def zone_records(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def zone_records(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "zone_records", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneRecordsets")
-    def zone_recordsets(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def zone_recordsets(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of recordsets in a zone.
         """
         return pulumi.get(self, "zone_recordsets")
 
     @zone_recordsets.setter
-    def zone_recordsets(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def zone_recordsets(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "zone_recordsets", value)
 
     @_builtins.property
     @pulumi.getter
-    def zones(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def zones(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of zones that can be created.
         """
         return pulumi.get(self, "zones")
 
     @zones.setter
-    def zones(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def zones(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "zones", value)
 
 
 @pulumi.input_type
 class _QuotaV2State:
     def __init__(__self__, *,
-                 api_export_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 recordset_records: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_records: Optional[pulumi.Input[_builtins.int]] = None,
-                 zone_recordsets: Optional[pulumi.Input[_builtins.int]] = None,
-                 zones: Optional[pulumi.Input[_builtins.int]] = None):
+                 api_export_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 recordset_records: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_records: pulumi.Input[Optional[_builtins.int]] = None,
+                 zone_recordsets: pulumi.Input[Optional[_builtins.int]] = None,
+                 zones: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering QuotaV2 resources.
 
@@ -189,7 +189,7 @@ class _QuotaV2State:
 
     @_builtins.property
     @pulumi.getter(name="apiExportSize")
-    def api_export_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def api_export_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of zones that can be
         exported via the API.
@@ -197,12 +197,12 @@ class _QuotaV2State:
         return pulumi.get(self, "api_export_size")
 
     @api_export_size.setter
-    def api_export_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def api_export_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "api_export_size", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the project to manage quota. Changing this
         creates new quota.
@@ -210,12 +210,12 @@ class _QuotaV2State:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="recordsetRecords")
-    def recordset_records(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def recordset_records(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of records in a
         recordset.
@@ -223,12 +223,12 @@ class _QuotaV2State:
         return pulumi.get(self, "recordset_records")
 
     @recordset_records.setter
-    def recordset_records(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def recordset_records(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "recordset_records", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 DNS client. If
         omitted, the `region` argument of the provider is used. Changing this creates
@@ -237,43 +237,43 @@ class _QuotaV2State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneRecords")
-    def zone_records(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def zone_records(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of records in a zone.
         """
         return pulumi.get(self, "zone_records")
 
     @zone_records.setter
-    def zone_records(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def zone_records(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "zone_records", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneRecordsets")
-    def zone_recordsets(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def zone_recordsets(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of recordsets in a zone.
         """
         return pulumi.get(self, "zone_recordsets")
 
     @zone_recordsets.setter
-    def zone_recordsets(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def zone_recordsets(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "zone_recordsets", value)
 
     @_builtins.property
     @pulumi.getter
-    def zones(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def zones(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of zones that can be created.
         """
         return pulumi.get(self, "zones")
 
     @zones.setter
-    def zones(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def zones(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "zones", value)
 
 
@@ -283,13 +283,13 @@ class QuotaV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_export_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 recordset_records: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_records: Optional[pulumi.Input[_builtins.int]] = None,
-                 zone_recordsets: Optional[pulumi.Input[_builtins.int]] = None,
-                 zones: Optional[pulumi.Input[_builtins.int]] = None,
+                 api_export_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 recordset_records: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_records: pulumi.Input[Optional[_builtins.int]] = None,
+                 zone_recordsets: pulumi.Input[Optional[_builtins.int]] = None,
+                 zones: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages DNS quota in OpenStack DNS Service.
@@ -361,13 +361,13 @@ class QuotaV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_export_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 recordset_records: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_records: Optional[pulumi.Input[_builtins.int]] = None,
-                 zone_recordsets: Optional[pulumi.Input[_builtins.int]] = None,
-                 zones: Optional[pulumi.Input[_builtins.int]] = None,
+                 api_export_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 recordset_records: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_records: pulumi.Input[Optional[_builtins.int]] = None,
+                 zone_recordsets: pulumi.Input[Optional[_builtins.int]] = None,
+                 zones: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -396,13 +396,13 @@ class QuotaV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_export_size: Optional[pulumi.Input[_builtins.int]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            recordset_records: Optional[pulumi.Input[_builtins.int]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_records: Optional[pulumi.Input[_builtins.int]] = None,
-            zone_recordsets: Optional[pulumi.Input[_builtins.int]] = None,
-            zones: Optional[pulumi.Input[_builtins.int]] = None) -> 'QuotaV2':
+            api_export_size: pulumi.Input[Optional[_builtins.int]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            recordset_records: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_records: pulumi.Input[Optional[_builtins.int]] = None,
+            zone_recordsets: pulumi.Input[Optional[_builtins.int]] = None,
+            zones: pulumi.Input[Optional[_builtins.int]] = None) -> 'QuotaV2':
         """
         Get an existing QuotaV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

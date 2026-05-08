@@ -112,11 +112,11 @@ export interface GetKeypairOutputArgs {
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The user id of the owner of the key pair.
      * This parameter can be specified only if the provider is configured to use
      * the credentials of an OpenStack administrator.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }

@@ -409,13 +409,13 @@ def get_pool_v2(lb_method: Optional[_builtins.str] = None,
         tls_container_ref=pulumi.get(__ret__, 'tls_container_ref'),
         tls_enabled=pulumi.get(__ret__, 'tls_enabled'),
         tls_versions=pulumi.get(__ret__, 'tls_versions'))
-def get_pool_v2_output(lb_method: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       loadbalancer_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       pool_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       protocol: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       tags: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_pool_v2_output(lb_method: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       loadbalancer_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       pool_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       protocol: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       tags: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPoolV2Result]:
     """
     Use this data source to get the ID of an OpenStack Load Balancer pool.

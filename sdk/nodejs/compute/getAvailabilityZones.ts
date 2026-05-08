@@ -82,9 +82,9 @@ export interface GetAvailabilityZonesOutputArgs {
     /**
      * The `region` to fetch availability zones from, defaults to the provider's `region`
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The `state` of the availability zones to match, default ("available").
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }

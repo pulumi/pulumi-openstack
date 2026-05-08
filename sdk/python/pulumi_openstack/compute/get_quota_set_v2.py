@@ -285,8 +285,8 @@ def get_quota_set_v2(project_id: Optional[_builtins.str] = None,
         security_groups=pulumi.get(__ret__, 'security_groups'),
         server_group_members=pulumi.get(__ret__, 'server_group_members'),
         server_groups=pulumi.get(__ret__, 'server_groups'))
-def get_quota_set_v2_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                            region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_quota_set_v2_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                            region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQuotaSetV2Result]:
     """
     Use this data source to get the compute quotaset of an OpenStack project.

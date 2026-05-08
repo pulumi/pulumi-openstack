@@ -146,11 +146,11 @@ export interface GetNodeGroupOutputArgs {
     /**
      * The name of the node group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V1 Container Infra
      * client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

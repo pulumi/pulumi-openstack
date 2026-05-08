@@ -191,40 +191,40 @@ export interface GetShareOutputArgs {
     /**
      * The human-readable description for the share.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The export location path of the share. Available
      * since Manila API version 2.35.
      */
-    exportLocationPath?: pulumi.Input<string>;
+    exportLocationPath?: pulumi.Input<string | undefined>;
     /**
      * The level of visibility for the share.
      * length.
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * One or more metadata key and value pairs as a dictionary of
      * strings.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the share.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Shared File System
      * client. A Shared File System client is needed to read a share. If omitted,
      * the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the share's share network.
      */
-    shareNetworkId?: pulumi.Input<string>;
+    shareNetworkId?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the share's base snapshot.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * A share status filter. A valid value is `creating`,
      * `error`, `available`, `deleting`, `errorDeleting`, `manageStarting`,
@@ -232,5 +232,5 @@ export interface GetShareOutputArgs {
      * `extending`, `extendingError`, `shrinking`, `shrinkingError`, or
      * `shrinkingPossibleDataLossError`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

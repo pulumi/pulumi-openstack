@@ -157,43 +157,43 @@ export interface PortForwardingV2State {
      * A text describing the port forwarding. Changing this
      * updates the `description` of an existing port forwarding.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The TCP/UDP/other protocol port number of the port forwarding. Changing this
      * updates the `externalPort` of an existing port forwarding.
      */
-    externalPort?: pulumi.Input<number>;
+    externalPort?: pulumi.Input<number | undefined>;
     /**
      * The ID of the Neutron floating IP address. Changing this creates a new port forwarding.
      */
-    floatingipId?: pulumi.Input<string>;
+    floatingipId?: pulumi.Input<string | undefined>;
     /**
      * The fixed IPv4 address of the Neutron port associated with the port forwarding.
      * Changing this updates the `internalIpAddress` of an existing port forwarding.
      */
-    internalIpAddress?: pulumi.Input<string>;
+    internalIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
      * port forwarding. Changing this updates the `internalPort` of an existing port forwarding.
      */
-    internalPort?: pulumi.Input<number>;
+    internalPort?: pulumi.Input<number | undefined>;
     /**
      * The ID of the Neutron port associated with the port forwarding. Changing
      * this updates the `internalPortId` of an existing port forwarding.
      */
-    internalPortId?: pulumi.Input<string>;
+    internalPortId?: pulumi.Input<string | undefined>;
     /**
      * The IP protocol used in the port forwarding. Changing this updates the `protocol`
      * of an existing port forwarding.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port forwarding. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * port forwarding.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -204,7 +204,7 @@ export interface PortForwardingV2Args {
      * A text describing the port forwarding. Changing this
      * updates the `description` of an existing port forwarding.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The TCP/UDP/other protocol port number of the port forwarding. Changing this
      * updates the `externalPort` of an existing port forwarding.
@@ -240,5 +240,5 @@ export interface PortForwardingV2Args {
      * `region` argument of the provider is used. Changing this creates a new
      * port forwarding.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

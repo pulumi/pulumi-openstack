@@ -23,14 +23,14 @@ class InstanceArgs:
     def __init__(__self__, *,
                  datastore: pulumi.Input['InstanceDatastoreArgs'],
                  size: pulumi.Input[_builtins.int],
-                 configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 databases: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDatabaseArgs']]]] = None,
-                 flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 databases: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDatabaseArgs']]]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceUserArgs']]]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -101,7 +101,7 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="configurationId")
-    def configuration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def configuration_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configuration ID to be attached to the instance. Database instance
         will be rebooted when configuration is detached.
@@ -109,12 +109,12 @@ class InstanceArgs:
         return pulumi.get(self, "configuration_id")
 
     @configuration_id.setter
-    def configuration_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def configuration_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "configuration_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def databases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDatabaseArgs']]]]:
+    def databases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDatabaseArgs']]]]:
         """
         An array of database name, charset and collate. The database
         object structure is documented below.
@@ -122,12 +122,12 @@ class InstanceArgs:
         return pulumi.get(self, "databases")
 
     @databases.setter
-    def databases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDatabaseArgs']]]]):
+    def databases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDatabaseArgs']]]]):
         pulumi.set(self, "databases", value)
 
     @_builtins.property
     @pulumi.getter(name="flavorId")
-    def flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flavor_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The flavor ID of the desired flavor for the instance.
         Changing this creates new instance.
@@ -135,24 +135,24 @@ class InstanceArgs:
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
-    def flavor_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flavor_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flavor_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]]:
+    def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkArgs']]]]:
         """
         An array of one or more networks to attach to the
         instance. The network object structure is documented below. Changing this
@@ -161,12 +161,12 @@ class InstanceArgs:
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]]):
+    def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkArgs']]]]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the db instance. Changing this
         creates a new instance.
@@ -174,12 +174,12 @@ class InstanceArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]]:
+    def users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceUserArgs']]]]:
         """
         An array of username, password, host and databases. The user
         object structure is documented below.
@@ -187,12 +187,12 @@ class InstanceArgs:
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]]):
+    def users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceUserArgs']]]]):
         pulumi.set(self, "users", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeType")
-    def volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the volume type to use. If you want to
         specify a volume type, you must also specify a volume size. Changing this
@@ -201,24 +201,24 @@ class InstanceArgs:
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
-    def volume_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_type", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 databases: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDatabaseArgs']]]] = None,
-                 datastore: Optional[pulumi.Input['InstanceDatastoreArgs']] = None,
-                 flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 databases: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDatabaseArgs']]]] = None,
+                 datastore: pulumi.Input[Optional['InstanceDatastoreArgs']] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceUserArgs']]]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -269,19 +269,19 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter
-    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of IP addresses assigned to the instance.
         """
         return pulumi.get(self, "addresses")
 
     @addresses.setter
-    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="configurationId")
-    def configuration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def configuration_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configuration ID to be attached to the instance. Database instance
         will be rebooted when configuration is detached.
@@ -289,12 +289,12 @@ class _InstanceState:
         return pulumi.get(self, "configuration_id")
 
     @configuration_id.setter
-    def configuration_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def configuration_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "configuration_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def databases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDatabaseArgs']]]]:
+    def databases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDatabaseArgs']]]]:
         """
         An array of database name, charset and collate. The database
         object structure is documented below.
@@ -302,12 +302,12 @@ class _InstanceState:
         return pulumi.get(self, "databases")
 
     @databases.setter
-    def databases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDatabaseArgs']]]]):
+    def databases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDatabaseArgs']]]]):
         pulumi.set(self, "databases", value)
 
     @_builtins.property
     @pulumi.getter
-    def datastore(self) -> Optional[pulumi.Input['InstanceDatastoreArgs']]:
+    def datastore(self) -> pulumi.Input[Optional['InstanceDatastoreArgs']]:
         """
         An array of database engine type and version. The datastore
         object structure is documented below. Changing this creates a new instance.
@@ -315,12 +315,12 @@ class _InstanceState:
         return pulumi.get(self, "datastore")
 
     @datastore.setter
-    def datastore(self, value: Optional[pulumi.Input['InstanceDatastoreArgs']]):
+    def datastore(self, value: pulumi.Input[Optional['InstanceDatastoreArgs']]):
         pulumi.set(self, "datastore", value)
 
     @_builtins.property
     @pulumi.getter(name="flavorId")
-    def flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flavor_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The flavor ID of the desired flavor for the instance.
         Changing this creates new instance.
@@ -328,24 +328,24 @@ class _InstanceState:
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
-    def flavor_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flavor_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flavor_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]]:
+    def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkArgs']]]]:
         """
         An array of one or more networks to attach to the
         instance. The network object structure is documented below. Changing this
@@ -354,12 +354,12 @@ class _InstanceState:
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]]):
+    def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkArgs']]]]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the db instance. Changing this
         creates a new instance.
@@ -367,24 +367,24 @@ class _InstanceState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the volume size in GB. Changing this creates new instance.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]]:
+    def users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceUserArgs']]]]:
         """
         An array of username, password, host and databases. The user
         object structure is documented below.
@@ -392,12 +392,12 @@ class _InstanceState:
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]]):
+    def users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceUserArgs']]]]):
         pulumi.set(self, "users", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeType")
-    def volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the volume type to use. If you want to
         specify a volume type, you must also specify a volume size. Changing this
@@ -406,7 +406,7 @@ class _InstanceState:
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
-    def volume_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_type", value)
 
 
@@ -416,16 +416,16 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 databases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDatabaseArgs', 'InstanceDatabaseArgsDict']]]]] = None,
-                 datastore: Optional[pulumi.Input[Union['InstanceDatastoreArgs', 'InstanceDatastoreArgsDict']]] = None,
-                 flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceUserArgs', 'InstanceUserArgsDict']]]]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 databases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDatabaseArgs', 'InstanceDatabaseArgsDict']]]]] = None,
+                 datastore: pulumi.Input[Optional[Union['InstanceDatastoreArgs', 'InstanceDatastoreArgsDict']]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceUserArgs', 'InstanceUserArgsDict']]]]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V1 DB instance resource within OpenStack.
@@ -531,16 +531,16 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 databases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDatabaseArgs', 'InstanceDatabaseArgsDict']]]]] = None,
-                 datastore: Optional[pulumi.Input[Union['InstanceDatastoreArgs', 'InstanceDatastoreArgsDict']]] = None,
-                 flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceUserArgs', 'InstanceUserArgsDict']]]]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 databases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDatabaseArgs', 'InstanceDatabaseArgsDict']]]]] = None,
+                 datastore: pulumi.Input[Optional[Union['InstanceDatastoreArgs', 'InstanceDatastoreArgsDict']]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceUserArgs', 'InstanceUserArgsDict']]]]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -575,17 +575,17 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-            databases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDatabaseArgs', 'InstanceDatabaseArgsDict']]]]] = None,
-            datastore: Optional[pulumi.Input[Union['InstanceDatastoreArgs', 'InstanceDatastoreArgsDict']]] = None,
-            flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            size: Optional[pulumi.Input[_builtins.int]] = None,
-            users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceUserArgs', 'InstanceUserArgsDict']]]]] = None,
-            volume_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
+            addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            databases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDatabaseArgs', 'InstanceDatabaseArgsDict']]]]] = None,
+            datastore: pulumi.Input[Optional[Union['InstanceDatastoreArgs', 'InstanceDatastoreArgsDict']]] = None,
+            flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceUserArgs', 'InstanceUserArgsDict']]]]] = None,
+            volume_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

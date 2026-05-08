@@ -164,58 +164,58 @@ export interface IpSecPolicyState {
      * aes-xcbc, aes-cmac. Default is sha1.
      * Changing this updates the algorithm of the existing policy.
      */
-    authAlgorithm?: pulumi.Input<string>;
+    authAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * The human-readable description for the policy.
      * Changing this updates the description of the existing policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The encapsulation mode. Valid values are tunnel and transport. Default is tunnel.
      * Changing this updates the existing policy.
      */
-    encapsulationMode?: pulumi.Input<string>;
+    encapsulationMode?: pulumi.Input<string | undefined>;
     /**
      * The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
      * aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
      * The default value is aes-128. Changing this updates the existing policy.
      */
-    encryptionAlgorithm?: pulumi.Input<string>;
+    encryptionAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * The lifetime of the security association. Consists of Unit and Value.
      */
-    lifetimes?: pulumi.Input<pulumi.Input<inputs.vpnaas.IpSecPolicyLifetime>[]>;
+    lifetimes?: pulumi.Input<pulumi.Input<inputs.vpnaas.IpSecPolicyLifetime>[] | undefined>;
     /**
      * The name of the policy. Changing this updates the name of
      * the existing policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
      * Default is group5. Changing this updates the existing policy.
      */
-    pfs?: pulumi.Input<string>;
+    pfs?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an IPSec policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * policy.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The owner of the policy. Required if admin wants to
      * create a policy for another project. Changing this creates a new policy.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * The transform protocol. Valid values are esp, ah and ah-esp.
      * Changing this updates the existing policy. Default is ESP.
      */
-    transformProtocol?: pulumi.Input<string>;
+    transformProtocol?: pulumi.Input<string | undefined>;
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -227,56 +227,56 @@ export interface IpSecPolicyArgs {
      * aes-xcbc, aes-cmac. Default is sha1.
      * Changing this updates the algorithm of the existing policy.
      */
-    authAlgorithm?: pulumi.Input<string>;
+    authAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * The human-readable description for the policy.
      * Changing this updates the description of the existing policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The encapsulation mode. Valid values are tunnel and transport. Default is tunnel.
      * Changing this updates the existing policy.
      */
-    encapsulationMode?: pulumi.Input<string>;
+    encapsulationMode?: pulumi.Input<string | undefined>;
     /**
      * The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
      * aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
      * The default value is aes-128. Changing this updates the existing policy.
      */
-    encryptionAlgorithm?: pulumi.Input<string>;
+    encryptionAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * The lifetime of the security association. Consists of Unit and Value.
      */
-    lifetimes?: pulumi.Input<pulumi.Input<inputs.vpnaas.IpSecPolicyLifetime>[]>;
+    lifetimes?: pulumi.Input<pulumi.Input<inputs.vpnaas.IpSecPolicyLifetime>[] | undefined>;
     /**
      * The name of the policy. Changing this updates the name of
      * the existing policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
      * Default is group5. Changing this updates the existing policy.
      */
-    pfs?: pulumi.Input<string>;
+    pfs?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an IPSec policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * policy.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The owner of the policy. Required if admin wants to
      * create a policy for another project. Changing this creates a new policy.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * The transform protocol. Valid values are esp, ah and ah-esp.
      * Changing this updates the existing policy. Default is ESP.
      */
-    transformProtocol?: pulumi.Input<string>;
+    transformProtocol?: pulumi.Input<string | undefined>;
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

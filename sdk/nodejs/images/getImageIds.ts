@@ -199,56 +199,56 @@ export interface GetImageIdsOutputArgs {
     /**
      * The container format of the image.
      */
-    containerFormat?: pulumi.Input<string>;
+    containerFormat?: pulumi.Input<string | undefined>;
     /**
      * The disk format of the image.
      */
-    diskFormat?: pulumi.Input<string>;
+    diskFormat?: pulumi.Input<string | undefined>;
     /**
      * Whether or not the image is hidden from public list.
      */
-    hidden?: pulumi.Input<boolean>;
+    hidden?: pulumi.Input<boolean | undefined>;
     /**
      * The status of the image. Must be one of
      * "accepted", "pending", "rejected", or "all".
      */
-    memberStatus?: pulumi.Input<string>;
+    memberStatus?: pulumi.Input<string | undefined>;
     /**
      * The name of the image. Cannot be used simultaneously with
      * `nameRegex`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The regular expressian of the name of the image.
      * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
      * `nameRegex` filtering does by client on the result of OpenStack search
      * query.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * The owner (UUID) of the image.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * a map of key/value pairs to match an image with.
      * All specified properties must be matched. Unlike other options filtering by
      * `properties` does by client on the result of OpenStack search query.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region in which to obtain the V2 Glance client. A
      * Glance client is needed to create an Image that can be used with a compute
      * instance. If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The maximum size (in bytes) of the image to return.
      */
-    sizeMax?: pulumi.Input<number>;
+    sizeMax?: pulumi.Input<number | undefined>;
     /**
      * The minimum size (in bytes) of the image to return.
      */
-    sizeMin?: pulumi.Input<number>;
+    sizeMin?: pulumi.Input<number | undefined>;
     /**
      * Sorts the response by one or more attribute and sort
      * direction combinations. You can also set multiple sort keys and directions.
@@ -256,19 +256,19 @@ export interface GetImageIdsOutputArgs {
      * values. For example expression `sort = "name:asc,status"` sorts ascending by
      * name and descending by status.
      */
-    sort?: pulumi.Input<string>;
+    sort?: pulumi.Input<string | undefined>;
     /**
      * Search for images with a specific tag.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
     /**
      * A list of tags required to be set on the image (all
      * specified tags must be in the images tag list for it to be matched).
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The visibility of the image. Must be one of
      * "public", "private", "community", or "shared". Defaults to "private".
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
 }

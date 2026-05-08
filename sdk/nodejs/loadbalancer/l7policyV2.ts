@@ -208,65 +208,65 @@ export interface L7PolicyV2State {
      * The L7 Policy action - can either be REDIRECT\_TO\_POOL,
      * REDIRECT\_TO\_URL or REJECT.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * The administrative state of the L7 Policy.
      * A valid value is true (UP) or false (DOWN).
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * Human-readable description for the L7 Policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Listener on which the L7 Policy will be associated with.
      * Changing this creates a new L7 Policy.
      */
-    listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string | undefined>;
     /**
      * Human-readable name for the L7 Policy. Does not have
      * to be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The position of this policy on the listener. Positions start at 1.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Integer. Requests matching this policy will be  
      * redirected to the specified URL or Prefix URL with the HTTP response code.
      * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
      * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
      */
-    redirectHttpCode?: pulumi.Input<number>;
+    redirectHttpCode?: pulumi.Input<number | undefined>;
     /**
      * Requests matching this policy will be redirected to the
      * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
      */
-    redirectPoolId?: pulumi.Input<string>;
+    redirectPoolId?: pulumi.Input<string | undefined>;
     /**
      * Requests matching this policy will be redirected to 
      * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
      */
-    redirectPrefix?: pulumi.Input<string>;
+    redirectPrefix?: pulumi.Input<string | undefined>;
     /**
      * Requests matching this policy will be redirected to this URL.
      * Only valid if action is REDIRECT\_TO\_URL.
      */
-    redirectUrl?: pulumi.Input<string>;
+    redirectUrl?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an L7 policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Policy.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the L7 Policy.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new L7 Policy.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -282,11 +282,11 @@ export interface L7PolicyV2Args {
      * The administrative state of the L7 Policy.
      * A valid value is true (UP) or false (DOWN).
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * Human-readable description for the L7 Policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Listener on which the L7 Policy will be associated with.
      * Changing this creates a new L7 Policy.
@@ -296,44 +296,44 @@ export interface L7PolicyV2Args {
      * Human-readable name for the L7 Policy. Does not have
      * to be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The position of this policy on the listener. Positions start at 1.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Integer. Requests matching this policy will be  
      * redirected to the specified URL or Prefix URL with the HTTP response code.
      * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
      * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
      */
-    redirectHttpCode?: pulumi.Input<number>;
+    redirectHttpCode?: pulumi.Input<number | undefined>;
     /**
      * Requests matching this policy will be redirected to the
      * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
      */
-    redirectPoolId?: pulumi.Input<string>;
+    redirectPoolId?: pulumi.Input<string | undefined>;
     /**
      * Requests matching this policy will be redirected to 
      * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
      */
-    redirectPrefix?: pulumi.Input<string>;
+    redirectPrefix?: pulumi.Input<string | undefined>;
     /**
      * Requests matching this policy will be redirected to this URL.
      * Only valid if action is REDIRECT\_TO\_URL.
      */
-    redirectUrl?: pulumi.Input<string>;
+    redirectUrl?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an L7 policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Policy.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the L7 Policy.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new L7 Policy.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

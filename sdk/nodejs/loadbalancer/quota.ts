@@ -169,49 +169,49 @@ export interface QuotaState {
      * Quota value for health_monitors. Changing
      * this updates the existing quota. Omitting it sets it to 0.
      */
-    healthMonitor?: pulumi.Input<number>;
+    healthMonitor?: pulumi.Input<number | undefined>;
     /**
      * Quota value for l7_policies. Changing this
      * updates the existing quota. Omitting it sets it to 0. Available in
      * **Octavia minor version 2.19**.
      */
-    l7Policy?: pulumi.Input<number>;
+    l7Policy?: pulumi.Input<number | undefined>;
     /**
      * Quota value for l7_rules. Changing this
      * updates the existing quota. Omitting it sets it to 0. Available in
      * **Octavia minor version 2.19**.
      */
-    l7Rule?: pulumi.Input<number>;
+    l7Rule?: pulumi.Input<number | undefined>;
     /**
      * Quota value for listeners. Changing this updates
      * the existing quota. Omitting it sets it to 0.
      */
-    listener?: pulumi.Input<number>;
+    listener?: pulumi.Input<number | undefined>;
     /**
      * Quota value for loadbalancers. Changing this
      * updates the existing quota. Omitting it sets it to 0.
      */
-    loadbalancer?: pulumi.Input<number>;
+    loadbalancer?: pulumi.Input<number | undefined>;
     /**
      * Quota value for members. Changing this updates
      * the existing quota. Omitting it sets it to 0.
      */
-    member?: pulumi.Input<number>;
+    member?: pulumi.Input<number | undefined>;
     /**
      * Quota value for pools. Changing this updates the
      * the existing quota. Omitting it sets it to 0.
      */
-    pool?: pulumi.Input<number>;
+    pool?: pulumi.Input<number | undefined>;
     /**
      * ID of the project to manage quotas. Changing this
      * creates a new quota.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Region in which to manage quotas. Changing this
      * creates a new quota. If ommited, the region of the credentials is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -222,39 +222,39 @@ export interface QuotaArgs {
      * Quota value for health_monitors. Changing
      * this updates the existing quota. Omitting it sets it to 0.
      */
-    healthMonitor?: pulumi.Input<number>;
+    healthMonitor?: pulumi.Input<number | undefined>;
     /**
      * Quota value for l7_policies. Changing this
      * updates the existing quota. Omitting it sets it to 0. Available in
      * **Octavia minor version 2.19**.
      */
-    l7Policy?: pulumi.Input<number>;
+    l7Policy?: pulumi.Input<number | undefined>;
     /**
      * Quota value for l7_rules. Changing this
      * updates the existing quota. Omitting it sets it to 0. Available in
      * **Octavia minor version 2.19**.
      */
-    l7Rule?: pulumi.Input<number>;
+    l7Rule?: pulumi.Input<number | undefined>;
     /**
      * Quota value for listeners. Changing this updates
      * the existing quota. Omitting it sets it to 0.
      */
-    listener?: pulumi.Input<number>;
+    listener?: pulumi.Input<number | undefined>;
     /**
      * Quota value for loadbalancers. Changing this
      * updates the existing quota. Omitting it sets it to 0.
      */
-    loadbalancer?: pulumi.Input<number>;
+    loadbalancer?: pulumi.Input<number | undefined>;
     /**
      * Quota value for members. Changing this updates
      * the existing quota. Omitting it sets it to 0.
      */
-    member?: pulumi.Input<number>;
+    member?: pulumi.Input<number | undefined>;
     /**
      * Quota value for pools. Changing this updates the
      * the existing quota. Omitting it sets it to 0.
      */
-    pool?: pulumi.Input<number>;
+    pool?: pulumi.Input<number | undefined>;
     /**
      * ID of the project to manage quotas. Changing this
      * creates a new quota.
@@ -264,5 +264,5 @@ export interface QuotaArgs {
      * Region in which to manage quotas. Changing this
      * creates a new quota. If ommited, the region of the credentials is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

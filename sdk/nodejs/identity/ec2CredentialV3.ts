@@ -146,34 +146,34 @@ export interface Ec2CredentialV3State {
     /**
      * contains an EC2 credential access UUID
      */
-    access?: pulumi.Input<string>;
+    access?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project the EC2 credential is created
      * for and that authentication requests using this EC2 credential will
      * be scoped to. Only administrative users can specify a project ID different
      * from the current auth scope.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new EC2 credential.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * contains an EC2 credential secret UUID
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * contains an EC2 credential trust ID scope
      */
-    trustId?: pulumi.Input<string>;
+    trustId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user the EC2 credential is created for.
      * Only administrative users can specify a user ID different from the current
      * auth scope.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -186,17 +186,17 @@ export interface Ec2CredentialV3Args {
      * be scoped to. Only administrative users can specify a project ID different
      * from the current auth scope.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new EC2 credential.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user the EC2 credential is created for.
      * Only administrative users can specify a user ID different from the current
      * auth scope.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }

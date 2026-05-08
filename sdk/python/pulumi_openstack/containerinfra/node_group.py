@@ -20,17 +20,17 @@ __all__ = ['NodeGroupArgs', 'NodeGroup']
 class NodeGroupArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 docker_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 max_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 merge_labels: Optional[pulumi.Input[_builtins.bool]] = None,
-                 min_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None):
+                 docker_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 max_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 merge_labels: pulumi.Input[Optional[_builtins.bool]] = None,
+                 min_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NodeGroup resource.
 
@@ -102,7 +102,7 @@ class NodeGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="dockerVolumeSize")
-    def docker_volume_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def docker_volume_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size (in GB) of the Docker volume.
         Changing this creates a new node group.
@@ -110,12 +110,12 @@ class NodeGroupArgs:
         return pulumi.get(self, "docker_volume_size")
 
     @docker_volume_size.setter
-    def docker_volume_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def docker_volume_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "docker_volume_size", value)
 
     @_builtins.property
     @pulumi.getter(name="flavorId")
-    def flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flavor_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The flavor for the nodes of the node group. Can be set
         via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
@@ -124,12 +124,12 @@ class NodeGroupArgs:
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
-    def flavor_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flavor_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flavor_id", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reference to an image that is used for nodes of the
         node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
@@ -138,12 +138,12 @@ class NodeGroupArgs:
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of key value pairs representing additional
         properties of the node group. Changing this creates a new node group.
@@ -151,12 +151,12 @@ class NodeGroupArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="maxNodeCount")
-    def max_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of nodes for the node group.
         Changing this update the maximum number of nodes of the node group.
@@ -164,12 +164,12 @@ class NodeGroupArgs:
         return pulumi.get(self, "max_node_count")
 
     @max_node_count.setter
-    def max_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeLabels")
-    def merge_labels(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_labels(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the provided labels should be
         merged with cluster labels. Changing this creates a new nodegroup.
@@ -177,12 +177,12 @@ class NodeGroupArgs:
         return pulumi.get(self, "merge_labels")
 
     @merge_labels.setter
-    def merge_labels(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_labels(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="minNodeCount")
-    def min_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of nodes for the node group.
         Changing this update the minimum number of nodes of the node group.
@@ -190,12 +190,12 @@ class NodeGroupArgs:
         return pulumi.get(self, "min_node_count")
 
     @min_node_count.setter
-    def min_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_node_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the node group. Changing this creates a new
         node group.
@@ -203,12 +203,12 @@ class NodeGroupArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes for the node group. Changing
         this update the number of nodes of the node group.
@@ -216,12 +216,12 @@ class NodeGroupArgs:
         return pulumi.get(self, "node_count")
 
     @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V1 Container Infra
         client. A Container Infra client is needed to create a cluster. If omitted,
@@ -231,12 +231,12 @@ class NodeGroupArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role of nodes in the node group. Changing this
         creates a new node group.
@@ -244,28 +244,28 @@ class NodeGroupArgs:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
 
 @pulumi.input_type
 class _NodeGroupState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 max_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 merge_labels: Optional[pulumi.Input[_builtins.bool]] = None,
-                 min_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 max_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 merge_labels: pulumi.Input[Optional[_builtins.bool]] = None,
+                 min_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NodeGroup resources.
 
@@ -334,7 +334,7 @@ class _NodeGroupState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the V1 Container Infra cluster.
         Changing this creates a new node group.
@@ -342,21 +342,21 @@ class _NodeGroupState:
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="dockerVolumeSize")
-    def docker_volume_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def docker_volume_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size (in GB) of the Docker volume.
         Changing this creates a new node group.
@@ -364,12 +364,12 @@ class _NodeGroupState:
         return pulumi.get(self, "docker_volume_size")
 
     @docker_volume_size.setter
-    def docker_volume_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def docker_volume_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "docker_volume_size", value)
 
     @_builtins.property
     @pulumi.getter(name="flavorId")
-    def flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flavor_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The flavor for the nodes of the node group. Can be set
         via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
@@ -378,12 +378,12 @@ class _NodeGroupState:
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
-    def flavor_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flavor_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flavor_id", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reference to an image that is used for nodes of the
         node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
@@ -392,12 +392,12 @@ class _NodeGroupState:
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of key value pairs representing additional
         properties of the node group. Changing this creates a new node group.
@@ -405,12 +405,12 @@ class _NodeGroupState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="maxNodeCount")
-    def max_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of nodes for the node group.
         Changing this update the maximum number of nodes of the node group.
@@ -418,12 +418,12 @@ class _NodeGroupState:
         return pulumi.get(self, "max_node_count")
 
     @max_node_count.setter
-    def max_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeLabels")
-    def merge_labels(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_labels(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the provided labels should be
         merged with cluster labels. Changing this creates a new nodegroup.
@@ -431,12 +431,12 @@ class _NodeGroupState:
         return pulumi.get(self, "merge_labels")
 
     @merge_labels.setter
-    def merge_labels(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_labels(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="minNodeCount")
-    def min_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of nodes for the node group.
         Changing this update the minimum number of nodes of the node group.
@@ -444,12 +444,12 @@ class _NodeGroupState:
         return pulumi.get(self, "min_node_count")
 
     @min_node_count.setter
-    def min_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_node_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the node group. Changing this creates a new
         node group.
@@ -457,12 +457,12 @@ class _NodeGroupState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes for the node group. Changing
         this update the number of nodes of the node group.
@@ -470,12 +470,12 @@ class _NodeGroupState:
         return pulumi.get(self, "node_count")
 
     @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project of the node group. Required if admin
         wants to create a cluster in another project. Changing this creates a new
@@ -484,12 +484,12 @@ class _NodeGroupState:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V1 Container Infra
         client. A Container Infra client is needed to create a cluster. If omitted,
@@ -499,12 +499,12 @@ class _NodeGroupState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role of nodes in the node group. Changing this
         creates a new node group.
@@ -512,16 +512,16 @@ class _NodeGroupState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -531,18 +531,18 @@ class NodeGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 max_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 merge_labels: Optional[pulumi.Input[_builtins.bool]] = None,
-                 min_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 max_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 merge_labels: pulumi.Input[Optional[_builtins.bool]] = None,
+                 min_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V1 Magnum node group resource within OpenStack.
@@ -686,18 +686,18 @@ class NodeGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 max_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 merge_labels: Optional[pulumi.Input[_builtins.bool]] = None,
-                 min_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 max_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 merge_labels: pulumi.Input[Optional[_builtins.bool]] = None,
+                 min_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -734,21 +734,21 @@ class NodeGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            docker_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-            flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            max_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            merge_labels: Optional[pulumi.Input[_builtins.bool]] = None,
-            min_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'NodeGroup':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            docker_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+            flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            max_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            merge_labels: pulumi.Input[Optional[_builtins.bool]] = None,
+            min_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'NodeGroup':
         """
         Get an existing NodeGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

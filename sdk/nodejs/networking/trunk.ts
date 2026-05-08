@@ -188,49 +188,49 @@ export interface TrunkState {
      * (must be "true" or "false" if provided). Changing this updates the
      * `adminStateUp` of an existing trunk.
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * The collection of tags assigned on the trunk, which have been
      * explicitly and implicitly added.
      */
-    allTags?: pulumi.Input<pulumi.Input<string>[]>;
+    allTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Human-readable description of the trunk. Changing this
      * updates the name of the existing trunk.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A unique name for the trunk. Changing this
      * updates the `name` of an existing trunk.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the port to be used as the parent port of the
      * trunk. This is the port that should be used as the compute instance network
      * port. Changing this creates a new trunk.
      */
-    portId?: pulumi.Input<string>;
+    portId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a trunk. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * trunk.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The set of ports that will be made subports of the trunk.
      * The structure of each subport is described below.
      */
-    subPorts?: pulumi.Input<pulumi.Input<inputs.networking.TrunkSubPort>[]>;
+    subPorts?: pulumi.Input<pulumi.Input<inputs.networking.TrunkSubPort>[] | undefined>;
     /**
      * A set of string tags for the port.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The owner of the Trunk. Required if admin wants
      * to create a trunk on behalf of another tenant. Changing this creates a new trunk.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -242,17 +242,17 @@ export interface TrunkArgs {
      * (must be "true" or "false" if provided). Changing this updates the
      * `adminStateUp` of an existing trunk.
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * Human-readable description of the trunk. Changing this
      * updates the name of the existing trunk.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A unique name for the trunk. Changing this
      * updates the `name` of an existing trunk.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the port to be used as the parent port of the
      * trunk. This is the port that should be used as the compute instance network
@@ -265,19 +265,19 @@ export interface TrunkArgs {
      * `region` argument of the provider is used. Changing this creates a new
      * trunk.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The set of ports that will be made subports of the trunk.
      * The structure of each subport is described below.
      */
-    subPorts?: pulumi.Input<pulumi.Input<inputs.networking.TrunkSubPort>[]>;
+    subPorts?: pulumi.Input<pulumi.Input<inputs.networking.TrunkSubPort>[] | undefined>;
     /**
      * A set of string tags for the port.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The owner of the Trunk. Required if admin wants
      * to create a trunk on behalf of another tenant. Changing this creates a new trunk.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

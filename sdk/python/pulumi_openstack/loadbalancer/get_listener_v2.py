@@ -551,13 +551,13 @@ def get_listener_v2(listener_id: Optional[_builtins.str] = None,
         timeout_tcp_inspect=pulumi.get(__ret__, 'timeout_tcp_inspect'),
         tls_ciphers=pulumi.get(__ret__, 'tls_ciphers'),
         tls_versions=pulumi.get(__ret__, 'tls_versions'))
-def get_listener_v2_output(listener_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           loadbalancer_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           protocol: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           protocol_port: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                           region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           tags: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_listener_v2_output(listener_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           loadbalancer_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           protocol: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           protocol_port: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                           region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           tags: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetListenerV2Result]:
     """
     Use this data source to get the ID of an OpenStack Load Balancer listener.

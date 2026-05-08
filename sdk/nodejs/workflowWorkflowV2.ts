@@ -129,18 +129,18 @@ export interface WorkflowWorkflowV2OutputArgs {
     /**
      * The name of the workflow.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace of the workflow.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The id of the project to retrieve the workflow.
      * Requires admin privileges.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Workflow client.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

@@ -212,74 +212,74 @@ export interface NodeGroupState {
      * The UUID of the V1 Container Infra cluster.
      * Changing this creates a new node group.
      */
-    clusterId?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The size (in GB) of the Docker volume.
      * Changing this creates a new node group.
      */
-    dockerVolumeSize?: pulumi.Input<number>;
+    dockerVolumeSize?: pulumi.Input<number | undefined>;
     /**
      * The flavor for the nodes of the node group. Can be set
      * via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
      * node group.
      */
-    flavorId?: pulumi.Input<string>;
+    flavorId?: pulumi.Input<string | undefined>;
     /**
      * The reference to an image that is used for nodes of the
      * node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
      * Changing this updates the image attribute of the existing node group.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The list of key value pairs representing additional
      * properties of the node group. Changing this creates a new node group.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The maximum number of nodes for the node group.
      * Changing this update the maximum number of nodes of the node group.
      */
-    maxNodeCount?: pulumi.Input<number>;
+    maxNodeCount?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether the provided labels should be
      * merged with cluster labels. Changing this creates a new nodegroup.
      */
-    mergeLabels?: pulumi.Input<boolean>;
+    mergeLabels?: pulumi.Input<boolean | undefined>;
     /**
      * The minimum number of nodes for the node group.
      * Changing this update the minimum number of nodes of the node group.
      */
-    minNodeCount?: pulumi.Input<number>;
+    minNodeCount?: pulumi.Input<number | undefined>;
     /**
      * The name of the node group. Changing this creates a new
      * node group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The number of nodes for the node group. Changing
      * this update the number of nodes of the node group.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * The project of the node group. Required if admin
      * wants to create a cluster in another project. Changing this creates a new
      * node group.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V1 Container Infra
      * client. A Container Infra client is needed to create a cluster. If omitted,
      * the `region` argument of the provider is used. Changing this creates a new
      * node group.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The role of nodes in the node group. Changing this
      * creates a new node group.
      */
-    role?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -295,59 +295,59 @@ export interface NodeGroupArgs {
      * The size (in GB) of the Docker volume.
      * Changing this creates a new node group.
      */
-    dockerVolumeSize?: pulumi.Input<number>;
+    dockerVolumeSize?: pulumi.Input<number | undefined>;
     /**
      * The flavor for the nodes of the node group. Can be set
      * via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
      * node group.
      */
-    flavorId?: pulumi.Input<string>;
+    flavorId?: pulumi.Input<string | undefined>;
     /**
      * The reference to an image that is used for nodes of the
      * node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
      * Changing this updates the image attribute of the existing node group.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The list of key value pairs representing additional
      * properties of the node group. Changing this creates a new node group.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The maximum number of nodes for the node group.
      * Changing this update the maximum number of nodes of the node group.
      */
-    maxNodeCount?: pulumi.Input<number>;
+    maxNodeCount?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether the provided labels should be
      * merged with cluster labels. Changing this creates a new nodegroup.
      */
-    mergeLabels?: pulumi.Input<boolean>;
+    mergeLabels?: pulumi.Input<boolean | undefined>;
     /**
      * The minimum number of nodes for the node group.
      * Changing this update the minimum number of nodes of the node group.
      */
-    minNodeCount?: pulumi.Input<number>;
+    minNodeCount?: pulumi.Input<number | undefined>;
     /**
      * The name of the node group. Changing this creates a new
      * node group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The number of nodes for the node group. Changing
      * this update the number of nodes of the node group.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * The region in which to obtain the V1 Container Infra
      * client. A Container Infra client is needed to create a cluster. If omitted,
      * the `region` argument of the provider is used. Changing this creates a new
      * node group.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The role of nodes in the node group. Changing this
      * creates a new node group.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }

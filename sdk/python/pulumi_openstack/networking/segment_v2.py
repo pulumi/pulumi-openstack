@@ -21,11 +21,11 @@ class SegmentV2Args:
     def __init__(__self__, *,
                  network_id: pulumi.Input[_builtins.str],
                  network_type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 physical_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 segmentation_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 physical_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 segmentation_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a SegmentV2 resource.
 
@@ -87,31 +87,31 @@ class SegmentV2Args:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the segment.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the segment.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="physicalNetwork")
-    def physical_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def physical_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the physical network. Changing this
         will create a new segment.
@@ -119,12 +119,12 @@ class SegmentV2Args:
         return pulumi.get(self, "physical_network")
 
     @physical_network.setter
-    def physical_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def physical_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "physical_network", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a Neutron network. If omitted, the
@@ -134,12 +134,12 @@ class SegmentV2Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="segmentationId")
-    def segmentation_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def segmentation_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A segmentation identifier. Changing is allowed
         only for `vlan`.
@@ -147,23 +147,23 @@ class SegmentV2Args:
         return pulumi.get(self, "segmentation_id")
 
     @segmentation_id.setter
-    def segmentation_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def segmentation_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "segmentation_id", value)
 
 
 @pulumi.input_type
 class _SegmentV2State:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 physical_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 segmentation_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 physical_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 segmentation_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SegmentV2 resources.
 
@@ -209,43 +209,43 @@ class _SegmentV2State:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp (RFC3339 format).
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the segment.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the segment.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkId")
-    def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the network this segment belongs to.
         Changing this will create a new segment.
@@ -253,12 +253,12 @@ class _SegmentV2State:
         return pulumi.get(self, "network_id")
 
     @network_id.setter
-    def network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type. Valid values depend on the
         backend (e.g., `vlan`, `vxlan`, `flat`, `gre`, `geneve`, `local`). Changing
@@ -267,12 +267,12 @@ class _SegmentV2State:
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="physicalNetwork")
-    def physical_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def physical_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the physical network. Changing this
         will create a new segment.
@@ -280,12 +280,12 @@ class _SegmentV2State:
         return pulumi.get(self, "physical_network")
 
     @physical_network.setter
-    def physical_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def physical_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "physical_network", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a Neutron network. If omitted, the
@@ -295,24 +295,24 @@ class _SegmentV2State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionNumber")
-    def revision_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def revision_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The revision number of the segment.
         """
         return pulumi.get(self, "revision_number")
 
     @revision_number.setter
-    def revision_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def revision_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "revision_number", value)
 
     @_builtins.property
     @pulumi.getter(name="segmentationId")
-    def segmentation_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def segmentation_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A segmentation identifier. Changing is allowed
         only for `vlan`.
@@ -320,19 +320,19 @@ class _SegmentV2State:
         return pulumi.get(self, "segmentation_id")
 
     @segmentation_id.setter
-    def segmentation_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def segmentation_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "segmentation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last update timestamp (RFC3339 format).
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -342,13 +342,13 @@ class SegmentV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 physical_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 segmentation_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 physical_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 segmentation_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages a Neutron network segment resource within OpenStack.
@@ -455,13 +455,13 @@ class SegmentV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 physical_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 segmentation_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 physical_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 segmentation_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -495,16 +495,16 @@ class SegmentV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_id: Optional[pulumi.Input[_builtins.str]] = None,
-            network_type: Optional[pulumi.Input[_builtins.str]] = None,
-            physical_network: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            revision_number: Optional[pulumi.Input[_builtins.int]] = None,
-            segmentation_id: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'SegmentV2':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            physical_network: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            revision_number: pulumi.Input[Optional[_builtins.int]] = None,
+            segmentation_id: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'SegmentV2':
         """
         Get an existing SegmentV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

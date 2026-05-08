@@ -155,16 +155,16 @@ export interface KeypairState {
     /**
      * The fingerprint of the public key.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * A unique name for the keypair. Changing this creates a new
      * keypair.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The generated private key when no public key is specified.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * A pregenerated OpenSSH-formatted public key.
      * Changing this creates a new keypair. If a public key is not specified, then
@@ -172,24 +172,24 @@ export interface KeypairState {
      * created, then destroying this resource means you will lose access to that
      * keypair forever.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Keypairs are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new keypair.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * This allows administrative users to operate key-pairs
      * of specified user ID. For this feature your need to have openstack microversion
      * 2.10 (Liberty) or later.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -200,7 +200,7 @@ export interface KeypairArgs {
      * A unique name for the keypair. Changing this creates a new
      * keypair.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A pregenerated OpenSSH-formatted public key.
      * Changing this creates a new keypair. If a public key is not specified, then
@@ -208,22 +208,22 @@ export interface KeypairArgs {
      * created, then destroying this resource means you will lose access to that
      * keypair forever.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Keypairs are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new keypair.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * This allows administrative users to operate key-pairs
      * of specified user ID. For this feature your need to have openstack microversion
      * 2.10 (Liberty) or later.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

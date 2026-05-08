@@ -39,8 +39,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetAvailbilityZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -79,8 +79,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetAvailbilityZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -119,8 +119,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetAvailbilityZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -159,8 +159,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetAvailbilityZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -199,8 +199,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetAvailbilityZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -239,8 +239,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetAvailbilityZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -279,8 +279,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetAvailbilityZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -318,8 +318,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetShareArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -358,8 +358,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetShareArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -398,8 +398,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetShareArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -438,8 +438,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetShareArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -478,8 +478,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetShareArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -518,8 +518,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetShareArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -558,8 +558,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetShareArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -598,8 +598,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetShareNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -638,8 +638,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetShareNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -678,8 +678,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetShareNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -718,8 +718,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetShareNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -758,8 +758,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetShareNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -798,8 +798,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetShareNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -838,8 +838,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetShareNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -878,8 +878,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -918,8 +918,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -958,8 +958,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -998,8 +998,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1038,8 +1038,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1078,8 +1078,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1118,8 +1118,8 @@ public final class SharedfilesystemFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.sharedfilesystem.SharedfilesystemFunctions;
      * import com.pulumi.openstack.sharedfilesystem.inputs.GetSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

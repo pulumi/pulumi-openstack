@@ -178,37 +178,37 @@ export interface PolicyV2State {
      * rules are changed. Changing this updates the `audited` status of an existing
      * firewall policy.
      */
-    audited?: pulumi.Input<boolean>;
+    audited?: pulumi.Input<boolean | undefined>;
     /**
      * A description for the firewall policy. Changing
      * this updates the `description` of an existing firewall policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A name for the firewall policy. Changing this
      * updates the `name` of an existing firewall policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * This argument conflicts and is interchangeable
      * with `tenantId`. The owner of the firewall policy. Required if admin wants
      * to create a firewall policy for another project. Changing this creates a new
      * firewall policy.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the v2 networking client.
      * A networking client is needed to create a firewall policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * firewall policy.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * An array of one or more firewall rules that comprise
      * the policy. Changing this results in adding/removing rules from the
      * existing firewall policy.
      */
-    rules?: pulumi.Input<pulumi.Input<string>[]>;
+    rules?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Sharing status of the firewall policy (must be "true"
      * or "false" if provided). If this is "true" the policy is visible to, and
@@ -216,14 +216,14 @@ export interface PolicyV2State {
      * `shared` status of an existing firewall policy. Only administrative users
      * can specify if the policy should be shared.
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * This argument conflicts and is interchangeable
      * with `projectId`. The owner of the firewall policy. Required if admin wants
      * to create a firewall policy for another tenant. Changing this creates a new
      * firewall policy.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -237,37 +237,37 @@ export interface PolicyV2Args {
      * rules are changed. Changing this updates the `audited` status of an existing
      * firewall policy.
      */
-    audited?: pulumi.Input<boolean>;
+    audited?: pulumi.Input<boolean | undefined>;
     /**
      * A description for the firewall policy. Changing
      * this updates the `description` of an existing firewall policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A name for the firewall policy. Changing this
      * updates the `name` of an existing firewall policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * This argument conflicts and is interchangeable
      * with `tenantId`. The owner of the firewall policy. Required if admin wants
      * to create a firewall policy for another project. Changing this creates a new
      * firewall policy.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the v2 networking client.
      * A networking client is needed to create a firewall policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * firewall policy.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * An array of one or more firewall rules that comprise
      * the policy. Changing this results in adding/removing rules from the
      * existing firewall policy.
      */
-    rules?: pulumi.Input<pulumi.Input<string>[]>;
+    rules?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Sharing status of the firewall policy (must be "true"
      * or "false" if provided). If this is "true" the policy is visible to, and
@@ -275,12 +275,12 @@ export interface PolicyV2Args {
      * `shared` status of an existing firewall policy. Only administrative users
      * can specify if the policy should be shared.
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * This argument conflicts and is interchangeable
      * with `projectId`. The owner of the firewall policy. Required if admin wants
      * to create a firewall policy for another tenant. Changing this creates a new
      * firewall policy.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

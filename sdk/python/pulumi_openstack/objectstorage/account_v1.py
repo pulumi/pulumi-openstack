@@ -19,9 +19,9 @@ __all__ = ['AccountV1Args', 'AccountV1']
 @pulumi.input_type
 class AccountV1Args:
     def __init__(__self__, *,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountV1 resource.
 
@@ -43,7 +43,7 @@ class AccountV1Args:
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of custom key/value pairs to associate with the
         account metadata. Changing the `Quota-Bytes` key value is allowed to be
@@ -52,12 +52,12 @@ class AccountV1Args:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID of the corresponding account. If
         omitted, the token's project ID is used. Changing this creates a new account.
@@ -65,12 +65,12 @@ class AccountV1Args:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the account. If omitted,
         the `region` argument of the provider is used. Changing this creates a new
@@ -79,21 +79,21 @@ class AccountV1Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _AccountV1State:
     def __init__(__self__, *,
-                 bytes_used: Optional[pulumi.Input[_builtins.int]] = None,
-                 container_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 object_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 bytes_used: pulumi.Input[Optional[_builtins.int]] = None,
+                 container_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 object_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountV1 resources.
 
@@ -130,43 +130,43 @@ class _AccountV1State:
 
     @_builtins.property
     @pulumi.getter(name="bytesUsed")
-    def bytes_used(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bytes_used(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of bytes used by the account.
         """
         return pulumi.get(self, "bytes_used")
 
     @bytes_used.setter
-    def bytes_used(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bytes_used(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bytes_used", value)
 
     @_builtins.property
     @pulumi.getter(name="containerCount")
-    def container_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of containers in the account.
         """
         return pulumi.get(self, "container_count")
 
     @container_count.setter
-    def container_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def headers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of headers returned for the account.
         """
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def headers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of custom key/value pairs to associate with the
         account metadata. Changing the `Quota-Bytes` key value is allowed to be
@@ -175,24 +175,24 @@ class _AccountV1State:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="objectCount")
-    def object_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def object_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of objects in the account.
         """
         return pulumi.get(self, "object_count")
 
     @object_count.setter
-    def object_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def object_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "object_count", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID of the corresponding account. If
         omitted, the token's project ID is used. Changing this creates a new account.
@@ -200,24 +200,24 @@ class _AccountV1State:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaBytes")
-    def quota_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def quota_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of bytes allowed for the account.
         """
         return pulumi.get(self, "quota_bytes")
 
     @quota_bytes.setter
-    def quota_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def quota_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "quota_bytes", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the account. If omitted,
         the `region` argument of the provider is used. Changing this creates a new
@@ -226,7 +226,7 @@ class _AccountV1State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -236,9 +236,9 @@ class AccountV1(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V1 account resource within OpenStack.
@@ -324,9 +324,9 @@ class AccountV1(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -354,14 +354,14 @@ class AccountV1(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bytes_used: Optional[pulumi.Input[_builtins.int]] = None,
-            container_count: Optional[pulumi.Input[_builtins.int]] = None,
-            headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            object_count: Optional[pulumi.Input[_builtins.int]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            quota_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccountV1':
+            bytes_used: pulumi.Input[Optional[_builtins.int]] = None,
+            container_count: pulumi.Input[Optional[_builtins.int]] = None,
+            headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            object_count: pulumi.Input[Optional[_builtins.int]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountV1':
         """
         Get an existing AccountV1 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -190,54 +190,54 @@ export interface OrderV1State {
     /**
      * The container reference / where to find the container.
      */
-    containerRef?: pulumi.Input<string>;
+    containerRef?: pulumi.Input<string | undefined>;
     /**
      * The date the order was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * The creator of the order.
      */
-    creatorId?: pulumi.Input<string>;
+    creatorId?: pulumi.Input<string | undefined>;
     /**
      * Dictionary containing the order metadata used to generate the order. The structure is described below.
      */
-    meta?: pulumi.Input<inputs.keymanager.OrderV1Meta>;
+    meta?: pulumi.Input<inputs.keymanager.OrderV1Meta | undefined>;
     /**
      * The order reference / where to find the order.
      */
-    orderRef?: pulumi.Input<string>;
+    orderRef?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V1 KeyManager client.
      * A KeyManager client is needed to create a order. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * V1 order.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The secret reference / where to find the secret.
      */
-    secretRef?: pulumi.Input<string>;
+    secretRef?: pulumi.Input<string | undefined>;
     /**
      * The status of the order.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The sub status of the order.
      */
-    subStatus?: pulumi.Input<string>;
+    subStatus?: pulumi.Input<string | undefined>;
     /**
      * The sub status message of the order.
      */
-    subStatusMessage?: pulumi.Input<string>;
+    subStatusMessage?: pulumi.Input<string | undefined>;
     /**
      * The type of key to be generated. Must be one of `asymmetric`, `key`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The date the order was last updated.
      */
-    updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -254,7 +254,7 @@ export interface OrderV1Args {
      * `region` argument of the provider is used. Changing this creates a new
      * V1 order.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The type of key to be generated. Must be one of `asymmetric`, `key`.
      */

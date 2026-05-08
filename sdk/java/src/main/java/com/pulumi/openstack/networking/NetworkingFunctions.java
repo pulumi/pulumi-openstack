@@ -77,8 +77,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetAddressScopeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -119,8 +119,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetAddressScopeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -161,8 +161,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetAddressScopeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -203,8 +203,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetAddressScopeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -245,8 +245,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetAddressScopeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -287,8 +287,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetAddressScopeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -329,8 +329,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetAddressScopeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -371,8 +371,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetFloatingIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -411,8 +411,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetFloatingIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -451,8 +451,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetFloatingIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -491,8 +491,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetFloatingIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -531,8 +531,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetFloatingIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -571,8 +571,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetFloatingIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -611,8 +611,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetFloatingIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -651,8 +651,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -691,8 +691,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -731,8 +731,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -771,8 +771,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -811,8 +811,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -851,8 +851,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -891,8 +891,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetNetworkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -931,8 +931,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetPortArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -971,8 +971,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetPortArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1011,8 +1011,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetPortArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1051,8 +1051,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetPortArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1091,8 +1091,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetPortArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1131,8 +1131,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetPortArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1171,8 +1171,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetPortArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1212,8 +1212,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetPortIdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1253,8 +1253,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetPortIdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1294,8 +1294,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetPortIdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1335,8 +1335,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetPortIdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1376,8 +1376,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetPortIdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1417,8 +1417,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetPortIdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1458,8 +1458,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetPortIdsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1498,8 +1498,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosBandwidthLimitRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1538,8 +1538,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosBandwidthLimitRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1578,8 +1578,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosBandwidthLimitRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1618,8 +1618,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosBandwidthLimitRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1658,8 +1658,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosBandwidthLimitRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1698,8 +1698,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosDscpMarkingRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1738,8 +1738,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosDscpMarkingRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1778,8 +1778,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosDscpMarkingRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1818,8 +1818,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosDscpMarkingRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1858,8 +1858,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosDscpMarkingRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1898,8 +1898,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosMinimumBandwidthRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1938,8 +1938,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosMinimumBandwidthRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1978,8 +1978,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosMinimumBandwidthRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2018,8 +2018,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosMinimumBandwidthRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2058,8 +2058,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosMinimumBandwidthRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2098,8 +2098,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2138,8 +2138,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2178,8 +2178,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2218,8 +2218,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2258,8 +2258,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2298,8 +2298,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2338,8 +2338,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQosPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2378,8 +2378,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQuotaV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2418,8 +2418,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQuotaV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2458,8 +2458,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQuotaV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2498,8 +2498,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQuotaV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2538,8 +2538,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetQuotaV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2578,8 +2578,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetRouterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2618,8 +2618,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetRouterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2658,8 +2658,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetRouterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2698,8 +2698,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetRouterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2738,8 +2738,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetRouterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2778,8 +2778,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetRouterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2818,8 +2818,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetRouterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2858,8 +2858,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSecGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2898,8 +2898,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSecGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2938,8 +2938,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSecGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2978,8 +2978,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSecGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3018,8 +3018,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSecGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3058,8 +3058,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSecGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3098,8 +3098,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSecGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3138,8 +3138,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSegmentV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3178,8 +3178,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSegmentV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3218,8 +3218,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSegmentV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3258,8 +3258,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSegmentV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3298,8 +3298,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSegmentV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3338,8 +3338,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSegmentV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3378,8 +3378,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSegmentV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3418,8 +3418,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3458,8 +3458,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3498,8 +3498,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3538,8 +3538,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3578,8 +3578,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3618,8 +3618,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3658,8 +3658,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3699,8 +3699,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetIdsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3741,8 +3741,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetIdsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3783,8 +3783,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetIdsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3825,8 +3825,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetIdsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3867,8 +3867,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetIdsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3909,8 +3909,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetIdsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3951,8 +3951,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetIdsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3992,8 +3992,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4032,8 +4032,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4072,8 +4072,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4112,8 +4112,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4152,8 +4152,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4192,8 +4192,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4232,8 +4232,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetSubnetPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4272,8 +4272,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetTrunkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4312,8 +4312,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetTrunkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4352,8 +4352,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetTrunkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4392,8 +4392,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetTrunkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4432,8 +4432,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetTrunkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4472,8 +4472,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetTrunkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4512,8 +4512,8 @@ public final class NetworkingFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.networking.NetworkingFunctions;
      * import com.pulumi.openstack.networking.inputs.GetTrunkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

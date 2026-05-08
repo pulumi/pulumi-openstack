@@ -188,13 +188,13 @@ def get_sec_group(description: Optional[_builtins.str] = None,
         stateful=pulumi.get(__ret__, 'stateful'),
         tags=pulumi.get(__ret__, 'tags'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'))
-def get_sec_group_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         secgroup_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         stateful: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                         tags: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         tenant_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_sec_group_output(description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         secgroup_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         stateful: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                         tags: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         tenant_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecGroupResult]:
     """
     Use this data source to get the ID of an available OpenStack security group.

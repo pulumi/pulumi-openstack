@@ -20,14 +20,14 @@ __all__ = [
 ]
 
 class ShareExportLocationArgsDict(TypedDict):
-    path: NotRequired[pulumi.Input[_builtins.str]]
-    preferred: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    preferred: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ShareExportLocationArgs:
     def __init__(__self__, *,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred: Optional[pulumi.Input[_builtins.str]] = None):
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred: pulumi.Input[Optional[_builtins.str]] = None):
         if path is not None:
             pulumi.set(__self__, "path", path)
         if preferred is not None:
@@ -35,20 +35,20 @@ class ShareExportLocationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def preferred(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "preferred")
 
     @preferred.setter
-    def preferred(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred", value)
 
 

@@ -185,133 +185,133 @@ export interface ProviderArgs {
      * If set to `false`, OpenStack authorization won't be perfomed
      * automatically, if the initial auth token get expired. Defaults to `true`
      */
-    allowReauth?: pulumi.Input<boolean>;
+    allowReauth?: pulumi.Input<boolean | undefined>;
     /**
      * Application Credential ID to login with.
      */
-    applicationCredentialId?: pulumi.Input<string>;
+    applicationCredentialId?: pulumi.Input<string | undefined>;
     /**
      * Application Credential name to login with.
      */
-    applicationCredentialName?: pulumi.Input<string>;
+    applicationCredentialName?: pulumi.Input<string | undefined>;
     /**
      * Application Credential secret to login with.
      */
-    applicationCredentialSecret?: pulumi.Input<string>;
+    applicationCredentialSecret?: pulumi.Input<string | undefined>;
     /**
      * The Identity authentication URL.
      */
-    authUrl?: pulumi.Input<string>;
+    authUrl?: pulumi.Input<string | undefined>;
     /**
      * A Custom CA certificate.
      */
-    cacertFile?: pulumi.Input<string>;
+    cacertFile?: pulumi.Input<string | undefined>;
     /**
      * A client certificate to authenticate with.
      */
-    cert?: pulumi.Input<string>;
+    cert?: pulumi.Input<string | undefined>;
     /**
      * An entry in a `clouds.yaml` file to use.
      */
-    cloud?: pulumi.Input<string>;
+    cloud?: pulumi.Input<string | undefined>;
     /**
      * The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
      */
-    defaultDomain?: pulumi.Input<string>;
+    defaultDomain?: pulumi.Input<string | undefined>;
     /**
      * If set to `false`, OpenStack authorization will be perfomed,
      * every time the service provider client is called. Defaults to `true`.
      */
-    delayedAuth?: pulumi.Input<boolean>;
+    delayedAuth?: pulumi.Input<boolean | undefined>;
     /**
      * If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
      */
-    disableNoCacheHeader?: pulumi.Input<boolean>;
+    disableNoCacheHeader?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Domain to scope to (Identity v3).
      */
-    domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Domain to scope to (Identity v3).
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * Outputs very verbose logs with all calls made to and responses from OpenStack
      */
-    enableLogging?: pulumi.Input<boolean>;
+    enableLogging?: pulumi.Input<boolean | undefined>;
     /**
      * A map of services with an endpoint to override what was
      * from the Keystone catalog
      */
-    endpointOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    endpointType?: pulumi.Input<string>;
+    endpointOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    endpointType?: pulumi.Input<string | undefined>;
     /**
      * Trust self-signed certificates.
      */
-    insecure?: pulumi.Input<boolean>;
+    insecure?: pulumi.Input<boolean | undefined>;
     /**
      * A client private key to authenticate with.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * How many times HTTP connection should be retried until giving up.
      */
-    maxRetries?: pulumi.Input<number>;
+    maxRetries?: pulumi.Input<number | undefined>;
     /**
      * Password to login with.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The ID of the domain where the proejct resides (Identity v3).
      */
-    projectDomainId?: pulumi.Input<string>;
+    projectDomainId?: pulumi.Input<string | undefined>;
     /**
      * The name of the domain where the project resides (Identity v3).
      */
-    projectDomainName?: pulumi.Input<string>;
+    projectDomainName?: pulumi.Input<string | undefined>;
     /**
      * The OpenStack region to connect to.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Use Swift's authentication system instead of Keystone. Only used for
      * interaction with Swift.
      */
-    swauth?: pulumi.Input<boolean>;
+    swauth?: pulumi.Input<boolean | undefined>;
     /**
      * If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
      */
-    systemScope?: pulumi.Input<boolean>;
+    systemScope?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Tenant (Identity v2) or Project (Identity v3)
      * to login with.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Tenant (Identity v2) or Project (Identity v3)
      * to login with.
      */
-    tenantName?: pulumi.Input<string>;
+    tenantName?: pulumi.Input<string | undefined>;
     /**
      * Authentication token to use as an alternative to username/password.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The ID of the domain where the user resides (Identity v3).
      */
-    userDomainId?: pulumi.Input<string>;
+    userDomainId?: pulumi.Input<string | undefined>;
     /**
      * The name of the domain where the user resides (Identity v3).
      */
-    userDomainName?: pulumi.Input<string>;
+    userDomainName?: pulumi.Input<string | undefined>;
     /**
      * User ID to login with.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * Username to login with.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

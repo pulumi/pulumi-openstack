@@ -125,18 +125,18 @@ export interface FlavorAccessState {
     /**
      * The UUID of flavor to use. Changing this creates a new flavor access.
      */
-    flavorId?: pulumi.Input<string>;
+    flavorId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new flavor access.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The UUID of tenant which is allowed to use the flavor.
      * Changing this creates a new flavor access.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -152,7 +152,7 @@ export interface FlavorAccessArgs {
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new flavor access.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The UUID of tenant which is allowed to use the flavor.
      * Changing this creates a new flavor access.

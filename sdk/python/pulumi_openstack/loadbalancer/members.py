@@ -22,8 +22,8 @@ __all__ = ['MembersArgs', 'Members']
 class MembersArgs:
     def __init__(__self__, *,
                  pool_id: pulumi.Input[_builtins.str],
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input['MembersMemberArgs']]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Members resource.
 
@@ -57,7 +57,7 @@ class MembersArgs:
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MembersMemberArgs']]]]:
         """
         A set of dictionaries containing member parameters. The
         structure is described below.
@@ -65,12 +65,12 @@ class MembersArgs:
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MembersMemberArgs']]]]):
         pulumi.set(self, "members", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create pool members. If omitted, the
@@ -80,16 +80,16 @@ class MembersArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _MembersState:
     def __init__(__self__, *,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]]] = None,
-                 pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input['MembersMemberArgs']]]] = None,
+                 pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Members resources.
 
@@ -111,7 +111,7 @@ class _MembersState:
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MembersMemberArgs']]]]:
         """
         A set of dictionaries containing member parameters. The
         structure is described below.
@@ -119,12 +119,12 @@ class _MembersState:
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MembersMemberArgs']]]]):
         pulumi.set(self, "members", value)
 
     @_builtins.property
     @pulumi.getter(name="poolId")
-    def pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the pool that members will be assigned to.
         Changing this creates a new members resource.
@@ -132,12 +132,12 @@ class _MembersState:
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
-    def pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pool_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create pool members. If omitted, the
@@ -147,7 +147,7 @@ class _MembersState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -157,9 +157,9 @@ class Members(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MembersMemberArgs', 'MembersMemberArgsDict']]]]] = None,
-                 pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MembersMemberArgs', 'MembersMemberArgsDict']]]]] = None,
+                 pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V2 members resource within OpenStack (batch members update).
@@ -263,9 +263,9 @@ class Members(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MembersMemberArgs', 'MembersMemberArgsDict']]]]] = None,
-                 pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MembersMemberArgs', 'MembersMemberArgsDict']]]]] = None,
+                 pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -290,9 +290,9 @@ class Members(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MembersMemberArgs', 'MembersMemberArgsDict']]]]] = None,
-            pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'Members':
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MembersMemberArgs', 'MembersMemberArgsDict']]]]] = None,
+            pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'Members':
         """
         Get an existing Members resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

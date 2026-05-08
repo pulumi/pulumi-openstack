@@ -21,18 +21,18 @@ __all__ = ['SecretV1Args', 'SecretV1']
 @pulumi.input_type
 class SecretV1Args:
     def __init__(__self__, *,
-                 acl: Optional[pulumi.Input['SecretV1AclArgs']] = None,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 bit_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 expiration: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payload: Optional[pulumi.Input[_builtins.str]] = None,
-                 payload_content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 payload_content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl: pulumi.Input[Optional['SecretV1AclArgs']] = None,
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 bit_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payload: pulumi.Input[Optional[_builtins.str]] = None,
+                 payload_content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 payload_content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecretV1 resource.
 
@@ -82,7 +82,7 @@ class SecretV1Args:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input['SecretV1AclArgs']]:
+    def acl(self) -> pulumi.Input[Optional['SecretV1AclArgs']]:
         """
         Allows to control an access to a secret. Currently only the
         `read` operation is supported. If not specified, the secret is accessible
@@ -91,72 +91,72 @@ class SecretV1Args:
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input['SecretV1AclArgs']]):
+    def acl(self, value: pulumi.Input[Optional['SecretV1AclArgs']]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Metadata provided by a user or system for informational purposes.
         """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="bitLength")
-    def bit_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bit_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Metadata provided by a user or system for informational purposes.
         """
         return pulumi.get(self, "bit_length")
 
     @bit_length.setter
-    def bit_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bit_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bit_length", value)
 
     @_builtins.property
     @pulumi.getter
-    def expiration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
         """
         return pulumi.get(self, "expiration")
 
     @expiration.setter
-    def expiration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Additional Metadata for the secret.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Metadata provided by a user or system for informational purposes.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable name for the Secret. Does not have
         to be unique.
@@ -164,48 +164,48 @@ class SecretV1Args:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def payload(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payload(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secret's data to be stored. **payload\\_content\\_type** must also be supplied if **payload** is included.
         """
         return pulumi.get(self, "payload")
 
     @payload.setter
-    def payload(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payload(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payload", value)
 
     @_builtins.property
     @pulumi.getter(name="payloadContentEncoding")
-    def payload_content_encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payload_content_encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
         """
         return pulumi.get(self, "payload_content_encoding")
 
     @payload_content_encoding.setter
-    def payload_content_encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payload_content_encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payload_content_encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="payloadContentType")
-    def payload_content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payload_content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
         """
         return pulumi.get(self, "payload_content_type")
 
     @payload_content_type.setter
-    def payload_content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payload_content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payload_content_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V1 KeyManager client.
         A KeyManager client is needed to create a secret. If omitted, the
@@ -215,44 +215,44 @@ class SecretV1Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="secretType")
-    def secret_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
         """
         return pulumi.get(self, "secret_type")
 
     @secret_type.setter
-    def secret_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_type", value)
 
 
 @pulumi.input_type
 class _SecretV1State:
     def __init__(__self__, *,
-                 acl: Optional[pulumi.Input['SecretV1AclArgs']] = None,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 all_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 bit_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 content_types: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 creator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payload: Optional[pulumi.Input[_builtins.str]] = None,
-                 payload_content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 payload_content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl: pulumi.Input[Optional['SecretV1AclArgs']] = None,
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 all_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 bit_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 content_types: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 creator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payload: pulumi.Input[Optional[_builtins.str]] = None,
+                 payload_content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 payload_content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecretV1 resources.
 
@@ -324,7 +324,7 @@ class _SecretV1State:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input['SecretV1AclArgs']]:
+    def acl(self) -> pulumi.Input[Optional['SecretV1AclArgs']]:
         """
         Allows to control an access to a secret. Currently only the
         `read` operation is supported. If not specified, the secret is accessible
@@ -333,24 +333,24 @@ class _SecretV1State:
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input['SecretV1AclArgs']]):
+    def acl(self, value: pulumi.Input[Optional['SecretV1AclArgs']]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Metadata provided by a user or system for informational purposes.
         """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="allMetadata")
-    def all_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def all_metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The map of metadata, assigned on the secret, which has been
         explicitly and implicitly added.
@@ -358,96 +358,96 @@ class _SecretV1State:
         return pulumi.get(self, "all_metadata")
 
     @all_metadata.setter
-    def all_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def all_metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "all_metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="bitLength")
-    def bit_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bit_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Metadata provided by a user or system for informational purposes.
         """
         return pulumi.get(self, "bit_length")
 
     @bit_length.setter
-    def bit_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bit_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bit_length", value)
 
     @_builtins.property
     @pulumi.getter(name="contentTypes")
-    def content_types(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def content_types(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The map of the content types, assigned on the secret.
         """
         return pulumi.get(self, "content_types")
 
     @content_types.setter
-    def content_types(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def content_types(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "content_types", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date the secret was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="creatorId")
-    def creator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creator of the secret.
         """
         return pulumi.get(self, "creator_id")
 
     @creator_id.setter
-    def creator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def expiration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
         """
         return pulumi.get(self, "expiration")
 
     @expiration.setter
-    def expiration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Additional Metadata for the secret.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Metadata provided by a user or system for informational purposes.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable name for the Secret. Does not have
         to be unique.
@@ -455,48 +455,48 @@ class _SecretV1State:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def payload(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payload(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secret's data to be stored. **payload\\_content\\_type** must also be supplied if **payload** is included.
         """
         return pulumi.get(self, "payload")
 
     @payload.setter
-    def payload(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payload(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payload", value)
 
     @_builtins.property
     @pulumi.getter(name="payloadContentEncoding")
-    def payload_content_encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payload_content_encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
         """
         return pulumi.get(self, "payload_content_encoding")
 
     @payload_content_encoding.setter
-    def payload_content_encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payload_content_encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payload_content_encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="payloadContentType")
-    def payload_content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payload_content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
         """
         return pulumi.get(self, "payload_content_type")
 
     @payload_content_type.setter
-    def payload_content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payload_content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payload_content_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V1 KeyManager client.
         A KeyManager client is needed to create a secret. If omitted, the
@@ -506,55 +506,55 @@ class _SecretV1State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="secretRef")
-    def secret_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secret reference / where to find the secret.
         """
         return pulumi.get(self, "secret_ref")
 
     @secret_ref.setter
-    def secret_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_ref", value)
 
     @_builtins.property
     @pulumi.getter(name="secretType")
-    def secret_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
         """
         return pulumi.get(self, "secret_type")
 
     @secret_type.setter
-    def secret_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the secret.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date the secret was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -564,18 +564,18 @@ class SecretV1(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[Union['SecretV1AclArgs', 'SecretV1AclArgsDict']]] = None,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 bit_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 expiration: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payload: Optional[pulumi.Input[_builtins.str]] = None,
-                 payload_content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 payload_content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl: pulumi.Input[Optional[Union['SecretV1AclArgs', 'SecretV1AclArgsDict']]] = None,
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 bit_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payload: pulumi.Input[Optional[_builtins.str]] = None,
+                 payload_content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 payload_content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V1 Barbican secret resource within OpenStack.
@@ -821,18 +821,18 @@ class SecretV1(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[Union['SecretV1AclArgs', 'SecretV1AclArgsDict']]] = None,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 bit_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 expiration: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payload: Optional[pulumi.Input[_builtins.str]] = None,
-                 payload_content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 payload_content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl: pulumi.Input[Optional[Union['SecretV1AclArgs', 'SecretV1AclArgsDict']]] = None,
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 bit_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payload: pulumi.Input[Optional[_builtins.str]] = None,
+                 payload_content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 payload_content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -873,25 +873,25 @@ class SecretV1(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl: Optional[pulumi.Input[Union['SecretV1AclArgs', 'SecretV1AclArgsDict']]] = None,
-            algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            all_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            bit_length: Optional[pulumi.Input[_builtins.int]] = None,
-            content_types: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            creator_id: Optional[pulumi.Input[_builtins.str]] = None,
-            expiration: Optional[pulumi.Input[_builtins.str]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            mode: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            payload: Optional[pulumi.Input[_builtins.str]] = None,
-            payload_content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-            payload_content_type: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_ref: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'SecretV1':
+            acl: pulumi.Input[Optional[Union['SecretV1AclArgs', 'SecretV1AclArgsDict']]] = None,
+            algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            all_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            bit_length: pulumi.Input[Optional[_builtins.int]] = None,
+            content_types: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            creator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            payload: pulumi.Input[Optional[_builtins.str]] = None,
+            payload_content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            payload_content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecretV1':
         """
         Get an existing SecretV1 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

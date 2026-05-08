@@ -219,57 +219,57 @@ export interface ShareNetworkState {
     /**
      * The share network CIDR.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * The human-readable description for the share network.
      * Changing this updates the description of the existing share network.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The IP version of the share network. Can either be 4 or 6.
      */
-    ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number | undefined>;
     /**
      * The name for the share network. Changing this updates the name
      * of the existing share network.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The share network type. Can either be VLAN, VXLAN, GRE, or flat.
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
     /**
      * The UUID of a neutron network when setting up or updating
      * a share network. Changing this updates the existing share network if it's not used by
      * shares.
      */
-    neutronNetId?: pulumi.Input<string>;
+    neutronNetId?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the neutron subnet when setting up or
      * updating a share network. Changing this updates the existing share network if it's
      * not used by shares.
      */
-    neutronSubnetId?: pulumi.Input<string>;
+    neutronSubnetId?: pulumi.Input<string | undefined>;
     /**
      * The owner of the Share Network.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Shared File System client.
      * A Shared File System client is needed to create a share network. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * share network.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The list of security service IDs to associate with
      * the share network. The security service must be specified by ID and not name.
      */
-    securityServiceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityServiceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The share network segmentation ID.
      */
-    segmentationId?: pulumi.Input<number>;
+    segmentationId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -280,12 +280,12 @@ export interface ShareNetworkArgs {
      * The human-readable description for the share network.
      * Changing this updates the description of the existing share network.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name for the share network. Changing this updates the name
      * of the existing share network.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The UUID of a neutron network when setting up or updating
      * a share network. Changing this updates the existing share network if it's not used by
@@ -304,10 +304,10 @@ export interface ShareNetworkArgs {
      * `region` argument of the provider is used. Changing this creates a new
      * share network.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The list of security service IDs to associate with
      * the share network. The security service must be specified by ID and not name.
      */
-    securityServiceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityServiceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

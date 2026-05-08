@@ -159,58 +159,58 @@ export interface QuotaV2State {
      * Quota value for floating IPs. Changing this updates the
      * existing quota.
      */
-    floatingip?: pulumi.Input<number>;
+    floatingip?: pulumi.Input<number | undefined>;
     /**
      * Quota value for networks. Changing this updates the
      * existing quota.
      */
-    network?: pulumi.Input<number>;
+    network?: pulumi.Input<number | undefined>;
     /**
      * Quota value for ports. Changing this updates the
      * existing quota.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * ID of the project to manage quota. Changing this
      * creates new quota.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Quota value for RBAC policies.
      * Changing this updates the existing quota.
      */
-    rbacPolicy?: pulumi.Input<number>;
+    rbacPolicy?: pulumi.Input<number | undefined>;
     /**
      * The region in which to create the quota. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates new quota.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Quota value for routers. Changing this updates the
      * existing quota.
      */
-    router?: pulumi.Input<number>;
+    router?: pulumi.Input<number | undefined>;
     /**
      * Quota value for security groups. Changing
      * this updates the existing quota.
      */
-    securityGroup?: pulumi.Input<number>;
+    securityGroup?: pulumi.Input<number | undefined>;
     /**
      * Quota value for security group rules.
      * Changing this updates the existing quota.
      */
-    securityGroupRule?: pulumi.Input<number>;
+    securityGroupRule?: pulumi.Input<number | undefined>;
     /**
      * Quota value for subnets. Changing
      * this updates the existing quota.
      */
-    subnet?: pulumi.Input<number>;
+    subnet?: pulumi.Input<number | undefined>;
     /**
      * Quota value for subnetpools.
      * Changing this updates the existing quota.
      */
-    subnetpool?: pulumi.Input<number>;
+    subnetpool?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -221,17 +221,17 @@ export interface QuotaV2Args {
      * Quota value for floating IPs. Changing this updates the
      * existing quota.
      */
-    floatingip?: pulumi.Input<number>;
+    floatingip?: pulumi.Input<number | undefined>;
     /**
      * Quota value for networks. Changing this updates the
      * existing quota.
      */
-    network?: pulumi.Input<number>;
+    network?: pulumi.Input<number | undefined>;
     /**
      * Quota value for ports. Changing this updates the
      * existing quota.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * ID of the project to manage quota. Changing this
      * creates new quota.
@@ -241,36 +241,36 @@ export interface QuotaV2Args {
      * Quota value for RBAC policies.
      * Changing this updates the existing quota.
      */
-    rbacPolicy?: pulumi.Input<number>;
+    rbacPolicy?: pulumi.Input<number | undefined>;
     /**
      * The region in which to create the quota. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates new quota.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Quota value for routers. Changing this updates the
      * existing quota.
      */
-    router?: pulumi.Input<number>;
+    router?: pulumi.Input<number | undefined>;
     /**
      * Quota value for security groups. Changing
      * this updates the existing quota.
      */
-    securityGroup?: pulumi.Input<number>;
+    securityGroup?: pulumi.Input<number | undefined>;
     /**
      * Quota value for security group rules.
      * Changing this updates the existing quota.
      */
-    securityGroupRule?: pulumi.Input<number>;
+    securityGroupRule?: pulumi.Input<number | undefined>;
     /**
      * Quota value for subnets. Changing
      * this updates the existing quota.
      */
-    subnet?: pulumi.Input<number>;
+    subnet?: pulumi.Input<number | undefined>;
     /**
      * Quota value for subnetpools.
      * Changing this updates the existing quota.
      */
-    subnetpool?: pulumi.Input<number>;
+    subnetpool?: pulumi.Input<number | undefined>;
 }

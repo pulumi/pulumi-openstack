@@ -150,24 +150,24 @@ export interface LbFlavorprofileV2State {
      * can be used for readability as shown in the example above.
      * Changing this updates the existing flavorprofile.
      */
-    flavorData?: pulumi.Input<string>;
+    flavorData?: pulumi.Input<string | undefined>;
     /**
      * Name of the flavorprofile. Changing this updates the existing
      * flavorprofile.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The providerName that the flavorProfile will use.
      * Changing this updates the existing flavorprofile.
      */
-    providerName?: pulumi.Input<string>;
+    providerName?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an LB member. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * LB flavorprofile.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -185,7 +185,7 @@ export interface LbFlavorprofileV2Args {
      * Name of the flavorprofile. Changing this updates the existing
      * flavorprofile.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The providerName that the flavorProfile will use.
      * Changing this updates the existing flavorprofile.
@@ -197,5 +197,5 @@ export interface LbFlavorprofileV2Args {
      * `region` argument of the provider is used. Changing this creates a new
      * LB flavorprofile.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

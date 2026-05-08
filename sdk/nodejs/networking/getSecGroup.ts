@@ -135,31 +135,31 @@ export interface GetSecGroupOutputArgs {
     /**
      * Human-readable description the the subnet.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the security group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve security groups ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the security group.
      */
-    secgroupId?: pulumi.Input<string>;
+    secgroupId?: pulumi.Input<string | undefined>;
     /**
      * Whether the security group is stateful or not.
      */
-    stateful?: pulumi.Input<boolean>;
+    stateful?: pulumi.Input<boolean | undefined>;
     /**
      * The list of security group tags to filter.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The owner of the security group.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

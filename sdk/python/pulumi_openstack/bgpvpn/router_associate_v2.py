@@ -21,9 +21,9 @@ class RouterAssociateV2Args:
     def __init__(__self__, *,
                  bgpvpn_id: pulumi.Input[_builtins.str],
                  router_id: pulumi.Input[_builtins.str],
-                 advertise_extra_routes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 advertise_extra_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouterAssociateV2 resource.
 
@@ -79,7 +79,7 @@ class RouterAssociateV2Args:
 
     @_builtins.property
     @pulumi.getter(name="advertiseExtraRoutes")
-    def advertise_extra_routes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def advertise_extra_routes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean flag indicating whether extra
         routes should be advertised. Defaults to true.
@@ -87,12 +87,12 @@ class RouterAssociateV2Args:
         return pulumi.get(self, "advertise_extra_routes")
 
     @advertise_extra_routes.setter
-    def advertise_extra_routes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def advertise_extra_routes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "advertise_extra_routes", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project that owns the BGP VPN router
         association. Only administrative and users with `advsvc` role can specify a
@@ -102,12 +102,12 @@ class RouterAssociateV2Args:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a BGP VPN router association. If
@@ -117,18 +117,18 @@ class RouterAssociateV2Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _RouterAssociateV2State:
     def __init__(__self__, *,
-                 advertise_extra_routes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgpvpn_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 advertise_extra_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgpvpn_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterAssociateV2 resources.
 
@@ -160,7 +160,7 @@ class _RouterAssociateV2State:
 
     @_builtins.property
     @pulumi.getter(name="advertiseExtraRoutes")
-    def advertise_extra_routes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def advertise_extra_routes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean flag indicating whether extra
         routes should be advertised. Defaults to true.
@@ -168,12 +168,12 @@ class _RouterAssociateV2State:
         return pulumi.get(self, "advertise_extra_routes")
 
     @advertise_extra_routes.setter
-    def advertise_extra_routes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def advertise_extra_routes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "advertise_extra_routes", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpvpnId")
-    def bgpvpn_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bgpvpn_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the BGP VPN to which the router will be
         associated. Changing this creates a new BGP VPN router association.
@@ -181,12 +181,12 @@ class _RouterAssociateV2State:
         return pulumi.get(self, "bgpvpn_id")
 
     @bgpvpn_id.setter
-    def bgpvpn_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bgpvpn_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bgpvpn_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project that owns the BGP VPN router
         association. Only administrative and users with `advsvc` role can specify a
@@ -196,12 +196,12 @@ class _RouterAssociateV2State:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a BGP VPN router association. If
@@ -211,12 +211,12 @@ class _RouterAssociateV2State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="routerId")
-    def router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the router to be associated with the BGP
         VPN. Changing this creates a new BGP VPN router association.
@@ -224,7 +224,7 @@ class _RouterAssociateV2State:
         return pulumi.get(self, "router_id")
 
     @router_id.setter
-    def router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_id", value)
 
 
@@ -234,11 +234,11 @@ class RouterAssociateV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advertise_extra_routes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgpvpn_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 advertise_extra_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgpvpn_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V2 BGP VPN router association resource within OpenStack.
@@ -308,11 +308,11 @@ class RouterAssociateV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advertise_extra_routes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgpvpn_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 advertise_extra_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgpvpn_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -343,11 +343,11 @@ class RouterAssociateV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advertise_extra_routes: Optional[pulumi.Input[_builtins.bool]] = None,
-            bgpvpn_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            router_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'RouterAssociateV2':
+            advertise_extra_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+            bgpvpn_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RouterAssociateV2':
         """
         Get an existing RouterAssociateV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

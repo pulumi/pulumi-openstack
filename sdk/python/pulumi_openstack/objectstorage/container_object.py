@@ -20,20 +20,20 @@ __all__ = ['ContainerObjectArgs', 'ContainerObject']
 class ContainerObjectArgs:
     def __init__(__self__, *,
                  container_name: pulumi.Input[_builtins.str],
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 copy_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_after: Optional[pulumi.Input[_builtins.int]] = None,
-                 delete_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 detect_content_type: Optional[pulumi.Input[_builtins.bool]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_manifest: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None):
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 copy_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_after: pulumi.Input[Optional[_builtins.int]] = None,
+                 delete_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 detect_content_type: pulumi.Input[Optional[_builtins.bool]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_manifest: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ContainerObject resource.
 
@@ -126,7 +126,7 @@ class ContainerObjectArgs:
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string representing the content of the object. Conflicts with
         `source` and `copy_from`.
@@ -134,12 +134,12 @@ class ContainerObjectArgs:
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter(name="contentDisposition")
-    def content_disposition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_disposition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string which specifies the override behavior for 
         the browser. For example, this header might specify that the browser use a download
@@ -148,12 +148,12 @@ class ContainerObjectArgs:
         return pulumi.get(self, "content_disposition")
 
     @content_disposition.setter
-    def content_disposition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_disposition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_disposition", value)
 
     @_builtins.property
     @pulumi.getter(name="contentEncoding")
-    def content_encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string representing the value of the Content-Encoding
         metadata.
@@ -161,24 +161,24 @@ class ContainerObjectArgs:
         return pulumi.get(self, "content_encoding")
 
     @content_encoding.setter
-    def content_encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string which sets the MIME type for the object.
         """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter(name="copyFrom")
-    def copy_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def copy_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string representing the name of an object 
         used to create the new object by copying the `copy_from` object. The value is in form
@@ -189,12 +189,12 @@ class ContainerObjectArgs:
         return pulumi.get(self, "copy_from")
 
     @copy_from.setter
-    def copy_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def copy_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "copy_from", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteAfter")
-    def delete_after(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def delete_after(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         An integer representing the number of seconds after which the
         system removes the object. Internally, the Object Storage system stores this value in
@@ -203,12 +203,12 @@ class ContainerObjectArgs:
         return pulumi.get(self, "delete_after")
 
     @delete_after.setter
-    def delete_after(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def delete_after(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "delete_after", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteAt")
-    def delete_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An string representing the date when the system removes the object. 
         For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
@@ -216,12 +216,12 @@ class ContainerObjectArgs:
         return pulumi.get(self, "delete_at")
 
     @delete_at.setter
-    def delete_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_at", value)
 
     @_builtins.property
     @pulumi.getter(name="detectContentType")
-    def detect_content_type(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def detect_content_type(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, Object Storage guesses the content 
         type based on the file extension and ignores the value sent in the Content-Type
@@ -230,45 +230,45 @@ class ContainerObjectArgs:
         return pulumi.get(self, "detect_content_type")
 
     @detect_content_type.setter
-    def detect_content_type(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def detect_content_type(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "detect_content_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the object.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="objectManifest")
-    def object_manifest(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_manifest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string set to specify that this is a dynamic large 
         object manifest object. The value is the container and object name prefix of the
@@ -279,12 +279,12 @@ class ContainerObjectArgs:
         return pulumi.get(self, "object_manifest")
 
     @object_manifest.setter
-    def object_manifest(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_manifest(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_manifest", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the container. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -293,12 +293,12 @@ class ContainerObjectArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string representing the local path of a file which will be used
         as the object's content. Conflicts with `source` and `copy_from`.
@@ -306,32 +306,32 @@ class ContainerObjectArgs:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
 
 @pulumi.input_type
 class _ContainerObjectState:
     def __init__(__self__, *,
-                 container_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 copy_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 date: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_after: Optional[pulumi.Input[_builtins.int]] = None,
-                 delete_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 detect_content_type: Optional[pulumi.Input[_builtins.bool]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_manifest: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 trans_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 container_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 copy_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 date: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_after: pulumi.Input[Optional[_builtins.int]] = None,
+                 delete_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 detect_content_type: pulumi.Input[Optional[_builtins.bool]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_manifest: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 trans_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ContainerObject resources.
 
@@ -429,7 +429,7 @@ class _ContainerObjectState:
 
     @_builtins.property
     @pulumi.getter(name="containerName")
-    def container_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique (within an account) name for the container. 
         The container name must be from 1 to 256 characters long and can start
@@ -441,12 +441,12 @@ class _ContainerObjectState:
         return pulumi.get(self, "container_name")
 
     @container_name.setter
-    def container_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string representing the content of the object. Conflicts with
         `source` and `copy_from`.
@@ -454,12 +454,12 @@ class _ContainerObjectState:
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter(name="contentDisposition")
-    def content_disposition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_disposition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string which specifies the override behavior for 
         the browser. For example, this header might specify that the browser use a download
@@ -468,12 +468,12 @@ class _ContainerObjectState:
         return pulumi.get(self, "content_disposition")
 
     @content_disposition.setter
-    def content_disposition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_disposition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_disposition", value)
 
     @_builtins.property
     @pulumi.getter(name="contentEncoding")
-    def content_encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string representing the value of the Content-Encoding
         metadata.
@@ -481,12 +481,12 @@ class _ContainerObjectState:
         return pulumi.get(self, "content_encoding")
 
     @content_encoding.setter
-    def content_encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="contentLength")
-    def content_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def content_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If the operation succeeds, this value is zero (0) or the 
         length of informational or error text in the response body.
@@ -494,24 +494,24 @@ class _ContainerObjectState:
         return pulumi.get(self, "content_length")
 
     @content_length.setter
-    def content_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def content_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "content_length", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string which sets the MIME type for the object.
         """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter(name="copyFrom")
-    def copy_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def copy_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string representing the name of an object 
         used to create the new object by copying the `copy_from` object. The value is in form
@@ -522,12 +522,12 @@ class _ContainerObjectState:
         return pulumi.get(self, "copy_from")
 
     @copy_from.setter
-    def copy_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def copy_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "copy_from", value)
 
     @_builtins.property
     @pulumi.getter
-    def date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time the system responded to the request, using the preferred 
         format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
@@ -536,12 +536,12 @@ class _ContainerObjectState:
         return pulumi.get(self, "date")
 
     @date.setter
-    def date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "date", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteAfter")
-    def delete_after(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def delete_after(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         An integer representing the number of seconds after which the
         system removes the object. Internally, the Object Storage system stores this value in
@@ -550,12 +550,12 @@ class _ContainerObjectState:
         return pulumi.get(self, "delete_after")
 
     @delete_after.setter
-    def delete_after(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def delete_after(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "delete_after", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteAt")
-    def delete_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An string representing the date when the system removes the object. 
         For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
@@ -563,12 +563,12 @@ class _ContainerObjectState:
         return pulumi.get(self, "delete_at")
 
     @delete_at.setter
-    def delete_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_at", value)
 
     @_builtins.property
     @pulumi.getter(name="detectContentType")
-    def detect_content_type(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def detect_content_type(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, Object Storage guesses the content 
         type based on the file extension and ignores the value sent in the Content-Type
@@ -577,24 +577,24 @@ class _ContainerObjectState:
         return pulumi.get(self, "detect_content_type")
 
     @detect_content_type.setter
-    def detect_content_type(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def detect_content_type(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "detect_content_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
-    def last_modified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the object was last modified. The date and time 
         stamp format is ISO 8601:
@@ -606,33 +606,33 @@ class _ContainerObjectState:
         return pulumi.get(self, "last_modified")
 
     @last_modified.setter
-    def last_modified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the object.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="objectManifest")
-    def object_manifest(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_manifest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string set to specify that this is a dynamic large 
         object manifest object. The value is the container and object name prefix of the
@@ -643,12 +643,12 @@ class _ContainerObjectState:
         return pulumi.get(self, "object_manifest")
 
     @object_manifest.setter
-    def object_manifest(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_manifest(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_manifest", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the container. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -657,12 +657,12 @@ class _ContainerObjectState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string representing the local path of a file which will be used
         as the object's content. Conflicts with `source` and `copy_from`.
@@ -670,12 +670,12 @@ class _ContainerObjectState:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter(name="transId")
-    def trans_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trans_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique transaction ID for this request. Your service provider might 
         need this value if you report a problem.
@@ -683,7 +683,7 @@ class _ContainerObjectState:
         return pulumi.get(self, "trans_id")
 
     @trans_id.setter
-    def trans_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trans_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trans_id", value)
 
 
@@ -693,21 +693,21 @@ class ContainerObject(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 copy_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_after: Optional[pulumi.Input[_builtins.int]] = None,
-                 delete_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 detect_content_type: Optional[pulumi.Input[_builtins.bool]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_manifest: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
+                 container_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 copy_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_after: pulumi.Input[Optional[_builtins.int]] = None,
+                 delete_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 detect_content_type: pulumi.Input[Optional[_builtins.bool]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_manifest: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V1 container object resource within OpenStack.
@@ -792,21 +792,21 @@ class ContainerObject(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 copy_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_after: Optional[pulumi.Input[_builtins.int]] = None,
-                 delete_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 detect_content_type: Optional[pulumi.Input[_builtins.bool]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_manifest: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
+                 container_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 copy_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_after: pulumi.Input[Optional[_builtins.int]] = None,
+                 delete_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 detect_content_type: pulumi.Input[Optional[_builtins.bool]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_manifest: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -847,25 +847,25 @@ class ContainerObject(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            container_name: Optional[pulumi.Input[_builtins.str]] = None,
-            content: Optional[pulumi.Input[_builtins.str]] = None,
-            content_disposition: Optional[pulumi.Input[_builtins.str]] = None,
-            content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-            content_length: Optional[pulumi.Input[_builtins.int]] = None,
-            content_type: Optional[pulumi.Input[_builtins.str]] = None,
-            copy_from: Optional[pulumi.Input[_builtins.str]] = None,
-            date: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_after: Optional[pulumi.Input[_builtins.int]] = None,
-            delete_at: Optional[pulumi.Input[_builtins.str]] = None,
-            detect_content_type: Optional[pulumi.Input[_builtins.bool]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modified: Optional[pulumi.Input[_builtins.str]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            object_manifest: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            source: Optional[pulumi.Input[_builtins.str]] = None,
-            trans_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ContainerObject':
+            container_name: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+            content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            content_length: pulumi.Input[Optional[_builtins.int]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            copy_from: pulumi.Input[Optional[_builtins.str]] = None,
+            date: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_after: pulumi.Input[Optional[_builtins.int]] = None,
+            delete_at: pulumi.Input[Optional[_builtins.str]] = None,
+            detect_content_type: pulumi.Input[Optional[_builtins.bool]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            object_manifest: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            trans_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ContainerObject':
         """
         Get an existing ContainerObject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

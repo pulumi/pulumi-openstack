@@ -21,19 +21,19 @@ __all__ = ['UserArgs', 'User']
 @pulumi.input_type
 class UserArgs:
     def __init__(__self__, *,
-                 default_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 extra: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ignore_change_password_upon_first_use: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_lockout_failure_attempts: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_password_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 multi_factor_auth_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 multi_factor_auth_rules: Optional[pulumi.Input[Sequence[pulumi.Input['UserMultiFactorAuthRuleArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 extra: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ignore_change_password_upon_first_use: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_lockout_failure_attempts: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_password_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 multi_factor_auth_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 multi_factor_auth_rules: pulumi.Input[Optional[Sequence[pulumi.Input['UserMultiFactorAuthRuleArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
 
@@ -90,43 +90,43 @@ class UserArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultProjectId")
-    def default_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default project this user belongs to.
         """
         return pulumi.get(self, "default_project_id")
 
     @default_project_id.setter
-    def default_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the user.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="domainId")
-    def domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain this user belongs to.
         """
         return pulumi.get(self, "domain_id")
 
     @domain_id.setter
-    def domain_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the user is enabled or disabled. Valid
         values are `true` and `false`.
@@ -134,24 +134,24 @@ class UserArgs:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def extra(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def extra(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Free-form key/value pairs of extra information.
         """
         return pulumi.get(self, "extra")
 
     @extra.setter
-    def extra(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def extra(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "extra", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreChangePasswordUponFirstUse")
-    def ignore_change_password_upon_first_use(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_change_password_upon_first_use(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         User will not have to
         change their password upon first use. Valid values are `true` and `false`.
@@ -159,12 +159,12 @@ class UserArgs:
         return pulumi.get(self, "ignore_change_password_upon_first_use")
 
     @ignore_change_password_upon_first_use.setter
-    def ignore_change_password_upon_first_use(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_change_password_upon_first_use(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_change_password_upon_first_use", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreLockoutFailureAttempts")
-    def ignore_lockout_failure_attempts(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_lockout_failure_attempts(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         User will not have a failure
         lockout placed on their account. Valid values are `true` and `false`.
@@ -172,12 +172,12 @@ class UserArgs:
         return pulumi.get(self, "ignore_lockout_failure_attempts")
 
     @ignore_lockout_failure_attempts.setter
-    def ignore_lockout_failure_attempts(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_lockout_failure_attempts(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_lockout_failure_attempts", value)
 
     @_builtins.property
     @pulumi.getter(name="ignorePasswordExpiry")
-    def ignore_password_expiry(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_password_expiry(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         User's password will not expire.
         Valid values are `true` and `false`.
@@ -185,12 +185,12 @@ class UserArgs:
         return pulumi.get(self, "ignore_password_expiry")
 
     @ignore_password_expiry.setter
-    def ignore_password_expiry(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_password_expiry(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_password_expiry", value)
 
     @_builtins.property
     @pulumi.getter(name="multiFactorAuthEnabled")
-    def multi_factor_auth_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def multi_factor_auth_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable multi-factor
         authentication. Valid values are `true` and `false`.
@@ -198,12 +198,12 @@ class UserArgs:
         return pulumi.get(self, "multi_factor_auth_enabled")
 
     @multi_factor_auth_enabled.setter
-    def multi_factor_auth_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def multi_factor_auth_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "multi_factor_auth_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="multiFactorAuthRules")
-    def multi_factor_auth_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserMultiFactorAuthRuleArgs']]]]:
+    def multi_factor_auth_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserMultiFactorAuthRuleArgs']]]]:
         """
         A multi-factor authentication rule.
         The structure is documented below. Please see the
@@ -213,36 +213,36 @@ class UserArgs:
         return pulumi.get(self, "multi_factor_auth_rules")
 
     @multi_factor_auth_rules.setter
-    def multi_factor_auth_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserMultiFactorAuthRuleArgs']]]]):
+    def multi_factor_auth_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserMultiFactorAuthRuleArgs']]]]):
         pulumi.set(self, "multi_factor_auth_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password for the user.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V3 Keystone client.
         If omitted, the `region` argument of the provider is used. Changing this
@@ -251,26 +251,26 @@ class UserArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _UserState:
     def __init__(__self__, *,
-                 default_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 extra: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ignore_change_password_upon_first_use: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_lockout_failure_attempts: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_password_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 multi_factor_auth_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 multi_factor_auth_rules: Optional[pulumi.Input[Sequence[pulumi.Input['UserMultiFactorAuthRuleArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 extra: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ignore_change_password_upon_first_use: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_lockout_failure_attempts: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_password_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 multi_factor_auth_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 multi_factor_auth_rules: pulumi.Input[Optional[Sequence[pulumi.Input['UserMultiFactorAuthRuleArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
 
@@ -327,43 +327,43 @@ class _UserState:
 
     @_builtins.property
     @pulumi.getter(name="defaultProjectId")
-    def default_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default project this user belongs to.
         """
         return pulumi.get(self, "default_project_id")
 
     @default_project_id.setter
-    def default_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the user.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="domainId")
-    def domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain this user belongs to.
         """
         return pulumi.get(self, "domain_id")
 
     @domain_id.setter
-    def domain_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the user is enabled or disabled. Valid
         values are `true` and `false`.
@@ -371,24 +371,24 @@ class _UserState:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def extra(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def extra(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Free-form key/value pairs of extra information.
         """
         return pulumi.get(self, "extra")
 
     @extra.setter
-    def extra(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def extra(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "extra", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreChangePasswordUponFirstUse")
-    def ignore_change_password_upon_first_use(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_change_password_upon_first_use(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         User will not have to
         change their password upon first use. Valid values are `true` and `false`.
@@ -396,12 +396,12 @@ class _UserState:
         return pulumi.get(self, "ignore_change_password_upon_first_use")
 
     @ignore_change_password_upon_first_use.setter
-    def ignore_change_password_upon_first_use(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_change_password_upon_first_use(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_change_password_upon_first_use", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreLockoutFailureAttempts")
-    def ignore_lockout_failure_attempts(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_lockout_failure_attempts(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         User will not have a failure
         lockout placed on their account. Valid values are `true` and `false`.
@@ -409,12 +409,12 @@ class _UserState:
         return pulumi.get(self, "ignore_lockout_failure_attempts")
 
     @ignore_lockout_failure_attempts.setter
-    def ignore_lockout_failure_attempts(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_lockout_failure_attempts(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_lockout_failure_attempts", value)
 
     @_builtins.property
     @pulumi.getter(name="ignorePasswordExpiry")
-    def ignore_password_expiry(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_password_expiry(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         User's password will not expire.
         Valid values are `true` and `false`.
@@ -422,12 +422,12 @@ class _UserState:
         return pulumi.get(self, "ignore_password_expiry")
 
     @ignore_password_expiry.setter
-    def ignore_password_expiry(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_password_expiry(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_password_expiry", value)
 
     @_builtins.property
     @pulumi.getter(name="multiFactorAuthEnabled")
-    def multi_factor_auth_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def multi_factor_auth_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable multi-factor
         authentication. Valid values are `true` and `false`.
@@ -435,12 +435,12 @@ class _UserState:
         return pulumi.get(self, "multi_factor_auth_enabled")
 
     @multi_factor_auth_enabled.setter
-    def multi_factor_auth_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def multi_factor_auth_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "multi_factor_auth_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="multiFactorAuthRules")
-    def multi_factor_auth_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserMultiFactorAuthRuleArgs']]]]:
+    def multi_factor_auth_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserMultiFactorAuthRuleArgs']]]]:
         """
         A multi-factor authentication rule.
         The structure is documented below. Please see the
@@ -450,36 +450,36 @@ class _UserState:
         return pulumi.get(self, "multi_factor_auth_rules")
 
     @multi_factor_auth_rules.setter
-    def multi_factor_auth_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserMultiFactorAuthRuleArgs']]]]):
+    def multi_factor_auth_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserMultiFactorAuthRuleArgs']]]]):
         pulumi.set(self, "multi_factor_auth_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password for the user.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V3 Keystone client.
         If omitted, the `region` argument of the provider is used. Changing this
@@ -488,7 +488,7 @@ class _UserState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -498,19 +498,19 @@ class User(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 extra: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ignore_change_password_upon_first_use: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_lockout_failure_attempts: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_password_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 multi_factor_auth_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 multi_factor_auth_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserMultiFactorAuthRuleArgs', 'UserMultiFactorAuthRuleArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 extra: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ignore_change_password_upon_first_use: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_lockout_failure_attempts: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_password_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 multi_factor_auth_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 multi_factor_auth_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserMultiFactorAuthRuleArgs', 'UserMultiFactorAuthRuleArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V3 User resource within OpenStack Keystone.
@@ -657,19 +657,19 @@ class User(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 extra: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ignore_change_password_upon_first_use: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_lockout_failure_attempts: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_password_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-                 multi_factor_auth_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 multi_factor_auth_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserMultiFactorAuthRuleArgs', 'UserMultiFactorAuthRuleArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 extra: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ignore_change_password_upon_first_use: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_lockout_failure_attempts: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_password_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+                 multi_factor_auth_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 multi_factor_auth_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserMultiFactorAuthRuleArgs', 'UserMultiFactorAuthRuleArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -704,19 +704,19 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            extra: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            ignore_change_password_upon_first_use: Optional[pulumi.Input[_builtins.bool]] = None,
-            ignore_lockout_failure_attempts: Optional[pulumi.Input[_builtins.bool]] = None,
-            ignore_password_expiry: Optional[pulumi.Input[_builtins.bool]] = None,
-            multi_factor_auth_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            multi_factor_auth_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserMultiFactorAuthRuleArgs', 'UserMultiFactorAuthRuleArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'User':
+            default_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            extra: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ignore_change_password_upon_first_use: pulumi.Input[Optional[_builtins.bool]] = None,
+            ignore_lockout_failure_attempts: pulumi.Input[Optional[_builtins.bool]] = None,
+            ignore_password_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+            multi_factor_auth_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            multi_factor_auth_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserMultiFactorAuthRuleArgs', 'UserMultiFactorAuthRuleArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

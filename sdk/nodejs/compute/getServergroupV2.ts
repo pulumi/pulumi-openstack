@@ -117,5 +117,5 @@ export interface GetServergroupV2OutputArgs {
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

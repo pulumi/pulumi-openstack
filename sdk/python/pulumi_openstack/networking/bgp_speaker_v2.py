@@ -22,14 +22,14 @@ __all__ = ['BgpSpeakerV2Args', 'BgpSpeakerV2']
 class BgpSpeakerV2Args:
     def __init__(__self__, *,
                  local_as: pulumi.Input[_builtins.int],
-                 advertise_floating_ip_host_routes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 advertise_tenant_networks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 peers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 advertise_floating_ip_host_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 advertise_tenant_networks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BgpSpeakerV2 resource.
 
@@ -86,7 +86,7 @@ class BgpSpeakerV2Args:
 
     @_builtins.property
     @pulumi.getter(name="advertiseFloatingIpHostRoutes")
-    def advertise_floating_ip_host_routes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def advertise_floating_ip_host_routes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean value indicating
         whether to advertise floating IP host routes. Defaults to `true`.
@@ -94,12 +94,12 @@ class BgpSpeakerV2Args:
         return pulumi.get(self, "advertise_floating_ip_host_routes")
 
     @advertise_floating_ip_host_routes.setter
-    def advertise_floating_ip_host_routes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def advertise_floating_ip_host_routes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "advertise_floating_ip_host_routes", value)
 
     @_builtins.property
     @pulumi.getter(name="advertiseTenantNetworks")
-    def advertise_tenant_networks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def advertise_tenant_networks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean value indicating whether to
         advertise tenant networks. Defaults to `true`.
@@ -107,12 +107,12 @@ class BgpSpeakerV2Args:
         return pulumi.get(self, "advertise_tenant_networks")
 
     @advertise_tenant_networks.setter
-    def advertise_tenant_networks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def advertise_tenant_networks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "advertise_tenant_networks", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The IP version of the BGP speaker. Valid values are
         `4` or `6`. Defaults to `4`. Changing this creates a new BGP speaker.
@@ -120,48 +120,48 @@ class BgpSpeakerV2Args:
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the BGP speaker.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of network IDs to associate with the BGP speaker.
         """
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter
-    def peers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def peers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of BGP peer IDs to associate with the BGP speaker.
         """
         return pulumi.get(self, "peers")
 
     @peers.setter
-    def peers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def peers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "peers", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a Neutron network. If omitted, the
@@ -171,12 +171,12 @@ class BgpSpeakerV2Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tenant/project ID. Required if admin privileges
         are used. Changing this creates a new BGP speaker.
@@ -184,23 +184,23 @@ class BgpSpeakerV2Args:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
 @pulumi.input_type
 class _BgpSpeakerV2State:
     def __init__(__self__, *,
-                 advertise_floating_ip_host_routes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 advertise_tenant_networks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 advertised_routes: Optional[pulumi.Input[Sequence[pulumi.Input['BgpSpeakerV2AdvertisedRouteArgs']]]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 local_as: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 peers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 advertise_floating_ip_host_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 advertise_tenant_networks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 advertised_routes: pulumi.Input[Optional[Sequence[pulumi.Input['BgpSpeakerV2AdvertisedRouteArgs']]]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 local_as: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BgpSpeakerV2 resources.
 
@@ -250,7 +250,7 @@ class _BgpSpeakerV2State:
 
     @_builtins.property
     @pulumi.getter(name="advertiseFloatingIpHostRoutes")
-    def advertise_floating_ip_host_routes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def advertise_floating_ip_host_routes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean value indicating
         whether to advertise floating IP host routes. Defaults to `true`.
@@ -258,12 +258,12 @@ class _BgpSpeakerV2State:
         return pulumi.get(self, "advertise_floating_ip_host_routes")
 
     @advertise_floating_ip_host_routes.setter
-    def advertise_floating_ip_host_routes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def advertise_floating_ip_host_routes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "advertise_floating_ip_host_routes", value)
 
     @_builtins.property
     @pulumi.getter(name="advertiseTenantNetworks")
-    def advertise_tenant_networks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def advertise_tenant_networks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean value indicating whether to
         advertise tenant networks. Defaults to `true`.
@@ -271,12 +271,12 @@ class _BgpSpeakerV2State:
         return pulumi.get(self, "advertise_tenant_networks")
 
     @advertise_tenant_networks.setter
-    def advertise_tenant_networks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def advertise_tenant_networks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "advertise_tenant_networks", value)
 
     @_builtins.property
     @pulumi.getter(name="advertisedRoutes")
-    def advertised_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BgpSpeakerV2AdvertisedRouteArgs']]]]:
+    def advertised_routes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BgpSpeakerV2AdvertisedRouteArgs']]]]:
         """
         A list of dictionaries containing the `destination` and
         `next_hop` for each route advertised by the BGP speaker. This attribute is
@@ -286,12 +286,12 @@ class _BgpSpeakerV2State:
         return pulumi.get(self, "advertised_routes")
 
     @advertised_routes.setter
-    def advertised_routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BgpSpeakerV2AdvertisedRouteArgs']]]]):
+    def advertised_routes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BgpSpeakerV2AdvertisedRouteArgs']]]]):
         pulumi.set(self, "advertised_routes", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The IP version of the BGP speaker. Valid values are
         `4` or `6`. Defaults to `4`. Changing this creates a new BGP speaker.
@@ -299,12 +299,12 @@ class _BgpSpeakerV2State:
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="localAs")
-    def local_as(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def local_as(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The local autonomous system number (ASN) for the BGP
         speaker. This is a mandatory field and must be specified. Changing this
@@ -313,48 +313,48 @@ class _BgpSpeakerV2State:
         return pulumi.get(self, "local_as")
 
     @local_as.setter
-    def local_as(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def local_as(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "local_as", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the BGP speaker.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of network IDs to associate with the BGP speaker.
         """
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter
-    def peers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def peers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of BGP peer IDs to associate with the BGP speaker.
         """
         return pulumi.get(self, "peers")
 
     @peers.setter
-    def peers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def peers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "peers", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a Neutron network. If omitted, the
@@ -364,12 +364,12 @@ class _BgpSpeakerV2State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tenant/project ID. Required if admin privileges
         are used. Changing this creates a new BGP speaker.
@@ -377,7 +377,7 @@ class _BgpSpeakerV2State:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
@@ -387,15 +387,15 @@ class BgpSpeakerV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advertise_floating_ip_host_routes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 advertise_tenant_networks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 local_as: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 peers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 advertise_floating_ip_host_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 advertise_tenant_networks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 local_as: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V2 Neutron BGP Speaker resource within OpenStack.
@@ -511,15 +511,15 @@ class BgpSpeakerV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advertise_floating_ip_host_routes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 advertise_tenant_networks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 local_as: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 peers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 advertise_floating_ip_host_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 advertise_tenant_networks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 local_as: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -551,16 +551,16 @@ class BgpSpeakerV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advertise_floating_ip_host_routes: Optional[pulumi.Input[_builtins.bool]] = None,
-            advertise_tenant_networks: Optional[pulumi.Input[_builtins.bool]] = None,
-            advertised_routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BgpSpeakerV2AdvertisedRouteArgs', 'BgpSpeakerV2AdvertisedRouteArgsDict']]]]] = None,
-            ip_version: Optional[pulumi.Input[_builtins.int]] = None,
-            local_as: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            peers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'BgpSpeakerV2':
+            advertise_floating_ip_host_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+            advertise_tenant_networks: pulumi.Input[Optional[_builtins.bool]] = None,
+            advertised_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BgpSpeakerV2AdvertisedRouteArgs', 'BgpSpeakerV2AdvertisedRouteArgsDict']]]]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+            local_as: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'BgpSpeakerV2':
         """
         Get an existing BgpSpeakerV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

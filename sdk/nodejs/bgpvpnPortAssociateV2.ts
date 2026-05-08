@@ -146,35 +146,35 @@ export interface BgpvpnPortAssociateV2State {
      * A boolean flag indicating whether fixed
      * IPs should be advertised. Defaults to true.
      */
-    advertiseFixedIps?: pulumi.Input<boolean>;
+    advertiseFixedIps?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the BGP VPN to which the port will be
      * associated. Changing this creates a new BGP VPN port association.
      */
-    bgpvpnId?: pulumi.Input<string>;
+    bgpvpnId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the port to be associated with the BGP VPN.
      * Changing this creates a new BGP VPN port association.
      */
-    portId?: pulumi.Input<string>;
+    portId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project that owns the port
      * association. Only administrative and users with `advsvc` role can specify a
      * project ID other than their own. Changing this creates a new BGP VPN port
      * association.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a BGP VPN port association. If
      * omitted, the `region` argument of the provider is used. Changing this creates
      * a new BGP VPN port association.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list of dictionaries containing the following keys:
      */
-    routes?: pulumi.Input<pulumi.Input<inputs.BgpvpnPortAssociateV2Route>[]>;
+    routes?: pulumi.Input<pulumi.Input<inputs.BgpvpnPortAssociateV2Route>[] | undefined>;
 }
 
 /**
@@ -185,7 +185,7 @@ export interface BgpvpnPortAssociateV2Args {
      * A boolean flag indicating whether fixed
      * IPs should be advertised. Defaults to true.
      */
-    advertiseFixedIps?: pulumi.Input<boolean>;
+    advertiseFixedIps?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the BGP VPN to which the port will be
      * associated. Changing this creates a new BGP VPN port association.
@@ -202,16 +202,16 @@ export interface BgpvpnPortAssociateV2Args {
      * project ID other than their own. Changing this creates a new BGP VPN port
      * association.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a BGP VPN port association. If
      * omitted, the `region` argument of the provider is used. Changing this creates
      * a new BGP VPN port association.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list of dictionaries containing the following keys:
      */
-    routes?: pulumi.Input<pulumi.Input<inputs.BgpvpnPortAssociateV2Route>[]>;
+    routes?: pulumi.Input<pulumi.Input<inputs.BgpvpnPortAssociateV2Route>[] | undefined>;
 }

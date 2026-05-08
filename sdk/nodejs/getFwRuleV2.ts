@@ -240,73 +240,73 @@ export interface GetFwRuleV2OutputArgs {
     /**
      * Action to be taken when the firewall rule matches.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * The description of the firewall rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination IP address on which the
      * firewall rule operates.
      */
-    destinationIpAddress?: pulumi.Input<string>;
+    destinationIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The destination port on which the firewall
      * rule operates.
      */
-    destinationPort?: pulumi.Input<string>;
+    destinationPort?: pulumi.Input<string | undefined>;
     /**
      * Enabled status for the firewall rule.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the firewall policy the rule belongs to.
      */
-    firewallPolicyIds?: pulumi.Input<pulumi.Input<string>[]>;
+    firewallPolicyIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * IP version, either 4 (default) or 6.
      */
-    ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number | undefined>;
     /**
      * The name of the firewall rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * This argument conflicts and is interchangeable
      * with `tenantId`. The owner of the firewall rule.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The protocol type on which the firewall rule operates.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve firewall policy ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the firewall rule.
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string | undefined>;
     /**
      * The sharing status of the firewall policy.
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * The source IP address on which the firewall
      * rule operates.
      */
-    sourceIpAddress?: pulumi.Input<string>;
+    sourceIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The source port on which the firewall
      * rule operates.
      */
-    sourcePort?: pulumi.Input<string>;
+    sourcePort?: pulumi.Input<string | undefined>;
     /**
      * This argument conflicts and is interchangeable
      * with `projectId`. The owner of the firewall rule.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

@@ -136,35 +136,35 @@ export interface GetProjectIdsV3OutputArgs {
     /**
      * The domain projects belongs to.
      */
-    domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string | undefined>;
     /**
      * Whether the project is enabled or disabled. Valid
      * values are `true` and `false`. Default is `true`.
      */
-    enabled?: pulumi.Input<boolean>;
-    isDomain?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    isDomain?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the project.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The regular expression of the name of the project.
      * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
      * `nameRegex` filtering does by client on the result of OpenStack search
      * query.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * The parent of the project.
      */
-    parentId?: pulumi.Input<string>;
+    parentId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Tags for the project.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -153,37 +153,37 @@ export interface GetPolicyV2OutputArgs {
     /**
      * Whether this policy has been audited.
      */
-    audited?: pulumi.Input<boolean>;
+    audited?: pulumi.Input<boolean | undefined>;
     /**
      * Human-readable description of the policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the firewall policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the firewall policy.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * This argument conflicts and is interchangeable
      * with `tenantId`. The owner of the firewall policy.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve firewall policy ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Whether this policy is shared across all projects.
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * This argument conflicts and is interchangeable
      * with `projectId`. The owner of the firewall policy.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

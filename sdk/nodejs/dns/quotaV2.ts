@@ -128,35 +128,35 @@ export interface QuotaV2State {
      * The maximum number of zones that can be
      * exported via the API.
      */
-    apiExportSize?: pulumi.Input<number>;
+    apiExportSize?: pulumi.Input<number | undefined>;
     /**
      * ID of the project to manage quota. Changing this
      * creates new quota.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of records in a
      * recordset.
      */
-    recordsetRecords?: pulumi.Input<number>;
+    recordsetRecords?: pulumi.Input<number | undefined>;
     /**
      * The region in which to obtain the V2 DNS client. If
      * omitted, the `region` argument of the provider is used. Changing this creates
      * a new DNS quota.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of records in a zone.
      */
-    zoneRecords?: pulumi.Input<number>;
+    zoneRecords?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of recordsets in a zone.
      */
-    zoneRecordsets?: pulumi.Input<number>;
+    zoneRecordsets?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of zones that can be created.
      */
-    zones?: pulumi.Input<number>;
+    zones?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -167,7 +167,7 @@ export interface QuotaV2Args {
      * The maximum number of zones that can be
      * exported via the API.
      */
-    apiExportSize?: pulumi.Input<number>;
+    apiExportSize?: pulumi.Input<number | undefined>;
     /**
      * ID of the project to manage quota. Changing this
      * creates new quota.
@@ -177,23 +177,23 @@ export interface QuotaV2Args {
      * The maximum number of records in a
      * recordset.
      */
-    recordsetRecords?: pulumi.Input<number>;
+    recordsetRecords?: pulumi.Input<number | undefined>;
     /**
      * The region in which to obtain the V2 DNS client. If
      * omitted, the `region` argument of the provider is used. Changing this creates
      * a new DNS quota.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of records in a zone.
      */
-    zoneRecords?: pulumi.Input<number>;
+    zoneRecords?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of recordsets in a zone.
      */
-    zoneRecordsets?: pulumi.Input<number>;
+    zoneRecordsets?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of zones that can be created.
      */
-    zones?: pulumi.Input<number>;
+    zones?: pulumi.Input<number | undefined>;
 }

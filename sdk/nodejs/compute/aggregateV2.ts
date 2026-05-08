@@ -149,26 +149,26 @@ export interface AggregateV2State {
      * to Openstack and visible in the web interface, or the provider will fail to add them to the host
      * aggregate.
      */
-    hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    hosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the Host Aggregate
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the Host Aggregate. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new Host Aggregate.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The name of the Availability Zone to use. If ommited, it will take the default
      * availability zone.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -180,24 +180,24 @@ export interface AggregateV2Args {
      * to Openstack and visible in the web interface, or the provider will fail to add them to the host
      * aggregate.
      */
-    hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    hosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the Host Aggregate
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the Host Aggregate. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new Host Aggregate.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The name of the Availability Zone to use. If ommited, it will take the default
      * availability zone.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

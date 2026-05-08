@@ -190,70 +190,70 @@ export interface MemberState {
      * The IP address of the member to receive traffic from
      * the load balancer. Changing this creates a new member.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The administrative state of the member.
      * A valid value is true (UP) or false (DOWN). Defaults to true.
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean that indicates whether that member works as a backup or not. Available 
      * only for Octavia >= 2.1.
      */
-    backup?: pulumi.Input<boolean>;
+    backup?: pulumi.Input<boolean | undefined>;
     /**
      * An alternate IP address used for health monitoring a backend member.
      * Available only for Octavia
      */
-    monitorAddress?: pulumi.Input<string>;
+    monitorAddress?: pulumi.Input<string | undefined>;
     /**
      * An alternate protocol port used for health monitoring a backend member.
      * Available only for Octavia
      */
-    monitorPort?: pulumi.Input<number>;
+    monitorPort?: pulumi.Input<number | undefined>;
     /**
      * Human-readable name for the member.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The id of the pool that this member will be assigned
      * to. Changing this creates a new member.
      */
-    poolId?: pulumi.Input<string>;
+    poolId?: pulumi.Input<string | undefined>;
     /**
      * The port on which to listen for client traffic.
      * Changing this creates a new member.
      */
-    protocolPort?: pulumi.Input<number>;
+    protocolPort?: pulumi.Input<number | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a member. If omitted, the `region`
      * argument of the provider is used. Changing this creates a new member.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The subnet in which to access the member. Changing
      * this creates a new member.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * A list of simple strings assigned to the member.
      * Available only for Octavia >= 2.5.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the member.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new member.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * A positive integer value that indicates the relative
      * portion of traffic that this member should receive from the pool. For
      * example, a member with a weight of 10 receives five times as much traffic
      * as a member with a weight of 2. Defaults to 1.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -269,26 +269,26 @@ export interface MemberArgs {
      * The administrative state of the member.
      * A valid value is true (UP) or false (DOWN). Defaults to true.
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean that indicates whether that member works as a backup or not. Available 
      * only for Octavia >= 2.1.
      */
-    backup?: pulumi.Input<boolean>;
+    backup?: pulumi.Input<boolean | undefined>;
     /**
      * An alternate IP address used for health monitoring a backend member.
      * Available only for Octavia
      */
-    monitorAddress?: pulumi.Input<string>;
+    monitorAddress?: pulumi.Input<string | undefined>;
     /**
      * An alternate protocol port used for health monitoring a backend member.
      * Available only for Octavia
      */
-    monitorPort?: pulumi.Input<number>;
+    monitorPort?: pulumi.Input<number | undefined>;
     /**
      * Human-readable name for the member.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The id of the pool that this member will be assigned
      * to. Changing this creates a new member.
@@ -304,28 +304,28 @@ export interface MemberArgs {
      * A Networking client is needed to create a member. If omitted, the `region`
      * argument of the provider is used. Changing this creates a new member.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The subnet in which to access the member. Changing
      * this creates a new member.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * A list of simple strings assigned to the member.
      * Available only for Octavia >= 2.5.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the member.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new member.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * A positive integer value that indicates the relative
      * portion of traffic that this member should receive from the pool. For
      * example, a member with a weight of 10 receives five times as much traffic
      * as a member with a weight of 2. Defaults to 1.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }

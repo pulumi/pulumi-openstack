@@ -225,13 +225,13 @@ def get_volume_v3(bootable: Optional[_builtins.str] = None,
         source_volume_id=pulumi.get(__ret__, 'source_volume_id'),
         status=pulumi.get(__ret__, 'status'),
         volume_type=pulumi.get(__ret__, 'volume_type'))
-def get_volume_v3_output(bootable: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         host: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         metadata: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                         name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         volume_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_volume_v3_output(bootable: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         host: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         metadata: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                         name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         volume_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumeV3Result]:
     """
     Use this data source to get information about an existing volume.

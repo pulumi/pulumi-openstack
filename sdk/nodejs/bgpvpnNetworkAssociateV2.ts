@@ -121,26 +121,26 @@ export interface BgpvpnNetworkAssociateV2State {
      * The ID of the BGP VPN to which the network will be
      * associated. Changing this creates a new BGP VPN network association
      */
-    bgpvpnId?: pulumi.Input<string>;
+    bgpvpnId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the network to be associated with the BGP
      * VPN. Changing this creates a new BGP VPN network association.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project that owns the BGP VPN network
      * association. Only administrative and users with `advsvc` role can specify a
      * project ID other than their own. Changing this creates a new BGP VPN network
      * association.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a BGP VPN network association. If
      * omitted, the `region` argument of the provider is used. Changing this creates
      * a new BGP VPN network association.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -163,12 +163,12 @@ export interface BgpvpnNetworkAssociateV2Args {
      * project ID other than their own. Changing this creates a new BGP VPN network
      * association.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a BGP VPN network association. If
      * omitted, the `region` argument of the provider is used. Changing this creates
      * a new BGP VPN network association.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

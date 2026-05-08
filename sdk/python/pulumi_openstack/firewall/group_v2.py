@@ -19,16 +19,16 @@ __all__ = ['GroupV2Args', 'GroupV2']
 @pulumi.input_type
 class GroupV2Args:
     def __init__(__self__, *,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_firewall_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingress_firewall_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_firewall_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_firewall_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GroupV2 resource.
 
@@ -89,7 +89,7 @@ class GroupV2Args:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Administrative up/down status for the firewall
         group (must be "true" or "false" if provided - defaults to "true").
@@ -98,12 +98,12 @@ class GroupV2Args:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the firewall group. Changing this
         updates the `description` of an existing firewall group.
@@ -111,12 +111,12 @@ class GroupV2Args:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="egressFirewallPolicyId")
-    def egress_firewall_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def egress_firewall_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The egress firewall policy resource
         id for the firewall group. Changing this updates the
@@ -125,12 +125,12 @@ class GroupV2Args:
         return pulumi.get(self, "egress_firewall_policy_id")
 
     @egress_firewall_policy_id.setter
-    def egress_firewall_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def egress_firewall_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "egress_firewall_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressFirewallPolicyId")
-    def ingress_firewall_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingress_firewall_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ingress firewall policy resource
         id for the firewall group. Changing this updates the
@@ -139,12 +139,12 @@ class GroupV2Args:
         return pulumi.get(self, "ingress_firewall_policy_id")
 
     @ingress_firewall_policy_id.setter
-    def ingress_firewall_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingress_firewall_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingress_firewall_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the firewall group. Changing this
         updates the `name` of an existing firewall.
@@ -152,12 +152,12 @@ class GroupV2Args:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Port(s) to associate this firewall group
         with. Must be a list of strings. Changing this updates the associated ports
@@ -166,12 +166,12 @@ class GroupV2Args:
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ports", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This argument conflicts and  is interchangeable
         with `tenant_id`. The owner of the firewall group. Required if admin wants
@@ -181,12 +181,12 @@ class GroupV2Args:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the v2 networking client.
         A networking client is needed to create a firewall group. If omitted, the
@@ -196,12 +196,12 @@ class GroupV2Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def shared(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shared(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Sharing status of the firewall group (must be "true"
         or "false" if provided). If this is "true" the firewall group is visible to,
@@ -212,12 +212,12 @@ class GroupV2Args:
         return pulumi.get(self, "shared")
 
     @shared.setter
-    def shared(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shared(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shared", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This argument conflicts and is interchangeable with
         `project_id`. The owner of the firewall group. Required if admin wants to
@@ -227,24 +227,24 @@ class GroupV2Args:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
 @pulumi.input_type
 class _GroupV2State:
     def __init__(__self__, *,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_firewall_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingress_firewall_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_firewall_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_firewall_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupV2 resources.
 
@@ -308,7 +308,7 @@ class _GroupV2State:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Administrative up/down status for the firewall
         group (must be "true" or "false" if provided - defaults to "true").
@@ -317,12 +317,12 @@ class _GroupV2State:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the firewall group. Changing this
         updates the `description` of an existing firewall group.
@@ -330,12 +330,12 @@ class _GroupV2State:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="egressFirewallPolicyId")
-    def egress_firewall_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def egress_firewall_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The egress firewall policy resource
         id for the firewall group. Changing this updates the
@@ -344,12 +344,12 @@ class _GroupV2State:
         return pulumi.get(self, "egress_firewall_policy_id")
 
     @egress_firewall_policy_id.setter
-    def egress_firewall_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def egress_firewall_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "egress_firewall_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressFirewallPolicyId")
-    def ingress_firewall_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingress_firewall_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ingress firewall policy resource
         id for the firewall group. Changing this updates the
@@ -358,12 +358,12 @@ class _GroupV2State:
         return pulumi.get(self, "ingress_firewall_policy_id")
 
     @ingress_firewall_policy_id.setter
-    def ingress_firewall_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingress_firewall_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingress_firewall_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the firewall group. Changing this
         updates the `name` of an existing firewall.
@@ -371,12 +371,12 @@ class _GroupV2State:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Port(s) to associate this firewall group
         with. Must be a list of strings. Changing this updates the associated ports
@@ -385,12 +385,12 @@ class _GroupV2State:
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ports", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This argument conflicts and  is interchangeable
         with `tenant_id`. The owner of the firewall group. Required if admin wants
@@ -400,12 +400,12 @@ class _GroupV2State:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the v2 networking client.
         A networking client is needed to create a firewall group. If omitted, the
@@ -415,12 +415,12 @@ class _GroupV2State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def shared(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shared(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Sharing status of the firewall group (must be "true"
         or "false" if provided). If this is "true" the firewall group is visible to,
@@ -431,24 +431,24 @@ class _GroupV2State:
         return pulumi.get(self, "shared")
 
     @shared.setter
-    def shared(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shared(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shared", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the firewall group.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This argument conflicts and is interchangeable with
         `project_id`. The owner of the firewall group. Required if admin wants to
@@ -458,7 +458,7 @@ class _GroupV2State:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
@@ -468,16 +468,16 @@ class GroupV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_firewall_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingress_firewall_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_firewall_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_firewall_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a v2 firewall group resource within OpenStack.
@@ -628,16 +628,16 @@ class GroupV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_firewall_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingress_firewall_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_firewall_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_firewall_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -668,17 +668,17 @@ class GroupV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            egress_firewall_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ingress_firewall_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            shared: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'GroupV2':
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            egress_firewall_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ingress_firewall_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            shared: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'GroupV2':
         """
         Get an existing GroupV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

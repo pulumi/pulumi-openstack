@@ -20,21 +20,21 @@ __all__ = ['QuotaSetV2Args', 'QuotaSetV2']
 class QuotaSetV2Args:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
-                 cores: Optional[pulumi.Input[_builtins.int]] = None,
-                 fixed_ips: Optional[pulumi.Input[_builtins.int]] = None,
-                 floating_ips: Optional[pulumi.Input[_builtins.int]] = None,
-                 injected_file_content_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 injected_file_path_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 injected_files: Optional[pulumi.Input[_builtins.int]] = None,
-                 instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 key_pairs: Optional[pulumi.Input[_builtins.int]] = None,
-                 metadata_items: Optional[pulumi.Input[_builtins.int]] = None,
-                 ram: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_groups: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_group_members: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_groups: Optional[pulumi.Input[_builtins.int]] = None):
+                 cores: pulumi.Input[Optional[_builtins.int]] = None,
+                 fixed_ips: pulumi.Input[Optional[_builtins.int]] = None,
+                 floating_ips: pulumi.Input[Optional[_builtins.int]] = None,
+                 injected_file_content_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 injected_file_path_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 injected_files: pulumi.Input[Optional[_builtins.int]] = None,
+                 instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 key_pairs: pulumi.Input[Optional[_builtins.int]] = None,
+                 metadata_items: pulumi.Input[Optional[_builtins.int]] = None,
+                 ram: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_groups: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_group_members: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_groups: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a QuotaSetV2 resource.
 
@@ -119,7 +119,7 @@ class QuotaSetV2Args:
 
     @_builtins.property
     @pulumi.getter
-    def cores(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cores(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for cores.
         Changing this updates the existing quotaset.
@@ -127,12 +127,12 @@ class QuotaSetV2Args:
         return pulumi.get(self, "cores")
 
     @cores.setter
-    def cores(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cores(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cores", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedIps")
-    def fixed_ips(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def fixed_ips(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for fixed IPs.
         Changing this updates the existing quotaset.
@@ -140,12 +140,12 @@ class QuotaSetV2Args:
         return pulumi.get(self, "fixed_ips")
 
     @fixed_ips.setter
-    def fixed_ips(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def fixed_ips(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "fixed_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="floatingIps")
-    def floating_ips(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def floating_ips(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for floating IPs.
         Changing this updates the existing quotaset.
@@ -153,12 +153,12 @@ class QuotaSetV2Args:
         return pulumi.get(self, "floating_ips")
 
     @floating_ips.setter
-    def floating_ips(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def floating_ips(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "floating_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="injectedFileContentBytes")
-    def injected_file_content_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def injected_file_content_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for content bytes
         of injected files. Changing this updates the existing quotaset.
@@ -166,12 +166,12 @@ class QuotaSetV2Args:
         return pulumi.get(self, "injected_file_content_bytes")
 
     @injected_file_content_bytes.setter
-    def injected_file_content_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def injected_file_content_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "injected_file_content_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="injectedFilePathBytes")
-    def injected_file_path_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def injected_file_path_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for path bytes of
         injected files. Changing this updates the existing quotaset.
@@ -179,12 +179,12 @@ class QuotaSetV2Args:
         return pulumi.get(self, "injected_file_path_bytes")
 
     @injected_file_path_bytes.setter
-    def injected_file_path_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def injected_file_path_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "injected_file_path_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="injectedFiles")
-    def injected_files(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def injected_files(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for injected files.
         Changing this updates the existing quotaset.
@@ -192,12 +192,12 @@ class QuotaSetV2Args:
         return pulumi.get(self, "injected_files")
 
     @injected_files.setter
-    def injected_files(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def injected_files(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "injected_files", value)
 
     @_builtins.property
     @pulumi.getter
-    def instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for instances.
         Changing this updates the existing quotaset.
@@ -205,12 +205,12 @@ class QuotaSetV2Args:
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instances", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPairs")
-    def key_pairs(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def key_pairs(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for key pairs.
         Changing this updates the existing quotaset.
@@ -218,12 +218,12 @@ class QuotaSetV2Args:
         return pulumi.get(self, "key_pairs")
 
     @key_pairs.setter
-    def key_pairs(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def key_pairs(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "key_pairs", value)
 
     @_builtins.property
     @pulumi.getter(name="metadataItems")
-    def metadata_items(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def metadata_items(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for metadata items.
         Changing this updates the existing quotaset.
@@ -231,12 +231,12 @@ class QuotaSetV2Args:
         return pulumi.get(self, "metadata_items")
 
     @metadata_items.setter
-    def metadata_items(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def metadata_items(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "metadata_items", value)
 
     @_builtins.property
     @pulumi.getter
-    def ram(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ram(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for RAM.
         Changing this updates the existing quotaset.
@@ -244,12 +244,12 @@ class QuotaSetV2Args:
         return pulumi.get(self, "ram")
 
     @ram.setter
-    def ram(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ram(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ram", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the volume. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -258,12 +258,12 @@ class QuotaSetV2Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupRules")
-    def security_group_rules(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def security_group_rules(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for security group rules.
         Changing this updates the existing quotaset.
@@ -271,12 +271,12 @@ class QuotaSetV2Args:
         return pulumi.get(self, "security_group_rules")
 
     @security_group_rules.setter
-    def security_group_rules(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def security_group_rules(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "security_group_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def security_groups(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for security groups.
         Changing this updates the existing quotaset.
@@ -284,12 +284,12 @@ class QuotaSetV2Args:
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def security_groups(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "security_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="serverGroupMembers")
-    def server_group_members(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def server_group_members(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for server groups members.
         Changing this updates the existing quotaset.
@@ -297,12 +297,12 @@ class QuotaSetV2Args:
         return pulumi.get(self, "server_group_members")
 
     @server_group_members.setter
-    def server_group_members(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def server_group_members(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "server_group_members", value)
 
     @_builtins.property
     @pulumi.getter(name="serverGroups")
-    def server_groups(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def server_groups(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for server groups.
         Changing this updates the existing quotaset.
@@ -310,29 +310,29 @@ class QuotaSetV2Args:
         return pulumi.get(self, "server_groups")
 
     @server_groups.setter
-    def server_groups(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def server_groups(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "server_groups", value)
 
 
 @pulumi.input_type
 class _QuotaSetV2State:
     def __init__(__self__, *,
-                 cores: Optional[pulumi.Input[_builtins.int]] = None,
-                 fixed_ips: Optional[pulumi.Input[_builtins.int]] = None,
-                 floating_ips: Optional[pulumi.Input[_builtins.int]] = None,
-                 injected_file_content_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 injected_file_path_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 injected_files: Optional[pulumi.Input[_builtins.int]] = None,
-                 instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 key_pairs: Optional[pulumi.Input[_builtins.int]] = None,
-                 metadata_items: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_groups: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_group_members: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_groups: Optional[pulumi.Input[_builtins.int]] = None):
+                 cores: pulumi.Input[Optional[_builtins.int]] = None,
+                 fixed_ips: pulumi.Input[Optional[_builtins.int]] = None,
+                 floating_ips: pulumi.Input[Optional[_builtins.int]] = None,
+                 injected_file_content_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 injected_file_path_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 injected_files: pulumi.Input[Optional[_builtins.int]] = None,
+                 instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 key_pairs: pulumi.Input[Optional[_builtins.int]] = None,
+                 metadata_items: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_groups: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_group_members: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_groups: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering QuotaSetV2 resources.
 
@@ -405,7 +405,7 @@ class _QuotaSetV2State:
 
     @_builtins.property
     @pulumi.getter
-    def cores(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cores(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for cores.
         Changing this updates the existing quotaset.
@@ -413,12 +413,12 @@ class _QuotaSetV2State:
         return pulumi.get(self, "cores")
 
     @cores.setter
-    def cores(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cores(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cores", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedIps")
-    def fixed_ips(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def fixed_ips(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for fixed IPs.
         Changing this updates the existing quotaset.
@@ -426,12 +426,12 @@ class _QuotaSetV2State:
         return pulumi.get(self, "fixed_ips")
 
     @fixed_ips.setter
-    def fixed_ips(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def fixed_ips(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "fixed_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="floatingIps")
-    def floating_ips(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def floating_ips(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for floating IPs.
         Changing this updates the existing quotaset.
@@ -439,12 +439,12 @@ class _QuotaSetV2State:
         return pulumi.get(self, "floating_ips")
 
     @floating_ips.setter
-    def floating_ips(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def floating_ips(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "floating_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="injectedFileContentBytes")
-    def injected_file_content_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def injected_file_content_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for content bytes
         of injected files. Changing this updates the existing quotaset.
@@ -452,12 +452,12 @@ class _QuotaSetV2State:
         return pulumi.get(self, "injected_file_content_bytes")
 
     @injected_file_content_bytes.setter
-    def injected_file_content_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def injected_file_content_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "injected_file_content_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="injectedFilePathBytes")
-    def injected_file_path_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def injected_file_path_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for path bytes of
         injected files. Changing this updates the existing quotaset.
@@ -465,12 +465,12 @@ class _QuotaSetV2State:
         return pulumi.get(self, "injected_file_path_bytes")
 
     @injected_file_path_bytes.setter
-    def injected_file_path_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def injected_file_path_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "injected_file_path_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="injectedFiles")
-    def injected_files(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def injected_files(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for injected files.
         Changing this updates the existing quotaset.
@@ -478,12 +478,12 @@ class _QuotaSetV2State:
         return pulumi.get(self, "injected_files")
 
     @injected_files.setter
-    def injected_files(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def injected_files(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "injected_files", value)
 
     @_builtins.property
     @pulumi.getter
-    def instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for instances.
         Changing this updates the existing quotaset.
@@ -491,12 +491,12 @@ class _QuotaSetV2State:
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instances", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPairs")
-    def key_pairs(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def key_pairs(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for key pairs.
         Changing this updates the existing quotaset.
@@ -504,12 +504,12 @@ class _QuotaSetV2State:
         return pulumi.get(self, "key_pairs")
 
     @key_pairs.setter
-    def key_pairs(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def key_pairs(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "key_pairs", value)
 
     @_builtins.property
     @pulumi.getter(name="metadataItems")
-    def metadata_items(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def metadata_items(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for metadata items.
         Changing this updates the existing quotaset.
@@ -517,12 +517,12 @@ class _QuotaSetV2State:
         return pulumi.get(self, "metadata_items")
 
     @metadata_items.setter
-    def metadata_items(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def metadata_items(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "metadata_items", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the project to manage quotas.
         Changing this creates a new quotaset.
@@ -530,12 +530,12 @@ class _QuotaSetV2State:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def ram(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ram(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for RAM.
         Changing this updates the existing quotaset.
@@ -543,12 +543,12 @@ class _QuotaSetV2State:
         return pulumi.get(self, "ram")
 
     @ram.setter
-    def ram(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ram(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ram", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the volume. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -557,12 +557,12 @@ class _QuotaSetV2State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupRules")
-    def security_group_rules(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def security_group_rules(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for security group rules.
         Changing this updates the existing quotaset.
@@ -570,12 +570,12 @@ class _QuotaSetV2State:
         return pulumi.get(self, "security_group_rules")
 
     @security_group_rules.setter
-    def security_group_rules(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def security_group_rules(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "security_group_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def security_groups(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for security groups.
         Changing this updates the existing quotaset.
@@ -583,12 +583,12 @@ class _QuotaSetV2State:
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def security_groups(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "security_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="serverGroupMembers")
-    def server_group_members(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def server_group_members(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for server groups members.
         Changing this updates the existing quotaset.
@@ -596,12 +596,12 @@ class _QuotaSetV2State:
         return pulumi.get(self, "server_group_members")
 
     @server_group_members.setter
-    def server_group_members(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def server_group_members(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "server_group_members", value)
 
     @_builtins.property
     @pulumi.getter(name="serverGroups")
-    def server_groups(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def server_groups(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for server groups.
         Changing this updates the existing quotaset.
@@ -609,7 +609,7 @@ class _QuotaSetV2State:
         return pulumi.get(self, "server_groups")
 
     @server_groups.setter
-    def server_groups(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def server_groups(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "server_groups", value)
 
 
@@ -619,22 +619,22 @@ class QuotaSetV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cores: Optional[pulumi.Input[_builtins.int]] = None,
-                 fixed_ips: Optional[pulumi.Input[_builtins.int]] = None,
-                 floating_ips: Optional[pulumi.Input[_builtins.int]] = None,
-                 injected_file_content_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 injected_file_path_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 injected_files: Optional[pulumi.Input[_builtins.int]] = None,
-                 instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 key_pairs: Optional[pulumi.Input[_builtins.int]] = None,
-                 metadata_items: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_groups: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_group_members: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_groups: Optional[pulumi.Input[_builtins.int]] = None,
+                 cores: pulumi.Input[Optional[_builtins.int]] = None,
+                 fixed_ips: pulumi.Input[Optional[_builtins.int]] = None,
+                 floating_ips: pulumi.Input[Optional[_builtins.int]] = None,
+                 injected_file_content_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 injected_file_path_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 injected_files: pulumi.Input[Optional[_builtins.int]] = None,
+                 instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 key_pairs: pulumi.Input[Optional[_builtins.int]] = None,
+                 metadata_items: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_groups: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_group_members: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_groups: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages a V2 compute quotaset resource within OpenStack.
@@ -727,22 +727,22 @@ class QuotaSetV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cores: Optional[pulumi.Input[_builtins.int]] = None,
-                 fixed_ips: Optional[pulumi.Input[_builtins.int]] = None,
-                 floating_ips: Optional[pulumi.Input[_builtins.int]] = None,
-                 injected_file_content_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 injected_file_path_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 injected_files: Optional[pulumi.Input[_builtins.int]] = None,
-                 instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 key_pairs: Optional[pulumi.Input[_builtins.int]] = None,
-                 metadata_items: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_groups: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_group_members: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_groups: Optional[pulumi.Input[_builtins.int]] = None,
+                 cores: pulumi.Input[Optional[_builtins.int]] = None,
+                 fixed_ips: pulumi.Input[Optional[_builtins.int]] = None,
+                 floating_ips: pulumi.Input[Optional[_builtins.int]] = None,
+                 injected_file_content_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 injected_file_path_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 injected_files: pulumi.Input[Optional[_builtins.int]] = None,
+                 instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 key_pairs: pulumi.Input[Optional[_builtins.int]] = None,
+                 metadata_items: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_groups: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_group_members: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_groups: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -780,22 +780,22 @@ class QuotaSetV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cores: Optional[pulumi.Input[_builtins.int]] = None,
-            fixed_ips: Optional[pulumi.Input[_builtins.int]] = None,
-            floating_ips: Optional[pulumi.Input[_builtins.int]] = None,
-            injected_file_content_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            injected_file_path_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            injected_files: Optional[pulumi.Input[_builtins.int]] = None,
-            instances: Optional[pulumi.Input[_builtins.int]] = None,
-            key_pairs: Optional[pulumi.Input[_builtins.int]] = None,
-            metadata_items: Optional[pulumi.Input[_builtins.int]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ram: Optional[pulumi.Input[_builtins.int]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_rules: Optional[pulumi.Input[_builtins.int]] = None,
-            security_groups: Optional[pulumi.Input[_builtins.int]] = None,
-            server_group_members: Optional[pulumi.Input[_builtins.int]] = None,
-            server_groups: Optional[pulumi.Input[_builtins.int]] = None) -> 'QuotaSetV2':
+            cores: pulumi.Input[Optional[_builtins.int]] = None,
+            fixed_ips: pulumi.Input[Optional[_builtins.int]] = None,
+            floating_ips: pulumi.Input[Optional[_builtins.int]] = None,
+            injected_file_content_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            injected_file_path_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            injected_files: pulumi.Input[Optional[_builtins.int]] = None,
+            instances: pulumi.Input[Optional[_builtins.int]] = None,
+            key_pairs: pulumi.Input[Optional[_builtins.int]] = None,
+            metadata_items: pulumi.Input[Optional[_builtins.int]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ram: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_rules: pulumi.Input[Optional[_builtins.int]] = None,
+            security_groups: pulumi.Input[Optional[_builtins.int]] = None,
+            server_group_members: pulumi.Input[Optional[_builtins.int]] = None,
+            server_groups: pulumi.Input[Optional[_builtins.int]] = None) -> 'QuotaSetV2':
         """
         Get an existing QuotaSetV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

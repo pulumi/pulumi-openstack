@@ -218,92 +218,92 @@ export interface VolumeState {
      * display the Attachment ID, Instance ID, and the Device as the Instance
      * sees it.
      */
-    attachments?: pulumi.Input<pulumi.Input<inputs.blockstorage.VolumeAttachment>[]>;
+    attachments?: pulumi.Input<pulumi.Input<inputs.blockstorage.VolumeAttachment>[] | undefined>;
     /**
      * The availability zone for the volume.
      * Changing this creates a new volume.
      */
-    availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string | undefined>;
     /**
      * The backup ID from which to create the volume.
      * Conflicts with `snapshotId`, `sourceVolId`, `imageId`. Changing this
      * creates a new volume. Requires microversion >= 3.47.
      */
-    backupId?: pulumi.Input<string>;
+    backupId?: pulumi.Input<string | undefined>;
     /**
      * The consistency group to place the volume
      * in.
      */
-    consistencyGroupId?: pulumi.Input<string>;
+    consistencyGroupId?: pulumi.Input<string | undefined>;
     /**
      * A description of the volume. Changing this updates
      * the volume's description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * When this option is set it allows extending
      * attached volumes. Note: updating size of an attached volume requires Cinder
      * support for version 3.42 and a compatible storage driver.
      */
-    enableOnlineResize?: pulumi.Input<boolean>;
+    enableOnlineResize?: pulumi.Input<boolean | undefined>;
     /**
      * The image ID from which to create the volume.
      * Conflicts with `snapshotId`, `sourceVolId`, `backupId`. Changing this
      * creates a new volume.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * Metadata key/value pairs to associate with the volume.
      * Changing this updates the existing volume metadata.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A unique name for the volume. Changing this updates the
      * volume's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the volume. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new volume.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Provide the Cinder scheduler with hints on where
      * to instantiate a volume in the OpenStack cloud. The available hints are described below.
      */
-    schedulerHints?: pulumi.Input<pulumi.Input<inputs.blockstorage.VolumeSchedulerHint>[]>;
+    schedulerHints?: pulumi.Input<pulumi.Input<inputs.blockstorage.VolumeSchedulerHint>[] | undefined>;
     /**
      * The size of the volume to create (in gigabytes).
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The snapshot ID from which to create the volume.
      * Conflicts with `sourceVolId`, `imageId`, `backupId`. Changing this
      * creates a new volume.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * The volume ID to replicate with.
      */
-    sourceReplica?: pulumi.Input<string>;
+    sourceReplica?: pulumi.Input<string | undefined>;
     /**
      * The volume ID from which to create the volume.
      * Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
      * creates a new volume.
      */
-    sourceVolId?: pulumi.Input<string>;
+    sourceVolId?: pulumi.Input<string | undefined>;
     /**
      * Migration policy when changing `volumeType`.
      * `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
      * allows migration if needed. Applicable only when updating `volumeType`.
      */
-    volumeRetypePolicy?: pulumi.Input<string>;
+    volumeRetypePolicy?: pulumi.Input<string | undefined>;
     /**
      * The type of volume to create or update.
      * Changing this will attempt an in-place retype operation; migration depends on `volumeRetypePolicy`.
      */
-    volumeType?: pulumi.Input<string>;
+    volumeType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -314,56 +314,56 @@ export interface VolumeArgs {
      * The availability zone for the volume.
      * Changing this creates a new volume.
      */
-    availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string | undefined>;
     /**
      * The backup ID from which to create the volume.
      * Conflicts with `snapshotId`, `sourceVolId`, `imageId`. Changing this
      * creates a new volume. Requires microversion >= 3.47.
      */
-    backupId?: pulumi.Input<string>;
+    backupId?: pulumi.Input<string | undefined>;
     /**
      * The consistency group to place the volume
      * in.
      */
-    consistencyGroupId?: pulumi.Input<string>;
+    consistencyGroupId?: pulumi.Input<string | undefined>;
     /**
      * A description of the volume. Changing this updates
      * the volume's description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * When this option is set it allows extending
      * attached volumes. Note: updating size of an attached volume requires Cinder
      * support for version 3.42 and a compatible storage driver.
      */
-    enableOnlineResize?: pulumi.Input<boolean>;
+    enableOnlineResize?: pulumi.Input<boolean | undefined>;
     /**
      * The image ID from which to create the volume.
      * Conflicts with `snapshotId`, `sourceVolId`, `backupId`. Changing this
      * creates a new volume.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * Metadata key/value pairs to associate with the volume.
      * Changing this updates the existing volume metadata.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A unique name for the volume. Changing this updates the
      * volume's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the volume. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new volume.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Provide the Cinder scheduler with hints on where
      * to instantiate a volume in the OpenStack cloud. The available hints are described below.
      */
-    schedulerHints?: pulumi.Input<pulumi.Input<inputs.blockstorage.VolumeSchedulerHint>[]>;
+    schedulerHints?: pulumi.Input<pulumi.Input<inputs.blockstorage.VolumeSchedulerHint>[] | undefined>;
     /**
      * The size of the volume to create (in gigabytes).
      */
@@ -373,26 +373,26 @@ export interface VolumeArgs {
      * Conflicts with `sourceVolId`, `imageId`, `backupId`. Changing this
      * creates a new volume.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * The volume ID to replicate with.
      */
-    sourceReplica?: pulumi.Input<string>;
+    sourceReplica?: pulumi.Input<string | undefined>;
     /**
      * The volume ID from which to create the volume.
      * Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
      * creates a new volume.
      */
-    sourceVolId?: pulumi.Input<string>;
+    sourceVolId?: pulumi.Input<string | undefined>;
     /**
      * Migration policy when changing `volumeType`.
      * `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
      * allows migration if needed. Applicable only when updating `volumeType`.
      */
-    volumeRetypePolicy?: pulumi.Input<string>;
+    volumeRetypePolicy?: pulumi.Input<string | undefined>;
     /**
      * The type of volume to create or update.
      * Changing this will attempt an in-place retype operation; migration depends on `volumeRetypePolicy`.
      */
-    volumeType?: pulumi.Input<string>;
+    volumeType?: pulumi.Input<string | undefined>;
 }

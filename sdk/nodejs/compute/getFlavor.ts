@@ -162,53 +162,53 @@ export interface GetFlavorOutputArgs {
     /**
      * The description of the flavor.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The exact amount of disk (in gigabytes).
      */
-    disk?: pulumi.Input<number>;
+    disk?: pulumi.Input<number | undefined>;
     /**
      * The ID of the flavor. Conflicts with the `name`,
      * `minRam` and `minDisk`
      */
-    flavorId?: pulumi.Input<string>;
+    flavorId?: pulumi.Input<string | undefined>;
     /**
      * The flavor visibility.
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * The minimum amount of disk (in gigabytes). Conflicts
      * with the `flavorId`.
      */
-    minDisk?: pulumi.Input<number>;
+    minDisk?: pulumi.Input<number | undefined>;
     /**
      * The minimum amount of RAM (in megabytes). Conflicts
      * with the `flavorId`.
      */
-    minRam?: pulumi.Input<number>;
+    minRam?: pulumi.Input<number | undefined>;
     /**
      * The name of the flavor. Conflicts with the `flavorId`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The exact amount of RAM (in megabytes).
      */
-    ram?: pulumi.Input<number>;
+    ram?: pulumi.Input<number | undefined>;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The `rxTxFactor` of the flavor.
      */
-    rxTxFactor?: pulumi.Input<number>;
+    rxTxFactor?: pulumi.Input<number | undefined>;
     /**
      * The amount of swap (in gigabytes).
      */
-    swap?: pulumi.Input<number>;
+    swap?: pulumi.Input<number | undefined>;
     /**
      * The amount of VCPUs.
      */
-    vcpus?: pulumi.Input<number>;
+    vcpus?: pulumi.Input<number | undefined>;
 }

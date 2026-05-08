@@ -189,11 +189,11 @@ def get_snapshot_v3(most_recent: Optional[_builtins.bool] = None,
         size=pulumi.get(__ret__, 'size'),
         status=pulumi.get(__ret__, 'status'),
         volume_id=pulumi.get(__ret__, 'volume_id'))
-def get_snapshot_v3_output(most_recent: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                           name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           volume_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_snapshot_v3_output(most_recent: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                           name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           volume_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSnapshotV3Result]:
     """
     Use this data source to get information about an existing snapshot.

@@ -112,14 +112,14 @@ export interface GetLbFlavorDeprecatedOutputArgs {
     /**
      * The ID of the flavor. Exactly one of `name`, `flavorId` is required to be set.
      */
-    flavorId?: pulumi.Input<string>;
+    flavorId?: pulumi.Input<string | undefined>;
     /**
      * The name of the flavor. Exactly one of `name`, `flavorId` is required to be set.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Load Balancer client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

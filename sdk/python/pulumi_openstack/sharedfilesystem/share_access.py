@@ -23,7 +23,7 @@ class ShareAccessArgs:
                  access_to: pulumi.Input[_builtins.str],
                  access_type: pulumi.Input[_builtins.str],
                  share_id: pulumi.Input[_builtins.str],
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ShareAccess resource.
 
@@ -98,7 +98,7 @@ class ShareAccessArgs:
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Shared File System
         client. A Shared File System client is needed to create a share access.
@@ -107,20 +107,20 @@ class ShareAccessArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _ShareAccessState:
     def __init__(__self__, *,
-                 access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_to: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_to: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ShareAccess resources.
 
@@ -154,31 +154,31 @@ class _ShareAccessState:
 
     @_builtins.property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access credential of the entity granted access.
         """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
-    def access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access level to the share. Can either be `rw` or `ro`.
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
-    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="accessTo")
-    def access_to(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_to(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value that defines the access. Can either be an IP
         address or a username verified by configured Security Service of the Share Network.
@@ -186,12 +186,12 @@ class _ShareAccessState:
         return pulumi.get(self, "access_to")
 
     @access_to.setter
-    def access_to(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_to(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_to", value)
 
     @_builtins.property
     @pulumi.getter(name="accessType")
-    def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access rule type. Can either be an ip, user,
         cert, or cephx. cephx support requires an OpenStack environment that supports
@@ -200,12 +200,12 @@ class _ShareAccessState:
         return pulumi.get(self, "access_type")
 
     @access_type.setter
-    def access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Shared File System
         client. A Shared File System client is needed to create a share access.
@@ -214,31 +214,31 @@ class _ShareAccessState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="shareId")
-    def share_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def share_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the share to which you are granted access.
         """
         return pulumi.get(self, "share_id")
 
     @share_id.setter
-    def share_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def share_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "share_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The share access state.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -248,11 +248,11 @@ class ShareAccess(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_to: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_to: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Use this resource to control the share access lists.
@@ -490,11 +490,11 @@ class ShareAccess(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_to: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_to: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -531,13 +531,13 @@ class ShareAccess(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_key: Optional[pulumi.Input[_builtins.str]] = None,
-            access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            access_to: Optional[pulumi.Input[_builtins.str]] = None,
-            access_type: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            share_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'ShareAccess':
+            access_key: pulumi.Input[Optional[_builtins.str]] = None,
+            access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            access_to: pulumi.Input[Optional[_builtins.str]] = None,
+            access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            share_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'ShareAccess':
         """
         Get an existing ShareAccess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

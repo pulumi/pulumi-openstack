@@ -257,33 +257,33 @@ export interface GetListenerV2OutputArgs {
      * The ID of the listener. Exactly one of `name`,
      * `listenerId` is required to be set.
      */
-    listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the load balancer associated with
      * the requested listener.
      */
-    loadbalancerId?: pulumi.Input<string>;
+    loadbalancerId?: pulumi.Input<string | undefined>;
     /**
      * The name of the listener. Exactly one of `name`,
      * `listenerId` is required to be set.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The protocol of the requested listener.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The port on which the requested listener accepts client traffic.
      */
-    protocolPort?: pulumi.Input<number>;
+    protocolPort?: pulumi.Input<number | undefined>;
     /**
      * The region in which to obtain the V2 Load Balancer client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A set of tags applied to the loadbalancer's listener.
      * The loadbalancer' listener will be returned if it has all of the specified tags.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

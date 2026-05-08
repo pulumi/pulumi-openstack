@@ -21,24 +21,24 @@ class ImageArgs:
     def __init__(__self__, *,
                  container_format: pulumi.Input[_builtins.str],
                  disk_format: pulumi.Input[_builtins.str],
-                 decompress: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_cache_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_source_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_source_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_source_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_disk_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ram_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 verify_checksum: Optional[pulumi.Input[_builtins.bool]] = None,
-                 visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_download: Optional[pulumi.Input[_builtins.bool]] = None):
+                 decompress: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_cache_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_source_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_source_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_source_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_disk_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ram_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 verify_checksum: pulumi.Input[Optional[_builtins.bool]] = None,
+                 visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_download: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Image resource.
 
@@ -162,7 +162,7 @@ class ImageArgs:
 
     @_builtins.property
     @pulumi.getter
-    def decompress(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def decompress(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, this provider will decompress downloaded
         image before uploading it to OpenStack. Decompression algorithm is chosen by
@@ -173,12 +173,12 @@ class ImageArgs:
         return pulumi.get(self, "decompress")
 
     @decompress.setter
-    def decompress(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def decompress(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "decompress", value)
 
     @_builtins.property
     @pulumi.getter
-    def hidden(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hidden(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, image will be hidden from public list.
         Defaults to false.
@@ -186,12 +186,12 @@ class ImageArgs:
         return pulumi.get(self, "hidden")
 
     @hidden.setter
-    def hidden(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hidden(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hidden", value)
 
     @_builtins.property
     @pulumi.getter(name="imageCachePath")
-    def image_cache_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_cache_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the directory where the images will
         be downloaded. Images will be stored with a filename corresponding to the
@@ -200,12 +200,12 @@ class ImageArgs:
         return pulumi.get(self, "image_cache_path")
 
     @image_cache_path.setter
-    def image_cache_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_cache_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_cache_path", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique ID (valid UUID) of image to create. Changing
         this creates a new image.
@@ -213,12 +213,12 @@ class ImageArgs:
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="imageSourcePassword")
-    def image_source_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_source_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of basic auth to download
         `image_source_url`.
@@ -226,12 +226,12 @@ class ImageArgs:
         return pulumi.get(self, "image_source_password")
 
     @image_source_password.setter
-    def image_source_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_source_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_source_password", value)
 
     @_builtins.property
     @pulumi.getter(name="imageSourceUrl")
-    def image_source_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_source_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the url of the raw image. If
         `web_download` is not used, then the image will be downloaded in the
@@ -241,12 +241,12 @@ class ImageArgs:
         return pulumi.get(self, "image_source_url")
 
     @image_source_url.setter
-    def image_source_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_source_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_source_url", value)
 
     @_builtins.property
     @pulumi.getter(name="imageSourceUsername")
-    def image_source_username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_source_username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of basic auth to download
         `image_source_url`.
@@ -254,12 +254,12 @@ class ImageArgs:
         return pulumi.get(self, "image_source_username")
 
     @image_source_username.setter
-    def image_source_username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_source_username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_source_username", value)
 
     @_builtins.property
     @pulumi.getter(name="localFilePath")
-    def local_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the filepath of the raw image file
         that will be uploaded to Glance. Conflicts with `image_source_url` and
@@ -268,12 +268,12 @@ class ImageArgs:
         return pulumi.get(self, "local_file_path")
 
     @local_file_path.setter
-    def local_file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_file_path", value)
 
     @_builtins.property
     @pulumi.getter(name="minDiskGb")
-    def min_disk_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_disk_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Amount of disk space (in GB) required to boot
         image. Defaults to 0.
@@ -281,12 +281,12 @@ class ImageArgs:
         return pulumi.get(self, "min_disk_gb")
 
     @min_disk_gb.setter
-    def min_disk_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_disk_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_disk_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="minRamMb")
-    def min_ram_mb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_ram_mb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Amount of ram (in MB) required to boot image.
         Defauts to 0.
@@ -294,24 +294,24 @@ class ImageArgs:
         return pulumi.get(self, "min_ram_mb")
 
     @min_ram_mb.setter
-    def min_ram_mb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_ram_mb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_ram_mb", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the image.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of key/value pairs to set freeform
         information about an image. See the "Notes" section for further information
@@ -320,12 +320,12 @@ class ImageArgs:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter
-    def protected(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def protected(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, image will not be deletable. Defaults to
         false.
@@ -333,12 +333,12 @@ class ImageArgs:
         return pulumi.get(self, "protected")
 
     @protected.setter
-    def protected(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def protected(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "protected", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Glance client. A
         Glance client is needed to create an Image that can be used with a compute
@@ -348,12 +348,12 @@ class ImageArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The tags of the image. It must be a list of strings. At
         this time, it is not possible to delete all tags of an image.
@@ -361,12 +361,12 @@ class ImageArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="verifyChecksum")
-    def verify_checksum(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def verify_checksum(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If false, the checksum will not be verified
         once the image is finished uploading. Conflicts with `web_download`. Defaults
@@ -375,12 +375,12 @@ class ImageArgs:
         return pulumi.get(self, "verify_checksum")
 
     @verify_checksum.setter
-    def verify_checksum(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def verify_checksum(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "verify_checksum", value)
 
     @_builtins.property
     @pulumi.getter
-    def visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The visibility of the image. Must be one of
         "public", "private", "community", or "shared". The ability to set the
@@ -389,12 +389,12 @@ class ImageArgs:
         return pulumi.get(self, "visibility")
 
     @visibility.setter
-    def visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "visibility", value)
 
     @_builtins.property
     @pulumi.getter(name="webDownload")
-    def web_download(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def web_download(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the "web-download" import method will be
         used to let Openstack download the image directly from the remote source.
@@ -403,42 +403,42 @@ class ImageArgs:
         return pulumi.get(self, "web_download")
 
     @web_download.setter
-    def web_download(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def web_download(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "web_download", value)
 
 
 @pulumi.input_type
 class _ImageState:
     def __init__(__self__, *,
-                 checksum: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 decompress: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 file: Optional[pulumi.Input[_builtins.str]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_cache_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_source_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_source_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_source_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 min_disk_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ram_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify_checksum: Optional[pulumi.Input[_builtins.bool]] = None,
-                 visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_download: Optional[pulumi.Input[_builtins.bool]] = None):
+                 checksum: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 decompress: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 file: pulumi.Input[Optional[_builtins.str]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_cache_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_source_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_source_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_source_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 min_disk_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ram_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify_checksum: pulumi.Input[Optional[_builtins.bool]] = None,
+                 visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_download: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Image resources.
 
@@ -571,19 +571,19 @@ class _ImageState:
 
     @_builtins.property
     @pulumi.getter
-    def checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The checksum of the data associated with the image.
         """
         return pulumi.get(self, "checksum")
 
     @checksum.setter
-    def checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "checksum", value)
 
     @_builtins.property
     @pulumi.getter(name="containerFormat")
-    def container_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The container format. Must be one of "bare",
         "ovf", "aki", "ari", "ami", "ova", "docker", "compressed".
@@ -591,24 +591,24 @@ class _ImageState:
         return pulumi.get(self, "container_format")
 
     @container_format.setter
-    def container_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_format", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date the image was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def decompress(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def decompress(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, this provider will decompress downloaded
         image before uploading it to OpenStack. Decompression algorithm is chosen by
@@ -619,12 +619,12 @@ class _ImageState:
         return pulumi.get(self, "decompress")
 
     @decompress.setter
-    def decompress(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def decompress(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "decompress", value)
 
     @_builtins.property
     @pulumi.getter(name="diskFormat")
-    def disk_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk format. Must be one of "raw", "vhd",
         "vhdx", "vmdk", "vdi", "iso", "ploop", "qcow2", "aki", "ari", "ami"
@@ -632,12 +632,12 @@ class _ImageState:
         return pulumi.get(self, "disk_format")
 
     @disk_format.setter
-    def disk_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_format", value)
 
     @_builtins.property
     @pulumi.getter
-    def file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the trailing path after the glance
         endpoint that represent the location of the image
@@ -646,12 +646,12 @@ class _ImageState:
         return pulumi.get(self, "file")
 
     @file.setter
-    def file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file", value)
 
     @_builtins.property
     @pulumi.getter
-    def hidden(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hidden(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, image will be hidden from public list.
         Defaults to false.
@@ -659,12 +659,12 @@ class _ImageState:
         return pulumi.get(self, "hidden")
 
     @hidden.setter
-    def hidden(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hidden(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hidden", value)
 
     @_builtins.property
     @pulumi.getter(name="imageCachePath")
-    def image_cache_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_cache_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the directory where the images will
         be downloaded. Images will be stored with a filename corresponding to the
@@ -673,12 +673,12 @@ class _ImageState:
         return pulumi.get(self, "image_cache_path")
 
     @image_cache_path.setter
-    def image_cache_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_cache_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_cache_path", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique ID (valid UUID) of image to create. Changing
         this creates a new image.
@@ -686,12 +686,12 @@ class _ImageState:
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="imageSourcePassword")
-    def image_source_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_source_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of basic auth to download
         `image_source_url`.
@@ -699,12 +699,12 @@ class _ImageState:
         return pulumi.get(self, "image_source_password")
 
     @image_source_password.setter
-    def image_source_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_source_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_source_password", value)
 
     @_builtins.property
     @pulumi.getter(name="imageSourceUrl")
-    def image_source_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_source_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the url of the raw image. If
         `web_download` is not used, then the image will be downloaded in the
@@ -714,12 +714,12 @@ class _ImageState:
         return pulumi.get(self, "image_source_url")
 
     @image_source_url.setter
-    def image_source_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_source_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_source_url", value)
 
     @_builtins.property
     @pulumi.getter(name="imageSourceUsername")
-    def image_source_username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_source_username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of basic auth to download
         `image_source_url`.
@@ -727,12 +727,12 @@ class _ImageState:
         return pulumi.get(self, "image_source_username")
 
     @image_source_username.setter
-    def image_source_username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_source_username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_source_username", value)
 
     @_builtins.property
     @pulumi.getter(name="localFilePath")
-    def local_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the filepath of the raw image file
         that will be uploaded to Glance. Conflicts with `image_source_url` and
@@ -741,12 +741,12 @@ class _ImageState:
         return pulumi.get(self, "local_file_path")
 
     @local_file_path.setter
-    def local_file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_file_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The metadata associated with the image.
         Image metadata allow for meaningfully define the image properties
@@ -755,12 +755,12 @@ class _ImageState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="minDiskGb")
-    def min_disk_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_disk_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Amount of disk space (in GB) required to boot
         image. Defaults to 0.
@@ -768,12 +768,12 @@ class _ImageState:
         return pulumi.get(self, "min_disk_gb")
 
     @min_disk_gb.setter
-    def min_disk_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_disk_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_disk_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="minRamMb")
-    def min_ram_mb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_ram_mb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Amount of ram (in MB) required to boot image.
         Defauts to 0.
@@ -781,36 +781,36 @@ class _ImageState:
         return pulumi.get(self, "min_ram_mb")
 
     @min_ram_mb.setter
-    def min_ram_mb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_ram_mb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_ram_mb", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the image.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the openstack user who owns the image.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of key/value pairs to set freeform
         information about an image. See the "Notes" section for further information
@@ -819,12 +819,12 @@ class _ImageState:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter
-    def protected(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def protected(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, image will not be deletable. Defaults to
         false.
@@ -832,12 +832,12 @@ class _ImageState:
         return pulumi.get(self, "protected")
 
     @protected.setter
-    def protected(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def protected(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "protected", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Glance client. A
         Glance client is needed to create an Image that can be used with a compute
@@ -847,12 +847,12 @@ class _ImageState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the JSON-schema that represent
         the image or image
@@ -860,24 +860,24 @@ class _ImageState:
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter(name="sizeBytes")
-    def size_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size in bytes of the data associated with the image.
         """
         return pulumi.get(self, "size_bytes")
 
     @size_bytes.setter
-    def size_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size_bytes", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the image. It can be "queued", "active"
         or "saving".
@@ -885,12 +885,12 @@ class _ImageState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The tags of the image. It must be a list of strings. At
         this time, it is not possible to delete all tags of an image.
@@ -898,24 +898,24 @@ class _ImageState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date the image was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="verifyChecksum")
-    def verify_checksum(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def verify_checksum(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If false, the checksum will not be verified
         once the image is finished uploading. Conflicts with `web_download`. Defaults
@@ -924,12 +924,12 @@ class _ImageState:
         return pulumi.get(self, "verify_checksum")
 
     @verify_checksum.setter
-    def verify_checksum(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def verify_checksum(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "verify_checksum", value)
 
     @_builtins.property
     @pulumi.getter
-    def visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The visibility of the image. Must be one of
         "public", "private", "community", or "shared". The ability to set the
@@ -938,12 +938,12 @@ class _ImageState:
         return pulumi.get(self, "visibility")
 
     @visibility.setter
-    def visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "visibility", value)
 
     @_builtins.property
     @pulumi.getter(name="webDownload")
-    def web_download(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def web_download(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the "web-download" import method will be
         used to let Openstack download the image directly from the remote source.
@@ -952,7 +952,7 @@ class _ImageState:
         return pulumi.get(self, "web_download")
 
     @web_download.setter
-    def web_download(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def web_download(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "web_download", value)
 
 
@@ -962,26 +962,26 @@ class Image(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 decompress: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_cache_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_source_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_source_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_source_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_disk_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ram_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 verify_checksum: Optional[pulumi.Input[_builtins.bool]] = None,
-                 visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_download: Optional[pulumi.Input[_builtins.bool]] = None,
+                 container_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 decompress: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_cache_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_source_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_source_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_source_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_disk_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ram_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 verify_checksum: pulumi.Input[Optional[_builtins.bool]] = None,
+                 visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_download: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages a V2 Image resource within OpenStack Glance.
@@ -1155,26 +1155,26 @@ class Image(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 decompress: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_cache_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_source_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_source_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_source_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_disk_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ram_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 verify_checksum: Optional[pulumi.Input[_builtins.bool]] = None,
-                 visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_download: Optional[pulumi.Input[_builtins.bool]] = None,
+                 container_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 decompress: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_cache_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_source_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_source_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_source_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_disk_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ram_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 verify_checksum: pulumi.Input[Optional[_builtins.bool]] = None,
+                 visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_download: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1229,35 +1229,35 @@ class Image(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            checksum: Optional[pulumi.Input[_builtins.str]] = None,
-            container_format: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            decompress: Optional[pulumi.Input[_builtins.bool]] = None,
-            disk_format: Optional[pulumi.Input[_builtins.str]] = None,
-            file: Optional[pulumi.Input[_builtins.str]] = None,
-            hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-            image_cache_path: Optional[pulumi.Input[_builtins.str]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            image_source_password: Optional[pulumi.Input[_builtins.str]] = None,
-            image_source_url: Optional[pulumi.Input[_builtins.str]] = None,
-            image_source_username: Optional[pulumi.Input[_builtins.str]] = None,
-            local_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            min_disk_gb: Optional[pulumi.Input[_builtins.int]] = None,
-            min_ram_mb: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            owner: Optional[pulumi.Input[_builtins.str]] = None,
-            properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            protected: Optional[pulumi.Input[_builtins.bool]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            schema: Optional[pulumi.Input[_builtins.str]] = None,
-            size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            verify_checksum: Optional[pulumi.Input[_builtins.bool]] = None,
-            visibility: Optional[pulumi.Input[_builtins.str]] = None,
-            web_download: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Image':
+            checksum: pulumi.Input[Optional[_builtins.str]] = None,
+            container_format: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            decompress: pulumi.Input[Optional[_builtins.bool]] = None,
+            disk_format: pulumi.Input[Optional[_builtins.str]] = None,
+            file: pulumi.Input[Optional[_builtins.str]] = None,
+            hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_cache_path: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            image_source_password: pulumi.Input[Optional[_builtins.str]] = None,
+            image_source_url: pulumi.Input[Optional[_builtins.str]] = None,
+            image_source_username: pulumi.Input[Optional[_builtins.str]] = None,
+            local_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            min_disk_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            min_ram_mb: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            protected: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            verify_checksum: pulumi.Input[Optional[_builtins.bool]] = None,
+            visibility: pulumi.Input[Optional[_builtins.str]] = None,
+            web_download: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

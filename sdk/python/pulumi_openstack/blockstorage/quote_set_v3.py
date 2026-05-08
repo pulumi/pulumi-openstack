@@ -20,15 +20,15 @@ __all__ = ['QuoteSetV3Args', 'QuoteSetV3']
 class QuoteSetV3Args:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
-                 backup_gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 backups: Optional[pulumi.Input[_builtins.int]] = None,
-                 gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 groups: Optional[pulumi.Input[_builtins.int]] = None,
-                 per_volume_gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshots: Optional[pulumi.Input[_builtins.int]] = None,
-                 volume_type_quota: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 volumes: Optional[pulumi.Input[_builtins.int]] = None):
+                 backup_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 backups: pulumi.Input[Optional[_builtins.int]] = None,
+                 gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 groups: pulumi.Input[Optional[_builtins.int]] = None,
+                 per_volume_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshots: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_type_quota: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 volumes: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a QuoteSetV3 resource.
 
@@ -90,7 +90,7 @@ class QuoteSetV3Args:
 
     @_builtins.property
     @pulumi.getter(name="backupGigabytes")
-    def backup_gigabytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_gigabytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for backup gigabytes. Changing
         this updates the existing quotaset.
@@ -98,12 +98,12 @@ class QuoteSetV3Args:
         return pulumi.get(self, "backup_gigabytes")
 
     @backup_gigabytes.setter
-    def backup_gigabytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_gigabytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_gigabytes", value)
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backups(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for backups. Changing this updates the
         existing quotaset.
@@ -111,12 +111,12 @@ class QuoteSetV3Args:
         return pulumi.get(self, "backups")
 
     @backups.setter
-    def backups(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backups(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backups", value)
 
     @_builtins.property
     @pulumi.getter
-    def gigabytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gigabytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for gigabytes. Changing this updates the
         existing quotaset.
@@ -124,12 +124,12 @@ class QuoteSetV3Args:
         return pulumi.get(self, "gigabytes")
 
     @gigabytes.setter
-    def gigabytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gigabytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gigabytes", value)
 
     @_builtins.property
     @pulumi.getter
-    def groups(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def groups(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for groups. Changing this updates the
         existing quotaset.
@@ -137,12 +137,12 @@ class QuoteSetV3Args:
         return pulumi.get(self, "groups")
 
     @groups.setter
-    def groups(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def groups(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "groups", value)
 
     @_builtins.property
     @pulumi.getter(name="perVolumeGigabytes")
-    def per_volume_gigabytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def per_volume_gigabytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for gigabytes per volume .
         Changing this updates the existing quotaset.
@@ -150,12 +150,12 @@ class QuoteSetV3Args:
         return pulumi.get(self, "per_volume_gigabytes")
 
     @per_volume_gigabytes.setter
-    def per_volume_gigabytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def per_volume_gigabytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "per_volume_gigabytes", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the volume. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -164,12 +164,12 @@ class QuoteSetV3Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def snapshots(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def snapshots(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for snapshots. Changing this updates the
         existing quotaset.
@@ -177,12 +177,12 @@ class QuoteSetV3Args:
         return pulumi.get(self, "snapshots")
 
     @snapshots.setter
-    def snapshots(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def snapshots(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "snapshots", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeTypeQuota")
-    def volume_type_quota(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def volume_type_quota(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Key/Value pairs for setting quota for
         volumes types. Possible keys are `snapshots_<volume_type_name>`,
@@ -191,12 +191,12 @@ class QuoteSetV3Args:
         return pulumi.get(self, "volume_type_quota")
 
     @volume_type_quota.setter
-    def volume_type_quota(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def volume_type_quota(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "volume_type_quota", value)
 
     @_builtins.property
     @pulumi.getter
-    def volumes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def volumes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for volumes. Changing this updates the
         existing quotaset.
@@ -204,23 +204,23 @@ class QuoteSetV3Args:
         return pulumi.get(self, "volumes")
 
     @volumes.setter
-    def volumes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def volumes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "volumes", value)
 
 
 @pulumi.input_type
 class _QuoteSetV3State:
     def __init__(__self__, *,
-                 backup_gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 backups: Optional[pulumi.Input[_builtins.int]] = None,
-                 gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 groups: Optional[pulumi.Input[_builtins.int]] = None,
-                 per_volume_gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshots: Optional[pulumi.Input[_builtins.int]] = None,
-                 volume_type_quota: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 volumes: Optional[pulumi.Input[_builtins.int]] = None):
+                 backup_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 backups: pulumi.Input[Optional[_builtins.int]] = None,
+                 gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 groups: pulumi.Input[Optional[_builtins.int]] = None,
+                 per_volume_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshots: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_type_quota: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 volumes: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering QuoteSetV3 resources.
 
@@ -270,7 +270,7 @@ class _QuoteSetV3State:
 
     @_builtins.property
     @pulumi.getter(name="backupGigabytes")
-    def backup_gigabytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_gigabytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for backup gigabytes. Changing
         this updates the existing quotaset.
@@ -278,12 +278,12 @@ class _QuoteSetV3State:
         return pulumi.get(self, "backup_gigabytes")
 
     @backup_gigabytes.setter
-    def backup_gigabytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_gigabytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_gigabytes", value)
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backups(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for backups. Changing this updates the
         existing quotaset.
@@ -291,12 +291,12 @@ class _QuoteSetV3State:
         return pulumi.get(self, "backups")
 
     @backups.setter
-    def backups(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backups(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backups", value)
 
     @_builtins.property
     @pulumi.getter
-    def gigabytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gigabytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for gigabytes. Changing this updates the
         existing quotaset.
@@ -304,12 +304,12 @@ class _QuoteSetV3State:
         return pulumi.get(self, "gigabytes")
 
     @gigabytes.setter
-    def gigabytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gigabytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gigabytes", value)
 
     @_builtins.property
     @pulumi.getter
-    def groups(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def groups(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for groups. Changing this updates the
         existing quotaset.
@@ -317,12 +317,12 @@ class _QuoteSetV3State:
         return pulumi.get(self, "groups")
 
     @groups.setter
-    def groups(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def groups(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "groups", value)
 
     @_builtins.property
     @pulumi.getter(name="perVolumeGigabytes")
-    def per_volume_gigabytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def per_volume_gigabytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for gigabytes per volume .
         Changing this updates the existing quotaset.
@@ -330,12 +330,12 @@ class _QuoteSetV3State:
         return pulumi.get(self, "per_volume_gigabytes")
 
     @per_volume_gigabytes.setter
-    def per_volume_gigabytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def per_volume_gigabytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "per_volume_gigabytes", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the project to manage quotas. Changing this
         creates a new quotaset.
@@ -343,12 +343,12 @@ class _QuoteSetV3State:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the volume. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -357,12 +357,12 @@ class _QuoteSetV3State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def snapshots(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def snapshots(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for snapshots. Changing this updates the
         existing quotaset.
@@ -370,12 +370,12 @@ class _QuoteSetV3State:
         return pulumi.get(self, "snapshots")
 
     @snapshots.setter
-    def snapshots(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def snapshots(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "snapshots", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeTypeQuota")
-    def volume_type_quota(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def volume_type_quota(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Key/Value pairs for setting quota for
         volumes types. Possible keys are `snapshots_<volume_type_name>`,
@@ -384,12 +384,12 @@ class _QuoteSetV3State:
         return pulumi.get(self, "volume_type_quota")
 
     @volume_type_quota.setter
-    def volume_type_quota(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def volume_type_quota(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "volume_type_quota", value)
 
     @_builtins.property
     @pulumi.getter
-    def volumes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def volumes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for volumes. Changing this updates the
         existing quotaset.
@@ -397,7 +397,7 @@ class _QuoteSetV3State:
         return pulumi.get(self, "volumes")
 
     @volumes.setter
-    def volumes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def volumes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "volumes", value)
 
 
@@ -407,16 +407,16 @@ class QuoteSetV3(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 backups: Optional[pulumi.Input[_builtins.int]] = None,
-                 gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 groups: Optional[pulumi.Input[_builtins.int]] = None,
-                 per_volume_gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshots: Optional[pulumi.Input[_builtins.int]] = None,
-                 volume_type_quota: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 volumes: Optional[pulumi.Input[_builtins.int]] = None,
+                 backup_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 backups: pulumi.Input[Optional[_builtins.int]] = None,
+                 gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 groups: pulumi.Input[Optional[_builtins.int]] = None,
+                 per_volume_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshots: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_type_quota: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 volumes: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages a V3 block storage quotaset resource within OpenStack.
@@ -498,16 +498,16 @@ class QuoteSetV3(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 backups: Optional[pulumi.Input[_builtins.int]] = None,
-                 gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 groups: Optional[pulumi.Input[_builtins.int]] = None,
-                 per_volume_gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshots: Optional[pulumi.Input[_builtins.int]] = None,
-                 volume_type_quota: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 volumes: Optional[pulumi.Input[_builtins.int]] = None,
+                 backup_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 backups: pulumi.Input[Optional[_builtins.int]] = None,
+                 gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 groups: pulumi.Input[Optional[_builtins.int]] = None,
+                 per_volume_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshots: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_type_quota: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 volumes: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -539,16 +539,16 @@ class QuoteSetV3(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-            backups: Optional[pulumi.Input[_builtins.int]] = None,
-            gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-            groups: Optional[pulumi.Input[_builtins.int]] = None,
-            per_volume_gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            snapshots: Optional[pulumi.Input[_builtins.int]] = None,
-            volume_type_quota: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            volumes: Optional[pulumi.Input[_builtins.int]] = None) -> 'QuoteSetV3':
+            backup_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+            backups: pulumi.Input[Optional[_builtins.int]] = None,
+            gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+            groups: pulumi.Input[Optional[_builtins.int]] = None,
+            per_volume_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshots: pulumi.Input[Optional[_builtins.int]] = None,
+            volume_type_quota: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            volumes: pulumi.Input[Optional[_builtins.int]] = None) -> 'QuoteSetV3':
         """
         Get an existing QuoteSetV3 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

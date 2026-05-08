@@ -176,54 +176,54 @@ export interface BgpSpeakerV2State {
      * A boolean value indicating
      * whether to advertise floating IP host routes. Defaults to `true`.
      */
-    advertiseFloatingIpHostRoutes?: pulumi.Input<boolean>;
+    advertiseFloatingIpHostRoutes?: pulumi.Input<boolean | undefined>;
     /**
      * A boolean value indicating whether to
      * advertise tenant networks. Defaults to `true`.
      */
-    advertiseTenantNetworks?: pulumi.Input<boolean>;
+    advertiseTenantNetworks?: pulumi.Input<boolean | undefined>;
     /**
      * A list of dictionaries containing the `destination` and
      * `nextHop` for each route advertised by the BGP speaker. This attribute is
      * only populated after the BGP speaker has been created and has established BGP
      * sessions with its peers.
      */
-    advertisedRoutes?: pulumi.Input<pulumi.Input<inputs.networking.BgpSpeakerV2AdvertisedRoute>[]>;
+    advertisedRoutes?: pulumi.Input<pulumi.Input<inputs.networking.BgpSpeakerV2AdvertisedRoute>[] | undefined>;
     /**
      * The IP version of the BGP speaker. Valid values are
      * `4` or `6`. Defaults to `4`. Changing this creates a new BGP speaker.
      */
-    ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number | undefined>;
     /**
      * The local autonomous system number (ASN) for the BGP
      * speaker. This is a mandatory field and must be specified. Changing this
      * creates a new BGP speaker.
      */
-    localAs?: pulumi.Input<number>;
+    localAs?: pulumi.Input<number | undefined>;
     /**
      * A name for the BGP speaker.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of network IDs to associate with the BGP speaker.
      */
-    networks?: pulumi.Input<pulumi.Input<string>[]>;
+    networks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of BGP peer IDs to associate with the BGP speaker.
      */
-    peers?: pulumi.Input<pulumi.Input<string>[]>;
+    peers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron network. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new BGP
      * speaker.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The tenant/project ID. Required if admin privileges
      * are used. Changing this creates a new BGP speaker.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -234,17 +234,17 @@ export interface BgpSpeakerV2Args {
      * A boolean value indicating
      * whether to advertise floating IP host routes. Defaults to `true`.
      */
-    advertiseFloatingIpHostRoutes?: pulumi.Input<boolean>;
+    advertiseFloatingIpHostRoutes?: pulumi.Input<boolean | undefined>;
     /**
      * A boolean value indicating whether to
      * advertise tenant networks. Defaults to `true`.
      */
-    advertiseTenantNetworks?: pulumi.Input<boolean>;
+    advertiseTenantNetworks?: pulumi.Input<boolean | undefined>;
     /**
      * The IP version of the BGP speaker. Valid values are
      * `4` or `6`. Defaults to `4`. Changing this creates a new BGP speaker.
      */
-    ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number | undefined>;
     /**
      * The local autonomous system number (ASN) for the BGP
      * speaker. This is a mandatory field and must be specified. Changing this
@@ -254,25 +254,25 @@ export interface BgpSpeakerV2Args {
     /**
      * A name for the BGP speaker.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of network IDs to associate with the BGP speaker.
      */
-    networks?: pulumi.Input<pulumi.Input<string>[]>;
+    networks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of BGP peer IDs to associate with the BGP speaker.
      */
-    peers?: pulumi.Input<pulumi.Input<string>[]>;
+    peers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron network. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new BGP
      * speaker.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The tenant/project ID. Required if admin privileges
      * are used. Changing this creates a new BGP speaker.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

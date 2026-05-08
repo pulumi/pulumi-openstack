@@ -202,76 +202,76 @@ export interface GetSubnetIdsV2OutputArgs {
     /**
      * The CIDR of the subnet.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * Human-readable description of the subnet.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If the subnet has DHCP enabled.
      */
-    dhcpEnabled?: pulumi.Input<boolean>;
+    dhcpEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * If the subnet publishes DNS records.
      */
-    dnsPublishFixedIp?: pulumi.Input<boolean>;
+    dnsPublishFixedIp?: pulumi.Input<boolean | undefined>;
     /**
      * The IP of the subnet's gateway.
      */
-    gatewayIp?: pulumi.Input<string>;
+    gatewayIp?: pulumi.Input<string | undefined>;
     /**
      * The IP version of the subnet (either 4 or 6).
      */
-    ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number | undefined>;
     /**
      * The IPv6 address mode. Valid values are
      * `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
      */
-    ipv6AddressMode?: pulumi.Input<string>;
+    ipv6AddressMode?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 Router Advertisement mode. Valid values
      * are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
      */
-    ipv6RaMode?: pulumi.Input<string>;
+    ipv6RaMode?: pulumi.Input<string | undefined>;
     /**
      * The name of the subnet.
      */
-    name?: pulumi.Input<string>;
-    nameRegex?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * The ID of the network the subnet belongs to.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve subnet ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the segment the subnet belongs to.
      * Available when neutron segment extension is enabled.
      */
-    segmentId?: pulumi.Input<string>;
+    segmentId?: pulumi.Input<string | undefined>;
     /**
      * Order the results in either `asc` or `desc`.
      * Defaults to none.
      */
-    sortDirection?: pulumi.Input<string>;
+    sortDirection?: pulumi.Input<string | undefined>;
     /**
      * Sort subnets based on a certain key. Defaults to none.
      */
-    sortKey?: pulumi.Input<string>;
+    sortKey?: pulumi.Input<string | undefined>;
     /**
      * The ID of the subnetpool associated with the subnet.
      */
-    subnetpoolId?: pulumi.Input<string>;
+    subnetpoolId?: pulumi.Input<string | undefined>;
     /**
      * The list of subnet tags to filter.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The owner of the subnet.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

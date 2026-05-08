@@ -118,17 +118,17 @@ export interface QosDscpMarkingRuleState {
      * The value of DSCP mark. Changing this updates the DSCP mark value existing
      * QoS DSCP marking rule.
      */
-    dscpMark?: pulumi.Input<number>;
+    dscpMark?: pulumi.Input<number | undefined>;
     /**
      * The QoS policy reference. Changing this creates a new QoS DSCP marking rule.
      */
-    qosPolicyId?: pulumi.Input<string>;
+    qosPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new QoS DSCP marking rule.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -149,5 +149,5 @@ export interface QosDscpMarkingRuleArgs {
      * A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new QoS DSCP marking rule.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

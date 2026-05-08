@@ -224,29 +224,29 @@ export interface SecGroupRuleState {
     /**
      * A description of the rule. Changing this creates a new security group rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The direction of the rule, valid values are __ingress__
      * or __egress__. Changing this creates a new security group rule.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * The layer 3 protocol type, valid values are __IPv4__
      * or __IPv6__. Changing this creates a new security group rule.
      */
-    ethertype?: pulumi.Input<string>;
+    ethertype?: pulumi.Input<string | undefined>;
     /**
      * The higher part of the allowed port range, valid
      * integer value needs to be between 1 and 65535. Changing this creates a new
      * security group rule.
      */
-    portRangeMax?: pulumi.Input<number>;
+    portRangeMax?: pulumi.Input<number | undefined>;
     /**
      * The lower part of the allowed port range, valid
      * integer value needs to be between 1 and 65535. Changing this creates a new
      * security group rule.
      */
-    portRangeMin?: pulumi.Input<number>;
+    portRangeMin?: pulumi.Input<number | undefined>;
     /**
      * The layer 4 protocol type, valid values are
      * following. Changing this creates a new security group rule. This is required
@@ -276,44 +276,44 @@ export interface SecGroupRuleState {
      * * __vrrp__
      * * __ipip__
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security group rule.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The remote address group id, the value
      * needs to be an OpenStack ID of an address group in the same tenant. Changing
      * this creates a new security group rule. This argument is mutually exclusive
      * with `remoteIpPrefix` and `remoteGroupId`.
      */
-    remoteAddressGroupId?: pulumi.Input<string>;
+    remoteAddressGroupId?: pulumi.Input<string | undefined>;
     /**
      * The remote group id, the value needs to be an
      * Openstack ID of a security group in the same tenant. Changing this creates
      * a new security group rule.
      */
-    remoteGroupId?: pulumi.Input<string>;
+    remoteGroupId?: pulumi.Input<string | undefined>;
     /**
      * The remote CIDR, the value needs to be a valid
      * CIDR (i.e. 192.168.0.0/16). Changing this creates a new security group rule.
      */
-    remoteIpPrefix?: pulumi.Input<string>;
+    remoteIpPrefix?: pulumi.Input<string | undefined>;
     /**
      * The security group id the rule should belong
      * to, the value needs to be an Openstack ID of a security group in the same
      * tenant. Changing this creates a new security group rule.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The owner of the security group. Required if admin
      * wants to create a port for another tenant. Changing this creates a new
      * security group rule.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -323,7 +323,7 @@ export interface SecGroupRuleArgs {
     /**
      * A description of the rule. Changing this creates a new security group rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The direction of the rule, valid values are __ingress__
      * or __egress__. Changing this creates a new security group rule.
@@ -339,13 +339,13 @@ export interface SecGroupRuleArgs {
      * integer value needs to be between 1 and 65535. Changing this creates a new
      * security group rule.
      */
-    portRangeMax?: pulumi.Input<number>;
+    portRangeMax?: pulumi.Input<number | undefined>;
     /**
      * The lower part of the allowed port range, valid
      * integer value needs to be between 1 and 65535. Changing this creates a new
      * security group rule.
      */
-    portRangeMin?: pulumi.Input<number>;
+    portRangeMin?: pulumi.Input<number | undefined>;
     /**
      * The layer 4 protocol type, valid values are
      * following. Changing this creates a new security group rule. This is required
@@ -375,32 +375,32 @@ export interface SecGroupRuleArgs {
      * * __vrrp__
      * * __ipip__
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security group rule.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The remote address group id, the value
      * needs to be an OpenStack ID of an address group in the same tenant. Changing
      * this creates a new security group rule. This argument is mutually exclusive
      * with `remoteIpPrefix` and `remoteGroupId`.
      */
-    remoteAddressGroupId?: pulumi.Input<string>;
+    remoteAddressGroupId?: pulumi.Input<string | undefined>;
     /**
      * The remote group id, the value needs to be an
      * Openstack ID of a security group in the same tenant. Changing this creates
      * a new security group rule.
      */
-    remoteGroupId?: pulumi.Input<string>;
+    remoteGroupId?: pulumi.Input<string | undefined>;
     /**
      * The remote CIDR, the value needs to be a valid
      * CIDR (i.e. 192.168.0.0/16). Changing this creates a new security group rule.
      */
-    remoteIpPrefix?: pulumi.Input<string>;
+    remoteIpPrefix?: pulumi.Input<string | undefined>;
     /**
      * The security group id the rule should belong
      * to, the value needs to be an Openstack ID of a security group in the same
@@ -412,5 +412,5 @@ export interface SecGroupRuleArgs {
      * wants to create a port for another tenant. Changing this creates a new
      * security group rule.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

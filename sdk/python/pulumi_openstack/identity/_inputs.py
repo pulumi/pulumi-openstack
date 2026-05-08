@@ -43,7 +43,7 @@ class ApplicationCredentialAccessRuleArgsDict(TypedDict):
     **identity**, **compute**, **volumev3**, **image**, **network**,
     **object-store**, **sharev2**, **dns**, **key-manager**, **monitoring**, etc.
     """
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the existing access rule. The access rule ID of
     another application credential can be provided.
@@ -55,7 +55,7 @@ class ApplicationCredentialAccessRuleArgs:
                  method: pulumi.Input[_builtins.str],
                  path: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
-                 id: Optional[pulumi.Input[_builtins.str]] = None):
+                 id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] method: The request method that the application credential is
                permitted to use for a given API endpoint. Allowed values: `POST`, `GET`,
@@ -125,7 +125,7 @@ class ApplicationCredentialAccessRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the existing access rule. The access rule ID of
         another application credential can be provided.
@@ -133,7 +133,7 @@ class ApplicationCredentialAccessRuleArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
 

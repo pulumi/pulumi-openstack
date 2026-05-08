@@ -271,37 +271,37 @@ export interface VolumeAttachState {
      * to update the device upon subsequent applying which will cause the volume
      * to be detached and reattached indefinitely. Please use with caution.
      */
-    device?: pulumi.Input<string>;
+    device?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Instance to attach the Volume to.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Enable attachment of multiattach-capable volumes.
      */
-    multiattach?: pulumi.Input<boolean>;
+    multiattach?: pulumi.Input<boolean | undefined>;
     /**
      * The region in which to obtain the V2 Compute client.
      * A Compute client is needed to create a volume attachment. If omitted, the
      * `region` argument of the provider is used. Changing this creates a
      * new volume attachment.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Add a device role tag that is applied to the volume when
      * attaching it to the VM. Changing this creates a new volume attachment with
      * the new tag. Requires microversion >= 2.49.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
     /**
      * Map of additional vendor-specific options.
      * Supported options are described below.
      */
-    vendorOptions?: pulumi.Input<inputs.compute.VolumeAttachVendorOptions>;
+    vendorOptions?: pulumi.Input<inputs.compute.VolumeAttachVendorOptions | undefined>;
     /**
      * The ID of the Volume to attach to an Instance.
      */
-    volumeId?: pulumi.Input<string>;
+    volumeId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -316,7 +316,7 @@ export interface VolumeAttachArgs {
      * to update the device upon subsequent applying which will cause the volume
      * to be detached and reattached indefinitely. Please use with caution.
      */
-    device?: pulumi.Input<string>;
+    device?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Instance to attach the Volume to.
      */
@@ -324,25 +324,25 @@ export interface VolumeAttachArgs {
     /**
      * Enable attachment of multiattach-capable volumes.
      */
-    multiattach?: pulumi.Input<boolean>;
+    multiattach?: pulumi.Input<boolean | undefined>;
     /**
      * The region in which to obtain the V2 Compute client.
      * A Compute client is needed to create a volume attachment. If omitted, the
      * `region` argument of the provider is used. Changing this creates a
      * new volume attachment.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Add a device role tag that is applied to the volume when
      * attaching it to the VM. Changing this creates a new volume attachment with
      * the new tag. Requires microversion >= 2.49.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
     /**
      * Map of additional vendor-specific options.
      * Supported options are described below.
      */
-    vendorOptions?: pulumi.Input<inputs.compute.VolumeAttachVendorOptions>;
+    vendorOptions?: pulumi.Input<inputs.compute.VolumeAttachVendorOptions | undefined>;
     /**
      * The ID of the Volume to attach to an Instance.
      */

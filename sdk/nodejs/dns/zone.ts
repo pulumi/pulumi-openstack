@@ -168,57 +168,57 @@ export interface ZoneState {
      * Attributes for the DNS Service scheduler.
      * Changing this creates a new zone.
      */
-    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A description of the zone.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Disable wait for zone to reach ACTIVE
      * status. The check is enabled by default. If this argument is true, zone
      * will be considered as created/updated if OpenStack request returned success.
      */
-    disableStatusCheck?: pulumi.Input<boolean>;
+    disableStatusCheck?: pulumi.Input<boolean | undefined>;
     /**
      * The email contact for the zone record.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * An array of master DNS servers. For when `type` is
      * `SECONDARY`.
      */
-    masters?: pulumi.Input<pulumi.Input<string>[]>;
+    masters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the zone. Note the `.` at the end of the name.
      * Changing this creates a new DNS zone.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project DNS zone is created
      * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
      * user role in target project).
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 DNS client.
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The time to live (TTL) of the zone.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * The type of zone. Can either be `PRIMARY` or `SECONDARY`.
      * Changing this creates a new zone.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Map of additional options. Changing this creates a
      * new zone.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -229,55 +229,55 @@ export interface ZoneArgs {
      * Attributes for the DNS Service scheduler.
      * Changing this creates a new zone.
      */
-    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A description of the zone.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Disable wait for zone to reach ACTIVE
      * status. The check is enabled by default. If this argument is true, zone
      * will be considered as created/updated if OpenStack request returned success.
      */
-    disableStatusCheck?: pulumi.Input<boolean>;
+    disableStatusCheck?: pulumi.Input<boolean | undefined>;
     /**
      * The email contact for the zone record.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * An array of master DNS servers. For when `type` is
      * `SECONDARY`.
      */
-    masters?: pulumi.Input<pulumi.Input<string>[]>;
+    masters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the zone. Note the `.` at the end of the name.
      * Changing this creates a new DNS zone.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project DNS zone is created
      * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
      * user role in target project).
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 DNS client.
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The time to live (TTL) of the zone.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * The type of zone. Can either be `PRIMARY` or `SECONDARY`.
      * Changing this creates a new zone.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Map of additional options. Changing this creates a
      * new zone.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

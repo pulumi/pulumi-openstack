@@ -101,7 +101,7 @@ def get_availbility_zones(region: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         names=pulumi.get(__ret__, 'names'),
         region=pulumi.get(__ret__, 'region'))
-def get_availbility_zones_output(region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_availbility_zones_output(region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAvailbilityZonesResult]:
     """
     Use this data source to get a list of Shared File System availability zones

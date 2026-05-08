@@ -23,11 +23,11 @@ class L7RuleV2Args:
                  l7policy_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 invert: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 invert: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a L7RuleV2 resource.
 
@@ -122,7 +122,7 @@ class L7RuleV2Args:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the L7 Rule.
         A valid value is true (UP) or false (DOWN).
@@ -130,12 +130,12 @@ class L7RuleV2Args:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter
-    def invert(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def invert(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true the logic of the rule is inverted. For example, with invert
         true, equal to would become not equal to. Default is false.
@@ -143,12 +143,12 @@ class L7RuleV2Args:
         return pulumi.get(self, "invert")
 
     @invert.setter
-    def invert(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def invert(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "invert", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key to use for the comparison. For example, the name of the cookie to
         evaluate. Valid when `type` is set to COOKIE or HEADER.
@@ -156,12 +156,12 @@ class L7RuleV2Args:
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an L7 rule. If omitted, the
@@ -171,12 +171,12 @@ class L7RuleV2Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for admins. The UUID of the tenant who owns
         the L7 Rule.  Only administrative users can specify a tenant UUID
@@ -185,23 +185,23 @@ class L7RuleV2Args:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
 @pulumi.input_type
 class _L7RuleV2State:
     def __init__(__self__, *,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 compare_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 invert: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 l7policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 compare_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 invert: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 l7policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering L7RuleV2 resources.
 
@@ -251,7 +251,7 @@ class _L7RuleV2State:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the L7 Rule.
         A valid value is true (UP) or false (DOWN).
@@ -259,12 +259,12 @@ class _L7RuleV2State:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter(name="compareType")
-    def compare_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compare_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comparison type for the L7 rule - can either be
         CONTAINS, STARTS\\_WITH, ENDS_WITH, EQUAL_TO or REGEX
@@ -272,12 +272,12 @@ class _L7RuleV2State:
         return pulumi.get(self, "compare_type")
 
     @compare_type.setter
-    def compare_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compare_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compare_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def invert(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def invert(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true the logic of the rule is inverted. For example, with invert
         true, equal to would become not equal to. Default is false.
@@ -285,12 +285,12 @@ class _L7RuleV2State:
         return pulumi.get(self, "invert")
 
     @invert.setter
-    def invert(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def invert(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "invert", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key to use for the comparison. For example, the name of the cookie to
         evaluate. Valid when `type` is set to COOKIE or HEADER.
@@ -298,12 +298,12 @@ class _L7RuleV2State:
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="l7policyId")
-    def l7policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def l7policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the L7 Policy to query. Changing this creates a new
         L7 Rule.
@@ -311,24 +311,24 @@ class _L7RuleV2State:
         return pulumi.get(self, "l7policy_id")
 
     @l7policy_id.setter
-    def l7policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def l7policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "l7policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerId")
-    def listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Listener owning this resource.
         """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
-    def listener_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an L7 rule. If omitted, the
@@ -338,12 +338,12 @@ class _L7RuleV2State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for admins. The UUID of the tenant who owns
         the L7 Rule.  Only administrative users can specify a tenant UUID
@@ -352,12 +352,12 @@ class _L7RuleV2State:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The L7 Rule type - can either be COOKIE, FILE\\_TYPE, HEADER,
         HOST\\_NAME, PATH, SSL\\_CONN\\_HAS\\_CERT, SSL\\_VERIFY\\_RESULT or SSL\\_DN\\_FIELD.
@@ -365,12 +365,12 @@ class _L7RuleV2State:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value to use for the comparison. For example, the file type to
         compare.
@@ -378,7 +378,7 @@ class _L7RuleV2State:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -388,15 +388,15 @@ class L7RuleV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 compare_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 invert: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 l7policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 compare_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 invert: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 l7policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V2 L7 Rule resource within OpenStack.
@@ -551,15 +551,15 @@ class L7RuleV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 compare_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 invert: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 l7policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 compare_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 invert: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 l7policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -597,16 +597,16 @@ class L7RuleV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-            compare_type: Optional[pulumi.Input[_builtins.str]] = None,
-            invert: Optional[pulumi.Input[_builtins.bool]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            l7policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            value: Optional[pulumi.Input[_builtins.str]] = None) -> 'L7RuleV2':
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            compare_type: pulumi.Input[Optional[_builtins.str]] = None,
+            invert: pulumi.Input[Optional[_builtins.bool]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            l7policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> 'L7RuleV2':
         """
         Get an existing L7RuleV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

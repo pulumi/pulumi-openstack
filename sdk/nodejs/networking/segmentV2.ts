@@ -168,51 +168,51 @@ export interface SegmentV2State {
     /**
      * Creation timestamp (RFC3339 format).
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * A description for the segment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A name for the segment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the network this segment belongs to.
      * Changing this will create a new segment.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * The network type. Valid values depend on the
      * backend (e.g., `vlan`, `vxlan`, `flat`, `gre`, `geneve`, `local`). Changing
      * this will create a new segment.
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
     /**
      * The name of the physical network. Changing this
      * will create a new segment.
      */
-    physicalNetwork?: pulumi.Input<string>;
+    physicalNetwork?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron network. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * segment.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The revision number of the segment.
      */
-    revisionNumber?: pulumi.Input<number>;
+    revisionNumber?: pulumi.Input<number | undefined>;
     /**
      * A segmentation identifier. Changing is allowed
      * only for `vlan`.
      */
-    segmentationId?: pulumi.Input<number>;
+    segmentationId?: pulumi.Input<number | undefined>;
     /**
      * Last update timestamp (RFC3339 format).
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -222,11 +222,11 @@ export interface SegmentV2Args {
     /**
      * A description for the segment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A name for the segment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the network this segment belongs to.
      * Changing this will create a new segment.
@@ -242,17 +242,17 @@ export interface SegmentV2Args {
      * The name of the physical network. Changing this
      * will create a new segment.
      */
-    physicalNetwork?: pulumi.Input<string>;
+    physicalNetwork?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron network. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * segment.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A segmentation identifier. Changing is allowed
      * only for `vlan`.
      */
-    segmentationId?: pulumi.Input<number>;
+    segmentationId?: pulumi.Input<number | undefined>;
 }

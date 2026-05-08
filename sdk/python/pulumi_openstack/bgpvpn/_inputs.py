@@ -26,17 +26,17 @@ class PortAssociateV2RouteArgsDict(TypedDict):
     CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
     `bgpvpn` type, the BGP VPN ID must be specified in the `bgpvpn_id` key.
     """
-    bgpvpn_id: NotRequired[pulumi.Input[_builtins.str]]
+    bgpvpn_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the BGP VPN to be advertised. Required
     if `type` is `bgpvpn`. Conflicts with `prefix`.
     """
-    local_pref: NotRequired[pulumi.Input[_builtins.int]]
+    local_pref: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The BGP LOCAL\\_PREF value of the routes that will
     be advertised.
     """
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CIDR prefix (v4 or v6) to be advertised. Required
     if `type` is `prefix`. Conflicts with `bgpvpn_id`.
@@ -46,9 +46,9 @@ class PortAssociateV2RouteArgsDict(TypedDict):
 class PortAssociateV2RouteArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 bgpvpn_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_pref: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None):
+                 bgpvpn_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_pref: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: Can be `prefix` or `bgpvpn`. For the `prefix` type, the
                CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
@@ -84,7 +84,7 @@ class PortAssociateV2RouteArgs:
 
     @_builtins.property
     @pulumi.getter(name="bgpvpnId")
-    def bgpvpn_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bgpvpn_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the BGP VPN to be advertised. Required
         if `type` is `bgpvpn`. Conflicts with `prefix`.
@@ -92,12 +92,12 @@ class PortAssociateV2RouteArgs:
         return pulumi.get(self, "bgpvpn_id")
 
     @bgpvpn_id.setter
-    def bgpvpn_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bgpvpn_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bgpvpn_id", value)
 
     @_builtins.property
     @pulumi.getter(name="localPref")
-    def local_pref(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def local_pref(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The BGP LOCAL\\_PREF value of the routes that will
         be advertised.
@@ -105,12 +105,12 @@ class PortAssociateV2RouteArgs:
         return pulumi.get(self, "local_pref")
 
     @local_pref.setter
-    def local_pref(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def local_pref(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "local_pref", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR prefix (v4 or v6) to be advertised. Required
         if `type` is `prefix`. Conflicts with `bgpvpn_id`.
@@ -118,7 +118,7 @@ class PortAssociateV2RouteArgs:
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
 

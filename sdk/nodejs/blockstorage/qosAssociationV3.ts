@@ -123,18 +123,18 @@ export interface QosAssociationV3State {
      * ID of the qos to associate. Changing this creates
      * a new qos association.
      */
-    qosId?: pulumi.Input<string>;
+    qosId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the qos association.
      * If omitted, the `region` argument of the provider is used. Changing
      * this creates a new qos association.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * ID of the volumeType to associate.
      * Changing this creates a new qos association.
      */
-    volumeTypeId?: pulumi.Input<string>;
+    volumeTypeId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -151,7 +151,7 @@ export interface QosAssociationV3Args {
      * If omitted, the `region` argument of the provider is used. Changing
      * this creates a new qos association.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * ID of the volumeType to associate.
      * Changing this creates a new qos association.

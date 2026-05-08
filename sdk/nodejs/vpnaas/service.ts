@@ -162,53 +162,53 @@ export interface ServiceState {
      * The administrative state of the resource. Can either be up(true) or down(false).
      * Changing this updates the administrative state of the existing service.
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * The human-readable description for the service.
      * Changing this updates the description of the existing service.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The read-only external (public) IPv4 address that is used for the VPN service.
      */
-    externalV4Ip?: pulumi.Input<string>;
+    externalV4Ip?: pulumi.Input<string | undefined>;
     /**
      * The read-only external (public) IPv6 address that is used for the VPN service.
      */
-    externalV6Ip?: pulumi.Input<string>;
+    externalV6Ip?: pulumi.Input<string | undefined>;
     /**
      * The name of the service. Changing this updates the name of
      * the existing service.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a VPN service. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * service.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the router. Changing this creates a new service.
      */
-    routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether IPsec VPN service is currently operational. Values are ACTIVE, DOWN, BUILD, ERROR, PENDING_CREATE, PENDING_UPDATE, or PENDING_DELETE.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * SubnetID is the ID of the subnet. Default is null.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * The owner of the service. Required if admin wants to
      * create a service for another project. Changing this creates a new service.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -219,24 +219,24 @@ export interface ServiceArgs {
      * The administrative state of the resource. Can either be up(true) or down(false).
      * Changing this updates the administrative state of the existing service.
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * The human-readable description for the service.
      * Changing this updates the description of the existing service.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the service. Changing this updates the name of
      * the existing service.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a VPN service. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * service.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the router. Changing this creates a new service.
      */
@@ -244,14 +244,14 @@ export interface ServiceArgs {
     /**
      * SubnetID is the ID of the subnet. Default is null.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * The owner of the service. Required if admin wants to
      * create a service for another project. Changing this creates a new service.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

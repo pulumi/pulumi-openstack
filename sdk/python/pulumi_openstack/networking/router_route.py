@@ -22,7 +22,7 @@ class RouterRouteArgs:
                  destination_cidr: pulumi.Input[_builtins.str],
                  next_hop: pulumi.Input[_builtins.str],
                  router_id: pulumi.Input[_builtins.str],
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouterRoute resource.
 
@@ -84,7 +84,7 @@ class RouterRouteArgs:
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 networking client.
         A networking client is needed to configure a routing entry on a router. If omitted, the
@@ -94,17 +94,17 @@ class RouterRouteArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _RouterRouteState:
     def __init__(__self__, *,
-                 destination_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 destination_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterRoute resources.
 
@@ -130,7 +130,7 @@ class _RouterRouteState:
 
     @_builtins.property
     @pulumi.getter(name="destinationCidr")
-    def destination_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CIDR block to match on the packet’s destination IP. Changing
         this creates a new routing entry.
@@ -138,12 +138,12 @@ class _RouterRouteState:
         return pulumi.get(self, "destination_cidr")
 
     @destination_cidr.setter
-    def destination_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHop")
-    def next_hop(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address of the next hop gateway.  Changing
         this creates a new routing entry.
@@ -151,12 +151,12 @@ class _RouterRouteState:
         return pulumi.get(self, "next_hop")
 
     @next_hop.setter
-    def next_hop(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 networking client.
         A networking client is needed to configure a routing entry on a router. If omitted, the
@@ -166,12 +166,12 @@ class _RouterRouteState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="routerId")
-    def router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the router this routing entry belongs to. Changing
         this creates a new routing entry.
@@ -179,7 +179,7 @@ class _RouterRouteState:
         return pulumi.get(self, "router_id")
 
     @router_id.setter
-    def router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_id", value)
 
 
@@ -189,10 +189,10 @@ class RouterRoute(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 destination_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates a routing entry on a OpenStack V2 router.
@@ -316,10 +316,10 @@ class RouterRoute(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 destination_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -349,10 +349,10 @@ class RouterRoute(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            destination_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            next_hop: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            router_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'RouterRoute':
+            destination_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RouterRoute':
         """
         Get an existing RouterRoute resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

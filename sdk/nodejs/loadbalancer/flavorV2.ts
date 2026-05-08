@@ -135,29 +135,29 @@ export interface FlavorV2State {
      * The description of the flavor. Changing this
      * updates the existing flavor.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the flavor is enabled or not. Defaults to `true`.
      * Changing this updates the existing flavor.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The flavorProfileId that the flavor
      * will use. Changing this creates a new flavor.
      */
-    flavorProfileId?: pulumi.Input<string>;
+    flavorProfileId?: pulumi.Input<string | undefined>;
     /**
      * Name of the flavor. Changing this updates the existing
      * flavor.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an LB member. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * LB flavor.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -168,12 +168,12 @@ export interface FlavorV2Args {
      * The description of the flavor. Changing this
      * updates the existing flavor.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the flavor is enabled or not. Defaults to `true`.
      * Changing this updates the existing flavor.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The flavorProfileId that the flavor
      * will use. Changing this creates a new flavor.
@@ -183,12 +183,12 @@ export interface FlavorV2Args {
      * Name of the flavor. Changing this updates the existing
      * flavor.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an LB member. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * LB flavor.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

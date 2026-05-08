@@ -179,35 +179,35 @@ export interface ImageAccessState {
     /**
      * The date the image access was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The image ID.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The member ID, e.g. the target project ID.
      */
-    memberId?: pulumi.Input<string>;
+    memberId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Glance client.
      * A Glance client is needed to manage Image members. If omitted, the `region`
      * argument of the provider is used. Changing this creates a new resource.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The member schema.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * The member proposal status. Optional if admin wants to
      * force the member proposal acceptance. Can either be `accepted`, `rejected` or
      * `pending`. Defaults to `pending`. Foridden for non-admin users.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The date the image access was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -227,11 +227,11 @@ export interface ImageAccessArgs {
      * A Glance client is needed to manage Image members. If omitted, the `region`
      * argument of the provider is used. Changing this creates a new resource.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The member proposal status. Optional if admin wants to
      * force the member proposal acceptance. Can either be `accepted`, `rejected` or
      * `pending`. Defaults to `pending`. Foridden for non-admin users.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

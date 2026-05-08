@@ -40,33 +40,33 @@ class InstanceBlockDeviceArgsDict(TypedDict):
     "blank", "image", "volume", or "snapshot". Changing this creates a new
     server.
     """
-    boot_index: NotRequired[pulumi.Input[_builtins.int]]
+    boot_index: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The boot index of the volume. It defaults to 0.
     Changing this creates a new server.
     """
-    delete_on_termination: NotRequired[pulumi.Input[_builtins.bool]]
+    delete_on_termination: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Delete the volume / block device upon
     termination of the instance. Defaults to false. Changing this creates a
     new server.
     """
-    destination_type: NotRequired[pulumi.Input[_builtins.str]]
+    destination_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type that gets created. Possible values
     are "volume" and "local". Changing this creates a new server.
     """
-    device_type: NotRequired[pulumi.Input[_builtins.str]]
+    device_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The low-level device type that will be used. Most
     common thing is to leave this empty. Changing this creates a new server.
     """
-    disk_bus: NotRequired[pulumi.Input[_builtins.str]]
+    disk_bus: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The low-level disk bus that will be used. Most common
     thing is to leave this empty. Changing this creates a new server.
     """
-    guest_format: NotRequired[pulumi.Input[_builtins.str]]
+    guest_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the guest server disk file system format,
     such as `ext2`, `ext3`, `ext4`, `xfs` or `swap`. Swap block device mappings
@@ -75,24 +75,24 @@ class InstanceBlockDeviceArgsDict(TypedDict):
     must be less than or equal to the swap size of the flavor. Changing this
     creates a new server.
     """
-    multiattach: NotRequired[pulumi.Input[_builtins.bool]]
+    multiattach: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable the attachment of multiattach-capable
     volumes.
     """
-    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    uuid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The UUID of
     the image, volume, or snapshot. Changing this creates a new server.
     """
-    volume_size: NotRequired[pulumi.Input[_builtins.int]]
+    volume_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The size of the volume to create (in gigabytes). Required
     in the following combinations: source=image and destination=volume,
     source=blank and destination=local, and source=blank and destination=volume.
     Changing this creates a new server.
     """
-    volume_type: NotRequired[pulumi.Input[_builtins.str]]
+    volume_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The volume type that will be used, for example SSD
     or HDD storage. The available options depend on how your specific OpenStack
@@ -104,16 +104,16 @@ class InstanceBlockDeviceArgsDict(TypedDict):
 class InstanceBlockDeviceArgs:
     def __init__(__self__, *,
                  source_type: pulumi.Input[_builtins.str],
-                 boot_index: Optional[pulumi.Input[_builtins.int]] = None,
-                 delete_on_termination: Optional[pulumi.Input[_builtins.bool]] = None,
-                 destination_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_bus: Optional[pulumi.Input[_builtins.str]] = None,
-                 guest_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 multiattach: Optional[pulumi.Input[_builtins.bool]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 boot_index: pulumi.Input[Optional[_builtins.int]] = None,
+                 delete_on_termination: pulumi.Input[Optional[_builtins.bool]] = None,
+                 destination_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_bus: pulumi.Input[Optional[_builtins.str]] = None,
+                 guest_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 multiattach: pulumi.Input[Optional[_builtins.bool]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] source_type: The source type of the device. Must be one of
                "blank", "image", "volume", or "snapshot". Changing this creates a new
@@ -186,7 +186,7 @@ class InstanceBlockDeviceArgs:
 
     @_builtins.property
     @pulumi.getter(name="bootIndex")
-    def boot_index(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def boot_index(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The boot index of the volume. It defaults to 0.
         Changing this creates a new server.
@@ -194,12 +194,12 @@ class InstanceBlockDeviceArgs:
         return pulumi.get(self, "boot_index")
 
     @boot_index.setter
-    def boot_index(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def boot_index(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "boot_index", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteOnTermination")
-    def delete_on_termination(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_on_termination(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Delete the volume / block device upon
         termination of the instance. Defaults to false. Changing this creates a
@@ -208,12 +208,12 @@ class InstanceBlockDeviceArgs:
         return pulumi.get(self, "delete_on_termination")
 
     @delete_on_termination.setter
-    def delete_on_termination(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_on_termination(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_on_termination", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationType")
-    def destination_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type that gets created. Possible values
         are "volume" and "local". Changing this creates a new server.
@@ -221,12 +221,12 @@ class InstanceBlockDeviceArgs:
         return pulumi.get(self, "destination_type")
 
     @destination_type.setter
-    def destination_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_type", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceType")
-    def device_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The low-level device type that will be used. Most
         common thing is to leave this empty. Changing this creates a new server.
@@ -234,12 +234,12 @@ class InstanceBlockDeviceArgs:
         return pulumi.get(self, "device_type")
 
     @device_type.setter
-    def device_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device_type", value)
 
     @_builtins.property
     @pulumi.getter(name="diskBus")
-    def disk_bus(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_bus(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The low-level disk bus that will be used. Most common
         thing is to leave this empty. Changing this creates a new server.
@@ -247,12 +247,12 @@ class InstanceBlockDeviceArgs:
         return pulumi.get(self, "disk_bus")
 
     @disk_bus.setter
-    def disk_bus(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_bus(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_bus", value)
 
     @_builtins.property
     @pulumi.getter(name="guestFormat")
-    def guest_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def guest_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the guest server disk file system format,
         such as `ext2`, `ext3`, `ext4`, `xfs` or `swap`. Swap block device mappings
@@ -264,12 +264,12 @@ class InstanceBlockDeviceArgs:
         return pulumi.get(self, "guest_format")
 
     @guest_format.setter
-    def guest_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def guest_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "guest_format", value)
 
     @_builtins.property
     @pulumi.getter
-    def multiattach(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def multiattach(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable the attachment of multiattach-capable
         volumes.
@@ -277,12 +277,12 @@ class InstanceBlockDeviceArgs:
         return pulumi.get(self, "multiattach")
 
     @multiattach.setter
-    def multiattach(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def multiattach(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "multiattach", value)
 
     @_builtins.property
     @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of
         the image, volume, or snapshot. Changing this creates a new server.
@@ -290,12 +290,12 @@ class InstanceBlockDeviceArgs:
         return pulumi.get(self, "uuid")
 
     @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeSize")
-    def volume_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def volume_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the volume to create (in gigabytes). Required
         in the following combinations: source=image and destination=volume,
@@ -305,12 +305,12 @@ class InstanceBlockDeviceArgs:
         return pulumi.get(self, "volume_size")
 
     @volume_size.setter
-    def volume_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def volume_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "volume_size", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeType")
-    def volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The volume type that will be used, for example SSD
         or HDD storage. The available options depend on how your specific OpenStack
@@ -320,34 +320,34 @@ class InstanceBlockDeviceArgs:
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
-    def volume_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_type", value)
 
 
 class InstanceNetworkArgsDict(TypedDict):
-    access_network: NotRequired[pulumi.Input[_builtins.bool]]
+    access_network: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies if this network should be used for
     provisioning access. Accepts true or false. Defaults to false.
     """
-    fixed_ip_v4: NotRequired[pulumi.Input[_builtins.str]]
+    fixed_ip_v4: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies a fixed IPv4 address to be used on this
     network. Changing this creates a new server.
     """
-    fixed_ip_v6: NotRequired[pulumi.Input[_builtins.str]]
-    mac: NotRequired[pulumi.Input[_builtins.str]]
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    fixed_ip_v6: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    mac: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The human-readable
     name of the network. Changing this creates a new server.
     """
-    port: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The port UUID of a
     network to attach to the server. Changing this creates a new server.
     """
-    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    uuid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The network UUID to
     attach to the server. Changing this creates a new server.
@@ -356,13 +356,13 @@ class InstanceNetworkArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceNetworkArgs:
     def __init__(__self__, *,
-                 access_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fixed_ip_v4: Optional[pulumi.Input[_builtins.str]] = None,
-                 fixed_ip_v6: Optional[pulumi.Input[_builtins.str]] = None,
-                 mac: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_network: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fixed_ip_v4: pulumi.Input[Optional[_builtins.str]] = None,
+                 fixed_ip_v6: pulumi.Input[Optional[_builtins.str]] = None,
+                 mac: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] access_network: Specifies if this network should be used for
                provisioning access. Accepts true or false. Defaults to false.
@@ -392,7 +392,7 @@ class InstanceNetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessNetwork")
-    def access_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def access_network(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies if this network should be used for
         provisioning access. Accepts true or false. Defaults to false.
@@ -400,12 +400,12 @@ class InstanceNetworkArgs:
         return pulumi.get(self, "access_network")
 
     @access_network.setter
-    def access_network(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def access_network(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "access_network", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedIpV4")
-    def fixed_ip_v4(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fixed_ip_v4(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies a fixed IPv4 address to be used on this
         network. Changing this creates a new server.
@@ -413,30 +413,30 @@ class InstanceNetworkArgs:
         return pulumi.get(self, "fixed_ip_v4")
 
     @fixed_ip_v4.setter
-    def fixed_ip_v4(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fixed_ip_v4(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fixed_ip_v4", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedIpV6")
-    def fixed_ip_v6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fixed_ip_v6(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "fixed_ip_v6")
 
     @fixed_ip_v6.setter
-    def fixed_ip_v6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fixed_ip_v6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fixed_ip_v6", value)
 
     @_builtins.property
     @pulumi.getter
-    def mac(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mac(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "mac")
 
     @mac.setter
-    def mac(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mac(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mac", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable
         name of the network. Changing this creates a new server.
@@ -444,12 +444,12 @@ class InstanceNetworkArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port UUID of a
         network to attach to the server. Changing this creates a new server.
@@ -457,12 +457,12 @@ class InstanceNetworkArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network UUID to
         attach to the server. Changing this creates a new server.
@@ -470,7 +470,7 @@ class InstanceNetworkArgs:
         return pulumi.get(self, "uuid")
 
     @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
 
 
@@ -522,32 +522,32 @@ class InstancePersonalityArgs:
 
 
 class InstanceSchedulerHintArgsDict(TypedDict):
-    additional_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    additional_properties: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Arbitrary key/value pairs of additional
     properties to pass to the scheduler.
     """
-    build_near_host_ip: NotRequired[pulumi.Input[_builtins.str]]
+    build_near_host_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An IP Address in CIDR form. The instance
     will be placed on a compute node that is in the same subnet.
     """
-    different_cells: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    different_cells: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The names of cells where not to build the instance.
     """
-    different_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    different_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of instance UUIDs. The instance will
     be scheduled on a different host than all other instances.
     """
-    group: NotRequired[pulumi.Input[_builtins.str]]
+    group: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A UUID of a Server Group. The instance will be placed
     into that group. See reference
     for details on managing servergroup resources
     """
-    queries: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    queries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A conditional query that a compute node must pass in
     order to host an instance. The query must use the `JsonFilter` syntax
@@ -560,12 +560,12 @@ class InstanceSchedulerHintArgsDict(TypedDict):
     [">=", "$free_ram_mb", "1024"]
     ```
     """
-    same_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    same_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of instance UUIDs. The instance will be
     scheduled on the same host of those specified.
     """
-    target_cell: NotRequired[pulumi.Input[_builtins.str]]
+    target_cell: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of a cell to host the instance.
     """
@@ -573,14 +573,14 @@ class InstanceSchedulerHintArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceSchedulerHintArgs:
     def __init__(__self__, *,
-                 additional_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 build_near_host_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 different_cells: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 different_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 queries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 same_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_cell: Optional[pulumi.Input[_builtins.str]] = None):
+                 additional_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 build_near_host_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 different_cells: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 different_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 queries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 same_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_cell: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] additional_properties: Arbitrary key/value pairs of additional
                properties to pass to the scheduler.
@@ -625,7 +625,7 @@ class InstanceSchedulerHintArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalProperties")
-    def additional_properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def additional_properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Arbitrary key/value pairs of additional
         properties to pass to the scheduler.
@@ -633,12 +633,12 @@ class InstanceSchedulerHintArgs:
         return pulumi.get(self, "additional_properties")
 
     @additional_properties.setter
-    def additional_properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def additional_properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_properties", value)
 
     @_builtins.property
     @pulumi.getter(name="buildNearHostIp")
-    def build_near_host_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def build_near_host_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An IP Address in CIDR form. The instance
         will be placed on a compute node that is in the same subnet.
@@ -646,24 +646,24 @@ class InstanceSchedulerHintArgs:
         return pulumi.get(self, "build_near_host_ip")
 
     @build_near_host_ip.setter
-    def build_near_host_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def build_near_host_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "build_near_host_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="differentCells")
-    def different_cells(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def different_cells(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The names of cells where not to build the instance.
         """
         return pulumi.get(self, "different_cells")
 
     @different_cells.setter
-    def different_cells(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def different_cells(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "different_cells", value)
 
     @_builtins.property
     @pulumi.getter(name="differentHosts")
-    def different_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def different_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of instance UUIDs. The instance will
         be scheduled on a different host than all other instances.
@@ -671,12 +671,12 @@ class InstanceSchedulerHintArgs:
         return pulumi.get(self, "different_hosts")
 
     @different_hosts.setter
-    def different_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def different_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "different_hosts", value)
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A UUID of a Server Group. The instance will be placed
         into that group. See reference
@@ -685,12 +685,12 @@ class InstanceSchedulerHintArgs:
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter
-    def queries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def queries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A conditional query that a compute node must pass in
         order to host an instance. The query must use the `JsonFilter` syntax
@@ -706,12 +706,12 @@ class InstanceSchedulerHintArgs:
         return pulumi.get(self, "queries")
 
     @queries.setter
-    def queries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def queries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "queries", value)
 
     @_builtins.property
     @pulumi.getter(name="sameHosts")
-    def same_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def same_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of instance UUIDs. The instance will be
         scheduled on the same host of those specified.
@@ -719,30 +719,30 @@ class InstanceSchedulerHintArgs:
         return pulumi.get(self, "same_hosts")
 
     @same_hosts.setter
-    def same_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def same_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "same_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="targetCell")
-    def target_cell(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_cell(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a cell to host the instance.
         """
         return pulumi.get(self, "target_cell")
 
     @target_cell.setter
-    def target_cell(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_cell(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_cell", value)
 
 
 class InstanceVendorOptionsArgsDict(TypedDict):
-    detach_ports_before_destroy: NotRequired[pulumi.Input[_builtins.bool]]
+    detach_ports_before_destroy: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to try to detach all attached
     ports to the vm before destroying it to make sure the port state is correct
     after the vm destruction. This is helpful when the port is not deleted.
     """
-    ignore_resize_confirmation: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_resize_confirmation: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Boolean to control whether
     to ignore manual confirmation of the instance resizing. This can be helpful
@@ -753,8 +753,8 @@ class InstanceVendorOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceVendorOptionsArgs:
     def __init__(__self__, *,
-                 detach_ports_before_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_resize_confirmation: Optional[pulumi.Input[_builtins.bool]] = None):
+                 detach_ports_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_resize_confirmation: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] detach_ports_before_destroy: Whether to try to detach all attached
                ports to the vm before destroying it to make sure the port state is correct
@@ -771,7 +771,7 @@ class InstanceVendorOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="detachPortsBeforeDestroy")
-    def detach_ports_before_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def detach_ports_before_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to try to detach all attached
         ports to the vm before destroying it to make sure the port state is correct
@@ -780,12 +780,12 @@ class InstanceVendorOptionsArgs:
         return pulumi.get(self, "detach_ports_before_destroy")
 
     @detach_ports_before_destroy.setter
-    def detach_ports_before_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def detach_ports_before_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "detach_ports_before_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreResizeConfirmation")
-    def ignore_resize_confirmation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_resize_confirmation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean to control whether
         to ignore manual confirmation of the instance resizing. This can be helpful
@@ -795,32 +795,32 @@ class InstanceVendorOptionsArgs:
         return pulumi.get(self, "ignore_resize_confirmation")
 
     @ignore_resize_confirmation.setter
-    def ignore_resize_confirmation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_resize_confirmation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_resize_confirmation", value)
 
 
 class ServerGroupRulesArgsDict(TypedDict):
-    max_server_per_host: NotRequired[pulumi.Input[_builtins.int]]
+    max_server_per_host: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class ServerGroupRulesArgs:
     def __init__(__self__, *,
-                 max_server_per_host: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_server_per_host: pulumi.Input[Optional[_builtins.int]] = None):
         if max_server_per_host is not None:
             pulumi.set(__self__, "max_server_per_host", max_server_per_host)
 
     @_builtins.property
     @pulumi.getter(name="maxServerPerHost")
-    def max_server_per_host(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_server_per_host(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "max_server_per_host")
 
     @max_server_per_host.setter
-    def max_server_per_host(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_server_per_host(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_server_per_host", value)
 
 
 class VolumeAttachVendorOptionsArgsDict(TypedDict):
-    ignore_volume_confirmation: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_volume_confirmation: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Boolean to control whether
     to ignore volume status confirmation of the attached volume. This can be helpful
@@ -830,7 +830,7 @@ class VolumeAttachVendorOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class VolumeAttachVendorOptionsArgs:
     def __init__(__self__, *,
-                 ignore_volume_confirmation: Optional[pulumi.Input[_builtins.bool]] = None):
+                 ignore_volume_confirmation: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] ignore_volume_confirmation: Boolean to control whether
                to ignore volume status confirmation of the attached volume. This can be helpful
@@ -841,7 +841,7 @@ class VolumeAttachVendorOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="ignoreVolumeConfirmation")
-    def ignore_volume_confirmation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_volume_confirmation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean to control whether
         to ignore volume status confirmation of the attached volume. This can be helpful
@@ -850,7 +850,7 @@ class VolumeAttachVendorOptionsArgs:
         return pulumi.get(self, "ignore_volume_confirmation")
 
     @ignore_volume_confirmation.setter
-    def ignore_volume_confirmation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_volume_confirmation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_volume_confirmation", value)
 
 

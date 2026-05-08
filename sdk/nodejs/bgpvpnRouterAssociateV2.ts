@@ -128,31 +128,31 @@ export interface BgpvpnRouterAssociateV2State {
      * A boolean flag indicating whether extra
      * routes should be advertised. Defaults to true.
      */
-    advertiseExtraRoutes?: pulumi.Input<boolean>;
+    advertiseExtraRoutes?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the BGP VPN to which the router will be
      * associated. Changing this creates a new BGP VPN router association.
      */
-    bgpvpnId?: pulumi.Input<string>;
+    bgpvpnId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project that owns the BGP VPN router
      * association. Only administrative and users with `advsvc` role can specify a
      * project ID other than their own. Changing this creates a new BGP VPN router
      * association.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a BGP VPN router association. If
      * omitted, the `region` argument of the provider is used. Changing this creates
      * a new BGP VPN router association.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the router to be associated with the BGP
      * VPN. Changing this creates a new BGP VPN router association.
      */
-    routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -163,7 +163,7 @@ export interface BgpvpnRouterAssociateV2Args {
      * A boolean flag indicating whether extra
      * routes should be advertised. Defaults to true.
      */
-    advertiseExtraRoutes?: pulumi.Input<boolean>;
+    advertiseExtraRoutes?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the BGP VPN to which the router will be
      * associated. Changing this creates a new BGP VPN router association.
@@ -175,14 +175,14 @@ export interface BgpvpnRouterAssociateV2Args {
      * project ID other than their own. Changing this creates a new BGP VPN router
      * association.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a BGP VPN router association. If
      * omitted, the `region` argument of the provider is used. Changing this creates
      * a new BGP VPN router association.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the router to be associated with the BGP
      * VPN. Changing this creates a new BGP VPN router association.

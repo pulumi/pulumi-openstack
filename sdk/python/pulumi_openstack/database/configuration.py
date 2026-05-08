@@ -23,9 +23,9 @@ class ConfigurationArgs:
     def __init__(__self__, *,
                  datastore: pulumi.Input['ConfigurationDatastoreArgs'],
                  description: pulumi.Input[_builtins.str],
-                 configurations: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 configurations: pulumi.Input[Optional[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Configuration resource.
 
@@ -73,31 +73,31 @@ class ConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]]:
+    def configurations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]]:
         """
         An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
         """
         return pulumi.get(self, "configurations")
 
     @configurations.setter
-    def configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]]):
+    def configurations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]]):
         pulumi.set(self, "configurations", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the db instance. Changing this
         creates a new instance.
@@ -105,18 +105,18 @@ class ConfigurationArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _ConfigurationState:
     def __init__(__self__, *,
-                 configurations: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]] = None,
-                 datastore: Optional[pulumi.Input['ConfigurationDatastoreArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 configurations: pulumi.Input[Optional[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]] = None,
+                 datastore: pulumi.Input[Optional['ConfigurationDatastoreArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Configuration resources.
 
@@ -141,19 +141,19 @@ class _ConfigurationState:
 
     @_builtins.property
     @pulumi.getter
-    def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]]:
+    def configurations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]]:
         """
         An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
         """
         return pulumi.get(self, "configurations")
 
     @configurations.setter
-    def configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]]):
+    def configurations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]]):
         pulumi.set(self, "configurations", value)
 
     @_builtins.property
     @pulumi.getter
-    def datastore(self) -> Optional[pulumi.Input['ConfigurationDatastoreArgs']]:
+    def datastore(self) -> pulumi.Input[Optional['ConfigurationDatastoreArgs']]:
         """
         An array of database engine type and version. The datastore
         object structure is documented below. Changing this creates resource.
@@ -161,36 +161,36 @@ class _ConfigurationState:
         return pulumi.get(self, "datastore")
 
     @datastore.setter
-    def datastore(self, value: Optional[pulumi.Input['ConfigurationDatastoreArgs']]):
+    def datastore(self, value: pulumi.Input[Optional['ConfigurationDatastoreArgs']]):
         pulumi.set(self, "datastore", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the db instance. Changing this
         creates a new instance.
@@ -198,7 +198,7 @@ class _ConfigurationState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -208,11 +208,11 @@ class Configuration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict']]]]] = None,
-                 datastore: Optional[pulumi.Input[Union['ConfigurationDatastoreArgs', 'ConfigurationDatastoreArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict']]]]] = None,
+                 datastore: pulumi.Input[Optional[Union['ConfigurationDatastoreArgs', 'ConfigurationDatastoreArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V1 DB configuration resource within OpenStack.
@@ -305,11 +305,11 @@ class Configuration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict']]]]] = None,
-                 datastore: Optional[pulumi.Input[Union['ConfigurationDatastoreArgs', 'ConfigurationDatastoreArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict']]]]] = None,
+                 datastore: pulumi.Input[Optional[Union['ConfigurationDatastoreArgs', 'ConfigurationDatastoreArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -338,11 +338,11 @@ class Configuration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict']]]]] = None,
-            datastore: Optional[pulumi.Input[Union['ConfigurationDatastoreArgs', 'ConfigurationDatastoreArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'Configuration':
+            configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict']]]]] = None,
+            datastore: pulumi.Input[Optional[Union['ConfigurationDatastoreArgs', 'ConfigurationDatastoreArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'Configuration':
         """
         Get an existing Configuration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

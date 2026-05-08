@@ -113,11 +113,11 @@ export interface GetAggregateV2OutputArgs {
     /**
      * List of Hypervisors contained in the Host Aggregate
      */
-    hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    hosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Metadata of the Host Aggregate
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the host aggregate.
      */
@@ -126,5 +126,5 @@ export interface GetAggregateV2OutputArgs {
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

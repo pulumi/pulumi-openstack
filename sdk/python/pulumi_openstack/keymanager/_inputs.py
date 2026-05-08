@@ -32,40 +32,40 @@ __all__ = [
 ]
 
 class ContainerV1AclArgsDict(TypedDict):
-    read: NotRequired[pulumi.Input['ContainerV1AclReadArgsDict']]
+    read: NotRequired[pulumi.Input[Optional['ContainerV1AclReadArgs']]]
 
 @pulumi.input_type
 class ContainerV1AclArgs:
     def __init__(__self__, *,
-                 read: Optional[pulumi.Input['ContainerV1AclReadArgs']] = None):
+                 read: pulumi.Input[Optional['ContainerV1AclReadArgs']] = None):
         if read is not None:
             pulumi.set(__self__, "read", read)
 
     @_builtins.property
     @pulumi.getter
-    def read(self) -> Optional[pulumi.Input['ContainerV1AclReadArgs']]:
+    def read(self) -> pulumi.Input[Optional['ContainerV1AclReadArgs']]:
         return pulumi.get(self, "read")
 
     @read.setter
-    def read(self, value: Optional[pulumi.Input['ContainerV1AclReadArgs']]):
+    def read(self, value: pulumi.Input[Optional['ContainerV1AclReadArgs']]):
         pulumi.set(self, "read", value)
 
 
 class ContainerV1AclReadArgsDict(TypedDict):
-    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    created_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The date the container was created.
     """
-    project_access: NotRequired[pulumi.Input[_builtins.bool]]
+    project_access: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the container is accessible project wide.
     Defaults to `true`.
     """
-    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    updated_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The date the container was last updated.
     """
-    users: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of user IDs, which are allowed to access the
     container, when `project_access` is set to `false`.
@@ -74,10 +74,10 @@ class ContainerV1AclReadArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerV1AclReadArgs:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] created_at: The date the container was created.
         :param pulumi.Input[_builtins.bool] project_access: Whether the container is accessible project wide.
@@ -97,19 +97,19 @@ class ContainerV1AclReadArgs:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date the container was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="projectAccess")
-    def project_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def project_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the container is accessible project wide.
         Defaults to `true`.
@@ -117,24 +117,24 @@ class ContainerV1AclReadArgs:
         return pulumi.get(self, "project_access")
 
     @project_access.setter
-    def project_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def project_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "project_access", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date the container was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of user IDs, which are allowed to access the
         container, when `project_access` is set to `false`.
@@ -142,17 +142,17 @@ class ContainerV1AclReadArgs:
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "users", value)
 
 
 class ContainerV1ConsumerArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Human-readable name for the Container. Does not have
     to be unique.
     """
-    url: NotRequired[pulumi.Input[_builtins.str]]
+    url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The consumer URL.
     """
@@ -160,8 +160,8 @@ class ContainerV1ConsumerArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerV1ConsumerArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Human-readable name for the Container. Does not have
                to be unique.
@@ -174,7 +174,7 @@ class ContainerV1ConsumerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable name for the Container. Does not have
         to be unique.
@@ -182,19 +182,19 @@ class ContainerV1ConsumerArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The consumer URL.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -203,7 +203,7 @@ class ContainerV1SecretRefArgsDict(TypedDict):
     """
     The secret reference / where to find the secret, URL.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
     """
@@ -212,7 +212,7 @@ class ContainerV1SecretRefArgsDict(TypedDict):
 class ContainerV1SecretRefArgs:
     def __init__(__self__, *,
                  secret_ref: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret_ref: The secret reference / where to find the secret, URL.
         :param pulumi.Input[_builtins.str] name: The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
@@ -235,14 +235,14 @@ class ContainerV1SecretRefArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -255,19 +255,19 @@ class OrderV1MetaArgsDict(TypedDict):
     """
     Bit lenght of key to be generated.
     """
-    expiration: NotRequired[pulumi.Input[_builtins.str]]
+    expiration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
     """
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The mode to use for key generation.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the secret set by the user.
     """
-    payload_content_type: NotRequired[pulumi.Input[_builtins.str]]
+    payload_content_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The media type for the content of the secrets payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
     """
@@ -277,10 +277,10 @@ class OrderV1MetaArgs:
     def __init__(__self__, *,
                  algorithm: pulumi.Input[_builtins.str],
                  bit_length: pulumi.Input[_builtins.int],
-                 expiration: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payload_content_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 expiration: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payload_content_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] algorithm: Algorithm to use for key generation.
         :param pulumi.Input[_builtins.int] bit_length: Bit lenght of key to be generated.
@@ -326,88 +326,88 @@ class OrderV1MetaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def expiration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
         """
         return pulumi.get(self, "expiration")
 
     @expiration.setter
-    def expiration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode to use for key generation.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the secret set by the user.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="payloadContentType")
-    def payload_content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payload_content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The media type for the content of the secrets payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
         """
         return pulumi.get(self, "payload_content_type")
 
     @payload_content_type.setter
-    def payload_content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payload_content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payload_content_type", value)
 
 
 class SecretV1AclArgsDict(TypedDict):
-    read: NotRequired[pulumi.Input['SecretV1AclReadArgsDict']]
+    read: NotRequired[pulumi.Input[Optional['SecretV1AclReadArgs']]]
 
 @pulumi.input_type
 class SecretV1AclArgs:
     def __init__(__self__, *,
-                 read: Optional[pulumi.Input['SecretV1AclReadArgs']] = None):
+                 read: pulumi.Input[Optional['SecretV1AclReadArgs']] = None):
         if read is not None:
             pulumi.set(__self__, "read", read)
 
     @_builtins.property
     @pulumi.getter
-    def read(self) -> Optional[pulumi.Input['SecretV1AclReadArgs']]:
+    def read(self) -> pulumi.Input[Optional['SecretV1AclReadArgs']]:
         return pulumi.get(self, "read")
 
     @read.setter
-    def read(self, value: Optional[pulumi.Input['SecretV1AclReadArgs']]):
+    def read(self, value: pulumi.Input[Optional['SecretV1AclReadArgs']]):
         pulumi.set(self, "read", value)
 
 
 class SecretV1AclReadArgsDict(TypedDict):
-    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    created_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The date the secret was created.
     """
-    project_access: NotRequired[pulumi.Input[_builtins.bool]]
+    project_access: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the secret is accessible project wide.
     Defaults to `true`.
     """
-    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    updated_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The date the secret was last updated.
     """
-    users: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of user IDs, which are allowed to access the
     secret, when `project_access` is set to `false`.
@@ -416,10 +416,10 @@ class SecretV1AclReadArgsDict(TypedDict):
 @pulumi.input_type
 class SecretV1AclReadArgs:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] created_at: The date the secret was created.
         :param pulumi.Input[_builtins.bool] project_access: Whether the secret is accessible project wide.
@@ -439,19 +439,19 @@ class SecretV1AclReadArgs:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date the secret was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="projectAccess")
-    def project_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def project_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the secret is accessible project wide.
         Defaults to `true`.
@@ -459,24 +459,24 @@ class SecretV1AclReadArgs:
         return pulumi.get(self, "project_access")
 
     @project_access.setter
-    def project_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def project_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "project_access", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date the secret was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of user IDs, which are allowed to access the
         secret, when `project_access` is set to `false`.
@@ -484,7 +484,7 @@ class SecretV1AclReadArgs:
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "users", value)
 
 

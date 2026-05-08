@@ -22,10 +22,10 @@ __all__ = ['ContainerV1Args', 'ContainerV1']
 class ContainerV1Args:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 acl: Optional[pulumi.Input['ContainerV1AclArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_refs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]] = None):
+                 acl: pulumi.Input[Optional['ContainerV1AclArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_refs: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]] = None):
         """
         The set of arguments for constructing a ContainerV1 resource.
 
@@ -66,7 +66,7 @@ class ContainerV1Args:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input['ContainerV1AclArgs']]:
+    def acl(self) -> pulumi.Input[Optional['ContainerV1AclArgs']]:
         """
         Allows to control an access to a container. Currently only
         the `read` operation is supported. If not specified, the container is
@@ -75,12 +75,12 @@ class ContainerV1Args:
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input['ContainerV1AclArgs']]):
+    def acl(self, value: pulumi.Input[Optional['ContainerV1AclArgs']]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable name for the Container. Does not have
         to be unique.
@@ -88,12 +88,12 @@ class ContainerV1Args:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V1 KeyManager client.
         A KeyManager client is needed to create a container. If omitted, the
@@ -103,12 +103,12 @@ class ContainerV1Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="secretRefs")
-    def secret_refs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]]:
+    def secret_refs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]]:
         """
         A set of dictionaries containing references to secrets. The structure is described
         below.
@@ -116,24 +116,24 @@ class ContainerV1Args:
         return pulumi.get(self, "secret_refs")
 
     @secret_refs.setter
-    def secret_refs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]]):
+    def secret_refs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]]):
         pulumi.set(self, "secret_refs", value)
 
 
 @pulumi.input_type
 class _ContainerV1State:
     def __init__(__self__, *,
-                 acl: Optional[pulumi.Input['ContainerV1AclArgs']] = None,
-                 consumers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerV1ConsumerArgs']]]] = None,
-                 container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 creator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_refs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl: pulumi.Input[Optional['ContainerV1AclArgs']] = None,
+                 consumers: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerV1ConsumerArgs']]]] = None,
+                 container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 creator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_refs: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ContainerV1 resources.
 
@@ -181,7 +181,7 @@ class _ContainerV1State:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input['ContainerV1AclArgs']]:
+    def acl(self) -> pulumi.Input[Optional['ContainerV1AclArgs']]:
         """
         Allows to control an access to a container. Currently only
         the `read` operation is supported. If not specified, the container is
@@ -190,60 +190,60 @@ class _ContainerV1State:
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input['ContainerV1AclArgs']]):
+    def acl(self, value: pulumi.Input[Optional['ContainerV1AclArgs']]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def consumers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerV1ConsumerArgs']]]]:
+    def consumers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerV1ConsumerArgs']]]]:
         """
         The list of the container consumers. The structure is described below.
         """
         return pulumi.get(self, "consumers")
 
     @consumers.setter
-    def consumers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerV1ConsumerArgs']]]]):
+    def consumers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerV1ConsumerArgs']]]]):
         pulumi.set(self, "consumers", value)
 
     @_builtins.property
     @pulumi.getter(name="containerRef")
-    def container_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The container reference / where to find the container.
         """
         return pulumi.get(self, "container_ref")
 
     @container_ref.setter
-    def container_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_ref", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date the container was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="creatorId")
-    def creator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creator of the container.
         """
         return pulumi.get(self, "creator_id")
 
     @creator_id.setter
-    def creator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable name for the Container. Does not have
         to be unique.
@@ -251,12 +251,12 @@ class _ContainerV1State:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V1 KeyManager client.
         A KeyManager client is needed to create a container. If omitted, the
@@ -266,12 +266,12 @@ class _ContainerV1State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="secretRefs")
-    def secret_refs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]]:
+    def secret_refs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]]:
         """
         A set of dictionaries containing references to secrets. The structure is described
         below.
@@ -279,43 +279,43 @@ class _ContainerV1State:
         return pulumi.get(self, "secret_refs")
 
     @secret_refs.setter
-    def secret_refs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]]):
+    def secret_refs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]]):
         pulumi.set(self, "secret_refs", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the container.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date the container was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -325,11 +325,11 @@ class ContainerV1(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[Union['ContainerV1AclArgs', 'ContainerV1AclArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_refs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerV1SecretRefArgs', 'ContainerV1SecretRefArgsDict']]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl: pulumi.Input[Optional[Union['ContainerV1AclArgs', 'ContainerV1AclArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_refs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerV1SecretRefArgs', 'ContainerV1SecretRefArgsDict']]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V1 Barbican container resource within OpenStack.
@@ -553,11 +553,11 @@ class ContainerV1(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[Union['ContainerV1AclArgs', 'ContainerV1AclArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_refs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerV1SecretRefArgs', 'ContainerV1SecretRefArgsDict']]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl: pulumi.Input[Optional[Union['ContainerV1AclArgs', 'ContainerV1AclArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_refs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerV1SecretRefArgs', 'ContainerV1SecretRefArgsDict']]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -590,17 +590,17 @@ class ContainerV1(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl: Optional[pulumi.Input[Union['ContainerV1AclArgs', 'ContainerV1AclArgsDict']]] = None,
-            consumers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerV1ConsumerArgs', 'ContainerV1ConsumerArgsDict']]]]] = None,
-            container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            creator_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_refs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerV1SecretRefArgs', 'ContainerV1SecretRefArgsDict']]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'ContainerV1':
+            acl: pulumi.Input[Optional[Union['ContainerV1AclArgs', 'ContainerV1AclArgsDict']]] = None,
+            consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerV1ConsumerArgs', 'ContainerV1ConsumerArgsDict']]]]] = None,
+            container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            creator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_refs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerV1SecretRefArgs', 'ContainerV1SecretRefArgsDict']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'ContainerV1':
         """
         Get an existing ContainerV1 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

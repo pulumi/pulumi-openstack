@@ -21,11 +21,11 @@ __all__ = ['ServerGroupArgs', 'ServerGroup']
 @pulumi.input_type
 class ServerGroupArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input['ServerGroupRulesArgs']] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional['ServerGroupRulesArgs']] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ServerGroup resource.
 
@@ -54,7 +54,7 @@ class ServerGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the server group. Changing this creates
         a new server group.
@@ -62,12 +62,12 @@ class ServerGroupArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def policies(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policies(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A list of exactly one policy name to associate with
         the server group. See the Policies section for more information. Changing this
@@ -76,12 +76,12 @@ class ServerGroupArgs:
         return pulumi.get(self, "policies")
 
     @policies.setter
-    def policies(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policies(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Compute client.
         If omitted, the `region` argument of the provider is used. Changing
@@ -90,12 +90,12 @@ class ServerGroupArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input['ServerGroupRulesArgs']]:
+    def rules(self) -> pulumi.Input[Optional['ServerGroupRulesArgs']]:
         """
         The rules which are applied to specified `policy`. Currently,
         only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
@@ -103,31 +103,31 @@ class ServerGroupArgs:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input['ServerGroupRulesArgs']]):
+    def rules(self, value: pulumi.Input[Optional['ServerGroupRulesArgs']]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
 @pulumi.input_type
 class _ServerGroupState:
     def __init__(__self__, *,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input['ServerGroupRulesArgs']] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional['ServerGroupRulesArgs']] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ServerGroup resources.
 
@@ -159,19 +159,19 @@ class _ServerGroupState:
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The instances that are part of this server group.
         """
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "members", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the server group. Changing this creates
         a new server group.
@@ -179,12 +179,12 @@ class _ServerGroupState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def policies(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policies(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A list of exactly one policy name to associate with
         the server group. See the Policies section for more information. Changing this
@@ -193,12 +193,12 @@ class _ServerGroupState:
         return pulumi.get(self, "policies")
 
     @policies.setter
-    def policies(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policies(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Compute client.
         If omitted, the `region` argument of the provider is used. Changing
@@ -207,12 +207,12 @@ class _ServerGroupState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input['ServerGroupRulesArgs']]:
+    def rules(self) -> pulumi.Input[Optional['ServerGroupRulesArgs']]:
         """
         The rules which are applied to specified `policy`. Currently,
         only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
@@ -220,19 +220,19 @@ class _ServerGroupState:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input['ServerGroupRulesArgs']]):
+    def rules(self, value: pulumi.Input[Optional['ServerGroupRulesArgs']]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -242,11 +242,11 @@ class ServerGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Manages a V2 Server Group resource within OpenStack.
@@ -437,11 +437,11 @@ class ServerGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policies: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policies: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -467,12 +467,12 @@ class ServerGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            policies: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            rules: Optional[pulumi.Input[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ServerGroup':
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policies: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ServerGroup':
         """
         Get an existing ServerGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -21,16 +21,16 @@ class L7PolicyV2Args:
     def __init__(__self__, *,
                  action: pulumi.Input[_builtins.str],
                  listener_id: pulumi.Input[_builtins.str],
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 position: Optional[pulumi.Input[_builtins.int]] = None,
-                 redirect_http_code: Optional[pulumi.Input[_builtins.int]] = None,
-                 redirect_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 position: pulumi.Input[Optional[_builtins.int]] = None,
+                 redirect_http_code: pulumi.Input[Optional[_builtins.int]] = None,
+                 redirect_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a L7PolicyV2 resource.
 
@@ -113,7 +113,7 @@ class L7PolicyV2Args:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the L7 Policy.
         A valid value is true (UP) or false (DOWN).
@@ -121,24 +121,24 @@ class L7PolicyV2Args:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable description for the L7 Policy.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable name for the L7 Policy. Does not have
         to be unique.
@@ -146,24 +146,24 @@ class L7PolicyV2Args:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The position of this policy on the listener. Positions start at 1.
         """
         return pulumi.get(self, "position")
 
     @position.setter
-    def position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "position", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectHttpCode")
-    def redirect_http_code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def redirect_http_code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Integer. Requests matching this policy will be  
         redirected to the specified URL or Prefix URL with the HTTP response code.
@@ -173,12 +173,12 @@ class L7PolicyV2Args:
         return pulumi.get(self, "redirect_http_code")
 
     @redirect_http_code.setter
-    def redirect_http_code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def redirect_http_code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "redirect_http_code", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectPoolId")
-    def redirect_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redirect_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Requests matching this policy will be redirected to the
         pool with this ID. Only valid if action is REDIRECT\\_TO\\_POOL.
@@ -186,12 +186,12 @@ class L7PolicyV2Args:
         return pulumi.get(self, "redirect_pool_id")
 
     @redirect_pool_id.setter
-    def redirect_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redirect_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redirect_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectPrefix")
-    def redirect_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redirect_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Requests matching this policy will be redirected to 
         this Prefix URL. Only valid if action is REDIRECT\\_PREFIX.
@@ -199,12 +199,12 @@ class L7PolicyV2Args:
         return pulumi.get(self, "redirect_prefix")
 
     @redirect_prefix.setter
-    def redirect_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redirect_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redirect_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectUrl")
-    def redirect_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redirect_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Requests matching this policy will be redirected to this URL.
         Only valid if action is REDIRECT\\_TO\\_URL.
@@ -212,12 +212,12 @@ class L7PolicyV2Args:
         return pulumi.get(self, "redirect_url")
 
     @redirect_url.setter
-    def redirect_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redirect_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redirect_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an L7 policy. If omitted, the
@@ -227,12 +227,12 @@ class L7PolicyV2Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for admins. The UUID of the tenant who owns
         the L7 Policy.  Only administrative users can specify a tenant UUID
@@ -241,25 +241,25 @@ class L7PolicyV2Args:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
 @pulumi.input_type
 class _L7PolicyV2State:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 position: Optional[pulumi.Input[_builtins.int]] = None,
-                 redirect_http_code: Optional[pulumi.Input[_builtins.int]] = None,
-                 redirect_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 position: pulumi.Input[Optional[_builtins.int]] = None,
+                 redirect_http_code: pulumi.Input[Optional[_builtins.int]] = None,
+                 redirect_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering L7PolicyV2 resources.
 
@@ -318,7 +318,7 @@ class _L7PolicyV2State:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The L7 Policy action - can either be REDIRECT\\_TO\\_POOL,
         REDIRECT\\_TO\\_URL or REJECT.
@@ -326,12 +326,12 @@ class _L7PolicyV2State:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the L7 Policy.
         A valid value is true (UP) or false (DOWN).
@@ -339,24 +339,24 @@ class _L7PolicyV2State:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable description for the L7 Policy.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerId")
-    def listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Listener on which the L7 Policy will be associated with.
         Changing this creates a new L7 Policy.
@@ -364,12 +364,12 @@ class _L7PolicyV2State:
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
-    def listener_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable name for the L7 Policy. Does not have
         to be unique.
@@ -377,24 +377,24 @@ class _L7PolicyV2State:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The position of this policy on the listener. Positions start at 1.
         """
         return pulumi.get(self, "position")
 
     @position.setter
-    def position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "position", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectHttpCode")
-    def redirect_http_code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def redirect_http_code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Integer. Requests matching this policy will be  
         redirected to the specified URL or Prefix URL with the HTTP response code.
@@ -404,12 +404,12 @@ class _L7PolicyV2State:
         return pulumi.get(self, "redirect_http_code")
 
     @redirect_http_code.setter
-    def redirect_http_code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def redirect_http_code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "redirect_http_code", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectPoolId")
-    def redirect_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redirect_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Requests matching this policy will be redirected to the
         pool with this ID. Only valid if action is REDIRECT\\_TO\\_POOL.
@@ -417,12 +417,12 @@ class _L7PolicyV2State:
         return pulumi.get(self, "redirect_pool_id")
 
     @redirect_pool_id.setter
-    def redirect_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redirect_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redirect_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectPrefix")
-    def redirect_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redirect_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Requests matching this policy will be redirected to 
         this Prefix URL. Only valid if action is REDIRECT\\_PREFIX.
@@ -430,12 +430,12 @@ class _L7PolicyV2State:
         return pulumi.get(self, "redirect_prefix")
 
     @redirect_prefix.setter
-    def redirect_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redirect_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redirect_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectUrl")
-    def redirect_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redirect_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Requests matching this policy will be redirected to this URL.
         Only valid if action is REDIRECT\\_TO\\_URL.
@@ -443,12 +443,12 @@ class _L7PolicyV2State:
         return pulumi.get(self, "redirect_url")
 
     @redirect_url.setter
-    def redirect_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redirect_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redirect_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an L7 policy. If omitted, the
@@ -458,12 +458,12 @@ class _L7PolicyV2State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for admins. The UUID of the tenant who owns
         the L7 Policy.  Only administrative users can specify a tenant UUID
@@ -472,7 +472,7 @@ class _L7PolicyV2State:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
@@ -482,18 +482,18 @@ class L7PolicyV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 position: Optional[pulumi.Input[_builtins.int]] = None,
-                 redirect_http_code: Optional[pulumi.Input[_builtins.int]] = None,
-                 redirect_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 position: pulumi.Input[Optional[_builtins.int]] = None,
+                 redirect_http_code: pulumi.Input[Optional[_builtins.int]] = None,
+                 redirect_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a Load Balancer L7 Policy resource within OpenStack.
@@ -642,18 +642,18 @@ class L7PolicyV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 position: Optional[pulumi.Input[_builtins.int]] = None,
-                 redirect_http_code: Optional[pulumi.Input[_builtins.int]] = None,
-                 redirect_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 position: pulumi.Input[Optional[_builtins.int]] = None,
+                 redirect_http_code: pulumi.Input[Optional[_builtins.int]] = None,
+                 redirect_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -689,18 +689,18 @@ class L7PolicyV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            position: Optional[pulumi.Input[_builtins.int]] = None,
-            redirect_http_code: Optional[pulumi.Input[_builtins.int]] = None,
-            redirect_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            redirect_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            redirect_url: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'L7PolicyV2':
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            position: pulumi.Input[Optional[_builtins.int]] = None,
+            redirect_http_code: pulumi.Input[Optional[_builtins.int]] = None,
+            redirect_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            redirect_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            redirect_url: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'L7PolicyV2':
         """
         Get an existing L7PolicyV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

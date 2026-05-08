@@ -206,87 +206,87 @@ export interface RuleV2State {
      * when the firewall rule matches. Changing this updates the `action` of an
      * existing firewall rule. Default is `deny`.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * A description for the firewall rule. Changing this
      * updates the `description` of an existing firewall rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination IP address on which the
      * firewall rule operates. Changing this updates the `destinationIpAddress`
      * of an existing firewall rule.
      */
-    destinationIpAddress?: pulumi.Input<string>;
+    destinationIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The destination port on which the firewall
      * rule operates. Changing this updates the `destinationPort` of an existing
      * firewall rule. Require not `any` or empty protocol.
      */
-    destinationPort?: pulumi.Input<string>;
+    destinationPort?: pulumi.Input<string | undefined>;
     /**
      * Enabled status for the firewall rule (must be "true"
      * or "false" if provided - defaults to "true"). Changing this updates the
      * `enabled` status of an existing firewall rule.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * IP version, either 4 or 6. Changing this
      * updates the `ipVersion` of an existing firewall rule. Default is `4`.
      */
-    ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number | undefined>;
     /**
      * A unique name for the firewall rule. Changing this
      * updates the `name` of an existing firewall rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * This argument conflicts and is interchangeable
      * with `tenantId`. The owner of the firewall rule. Required if admin wants
      * to create a firewall rule for another project. Changing this creates a new
      * firewall rule.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * (Optional; Required if `sourcePort` or `destinationPort` is not
      * empty) The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
      * `protocol` of an existing firewall rule. Default is `any`.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the v2 networking client.
      * A networking client is needed to create a firewall rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * firewall rule.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Sharing status of the firewall rule (must be "true"
      * or "false" if provided). If this is "true" the policy is visible to, and
      * can be used in, firewalls in other tenants. Changing this updates the
      * `shared` status of an existing firewall policy. On
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * The source IP address on which the firewall
      * rule operates. Changing this updates the `sourceIpAddress` of an existing
      * firewall rule.
      */
-    sourceIpAddress?: pulumi.Input<string>;
+    sourceIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The source port on which the firewall
      * rule operates. Changing this updates the `sourcePort` of an existing
      * firewall rule. Require not `any` or empty protocol.
      */
-    sourcePort?: pulumi.Input<string>;
+    sourcePort?: pulumi.Input<string | undefined>;
     /**
      * This argument conflicts and is interchangeable
      * with `projectId`. The owner of the firewall rule. Required if admin wants
      * to create a firewall rule for another tenant. Changing this creates a new
      * firewall rule.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -298,85 +298,85 @@ export interface RuleV2Args {
      * when the firewall rule matches. Changing this updates the `action` of an
      * existing firewall rule. Default is `deny`.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * A description for the firewall rule. Changing this
      * updates the `description` of an existing firewall rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination IP address on which the
      * firewall rule operates. Changing this updates the `destinationIpAddress`
      * of an existing firewall rule.
      */
-    destinationIpAddress?: pulumi.Input<string>;
+    destinationIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The destination port on which the firewall
      * rule operates. Changing this updates the `destinationPort` of an existing
      * firewall rule. Require not `any` or empty protocol.
      */
-    destinationPort?: pulumi.Input<string>;
+    destinationPort?: pulumi.Input<string | undefined>;
     /**
      * Enabled status for the firewall rule (must be "true"
      * or "false" if provided - defaults to "true"). Changing this updates the
      * `enabled` status of an existing firewall rule.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * IP version, either 4 or 6. Changing this
      * updates the `ipVersion` of an existing firewall rule. Default is `4`.
      */
-    ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number | undefined>;
     /**
      * A unique name for the firewall rule. Changing this
      * updates the `name` of an existing firewall rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * This argument conflicts and is interchangeable
      * with `tenantId`. The owner of the firewall rule. Required if admin wants
      * to create a firewall rule for another project. Changing this creates a new
      * firewall rule.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * (Optional; Required if `sourcePort` or `destinationPort` is not
      * empty) The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
      * `protocol` of an existing firewall rule. Default is `any`.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the v2 networking client.
      * A networking client is needed to create a firewall rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * firewall rule.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Sharing status of the firewall rule (must be "true"
      * or "false" if provided). If this is "true" the policy is visible to, and
      * can be used in, firewalls in other tenants. Changing this updates the
      * `shared` status of an existing firewall policy. On
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * The source IP address on which the firewall
      * rule operates. Changing this updates the `sourceIpAddress` of an existing
      * firewall rule.
      */
-    sourceIpAddress?: pulumi.Input<string>;
+    sourceIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The source port on which the firewall
      * rule operates. Changing this updates the `sourcePort` of an existing
      * firewall rule. Require not `any` or empty protocol.
      */
-    sourcePort?: pulumi.Input<string>;
+    sourcePort?: pulumi.Input<string | undefined>;
     /**
      * This argument conflicts and is interchangeable
      * with `projectId`. The owner of the firewall rule. Required if admin wants
      * to create a firewall rule for another tenant. Changing this creates a new
      * firewall rule.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

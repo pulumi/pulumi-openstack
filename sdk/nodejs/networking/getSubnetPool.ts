@@ -221,57 +221,57 @@ export interface GetSubnetPoolOutputArgs {
      * The Neutron address scope that subnetpools
      * is assigned to.
      */
-    addressScopeId?: pulumi.Input<string>;
+    addressScopeId?: pulumi.Input<string | undefined>;
     /**
      * The size of the subnetpool default prefix
      * length.
      */
-    defaultPrefixlen?: pulumi.Input<number>;
+    defaultPrefixlen?: pulumi.Input<number | undefined>;
     /**
      * The per-project quota on the prefix space that
      * can be allocated from the subnetpool for project subnets.
      */
-    defaultQuota?: pulumi.Input<number>;
+    defaultQuota?: pulumi.Input<number | undefined>;
     /**
      * The human-readable description for the subnetpool.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The IP protocol version.
      */
-    ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number | undefined>;
     /**
      * Whether the subnetpool is default subnetpool or not.
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * The size of the subnetpool max prefix length.
      */
-    maxPrefixlen?: pulumi.Input<number>;
+    maxPrefixlen?: pulumi.Input<number | undefined>;
     /**
      * The size of the subnetpool min prefix length.
      */
-    minPrefixlen?: pulumi.Input<number>;
+    minPrefixlen?: pulumi.Input<number | undefined>;
     /**
      * The name of the subnetpool.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The owner of the subnetpool.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to retrieve a subnetpool id. If omitted, the
      * `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Whether this subnetpool is shared across all projects.
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * The list of subnetpool tags to filter.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

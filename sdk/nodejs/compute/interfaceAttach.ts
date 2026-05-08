@@ -257,27 +257,27 @@ export interface InterfaceAttachState {
      * An IP address to assosciate with the port.
      * _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
      */
-    fixedIp?: pulumi.Input<string>;
+    fixedIp?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Instance to attach the Port or Network to.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Network to attach to an Instance. A port will be created automatically.
      * _NOTE_: This option and `portId` are mutually exclusive.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Port to attach to an Instance.
      * _NOTE_: This option and `networkId` are mutually exclusive.
      */
-    portId?: pulumi.Input<string>;
+    portId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the interface attachment.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new attachment.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -288,7 +288,7 @@ export interface InterfaceAttachArgs {
      * An IP address to assosciate with the port.
      * _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
      */
-    fixedIp?: pulumi.Input<string>;
+    fixedIp?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Instance to attach the Port or Network to.
      */
@@ -297,16 +297,16 @@ export interface InterfaceAttachArgs {
      * The ID of the Network to attach to an Instance. A port will be created automatically.
      * _NOTE_: This option and `portId` are mutually exclusive.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Port to attach to an Instance.
      * _NOTE_: This option and `networkId` are mutually exclusive.
      */
-    portId?: pulumi.Input<string>;
+    portId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the interface attachment.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new attachment.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

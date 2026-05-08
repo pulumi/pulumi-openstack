@@ -149,10 +149,10 @@ def get_aggregate_v2(hosts: Optional[Sequence[_builtins.str]] = None,
         name=pulumi.get(__ret__, 'name'),
         region=pulumi.get(__ret__, 'region'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_aggregate_v2_output(hosts: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                            metadata: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                            name: Optional[pulumi.Input[_builtins.str]] = None,
-                            region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_aggregate_v2_output(hosts: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                            metadata: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                            name: pulumi.Input[Optional[_builtins.str]] = None,
+                            region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAggregateV2Result]:
     """
     Use this data source to get information about host aggregates

@@ -123,22 +123,22 @@ export interface ZoneShareV2State {
      * `X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target
      * project).
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 DNS client. If
      * omitted, the `region` argument of the provider is used. Changing this creates
      * a new DNS zone share.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the target project with which the
      * DNS zone will be shared.
      */
-    targetProjectId?: pulumi.Input<string>;
+    targetProjectId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the DNS zone to be shared.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -150,13 +150,13 @@ export interface ZoneShareV2Args {
      * `X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target
      * project).
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 DNS client. If
      * omitted, the `region` argument of the provider is used. Changing this creates
      * a new DNS zone share.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the target project with which the
      * DNS zone will be shared.

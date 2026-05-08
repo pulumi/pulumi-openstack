@@ -259,7 +259,7 @@ export interface SubnetState {
      * The collection of ags assigned on the subnet, which have been
      * explicitly and implicitly added.
      */
-    allTags?: pulumi.Input<pulumi.Input<string>[]>;
+    allTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A block declaring the start and end range of
      * the IP addresses available for use with DHCP in this subnet. Multiple
@@ -268,114 +268,114 @@ export interface SubnetState {
      * must be from the same CIDR that the subnet is part of.
      * The `allocationPool` block is documented below.
      */
-    allocationPools?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPool>[]>;
+    allocationPools?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPool>[] | undefined>;
     /**
      * CIDR representing IP range for this subnet, based on IP
      * version. You can omit this option if you are creating a subnet from a
      * subnet pool.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * Human-readable description of the subnet. Changing this
      * updates the name of the existing subnet.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * An array of DNS name server names used by hosts
      * in this subnet. Changing this updates the DNS name servers for the existing
      * subnet.
      */
-    dnsNameservers?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsNameservers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to publish DNS records for IPs
      * from this subnet. Defaults is false.
      */
-    dnsPublishFixedIp?: pulumi.Input<boolean>;
+    dnsPublishFixedIp?: pulumi.Input<boolean | undefined>;
     /**
      * The administrative state of the network.
      * Acceptable values are "true" and "false". Changing this value enables or
      * disables the DHCP capabilities of the existing subnet. Defaults to true.
      */
-    enableDhcp?: pulumi.Input<boolean>;
+    enableDhcp?: pulumi.Input<boolean | undefined>;
     /**
      * Default gateway used by devices in this subnet.
      * Leaving this blank and not setting `noGateway` will cause a default
      * gateway of `.1` to be used. Changing this updates the gateway IP of the
      * existing subnet.
      */
-    gatewayIp?: pulumi.Input<string>;
+    gatewayIp?: pulumi.Input<string | undefined>;
     /**
      * IP version, either 4 (default) or 6. Changing this creates a
      * new subnet.
      */
-    ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number | undefined>;
     /**
      * The IPv6 address mode. Valid values are
      * `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
      */
-    ipv6AddressMode?: pulumi.Input<string>;
+    ipv6AddressMode?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 Router Advertisement mode. Valid values
      * are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
      */
-    ipv6RaMode?: pulumi.Input<string>;
+    ipv6RaMode?: pulumi.Input<string | undefined>;
     /**
      * The name of the subnet. Changing this updates the name of
      * the existing subnet.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the parent network. Changing this
      * creates a new subnet.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * Do not set a gateway IP on this subnet. Changing
      * this removes or adds a default gateway IP of the existing subnet.
      */
-    noGateway?: pulumi.Input<boolean>;
+    noGateway?: pulumi.Input<boolean | undefined>;
     /**
      * The prefix length to use when creating a subnet
      * from a subnet pool. The default subnet pool prefix length that was defined
      * when creating the subnet pool will be used if not provided. Changing this
      * creates a new subnet.
      */
-    prefixLength?: pulumi.Input<number>;
+    prefixLength?: pulumi.Input<number | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron subnet. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * subnet.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The segment ID of the subnet. This is used to
      * specify which segment the subnet belongs to when using Neutron's routed
      * provider networks. Available when neutron segment extension is enabled.
      */
-    segmentId?: pulumi.Input<string>;
+    segmentId?: pulumi.Input<string | undefined>;
     /**
      * An array of service types used by the subnet.
      * Changing this updates the service types for the existing subnet.
      */
-    serviceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the subnetpool associated with the subnet.
      */
-    subnetpoolId?: pulumi.Input<string>;
+    subnetpoolId?: pulumi.Input<string | undefined>;
     /**
      * A set of string tags for the subnet.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The owner of the subnet. Required if admin wants to
      * create a subnet for another tenant. Changing this creates a new subnet.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -390,62 +390,62 @@ export interface SubnetArgs {
      * must be from the same CIDR that the subnet is part of.
      * The `allocationPool` block is documented below.
      */
-    allocationPools?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPool>[]>;
+    allocationPools?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPool>[] | undefined>;
     /**
      * CIDR representing IP range for this subnet, based on IP
      * version. You can omit this option if you are creating a subnet from a
      * subnet pool.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * Human-readable description of the subnet. Changing this
      * updates the name of the existing subnet.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * An array of DNS name server names used by hosts
      * in this subnet. Changing this updates the DNS name servers for the existing
      * subnet.
      */
-    dnsNameservers?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsNameservers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to publish DNS records for IPs
      * from this subnet. Defaults is false.
      */
-    dnsPublishFixedIp?: pulumi.Input<boolean>;
+    dnsPublishFixedIp?: pulumi.Input<boolean | undefined>;
     /**
      * The administrative state of the network.
      * Acceptable values are "true" and "false". Changing this value enables or
      * disables the DHCP capabilities of the existing subnet. Defaults to true.
      */
-    enableDhcp?: pulumi.Input<boolean>;
+    enableDhcp?: pulumi.Input<boolean | undefined>;
     /**
      * Default gateway used by devices in this subnet.
      * Leaving this blank and not setting `noGateway` will cause a default
      * gateway of `.1` to be used. Changing this updates the gateway IP of the
      * existing subnet.
      */
-    gatewayIp?: pulumi.Input<string>;
+    gatewayIp?: pulumi.Input<string | undefined>;
     /**
      * IP version, either 4 (default) or 6. Changing this creates a
      * new subnet.
      */
-    ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number | undefined>;
     /**
      * The IPv6 address mode. Valid values are
      * `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
      */
-    ipv6AddressMode?: pulumi.Input<string>;
+    ipv6AddressMode?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 Router Advertisement mode. Valid values
      * are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
      */
-    ipv6RaMode?: pulumi.Input<string>;
+    ipv6RaMode?: pulumi.Input<string | undefined>;
     /**
      * The name of the subnet. Changing this updates the name of
      * the existing subnet.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the parent network. Changing this
      * creates a new subnet.
@@ -455,47 +455,47 @@ export interface SubnetArgs {
      * Do not set a gateway IP on this subnet. Changing
      * this removes or adds a default gateway IP of the existing subnet.
      */
-    noGateway?: pulumi.Input<boolean>;
+    noGateway?: pulumi.Input<boolean | undefined>;
     /**
      * The prefix length to use when creating a subnet
      * from a subnet pool. The default subnet pool prefix length that was defined
      * when creating the subnet pool will be used if not provided. Changing this
      * creates a new subnet.
      */
-    prefixLength?: pulumi.Input<number>;
+    prefixLength?: pulumi.Input<number | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron subnet. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * subnet.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The segment ID of the subnet. This is used to
      * specify which segment the subnet belongs to when using Neutron's routed
      * provider networks. Available when neutron segment extension is enabled.
      */
-    segmentId?: pulumi.Input<string>;
+    segmentId?: pulumi.Input<string | undefined>;
     /**
      * An array of service types used by the subnet.
      * Changing this updates the service types for the existing subnet.
      */
-    serviceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the subnetpool associated with the subnet.
      */
-    subnetpoolId?: pulumi.Input<string>;
+    subnetpoolId?: pulumi.Input<string | undefined>;
     /**
      * A set of string tags for the subnet.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The owner of the subnet. Required if admin wants to
      * create a subnet for another tenant. Changing this creates a new subnet.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

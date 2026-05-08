@@ -22,26 +22,26 @@ __all__ = ['SubnetArgs', 'Subnet']
 class SubnetArgs:
     def __init__(__self__, *,
                  network_id: pulumi.Input[_builtins.str],
-                 allocation_pools: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_publish_fixed_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_dhcp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipv6_address_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_ra_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 segment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnetpool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 allocation_pools: pulumi.Input[Optional[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_publish_fixed_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_dhcp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv6_address_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_ra_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 segment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnetpool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Subnet resource.
 
@@ -156,7 +156,7 @@ class SubnetArgs:
 
     @_builtins.property
     @pulumi.getter(name="allocationPools")
-    def allocation_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]]:
+    def allocation_pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]]:
         """
         A block declaring the start and end range of
         the IP addresses available for use with DHCP in this subnet. Multiple
@@ -168,12 +168,12 @@ class SubnetArgs:
         return pulumi.get(self, "allocation_pools")
 
     @allocation_pools.setter
-    def allocation_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]]):
+    def allocation_pools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]]):
         pulumi.set(self, "allocation_pools", value)
 
     @_builtins.property
     @pulumi.getter
-    def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CIDR representing IP range for this subnet, based on IP
         version. You can omit this option if you are creating a subnet from a
@@ -182,12 +182,12 @@ class SubnetArgs:
         return pulumi.get(self, "cidr")
 
     @cidr.setter
-    def cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable description of the subnet. Changing this
         updates the name of the existing subnet.
@@ -195,12 +195,12 @@ class SubnetArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsNameservers")
-    def dns_nameservers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dns_nameservers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of DNS name server names used by hosts
         in this subnet. Changing this updates the DNS name servers for the existing
@@ -209,12 +209,12 @@ class SubnetArgs:
         return pulumi.get(self, "dns_nameservers")
 
     @dns_nameservers.setter
-    def dns_nameservers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dns_nameservers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dns_nameservers", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsPublishFixedIp")
-    def dns_publish_fixed_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dns_publish_fixed_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to publish DNS records for IPs
         from this subnet. Defaults is false.
@@ -222,12 +222,12 @@ class SubnetArgs:
         return pulumi.get(self, "dns_publish_fixed_ip")
 
     @dns_publish_fixed_ip.setter
-    def dns_publish_fixed_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dns_publish_fixed_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dns_publish_fixed_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDhcp")
-    def enable_dhcp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_dhcp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the network.
         Acceptable values are "true" and "false". Changing this value enables or
@@ -236,12 +236,12 @@ class SubnetArgs:
         return pulumi.get(self, "enable_dhcp")
 
     @enable_dhcp.setter
-    def enable_dhcp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_dhcp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_dhcp", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayIp")
-    def gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default gateway used by devices in this subnet.
         Leaving this blank and not setting `no_gateway` will cause a default
@@ -251,12 +251,12 @@ class SubnetArgs:
         return pulumi.get(self, "gateway_ip")
 
     @gateway_ip.setter
-    def gateway_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         IP version, either 4 (default) or 6. Changing this creates a
         new subnet.
@@ -264,12 +264,12 @@ class SubnetArgs:
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6AddressMode")
-    def ipv6_address_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_address_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 address mode. Valid values are
         `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
@@ -277,12 +277,12 @@ class SubnetArgs:
         return pulumi.get(self, "ipv6_address_mode")
 
     @ipv6_address_mode.setter
-    def ipv6_address_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_address_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_address_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6RaMode")
-    def ipv6_ra_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_ra_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 Router Advertisement mode. Valid values
         are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
@@ -290,12 +290,12 @@ class SubnetArgs:
         return pulumi.get(self, "ipv6_ra_mode")
 
     @ipv6_ra_mode.setter
-    def ipv6_ra_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_ra_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_ra_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the subnet. Changing this updates the name of
         the existing subnet.
@@ -303,12 +303,12 @@ class SubnetArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="noGateway")
-    def no_gateway(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_gateway(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Do not set a gateway IP on this subnet. Changing
         this removes or adds a default gateway IP of the existing subnet.
@@ -316,12 +316,12 @@ class SubnetArgs:
         return pulumi.get(self, "no_gateway")
 
     @no_gateway.setter
-    def no_gateway(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_gateway(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_gateway", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixLength")
-    def prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def prefix_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The prefix length to use when creating a subnet
         from a subnet pool. The default subnet pool prefix length that was defined
@@ -331,12 +331,12 @@ class SubnetArgs:
         return pulumi.get(self, "prefix_length")
 
     @prefix_length.setter
-    def prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "prefix_length", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a Neutron subnet. If omitted, the
@@ -346,12 +346,12 @@ class SubnetArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="segmentId")
-    def segment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def segment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The segment ID of the subnet. This is used to
         specify which segment the subnet belongs to when using Neutron's routed
@@ -360,12 +360,12 @@ class SubnetArgs:
         return pulumi.get(self, "segment_id")
 
     @segment_id.setter
-    def segment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def segment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "segment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceTypes")
-    def service_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def service_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of service types used by the subnet.
         Changing this updates the service types for the existing subnet.
@@ -373,36 +373,36 @@ class SubnetArgs:
         return pulumi.get(self, "service_types")
 
     @service_types.setter
-    def service_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def service_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "service_types", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetpoolId")
-    def subnetpool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetpool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the subnetpool associated with the subnet.
         """
         return pulumi.get(self, "subnetpool_id")
 
     @subnetpool_id.setter
-    def subnetpool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetpool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetpool_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of string tags for the subnet.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of the subnet. Required if admin wants to
         create a subnet for another tenant. Changing this creates a new subnet.
@@ -410,47 +410,47 @@ class SubnetArgs:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
 @pulumi.input_type
 class _SubnetState:
     def __init__(__self__, *,
-                 all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 allocation_pools: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_publish_fixed_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_dhcp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipv6_address_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_ra_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 segment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnetpool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 all_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allocation_pools: pulumi.Input[Optional[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_publish_fixed_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_dhcp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv6_address_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_ra_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 segment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnetpool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Subnet resources.
 
@@ -557,7 +557,7 @@ class _SubnetState:
 
     @_builtins.property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def all_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The collection of ags assigned on the subnet, which have been
         explicitly and implicitly added.
@@ -565,12 +565,12 @@ class _SubnetState:
         return pulumi.get(self, "all_tags")
 
     @all_tags.setter
-    def all_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def all_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "all_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="allocationPools")
-    def allocation_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]]:
+    def allocation_pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]]:
         """
         A block declaring the start and end range of
         the IP addresses available for use with DHCP in this subnet. Multiple
@@ -582,12 +582,12 @@ class _SubnetState:
         return pulumi.get(self, "allocation_pools")
 
     @allocation_pools.setter
-    def allocation_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]]):
+    def allocation_pools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]]):
         pulumi.set(self, "allocation_pools", value)
 
     @_builtins.property
     @pulumi.getter
-    def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CIDR representing IP range for this subnet, based on IP
         version. You can omit this option if you are creating a subnet from a
@@ -596,12 +596,12 @@ class _SubnetState:
         return pulumi.get(self, "cidr")
 
     @cidr.setter
-    def cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable description of the subnet. Changing this
         updates the name of the existing subnet.
@@ -609,12 +609,12 @@ class _SubnetState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsNameservers")
-    def dns_nameservers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dns_nameservers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of DNS name server names used by hosts
         in this subnet. Changing this updates the DNS name servers for the existing
@@ -623,12 +623,12 @@ class _SubnetState:
         return pulumi.get(self, "dns_nameservers")
 
     @dns_nameservers.setter
-    def dns_nameservers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dns_nameservers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dns_nameservers", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsPublishFixedIp")
-    def dns_publish_fixed_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dns_publish_fixed_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to publish DNS records for IPs
         from this subnet. Defaults is false.
@@ -636,12 +636,12 @@ class _SubnetState:
         return pulumi.get(self, "dns_publish_fixed_ip")
 
     @dns_publish_fixed_ip.setter
-    def dns_publish_fixed_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dns_publish_fixed_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dns_publish_fixed_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDhcp")
-    def enable_dhcp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_dhcp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the network.
         Acceptable values are "true" and "false". Changing this value enables or
@@ -650,12 +650,12 @@ class _SubnetState:
         return pulumi.get(self, "enable_dhcp")
 
     @enable_dhcp.setter
-    def enable_dhcp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_dhcp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_dhcp", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayIp")
-    def gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default gateway used by devices in this subnet.
         Leaving this blank and not setting `no_gateway` will cause a default
@@ -665,12 +665,12 @@ class _SubnetState:
         return pulumi.get(self, "gateway_ip")
 
     @gateway_ip.setter
-    def gateway_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         IP version, either 4 (default) or 6. Changing this creates a
         new subnet.
@@ -678,12 +678,12 @@ class _SubnetState:
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6AddressMode")
-    def ipv6_address_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_address_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 address mode. Valid values are
         `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
@@ -691,12 +691,12 @@ class _SubnetState:
         return pulumi.get(self, "ipv6_address_mode")
 
     @ipv6_address_mode.setter
-    def ipv6_address_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_address_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_address_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6RaMode")
-    def ipv6_ra_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_ra_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 Router Advertisement mode. Valid values
         are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
@@ -704,12 +704,12 @@ class _SubnetState:
         return pulumi.get(self, "ipv6_ra_mode")
 
     @ipv6_ra_mode.setter
-    def ipv6_ra_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_ra_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_ra_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the subnet. Changing this updates the name of
         the existing subnet.
@@ -717,12 +717,12 @@ class _SubnetState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkId")
-    def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the parent network. Changing this
         creates a new subnet.
@@ -730,12 +730,12 @@ class _SubnetState:
         return pulumi.get(self, "network_id")
 
     @network_id.setter
-    def network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="noGateway")
-    def no_gateway(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_gateway(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Do not set a gateway IP on this subnet. Changing
         this removes or adds a default gateway IP of the existing subnet.
@@ -743,12 +743,12 @@ class _SubnetState:
         return pulumi.get(self, "no_gateway")
 
     @no_gateway.setter
-    def no_gateway(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_gateway(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_gateway", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixLength")
-    def prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def prefix_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The prefix length to use when creating a subnet
         from a subnet pool. The default subnet pool prefix length that was defined
@@ -758,12 +758,12 @@ class _SubnetState:
         return pulumi.get(self, "prefix_length")
 
     @prefix_length.setter
-    def prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "prefix_length", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a Neutron subnet. If omitted, the
@@ -773,12 +773,12 @@ class _SubnetState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="segmentId")
-    def segment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def segment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The segment ID of the subnet. This is used to
         specify which segment the subnet belongs to when using Neutron's routed
@@ -787,12 +787,12 @@ class _SubnetState:
         return pulumi.get(self, "segment_id")
 
     @segment_id.setter
-    def segment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def segment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "segment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceTypes")
-    def service_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def service_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of service types used by the subnet.
         Changing this updates the service types for the existing subnet.
@@ -800,36 +800,36 @@ class _SubnetState:
         return pulumi.get(self, "service_types")
 
     @service_types.setter
-    def service_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def service_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "service_types", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetpoolId")
-    def subnetpool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetpool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the subnetpool associated with the subnet.
         """
         return pulumi.get(self, "subnetpool_id")
 
     @subnetpool_id.setter
-    def subnetpool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetpool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetpool_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of string tags for the subnet.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of the subnet. Required if admin wants to
         create a subnet for another tenant. Changing this creates a new subnet.
@@ -837,19 +837,19 @@ class _SubnetState:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -859,27 +859,27 @@ class Subnet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetAllocationPoolArgs', 'SubnetAllocationPoolArgsDict']]]]] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_publish_fixed_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_dhcp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipv6_address_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_ra_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 segment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnetpool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 allocation_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetAllocationPoolArgs', 'SubnetAllocationPoolArgsDict']]]]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_publish_fixed_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_dhcp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv6_address_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_ra_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 segment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnetpool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Manages a V2 Neutron subnet resource within OpenStack.
@@ -1010,27 +1010,27 @@ class Subnet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetAllocationPoolArgs', 'SubnetAllocationPoolArgsDict']]]]] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_publish_fixed_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_dhcp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipv6_address_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_ra_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 segment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnetpool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 allocation_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetAllocationPoolArgs', 'SubnetAllocationPoolArgsDict']]]]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_publish_fixed_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_dhcp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv6_address_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_ra_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 segment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnetpool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1074,28 +1074,28 @@ class Subnet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            allocation_pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetAllocationPoolArgs', 'SubnetAllocationPoolArgsDict']]]]] = None,
-            cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dns_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            dns_publish_fixed_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_dhcp: Optional[pulumi.Input[_builtins.bool]] = None,
-            gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_version: Optional[pulumi.Input[_builtins.int]] = None,
-            ipv6_address_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6_ra_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_id: Optional[pulumi.Input[_builtins.str]] = None,
-            no_gateway: Optional[pulumi.Input[_builtins.bool]] = None,
-            prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            segment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            subnetpool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Subnet':
+            all_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            allocation_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetAllocationPoolArgs', 'SubnetAllocationPoolArgsDict']]]]] = None,
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dns_publish_fixed_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_dhcp: pulumi.Input[Optional[_builtins.bool]] = None,
+            gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+            ipv6_address_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_ra_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            no_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+            prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            segment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            subnetpool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Subnet':
         """
         Get an existing Subnet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

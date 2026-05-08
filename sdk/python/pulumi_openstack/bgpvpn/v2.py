@@ -19,16 +19,16 @@ __all__ = ['V2Args', 'V2']
 @pulumi.input_type
 class V2Args:
     def __init__(__self__, *,
-                 export_targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 import_targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 local_pref: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_distinguishers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 route_targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vni: Optional[pulumi.Input[_builtins.int]] = None):
+                 export_targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 import_targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 local_pref: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_distinguishers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 route_targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vni: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a V2 resource.
 
@@ -79,7 +79,7 @@ class V2Args:
 
     @_builtins.property
     @pulumi.getter(name="exportTargets")
-    def export_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def export_targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of additional Route Targets that will be
         used for export.
@@ -87,12 +87,12 @@ class V2Args:
         return pulumi.get(self, "export_targets")
 
     @export_targets.setter
-    def export_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def export_targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "export_targets", value)
 
     @_builtins.property
     @pulumi.getter(name="importTargets")
-    def import_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def import_targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of additional Route Targets that will be
         imported.
@@ -100,12 +100,12 @@ class V2Args:
         return pulumi.get(self, "import_targets")
 
     @import_targets.setter
-    def import_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def import_targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "import_targets", value)
 
     @_builtins.property
     @pulumi.getter(name="localPref")
-    def local_pref(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def local_pref(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The default BGP LOCAL\\_PREF of routes that will be
         advertised to the BGP VPN, unless overridden per-route.
@@ -113,12 +113,12 @@ class V2Args:
         return pulumi.get(self, "local_pref")
 
     @local_pref.setter
-    def local_pref(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def local_pref(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "local_pref", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the BGP VPN. Changing this updates the name of
         the existing BGP VPN.
@@ -126,12 +126,12 @@ class V2Args:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project that owns the BGPVPN. Only
         administrative and users with `advsvc` role can specify a project ID other
@@ -140,12 +140,12 @@ class V2Args:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a BGP VPN service. If omitted, the
@@ -155,12 +155,12 @@ class V2Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="routeDistinguishers")
-    def route_distinguishers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def route_distinguishers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of route distinguisher strings. If
         specified, one of these RDs will be used to advertise VPN routes.
@@ -168,12 +168,12 @@ class V2Args:
         return pulumi.get(self, "route_distinguishers")
 
     @route_distinguishers.setter
-    def route_distinguishers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def route_distinguishers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "route_distinguishers", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTargets")
-    def route_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def route_targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of Route Targets that will be both
         imported and used for export.
@@ -181,12 +181,12 @@ class V2Args:
         return pulumi.get(self, "route_targets")
 
     @route_targets.setter
-    def route_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def route_targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "route_targets", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the BGP VPN (either `l2` or `l3`). Changing this
         creates a new BGP VPN. Defaults to `l3`.
@@ -194,12 +194,12 @@ class V2Args:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def vni(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vni(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The globally-assigned VXLAN VNI for the BGP VPN. Changing
         this creates a new BGP VPN.
@@ -207,27 +207,27 @@ class V2Args:
         return pulumi.get(self, "vni")
 
     @vni.setter
-    def vni(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vni(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vni", value)
 
 
 @pulumi.input_type
 class _V2State:
     def __init__(__self__, *,
-                 export_targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 import_targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 local_pref: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_distinguishers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 route_targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 routers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vni: Optional[pulumi.Input[_builtins.int]] = None):
+                 export_targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 import_targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 local_pref: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_distinguishers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 route_targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 routers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vni: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering V2 resources.
 
@@ -290,7 +290,7 @@ class _V2State:
 
     @_builtins.property
     @pulumi.getter(name="exportTargets")
-    def export_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def export_targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of additional Route Targets that will be
         used for export.
@@ -298,12 +298,12 @@ class _V2State:
         return pulumi.get(self, "export_targets")
 
     @export_targets.setter
-    def export_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def export_targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "export_targets", value)
 
     @_builtins.property
     @pulumi.getter(name="importTargets")
-    def import_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def import_targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of additional Route Targets that will be
         imported.
@@ -311,12 +311,12 @@ class _V2State:
         return pulumi.get(self, "import_targets")
 
     @import_targets.setter
-    def import_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def import_targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "import_targets", value)
 
     @_builtins.property
     @pulumi.getter(name="localPref")
-    def local_pref(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def local_pref(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The default BGP LOCAL\\_PREF of routes that will be
         advertised to the BGP VPN, unless overridden per-route.
@@ -324,12 +324,12 @@ class _V2State:
         return pulumi.get(self, "local_pref")
 
     @local_pref.setter
-    def local_pref(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def local_pref(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "local_pref", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the BGP VPN. Changing this updates the name of
         the existing BGP VPN.
@@ -337,36 +337,36 @@ class _V2State:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of network IDs that are associated with the BGP VPN.
         """
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of port IDs that are associated with the BGP VPN.
         """
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ports", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project that owns the BGPVPN. Only
         administrative and users with `advsvc` role can specify a project ID other
@@ -375,12 +375,12 @@ class _V2State:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a BGP VPN service. If omitted, the
@@ -390,12 +390,12 @@ class _V2State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="routeDistinguishers")
-    def route_distinguishers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def route_distinguishers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of route distinguisher strings. If
         specified, one of these RDs will be used to advertise VPN routes.
@@ -403,12 +403,12 @@ class _V2State:
         return pulumi.get(self, "route_distinguishers")
 
     @route_distinguishers.setter
-    def route_distinguishers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def route_distinguishers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "route_distinguishers", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTargets")
-    def route_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def route_targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of Route Targets that will be both
         imported and used for export.
@@ -416,36 +416,36 @@ class _V2State:
         return pulumi.get(self, "route_targets")
 
     @route_targets.setter
-    def route_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def route_targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "route_targets", value)
 
     @_builtins.property
     @pulumi.getter
-    def routers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def routers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of router IDs that are associated with the BGP VPN.
         """
         return pulumi.get(self, "routers")
 
     @routers.setter
-    def routers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def routers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "routers", value)
 
     @_builtins.property
     @pulumi.getter
-    def shared(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shared(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the BGP VPN is shared across projects.
         """
         return pulumi.get(self, "shared")
 
     @shared.setter
-    def shared(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shared(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shared", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the BGP VPN (either `l2` or `l3`). Changing this
         creates a new BGP VPN. Defaults to `l3`.
@@ -453,12 +453,12 @@ class _V2State:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def vni(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vni(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The globally-assigned VXLAN VNI for the BGP VPN. Changing
         this creates a new BGP VPN.
@@ -466,7 +466,7 @@ class _V2State:
         return pulumi.get(self, "vni")
 
     @vni.setter
-    def vni(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vni(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vni", value)
 
 
@@ -476,16 +476,16 @@ class V2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 export_targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 import_targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 local_pref: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_distinguishers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 route_targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vni: Optional[pulumi.Input[_builtins.int]] = None,
+                 export_targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 import_targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 local_pref: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_distinguishers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 route_targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vni: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages a V2 BGP VPN service resource within OpenStack.
@@ -570,16 +570,16 @@ class V2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 export_targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 import_targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 local_pref: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_distinguishers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 route_targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vni: Optional[pulumi.Input[_builtins.int]] = None,
+                 export_targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 import_targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 local_pref: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_distinguishers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 route_targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vni: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -615,20 +615,20 @@ class V2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            export_targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            import_targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            local_pref: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            route_distinguishers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            route_targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            routers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            shared: Optional[pulumi.Input[_builtins.bool]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            vni: Optional[pulumi.Input[_builtins.int]] = None) -> 'V2':
+            export_targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            import_targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            local_pref: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            route_distinguishers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            route_targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            routers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            shared: pulumi.Input[Optional[_builtins.bool]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vni: pulumi.Input[Optional[_builtins.int]] = None) -> 'V2':
         """
         Get an existing V2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

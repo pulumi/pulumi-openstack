@@ -145,36 +145,36 @@ export interface ImageAccessAcceptState {
     /**
      * The date the image membership was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The proposed image ID.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The member ID, e.g. the target project ID. Optional
      * for admin accounts. Defaults to the current scope project ID.
      */
-    memberId?: pulumi.Input<string>;
+    memberId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Glance client.
      * A Glance client is needed to manage Image memberships. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * membership.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The membership schema.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * The membership proposal status. Can either be
      * `accepted`, `rejected` or `pending`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The date the image membership was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -189,14 +189,14 @@ export interface ImageAccessAcceptArgs {
      * The member ID, e.g. the target project ID. Optional
      * for admin accounts. Defaults to the current scope project ID.
      */
-    memberId?: pulumi.Input<string>;
+    memberId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Glance client.
      * A Glance client is needed to manage Image memberships. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * membership.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The membership proposal status. Can either be
      * `accepted`, `rejected` or `pending`.

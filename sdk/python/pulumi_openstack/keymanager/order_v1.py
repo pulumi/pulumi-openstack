@@ -23,7 +23,7 @@ class OrderV1Args:
     def __init__(__self__, *,
                  meta: pulumi.Input['OrderV1MetaArgs'],
                  type: pulumi.Input[_builtins.str],
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a OrderV1 resource.
 
@@ -65,7 +65,7 @@ class OrderV1Args:
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V1 KeyManager client.
         A KeyManager client is needed to create a order. If omitted, the
@@ -75,25 +75,25 @@ class OrderV1Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _OrderV1State:
     def __init__(__self__, *,
-                 container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 created: Optional[pulumi.Input[_builtins.str]] = None,
-                 creator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta: Optional[pulumi.Input['OrderV1MetaArgs']] = None,
-                 order_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_status_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated: Optional[pulumi.Input[_builtins.str]] = None):
+                 container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 created: pulumi.Input[Optional[_builtins.str]] = None,
+                 creator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta: pulumi.Input[Optional['OrderV1MetaArgs']] = None,
+                 order_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_status_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrderV1 resources.
 
@@ -140,67 +140,67 @@ class _OrderV1State:
 
     @_builtins.property
     @pulumi.getter(name="containerRef")
-    def container_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The container reference / where to find the container.
         """
         return pulumi.get(self, "container_ref")
 
     @container_ref.setter
-    def container_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_ref", value)
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date the order was created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter(name="creatorId")
-    def creator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creator of the order.
         """
         return pulumi.get(self, "creator_id")
 
     @creator_id.setter
-    def creator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input['OrderV1MetaArgs']]:
+    def meta(self) -> pulumi.Input[Optional['OrderV1MetaArgs']]:
         """
         Dictionary containing the order metadata used to generate the order. The structure is described below.
         """
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input['OrderV1MetaArgs']]):
+    def meta(self, value: pulumi.Input[Optional['OrderV1MetaArgs']]):
         pulumi.set(self, "meta", value)
 
     @_builtins.property
     @pulumi.getter(name="orderRef")
-    def order_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The order reference / where to find the order.
         """
         return pulumi.get(self, "order_ref")
 
     @order_ref.setter
-    def order_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order_ref", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V1 KeyManager client.
         A KeyManager client is needed to create a order. If omitted, the
@@ -210,79 +210,79 @@ class _OrderV1State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="secretRef")
-    def secret_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secret reference / where to find the secret.
         """
         return pulumi.get(self, "secret_ref")
 
     @secret_ref.setter
-    def secret_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_ref", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the order.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="subStatus")
-    def sub_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sub status of the order.
         """
         return pulumi.get(self, "sub_status")
 
     @sub_status.setter
-    def sub_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_status", value)
 
     @_builtins.property
     @pulumi.getter(name="subStatusMessage")
-    def sub_status_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_status_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sub status message of the order.
         """
         return pulumi.get(self, "sub_status_message")
 
     @sub_status_message.setter
-    def sub_status_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_status_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_status_message", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of key to be generated. Must be one of `asymmetric`, `key`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def updated(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date the order was last updated.
         """
         return pulumi.get(self, "updated")
 
     @updated.setter
-    def updated(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated", value)
 
 
@@ -292,9 +292,9 @@ class OrderV1(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 meta: Optional[pulumi.Input[Union['OrderV1MetaArgs', 'OrderV1MetaArgsDict']]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 meta: pulumi.Input[Optional[Union['OrderV1MetaArgs', 'OrderV1MetaArgsDict']]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V1 Barbican order resource within OpenStack.
@@ -416,9 +416,9 @@ class OrderV1(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 meta: Optional[pulumi.Input[Union['OrderV1MetaArgs', 'OrderV1MetaArgsDict']]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 meta: pulumi.Input[Optional[Union['OrderV1MetaArgs', 'OrderV1MetaArgsDict']]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -454,18 +454,18 @@ class OrderV1(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-            created: Optional[pulumi.Input[_builtins.str]] = None,
-            creator_id: Optional[pulumi.Input[_builtins.str]] = None,
-            meta: Optional[pulumi.Input[Union['OrderV1MetaArgs', 'OrderV1MetaArgsDict']]] = None,
-            order_ref: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_ref: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            sub_status: Optional[pulumi.Input[_builtins.str]] = None,
-            sub_status_message: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            updated: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrderV1':
+            container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            creator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            meta: pulumi.Input[Optional[Union['OrderV1MetaArgs', 'OrderV1MetaArgsDict']]] = None,
+            order_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_status: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_status_message: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrderV1':
         """
         Get an existing OrderV1 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -137,29 +137,29 @@ export interface RegisteredLimitV3State {
     /**
      * Integer for the actual limit.
      */
-    defaultLimit?: pulumi.Input<number>;
+    defaultLimit?: pulumi.Input<number | undefined>;
     /**
      * Description of the limit
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new registered limit.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The resource that the limit applies to. On
      * updates, either service_id, resourceName or regionId must be different than
      * existing value otherwise it will raise 409.
      */
-    resourceName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string | undefined>;
     /**
      * The service the limit applies to. On updates,
      * either service_id, resourceName or regionId must be different than existing
      * value otherwise it will raise 409.
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -173,13 +173,13 @@ export interface RegisteredLimitV3Args {
     /**
      * Description of the limit
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new registered limit.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The resource that the limit applies to. On
      * updates, either service_id, resourceName or regionId must be different than

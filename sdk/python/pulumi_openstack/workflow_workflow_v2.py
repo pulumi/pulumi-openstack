@@ -200,10 +200,10 @@ def workflow_workflow_v2(name: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         scope=pulumi.get(__ret__, 'scope'),
         tags=pulumi.get(__ret__, 'tags'))
-def workflow_workflow_v2_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def workflow_workflow_v2_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[WorkflowWorkflowV2Result]:
     """
     Use this data source to get the ID of an available workflow.

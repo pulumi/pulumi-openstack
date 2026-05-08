@@ -202,49 +202,49 @@ export interface GroupV2State {
      * group (must be "true" or "false" if provided - defaults to "true").
      * Changing this updates the `adminStateUp` of an existing firewall group.
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * A description for the firewall group. Changing this
      * updates the `description` of an existing firewall group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The egress firewall policy resource
      * id for the firewall group. Changing this updates the
      * `egressFirewallPolicyId` of an existing firewall group.
      */
-    egressFirewallPolicyId?: pulumi.Input<string>;
+    egressFirewallPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The ingress firewall policy resource
      * id for the firewall group. Changing this updates the
      * `ingressFirewallPolicyId` of an existing firewall group.
      */
-    ingressFirewallPolicyId?: pulumi.Input<string>;
+    ingressFirewallPolicyId?: pulumi.Input<string | undefined>;
     /**
      * A name for the firewall group. Changing this
      * updates the `name` of an existing firewall.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Port(s) to associate this firewall group
      * with. Must be a list of strings. Changing this updates the associated ports
      * of an existing firewall group.
      */
-    ports?: pulumi.Input<pulumi.Input<string>[]>;
+    ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This argument conflicts and  is interchangeable
      * with `tenantId`. The owner of the firewall group. Required if admin wants
      * to create a firewall group for another project. Changing this creates a new
      * firewall group.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the v2 networking client.
      * A networking client is needed to create a firewall group. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * firewall group.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Sharing status of the firewall group (must be "true"
      * or "false" if provided). If this is "true" the firewall group is visible to,
@@ -252,18 +252,18 @@ export interface GroupV2State {
      * `shared` status of an existing firewall group. Only administrative users
      * can specify if the firewall group should be shared.
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * The status of the firewall group.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * This argument conflicts and is interchangeable with
      * `projectId`. The owner of the firewall group. Required if admin wants to
      * create a firewall group for another tenant. Changing this creates a new
      * firewall group.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -275,49 +275,49 @@ export interface GroupV2Args {
      * group (must be "true" or "false" if provided - defaults to "true").
      * Changing this updates the `adminStateUp` of an existing firewall group.
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * A description for the firewall group. Changing this
      * updates the `description` of an existing firewall group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The egress firewall policy resource
      * id for the firewall group. Changing this updates the
      * `egressFirewallPolicyId` of an existing firewall group.
      */
-    egressFirewallPolicyId?: pulumi.Input<string>;
+    egressFirewallPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The ingress firewall policy resource
      * id for the firewall group. Changing this updates the
      * `ingressFirewallPolicyId` of an existing firewall group.
      */
-    ingressFirewallPolicyId?: pulumi.Input<string>;
+    ingressFirewallPolicyId?: pulumi.Input<string | undefined>;
     /**
      * A name for the firewall group. Changing this
      * updates the `name` of an existing firewall.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Port(s) to associate this firewall group
      * with. Must be a list of strings. Changing this updates the associated ports
      * of an existing firewall group.
      */
-    ports?: pulumi.Input<pulumi.Input<string>[]>;
+    ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This argument conflicts and  is interchangeable
      * with `tenantId`. The owner of the firewall group. Required if admin wants
      * to create a firewall group for another project. Changing this creates a new
      * firewall group.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the v2 networking client.
      * A networking client is needed to create a firewall group. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * firewall group.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Sharing status of the firewall group (must be "true"
      * or "false" if provided). If this is "true" the firewall group is visible to,
@@ -325,12 +325,12 @@ export interface GroupV2Args {
      * `shared` status of an existing firewall group. Only administrative users
      * can specify if the firewall group should be shared.
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * This argument conflicts and is interchangeable with
      * `projectId`. The owner of the firewall group. Required if admin wants to
      * create a firewall group for another tenant. Changing this creates a new
      * firewall group.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

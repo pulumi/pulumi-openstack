@@ -520,8 +520,8 @@ def get_cluster_template(name: Optional[_builtins.str] = None,
         updated_at=pulumi.get(__ret__, 'updated_at'),
         user_id=pulumi.get(__ret__, 'user_id'),
         volume_driver=pulumi.get(__ret__, 'volume_driver'))
-def get_cluster_template_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_cluster_template_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterTemplateResult]:
     """
     Use this data source to get the ID of an available OpenStack Magnum cluster

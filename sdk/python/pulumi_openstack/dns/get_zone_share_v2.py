@@ -175,12 +175,12 @@ def get_zone_share_v2(all_projects: Optional[_builtins.str] = None,
         share_id=pulumi.get(__ret__, 'share_id'),
         target_project_id=pulumi.get(__ret__, 'target_project_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_zone_share_v2_output(all_projects: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             share_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             target_project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zone_share_v2_output(all_projects: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             share_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             target_project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneShareV2Result]:
     """
     Use this data source to get information about a DNS zone share.

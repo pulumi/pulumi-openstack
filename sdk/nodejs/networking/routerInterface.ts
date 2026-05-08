@@ -141,29 +141,29 @@ export interface RouterInterfaceState {
      * corresponding router ID should be deleted so that the router interface can
      * be destroyed without any errors. The default value is `false`.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the port this interface connects to. Changing
      * this creates a new router interface.
      */
-    portId?: pulumi.Input<string>;
+    portId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a router. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * router interface.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * ID of the router this interface belongs to. Changing
      * this creates a new router interface.
      */
-    routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string | undefined>;
     /**
      * ID of the subnet this interface connects to. Changing
      * this creates a new router interface.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -175,19 +175,19 @@ export interface RouterInterfaceArgs {
      * corresponding router ID should be deleted so that the router interface can
      * be destroyed without any errors. The default value is `false`.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the port this interface connects to. Changing
      * this creates a new router interface.
      */
-    portId?: pulumi.Input<string>;
+    portId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a router. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * router interface.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * ID of the router this interface belongs to. Changing
      * this creates a new router interface.
@@ -197,5 +197,5 @@ export interface RouterInterfaceArgs {
      * ID of the subnet this interface connects to. Changing
      * this creates a new router interface.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
 }

@@ -175,41 +175,41 @@ export interface GetShareNetworkOutputArgs {
     /**
      * The human-readable description of the share network.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The IP version of the share network. Can either be 4 or 6.
      */
-    ipVersion?: pulumi.Input<number>;
+    ipVersion?: pulumi.Input<number | undefined>;
     /**
      * The name of the share network.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The share network type. Can either be VLAN, VXLAN,
      * GRE, or flat.
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
     /**
      * The neutron network UUID of the share network.
      */
-    neutronNetId?: pulumi.Input<string>;
+    neutronNetId?: pulumi.Input<string | undefined>;
     /**
      * The neutron subnet UUID of the share network.
      */
-    neutronSubnetId?: pulumi.Input<string>;
+    neutronSubnetId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Shared File System client.
      * A Shared File System client is needed to read a share network. If omitted, the
      * `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The security service IDs associated with
      * the share network.
      */
-    securityServiceId?: pulumi.Input<string>;
+    securityServiceId?: pulumi.Input<string | undefined>;
     /**
      * The share network segmentation ID.
      */
-    segmentationId?: pulumi.Input<number>;
+    segmentationId?: pulumi.Input<number | undefined>;
 }

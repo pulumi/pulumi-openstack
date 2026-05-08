@@ -149,10 +149,10 @@ def get_qos_bandwidth_limit_rule(max_burst_kbps: Optional[_builtins.int] = None,
         max_kbps=pulumi.get(__ret__, 'max_kbps'),
         qos_policy_id=pulumi.get(__ret__, 'qos_policy_id'),
         region=pulumi.get(__ret__, 'region'))
-def get_qos_bandwidth_limit_rule_output(max_burst_kbps: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                        max_kbps: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                        qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                        region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_qos_bandwidth_limit_rule_output(max_burst_kbps: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                        max_kbps: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                        qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                        region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQosBandwidthLimitRuleResult]:
     """
     Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.

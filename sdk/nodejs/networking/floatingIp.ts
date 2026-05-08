@@ -218,45 +218,45 @@ export interface FloatingIpState {
      * an admin user or have had a custom policy or role applied to your OpenStack
      * user or project.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The collection of tags assigned on the floating IP, which have
      * been explicitly and implicitly added.
      */
-    allTags?: pulumi.Input<pulumi.Input<string>[]>;
+    allTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Human-readable description for the floating IP.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The floating IP DNS domain. Available, when Neutron
      * DNS extension is enabled. The data in this attribute will be published in an
      * external DNS service when Neutron is configured to integrate with such a
      * service. Changing this creates a new floating IP.
      */
-    dnsDomain?: pulumi.Input<string>;
+    dnsDomain?: pulumi.Input<string | undefined>;
     /**
      * The floating IP DNS name. Available, when Neutron DNS
      * extension is enabled. The data in this attribute will be published in an
      * external DNS service when Neutron is configured to integrate with such a
      * service. Changing this creates a new floating IP.
      */
-    dnsName?: pulumi.Input<string>;
+    dnsName?: pulumi.Input<string | undefined>;
     /**
      * Fixed IP of the port to associate with this floating IP. Required if
      * the port has multiple fixed IPs.
      */
-    fixedIp?: pulumi.Input<string>;
+    fixedIp?: pulumi.Input<string | undefined>;
     /**
      * The name of the pool from which to obtain the floating
      * IP. Changing this creates a new floating IP.
      */
-    pool?: pulumi.Input<string>;
+    pool?: pulumi.Input<string | undefined>;
     /**
      * ID of an existing port with at least one IP address to
      * associate with this floating IP.
      */
-    portId?: pulumi.Input<string>;
+    portId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a floating IP that can be used with
@@ -264,34 +264,34 @@ export interface FloatingIpState {
      * `region` argument of the provider is used. Changing this creates a new
      * floating IP (which may or may not have a different address).
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The subnet ID of the floating IP pool. Specify this if
      * the floating IP network has multiple subnets.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * A list of external subnet IDs to try over each to
      * allocate a floating IP address. If a subnet ID in a list has exhausted
      * floating IP pool, the next subnet ID will be tried. This argument is used only
      * during the resource creation. Conflicts with a `subnetId` argument.
      */
-    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A set of string tags for the floating IP.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The target tenant ID in which to allocate the floating
      * IP, if you specify this together with a port_id, make sure the target port
      * belongs to the same tenant. Changing this creates a new floating IP (which
      * may or may not have a different address)
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -304,40 +304,40 @@ export interface FloatingIpArgs {
      * an admin user or have had a custom policy or role applied to your OpenStack
      * user or project.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * Human-readable description for the floating IP.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The floating IP DNS domain. Available, when Neutron
      * DNS extension is enabled. The data in this attribute will be published in an
      * external DNS service when Neutron is configured to integrate with such a
      * service. Changing this creates a new floating IP.
      */
-    dnsDomain?: pulumi.Input<string>;
+    dnsDomain?: pulumi.Input<string | undefined>;
     /**
      * The floating IP DNS name. Available, when Neutron DNS
      * extension is enabled. The data in this attribute will be published in an
      * external DNS service when Neutron is configured to integrate with such a
      * service. Changing this creates a new floating IP.
      */
-    dnsName?: pulumi.Input<string>;
+    dnsName?: pulumi.Input<string | undefined>;
     /**
      * Fixed IP of the port to associate with this floating IP. Required if
      * the port has multiple fixed IPs.
      */
-    fixedIp?: pulumi.Input<string>;
+    fixedIp?: pulumi.Input<string | undefined>;
     /**
      * The name of the pool from which to obtain the floating
      * IP. Changing this creates a new floating IP.
      */
-    pool?: pulumi.Input<string>;
+    pool?: pulumi.Input<string | undefined>;
     /**
      * ID of an existing port with at least one IP address to
      * associate with this floating IP.
      */
-    portId?: pulumi.Input<string>;
+    portId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a floating IP that can be used with
@@ -345,32 +345,32 @@ export interface FloatingIpArgs {
      * `region` argument of the provider is used. Changing this creates a new
      * floating IP (which may or may not have a different address).
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The subnet ID of the floating IP pool. Specify this if
      * the floating IP network has multiple subnets.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * A list of external subnet IDs to try over each to
      * allocate a floating IP address. If a subnet ID in a list has exhausted
      * floating IP pool, the next subnet ID will be tried. This argument is used only
      * during the resource creation. Conflicts with a `subnetId` argument.
      */
-    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A set of string tags for the floating IP.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The target tenant ID in which to allocate the floating
      * IP, if you specify this together with a port_id, make sure the target port
      * belongs to the same tenant. Changing this creates a new floating IP (which
      * may or may not have a different address)
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -151,38 +151,38 @@ export interface BgpPeerV2State {
      * or `md5`. Defaults to `none`. If set to not `none`, the `password` argument
      * must also be provided. Changing this creates a new BGP peer.
      */
-    authType?: pulumi.Input<string>;
+    authType?: pulumi.Input<string | undefined>;
     /**
      * A name for the BGP peer.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The password used for MD5 authentication. Must be set
      * only when `authType` is not `none`.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the BGP peer. Must be a valid IP
      * address. Changing this creates a new BGP peer.
      */
-    peerIp?: pulumi.Input<string>;
+    peerIp?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron network. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new BGP
      * peer.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The AS number of the BGP peer. Changing this
      * creates a new BGP peer.
      */
-    remoteAs?: pulumi.Input<number>;
+    remoteAs?: pulumi.Input<number | undefined>;
     /**
      * The tenant/project ID. Required if admin privileges
      * are used. Changing this creates a new BGP peer.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -194,16 +194,16 @@ export interface BgpPeerV2Args {
      * or `md5`. Defaults to `none`. If set to not `none`, the `password` argument
      * must also be provided. Changing this creates a new BGP peer.
      */
-    authType?: pulumi.Input<string>;
+    authType?: pulumi.Input<string | undefined>;
     /**
      * A name for the BGP peer.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The password used for MD5 authentication. Must be set
      * only when `authType` is not `none`.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the BGP peer. Must be a valid IP
      * address. Changing this creates a new BGP peer.
@@ -215,7 +215,7 @@ export interface BgpPeerV2Args {
      * `region` argument of the provider is used. Changing this creates a new BGP
      * peer.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The AS number of the BGP peer. Changing this
      * creates a new BGP peer.
@@ -225,5 +225,5 @@ export interface BgpPeerV2Args {
      * The tenant/project ID. Required if admin privileges
      * are used. Changing this creates a new BGP peer.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

@@ -19,20 +19,20 @@ __all__ = ['RuleV2Args', 'RuleV2']
 @pulumi.input_type
 class RuleV2Args:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RuleV2 resource.
 
@@ -112,7 +112,7 @@ class RuleV2Args:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Action to be taken (must be "allow", "deny" or "reject")
         when the firewall rule matches. Changing this updates the `action` of an
@@ -121,12 +121,12 @@ class RuleV2Args:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the firewall rule. Changing this
         updates the `description` of an existing firewall rule.
@@ -134,12 +134,12 @@ class RuleV2Args:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationIpAddress")
-    def destination_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination IP address on which the
         firewall rule operates. Changing this updates the `destination_ip_address`
@@ -148,12 +148,12 @@ class RuleV2Args:
         return pulumi.get(self, "destination_ip_address")
 
     @destination_ip_address.setter
-    def destination_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationPort")
-    def destination_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination port on which the firewall
         rule operates. Changing this updates the `destination_port` of an existing
@@ -162,12 +162,12 @@ class RuleV2Args:
         return pulumi.get(self, "destination_port")
 
     @destination_port.setter
-    def destination_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enabled status for the firewall rule (must be "true"
         or "false" if provided - defaults to "true"). Changing this updates the
@@ -176,12 +176,12 @@ class RuleV2Args:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         IP version, either 4 or 6. Changing this
         updates the `ip_version` of an existing firewall rule. Default is `4`.
@@ -189,12 +189,12 @@ class RuleV2Args:
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the firewall rule. Changing this
         updates the `name` of an existing firewall rule.
@@ -202,12 +202,12 @@ class RuleV2Args:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This argument conflicts and is interchangeable
         with `tenant_id`. The owner of the firewall rule. Required if admin wants
@@ -217,12 +217,12 @@ class RuleV2Args:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional; Required if `source_port` or `destination_port` is not
         empty) The protocol type on which the firewall rule operates.
@@ -232,12 +232,12 @@ class RuleV2Args:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the v2 networking client.
         A networking client is needed to create a firewall rule. If omitted, the
@@ -247,12 +247,12 @@ class RuleV2Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def shared(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shared(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Sharing status of the firewall rule (must be "true"
         or "false" if provided). If this is "true" the policy is visible to, and
@@ -262,12 +262,12 @@ class RuleV2Args:
         return pulumi.get(self, "shared")
 
     @shared.setter
-    def shared(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shared(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shared", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceIpAddress")
-    def source_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source IP address on which the firewall
         rule operates. Changing this updates the `source_ip_address` of an existing
@@ -276,12 +276,12 @@ class RuleV2Args:
         return pulumi.get(self, "source_ip_address")
 
     @source_ip_address.setter
-    def source_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="sourcePort")
-    def source_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source port on which the firewall
         rule operates. Changing this updates the `source_port` of an existing
@@ -290,12 +290,12 @@ class RuleV2Args:
         return pulumi.get(self, "source_port")
 
     @source_port.setter
-    def source_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_port", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This argument conflicts and is interchangeable
         with `project_id`. The owner of the firewall rule. Required if admin wants
@@ -305,27 +305,27 @@ class RuleV2Args:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
 @pulumi.input_type
 class _RuleV2State:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RuleV2 resources.
 
@@ -405,7 +405,7 @@ class _RuleV2State:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Action to be taken (must be "allow", "deny" or "reject")
         when the firewall rule matches. Changing this updates the `action` of an
@@ -414,12 +414,12 @@ class _RuleV2State:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the firewall rule. Changing this
         updates the `description` of an existing firewall rule.
@@ -427,12 +427,12 @@ class _RuleV2State:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationIpAddress")
-    def destination_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination IP address on which the
         firewall rule operates. Changing this updates the `destination_ip_address`
@@ -441,12 +441,12 @@ class _RuleV2State:
         return pulumi.get(self, "destination_ip_address")
 
     @destination_ip_address.setter
-    def destination_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationPort")
-    def destination_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination port on which the firewall
         rule operates. Changing this updates the `destination_port` of an existing
@@ -455,12 +455,12 @@ class _RuleV2State:
         return pulumi.get(self, "destination_port")
 
     @destination_port.setter
-    def destination_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enabled status for the firewall rule (must be "true"
         or "false" if provided - defaults to "true"). Changing this updates the
@@ -469,12 +469,12 @@ class _RuleV2State:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         IP version, either 4 or 6. Changing this
         updates the `ip_version` of an existing firewall rule. Default is `4`.
@@ -482,12 +482,12 @@ class _RuleV2State:
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the firewall rule. Changing this
         updates the `name` of an existing firewall rule.
@@ -495,12 +495,12 @@ class _RuleV2State:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This argument conflicts and is interchangeable
         with `tenant_id`. The owner of the firewall rule. Required if admin wants
@@ -510,12 +510,12 @@ class _RuleV2State:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional; Required if `source_port` or `destination_port` is not
         empty) The protocol type on which the firewall rule operates.
@@ -525,12 +525,12 @@ class _RuleV2State:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the v2 networking client.
         A networking client is needed to create a firewall rule. If omitted, the
@@ -540,12 +540,12 @@ class _RuleV2State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def shared(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shared(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Sharing status of the firewall rule (must be "true"
         or "false" if provided). If this is "true" the policy is visible to, and
@@ -555,12 +555,12 @@ class _RuleV2State:
         return pulumi.get(self, "shared")
 
     @shared.setter
-    def shared(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shared(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shared", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceIpAddress")
-    def source_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source IP address on which the firewall
         rule operates. Changing this updates the `source_ip_address` of an existing
@@ -569,12 +569,12 @@ class _RuleV2State:
         return pulumi.get(self, "source_ip_address")
 
     @source_ip_address.setter
-    def source_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="sourcePort")
-    def source_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source port on which the firewall
         rule operates. Changing this updates the `source_port` of an existing
@@ -583,12 +583,12 @@ class _RuleV2State:
         return pulumi.get(self, "source_port")
 
     @source_port.setter
-    def source_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_port", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This argument conflicts and is interchangeable
         with `project_id`. The owner of the firewall rule. Required if admin wants
@@ -598,7 +598,7 @@ class _RuleV2State:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
@@ -608,20 +608,20 @@ class RuleV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a v2 firewall rule resource within OpenStack.
@@ -749,20 +749,20 @@ class RuleV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -796,20 +796,20 @@ class RuleV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_port: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            ip_version: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            shared: Optional[pulumi.Input[_builtins.bool]] = None,
-            source_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            source_port: Optional[pulumi.Input[_builtins.str]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'RuleV2':
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_port: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            shared: pulumi.Input[Optional[_builtins.bool]] = None,
+            source_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            source_port: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RuleV2':
         """
         Get an existing RuleV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -22,7 +22,7 @@ __all__ = [
 class StackV1StackOutputArgsDict(TypedDict):
     output_key: pulumi.Input[_builtins.str]
     output_value: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of the stack resource.
     """
@@ -32,7 +32,7 @@ class StackV1StackOutputArgs:
     def __init__(__self__, *,
                  output_key: pulumi.Input[_builtins.str],
                  output_value: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of the stack resource.
         """
@@ -61,14 +61,14 @@ class StackV1StackOutputArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the stack resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
