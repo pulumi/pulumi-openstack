@@ -22,31 +22,31 @@ class ListenerArgs:
                  loadbalancer_id: pulumi.Input[_builtins.str],
                  protocol: pulumi.Input[_builtins.str],
                  protocol_port: pulumi.Input[_builtins.int],
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 alpn_protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 client_authentication: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_ca_tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_crl_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts_include_subdomains: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hsts_max_age: Optional[pulumi.Input[_builtins.int]] = None,
-                 hsts_preload: Optional[pulumi.Input[_builtins.bool]] = None,
-                 insert_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 sni_container_refs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_client_data: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_member_connect: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_member_data: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_tcp_inspect: Optional[pulumi.Input[_builtins.int]] = None,
-                 tls_ciphers: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 alpn_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_authentication: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ca_tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_crl_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts_include_subdomains: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hsts_max_age: pulumi.Input[Optional[_builtins.int]] = None,
+                 hsts_preload: pulumi.Input[Optional[_builtins.bool]] = None,
+                 insert_headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sni_container_refs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_client_data: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_member_connect: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_member_data: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_tcp_inspect: pulumi.Input[Optional[_builtins.int]] = None,
+                 tls_ciphers: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Listener resource.
 
@@ -234,7 +234,7 @@ class ListenerArgs:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the Listener. A
         valid value is true (UP) or false (DOWN).
@@ -242,12 +242,12 @@ class ListenerArgs:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedCidrs")
-    def allowed_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of CIDR blocks that are permitted to
         connect to this listener, denying all other source addresses. If not present,
@@ -256,12 +256,12 @@ class ListenerArgs:
         return pulumi.get(self, "allowed_cidrs")
 
     @allowed_cidrs.setter
-    def allowed_cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_cidrs", value)
 
     @_builtins.property
     @pulumi.getter(name="alpnProtocols")
-    def alpn_protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def alpn_protocols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of ALPN protocols. Available protocols:
         `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
@@ -270,12 +270,12 @@ class ListenerArgs:
         return pulumi.get(self, "alpn_protocols")
 
     @alpn_protocols.setter
-    def alpn_protocols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def alpn_protocols(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alpn_protocols", value)
 
     @_builtins.property
     @pulumi.getter(name="clientAuthentication")
-    def client_authentication(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_authentication(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The TLS client authentication mode.
         Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
@@ -285,12 +285,12 @@ class ListenerArgs:
         return pulumi.get(self, "client_authentication")
 
     @client_authentication.setter
-    def client_authentication(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_authentication(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCaTlsContainerRef")
-    def client_ca_tls_container_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_ca_tls_container_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ref of the key manager service
         secret containing a PEM format client CA certificate bundle for
@@ -301,12 +301,12 @@ class ListenerArgs:
         return pulumi.get(self, "client_ca_tls_container_ref")
 
     @client_ca_tls_container_ref.setter
-    def client_ca_tls_container_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_ca_tls_container_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_ca_tls_container_ref", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCrlContainerRef")
-    def client_crl_container_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_crl_container_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the key manager service
         secret containing a PEM format CA revocation list file for `TERMINATED_HTTPS`
@@ -315,12 +315,12 @@ class ListenerArgs:
         return pulumi.get(self, "client_crl_container_ref")
 
     @client_crl_container_ref.setter
-    def client_crl_container_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_crl_container_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_crl_container_ref", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionLimit")
-    def connection_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connection_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of connections allowed for
         the Listener.
@@ -328,12 +328,12 @@ class ListenerArgs:
         return pulumi.get(self, "connection_limit")
 
     @connection_limit.setter
-    def connection_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connection_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connection_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultPoolId")
-    def default_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the default pool with which the
         Listener is associated.
@@ -341,12 +341,12 @@ class ListenerArgs:
         return pulumi.get(self, "default_pool_id")
 
     @default_pool_id.setter
-    def default_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTlsContainerRef")
-    def default_tls_container_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_tls_container_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to a Barbican Secrets
         container which stores TLS information. This is required if the protocol is
@@ -357,24 +357,24 @@ class ListenerArgs:
         return pulumi.get(self, "default_tls_container_ref")
 
     @default_tls_container_ref.setter
-    def default_tls_container_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_tls_container_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_tls_container_ref", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable description for the Listener.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="hstsIncludeSubdomains")
-    def hsts_include_subdomains(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hsts_include_subdomains(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether the
         **includeSubDomains** directive should be added to the
@@ -386,12 +386,12 @@ class ListenerArgs:
         return pulumi.get(self, "hsts_include_subdomains")
 
     @hsts_include_subdomains.setter
-    def hsts_include_subdomains(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hsts_include_subdomains(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hsts_include_subdomains", value)
 
     @_builtins.property
     @pulumi.getter(name="hstsMaxAge")
-    def hsts_max_age(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hsts_max_age(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The value of the **max_age** directive for the
         Strict-Transport-Security HTTP response header. Setting this enables HTTP
@@ -402,12 +402,12 @@ class ListenerArgs:
         return pulumi.get(self, "hsts_max_age")
 
     @hsts_max_age.setter
-    def hsts_max_age(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hsts_max_age(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hsts_max_age", value)
 
     @_builtins.property
     @pulumi.getter(name="hstsPreload")
-    def hsts_preload(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hsts_preload(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether the **preload** directive should
         be added to the Strict-Transport-Security HTTP response header. This requires
@@ -418,12 +418,12 @@ class ListenerArgs:
         return pulumi.get(self, "hsts_preload")
 
     @hsts_preload.setter
-    def hsts_preload(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hsts_preload(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hsts_preload", value)
 
     @_builtins.property
     @pulumi.getter(name="insertHeaders")
-    def insert_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def insert_headers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of key value pairs representing
         headers to insert into the request before it is sent to the backend members.
@@ -432,12 +432,12 @@ class ListenerArgs:
         return pulumi.get(self, "insert_headers")
 
     @insert_headers.setter
-    def insert_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def insert_headers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "insert_headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable name for the Listener. Does not have to be
         unique.
@@ -445,12 +445,12 @@ class ListenerArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a listener. If omitted, the `region`
@@ -459,12 +459,12 @@ class ListenerArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="sniContainerRefs")
-    def sni_container_refs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def sni_container_refs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of references to Barbican Secrets
         containers which store SNI information. See
@@ -474,12 +474,12 @@ class ListenerArgs:
         return pulumi.get(self, "sni_container_refs")
 
     @sni_container_refs.setter
-    def sni_container_refs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def sni_container_refs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sni_container_refs", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of simple strings assigned to the pool. Available
         for Octavia **minor version 2.5 or later**.
@@ -487,12 +487,12 @@ class ListenerArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for admins. The UUID of the tenant who owns
         the Listener.  Only administrative users can specify a tenant UUID other than
@@ -501,12 +501,12 @@ class ListenerArgs:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutClientData")
-    def timeout_client_data(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_client_data(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The client inactivity timeout in
         milliseconds.
@@ -514,12 +514,12 @@ class ListenerArgs:
         return pulumi.get(self, "timeout_client_data")
 
     @timeout_client_data.setter
-    def timeout_client_data(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_client_data(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_client_data", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutMemberConnect")
-    def timeout_member_connect(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_member_connect(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The member connection timeout in
         milliseconds.
@@ -527,12 +527,12 @@ class ListenerArgs:
         return pulumi.get(self, "timeout_member_connect")
 
     @timeout_member_connect.setter
-    def timeout_member_connect(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_member_connect(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_member_connect", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutMemberData")
-    def timeout_member_data(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_member_data(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The member inactivity timeout in
         milliseconds.
@@ -540,12 +540,12 @@ class ListenerArgs:
         return pulumi.get(self, "timeout_member_data")
 
     @timeout_member_data.setter
-    def timeout_member_data(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_member_data(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_member_data", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutTcpInspect")
-    def timeout_tcp_inspect(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_tcp_inspect(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time in milliseconds, to wait for
         additional TCP packets for content inspection.
@@ -553,12 +553,12 @@ class ListenerArgs:
         return pulumi.get(self, "timeout_tcp_inspect")
 
     @timeout_tcp_inspect.setter
-    def timeout_tcp_inspect(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_tcp_inspect(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_tcp_inspect", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsCiphers")
-    def tls_ciphers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls_ciphers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         List of ciphers in OpenSSL format
         (colon-separated). See
@@ -568,12 +568,12 @@ class ListenerArgs:
         return pulumi.get(self, "tls_ciphers")
 
     @tls_ciphers.setter
-    def tls_ciphers(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls_ciphers(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls_ciphers", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsVersions")
-    def tls_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tls_versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of TLS protocol versions. Available
         versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
@@ -582,41 +582,41 @@ class ListenerArgs:
         return pulumi.get(self, "tls_versions")
 
     @tls_versions.setter
-    def tls_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tls_versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tls_versions", value)
 
 
 @pulumi.input_type
 class _ListenerState:
     def __init__(__self__, *,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 alpn_protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 client_authentication: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_ca_tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_crl_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts_include_subdomains: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hsts_max_age: Optional[pulumi.Input[_builtins.int]] = None,
-                 hsts_preload: Optional[pulumi.Input[_builtins.bool]] = None,
-                 insert_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 loadbalancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 sni_container_refs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_client_data: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_member_connect: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_member_data: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_tcp_inspect: Optional[pulumi.Input[_builtins.int]] = None,
-                 tls_ciphers: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 alpn_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_authentication: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ca_tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_crl_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts_include_subdomains: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hsts_max_age: pulumi.Input[Optional[_builtins.int]] = None,
+                 hsts_preload: pulumi.Input[Optional[_builtins.bool]] = None,
+                 insert_headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 loadbalancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sni_container_refs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_client_data: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_member_connect: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_member_data: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_tcp_inspect: pulumi.Input[Optional[_builtins.int]] = None,
+                 tls_ciphers: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Listener resources.
 
@@ -766,7 +766,7 @@ class _ListenerState:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the Listener. A
         valid value is true (UP) or false (DOWN).
@@ -774,12 +774,12 @@ class _ListenerState:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedCidrs")
-    def allowed_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of CIDR blocks that are permitted to
         connect to this listener, denying all other source addresses. If not present,
@@ -788,12 +788,12 @@ class _ListenerState:
         return pulumi.get(self, "allowed_cidrs")
 
     @allowed_cidrs.setter
-    def allowed_cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_cidrs", value)
 
     @_builtins.property
     @pulumi.getter(name="alpnProtocols")
-    def alpn_protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def alpn_protocols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of ALPN protocols. Available protocols:
         `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
@@ -802,12 +802,12 @@ class _ListenerState:
         return pulumi.get(self, "alpn_protocols")
 
     @alpn_protocols.setter
-    def alpn_protocols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def alpn_protocols(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alpn_protocols", value)
 
     @_builtins.property
     @pulumi.getter(name="clientAuthentication")
-    def client_authentication(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_authentication(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The TLS client authentication mode.
         Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
@@ -817,12 +817,12 @@ class _ListenerState:
         return pulumi.get(self, "client_authentication")
 
     @client_authentication.setter
-    def client_authentication(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_authentication(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCaTlsContainerRef")
-    def client_ca_tls_container_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_ca_tls_container_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ref of the key manager service
         secret containing a PEM format client CA certificate bundle for
@@ -833,12 +833,12 @@ class _ListenerState:
         return pulumi.get(self, "client_ca_tls_container_ref")
 
     @client_ca_tls_container_ref.setter
-    def client_ca_tls_container_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_ca_tls_container_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_ca_tls_container_ref", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCrlContainerRef")
-    def client_crl_container_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_crl_container_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the key manager service
         secret containing a PEM format CA revocation list file for `TERMINATED_HTTPS`
@@ -847,12 +847,12 @@ class _ListenerState:
         return pulumi.get(self, "client_crl_container_ref")
 
     @client_crl_container_ref.setter
-    def client_crl_container_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_crl_container_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_crl_container_ref", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionLimit")
-    def connection_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connection_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of connections allowed for
         the Listener.
@@ -860,12 +860,12 @@ class _ListenerState:
         return pulumi.get(self, "connection_limit")
 
     @connection_limit.setter
-    def connection_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connection_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connection_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultPoolId")
-    def default_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the default pool with which the
         Listener is associated.
@@ -873,12 +873,12 @@ class _ListenerState:
         return pulumi.get(self, "default_pool_id")
 
     @default_pool_id.setter
-    def default_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTlsContainerRef")
-    def default_tls_container_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_tls_container_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to a Barbican Secrets
         container which stores TLS information. This is required if the protocol is
@@ -889,24 +889,24 @@ class _ListenerState:
         return pulumi.get(self, "default_tls_container_ref")
 
     @default_tls_container_ref.setter
-    def default_tls_container_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_tls_container_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_tls_container_ref", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable description for the Listener.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="hstsIncludeSubdomains")
-    def hsts_include_subdomains(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hsts_include_subdomains(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether the
         **includeSubDomains** directive should be added to the
@@ -918,12 +918,12 @@ class _ListenerState:
         return pulumi.get(self, "hsts_include_subdomains")
 
     @hsts_include_subdomains.setter
-    def hsts_include_subdomains(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hsts_include_subdomains(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hsts_include_subdomains", value)
 
     @_builtins.property
     @pulumi.getter(name="hstsMaxAge")
-    def hsts_max_age(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hsts_max_age(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The value of the **max_age** directive for the
         Strict-Transport-Security HTTP response header. Setting this enables HTTP
@@ -934,12 +934,12 @@ class _ListenerState:
         return pulumi.get(self, "hsts_max_age")
 
     @hsts_max_age.setter
-    def hsts_max_age(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hsts_max_age(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hsts_max_age", value)
 
     @_builtins.property
     @pulumi.getter(name="hstsPreload")
-    def hsts_preload(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hsts_preload(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines whether the **preload** directive should
         be added to the Strict-Transport-Security HTTP response header. This requires
@@ -950,12 +950,12 @@ class _ListenerState:
         return pulumi.get(self, "hsts_preload")
 
     @hsts_preload.setter
-    def hsts_preload(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hsts_preload(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hsts_preload", value)
 
     @_builtins.property
     @pulumi.getter(name="insertHeaders")
-    def insert_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def insert_headers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of key value pairs representing
         headers to insert into the request before it is sent to the backend members.
@@ -964,12 +964,12 @@ class _ListenerState:
         return pulumi.get(self, "insert_headers")
 
     @insert_headers.setter
-    def insert_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def insert_headers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "insert_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="loadbalancerId")
-    def loadbalancer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def loadbalancer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The load balancer on which to provision this
         Listener. Changing this creates a new Listener.
@@ -977,12 +977,12 @@ class _ListenerState:
         return pulumi.get(self, "loadbalancer_id")
 
     @loadbalancer_id.setter
-    def loadbalancer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def loadbalancer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "loadbalancer_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable name for the Listener. Does not have to be
         unique.
@@ -990,12 +990,12 @@ class _ListenerState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol can be either `TCP`, `HTTP`, `HTTPS`,
         `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
@@ -1005,12 +1005,12 @@ class _ListenerState:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolPort")
-    def protocol_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def protocol_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port on which to listen for client traffic.
         * Changing this creates a new Listener.
@@ -1018,12 +1018,12 @@ class _ListenerState:
         return pulumi.get(self, "protocol_port")
 
     @protocol_port.setter
-    def protocol_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def protocol_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "protocol_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a listener. If omitted, the `region`
@@ -1032,12 +1032,12 @@ class _ListenerState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="sniContainerRefs")
-    def sni_container_refs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def sni_container_refs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of references to Barbican Secrets
         containers which store SNI information. See
@@ -1047,12 +1047,12 @@ class _ListenerState:
         return pulumi.get(self, "sni_container_refs")
 
     @sni_container_refs.setter
-    def sni_container_refs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def sni_container_refs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sni_container_refs", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of simple strings assigned to the pool. Available
         for Octavia **minor version 2.5 or later**.
@@ -1060,12 +1060,12 @@ class _ListenerState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for admins. The UUID of the tenant who owns
         the Listener.  Only administrative users can specify a tenant UUID other than
@@ -1074,12 +1074,12 @@ class _ListenerState:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutClientData")
-    def timeout_client_data(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_client_data(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The client inactivity timeout in
         milliseconds.
@@ -1087,12 +1087,12 @@ class _ListenerState:
         return pulumi.get(self, "timeout_client_data")
 
     @timeout_client_data.setter
-    def timeout_client_data(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_client_data(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_client_data", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutMemberConnect")
-    def timeout_member_connect(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_member_connect(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The member connection timeout in
         milliseconds.
@@ -1100,12 +1100,12 @@ class _ListenerState:
         return pulumi.get(self, "timeout_member_connect")
 
     @timeout_member_connect.setter
-    def timeout_member_connect(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_member_connect(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_member_connect", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutMemberData")
-    def timeout_member_data(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_member_data(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The member inactivity timeout in
         milliseconds.
@@ -1113,12 +1113,12 @@ class _ListenerState:
         return pulumi.get(self, "timeout_member_data")
 
     @timeout_member_data.setter
-    def timeout_member_data(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_member_data(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_member_data", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutTcpInspect")
-    def timeout_tcp_inspect(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_tcp_inspect(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time in milliseconds, to wait for
         additional TCP packets for content inspection.
@@ -1126,12 +1126,12 @@ class _ListenerState:
         return pulumi.get(self, "timeout_tcp_inspect")
 
     @timeout_tcp_inspect.setter
-    def timeout_tcp_inspect(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_tcp_inspect(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_tcp_inspect", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsCiphers")
-    def tls_ciphers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls_ciphers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         List of ciphers in OpenSSL format
         (colon-separated). See
@@ -1141,12 +1141,12 @@ class _ListenerState:
         return pulumi.get(self, "tls_ciphers")
 
     @tls_ciphers.setter
-    def tls_ciphers(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls_ciphers(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls_ciphers", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsVersions")
-    def tls_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tls_versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of TLS protocol versions. Available
         versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
@@ -1155,7 +1155,7 @@ class _ListenerState:
         return pulumi.get(self, "tls_versions")
 
     @tls_versions.setter
-    def tls_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tls_versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tls_versions", value)
 
 
@@ -1165,34 +1165,34 @@ class Listener(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 alpn_protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 client_authentication: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_ca_tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_crl_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts_include_subdomains: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hsts_max_age: Optional[pulumi.Input[_builtins.int]] = None,
-                 hsts_preload: Optional[pulumi.Input[_builtins.bool]] = None,
-                 insert_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 loadbalancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 sni_container_refs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_client_data: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_member_connect: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_member_data: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_tcp_inspect: Optional[pulumi.Input[_builtins.int]] = None,
-                 tls_ciphers: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 alpn_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_authentication: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ca_tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_crl_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts_include_subdomains: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hsts_max_age: pulumi.Input[Optional[_builtins.int]] = None,
+                 hsts_preload: pulumi.Input[Optional[_builtins.bool]] = None,
+                 insert_headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 loadbalancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sni_container_refs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_client_data: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_member_connect: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_member_data: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_tcp_inspect: pulumi.Input[Optional[_builtins.int]] = None,
+                 tls_ciphers: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Manages a V2 listener resource within OpenStack.
@@ -1430,34 +1430,34 @@ class Listener(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 alpn_protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 client_authentication: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_ca_tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_crl_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hsts_include_subdomains: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hsts_max_age: Optional[pulumi.Input[_builtins.int]] = None,
-                 hsts_preload: Optional[pulumi.Input[_builtins.bool]] = None,
-                 insert_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 loadbalancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 sni_container_refs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_client_data: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_member_connect: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_member_data: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_tcp_inspect: Optional[pulumi.Input[_builtins.int]] = None,
-                 tls_ciphers: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 alpn_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_authentication: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ca_tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_crl_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hsts_include_subdomains: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hsts_max_age: pulumi.Input[Optional[_builtins.int]] = None,
+                 hsts_preload: pulumi.Input[Optional[_builtins.bool]] = None,
+                 insert_headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 loadbalancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sni_container_refs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_client_data: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_member_connect: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_member_data: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_tcp_inspect: pulumi.Input[Optional[_builtins.int]] = None,
+                 tls_ciphers: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1511,34 +1511,34 @@ class Listener(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-            allowed_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            alpn_protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            client_authentication: Optional[pulumi.Input[_builtins.str]] = None,
-            client_ca_tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-            client_crl_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            default_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            default_tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            hsts_include_subdomains: Optional[pulumi.Input[_builtins.bool]] = None,
-            hsts_max_age: Optional[pulumi.Input[_builtins.int]] = None,
-            hsts_preload: Optional[pulumi.Input[_builtins.bool]] = None,
-            insert_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            loadbalancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            protocol_port: Optional[pulumi.Input[_builtins.int]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            sni_container_refs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            timeout_client_data: Optional[pulumi.Input[_builtins.int]] = None,
-            timeout_member_connect: Optional[pulumi.Input[_builtins.int]] = None,
-            timeout_member_data: Optional[pulumi.Input[_builtins.int]] = None,
-            timeout_tcp_inspect: Optional[pulumi.Input[_builtins.int]] = None,
-            tls_ciphers: Optional[pulumi.Input[_builtins.str]] = None,
-            tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Listener':
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            allowed_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            alpn_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            client_authentication: pulumi.Input[Optional[_builtins.str]] = None,
+            client_ca_tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            client_crl_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            default_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            hsts_include_subdomains: pulumi.Input[Optional[_builtins.bool]] = None,
+            hsts_max_age: pulumi.Input[Optional[_builtins.int]] = None,
+            hsts_preload: pulumi.Input[Optional[_builtins.bool]] = None,
+            insert_headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            loadbalancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol_port: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            sni_container_refs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout_client_data: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_member_connect: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_member_data: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_tcp_inspect: pulumi.Input[Optional[_builtins.int]] = None,
+            tls_ciphers: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Listener':
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

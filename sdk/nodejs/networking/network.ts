@@ -257,48 +257,48 @@ export interface NetworkState {
      * Acceptable values are "true" and "false". Changing this value updates the
      * state of the existing network.
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * The collection of tags assigned on the network, which have been
      * explicitly and implicitly added.
      */
-    allTags?: pulumi.Input<pulumi.Input<string>[]>;
+    allTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An availability zone is used to make
      * network resources highly available. Used for resources with high availability
      * so that they are scheduled on different availability zones. Changing this
      * creates a new network.
      */
-    availabilityZoneHints?: pulumi.Input<pulumi.Input<string>[]>;
+    availabilityZoneHints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Human-readable description of the network. Changing this
      * updates the name of the existing network.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The network DNS domain. Available, when Neutron DNS
      * extension is enabled. The `dnsDomain` of a network in conjunction with the
      * `dnsName` attribute of its ports will be published in an external DNS
      * service when Neutron is configured to integrate with such a service.
      */
-    dnsDomain?: pulumi.Input<string>;
+    dnsDomain?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the network resource has the
      * external routing facility. Valid values are true and false. Defaults to
      * false. Changing this updates the external attribute of the existing network.
      */
-    external?: pulumi.Input<boolean>;
+    external?: pulumi.Input<boolean | undefined>;
     /**
      * The network MTU. Available for read-only, when Neutron
      * `net-mtu` extension is enabled. Available for the modification, when
      * Neutron `net-mtu-writable` extension is enabled.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The name of the network. Changing this updates the name of
      * the existing network.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether to explicitly enable or disable
      * port security on the network. Port Security is usually enabled by default, so
@@ -306,51 +306,51 @@ export interface NetworkState {
      * explicitly to `false` will disable port security. Valid values are `true` and
      * `false`.
      */
-    portSecurityEnabled?: pulumi.Input<boolean>;
+    portSecurityEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Reference to the associated QoS policy.
      */
-    qosPolicyId?: pulumi.Input<string>;
+    qosPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron network. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * network.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * An array of one or more provider segment objects.
      * Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
      * updating any provider related segments attributes. Check your plug-in whether
      * it supports updating.
      */
-    segments?: pulumi.Input<pulumi.Input<inputs.networking.NetworkSegment>[]>;
+    segments?: pulumi.Input<pulumi.Input<inputs.networking.NetworkSegment>[] | undefined>;
     /**
      * Specifies whether the network resource can be accessed
      * by any tenant or not. Changing this updates the sharing capabilities of the
      * existing network.
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * A set of string tags for the network.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The owner of the network. Required if admin wants to
      * create a network for another tenant. Changing this creates a new network.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the network resource has the
      * VLAN transparent attribute set. Valid values are true and false. Defaults to
      * false. Changing this updates the `transparentVlan` attribute of the existing
      * network.
      */
-    transparentVlan?: pulumi.Input<boolean>;
+    transparentVlan?: pulumi.Input<boolean | undefined>;
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -362,43 +362,43 @@ export interface NetworkArgs {
      * Acceptable values are "true" and "false". Changing this value updates the
      * state of the existing network.
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * An availability zone is used to make
      * network resources highly available. Used for resources with high availability
      * so that they are scheduled on different availability zones. Changing this
      * creates a new network.
      */
-    availabilityZoneHints?: pulumi.Input<pulumi.Input<string>[]>;
+    availabilityZoneHints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Human-readable description of the network. Changing this
      * updates the name of the existing network.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The network DNS domain. Available, when Neutron DNS
      * extension is enabled. The `dnsDomain` of a network in conjunction with the
      * `dnsName` attribute of its ports will be published in an external DNS
      * service when Neutron is configured to integrate with such a service.
      */
-    dnsDomain?: pulumi.Input<string>;
+    dnsDomain?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the network resource has the
      * external routing facility. Valid values are true and false. Defaults to
      * false. Changing this updates the external attribute of the existing network.
      */
-    external?: pulumi.Input<boolean>;
+    external?: pulumi.Input<boolean | undefined>;
     /**
      * The network MTU. Available for read-only, when Neutron
      * `net-mtu` extension is enabled. Available for the modification, when
      * Neutron `net-mtu-writable` extension is enabled.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The name of the network. Changing this updates the name of
      * the existing network.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether to explicitly enable or disable
      * port security on the network. Port Security is usually enabled by default, so
@@ -406,49 +406,49 @@ export interface NetworkArgs {
      * explicitly to `false` will disable port security. Valid values are `true` and
      * `false`.
      */
-    portSecurityEnabled?: pulumi.Input<boolean>;
+    portSecurityEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Reference to the associated QoS policy.
      */
-    qosPolicyId?: pulumi.Input<string>;
+    qosPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron network. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * network.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * An array of one or more provider segment objects.
      * Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
      * updating any provider related segments attributes. Check your plug-in whether
      * it supports updating.
      */
-    segments?: pulumi.Input<pulumi.Input<inputs.networking.NetworkSegment>[]>;
+    segments?: pulumi.Input<pulumi.Input<inputs.networking.NetworkSegment>[] | undefined>;
     /**
      * Specifies whether the network resource can be accessed
      * by any tenant or not. Changing this updates the sharing capabilities of the
      * existing network.
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * A set of string tags for the network.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The owner of the network. Required if admin wants to
      * create a network for another tenant. Changing this creates a new network.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the network resource has the
      * VLAN transparent attribute set. Valid values are true and false. Defaults to
      * false. Changing this updates the `transparentVlan` attribute of the existing
      * network.
      */
-    transparentVlan?: pulumi.Input<boolean>;
+    transparentVlan?: pulumi.Input<boolean | undefined>;
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

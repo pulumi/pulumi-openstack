@@ -21,17 +21,17 @@ __all__ = ['IkePolicyArgs', 'IkePolicy']
 @pulumi.input_type
 class IkePolicyArgs:
     def __init__(__self__, *,
-                 auth_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 ike_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input['IkePolicyLifetimeArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pfs: Optional[pulumi.Input[_builtins.str]] = None,
-                 phase1_negotiation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 auth_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 ike_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input['IkePolicyLifetimeArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pfs: pulumi.Input[Optional[_builtins.str]] = None,
+                 phase1_negotiation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a IkePolicy resource.
 
@@ -85,7 +85,7 @@ class IkePolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="authAlgorithm")
-    def auth_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
         aes-xcbc, aes-cmac. Default is sha1.
@@ -94,12 +94,12 @@ class IkePolicyArgs:
         return pulumi.get(self, "auth_algorithm")
 
     @auth_algorithm.setter
-    def auth_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_algorithm", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable description for the policy.
         Changing this updates the description of the existing policy.
@@ -107,12 +107,12 @@ class IkePolicyArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionAlgorithm")
-    def encryption_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
         aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
@@ -121,12 +121,12 @@ class IkePolicyArgs:
         return pulumi.get(self, "encryption_algorithm")
 
     @encryption_algorithm.setter
-    def encryption_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="ikeVersion")
-    def ike_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ike_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IKE version. A valid value is v1 or v2. Default is v1.
         Changing this updates the existing policy.
@@ -134,24 +134,24 @@ class IkePolicyArgs:
         return pulumi.get(self, "ike_version")
 
     @ike_version.setter
-    def ike_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ike_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ike_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def lifetimes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IkePolicyLifetimeArgs']]]]:
+    def lifetimes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IkePolicyLifetimeArgs']]]]:
         """
         The lifetime of the security association. Consists of Unit and Value.
         """
         return pulumi.get(self, "lifetimes")
 
     @lifetimes.setter
-    def lifetimes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IkePolicyLifetimeArgs']]]]):
+    def lifetimes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IkePolicyLifetimeArgs']]]]):
         pulumi.set(self, "lifetimes", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the policy. Changing this updates the name of
         the existing policy.
@@ -159,12 +159,12 @@ class IkePolicyArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def pfs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pfs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
         Default is group5. Changing this updates the existing policy.
@@ -172,12 +172,12 @@ class IkePolicyArgs:
         return pulumi.get(self, "pfs")
 
     @pfs.setter
-    def pfs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pfs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pfs", value)
 
     @_builtins.property
     @pulumi.getter(name="phase1NegotiationMode")
-    def phase1_negotiation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def phase1_negotiation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IKE mode. A valid value is main, which is the default.
         Changing this updates the existing policy.
@@ -185,12 +185,12 @@ class IkePolicyArgs:
         return pulumi.get(self, "phase1_negotiation_mode")
 
     @phase1_negotiation_mode.setter
-    def phase1_negotiation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def phase1_negotiation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "phase1_negotiation_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a VPN service. If omitted, the
@@ -200,12 +200,12 @@ class IkePolicyArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of the policy. Required if admin wants to
         create a service for another policy. Changing this creates a new policy.
@@ -213,36 +213,36 @@ class IkePolicyArgs:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
 @pulumi.input_type
 class _IkePolicyState:
     def __init__(__self__, *,
-                 auth_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 ike_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input['IkePolicyLifetimeArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pfs: Optional[pulumi.Input[_builtins.str]] = None,
-                 phase1_negotiation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 auth_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 ike_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input['IkePolicyLifetimeArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pfs: pulumi.Input[Optional[_builtins.str]] = None,
+                 phase1_negotiation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering IkePolicy resources.
 
@@ -296,7 +296,7 @@ class _IkePolicyState:
 
     @_builtins.property
     @pulumi.getter(name="authAlgorithm")
-    def auth_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
         aes-xcbc, aes-cmac. Default is sha1.
@@ -305,12 +305,12 @@ class _IkePolicyState:
         return pulumi.get(self, "auth_algorithm")
 
     @auth_algorithm.setter
-    def auth_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_algorithm", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable description for the policy.
         Changing this updates the description of the existing policy.
@@ -318,12 +318,12 @@ class _IkePolicyState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionAlgorithm")
-    def encryption_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
         aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
@@ -332,12 +332,12 @@ class _IkePolicyState:
         return pulumi.get(self, "encryption_algorithm")
 
     @encryption_algorithm.setter
-    def encryption_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="ikeVersion")
-    def ike_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ike_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IKE version. A valid value is v1 or v2. Default is v1.
         Changing this updates the existing policy.
@@ -345,24 +345,24 @@ class _IkePolicyState:
         return pulumi.get(self, "ike_version")
 
     @ike_version.setter
-    def ike_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ike_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ike_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def lifetimes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IkePolicyLifetimeArgs']]]]:
+    def lifetimes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IkePolicyLifetimeArgs']]]]:
         """
         The lifetime of the security association. Consists of Unit and Value.
         """
         return pulumi.get(self, "lifetimes")
 
     @lifetimes.setter
-    def lifetimes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IkePolicyLifetimeArgs']]]]):
+    def lifetimes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IkePolicyLifetimeArgs']]]]):
         pulumi.set(self, "lifetimes", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the policy. Changing this updates the name of
         the existing policy.
@@ -370,12 +370,12 @@ class _IkePolicyState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def pfs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pfs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
         Default is group5. Changing this updates the existing policy.
@@ -383,12 +383,12 @@ class _IkePolicyState:
         return pulumi.get(self, "pfs")
 
     @pfs.setter
-    def pfs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pfs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pfs", value)
 
     @_builtins.property
     @pulumi.getter(name="phase1NegotiationMode")
-    def phase1_negotiation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def phase1_negotiation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IKE mode. A valid value is main, which is the default.
         Changing this updates the existing policy.
@@ -396,12 +396,12 @@ class _IkePolicyState:
         return pulumi.get(self, "phase1_negotiation_mode")
 
     @phase1_negotiation_mode.setter
-    def phase1_negotiation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def phase1_negotiation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "phase1_negotiation_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a VPN service. If omitted, the
@@ -411,12 +411,12 @@ class _IkePolicyState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of the policy. Required if admin wants to
         create a service for another policy. Changing this creates a new policy.
@@ -424,19 +424,19 @@ class _IkePolicyState:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -446,17 +446,17 @@ class IkePolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 ike_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IkePolicyLifetimeArgs', 'IkePolicyLifetimeArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pfs: Optional[pulumi.Input[_builtins.str]] = None,
-                 phase1_negotiation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 auth_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 ike_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IkePolicyLifetimeArgs', 'IkePolicyLifetimeArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pfs: pulumi.Input[Optional[_builtins.str]] = None,
+                 phase1_negotiation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Manages a V2 Neutron IKE policy resource within OpenStack.
@@ -548,17 +548,17 @@ class IkePolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 ike_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IkePolicyLifetimeArgs', 'IkePolicyLifetimeArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pfs: Optional[pulumi.Input[_builtins.str]] = None,
-                 phase1_negotiation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 auth_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 ike_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IkePolicyLifetimeArgs', 'IkePolicyLifetimeArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pfs: pulumi.Input[Optional[_builtins.str]] = None,
+                 phase1_negotiation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -589,17 +589,17 @@ class IkePolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            encryption_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            ike_version: Optional[pulumi.Input[_builtins.str]] = None,
-            lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IkePolicyLifetimeArgs', 'IkePolicyLifetimeArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            pfs: Optional[pulumi.Input[_builtins.str]] = None,
-            phase1_negotiation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'IkePolicy':
+            auth_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            ike_version: pulumi.Input[Optional[_builtins.str]] = None,
+            lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IkePolicyLifetimeArgs', 'IkePolicyLifetimeArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pfs: pulumi.Input[Optional[_builtins.str]] = None,
+            phase1_negotiation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'IkePolicy':
         """
         Get an existing IkePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

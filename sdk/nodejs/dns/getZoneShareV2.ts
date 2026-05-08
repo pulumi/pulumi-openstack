@@ -139,28 +139,28 @@ export interface GetZoneShareV2OutputArgs {
      * across all projects. If set to `false`, it will only search within the
      * current project. Defaults to `false`.
      */
-    allProjects?: pulumi.Input<string>;
+    allProjects?: pulumi.Input<string | undefined>;
     /**
      * The owner project ID. If omitted, it is derived
      * from the zone share details.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 DNS client. If
      * omitted, the `region` argument of the provider is used. Changing this creates
      * a new DNS zone share data source.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the DNS zone share to retrieve. If
      * provided, the data source returns only the share with this ID.
      */
-    shareId?: pulumi.Input<string>;
+    shareId?: pulumi.Input<string | undefined>;
     /**
      * If provided, the data source returns the
      * share with this target project ID.
      */
-    targetProjectId?: pulumi.Input<string>;
+    targetProjectId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the DNS zone for which to get share.
      */

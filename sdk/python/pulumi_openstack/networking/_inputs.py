@@ -40,14 +40,14 @@ __all__ = [
 ]
 
 class BgpSpeakerV2AdvertisedRouteArgsDict(TypedDict):
-    destination: NotRequired[pulumi.Input[_builtins.str]]
-    next_hop: NotRequired[pulumi.Input[_builtins.str]]
+    destination: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    next_hop: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class BgpSpeakerV2AdvertisedRouteArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop: Optional[pulumi.Input[_builtins.str]] = None):
+                 destination: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop: pulumi.Input[Optional[_builtins.str]] = None):
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
         if next_hop is not None:
@@ -55,33 +55,33 @@ class BgpSpeakerV2AdvertisedRouteArgs:
 
     @_builtins.property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHop")
-    def next_hop(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "next_hop")
 
     @next_hop.setter
-    def next_hop(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop", value)
 
 
 class NetworkSegmentArgsDict(TypedDict):
-    network_type: NotRequired[pulumi.Input[_builtins.str]]
+    network_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of physical network.
     """
-    physical_network: NotRequired[pulumi.Input[_builtins.str]]
+    physical_network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The physical network where this network is implemented.
     """
-    segmentation_id: NotRequired[pulumi.Input[_builtins.int]]
+    segmentation_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     An isolated segment on the physical network.
     """
@@ -89,9 +89,9 @@ class NetworkSegmentArgsDict(TypedDict):
 @pulumi.input_type
 class NetworkSegmentArgs:
     def __init__(__self__, *,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 physical_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 segmentation_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 physical_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 segmentation_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] network_type: The type of physical network.
         :param pulumi.Input[_builtins.str] physical_network: The physical network where this network is implemented.
@@ -106,38 +106,38 @@ class NetworkSegmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of physical network.
         """
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="physicalNetwork")
-    def physical_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def physical_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The physical network where this network is implemented.
         """
         return pulumi.get(self, "physical_network")
 
     @physical_network.setter
-    def physical_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def physical_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "physical_network", value)
 
     @_builtins.property
     @pulumi.getter(name="segmentationId")
-    def segmentation_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def segmentation_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         An isolated segment on the physical network.
         """
         return pulumi.get(self, "segmentation_id")
 
     @segmentation_id.setter
-    def segmentation_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def segmentation_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "segmentation_id", value)
 
 
@@ -146,7 +146,7 @@ class PortAllowedAddressPairArgsDict(TypedDict):
     """
     The additional IP address.
     """
-    mac_address: NotRequired[pulumi.Input[_builtins.str]]
+    mac_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The additional MAC address.
     """
@@ -155,7 +155,7 @@ class PortAllowedAddressPairArgsDict(TypedDict):
 class PortAllowedAddressPairArgs:
     def __init__(__self__, *,
                  ip_address: pulumi.Input[_builtins.str],
-                 mac_address: Optional[pulumi.Input[_builtins.str]] = None):
+                 mac_address: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ip_address: The additional IP address.
         :param pulumi.Input[_builtins.str] mac_address: The additional MAC address.
@@ -178,37 +178,37 @@ class PortAllowedAddressPairArgs:
 
     @_builtins.property
     @pulumi.getter(name="macAddress")
-    def mac_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mac_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The additional MAC address.
         """
         return pulumi.get(self, "mac_address")
 
     @mac_address.setter
-    def mac_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mac_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mac_address", value)
 
 
 class PortBindingArgsDict(TypedDict):
-    host_id: NotRequired[pulumi.Input[_builtins.str]]
+    host_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the host to allocate port on.
     """
-    profile: NotRequired[pulumi.Input[_builtins.str]]
+    profile: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Custom data to be passed as `binding:profile`. Data
     must be passed as JSON.
     """
-    vif_details: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    vif_details: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     A map of JSON strings containing additional
     details for this specific binding.
     """
-    vif_type: NotRequired[pulumi.Input[_builtins.str]]
+    vif_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VNIC type of the port binding.
     """
-    vnic_type: NotRequired[pulumi.Input[_builtins.str]]
+    vnic_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     VNIC type for the port. Can either be `direct`,
     `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
@@ -218,11 +218,11 @@ class PortBindingArgsDict(TypedDict):
 @pulumi.input_type
 class PortBindingArgs:
     def __init__(__self__, *,
-                 host_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 vif_details: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vif_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vnic_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 host_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 vif_details: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vif_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vnic_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] host_id: The ID of the host to allocate port on.
         :param pulumi.Input[_builtins.str] profile: Custom data to be passed as `binding:profile`. Data
@@ -247,19 +247,19 @@ class PortBindingArgs:
 
     @_builtins.property
     @pulumi.getter(name="hostId")
-    def host_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the host to allocate port on.
         """
         return pulumi.get(self, "host_id")
 
     @host_id.setter
-    def host_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom data to be passed as `binding:profile`. Data
         must be passed as JSON.
@@ -267,12 +267,12 @@ class PortBindingArgs:
         return pulumi.get(self, "profile")
 
     @profile.setter
-    def profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "profile", value)
 
     @_builtins.property
     @pulumi.getter(name="vifDetails")
-    def vif_details(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def vif_details(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of JSON strings containing additional
         details for this specific binding.
@@ -280,24 +280,24 @@ class PortBindingArgs:
         return pulumi.get(self, "vif_details")
 
     @vif_details.setter
-    def vif_details(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def vif_details(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vif_details", value)
 
     @_builtins.property
     @pulumi.getter(name="vifType")
-    def vif_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vif_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VNIC type of the port binding.
         """
         return pulumi.get(self, "vif_type")
 
     @vif_type.setter
-    def vif_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vif_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vif_type", value)
 
     @_builtins.property
     @pulumi.getter(name="vnicType")
-    def vnic_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vnic_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VNIC type for the port. Can either be `direct`,
         `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
@@ -306,7 +306,7 @@ class PortBindingArgs:
         return pulumi.get(self, "vnic_type")
 
     @vnic_type.setter
-    def vnic_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vnic_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vnic_type", value)
 
 
@@ -319,7 +319,7 @@ class PortExtraDhcpOptionArgsDict(TypedDict):
     """
     Value of the DHCP option.
     """
-    ip_version: NotRequired[pulumi.Input[_builtins.int]]
+    ip_version: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     IP protocol version. Defaults to 4.
     """
@@ -329,7 +329,7 @@ class PortExtraDhcpOptionArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 ip_version: Optional[pulumi.Input[_builtins.int]] = None):
+                 ip_version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Name of the DHCP option.
         :param pulumi.Input[_builtins.str] value: Value of the DHCP option.
@@ -366,19 +366,19 @@ class PortExtraDhcpOptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         IP protocol version. Defaults to 4.
         """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ip_version", value)
 
 
 class PortFixedIpArgsDict(TypedDict):
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     IP address desired in the subnet for this port. If
     you don't specify `ip_address`, an available IP address from the specified
@@ -386,7 +386,7 @@ class PortFixedIpArgsDict(TypedDict):
     is left blank or omitted. To retrieve the assigned IP address, use the
     `all_fixed_ips` attribute.
     """
-    subnet_id: NotRequired[pulumi.Input[_builtins.str]]
+    subnet_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Subnet in which to allocate IP address for
     this port.
@@ -395,8 +395,8 @@ class PortFixedIpArgsDict(TypedDict):
 @pulumi.input_type
 class PortFixedIpArgs:
     def __init__(__self__, *,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ip_address: IP address desired in the subnet for this port. If
                you don't specify `ip_address`, an available IP address from the specified
@@ -413,7 +413,7 @@ class PortFixedIpArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address desired in the subnet for this port. If
         you don't specify `ip_address`, an available IP address from the specified
@@ -424,12 +424,12 @@ class PortFixedIpArgs:
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subnet in which to allocate IP address for
         this port.
@@ -437,16 +437,16 @@ class PortFixedIpArgs:
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_id", value)
 
 
 class RouterExternalFixedIpArgsDict(TypedDict):
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP address to set on the router.
     """
-    subnet_id: NotRequired[pulumi.Input[_builtins.str]]
+    subnet_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Subnet in which the fixed IP belongs to.
     """
@@ -454,8 +454,8 @@ class RouterExternalFixedIpArgsDict(TypedDict):
 @pulumi.input_type
 class RouterExternalFixedIpArgs:
     def __init__(__self__, *,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ip_address: The IP address to set on the router.
         :param pulumi.Input[_builtins.str] subnet_id: Subnet in which the fixed IP belongs to.
@@ -467,26 +467,26 @@ class RouterExternalFixedIpArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address to set on the router.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subnet in which the fixed IP belongs to.
         """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_id", value)
 
 
@@ -541,7 +541,7 @@ class RouterRoutesV2RouteArgs:
 
 
 class RouterVendorOptionsArgsDict(TypedDict):
-    set_router_gateway_after_create: NotRequired[pulumi.Input[_builtins.bool]]
+    set_router_gateway_after_create: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Boolean to control whether
     the Router gateway is assigned during creation or updated after creation.
@@ -550,7 +550,7 @@ class RouterVendorOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class RouterVendorOptionsArgs:
     def __init__(__self__, *,
-                 set_router_gateway_after_create: Optional[pulumi.Input[_builtins.bool]] = None):
+                 set_router_gateway_after_create: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] set_router_gateway_after_create: Boolean to control whether
                the Router gateway is assigned during creation or updated after creation.
@@ -560,7 +560,7 @@ class RouterVendorOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="setRouterGatewayAfterCreate")
-    def set_router_gateway_after_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def set_router_gateway_after_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean to control whether
         the Router gateway is assigned during creation or updated after creation.
@@ -568,7 +568,7 @@ class RouterVendorOptionsArgs:
         return pulumi.get(self, "set_router_gateway_after_create")
 
     @set_router_gateway_after_create.setter
-    def set_router_gateway_after_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def set_router_gateway_after_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "set_router_gateway_after_create", value)
 
 

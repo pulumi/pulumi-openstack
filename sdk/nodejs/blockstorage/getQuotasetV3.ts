@@ -124,5 +124,5 @@ export interface GetQuotasetV3OutputArgs {
      * The region in which to obtain the V3 Blockstorage client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

@@ -350,8 +350,8 @@ def get_limits_v2(project_id: Optional[_builtins.str] = None,
         total_ram_used=pulumi.get(__ret__, 'total_ram_used'),
         total_security_groups_used=pulumi.get(__ret__, 'total_security_groups_used'),
         total_server_groups_used=pulumi.get(__ret__, 'total_server_groups_used'))
-def get_limits_v2_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                         region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_limits_v2_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                         region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLimitsV2Result]:
     """
     Use this data source to get the compute limits of an OpenStack project.

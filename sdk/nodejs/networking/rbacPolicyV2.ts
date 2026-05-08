@@ -157,32 +157,32 @@ export interface RbacPolicyV2State {
      * Action for the RBAC policy. Can either be
      * `accessAsExternal` or `accessAsShared`.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * The ID of the `objectType` resource. An
      * `objectType` of `network` returns a network ID and an `objectType` of
      * `qosPolicy` returns a QoS ID.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * The type of the object that the RBAC policy
      * affects. Can be one of the following: `addressScope`, `addressGroup`,
      * `network`, `qosPolicy`, `securityGroup`, `subnetpool` or `bgpvpn`.
      */
-    objectType?: pulumi.Input<string>;
-    projectId?: pulumi.Input<string>;
+    objectType?: pulumi.Input<string | undefined>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to configure a routing entry on a subnet. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * routing entry.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the tenant to which the RBAC policy
      * will be enforced.
      */
-    targetTenant?: pulumi.Input<string>;
+    targetTenant?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -212,7 +212,7 @@ export interface RbacPolicyV2Args {
      * `region` argument of the provider is used. Changing this creates a new
      * routing entry.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the tenant to which the RBAC policy
      * will be enforced.

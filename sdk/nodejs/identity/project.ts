@@ -142,42 +142,42 @@ export interface ProjectState {
     /**
      * A description of the project.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The domain this project belongs to.
      */
-    domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string | undefined>;
     /**
      * Whether the project is enabled or disabled. Valid
      * values are `true` and `false`. Default is `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this project is a domain. Valid values
      * are `true` and `false`. Default is `false`. Changing this creates a new
      * project/domain.
      */
-    isDomain?: pulumi.Input<boolean>;
+    isDomain?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the project.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent of this project. Changing this creates
      * a new project.
      */
-    parentId?: pulumi.Input<string>;
+    parentId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new project.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Tags for the project. Changing this updates the existing
      * project.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -187,40 +187,40 @@ export interface ProjectArgs {
     /**
      * A description of the project.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The domain this project belongs to.
      */
-    domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string | undefined>;
     /**
      * Whether the project is enabled or disabled. Valid
      * values are `true` and `false`. Default is `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this project is a domain. Valid values
      * are `true` and `false`. Default is `false`. Changing this creates a new
      * project/domain.
      */
-    isDomain?: pulumi.Input<boolean>;
+    isDomain?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the project.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent of this project. Changing this creates
      * a new project.
      */
-    parentId?: pulumi.Input<string>;
+    parentId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new project.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Tags for the project. Changing this updates the existing
      * project.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -150,31 +150,31 @@ export interface GetEndpointOutputArgs {
      * The region the endpoint is assigned to. The
      * `region` and `endpointRegion` can be different.
      */
-    endpointRegion?: pulumi.Input<string>;
+    endpointRegion?: pulumi.Input<string | undefined>;
     /**
      * The endpoint interface. Valid values are `public`,
      * `internal`, and `admin`. Default value is `public`
      */
-    interface?: pulumi.Input<string>;
+    interface?: pulumi.Input<string | undefined>;
     /**
      * The name of the endpoint.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The service id this endpoint belongs to.
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
     /**
      * The service name of the endpoint.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * The service type of the endpoint.
      */
-    serviceType?: pulumi.Input<string>;
+    serviceType?: pulumi.Input<string | undefined>;
 }

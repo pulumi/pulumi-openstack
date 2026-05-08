@@ -120,18 +120,18 @@ export interface VolumeTypeAccessV3State {
      * ID of the project to give access to. Changing this
      * creates a new resource.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the volume. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new quotaset.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * ID of the volume type to give access to. Changing
      * this creates a new resource.
      */
-    volumeTypeId?: pulumi.Input<string>;
+    volumeTypeId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -148,7 +148,7 @@ export interface VolumeTypeAccessV3Args {
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new quotaset.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * ID of the volume type to give access to. Changing
      * this creates a new resource.

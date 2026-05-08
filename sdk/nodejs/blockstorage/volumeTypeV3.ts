@@ -143,27 +143,27 @@ export interface VolumeTypeV3State {
      * Human-readable description of the port. Changing
      * this updates the `description` of an existing volume type.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Key/Value pairs of metadata for the volume type.
      */
-    extraSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    extraSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether the volume type is public. Changing
      * this updates the `isPublic` of an existing volume type.
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the volume type.  Changing this
      * updates the `name` of an existing volume type.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the volume. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new quotaset.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -174,25 +174,25 @@ export interface VolumeTypeV3Args {
      * Human-readable description of the port. Changing
      * this updates the `description` of an existing volume type.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Key/Value pairs of metadata for the volume type.
      */
-    extraSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    extraSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether the volume type is public. Changing
      * this updates the `isPublic` of an existing volume type.
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the volume type.  Changing this
      * updates the `name` of an existing volume type.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the volume. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new quotaset.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

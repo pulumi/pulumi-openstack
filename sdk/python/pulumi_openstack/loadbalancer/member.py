@@ -22,16 +22,16 @@ class MemberArgs:
                  address: pulumi.Input[_builtins.str],
                  pool_id: pulumi.Input[_builtins.str],
                  protocol_port: pulumi.Input[_builtins.int],
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 monitor_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 monitor_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Member resource.
 
@@ -130,7 +130,7 @@ class MemberArgs:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the member.
         A valid value is true (UP) or false (DOWN). Defaults to true.
@@ -138,12 +138,12 @@ class MemberArgs:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter
-    def backup(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def backup(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean that indicates whether that member works as a backup or not. Available 
         only for Octavia >= 2.1.
@@ -151,12 +151,12 @@ class MemberArgs:
         return pulumi.get(self, "backup")
 
     @backup.setter
-    def backup(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def backup(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "backup", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorAddress")
-    def monitor_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An alternate IP address used for health monitoring a backend member.
         Available only for Octavia
@@ -164,12 +164,12 @@ class MemberArgs:
         return pulumi.get(self, "monitor_address")
 
     @monitor_address.setter
-    def monitor_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitor_address", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorPort")
-    def monitor_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def monitor_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         An alternate protocol port used for health monitoring a backend member.
         Available only for Octavia
@@ -177,24 +177,24 @@ class MemberArgs:
         return pulumi.get(self, "monitor_port")
 
     @monitor_port.setter
-    def monitor_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def monitor_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "monitor_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable name for the member.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a member. If omitted, the `region`
@@ -203,12 +203,12 @@ class MemberArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subnet in which to access the member. Changing
         this creates a new member.
@@ -216,12 +216,12 @@ class MemberArgs:
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of simple strings assigned to the member.
         Available only for Octavia >= 2.5.
@@ -229,12 +229,12 @@ class MemberArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for admins. The UUID of the tenant who owns
         the member.  Only administrative users can specify a tenant UUID
@@ -243,12 +243,12 @@ class MemberArgs:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A positive integer value that indicates the relative
         portion of traffic that this member should receive from the pool. For
@@ -258,26 +258,26 @@ class MemberArgs:
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
 @pulumi.input_type
 class _MemberState:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 monitor_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 monitor_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Member resources.
 
@@ -340,7 +340,7 @@ class _MemberState:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the member to receive traffic from
         the load balancer. Changing this creates a new member.
@@ -348,12 +348,12 @@ class _MemberState:
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the member.
         A valid value is true (UP) or false (DOWN). Defaults to true.
@@ -361,12 +361,12 @@ class _MemberState:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter
-    def backup(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def backup(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean that indicates whether that member works as a backup or not. Available 
         only for Octavia >= 2.1.
@@ -374,12 +374,12 @@ class _MemberState:
         return pulumi.get(self, "backup")
 
     @backup.setter
-    def backup(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def backup(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "backup", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorAddress")
-    def monitor_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An alternate IP address used for health monitoring a backend member.
         Available only for Octavia
@@ -387,12 +387,12 @@ class _MemberState:
         return pulumi.get(self, "monitor_address")
 
     @monitor_address.setter
-    def monitor_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitor_address", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorPort")
-    def monitor_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def monitor_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         An alternate protocol port used for health monitoring a backend member.
         Available only for Octavia
@@ -400,24 +400,24 @@ class _MemberState:
         return pulumi.get(self, "monitor_port")
 
     @monitor_port.setter
-    def monitor_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def monitor_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "monitor_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable name for the member.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="poolId")
-    def pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the pool that this member will be assigned
         to. Changing this creates a new member.
@@ -425,12 +425,12 @@ class _MemberState:
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
-    def pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolPort")
-    def protocol_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def protocol_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port on which to listen for client traffic.
         Changing this creates a new member.
@@ -438,12 +438,12 @@ class _MemberState:
         return pulumi.get(self, "protocol_port")
 
     @protocol_port.setter
-    def protocol_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def protocol_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "protocol_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a member. If omitted, the `region`
@@ -452,12 +452,12 @@ class _MemberState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subnet in which to access the member. Changing
         this creates a new member.
@@ -465,12 +465,12 @@ class _MemberState:
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of simple strings assigned to the member.
         Available only for Octavia >= 2.5.
@@ -478,12 +478,12 @@ class _MemberState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for admins. The UUID of the tenant who owns
         the member.  Only administrative users can specify a tenant UUID
@@ -492,12 +492,12 @@ class _MemberState:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A positive integer value that indicates the relative
         portion of traffic that this member should receive from the pool. For
@@ -507,7 +507,7 @@ class _MemberState:
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
@@ -517,19 +517,19 @@ class Member(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 monitor_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 monitor_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages a V2 member resource within OpenStack.
@@ -634,19 +634,19 @@ class Member(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 monitor_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 monitor_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -685,19 +685,19 @@ class Member(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address: Optional[pulumi.Input[_builtins.str]] = None,
-            admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-            backup: Optional[pulumi.Input[_builtins.bool]] = None,
-            monitor_address: Optional[pulumi.Input[_builtins.str]] = None,
-            monitor_port: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            protocol_port: Optional[pulumi.Input[_builtins.int]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            weight: Optional[pulumi.Input[_builtins.int]] = None) -> 'Member':
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            backup: pulumi.Input[Optional[_builtins.bool]] = None,
+            monitor_address: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor_port: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol_port: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None) -> 'Member':
         """
         Get an existing Member resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

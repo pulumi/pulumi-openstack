@@ -370,26 +370,26 @@ export interface ListenerState {
      * The administrative state of the Listener. A
      * valid value is true (UP) or false (DOWN).
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * A list of CIDR blocks that are permitted to
      * connect to this listener, denying all other source addresses. If not present,
      * defaults to allow all.
      */
-    allowedCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedCidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of ALPN protocols. Available protocols:
      * `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
      * 2.20**.
      */
-    alpnProtocols?: pulumi.Input<pulumi.Input<string>[]>;
+    alpnProtocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The TLS client authentication mode.
      * Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
      * `TERMINATED_HTTPS` listener protocol and the `clientCaTlsContainerRef`.
      * Supported only in **Octavia minor version >= 2.8**.
      */
-    clientAuthentication?: pulumi.Input<string>;
+    clientAuthentication?: pulumi.Input<string | undefined>;
     /**
      * The ref of the key manager service
      * secret containing a PEM format client CA certificate bundle for
@@ -397,23 +397,23 @@ export interface ListenerState {
      * `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version >=
      * 2.8**.
      */
-    clientCaTlsContainerRef?: pulumi.Input<string>;
+    clientCaTlsContainerRef?: pulumi.Input<string | undefined>;
     /**
      * The URI of the key manager service
      * secret containing a PEM format CA revocation list file for `TERMINATED_HTTPS`
      * listeners. Supported only in **Octavia minor version >= 2.8**.
      */
-    clientCrlContainerRef?: pulumi.Input<string>;
+    clientCrlContainerRef?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of connections allowed for
      * the Listener.
      */
-    connectionLimit?: pulumi.Input<number>;
+    connectionLimit?: pulumi.Input<number | undefined>;
     /**
      * The ID of the default pool with which the
      * Listener is associated.
      */
-    defaultPoolId?: pulumi.Input<string>;
+    defaultPoolId?: pulumi.Input<string | undefined>;
     /**
      * A reference to a Barbican Secrets
      * container which stores TLS information. This is required if the protocol is
@@ -421,11 +421,11 @@ export interface ListenerState {
      * [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
      * for more information.
      */
-    defaultTlsContainerRef?: pulumi.Input<string>;
+    defaultTlsContainerRef?: pulumi.Input<string | undefined>;
     /**
      * Human-readable description for the Listener.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Defines whether the
      * **includeSubDomains** directive should be added to the
@@ -434,7 +434,7 @@ export interface ListenerState {
      * `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
      * version >= 2.27**.
      */
-    hstsIncludeSubdomains?: pulumi.Input<boolean>;
+    hstsIncludeSubdomains?: pulumi.Input<boolean | undefined>;
     /**
      * The value of the **max_age** directive for the
      * Strict-Transport-Security HTTP response header. Setting this enables HTTP
@@ -442,7 +442,7 @@ export interface ListenerState {
      * `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
      * version >= 2.27**.
      */
-    hstsMaxAge?: pulumi.Input<number>;
+    hstsMaxAge?: pulumi.Input<number | undefined>;
     /**
      * Defines whether the **preload** directive should
      * be added to the Strict-Transport-Security HTTP response header. This requires
@@ -450,92 +450,92 @@ export interface ListenerState {
      * Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
      * minor version >= 2.27**.
      */
-    hstsPreload?: pulumi.Input<boolean>;
+    hstsPreload?: pulumi.Input<boolean | undefined>;
     /**
      * The list of key value pairs representing
      * headers to insert into the request before it is sent to the backend members.
      * Changing this updates the headers of the existing listener.
      */
-    insertHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    insertHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The load balancer on which to provision this
      * Listener. Changing this creates a new Listener.
      */
-    loadbalancerId?: pulumi.Input<string>;
+    loadbalancerId?: pulumi.Input<string | undefined>;
     /**
      * Human-readable name for the Listener. Does not have to be
      * unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The protocol can be either `TCP`, `HTTP`, `HTTPS`,
      * `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
      * \>= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version >=
      * 2.25**). Changing this creates a new Listener.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The port on which to listen for client traffic.
      * * Changing this creates a new Listener.
      */
-    protocolPort?: pulumi.Input<number>;
+    protocolPort?: pulumi.Input<number | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a listener. If omitted, the `region`
      * argument of the provider is used. Changing this creates a new Listener.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list of references to Barbican Secrets
      * containers which store SNI information. See
      * [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
      * for more information.
      */
-    sniContainerRefs?: pulumi.Input<pulumi.Input<string>[]>;
+    sniContainerRefs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of simple strings assigned to the pool. Available
      * for Octavia **minor version 2.5 or later**.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the Listener.  Only administrative users can specify a tenant UUID other than
      * their own. Changing this creates a new Listener.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * The client inactivity timeout in
      * milliseconds.
      */
-    timeoutClientData?: pulumi.Input<number>;
+    timeoutClientData?: pulumi.Input<number | undefined>;
     /**
      * The member connection timeout in
      * milliseconds.
      */
-    timeoutMemberConnect?: pulumi.Input<number>;
+    timeoutMemberConnect?: pulumi.Input<number | undefined>;
     /**
      * The member inactivity timeout in
      * milliseconds.
      */
-    timeoutMemberData?: pulumi.Input<number>;
+    timeoutMemberData?: pulumi.Input<number | undefined>;
     /**
      * The time in milliseconds, to wait for
      * additional TCP packets for content inspection.
      */
-    timeoutTcpInspect?: pulumi.Input<number>;
+    timeoutTcpInspect?: pulumi.Input<number | undefined>;
     /**
      * List of ciphers in OpenSSL format
      * (colon-separated). See
      * https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
      * Supported only in **Octavia minor version >= 2.15**.
      */
-    tlsCiphers?: pulumi.Input<string>;
+    tlsCiphers?: pulumi.Input<string | undefined>;
     /**
      * A list of TLS protocol versions. Available
      * versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
      * **Octavia minor version >= 2.17**.
      */
-    tlsVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    tlsVersions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -546,26 +546,26 @@ export interface ListenerArgs {
      * The administrative state of the Listener. A
      * valid value is true (UP) or false (DOWN).
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * A list of CIDR blocks that are permitted to
      * connect to this listener, denying all other source addresses. If not present,
      * defaults to allow all.
      */
-    allowedCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedCidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of ALPN protocols. Available protocols:
      * `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
      * 2.20**.
      */
-    alpnProtocols?: pulumi.Input<pulumi.Input<string>[]>;
+    alpnProtocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The TLS client authentication mode.
      * Available options: `NONE`, `OPTIONAL` or `MANDATORY`. Requires
      * `TERMINATED_HTTPS` listener protocol and the `clientCaTlsContainerRef`.
      * Supported only in **Octavia minor version >= 2.8**.
      */
-    clientAuthentication?: pulumi.Input<string>;
+    clientAuthentication?: pulumi.Input<string | undefined>;
     /**
      * The ref of the key manager service
      * secret containing a PEM format client CA certificate bundle for
@@ -573,23 +573,23 @@ export interface ListenerArgs {
      * `OPTIONAL` or `MANDATORY`. Supported only in **Octavia minor version >=
      * 2.8**.
      */
-    clientCaTlsContainerRef?: pulumi.Input<string>;
+    clientCaTlsContainerRef?: pulumi.Input<string | undefined>;
     /**
      * The URI of the key manager service
      * secret containing a PEM format CA revocation list file for `TERMINATED_HTTPS`
      * listeners. Supported only in **Octavia minor version >= 2.8**.
      */
-    clientCrlContainerRef?: pulumi.Input<string>;
+    clientCrlContainerRef?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of connections allowed for
      * the Listener.
      */
-    connectionLimit?: pulumi.Input<number>;
+    connectionLimit?: pulumi.Input<number | undefined>;
     /**
      * The ID of the default pool with which the
      * Listener is associated.
      */
-    defaultPoolId?: pulumi.Input<string>;
+    defaultPoolId?: pulumi.Input<string | undefined>;
     /**
      * A reference to a Barbican Secrets
      * container which stores TLS information. This is required if the protocol is
@@ -597,11 +597,11 @@ export interface ListenerArgs {
      * [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
      * for more information.
      */
-    defaultTlsContainerRef?: pulumi.Input<string>;
+    defaultTlsContainerRef?: pulumi.Input<string | undefined>;
     /**
      * Human-readable description for the Listener.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Defines whether the
      * **includeSubDomains** directive should be added to the
@@ -610,7 +610,7 @@ export interface ListenerArgs {
      * `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
      * version >= 2.27**.
      */
-    hstsIncludeSubdomains?: pulumi.Input<boolean>;
+    hstsIncludeSubdomains?: pulumi.Input<boolean | undefined>;
     /**
      * The value of the **max_age** directive for the
      * Strict-Transport-Security HTTP response header. Setting this enables HTTP
@@ -618,7 +618,7 @@ export interface ListenerArgs {
      * `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia minor
      * version >= 2.27**.
      */
-    hstsMaxAge?: pulumi.Input<number>;
+    hstsMaxAge?: pulumi.Input<number | undefined>;
     /**
      * Defines whether the **preload** directive should
      * be added to the Strict-Transport-Security HTTP response header. This requires
@@ -626,13 +626,13 @@ export interface ListenerArgs {
      * Requires `TERMINATED_HTTPS` listener protocol. Supported only in **Octavia
      * minor version >= 2.27**.
      */
-    hstsPreload?: pulumi.Input<boolean>;
+    hstsPreload?: pulumi.Input<boolean | undefined>;
     /**
      * The list of key value pairs representing
      * headers to insert into the request before it is sent to the backend members.
      * Changing this updates the headers of the existing listener.
      */
-    insertHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    insertHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The load balancer on which to provision this
      * Listener. Changing this creates a new Listener.
@@ -642,7 +642,7 @@ export interface ListenerArgs {
      * Human-readable name for the Listener. Does not have to be
      * unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The protocol can be either `TCP`, `HTTP`, `HTTPS`,
      * `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
@@ -660,56 +660,56 @@ export interface ListenerArgs {
      * A Networking client is needed to create a listener. If omitted, the `region`
      * argument of the provider is used. Changing this creates a new Listener.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list of references to Barbican Secrets
      * containers which store SNI information. See
      * [here](https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html#deploy-a-tls-terminated-https-load-balancer)
      * for more information.
      */
-    sniContainerRefs?: pulumi.Input<pulumi.Input<string>[]>;
+    sniContainerRefs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of simple strings assigned to the pool. Available
      * for Octavia **minor version 2.5 or later**.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the Listener.  Only administrative users can specify a tenant UUID other than
      * their own. Changing this creates a new Listener.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * The client inactivity timeout in
      * milliseconds.
      */
-    timeoutClientData?: pulumi.Input<number>;
+    timeoutClientData?: pulumi.Input<number | undefined>;
     /**
      * The member connection timeout in
      * milliseconds.
      */
-    timeoutMemberConnect?: pulumi.Input<number>;
+    timeoutMemberConnect?: pulumi.Input<number | undefined>;
     /**
      * The member inactivity timeout in
      * milliseconds.
      */
-    timeoutMemberData?: pulumi.Input<number>;
+    timeoutMemberData?: pulumi.Input<number | undefined>;
     /**
      * The time in milliseconds, to wait for
      * additional TCP packets for content inspection.
      */
-    timeoutTcpInspect?: pulumi.Input<number>;
+    timeoutTcpInspect?: pulumi.Input<number | undefined>;
     /**
      * List of ciphers in OpenSSL format
      * (colon-separated). See
      * https://www.openssl.org/docs/man1.1.1/man1/ciphers.html for more information.
      * Supported only in **Octavia minor version >= 2.15**.
      */
-    tlsCiphers?: pulumi.Input<string>;
+    tlsCiphers?: pulumi.Input<string | undefined>;
     /**
      * A list of TLS protocol versions. Available
      * versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
      * **Octavia minor version >= 2.17**.
      */
-    tlsVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    tlsVersions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

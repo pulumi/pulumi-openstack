@@ -10,17 +10,17 @@ export interface BgpvpnPortAssociateV2Route {
      * The ID of the BGP VPN to be advertised. Required
      * if `type` is `bgpvpn`. Conflicts with `prefix`.
      */
-    bgpvpnId?: pulumi.Input<string>;
+    bgpvpnId?: pulumi.Input<string | undefined>;
     /**
      * The BGP LOCAL\_PREF value of the routes that will
      * be advertised.
      */
-    localPref?: pulumi.Input<number>;
+    localPref?: pulumi.Input<number | undefined>;
     /**
      * The CIDR prefix (v4 or v6) to be advertised. Required
      * if `type` is `prefix`. Conflicts with `bgpvpnId`.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * Can be `prefix` or `bgpvpn`. For the `prefix` type, the
      * CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
@@ -35,13 +35,13 @@ export interface TaasTapMirrorV2Directions {
      * is the identifier of the ERSPAN or GRE session between the source and destination,
      * this must be unique within the project.
      */
-    in?: pulumi.Input<number>;
+    in?: pulumi.Input<number | undefined>;
     /**
      * Declares egress traffic will be mirrored. The value is the
      * identifier of the ERSPAN or GRE session between the source and destination,
      * this must be unique within the project.
      */
-    out?: pulumi.Input<number>;
+    out?: pulumi.Input<number | undefined>;
 }
 export namespace bgpvpn {
     export interface PortAssociateV2Route {
@@ -49,17 +49,17 @@ export namespace bgpvpn {
          * The ID of the BGP VPN to be advertised. Required
          * if `type` is `bgpvpn`. Conflicts with `prefix`.
          */
-        bgpvpnId?: pulumi.Input<string>;
+        bgpvpnId?: pulumi.Input<string | undefined>;
         /**
          * The BGP LOCAL\_PREF value of the routes that will
          * be advertised.
          */
-        localPref?: pulumi.Input<number>;
+        localPref?: pulumi.Input<number | undefined>;
         /**
          * The CIDR prefix (v4 or v6) to be advertised. Required
          * if `type` is `prefix`. Conflicts with `bgpvpnId`.
          */
-        prefix?: pulumi.Input<string>;
+        prefix?: pulumi.Input<string | undefined>;
         /**
          * Can be `prefix` or `bgpvpn`. For the `prefix` type, the
          * CIDR prefix (v4 or v6) must be specified in the `prefix` key. For the
@@ -71,9 +71,9 @@ export namespace bgpvpn {
 
 export namespace blockstorage {
     export interface VolumeAttachment {
-        device?: pulumi.Input<string>;
-        id?: pulumi.Input<string>;
-        instanceId?: pulumi.Input<string>;
+        device?: pulumi.Input<string | undefined>;
+        id?: pulumi.Input<string | undefined>;
+        instanceId?: pulumi.Input<string | undefined>;
     }
 
     export interface VolumeSchedulerHint {
@@ -81,17 +81,17 @@ export namespace blockstorage {
          * Arbitrary key/value pairs of additional
          * properties to pass to the scheduler.
          */
-        additionalProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        additionalProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
         /**
          * The volume should be scheduled on a 
          * different host from the set of volumes specified in the list provided.
          */
-        differentHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        differentHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * An instance UUID. The volume should be 
          * scheduled on the same host as the instance.
          */
-        localToInstance?: pulumi.Input<string>;
+        localToInstance?: pulumi.Input<string | undefined>;
         /**
          * A conditional query that a back-end must pass in
          * order to host a volume. The query must use the `JsonFilter` syntax
@@ -104,12 +104,12 @@ export namespace blockstorage {
          * [“=”, “$backend_id”, “rbd:vol@ceph#cloud”]
          * ```
          */
-        query?: pulumi.Input<string>;
+        query?: pulumi.Input<string | undefined>;
         /**
          * A list of volume UUIDs. The volume should be
          * scheduled on the same host as another volume specified in the list provided.
          */
-        sameHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        sameHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 }
 
@@ -145,27 +145,27 @@ export namespace compute {
         /**
          * The IPv4 address assigned to this network port.
          */
-        fixedIpV4?: pulumi.Input<string>;
+        fixedIpV4?: pulumi.Input<string | undefined>;
         /**
          * The IPv6 address assigned to this network port.
          */
-        fixedIpV6?: pulumi.Input<string>;
+        fixedIpV6?: pulumi.Input<string | undefined>;
         /**
          * The MAC address assigned to this network interface.
          */
-        mac?: pulumi.Input<string>;
+        mac?: pulumi.Input<string | undefined>;
         /**
          * The name of the network
          */
-        name?: pulumi.Input<string>;
+        name?: pulumi.Input<string | undefined>;
         /**
          * The port UUID for this network
          */
-        port?: pulumi.Input<string>;
+        port?: pulumi.Input<string | undefined>;
         /**
          * The UUID of the network
          */
-        uuid?: pulumi.Input<string>;
+        uuid?: pulumi.Input<string | undefined>;
     }
 
     export interface InstanceBlockDevice {
@@ -173,28 +173,28 @@ export namespace compute {
          * The boot index of the volume. It defaults to 0.
          * Changing this creates a new server.
          */
-        bootIndex?: pulumi.Input<number>;
+        bootIndex?: pulumi.Input<number | undefined>;
         /**
          * Delete the volume / block device upon
          * termination of the instance. Defaults to false. Changing this creates a
          * new server.
          */
-        deleteOnTermination?: pulumi.Input<boolean>;
+        deleteOnTermination?: pulumi.Input<boolean | undefined>;
         /**
          * The type that gets created. Possible values
          * are "volume" and "local". Changing this creates a new server.
          */
-        destinationType?: pulumi.Input<string>;
+        destinationType?: pulumi.Input<string | undefined>;
         /**
          * The low-level device type that will be used. Most
          * common thing is to leave this empty. Changing this creates a new server.
          */
-        deviceType?: pulumi.Input<string>;
+        deviceType?: pulumi.Input<string | undefined>;
         /**
          * The low-level disk bus that will be used. Most common
          * thing is to leave this empty. Changing this creates a new server.
          */
-        diskBus?: pulumi.Input<string>;
+        diskBus?: pulumi.Input<string | undefined>;
         /**
          * Specifies the guest server disk file system format,
          * such as `ext2`, `ext3`, `ext4`, `xfs` or `swap`. Swap block device mappings
@@ -203,12 +203,12 @@ export namespace compute {
          * must be less than or equal to the swap size of the flavor. Changing this
          * creates a new server.
          */
-        guestFormat?: pulumi.Input<string>;
+        guestFormat?: pulumi.Input<string | undefined>;
         /**
          * Enable the attachment of multiattach-capable
          * volumes.
          */
-        multiattach?: pulumi.Input<boolean>;
+        multiattach?: pulumi.Input<boolean | undefined>;
         /**
          * The source type of the device. Must be one of
          * "blank", "image", "volume", or "snapshot". Changing this creates a new
@@ -219,21 +219,21 @@ export namespace compute {
          * The UUID of
          * the image, volume, or snapshot. Changing this creates a new server.
          */
-        uuid?: pulumi.Input<string>;
+        uuid?: pulumi.Input<string | undefined>;
         /**
          * The size of the volume to create (in gigabytes). Required
          * in the following combinations: source=image and destination=volume,
          * source=blank and destination=local, and source=blank and destination=volume.
          * Changing this creates a new server.
          */
-        volumeSize?: pulumi.Input<number>;
+        volumeSize?: pulumi.Input<number | undefined>;
         /**
          * The volume type that will be used, for example SSD
          * or HDD storage. The available options depend on how your specific OpenStack
          * cloud is configured and what classes of storage are provided. Changing this
          * creates a new server.
          */
-        volumeType?: pulumi.Input<string>;
+        volumeType?: pulumi.Input<string | undefined>;
     }
 
     export interface InstanceNetwork {
@@ -241,29 +241,29 @@ export namespace compute {
          * Specifies if this network should be used for
          * provisioning access. Accepts true or false. Defaults to false.
          */
-        accessNetwork?: pulumi.Input<boolean>;
+        accessNetwork?: pulumi.Input<boolean | undefined>;
         /**
          * Specifies a fixed IPv4 address to be used on this
          * network. Changing this creates a new server.
          */
-        fixedIpV4?: pulumi.Input<string>;
-        fixedIpV6?: pulumi.Input<string>;
-        mac?: pulumi.Input<string>;
+        fixedIpV4?: pulumi.Input<string | undefined>;
+        fixedIpV6?: pulumi.Input<string | undefined>;
+        mac?: pulumi.Input<string | undefined>;
         /**
          * The human-readable
          * name of the network. Changing this creates a new server.
          */
-        name?: pulumi.Input<string>;
+        name?: pulumi.Input<string | undefined>;
         /**
          * The port UUID of a
          * network to attach to the server. Changing this creates a new server.
          */
-        port?: pulumi.Input<string>;
+        port?: pulumi.Input<string | undefined>;
         /**
          * The network UUID to
          * attach to the server. Changing this creates a new server.
          */
-        uuid?: pulumi.Input<string>;
+        uuid?: pulumi.Input<string | undefined>;
     }
 
     export interface InstancePersonality {
@@ -282,27 +282,27 @@ export namespace compute {
          * Arbitrary key/value pairs of additional
          * properties to pass to the scheduler.
          */
-        additionalProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        additionalProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
         /**
          * An IP Address in CIDR form. The instance
          * will be placed on a compute node that is in the same subnet.
          */
-        buildNearHostIp?: pulumi.Input<string>;
+        buildNearHostIp?: pulumi.Input<string | undefined>;
         /**
          * The names of cells where not to build the instance.
          */
-        differentCells?: pulumi.Input<pulumi.Input<string>[]>;
+        differentCells?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * A list of instance UUIDs. The instance will
          * be scheduled on a different host than all other instances.
          */
-        differentHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        differentHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * A UUID of a Server Group. The instance will be placed
          * into that group. See reference
          * for details on managing servergroup resources
          */
-        group?: pulumi.Input<string>;
+        group?: pulumi.Input<string | undefined>;
         /**
          * A conditional query that a compute node must pass in
          * order to host an instance. The query must use the `JsonFilter` syntax
@@ -315,16 +315,16 @@ export namespace compute {
          * [">=", "$free_ram_mb", "1024"]
          * ```
          */
-        queries?: pulumi.Input<pulumi.Input<string>[]>;
+        queries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * A list of instance UUIDs. The instance will be
          * scheduled on the same host of those specified.
          */
-        sameHosts?: pulumi.Input<pulumi.Input<string>[]>;
+        sameHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * The name of a cell to host the instance.
          */
-        targetCell?: pulumi.Input<string>;
+        targetCell?: pulumi.Input<string | undefined>;
     }
 
     export interface InstanceVendorOptions {
@@ -333,18 +333,18 @@ export namespace compute {
          * ports to the vm before destroying it to make sure the port state is correct
          * after the vm destruction. This is helpful when the port is not deleted.
          */
-        detachPortsBeforeDestroy?: pulumi.Input<boolean>;
+        detachPortsBeforeDestroy?: pulumi.Input<boolean | undefined>;
         /**
          * Boolean to control whether
          * to ignore manual confirmation of the instance resizing. This can be helpful
          * to work with some OpenStack clouds which automatically confirm resizing of
          * instances after some timeout.
          */
-        ignoreResizeConfirmation?: pulumi.Input<boolean>;
+        ignoreResizeConfirmation?: pulumi.Input<boolean | undefined>;
     }
 
     export interface ServerGroupRules {
-        maxServerPerHost?: pulumi.Input<number>;
+        maxServerPerHost?: pulumi.Input<number | undefined>;
     }
 
     export interface VolumeAttachVendorOptions {
@@ -353,7 +353,7 @@ export namespace compute {
          * to ignore volume status confirmation of the attached volume. This can be helpful
          * to work with some OpenStack clouds which don't have the Block Storage V3 API available.
          */
-        ignoreVolumeConfirmation?: pulumi.Input<boolean>;
+        ignoreVolumeConfirmation?: pulumi.Input<boolean | undefined>;
     }
 }
 
@@ -366,7 +366,7 @@ export namespace database {
         /**
          * Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
          */
-        stringType?: pulumi.Input<boolean>;
+        stringType?: pulumi.Input<boolean | undefined>;
         /**
          * Configuration parameter value. Changing this creates a new resource.
          */
@@ -389,11 +389,11 @@ export namespace database {
          * Database character set. Changing this creates a
          * new instance.
          */
-        charset?: pulumi.Input<string>;
+        charset?: pulumi.Input<string | undefined>;
         /**
          * Database collation. Changing this creates a new instance.
          */
-        collate?: pulumi.Input<string>;
+        collate?: pulumi.Input<string | undefined>;
         /**
          * Database to be created on new instance. Changing this creates a
          * new instance.
@@ -419,22 +419,22 @@ export namespace database {
          * Specifies a fixed IPv4 address to be used on this
          * network. Changing this creates a new instance.
          */
-        fixedIpV4?: pulumi.Input<string>;
+        fixedIpV4?: pulumi.Input<string | undefined>;
         /**
          * Specifies a fixed IPv6 address to be used on this
          * network. Changing this creates a new instance.
          */
-        fixedIpV6?: pulumi.Input<string>;
+        fixedIpV6?: pulumi.Input<string | undefined>;
         /**
          * The port UUID of a
          * network to attach to the instance. Changing this creates a new instance.
          */
-        port?: pulumi.Input<string>;
+        port?: pulumi.Input<string | undefined>;
         /**
          * The network UUID to
          * attach to the instance. Changing this creates a new instance.
          */
-        uuid?: pulumi.Input<string>;
+        uuid?: pulumi.Input<string | undefined>;
     }
 
     export interface InstanceUser {
@@ -442,12 +442,12 @@ export namespace database {
          * A list of databases that user will have access to. If not specified,
          * user has access to all databases on th einstance. Changing this creates a new instance.
          */
-        databases?: pulumi.Input<pulumi.Input<string>[]>;
+        databases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
          * An ip address or % sign indicating what ip addresses can connect with
          * this user credentials. Changing this creates a new instance.
          */
-        host?: pulumi.Input<string>;
+        host?: pulumi.Input<string | undefined>;
         /**
          * Username to be created on new instance. Changing this creates a
          * new instance.
@@ -457,7 +457,7 @@ export namespace database {
          * User's password. Changing this creates a
          * new instance.
          */
-        password?: pulumi.Input<string>;
+        password?: pulumi.Input<string | undefined>;
     }
 }
 
@@ -467,7 +467,7 @@ export namespace identity {
          * The ID of the existing access rule. The access rule ID of
          * another application credential can be provided.
          */
-        id?: pulumi.Input<string>;
+        id?: pulumi.Input<string | undefined>;
         /**
          * The request method that the application credential is
          * permitted to use for a given API endpoint. Allowed values: `POST`, `GET`,
@@ -502,28 +502,28 @@ export namespace identity {
 
 export namespace keymanager {
     export interface ContainerV1Acl {
-        read?: pulumi.Input<inputs.keymanager.ContainerV1AclRead>;
+        read?: pulumi.Input<inputs.keymanager.ContainerV1AclRead | undefined>;
     }
 
     export interface ContainerV1AclRead {
         /**
          * The date the container was created.
          */
-        createdAt?: pulumi.Input<string>;
+        createdAt?: pulumi.Input<string | undefined>;
         /**
          * Whether the container is accessible project wide.
          * Defaults to `true`.
          */
-        projectAccess?: pulumi.Input<boolean>;
+        projectAccess?: pulumi.Input<boolean | undefined>;
         /**
          * The date the container was last updated.
          */
-        updatedAt?: pulumi.Input<string>;
+        updatedAt?: pulumi.Input<string | undefined>;
         /**
          * The list of user IDs, which are allowed to access the
          * container, when `projectAccess` is set to `false`.
          */
-        users?: pulumi.Input<pulumi.Input<string>[]>;
+        users?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface ContainerV1Consumer {
@@ -531,18 +531,18 @@ export namespace keymanager {
          * Human-readable name for the Container. Does not have
          * to be unique.
          */
-        name?: pulumi.Input<string>;
+        name?: pulumi.Input<string | undefined>;
         /**
          * The consumer URL.
          */
-        url?: pulumi.Input<string>;
+        url?: pulumi.Input<string | undefined>;
     }
 
     export interface ContainerV1SecretRef {
         /**
          * The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
          */
-        name?: pulumi.Input<string>;
+        name?: pulumi.Input<string | undefined>;
         /**
          * The secret reference / where to find the secret, URL.
          */
@@ -561,44 +561,44 @@ export namespace keymanager {
         /**
          * This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
          */
-        expiration?: pulumi.Input<string>;
+        expiration?: pulumi.Input<string | undefined>;
         /**
          * The mode to use for key generation.
          */
-        mode?: pulumi.Input<string>;
+        mode?: pulumi.Input<string | undefined>;
         /**
          * The name of the secret set by the user.
          */
-        name?: pulumi.Input<string>;
+        name?: pulumi.Input<string | undefined>;
         /**
          * The media type for the content of the secrets payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
          */
-        payloadContentType?: pulumi.Input<string>;
+        payloadContentType?: pulumi.Input<string | undefined>;
     }
 
     export interface SecretV1Acl {
-        read?: pulumi.Input<inputs.keymanager.SecretV1AclRead>;
+        read?: pulumi.Input<inputs.keymanager.SecretV1AclRead | undefined>;
     }
 
     export interface SecretV1AclRead {
         /**
          * The date the secret was created.
          */
-        createdAt?: pulumi.Input<string>;
+        createdAt?: pulumi.Input<string | undefined>;
         /**
          * Whether the secret is accessible project wide.
          * Defaults to `true`.
          */
-        projectAccess?: pulumi.Input<boolean>;
+        projectAccess?: pulumi.Input<boolean | undefined>;
         /**
          * The date the secret was last updated.
          */
-        updatedAt?: pulumi.Input<string>;
+        updatedAt?: pulumi.Input<string | undefined>;
         /**
          * The list of user IDs, which are allowed to access the
          * secret, when `projectAccess` is set to `false`.
          */
-        users?: pulumi.Input<pulumi.Input<string>[]>;
+        users?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 }
 
@@ -613,30 +613,30 @@ export namespace loadbalancer {
          * The administrative state of the member.
          * A valid value is true (UP) or false (DOWN). Defaults to true.
          */
-        adminStateUp?: pulumi.Input<boolean>;
+        adminStateUp?: pulumi.Input<boolean | undefined>;
         /**
          * A bool that indicates whether the member is
          * backup. **Requires octavia minor version 2.1 or later**.
          */
-        backup?: pulumi.Input<boolean>;
+        backup?: pulumi.Input<boolean | undefined>;
         /**
          * The unique ID for the members.
          */
-        id?: pulumi.Input<string>;
+        id?: pulumi.Input<string | undefined>;
         /**
          * An alternate IP address used for health 
          * monitoring a backend member.
          */
-        monitorAddress?: pulumi.Input<string>;
+        monitorAddress?: pulumi.Input<string | undefined>;
         /**
          * An alternate protocol port used for health 
          * monitoring a backend member.
          */
-        monitorPort?: pulumi.Input<number>;
+        monitorPort?: pulumi.Input<number | undefined>;
         /**
          * Human-readable name for the member.
          */
-        name?: pulumi.Input<string>;
+        name?: pulumi.Input<string | undefined>;
         /**
          * The port on which to listen for client traffic.
          */
@@ -644,14 +644,14 @@ export namespace loadbalancer {
         /**
          * The subnet in which to access the member.
          */
-        subnetId?: pulumi.Input<string>;
+        subnetId?: pulumi.Input<string | undefined>;
         /**
          * A positive integer value that indicates the relative
          * portion of traffic that this members should receive from the pool. For
          * example, a member with a weight of 10 receives five times as much traffic
          * as a member with a weight of 2. Defaults to 1.
          */
-        weight?: pulumi.Input<number>;
+        weight?: pulumi.Input<number | undefined>;
     }
 
     export interface PoolPersistence {
@@ -659,7 +659,7 @@ export namespace loadbalancer {
          * The name of the cookie if persistence mode is set
          * appropriately. Required if `type = APP_COOKIE`.
          */
-        cookieName?: pulumi.Input<string>;
+        cookieName?: pulumi.Input<string | undefined>;
         /**
          * The type of persistence mode. The current specification
          * supports SOURCE_IP, HTTP_COOKIE, and APP_COOKIE.
@@ -670,23 +670,23 @@ export namespace loadbalancer {
 
 export namespace networking {
     export interface BgpSpeakerV2AdvertisedRoute {
-        destination?: pulumi.Input<string>;
-        nextHop?: pulumi.Input<string>;
+        destination?: pulumi.Input<string | undefined>;
+        nextHop?: pulumi.Input<string | undefined>;
     }
 
     export interface NetworkSegment {
         /**
          * The type of physical network.
          */
-        networkType?: pulumi.Input<string>;
+        networkType?: pulumi.Input<string | undefined>;
         /**
          * The physical network where this network is implemented.
          */
-        physicalNetwork?: pulumi.Input<string>;
+        physicalNetwork?: pulumi.Input<string | undefined>;
         /**
          * An isolated segment on the physical network.
          */
-        segmentationId?: pulumi.Input<number>;
+        segmentationId?: pulumi.Input<number | undefined>;
     }
 
     export interface PortAllowedAddressPair {
@@ -697,41 +697,41 @@ export namespace networking {
         /**
          * The additional MAC address.
          */
-        macAddress?: pulumi.Input<string>;
+        macAddress?: pulumi.Input<string | undefined>;
     }
 
     export interface PortBinding {
         /**
          * The ID of the host to allocate port on.
          */
-        hostId?: pulumi.Input<string>;
+        hostId?: pulumi.Input<string | undefined>;
         /**
          * Custom data to be passed as `binding:profile`. Data
          * must be passed as JSON.
          */
-        profile?: pulumi.Input<string>;
+        profile?: pulumi.Input<string | undefined>;
         /**
          * A map of JSON strings containing additional
          * details for this specific binding.
          */
-        vifDetails?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        vifDetails?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
         /**
          * The VNIC type of the port binding.
          */
-        vifType?: pulumi.Input<string>;
+        vifType?: pulumi.Input<string | undefined>;
         /**
          * VNIC type for the port. Can either be `direct`,
          * `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
          * Default value is `normal`. It can be updated on unbound ports only.
          */
-        vnicType?: pulumi.Input<string>;
+        vnicType?: pulumi.Input<string | undefined>;
     }
 
     export interface PortExtraDhcpOption {
         /**
          * IP protocol version. Defaults to 4.
          */
-        ipVersion?: pulumi.Input<number>;
+        ipVersion?: pulumi.Input<number | undefined>;
         /**
          * Name of the DHCP option.
          */
@@ -750,23 +750,23 @@ export namespace networking {
          * is left blank or omitted. To retrieve the assigned IP address, use the
          * `allFixedIps` attribute.
          */
-        ipAddress?: pulumi.Input<string>;
+        ipAddress?: pulumi.Input<string | undefined>;
         /**
          * Subnet in which to allocate IP address for
          * this port.
          */
-        subnetId?: pulumi.Input<string>;
+        subnetId?: pulumi.Input<string | undefined>;
     }
 
     export interface RouterExternalFixedIp {
         /**
          * The IP address to set on the router.
          */
-        ipAddress?: pulumi.Input<string>;
+        ipAddress?: pulumi.Input<string | undefined>;
         /**
          * Subnet in which the fixed IP belongs to.
          */
-        subnetId?: pulumi.Input<string>;
+        subnetId?: pulumi.Input<string | undefined>;
     }
 
     export interface RouterRoutesV2Route {
@@ -786,7 +786,7 @@ export namespace networking {
          * Boolean to control whether
          * the Router gateway is assigned during creation or updated after creation.
          */
-        setRouterGatewayAfterCreate?: pulumi.Input<boolean>;
+        setRouterGatewayAfterCreate?: pulumi.Input<boolean | undefined>;
     }
 
     export interface SubnetAllocationPool {
@@ -836,7 +836,7 @@ export namespace orchestration {
         /**
          * The description of the stack resource.
          */
-        description?: pulumi.Input<string>;
+        description?: pulumi.Input<string | undefined>;
         outputKey: pulumi.Input<string>;
         outputValue: pulumi.Input<string>;
     }
@@ -844,28 +844,28 @@ export namespace orchestration {
 
 export namespace sharedfilesystem {
     export interface ShareExportLocation {
-        path?: pulumi.Input<string>;
-        preferred?: pulumi.Input<string>;
+        path?: pulumi.Input<string | undefined>;
+        preferred?: pulumi.Input<string | undefined>;
     }
 }
 
 export namespace vpnaas {
     export interface IkePolicyLifetime {
-        units?: pulumi.Input<string>;
+        units?: pulumi.Input<string | undefined>;
         /**
          * The value for the lifetime of the security association. Must be a positive integer.
          * Default is 3600.
          */
-        value?: pulumi.Input<number>;
+        value?: pulumi.Input<number | undefined>;
     }
 
     export interface IpSecPolicyLifetime {
-        units?: pulumi.Input<string>;
+        units?: pulumi.Input<string | undefined>;
         /**
          * The value for the lifetime of the security association. Must be a positive integer.
          * Default is 3600.
          */
-        value?: pulumi.Input<number>;
+        value?: pulumi.Input<number | undefined>;
     }
 
     export interface SiteConnectionDpd {
@@ -874,18 +874,18 @@ export namespace vpnaas {
          * A valid value is clear, hold, restart, disabled, or restart-by-peer.
          * Default value is hold.
          */
-        action?: pulumi.Input<string>;
+        action?: pulumi.Input<string | undefined>;
         /**
          * The dead peer detection (DPD) interval, in seconds.
          * A valid value is a positive integer.
          * Default is 30.
          */
-        interval?: pulumi.Input<number>;
+        interval?: pulumi.Input<number | undefined>;
         /**
          * The dead peer detection (DPD) timeout in seconds.
          * A valid value is a positive integer that is greater than the DPD interval value.
          * Default is 120.
          */
-        timeout?: pulumi.Input<number>;
+        timeout?: pulumi.Input<number | undefined>;
     }
 }

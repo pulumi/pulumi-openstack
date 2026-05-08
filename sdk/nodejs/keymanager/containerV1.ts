@@ -244,52 +244,52 @@ export interface ContainerV1State {
      * the `read` operation is supported. If not specified, the container is
      * accessible project wide. The `read` structure is described below.
      */
-    acl?: pulumi.Input<inputs.keymanager.ContainerV1Acl>;
+    acl?: pulumi.Input<inputs.keymanager.ContainerV1Acl | undefined>;
     /**
      * The list of the container consumers. The structure is described below.
      */
-    consumers?: pulumi.Input<pulumi.Input<inputs.keymanager.ContainerV1Consumer>[]>;
+    consumers?: pulumi.Input<pulumi.Input<inputs.keymanager.ContainerV1Consumer>[] | undefined>;
     /**
      * The container reference / where to find the container.
      */
-    containerRef?: pulumi.Input<string>;
+    containerRef?: pulumi.Input<string | undefined>;
     /**
      * The date the container was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The creator of the container.
      */
-    creatorId?: pulumi.Input<string>;
+    creatorId?: pulumi.Input<string | undefined>;
     /**
      * Human-readable name for the Container. Does not have
      * to be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V1 KeyManager client.
      * A KeyManager client is needed to create a container. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * V1 container.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A set of dictionaries containing references to secrets. The structure is described
      * below.
      */
-    secretRefs?: pulumi.Input<pulumi.Input<inputs.keymanager.ContainerV1SecretRef>[]>;
+    secretRefs?: pulumi.Input<pulumi.Input<inputs.keymanager.ContainerV1SecretRef>[] | undefined>;
     /**
      * The status of the container.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The date the container was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -301,24 +301,24 @@ export interface ContainerV1Args {
      * the `read` operation is supported. If not specified, the container is
      * accessible project wide. The `read` structure is described below.
      */
-    acl?: pulumi.Input<inputs.keymanager.ContainerV1Acl>;
+    acl?: pulumi.Input<inputs.keymanager.ContainerV1Acl | undefined>;
     /**
      * Human-readable name for the Container. Does not have
      * to be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V1 KeyManager client.
      * A KeyManager client is needed to create a container. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * V1 container.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A set of dictionaries containing references to secrets. The structure is described
      * below.
      */
-    secretRefs?: pulumi.Input<pulumi.Input<inputs.keymanager.ContainerV1SecretRef>[]>;
+    secretRefs?: pulumi.Input<pulumi.Input<inputs.keymanager.ContainerV1SecretRef>[] | undefined>;
     /**
      * Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
      */

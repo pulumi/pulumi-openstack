@@ -173,50 +173,50 @@ export interface TempUrlState {
     /**
      * The container name the object belongs to.
      */
-    container?: pulumi.Input<string>;
+    container?: pulumi.Input<string | undefined>;
     /**
      * The digest to use when generating the tempurl.
      * Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
      */
-    digest?: pulumi.Input<string>;
+    digest?: pulumi.Input<string | undefined>;
     /**
      * The key to use when generating the tempurl. If not
      * provided, the key will be read from the container or account metadata.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The method allowed when accessing this URL.
      * Valid values are `GET`, and `POST`. Default is `GET`.
      */
-    method?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
     /**
      * The object name the tempurl is for.
      */
-    object?: pulumi.Input<string>;
+    object?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically regenerate the URL when
      * it has expired. If set to true, this will create a new resource with a new
      * ID and new URL. Defaults to false.
      */
-    regenerate?: pulumi.Input<boolean>;
+    regenerate?: pulumi.Input<boolean | undefined>;
     /**
      * The region the tempurl is located in.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Split is the string on which to split the object URL.
      * Default is `/v1/`.
      */
-    split?: pulumi.Input<string>;
+    split?: pulumi.Input<string | undefined>;
     /**
      * The TTL, in seconds, for the URL. For how long it should
      * be valid.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * The URL
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -231,17 +231,17 @@ export interface TempUrlArgs {
      * The digest to use when generating the tempurl.
      * Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
      */
-    digest?: pulumi.Input<string>;
+    digest?: pulumi.Input<string | undefined>;
     /**
      * The key to use when generating the tempurl. If not
      * provided, the key will be read from the container or account metadata.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The method allowed when accessing this URL.
      * Valid values are `GET`, and `POST`. Default is `GET`.
      */
-    method?: pulumi.Input<string>;
+    method?: pulumi.Input<string | undefined>;
     /**
      * The object name the tempurl is for.
      */
@@ -251,16 +251,16 @@ export interface TempUrlArgs {
      * it has expired. If set to true, this will create a new resource with a new
      * ID and new URL. Defaults to false.
      */
-    regenerate?: pulumi.Input<boolean>;
+    regenerate?: pulumi.Input<boolean | undefined>;
     /**
      * The region the tempurl is located in.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Split is the string on which to split the object URL.
      * Default is `/v1/`.
      */
-    split?: pulumi.Input<string>;
+    split?: pulumi.Input<string | undefined>;
     /**
      * The TTL, in seconds, for the URL. For how long it should
      * be valid.

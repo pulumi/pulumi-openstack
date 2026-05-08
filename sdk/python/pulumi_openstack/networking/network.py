@@ -21,22 +21,22 @@ __all__ = ['NetworkArgs', 'Network']
 @pulumi.input_type
 class NetworkArgs:
     def __init__(__self__, *,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 availability_zone_hints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_security_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 segments: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkSegmentArgs']]]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transparent_vlan: Optional[pulumi.Input[_builtins.bool]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 availability_zone_hints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 segments: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkSegmentArgs']]]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transparent_vlan: pulumi.Input[Optional[_builtins.bool]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Network resource.
 
@@ -122,7 +122,7 @@ class NetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the network.
         Acceptable values are "true" and "false". Changing this value updates the
@@ -131,12 +131,12 @@ class NetworkArgs:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZoneHints")
-    def availability_zone_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def availability_zone_hints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An availability zone is used to make
         network resources highly available. Used for resources with high availability
@@ -146,12 +146,12 @@ class NetworkArgs:
         return pulumi.get(self, "availability_zone_hints")
 
     @availability_zone_hints.setter
-    def availability_zone_hints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def availability_zone_hints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "availability_zone_hints", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable description of the network. Changing this
         updates the name of the existing network.
@@ -159,12 +159,12 @@ class NetworkArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsDomain")
-    def dns_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network DNS domain. Available, when Neutron DNS
         extension is enabled. The `dns_domain` of a network in conjunction with the
@@ -174,12 +174,12 @@ class NetworkArgs:
         return pulumi.get(self, "dns_domain")
 
     @dns_domain.setter
-    def dns_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def external(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def external(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the network resource has the
         external routing facility. Valid values are true and false. Defaults to
@@ -188,12 +188,12 @@ class NetworkArgs:
         return pulumi.get(self, "external")
 
     @external.setter
-    def external(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def external(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "external", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The network MTU. Available for read-only, when Neutron
         `net-mtu` extension is enabled. Available for the modification, when
@@ -202,12 +202,12 @@ class NetworkArgs:
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the network. Changing this updates the name of
         the existing network.
@@ -215,12 +215,12 @@ class NetworkArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="portSecurityEnabled")
-    def port_security_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def port_security_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to explicitly enable or disable
         port security on the network. Port Security is usually enabled by default, so
@@ -231,24 +231,24 @@ class NetworkArgs:
         return pulumi.get(self, "port_security_enabled")
 
     @port_security_enabled.setter
-    def port_security_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def port_security_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "port_security_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="qosPolicyId")
-    def qos_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qos_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to the associated QoS policy.
         """
         return pulumi.get(self, "qos_policy_id")
 
     @qos_policy_id.setter
-    def qos_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qos_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qos_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a Neutron network. If omitted, the
@@ -258,12 +258,12 @@ class NetworkArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def segments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkSegmentArgs']]]]:
+    def segments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkSegmentArgs']]]]:
         """
         An array of one or more provider segment objects.
         Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
@@ -273,12 +273,12 @@ class NetworkArgs:
         return pulumi.get(self, "segments")
 
     @segments.setter
-    def segments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkSegmentArgs']]]]):
+    def segments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkSegmentArgs']]]]):
         pulumi.set(self, "segments", value)
 
     @_builtins.property
     @pulumi.getter
-    def shared(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shared(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the network resource can be accessed
         by any tenant or not. Changing this updates the sharing capabilities of the
@@ -287,24 +287,24 @@ class NetworkArgs:
         return pulumi.get(self, "shared")
 
     @shared.setter
-    def shared(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shared(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shared", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of string tags for the network.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of the network. Required if admin wants to
         create a network for another tenant. Changing this creates a new network.
@@ -312,12 +312,12 @@ class NetworkArgs:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transparentVlan")
-    def transparent_vlan(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def transparent_vlan(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the network resource has the
         VLAN transparent attribute set. Valid values are true and false. Defaults to
@@ -327,42 +327,42 @@ class NetworkArgs:
         return pulumi.get(self, "transparent_vlan")
 
     @transparent_vlan.setter
-    def transparent_vlan(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def transparent_vlan(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "transparent_vlan", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
 @pulumi.input_type
 class _NetworkState:
     def __init__(__self__, *,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 availability_zone_hints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_security_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 segments: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkSegmentArgs']]]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transparent_vlan: Optional[pulumi.Input[_builtins.bool]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 all_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 availability_zone_hints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 segments: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkSegmentArgs']]]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transparent_vlan: pulumi.Input[Optional[_builtins.bool]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Network resources.
 
@@ -452,7 +452,7 @@ class _NetworkState:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the network.
         Acceptable values are "true" and "false". Changing this value updates the
@@ -461,12 +461,12 @@ class _NetworkState:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def all_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The collection of tags assigned on the network, which have been
         explicitly and implicitly added.
@@ -474,12 +474,12 @@ class _NetworkState:
         return pulumi.get(self, "all_tags")
 
     @all_tags.setter
-    def all_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def all_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "all_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZoneHints")
-    def availability_zone_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def availability_zone_hints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An availability zone is used to make
         network resources highly available. Used for resources with high availability
@@ -489,12 +489,12 @@ class _NetworkState:
         return pulumi.get(self, "availability_zone_hints")
 
     @availability_zone_hints.setter
-    def availability_zone_hints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def availability_zone_hints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "availability_zone_hints", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable description of the network. Changing this
         updates the name of the existing network.
@@ -502,12 +502,12 @@ class _NetworkState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsDomain")
-    def dns_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network DNS domain. Available, when Neutron DNS
         extension is enabled. The `dns_domain` of a network in conjunction with the
@@ -517,12 +517,12 @@ class _NetworkState:
         return pulumi.get(self, "dns_domain")
 
     @dns_domain.setter
-    def dns_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def external(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def external(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the network resource has the
         external routing facility. Valid values are true and false. Defaults to
@@ -531,12 +531,12 @@ class _NetworkState:
         return pulumi.get(self, "external")
 
     @external.setter
-    def external(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def external(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "external", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The network MTU. Available for read-only, when Neutron
         `net-mtu` extension is enabled. Available for the modification, when
@@ -545,12 +545,12 @@ class _NetworkState:
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the network. Changing this updates the name of
         the existing network.
@@ -558,12 +558,12 @@ class _NetworkState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="portSecurityEnabled")
-    def port_security_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def port_security_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to explicitly enable or disable
         port security on the network. Port Security is usually enabled by default, so
@@ -574,24 +574,24 @@ class _NetworkState:
         return pulumi.get(self, "port_security_enabled")
 
     @port_security_enabled.setter
-    def port_security_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def port_security_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "port_security_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="qosPolicyId")
-    def qos_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qos_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to the associated QoS policy.
         """
         return pulumi.get(self, "qos_policy_id")
 
     @qos_policy_id.setter
-    def qos_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qos_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qos_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a Neutron network. If omitted, the
@@ -601,12 +601,12 @@ class _NetworkState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def segments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkSegmentArgs']]]]:
+    def segments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkSegmentArgs']]]]:
         """
         An array of one or more provider segment objects.
         Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
@@ -616,12 +616,12 @@ class _NetworkState:
         return pulumi.get(self, "segments")
 
     @segments.setter
-    def segments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkSegmentArgs']]]]):
+    def segments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkSegmentArgs']]]]):
         pulumi.set(self, "segments", value)
 
     @_builtins.property
     @pulumi.getter
-    def shared(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shared(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the network resource can be accessed
         by any tenant or not. Changing this updates the sharing capabilities of the
@@ -630,24 +630,24 @@ class _NetworkState:
         return pulumi.get(self, "shared")
 
     @shared.setter
-    def shared(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shared(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shared", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of string tags for the network.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of the network. Required if admin wants to
         create a network for another tenant. Changing this creates a new network.
@@ -655,12 +655,12 @@ class _NetworkState:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transparentVlan")
-    def transparent_vlan(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def transparent_vlan(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the network resource has the
         VLAN transparent attribute set. Valid values are true and false. Defaults to
@@ -670,19 +670,19 @@ class _NetworkState:
         return pulumi.get(self, "transparent_vlan")
 
     @transparent_vlan.setter
-    def transparent_vlan(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def transparent_vlan(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "transparent_vlan", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -692,22 +692,22 @@ class Network(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 availability_zone_hints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_security_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 segments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict']]]]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transparent_vlan: Optional[pulumi.Input[_builtins.bool]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 availability_zone_hints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 segments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict']]]]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transparent_vlan: pulumi.Input[Optional[_builtins.bool]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Manages a V2 Neutron network resource within OpenStack.
@@ -887,22 +887,22 @@ class Network(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 availability_zone_hints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_security_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 segments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict']]]]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transparent_vlan: Optional[pulumi.Input[_builtins.bool]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 availability_zone_hints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 segments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict']]]]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transparent_vlan: pulumi.Input[Optional[_builtins.bool]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -939,23 +939,23 @@ class Network(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-            all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            availability_zone_hints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dns_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            external: Optional[pulumi.Input[_builtins.bool]] = None,
-            mtu: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            port_security_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            segments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict']]]]] = None,
-            shared: Optional[pulumi.Input[_builtins.bool]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            transparent_vlan: Optional[pulumi.Input[_builtins.bool]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Network':
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            all_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            availability_zone_hints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            external: pulumi.Input[Optional[_builtins.bool]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port_security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            segments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict']]]]] = None,
+            shared: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transparent_vlan: pulumi.Input[Optional[_builtins.bool]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Network':
         """
         Get an existing Network resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

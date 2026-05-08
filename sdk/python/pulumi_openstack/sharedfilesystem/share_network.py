@@ -21,10 +21,10 @@ class ShareNetworkArgs:
     def __init__(__self__, *,
                  neutron_net_id: pulumi.Input[_builtins.str],
                  neutron_subnet_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_service_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_service_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ShareNetwork resource.
 
@@ -86,7 +86,7 @@ class ShareNetworkArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable description for the share network.
         Changing this updates the description of the existing share network.
@@ -94,12 +94,12 @@ class ShareNetworkArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for the share network. Changing this updates the name
         of the existing share network.
@@ -107,12 +107,12 @@ class ShareNetworkArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Shared File System client.
         A Shared File System client is needed to create a share network. If omitted, the
@@ -122,12 +122,12 @@ class ShareNetworkArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="securityServiceIds")
-    def security_service_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_service_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of security service IDs to associate with
         the share network. The security service must be specified by ID and not name.
@@ -135,24 +135,24 @@ class ShareNetworkArgs:
         return pulumi.get(self, "security_service_ids")
 
     @security_service_ids.setter
-    def security_service_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_service_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_service_ids", value)
 
 
 @pulumi.input_type
 class _ShareNetworkState:
     def __init__(__self__, *,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 neutron_net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 neutron_subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_service_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 segmentation_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 neutron_net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 neutron_subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_service_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 segmentation_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ShareNetwork resources.
 
@@ -203,19 +203,19 @@ class _ShareNetworkState:
 
     @_builtins.property
     @pulumi.getter
-    def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The share network CIDR.
         """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
-    def cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable description for the share network.
         Changing this updates the description of the existing share network.
@@ -223,24 +223,24 @@ class _ShareNetworkState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The IP version of the share network. Can either be 4 or 6.
         """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for the share network. Changing this updates the name
         of the existing share network.
@@ -248,24 +248,24 @@ class _ShareNetworkState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The share network type. Can either be VLAN, VXLAN, GRE, or flat.
         """
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="neutronNetId")
-    def neutron_net_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def neutron_net_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of a neutron network when setting up or updating
         a share network. Changing this updates the existing share network if it's not used by
@@ -274,12 +274,12 @@ class _ShareNetworkState:
         return pulumi.get(self, "neutron_net_id")
 
     @neutron_net_id.setter
-    def neutron_net_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def neutron_net_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "neutron_net_id", value)
 
     @_builtins.property
     @pulumi.getter(name="neutronSubnetId")
-    def neutron_subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def neutron_subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the neutron subnet when setting up or
         updating a share network. Changing this updates the existing share network if it's
@@ -288,24 +288,24 @@ class _ShareNetworkState:
         return pulumi.get(self, "neutron_subnet_id")
 
     @neutron_subnet_id.setter
-    def neutron_subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def neutron_subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "neutron_subnet_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of the Share Network.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Shared File System client.
         A Shared File System client is needed to create a share network. If omitted, the
@@ -315,12 +315,12 @@ class _ShareNetworkState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="securityServiceIds")
-    def security_service_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_service_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of security service IDs to associate with
         the share network. The security service must be specified by ID and not name.
@@ -328,19 +328,19 @@ class _ShareNetworkState:
         return pulumi.get(self, "security_service_ids")
 
     @security_service_ids.setter
-    def security_service_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_service_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_service_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="segmentationId")
-    def segmentation_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def segmentation_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The share network segmentation ID.
         """
         return pulumi.get(self, "segmentation_id")
 
     @segmentation_id.setter
-    def segmentation_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def segmentation_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "segmentation_id", value)
 
 
@@ -350,12 +350,12 @@ class ShareNetwork(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 neutron_net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 neutron_subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_service_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 neutron_net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 neutron_subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_service_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Use this resource to configure a share network.
@@ -537,12 +537,12 @@ class ShareNetwork(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 neutron_net_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 neutron_subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_service_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 neutron_net_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 neutron_subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_service_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -577,17 +577,17 @@ class ShareNetwork(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_version: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_type: Optional[pulumi.Input[_builtins.str]] = None,
-            neutron_net_id: Optional[pulumi.Input[_builtins.str]] = None,
-            neutron_subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            security_service_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            segmentation_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'ShareNetwork':
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            neutron_net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            neutron_subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            security_service_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            segmentation_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'ShareNetwork':
         """
         Get an existing ShareNetwork resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -226,14 +226,14 @@ def get_user(domain_id: Optional[_builtins.str] = None,
         protocol_id=pulumi.get(__ret__, 'protocol_id'),
         region=pulumi.get(__ret__, 'region'),
         unique_id=pulumi.get(__ret__, 'unique_id'))
-def get_user_output(domain_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    enabled: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                    idp_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    password_expires_at: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    protocol_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    unique_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_user_output(domain_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    enabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                    idp_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    password_expires_at: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    protocol_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    unique_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     Use this data source to get the ID of an OpenStack user.

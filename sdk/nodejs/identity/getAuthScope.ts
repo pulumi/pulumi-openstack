@@ -230,7 +230,7 @@ export interface GetAuthScopeOutputArgs {
      * A Identity client is needed to retrieve tokens IDs. If omitted, the
      * `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A boolean argument that determines whether to
      * export the current auth scope token ID. When set to `true`, the `tokenId`
@@ -239,5 +239,5 @@ export interface GetAuthScopeOutputArgs {
      * access to other OpenStack services within the current auth scope, so use this
      * option with caution.
      */
-    setTokenId?: pulumi.Input<boolean>;
+    setTokenId?: pulumi.Input<boolean | undefined>;
 }

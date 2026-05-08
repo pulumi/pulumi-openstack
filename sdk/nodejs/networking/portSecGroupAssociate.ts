@@ -181,29 +181,29 @@ export interface PortSecGroupAssociateState {
      * The collection of Security Group IDs on the port
      * which have been explicitly and implicitly added.
      */
-    allSecurityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allSecurityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to replace or append the list of security
      * groups, specified in the `securityGroupIds`. Defaults to `false`.
      */
-    enforce?: pulumi.Input<boolean>;
+    enforce?: pulumi.Input<boolean | undefined>;
     /**
      * An UUID of the port to apply security groups to.
      */
-    portId?: pulumi.Input<string>;
+    portId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to manage a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * resource.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list of security group IDs to apply to
      * the port. The security groups must be specified by ID and not name (as
      * opposed to how they are configured with the Compute Instance).
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -214,7 +214,7 @@ export interface PortSecGroupAssociateArgs {
      * Whether to replace or append the list of security
      * groups, specified in the `securityGroupIds`. Defaults to `false`.
      */
-    enforce?: pulumi.Input<boolean>;
+    enforce?: pulumi.Input<boolean | undefined>;
     /**
      * An UUID of the port to apply security groups to.
      */
@@ -225,7 +225,7 @@ export interface PortSecGroupAssociateArgs {
      * `region` argument of the provider is used. Changing this creates a new
      * resource.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list of security group IDs to apply to
      * the port. The security groups must be specified by ID and not name (as

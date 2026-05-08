@@ -21,31 +21,31 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 admin_pass: Optional[pulumi.Input[_builtins.str]] = None,
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 availability_zone_hints: Optional[pulumi.Input[_builtins.str]] = None,
-                 block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]]] = None,
-                 config_drive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 flavor_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hypervisor_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_pair: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
-                 personalities: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]]] = None,
-                 power_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 stop_before_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vendor_options: Optional[pulumi.Input['InstanceVendorOptionsArgs']] = None):
+                 admin_pass: pulumi.Input[Optional[_builtins.str]] = None,
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 availability_zone_hints: pulumi.Input[Optional[_builtins.str]] = None,
+                 block_devices: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]]] = None,
+                 config_drive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 flavor_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hypervisor_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_pair: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
+                 personalities: pulumi.Input[Optional[Sequence[pulumi.Input['InstancePersonalityArgs']]]] = None,
+                 power_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler_hints: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 stop_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vendor_options: pulumi.Input[Optional['InstanceVendorOptionsArgs']] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -183,7 +183,7 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="adminPass")
-    def admin_pass(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def admin_pass(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The administrative password to assign to the server.
         Changing this changes the root password on the existing server.
@@ -191,12 +191,12 @@ class InstanceArgs:
         return pulumi.get(self, "admin_pass")
 
     @admin_pass.setter
-    def admin_pass(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def admin_pass(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "admin_pass", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def availability_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The availability zone in which to create
         the server. Conflicts with `availability_zone_hints`. Changing this creates
@@ -205,12 +205,12 @@ class InstanceArgs:
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
-    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def availability_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "availability_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZoneHints")
-    def availability_zone_hints(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def availability_zone_hints(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The availability zone in which to
         create the server. This argument is preferred to `availability_zone`, when
@@ -222,12 +222,12 @@ class InstanceArgs:
         return pulumi.get(self, "availability_zone_hints")
 
     @availability_zone_hints.setter
-    def availability_zone_hints(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def availability_zone_hints(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "availability_zone_hints", value)
 
     @_builtins.property
     @pulumi.getter(name="blockDevices")
-    def block_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]]]:
+    def block_devices(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]]]:
         """
         Configuration of block devices. The block_device
         structure is documented below. Changing this creates a new server.
@@ -239,12 +239,12 @@ class InstanceArgs:
         return pulumi.get(self, "block_devices")
 
     @block_devices.setter
-    def block_devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]]]):
+    def block_devices(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]]]):
         pulumi.set(self, "block_devices", value)
 
     @_builtins.property
     @pulumi.getter(name="configDrive")
-    def config_drive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def config_drive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use the config_drive feature to
         configure the instance. Changing this creates a new server.
@@ -252,12 +252,12 @@ class InstanceArgs:
         return pulumi.get(self, "config_drive")
 
     @config_drive.setter
-    def config_drive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def config_drive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "config_drive", value)
 
     @_builtins.property
     @pulumi.getter(name="flavorId")
-    def flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flavor_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The flavor ID of
         the desired flavor for the server. Changing this resizes the existing server.
@@ -265,12 +265,12 @@ class InstanceArgs:
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
-    def flavor_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flavor_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flavor_id", value)
 
     @_builtins.property
     @pulumi.getter(name="flavorName")
-    def flavor_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flavor_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the
         desired flavor for the server. Changing this resizes the existing server.
@@ -278,12 +278,12 @@ class InstanceArgs:
         return pulumi.get(self, "flavor_name")
 
     @flavor_name.setter
-    def flavor_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flavor_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flavor_name", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to force the OpenStack instance to be
         forcefully deleted. This is useful for environments that have reclaim / soft
@@ -292,12 +292,12 @@ class InstanceArgs:
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="hypervisorHostname")
-    def hypervisor_hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hypervisor_hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the exact hypervisor hostname on
         which to create the instance. When provided, this parameter is included in
@@ -309,12 +309,12 @@ class InstanceArgs:
         return pulumi.get(self, "hypervisor_hostname")
 
     @hypervisor_hostname.setter
-    def hypervisor_hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hypervisor_hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hypervisor_hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional; Required if `image_name` is empty and not booting
         from a volume. Do not specify if booting from a volume.) The image ID of
@@ -324,12 +324,12 @@ class InstanceArgs:
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional; Required if `image_id` is empty and not booting
         from a volume. Do not specify if booting from a volume.) The name of the
@@ -338,12 +338,12 @@ class InstanceArgs:
         return pulumi.get(self, "image_name")
 
     @image_name.setter
-    def image_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_name", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPair")
-    def key_pair(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pair(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a key pair to put on the server. The key
         pair must already be created and associated with the tenant's account.
@@ -352,12 +352,12 @@ class InstanceArgs:
         return pulumi.get(self, "key_pair")
 
     @key_pair.setter
-    def key_pair(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pair(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pair", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Metadata key/value pairs to make available from
         within the instance. Changing this updates the existing server metadata.
@@ -365,24 +365,24 @@ class InstanceArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkMode")
-    def network_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Special string for `network` option to create
         the server. `network_mode` can be `"auto"` or `"none"`.
@@ -391,12 +391,12 @@ class InstanceArgs:
         return pulumi.get(self, "network_mode")
 
     @network_mode.setter
-    def network_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]]:
+    def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkArgs']]]]:
         """
         An array of one or more networks to attach to the
         instance. The network object structure is documented below. Changing this
@@ -405,12 +405,12 @@ class InstanceArgs:
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]]):
+    def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkArgs']]]]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter
-    def personalities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]]]:
+    def personalities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstancePersonalityArgs']]]]:
         """
         Customize the personality of an instance by
         defining one or more files and their contents. The personality structure is
@@ -420,12 +420,12 @@ class InstanceArgs:
         return pulumi.get(self, "personalities")
 
     @personalities.setter
-    def personalities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]]]):
+    def personalities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstancePersonalityArgs']]]]):
         pulumi.set(self, "personalities", value)
 
     @_builtins.property
     @pulumi.getter(name="powerState")
-    def power_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def power_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provide the VM state. Only 'active', 'shutoff', 'paused'
         and 'shelved_offloaded' are supported values.
@@ -436,12 +436,12 @@ class InstanceArgs:
         return pulumi.get(self, "power_state")
 
     @power_state.setter
-    def power_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def power_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "power_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the server instance. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -450,12 +450,12 @@ class InstanceArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="schedulerHints")
-    def scheduler_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]]:
+    def scheduler_hints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]]:
         """
         Provide the Nova scheduler with hints on how
         the instance should be launched. The available hints are described below.
@@ -463,12 +463,12 @@ class InstanceArgs:
         return pulumi.get(self, "scheduler_hints")
 
     @scheduler_hints.setter
-    def scheduler_hints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]]):
+    def scheduler_hints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]]):
         pulumi.set(self, "scheduler_hints", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of one or more security group names
         to associate with the server. Changing this results in adding/removing
@@ -480,12 +480,12 @@ class InstanceArgs:
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="stopBeforeDestroy")
-    def stop_before_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def stop_before_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to try stop instance gracefully
         before destroying it, thus giving chance for guest OS daemons to stop correctly.
@@ -494,12 +494,12 @@ class InstanceArgs:
         return pulumi.get(self, "stop_before_destroy")
 
     @stop_before_destroy.setter
-    def stop_before_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def stop_before_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "stop_before_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of string tags for the instance. Changing this
         updates the existing instance tags.
@@ -507,12 +507,12 @@ class InstanceArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user data to provide when launching the instance.
         Changing this creates a new server.
@@ -520,12 +520,12 @@ class InstanceArgs:
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="vendorOptions")
-    def vendor_options(self) -> Optional[pulumi.Input['InstanceVendorOptionsArgs']]:
+    def vendor_options(self) -> pulumi.Input[Optional['InstanceVendorOptionsArgs']]:
         """
         Map of additional vendor-specific options.
         Supported options are described below.
@@ -533,44 +533,44 @@ class InstanceArgs:
         return pulumi.get(self, "vendor_options")
 
     @vendor_options.setter
-    def vendor_options(self, value: Optional[pulumi.Input['InstanceVendorOptionsArgs']]):
+    def vendor_options(self, value: pulumi.Input[Optional['InstanceVendorOptionsArgs']]):
         pulumi.set(self, "vendor_options", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 access_ip_v4: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_ip_v6: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_pass: Optional[pulumi.Input[_builtins.str]] = None,
-                 all_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 availability_zone_hints: Optional[pulumi.Input[_builtins.str]] = None,
-                 block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]]] = None,
-                 config_drive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created: Optional[pulumi.Input[_builtins.str]] = None,
-                 flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 flavor_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hypervisor_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_pair: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
-                 personalities: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]]] = None,
-                 power_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 stop_before_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 updated: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vendor_options: Optional[pulumi.Input['InstanceVendorOptionsArgs']] = None):
+                 access_ip_v4: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_ip_v6: pulumi.Input[Optional[_builtins.str]] = None,
+                 admin_pass: pulumi.Input[Optional[_builtins.str]] = None,
+                 all_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 all_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 availability_zone_hints: pulumi.Input[Optional[_builtins.str]] = None,
+                 block_devices: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]]] = None,
+                 config_drive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created: pulumi.Input[Optional[_builtins.str]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 flavor_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hypervisor_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_pair: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
+                 personalities: pulumi.Input[Optional[Sequence[pulumi.Input['InstancePersonalityArgs']]]] = None,
+                 power_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler_hints: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 stop_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 updated: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vendor_options: pulumi.Input[Optional['InstanceVendorOptionsArgs']] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -728,31 +728,31 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="accessIpV4")
-    def access_ip_v4(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_ip_v4(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first detected Fixed IPv4 address.
         """
         return pulumi.get(self, "access_ip_v4")
 
     @access_ip_v4.setter
-    def access_ip_v4(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_ip_v4(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_ip_v4", value)
 
     @_builtins.property
     @pulumi.getter(name="accessIpV6")
-    def access_ip_v6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_ip_v6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first detected Fixed IPv6 address.
         """
         return pulumi.get(self, "access_ip_v6")
 
     @access_ip_v6.setter
-    def access_ip_v6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_ip_v6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_ip_v6", value)
 
     @_builtins.property
     @pulumi.getter(name="adminPass")
-    def admin_pass(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def admin_pass(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The administrative password to assign to the server.
         Changing this changes the root password on the existing server.
@@ -760,12 +760,12 @@ class _InstanceState:
         return pulumi.get(self, "admin_pass")
 
     @admin_pass.setter
-    def admin_pass(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def admin_pass(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "admin_pass", value)
 
     @_builtins.property
     @pulumi.getter(name="allMetadata")
-    def all_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def all_metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Contains all instance metadata, even metadata not set
         by Terraform.
@@ -773,12 +773,12 @@ class _InstanceState:
         return pulumi.get(self, "all_metadata")
 
     @all_metadata.setter
-    def all_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def all_metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "all_metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def all_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The collection of tags assigned on the instance, which have
         been explicitly and implicitly added.
@@ -786,12 +786,12 @@ class _InstanceState:
         return pulumi.get(self, "all_tags")
 
     @all_tags.setter
-    def all_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def all_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "all_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def availability_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The availability zone in which to create
         the server. Conflicts with `availability_zone_hints`. Changing this creates
@@ -800,12 +800,12 @@ class _InstanceState:
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
-    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def availability_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "availability_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZoneHints")
-    def availability_zone_hints(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def availability_zone_hints(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The availability zone in which to
         create the server. This argument is preferred to `availability_zone`, when
@@ -817,12 +817,12 @@ class _InstanceState:
         return pulumi.get(self, "availability_zone_hints")
 
     @availability_zone_hints.setter
-    def availability_zone_hints(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def availability_zone_hints(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "availability_zone_hints", value)
 
     @_builtins.property
     @pulumi.getter(name="blockDevices")
-    def block_devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]]]:
+    def block_devices(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]]]:
         """
         Configuration of block devices. The block_device
         structure is documented below. Changing this creates a new server.
@@ -834,12 +834,12 @@ class _InstanceState:
         return pulumi.get(self, "block_devices")
 
     @block_devices.setter
-    def block_devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]]]):
+    def block_devices(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]]]):
         pulumi.set(self, "block_devices", value)
 
     @_builtins.property
     @pulumi.getter(name="configDrive")
-    def config_drive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def config_drive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use the config_drive feature to
         configure the instance. Changing this creates a new server.
@@ -847,24 +847,24 @@ class _InstanceState:
         return pulumi.get(self, "config_drive")
 
     @config_drive.setter
-    def config_drive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def config_drive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "config_drive", value)
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the instance.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter(name="flavorId")
-    def flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flavor_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The flavor ID of
         the desired flavor for the server. Changing this resizes the existing server.
@@ -872,12 +872,12 @@ class _InstanceState:
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
-    def flavor_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flavor_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flavor_id", value)
 
     @_builtins.property
     @pulumi.getter(name="flavorName")
-    def flavor_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flavor_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the
         desired flavor for the server. Changing this resizes the existing server.
@@ -885,12 +885,12 @@ class _InstanceState:
         return pulumi.get(self, "flavor_name")
 
     @flavor_name.setter
-    def flavor_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flavor_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flavor_name", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to force the OpenStack instance to be
         forcefully deleted. This is useful for environments that have reclaim / soft
@@ -899,12 +899,12 @@ class _InstanceState:
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="hypervisorHostname")
-    def hypervisor_hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hypervisor_hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the exact hypervisor hostname on
         which to create the instance. When provided, this parameter is included in
@@ -916,12 +916,12 @@ class _InstanceState:
         return pulumi.get(self, "hypervisor_hostname")
 
     @hypervisor_hostname.setter
-    def hypervisor_hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hypervisor_hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hypervisor_hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional; Required if `image_name` is empty and not booting
         from a volume. Do not specify if booting from a volume.) The image ID of
@@ -931,12 +931,12 @@ class _InstanceState:
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional; Required if `image_id` is empty and not booting
         from a volume. Do not specify if booting from a volume.) The name of the
@@ -945,12 +945,12 @@ class _InstanceState:
         return pulumi.get(self, "image_name")
 
     @image_name.setter
-    def image_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_name", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPair")
-    def key_pair(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pair(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a key pair to put on the server. The key
         pair must already be created and associated with the tenant's account.
@@ -959,12 +959,12 @@ class _InstanceState:
         return pulumi.get(self, "key_pair")
 
     @key_pair.setter
-    def key_pair(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pair(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pair", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Metadata key/value pairs to make available from
         within the instance. Changing this updates the existing server metadata.
@@ -972,24 +972,24 @@ class _InstanceState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkMode")
-    def network_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Special string for `network` option to create
         the server. `network_mode` can be `"auto"` or `"none"`.
@@ -998,12 +998,12 @@ class _InstanceState:
         return pulumi.get(self, "network_mode")
 
     @network_mode.setter
-    def network_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]]:
+    def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkArgs']]]]:
         """
         An array of one or more networks to attach to the
         instance. The network object structure is documented below. Changing this
@@ -1012,12 +1012,12 @@ class _InstanceState:
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]]):
+    def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkArgs']]]]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter
-    def personalities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]]]:
+    def personalities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstancePersonalityArgs']]]]:
         """
         Customize the personality of an instance by
         defining one or more files and their contents. The personality structure is
@@ -1027,12 +1027,12 @@ class _InstanceState:
         return pulumi.get(self, "personalities")
 
     @personalities.setter
-    def personalities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]]]):
+    def personalities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstancePersonalityArgs']]]]):
         pulumi.set(self, "personalities", value)
 
     @_builtins.property
     @pulumi.getter(name="powerState")
-    def power_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def power_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provide the VM state. Only 'active', 'shutoff', 'paused'
         and 'shelved_offloaded' are supported values.
@@ -1043,12 +1043,12 @@ class _InstanceState:
         return pulumi.get(self, "power_state")
 
     @power_state.setter
-    def power_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def power_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "power_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the server instance. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -1057,12 +1057,12 @@ class _InstanceState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="schedulerHints")
-    def scheduler_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]]:
+    def scheduler_hints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]]:
         """
         Provide the Nova scheduler with hints on how
         the instance should be launched. The available hints are described below.
@@ -1070,12 +1070,12 @@ class _InstanceState:
         return pulumi.get(self, "scheduler_hints")
 
     @scheduler_hints.setter
-    def scheduler_hints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]]):
+    def scheduler_hints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]]):
         pulumi.set(self, "scheduler_hints", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of one or more security group names
         to associate with the server. Changing this results in adding/removing
@@ -1087,12 +1087,12 @@ class _InstanceState:
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="stopBeforeDestroy")
-    def stop_before_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def stop_before_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to try stop instance gracefully
         before destroying it, thus giving chance for guest OS daemons to stop correctly.
@@ -1101,12 +1101,12 @@ class _InstanceState:
         return pulumi.get(self, "stop_before_destroy")
 
     @stop_before_destroy.setter
-    def stop_before_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def stop_before_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "stop_before_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of string tags for the instance. Changing this
         updates the existing instance tags.
@@ -1114,24 +1114,24 @@ class _InstanceState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def updated(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the instance was last updated.
         """
         return pulumi.get(self, "updated")
 
     @updated.setter
-    def updated(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user data to provide when launching the instance.
         Changing this creates a new server.
@@ -1139,12 +1139,12 @@ class _InstanceState:
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="vendorOptions")
-    def vendor_options(self) -> Optional[pulumi.Input['InstanceVendorOptionsArgs']]:
+    def vendor_options(self) -> pulumi.Input[Optional['InstanceVendorOptionsArgs']]:
         """
         Map of additional vendor-specific options.
         Supported options are described below.
@@ -1152,7 +1152,7 @@ class _InstanceState:
         return pulumi.get(self, "vendor_options")
 
     @vendor_options.setter
-    def vendor_options(self, value: Optional[pulumi.Input['InstanceVendorOptionsArgs']]):
+    def vendor_options(self, value: pulumi.Input[Optional['InstanceVendorOptionsArgs']]):
         pulumi.set(self, "vendor_options", value)
 
 
@@ -1162,31 +1162,31 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_pass: Optional[pulumi.Input[_builtins.str]] = None,
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 availability_zone_hints: Optional[pulumi.Input[_builtins.str]] = None,
-                 block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBlockDeviceArgs', 'InstanceBlockDeviceArgsDict']]]]] = None,
-                 config_drive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 flavor_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hypervisor_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_pair: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
-                 personalities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePersonalityArgs', 'InstancePersonalityArgsDict']]]]] = None,
-                 power_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceSchedulerHintArgs', 'InstanceSchedulerHintArgsDict']]]]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 stop_before_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vendor_options: Optional[pulumi.Input[Union['InstanceVendorOptionsArgs', 'InstanceVendorOptionsArgsDict']]] = None,
+                 admin_pass: pulumi.Input[Optional[_builtins.str]] = None,
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 availability_zone_hints: pulumi.Input[Optional[_builtins.str]] = None,
+                 block_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceBlockDeviceArgs', 'InstanceBlockDeviceArgsDict']]]]] = None,
+                 config_drive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 flavor_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hypervisor_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_pair: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
+                 personalities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstancePersonalityArgs', 'InstancePersonalityArgsDict']]]]] = None,
+                 power_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler_hints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSchedulerHintArgs', 'InstanceSchedulerHintArgsDict']]]]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 stop_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vendor_options: pulumi.Input[Optional[Union['InstanceVendorOptionsArgs', 'InstanceVendorOptionsArgsDict']]] = None,
                  __props__=None):
         """
         Manages a V2 VM instance resource within OpenStack.
@@ -2430,31 +2430,31 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_pass: Optional[pulumi.Input[_builtins.str]] = None,
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 availability_zone_hints: Optional[pulumi.Input[_builtins.str]] = None,
-                 block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBlockDeviceArgs', 'InstanceBlockDeviceArgsDict']]]]] = None,
-                 config_drive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 flavor_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hypervisor_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_pair: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
-                 personalities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePersonalityArgs', 'InstancePersonalityArgsDict']]]]] = None,
-                 power_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceSchedulerHintArgs', 'InstanceSchedulerHintArgsDict']]]]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 stop_before_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vendor_options: Optional[pulumi.Input[Union['InstanceVendorOptionsArgs', 'InstanceVendorOptionsArgsDict']]] = None,
+                 admin_pass: pulumi.Input[Optional[_builtins.str]] = None,
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 availability_zone_hints: pulumi.Input[Optional[_builtins.str]] = None,
+                 block_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceBlockDeviceArgs', 'InstanceBlockDeviceArgsDict']]]]] = None,
+                 config_drive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 flavor_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hypervisor_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_pair: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
+                 personalities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstancePersonalityArgs', 'InstancePersonalityArgsDict']]]]] = None,
+                 power_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler_hints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSchedulerHintArgs', 'InstanceSchedulerHintArgsDict']]]]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 stop_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vendor_options: pulumi.Input[Optional[Union['InstanceVendorOptionsArgs', 'InstanceVendorOptionsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2507,37 +2507,37 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_ip_v4: Optional[pulumi.Input[_builtins.str]] = None,
-            access_ip_v6: Optional[pulumi.Input[_builtins.str]] = None,
-            admin_pass: Optional[pulumi.Input[_builtins.str]] = None,
-            all_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            availability_zone_hints: Optional[pulumi.Input[_builtins.str]] = None,
-            block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBlockDeviceArgs', 'InstanceBlockDeviceArgsDict']]]]] = None,
-            config_drive: Optional[pulumi.Input[_builtins.bool]] = None,
-            created: Optional[pulumi.Input[_builtins.str]] = None,
-            flavor_id: Optional[pulumi.Input[_builtins.str]] = None,
-            flavor_name: Optional[pulumi.Input[_builtins.str]] = None,
-            force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            hypervisor_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            image_name: Optional[pulumi.Input[_builtins.str]] = None,
-            key_pair: Optional[pulumi.Input[_builtins.str]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
-            personalities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstancePersonalityArgs', 'InstancePersonalityArgsDict']]]]] = None,
-            power_state: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceSchedulerHintArgs', 'InstanceSchedulerHintArgsDict']]]]] = None,
-            security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            stop_before_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            updated: Optional[pulumi.Input[_builtins.str]] = None,
-            user_data: Optional[pulumi.Input[_builtins.str]] = None,
-            vendor_options: Optional[pulumi.Input[Union['InstanceVendorOptionsArgs', 'InstanceVendorOptionsArgsDict']]] = None) -> 'Instance':
+            access_ip_v4: pulumi.Input[Optional[_builtins.str]] = None,
+            access_ip_v6: pulumi.Input[Optional[_builtins.str]] = None,
+            admin_pass: pulumi.Input[Optional[_builtins.str]] = None,
+            all_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            all_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            availability_zone_hints: pulumi.Input[Optional[_builtins.str]] = None,
+            block_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceBlockDeviceArgs', 'InstanceBlockDeviceArgsDict']]]]] = None,
+            config_drive: pulumi.Input[Optional[_builtins.bool]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+            flavor_name: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            hypervisor_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            key_pair: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
+            personalities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstancePersonalityArgs', 'InstancePersonalityArgsDict']]]]] = None,
+            power_state: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduler_hints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSchedulerHintArgs', 'InstanceSchedulerHintArgsDict']]]]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            stop_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            vendor_options: pulumi.Input[Optional[Union['InstanceVendorOptionsArgs', 'InstanceVendorOptionsArgsDict']]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

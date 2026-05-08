@@ -21,7 +21,7 @@ class QosAssociationV3Args:
     def __init__(__self__, *,
                  qos_id: pulumi.Input[_builtins.str],
                  volume_type_id: pulumi.Input[_builtins.str],
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a QosAssociationV3 resource.
 
@@ -66,7 +66,7 @@ class QosAssociationV3Args:
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the qos association.
         If omitted, the `region` argument of the provider is used. Changing
@@ -75,16 +75,16 @@ class QosAssociationV3Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _QosAssociationV3State:
     def __init__(__self__, *,
-                 qos_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 qos_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering QosAssociationV3 resources.
 
@@ -105,7 +105,7 @@ class _QosAssociationV3State:
 
     @_builtins.property
     @pulumi.getter(name="qosId")
-    def qos_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qos_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the qos to associate. Changing this creates
         a new qos association.
@@ -113,12 +113,12 @@ class _QosAssociationV3State:
         return pulumi.get(self, "qos_id")
 
     @qos_id.setter
-    def qos_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qos_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qos_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the qos association.
         If omitted, the `region` argument of the provider is used. Changing
@@ -127,12 +127,12 @@ class _QosAssociationV3State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeTypeId")
-    def volume_type_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_type_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the volume_type to associate.
         Changing this creates a new qos association.
@@ -140,7 +140,7 @@ class _QosAssociationV3State:
         return pulumi.get(self, "volume_type_id")
 
     @volume_type_id.setter
-    def volume_type_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_type_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_type_id", value)
 
 
@@ -150,9 +150,9 @@ class QosAssociationV3(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 qos_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 qos_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V3 block storage Qos Association resource within OpenStack.
@@ -249,9 +249,9 @@ class QosAssociationV3(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 qos_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 qos_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -278,9 +278,9 @@ class QosAssociationV3(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            qos_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_type_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'QosAssociationV3':
+            qos_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_type_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'QosAssociationV3':
         """
         Get an existing QosAssociationV3 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

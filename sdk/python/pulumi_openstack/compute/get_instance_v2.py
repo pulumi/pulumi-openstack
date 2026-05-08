@@ -313,10 +313,10 @@ def get_instance_v2(id: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         updated=pulumi.get(__ret__, 'updated'),
         user_data=pulumi.get(__ret__, 'user_data'))
-def get_instance_v2_output(id: Optional[pulumi.Input[_builtins.str]] = None,
-                           networks: Optional[pulumi.Input[Optional[Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict']]]]] = None,
-                           region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           user_data: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instance_v2_output(id: pulumi.Input[Optional[_builtins.str]] = None,
+                           networks: pulumi.Input[Optional[Optional[Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict']]]]] = None,
+                           region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           user_data: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceV2Result]:
     """
     Use this data source to get the details of a running server

@@ -23,11 +23,11 @@ class VolumeAttachArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
                  volume_id: pulumi.Input[_builtins.str],
-                 device: Optional[pulumi.Input[_builtins.str]] = None,
-                 multiattach: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 vendor_options: Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']] = None):
+                 device: pulumi.Input[Optional[_builtins.str]] = None,
+                 multiattach: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 vendor_options: pulumi.Input[Optional['VolumeAttachVendorOptionsArgs']] = None):
         """
         The set of arguments for constructing a VolumeAttach resource.
 
@@ -89,7 +89,7 @@ class VolumeAttachArgs:
 
     @_builtins.property
     @pulumi.getter
-    def device(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The device of the volume attachment (ex: `/dev/vdc`).
         _NOTE_: Being able to specify a device is dependent upon the hypervisor in
@@ -101,24 +101,24 @@ class VolumeAttachArgs:
         return pulumi.get(self, "device")
 
     @device.setter
-    def device(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device", value)
 
     @_builtins.property
     @pulumi.getter
-    def multiattach(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def multiattach(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable attachment of multiattach-capable volumes.
         """
         return pulumi.get(self, "multiattach")
 
     @multiattach.setter
-    def multiattach(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def multiattach(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "multiattach", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Compute client.
         A Compute client is needed to create a volume attachment. If omitted, the
@@ -128,12 +128,12 @@ class VolumeAttachArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Add a device role tag that is applied to the volume when
         attaching it to the VM. Changing this creates a new volume attachment with
@@ -142,12 +142,12 @@ class VolumeAttachArgs:
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag", value)
 
     @_builtins.property
     @pulumi.getter(name="vendorOptions")
-    def vendor_options(self) -> Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']]:
+    def vendor_options(self) -> pulumi.Input[Optional['VolumeAttachVendorOptionsArgs']]:
         """
         Map of additional vendor-specific options.
         Supported options are described below.
@@ -155,20 +155,20 @@ class VolumeAttachArgs:
         return pulumi.get(self, "vendor_options")
 
     @vendor_options.setter
-    def vendor_options(self, value: Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']]):
+    def vendor_options(self, value: pulumi.Input[Optional['VolumeAttachVendorOptionsArgs']]):
         pulumi.set(self, "vendor_options", value)
 
 
 @pulumi.input_type
 class _VolumeAttachState:
     def __init__(__self__, *,
-                 device: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 multiattach: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 vendor_options: Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 device: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 multiattach: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 vendor_options: pulumi.Input[Optional['VolumeAttachVendorOptionsArgs']] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VolumeAttach resources.
 
@@ -208,7 +208,7 @@ class _VolumeAttachState:
 
     @_builtins.property
     @pulumi.getter
-    def device(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The device of the volume attachment (ex: `/dev/vdc`).
         _NOTE_: Being able to specify a device is dependent upon the hypervisor in
@@ -220,36 +220,36 @@ class _VolumeAttachState:
         return pulumi.get(self, "device")
 
     @device.setter
-    def device(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Instance to attach the Volume to.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def multiattach(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def multiattach(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable attachment of multiattach-capable volumes.
         """
         return pulumi.get(self, "multiattach")
 
     @multiattach.setter
-    def multiattach(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def multiattach(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "multiattach", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Compute client.
         A Compute client is needed to create a volume attachment. If omitted, the
@@ -259,12 +259,12 @@ class _VolumeAttachState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Add a device role tag that is applied to the volume when
         attaching it to the VM. Changing this creates a new volume attachment with
@@ -273,12 +273,12 @@ class _VolumeAttachState:
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag", value)
 
     @_builtins.property
     @pulumi.getter(name="vendorOptions")
-    def vendor_options(self) -> Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']]:
+    def vendor_options(self) -> pulumi.Input[Optional['VolumeAttachVendorOptionsArgs']]:
         """
         Map of additional vendor-specific options.
         Supported options are described below.
@@ -286,19 +286,19 @@ class _VolumeAttachState:
         return pulumi.get(self, "vendor_options")
 
     @vendor_options.setter
-    def vendor_options(self, value: Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']]):
+    def vendor_options(self, value: pulumi.Input[Optional['VolumeAttachVendorOptionsArgs']]):
         pulumi.set(self, "vendor_options", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Volume to attach to an Instance.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_id", value)
 
 
@@ -308,13 +308,13 @@ class VolumeAttach(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 device: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 multiattach: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 vendor_options: Optional[pulumi.Input[Union['VolumeAttachVendorOptionsArgs', 'VolumeAttachVendorOptionsArgsDict']]] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 device: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 multiattach: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 vendor_options: pulumi.Input[Optional[Union['VolumeAttachVendorOptionsArgs', 'VolumeAttachVendorOptionsArgsDict']]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Attaches a Block Storage Volume to an Instance using the OpenStack
@@ -343,10 +343,11 @@ class VolumeAttach(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_openstack as openstack
         import pulumi_std as std
 
-        volumes = []
+        volumes: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             volumes.append(openstack.blockstorage.Volume(f"volumes-{range['value']}",
                 name=std.format(input="vol-%02d",
@@ -355,7 +356,7 @@ class VolumeAttach(pulumi.CustomResource):
         instance1 = openstack.compute.Instance("instance_1",
             name="instance_1",
             security_groups=["default"])
-        attachments = []
+        attachments: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             attachments.append(openstack.compute.VolumeAttach(f"attachments-{range['value']}",
                 instance_id=instance1.id,
@@ -372,10 +373,11 @@ class VolumeAttach(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_openstack as openstack
         import pulumi_std as std
 
-        volumes = []
+        volumes: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             volumes.append(openstack.blockstorage.Volume(f"volumes-{range['value']}",
                 name=std.format(input="vol-%02d",
@@ -491,10 +493,11 @@ class VolumeAttach(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_openstack as openstack
         import pulumi_std as std
 
-        volumes = []
+        volumes: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             volumes.append(openstack.blockstorage.Volume(f"volumes-{range['value']}",
                 name=std.format(input="vol-%02d",
@@ -503,7 +506,7 @@ class VolumeAttach(pulumi.CustomResource):
         instance1 = openstack.compute.Instance("instance_1",
             name="instance_1",
             security_groups=["default"])
-        attachments = []
+        attachments: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             attachments.append(openstack.compute.VolumeAttach(f"attachments-{range['value']}",
                 instance_id=instance1.id,
@@ -520,10 +523,11 @@ class VolumeAttach(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_openstack as openstack
         import pulumi_std as std
 
-        volumes = []
+        volumes: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             volumes.append(openstack.blockstorage.Volume(f"volumes-{range['value']}",
                 name=std.format(input="vol-%02d",
@@ -600,13 +604,13 @@ class VolumeAttach(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 device: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 multiattach: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 vendor_options: Optional[pulumi.Input[Union['VolumeAttachVendorOptionsArgs', 'VolumeAttachVendorOptionsArgsDict']]] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 device: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 multiattach: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 vendor_options: pulumi.Input[Optional[Union['VolumeAttachVendorOptionsArgs', 'VolumeAttachVendorOptionsArgsDict']]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -637,13 +641,13 @@ class VolumeAttach(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            device: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            multiattach: Optional[pulumi.Input[_builtins.bool]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            tag: Optional[pulumi.Input[_builtins.str]] = None,
-            vendor_options: Optional[pulumi.Input[Union['VolumeAttachVendorOptionsArgs', 'VolumeAttachVendorOptionsArgsDict']]] = None,
-            volume_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VolumeAttach':
+            device: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            multiattach: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tag: pulumi.Input[Optional[_builtins.str]] = None,
+            vendor_options: pulumi.Input[Optional[Union['VolumeAttachVendorOptionsArgs', 'VolumeAttachVendorOptionsArgsDict']]] = None,
+            volume_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VolumeAttach':
         """
         Get an existing VolumeAttach resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

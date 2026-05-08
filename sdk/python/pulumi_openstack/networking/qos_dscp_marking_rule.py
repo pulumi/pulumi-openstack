@@ -21,7 +21,7 @@ class QosDscpMarkingRuleArgs:
     def __init__(__self__, *,
                  dscp_mark: pulumi.Input[_builtins.int],
                  qos_policy_id: pulumi.Input[_builtins.str],
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a QosDscpMarkingRule resource.
 
@@ -64,7 +64,7 @@ class QosDscpMarkingRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
@@ -73,16 +73,16 @@ class QosDscpMarkingRuleArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _QosDscpMarkingRuleState:
     def __init__(__self__, *,
-                 dscp_mark: Optional[pulumi.Input[_builtins.int]] = None,
-                 qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 dscp_mark: pulumi.Input[Optional[_builtins.int]] = None,
+                 qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering QosDscpMarkingRule resources.
 
@@ -102,7 +102,7 @@ class _QosDscpMarkingRuleState:
 
     @_builtins.property
     @pulumi.getter(name="dscpMark")
-    def dscp_mark(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def dscp_mark(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The value of DSCP mark. Changing this updates the DSCP mark value existing
         QoS DSCP marking rule.
@@ -110,24 +110,24 @@ class _QosDscpMarkingRuleState:
         return pulumi.get(self, "dscp_mark")
 
     @dscp_mark.setter
-    def dscp_mark(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def dscp_mark(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "dscp_mark", value)
 
     @_builtins.property
     @pulumi.getter(name="qosPolicyId")
-    def qos_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qos_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The QoS policy reference. Changing this creates a new QoS DSCP marking rule.
         """
         return pulumi.get(self, "qos_policy_id")
 
     @qos_policy_id.setter
-    def qos_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qos_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qos_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
@@ -136,7 +136,7 @@ class _QosDscpMarkingRuleState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -146,9 +146,9 @@ class QosDscpMarkingRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dscp_mark: Optional[pulumi.Input[_builtins.int]] = None,
-                 qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 dscp_mark: pulumi.Input[Optional[_builtins.int]] = None,
+                 qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V2 Neutron QoS DSCP marking rule resource within OpenStack.
@@ -236,9 +236,9 @@ class QosDscpMarkingRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dscp_mark: Optional[pulumi.Input[_builtins.int]] = None,
-                 qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 dscp_mark: pulumi.Input[Optional[_builtins.int]] = None,
+                 qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -265,9 +265,9 @@ class QosDscpMarkingRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dscp_mark: Optional[pulumi.Input[_builtins.int]] = None,
-            qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'QosDscpMarkingRule':
+            dscp_mark: pulumi.Input[Optional[_builtins.int]] = None,
+            qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'QosDscpMarkingRule':
         """
         Get an existing QosDscpMarkingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

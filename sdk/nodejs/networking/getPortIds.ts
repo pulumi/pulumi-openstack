@@ -187,66 +187,66 @@ export interface GetPortIdsOutputArgs {
     /**
      * The administrative state of the port.
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * Human-readable description of the port.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the device the port belongs to.
      */
-    deviceId?: pulumi.Input<string>;
+    deviceId?: pulumi.Input<string | undefined>;
     /**
      * The device owner of the port.
      */
-    deviceOwner?: pulumi.Input<string>;
-    dnsName?: pulumi.Input<string>;
+    deviceOwner?: pulumi.Input<string | undefined>;
+    dnsName?: pulumi.Input<string | undefined>;
     /**
      * The port IP address filter.
      */
-    fixedIp?: pulumi.Input<string>;
+    fixedIp?: pulumi.Input<string | undefined>;
     /**
      * The MAC address of the port.
      */
-    macAddress?: pulumi.Input<string>;
+    macAddress?: pulumi.Input<string | undefined>;
     /**
      * The name of the port.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the network the port belongs to.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * The owner of the port.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve port ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The list of port security group IDs to filter.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Order the results in either `asc` or `desc`.
      * Defaults to none.
      */
-    sortDirection?: pulumi.Input<string>;
+    sortDirection?: pulumi.Input<string | undefined>;
     /**
      * Sort ports based on a certain key. Defaults to none.
      */
-    sortKey?: pulumi.Input<string>;
+    sortKey?: pulumi.Input<string | undefined>;
     /**
      * The status of the port.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The list of port tags to filter.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    tenantId?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

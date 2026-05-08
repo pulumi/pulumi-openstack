@@ -82,5 +82,5 @@ export interface GetAvailbilityZonesOutputArgs {
      * The region in which to obtain the V2 Shared File System
      * client. If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

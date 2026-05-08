@@ -120,21 +120,21 @@ export interface QosV3State {
      * `back-end` or `both`. Changing this updates the `consumer` of an
      * existing qos.
      */
-    consumer?: pulumi.Input<string>;
+    consumer?: pulumi.Input<string | undefined>;
     /**
      * Name of the qos.  Changing this creates a new qos.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the qos. If omitted,
      * the `region` argument of the provider is used. Changing this creates
      * a new qos.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Key/Value pairs of specs for the qos.
      */
-    specs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    specs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -146,19 +146,19 @@ export interface QosV3Args {
      * `back-end` or `both`. Changing this updates the `consumer` of an
      * existing qos.
      */
-    consumer?: pulumi.Input<string>;
+    consumer?: pulumi.Input<string | undefined>;
     /**
      * Name of the qos.  Changing this creates a new qos.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the qos. If omitted,
      * the `region` argument of the provider is used. Changing this creates
      * a new qos.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Key/Value pairs of specs for the qos.
      */
-    specs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    specs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

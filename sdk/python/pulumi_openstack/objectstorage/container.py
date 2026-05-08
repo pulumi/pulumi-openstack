@@ -21,19 +21,19 @@ __all__ = ['ContainerArgs', 'Container']
 @pulumi.input_type
 class ContainerArgs:
     def __init__(__self__, *,
-                 container_read: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_sync_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_sync_to: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_write: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 versioning: Optional[pulumi.Input[_builtins.bool]] = None,
-                 versioning_legacy: Optional[pulumi.Input['ContainerVersioningLegacyArgs']] = None):
+                 container_read: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_sync_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_sync_to: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_write: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 versioning: pulumi.Input[Optional[_builtins.bool]] = None,
+                 versioning_legacy: pulumi.Input[Optional['ContainerVersioningLegacyArgs']] = None):
         """
         The set of arguments for constructing a Container resource.
 
@@ -107,7 +107,7 @@ class ContainerArgs:
 
     @_builtins.property
     @pulumi.getter(name="containerRead")
-    def container_read(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_read(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets an access control list (ACL) that grants
         read access. This header can contain a comma-delimited list of users that can
@@ -117,12 +117,12 @@ class ContainerArgs:
         return pulumi.get(self, "container_read")
 
     @container_read.setter
-    def container_read(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_read(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_read", value)
 
     @_builtins.property
     @pulumi.getter(name="containerSyncKey")
-    def container_sync_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_sync_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secret key for container
         synchronization. Changing this updates container synchronization.
@@ -130,12 +130,12 @@ class ContainerArgs:
         return pulumi.get(self, "container_sync_key")
 
     @container_sync_key.setter
-    def container_sync_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_sync_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_sync_key", value)
 
     @_builtins.property
     @pulumi.getter(name="containerSyncTo")
-    def container_sync_to(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_sync_to(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination for container
         synchronization. Changing this updates container synchronization.
@@ -143,12 +143,12 @@ class ContainerArgs:
         return pulumi.get(self, "container_sync_to")
 
     @container_sync_to.setter
-    def container_sync_to(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_sync_to(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_sync_to", value)
 
     @_builtins.property
     @pulumi.getter(name="containerWrite")
-    def container_write(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_write(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets an ACL that grants write access. Changing
         this updates the access control list write access.
@@ -156,12 +156,12 @@ class ContainerArgs:
         return pulumi.get(self, "container_write")
 
     @container_write.setter
-    def container_write(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_write(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_write", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The MIME type for the container. Changing this
         updates the MIME type.
@@ -169,12 +169,12 @@ class ContainerArgs:
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean that indicates all
         objects should be deleted from the container so that the container can be
@@ -183,12 +183,12 @@ class ContainerArgs:
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Custom key/value pairs to associate with the
         container. Changing this updates the existing container metadata.
@@ -196,12 +196,12 @@ class ContainerArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the container. Changing this creates a
         new container.
@@ -209,12 +209,12 @@ class ContainerArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the container. If
         omitted, the `region` argument of the provider is used. Changing this creates
@@ -223,12 +223,12 @@ class ContainerArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="storageClass")
-    def storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage class to be used for the container.
         Changing this creates a new container. This option is only available in Ceph
@@ -237,12 +237,12 @@ class ContainerArgs:
         return pulumi.get(self, "storage_class")
 
     @storage_class.setter
-    def storage_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_class", value)
 
     @_builtins.property
     @pulumi.getter(name="storagePolicy")
-    def storage_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage policy to be used for the
         container. Changing this creates a new container.
@@ -250,12 +250,12 @@ class ContainerArgs:
         return pulumi.get(self, "storage_policy")
 
     @storage_policy.setter
-    def storage_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def versioning(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def versioning(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean that can enable or disable object
         versioning. The default value is `false`. To use this feature, your Swift
@@ -269,13 +269,13 @@ class ContainerArgs:
         return pulumi.get(self, "versioning")
 
     @versioning.setter
-    def versioning(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def versioning(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "versioning", value)
 
     @_builtins.property
     @pulumi.getter(name="versioningLegacy")
     @_utilities.deprecated("""Use newer \"versioning\" implementation""")
-    def versioning_legacy(self) -> Optional[pulumi.Input['ContainerVersioningLegacyArgs']]:
+    def versioning_legacy(self) -> pulumi.Input[Optional['ContainerVersioningLegacyArgs']]:
         """
         Enable legacy object versioning. The
         structure is described below.
@@ -283,26 +283,26 @@ class ContainerArgs:
         return pulumi.get(self, "versioning_legacy")
 
     @versioning_legacy.setter
-    def versioning_legacy(self, value: Optional[pulumi.Input['ContainerVersioningLegacyArgs']]):
+    def versioning_legacy(self, value: pulumi.Input[Optional['ContainerVersioningLegacyArgs']]):
         pulumi.set(self, "versioning_legacy", value)
 
 
 @pulumi.input_type
 class _ContainerState:
     def __init__(__self__, *,
-                 container_read: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_sync_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_sync_to: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_write: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 versioning: Optional[pulumi.Input[_builtins.bool]] = None,
-                 versioning_legacy: Optional[pulumi.Input['ContainerVersioningLegacyArgs']] = None):
+                 container_read: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_sync_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_sync_to: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_write: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 versioning: pulumi.Input[Optional[_builtins.bool]] = None,
+                 versioning_legacy: pulumi.Input[Optional['ContainerVersioningLegacyArgs']] = None):
         """
         Input properties used for looking up and filtering Container resources.
 
@@ -376,7 +376,7 @@ class _ContainerState:
 
     @_builtins.property
     @pulumi.getter(name="containerRead")
-    def container_read(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_read(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets an access control list (ACL) that grants
         read access. This header can contain a comma-delimited list of users that can
@@ -386,12 +386,12 @@ class _ContainerState:
         return pulumi.get(self, "container_read")
 
     @container_read.setter
-    def container_read(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_read(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_read", value)
 
     @_builtins.property
     @pulumi.getter(name="containerSyncKey")
-    def container_sync_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_sync_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secret key for container
         synchronization. Changing this updates container synchronization.
@@ -399,12 +399,12 @@ class _ContainerState:
         return pulumi.get(self, "container_sync_key")
 
     @container_sync_key.setter
-    def container_sync_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_sync_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_sync_key", value)
 
     @_builtins.property
     @pulumi.getter(name="containerSyncTo")
-    def container_sync_to(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_sync_to(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination for container
         synchronization. Changing this updates container synchronization.
@@ -412,12 +412,12 @@ class _ContainerState:
         return pulumi.get(self, "container_sync_to")
 
     @container_sync_to.setter
-    def container_sync_to(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_sync_to(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_sync_to", value)
 
     @_builtins.property
     @pulumi.getter(name="containerWrite")
-    def container_write(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_write(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets an ACL that grants write access. Changing
         this updates the access control list write access.
@@ -425,12 +425,12 @@ class _ContainerState:
         return pulumi.get(self, "container_write")
 
     @container_write.setter
-    def container_write(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_write(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_write", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The MIME type for the container. Changing this
         updates the MIME type.
@@ -438,12 +438,12 @@ class _ContainerState:
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean that indicates all
         objects should be deleted from the container so that the container can be
@@ -452,12 +452,12 @@ class _ContainerState:
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Custom key/value pairs to associate with the
         container. Changing this updates the existing container metadata.
@@ -465,12 +465,12 @@ class _ContainerState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the container. Changing this creates a
         new container.
@@ -478,12 +478,12 @@ class _ContainerState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the container. If
         omitted, the `region` argument of the provider is used. Changing this creates
@@ -492,12 +492,12 @@ class _ContainerState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="storageClass")
-    def storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage class to be used for the container.
         Changing this creates a new container. This option is only available in Ceph
@@ -506,12 +506,12 @@ class _ContainerState:
         return pulumi.get(self, "storage_class")
 
     @storage_class.setter
-    def storage_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_class", value)
 
     @_builtins.property
     @pulumi.getter(name="storagePolicy")
-    def storage_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage policy to be used for the
         container. Changing this creates a new container.
@@ -519,12 +519,12 @@ class _ContainerState:
         return pulumi.get(self, "storage_policy")
 
     @storage_policy.setter
-    def storage_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def versioning(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def versioning(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean that can enable or disable object
         versioning. The default value is `false`. To use this feature, your Swift
@@ -538,13 +538,13 @@ class _ContainerState:
         return pulumi.get(self, "versioning")
 
     @versioning.setter
-    def versioning(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def versioning(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "versioning", value)
 
     @_builtins.property
     @pulumi.getter(name="versioningLegacy")
     @_utilities.deprecated("""Use newer \"versioning\" implementation""")
-    def versioning_legacy(self) -> Optional[pulumi.Input['ContainerVersioningLegacyArgs']]:
+    def versioning_legacy(self) -> pulumi.Input[Optional['ContainerVersioningLegacyArgs']]:
         """
         Enable legacy object versioning. The
         structure is described below.
@@ -552,7 +552,7 @@ class _ContainerState:
         return pulumi.get(self, "versioning_legacy")
 
     @versioning_legacy.setter
-    def versioning_legacy(self, value: Optional[pulumi.Input['ContainerVersioningLegacyArgs']]):
+    def versioning_legacy(self, value: pulumi.Input[Optional['ContainerVersioningLegacyArgs']]):
         pulumi.set(self, "versioning_legacy", value)
 
 
@@ -562,19 +562,19 @@ class Container(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_read: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_sync_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_sync_to: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_write: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 versioning: Optional[pulumi.Input[_builtins.bool]] = None,
-                 versioning_legacy: Optional[pulumi.Input[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict']]] = None,
+                 container_read: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_sync_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_sync_to: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_write: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 versioning: pulumi.Input[Optional[_builtins.bool]] = None,
+                 versioning_legacy: pulumi.Input[Optional[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict']]] = None,
                  __props__=None):
         """
         Manages a V1 container resource within OpenStack.
@@ -859,19 +859,19 @@ class Container(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_read: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_sync_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_sync_to: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_write: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 versioning: Optional[pulumi.Input[_builtins.bool]] = None,
-                 versioning_legacy: Optional[pulumi.Input[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict']]] = None,
+                 container_read: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_sync_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_sync_to: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_write: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 versioning: pulumi.Input[Optional[_builtins.bool]] = None,
+                 versioning_legacy: pulumi.Input[Optional[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -904,19 +904,19 @@ class Container(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            container_read: Optional[pulumi.Input[_builtins.str]] = None,
-            container_sync_key: Optional[pulumi.Input[_builtins.str]] = None,
-            container_sync_to: Optional[pulumi.Input[_builtins.str]] = None,
-            container_write: Optional[pulumi.Input[_builtins.str]] = None,
-            content_type: Optional[pulumi.Input[_builtins.str]] = None,
-            force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_class: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            versioning: Optional[pulumi.Input[_builtins.bool]] = None,
-            versioning_legacy: Optional[pulumi.Input[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict']]] = None) -> 'Container':
+            container_read: pulumi.Input[Optional[_builtins.str]] = None,
+            container_sync_key: pulumi.Input[Optional[_builtins.str]] = None,
+            container_sync_to: pulumi.Input[Optional[_builtins.str]] = None,
+            container_write: pulumi.Input[Optional[_builtins.str]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            versioning: pulumi.Input[Optional[_builtins.bool]] = None,
+            versioning_legacy: pulumi.Input[Optional[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict']]] = None) -> 'Container':
         """
         Get an existing Container resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

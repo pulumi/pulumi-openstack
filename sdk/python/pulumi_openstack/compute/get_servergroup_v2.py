@@ -180,8 +180,8 @@ def get_servergroup_v2(name: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         rules=pulumi.get(__ret__, 'rules'),
         user_id=pulumi.get(__ret__, 'user_id'))
-def get_servergroup_v2_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                              region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_servergroup_v2_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                              region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServergroupV2Result]:
     """
     Use this data source to get information about server groups

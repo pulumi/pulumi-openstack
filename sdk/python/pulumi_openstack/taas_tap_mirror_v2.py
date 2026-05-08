@@ -25,10 +25,10 @@ class TaasTapMirrorV2Args:
                  mirror_type: pulumi.Input[_builtins.str],
                  port_id: pulumi.Input[_builtins.str],
                  remote_ip: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TaasTapMirrorV2 resource.
 
@@ -124,7 +124,7 @@ class TaasTapMirrorV2Args:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable description for the Tap Mirror.
         Changing this updates the description of the existing Tap Mirror.
@@ -132,12 +132,12 @@ class TaasTapMirrorV2Args:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Tap Mirror. Changing this updates the name of
         the existing Tap Mirror.
@@ -145,12 +145,12 @@ class TaasTapMirrorV2Args:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an endpoint group. If omitted, the
@@ -160,12 +160,12 @@ class TaasTapMirrorV2Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of the Tap Mirror. Required if admin wants to
         create a Tap Mirror for another project. Changing this creates a new Tap Mirror.
@@ -173,22 +173,22 @@ class TaasTapMirrorV2Args:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
 @pulumi.input_type
 class _TaasTapMirrorV2State:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 directions: Optional[pulumi.Input['TaasTapMirrorV2DirectionsArgs']] = None,
-                 mirror_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 directions: pulumi.Input[Optional['TaasTapMirrorV2DirectionsArgs']] = None,
+                 mirror_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TaasTapMirrorV2 resources.
 
@@ -236,7 +236,7 @@ class _TaasTapMirrorV2State:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable description for the Tap Mirror.
         Changing this updates the description of the existing Tap Mirror.
@@ -244,12 +244,12 @@ class _TaasTapMirrorV2State:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def directions(self) -> Optional[pulumi.Input['TaasTapMirrorV2DirectionsArgs']]:
+    def directions(self) -> pulumi.Input[Optional['TaasTapMirrorV2DirectionsArgs']]:
         """
         A block declaring the directions to be mirrored and their
         identifiers. One block has to be declared with at least one direction. Changing
@@ -258,12 +258,12 @@ class _TaasTapMirrorV2State:
         return pulumi.get(self, "directions")
 
     @directions.setter
-    def directions(self, value: Optional[pulumi.Input['TaasTapMirrorV2DirectionsArgs']]):
+    def directions(self, value: pulumi.Input[Optional['TaasTapMirrorV2DirectionsArgs']]):
         pulumi.set(self, "directions", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorType")
-    def mirror_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mirror_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the mirroring, can be `gre` or `erspanv1`.
         Changing this creates a new Tap Mirror.
@@ -271,12 +271,12 @@ class _TaasTapMirrorV2State:
         return pulumi.get(self, "mirror_type")
 
     @mirror_type.setter
-    def mirror_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mirror_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mirror_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Tap Mirror. Changing this updates the name of
         the existing Tap Mirror.
@@ -284,12 +284,12 @@ class _TaasTapMirrorV2State:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="portId")
-    def port_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Port ID of the Tap Mirror, this will be the source of
         the mirrored traffic, and this traffic will be tunneled into the GRE or ERSPAN
@@ -299,24 +299,24 @@ class _TaasTapMirrorV2State:
         return pulumi.get(self, "port_id")
 
     @port_id.setter
-    def port_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the OpenStack project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an endpoint group. If omitted, the
@@ -326,12 +326,12 @@ class _TaasTapMirrorV2State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteIp")
-    def remote_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remote_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remote IP of the Tap Mirror, this will be the remote
         end of the GRE or ERSPAN v1 tunnel. Changing this creates a new Tap Mirror.
@@ -339,12 +339,12 @@ class _TaasTapMirrorV2State:
         return pulumi.get(self, "remote_ip")
 
     @remote_ip.setter
-    def remote_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remote_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remote_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of the Tap Mirror. Required if admin wants to
         create a Tap Mirror for another project. Changing this creates a new Tap Mirror.
@@ -352,7 +352,7 @@ class _TaasTapMirrorV2State:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
@@ -362,14 +362,14 @@ class TaasTapMirrorV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 directions: Optional[pulumi.Input[Union['TaasTapMirrorV2DirectionsArgs', 'TaasTapMirrorV2DirectionsArgsDict']]] = None,
-                 mirror_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 directions: pulumi.Input[Optional[Union['TaasTapMirrorV2DirectionsArgs', 'TaasTapMirrorV2DirectionsArgsDict']]] = None,
+                 mirror_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V2 Neutron Tap Mirror resource within OpenStack tap-as-a-service extension.
@@ -472,14 +472,14 @@ class TaasTapMirrorV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 directions: Optional[pulumi.Input[Union['TaasTapMirrorV2DirectionsArgs', 'TaasTapMirrorV2DirectionsArgsDict']]] = None,
-                 mirror_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 directions: pulumi.Input[Optional[Union['TaasTapMirrorV2DirectionsArgs', 'TaasTapMirrorV2DirectionsArgsDict']]] = None,
+                 mirror_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -516,15 +516,15 @@ class TaasTapMirrorV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            directions: Optional[pulumi.Input[Union['TaasTapMirrorV2DirectionsArgs', 'TaasTapMirrorV2DirectionsArgsDict']]] = None,
-            mirror_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            port_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            remote_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TaasTapMirrorV2':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            directions: pulumi.Input[Optional[Union['TaasTapMirrorV2DirectionsArgs', 'TaasTapMirrorV2DirectionsArgsDict']]] = None,
+            mirror_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TaasTapMirrorV2':
         """
         Get an existing TaasTapMirrorV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

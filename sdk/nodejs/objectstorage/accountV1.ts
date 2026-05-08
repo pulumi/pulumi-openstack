@@ -140,40 +140,40 @@ export interface AccountV1State {
     /**
      * The number of bytes used by the account.
      */
-    bytesUsed?: pulumi.Input<number>;
+    bytesUsed?: pulumi.Input<number | undefined>;
     /**
      * The number of containers in the account.
      */
-    containerCount?: pulumi.Input<number>;
+    containerCount?: pulumi.Input<number | undefined>;
     /**
      * A map of headers returned for the account.
      */
-    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A map of custom key/value pairs to associate with the
      * account metadata. Changing the `Quota-Bytes` key value is allowed to be
      * updated only by the cloud administrator.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The number of objects in the account.
      */
-    objectCount?: pulumi.Input<number>;
+    objectCount?: pulumi.Input<number | undefined>;
     /**
      * The project ID of the corresponding account. If
      * omitted, the token's project ID is used. Changing this creates a new account.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The number of bytes allowed for the account.
      */
-    quotaBytes?: pulumi.Input<number>;
+    quotaBytes?: pulumi.Input<number | undefined>;
     /**
      * The region in which to create the account. If omitted,
      * the `region` argument of the provider is used. Changing this creates a new
      * account.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -185,16 +185,16 @@ export interface AccountV1Args {
      * account metadata. Changing the `Quota-Bytes` key value is allowed to be
      * updated only by the cloud administrator.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The project ID of the corresponding account. If
      * omitted, the token's project ID is used. Changing this creates a new account.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the account. If omitted,
      * the `region` argument of the provider is used. Changing this creates a new
      * account.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

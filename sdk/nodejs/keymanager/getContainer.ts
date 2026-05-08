@@ -131,11 +131,11 @@ export interface GetContainerOutputArgs {
     /**
      * The Container name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V1 KeyManager client.
      * A KeyManager client is needed to fetch a container. If omitted, the `region`
      * argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

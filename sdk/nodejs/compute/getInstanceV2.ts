@@ -163,14 +163,14 @@ export interface GetInstanceV2OutputArgs {
     /**
      * An array of maps, detailed below.
      */
-    networks?: pulumi.Input<pulumi.Input<inputs.compute.GetInstanceV2NetworkArgs>[]>;
+    networks?: pulumi.Input<pulumi.Input<inputs.compute.GetInstanceV2NetworkArgs>[] | undefined>;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The user data added when the server was created.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
 }

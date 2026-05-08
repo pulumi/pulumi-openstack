@@ -329,16 +329,16 @@ export interface ImageState {
     /**
      * The checksum of the data associated with the image.
      */
-    checksum?: pulumi.Input<string>;
+    checksum?: pulumi.Input<string | undefined>;
     /**
      * The container format. Must be one of "bare",
      * "ovf", "aki", "ari", "ami", "ova", "docker", "compressed".
      */
-    containerFormat?: pulumi.Input<string>;
+    containerFormat?: pulumi.Input<string | undefined>;
     /**
      * The date the image was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * If true, this provider will decompress downloaded
      * image before uploading it to OpenStack. Decompression algorithm is chosen by
@@ -346,140 +346,140 @@ export interface ImageState {
      * filename extension. Supported algorithms are: gzip, bzip2, xz and zst.
      * Defaults to false. Changing this creates a new Image.
      */
-    decompress?: pulumi.Input<boolean>;
+    decompress?: pulumi.Input<boolean | undefined>;
     /**
      * The disk format. Must be one of "raw", "vhd",
      * "vhdx", "vmdk", "vdi", "iso", "ploop", "qcow2", "aki", "ari", "ami"
      */
-    diskFormat?: pulumi.Input<string>;
+    diskFormat?: pulumi.Input<string | undefined>;
     /**
      * the trailing path after the glance
      * endpoint that represent the location of the image
      * or the path to retrieve it.
      */
-    file?: pulumi.Input<string>;
+    file?: pulumi.Input<string | undefined>;
     /**
      * If true, image will be hidden from public list.
      * Defaults to false.
      */
-    hidden?: pulumi.Input<boolean>;
+    hidden?: pulumi.Input<boolean | undefined>;
     /**
      * This is the directory where the images will
      * be downloaded. Images will be stored with a filename corresponding to the
      * url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
      */
-    imageCachePath?: pulumi.Input<string>;
+    imageCachePath?: pulumi.Input<string | undefined>;
     /**
      * Unique ID (valid UUID) of image to create. Changing
      * this creates a new image.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The password of basic auth to download
      * `imageSourceUrl`.
      */
-    imageSourcePassword?: pulumi.Input<string>;
+    imageSourcePassword?: pulumi.Input<string | undefined>;
     /**
      * This is the url of the raw image. If
      * `webDownload` is not used, then the image will be downloaded in the
      * `imageCachePath` before being uploaded to Glance. Conflicts with
      * `localFilePath`.
      */
-    imageSourceUrl?: pulumi.Input<string>;
+    imageSourceUrl?: pulumi.Input<string | undefined>;
     /**
      * The username of basic auth to download
      * `imageSourceUrl`.
      */
-    imageSourceUsername?: pulumi.Input<string>;
+    imageSourceUsername?: pulumi.Input<string | undefined>;
     /**
      * This is the filepath of the raw image file
      * that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
      * `webDownload`.
      */
-    localFilePath?: pulumi.Input<string>;
+    localFilePath?: pulumi.Input<string | undefined>;
     /**
      * The metadata associated with the image.
      * Image metadata allow for meaningfully define the image properties
      * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Amount of disk space (in GB) required to boot
      * image. Defaults to 0.
      */
-    minDiskGb?: pulumi.Input<number>;
+    minDiskGb?: pulumi.Input<number | undefined>;
     /**
      * Amount of ram (in MB) required to boot image.
      * Defauts to 0.
      */
-    minRamMb?: pulumi.Input<number>;
+    minRamMb?: pulumi.Input<number | undefined>;
     /**
      * The name of the image.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The id of the openstack user who owns the image.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * A map of key/value pairs to set freeform
      * information about an image. See the "Notes" section for further information
      * about properties.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If true, image will not be deletable. Defaults to
      * false.
      */
-    protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean | undefined>;
     /**
      * The region in which to obtain the V2 Glance client. A
      * Glance client is needed to create an Image that can be used with a compute
      * instance. If omitted, the `region` argument of the provider is used. Changing
      * this creates a new Image.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The path to the JSON-schema that represent
      * the image or image
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * The size in bytes of the data associated with the image.
      */
-    sizeBytes?: pulumi.Input<number>;
+    sizeBytes?: pulumi.Input<number | undefined>;
     /**
      * The status of the image. It can be "queued", "active"
      * or "saving".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tags of the image. It must be a list of strings. At
      * this time, it is not possible to delete all tags of an image.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The date the image was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * If false, the checksum will not be verified
      * once the image is finished uploading. Conflicts with `webDownload`. Defaults
      * to true when not using `webDownload`.
      */
-    verifyChecksum?: pulumi.Input<boolean>;
+    verifyChecksum?: pulumi.Input<boolean | undefined>;
     /**
      * The visibility of the image. Must be one of
      * "public", "private", "community", or "shared". The ability to set the
      * visibility depends upon the configuration of the OpenStack cloud.
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
     /**
      * If true, the "web-download" import method will be
      * used to let Openstack download the image directly from the remote source.
      * Conflicts with `localFilePath`. Defaults to false.
      */
-    webDownload?: pulumi.Input<boolean>;
+    webDownload?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -498,7 +498,7 @@ export interface ImageArgs {
      * filename extension. Supported algorithms are: gzip, bzip2, xz and zst.
      * Defaults to false. Changing this creates a new Image.
      */
-    decompress?: pulumi.Input<boolean>;
+    decompress?: pulumi.Input<boolean | undefined>;
     /**
      * The disk format. Must be one of "raw", "vhd",
      * "vhdx", "vmdk", "vdi", "iso", "ploop", "qcow2", "aki", "ari", "ami"
@@ -508,94 +508,94 @@ export interface ImageArgs {
      * If true, image will be hidden from public list.
      * Defaults to false.
      */
-    hidden?: pulumi.Input<boolean>;
+    hidden?: pulumi.Input<boolean | undefined>;
     /**
      * This is the directory where the images will
      * be downloaded. Images will be stored with a filename corresponding to the
      * url's md5 hash. Defaults to "$HOME/.terraform/image_cache"
      */
-    imageCachePath?: pulumi.Input<string>;
+    imageCachePath?: pulumi.Input<string | undefined>;
     /**
      * Unique ID (valid UUID) of image to create. Changing
      * this creates a new image.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The password of basic auth to download
      * `imageSourceUrl`.
      */
-    imageSourcePassword?: pulumi.Input<string>;
+    imageSourcePassword?: pulumi.Input<string | undefined>;
     /**
      * This is the url of the raw image. If
      * `webDownload` is not used, then the image will be downloaded in the
      * `imageCachePath` before being uploaded to Glance. Conflicts with
      * `localFilePath`.
      */
-    imageSourceUrl?: pulumi.Input<string>;
+    imageSourceUrl?: pulumi.Input<string | undefined>;
     /**
      * The username of basic auth to download
      * `imageSourceUrl`.
      */
-    imageSourceUsername?: pulumi.Input<string>;
+    imageSourceUsername?: pulumi.Input<string | undefined>;
     /**
      * This is the filepath of the raw image file
      * that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
      * `webDownload`.
      */
-    localFilePath?: pulumi.Input<string>;
+    localFilePath?: pulumi.Input<string | undefined>;
     /**
      * Amount of disk space (in GB) required to boot
      * image. Defaults to 0.
      */
-    minDiskGb?: pulumi.Input<number>;
+    minDiskGb?: pulumi.Input<number | undefined>;
     /**
      * Amount of ram (in MB) required to boot image.
      * Defauts to 0.
      */
-    minRamMb?: pulumi.Input<number>;
+    minRamMb?: pulumi.Input<number | undefined>;
     /**
      * The name of the image.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A map of key/value pairs to set freeform
      * information about an image. See the "Notes" section for further information
      * about properties.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If true, image will not be deletable. Defaults to
      * false.
      */
-    protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean | undefined>;
     /**
      * The region in which to obtain the V2 Glance client. A
      * Glance client is needed to create an Image that can be used with a compute
      * instance. If omitted, the `region` argument of the provider is used. Changing
      * this creates a new Image.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The tags of the image. It must be a list of strings. At
      * this time, it is not possible to delete all tags of an image.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If false, the checksum will not be verified
      * once the image is finished uploading. Conflicts with `webDownload`. Defaults
      * to true when not using `webDownload`.
      */
-    verifyChecksum?: pulumi.Input<boolean>;
+    verifyChecksum?: pulumi.Input<boolean | undefined>;
     /**
      * The visibility of the image. Must be one of
      * "public", "private", "community", or "shared". The ability to set the
      * visibility depends upon the configuration of the OpenStack cloud.
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
     /**
      * If true, the "web-download" import method will be
      * used to let Openstack download the image directly from the remote source.
      * Conflicts with `localFilePath`. Defaults to false.
      */
-    webDownload?: pulumi.Input<boolean>;
+    webDownload?: pulumi.Input<boolean | undefined>;
 }

@@ -171,51 +171,51 @@ export interface TaasTapMirrorV2State {
      * The human-readable description for the Tap Mirror.
      * Changing this updates the description of the existing Tap Mirror.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A block declaring the directions to be mirrored and their
      * identifiers. One block has to be declared with at least one direction. Changing
      * this creates a new Tap Mirror.
      */
-    directions?: pulumi.Input<inputs.TaasTapMirrorV2Directions>;
+    directions?: pulumi.Input<inputs.TaasTapMirrorV2Directions | undefined>;
     /**
      * The type of the mirroring, can be `gre` or `erspanv1`.
      * Changing this creates a new Tap Mirror.
      */
-    mirrorType?: pulumi.Input<string>;
+    mirrorType?: pulumi.Input<string | undefined>;
     /**
      * The name of the Tap Mirror. Changing this updates the name of
      * the existing Tap Mirror.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Port ID of the Tap Mirror, this will be the source of
      * the mirrored traffic, and this traffic will be tunneled into the GRE or ERSPAN
      * v1 tunnel. The tunnel itself is not starting from this port. Changing this
      * creates a new Tap Mirror.
      */
-    portId?: pulumi.Input<string>;
+    portId?: pulumi.Input<string | undefined>;
     /**
      * Id of the OpenStack project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an endpoint group. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * group.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The remote IP of the Tap Mirror, this will be the remote
      * end of the GRE or ERSPAN v1 tunnel. Changing this creates a new Tap Mirror.
      */
-    remoteIp?: pulumi.Input<string>;
+    remoteIp?: pulumi.Input<string | undefined>;
     /**
      * The owner of the Tap Mirror. Required if admin wants to
      * create a Tap Mirror for another project. Changing this creates a new Tap Mirror.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -226,7 +226,7 @@ export interface TaasTapMirrorV2Args {
      * The human-readable description for the Tap Mirror.
      * Changing this updates the description of the existing Tap Mirror.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A block declaring the directions to be mirrored and their
      * identifiers. One block has to be declared with at least one direction. Changing
@@ -242,7 +242,7 @@ export interface TaasTapMirrorV2Args {
      * The name of the Tap Mirror. Changing this updates the name of
      * the existing Tap Mirror.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Port ID of the Tap Mirror, this will be the source of
      * the mirrored traffic, and this traffic will be tunneled into the GRE or ERSPAN
@@ -256,7 +256,7 @@ export interface TaasTapMirrorV2Args {
      * `region` argument of the provider is used. Changing this creates a new
      * group.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The remote IP of the Tap Mirror, this will be the remote
      * end of the GRE or ERSPAN v1 tunnel. Changing this creates a new Tap Mirror.
@@ -266,5 +266,5 @@ export interface TaasTapMirrorV2Args {
      * The owner of the Tap Mirror. Required if admin wants to
      * create a Tap Mirror for another project. Changing this creates a new Tap Mirror.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

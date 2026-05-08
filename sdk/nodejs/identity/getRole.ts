@@ -97,7 +97,7 @@ export interface GetRoleOutputArgs {
     /**
      * The domain the role belongs to.
      */
-    domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string | undefined>;
     /**
      * The name of the role.
      */
@@ -106,5 +106,5 @@ export interface GetRoleOutputArgs {
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

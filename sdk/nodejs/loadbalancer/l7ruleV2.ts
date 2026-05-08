@@ -206,54 +206,54 @@ export interface L7RuleV2State {
      * The administrative state of the L7 Rule.
      * A valid value is true (UP) or false (DOWN).
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * The comparison type for the L7 rule - can either be
      * CONTAINS, STARTS\_WITH, ENDS_WITH, EQUAL_TO or REGEX
      */
-    compareType?: pulumi.Input<string>;
+    compareType?: pulumi.Input<string | undefined>;
     /**
      * When true the logic of the rule is inverted. For example, with invert
      * true, equal to would become not equal to. Default is false.
      */
-    invert?: pulumi.Input<boolean>;
+    invert?: pulumi.Input<boolean | undefined>;
     /**
      * The key to use for the comparison. For example, the name of the cookie to
      * evaluate. Valid when `type` is set to COOKIE or HEADER.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The ID of the L7 Policy to query. Changing this creates a new
      * L7 Rule.
      */
-    l7policyId?: pulumi.Input<string>;
+    l7policyId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Listener owning this resource.
      */
-    listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create an L7 rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Rule.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the L7 Rule.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new L7 Rule.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
      * HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The value to use for the comparison. For example, the file type to
      * compare.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -264,7 +264,7 @@ export interface L7RuleV2Args {
      * The administrative state of the L7 Rule.
      * A valid value is true (UP) or false (DOWN).
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * The comparison type for the L7 rule - can either be
      * CONTAINS, STARTS\_WITH, ENDS_WITH, EQUAL_TO or REGEX
@@ -274,12 +274,12 @@ export interface L7RuleV2Args {
      * When true the logic of the rule is inverted. For example, with invert
      * true, equal to would become not equal to. Default is false.
      */
-    invert?: pulumi.Input<boolean>;
+    invert?: pulumi.Input<boolean | undefined>;
     /**
      * The key to use for the comparison. For example, the name of the cookie to
      * evaluate. Valid when `type` is set to COOKIE or HEADER.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The ID of the L7 Policy to query. Changing this creates a new
      * L7 Rule.
@@ -291,13 +291,13 @@ export interface L7RuleV2Args {
      * `region` argument of the provider is used. Changing this creates a new
      * L7 Rule.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the L7 Rule.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new L7 Rule.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
      * HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.

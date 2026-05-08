@@ -20,10 +20,10 @@ __all__ = ['RouterInterfaceArgs', 'RouterInterface']
 class RouterInterfaceArgs:
     def __init__(__self__, *,
                  router_id: pulumi.Input[_builtins.str],
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouterInterface resource.
 
@@ -66,7 +66,7 @@ class RouterInterfaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean indicating whether the routes from the
         corresponding router ID should be deleted so that the router interface can
@@ -75,12 +75,12 @@ class RouterInterfaceArgs:
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="portId")
-    def port_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the port this interface connects to. Changing
         this creates a new router interface.
@@ -88,12 +88,12 @@ class RouterInterfaceArgs:
         return pulumi.get(self, "port_id")
 
     @port_id.setter
-    def port_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 networking client.
         A networking client is needed to create a router. If omitted, the
@@ -103,12 +103,12 @@ class RouterInterfaceArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the subnet this interface connects to. Changing
         this creates a new router interface.
@@ -116,18 +116,18 @@ class RouterInterfaceArgs:
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_id", value)
 
 
 @pulumi.input_type
 class _RouterInterfaceState:
     def __init__(__self__, *,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterInterface resources.
 
@@ -158,7 +158,7 @@ class _RouterInterfaceState:
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean indicating whether the routes from the
         corresponding router ID should be deleted so that the router interface can
@@ -167,12 +167,12 @@ class _RouterInterfaceState:
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="portId")
-    def port_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the port this interface connects to. Changing
         this creates a new router interface.
@@ -180,12 +180,12 @@ class _RouterInterfaceState:
         return pulumi.get(self, "port_id")
 
     @port_id.setter
-    def port_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 networking client.
         A networking client is needed to create a router. If omitted, the
@@ -195,12 +195,12 @@ class _RouterInterfaceState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="routerId")
-    def router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the router this interface belongs to. Changing
         this creates a new router interface.
@@ -208,12 +208,12 @@ class _RouterInterfaceState:
         return pulumi.get(self, "router_id")
 
     @router_id.setter
-    def router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the subnet this interface connects to. Changing
         this creates a new router interface.
@@ -221,7 +221,7 @@ class _RouterInterfaceState:
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_id", value)
 
 
@@ -231,11 +231,11 @@ class RouterInterface(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V2 router interface resource within OpenStack.
@@ -342,11 +342,11 @@ class RouterInterface(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -373,11 +373,11 @@ class RouterInterface(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            port_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            subnet_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'RouterInterface':
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            port_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RouterInterface':
         """
         Get an existing RouterInterface resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

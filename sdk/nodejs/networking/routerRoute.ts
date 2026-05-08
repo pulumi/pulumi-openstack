@@ -150,24 +150,24 @@ export interface RouterRouteState {
      * CIDR block to match on the packet’s destination IP. Changing
      * this creates a new routing entry.
      */
-    destinationCidr?: pulumi.Input<string>;
+    destinationCidr?: pulumi.Input<string | undefined>;
     /**
      * IP address of the next hop gateway.  Changing
      * this creates a new routing entry.
      */
-    nextHop?: pulumi.Input<string>;
+    nextHop?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to configure a routing entry on a router. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * routing entry.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * ID of the router this routing entry belongs to. Changing
      * this creates a new routing entry.
      */
-    routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -190,7 +190,7 @@ export interface RouterRouteArgs {
      * `region` argument of the provider is used. Changing this creates a new
      * routing entry.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * ID of the router this routing entry belongs to. Changing
      * this creates a new routing entry.

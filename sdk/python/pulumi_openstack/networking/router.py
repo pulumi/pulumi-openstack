@@ -21,21 +21,21 @@ __all__ = ['RouterArgs', 'Router']
 @pulumi.input_type
 class RouterArgs:
     def __init__(__self__, *,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 availability_zone_hints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 distributed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_snat: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]] = None,
-                 external_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vendor_options: Optional[pulumi.Input['RouterVendorOptionsArgs']] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 availability_zone_hints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 distributed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_snat: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]] = None,
+                 external_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vendor_options: pulumi.Input[Optional['RouterVendorOptionsArgs']] = None):
         """
         The set of arguments for constructing a Router resource.
 
@@ -117,7 +117,7 @@ class RouterArgs:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Administrative up/down status for the router
         (must be "true" or "false" if provided). Changing this updates the
@@ -126,12 +126,12 @@ class RouterArgs:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZoneHints")
-    def availability_zone_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def availability_zone_hints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An availability zone is used to make
         network resources highly available. Used for resources with high availability
@@ -141,24 +141,24 @@ class RouterArgs:
         return pulumi.get(self, "availability_zone_hints")
 
     @availability_zone_hints.setter
-    def availability_zone_hints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def availability_zone_hints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "availability_zone_hints", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable description for the router.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def distributed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def distributed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether or not to create a
         distributed router. The default policy setting in Neutron restricts
@@ -167,12 +167,12 @@ class RouterArgs:
         return pulumi.get(self, "distributed")
 
     @distributed.setter
-    def distributed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def distributed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "distributed", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSnat")
-    def enable_snat(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_snat(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Source NAT for the router. Valid values are
         "true" or "false". An `external_network_id` has to be set in order to
@@ -183,12 +183,12 @@ class RouterArgs:
         return pulumi.get(self, "enable_snat")
 
     @enable_snat.setter
-    def enable_snat(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_snat(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_snat", value)
 
     @_builtins.property
     @pulumi.getter(name="externalFixedIps")
-    def external_fixed_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]]:
+    def external_fixed_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]]:
         """
         An external fixed IP for the router. This
         can be repeated. The structure is described below. An `external_network_id`
@@ -198,12 +198,12 @@ class RouterArgs:
         return pulumi.get(self, "external_fixed_ips")
 
     @external_fixed_ips.setter
-    def external_fixed_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]]):
+    def external_fixed_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]]):
         pulumi.set(self, "external_fixed_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="externalNetworkId")
-    def external_network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network UUID of an external gateway
         for the router. A router with an external gateway is required if any
@@ -213,12 +213,12 @@ class RouterArgs:
         return pulumi.get(self, "external_network_id")
 
     @external_network_id.setter
-    def external_network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="externalQosPolicyId")
-    def external_qos_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_qos_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The QoS policy UUID that will be applied
         on the external gateway for the router. Changing this updates the external
@@ -227,12 +227,12 @@ class RouterArgs:
         return pulumi.get(self, "external_qos_policy_id")
 
     @external_qos_policy_id.setter
-    def external_qos_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_qos_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_qos_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="externalSubnetIds")
-    def external_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def external_subnet_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of external subnet IDs to try over
         each to obtain a fixed IP for the router. If a subnet ID in a list has
@@ -243,12 +243,12 @@ class RouterArgs:
         return pulumi.get(self, "external_subnet_ids")
 
     @external_subnet_ids.setter
-    def external_subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def external_subnet_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "external_subnet_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the router. Changing this
         updates the `name` of an existing router.
@@ -256,12 +256,12 @@ class RouterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 networking client.
         A networking client is needed to create a router. If omitted, the
@@ -271,24 +271,24 @@ class RouterArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of string tags for the router.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of the floating IP. Required if admin wants
         to create a router for another tenant. Changing this creates a new router.
@@ -296,24 +296,24 @@ class RouterArgs:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional driver-specific options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value_specs", value)
 
     @_builtins.property
     @pulumi.getter(name="vendorOptions")
-    def vendor_options(self) -> Optional[pulumi.Input['RouterVendorOptionsArgs']]:
+    def vendor_options(self) -> pulumi.Input[Optional['RouterVendorOptionsArgs']]:
         """
         Map of additional vendor-specific options.
         Supported options are described below.
@@ -321,29 +321,29 @@ class RouterArgs:
         return pulumi.get(self, "vendor_options")
 
     @vendor_options.setter
-    def vendor_options(self, value: Optional[pulumi.Input['RouterVendorOptionsArgs']]):
+    def vendor_options(self, value: pulumi.Input[Optional['RouterVendorOptionsArgs']]):
         pulumi.set(self, "vendor_options", value)
 
 
 @pulumi.input_type
 class _RouterState:
     def __init__(__self__, *,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 availability_zone_hints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 distributed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_snat: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]] = None,
-                 external_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vendor_options: Optional[pulumi.Input['RouterVendorOptionsArgs']] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 all_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 availability_zone_hints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 distributed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_snat: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]] = None,
+                 external_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vendor_options: pulumi.Input[Optional['RouterVendorOptionsArgs']] = None):
         """
         Input properties used for looking up and filtering Router resources.
 
@@ -429,7 +429,7 @@ class _RouterState:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Administrative up/down status for the router
         (must be "true" or "false" if provided). Changing this updates the
@@ -438,12 +438,12 @@ class _RouterState:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def all_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The collection of tags assigned on the router, which have been
         explicitly and implicitly added.
@@ -451,12 +451,12 @@ class _RouterState:
         return pulumi.get(self, "all_tags")
 
     @all_tags.setter
-    def all_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def all_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "all_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZoneHints")
-    def availability_zone_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def availability_zone_hints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An availability zone is used to make
         network resources highly available. Used for resources with high availability
@@ -466,24 +466,24 @@ class _RouterState:
         return pulumi.get(self, "availability_zone_hints")
 
     @availability_zone_hints.setter
-    def availability_zone_hints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def availability_zone_hints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "availability_zone_hints", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable description for the router.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def distributed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def distributed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether or not to create a
         distributed router. The default policy setting in Neutron restricts
@@ -492,12 +492,12 @@ class _RouterState:
         return pulumi.get(self, "distributed")
 
     @distributed.setter
-    def distributed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def distributed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "distributed", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSnat")
-    def enable_snat(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_snat(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Source NAT for the router. Valid values are
         "true" or "false". An `external_network_id` has to be set in order to
@@ -508,12 +508,12 @@ class _RouterState:
         return pulumi.get(self, "enable_snat")
 
     @enable_snat.setter
-    def enable_snat(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_snat(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_snat", value)
 
     @_builtins.property
     @pulumi.getter(name="externalFixedIps")
-    def external_fixed_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]]:
+    def external_fixed_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]]:
         """
         An external fixed IP for the router. This
         can be repeated. The structure is described below. An `external_network_id`
@@ -523,12 +523,12 @@ class _RouterState:
         return pulumi.get(self, "external_fixed_ips")
 
     @external_fixed_ips.setter
-    def external_fixed_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]]):
+    def external_fixed_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]]):
         pulumi.set(self, "external_fixed_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="externalNetworkId")
-    def external_network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network UUID of an external gateway
         for the router. A router with an external gateway is required if any
@@ -538,12 +538,12 @@ class _RouterState:
         return pulumi.get(self, "external_network_id")
 
     @external_network_id.setter
-    def external_network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="externalQosPolicyId")
-    def external_qos_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_qos_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The QoS policy UUID that will be applied
         on the external gateway for the router. Changing this updates the external
@@ -552,12 +552,12 @@ class _RouterState:
         return pulumi.get(self, "external_qos_policy_id")
 
     @external_qos_policy_id.setter
-    def external_qos_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_qos_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_qos_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="externalSubnetIds")
-    def external_subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def external_subnet_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of external subnet IDs to try over
         each to obtain a fixed IP for the router. If a subnet ID in a list has
@@ -568,12 +568,12 @@ class _RouterState:
         return pulumi.get(self, "external_subnet_ids")
 
     @external_subnet_ids.setter
-    def external_subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def external_subnet_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "external_subnet_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the router. Changing this
         updates the `name` of an existing router.
@@ -581,12 +581,12 @@ class _RouterState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 networking client.
         A networking client is needed to create a router. If omitted, the
@@ -596,24 +596,24 @@ class _RouterState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of string tags for the router.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of the floating IP. Required if admin wants
         to create a router for another tenant. Changing this creates a new router.
@@ -621,24 +621,24 @@ class _RouterState:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional driver-specific options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value_specs", value)
 
     @_builtins.property
     @pulumi.getter(name="vendorOptions")
-    def vendor_options(self) -> Optional[pulumi.Input['RouterVendorOptionsArgs']]:
+    def vendor_options(self) -> pulumi.Input[Optional['RouterVendorOptionsArgs']]:
         """
         Map of additional vendor-specific options.
         Supported options are described below.
@@ -646,7 +646,7 @@ class _RouterState:
         return pulumi.get(self, "vendor_options")
 
     @vendor_options.setter
-    def vendor_options(self, value: Optional[pulumi.Input['RouterVendorOptionsArgs']]):
+    def vendor_options(self, value: pulumi.Input[Optional['RouterVendorOptionsArgs']]):
         pulumi.set(self, "vendor_options", value)
 
 
@@ -656,21 +656,21 @@ class Router(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 availability_zone_hints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 distributed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_snat: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict']]]]] = None,
-                 external_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vendor_options: Optional[pulumi.Input[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict']]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 availability_zone_hints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 distributed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_snat: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict']]]]] = None,
+                 external_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vendor_options: pulumi.Input[Optional[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict']]] = None,
                  __props__=None):
         """
         Manages a V2 router resource within OpenStack.
@@ -788,21 +788,21 @@ class Router(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 availability_zone_hints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 distributed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_snat: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict']]]]] = None,
-                 external_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vendor_options: Optional[pulumi.Input[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict']]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 availability_zone_hints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 distributed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_snat: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict']]]]] = None,
+                 external_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vendor_options: pulumi.Input[Optional[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -838,22 +838,22 @@ class Router(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-            all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            availability_zone_hints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            distributed: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_snat: Optional[pulumi.Input[_builtins.bool]] = None,
-            external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict']]]]] = None,
-            external_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-            external_qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vendor_options: Optional[pulumi.Input[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict']]] = None) -> 'Router':
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            all_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            availability_zone_hints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            distributed: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_snat: pulumi.Input[Optional[_builtins.bool]] = None,
+            external_fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict']]]]] = None,
+            external_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            external_qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            external_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vendor_options: pulumi.Input[Optional[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict']]] = None) -> 'Router':
         """
         Get an existing Router resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

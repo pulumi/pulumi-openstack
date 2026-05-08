@@ -22,26 +22,26 @@ __all__ = ['PortArgs', 'Port']
 class PortArgs:
     def __init__(__self__, *,
                  network_id: pulumi.Input[_builtins.str],
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_address_pairs: Optional[pulumi.Input[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]]] = None,
-                 binding: Optional[pulumi.Input['PortBindingArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_dhcp_options: Optional[pulumi.Input[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]]] = None,
-                 fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input['PortFixedIpArgs']]]] = None,
-                 mac_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_fixed_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 no_security_groups: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_security_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_address_pairs: pulumi.Input[Optional[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]]] = None,
+                 binding: pulumi.Input[Optional['PortBindingArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_dhcp_options: pulumi.Input[Optional[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]]] = None,
+                 fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input['PortFixedIpArgs']]]] = None,
+                 mac_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_fixed_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 no_security_groups: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Port resource.
 
@@ -157,7 +157,7 @@ class PortArgs:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Administrative up/down status for the port
         (must be `true` or `false` if provided). Changing this updates the
@@ -166,12 +166,12 @@ class PortArgs:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedAddressPairs")
-    def allowed_address_pairs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]]]:
+    def allowed_address_pairs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]]]:
         """
         An IP/MAC Address pair of additional IP
         addresses that can be active on this port. The structure is described
@@ -180,12 +180,12 @@ class PortArgs:
         return pulumi.get(self, "allowed_address_pairs")
 
     @allowed_address_pairs.setter
-    def allowed_address_pairs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]]]):
+    def allowed_address_pairs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]]]):
         pulumi.set(self, "allowed_address_pairs", value)
 
     @_builtins.property
     @pulumi.getter
-    def binding(self) -> Optional[pulumi.Input['PortBindingArgs']]:
+    def binding(self) -> pulumi.Input[Optional['PortBindingArgs']]:
         """
         The port binding allows to specify binding information
         for the port. The structure is described below.
@@ -193,12 +193,12 @@ class PortArgs:
         return pulumi.get(self, "binding")
 
     @binding.setter
-    def binding(self, value: Optional[pulumi.Input['PortBindingArgs']]):
+    def binding(self, value: pulumi.Input[Optional['PortBindingArgs']]):
         pulumi.set(self, "binding", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable description of the port. Changing
         this updates the `description` of an existing port.
@@ -206,12 +206,12 @@ class PortArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceId")
-    def device_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the device attached to the port. Changing this
         creates a new port.
@@ -219,12 +219,12 @@ class PortArgs:
         return pulumi.get(self, "device_id")
 
     @device_id.setter
-    def device_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceOwner")
-    def device_owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device_owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The device owner of the port. Changing this creates
         a new port.
@@ -232,12 +232,12 @@ class PortArgs:
         return pulumi.get(self, "device_owner")
 
     @device_owner.setter
-    def device_owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device_owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device_owner", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsName")
-    def dns_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port DNS name. Available, when Neutron DNS extension
         is enabled.
@@ -245,12 +245,12 @@ class PortArgs:
         return pulumi.get(self, "dns_name")
 
     @dns_name.setter
-    def dns_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_name", value)
 
     @_builtins.property
     @pulumi.getter(name="extraDhcpOptions")
-    def extra_dhcp_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]]]:
+    def extra_dhcp_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]]]:
         """
         An extra DHCP option that needs to be configured
         on the port. The structure is described below. Can be specified multiple
@@ -259,12 +259,12 @@ class PortArgs:
         return pulumi.get(self, "extra_dhcp_options")
 
     @extra_dhcp_options.setter
-    def extra_dhcp_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]]]):
+    def extra_dhcp_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]]]):
         pulumi.set(self, "extra_dhcp_options", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedIps")
-    def fixed_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PortFixedIpArgs']]]]:
+    def fixed_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PortFixedIpArgs']]]]:
         """
         An array of desired IPs for
         this port. The structure is described below.
@@ -272,12 +272,12 @@ class PortArgs:
         return pulumi.get(self, "fixed_ips")
 
     @fixed_ips.setter
-    def fixed_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PortFixedIpArgs']]]]):
+    def fixed_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PortFixedIpArgs']]]]):
         pulumi.set(self, "fixed_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="macAddress")
-    def mac_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mac_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify a specific MAC address for the port. Changing
         this creates a new port.
@@ -285,12 +285,12 @@ class PortArgs:
         return pulumi.get(self, "mac_address")
 
     @mac_address.setter
-    def mac_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mac_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mac_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the port. Changing this
         updates the `name` of an existing port.
@@ -298,12 +298,12 @@ class PortArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="noFixedIp")
-    def no_fixed_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_fixed_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Create a port with no fixed
         IP address. This will also remove any fixed IPs previously set on a port. `true`
@@ -312,12 +312,12 @@ class PortArgs:
         return pulumi.get(self, "no_fixed_ip")
 
     @no_fixed_ip.setter
-    def no_fixed_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_fixed_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_fixed_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="noSecurityGroups")
-    def no_security_groups(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_security_groups(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to
         `true`, then no security groups are applied to the port. If set to `false` and
@@ -328,12 +328,12 @@ class PortArgs:
         return pulumi.get(self, "no_security_groups")
 
     @no_security_groups.setter
-    def no_security_groups(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_security_groups(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_security_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="portSecurityEnabled")
-    def port_security_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def port_security_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to explicitly enable or disable
         port security on the port. Port Security is usually enabled by default, so
@@ -345,24 +345,24 @@ class PortArgs:
         return pulumi.get(self, "port_security_enabled")
 
     @port_security_enabled.setter
-    def port_security_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def port_security_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "port_security_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="qosPolicyId")
-    def qos_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qos_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to the associated QoS policy.
         """
         return pulumi.get(self, "qos_policy_id")
 
     @qos_policy_id.setter
-    def qos_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qos_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qos_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a port. If omitted, the
@@ -372,12 +372,12 @@ class PortArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list
         of security group IDs to apply to the port. The security groups must be
@@ -387,24 +387,24 @@ class PortArgs:
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of string tags for the port.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of the port. Required if admin wants
         to create a port for another tenant. Changing this creates a new port.
@@ -412,50 +412,50 @@ class PortArgs:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
 @pulumi.input_type
 class _PortState:
     def __init__(__self__, *,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 all_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 all_security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 allowed_address_pairs: Optional[pulumi.Input[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]]] = None,
-                 binding: Optional[pulumi.Input['PortBindingArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_dhcp_options: Optional[pulumi.Input[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]]] = None,
-                 fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input['PortFixedIpArgs']]]] = None,
-                 mac_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_fixed_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 no_security_groups: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_security_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 all_fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 all_security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 all_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allowed_address_pairs: pulumi.Input[Optional[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]]] = None,
+                 binding: pulumi.Input[Optional['PortBindingArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_dhcp_options: pulumi.Input[Optional[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]]] = None,
+                 fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input['PortFixedIpArgs']]]] = None,
+                 mac_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_fixed_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 no_security_groups: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Port resources.
 
@@ -574,7 +574,7 @@ class _PortState:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Administrative up/down status for the port
         (must be `true` or `false` if provided). Changing this updates the
@@ -583,12 +583,12 @@ class _PortState:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter(name="allFixedIps")
-    def all_fixed_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def all_fixed_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The collection of Fixed IP addresses on the port in the
         order returned by the Network v2 API.
@@ -596,12 +596,12 @@ class _PortState:
         return pulumi.get(self, "all_fixed_ips")
 
     @all_fixed_ips.setter
-    def all_fixed_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def all_fixed_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "all_fixed_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="allSecurityGroupIds")
-    def all_security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def all_security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The collection of Security Group IDs on the port
         which have been explicitly and implicitly added.
@@ -609,12 +609,12 @@ class _PortState:
         return pulumi.get(self, "all_security_group_ids")
 
     @all_security_group_ids.setter
-    def all_security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def all_security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "all_security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="allTags")
-    def all_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def all_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The collection of tags assigned on the port, which have been
         explicitly and implicitly added.
@@ -622,12 +622,12 @@ class _PortState:
         return pulumi.get(self, "all_tags")
 
     @all_tags.setter
-    def all_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def all_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "all_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedAddressPairs")
-    def allowed_address_pairs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]]]:
+    def allowed_address_pairs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]]]:
         """
         An IP/MAC Address pair of additional IP
         addresses that can be active on this port. The structure is described
@@ -636,12 +636,12 @@ class _PortState:
         return pulumi.get(self, "allowed_address_pairs")
 
     @allowed_address_pairs.setter
-    def allowed_address_pairs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]]]):
+    def allowed_address_pairs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]]]):
         pulumi.set(self, "allowed_address_pairs", value)
 
     @_builtins.property
     @pulumi.getter
-    def binding(self) -> Optional[pulumi.Input['PortBindingArgs']]:
+    def binding(self) -> pulumi.Input[Optional['PortBindingArgs']]:
         """
         The port binding allows to specify binding information
         for the port. The structure is described below.
@@ -649,12 +649,12 @@ class _PortState:
         return pulumi.get(self, "binding")
 
     @binding.setter
-    def binding(self, value: Optional[pulumi.Input['PortBindingArgs']]):
+    def binding(self, value: pulumi.Input[Optional['PortBindingArgs']]):
         pulumi.set(self, "binding", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable description of the port. Changing
         this updates the `description` of an existing port.
@@ -662,12 +662,12 @@ class _PortState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceId")
-    def device_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the device attached to the port. Changing this
         creates a new port.
@@ -675,12 +675,12 @@ class _PortState:
         return pulumi.get(self, "device_id")
 
     @device_id.setter
-    def device_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceOwner")
-    def device_owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device_owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The device owner of the port. Changing this creates
         a new port.
@@ -688,24 +688,24 @@ class _PortState:
         return pulumi.get(self, "device_owner")
 
     @device_owner.setter
-    def device_owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device_owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device_owner", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsAssignments")
-    def dns_assignments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+    def dns_assignments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         """
         The list of maps representing port DNS assignments.
         """
         return pulumi.get(self, "dns_assignments")
 
     @dns_assignments.setter
-    def dns_assignments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+    def dns_assignments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "dns_assignments", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsName")
-    def dns_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port DNS name. Available, when Neutron DNS extension
         is enabled.
@@ -713,12 +713,12 @@ class _PortState:
         return pulumi.get(self, "dns_name")
 
     @dns_name.setter
-    def dns_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_name", value)
 
     @_builtins.property
     @pulumi.getter(name="extraDhcpOptions")
-    def extra_dhcp_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]]]:
+    def extra_dhcp_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]]]:
         """
         An extra DHCP option that needs to be configured
         on the port. The structure is described below. Can be specified multiple
@@ -727,12 +727,12 @@ class _PortState:
         return pulumi.get(self, "extra_dhcp_options")
 
     @extra_dhcp_options.setter
-    def extra_dhcp_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]]]):
+    def extra_dhcp_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]]]):
         pulumi.set(self, "extra_dhcp_options", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedIps")
-    def fixed_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PortFixedIpArgs']]]]:
+    def fixed_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PortFixedIpArgs']]]]:
         """
         An array of desired IPs for
         this port. The structure is described below.
@@ -740,12 +740,12 @@ class _PortState:
         return pulumi.get(self, "fixed_ips")
 
     @fixed_ips.setter
-    def fixed_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PortFixedIpArgs']]]]):
+    def fixed_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PortFixedIpArgs']]]]):
         pulumi.set(self, "fixed_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="macAddress")
-    def mac_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mac_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify a specific MAC address for the port. Changing
         this creates a new port.
@@ -753,12 +753,12 @@ class _PortState:
         return pulumi.get(self, "mac_address")
 
     @mac_address.setter
-    def mac_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mac_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mac_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the port. Changing this
         updates the `name` of an existing port.
@@ -766,12 +766,12 @@ class _PortState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkId")
-    def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the network to attach the port to. Changing
         this creates a new port.
@@ -779,12 +779,12 @@ class _PortState:
         return pulumi.get(self, "network_id")
 
     @network_id.setter
-    def network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="noFixedIp")
-    def no_fixed_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_fixed_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Create a port with no fixed
         IP address. This will also remove any fixed IPs previously set on a port. `true`
@@ -793,12 +793,12 @@ class _PortState:
         return pulumi.get(self, "no_fixed_ip")
 
     @no_fixed_ip.setter
-    def no_fixed_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_fixed_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_fixed_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="noSecurityGroups")
-    def no_security_groups(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_security_groups(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to
         `true`, then no security groups are applied to the port. If set to `false` and
@@ -809,12 +809,12 @@ class _PortState:
         return pulumi.get(self, "no_security_groups")
 
     @no_security_groups.setter
-    def no_security_groups(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_security_groups(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_security_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="portSecurityEnabled")
-    def port_security_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def port_security_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to explicitly enable or disable
         port security on the port. Port Security is usually enabled by default, so
@@ -826,24 +826,24 @@ class _PortState:
         return pulumi.get(self, "port_security_enabled")
 
     @port_security_enabled.setter
-    def port_security_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def port_security_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "port_security_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="qosPolicyId")
-    def qos_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qos_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to the associated QoS policy.
         """
         return pulumi.get(self, "qos_policy_id")
 
     @qos_policy_id.setter
-    def qos_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qos_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qos_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a port. If omitted, the
@@ -853,12 +853,12 @@ class _PortState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list
         of security group IDs to apply to the port. The security groups must be
@@ -868,24 +868,24 @@ class _PortState:
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of string tags for the port.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of the port. Required if admin wants
         to create a port for another tenant. Changing this creates a new port.
@@ -893,19 +893,19 @@ class _PortState:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -915,27 +915,27 @@ class Port(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_address_pairs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortAllowedAddressPairArgs', 'PortAllowedAddressPairArgsDict']]]]] = None,
-                 binding: Optional[pulumi.Input[Union['PortBindingArgs', 'PortBindingArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_dhcp_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortExtraDhcpOptionArgs', 'PortExtraDhcpOptionArgsDict']]]]] = None,
-                 fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortFixedIpArgs', 'PortFixedIpArgsDict']]]]] = None,
-                 mac_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_fixed_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 no_security_groups: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_security_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_address_pairs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PortAllowedAddressPairArgs', 'PortAllowedAddressPairArgsDict']]]]] = None,
+                 binding: pulumi.Input[Optional[Union['PortBindingArgs', 'PortBindingArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_dhcp_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PortExtraDhcpOptionArgs', 'PortExtraDhcpOptionArgsDict']]]]] = None,
+                 fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PortFixedIpArgs', 'PortFixedIpArgsDict']]]]] = None,
+                 mac_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_fixed_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 no_security_groups: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Manages a V2 port resource within OpenStack.
@@ -1219,27 +1219,27 @@ class Port(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_address_pairs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortAllowedAddressPairArgs', 'PortAllowedAddressPairArgsDict']]]]] = None,
-                 binding: Optional[pulumi.Input[Union['PortBindingArgs', 'PortBindingArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_dhcp_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortExtraDhcpOptionArgs', 'PortExtraDhcpOptionArgsDict']]]]] = None,
-                 fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortFixedIpArgs', 'PortFixedIpArgsDict']]]]] = None,
-                 mac_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_fixed_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 no_security_groups: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_security_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_address_pairs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PortAllowedAddressPairArgs', 'PortAllowedAddressPairArgsDict']]]]] = None,
+                 binding: pulumi.Input[Optional[Union['PortBindingArgs', 'PortBindingArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_dhcp_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PortExtraDhcpOptionArgs', 'PortExtraDhcpOptionArgsDict']]]]] = None,
+                 fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PortFixedIpArgs', 'PortFixedIpArgsDict']]]]] = None,
+                 mac_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_fixed_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 no_security_groups: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1286,31 +1286,31 @@ class Port(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-            all_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            all_security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            allowed_address_pairs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortAllowedAddressPairArgs', 'PortAllowedAddressPairArgsDict']]]]] = None,
-            binding: Optional[pulumi.Input[Union['PortBindingArgs', 'PortBindingArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            device_id: Optional[pulumi.Input[_builtins.str]] = None,
-            device_owner: Optional[pulumi.Input[_builtins.str]] = None,
-            dns_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-            dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-            extra_dhcp_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortExtraDhcpOptionArgs', 'PortExtraDhcpOptionArgsDict']]]]] = None,
-            fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PortFixedIpArgs', 'PortFixedIpArgsDict']]]]] = None,
-            mac_address: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_id: Optional[pulumi.Input[_builtins.str]] = None,
-            no_fixed_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-            no_security_groups: Optional[pulumi.Input[_builtins.bool]] = None,
-            port_security_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Port':
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            all_fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            all_security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            all_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            allowed_address_pairs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PortAllowedAddressPairArgs', 'PortAllowedAddressPairArgsDict']]]]] = None,
+            binding: pulumi.Input[Optional[Union['PortBindingArgs', 'PortBindingArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            device_id: pulumi.Input[Optional[_builtins.str]] = None,
+            device_owner: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+            extra_dhcp_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PortExtraDhcpOptionArgs', 'PortExtraDhcpOptionArgsDict']]]]] = None,
+            fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PortFixedIpArgs', 'PortFixedIpArgsDict']]]]] = None,
+            mac_address: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            no_fixed_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            no_security_groups: pulumi.Input[Optional[_builtins.bool]] = None,
+            port_security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Port':
         """
         Get an existing Port resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

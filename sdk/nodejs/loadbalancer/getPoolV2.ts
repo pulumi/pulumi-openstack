@@ -214,34 +214,34 @@ export interface GetPoolV2OutputArgs {
      * The load balancing algorithm to distribute traffic to the
      * pool's members.
      */
-    lbMethod?: pulumi.Input<string>;
+    lbMethod?: pulumi.Input<string | undefined>;
     /**
      * The ID of the load balancer associated with
      * the requested pool.
      */
-    loadbalancerId?: pulumi.Input<string>;
+    loadbalancerId?: pulumi.Input<string | undefined>;
     /**
      * The name of the pool. Exactly one of `name`, `poolId`
      * is required to be set.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the pool. Exactly one of `name`, `poolId`
      * is required to be set.
      */
-    poolId?: pulumi.Input<string>;
+    poolId?: pulumi.Input<string | undefined>;
     /**
      * The protocol of the requested pool.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Load Balancer
      * client. If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A set of tags applied to the loadbalancer's pool. The
      * loadbalancer' pool will be returned if it has all of the specified tags.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

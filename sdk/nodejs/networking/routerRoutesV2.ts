@@ -152,16 +152,16 @@ export interface RouterRoutesV2State {
      * omitted, the `region` argument of the provider is used. Changing this creates
      * new routing entries.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * ID of the router these routing entries belong to.
      * Changing this creates new routing entries.
      */
-    routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string | undefined>;
     /**
      * A set of routing entries to add to the router.
      */
-    routes?: pulumi.Input<pulumi.Input<inputs.networking.RouterRoutesV2Route>[]>;
+    routes?: pulumi.Input<pulumi.Input<inputs.networking.RouterRoutesV2Route>[] | undefined>;
 }
 
 /**
@@ -174,7 +174,7 @@ export interface RouterRoutesV2Args {
      * omitted, the `region` argument of the provider is used. Changing this creates
      * new routing entries.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * ID of the router these routing entries belong to.
      * Changing this creates new routing entries.
@@ -183,5 +183,5 @@ export interface RouterRoutesV2Args {
     /**
      * A set of routing entries to add to the router.
      */
-    routes?: pulumi.Input<pulumi.Input<inputs.networking.RouterRoutesV2Route>[]>;
+    routes?: pulumi.Input<pulumi.Input<inputs.networking.RouterRoutesV2Route>[] | undefined>;
 }

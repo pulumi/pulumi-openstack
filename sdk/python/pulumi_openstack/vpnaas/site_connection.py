@@ -27,19 +27,19 @@ class SiteConnectionArgs:
                  peer_id: pulumi.Input[_builtins.str],
                  psk: pulumi.Input[_builtins.str],
                  vpnservice_id: pulumi.Input[_builtins.str],
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dpds: Optional[pulumi.Input[Sequence[pulumi.Input['SiteConnectionDpdArgs']]]] = None,
-                 initiator: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_ep_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 peer_ep_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dpds: pulumi.Input[Optional[Sequence[pulumi.Input['SiteConnectionDpdArgs']]]] = None,
+                 initiator: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_ep_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 peer_ep_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SiteConnection resource.
 
@@ -189,7 +189,7 @@ class SiteConnectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the resource. Can either be up(true) or down(false).
         Changing this updates the administrative state of the existing connection.
@@ -197,12 +197,12 @@ class SiteConnectionArgs:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable description for the connection.
         Changing this updates the description of the existing connection.
@@ -210,36 +210,36 @@ class SiteConnectionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def dpds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SiteConnectionDpdArgs']]]]:
+    def dpds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SiteConnectionDpdArgs']]]]:
         """
         A dictionary with dead peer detection (DPD) protocol controls.
         """
         return pulumi.get(self, "dpds")
 
     @dpds.setter
-    def dpds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SiteConnectionDpdArgs']]]]):
+    def dpds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SiteConnectionDpdArgs']]]]):
         pulumi.set(self, "dpds", value)
 
     @_builtins.property
     @pulumi.getter
-    def initiator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def initiator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A valid value is response-only or bi-directional. Default is bi-directional.
         """
         return pulumi.get(self, "initiator")
 
     @initiator.setter
-    def initiator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def initiator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initiator", value)
 
     @_builtins.property
     @pulumi.getter(name="localEpGroupId")
-    def local_ep_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_ep_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID for the endpoint group that contains private subnets for the local side of the connection.
         You must specify this parameter with the peer_ep_group_id parameter unless
@@ -249,12 +249,12 @@ class SiteConnectionArgs:
         return pulumi.get(self, "local_ep_group_id")
 
     @local_ep_group_id.setter
-    def local_ep_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_ep_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_ep_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="localId")
-    def local_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An ID to be used instead of the external IP address for a virtual router used in traffic between instances on different networks in east-west traffic.
         Most often, local ID would be domain name, email address, etc.
@@ -263,12 +263,12 @@ class SiteConnectionArgs:
         return pulumi.get(self, "local_id")
 
     @local_id.setter
-    def local_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum transmission unit (MTU) value to address fragmentation.
         Minimum value is 68 for IPv4, and 1280 for IPv6.
@@ -276,12 +276,12 @@ class SiteConnectionArgs:
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the connection. Changing this updates the name of
         the existing connection.
@@ -289,24 +289,24 @@ class SiteConnectionArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="peerCidrs")
-    def peer_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def peer_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Unique list of valid peer private CIDRs in the form < net_address > / < prefix > .
         """
         return pulumi.get(self, "peer_cidrs")
 
     @peer_cidrs.setter
-    def peer_cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def peer_cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "peer_cidrs", value)
 
     @_builtins.property
     @pulumi.getter(name="peerEpGroupId")
-    def peer_ep_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_ep_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID for the endpoint group that contains private CIDRs in the form < net_address > / < prefix > for the peer side of the connection.
         You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
@@ -315,12 +315,12 @@ class SiteConnectionArgs:
         return pulumi.get(self, "peer_ep_group_id")
 
     @peer_ep_group_id.setter
-    def peer_ep_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_ep_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_ep_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an IPSec site connection. If omitted, the
@@ -330,12 +330,12 @@ class SiteConnectionArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of the connection. Required if admin wants to
         create a connection for another project. Changing this creates a new connection.
@@ -343,44 +343,44 @@ class SiteConnectionArgs:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
 @pulumi.input_type
 class _SiteConnectionState:
     def __init__(__self__, *,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dpds: Optional[pulumi.Input[Sequence[pulumi.Input['SiteConnectionDpdArgs']]]] = None,
-                 ikepolicy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 initiator: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipsecpolicy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_ep_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 peer_ep_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 psk: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpnservice_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dpds: pulumi.Input[Optional[Sequence[pulumi.Input['SiteConnectionDpdArgs']]]] = None,
+                 ikepolicy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 initiator: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipsecpolicy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_ep_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 peer_ep_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 psk: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpnservice_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SiteConnection resources.
 
@@ -462,7 +462,7 @@ class _SiteConnectionState:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the resource. Can either be up(true) or down(false).
         Changing this updates the administrative state of the existing connection.
@@ -470,12 +470,12 @@ class _SiteConnectionState:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable description for the connection.
         Changing this updates the description of the existing connection.
@@ -483,60 +483,60 @@ class _SiteConnectionState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def dpds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SiteConnectionDpdArgs']]]]:
+    def dpds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SiteConnectionDpdArgs']]]]:
         """
         A dictionary with dead peer detection (DPD) protocol controls.
         """
         return pulumi.get(self, "dpds")
 
     @dpds.setter
-    def dpds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SiteConnectionDpdArgs']]]]):
+    def dpds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SiteConnectionDpdArgs']]]]):
         pulumi.set(self, "dpds", value)
 
     @_builtins.property
     @pulumi.getter(name="ikepolicyId")
-    def ikepolicy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ikepolicy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the IKE policy. Changing this creates a new connection.
         """
         return pulumi.get(self, "ikepolicy_id")
 
     @ikepolicy_id.setter
-    def ikepolicy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ikepolicy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ikepolicy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def initiator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def initiator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A valid value is response-only or bi-directional. Default is bi-directional.
         """
         return pulumi.get(self, "initiator")
 
     @initiator.setter
-    def initiator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def initiator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initiator", value)
 
     @_builtins.property
     @pulumi.getter(name="ipsecpolicyId")
-    def ipsecpolicy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipsecpolicy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the IPsec policy. Changing this creates a new connection.
         """
         return pulumi.get(self, "ipsecpolicy_id")
 
     @ipsecpolicy_id.setter
-    def ipsecpolicy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipsecpolicy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipsecpolicy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="localEpGroupId")
-    def local_ep_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_ep_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID for the endpoint group that contains private subnets for the local side of the connection.
         You must specify this parameter with the peer_ep_group_id parameter unless
@@ -546,12 +546,12 @@ class _SiteConnectionState:
         return pulumi.get(self, "local_ep_group_id")
 
     @local_ep_group_id.setter
-    def local_ep_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_ep_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_ep_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="localId")
-    def local_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An ID to be used instead of the external IP address for a virtual router used in traffic between instances on different networks in east-west traffic.
         Most often, local ID would be domain name, email address, etc.
@@ -560,12 +560,12 @@ class _SiteConnectionState:
         return pulumi.get(self, "local_id")
 
     @local_id.setter
-    def local_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum transmission unit (MTU) value to address fragmentation.
         Minimum value is 68 for IPv4, and 1280 for IPv6.
@@ -573,12 +573,12 @@ class _SiteConnectionState:
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the connection. Changing this updates the name of
         the existing connection.
@@ -586,36 +586,36 @@ class _SiteConnectionState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="peerAddress")
-    def peer_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The peer gateway public IPv4 or IPv6 address or FQDN.
         """
         return pulumi.get(self, "peer_address")
 
     @peer_address.setter
-    def peer_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_address", value)
 
     @_builtins.property
     @pulumi.getter(name="peerCidrs")
-    def peer_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def peer_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Unique list of valid peer private CIDRs in the form < net_address > / < prefix > .
         """
         return pulumi.get(self, "peer_cidrs")
 
     @peer_cidrs.setter
-    def peer_cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def peer_cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "peer_cidrs", value)
 
     @_builtins.property
     @pulumi.getter(name="peerEpGroupId")
-    def peer_ep_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_ep_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID for the endpoint group that contains private CIDRs in the form < net_address > / < prefix > for the peer side of the connection.
         You must specify this parameter with the local_ep_group_id parameter unless in backward-compatible mode
@@ -624,12 +624,12 @@ class _SiteConnectionState:
         return pulumi.get(self, "peer_ep_group_id")
 
     @peer_ep_group_id.setter
-    def peer_ep_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_ep_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_ep_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="peerId")
-    def peer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
         Typically, this value matches the peer_address value.
@@ -638,24 +638,24 @@ class _SiteConnectionState:
         return pulumi.get(self, "peer_id")
 
     @peer_id.setter
-    def peer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def psk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def psk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The pre-shared key. A valid value is any string.
         """
         return pulumi.get(self, "psk")
 
     @psk.setter
-    def psk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def psk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "psk", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an IPSec site connection. If omitted, the
@@ -665,12 +665,12 @@ class _SiteConnectionState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of the connection. Required if admin wants to
         create a connection for another project. Changing this creates a new connection.
@@ -678,31 +678,31 @@ class _SiteConnectionState:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value_specs", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnserviceId")
-    def vpnservice_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpnservice_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPN service. Changing this creates a new connection.
         """
         return pulumi.get(self, "vpnservice_id")
 
     @vpnservice_id.setter
-    def vpnservice_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpnservice_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpnservice_id", value)
 
 
@@ -712,25 +712,25 @@ class SiteConnection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dpds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SiteConnectionDpdArgs', 'SiteConnectionDpdArgsDict']]]]] = None,
-                 ikepolicy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 initiator: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipsecpolicy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_ep_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 peer_ep_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 psk: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpnservice_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dpds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SiteConnectionDpdArgs', 'SiteConnectionDpdArgsDict']]]]] = None,
+                 ikepolicy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 initiator: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipsecpolicy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_ep_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 peer_ep_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 psk: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpnservice_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V2 Neutron IPSec site connection resource within OpenStack.
@@ -860,25 +860,25 @@ class SiteConnection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dpds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SiteConnectionDpdArgs', 'SiteConnectionDpdArgsDict']]]]] = None,
-                 ikepolicy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 initiator: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipsecpolicy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_ep_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 peer_ep_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 psk: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpnservice_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dpds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SiteConnectionDpdArgs', 'SiteConnectionDpdArgsDict']]]]] = None,
+                 ikepolicy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 initiator: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipsecpolicy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_ep_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 peer_ep_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 psk: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpnservice_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -929,25 +929,25 @@ class SiteConnection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dpds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SiteConnectionDpdArgs', 'SiteConnectionDpdArgsDict']]]]] = None,
-            ikepolicy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            initiator: Optional[pulumi.Input[_builtins.str]] = None,
-            ipsecpolicy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            local_ep_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            local_id: Optional[pulumi.Input[_builtins.str]] = None,
-            mtu: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_address: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            peer_ep_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            psk: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vpnservice_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'SiteConnection':
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dpds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SiteConnectionDpdArgs', 'SiteConnectionDpdArgsDict']]]]] = None,
+            ikepolicy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            initiator: pulumi.Input[Optional[_builtins.str]] = None,
+            ipsecpolicy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            local_ep_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            local_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_address: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            peer_ep_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            psk: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpnservice_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'SiteConnection':
         """
         Get an existing SiteConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

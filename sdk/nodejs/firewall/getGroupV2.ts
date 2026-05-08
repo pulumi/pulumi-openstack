@@ -186,49 +186,49 @@ export interface GetGroupV2OutputArgs {
     /**
      * Administrative up/down status for the firewall group.
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * Human-readable description of the firewall group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The egress policy ID of the firewall group.
      */
-    egressFirewallPolicyId?: pulumi.Input<string>;
+    egressFirewallPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the firewall group.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The ingress policy ID of the firewall group.
      */
-    ingressFirewallPolicyId?: pulumi.Input<string>;
+    ingressFirewallPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The name of the firewall group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * This argument conflicts and is interchangeable
      * with `tenantId`. The owner of the firewall group.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve firewall group ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The sharing status of the firewall group.
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * Enabled status for the firewall group.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * This argument conflicts and is interchangeable
      * with `projectId`. The owner of the firewall group.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

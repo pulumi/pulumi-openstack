@@ -20,34 +20,34 @@ __all__ = ['ClusterTemplateArgs', 'ClusterTemplate']
 class ClusterTemplateArgs:
     def __init__(__self__, *,
                  coe: pulumi.Input[_builtins.str],
-                 apiserver_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_distro: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_nameserver: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_storage_driver: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 external_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 fixed_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 fixed_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 flavor: Optional[pulumi.Input[_builtins.str]] = None,
-                 floating_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-                 http_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure_registry: Optional[pulumi.Input[_builtins.str]] = None,
-                 keypair_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 master_flavor: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_lb_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_driver: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 server_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 volume_driver: Optional[pulumi.Input[_builtins.str]] = None):
+                 apiserver_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_distro: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_nameserver: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_storage_driver: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 external_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 fixed_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 fixed_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 flavor: pulumi.Input[Optional[_builtins.str]] = None,
+                 floating_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+                 http_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure_registry: pulumi.Input[Optional[_builtins.str]] = None,
+                 keypair_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 master_flavor: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_lb_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_driver: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 server_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 volume_driver: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClusterTemplate resource.
 
@@ -209,7 +209,7 @@ class ClusterTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiserverPort")
-    def apiserver_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def apiserver_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The API server port for the Container
         Orchestration Engine for this cluster template. Changing this updates the
@@ -218,12 +218,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "apiserver_port")
 
     @apiserver_port.setter
-    def apiserver_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def apiserver_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "apiserver_port", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterDistro")
-    def cluster_distro(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_distro(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The distro for the cluster (fedora-atomic,
         coreos, etc.). Changing this updates the cluster distro of the existing
@@ -232,12 +232,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "cluster_distro")
 
     @cluster_distro.setter
-    def cluster_distro(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_distro(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_distro", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsNameserver")
-    def dns_nameserver(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_nameserver(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Address of the DNS nameserver that is used in
         nodes of the cluster. Changing this updates the DNS nameserver of the
@@ -246,12 +246,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "dns_nameserver")
 
     @dns_nameserver.setter
-    def dns_nameserver(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_nameserver(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_nameserver", value)
 
     @_builtins.property
     @pulumi.getter(name="dockerStorageDriver")
-    def docker_storage_driver(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def docker_storage_driver(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Docker storage driver. Changing this
         updates the Docker storage driver of the existing cluster template.
@@ -259,12 +259,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "docker_storage_driver")
 
     @docker_storage_driver.setter
-    def docker_storage_driver(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def docker_storage_driver(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "docker_storage_driver", value)
 
     @_builtins.property
     @pulumi.getter(name="dockerVolumeSize")
-    def docker_volume_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def docker_volume_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size (in GB) of the Docker volume.
         Changing this updates the Docker volume size of the existing cluster
@@ -273,12 +273,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "docker_volume_size")
 
     @docker_volume_size.setter
-    def docker_volume_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def docker_volume_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "docker_volume_size", value)
 
     @_builtins.property
     @pulumi.getter(name="externalNetworkId")
-    def external_network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the external network that will
         be used for the cluster. Changing this updates the external network ID of
@@ -287,12 +287,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "external_network_id")
 
     @external_network_id.setter
-    def external_network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedNetwork")
-    def fixed_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fixed_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fixed network that will be attached to the
         cluster. Changing this updates the fixed network of the existing cluster
@@ -301,12 +301,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "fixed_network")
 
     @fixed_network.setter
-    def fixed_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fixed_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fixed_network", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedSubnet")
-    def fixed_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fixed_subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fixed subnet that will be attached to the
         cluster. Changing this updates the fixed subnet of the existing cluster
@@ -315,12 +315,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "fixed_subnet")
 
     @fixed_subnet.setter
-    def fixed_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fixed_subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fixed_subnet", value)
 
     @_builtins.property
     @pulumi.getter
-    def flavor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flavor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The flavor for the nodes of the cluster. Can be set via
         the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
@@ -329,12 +329,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "flavor")
 
     @flavor.setter
-    def flavor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flavor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flavor", value)
 
     @_builtins.property
     @pulumi.getter(name="floatingIpEnabled")
-    def floating_ip_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def floating_ip_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether created cluster should
         create floating IP for every node or not. Changing this updates the
@@ -343,12 +343,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "floating_ip_enabled")
 
     @floating_ip_enabled.setter
-    def floating_ip_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def floating_ip_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "floating_ip_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def hidden(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hidden(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the ClusterTemplate is hidden or not.
         Changing this updates the hidden attribute of the existing cluster
@@ -357,12 +357,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "hidden")
 
     @hidden.setter
-    def hidden(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hidden(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hidden", value)
 
     @_builtins.property
     @pulumi.getter(name="httpProxy")
-    def http_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_proxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of a proxy for receiving all HTTP
         requests and relay them. Changing this updates the HTTP proxy address of
@@ -371,12 +371,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "http_proxy")
 
     @http_proxy.setter
-    def http_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_proxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_proxy", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsProxy")
-    def https_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_proxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of a proxy for receiving all HTTPS
         requests and relay them. Changing this updates the HTTPS proxy address of
@@ -385,12 +385,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "https_proxy")
 
     @https_proxy.setter
-    def https_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_proxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_proxy", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reference to an image that is used for nodes of the
         cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
@@ -399,12 +399,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter(name="insecureRegistry")
-    def insecure_registry(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def insecure_registry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The insecure registry URL for the cluster
         template. Changing this updates the insecure registry attribute of the
@@ -413,12 +413,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "insecure_registry")
 
     @insecure_registry.setter
-    def insecure_registry(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def insecure_registry(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "insecure_registry", value)
 
     @_builtins.property
     @pulumi.getter(name="keypairId")
-    def keypair_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keypair_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Compute service SSH keypair.
         Changing this updates the keypair of the existing cluster template.
@@ -426,12 +426,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "keypair_id")
 
     @keypair_id.setter
-    def keypair_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keypair_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keypair_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of key value pairs representing additional
         properties of the cluster template. Changing this updates the labels of the
@@ -440,12 +440,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="masterFlavor")
-    def master_flavor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_flavor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The flavor for the master nodes. Can be set via
         the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
@@ -454,12 +454,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "master_flavor")
 
     @master_flavor.setter
-    def master_flavor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_flavor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_flavor", value)
 
     @_builtins.property
     @pulumi.getter(name="masterLbEnabled")
-    def master_lb_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def master_lb_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether created cluster should
         has a loadbalancer for master nodes or not. Changing this updates the
@@ -468,12 +468,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "master_lb_enabled")
 
     @master_lb_enabled.setter
-    def master_lb_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def master_lb_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "master_lb_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cluster template. Changing this updates
         the name of the existing cluster template.
@@ -481,12 +481,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkDriver")
-    def network_driver(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_driver(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the driver for the container
         network. Changing this updates the network driver of the existing cluster
@@ -495,12 +495,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "network_driver")
 
     @network_driver.setter
-    def network_driver(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_driver(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_driver", value)
 
     @_builtins.property
     @pulumi.getter(name="noProxy")
-    def no_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def no_proxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A comma-separated list of IP addresses that shouldn't
         be used in the cluster. Changing this updates the no proxy list of the
@@ -509,12 +509,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "no_proxy")
 
     @no_proxy.setter
-    def no_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def no_proxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "no_proxy", value)
 
     @_builtins.property
     @pulumi.getter
-    def public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether cluster template should be public.
         Changing this updates the public attribute of the existing cluster
@@ -523,12 +523,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "public")
 
     @public.setter
-    def public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V1 Container Infra
         client. A Container Infra client is needed to create a cluster template. If
@@ -538,12 +538,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="registryEnabled")
-    def registry_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def registry_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether Docker registry is enabled
         in the cluster. Changing this updates the registry enabled attribute of the
@@ -552,12 +552,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "registry_enabled")
 
     @registry_enabled.setter
-    def registry_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def registry_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "registry_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="serverType")
-    def server_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The server type for the cluster template. Changing
         this updates the server type of the existing cluster template.
@@ -565,12 +565,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "server_type")
 
     @server_type.setter
-    def server_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_type", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsDisabled")
-    def tls_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tls_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the TLS should be disabled in
         the cluster. Changing this updates the attribute of the existing cluster.
@@ -578,12 +578,12 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "tls_disabled")
 
     @tls_disabled.setter
-    def tls_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tls_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tls_disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeDriver")
-    def volume_driver(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_driver(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the driver that is used for the
         volumes of the cluster nodes. Changing this updates the volume driver of
@@ -592,46 +592,46 @@ class ClusterTemplateArgs:
         return pulumi.get(self, "volume_driver")
 
     @volume_driver.setter
-    def volume_driver(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_driver(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_driver", value)
 
 
 @pulumi.input_type
 class _ClusterTemplateState:
     def __init__(__self__, *,
-                 apiserver_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_distro: Optional[pulumi.Input[_builtins.str]] = None,
-                 coe: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_nameserver: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_storage_driver: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 external_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 fixed_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 fixed_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 flavor: Optional[pulumi.Input[_builtins.str]] = None,
-                 floating_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-                 http_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure_registry: Optional[pulumi.Input[_builtins.str]] = None,
-                 keypair_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 master_flavor: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_lb_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_driver: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 server_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_driver: Optional[pulumi.Input[_builtins.str]] = None):
+                 apiserver_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_distro: pulumi.Input[Optional[_builtins.str]] = None,
+                 coe: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_nameserver: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_storage_driver: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 external_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 fixed_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 fixed_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 flavor: pulumi.Input[Optional[_builtins.str]] = None,
+                 floating_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+                 http_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure_registry: pulumi.Input[Optional[_builtins.str]] = None,
+                 keypair_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 master_flavor: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_lb_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_driver: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 server_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_driver: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClusterTemplate resources.
 
@@ -794,7 +794,7 @@ class _ClusterTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="apiserverPort")
-    def apiserver_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def apiserver_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The API server port for the Container
         Orchestration Engine for this cluster template. Changing this updates the
@@ -803,12 +803,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "apiserver_port")
 
     @apiserver_port.setter
-    def apiserver_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def apiserver_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "apiserver_port", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterDistro")
-    def cluster_distro(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_distro(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The distro for the cluster (fedora-atomic,
         coreos, etc.). Changing this updates the cluster distro of the existing
@@ -817,12 +817,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "cluster_distro")
 
     @cluster_distro.setter
-    def cluster_distro(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_distro(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_distro", value)
 
     @_builtins.property
     @pulumi.getter
-    def coe(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def coe(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Container Orchestration Engine for this cluster
         template. Changing this updates the engine of the existing cluster
@@ -831,21 +831,21 @@ class _ClusterTemplateState:
         return pulumi.get(self, "coe")
 
     @coe.setter
-    def coe(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def coe(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "coe", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsNameserver")
-    def dns_nameserver(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_nameserver(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Address of the DNS nameserver that is used in
         nodes of the cluster. Changing this updates the DNS nameserver of the
@@ -854,12 +854,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "dns_nameserver")
 
     @dns_nameserver.setter
-    def dns_nameserver(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_nameserver(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_nameserver", value)
 
     @_builtins.property
     @pulumi.getter(name="dockerStorageDriver")
-    def docker_storage_driver(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def docker_storage_driver(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Docker storage driver. Changing this
         updates the Docker storage driver of the existing cluster template.
@@ -867,12 +867,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "docker_storage_driver")
 
     @docker_storage_driver.setter
-    def docker_storage_driver(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def docker_storage_driver(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "docker_storage_driver", value)
 
     @_builtins.property
     @pulumi.getter(name="dockerVolumeSize")
-    def docker_volume_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def docker_volume_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size (in GB) of the Docker volume.
         Changing this updates the Docker volume size of the existing cluster
@@ -881,12 +881,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "docker_volume_size")
 
     @docker_volume_size.setter
-    def docker_volume_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def docker_volume_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "docker_volume_size", value)
 
     @_builtins.property
     @pulumi.getter(name="externalNetworkId")
-    def external_network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the external network that will
         be used for the cluster. Changing this updates the external network ID of
@@ -895,12 +895,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "external_network_id")
 
     @external_network_id.setter
-    def external_network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedNetwork")
-    def fixed_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fixed_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fixed network that will be attached to the
         cluster. Changing this updates the fixed network of the existing cluster
@@ -909,12 +909,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "fixed_network")
 
     @fixed_network.setter
-    def fixed_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fixed_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fixed_network", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedSubnet")
-    def fixed_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fixed_subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fixed subnet that will be attached to the
         cluster. Changing this updates the fixed subnet of the existing cluster
@@ -923,12 +923,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "fixed_subnet")
 
     @fixed_subnet.setter
-    def fixed_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fixed_subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fixed_subnet", value)
 
     @_builtins.property
     @pulumi.getter
-    def flavor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flavor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The flavor for the nodes of the cluster. Can be set via
         the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
@@ -937,12 +937,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "flavor")
 
     @flavor.setter
-    def flavor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flavor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flavor", value)
 
     @_builtins.property
     @pulumi.getter(name="floatingIpEnabled")
-    def floating_ip_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def floating_ip_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether created cluster should
         create floating IP for every node or not. Changing this updates the
@@ -951,12 +951,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "floating_ip_enabled")
 
     @floating_ip_enabled.setter
-    def floating_ip_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def floating_ip_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "floating_ip_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def hidden(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hidden(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the ClusterTemplate is hidden or not.
         Changing this updates the hidden attribute of the existing cluster
@@ -965,12 +965,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "hidden")
 
     @hidden.setter
-    def hidden(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hidden(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hidden", value)
 
     @_builtins.property
     @pulumi.getter(name="httpProxy")
-    def http_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_proxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of a proxy for receiving all HTTP
         requests and relay them. Changing this updates the HTTP proxy address of
@@ -979,12 +979,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "http_proxy")
 
     @http_proxy.setter
-    def http_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_proxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_proxy", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsProxy")
-    def https_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_proxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of a proxy for receiving all HTTPS
         requests and relay them. Changing this updates the HTTPS proxy address of
@@ -993,12 +993,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "https_proxy")
 
     @https_proxy.setter
-    def https_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_proxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_proxy", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reference to an image that is used for nodes of the
         cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
@@ -1007,12 +1007,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter(name="insecureRegistry")
-    def insecure_registry(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def insecure_registry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The insecure registry URL for the cluster
         template. Changing this updates the insecure registry attribute of the
@@ -1021,12 +1021,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "insecure_registry")
 
     @insecure_registry.setter
-    def insecure_registry(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def insecure_registry(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "insecure_registry", value)
 
     @_builtins.property
     @pulumi.getter(name="keypairId")
-    def keypair_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keypair_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Compute service SSH keypair.
         Changing this updates the keypair of the existing cluster template.
@@ -1034,12 +1034,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "keypair_id")
 
     @keypair_id.setter
-    def keypair_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keypair_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keypair_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of key value pairs representing additional
         properties of the cluster template. Changing this updates the labels of the
@@ -1048,12 +1048,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="masterFlavor")
-    def master_flavor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_flavor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The flavor for the master nodes. Can be set via
         the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
@@ -1062,12 +1062,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "master_flavor")
 
     @master_flavor.setter
-    def master_flavor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_flavor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_flavor", value)
 
     @_builtins.property
     @pulumi.getter(name="masterLbEnabled")
-    def master_lb_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def master_lb_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether created cluster should
         has a loadbalancer for master nodes or not. Changing this updates the
@@ -1076,12 +1076,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "master_lb_enabled")
 
     @master_lb_enabled.setter
-    def master_lb_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def master_lb_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "master_lb_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cluster template. Changing this updates
         the name of the existing cluster template.
@@ -1089,12 +1089,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkDriver")
-    def network_driver(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_driver(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the driver for the container
         network. Changing this updates the network driver of the existing cluster
@@ -1103,12 +1103,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "network_driver")
 
     @network_driver.setter
-    def network_driver(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_driver(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_driver", value)
 
     @_builtins.property
     @pulumi.getter(name="noProxy")
-    def no_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def no_proxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A comma-separated list of IP addresses that shouldn't
         be used in the cluster. Changing this updates the no proxy list of the
@@ -1117,12 +1117,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "no_proxy")
 
     @no_proxy.setter
-    def no_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def no_proxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "no_proxy", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project of the cluster template. Required if
         admin wants to create a cluster template in another project. Changing this
@@ -1131,12 +1131,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether cluster template should be public.
         Changing this updates the public attribute of the existing cluster
@@ -1145,12 +1145,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "public")
 
     @public.setter
-    def public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V1 Container Infra
         client. A Container Infra client is needed to create a cluster template. If
@@ -1160,12 +1160,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="registryEnabled")
-    def registry_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def registry_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether Docker registry is enabled
         in the cluster. Changing this updates the registry enabled attribute of the
@@ -1174,12 +1174,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "registry_enabled")
 
     @registry_enabled.setter
-    def registry_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def registry_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "registry_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="serverType")
-    def server_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The server type for the cluster template. Changing
         this updates the server type of the existing cluster template.
@@ -1187,12 +1187,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "server_type")
 
     @server_type.setter
-    def server_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_type", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsDisabled")
-    def tls_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tls_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the TLS should be disabled in
         the cluster. Changing this updates the attribute of the existing cluster.
@@ -1200,21 +1200,21 @@ class _ClusterTemplateState:
         return pulumi.get(self, "tls_disabled")
 
     @tls_disabled.setter
-    def tls_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tls_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tls_disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user of the cluster template. Required if admin
         wants to create a cluster template for another user. Changing this creates
@@ -1223,12 +1223,12 @@ class _ClusterTemplateState:
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeDriver")
-    def volume_driver(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_driver(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the driver that is used for the
         volumes of the cluster nodes. Changing this updates the volume driver of
@@ -1237,7 +1237,7 @@ class _ClusterTemplateState:
         return pulumi.get(self, "volume_driver")
 
     @volume_driver.setter
-    def volume_driver(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_driver(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_driver", value)
 
 
@@ -1247,35 +1247,35 @@ class ClusterTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apiserver_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_distro: Optional[pulumi.Input[_builtins.str]] = None,
-                 coe: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_nameserver: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_storage_driver: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 external_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 fixed_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 fixed_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 flavor: Optional[pulumi.Input[_builtins.str]] = None,
-                 floating_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-                 http_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure_registry: Optional[pulumi.Input[_builtins.str]] = None,
-                 keypair_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 master_flavor: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_lb_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_driver: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 server_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 volume_driver: Optional[pulumi.Input[_builtins.str]] = None,
+                 apiserver_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_distro: pulumi.Input[Optional[_builtins.str]] = None,
+                 coe: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_nameserver: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_storage_driver: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 external_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 fixed_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 fixed_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 flavor: pulumi.Input[Optional[_builtins.str]] = None,
+                 floating_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+                 http_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure_registry: pulumi.Input[Optional[_builtins.str]] = None,
+                 keypair_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 master_flavor: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_lb_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_driver: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 server_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 volume_driver: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V1 Magnum cluster template resource within OpenStack.
@@ -1544,35 +1544,35 @@ class ClusterTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apiserver_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_distro: Optional[pulumi.Input[_builtins.str]] = None,
-                 coe: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_nameserver: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_storage_driver: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 external_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 fixed_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 fixed_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 flavor: Optional[pulumi.Input[_builtins.str]] = None,
-                 floating_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-                 http_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure_registry: Optional[pulumi.Input[_builtins.str]] = None,
-                 keypair_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 master_flavor: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_lb_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_driver: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 server_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 volume_driver: Optional[pulumi.Input[_builtins.str]] = None,
+                 apiserver_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_distro: pulumi.Input[Optional[_builtins.str]] = None,
+                 coe: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_nameserver: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_storage_driver: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 external_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 fixed_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 fixed_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 flavor: pulumi.Input[Optional[_builtins.str]] = None,
+                 floating_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+                 http_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure_registry: pulumi.Input[Optional[_builtins.str]] = None,
+                 keypair_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 master_flavor: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_lb_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_driver: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 server_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 volume_driver: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1627,39 +1627,39 @@ class ClusterTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            apiserver_port: Optional[pulumi.Input[_builtins.int]] = None,
-            cluster_distro: Optional[pulumi.Input[_builtins.str]] = None,
-            coe: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            dns_nameserver: Optional[pulumi.Input[_builtins.str]] = None,
-            docker_storage_driver: Optional[pulumi.Input[_builtins.str]] = None,
-            docker_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-            external_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-            fixed_network: Optional[pulumi.Input[_builtins.str]] = None,
-            fixed_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-            flavor: Optional[pulumi.Input[_builtins.str]] = None,
-            floating_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-            http_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-            https_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-            image: Optional[pulumi.Input[_builtins.str]] = None,
-            insecure_registry: Optional[pulumi.Input[_builtins.str]] = None,
-            keypair_id: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            master_flavor: Optional[pulumi.Input[_builtins.str]] = None,
-            master_lb_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_driver: Optional[pulumi.Input[_builtins.str]] = None,
-            no_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            public: Optional[pulumi.Input[_builtins.bool]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            registry_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            server_type: Optional[pulumi.Input[_builtins.str]] = None,
-            tls_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_driver: Optional[pulumi.Input[_builtins.str]] = None) -> 'ClusterTemplate':
+            apiserver_port: pulumi.Input[Optional[_builtins.int]] = None,
+            cluster_distro: pulumi.Input[Optional[_builtins.str]] = None,
+            coe: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_nameserver: pulumi.Input[Optional[_builtins.str]] = None,
+            docker_storage_driver: pulumi.Input[Optional[_builtins.str]] = None,
+            docker_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+            external_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            fixed_network: pulumi.Input[Optional[_builtins.str]] = None,
+            fixed_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            flavor: pulumi.Input[Optional[_builtins.str]] = None,
+            floating_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+            http_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+            https_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+            image: pulumi.Input[Optional[_builtins.str]] = None,
+            insecure_registry: pulumi.Input[Optional[_builtins.str]] = None,
+            keypair_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            master_flavor: pulumi.Input[Optional[_builtins.str]] = None,
+            master_lb_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_driver: pulumi.Input[Optional[_builtins.str]] = None,
+            no_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            public: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            registry_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            server_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_driver: pulumi.Input[Optional[_builtins.str]] = None) -> 'ClusterTemplate':
         """
         Get an existing ClusterTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

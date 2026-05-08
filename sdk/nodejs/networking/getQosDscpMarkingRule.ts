@@ -98,7 +98,7 @@ export interface GetQosDscpMarkingRuleOutputArgs {
     /**
      * The value of a DSCP mark.
      */
-    dscpMark?: pulumi.Input<number>;
+    dscpMark?: pulumi.Input<number | undefined>;
     /**
      * The QoS policy reference.
      */
@@ -108,5 +108,5 @@ export interface GetQosDscpMarkingRuleOutputArgs {
      * A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
      * `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

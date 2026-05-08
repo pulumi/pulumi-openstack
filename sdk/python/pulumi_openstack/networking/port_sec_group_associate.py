@@ -21,8 +21,8 @@ class PortSecGroupAssociateArgs:
     def __init__(__self__, *,
                  port_id: pulumi.Input[_builtins.str],
                  security_group_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 enforce: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 enforce: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PortSecGroupAssociate resource.
 
@@ -72,7 +72,7 @@ class PortSecGroupAssociateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enforce(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enforce(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to replace or append the list of security
         groups, specified in the `security_group_ids`. Defaults to `false`.
@@ -80,12 +80,12 @@ class PortSecGroupAssociateArgs:
         return pulumi.get(self, "enforce")
 
     @enforce.setter
-    def enforce(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enforce(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enforce", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 networking client.
         A networking client is needed to manage a port. If omitted, the
@@ -95,18 +95,18 @@ class PortSecGroupAssociateArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _PortSecGroupAssociateState:
     def __init__(__self__, *,
-                 all_security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enforce: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 all_security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enforce: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering PortSecGroupAssociate resources.
 
@@ -136,7 +136,7 @@ class _PortSecGroupAssociateState:
 
     @_builtins.property
     @pulumi.getter(name="allSecurityGroupIds")
-    def all_security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def all_security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The collection of Security Group IDs on the port
         which have been explicitly and implicitly added.
@@ -144,12 +144,12 @@ class _PortSecGroupAssociateState:
         return pulumi.get(self, "all_security_group_ids")
 
     @all_security_group_ids.setter
-    def all_security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def all_security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "all_security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def enforce(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enforce(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to replace or append the list of security
         groups, specified in the `security_group_ids`. Defaults to `false`.
@@ -157,24 +157,24 @@ class _PortSecGroupAssociateState:
         return pulumi.get(self, "enforce")
 
     @enforce.setter
-    def enforce(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enforce(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enforce", value)
 
     @_builtins.property
     @pulumi.getter(name="portId")
-    def port_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An UUID of the port to apply security groups to.
         """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
-    def port_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 networking client.
         A networking client is needed to manage a port. If omitted, the
@@ -184,12 +184,12 @@ class _PortSecGroupAssociateState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of security group IDs to apply to
         the port. The security groups must be specified by ID and not name (as
@@ -198,7 +198,7 @@ class _PortSecGroupAssociateState:
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
 
@@ -208,10 +208,10 @@ class PortSecGroupAssociate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enforce: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enforce: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Manages a V2 port's security groups within OpenStack. Useful, when the port was
@@ -375,10 +375,10 @@ class PortSecGroupAssociate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enforce: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enforce: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -407,11 +407,11 @@ class PortSecGroupAssociate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            all_security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            enforce: Optional[pulumi.Input[_builtins.bool]] = None,
-            port_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'PortSecGroupAssociate':
+            all_security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            enforce: pulumi.Input[Optional[_builtins.bool]] = None,
+            port_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'PortSecGroupAssociate':
         """
         Get an existing PortSecGroupAssociate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

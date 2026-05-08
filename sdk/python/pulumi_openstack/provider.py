@@ -19,38 +19,38 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 allow_reauth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 application_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_credential_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 cacert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 delayed_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_no_cache_header: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_overrides: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 swauth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 system_scope: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_reauth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 application_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_credential_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 cacert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 delayed_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_no_cache_header: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_overrides: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 swauth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 system_scope: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -173,7 +173,7 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowReauth")
-    def allow_reauth(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_reauth(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `false`, OpenStack authorization won't be perfomed
         automatically, if the initial auth token get expired. Defaults to `true`
@@ -181,108 +181,108 @@ class ProviderArgs:
         return pulumi.get(self, "allow_reauth")
 
     @allow_reauth.setter
-    def allow_reauth(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_reauth(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_reauth", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationCredentialId")
-    def application_credential_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_credential_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application Credential ID to login with.
         """
         return pulumi.get(self, "application_credential_id")
 
     @application_credential_id.setter
-    def application_credential_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_credential_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_credential_id", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationCredentialName")
-    def application_credential_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_credential_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application Credential name to login with.
         """
         return pulumi.get(self, "application_credential_name")
 
     @application_credential_name.setter
-    def application_credential_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_credential_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_credential_name", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationCredentialSecret")
-    def application_credential_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_credential_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application Credential secret to login with.
         """
         return pulumi.get(self, "application_credential_secret")
 
     @application_credential_secret.setter
-    def application_credential_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_credential_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_credential_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="authUrl")
-    def auth_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Identity authentication URL.
         """
         return pulumi.get(self, "auth_url")
 
     @auth_url.setter
-    def auth_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_url", value)
 
     @_builtins.property
     @pulumi.getter(name="cacertFile")
-    def cacert_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cacert_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Custom CA certificate.
         """
         return pulumi.get(self, "cacert_file")
 
     @cacert_file.setter
-    def cacert_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cacert_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cacert_file", value)
 
     @_builtins.property
     @pulumi.getter
-    def cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A client certificate to authenticate with.
         """
         return pulumi.get(self, "cert")
 
     @cert.setter
-    def cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert", value)
 
     @_builtins.property
     @pulumi.getter
-    def cloud(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An entry in a `clouds.yaml` file to use.
         """
         return pulumi.get(self, "cloud")
 
     @cloud.setter
-    def cloud(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultDomain")
-    def default_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
         """
         return pulumi.get(self, "default_domain")
 
     @default_domain.setter
-    def default_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="delayedAuth")
-    def delayed_auth(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delayed_auth(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `false`, OpenStack authorization will be perfomed,
         every time the service provider client is called. Defaults to `true`.
@@ -290,60 +290,60 @@ class ProviderArgs:
         return pulumi.get(self, "delayed_auth")
 
     @delayed_auth.setter
-    def delayed_auth(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delayed_auth(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delayed_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="disableNoCacheHeader")
-    def disable_no_cache_header(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_no_cache_header(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
         """
         return pulumi.get(self, "disable_no_cache_header")
 
     @disable_no_cache_header.setter
-    def disable_no_cache_header(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_no_cache_header(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_no_cache_header", value)
 
     @_builtins.property
     @pulumi.getter(name="domainId")
-    def domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Domain to scope to (Identity v3).
         """
         return pulumi.get(self, "domain_id")
 
     @domain_id.setter
-    def domain_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_id", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Domain to scope to (Identity v3).
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="enableLogging")
-    def enable_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Outputs very verbose logs with all calls made to and responses from OpenStack
         """
         return pulumi.get(self, "enable_logging")
 
     @enable_logging.setter
-    def enable_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_logging", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointOverrides")
-    def endpoint_overrides(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def endpoint_overrides(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of services with an endpoint to override what was
         from the Keystone catalog
@@ -351,105 +351,105 @@ class ProviderArgs:
         return pulumi.get(self, "endpoint_overrides")
 
     @endpoint_overrides.setter
-    def endpoint_overrides(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def endpoint_overrides(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "endpoint_overrides", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
-    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Trust self-signed certificates.
         """
         return pulumi.get(self, "insecure")
 
     @insecure.setter
-    def insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "insecure", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A client private key to authenticate with.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRetries")
-    def max_retries(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_retries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How many times HTTP connection should be retried until giving up.
         """
         return pulumi.get(self, "max_retries")
 
     @max_retries.setter
-    def max_retries(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_retries(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_retries", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password to login with.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="projectDomainId")
-    def project_domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_domain_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the domain where the proejct resides (Identity v3).
         """
         return pulumi.get(self, "project_domain_id")
 
     @project_domain_id.setter
-    def project_domain_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_domain_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_domain_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectDomainName")
-    def project_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the domain where the project resides (Identity v3).
         """
         return pulumi.get(self, "project_domain_name")
 
     @project_domain_name.setter
-    def project_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_domain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OpenStack region to connect to.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def swauth(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def swauth(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use Swift's authentication system instead of Keystone. Only used for
         interaction with Swift.
@@ -457,24 +457,24 @@ class ProviderArgs:
         return pulumi.get(self, "swauth")
 
     @swauth.setter
-    def swauth(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def swauth(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "swauth", value)
 
     @_builtins.property
     @pulumi.getter(name="systemScope")
-    def system_scope(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def system_scope(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
         """
         return pulumi.get(self, "system_scope")
 
     @system_scope.setter
-    def system_scope(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def system_scope(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "system_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Tenant (Identity v2) or Project (Identity v3)
         to login with.
@@ -482,12 +482,12 @@ class ProviderArgs:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantName")
-    def tenant_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Tenant (Identity v2) or Project (Identity v3)
         to login with.
@@ -495,67 +495,67 @@ class ProviderArgs:
         return pulumi.get(self, "tenant_name")
 
     @tenant_name.setter
-    def tenant_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authentication token to use as an alternative to username/password.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter(name="userDomainId")
-    def user_domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_domain_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the domain where the user resides (Identity v3).
         """
         return pulumi.get(self, "user_domain_id")
 
     @user_domain_id.setter
-    def user_domain_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_domain_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_domain_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userDomainName")
-    def user_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the domain where the user resides (Identity v3).
         """
         return pulumi.get(self, "user_domain_name")
 
     @user_domain_name.setter
-    def user_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User ID to login with.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username to login with.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
@@ -565,38 +565,38 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_reauth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 application_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_credential_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 cacert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 delayed_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_no_cache_header: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_overrides: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 swauth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 system_scope: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_reauth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 application_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_credential_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 cacert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 delayed_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_no_cache_header: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_overrides: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 swauth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 system_scope: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the openstack package. By default, resources use package-wide configuration
@@ -673,38 +673,38 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_reauth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 application_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_credential_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 cacert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 delayed_auth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_no_cache_header: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_overrides: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 swauth: Optional[pulumi.Input[_builtins.bool]] = None,
-                 system_scope: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_reauth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 application_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_credential_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 cacert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 delayed_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_no_cache_header: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_overrides: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 swauth: pulumi.Input[Optional[_builtins.bool]] = None,
+                 system_scope: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

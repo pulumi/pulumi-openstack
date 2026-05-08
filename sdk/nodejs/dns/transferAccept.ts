@@ -140,26 +140,26 @@ export interface TransferAcceptState {
      * status. The check is enabled by default. If this argument is true, zone
      * will be considered as created/updated if OpenStack accept returned success.
      */
-    disableStatusCheck?: pulumi.Input<boolean>;
+    disableStatusCheck?: pulumi.Input<boolean | undefined>;
     /**
      * The transfer key.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 DNS client.
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone zone transfer accept.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Map of additional options. Changing this creates a
      * new transfer accept.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the zone transfer request.
      */
-    zoneTransferRequestId?: pulumi.Input<string>;
+    zoneTransferRequestId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -171,7 +171,7 @@ export interface TransferAcceptArgs {
      * status. The check is enabled by default. If this argument is true, zone
      * will be considered as created/updated if OpenStack accept returned success.
      */
-    disableStatusCheck?: pulumi.Input<boolean>;
+    disableStatusCheck?: pulumi.Input<boolean | undefined>;
     /**
      * The transfer key.
      */
@@ -181,12 +181,12 @@ export interface TransferAcceptArgs {
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone zone transfer accept.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Map of additional options. Changing this creates a
      * new transfer accept.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the zone transfer request.
      */

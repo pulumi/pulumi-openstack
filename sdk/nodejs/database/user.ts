@@ -126,25 +126,25 @@ export interface UserState {
     /**
      * A list of database user should have access to.
      */
-    databases?: pulumi.Input<pulumi.Input<string>[]>;
-    host?: pulumi.Input<string>;
+    databases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * The ID for the database instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * A unique name for the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * User's password.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the db user. Changing
      * this creates a new user.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -154,8 +154,8 @@ export interface UserArgs {
     /**
      * A list of database user should have access to.
      */
-    databases?: pulumi.Input<pulumi.Input<string>[]>;
-    host?: pulumi.Input<string>;
+    databases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * The ID for the database instance.
      */
@@ -163,7 +163,7 @@ export interface UserArgs {
     /**
      * A unique name for the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * User's password.
      */
@@ -172,5 +172,5 @@ export interface UserArgs {
      * The region in which to create the db user. Changing
      * this creates a new user.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

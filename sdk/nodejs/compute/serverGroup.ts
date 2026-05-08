@@ -185,33 +185,33 @@ export interface ServerGroupState {
     /**
      * The instances that are part of this server group.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A unique name for the server group. Changing this creates
      * a new server group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of exactly one policy name to associate with
      * the server group. See the Policies section for more information. Changing this
      * creates a new server group.
      */
-    policies?: pulumi.Input<string>;
+    policies?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used. Changing
      * this creates a new server group.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The rules which are applied to specified `policy`. Currently,
      * only the `maxServerPerHost` rule is supported for the `anti-affinity` policy.
      */
-    rules?: pulumi.Input<inputs.compute.ServerGroupRules>;
+    rules?: pulumi.Input<inputs.compute.ServerGroupRules | undefined>;
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -222,26 +222,26 @@ export interface ServerGroupArgs {
      * A unique name for the server group. Changing this creates
      * a new server group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of exactly one policy name to associate with
      * the server group. See the Policies section for more information. Changing this
      * creates a new server group.
      */
-    policies?: pulumi.Input<string>;
+    policies?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used. Changing
      * this creates a new server group.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The rules which are applied to specified `policy`. Currently,
      * only the `maxServerPerHost` rule is supported for the `anti-affinity` policy.
      */
-    rules?: pulumi.Input<inputs.compute.ServerGroupRules>;
+    rules?: pulumi.Input<inputs.compute.ServerGroupRules | undefined>;
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

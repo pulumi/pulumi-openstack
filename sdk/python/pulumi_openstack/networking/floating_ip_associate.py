@@ -21,8 +21,8 @@ class FloatingIpAssociateArgs:
     def __init__(__self__, *,
                  floating_ip: pulumi.Input[_builtins.str],
                  port_id: pulumi.Input[_builtins.str],
-                 fixed_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 fixed_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FloatingIpAssociate resource.
 
@@ -69,16 +69,16 @@ class FloatingIpAssociateArgs:
 
     @_builtins.property
     @pulumi.getter(name="fixedIp")
-    def fixed_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fixed_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "fixed_ip")
 
     @fixed_ip.setter
-    def fixed_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fixed_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fixed_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a floating IP that can be used with
@@ -89,17 +89,17 @@ class FloatingIpAssociateArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _FloatingIpAssociateState:
     def __init__(__self__, *,
-                 fixed_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 floating_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 fixed_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 floating_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FloatingIpAssociate resources.
 
@@ -123,28 +123,28 @@ class _FloatingIpAssociateState:
 
     @_builtins.property
     @pulumi.getter(name="fixedIp")
-    def fixed_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fixed_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "fixed_ip")
 
     @fixed_ip.setter
-    def fixed_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fixed_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fixed_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="floatingIp")
-    def floating_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def floating_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP Address of an existing floating IP.
         """
         return pulumi.get(self, "floating_ip")
 
     @floating_ip.setter
-    def floating_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def floating_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "floating_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="portId")
-    def port_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of an existing port with at least one IP address to
         associate with this floating IP.
@@ -152,12 +152,12 @@ class _FloatingIpAssociateState:
         return pulumi.get(self, "port_id")
 
     @port_id.setter
-    def port_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a floating IP that can be used with
@@ -168,7 +168,7 @@ class _FloatingIpAssociateState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -178,10 +178,10 @@ class FloatingIpAssociate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 fixed_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 floating_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 fixed_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 floating_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Associates a floating IP to a port. This is useful for situations
@@ -267,10 +267,10 @@ class FloatingIpAssociate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 fixed_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 floating_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 fixed_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 floating_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -298,10 +298,10 @@ class FloatingIpAssociate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            fixed_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            floating_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            port_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'FloatingIpAssociate':
+            fixed_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            floating_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            port_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'FloatingIpAssociate':
         """
         Get an existing FloatingIpAssociate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

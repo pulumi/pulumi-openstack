@@ -20,14 +20,14 @@ __all__ = ['QuotaArgs', 'Quota']
 class QuotaArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
-                 health_monitor: Optional[pulumi.Input[_builtins.int]] = None,
-                 l7_policy: Optional[pulumi.Input[_builtins.int]] = None,
-                 l7_rule: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener: Optional[pulumi.Input[_builtins.int]] = None,
-                 loadbalancer: Optional[pulumi.Input[_builtins.int]] = None,
-                 member: Optional[pulumi.Input[_builtins.int]] = None,
-                 pool: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 health_monitor: pulumi.Input[Optional[_builtins.int]] = None,
+                 l7_policy: pulumi.Input[Optional[_builtins.int]] = None,
+                 l7_rule: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener: pulumi.Input[Optional[_builtins.int]] = None,
+                 loadbalancer: pulumi.Input[Optional[_builtins.int]] = None,
+                 member: pulumi.Input[Optional[_builtins.int]] = None,
+                 pool: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Quota resource.
 
@@ -85,7 +85,7 @@ class QuotaArgs:
 
     @_builtins.property
     @pulumi.getter(name="healthMonitor")
-    def health_monitor(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_monitor(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for health_monitors. Changing
         this updates the existing quota. Omitting it sets it to 0.
@@ -93,12 +93,12 @@ class QuotaArgs:
         return pulumi.get(self, "health_monitor")
 
     @health_monitor.setter
-    def health_monitor(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_monitor(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_monitor", value)
 
     @_builtins.property
     @pulumi.getter(name="l7Policy")
-    def l7_policy(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def l7_policy(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for l7_policies. Changing this
         updates the existing quota. Omitting it sets it to 0. Available in
@@ -107,12 +107,12 @@ class QuotaArgs:
         return pulumi.get(self, "l7_policy")
 
     @l7_policy.setter
-    def l7_policy(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def l7_policy(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "l7_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="l7Rule")
-    def l7_rule(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def l7_rule(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for l7_rules. Changing this
         updates the existing quota. Omitting it sets it to 0. Available in
@@ -121,12 +121,12 @@ class QuotaArgs:
         return pulumi.get(self, "l7_rule")
 
     @l7_rule.setter
-    def l7_rule(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def l7_rule(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "l7_rule", value)
 
     @_builtins.property
     @pulumi.getter
-    def listener(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def listener(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for listeners. Changing this updates
         the existing quota. Omitting it sets it to 0.
@@ -134,12 +134,12 @@ class QuotaArgs:
         return pulumi.get(self, "listener")
 
     @listener.setter
-    def listener(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def listener(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "listener", value)
 
     @_builtins.property
     @pulumi.getter
-    def loadbalancer(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def loadbalancer(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for loadbalancers. Changing this
         updates the existing quota. Omitting it sets it to 0.
@@ -147,12 +147,12 @@ class QuotaArgs:
         return pulumi.get(self, "loadbalancer")
 
     @loadbalancer.setter
-    def loadbalancer(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def loadbalancer(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "loadbalancer", value)
 
     @_builtins.property
     @pulumi.getter
-    def member(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def member(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for members. Changing this updates
         the existing quota. Omitting it sets it to 0.
@@ -160,12 +160,12 @@ class QuotaArgs:
         return pulumi.get(self, "member")
 
     @member.setter
-    def member(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def member(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "member", value)
 
     @_builtins.property
     @pulumi.getter
-    def pool(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pool(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for pools. Changing this updates the
         the existing quota. Omitting it sets it to 0.
@@ -173,12 +173,12 @@ class QuotaArgs:
         return pulumi.get(self, "pool")
 
     @pool.setter
-    def pool(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pool(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pool", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region in which to manage quotas. Changing this
         creates a new quota. If ommited, the region of the credentials is used.
@@ -186,22 +186,22 @@ class QuotaArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _QuotaState:
     def __init__(__self__, *,
-                 health_monitor: Optional[pulumi.Input[_builtins.int]] = None,
-                 l7_policy: Optional[pulumi.Input[_builtins.int]] = None,
-                 l7_rule: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener: Optional[pulumi.Input[_builtins.int]] = None,
-                 loadbalancer: Optional[pulumi.Input[_builtins.int]] = None,
-                 member: Optional[pulumi.Input[_builtins.int]] = None,
-                 pool: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 health_monitor: pulumi.Input[Optional[_builtins.int]] = None,
+                 l7_policy: pulumi.Input[Optional[_builtins.int]] = None,
+                 l7_rule: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener: pulumi.Input[Optional[_builtins.int]] = None,
+                 loadbalancer: pulumi.Input[Optional[_builtins.int]] = None,
+                 member: pulumi.Input[Optional[_builtins.int]] = None,
+                 pool: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Quota resources.
 
@@ -247,7 +247,7 @@ class _QuotaState:
 
     @_builtins.property
     @pulumi.getter(name="healthMonitor")
-    def health_monitor(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_monitor(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for health_monitors. Changing
         this updates the existing quota. Omitting it sets it to 0.
@@ -255,12 +255,12 @@ class _QuotaState:
         return pulumi.get(self, "health_monitor")
 
     @health_monitor.setter
-    def health_monitor(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_monitor(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_monitor", value)
 
     @_builtins.property
     @pulumi.getter(name="l7Policy")
-    def l7_policy(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def l7_policy(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for l7_policies. Changing this
         updates the existing quota. Omitting it sets it to 0. Available in
@@ -269,12 +269,12 @@ class _QuotaState:
         return pulumi.get(self, "l7_policy")
 
     @l7_policy.setter
-    def l7_policy(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def l7_policy(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "l7_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="l7Rule")
-    def l7_rule(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def l7_rule(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for l7_rules. Changing this
         updates the existing quota. Omitting it sets it to 0. Available in
@@ -283,12 +283,12 @@ class _QuotaState:
         return pulumi.get(self, "l7_rule")
 
     @l7_rule.setter
-    def l7_rule(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def l7_rule(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "l7_rule", value)
 
     @_builtins.property
     @pulumi.getter
-    def listener(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def listener(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for listeners. Changing this updates
         the existing quota. Omitting it sets it to 0.
@@ -296,12 +296,12 @@ class _QuotaState:
         return pulumi.get(self, "listener")
 
     @listener.setter
-    def listener(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def listener(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "listener", value)
 
     @_builtins.property
     @pulumi.getter
-    def loadbalancer(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def loadbalancer(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for loadbalancers. Changing this
         updates the existing quota. Omitting it sets it to 0.
@@ -309,12 +309,12 @@ class _QuotaState:
         return pulumi.get(self, "loadbalancer")
 
     @loadbalancer.setter
-    def loadbalancer(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def loadbalancer(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "loadbalancer", value)
 
     @_builtins.property
     @pulumi.getter
-    def member(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def member(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for members. Changing this updates
         the existing quota. Omitting it sets it to 0.
@@ -322,12 +322,12 @@ class _QuotaState:
         return pulumi.get(self, "member")
 
     @member.setter
-    def member(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def member(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "member", value)
 
     @_builtins.property
     @pulumi.getter
-    def pool(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pool(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quota value for pools. Changing this updates the
         the existing quota. Omitting it sets it to 0.
@@ -335,12 +335,12 @@ class _QuotaState:
         return pulumi.get(self, "pool")
 
     @pool.setter
-    def pool(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pool(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pool", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the project to manage quotas. Changing this
         creates a new quota.
@@ -348,12 +348,12 @@ class _QuotaState:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region in which to manage quotas. Changing this
         creates a new quota. If ommited, the region of the credentials is used.
@@ -361,7 +361,7 @@ class _QuotaState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -371,15 +371,15 @@ class Quota(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 health_monitor: Optional[pulumi.Input[_builtins.int]] = None,
-                 l7_policy: Optional[pulumi.Input[_builtins.int]] = None,
-                 l7_rule: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener: Optional[pulumi.Input[_builtins.int]] = None,
-                 loadbalancer: Optional[pulumi.Input[_builtins.int]] = None,
-                 member: Optional[pulumi.Input[_builtins.int]] = None,
-                 pool: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 health_monitor: pulumi.Input[Optional[_builtins.int]] = None,
+                 l7_policy: pulumi.Input[Optional[_builtins.int]] = None,
+                 l7_rule: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener: pulumi.Input[Optional[_builtins.int]] = None,
+                 loadbalancer: pulumi.Input[Optional[_builtins.int]] = None,
+                 member: pulumi.Input[Optional[_builtins.int]] = None,
+                 pool: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V2 load balancer quota resource within OpenStack.
@@ -503,15 +503,15 @@ class Quota(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 health_monitor: Optional[pulumi.Input[_builtins.int]] = None,
-                 l7_policy: Optional[pulumi.Input[_builtins.int]] = None,
-                 l7_rule: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener: Optional[pulumi.Input[_builtins.int]] = None,
-                 loadbalancer: Optional[pulumi.Input[_builtins.int]] = None,
-                 member: Optional[pulumi.Input[_builtins.int]] = None,
-                 pool: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 health_monitor: pulumi.Input[Optional[_builtins.int]] = None,
+                 l7_policy: pulumi.Input[Optional[_builtins.int]] = None,
+                 l7_rule: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener: pulumi.Input[Optional[_builtins.int]] = None,
+                 loadbalancer: pulumi.Input[Optional[_builtins.int]] = None,
+                 member: pulumi.Input[Optional[_builtins.int]] = None,
+                 pool: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -542,15 +542,15 @@ class Quota(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            health_monitor: Optional[pulumi.Input[_builtins.int]] = None,
-            l7_policy: Optional[pulumi.Input[_builtins.int]] = None,
-            l7_rule: Optional[pulumi.Input[_builtins.int]] = None,
-            listener: Optional[pulumi.Input[_builtins.int]] = None,
-            loadbalancer: Optional[pulumi.Input[_builtins.int]] = None,
-            member: Optional[pulumi.Input[_builtins.int]] = None,
-            pool: Optional[pulumi.Input[_builtins.int]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'Quota':
+            health_monitor: pulumi.Input[Optional[_builtins.int]] = None,
+            l7_policy: pulumi.Input[Optional[_builtins.int]] = None,
+            l7_rule: pulumi.Input[Optional[_builtins.int]] = None,
+            listener: pulumi.Input[Optional[_builtins.int]] = None,
+            loadbalancer: pulumi.Input[Optional[_builtins.int]] = None,
+            member: pulumi.Input[Optional[_builtins.int]] = None,
+            pool: pulumi.Input[Optional[_builtins.int]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'Quota':
         """
         Get an existing Quota resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

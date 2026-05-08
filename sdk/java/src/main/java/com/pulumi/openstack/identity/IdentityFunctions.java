@@ -60,8 +60,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -98,8 +98,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -148,8 +148,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -186,8 +186,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -236,8 +236,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -274,8 +274,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -324,8 +324,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -362,8 +362,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -412,8 +412,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -450,8 +450,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -492,8 +492,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetEndpointArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -534,8 +534,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetEndpointArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -576,8 +576,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetEndpointArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -618,8 +618,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetEndpointArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -660,8 +660,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetEndpointArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -702,8 +702,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetEndpointArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -744,8 +744,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetEndpointArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -787,8 +787,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -830,8 +830,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -873,8 +873,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -916,8 +916,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -959,8 +959,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -999,8 +999,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1039,8 +1039,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1079,8 +1079,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1119,8 +1119,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1159,8 +1159,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1199,8 +1199,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1239,8 +1239,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1283,8 +1283,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetProjectIdsV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1327,8 +1327,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetProjectIdsV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1371,8 +1371,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetProjectIdsV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1415,8 +1415,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetProjectIdsV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1459,8 +1459,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetProjectIdsV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1503,8 +1503,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetProjectIdsV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1547,8 +1547,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetProjectIdsV3Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1587,8 +1587,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1627,8 +1627,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1667,8 +1667,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1707,8 +1707,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1747,8 +1747,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1789,8 +1789,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1831,8 +1831,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1873,8 +1873,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1915,8 +1915,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1957,8 +1957,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1999,8 +1999,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2041,8 +2041,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2081,8 +2081,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2121,8 +2121,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2161,8 +2161,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2201,8 +2201,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2241,8 +2241,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2281,8 +2281,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2321,8 +2321,8 @@ public final class IdentityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.identity.IdentityFunctions;
      * import com.pulumi.openstack.identity.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

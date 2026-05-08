@@ -176,45 +176,45 @@ export interface SecGroupState {
      * The collection of tags assigned on the security group, which have
      * been explicitly and implicitly added.
      */
-    allTags?: pulumi.Input<pulumi.Input<string>[]>;
+    allTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether or not to delete the default
      * egress security rules. This is `false` by default. See the below note
      * for more information.
      */
-    deleteDefaultRules?: pulumi.Input<boolean>;
+    deleteDefaultRules?: pulumi.Input<boolean | undefined>;
     /**
      * A unique name for the security group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A unique name for the security group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security group.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the security group is stateful or
      * stateless. Update of the stateful argument is allowed when there is no port
      * associated with the security group. Available only in OpenStack environments
      * with the `stateful-security-group` extension. Defaults to true.
      */
-    stateful?: pulumi.Input<boolean>;
+    stateful?: pulumi.Input<boolean | undefined>;
     /**
      * A set of string tags for the security group.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The owner of the security group. Required if admin
      * wants to create a port for another tenant. Changing this creates a new
      * security group.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -226,37 +226,37 @@ export interface SecGroupArgs {
      * egress security rules. This is `false` by default. See the below note
      * for more information.
      */
-    deleteDefaultRules?: pulumi.Input<boolean>;
+    deleteDefaultRules?: pulumi.Input<boolean | undefined>;
     /**
      * A unique name for the security group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A unique name for the security group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security group.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the security group is stateful or
      * stateless. Update of the stateful argument is allowed when there is no port
      * associated with the security group. Available only in OpenStack environments
      * with the `stateful-security-group` extension. Defaults to true.
      */
-    stateful?: pulumi.Input<boolean>;
+    stateful?: pulumi.Input<boolean | undefined>;
     /**
      * A set of string tags for the security group.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The owner of the security group. Required if admin
      * wants to create a port for another tenant. Changing this creates a new
      * security group.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }

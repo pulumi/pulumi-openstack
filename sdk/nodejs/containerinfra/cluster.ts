@@ -293,115 +293,115 @@ export class Cluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Cluster resources.
  */
 export interface ClusterState {
-    apiAddress?: pulumi.Input<string>;
+    apiAddress?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the V1 Container Infra cluster
      * template. Changing this creates a new cluster.
      */
-    clusterTemplateId?: pulumi.Input<string>;
-    coeVersion?: pulumi.Input<string>;
-    containerVersion?: pulumi.Input<string>;
+    clusterTemplateId?: pulumi.Input<string | undefined>;
+    coeVersion?: pulumi.Input<string | undefined>;
+    containerVersion?: pulumi.Input<string | undefined>;
     /**
      * The timeout (in minutes) for creating the
      * cluster. Changing this creates a new cluster.
      */
-    createTimeout?: pulumi.Input<number>;
-    createdAt?: pulumi.Input<string>;
+    createTimeout?: pulumi.Input<number | undefined>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The URL used for cluster node discovery.
      * Changing this creates a new cluster.
      */
-    discoveryUrl?: pulumi.Input<string>;
+    discoveryUrl?: pulumi.Input<string | undefined>;
     /**
      * The size (in GB) of the Docker volume.
      * Changing this creates a new cluster.
      */
-    dockerVolumeSize?: pulumi.Input<number>;
+    dockerVolumeSize?: pulumi.Input<number | undefined>;
     /**
      * The fixed network that will be attached to the
      * cluster. Changing this creates a new cluster.
      */
-    fixedNetwork?: pulumi.Input<string>;
+    fixedNetwork?: pulumi.Input<string | undefined>;
     /**
      * The fixed subnet that will be attached to the
      * cluster. Changing this creates a new cluster.
      */
-    fixedSubnet?: pulumi.Input<string>;
+    fixedSubnet?: pulumi.Input<string | undefined>;
     /**
      * The flavor for the nodes of the cluster. Can be set via
      * the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
      * cluster.
      */
-    flavor?: pulumi.Input<string>;
+    flavor?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether floating IP should be
      * created for every cluster node. Changing this creates a new cluster.
      */
-    floatingIpEnabled?: pulumi.Input<boolean>;
+    floatingIpEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Compute service SSH keypair. Changing
      * this creates a new cluster.
      */
-    keypair?: pulumi.Input<string>;
-    kubeconfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    keypair?: pulumi.Input<string | undefined>;
+    kubeconfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The list of key value pairs representing additional
      * properties of the cluster. Changing this creates a new cluster.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    masterAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    masterAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The number of master nodes for the cluster.
      * Changing this creates a new cluster.
      */
-    masterCount?: pulumi.Input<number>;
+    masterCount?: pulumi.Input<number | undefined>;
     /**
      * The flavor for the master nodes. Can be set via
      * the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
      * new cluster.
      */
-    masterFlavor?: pulumi.Input<string>;
+    masterFlavor?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to create a load balancer
      * for the master nodes. Changing this creates a new cluster.
      */
-    masterLbEnabled?: pulumi.Input<boolean>;
+    masterLbEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the provided labels should be
      * merged with cluster template labels. Changing this creates a new cluster.
      */
-    mergeLabels?: pulumi.Input<boolean>;
+    mergeLabels?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the cluster. Changing this creates a new
      * cluster.
      */
-    name?: pulumi.Input<string>;
-    nodeAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    name?: pulumi.Input<string | undefined>;
+    nodeAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The number of nodes for the cluster.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * The project of the cluster. Required if admin wants
      * to create a cluster in another project. Changing this creates a new
      * cluster.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V1 Container Infra
      * client. A Container Infra client is needed to create a cluster. If omitted,
      * the `region` argument of the provider is used. Changing this creates a new
      * cluster.
      */
-    region?: pulumi.Input<string>;
-    stackId?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
+    stackId?: pulumi.Input<string | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The user of the cluster. Required if admin wants to
      * create a cluster template for another user. Changing this creates a new
      * cluster.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -412,88 +412,88 @@ export interface ClusterArgs {
      * The UUID of the V1 Container Infra cluster
      * template. Changing this creates a new cluster.
      */
-    clusterTemplateId?: pulumi.Input<string>;
+    clusterTemplateId?: pulumi.Input<string | undefined>;
     /**
      * The timeout (in minutes) for creating the
      * cluster. Changing this creates a new cluster.
      */
-    createTimeout?: pulumi.Input<number>;
+    createTimeout?: pulumi.Input<number | undefined>;
     /**
      * The URL used for cluster node discovery.
      * Changing this creates a new cluster.
      */
-    discoveryUrl?: pulumi.Input<string>;
+    discoveryUrl?: pulumi.Input<string | undefined>;
     /**
      * The size (in GB) of the Docker volume.
      * Changing this creates a new cluster.
      */
-    dockerVolumeSize?: pulumi.Input<number>;
+    dockerVolumeSize?: pulumi.Input<number | undefined>;
     /**
      * The fixed network that will be attached to the
      * cluster. Changing this creates a new cluster.
      */
-    fixedNetwork?: pulumi.Input<string>;
+    fixedNetwork?: pulumi.Input<string | undefined>;
     /**
      * The fixed subnet that will be attached to the
      * cluster. Changing this creates a new cluster.
      */
-    fixedSubnet?: pulumi.Input<string>;
+    fixedSubnet?: pulumi.Input<string | undefined>;
     /**
      * The flavor for the nodes of the cluster. Can be set via
      * the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
      * cluster.
      */
-    flavor?: pulumi.Input<string>;
+    flavor?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether floating IP should be
      * created for every cluster node. Changing this creates a new cluster.
      */
-    floatingIpEnabled?: pulumi.Input<boolean>;
+    floatingIpEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Compute service SSH keypair. Changing
      * this creates a new cluster.
      */
-    keypair?: pulumi.Input<string>;
+    keypair?: pulumi.Input<string | undefined>;
     /**
      * The list of key value pairs representing additional
      * properties of the cluster. Changing this creates a new cluster.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The number of master nodes for the cluster.
      * Changing this creates a new cluster.
      */
-    masterCount?: pulumi.Input<number>;
+    masterCount?: pulumi.Input<number | undefined>;
     /**
      * The flavor for the master nodes. Can be set via
      * the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
      * new cluster.
      */
-    masterFlavor?: pulumi.Input<string>;
+    masterFlavor?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to create a load balancer
      * for the master nodes. Changing this creates a new cluster.
      */
-    masterLbEnabled?: pulumi.Input<boolean>;
+    masterLbEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the provided labels should be
      * merged with cluster template labels. Changing this creates a new cluster.
      */
-    mergeLabels?: pulumi.Input<boolean>;
+    mergeLabels?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the cluster. Changing this creates a new
      * cluster.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The number of nodes for the cluster.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * The region in which to obtain the V1 Container Infra
      * client. A Container Infra client is needed to create a cluster. If omitted,
      * the `region` argument of the provider is used. Changing this creates a new
      * cluster.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

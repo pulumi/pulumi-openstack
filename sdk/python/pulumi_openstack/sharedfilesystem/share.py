@@ -23,15 +23,15 @@ class ShareArgs:
     def __init__(__self__, *,
                  share_proto: pulumi.Input[_builtins.str],
                  size: pulumi.Input[_builtins.int],
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Share resource.
 
@@ -110,7 +110,7 @@ class ShareArgs:
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def availability_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The share availability zone. Changing this creates a
         new share.
@@ -118,12 +118,12 @@ class ShareArgs:
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
-    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def availability_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "availability_zone", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable description for the share.
         Changing this updates the description of the existing share.
@@ -131,12 +131,12 @@ class ShareArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="isPublic")
-    def is_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The level of visibility for the share. Set to true to make
         share public. Set to false to make it private. Default value is false. Changing this
@@ -145,12 +145,12 @@ class ShareArgs:
         return pulumi.get(self, "is_public")
 
     @is_public.setter
-    def is_public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_public", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         One or more metadata key and value pairs as a dictionary of
         strings.
@@ -158,12 +158,12 @@ class ShareArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the share. Changing this updates the name
         of the existing share.
@@ -171,12 +171,12 @@ class ShareArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Shared File System
         client. A Shared File System client is needed to create a share. Changing
@@ -185,12 +185,12 @@ class ShareArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="shareNetworkId")
-    def share_network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def share_network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of a share network where the share server exists
         or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
@@ -199,12 +199,12 @@ class ShareArgs:
         return pulumi.get(self, "share_network_id")
 
     @share_network_id.setter
-    def share_network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def share_network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "share_network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="shareType")
-    def share_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def share_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The share type name. If you omit this parameter, the default
         share type is used.
@@ -212,12 +212,12 @@ class ShareArgs:
         return pulumi.get(self, "share_type")
 
     @share_type.setter
-    def share_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def share_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "share_type", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the share's base snapshot. Changing this creates
         a new share.
@@ -225,31 +225,31 @@ class ShareArgs:
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
 
 
 @pulumi.input_type
 class _ShareState:
     def __init__(__self__, *,
-                 all_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 export_locations: Optional[pulumi.Input[Sequence[pulumi.Input['ShareExportLocationArgs']]]] = None,
-                 has_replicas: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_server_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 all_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 export_locations: pulumi.Input[Optional[Sequence[pulumi.Input['ShareExportLocationArgs']]]] = None,
+                 has_replicas: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_server_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Share resources.
 
@@ -327,7 +327,7 @@ class _ShareState:
 
     @_builtins.property
     @pulumi.getter(name="allMetadata")
-    def all_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def all_metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The map of metadata, assigned on the share, which has been
         explicitly and implicitly added.
@@ -335,12 +335,12 @@ class _ShareState:
         return pulumi.get(self, "all_metadata")
 
     @all_metadata.setter
-    def all_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def all_metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "all_metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def availability_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The share availability zone. Changing this creates a
         new share.
@@ -348,12 +348,12 @@ class _ShareState:
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
-    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def availability_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "availability_zone", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable description for the share.
         Changing this updates the description of the existing share.
@@ -361,12 +361,12 @@ class _ShareState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="exportLocations")
-    def export_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShareExportLocationArgs']]]]:
+    def export_locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ShareExportLocationArgs']]]]:
         """
         A list of export locations. For example, when a share server
         has more than one network interface, it can have multiple export locations.
@@ -374,36 +374,36 @@ class _ShareState:
         return pulumi.get(self, "export_locations")
 
     @export_locations.setter
-    def export_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShareExportLocationArgs']]]]):
+    def export_locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ShareExportLocationArgs']]]]):
         pulumi.set(self, "export_locations", value)
 
     @_builtins.property
     @pulumi.getter(name="hasReplicas")
-    def has_replicas(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def has_replicas(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether a share has replicas or not.
         """
         return pulumi.get(self, "has_replicas")
 
     @has_replicas.setter
-    def has_replicas(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def has_replicas(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "has_replicas", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The share host name.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="isPublic")
-    def is_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The level of visibility for the share. Set to true to make
         share public. Set to false to make it private. Default value is false. Changing this
@@ -412,12 +412,12 @@ class _ShareState:
         return pulumi.get(self, "is_public")
 
     @is_public.setter
-    def is_public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_public", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         One or more metadata key and value pairs as a dictionary of
         strings.
@@ -425,12 +425,12 @@ class _ShareState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the share. Changing this updates the name
         of the existing share.
@@ -438,24 +438,24 @@ class _ShareState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of the Share.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Shared File System
         client. A Shared File System client is needed to create a share. Changing
@@ -464,24 +464,24 @@ class _ShareState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationType")
-    def replication_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replication_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The share replication type.
         """
         return pulumi.get(self, "replication_type")
 
     @replication_type.setter
-    def replication_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replication_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replication_type", value)
 
     @_builtins.property
     @pulumi.getter(name="shareNetworkId")
-    def share_network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def share_network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of a share network where the share server exists
         or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
@@ -490,12 +490,12 @@ class _ShareState:
         return pulumi.get(self, "share_network_id")
 
     @share_network_id.setter
-    def share_network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def share_network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "share_network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="shareProto")
-    def share_proto(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def share_proto(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The share protocol - can either be NFS, CIFS,
         CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
@@ -503,24 +503,24 @@ class _ShareState:
         return pulumi.get(self, "share_proto")
 
     @share_proto.setter
-    def share_proto(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def share_proto(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "share_proto", value)
 
     @_builtins.property
     @pulumi.getter(name="shareServerId")
-    def share_server_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def share_server_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the share server.
         """
         return pulumi.get(self, "share_server_id")
 
     @share_server_id.setter
-    def share_server_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def share_server_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "share_server_id", value)
 
     @_builtins.property
     @pulumi.getter(name="shareType")
-    def share_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def share_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The share type name. If you omit this parameter, the default
         share type is used.
@@ -528,12 +528,12 @@ class _ShareState:
         return pulumi.get(self, "share_type")
 
     @share_type.setter
-    def share_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def share_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "share_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The share size, in GBs. The requested share size cannot be greater
         than the allowed GB quota. Changing this resizes the existing share.
@@ -541,12 +541,12 @@ class _ShareState:
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the share's base snapshot. Changing this creates
         a new share.
@@ -554,7 +554,7 @@ class _ShareState:
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
 
 
@@ -564,17 +564,17 @@ class Share(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Use this resource to configure a share.
@@ -703,17 +703,17 @@ class Share(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -755,24 +755,24 @@ class Share(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            all_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            export_locations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShareExportLocationArgs', 'ShareExportLocationArgsDict']]]]] = None,
-            has_replicas: Optional[pulumi.Input[_builtins.bool]] = None,
-            host: Optional[pulumi.Input[_builtins.str]] = None,
-            is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            replication_type: Optional[pulumi.Input[_builtins.str]] = None,
-            share_network_id: Optional[pulumi.Input[_builtins.str]] = None,
-            share_proto: Optional[pulumi.Input[_builtins.str]] = None,
-            share_server_id: Optional[pulumi.Input[_builtins.str]] = None,
-            share_type: Optional[pulumi.Input[_builtins.str]] = None,
-            size: Optional[pulumi.Input[_builtins.int]] = None,
-            snapshot_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Share':
+            all_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            export_locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareExportLocationArgs', 'ShareExportLocationArgsDict']]]]] = None,
+            has_replicas: pulumi.Input[Optional[_builtins.bool]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            replication_type: pulumi.Input[Optional[_builtins.str]] = None,
+            share_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            share_proto: pulumi.Input[Optional[_builtins.str]] = None,
+            share_server_id: pulumi.Input[Optional[_builtins.str]] = None,
+            share_type: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Share':
         """
         Get an existing Share resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

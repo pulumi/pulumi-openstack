@@ -202,14 +202,14 @@ def get_project_ids_v3(domain_id: Optional[_builtins.str] = None,
         parent_id=pulumi.get(__ret__, 'parent_id'),
         region=pulumi.get(__ret__, 'region'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_project_ids_v3_output(domain_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              enabled: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                              is_domain: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                              name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              parent_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              tags: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_project_ids_v3_output(domain_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              enabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                              is_domain: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                              name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              parent_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              tags: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectIdsV3Result]:
     """
     Use this data source to get a list of OpenStack Project IDs matching the

@@ -152,11 +152,11 @@ def get_address_scope(ip_version: Optional[_builtins.int] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'),
         shared=pulumi.get(__ret__, 'shared'))
-def get_address_scope_output(ip_version: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                             name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             shared: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_address_scope_output(ip_version: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                             name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             shared: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAddressScopeResult]:
     """
     Use this data source to get the ID of an available OpenStack address-scope.

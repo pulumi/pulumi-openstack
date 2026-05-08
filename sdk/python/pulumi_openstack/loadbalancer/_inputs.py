@@ -31,39 +31,39 @@ class MembersMemberArgsDict(TypedDict):
     """
     The port on which to listen for client traffic.
     """
-    admin_state_up: NotRequired[pulumi.Input[_builtins.bool]]
+    admin_state_up: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     The administrative state of the member.
     A valid value is true (UP) or false (DOWN). Defaults to true.
     """
-    backup: NotRequired[pulumi.Input[_builtins.bool]]
+    backup: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     A bool that indicates whether the member is
     backup. **Requires octavia minor version 2.1 or later**.
     """
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The unique ID for the members.
     """
-    monitor_address: NotRequired[pulumi.Input[_builtins.str]]
+    monitor_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An alternate IP address used for health 
     monitoring a backend member.
     """
-    monitor_port: NotRequired[pulumi.Input[_builtins.int]]
+    monitor_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     An alternate protocol port used for health 
     monitoring a backend member.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Human-readable name for the member.
     """
-    subnet_id: NotRequired[pulumi.Input[_builtins.str]]
+    subnet_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The subnet in which to access the member.
     """
-    weight: NotRequired[pulumi.Input[_builtins.int]]
+    weight: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     A positive integer value that indicates the relative
     portion of traffic that this members should receive from the pool. For
@@ -76,14 +76,14 @@ class MembersMemberArgs:
     def __init__(__self__, *,
                  address: pulumi.Input[_builtins.str],
                  protocol_port: pulumi.Input[_builtins.int],
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The IP address of the members to receive traffic from
                the load balancer.
@@ -150,7 +150,7 @@ class MembersMemberArgs:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the member.
         A valid value is true (UP) or false (DOWN). Defaults to true.
@@ -158,12 +158,12 @@ class MembersMemberArgs:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter
-    def backup(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def backup(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A bool that indicates whether the member is
         backup. **Requires octavia minor version 2.1 or later**.
@@ -171,24 +171,24 @@ class MembersMemberArgs:
         return pulumi.get(self, "backup")
 
     @backup.setter
-    def backup(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def backup(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "backup", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique ID for the members.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorAddress")
-    def monitor_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An alternate IP address used for health 
         monitoring a backend member.
@@ -196,12 +196,12 @@ class MembersMemberArgs:
         return pulumi.get(self, "monitor_address")
 
     @monitor_address.setter
-    def monitor_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitor_address", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorPort")
-    def monitor_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def monitor_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         An alternate protocol port used for health 
         monitoring a backend member.
@@ -209,36 +209,36 @@ class MembersMemberArgs:
         return pulumi.get(self, "monitor_port")
 
     @monitor_port.setter
-    def monitor_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def monitor_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "monitor_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable name for the member.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subnet in which to access the member.
         """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A positive integer value that indicates the relative
         portion of traffic that this members should receive from the pool. For
@@ -248,7 +248,7 @@ class MembersMemberArgs:
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
@@ -258,7 +258,7 @@ class PoolPersistenceArgsDict(TypedDict):
     The type of persistence mode. The current specification
     supports SOURCE_IP, HTTP_COOKIE, and APP_COOKIE.
     """
-    cookie_name: NotRequired[pulumi.Input[_builtins.str]]
+    cookie_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the cookie if persistence mode is set
     appropriately. Required if `type = APP_COOKIE`.
@@ -268,7 +268,7 @@ class PoolPersistenceArgsDict(TypedDict):
 class PoolPersistenceArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 cookie_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 cookie_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: The type of persistence mode. The current specification
                supports SOURCE_IP, HTTP_COOKIE, and APP_COOKIE.
@@ -294,7 +294,7 @@ class PoolPersistenceArgs:
 
     @_builtins.property
     @pulumi.getter(name="cookieName")
-    def cookie_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cookie_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cookie if persistence mode is set
         appropriately. Required if `type = APP_COOKIE`.
@@ -302,7 +302,7 @@ class PoolPersistenceArgs:
         return pulumi.get(self, "cookie_name")
 
     @cookie_name.setter
-    def cookie_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cookie_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cookie_name", value)
 
 

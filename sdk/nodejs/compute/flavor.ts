@@ -185,63 +185,63 @@ export interface FlavorState {
      * The description of the flavor. Changing this
      * updates the description of the flavor. Requires microversion >= 2.55.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The amount of disk space in GiB to use for the root
      * (/) partition. Changing this creates a new flavor.
      */
-    disk?: pulumi.Input<number>;
+    disk?: pulumi.Input<number | undefined>;
     /**
      * The amount of ephemeral in GiB. If unspecified,
      * the default is 0. Changing this creates a new flavor.
      */
-    ephemeral?: pulumi.Input<number>;
+    ephemeral?: pulumi.Input<number | undefined>;
     /**
      * Key/Value pairs of metadata for the flavor.
      */
-    extraSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    extraSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Unique ID (integer or UUID) of flavor to create. Changing
      * this creates a new flavor.
      */
-    flavorId?: pulumi.Input<string>;
+    flavorId?: pulumi.Input<string | undefined>;
     /**
      * Whether the flavor is public. Changing this creates
      * a new flavor.
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * A unique name for the flavor. Changing this creates a new
      * flavor.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The amount of RAM to use, in megabytes. Changing this
      * creates a new flavor.
      */
-    ram?: pulumi.Input<number>;
+    ram?: pulumi.Input<number | undefined>;
     /**
      * The region in which to obtain the V2 Compute client.
      * Flavors are associated with accounts, but a Compute client is needed to
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new flavor.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * RX/TX bandwith factor. The default is 1. Changing
      * this creates a new flavor.
      */
-    rxTxFactor?: pulumi.Input<number>;
+    rxTxFactor?: pulumi.Input<number | undefined>;
     /**
      * The amount of disk space in megabytes to use. If
      * unspecified, the default is 0. Changing this creates a new flavor.
      */
-    swap?: pulumi.Input<number>;
+    swap?: pulumi.Input<number | undefined>;
     /**
      * The number of virtual CPUs to use. Changing this creates
      * a new flavor.
      */
-    vcpus?: pulumi.Input<number>;
+    vcpus?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -252,7 +252,7 @@ export interface FlavorArgs {
      * The description of the flavor. Changing this
      * updates the description of the flavor. Requires microversion >= 2.55.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The amount of disk space in GiB to use for the root
      * (/) partition. Changing this creates a new flavor.
@@ -262,26 +262,26 @@ export interface FlavorArgs {
      * The amount of ephemeral in GiB. If unspecified,
      * the default is 0. Changing this creates a new flavor.
      */
-    ephemeral?: pulumi.Input<number>;
+    ephemeral?: pulumi.Input<number | undefined>;
     /**
      * Key/Value pairs of metadata for the flavor.
      */
-    extraSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    extraSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Unique ID (integer or UUID) of flavor to create. Changing
      * this creates a new flavor.
      */
-    flavorId?: pulumi.Input<string>;
+    flavorId?: pulumi.Input<string | undefined>;
     /**
      * Whether the flavor is public. Changing this creates
      * a new flavor.
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * A unique name for the flavor. Changing this creates a new
      * flavor.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The amount of RAM to use, in megabytes. Changing this
      * creates a new flavor.
@@ -293,17 +293,17 @@ export interface FlavorArgs {
      * create one. If omitted, the `region` argument of the provider is used.
      * Changing this creates a new flavor.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * RX/TX bandwith factor. The default is 1. Changing
      * this creates a new flavor.
      */
-    rxTxFactor?: pulumi.Input<number>;
+    rxTxFactor?: pulumi.Input<number | undefined>;
     /**
      * The amount of disk space in megabytes to use. If
      * unspecified, the default is 0. Changing this creates a new flavor.
      */
-    swap?: pulumi.Input<number>;
+    swap?: pulumi.Input<number | undefined>;
     /**
      * The number of virtual CPUs to use. Changing this creates
      * a new flavor.

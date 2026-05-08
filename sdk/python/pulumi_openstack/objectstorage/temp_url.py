@@ -22,12 +22,12 @@ class TempUrlArgs:
                  container: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
                  ttl: pulumi.Input[_builtins.int],
-                 digest: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 method: Optional[pulumi.Input[_builtins.str]] = None,
-                 regenerate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 split: Optional[pulumi.Input[_builtins.str]] = None):
+                 digest: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 method: pulumi.Input[Optional[_builtins.str]] = None,
+                 regenerate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 split: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TempUrl resource.
 
@@ -103,7 +103,7 @@ class TempUrlArgs:
 
     @_builtins.property
     @pulumi.getter
-    def digest(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def digest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The digest to use when generating the tempurl.
         Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
@@ -111,12 +111,12 @@ class TempUrlArgs:
         return pulumi.get(self, "digest")
 
     @digest.setter
-    def digest(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def digest(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "digest", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key to use when generating the tempurl. If not
         provided, the key will be read from the container or account metadata.
@@ -124,12 +124,12 @@ class TempUrlArgs:
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method allowed when accessing this URL.
         Valid values are `GET`, and `POST`. Default is `GET`.
@@ -137,12 +137,12 @@ class TempUrlArgs:
         return pulumi.get(self, "method")
 
     @method.setter
-    def method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "method", value)
 
     @_builtins.property
     @pulumi.getter
-    def regenerate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def regenerate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to automatically regenerate the URL when
         it has expired. If set to true, this will create a new resource with a new
@@ -151,24 +151,24 @@ class TempUrlArgs:
         return pulumi.get(self, "regenerate")
 
     @regenerate.setter
-    def regenerate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def regenerate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "regenerate", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region the tempurl is located in.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def split(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def split(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Split is the string on which to split the object URL.
         Default is `/v1/`.
@@ -176,23 +176,23 @@ class TempUrlArgs:
         return pulumi.get(self, "split")
 
     @split.setter
-    def split(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def split(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "split", value)
 
 
 @pulumi.input_type
 class _TempUrlState:
     def __init__(__self__, *,
-                 container: Optional[pulumi.Input[_builtins.str]] = None,
-                 digest: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 method: Optional[pulumi.Input[_builtins.str]] = None,
-                 object: Optional[pulumi.Input[_builtins.str]] = None,
-                 regenerate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 split: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 container: pulumi.Input[Optional[_builtins.str]] = None,
+                 digest: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 method: pulumi.Input[Optional[_builtins.str]] = None,
+                 object: pulumi.Input[Optional[_builtins.str]] = None,
+                 regenerate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 split: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TempUrl resources.
 
@@ -237,19 +237,19 @@ class _TempUrlState:
 
     @_builtins.property
     @pulumi.getter
-    def container(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The container name the object belongs to.
         """
         return pulumi.get(self, "container")
 
     @container.setter
-    def container(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container", value)
 
     @_builtins.property
     @pulumi.getter
-    def digest(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def digest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The digest to use when generating the tempurl.
         Supported values are `sha1`, `sha256` and `sha512`. Default is `sha1`.
@@ -257,12 +257,12 @@ class _TempUrlState:
         return pulumi.get(self, "digest")
 
     @digest.setter
-    def digest(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def digest(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "digest", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key to use when generating the tempurl. If not
         provided, the key will be read from the container or account metadata.
@@ -270,12 +270,12 @@ class _TempUrlState:
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method allowed when accessing this URL.
         Valid values are `GET`, and `POST`. Default is `GET`.
@@ -283,24 +283,24 @@ class _TempUrlState:
         return pulumi.get(self, "method")
 
     @method.setter
-    def method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "method", value)
 
     @_builtins.property
     @pulumi.getter
-    def object(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object name the tempurl is for.
         """
         return pulumi.get(self, "object")
 
     @object.setter
-    def object(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object", value)
 
     @_builtins.property
     @pulumi.getter
-    def regenerate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def regenerate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to automatically regenerate the URL when
         it has expired. If set to true, this will create a new resource with a new
@@ -309,24 +309,24 @@ class _TempUrlState:
         return pulumi.get(self, "regenerate")
 
     @regenerate.setter
-    def regenerate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def regenerate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "regenerate", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region the tempurl is located in.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def split(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def split(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Split is the string on which to split the object URL.
         Default is `/v1/`.
@@ -334,12 +334,12 @@ class _TempUrlState:
         return pulumi.get(self, "split")
 
     @split.setter
-    def split(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def split(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "split", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The TTL, in seconds, for the URL. For how long it should
         be valid.
@@ -347,19 +347,19 @@ class _TempUrlState:
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -369,15 +369,15 @@ class TempUrl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container: Optional[pulumi.Input[_builtins.str]] = None,
-                 digest: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 method: Optional[pulumi.Input[_builtins.str]] = None,
-                 object: Optional[pulumi.Input[_builtins.str]] = None,
-                 regenerate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 split: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
+                 container: pulumi.Input[Optional[_builtins.str]] = None,
+                 digest: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 method: pulumi.Input[Optional[_builtins.str]] = None,
+                 object: pulumi.Input[Optional[_builtins.str]] = None,
+                 regenerate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 split: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Use this resource to generate an OpenStack Object Storage temporary URL.
@@ -483,15 +483,15 @@ class TempUrl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container: Optional[pulumi.Input[_builtins.str]] = None,
-                 digest: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 method: Optional[pulumi.Input[_builtins.str]] = None,
-                 object: Optional[pulumi.Input[_builtins.str]] = None,
-                 regenerate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 split: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
+                 container: pulumi.Input[Optional[_builtins.str]] = None,
+                 digest: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 method: pulumi.Input[Optional[_builtins.str]] = None,
+                 object: pulumi.Input[Optional[_builtins.str]] = None,
+                 regenerate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 split: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -529,16 +529,16 @@ class TempUrl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            container: Optional[pulumi.Input[_builtins.str]] = None,
-            digest: Optional[pulumi.Input[_builtins.str]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            method: Optional[pulumi.Input[_builtins.str]] = None,
-            object: Optional[pulumi.Input[_builtins.str]] = None,
-            regenerate: Optional[pulumi.Input[_builtins.bool]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            split: Optional[pulumi.Input[_builtins.str]] = None,
-            ttl: Optional[pulumi.Input[_builtins.int]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'TempUrl':
+            container: pulumi.Input[Optional[_builtins.str]] = None,
+            digest: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            method: pulumi.Input[Optional[_builtins.str]] = None,
+            object: pulumi.Input[Optional[_builtins.str]] = None,
+            regenerate: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            split: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'TempUrl':
         """
         Get an existing TempUrl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

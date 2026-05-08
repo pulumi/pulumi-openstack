@@ -22,22 +22,22 @@ __all__ = ['StackV1Args', 'StackV1']
 class StackV1Args:
     def __init__(__self__, *,
                  template_opts: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]],
-                 stack_outputs: Optional[pulumi.Input[Sequence[pulumi.Input['StackV1StackOutputArgs']]]] = None,
-                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_rollback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 environment_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 status_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 stack_outputs: pulumi.Input[Optional[Sequence[pulumi.Input['StackV1StackOutputArgs']]]] = None,
+                 capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_rollback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environment_opts: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 status_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a StackV1 resource.
 
@@ -128,31 +128,31 @@ class StackV1Args:
 
     @_builtins.property
     @pulumi.getter(name="StackOutputs")
-    def stack_outputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StackV1StackOutputArgs']]]]:
+    def stack_outputs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StackV1StackOutputArgs']]]]:
         """
         A list of stack outputs.
         """
         return pulumi.get(self, "stack_outputs")
 
     @stack_outputs.setter
-    def stack_outputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StackV1StackOutputArgs']]]]):
+    def stack_outputs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StackV1StackOutputArgs']]]]):
         pulumi.set(self, "stack_outputs", value)
 
     @_builtins.property
     @pulumi.getter
-    def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def capabilities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of stack capabilities for stack.
         """
         return pulumi.get(self, "capabilities")
 
     @capabilities.setter
-    def capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def capabilities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "capabilities", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the resource was created. The date
         and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
@@ -162,24 +162,24 @@ class StackV1Args:
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the stack resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableRollback")
-    def disable_rollback(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_rollback(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables or disables deletion of all stack
         resources when a stack creation fails. Default is true, meaning all
@@ -188,12 +188,12 @@ class StackV1Args:
         return pulumi.get(self, "disable_rollback")
 
     @disable_rollback.setter
-    def disable_rollback(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_rollback(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_rollback", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentOpts")
-    def environment_opts(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def environment_opts(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Environment key/value pairs to associate with
         the stack which contains details for the environment of the stack.
@@ -203,12 +203,12 @@ class StackV1Args:
         return pulumi.get(self, "environment_opts")
 
     @environment_opts.setter
-    def environment_opts(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def environment_opts(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "environment_opts", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the stack. It must start with an
         alphabetic character. Changing this updates the stack's name.
@@ -216,24 +216,24 @@ class StackV1Args:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationTopics")
-    def notification_topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notification_topics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of notification topics for stack.
         """
         return pulumi.get(self, "notification_topics")
 
     @notification_topics.setter
-    def notification_topics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notification_topics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notification_topics", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-defined key/value pairs as parameters to pass
         to the template. Changing this updates the existing stack parameters.
@@ -241,12 +241,12 @@ class StackV1Args:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the stack. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -255,72 +255,72 @@ class StackV1Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the stack.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="statusReason")
-    def status_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason for the current status of the stack.
         """
         return pulumi.get(self, "status_reason")
 
     @status_reason.setter
-    def status_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status_reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of tags to assosciate with the Stack
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="templateDescription")
-    def template_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the stack template.
         """
         return pulumi.get(self, "template_description")
 
     @template_description.setter
-    def template_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_description", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout for stack action in minutes.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedTime")
-    def updated_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the resource was updated. The date
         and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
@@ -330,30 +330,30 @@ class StackV1Args:
         return pulumi.get(self, "updated_time")
 
     @updated_time.setter
-    def updated_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_time", value)
 
 
 @pulumi.input_type
 class _StackV1State:
     def __init__(__self__, *,
-                 stack_outputs: Optional[pulumi.Input[Sequence[pulumi.Input['StackV1StackOutputArgs']]]] = None,
-                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_rollback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 environment_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 status_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 stack_outputs: pulumi.Input[Optional[Sequence[pulumi.Input['StackV1StackOutputArgs']]]] = None,
+                 capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_rollback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environment_opts: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 status_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_opts: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StackV1 resources.
 
@@ -430,31 +430,31 @@ class _StackV1State:
 
     @_builtins.property
     @pulumi.getter(name="StackOutputs")
-    def stack_outputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StackV1StackOutputArgs']]]]:
+    def stack_outputs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StackV1StackOutputArgs']]]]:
         """
         A list of stack outputs.
         """
         return pulumi.get(self, "stack_outputs")
 
     @stack_outputs.setter
-    def stack_outputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StackV1StackOutputArgs']]]]):
+    def stack_outputs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StackV1StackOutputArgs']]]]):
         pulumi.set(self, "stack_outputs", value)
 
     @_builtins.property
     @pulumi.getter
-    def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def capabilities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of stack capabilities for stack.
         """
         return pulumi.get(self, "capabilities")
 
     @capabilities.setter
-    def capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def capabilities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "capabilities", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the resource was created. The date
         and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
@@ -464,24 +464,24 @@ class _StackV1State:
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the stack resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableRollback")
-    def disable_rollback(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_rollback(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables or disables deletion of all stack
         resources when a stack creation fails. Default is true, meaning all
@@ -490,12 +490,12 @@ class _StackV1State:
         return pulumi.get(self, "disable_rollback")
 
     @disable_rollback.setter
-    def disable_rollback(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_rollback(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_rollback", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentOpts")
-    def environment_opts(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def environment_opts(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Environment key/value pairs to associate with
         the stack which contains details for the environment of the stack.
@@ -505,12 +505,12 @@ class _StackV1State:
         return pulumi.get(self, "environment_opts")
 
     @environment_opts.setter
-    def environment_opts(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def environment_opts(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "environment_opts", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the stack. It must start with an
         alphabetic character. Changing this updates the stack's name.
@@ -518,24 +518,24 @@ class _StackV1State:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationTopics")
-    def notification_topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notification_topics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of notification topics for stack.
         """
         return pulumi.get(self, "notification_topics")
 
     @notification_topics.setter
-    def notification_topics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notification_topics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notification_topics", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-defined key/value pairs as parameters to pass
         to the template. Changing this updates the existing stack parameters.
@@ -543,12 +543,12 @@ class _StackV1State:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the stack. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -557,60 +557,60 @@ class _StackV1State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the stack.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="statusReason")
-    def status_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason for the current status of the stack.
         """
         return pulumi.get(self, "status_reason")
 
     @status_reason.setter
-    def status_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status_reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of tags to assosciate with the Stack
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="templateDescription")
-    def template_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the stack template.
         """
         return pulumi.get(self, "template_description")
 
     @template_description.setter
-    def template_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_description", value)
 
     @_builtins.property
     @pulumi.getter(name="templateOpts")
-    def template_opts(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def template_opts(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Template key/value pairs to associate with the
         stack which contains either the template file or url.
@@ -620,24 +620,24 @@ class _StackV1State:
         return pulumi.get(self, "template_opts")
 
     @template_opts.setter
-    def template_opts(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def template_opts(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "template_opts", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout for stack action in minutes.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedTime")
-    def updated_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the resource was updated. The date
         and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
@@ -647,7 +647,7 @@ class _StackV1State:
         return pulumi.get(self, "updated_time")
 
     @updated_time.setter
-    def updated_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_time", value)
 
 
@@ -657,23 +657,23 @@ class StackV1(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 stack_outputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict']]]]] = None,
-                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_rollback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 environment_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 status_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 stack_outputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict']]]]] = None,
+                 capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_rollback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environment_opts: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 status_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_opts: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_time: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V1 stack resource within OpenStack.
@@ -822,23 +822,23 @@ class StackV1(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 stack_outputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict']]]]] = None,
-                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_rollback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 environment_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 status_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 stack_outputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict']]]]] = None,
+                 capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_rollback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environment_opts: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 status_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_opts: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_time: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -877,23 +877,23 @@ class StackV1(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            stack_outputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict']]]]] = None,
-            capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            creation_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_rollback: Optional[pulumi.Input[_builtins.bool]] = None,
-            environment_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notification_topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            status_reason: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            template_description: Optional[pulumi.Input[_builtins.str]] = None,
-            template_opts: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'StackV1':
+            stack_outputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict']]]]] = None,
+            capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_rollback: pulumi.Input[Optional[_builtins.bool]] = None,
+            environment_opts: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            status_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            template_description: pulumi.Input[Optional[_builtins.str]] = None,
+            template_opts: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'StackV1':
         """
         Get an existing StackV1 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

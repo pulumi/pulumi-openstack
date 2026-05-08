@@ -99,11 +99,11 @@ export function getQosMinimumBandwidthRuleOutput(args: GetQosMinimumBandwidthRul
  * A collection of arguments for invoking getQosMinimumBandwidthRule.
  */
 export interface GetQosMinimumBandwidthRuleOutputArgs {
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * The value of a minimum kbps bandwidth.
      */
-    minKbps?: pulumi.Input<number>;
+    minKbps?: pulumi.Input<number | undefined>;
     /**
      * The QoS policy reference.
      */
@@ -113,5 +113,5 @@ export interface GetQosMinimumBandwidthRuleOutputArgs {
      * A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
      * `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

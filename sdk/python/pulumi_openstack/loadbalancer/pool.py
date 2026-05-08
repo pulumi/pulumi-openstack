@@ -23,22 +23,22 @@ class PoolArgs:
     def __init__(__self__, *,
                  lb_method: pulumi.Input[_builtins.str],
                  protocol: pulumi.Input[_builtins.str],
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alpn_protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ca_tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 crl_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 loadbalancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence: Optional[pulumi.Input['PoolPersistenceArgs']] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_ciphers: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alpn_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ca_tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 crl_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 loadbalancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence: pulumi.Input[Optional['PoolPersistenceArgs']] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_ciphers: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Pool resource.
 
@@ -156,7 +156,7 @@ class PoolArgs:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the pool. A valid
         value is true (UP) or false (DOWN).
@@ -164,12 +164,12 @@ class PoolArgs:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter(name="alpnProtocols")
-    def alpn_protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def alpn_protocols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of ALPN protocols. Available protocols:
         `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
@@ -178,12 +178,12 @@ class PoolArgs:
         return pulumi.get(self, "alpn_protocols")
 
     @alpn_protocols.setter
-    def alpn_protocols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def alpn_protocols(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alpn_protocols", value)
 
     @_builtins.property
     @pulumi.getter(name="caTlsContainerRef")
-    def ca_tls_container_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_tls_container_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reference of the key manager service
         secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
@@ -192,12 +192,12 @@ class PoolArgs:
         return pulumi.get(self, "ca_tls_container_ref")
 
     @ca_tls_container_ref.setter
-    def ca_tls_container_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_tls_container_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_tls_container_ref", value)
 
     @_builtins.property
     @pulumi.getter(name="crlContainerRef")
-    def crl_container_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def crl_container_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reference of the key manager service
         secret containing a PEM format CA revocation list file for `tls_enabled`
@@ -206,24 +206,24 @@ class PoolArgs:
         return pulumi.get(self, "crl_container_ref")
 
     @crl_container_ref.setter
-    def crl_container_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def crl_container_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crl_container_ref", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable description for the pool.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerId")
-    def listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Listener on which the members of the pool will
         be associated with. Changing this creates a new pool. Note: One of
@@ -232,12 +232,12 @@ class PoolArgs:
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
-    def listener_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_id", value)
 
     @_builtins.property
     @pulumi.getter(name="loadbalancerId")
-    def loadbalancer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def loadbalancer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The load balancer on which to provision this
         pool. Changing this creates a new pool. Note: One of LoadbalancerID or
@@ -246,24 +246,24 @@ class PoolArgs:
         return pulumi.get(self, "loadbalancer_id")
 
     @loadbalancer_id.setter
-    def loadbalancer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def loadbalancer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "loadbalancer_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable name for the pool.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def persistence(self) -> Optional[pulumi.Input['PoolPersistenceArgs']]:
+    def persistence(self) -> pulumi.Input[Optional['PoolPersistenceArgs']]:
         """
         Omit this field to prevent session persistence.
         Indicates whether connections in the same session will be processed by the
@@ -272,12 +272,12 @@ class PoolArgs:
         return pulumi.get(self, "persistence")
 
     @persistence.setter
-    def persistence(self, value: Optional[pulumi.Input['PoolPersistenceArgs']]):
+    def persistence(self, value: pulumi.Input[Optional['PoolPersistenceArgs']]):
         pulumi.set(self, "persistence", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a pool. If omitted, the `region`
@@ -286,21 +286,21 @@ class PoolArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for admins. The UUID of the tenant who owns
         the pool.  Only administrative users can specify a tenant UUID other than
@@ -309,12 +309,12 @@ class PoolArgs:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsCiphers")
-    def tls_ciphers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls_ciphers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         List of ciphers in OpenSSL format
         (colon-separated). See
@@ -324,12 +324,12 @@ class PoolArgs:
         return pulumi.get(self, "tls_ciphers")
 
     @tls_ciphers.setter
-    def tls_ciphers(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls_ciphers(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls_ciphers", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsContainerRef")
-    def tls_container_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls_container_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reference to the key manager service
         secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
@@ -339,12 +339,12 @@ class PoolArgs:
         return pulumi.get(self, "tls_container_ref")
 
     @tls_container_ref.setter
-    def tls_container_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls_container_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls_container_ref", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsEnabled")
-    def tls_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tls_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true connections to backend member servers
         will use TLS encryption. Default is false. Supported only in **Octavia minor
@@ -353,12 +353,12 @@ class PoolArgs:
         return pulumi.get(self, "tls_enabled")
 
     @tls_enabled.setter
-    def tls_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tls_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tls_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsVersions")
-    def tls_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tls_versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of TLS protocol versions. Available
         versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
@@ -367,31 +367,31 @@ class PoolArgs:
         return pulumi.get(self, "tls_versions")
 
     @tls_versions.setter
-    def tls_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tls_versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tls_versions", value)
 
 
 @pulumi.input_type
 class _PoolState:
     def __init__(__self__, *,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alpn_protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ca_tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 crl_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 lb_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 loadbalancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence: Optional[pulumi.Input['PoolPersistenceArgs']] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_ciphers: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alpn_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ca_tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 crl_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 lb_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 loadbalancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence: pulumi.Input[Optional['PoolPersistenceArgs']] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_ciphers: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Pool resources.
 
@@ -483,7 +483,7 @@ class _PoolState:
 
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
-    def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_state_up(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The administrative state of the pool. A valid
         value is true (UP) or false (DOWN).
@@ -491,12 +491,12 @@ class _PoolState:
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
-    def admin_state_up(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_state_up(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_state_up", value)
 
     @_builtins.property
     @pulumi.getter(name="alpnProtocols")
-    def alpn_protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def alpn_protocols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of ALPN protocols. Available protocols:
         `http/1.0`, `http/1.1`, `h2`. Supported only in **Octavia minor version >=
@@ -505,12 +505,12 @@ class _PoolState:
         return pulumi.get(self, "alpn_protocols")
 
     @alpn_protocols.setter
-    def alpn_protocols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def alpn_protocols(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alpn_protocols", value)
 
     @_builtins.property
     @pulumi.getter(name="caTlsContainerRef")
-    def ca_tls_container_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_tls_container_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reference of the key manager service
         secret containing a PEM format CA certificate bundle for `tls_enabled` pools.
@@ -519,12 +519,12 @@ class _PoolState:
         return pulumi.get(self, "ca_tls_container_ref")
 
     @ca_tls_container_ref.setter
-    def ca_tls_container_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_tls_container_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_tls_container_ref", value)
 
     @_builtins.property
     @pulumi.getter(name="crlContainerRef")
-    def crl_container_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def crl_container_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reference of the key manager service
         secret containing a PEM format CA revocation list file for `tls_enabled`
@@ -533,24 +533,24 @@ class _PoolState:
         return pulumi.get(self, "crl_container_ref")
 
     @crl_container_ref.setter
-    def crl_container_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def crl_container_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crl_container_ref", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable description for the pool.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="lbMethod")
-    def lb_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lb_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The load balancing algorithm to distribute traffic
         to the pool's members. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
@@ -559,12 +559,12 @@ class _PoolState:
         return pulumi.get(self, "lb_method")
 
     @lb_method.setter
-    def lb_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lb_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lb_method", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerId")
-    def listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Listener on which the members of the pool will
         be associated with. Changing this creates a new pool. Note: One of
@@ -573,12 +573,12 @@ class _PoolState:
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
-    def listener_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_id", value)
 
     @_builtins.property
     @pulumi.getter(name="loadbalancerId")
-    def loadbalancer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def loadbalancer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The load balancer on which to provision this
         pool. Changing this creates a new pool. Note: One of LoadbalancerID or
@@ -587,24 +587,24 @@ class _PoolState:
         return pulumi.get(self, "loadbalancer_id")
 
     @loadbalancer_id.setter
-    def loadbalancer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def loadbalancer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "loadbalancer_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable name for the pool.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def persistence(self) -> Optional[pulumi.Input['PoolPersistenceArgs']]:
+    def persistence(self) -> pulumi.Input[Optional['PoolPersistenceArgs']]:
         """
         Omit this field to prevent session persistence.
         Indicates whether connections in the same session will be processed by the
@@ -613,12 +613,12 @@ class _PoolState:
         return pulumi.get(self, "persistence")
 
     @persistence.setter
-    def persistence(self, value: Optional[pulumi.Input['PoolPersistenceArgs']]):
+    def persistence(self, value: pulumi.Input[Optional['PoolPersistenceArgs']]):
         pulumi.set(self, "persistence", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol - can either be TCP, HTTP, HTTPS, PROXY,
         UDP, PROXYV2 (**Octavia minor version >= 2.22**) or SCTP (**Octavia minor
@@ -627,12 +627,12 @@ class _PoolState:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create a pool. If omitted, the `region`
@@ -641,21 +641,21 @@ class _PoolState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for admins. The UUID of the tenant who owns
         the pool.  Only administrative users can specify a tenant UUID other than
@@ -664,12 +664,12 @@ class _PoolState:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsCiphers")
-    def tls_ciphers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls_ciphers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         List of ciphers in OpenSSL format
         (colon-separated). See
@@ -679,12 +679,12 @@ class _PoolState:
         return pulumi.get(self, "tls_ciphers")
 
     @tls_ciphers.setter
-    def tls_ciphers(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls_ciphers(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls_ciphers", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsContainerRef")
-    def tls_container_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls_container_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reference to the key manager service
         secret containing a PKCS12 format certificate/key bundle for `tls_enabled`
@@ -694,12 +694,12 @@ class _PoolState:
         return pulumi.get(self, "tls_container_ref")
 
     @tls_container_ref.setter
-    def tls_container_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls_container_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls_container_ref", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsEnabled")
-    def tls_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tls_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true connections to backend member servers
         will use TLS encryption. Default is false. Supported only in **Octavia minor
@@ -708,12 +708,12 @@ class _PoolState:
         return pulumi.get(self, "tls_enabled")
 
     @tls_enabled.setter
-    def tls_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tls_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tls_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsVersions")
-    def tls_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tls_versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of TLS protocol versions. Available
         versions: `TLSv1`, `TLSv1.1`, `TLSv1.2`, `TLSv1.3`. Supported only in
@@ -722,7 +722,7 @@ class _PoolState:
         return pulumi.get(self, "tls_versions")
 
     @tls_versions.setter
-    def tls_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tls_versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tls_versions", value)
 
 
@@ -732,24 +732,24 @@ class Pool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alpn_protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ca_tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 crl_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 lb_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 loadbalancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence: Optional[pulumi.Input[Union['PoolPersistenceArgs', 'PoolPersistenceArgsDict']]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_ciphers: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alpn_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ca_tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 crl_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 lb_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 loadbalancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence: pulumi.Input[Optional[Union['PoolPersistenceArgs', 'PoolPersistenceArgsDict']]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_ciphers: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Manages a V2 pool resource within OpenStack.
@@ -885,24 +885,24 @@ class Pool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alpn_protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ca_tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 crl_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 lb_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 loadbalancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence: Optional[pulumi.Input[Union['PoolPersistenceArgs', 'PoolPersistenceArgsDict']]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_ciphers: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alpn_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ca_tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 crl_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 lb_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 loadbalancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence: pulumi.Input[Optional[Union['PoolPersistenceArgs', 'PoolPersistenceArgsDict']]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_ciphers: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -944,24 +944,24 @@ class Pool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_state_up: Optional[pulumi.Input[_builtins.bool]] = None,
-            alpn_protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ca_tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-            crl_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            lb_method: Optional[pulumi.Input[_builtins.str]] = None,
-            listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-            loadbalancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            persistence: Optional[pulumi.Input[Union['PoolPersistenceArgs', 'PoolPersistenceArgsDict']]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tls_ciphers: Optional[pulumi.Input[_builtins.str]] = None,
-            tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
-            tls_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Pool':
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            alpn_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ca_tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            crl_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            lb_method: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            loadbalancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            persistence: pulumi.Input[Optional[Union['PoolPersistenceArgs', 'PoolPersistenceArgsDict']]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_ciphers: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Pool':
         """
         Get an existing Pool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

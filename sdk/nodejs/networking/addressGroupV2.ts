@@ -127,27 +127,27 @@ export interface AddressGroupV2State {
      * A list of CIDR blocks that define the addresses in
      * the address group. Each address must be a valid IPv4 or IPv6 CIDR block.
      */
-    addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A description of the address group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A name of the address group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The owner of the address group. Required if admin
      * wants to create a group for a specific project. Changing this creates a new
      * address group.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 networking client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new address group.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -162,21 +162,21 @@ export interface AddressGroupV2Args {
     /**
      * A description of the address group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A name of the address group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The owner of the address group. Required if admin
      * wants to create a group for a specific project. Changing this creates a new
      * address group.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 networking client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new address group.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

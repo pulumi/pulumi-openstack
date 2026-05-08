@@ -22,8 +22,8 @@ __all__ = ['RouterRoutesV2Args', 'RouterRoutesV2']
 class RouterRoutesV2Args:
     def __init__(__self__, *,
                  router_id: pulumi.Input[_builtins.str],
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 routes: Optional[pulumi.Input[Sequence[pulumi.Input['RouterRoutesV2RouteArgs']]]] = None):
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 routes: pulumi.Input[Optional[Sequence[pulumi.Input['RouterRoutesV2RouteArgs']]]] = None):
         """
         The set of arguments for constructing a RouterRoutesV2 resource.
 
@@ -56,7 +56,7 @@ class RouterRoutesV2Args:
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 networking client.
         A networking client is needed to configure routing entres on a router. If
@@ -66,28 +66,28 @@ class RouterRoutesV2Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterRoutesV2RouteArgs']]]]:
+    def routes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouterRoutesV2RouteArgs']]]]:
         """
         A set of routing entries to add to the router.
         """
         return pulumi.get(self, "routes")
 
     @routes.setter
-    def routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterRoutesV2RouteArgs']]]]):
+    def routes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouterRoutesV2RouteArgs']]]]):
         pulumi.set(self, "routes", value)
 
 
 @pulumi.input_type
 class _RouterRoutesV2State:
     def __init__(__self__, *,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routes: Optional[pulumi.Input[Sequence[pulumi.Input['RouterRoutesV2RouteArgs']]]] = None):
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routes: pulumi.Input[Optional[Sequence[pulumi.Input['RouterRoutesV2RouteArgs']]]] = None):
         """
         Input properties used for looking up and filtering RouterRoutesV2 resources.
 
@@ -108,7 +108,7 @@ class _RouterRoutesV2State:
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 networking client.
         A networking client is needed to configure routing entres on a router. If
@@ -118,12 +118,12 @@ class _RouterRoutesV2State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="routerId")
-    def router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the router these routing entries belong to.
         Changing this creates new routing entries.
@@ -131,19 +131,19 @@ class _RouterRoutesV2State:
         return pulumi.get(self, "router_id")
 
     @router_id.setter
-    def router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterRoutesV2RouteArgs']]]]:
+    def routes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouterRoutesV2RouteArgs']]]]:
         """
         A set of routing entries to add to the router.
         """
         return pulumi.get(self, "routes")
 
     @routes.setter
-    def routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterRoutesV2RouteArgs']]]]):
+    def routes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouterRoutesV2RouteArgs']]]]):
         pulumi.set(self, "routes", value)
 
 
@@ -153,9 +153,9 @@ class RouterRoutesV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterRoutesV2RouteArgs', 'RouterRoutesV2RouteArgsDict']]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutesV2RouteArgs', 'RouterRoutesV2RouteArgsDict']]]]] = None,
                  __props__=None):
         """
         Creates routing entries on a OpenStack V2 router.
@@ -302,9 +302,9 @@ class RouterRoutesV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterRoutesV2RouteArgs', 'RouterRoutesV2RouteArgsDict']]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutesV2RouteArgs', 'RouterRoutesV2RouteArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -329,9 +329,9 @@ class RouterRoutesV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterRoutesV2RouteArgs', 'RouterRoutesV2RouteArgsDict']]]]] = None) -> 'RouterRoutesV2':
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutesV2RouteArgs', 'RouterRoutesV2RouteArgsDict']]]]] = None) -> 'RouterRoutesV2':
         """
         Get an existing RouterRoutesV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

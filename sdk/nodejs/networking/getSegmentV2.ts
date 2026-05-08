@@ -166,40 +166,40 @@ export interface GetSegmentV2OutputArgs {
     /**
      * Human-readable description of the network segment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the network segment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the network.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * The type of the network, such as `vlan`, `vxlan`,
      * `flat`, `gre`, `geneve`, or `local`.
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
     /**
      * The name of the physical network.
      */
-    physicalNetwork?: pulumi.Input<string>;
+    physicalNetwork?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve networks ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * See Argument Reference above.
      */
-    revisionNumber?: pulumi.Input<number>;
+    revisionNumber?: pulumi.Input<number | undefined>;
     /**
      * The ID of the network segment
      */
-    segmentId?: pulumi.Input<string>;
+    segmentId?: pulumi.Input<string | undefined>;
     /**
      * The segmentation ID of the network segment.
      */
-    segmentationId?: pulumi.Input<number>;
+    segmentationId?: pulumi.Input<number | undefined>;
 }

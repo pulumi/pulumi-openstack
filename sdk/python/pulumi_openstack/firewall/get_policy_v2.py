@@ -212,14 +212,14 @@ def get_policy_v2(audited: Optional[_builtins.bool] = None,
         rules=pulumi.get(__ret__, 'rules'),
         shared=pulumi.get(__ret__, 'shared'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'))
-def get_policy_v2_output(audited: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                         description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         policy_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         shared: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                         tenant_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_policy_v2_output(audited: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                         description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         policy_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         shared: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                         tenant_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyV2Result]:
     """
     Use this data source to get information of an available OpenStack firewall policy v2.

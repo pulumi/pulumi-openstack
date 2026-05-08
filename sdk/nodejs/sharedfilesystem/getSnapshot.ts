@@ -133,23 +133,23 @@ export interface GetSnapshotOutputArgs {
     /**
      * The human-readable description of the snapshot.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the snapshot.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Shared File System client.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the source share that was used to create the snapshot.
      */
-    shareId?: pulumi.Input<string>;
+    shareId?: pulumi.Input<string | undefined>;
     /**
      * A snapshot status filter. A valid value is `available`, `error`,
      * `creating`, `deleting`, `manageStarting`, `manageError`, `unmanageStarting`,
      * `unmanageError` or `errorDeleting`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

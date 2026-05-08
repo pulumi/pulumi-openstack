@@ -21,14 +21,14 @@ __all__ = ['ApplicationCredentialArgs', 'ApplicationCredential']
 @pulumi.input_type
 class ApplicationCredentialArgs:
     def __init__(__self__, *,
-                 access_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCredentialAccessRuleArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 unrestricted: Optional[pulumi.Input[_builtins.bool]] = None):
+                 access_rules: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationCredentialAccessRuleArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 unrestricted: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ApplicationCredential resource.
 
@@ -77,7 +77,7 @@ class ApplicationCredentialArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessRules")
-    def access_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCredentialAccessRuleArgs']]]]:
+    def access_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationCredentialAccessRuleArgs']]]]:
         """
         A collection of one or more access rules, which
         this application credential allows to follow. The structure is described
@@ -86,12 +86,12 @@ class ApplicationCredentialArgs:
         return pulumi.get(self, "access_rules")
 
     @access_rules.setter
-    def access_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCredentialAccessRuleArgs']]]]):
+    def access_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationCredentialAccessRuleArgs']]]]):
         pulumi.set(self, "access_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the application credential.
         Changing this creates a new application credential.
@@ -99,12 +99,12 @@ class ApplicationCredentialArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The expiration time of the application credential
         in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted,
@@ -114,12 +114,12 @@ class ApplicationCredentialArgs:
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name of the application credential. Changing this
         creates a new application credential.
@@ -127,12 +127,12 @@ class ApplicationCredentialArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V3 Keystone client.
         If omitted, the `region` argument of the provider is used. Changing this
@@ -141,12 +141,12 @@ class ApplicationCredentialArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def roles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A collection of one or more role names, which this
         application credential has to be associated with its project. If omitted,
@@ -157,12 +157,12 @@ class ApplicationCredentialArgs:
         return pulumi.get(self, "roles")
 
     @roles.setter
-    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def roles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "roles", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secret for the application credential. If omitted,
         it will be generated by the server. Changing this creates a new application
@@ -171,12 +171,12 @@ class ApplicationCredentialArgs:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def unrestricted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def unrestricted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A flag indicating whether the application
         credential may be used for creation or destruction of other application
@@ -185,22 +185,22 @@ class ApplicationCredentialArgs:
         return pulumi.get(self, "unrestricted")
 
     @unrestricted.setter
-    def unrestricted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def unrestricted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "unrestricted", value)
 
 
 @pulumi.input_type
 class _ApplicationCredentialState:
     def __init__(__self__, *,
-                 access_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCredentialAccessRuleArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 unrestricted: Optional[pulumi.Input[_builtins.bool]] = None):
+                 access_rules: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationCredentialAccessRuleArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 unrestricted: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ApplicationCredential resources.
 
@@ -254,7 +254,7 @@ class _ApplicationCredentialState:
 
     @_builtins.property
     @pulumi.getter(name="accessRules")
-    def access_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCredentialAccessRuleArgs']]]]:
+    def access_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationCredentialAccessRuleArgs']]]]:
         """
         A collection of one or more access rules, which
         this application credential allows to follow. The structure is described
@@ -263,12 +263,12 @@ class _ApplicationCredentialState:
         return pulumi.get(self, "access_rules")
 
     @access_rules.setter
-    def access_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCredentialAccessRuleArgs']]]]):
+    def access_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationCredentialAccessRuleArgs']]]]):
         pulumi.set(self, "access_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the application credential.
         Changing this creates a new application credential.
@@ -276,12 +276,12 @@ class _ApplicationCredentialState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The expiration time of the application credential
         in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted,
@@ -291,12 +291,12 @@ class _ApplicationCredentialState:
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name of the application credential. Changing this
         creates a new application credential.
@@ -304,12 +304,12 @@ class _ApplicationCredentialState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project the application credential was created
         for and that authentication requests using this application credential will
@@ -318,12 +318,12 @@ class _ApplicationCredentialState:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V3 Keystone client.
         If omitted, the `region` argument of the provider is used. Changing this
@@ -332,12 +332,12 @@ class _ApplicationCredentialState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def roles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A collection of one or more role names, which this
         application credential has to be associated with its project. If omitted,
@@ -348,12 +348,12 @@ class _ApplicationCredentialState:
         return pulumi.get(self, "roles")
 
     @roles.setter
-    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def roles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "roles", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secret for the application credential. If omitted,
         it will be generated by the server. Changing this creates a new application
@@ -362,12 +362,12 @@ class _ApplicationCredentialState:
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def unrestricted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def unrestricted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A flag indicating whether the application
         credential may be used for creation or destruction of other application
@@ -376,7 +376,7 @@ class _ApplicationCredentialState:
         return pulumi.get(self, "unrestricted")
 
     @unrestricted.setter
-    def unrestricted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def unrestricted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "unrestricted", value)
 
 
@@ -386,14 +386,14 @@ class ApplicationCredential(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationCredentialAccessRuleArgs', 'ApplicationCredentialAccessRuleArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 unrestricted: Optional[pulumi.Input[_builtins.bool]] = None,
+                 access_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationCredentialAccessRuleArgs', 'ApplicationCredentialAccessRuleArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 unrestricted: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages a V3 Application Credential resource within OpenStack Keystone.
@@ -612,14 +612,14 @@ class ApplicationCredential(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationCredentialAccessRuleArgs', 'ApplicationCredentialAccessRuleArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 unrestricted: Optional[pulumi.Input[_builtins.bool]] = None,
+                 access_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationCredentialAccessRuleArgs', 'ApplicationCredentialAccessRuleArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 unrestricted: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -650,15 +650,15 @@ class ApplicationCredential(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationCredentialAccessRuleArgs', 'ApplicationCredentialAccessRuleArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            secret: Optional[pulumi.Input[_builtins.str]] = None,
-            unrestricted: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ApplicationCredential':
+            access_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationCredentialAccessRuleArgs', 'ApplicationCredentialAccessRuleArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            unrestricted: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ApplicationCredential':
         """
         Get an existing ApplicationCredential resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -158,35 +158,35 @@ export interface GetUserOutputArgs {
     /**
      * The domain this user belongs to.
      */
-    domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string | undefined>;
     /**
      * Whether the user is enabled or disabled. Valid
      * values are `true` and `false`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The identity provider ID of the user.
      */
-    idpId?: pulumi.Input<string>;
+    idpId?: pulumi.Input<string | undefined>;
     /**
      * The name of the user.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Query for expired passwords. See the [OpenStack API docs](https://developer.openstack.org/api-ref/identity/v3/#list-users) for more information on the query format.
      */
-    passwordExpiresAt?: pulumi.Input<string>;
+    passwordExpiresAt?: pulumi.Input<string | undefined>;
     /**
      * The protocol ID of the user.
      */
-    protocolId?: pulumi.Input<string>;
+    protocolId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the user.
      */
-    uniqueId?: pulumi.Input<string>;
+    uniqueId?: pulumi.Input<string | undefined>;
 }

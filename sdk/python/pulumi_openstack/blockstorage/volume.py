@@ -22,21 +22,21 @@ __all__ = ['VolumeArgs', 'Volume']
 class VolumeArgs:
     def __init__(__self__, *,
                  size: pulumi.Input[_builtins.int],
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 consistency_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_online_resize: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_replica: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_vol_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_retype_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 consistency_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_online_resize: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler_hints: pulumi.Input[Optional[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_replica: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_vol_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_retype_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Volume resource.
 
@@ -124,7 +124,7 @@ class VolumeArgs:
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def availability_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The availability zone for the volume.
         Changing this creates a new volume.
@@ -132,12 +132,12 @@ class VolumeArgs:
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
-    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def availability_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "availability_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="backupId")
-    def backup_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup ID from which to create the volume.
         Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
@@ -146,12 +146,12 @@ class VolumeArgs:
         return pulumi.get(self, "backup_id")
 
     @backup_id.setter
-    def backup_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_id", value)
 
     @_builtins.property
     @pulumi.getter(name="consistencyGroupId")
-    def consistency_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consistency_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The consistency group to place the volume
         in.
@@ -159,12 +159,12 @@ class VolumeArgs:
         return pulumi.get(self, "consistency_group_id")
 
     @consistency_group_id.setter
-    def consistency_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consistency_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consistency_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the volume. Changing this updates
         the volume's description.
@@ -172,12 +172,12 @@ class VolumeArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableOnlineResize")
-    def enable_online_resize(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_online_resize(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When this option is set it allows extending
         attached volumes. Note: updating size of an attached volume requires Cinder
@@ -186,12 +186,12 @@ class VolumeArgs:
         return pulumi.get(self, "enable_online_resize")
 
     @enable_online_resize.setter
-    def enable_online_resize(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_online_resize(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_online_resize", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image ID from which to create the volume.
         Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
@@ -200,12 +200,12 @@ class VolumeArgs:
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Metadata key/value pairs to associate with the volume.
         Changing this updates the existing volume metadata.
@@ -213,12 +213,12 @@ class VolumeArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the volume. Changing this updates the
         volume's name.
@@ -226,12 +226,12 @@ class VolumeArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the volume. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -240,12 +240,12 @@ class VolumeArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="schedulerHints")
-    def scheduler_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]]:
+    def scheduler_hints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]]:
         """
         Provide the Cinder scheduler with hints on where
         to instantiate a volume in the OpenStack cloud. The available hints are described below.
@@ -253,12 +253,12 @@ class VolumeArgs:
         return pulumi.get(self, "scheduler_hints")
 
     @scheduler_hints.setter
-    def scheduler_hints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]]):
+    def scheduler_hints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]]):
         pulumi.set(self, "scheduler_hints", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The snapshot ID from which to create the volume.
         Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
@@ -267,24 +267,24 @@ class VolumeArgs:
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceReplica")
-    def source_replica(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_replica(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The volume ID to replicate with.
         """
         return pulumi.get(self, "source_replica")
 
     @source_replica.setter
-    def source_replica(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_replica(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_replica", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceVolId")
-    def source_vol_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_vol_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The volume ID from which to create the volume.
         Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
@@ -293,12 +293,12 @@ class VolumeArgs:
         return pulumi.get(self, "source_vol_id")
 
     @source_vol_id.setter
-    def source_vol_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_vol_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_vol_id", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeRetypePolicy")
-    def volume_retype_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_retype_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Migration policy when changing `volume_type`.
         `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
@@ -307,12 +307,12 @@ class VolumeArgs:
         return pulumi.get(self, "volume_retype_policy")
 
     @volume_retype_policy.setter
-    def volume_retype_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_retype_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_retype_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeType")
-    def volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of volume to create or update.
         Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
@@ -320,30 +320,30 @@ class VolumeArgs:
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
-    def volume_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_type", value)
 
 
 @pulumi.input_type
 class _VolumeState:
     def __init__(__self__, *,
-                 attachments: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeAttachmentArgs']]]] = None,
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 consistency_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_online_resize: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_replica: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_vol_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_retype_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 attachments: pulumi.Input[Optional[Sequence[pulumi.Input['VolumeAttachmentArgs']]]] = None,
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 consistency_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_online_resize: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler_hints: pulumi.Input[Optional[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_replica: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_vol_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_retype_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Volume resources.
 
@@ -425,7 +425,7 @@ class _VolumeState:
 
     @_builtins.property
     @pulumi.getter
-    def attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeAttachmentArgs']]]]:
+    def attachments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VolumeAttachmentArgs']]]]:
         """
         If a volume is attached to an instance, this attribute will
         display the Attachment ID, Instance ID, and the Device as the Instance
@@ -434,12 +434,12 @@ class _VolumeState:
         return pulumi.get(self, "attachments")
 
     @attachments.setter
-    def attachments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeAttachmentArgs']]]]):
+    def attachments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VolumeAttachmentArgs']]]]):
         pulumi.set(self, "attachments", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def availability_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The availability zone for the volume.
         Changing this creates a new volume.
@@ -447,12 +447,12 @@ class _VolumeState:
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
-    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def availability_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "availability_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="backupId")
-    def backup_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup ID from which to create the volume.
         Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
@@ -461,12 +461,12 @@ class _VolumeState:
         return pulumi.get(self, "backup_id")
 
     @backup_id.setter
-    def backup_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_id", value)
 
     @_builtins.property
     @pulumi.getter(name="consistencyGroupId")
-    def consistency_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consistency_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The consistency group to place the volume
         in.
@@ -474,12 +474,12 @@ class _VolumeState:
         return pulumi.get(self, "consistency_group_id")
 
     @consistency_group_id.setter
-    def consistency_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consistency_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consistency_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the volume. Changing this updates
         the volume's description.
@@ -487,12 +487,12 @@ class _VolumeState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableOnlineResize")
-    def enable_online_resize(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_online_resize(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When this option is set it allows extending
         attached volumes. Note: updating size of an attached volume requires Cinder
@@ -501,12 +501,12 @@ class _VolumeState:
         return pulumi.get(self, "enable_online_resize")
 
     @enable_online_resize.setter
-    def enable_online_resize(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_online_resize(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_online_resize", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image ID from which to create the volume.
         Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
@@ -515,12 +515,12 @@ class _VolumeState:
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Metadata key/value pairs to associate with the volume.
         Changing this updates the existing volume metadata.
@@ -528,12 +528,12 @@ class _VolumeState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the volume. Changing this updates the
         volume's name.
@@ -541,12 +541,12 @@ class _VolumeState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the volume. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -555,12 +555,12 @@ class _VolumeState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="schedulerHints")
-    def scheduler_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]]:
+    def scheduler_hints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]]:
         """
         Provide the Cinder scheduler with hints on where
         to instantiate a volume in the OpenStack cloud. The available hints are described below.
@@ -568,24 +568,24 @@ class _VolumeState:
         return pulumi.get(self, "scheduler_hints")
 
     @scheduler_hints.setter
-    def scheduler_hints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]]):
+    def scheduler_hints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]]):
         pulumi.set(self, "scheduler_hints", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the volume to create (in gigabytes).
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The snapshot ID from which to create the volume.
         Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
@@ -594,24 +594,24 @@ class _VolumeState:
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceReplica")
-    def source_replica(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_replica(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The volume ID to replicate with.
         """
         return pulumi.get(self, "source_replica")
 
     @source_replica.setter
-    def source_replica(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_replica(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_replica", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceVolId")
-    def source_vol_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_vol_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The volume ID from which to create the volume.
         Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
@@ -620,12 +620,12 @@ class _VolumeState:
         return pulumi.get(self, "source_vol_id")
 
     @source_vol_id.setter
-    def source_vol_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_vol_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_vol_id", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeRetypePolicy")
-    def volume_retype_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_retype_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Migration policy when changing `volume_type`.
         `"never"` *(default)* prevents migration to another storage backend, while `"on-demand"`
@@ -634,12 +634,12 @@ class _VolumeState:
         return pulumi.get(self, "volume_retype_policy")
 
     @volume_retype_policy.setter
-    def volume_retype_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_retype_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_retype_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeType")
-    def volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of volume to create or update.
         Changing this will attempt an in-place retype operation; migration depends on `volume_retype_policy`.
@@ -647,7 +647,7 @@ class _VolumeState:
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
-    def volume_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_type", value)
 
 
@@ -657,22 +657,22 @@ class Volume(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 consistency_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_online_resize: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeSchedulerHintArgs', 'VolumeSchedulerHintArgsDict']]]]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_replica: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_vol_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_retype_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 consistency_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_online_resize: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler_hints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeSchedulerHintArgs', 'VolumeSchedulerHintArgsDict']]]]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_replica: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_vol_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_retype_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V3 volume resource within OpenStack.
@@ -785,22 +785,22 @@ class Volume(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 consistency_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_online_resize: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeSchedulerHintArgs', 'VolumeSchedulerHintArgsDict']]]]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_replica: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_vol_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_retype_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 consistency_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_online_resize: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler_hints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeSchedulerHintArgs', 'VolumeSchedulerHintArgsDict']]]]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_replica: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_vol_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_retype_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -839,23 +839,23 @@ class Volume(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attachments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeAttachmentArgs', 'VolumeAttachmentArgsDict']]]]] = None,
-            availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_id: Optional[pulumi.Input[_builtins.str]] = None,
-            consistency_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_online_resize: Optional[pulumi.Input[_builtins.bool]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeSchedulerHintArgs', 'VolumeSchedulerHintArgsDict']]]]] = None,
-            size: Optional[pulumi.Input[_builtins.int]] = None,
-            snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_replica: Optional[pulumi.Input[_builtins.str]] = None,
-            source_vol_id: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_retype_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Volume':
+            attachments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeAttachmentArgs', 'VolumeAttachmentArgsDict']]]]] = None,
+            availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+            consistency_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_online_resize: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduler_hints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeSchedulerHintArgs', 'VolumeSchedulerHintArgsDict']]]]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_replica: pulumi.Input[Optional[_builtins.str]] = None,
+            source_vol_id: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_retype_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Volume':
         """
         Get an existing Volume resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

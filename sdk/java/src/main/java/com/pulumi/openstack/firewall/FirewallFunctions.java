@@ -35,8 +35,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetGroupV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -75,8 +75,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetGroupV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -115,8 +115,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetGroupV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -155,8 +155,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetGroupV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -195,8 +195,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetGroupV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -235,8 +235,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetGroupV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -275,8 +275,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetGroupV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -315,8 +315,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetPolicyV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -355,8 +355,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetPolicyV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -395,8 +395,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetPolicyV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -435,8 +435,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetPolicyV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -475,8 +475,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetPolicyV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -515,8 +515,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetPolicyV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -555,8 +555,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetPolicyV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -595,8 +595,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetRuleV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -635,8 +635,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetRuleV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -675,8 +675,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetRuleV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -715,8 +715,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetRuleV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -755,8 +755,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetRuleV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -795,8 +795,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetRuleV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -835,8 +835,8 @@ public final class FirewallFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.firewall.FirewallFunctions;
      * import com.pulumi.openstack.firewall.inputs.GetRuleV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

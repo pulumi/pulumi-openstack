@@ -218,8 +218,8 @@ def get_quota_v2(project_id: Optional[_builtins.str] = None,
         security_group_rule=pulumi.get(__ret__, 'security_group_rule'),
         subnet=pulumi.get(__ret__, 'subnet'),
         subnetpool=pulumi.get(__ret__, 'subnetpool'))
-def get_quota_v2_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                        region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_quota_v2_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                        region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQuotaV2Result]:
     """
     Use this data source to get the networking quota of an OpenStack project.

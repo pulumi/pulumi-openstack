@@ -183,71 +183,71 @@ export interface BgpvpnV2State {
      * A list of additional Route Targets that will be
      * used for export.
      */
-    exportTargets?: pulumi.Input<pulumi.Input<string>[]>;
+    exportTargets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of additional Route Targets that will be
      * imported.
      */
-    importTargets?: pulumi.Input<pulumi.Input<string>[]>;
+    importTargets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The default BGP LOCAL\_PREF of routes that will be
      * advertised to the BGP VPN, unless overridden per-route.
      */
-    localPref?: pulumi.Input<number>;
+    localPref?: pulumi.Input<number | undefined>;
     /**
      * The name of the BGP VPN. Changing this updates the name of
      * the existing BGP VPN.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of network IDs that are associated with the BGP VPN.
      */
-    networks?: pulumi.Input<pulumi.Input<string>[]>;
+    networks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of port IDs that are associated with the BGP VPN.
      */
-    ports?: pulumi.Input<pulumi.Input<string>[]>;
+    ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the project that owns the BGPVPN. Only
      * administrative and users with `advsvc` role can specify a project ID other
      * than their own. Changing this creates a new BGP VPN.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a BGP VPN service. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * BGP VPN.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list of route distinguisher strings. If
      * specified, one of these RDs will be used to advertise VPN routes.
      */
-    routeDistinguishers?: pulumi.Input<pulumi.Input<string>[]>;
+    routeDistinguishers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of Route Targets that will be both
      * imported and used for export.
      */
-    routeTargets?: pulumi.Input<pulumi.Input<string>[]>;
+    routeTargets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of router IDs that are associated with the BGP VPN.
      */
-    routers?: pulumi.Input<pulumi.Input<string>[]>;
+    routers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether the BGP VPN is shared across projects.
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * The type of the BGP VPN (either `l2` or `l3`). Changing this
      * creates a new BGP VPN. Defaults to `l3`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The globally-assigned VXLAN VNI for the BGP VPN. Changing
      * this creates a new BGP VPN.
      */
-    vni?: pulumi.Input<number>;
+    vni?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -258,53 +258,53 @@ export interface BgpvpnV2Args {
      * A list of additional Route Targets that will be
      * used for export.
      */
-    exportTargets?: pulumi.Input<pulumi.Input<string>[]>;
+    exportTargets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of additional Route Targets that will be
      * imported.
      */
-    importTargets?: pulumi.Input<pulumi.Input<string>[]>;
+    importTargets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The default BGP LOCAL\_PREF of routes that will be
      * advertised to the BGP VPN, unless overridden per-route.
      */
-    localPref?: pulumi.Input<number>;
+    localPref?: pulumi.Input<number | undefined>;
     /**
      * The name of the BGP VPN. Changing this updates the name of
      * the existing BGP VPN.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project that owns the BGPVPN. Only
      * administrative and users with `advsvc` role can specify a project ID other
      * than their own. Changing this creates a new BGP VPN.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a BGP VPN service. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * BGP VPN.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list of route distinguisher strings. If
      * specified, one of these RDs will be used to advertise VPN routes.
      */
-    routeDistinguishers?: pulumi.Input<pulumi.Input<string>[]>;
+    routeDistinguishers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of Route Targets that will be both
      * imported and used for export.
      */
-    routeTargets?: pulumi.Input<pulumi.Input<string>[]>;
+    routeTargets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of the BGP VPN (either `l2` or `l3`). Changing this
      * creates a new BGP VPN. Defaults to `l3`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The globally-assigned VXLAN VNI for the BGP VPN. Changing
      * this creates a new BGP VPN.
      */
-    vni?: pulumi.Input<number>;
+    vni?: pulumi.Input<number | undefined>;
 }

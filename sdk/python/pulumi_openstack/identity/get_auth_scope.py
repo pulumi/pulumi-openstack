@@ -325,9 +325,9 @@ def get_auth_scope(name: Optional[_builtins.str] = None,
         user_domain_name=pulumi.get(__ret__, 'user_domain_name'),
         user_id=pulumi.get(__ret__, 'user_id'),
         user_name=pulumi.get(__ret__, 'user_name'))
-def get_auth_scope_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                          region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          set_token_id: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_auth_scope_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                          region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          set_token_id: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAuthScopeResult]:
     """
     Use this data source to get authentication information about the current

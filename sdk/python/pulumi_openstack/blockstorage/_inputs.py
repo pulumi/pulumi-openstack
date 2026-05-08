@@ -22,16 +22,16 @@ __all__ = [
 ]
 
 class VolumeAttachmentArgsDict(TypedDict):
-    device: NotRequired[pulumi.Input[_builtins.str]]
-    id: NotRequired[pulumi.Input[_builtins.str]]
-    instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    device: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class VolumeAttachmentArgs:
     def __init__(__self__, *,
-                 device: Optional[pulumi.Input[_builtins.str]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 device: pulumi.Input[Optional[_builtins.str]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None):
         if device is not None:
             pulumi.set(__self__, "device", device)
         if id is not None:
@@ -41,49 +41,49 @@ class VolumeAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def device(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "device")
 
     @device.setter
-    def device(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
 
 class VolumeSchedulerHintArgsDict(TypedDict):
-    additional_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    additional_properties: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Arbitrary key/value pairs of additional
     properties to pass to the scheduler.
     """
-    different_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    different_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The volume should be scheduled on a 
     different host from the set of volumes specified in the list provided.
     """
-    local_to_instance: NotRequired[pulumi.Input[_builtins.str]]
+    local_to_instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An instance UUID. The volume should be 
     scheduled on the same host as the instance.
     """
-    query: NotRequired[pulumi.Input[_builtins.str]]
+    query: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A conditional query that a back-end must pass in
     order to host a volume. The query must use the `JsonFilter` syntax
@@ -96,7 +96,7 @@ class VolumeSchedulerHintArgsDict(TypedDict):
     [“=”, “$backend_id”, “rbd:vol@ceph#cloud”]
     ```
     """
-    same_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    same_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of volume UUIDs. The volume should be
     scheduled on the same host as another volume specified in the list provided.
@@ -105,11 +105,11 @@ class VolumeSchedulerHintArgsDict(TypedDict):
 @pulumi.input_type
 class VolumeSchedulerHintArgs:
     def __init__(__self__, *,
-                 additional_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 different_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 local_to_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 query: Optional[pulumi.Input[_builtins.str]] = None,
-                 same_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 additional_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 different_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 local_to_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 query: pulumi.Input[Optional[_builtins.str]] = None,
+                 same_hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] additional_properties: Arbitrary key/value pairs of additional
                properties to pass to the scheduler.
@@ -143,7 +143,7 @@ class VolumeSchedulerHintArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalProperties")
-    def additional_properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def additional_properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Arbitrary key/value pairs of additional
         properties to pass to the scheduler.
@@ -151,12 +151,12 @@ class VolumeSchedulerHintArgs:
         return pulumi.get(self, "additional_properties")
 
     @additional_properties.setter
-    def additional_properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def additional_properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_properties", value)
 
     @_builtins.property
     @pulumi.getter(name="differentHosts")
-    def different_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def different_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The volume should be scheduled on a 
         different host from the set of volumes specified in the list provided.
@@ -164,12 +164,12 @@ class VolumeSchedulerHintArgs:
         return pulumi.get(self, "different_hosts")
 
     @different_hosts.setter
-    def different_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def different_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "different_hosts", value)
 
     @_builtins.property
     @pulumi.getter(name="localToInstance")
-    def local_to_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_to_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An instance UUID. The volume should be 
         scheduled on the same host as the instance.
@@ -177,12 +177,12 @@ class VolumeSchedulerHintArgs:
         return pulumi.get(self, "local_to_instance")
 
     @local_to_instance.setter
-    def local_to_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_to_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_to_instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def query(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A conditional query that a back-end must pass in
         order to host a volume. The query must use the `JsonFilter` syntax
@@ -198,12 +198,12 @@ class VolumeSchedulerHintArgs:
         return pulumi.get(self, "query")
 
     @query.setter
-    def query(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query", value)
 
     @_builtins.property
     @pulumi.getter(name="sameHosts")
-    def same_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def same_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of volume UUIDs. The volume should be
         scheduled on the same host as another volume specified in the list provided.
@@ -211,7 +211,7 @@ class VolumeSchedulerHintArgs:
         return pulumi.get(self, "same_hosts")
 
     @same_hosts.setter
-    def same_hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def same_hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "same_hosts", value)
 
 

@@ -125,22 +125,22 @@ export interface QosMinimumBandwidthRuleState {
      * The direction of traffic. Defaults to "egress". Changing this updates the direction of the
      * existing QoS minimum bandwidth rule.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * The minimum kilobits per second. Changing this updates the min kbps value of the existing
      * QoS minimum bandwidth rule.
      */
-    minKbps?: pulumi.Input<number>;
+    minKbps?: pulumi.Input<number | undefined>;
     /**
      * The QoS policy reference. Changing this creates a new QoS minimum bandwidth rule.
      */
-    qosPolicyId?: pulumi.Input<string>;
+    qosPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new QoS minimum bandwidth rule.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -151,7 +151,7 @@ export interface QosMinimumBandwidthRuleArgs {
      * The direction of traffic. Defaults to "egress". Changing this updates the direction of the
      * existing QoS minimum bandwidth rule.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * The minimum kilobits per second. Changing this updates the min kbps value of the existing
      * QoS minimum bandwidth rule.
@@ -166,5 +166,5 @@ export interface QosMinimumBandwidthRuleArgs {
      * A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new QoS minimum bandwidth rule.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

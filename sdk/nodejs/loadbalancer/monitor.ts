@@ -223,86 +223,86 @@ export interface MonitorState {
      * The administrative state of the monitor.
      * A valid value is true (UP) or false (DOWN).
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * The time, in seconds, between sending probes to members.
      */
-    delay?: pulumi.Input<number>;
+    delay?: pulumi.Input<number | undefined>;
     /**
      * The domain name to use in the HTTP host header
      * health monitor requests. Supported in Octavia API version 2.10 or later.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * Required for HTTP(S) types. Expected HTTP codes
      * for a passing HTTP(S) monitor. You can either specify a single status like
      * "200", a list like "200, 202" or a range like "200-202". Default is "200".
      */
-    expectedCodes?: pulumi.Input<string>;
+    expectedCodes?: pulumi.Input<string | undefined>;
     /**
      * Required for HTTP(S) types. The HTTP method that 
      * the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
      * OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
      */
-    httpMethod?: pulumi.Input<string>;
+    httpMethod?: pulumi.Input<string | undefined>;
     /**
      * Required for HTTP(S) types. The HTTP version that
      * the health monitor uses for requests. One of `1.0` or 1.1` is supported
      * for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
      * 2.10 or later.
      */
-    httpVersion?: pulumi.Input<string>;
+    httpVersion?: pulumi.Input<string | undefined>;
     /**
      * Number of permissible ping failures before
      * changing the member's status to INACTIVE. Must be a number between 1
      * and 10.
      */
-    maxRetries?: pulumi.Input<number>;
+    maxRetries?: pulumi.Input<number | undefined>;
     /**
      * Number of permissible ping failures before 
      * changing the member's status to ERROR. Must be a number between 1 and 10.
      * The default is 3. Changing this updates the maxRetriesDown of the
      * existing monitor.
      */
-    maxRetriesDown?: pulumi.Input<number>;
+    maxRetriesDown?: pulumi.Input<number | undefined>;
     /**
      * The Name of the Monitor.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The id of the pool that this monitor will be assigned to.
      */
-    poolId?: pulumi.Input<string>;
+    poolId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a monitor. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * monitor.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the monitor.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new monitor.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of seconds for a monitor to wait for a
      * ping reply before it times out. The value must be less than the delay
      * value.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * The type of probe, which is PING, TCP, HTTP, HTTPS,
      * TLS-HELLO, SCTP or UDP-CONNECT, that is sent by the loadbalancer to
      * verify the member state. Changing this creates a new monitor.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Required for HTTP(S) types. URI path that will be
      * accessed if monitor type is HTTP or HTTPS. Default is `/`.
      */
-    urlPath?: pulumi.Input<string>;
+    urlPath?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -313,7 +313,7 @@ export interface MonitorArgs {
      * The administrative state of the monitor.
      * A valid value is true (UP) or false (DOWN).
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * The time, in seconds, between sending probes to members.
      */
@@ -322,26 +322,26 @@ export interface MonitorArgs {
      * The domain name to use in the HTTP host header
      * health monitor requests. Supported in Octavia API version 2.10 or later.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * Required for HTTP(S) types. Expected HTTP codes
      * for a passing HTTP(S) monitor. You can either specify a single status like
      * "200", a list like "200, 202" or a range like "200-202". Default is "200".
      */
-    expectedCodes?: pulumi.Input<string>;
+    expectedCodes?: pulumi.Input<string | undefined>;
     /**
      * Required for HTTP(S) types. The HTTP method that 
      * the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
      * OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
      */
-    httpMethod?: pulumi.Input<string>;
+    httpMethod?: pulumi.Input<string | undefined>;
     /**
      * Required for HTTP(S) types. The HTTP version that
      * the health monitor uses for requests. One of `1.0` or 1.1` is supported
      * for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
      * 2.10 or later.
      */
-    httpVersion?: pulumi.Input<string>;
+    httpVersion?: pulumi.Input<string | undefined>;
     /**
      * Number of permissible ping failures before
      * changing the member's status to INACTIVE. Must be a number between 1
@@ -354,11 +354,11 @@ export interface MonitorArgs {
      * The default is 3. Changing this updates the maxRetriesDown of the
      * existing monitor.
      */
-    maxRetriesDown?: pulumi.Input<number>;
+    maxRetriesDown?: pulumi.Input<number | undefined>;
     /**
      * The Name of the Monitor.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The id of the pool that this monitor will be assigned to.
      */
@@ -369,13 +369,13 @@ export interface MonitorArgs {
      * `region` argument of the provider is used. Changing this creates a new
      * monitor.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the monitor.  Only administrative users can specify a tenant UUID
      * other than their own. Changing this creates a new monitor.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of seconds for a monitor to wait for a
      * ping reply before it times out. The value must be less than the delay
@@ -392,5 +392,5 @@ export interface MonitorArgs {
      * Required for HTTP(S) types. URI path that will be
      * accessed if monitor type is HTTP or HTTPS. Default is `/`.
      */
-    urlPath?: pulumi.Input<string>;
+    urlPath?: pulumi.Input<string | undefined>;
 }

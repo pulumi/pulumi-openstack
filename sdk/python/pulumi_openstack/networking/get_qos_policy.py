@@ -230,13 +230,13 @@ def get_qos_policy(description: Optional[_builtins.str] = None,
         shared=pulumi.get(__ret__, 'shared'),
         tags=pulumi.get(__ret__, 'tags'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-def get_qos_policy_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          is_default: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                          name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          shared: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                          tags: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_qos_policy_output(description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          is_default: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                          name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          shared: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                          tags: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQosPolicyResult]:
     """
     Use this data source to get the ID of an available OpenStack QoS policy.

@@ -240,72 +240,72 @@ export interface GetDnsZoneOutputArgs {
      * Try to obtain zone ID by listing all projects
      * (requires admin role by default, depends on your policy configuration)
      */
-    allProjects?: pulumi.Input<string>;
+    allProjects?: pulumi.Input<string | undefined>;
     /**
      * Attributes of the DNS Service scheduler.
      */
-    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The time the zone was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * A description of the zone.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The email contact for the zone record.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * An array of master DNS servers. When `type` is  `SECONDARY`.
      */
-    masters?: pulumi.Input<pulumi.Input<string>[]>;
+    masters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the zone.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the pool hosting the zone.
      */
-    poolId?: pulumi.Input<string>;
+    poolId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project the DNS zone is obtained from,
      * sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target project)
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 DNS client.
      * A DNS client is needed to retrieve zone ids. If omitted, the
      * `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The serial number of the zone.
      */
-    serial?: pulumi.Input<number>;
+    serial?: pulumi.Input<number | undefined>;
     /**
      * The zone's status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The time the zone was transferred.
      */
-    transferredAt?: pulumi.Input<string>;
+    transferredAt?: pulumi.Input<string | undefined>;
     /**
      * The time to live (TTL) of the zone.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * The type of the zone. Can either be `PRIMARY` or `SECONDARY`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The time the zone was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The version of the zone.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }

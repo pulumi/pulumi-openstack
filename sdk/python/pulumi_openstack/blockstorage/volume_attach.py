@@ -21,16 +21,16 @@ class VolumeAttachArgs:
     def __init__(__self__, *,
                  host_name: pulumi.Input[_builtins.str],
                  volume_id: pulumi.Input[_builtins.str],
-                 attach_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 device: Optional[pulumi.Input[_builtins.str]] = None,
-                 initiator: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 multipath: Optional[pulumi.Input[_builtins.bool]] = None,
-                 os_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 wwnn: Optional[pulumi.Input[_builtins.str]] = None,
-                 wwpns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 attach_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 device: pulumi.Input[Optional[_builtins.str]] = None,
+                 initiator: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 multipath: pulumi.Input[Optional[_builtins.bool]] = None,
+                 os_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 wwnn: pulumi.Input[Optional[_builtins.str]] = None,
+                 wwpns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a VolumeAttach resource.
 
@@ -104,7 +104,7 @@ class VolumeAttachArgs:
 
     @_builtins.property
     @pulumi.getter(name="attachMode")
-    def attach_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def attach_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify whether to attach the volume as Read-Only
         (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
@@ -113,12 +113,12 @@ class VolumeAttachArgs:
         return pulumi.get(self, "attach_mode")
 
     @attach_mode.setter
-    def attach_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def attach_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "attach_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def device(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The device to tell the Block Storage service this
         volume will be attached as. This is purely for informational purposes.
@@ -127,72 +127,72 @@ class VolumeAttachArgs:
         return pulumi.get(self, "device")
 
     @device.setter
-    def device(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device", value)
 
     @_builtins.property
     @pulumi.getter
-    def initiator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def initiator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The iSCSI initiator string to make the connection.
         """
         return pulumi.get(self, "initiator")
 
     @initiator.setter
-    def initiator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def initiator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initiator", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the `host_name` above.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def multipath(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def multipath(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to connect to this volume via multipath.
         """
         return pulumi.get(self, "multipath")
 
     @multipath.setter
-    def multipath(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def multipath(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "multipath", value)
 
     @_builtins.property
     @pulumi.getter(name="osType")
-    def os_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The iSCSI initiator OS type.
         """
         return pulumi.get(self, "os_type")
 
     @os_type.setter
-    def os_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def platform(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The iSCSI initiator platform.
         """
         return pulumi.get(self, "platform")
 
     @platform.setter
-    def platform(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V3 Block Storage
         client. A Block Storage client is needed to create a volume attachment.
@@ -202,24 +202,24 @@ class VolumeAttachArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def wwnn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def wwnn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A wwnn name. Used for Fibre Channel connections.
         """
         return pulumi.get(self, "wwnn")
 
     @wwnn.setter
-    def wwnn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def wwnn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "wwnn", value)
 
     @_builtins.property
     @pulumi.getter
-    def wwpns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def wwpns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of wwpn strings. Used for Fibre Channel
         connections.
@@ -227,28 +227,28 @@ class VolumeAttachArgs:
         return pulumi.get(self, "wwpns")
 
     @wwpns.setter
-    def wwpns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def wwpns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "wwpns", value)
 
 
 @pulumi.input_type
 class _VolumeAttachState:
     def __init__(__self__, *,
-                 attach_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 data: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 device: Optional[pulumi.Input[_builtins.str]] = None,
-                 driver_volume_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 initiator: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_point_base: Optional[pulumi.Input[_builtins.str]] = None,
-                 multipath: Optional[pulumi.Input[_builtins.bool]] = None,
-                 os_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wwnn: Optional[pulumi.Input[_builtins.str]] = None,
-                 wwpns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 attach_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 device: pulumi.Input[Optional[_builtins.str]] = None,
+                 driver_volume_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 initiator: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_point_base: pulumi.Input[Optional[_builtins.str]] = None,
+                 multipath: pulumi.Input[Optional[_builtins.bool]] = None,
+                 os_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wwnn: pulumi.Input[Optional[_builtins.str]] = None,
+                 wwpns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering VolumeAttach resources.
 
@@ -311,7 +311,7 @@ class _VolumeAttachState:
 
     @_builtins.property
     @pulumi.getter(name="attachMode")
-    def attach_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def attach_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify whether to attach the volume as Read-Only
         (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
@@ -320,12 +320,12 @@ class _VolumeAttachState:
         return pulumi.get(self, "attach_mode")
 
     @attach_mode.setter
-    def attach_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def attach_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "attach_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def data(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         This is a map of key/value pairs that contain the connection
         information. You will want to pass this information to a provisioner
@@ -334,12 +334,12 @@ class _VolumeAttachState:
         return pulumi.get(self, "data")
 
     @data.setter
-    def data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def data(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data", value)
 
     @_builtins.property
     @pulumi.getter
-    def device(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The device to tell the Block Storage service this
         volume will be attached as. This is purely for informational purposes.
@@ -348,108 +348,108 @@ class _VolumeAttachState:
         return pulumi.get(self, "device")
 
     @device.setter
-    def device(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device", value)
 
     @_builtins.property
     @pulumi.getter(name="driverVolumeType")
-    def driver_volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def driver_volume_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage driver that the volume is based on.
         """
         return pulumi.get(self, "driver_volume_type")
 
     @driver_volume_type.setter
-    def driver_volume_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def driver_volume_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "driver_volume_type", value)
 
     @_builtins.property
     @pulumi.getter(name="hostName")
-    def host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The host to attach the volume to.
         """
         return pulumi.get(self, "host_name")
 
     @host_name.setter
-    def host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def initiator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def initiator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The iSCSI initiator string to make the connection.
         """
         return pulumi.get(self, "initiator")
 
     @initiator.setter
-    def initiator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def initiator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initiator", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the `host_name` above.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="mountPointBase")
-    def mount_point_base(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_point_base(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A mount point base name for shared storage.
         """
         return pulumi.get(self, "mount_point_base")
 
     @mount_point_base.setter
-    def mount_point_base(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_point_base(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_point_base", value)
 
     @_builtins.property
     @pulumi.getter
-    def multipath(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def multipath(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to connect to this volume via multipath.
         """
         return pulumi.get(self, "multipath")
 
     @multipath.setter
-    def multipath(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def multipath(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "multipath", value)
 
     @_builtins.property
     @pulumi.getter(name="osType")
-    def os_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The iSCSI initiator OS type.
         """
         return pulumi.get(self, "os_type")
 
     @os_type.setter
-    def os_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def platform(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The iSCSI initiator platform.
         """
         return pulumi.get(self, "platform")
 
     @platform.setter
-    def platform(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V3 Block Storage
         client. A Block Storage client is needed to create a volume attachment.
@@ -459,36 +459,36 @@ class _VolumeAttachState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Volume to attach to an Instance.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def wwnn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def wwnn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A wwnn name. Used for Fibre Channel connections.
         """
         return pulumi.get(self, "wwnn")
 
     @wwnn.setter
-    def wwnn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def wwnn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "wwnn", value)
 
     @_builtins.property
     @pulumi.getter
-    def wwpns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def wwpns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of wwpn strings. Used for Fibre Channel
         connections.
@@ -496,7 +496,7 @@ class _VolumeAttachState:
         return pulumi.get(self, "wwpns")
 
     @wwpns.setter
-    def wwpns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def wwpns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "wwpns", value)
 
 
@@ -506,18 +506,18 @@ class VolumeAttach(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attach_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 device: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 initiator: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 multipath: Optional[pulumi.Input[_builtins.bool]] = None,
-                 os_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wwnn: Optional[pulumi.Input[_builtins.str]] = None,
-                 wwpns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 attach_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 device: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 initiator: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 multipath: pulumi.Input[Optional[_builtins.bool]] = None,
+                 os_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wwnn: pulumi.Input[Optional[_builtins.str]] = None,
+                 wwpns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         > **Note:** This resource usually requires admin privileges.
@@ -681,18 +681,18 @@ class VolumeAttach(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attach_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 device: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 initiator: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 multipath: Optional[pulumi.Input[_builtins.bool]] = None,
-                 os_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wwnn: Optional[pulumi.Input[_builtins.str]] = None,
-                 wwpns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 attach_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 device: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 initiator: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 multipath: pulumi.Input[Optional[_builtins.bool]] = None,
+                 os_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wwnn: pulumi.Input[Optional[_builtins.str]] = None,
+                 wwpns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -733,21 +733,21 @@ class VolumeAttach(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attach_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            data: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            device: Optional[pulumi.Input[_builtins.str]] = None,
-            driver_volume_type: Optional[pulumi.Input[_builtins.str]] = None,
-            host_name: Optional[pulumi.Input[_builtins.str]] = None,
-            initiator: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            mount_point_base: Optional[pulumi.Input[_builtins.str]] = None,
-            multipath: Optional[pulumi.Input[_builtins.bool]] = None,
-            os_type: Optional[pulumi.Input[_builtins.str]] = None,
-            platform: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_id: Optional[pulumi.Input[_builtins.str]] = None,
-            wwnn: Optional[pulumi.Input[_builtins.str]] = None,
-            wwpns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'VolumeAttach':
+            attach_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            device: pulumi.Input[Optional[_builtins.str]] = None,
+            driver_volume_type: pulumi.Input[Optional[_builtins.str]] = None,
+            host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            initiator: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            mount_point_base: pulumi.Input[Optional[_builtins.str]] = None,
+            multipath: pulumi.Input[Optional[_builtins.bool]] = None,
+            os_type: pulumi.Input[Optional[_builtins.str]] = None,
+            platform: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_id: pulumi.Input[Optional[_builtins.str]] = None,
+            wwnn: pulumi.Input[Optional[_builtins.str]] = None,
+            wwpns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'VolumeAttach':
         """
         Get an existing VolumeAttach resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

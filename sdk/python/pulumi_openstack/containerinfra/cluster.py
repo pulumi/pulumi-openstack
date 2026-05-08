@@ -19,23 +19,23 @@ __all__ = ['ClusterArgs', 'Cluster']
 @pulumi.input_type
 class ClusterArgs:
     def __init__(__self__, *,
-                 cluster_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 fixed_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 fixed_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 flavor: Optional[pulumi.Input[_builtins.str]] = None,
-                 floating_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keypair: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 master_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 master_flavor: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_lb_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_labels: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 fixed_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 fixed_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 flavor: pulumi.Input[Optional[_builtins.str]] = None,
+                 floating_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keypair: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 master_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 master_flavor: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_lb_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_labels: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
 
@@ -114,7 +114,7 @@ class ClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterTemplateId")
-    def cluster_template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the V1 Container Infra cluster
         template. Changing this creates a new cluster.
@@ -122,12 +122,12 @@ class ClusterArgs:
         return pulumi.get(self, "cluster_template_id")
 
     @cluster_template_id.setter
-    def cluster_template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTimeout")
-    def create_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout (in minutes) for creating the
         cluster. Changing this creates a new cluster.
@@ -135,12 +135,12 @@ class ClusterArgs:
         return pulumi.get(self, "create_timeout")
 
     @create_timeout.setter
-    def create_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="discoveryUrl")
-    def discovery_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def discovery_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL used for cluster node discovery.
         Changing this creates a new cluster.
@@ -148,12 +148,12 @@ class ClusterArgs:
         return pulumi.get(self, "discovery_url")
 
     @discovery_url.setter
-    def discovery_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def discovery_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "discovery_url", value)
 
     @_builtins.property
     @pulumi.getter(name="dockerVolumeSize")
-    def docker_volume_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def docker_volume_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size (in GB) of the Docker volume.
         Changing this creates a new cluster.
@@ -161,12 +161,12 @@ class ClusterArgs:
         return pulumi.get(self, "docker_volume_size")
 
     @docker_volume_size.setter
-    def docker_volume_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def docker_volume_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "docker_volume_size", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedNetwork")
-    def fixed_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fixed_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fixed network that will be attached to the
         cluster. Changing this creates a new cluster.
@@ -174,12 +174,12 @@ class ClusterArgs:
         return pulumi.get(self, "fixed_network")
 
     @fixed_network.setter
-    def fixed_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fixed_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fixed_network", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedSubnet")
-    def fixed_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fixed_subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fixed subnet that will be attached to the
         cluster. Changing this creates a new cluster.
@@ -187,12 +187,12 @@ class ClusterArgs:
         return pulumi.get(self, "fixed_subnet")
 
     @fixed_subnet.setter
-    def fixed_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fixed_subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fixed_subnet", value)
 
     @_builtins.property
     @pulumi.getter
-    def flavor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flavor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The flavor for the nodes of the cluster. Can be set via
         the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
@@ -201,12 +201,12 @@ class ClusterArgs:
         return pulumi.get(self, "flavor")
 
     @flavor.setter
-    def flavor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flavor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flavor", value)
 
     @_builtins.property
     @pulumi.getter(name="floatingIpEnabled")
-    def floating_ip_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def floating_ip_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether floating IP should be
         created for every cluster node. Changing this creates a new cluster.
@@ -214,12 +214,12 @@ class ClusterArgs:
         return pulumi.get(self, "floating_ip_enabled")
 
     @floating_ip_enabled.setter
-    def floating_ip_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def floating_ip_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "floating_ip_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def keypair(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keypair(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Compute service SSH keypair. Changing
         this creates a new cluster.
@@ -227,12 +227,12 @@ class ClusterArgs:
         return pulumi.get(self, "keypair")
 
     @keypair.setter
-    def keypair(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keypair(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keypair", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of key value pairs representing additional
         properties of the cluster. Changing this creates a new cluster.
@@ -240,12 +240,12 @@ class ClusterArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="masterCount")
-    def master_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def master_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of master nodes for the cluster.
         Changing this creates a new cluster.
@@ -253,12 +253,12 @@ class ClusterArgs:
         return pulumi.get(self, "master_count")
 
     @master_count.setter
-    def master_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def master_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "master_count", value)
 
     @_builtins.property
     @pulumi.getter(name="masterFlavor")
-    def master_flavor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_flavor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The flavor for the master nodes. Can be set via
         the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
@@ -267,12 +267,12 @@ class ClusterArgs:
         return pulumi.get(self, "master_flavor")
 
     @master_flavor.setter
-    def master_flavor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_flavor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_flavor", value)
 
     @_builtins.property
     @pulumi.getter(name="masterLbEnabled")
-    def master_lb_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def master_lb_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to create a load balancer
         for the master nodes. Changing this creates a new cluster.
@@ -280,12 +280,12 @@ class ClusterArgs:
         return pulumi.get(self, "master_lb_enabled")
 
     @master_lb_enabled.setter
-    def master_lb_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def master_lb_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "master_lb_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeLabels")
-    def merge_labels(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_labels(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the provided labels should be
         merged with cluster template labels. Changing this creates a new cluster.
@@ -293,12 +293,12 @@ class ClusterArgs:
         return pulumi.get(self, "merge_labels")
 
     @merge_labels.setter
-    def merge_labels(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_labels(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cluster. Changing this creates a new
         cluster.
@@ -306,24 +306,24 @@ class ClusterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes for the cluster.
         """
         return pulumi.get(self, "node_count")
 
     @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V1 Container Infra
         client. A Container Infra client is needed to create a cluster. If omitted,
@@ -333,41 +333,41 @@ class ClusterArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
-                 api_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 coe_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 fixed_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 fixed_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 flavor: Optional[pulumi.Input[_builtins.str]] = None,
-                 floating_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keypair: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubeconfig: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 master_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 master_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 master_flavor: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_lb_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_labels: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 coe_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 fixed_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 fixed_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 flavor: pulumi.Input[Optional[_builtins.str]] = None,
+                 floating_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keypair: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubeconfig: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 master_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 master_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 master_flavor: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_lb_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_labels: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
 
@@ -474,16 +474,16 @@ class _ClusterState:
 
     @_builtins.property
     @pulumi.getter(name="apiAddress")
-    def api_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "api_address")
 
     @api_address.setter
-    def api_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_address", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterTemplateId")
-    def cluster_template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the V1 Container Infra cluster
         template. Changing this creates a new cluster.
@@ -491,30 +491,30 @@ class _ClusterState:
         return pulumi.get(self, "cluster_template_id")
 
     @cluster_template_id.setter
-    def cluster_template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="coeVersion")
-    def coe_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def coe_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "coe_version")
 
     @coe_version.setter
-    def coe_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def coe_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "coe_version", value)
 
     @_builtins.property
     @pulumi.getter(name="containerVersion")
-    def container_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "container_version")
 
     @container_version.setter
-    def container_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_version", value)
 
     @_builtins.property
     @pulumi.getter(name="createTimeout")
-    def create_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout (in minutes) for creating the
         cluster. Changing this creates a new cluster.
@@ -522,21 +522,21 @@ class _ClusterState:
         return pulumi.get(self, "create_timeout")
 
     @create_timeout.setter
-    def create_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="discoveryUrl")
-    def discovery_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def discovery_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL used for cluster node discovery.
         Changing this creates a new cluster.
@@ -544,12 +544,12 @@ class _ClusterState:
         return pulumi.get(self, "discovery_url")
 
     @discovery_url.setter
-    def discovery_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def discovery_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "discovery_url", value)
 
     @_builtins.property
     @pulumi.getter(name="dockerVolumeSize")
-    def docker_volume_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def docker_volume_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size (in GB) of the Docker volume.
         Changing this creates a new cluster.
@@ -557,12 +557,12 @@ class _ClusterState:
         return pulumi.get(self, "docker_volume_size")
 
     @docker_volume_size.setter
-    def docker_volume_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def docker_volume_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "docker_volume_size", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedNetwork")
-    def fixed_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fixed_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fixed network that will be attached to the
         cluster. Changing this creates a new cluster.
@@ -570,12 +570,12 @@ class _ClusterState:
         return pulumi.get(self, "fixed_network")
 
     @fixed_network.setter
-    def fixed_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fixed_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fixed_network", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedSubnet")
-    def fixed_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fixed_subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fixed subnet that will be attached to the
         cluster. Changing this creates a new cluster.
@@ -583,12 +583,12 @@ class _ClusterState:
         return pulumi.get(self, "fixed_subnet")
 
     @fixed_subnet.setter
-    def fixed_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fixed_subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fixed_subnet", value)
 
     @_builtins.property
     @pulumi.getter
-    def flavor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flavor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The flavor for the nodes of the cluster. Can be set via
         the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
@@ -597,12 +597,12 @@ class _ClusterState:
         return pulumi.get(self, "flavor")
 
     @flavor.setter
-    def flavor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flavor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flavor", value)
 
     @_builtins.property
     @pulumi.getter(name="floatingIpEnabled")
-    def floating_ip_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def floating_ip_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether floating IP should be
         created for every cluster node. Changing this creates a new cluster.
@@ -610,12 +610,12 @@ class _ClusterState:
         return pulumi.get(self, "floating_ip_enabled")
 
     @floating_ip_enabled.setter
-    def floating_ip_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def floating_ip_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "floating_ip_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def keypair(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keypair(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Compute service SSH keypair. Changing
         this creates a new cluster.
@@ -623,21 +623,21 @@ class _ClusterState:
         return pulumi.get(self, "keypair")
 
     @keypair.setter
-    def keypair(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keypair(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keypair", value)
 
     @_builtins.property
     @pulumi.getter
-    def kubeconfig(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def kubeconfig(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "kubeconfig")
 
     @kubeconfig.setter
-    def kubeconfig(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def kubeconfig(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kubeconfig", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of key value pairs representing additional
         properties of the cluster. Changing this creates a new cluster.
@@ -645,21 +645,21 @@ class _ClusterState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="masterAddresses")
-    def master_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def master_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "master_addresses")
 
     @master_addresses.setter
-    def master_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def master_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "master_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="masterCount")
-    def master_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def master_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of master nodes for the cluster.
         Changing this creates a new cluster.
@@ -667,12 +667,12 @@ class _ClusterState:
         return pulumi.get(self, "master_count")
 
     @master_count.setter
-    def master_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def master_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "master_count", value)
 
     @_builtins.property
     @pulumi.getter(name="masterFlavor")
-    def master_flavor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_flavor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The flavor for the master nodes. Can be set via
         the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
@@ -681,12 +681,12 @@ class _ClusterState:
         return pulumi.get(self, "master_flavor")
 
     @master_flavor.setter
-    def master_flavor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_flavor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_flavor", value)
 
     @_builtins.property
     @pulumi.getter(name="masterLbEnabled")
-    def master_lb_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def master_lb_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to create a load balancer
         for the master nodes. Changing this creates a new cluster.
@@ -694,12 +694,12 @@ class _ClusterState:
         return pulumi.get(self, "master_lb_enabled")
 
     @master_lb_enabled.setter
-    def master_lb_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def master_lb_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "master_lb_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="mergeLabels")
-    def merge_labels(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def merge_labels(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the provided labels should be
         merged with cluster template labels. Changing this creates a new cluster.
@@ -707,12 +707,12 @@ class _ClusterState:
         return pulumi.get(self, "merge_labels")
 
     @merge_labels.setter
-    def merge_labels(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def merge_labels(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "merge_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cluster. Changing this creates a new
         cluster.
@@ -720,33 +720,33 @@ class _ClusterState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeAddresses")
-    def node_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def node_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "node_addresses")
 
     @node_addresses.setter
-    def node_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def node_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes for the cluster.
         """
         return pulumi.get(self, "node_count")
 
     @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project of the cluster. Required if admin wants
         to create a cluster in another project. Changing this creates a new
@@ -755,12 +755,12 @@ class _ClusterState:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V1 Container Infra
         client. A Container Infra client is needed to create a cluster. If omitted,
@@ -770,30 +770,30 @@ class _ClusterState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="stackId")
-    def stack_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "stack_id")
 
     @stack_id.setter
-    def stack_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_id", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user of the cluster. Required if admin wants to
         create a cluster template for another user. Changing this creates a new
@@ -802,7 +802,7 @@ class _ClusterState:
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -812,23 +812,23 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 fixed_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 fixed_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 flavor: Optional[pulumi.Input[_builtins.str]] = None,
-                 floating_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keypair: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 master_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 master_flavor: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_lb_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_labels: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 fixed_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 fixed_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 flavor: pulumi.Input[Optional[_builtins.str]] = None,
+                 floating_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keypair: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 master_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 master_flavor: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_lb_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_labels: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V1 Magnum cluster resource within OpenStack.
@@ -1027,23 +1027,23 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 fixed_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 fixed_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 flavor: Optional[pulumi.Input[_builtins.str]] = None,
-                 floating_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keypair: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 master_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 master_flavor: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_lb_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 merge_labels: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 fixed_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 fixed_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 flavor: pulumi.Input[Optional[_builtins.str]] = None,
+                 floating_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keypair: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 master_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 master_flavor: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_lb_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 merge_labels: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1093,34 +1093,34 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_address: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-            coe_version: Optional[pulumi.Input[_builtins.str]] = None,
-            container_version: Optional[pulumi.Input[_builtins.str]] = None,
-            create_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
-            docker_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-            fixed_network: Optional[pulumi.Input[_builtins.str]] = None,
-            fixed_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-            flavor: Optional[pulumi.Input[_builtins.str]] = None,
-            floating_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            keypair: Optional[pulumi.Input[_builtins.str]] = None,
-            kubeconfig: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            master_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            master_count: Optional[pulumi.Input[_builtins.int]] = None,
-            master_flavor: Optional[pulumi.Input[_builtins.str]] = None,
-            master_lb_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            merge_labels: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            stack_id: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Cluster':
+            api_address: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            coe_version: pulumi.Input[Optional[_builtins.str]] = None,
+            container_version: pulumi.Input[Optional[_builtins.str]] = None,
+            create_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
+            docker_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+            fixed_network: pulumi.Input[Optional[_builtins.str]] = None,
+            fixed_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            flavor: pulumi.Input[Optional[_builtins.str]] = None,
+            floating_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            keypair: pulumi.Input[Optional[_builtins.str]] = None,
+            kubeconfig: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            master_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            master_count: pulumi.Input[Optional[_builtins.int]] = None,
+            master_flavor: pulumi.Input[Optional[_builtins.str]] = None,
+            master_lb_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_labels: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_id: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -207,8 +207,8 @@ def get_quotaset_v3(project_id: Optional[_builtins.str] = None,
         snapshots=pulumi.get(__ret__, 'snapshots'),
         volume_type_quota=pulumi.get(__ret__, 'volume_type_quota'),
         volumes=pulumi.get(__ret__, 'volumes'))
-def get_quotaset_v3_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                           region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_quotaset_v3_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                           region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQuotasetV3Result]:
     """
     Use this data source to get the blockstorage quotaset v3 of an OpenStack project.

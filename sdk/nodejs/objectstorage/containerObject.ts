@@ -223,32 +223,32 @@ export interface ContainerObjectState {
      * character delimits the container and object name. For example, the path
      * /v1/account/www/pages specifies the www container, not the www/pages container.
      */
-    containerName?: pulumi.Input<string>;
+    containerName?: pulumi.Input<string | undefined>;
     /**
      * A string representing the content of the object. Conflicts with
      * `source` and `copyFrom`.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * A string which specifies the override behavior for 
      * the browser. For example, this header might specify that the browser use a download
      * program to save this file rather than show the file, which is the default.
      */
-    contentDisposition?: pulumi.Input<string>;
+    contentDisposition?: pulumi.Input<string | undefined>;
     /**
      * A string representing the value of the Content-Encoding
      * metadata.
      */
-    contentEncoding?: pulumi.Input<string>;
+    contentEncoding?: pulumi.Input<string | undefined>;
     /**
      * If the operation succeeds, this value is zero (0) or the 
      * length of informational or error text in the response body.
      */
-    contentLength?: pulumi.Input<number>;
+    contentLength?: pulumi.Input<number | undefined>;
     /**
      * A string which sets the MIME type for the object.
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * A string representing the name of an object 
      * used to create the new object by copying the `copyFrom` object. The value is in form
@@ -256,34 +256,34 @@ export interface ContainerObjectState {
      * container and object before you include them in the header. Conflicts with `source` and
      * `content`.
      */
-    copyFrom?: pulumi.Input<string>;
+    copyFrom?: pulumi.Input<string | undefined>;
     /**
      * The date and time the system responded to the request, using the preferred 
      * format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
      * time is always in UTC.
      */
-    date?: pulumi.Input<string>;
+    date?: pulumi.Input<string | undefined>;
     /**
      * An integer representing the number of seconds after which the
      * system removes the object. Internally, the Object Storage system stores this value in
      * the X-Delete-At metadata item.
      */
-    deleteAfter?: pulumi.Input<number>;
+    deleteAfter?: pulumi.Input<number | undefined>;
     /**
      * An string representing the date when the system removes the object. 
      * For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
      */
-    deleteAt?: pulumi.Input<string>;
+    deleteAt?: pulumi.Input<string | undefined>;
     /**
      * If set to true, Object Storage guesses the content 
      * type based on the file extension and ignores the value sent in the Content-Type
      * header, if present.
      */
-    detectContentType?: pulumi.Input<boolean>;
+    detectContentType?: pulumi.Input<boolean | undefined>;
     /**
      * Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The date and time when the object was last modified. The date and time 
      * stamp format is ISO 8601:
@@ -292,12 +292,12 @@ export interface ContainerObjectState {
      * The ±hh:mm value, if included, is the time zone as an offset from UTC. In the previous
      * example, the offset value is -05:00.
      */
-    lastModified?: pulumi.Input<string>;
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    lastModified?: pulumi.Input<string | undefined>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A unique name for the object.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A string set to specify that this is a dynamic large 
      * object manifest object. The value is the container and object name prefix of the
@@ -305,23 +305,23 @@ export interface ContainerObjectState {
      * URL-encode the names of the container and prefix before you include them in this
      * header.
      */
-    objectManifest?: pulumi.Input<string>;
+    objectManifest?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the container. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new container.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A string representing the local path of a file which will be used
      * as the object's content. Conflicts with `source` and `copyFrom`.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * A unique transaction ID for this request. Your service provider might 
      * need this value if you report a problem.
      */
-    transId?: pulumi.Input<string>;
+    transId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -341,22 +341,22 @@ export interface ContainerObjectArgs {
      * A string representing the content of the object. Conflicts with
      * `source` and `copyFrom`.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * A string which specifies the override behavior for 
      * the browser. For example, this header might specify that the browser use a download
      * program to save this file rather than show the file, which is the default.
      */
-    contentDisposition?: pulumi.Input<string>;
+    contentDisposition?: pulumi.Input<string | undefined>;
     /**
      * A string representing the value of the Content-Encoding
      * metadata.
      */
-    contentEncoding?: pulumi.Input<string>;
+    contentEncoding?: pulumi.Input<string | undefined>;
     /**
      * A string which sets the MIME type for the object.
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * A string representing the name of an object 
      * used to create the new object by copying the `copyFrom` object. The value is in form
@@ -364,33 +364,33 @@ export interface ContainerObjectArgs {
      * container and object before you include them in the header. Conflicts with `source` and
      * `content`.
      */
-    copyFrom?: pulumi.Input<string>;
+    copyFrom?: pulumi.Input<string | undefined>;
     /**
      * An integer representing the number of seconds after which the
      * system removes the object. Internally, the Object Storage system stores this value in
      * the X-Delete-At metadata item.
      */
-    deleteAfter?: pulumi.Input<number>;
+    deleteAfter?: pulumi.Input<number | undefined>;
     /**
      * An string representing the date when the system removes the object. 
      * For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
      */
-    deleteAt?: pulumi.Input<string>;
+    deleteAt?: pulumi.Input<string | undefined>;
     /**
      * If set to true, Object Storage guesses the content 
      * type based on the file extension and ignores the value sent in the Content-Type
      * header, if present.
      */
-    detectContentType?: pulumi.Input<boolean>;
+    detectContentType?: pulumi.Input<boolean | undefined>;
     /**
      * Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
      */
-    etag?: pulumi.Input<string>;
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    etag?: pulumi.Input<string | undefined>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A unique name for the object.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A string set to specify that this is a dynamic large 
      * object manifest object. The value is the container and object name prefix of the
@@ -398,16 +398,16 @@ export interface ContainerObjectArgs {
      * URL-encode the names of the container and prefix before you include them in this
      * header.
      */
-    objectManifest?: pulumi.Input<string>;
+    objectManifest?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the container. If
      * omitted, the `region` argument of the provider is used. Changing this
      * creates a new container.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A string representing the local path of a file which will be used
      * as the object's content. Conflicts with `source` and `copyFrom`.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }

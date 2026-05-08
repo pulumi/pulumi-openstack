@@ -210,44 +210,44 @@ export interface GetLoadbalancerV2OutputArgs {
     /**
      * The human-readable description for the loadbalancer.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the loadbalancer. Exactly one of
      * `name`, `loadbalancerId` is required to be set.
      */
-    loadbalancerId?: pulumi.Input<string>;
+    loadbalancerId?: pulumi.Input<string | undefined>;
     /**
      * The name of the loadbalancer. Exactly one of `name`,
      * `loadbalancerId` is required to be set.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Load Balancer client.
      * If omitted, the `region` argument of the provider is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A set of tags applied to the loadbalancer. The load balancer
      * will be returned if it has all of the specified tags.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A set of tags. The load balancer will be returned if
      * it has at least one of the specified tags.
      */
-    tagsAnies?: pulumi.Input<pulumi.Input<string>[]>;
+    tagsAnies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A set of tags. The load balancer will be returned
      * if it does not have any of the specified tags.
      */
-    tagsNotAnies?: pulumi.Input<pulumi.Input<string>[]>;
+    tagsNotAnies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A set of tags. The load balancer will be returned if
      * it does not have all of the specified tags.
      */
-    tagsNots?: pulumi.Input<pulumi.Input<string>[]>;
+    tagsNots?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IP address of the loadbalancer's virtual IP (VIP).
      */
-    vipAddress?: pulumi.Input<string>;
+    vipAddress?: pulumi.Input<string | undefined>;
 }

@@ -21,17 +21,17 @@ __all__ = ['IpSecPolicyArgs', 'IpSecPolicy']
 @pulumi.input_type
 class IpSecPolicyArgs:
     def __init__(__self__, *,
-                 auth_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encapsulation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input['IpSecPolicyLifetimeArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pfs: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transform_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 auth_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encapsulation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input['IpSecPolicyLifetimeArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pfs: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transform_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a IpSecPolicy resource.
 
@@ -85,7 +85,7 @@ class IpSecPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="authAlgorithm")
-    def auth_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
         aes-xcbc, aes-cmac. Default is sha1.
@@ -94,12 +94,12 @@ class IpSecPolicyArgs:
         return pulumi.get(self, "auth_algorithm")
 
     @auth_algorithm.setter
-    def auth_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_algorithm", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable description for the policy.
         Changing this updates the description of the existing policy.
@@ -107,12 +107,12 @@ class IpSecPolicyArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encapsulationMode")
-    def encapsulation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encapsulation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encapsulation mode. Valid values are tunnel and transport. Default is tunnel.
         Changing this updates the existing policy.
@@ -120,12 +120,12 @@ class IpSecPolicyArgs:
         return pulumi.get(self, "encapsulation_mode")
 
     @encapsulation_mode.setter
-    def encapsulation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encapsulation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encapsulation_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionAlgorithm")
-    def encryption_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
         aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
@@ -134,24 +134,24 @@ class IpSecPolicyArgs:
         return pulumi.get(self, "encryption_algorithm")
 
     @encryption_algorithm.setter
-    def encryption_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_algorithm", value)
 
     @_builtins.property
     @pulumi.getter
-    def lifetimes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IpSecPolicyLifetimeArgs']]]]:
+    def lifetimes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IpSecPolicyLifetimeArgs']]]]:
         """
         The lifetime of the security association. Consists of Unit and Value.
         """
         return pulumi.get(self, "lifetimes")
 
     @lifetimes.setter
-    def lifetimes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IpSecPolicyLifetimeArgs']]]]):
+    def lifetimes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IpSecPolicyLifetimeArgs']]]]):
         pulumi.set(self, "lifetimes", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the policy. Changing this updates the name of
         the existing policy.
@@ -159,12 +159,12 @@ class IpSecPolicyArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def pfs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pfs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
         Default is group5. Changing this updates the existing policy.
@@ -172,12 +172,12 @@ class IpSecPolicyArgs:
         return pulumi.get(self, "pfs")
 
     @pfs.setter
-    def pfs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pfs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pfs", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an IPSec policy. If omitted, the
@@ -187,12 +187,12 @@ class IpSecPolicyArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of the policy. Required if admin wants to
         create a policy for another project. Changing this creates a new policy.
@@ -200,12 +200,12 @@ class IpSecPolicyArgs:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transformProtocol")
-    def transform_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transform_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The transform protocol. Valid values are esp, ah and ah-esp.
         Changing this updates the existing policy. Default is ESP.
@@ -213,36 +213,36 @@ class IpSecPolicyArgs:
         return pulumi.get(self, "transform_protocol")
 
     @transform_protocol.setter
-    def transform_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transform_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transform_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
 @pulumi.input_type
 class _IpSecPolicyState:
     def __init__(__self__, *,
-                 auth_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encapsulation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input['IpSecPolicyLifetimeArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pfs: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transform_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 auth_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encapsulation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input['IpSecPolicyLifetimeArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pfs: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transform_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering IpSecPolicy resources.
 
@@ -296,7 +296,7 @@ class _IpSecPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="authAlgorithm")
-    def auth_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
         aes-xcbc, aes-cmac. Default is sha1.
@@ -305,12 +305,12 @@ class _IpSecPolicyState:
         return pulumi.get(self, "auth_algorithm")
 
     @auth_algorithm.setter
-    def auth_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_algorithm", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable description for the policy.
         Changing this updates the description of the existing policy.
@@ -318,12 +318,12 @@ class _IpSecPolicyState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encapsulationMode")
-    def encapsulation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encapsulation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encapsulation mode. Valid values are tunnel and transport. Default is tunnel.
         Changing this updates the existing policy.
@@ -331,12 +331,12 @@ class _IpSecPolicyState:
         return pulumi.get(self, "encapsulation_mode")
 
     @encapsulation_mode.setter
-    def encapsulation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encapsulation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encapsulation_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionAlgorithm")
-    def encryption_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
         aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
@@ -345,24 +345,24 @@ class _IpSecPolicyState:
         return pulumi.get(self, "encryption_algorithm")
 
     @encryption_algorithm.setter
-    def encryption_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_algorithm", value)
 
     @_builtins.property
     @pulumi.getter
-    def lifetimes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IpSecPolicyLifetimeArgs']]]]:
+    def lifetimes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IpSecPolicyLifetimeArgs']]]]:
         """
         The lifetime of the security association. Consists of Unit and Value.
         """
         return pulumi.get(self, "lifetimes")
 
     @lifetimes.setter
-    def lifetimes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IpSecPolicyLifetimeArgs']]]]):
+    def lifetimes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IpSecPolicyLifetimeArgs']]]]):
         pulumi.set(self, "lifetimes", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the policy. Changing this updates the name of
         the existing policy.
@@ -370,12 +370,12 @@ class _IpSecPolicyState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def pfs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pfs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
         Default is group5. Changing this updates the existing policy.
@@ -383,12 +383,12 @@ class _IpSecPolicyState:
         return pulumi.get(self, "pfs")
 
     @pfs.setter
-    def pfs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pfs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pfs", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 Networking client.
         A Networking client is needed to create an IPSec policy. If omitted, the
@@ -398,12 +398,12 @@ class _IpSecPolicyState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of the policy. Required if admin wants to
         create a policy for another project. Changing this creates a new policy.
@@ -411,12 +411,12 @@ class _IpSecPolicyState:
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transformProtocol")
-    def transform_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transform_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The transform protocol. Valid values are esp, ah and ah-esp.
         Changing this updates the existing policy. Default is ESP.
@@ -424,19 +424,19 @@ class _IpSecPolicyState:
         return pulumi.get(self, "transform_protocol")
 
     @transform_protocol.setter
-    def transform_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transform_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transform_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional options.
         """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
@@ -446,17 +446,17 @@ class IpSecPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encapsulation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pfs: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transform_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 auth_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encapsulation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pfs: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transform_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Manages a V2 Neutron IPSec policy resource within OpenStack.
@@ -548,17 +548,17 @@ class IpSecPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encapsulation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pfs: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transform_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 auth_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encapsulation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pfs: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transform_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -589,17 +589,17 @@ class IpSecPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            encapsulation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            encryption_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            pfs: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            transform_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'IpSecPolicy':
+            auth_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            encapsulation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pfs: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transform_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'IpSecPolicy':
         """
         Get an existing IpSecPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

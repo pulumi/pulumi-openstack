@@ -38,7 +38,7 @@ class ConfigurationConfigurationArgsDict(TypedDict):
     """
     Configuration parameter value. Changing this creates a new resource.
     """
-    string_type: NotRequired[pulumi.Input[_builtins.bool]]
+    string_type: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
     """
@@ -48,7 +48,7 @@ class ConfigurationConfigurationArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 string_type: Optional[pulumi.Input[_builtins.bool]] = None):
+                 string_type: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Configuration parameter name. Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] value: Configuration parameter value. Changing this creates a new resource.
@@ -85,14 +85,14 @@ class ConfigurationConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="stringType")
-    def string_type(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def string_type(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
         """
         return pulumi.get(self, "string_type")
 
     @string_type.setter
-    def string_type(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def string_type(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "string_type", value)
 
 
@@ -149,12 +149,12 @@ class InstanceDatabaseArgsDict(TypedDict):
     Database to be created on new instance. Changing this creates a
     new instance.
     """
-    charset: NotRequired[pulumi.Input[_builtins.str]]
+    charset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Database character set. Changing this creates a
     new instance.
     """
-    collate: NotRequired[pulumi.Input[_builtins.str]]
+    collate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Database collation. Changing this creates a new instance.
     """
@@ -163,8 +163,8 @@ class InstanceDatabaseArgsDict(TypedDict):
 class InstanceDatabaseArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 charset: Optional[pulumi.Input[_builtins.str]] = None,
-                 collate: Optional[pulumi.Input[_builtins.str]] = None):
+                 charset: pulumi.Input[Optional[_builtins.str]] = None,
+                 collate: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Database to be created on new instance. Changing this creates a
                new instance.
@@ -193,7 +193,7 @@ class InstanceDatabaseArgs:
 
     @_builtins.property
     @pulumi.getter
-    def charset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def charset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database character set. Changing this creates a
         new instance.
@@ -201,19 +201,19 @@ class InstanceDatabaseArgs:
         return pulumi.get(self, "charset")
 
     @charset.setter
-    def charset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def charset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "charset", value)
 
     @_builtins.property
     @pulumi.getter
-    def collate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database collation. Changing this creates a new instance.
         """
         return pulumi.get(self, "collate")
 
     @collate.setter
-    def collate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collate", value)
 
 
@@ -271,22 +271,22 @@ class InstanceDatastoreArgs:
 
 
 class InstanceNetworkArgsDict(TypedDict):
-    fixed_ip_v4: NotRequired[pulumi.Input[_builtins.str]]
+    fixed_ip_v4: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies a fixed IPv4 address to be used on this
     network. Changing this creates a new instance.
     """
-    fixed_ip_v6: NotRequired[pulumi.Input[_builtins.str]]
+    fixed_ip_v6: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies a fixed IPv6 address to be used on this
     network. Changing this creates a new instance.
     """
-    port: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The port UUID of a
     network to attach to the instance. Changing this creates a new instance.
     """
-    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    uuid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The network UUID to
     attach to the instance. Changing this creates a new instance.
@@ -295,10 +295,10 @@ class InstanceNetworkArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceNetworkArgs:
     def __init__(__self__, *,
-                 fixed_ip_v4: Optional[pulumi.Input[_builtins.str]] = None,
-                 fixed_ip_v6: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 fixed_ip_v4: pulumi.Input[Optional[_builtins.str]] = None,
+                 fixed_ip_v6: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] fixed_ip_v4: Specifies a fixed IPv4 address to be used on this
                network. Changing this creates a new instance.
@@ -320,7 +320,7 @@ class InstanceNetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="fixedIpV4")
-    def fixed_ip_v4(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fixed_ip_v4(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies a fixed IPv4 address to be used on this
         network. Changing this creates a new instance.
@@ -328,12 +328,12 @@ class InstanceNetworkArgs:
         return pulumi.get(self, "fixed_ip_v4")
 
     @fixed_ip_v4.setter
-    def fixed_ip_v4(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fixed_ip_v4(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fixed_ip_v4", value)
 
     @_builtins.property
     @pulumi.getter(name="fixedIpV6")
-    def fixed_ip_v6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fixed_ip_v6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies a fixed IPv6 address to be used on this
         network. Changing this creates a new instance.
@@ -341,12 +341,12 @@ class InstanceNetworkArgs:
         return pulumi.get(self, "fixed_ip_v6")
 
     @fixed_ip_v6.setter
-    def fixed_ip_v6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fixed_ip_v6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fixed_ip_v6", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port UUID of a
         network to attach to the instance. Changing this creates a new instance.
@@ -354,12 +354,12 @@ class InstanceNetworkArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network UUID to
         attach to the instance. Changing this creates a new instance.
@@ -367,7 +367,7 @@ class InstanceNetworkArgs:
         return pulumi.get(self, "uuid")
 
     @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
 
 
@@ -377,17 +377,17 @@ class InstanceUserArgsDict(TypedDict):
     Username to be created on new instance. Changing this creates a
     new instance.
     """
-    databases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    databases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of databases that user will have access to. If not specified,
     user has access to all databases on th einstance. Changing this creates a new instance.
     """
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An ip address or % sign indicating what ip addresses can connect with
     this user credentials. Changing this creates a new instance.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     User's password. Changing this creates a
     new instance.
@@ -397,9 +397,9 @@ class InstanceUserArgsDict(TypedDict):
 class InstanceUserArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 databases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None):
+                 databases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Username to be created on new instance. Changing this creates a
                new instance.
@@ -433,7 +433,7 @@ class InstanceUserArgs:
 
     @_builtins.property
     @pulumi.getter
-    def databases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def databases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of databases that user will have access to. If not specified,
         user has access to all databases on th einstance. Changing this creates a new instance.
@@ -441,12 +441,12 @@ class InstanceUserArgs:
         return pulumi.get(self, "databases")
 
     @databases.setter
-    def databases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def databases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "databases", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An ip address or % sign indicating what ip addresses can connect with
         this user credentials. Changing this creates a new instance.
@@ -454,12 +454,12 @@ class InstanceUserArgs:
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User's password. Changing this creates a
         new instance.
@@ -467,7 +467,7 @@ class InstanceUserArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
 

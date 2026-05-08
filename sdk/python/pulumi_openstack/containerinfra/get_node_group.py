@@ -262,9 +262,9 @@ def get_node_group(cluster_id: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         role=pulumi.get(__ret__, 'role'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-def get_node_group_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                          name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_node_group_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                          name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeGroupResult]:
     """
     Use this data source to get information of an available OpenStack Magnum node group.

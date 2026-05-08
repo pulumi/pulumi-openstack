@@ -131,25 +131,25 @@ export interface ConfigurationState {
     /**
      * An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
      */
-    configurations?: pulumi.Input<pulumi.Input<inputs.database.ConfigurationConfiguration>[]>;
+    configurations?: pulumi.Input<pulumi.Input<inputs.database.ConfigurationConfiguration>[] | undefined>;
     /**
      * An array of database engine type and version. The datastore
      * object structure is documented below. Changing this creates resource.
      */
-    datastore?: pulumi.Input<inputs.database.ConfigurationDatastore>;
+    datastore?: pulumi.Input<inputs.database.ConfigurationDatastore | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A unique name for the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the db instance. Changing this
      * creates a new instance.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -159,7 +159,7 @@ export interface ConfigurationArgs {
     /**
      * An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
      */
-    configurations?: pulumi.Input<pulumi.Input<inputs.database.ConfigurationConfiguration>[]>;
+    configurations?: pulumi.Input<pulumi.Input<inputs.database.ConfigurationConfiguration>[] | undefined>;
     /**
      * An array of database engine type and version. The datastore
      * object structure is documented below. Changing this creates resource.
@@ -172,10 +172,10 @@ export interface ConfigurationArgs {
     /**
      * A unique name for the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region in which to create the db instance. Changing this
      * creates a new instance.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

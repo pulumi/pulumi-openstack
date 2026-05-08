@@ -201,11 +201,11 @@ def get_snapshot(description: Optional[_builtins.str] = None,
         share_size=pulumi.get(__ret__, 'share_size'),
         size=pulumi.get(__ret__, 'size'),
         status=pulumi.get(__ret__, 'status'))
-def get_snapshot_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        share_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_snapshot_output(description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        share_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSnapshotResult]:
     """
     Use this data source to get the ID of an available Shared File System snapshot.

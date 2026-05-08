@@ -21,9 +21,9 @@ class TransferAcceptArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
                  zone_transfer_request_id: pulumi.Input[_builtins.str],
-                 disable_status_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 disable_status_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TransferAccept resource.
 
@@ -73,7 +73,7 @@ class TransferAcceptArgs:
 
     @_builtins.property
     @pulumi.getter(name="disableStatusCheck")
-    def disable_status_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_status_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable wait for zone to reach ACTIVE
         status. The check is enabled by default. If this argument is true, zone
@@ -82,12 +82,12 @@ class TransferAcceptArgs:
         return pulumi.get(self, "disable_status_check")
 
     @disable_status_check.setter
-    def disable_status_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_status_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_status_check", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 DNS client.
         If omitted, the `region` argument of the provider is used.
@@ -96,12 +96,12 @@ class TransferAcceptArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional options. Changing this creates a
         new transfer accept.
@@ -109,18 +109,18 @@ class TransferAcceptArgs:
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value_specs", value)
 
 
 @pulumi.input_type
 class _TransferAcceptState:
     def __init__(__self__, *,
-                 disable_status_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_transfer_request_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 disable_status_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_transfer_request_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransferAccept resources.
 
@@ -148,7 +148,7 @@ class _TransferAcceptState:
 
     @_builtins.property
     @pulumi.getter(name="disableStatusCheck")
-    def disable_status_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_status_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable wait for zone to reach ACTIVE
         status. The check is enabled by default. If this argument is true, zone
@@ -157,24 +157,24 @@ class _TransferAcceptState:
         return pulumi.get(self, "disable_status_check")
 
     @disable_status_check.setter
-    def disable_status_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_status_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_status_check", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The transfer key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to obtain the V2 DNS client.
         If omitted, the `region` argument of the provider is used.
@@ -183,12 +183,12 @@ class _TransferAcceptState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="valueSpecs")
-    def value_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def value_specs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of additional options. Changing this creates a
         new transfer accept.
@@ -196,19 +196,19 @@ class _TransferAcceptState:
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
-    def value_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def value_specs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "value_specs", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneTransferRequestId")
-    def zone_transfer_request_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_transfer_request_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the zone transfer request.
         """
         return pulumi.get(self, "zone_transfer_request_id")
 
     @zone_transfer_request_id.setter
-    def zone_transfer_request_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_transfer_request_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_transfer_request_id", value)
 
 
@@ -218,11 +218,11 @@ class TransferAccept(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable_status_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_transfer_request_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable_status_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_transfer_request_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a DNS zone transfer accept in the OpenStack DNS Service.
@@ -326,11 +326,11 @@ class TransferAccept(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable_status_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_transfer_request_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable_status_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_transfer_request_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -359,11 +359,11 @@ class TransferAccept(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            disable_status_check: Optional[pulumi.Input[_builtins.bool]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            value_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            zone_transfer_request_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TransferAccept':
+            disable_status_check: pulumi.Input[Optional[_builtins.bool]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            zone_transfer_request_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransferAccept':
         """
         Get an existing TransferAccept resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

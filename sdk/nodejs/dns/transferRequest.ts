@@ -141,34 +141,34 @@ export interface TransferRequestState {
     /**
      * A description of the zone tranfer request.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Disable wait for zone to reach ACTIVE
      * status. The check is enabled by default. If this argument is true, zone
      * will be considered as created/updated if OpenStack request returned success.
      */
-    disableStatusCheck?: pulumi.Input<boolean>;
-    key?: pulumi.Input<string>;
+    disableStatusCheck?: pulumi.Input<boolean | undefined>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 DNS client.
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone zone transfer accept.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The target Project ID to transfer to.
      */
-    targetProjectId?: pulumi.Input<string>;
+    targetProjectId?: pulumi.Input<string | undefined>;
     /**
      * Map of additional options. Changing this creates a
      * new transfer request.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the zone for which to create the transfer
      * request.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -178,29 +178,29 @@ export interface TransferRequestArgs {
     /**
      * A description of the zone tranfer request.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Disable wait for zone to reach ACTIVE
      * status. The check is enabled by default. If this argument is true, zone
      * will be considered as created/updated if OpenStack request returned success.
      */
-    disableStatusCheck?: pulumi.Input<boolean>;
-    key?: pulumi.Input<string>;
+    disableStatusCheck?: pulumi.Input<boolean | undefined>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 DNS client.
      * If omitted, the `region` argument of the provider is used.
      * Changing this creates a new DNS zone zone transfer accept.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The target Project ID to transfer to.
      */
-    targetProjectId?: pulumi.Input<string>;
+    targetProjectId?: pulumi.Input<string | undefined>;
     /**
      * Map of additional options. Changing this creates a
      * new transfer request.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the zone for which to create the transfer
      * request.

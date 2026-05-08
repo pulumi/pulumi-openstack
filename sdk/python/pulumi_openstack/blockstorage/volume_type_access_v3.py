@@ -21,7 +21,7 @@ class VolumeTypeAccessV3Args:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
                  volume_type_id: pulumi.Input[_builtins.str],
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VolumeTypeAccessV3 resource.
 
@@ -66,7 +66,7 @@ class VolumeTypeAccessV3Args:
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the volume. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -75,16 +75,16 @@ class VolumeTypeAccessV3Args:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _VolumeTypeAccessV3State:
     def __init__(__self__, *,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VolumeTypeAccessV3 resources.
 
@@ -105,7 +105,7 @@ class _VolumeTypeAccessV3State:
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the project to give access to. Changing this
         creates a new resource.
@@ -113,12 +113,12 @@ class _VolumeTypeAccessV3State:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which to create the volume. If
         omitted, the `region` argument of the provider is used. Changing this
@@ -127,12 +127,12 @@ class _VolumeTypeAccessV3State:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeTypeId")
-    def volume_type_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_type_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the volume type to give access to. Changing
         this creates a new resource.
@@ -140,7 +140,7 @@ class _VolumeTypeAccessV3State:
         return pulumi.get(self, "volume_type_id")
 
     @volume_type_id.setter
-    def volume_type_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_type_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_type_id", value)
 
 
@@ -150,9 +150,9 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a V3 block storage volume type access resource within OpenStack.
@@ -243,9 +243,9 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -272,9 +272,9 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_type_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VolumeTypeAccessV3':
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_type_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VolumeTypeAccessV3':
         """
         Get an existing VolumeTypeAccessV3 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

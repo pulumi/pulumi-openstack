@@ -151,37 +151,37 @@ export interface LimitV3State {
     /**
      * Description of the limit.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The domain the limit applies to. Changing this
      * creates a new Limit.
      */
-    domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string | undefined>;
     /**
      * The project the limit applies to. Changing this
      * creates a new Limit.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new Limit.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Integer for the actual limit.
      */
-    resourceLimit?: pulumi.Input<number>;
+    resourceLimit?: pulumi.Input<number | undefined>;
     /**
      * The resource that the limit applies to. Changing
      * this creates a new Limit.
      */
-    resourceName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string | undefined>;
     /**
      * The service the limit applies to. Changing this
      * creates a new Limit.
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -191,23 +191,23 @@ export interface LimitV3Args {
     /**
      * Description of the limit.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The domain the limit applies to. Changing this
      * creates a new Limit.
      */
-    domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string | undefined>;
     /**
      * The project the limit applies to. Changing this
      * creates a new Limit.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V3 Keystone client.
      * If omitted, the `region` argument of the provider is used. Changing this
      * creates a new Limit.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Integer for the actual limit.
      */

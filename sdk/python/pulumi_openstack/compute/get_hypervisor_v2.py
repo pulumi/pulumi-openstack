@@ -195,8 +195,8 @@ def get_hypervisor_v2(hostname: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         type=pulumi.get(__ret__, 'type'),
         vcpus=pulumi.get(__ret__, 'vcpus'))
-def get_hypervisor_v2_output(hostname: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_hypervisor_v2_output(hostname: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHypervisorV2Result]:
     """
     Use this data source to get information about hypervisors

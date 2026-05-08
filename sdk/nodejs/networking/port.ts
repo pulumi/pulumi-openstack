@@ -362,89 +362,89 @@ export interface PortState {
      * (must be `true` or `false` if provided). Changing this updates the
      * `adminStateUp` of an existing port.
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * The collection of Fixed IP addresses on the port in the
      * order returned by the Network v2 API.
      */
-    allFixedIps?: pulumi.Input<pulumi.Input<string>[]>;
+    allFixedIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The collection of Security Group IDs on the port
      * which have been explicitly and implicitly added.
      */
-    allSecurityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allSecurityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The collection of tags assigned on the port, which have been
      * explicitly and implicitly added.
      */
-    allTags?: pulumi.Input<pulumi.Input<string>[]>;
+    allTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An IP/MAC Address pair of additional IP
      * addresses that can be active on this port. The structure is described
      * below.
      */
-    allowedAddressPairs?: pulumi.Input<pulumi.Input<inputs.networking.PortAllowedAddressPair>[]>;
+    allowedAddressPairs?: pulumi.Input<pulumi.Input<inputs.networking.PortAllowedAddressPair>[] | undefined>;
     /**
      * The port binding allows to specify binding information
      * for the port. The structure is described below.
      */
-    binding?: pulumi.Input<inputs.networking.PortBinding>;
+    binding?: pulumi.Input<inputs.networking.PortBinding | undefined>;
     /**
      * Human-readable description of the port. Changing
      * this updates the `description` of an existing port.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the device attached to the port. Changing this
      * creates a new port.
      */
-    deviceId?: pulumi.Input<string>;
+    deviceId?: pulumi.Input<string | undefined>;
     /**
      * The device owner of the port. Changing this creates
      * a new port.
      */
-    deviceOwner?: pulumi.Input<string>;
+    deviceOwner?: pulumi.Input<string | undefined>;
     /**
      * The list of maps representing port DNS assignments.
      */
-    dnsAssignments?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    dnsAssignments?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
     /**
      * The port DNS name. Available, when Neutron DNS extension
      * is enabled.
      */
-    dnsName?: pulumi.Input<string>;
+    dnsName?: pulumi.Input<string | undefined>;
     /**
      * An extra DHCP option that needs to be configured
      * on the port. The structure is described below. Can be specified multiple
      * times.
      */
-    extraDhcpOptions?: pulumi.Input<pulumi.Input<inputs.networking.PortExtraDhcpOption>[]>;
+    extraDhcpOptions?: pulumi.Input<pulumi.Input<inputs.networking.PortExtraDhcpOption>[] | undefined>;
     /**
      * An array of desired IPs for
      * this port. The structure is described below.
      */
-    fixedIps?: pulumi.Input<pulumi.Input<inputs.networking.PortFixedIp>[]>;
+    fixedIps?: pulumi.Input<pulumi.Input<inputs.networking.PortFixedIp>[] | undefined>;
     /**
      * Specify a specific MAC address for the port. Changing
      * this creates a new port.
      */
-    macAddress?: pulumi.Input<string>;
+    macAddress?: pulumi.Input<string | undefined>;
     /**
      * A unique name for the port. Changing this
      * updates the `name` of an existing port.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the network to attach the port to. Changing
      * this creates a new port.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * Create a port with no fixed
      * IP address. This will also remove any fixed IPs previously set on a port. `true`
      * is the only valid value for this argument.
      */
-    noFixedIp?: pulumi.Input<boolean>;
+    noFixedIp?: pulumi.Input<boolean | undefined>;
     /**
      * If set to
      * `true`, then no security groups are applied to the port. If set to `false` and
@@ -452,7 +452,7 @@ export interface PortState {
      * behavior of the Networking service, which is to usually apply the "default"
      * security group.
      */
-    noSecurityGroups?: pulumi.Input<boolean>;
+    noSecurityGroups?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to explicitly enable or disable
      * port security on the port. Port Security is usually enabled by default, so
@@ -461,38 +461,38 @@ export interface PortState {
      * security, the port must not have any security groups. Valid values are `true`
      * and `false`.
      */
-    portSecurityEnabled?: pulumi.Input<boolean>;
+    portSecurityEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Reference to the associated QoS policy.
      */
-    qosPolicyId?: pulumi.Input<string>;
+    qosPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * port.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list
      * of security group IDs to apply to the port. The security groups must be
      * specified by ID and not name (as opposed to how they are configured with
      * the Compute Instance).
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A set of string tags for the port.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The owner of the port. Required if admin wants
      * to create a port for another tenant. Changing this creates a new port.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -504,59 +504,59 @@ export interface PortArgs {
      * (must be `true` or `false` if provided). Changing this updates the
      * `adminStateUp` of an existing port.
      */
-    adminStateUp?: pulumi.Input<boolean>;
+    adminStateUp?: pulumi.Input<boolean | undefined>;
     /**
      * An IP/MAC Address pair of additional IP
      * addresses that can be active on this port. The structure is described
      * below.
      */
-    allowedAddressPairs?: pulumi.Input<pulumi.Input<inputs.networking.PortAllowedAddressPair>[]>;
+    allowedAddressPairs?: pulumi.Input<pulumi.Input<inputs.networking.PortAllowedAddressPair>[] | undefined>;
     /**
      * The port binding allows to specify binding information
      * for the port. The structure is described below.
      */
-    binding?: pulumi.Input<inputs.networking.PortBinding>;
+    binding?: pulumi.Input<inputs.networking.PortBinding | undefined>;
     /**
      * Human-readable description of the port. Changing
      * this updates the `description` of an existing port.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the device attached to the port. Changing this
      * creates a new port.
      */
-    deviceId?: pulumi.Input<string>;
+    deviceId?: pulumi.Input<string | undefined>;
     /**
      * The device owner of the port. Changing this creates
      * a new port.
      */
-    deviceOwner?: pulumi.Input<string>;
+    deviceOwner?: pulumi.Input<string | undefined>;
     /**
      * The port DNS name. Available, when Neutron DNS extension
      * is enabled.
      */
-    dnsName?: pulumi.Input<string>;
+    dnsName?: pulumi.Input<string | undefined>;
     /**
      * An extra DHCP option that needs to be configured
      * on the port. The structure is described below. Can be specified multiple
      * times.
      */
-    extraDhcpOptions?: pulumi.Input<pulumi.Input<inputs.networking.PortExtraDhcpOption>[]>;
+    extraDhcpOptions?: pulumi.Input<pulumi.Input<inputs.networking.PortExtraDhcpOption>[] | undefined>;
     /**
      * An array of desired IPs for
      * this port. The structure is described below.
      */
-    fixedIps?: pulumi.Input<pulumi.Input<inputs.networking.PortFixedIp>[]>;
+    fixedIps?: pulumi.Input<pulumi.Input<inputs.networking.PortFixedIp>[] | undefined>;
     /**
      * Specify a specific MAC address for the port. Changing
      * this creates a new port.
      */
-    macAddress?: pulumi.Input<string>;
+    macAddress?: pulumi.Input<string | undefined>;
     /**
      * A unique name for the port. Changing this
      * updates the `name` of an existing port.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the network to attach the port to. Changing
      * this creates a new port.
@@ -567,7 +567,7 @@ export interface PortArgs {
      * IP address. This will also remove any fixed IPs previously set on a port. `true`
      * is the only valid value for this argument.
      */
-    noFixedIp?: pulumi.Input<boolean>;
+    noFixedIp?: pulumi.Input<boolean | undefined>;
     /**
      * If set to
      * `true`, then no security groups are applied to the port. If set to `false` and
@@ -575,7 +575,7 @@ export interface PortArgs {
      * behavior of the Networking service, which is to usually apply the "default"
      * security group.
      */
-    noSecurityGroups?: pulumi.Input<boolean>;
+    noSecurityGroups?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to explicitly enable or disable
      * port security on the port. Port Security is usually enabled by default, so
@@ -584,36 +584,36 @@ export interface PortArgs {
      * security, the port must not have any security groups. Valid values are `true`
      * and `false`.
      */
-    portSecurityEnabled?: pulumi.Input<boolean>;
+    portSecurityEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Reference to the associated QoS policy.
      */
-    qosPolicyId?: pulumi.Input<string>;
+    qosPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The region in which to obtain the V2 Networking client.
      * A Networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * port.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list
      * of security group IDs to apply to the port. The security groups must be
      * specified by ID and not name (as opposed to how they are configured with
      * the Compute Instance).
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A set of string tags for the port.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The owner of the port. Required if admin wants
      * to create a port for another tenant. Changing this creates a new port.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Map of additional options.
      */
-    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    valueSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
