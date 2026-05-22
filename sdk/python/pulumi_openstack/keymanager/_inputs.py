@@ -32,7 +32,7 @@ __all__ = [
 ]
 
 class ContainerV1AclArgsDict(TypedDict):
-    read: NotRequired[pulumi.Input[Optional['ContainerV1AclReadArgs']]]
+    read: NotRequired[pulumi.Input[Optional['ContainerV1AclReadArgsDict']]]
 
 @pulumi.input_type
 class ContainerV1AclArgs:
@@ -374,7 +374,7 @@ class OrderV1MetaArgs:
 
 
 class SecretV1AclArgsDict(TypedDict):
-    read: NotRequired[pulumi.Input[Optional['SecretV1AclReadArgs']]]
+    read: NotRequired[pulumi.Input[Optional['SecretV1AclReadArgsDict']]]
 
 @pulumi.input_type
 class SecretV1AclArgs:

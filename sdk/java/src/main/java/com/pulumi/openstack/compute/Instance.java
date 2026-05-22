@@ -396,14 +396,10 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         final var vm-port = Output.tuple(multi_net.id(), multi_net.networks()).applyValue(values -> {
- *             var id = values.t1;
- *             var networks = values.t2;
- *             return NetworkingFunctions.getPort(GetPortArgs.builder()
- *                 .deviceId(id)
- *                 .networkId(networks[1].uuid())
- *                 .build());
- *         });
+ *         final var vm-port = NetworkingFunctions.getPort(GetPortArgs.builder()
+ *             .deviceId(multi_net.id())
+ *             .networkId(multi_net.networks().applyValue(_networks -> _networks[1].uuid()))
+ *             .build());
  * 
  *         var fipVm = new FloatingIpAssociate("fipVm", FloatingIpAssociateArgs.builder()
  *             .floatingIp(myip.address())

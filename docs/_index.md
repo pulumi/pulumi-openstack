@@ -24,7 +24,7 @@ with the proper credentials before it can be used.
 Use the navigation to the left to read about the available resources.
 ## Example Usage
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
@@ -226,6 +226,22 @@ public class App {
         var test_server = new Instance("test-server");
 
     }
+}
+```
+
+{{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+pulumi {
+  required_providers {
+    openstack = {
+      source = "pulumi/openstack"
+    }
+  }
+}
+
+# Create a web server
+resource "openstack_compute_instance" "test-server" {
 }
 ```
 
@@ -481,7 +497,7 @@ provider "openstack" {
 * Explicitly define the public and private networks in your
   instances as shown below:
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
@@ -665,6 +681,34 @@ public class App {
             .build());
 
     }
+}
+```
+
+{{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+pulumi {
+  required_providers {
+    openstack = {
+      source = "pulumi/openstack"
+    }
+  }
+}
+
+resource "openstack_compute_instance" "my_instance" {
+  name      = "my_instance"
+  region    = "DFW"
+  image_id  = "fabe045f-43f8-4991-9e6c-5cabd617538c"
+  flavor_id = "general1-4"
+  key_pair  = "provisioning_key"
+  networks {
+    uuid = "00000000-0000-0000-0000-000000000000"
+    name = "public"
+  }
+  networks {
+    uuid = "11111111-1111-1111-1111-111111111111"
+    name = "private"
+  }
 }
 ```
 

@@ -1375,12 +1375,8 @@ class Instance(pulumi.CustomResource):
                     "name": "my_second_network",
                 },
             ])
-        vm_port = pulumi.Output.all(
-            id=multi_net.id,
-            networks=multi_net.networks
-        ).apply(lambda resolved_outputs: openstack.networking.get_port_output(device_id=resolved_outputs['id'],
-            network_id=networks[1].uuid))
-
+        vm_port = openstack.networking.get_port_output(device_id=multi_net.id,
+            network_id=multi_net.networks[1].uuid)
         fip_vm = openstack.networking.FloatingIpAssociate("fip_vm",
             floating_ip=myip.address,
             port_id=vm_port.id)
@@ -2033,12 +2029,8 @@ class Instance(pulumi.CustomResource):
                     "name": "my_second_network",
                 },
             ])
-        vm_port = pulumi.Output.all(
-            id=multi_net.id,
-            networks=multi_net.networks
-        ).apply(lambda resolved_outputs: openstack.networking.get_port_output(device_id=resolved_outputs['id'],
-            network_id=networks[1].uuid))
-
+        vm_port = openstack.networking.get_port_output(device_id=multi_net.id,
+            network_id=multi_net.networks[1].uuid)
         fip_vm = openstack.networking.FloatingIpAssociate("fip_vm",
             floating_ip=myip.address,
             port_id=vm_port.id)
