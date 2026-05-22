@@ -204,10 +204,10 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * });
- * const vm_port = pulumi.all([multi_net.id, multi_net.networks]).apply(([id, networks]) => openstack.networking.getPortOutput({
- *     deviceId: id,
- *     networkId: networks[1].uuid,
- * }));
+ * const vm_port = openstack.networking.getPortOutput({
+ *     deviceId: multi_net.id,
+ *     networkId: multi_net.networks.apply(networks => networks[1].uuid),
+ * });
  * const fipVm = new openstack.networking.FloatingIpAssociate("fip_vm", {
  *     floatingIp: myip.address,
  *     portId: vm_port.apply(vm_port => vm_port.id),
