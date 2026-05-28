@@ -54,7 +54,7 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// Application credential below will inherit all the current user's roles.
     /// 
-    /// !&gt; **WARNING:** Restrictions on these Identity operations are deliberately
+    /// &gt; **WARNING:** Restrictions on these Identity operations are deliberately
     /// imposed as a safeguard to prevent a compromised application credential from
     /// regenerating itself. Disabling this restriction poses an inherent added risk.
     /// 

@@ -62,7 +62,7 @@ import (
 //
 // Application credential below will inherit all the current user's roles.
 //
-// !> **WARNING:** Restrictions on these Identity operations are deliberately
+// > **WARNING:** Restrictions on these Identity operations are deliberately
 // imposed as a safeguard to prevent a compromised application credential from
 // regenerating itself. Disabling this restriction poses an inherent added risk.
 //
