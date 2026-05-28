@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  * Application credential below will inherit all the current user&#39;s roles.
  * 
- * !&gt; **WARNING:** Restrictions on these Identity operations are deliberately
+ * &gt; **WARNING:** Restrictions on these Identity operations are deliberately
  * imposed as a safeguard to prevent a compromised application credential from
  * regenerating itself. Disabling this restriction poses an inherent added risk.
  * 
