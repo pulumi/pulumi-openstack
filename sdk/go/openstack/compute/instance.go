@@ -359,13 +359,13 @@ import (
 //			vm_port := networking.LookupPortOutput(ctx, networking.GetPortOutputArgs{
 //				DeviceId: multi_net.ID(),
 //				NetworkId: multi_net.Networks.ApplyT(func(networks []compute.InstanceNetwork) (*string, error) {
-//					return &networks[1].Uuid, nil
+//					return networks[1].Uuid, nil
 //				}).(pulumi.StringPtrOutput),
 //			}, nil)
 //			_, err = networking.NewFloatingIpAssociate(ctx, "fip_vm", &networking.FloatingIpAssociateArgs{
 //				FloatingIp: myip.Address,
 //				PortId: pulumi.String(vm_port.ApplyT(func(vm_port networking.GetPortResult) (*string, error) {
-//					return &vm_port.Id, nil
+//					return vm_port.Id, nil
 //				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
