@@ -44,13 +44,13 @@ class L7PolicyV2Args:
         :param pulumi.Input[_builtins.str] name: Human-readable name for the L7 Policy. Does not have
                to be unique.
         :param pulumi.Input[_builtins.int] position: The position of this policy on the listener. Positions start at 1.
-        :param pulumi.Input[_builtins.int] redirect_http_code: Integer. Requests matching this policy will be  
+        :param pulumi.Input[_builtins.int] redirect_http_code: Integer. Requests matching this policy will be\\
                redirected to the specified URL or Prefix URL with the HTTP response code.
                Valid if action is REDIRECT\\_TO\\_URL or REDIRECT\\_PREFIX. Valid options are:
                301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
         :param pulumi.Input[_builtins.str] redirect_pool_id: Requests matching this policy will be redirected to the
                pool with this ID. Only valid if action is REDIRECT\\_TO\\_POOL.
-        :param pulumi.Input[_builtins.str] redirect_prefix: Requests matching this policy will be redirected to 
+        :param pulumi.Input[_builtins.str] redirect_prefix: Requests matching this policy will be redirected to
                this Prefix URL. Only valid if action is REDIRECT\\_PREFIX.
         :param pulumi.Input[_builtins.str] redirect_url: Requests matching this policy will be redirected to this URL.
                Only valid if action is REDIRECT\\_TO\\_URL.
@@ -165,7 +165,7 @@ class L7PolicyV2Args:
     @pulumi.getter(name="redirectHttpCode")
     def redirect_http_code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Integer. Requests matching this policy will be  
+        Integer. Requests matching this policy will be\\
         redirected to the specified URL or Prefix URL with the HTTP response code.
         Valid if action is REDIRECT\\_TO\\_URL or REDIRECT\\_PREFIX. Valid options are:
         301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
@@ -193,7 +193,7 @@ class L7PolicyV2Args:
     @pulumi.getter(name="redirectPrefix")
     def redirect_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Requests matching this policy will be redirected to 
+        Requests matching this policy will be redirected to
         this Prefix URL. Only valid if action is REDIRECT\\_PREFIX.
         """
         return pulumi.get(self, "redirect_prefix")
@@ -273,13 +273,13 @@ class _L7PolicyV2State:
         :param pulumi.Input[_builtins.str] name: Human-readable name for the L7 Policy. Does not have
                to be unique.
         :param pulumi.Input[_builtins.int] position: The position of this policy on the listener. Positions start at 1.
-        :param pulumi.Input[_builtins.int] redirect_http_code: Integer. Requests matching this policy will be  
+        :param pulumi.Input[_builtins.int] redirect_http_code: Integer. Requests matching this policy will be\\
                redirected to the specified URL or Prefix URL with the HTTP response code.
                Valid if action is REDIRECT\\_TO\\_URL or REDIRECT\\_PREFIX. Valid options are:
                301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
         :param pulumi.Input[_builtins.str] redirect_pool_id: Requests matching this policy will be redirected to the
                pool with this ID. Only valid if action is REDIRECT\\_TO\\_POOL.
-        :param pulumi.Input[_builtins.str] redirect_prefix: Requests matching this policy will be redirected to 
+        :param pulumi.Input[_builtins.str] redirect_prefix: Requests matching this policy will be redirected to
                this Prefix URL. Only valid if action is REDIRECT\\_PREFIX.
         :param pulumi.Input[_builtins.str] redirect_url: Requests matching this policy will be redirected to this URL.
                Only valid if action is REDIRECT\\_TO\\_URL.
@@ -396,7 +396,7 @@ class _L7PolicyV2State:
     @pulumi.getter(name="redirectHttpCode")
     def redirect_http_code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Integer. Requests matching this policy will be  
+        Integer. Requests matching this policy will be\\
         redirected to the specified URL or Prefix URL with the HTTP response code.
         Valid if action is REDIRECT\\_TO\\_URL or REDIRECT\\_PREFIX. Valid options are:
         301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
@@ -424,7 +424,7 @@ class _L7PolicyV2State:
     @pulumi.getter(name="redirectPrefix")
     def redirect_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Requests matching this policy will be redirected to 
+        Requests matching this policy will be redirected to
         this Prefix URL. Only valid if action is REDIRECT\\_PREFIX.
         """
         return pulumi.get(self, "redirect_prefix")
@@ -555,13 +555,13 @@ class L7PolicyV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Human-readable name for the L7 Policy. Does not have
                to be unique.
         :param pulumi.Input[_builtins.int] position: The position of this policy on the listener. Positions start at 1.
-        :param pulumi.Input[_builtins.int] redirect_http_code: Integer. Requests matching this policy will be  
+        :param pulumi.Input[_builtins.int] redirect_http_code: Integer. Requests matching this policy will be\\
                redirected to the specified URL or Prefix URL with the HTTP response code.
                Valid if action is REDIRECT\\_TO\\_URL or REDIRECT\\_PREFIX. Valid options are:
                301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
         :param pulumi.Input[_builtins.str] redirect_pool_id: Requests matching this policy will be redirected to the
                pool with this ID. Only valid if action is REDIRECT\\_TO\\_POOL.
-        :param pulumi.Input[_builtins.str] redirect_prefix: Requests matching this policy will be redirected to 
+        :param pulumi.Input[_builtins.str] redirect_prefix: Requests matching this policy will be redirected to
                this Prefix URL. Only valid if action is REDIRECT\\_PREFIX.
         :param pulumi.Input[_builtins.str] redirect_url: Requests matching this policy will be redirected to this URL.
                Only valid if action is REDIRECT\\_TO\\_URL.
@@ -718,13 +718,13 @@ class L7PolicyV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Human-readable name for the L7 Policy. Does not have
                to be unique.
         :param pulumi.Input[_builtins.int] position: The position of this policy on the listener. Positions start at 1.
-        :param pulumi.Input[_builtins.int] redirect_http_code: Integer. Requests matching this policy will be  
+        :param pulumi.Input[_builtins.int] redirect_http_code: Integer. Requests matching this policy will be\\
                redirected to the specified URL or Prefix URL with the HTTP response code.
                Valid if action is REDIRECT\\_TO\\_URL or REDIRECT\\_PREFIX. Valid options are:
                301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
         :param pulumi.Input[_builtins.str] redirect_pool_id: Requests matching this policy will be redirected to the
                pool with this ID. Only valid if action is REDIRECT\\_TO\\_POOL.
-        :param pulumi.Input[_builtins.str] redirect_prefix: Requests matching this policy will be redirected to 
+        :param pulumi.Input[_builtins.str] redirect_prefix: Requests matching this policy will be redirected to
                this Prefix URL. Only valid if action is REDIRECT\\_PREFIX.
         :param pulumi.Input[_builtins.str] redirect_url: Requests matching this policy will be redirected to this URL.
                Only valid if action is REDIRECT\\_TO\\_URL.
@@ -810,7 +810,7 @@ class L7PolicyV2(pulumi.CustomResource):
     @pulumi.getter(name="redirectHttpCode")
     def redirect_http_code(self) -> pulumi.Output[_builtins.int]:
         """
-        Integer. Requests matching this policy will be  
+        Integer. Requests matching this policy will be\\
         redirected to the specified URL or Prefix URL with the HTTP response code.
         Valid if action is REDIRECT\\_TO\\_URL or REDIRECT\\_PREFIX. Valid options are:
         301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
@@ -830,7 +830,7 @@ class L7PolicyV2(pulumi.CustomResource):
     @pulumi.getter(name="redirectPrefix")
     def redirect_prefix(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Requests matching this policy will be redirected to 
+        Requests matching this policy will be redirected to
         this Prefix URL. Only valid if action is REDIRECT\\_PREFIX.
         """
         return pulumi.get(self, "redirect_prefix")

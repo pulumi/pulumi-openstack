@@ -37,7 +37,7 @@ class ContainerObjectArgs:
         """
         The set of arguments for constructing a ContainerObject resource.
 
-        :param pulumi.Input[_builtins.str] container_name: A unique (within an account) name for the container. 
+        :param pulumi.Input[_builtins.str] container_name: A unique (within an account) name for the container.
                The container name must be from 1 to 256 characters long and can start
                with any character and contain any pattern. Character set must be UTF-8.
                The container name cannot contain a slash (/) character because this
@@ -45,13 +45,13 @@ class ContainerObjectArgs:
                /v1/account/www/pages specifies the www container, not the www/pages container.
         :param pulumi.Input[_builtins.str] content: A string representing the content of the object. Conflicts with
                `source` and `copy_from`.
-        :param pulumi.Input[_builtins.str] content_disposition: A string which specifies the override behavior for 
+        :param pulumi.Input[_builtins.str] content_disposition: A string which specifies the override behavior for
                the browser. For example, this header might specify that the browser use a download
                program to save this file rather than show the file, which is the default.
         :param pulumi.Input[_builtins.str] content_encoding: A string representing the value of the Content-Encoding
                metadata.
         :param pulumi.Input[_builtins.str] content_type: A string which sets the MIME type for the object.
-        :param pulumi.Input[_builtins.str] copy_from: A string representing the name of an object 
+        :param pulumi.Input[_builtins.str] copy_from: A string representing the name of an object
                used to create the new object by copying the `copy_from` object. The value is in form
                {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
                container and object before you include them in the header. Conflicts with `source` and
@@ -59,14 +59,14 @@ class ContainerObjectArgs:
         :param pulumi.Input[_builtins.int] delete_after: An integer representing the number of seconds after which the
                system removes the object. Internally, the Object Storage system stores this value in
                the X-Delete-At metadata item.
-        :param pulumi.Input[_builtins.str] delete_at: An string representing the date when the system removes the object. 
+        :param pulumi.Input[_builtins.str] delete_at: An string representing the date when the system removes the object.
                For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
-        :param pulumi.Input[_builtins.bool] detect_content_type: If set to true, Object Storage guesses the content 
+        :param pulumi.Input[_builtins.bool] detect_content_type: If set to true, Object Storage guesses the content
                type based on the file extension and ignores the value sent in the Content-Type
                header, if present.
         :param pulumi.Input[_builtins.str] etag: Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
         :param pulumi.Input[_builtins.str] name: A unique name for the object.
-        :param pulumi.Input[_builtins.str] object_manifest: A string set to specify that this is a dynamic large 
+        :param pulumi.Input[_builtins.str] object_manifest: A string set to specify that this is a dynamic large
                object manifest object. The value is the container and object name prefix of the
                segment objects in the form container/prefix. You must UTF-8-encode and then
                URL-encode the names of the container and prefix before you include them in this
@@ -111,7 +111,7 @@ class ContainerObjectArgs:
     @pulumi.getter(name="containerName")
     def container_name(self) -> pulumi.Input[_builtins.str]:
         """
-        A unique (within an account) name for the container. 
+        A unique (within an account) name for the container.
         The container name must be from 1 to 256 characters long and can start
         with any character and contain any pattern. Character set must be UTF-8.
         The container name cannot contain a slash (/) character because this
@@ -141,7 +141,7 @@ class ContainerObjectArgs:
     @pulumi.getter(name="contentDisposition")
     def content_disposition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A string which specifies the override behavior for 
+        A string which specifies the override behavior for
         the browser. For example, this header might specify that the browser use a download
         program to save this file rather than show the file, which is the default.
         """
@@ -180,7 +180,7 @@ class ContainerObjectArgs:
     @pulumi.getter(name="copyFrom")
     def copy_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A string representing the name of an object 
+        A string representing the name of an object
         used to create the new object by copying the `copy_from` object. The value is in form
         {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
         container and object before you include them in the header. Conflicts with `source` and
@@ -210,7 +210,7 @@ class ContainerObjectArgs:
     @pulumi.getter(name="deleteAt")
     def delete_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        An string representing the date when the system removes the object. 
+        An string representing the date when the system removes the object.
         For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
         """
         return pulumi.get(self, "delete_at")
@@ -223,7 +223,7 @@ class ContainerObjectArgs:
     @pulumi.getter(name="detectContentType")
     def detect_content_type(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If set to true, Object Storage guesses the content 
+        If set to true, Object Storage guesses the content
         type based on the file extension and ignores the value sent in the Content-Type
         header, if present.
         """
@@ -270,7 +270,7 @@ class ContainerObjectArgs:
     @pulumi.getter(name="objectManifest")
     def object_manifest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A string set to specify that this is a dynamic large 
+        A string set to specify that this is a dynamic large
         object manifest object. The value is the container and object name prefix of the
         segment objects in the form container/prefix. You must UTF-8-encode and then
         URL-encode the names of the container and prefix before you include them in this
@@ -335,7 +335,7 @@ class _ContainerObjectState:
         """
         Input properties used for looking up and filtering ContainerObject resources.
 
-        :param pulumi.Input[_builtins.str] container_name: A unique (within an account) name for the container. 
+        :param pulumi.Input[_builtins.str] container_name: A unique (within an account) name for the container.
                The container name must be from 1 to 256 characters long and can start
                with any character and contain any pattern. Character set must be UTF-8.
                The container name cannot contain a slash (/) character because this
@@ -343,39 +343,39 @@ class _ContainerObjectState:
                /v1/account/www/pages specifies the www container, not the www/pages container.
         :param pulumi.Input[_builtins.str] content: A string representing the content of the object. Conflicts with
                `source` and `copy_from`.
-        :param pulumi.Input[_builtins.str] content_disposition: A string which specifies the override behavior for 
+        :param pulumi.Input[_builtins.str] content_disposition: A string which specifies the override behavior for
                the browser. For example, this header might specify that the browser use a download
                program to save this file rather than show the file, which is the default.
         :param pulumi.Input[_builtins.str] content_encoding: A string representing the value of the Content-Encoding
                metadata.
-        :param pulumi.Input[_builtins.int] content_length: If the operation succeeds, this value is zero (0) or the 
+        :param pulumi.Input[_builtins.int] content_length: If the operation succeeds, this value is zero (0) or the
                length of informational or error text in the response body.
         :param pulumi.Input[_builtins.str] content_type: A string which sets the MIME type for the object.
-        :param pulumi.Input[_builtins.str] copy_from: A string representing the name of an object 
+        :param pulumi.Input[_builtins.str] copy_from: A string representing the name of an object
                used to create the new object by copying the `copy_from` object. The value is in form
                {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
                container and object before you include them in the header. Conflicts with `source` and
                `content`.
-        :param pulumi.Input[_builtins.str] date: The date and time the system responded to the request, using the preferred 
+        :param pulumi.Input[_builtins.str] date: The date and time the system responded to the request, using the preferred
                format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
                time is always in UTC.
         :param pulumi.Input[_builtins.int] delete_after: An integer representing the number of seconds after which the
                system removes the object. Internally, the Object Storage system stores this value in
                the X-Delete-At metadata item.
-        :param pulumi.Input[_builtins.str] delete_at: An string representing the date when the system removes the object. 
+        :param pulumi.Input[_builtins.str] delete_at: An string representing the date when the system removes the object.
                For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
-        :param pulumi.Input[_builtins.bool] detect_content_type: If set to true, Object Storage guesses the content 
+        :param pulumi.Input[_builtins.bool] detect_content_type: If set to true, Object Storage guesses the content
                type based on the file extension and ignores the value sent in the Content-Type
                header, if present.
         :param pulumi.Input[_builtins.str] etag: Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
-        :param pulumi.Input[_builtins.str] last_modified: The date and time when the object was last modified. The date and time 
+        :param pulumi.Input[_builtins.str] last_modified: The date and time when the object was last modified. The date and time
                stamp format is ISO 8601:
                CCYY-MM-DDThh:mm:ss±hh:mm
                For example, 2015-08-27T09:49:58-05:00.
                The ±hh:mm value, if included, is the time zone as an offset from UTC. In the previous
                example, the offset value is -05:00.
         :param pulumi.Input[_builtins.str] name: A unique name for the object.
-        :param pulumi.Input[_builtins.str] object_manifest: A string set to specify that this is a dynamic large 
+        :param pulumi.Input[_builtins.str] object_manifest: A string set to specify that this is a dynamic large
                object manifest object. The value is the container and object name prefix of the
                segment objects in the form container/prefix. You must UTF-8-encode and then
                URL-encode the names of the container and prefix before you include them in this
@@ -385,7 +385,7 @@ class _ContainerObjectState:
                creates a new container.
         :param pulumi.Input[_builtins.str] source: A string representing the local path of a file which will be used
                as the object's content. Conflicts with `source` and `copy_from`.
-        :param pulumi.Input[_builtins.str] trans_id: A unique transaction ID for this request. Your service provider might 
+        :param pulumi.Input[_builtins.str] trans_id: A unique transaction ID for this request. Your service provider might
                need this value if you report a problem.
         """
         if container_name is not None:
@@ -431,7 +431,7 @@ class _ContainerObjectState:
     @pulumi.getter(name="containerName")
     def container_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A unique (within an account) name for the container. 
+        A unique (within an account) name for the container.
         The container name must be from 1 to 256 characters long and can start
         with any character and contain any pattern. Character set must be UTF-8.
         The container name cannot contain a slash (/) character because this
@@ -461,7 +461,7 @@ class _ContainerObjectState:
     @pulumi.getter(name="contentDisposition")
     def content_disposition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A string which specifies the override behavior for 
+        A string which specifies the override behavior for
         the browser. For example, this header might specify that the browser use a download
         program to save this file rather than show the file, which is the default.
         """
@@ -488,7 +488,7 @@ class _ContainerObjectState:
     @pulumi.getter(name="contentLength")
     def content_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        If the operation succeeds, this value is zero (0) or the 
+        If the operation succeeds, this value is zero (0) or the
         length of informational or error text in the response body.
         """
         return pulumi.get(self, "content_length")
@@ -513,7 +513,7 @@ class _ContainerObjectState:
     @pulumi.getter(name="copyFrom")
     def copy_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A string representing the name of an object 
+        A string representing the name of an object
         used to create the new object by copying the `copy_from` object. The value is in form
         {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
         container and object before you include them in the header. Conflicts with `source` and
@@ -529,7 +529,7 @@ class _ContainerObjectState:
     @pulumi.getter
     def date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The date and time the system responded to the request, using the preferred 
+        The date and time the system responded to the request, using the preferred
         format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
         time is always in UTC.
         """
@@ -557,7 +557,7 @@ class _ContainerObjectState:
     @pulumi.getter(name="deleteAt")
     def delete_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        An string representing the date when the system removes the object. 
+        An string representing the date when the system removes the object.
         For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
         """
         return pulumi.get(self, "delete_at")
@@ -570,7 +570,7 @@ class _ContainerObjectState:
     @pulumi.getter(name="detectContentType")
     def detect_content_type(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If set to true, Object Storage guesses the content 
+        If set to true, Object Storage guesses the content
         type based on the file extension and ignores the value sent in the Content-Type
         header, if present.
         """
@@ -596,7 +596,7 @@ class _ContainerObjectState:
     @pulumi.getter(name="lastModified")
     def last_modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The date and time when the object was last modified. The date and time 
+        The date and time when the object was last modified. The date and time
         stamp format is ISO 8601:
         CCYY-MM-DDThh:mm:ss±hh:mm
         For example, 2015-08-27T09:49:58-05:00.
@@ -634,7 +634,7 @@ class _ContainerObjectState:
     @pulumi.getter(name="objectManifest")
     def object_manifest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A string set to specify that this is a dynamic large 
+        A string set to specify that this is a dynamic large
         object manifest object. The value is the container and object name prefix of the
         segment objects in the form container/prefix. You must UTF-8-encode and then
         URL-encode the names of the container and prefix before you include them in this
@@ -677,7 +677,7 @@ class _ContainerObjectState:
     @pulumi.getter(name="transId")
     def trans_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A unique transaction ID for this request. Your service provider might 
+        A unique transaction ID for this request. Your service provider might
         need this value if you report a problem.
         """
         return pulumi.get(self, "trans_id")
@@ -721,7 +721,7 @@ class ContainerObject(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] container_name: A unique (within an account) name for the container. 
+        :param pulumi.Input[_builtins.str] container_name: A unique (within an account) name for the container.
                The container name must be from 1 to 256 characters long and can start
                with any character and contain any pattern. Character set must be UTF-8.
                The container name cannot contain a slash (/) character because this
@@ -729,13 +729,13 @@ class ContainerObject(pulumi.CustomResource):
                /v1/account/www/pages specifies the www container, not the www/pages container.
         :param pulumi.Input[_builtins.str] content: A string representing the content of the object. Conflicts with
                `source` and `copy_from`.
-        :param pulumi.Input[_builtins.str] content_disposition: A string which specifies the override behavior for 
+        :param pulumi.Input[_builtins.str] content_disposition: A string which specifies the override behavior for
                the browser. For example, this header might specify that the browser use a download
                program to save this file rather than show the file, which is the default.
         :param pulumi.Input[_builtins.str] content_encoding: A string representing the value of the Content-Encoding
                metadata.
         :param pulumi.Input[_builtins.str] content_type: A string which sets the MIME type for the object.
-        :param pulumi.Input[_builtins.str] copy_from: A string representing the name of an object 
+        :param pulumi.Input[_builtins.str] copy_from: A string representing the name of an object
                used to create the new object by copying the `copy_from` object. The value is in form
                {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
                container and object before you include them in the header. Conflicts with `source` and
@@ -743,14 +743,14 @@ class ContainerObject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] delete_after: An integer representing the number of seconds after which the
                system removes the object. Internally, the Object Storage system stores this value in
                the X-Delete-At metadata item.
-        :param pulumi.Input[_builtins.str] delete_at: An string representing the date when the system removes the object. 
+        :param pulumi.Input[_builtins.str] delete_at: An string representing the date when the system removes the object.
                For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
-        :param pulumi.Input[_builtins.bool] detect_content_type: If set to true, Object Storage guesses the content 
+        :param pulumi.Input[_builtins.bool] detect_content_type: If set to true, Object Storage guesses the content
                type based on the file extension and ignores the value sent in the Content-Type
                header, if present.
         :param pulumi.Input[_builtins.str] etag: Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
         :param pulumi.Input[_builtins.str] name: A unique name for the object.
-        :param pulumi.Input[_builtins.str] object_manifest: A string set to specify that this is a dynamic large 
+        :param pulumi.Input[_builtins.str] object_manifest: A string set to specify that this is a dynamic large
                object manifest object. The value is the container and object name prefix of the
                segment objects in the form container/prefix. You must UTF-8-encode and then
                URL-encode the names of the container and prefix before you include them in this
@@ -873,7 +873,7 @@ class ContainerObject(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] container_name: A unique (within an account) name for the container. 
+        :param pulumi.Input[_builtins.str] container_name: A unique (within an account) name for the container.
                The container name must be from 1 to 256 characters long and can start
                with any character and contain any pattern. Character set must be UTF-8.
                The container name cannot contain a slash (/) character because this
@@ -881,39 +881,39 @@ class ContainerObject(pulumi.CustomResource):
                /v1/account/www/pages specifies the www container, not the www/pages container.
         :param pulumi.Input[_builtins.str] content: A string representing the content of the object. Conflicts with
                `source` and `copy_from`.
-        :param pulumi.Input[_builtins.str] content_disposition: A string which specifies the override behavior for 
+        :param pulumi.Input[_builtins.str] content_disposition: A string which specifies the override behavior for
                the browser. For example, this header might specify that the browser use a download
                program to save this file rather than show the file, which is the default.
         :param pulumi.Input[_builtins.str] content_encoding: A string representing the value of the Content-Encoding
                metadata.
-        :param pulumi.Input[_builtins.int] content_length: If the operation succeeds, this value is zero (0) or the 
+        :param pulumi.Input[_builtins.int] content_length: If the operation succeeds, this value is zero (0) or the
                length of informational or error text in the response body.
         :param pulumi.Input[_builtins.str] content_type: A string which sets the MIME type for the object.
-        :param pulumi.Input[_builtins.str] copy_from: A string representing the name of an object 
+        :param pulumi.Input[_builtins.str] copy_from: A string representing the name of an object
                used to create the new object by copying the `copy_from` object. The value is in form
                {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
                container and object before you include them in the header. Conflicts with `source` and
                `content`.
-        :param pulumi.Input[_builtins.str] date: The date and time the system responded to the request, using the preferred 
+        :param pulumi.Input[_builtins.str] date: The date and time the system responded to the request, using the preferred
                format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
                time is always in UTC.
         :param pulumi.Input[_builtins.int] delete_after: An integer representing the number of seconds after which the
                system removes the object. Internally, the Object Storage system stores this value in
                the X-Delete-At metadata item.
-        :param pulumi.Input[_builtins.str] delete_at: An string representing the date when the system removes the object. 
+        :param pulumi.Input[_builtins.str] delete_at: An string representing the date when the system removes the object.
                For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
-        :param pulumi.Input[_builtins.bool] detect_content_type: If set to true, Object Storage guesses the content 
+        :param pulumi.Input[_builtins.bool] detect_content_type: If set to true, Object Storage guesses the content
                type based on the file extension and ignores the value sent in the Content-Type
                header, if present.
         :param pulumi.Input[_builtins.str] etag: Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
-        :param pulumi.Input[_builtins.str] last_modified: The date and time when the object was last modified. The date and time 
+        :param pulumi.Input[_builtins.str] last_modified: The date and time when the object was last modified. The date and time
                stamp format is ISO 8601:
                CCYY-MM-DDThh:mm:ss±hh:mm
                For example, 2015-08-27T09:49:58-05:00.
                The ±hh:mm value, if included, is the time zone as an offset from UTC. In the previous
                example, the offset value is -05:00.
         :param pulumi.Input[_builtins.str] name: A unique name for the object.
-        :param pulumi.Input[_builtins.str] object_manifest: A string set to specify that this is a dynamic large 
+        :param pulumi.Input[_builtins.str] object_manifest: A string set to specify that this is a dynamic large
                object manifest object. The value is the container and object name prefix of the
                segment objects in the form container/prefix. You must UTF-8-encode and then
                URL-encode the names of the container and prefix before you include them in this
@@ -923,7 +923,7 @@ class ContainerObject(pulumi.CustomResource):
                creates a new container.
         :param pulumi.Input[_builtins.str] source: A string representing the local path of a file which will be used
                as the object's content. Conflicts with `source` and `copy_from`.
-        :param pulumi.Input[_builtins.str] trans_id: A unique transaction ID for this request. Your service provider might 
+        :param pulumi.Input[_builtins.str] trans_id: A unique transaction ID for this request. Your service provider might
                need this value if you report a problem.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -955,7 +955,7 @@ class ContainerObject(pulumi.CustomResource):
     @pulumi.getter(name="containerName")
     def container_name(self) -> pulumi.Output[_builtins.str]:
         """
-        A unique (within an account) name for the container. 
+        A unique (within an account) name for the container.
         The container name must be from 1 to 256 characters long and can start
         with any character and contain any pattern. Character set must be UTF-8.
         The container name cannot contain a slash (/) character because this
@@ -977,7 +977,7 @@ class ContainerObject(pulumi.CustomResource):
     @pulumi.getter(name="contentDisposition")
     def content_disposition(self) -> pulumi.Output[_builtins.str]:
         """
-        A string which specifies the override behavior for 
+        A string which specifies the override behavior for
         the browser. For example, this header might specify that the browser use a download
         program to save this file rather than show the file, which is the default.
         """
@@ -996,7 +996,7 @@ class ContainerObject(pulumi.CustomResource):
     @pulumi.getter(name="contentLength")
     def content_length(self) -> pulumi.Output[_builtins.int]:
         """
-        If the operation succeeds, this value is zero (0) or the 
+        If the operation succeeds, this value is zero (0) or the
         length of informational or error text in the response body.
         """
         return pulumi.get(self, "content_length")
@@ -1013,7 +1013,7 @@ class ContainerObject(pulumi.CustomResource):
     @pulumi.getter(name="copyFrom")
     def copy_from(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        A string representing the name of an object 
+        A string representing the name of an object
         used to create the new object by copying the `copy_from` object. The value is in form
         {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
         container and object before you include them in the header. Conflicts with `source` and
@@ -1025,7 +1025,7 @@ class ContainerObject(pulumi.CustomResource):
     @pulumi.getter
     def date(self) -> pulumi.Output[_builtins.str]:
         """
-        The date and time the system responded to the request, using the preferred 
+        The date and time the system responded to the request, using the preferred
         format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
         time is always in UTC.
         """
@@ -1045,7 +1045,7 @@ class ContainerObject(pulumi.CustomResource):
     @pulumi.getter(name="deleteAt")
     def delete_at(self) -> pulumi.Output[_builtins.str]:
         """
-        An string representing the date when the system removes the object. 
+        An string representing the date when the system removes the object.
         For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
         """
         return pulumi.get(self, "delete_at")
@@ -1054,7 +1054,7 @@ class ContainerObject(pulumi.CustomResource):
     @pulumi.getter(name="detectContentType")
     def detect_content_type(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        If set to true, Object Storage guesses the content 
+        If set to true, Object Storage guesses the content
         type based on the file extension and ignores the value sent in the Content-Type
         header, if present.
         """
@@ -1072,7 +1072,7 @@ class ContainerObject(pulumi.CustomResource):
     @pulumi.getter(name="lastModified")
     def last_modified(self) -> pulumi.Output[_builtins.str]:
         """
-        The date and time when the object was last modified. The date and time 
+        The date and time when the object was last modified. The date and time
         stamp format is ISO 8601:
         CCYY-MM-DDThh:mm:ss±hh:mm
         For example, 2015-08-27T09:49:58-05:00.
@@ -1098,7 +1098,7 @@ class ContainerObject(pulumi.CustomResource):
     @pulumi.getter(name="objectManifest")
     def object_manifest(self) -> pulumi.Output[_builtins.str]:
         """
-        A string set to specify that this is a dynamic large 
+        A string set to specify that this is a dynamic large
         object manifest object. The value is the container and object name prefix of the
         segment objects in the form container/prefix. You must UTF-8-encode and then
         URL-encode the names of the container and prefix before you include them in this
@@ -1129,7 +1129,7 @@ class ContainerObject(pulumi.CustomResource):
     @pulumi.getter(name="transId")
     def trans_id(self) -> pulumi.Output[_builtins.str]:
         """
-        A unique transaction ID for this request. Your service provider might 
+        A unique transaction ID for this request. Your service provider might
         need this value if you report a problem.
         """
         return pulumi.get(self, "trans_id")

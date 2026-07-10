@@ -759,10 +759,10 @@ import (
 // with a `network` block. Not specifying a network will result in the following
 // error:
 //
-//   - If you intend to use the `compute.InterfaceAttach` resource,
-//     you still need to make sure one of the above points is satisfied. An instance
-//     cannot be created without a valid network configuration even if you intend to
-//     use `compute.InterfaceAttach` after the instance has been created.
+// * If you intend to use the `compute.InterfaceAttach` resource,
+// you still need to make sure one of the above points is satisfied. An instance
+// cannot be created without a valid network configuration even if you intend to
+// use `compute.InterfaceAttach` after the instance has been created.
 //
 // ## Importing instances
 //

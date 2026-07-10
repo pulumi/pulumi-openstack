@@ -461,9 +461,9 @@ import * as utilities from "../utilities";
  * error:
  *
  * * If you intend to use the `openstack.compute.InterfaceAttach` resource,
- *   you still need to make sure one of the above points is satisfied. An instance
- *   cannot be created without a valid network configuration even if you intend to
- *   use `openstack.compute.InterfaceAttach` after the instance has been created.
+ * you still need to make sure one of the above points is satisfied. An instance
+ * cannot be created without a valid network configuration even if you intend to
+ * use `openstack.compute.InterfaceAttach` after the instance has been created.
  *
  * ## Importing instances
  *

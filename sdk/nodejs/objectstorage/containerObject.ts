@@ -42,7 +42,7 @@ export class ContainerObject extends pulumi.CustomResource {
     }
 
     /**
-     * A unique (within an account) name for the container. 
+     * A unique (within an account) name for the container.
      * The container name must be from 1 to 256 characters long and can start
      * with any character and contain any pattern. Character set must be UTF-8.
      * The container name cannot contain a slash (/) character because this
@@ -56,7 +56,7 @@ export class ContainerObject extends pulumi.CustomResource {
      */
     declare public readonly content: pulumi.Output<string | undefined>;
     /**
-     * A string which specifies the override behavior for 
+     * A string which specifies the override behavior for
      * the browser. For example, this header might specify that the browser use a download
      * program to save this file rather than show the file, which is the default.
      */
@@ -67,7 +67,7 @@ export class ContainerObject extends pulumi.CustomResource {
      */
     declare public readonly contentEncoding: pulumi.Output<string>;
     /**
-     * If the operation succeeds, this value is zero (0) or the 
+     * If the operation succeeds, this value is zero (0) or the
      * length of informational or error text in the response body.
      */
     declare public /*out*/ readonly contentLength: pulumi.Output<number>;
@@ -76,7 +76,7 @@ export class ContainerObject extends pulumi.CustomResource {
      */
     declare public readonly contentType: pulumi.Output<string>;
     /**
-     * A string representing the name of an object 
+     * A string representing the name of an object
      * used to create the new object by copying the `copyFrom` object. The value is in form
      * {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
      * container and object before you include them in the header. Conflicts with `source` and
@@ -84,7 +84,7 @@ export class ContainerObject extends pulumi.CustomResource {
      */
     declare public readonly copyFrom: pulumi.Output<string | undefined>;
     /**
-     * The date and time the system responded to the request, using the preferred 
+     * The date and time the system responded to the request, using the preferred
      * format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
      * time is always in UTC.
      */
@@ -96,12 +96,12 @@ export class ContainerObject extends pulumi.CustomResource {
      */
     declare public readonly deleteAfter: pulumi.Output<number | undefined>;
     /**
-     * An string representing the date when the system removes the object. 
+     * An string representing the date when the system removes the object.
      * For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
      */
     declare public readonly deleteAt: pulumi.Output<string>;
     /**
-     * If set to true, Object Storage guesses the content 
+     * If set to true, Object Storage guesses the content
      * type based on the file extension and ignores the value sent in the Content-Type
      * header, if present.
      */
@@ -111,7 +111,7 @@ export class ContainerObject extends pulumi.CustomResource {
      */
     declare public readonly etag: pulumi.Output<string>;
     /**
-     * The date and time when the object was last modified. The date and time 
+     * The date and time when the object was last modified. The date and time
      * stamp format is ISO 8601:
      * CCYY-MM-DDThh:mm:ss±hh:mm
      * For example, 2015-08-27T09:49:58-05:00.
@@ -125,7 +125,7 @@ export class ContainerObject extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * A string set to specify that this is a dynamic large 
+     * A string set to specify that this is a dynamic large
      * object manifest object. The value is the container and object name prefix of the
      * segment objects in the form container/prefix. You must UTF-8-encode and then
      * URL-encode the names of the container and prefix before you include them in this
@@ -144,7 +144,7 @@ export class ContainerObject extends pulumi.CustomResource {
      */
     declare public readonly source: pulumi.Output<string | undefined>;
     /**
-     * A unique transaction ID for this request. Your service provider might 
+     * A unique transaction ID for this request. Your service provider might
      * need this value if you report a problem.
      */
     declare public /*out*/ readonly transId: pulumi.Output<string>;
@@ -216,7 +216,7 @@ export class ContainerObject extends pulumi.CustomResource {
  */
 export interface ContainerObjectState {
     /**
-     * A unique (within an account) name for the container. 
+     * A unique (within an account) name for the container.
      * The container name must be from 1 to 256 characters long and can start
      * with any character and contain any pattern. Character set must be UTF-8.
      * The container name cannot contain a slash (/) character because this
@@ -230,7 +230,7 @@ export interface ContainerObjectState {
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * A string which specifies the override behavior for 
+     * A string which specifies the override behavior for
      * the browser. For example, this header might specify that the browser use a download
      * program to save this file rather than show the file, which is the default.
      */
@@ -241,7 +241,7 @@ export interface ContainerObjectState {
      */
     contentEncoding?: pulumi.Input<string | undefined>;
     /**
-     * If the operation succeeds, this value is zero (0) or the 
+     * If the operation succeeds, this value is zero (0) or the
      * length of informational or error text in the response body.
      */
     contentLength?: pulumi.Input<number | undefined>;
@@ -250,7 +250,7 @@ export interface ContainerObjectState {
      */
     contentType?: pulumi.Input<string | undefined>;
     /**
-     * A string representing the name of an object 
+     * A string representing the name of an object
      * used to create the new object by copying the `copyFrom` object. The value is in form
      * {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
      * container and object before you include them in the header. Conflicts with `source` and
@@ -258,7 +258,7 @@ export interface ContainerObjectState {
      */
     copyFrom?: pulumi.Input<string | undefined>;
     /**
-     * The date and time the system responded to the request, using the preferred 
+     * The date and time the system responded to the request, using the preferred
      * format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
      * time is always in UTC.
      */
@@ -270,12 +270,12 @@ export interface ContainerObjectState {
      */
     deleteAfter?: pulumi.Input<number | undefined>;
     /**
-     * An string representing the date when the system removes the object. 
+     * An string representing the date when the system removes the object.
      * For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
      */
     deleteAt?: pulumi.Input<string | undefined>;
     /**
-     * If set to true, Object Storage guesses the content 
+     * If set to true, Object Storage guesses the content
      * type based on the file extension and ignores the value sent in the Content-Type
      * header, if present.
      */
@@ -285,7 +285,7 @@ export interface ContainerObjectState {
      */
     etag?: pulumi.Input<string | undefined>;
     /**
-     * The date and time when the object was last modified. The date and time 
+     * The date and time when the object was last modified. The date and time
      * stamp format is ISO 8601:
      * CCYY-MM-DDThh:mm:ss±hh:mm
      * For example, 2015-08-27T09:49:58-05:00.
@@ -299,7 +299,7 @@ export interface ContainerObjectState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * A string set to specify that this is a dynamic large 
+     * A string set to specify that this is a dynamic large
      * object manifest object. The value is the container and object name prefix of the
      * segment objects in the form container/prefix. You must UTF-8-encode and then
      * URL-encode the names of the container and prefix before you include them in this
@@ -318,7 +318,7 @@ export interface ContainerObjectState {
      */
     source?: pulumi.Input<string | undefined>;
     /**
-     * A unique transaction ID for this request. Your service provider might 
+     * A unique transaction ID for this request. Your service provider might
      * need this value if you report a problem.
      */
     transId?: pulumi.Input<string | undefined>;
@@ -329,7 +329,7 @@ export interface ContainerObjectState {
  */
 export interface ContainerObjectArgs {
     /**
-     * A unique (within an account) name for the container. 
+     * A unique (within an account) name for the container.
      * The container name must be from 1 to 256 characters long and can start
      * with any character and contain any pattern. Character set must be UTF-8.
      * The container name cannot contain a slash (/) character because this
@@ -343,7 +343,7 @@ export interface ContainerObjectArgs {
      */
     content?: pulumi.Input<string | undefined>;
     /**
-     * A string which specifies the override behavior for 
+     * A string which specifies the override behavior for
      * the browser. For example, this header might specify that the browser use a download
      * program to save this file rather than show the file, which is the default.
      */
@@ -358,7 +358,7 @@ export interface ContainerObjectArgs {
      */
     contentType?: pulumi.Input<string | undefined>;
     /**
-     * A string representing the name of an object 
+     * A string representing the name of an object
      * used to create the new object by copying the `copyFrom` object. The value is in form
      * {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
      * container and object before you include them in the header. Conflicts with `source` and
@@ -372,12 +372,12 @@ export interface ContainerObjectArgs {
      */
     deleteAfter?: pulumi.Input<number | undefined>;
     /**
-     * An string representing the date when the system removes the object. 
+     * An string representing the date when the system removes the object.
      * For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
      */
     deleteAt?: pulumi.Input<string | undefined>;
     /**
-     * If set to true, Object Storage guesses the content 
+     * If set to true, Object Storage guesses the content
      * type based on the file extension and ignores the value sent in the Content-Type
      * header, if present.
      */
@@ -392,7 +392,7 @@ export interface ContainerObjectArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * A string set to specify that this is a dynamic large 
+     * A string set to specify that this is a dynamic large
      * object manifest object. The value is the container and object name prefix of the
      * segment objects in the form container/prefix. You must UTF-8-encode and then
      * URL-encode the names of the container and prefix before you include them in this

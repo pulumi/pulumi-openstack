@@ -55,14 +55,14 @@ class MonitorArgs:
         :param pulumi.Input[_builtins.str] expected_codes: Required for HTTP(S) types. Expected HTTP codes
                for a passing HTTP(S) monitor. You can either specify a single status like
                "200", a list like "200, 202" or a range like "200-202". Default is "200".
-        :param pulumi.Input[_builtins.str] http_method: Required for HTTP(S) types. The HTTP method that 
+        :param pulumi.Input[_builtins.str] http_method: Required for HTTP(S) types. The HTTP method that
                the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
                OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
         :param pulumi.Input[_builtins.str] http_version: Required for HTTP(S) types. The HTTP version that
-               the health monitor uses for requests. One of `1.0` or 1.1` is supported
-               for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+               the health monitor uses for requests. One of `1.0` or 1.1`is supported
+               for HTTP(S) monitors. The default is`1.0`. Supported in Octavia API version
                2.10 or later.
-        :param pulumi.Input[_builtins.int] max_retries_down: Number of permissible ping failures before 
+        :param pulumi.Input[_builtins.int] max_retries_down: Number of permissible ping failures before
                changing the member's status to ERROR. Must be a number between 1 and 10.
                The default is 3. Changing this updates the max_retries_down of the
                existing monitor.
@@ -213,7 +213,7 @@ class MonitorArgs:
     @pulumi.getter(name="httpMethod")
     def http_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required for HTTP(S) types. The HTTP method that 
+        Required for HTTP(S) types. The HTTP method that
         the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
         OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
         """
@@ -228,8 +228,8 @@ class MonitorArgs:
     def http_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for HTTP(S) types. The HTTP version that
-        the health monitor uses for requests. One of `1.0` or 1.1` is supported
-        for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+        the health monitor uses for requests. One of `1.0` or 1.1`is supported
+        for HTTP(S) monitors. The default is`1.0`. Supported in Octavia API version
         2.10 or later.
         """
         return pulumi.get(self, "http_version")
@@ -242,7 +242,7 @@ class MonitorArgs:
     @pulumi.getter(name="maxRetriesDown")
     def max_retries_down(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Number of permissible ping failures before 
+        Number of permissible ping failures before
         changing the member's status to ERROR. Must be a number between 1 and 10.
         The default is 3. Changing this updates the max_retries_down of the
         existing monitor.
@@ -337,17 +337,17 @@ class _MonitorState:
         :param pulumi.Input[_builtins.str] expected_codes: Required for HTTP(S) types. Expected HTTP codes
                for a passing HTTP(S) monitor. You can either specify a single status like
                "200", a list like "200, 202" or a range like "200-202". Default is "200".
-        :param pulumi.Input[_builtins.str] http_method: Required for HTTP(S) types. The HTTP method that 
+        :param pulumi.Input[_builtins.str] http_method: Required for HTTP(S) types. The HTTP method that
                the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
                OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
         :param pulumi.Input[_builtins.str] http_version: Required for HTTP(S) types. The HTTP version that
-               the health monitor uses for requests. One of `1.0` or 1.1` is supported
-               for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+               the health monitor uses for requests. One of `1.0` or 1.1`is supported
+               for HTTP(S) monitors. The default is`1.0`. Supported in Octavia API version
                2.10 or later.
         :param pulumi.Input[_builtins.int] max_retries: Number of permissible ping failures before
                changing the member's status to INACTIVE. Must be a number between 1
                and 10.
-        :param pulumi.Input[_builtins.int] max_retries_down: Number of permissible ping failures before 
+        :param pulumi.Input[_builtins.int] max_retries_down: Number of permissible ping failures before
                changing the member's status to ERROR. Must be a number between 1 and 10.
                The default is 3. Changing this updates the max_retries_down of the
                existing monitor.
@@ -456,7 +456,7 @@ class _MonitorState:
     @pulumi.getter(name="httpMethod")
     def http_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required for HTTP(S) types. The HTTP method that 
+        Required for HTTP(S) types. The HTTP method that
         the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
         OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
         """
@@ -471,8 +471,8 @@ class _MonitorState:
     def http_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required for HTTP(S) types. The HTTP version that
-        the health monitor uses for requests. One of `1.0` or 1.1` is supported
-        for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+        the health monitor uses for requests. One of `1.0` or 1.1`is supported
+        for HTTP(S) monitors. The default is`1.0`. Supported in Octavia API version
         2.10 or later.
         """
         return pulumi.get(self, "http_version")
@@ -499,7 +499,7 @@ class _MonitorState:
     @pulumi.getter(name="maxRetriesDown")
     def max_retries_down(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Number of permissible ping failures before 
+        Number of permissible ping failures before
         changing the member's status to ERROR. Must be a number between 1 and 10.
         The default is 3. Changing this updates the max_retries_down of the
         existing monitor.
@@ -669,17 +669,17 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expected_codes: Required for HTTP(S) types. Expected HTTP codes
                for a passing HTTP(S) monitor. You can either specify a single status like
                "200", a list like "200, 202" or a range like "200-202". Default is "200".
-        :param pulumi.Input[_builtins.str] http_method: Required for HTTP(S) types. The HTTP method that 
+        :param pulumi.Input[_builtins.str] http_method: Required for HTTP(S) types. The HTTP method that
                the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
                OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
         :param pulumi.Input[_builtins.str] http_version: Required for HTTP(S) types. The HTTP version that
-               the health monitor uses for requests. One of `1.0` or 1.1` is supported
-               for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+               the health monitor uses for requests. One of `1.0` or 1.1`is supported
+               for HTTP(S) monitors. The default is`1.0`. Supported in Octavia API version
                2.10 or later.
         :param pulumi.Input[_builtins.int] max_retries: Number of permissible ping failures before
                changing the member's status to INACTIVE. Must be a number between 1
                and 10.
-        :param pulumi.Input[_builtins.int] max_retries_down: Number of permissible ping failures before 
+        :param pulumi.Input[_builtins.int] max_retries_down: Number of permissible ping failures before
                changing the member's status to ERROR. Must be a number between 1 and 10.
                The default is 3. Changing this updates the max_retries_down of the
                existing monitor.
@@ -843,17 +843,17 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expected_codes: Required for HTTP(S) types. Expected HTTP codes
                for a passing HTTP(S) monitor. You can either specify a single status like
                "200", a list like "200, 202" or a range like "200-202". Default is "200".
-        :param pulumi.Input[_builtins.str] http_method: Required for HTTP(S) types. The HTTP method that 
+        :param pulumi.Input[_builtins.str] http_method: Required for HTTP(S) types. The HTTP method that
                the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
                OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
         :param pulumi.Input[_builtins.str] http_version: Required for HTTP(S) types. The HTTP version that
-               the health monitor uses for requests. One of `1.0` or 1.1` is supported
-               for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+               the health monitor uses for requests. One of `1.0` or 1.1`is supported
+               for HTTP(S) monitors. The default is`1.0`. Supported in Octavia API version
                2.10 or later.
         :param pulumi.Input[_builtins.int] max_retries: Number of permissible ping failures before
                changing the member's status to INACTIVE. Must be a number between 1
                and 10.
-        :param pulumi.Input[_builtins.int] max_retries_down: Number of permissible ping failures before 
+        :param pulumi.Input[_builtins.int] max_retries_down: Number of permissible ping failures before
                changing the member's status to ERROR. Must be a number between 1 and 10.
                The default is 3. Changing this updates the max_retries_down of the
                existing monitor.
@@ -936,7 +936,7 @@ class Monitor(pulumi.CustomResource):
     @pulumi.getter(name="httpMethod")
     def http_method(self) -> pulumi.Output[_builtins.str]:
         """
-        Required for HTTP(S) types. The HTTP method that 
+        Required for HTTP(S) types. The HTTP method that
         the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
         OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
         """
@@ -947,8 +947,8 @@ class Monitor(pulumi.CustomResource):
     def http_version(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Required for HTTP(S) types. The HTTP version that
-        the health monitor uses for requests. One of `1.0` or 1.1` is supported
-        for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+        the health monitor uses for requests. One of `1.0` or 1.1`is supported
+        for HTTP(S) monitors. The default is`1.0`. Supported in Octavia API version
         2.10 or later.
         """
         return pulumi.get(self, "http_version")
@@ -967,7 +967,7 @@ class Monitor(pulumi.CustomResource):
     @pulumi.getter(name="maxRetriesDown")
     def max_retries_down(self) -> pulumi.Output[_builtins.int]:
         """
-        Number of permissible ping failures before 
+        Number of permissible ping failures before
         changing the member's status to ERROR. Must be a number between 1 and 10.
         The default is 3. Changing this updates the max_retries_down of the
         existing monitor.

@@ -47,12 +47,12 @@ class MembersMemberArgsDict(TypedDict):
     """
     monitor_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    An alternate IP address used for health 
+    An alternate IP address used for health
     monitoring a backend member.
     """
     monitor_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    An alternate protocol port used for health 
+    An alternate protocol port used for health
     monitoring a backend member.
     """
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -93,9 +93,9 @@ class MembersMemberArgs:
         :param pulumi.Input[_builtins.bool] backup: A bool that indicates whether the member is
                backup. **Requires octavia minor version 2.1 or later**.
         :param pulumi.Input[_builtins.str] id: The unique ID for the members.
-        :param pulumi.Input[_builtins.str] monitor_address: An alternate IP address used for health 
+        :param pulumi.Input[_builtins.str] monitor_address: An alternate IP address used for health
                monitoring a backend member.
-        :param pulumi.Input[_builtins.int] monitor_port: An alternate protocol port used for health 
+        :param pulumi.Input[_builtins.int] monitor_port: An alternate protocol port used for health
                monitoring a backend member.
         :param pulumi.Input[_builtins.str] name: Human-readable name for the member.
         :param pulumi.Input[_builtins.str] subnet_id: The subnet in which to access the member.
@@ -190,7 +190,7 @@ class MembersMemberArgs:
     @pulumi.getter(name="monitorAddress")
     def monitor_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        An alternate IP address used for health 
+        An alternate IP address used for health
         monitoring a backend member.
         """
         return pulumi.get(self, "monitor_address")
@@ -203,7 +203,7 @@ class MembersMemberArgs:
     @pulumi.getter(name="monitorPort")
     def monitor_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        An alternate protocol port used for health 
+        An alternate protocol port used for health
         monitoring a backend member.
         """
         return pulumi.get(self, "monitor_port")

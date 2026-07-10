@@ -298,20 +298,20 @@ class InterfaceAttach(pulumi.CustomResource):
         network1 = openstack.networking.Network("network_1",
             name="network_1",
             admin_state_up=True)
-        ports: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            ports.append(openstack.networking.Port(f"ports-{range['value']}",
+        ports: list[openstack.networking.Port] = []
+        for ports_range in [{"value": i} for i in range(0, 2)]:
+            ports.append(openstack.networking.Port(f"ports-{ports_range['value']}",
                 name=std.format(input="port-%02d",
-                    args=[range["value"] + 1]).result,
+                    args=[ports_range["value"] + 1]).result,
                 network_id=network1.id,
                 admin_state_up=True))
         instance1 = openstack.compute.Instance("instance_1",
             name="instance_1",
             security_groups=["default"])
-        attachments: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            attachments.append(openstack.compute.InterfaceAttach(f"attachments-{range['value']}",
-                port_id=ports[range["value"]].id,
+        attachments: list[openstack.compute.InterfaceAttach] = []
+        for attachments_range in [{"value": i} for i in range(0, 2)]:
+            attachments.append(openstack.compute.InterfaceAttach(f"attachments-{attachments_range['value']}",
+                port_id=ports[attachments_range["value"]].id,
                 instance_id=instance1.id))
         ```
 
@@ -331,11 +331,11 @@ class InterfaceAttach(pulumi.CustomResource):
         network1 = openstack.networking.Network("network_1",
             name="network_1",
             admin_state_up=True)
-        ports: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            ports.append(openstack.networking.Port(f"ports-{range['value']}",
+        ports: list[openstack.networking.Port] = []
+        for ports_range in [{"value": i} for i in range(0, 2)]:
+            ports.append(openstack.networking.Port(f"ports-{ports_range['value']}",
                 name=std.format(input="port-%02d",
-                    args=[range["value"] + 1]).result,
+                    args=[ports_range["value"] + 1]).result,
                 network_id=network1.id,
                 admin_state_up=True))
         instance1 = openstack.compute.Instance("instance_1",
@@ -451,20 +451,20 @@ class InterfaceAttach(pulumi.CustomResource):
         network1 = openstack.networking.Network("network_1",
             name="network_1",
             admin_state_up=True)
-        ports: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            ports.append(openstack.networking.Port(f"ports-{range['value']}",
+        ports: list[openstack.networking.Port] = []
+        for ports_range in [{"value": i} for i in range(0, 2)]:
+            ports.append(openstack.networking.Port(f"ports-{ports_range['value']}",
                 name=std.format(input="port-%02d",
-                    args=[range["value"] + 1]).result,
+                    args=[ports_range["value"] + 1]).result,
                 network_id=network1.id,
                 admin_state_up=True))
         instance1 = openstack.compute.Instance("instance_1",
             name="instance_1",
             security_groups=["default"])
-        attachments: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            attachments.append(openstack.compute.InterfaceAttach(f"attachments-{range['value']}",
-                port_id=ports[range["value"]].id,
+        attachments: list[openstack.compute.InterfaceAttach] = []
+        for attachments_range in [{"value": i} for i in range(0, 2)]:
+            attachments.append(openstack.compute.InterfaceAttach(f"attachments-{attachments_range['value']}",
+                port_id=ports[attachments_range["value"]].id,
                 instance_id=instance1.id))
         ```
 
@@ -484,11 +484,11 @@ class InterfaceAttach(pulumi.CustomResource):
         network1 = openstack.networking.Network("network_1",
             name="network_1",
             admin_state_up=True)
-        ports: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            ports.append(openstack.networking.Port(f"ports-{range['value']}",
+        ports: list[openstack.networking.Port] = []
+        for ports_range in [{"value": i} for i in range(0, 2)]:
+            ports.append(openstack.networking.Port(f"ports-{ports_range['value']}",
                 name=std.format(input="port-%02d",
-                    args=[range["value"] + 1]).result,
+                    args=[ports_range["value"] + 1]).result,
                 network_id=network1.id,
                 admin_state_up=True))
         instance1 = openstack.compute.Instance("instance_1",

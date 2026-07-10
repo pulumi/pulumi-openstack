@@ -63,20 +63,20 @@ import * as utilities from "../utilities";
  * ## Policies
  *
  * * `affinity` - All instances/servers launched in this group will be hosted on
- *   the same compute node.
+ * the same compute node.
  *
  * * `anti-affinity` - All instances/servers launched in this group will be
- *   hosted on different compute nodes.
+ * hosted on different compute nodes.
  *
  * * `soft-affinity` - All instances/servers launched in this group will be hosted
- *   on the same compute node if possible, but if not possible they
- *   still will be scheduled instead of failure. To use this policy your
- *   OpenStack environment should support Compute service API 2.15 or above.
+ * on the same compute node if possible, but if not possible they
+ * still will be scheduled instead of failure. To use this policy your
+ * OpenStack environment should support Compute service API 2.15 or above.
  *
  * * `soft-anti-affinity` - All instances/servers launched in this group will be
- *   hosted on different compute nodes if possible, but if not possible they
- *   still will be scheduled instead of failure. To use this policy your
- *   OpenStack environment should support Compute service API 2.15 or above.
+ * hosted on different compute nodes if possible, but if not possible they
+ * still will be scheduled instead of failure. To use this policy your
+ * OpenStack environment should support Compute service API 2.15 or above.
  *
  * ## Import
  *

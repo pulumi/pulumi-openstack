@@ -114,7 +114,7 @@ export class L7PolicyV2 extends pulumi.CustomResource {
      */
     declare public readonly position: pulumi.Output<number>;
     /**
-     * Integer. Requests matching this policy will be  
+     * Integer. Requests matching this policy will be\
      * redirected to the specified URL or Prefix URL with the HTTP response code.
      * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
      * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
@@ -126,7 +126,7 @@ export class L7PolicyV2 extends pulumi.CustomResource {
      */
     declare public readonly redirectPoolId: pulumi.Output<string | undefined>;
     /**
-     * Requests matching this policy will be redirected to 
+     * Requests matching this policy will be redirected to
      * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
      */
     declare public readonly redirectPrefix: pulumi.Output<string | undefined>;
@@ -233,7 +233,7 @@ export interface L7PolicyV2State {
      */
     position?: pulumi.Input<number | undefined>;
     /**
-     * Integer. Requests matching this policy will be  
+     * Integer. Requests matching this policy will be\
      * redirected to the specified URL or Prefix URL with the HTTP response code.
      * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
      * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
@@ -245,7 +245,7 @@ export interface L7PolicyV2State {
      */
     redirectPoolId?: pulumi.Input<string | undefined>;
     /**
-     * Requests matching this policy will be redirected to 
+     * Requests matching this policy will be redirected to
      * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
      */
     redirectPrefix?: pulumi.Input<string | undefined>;
@@ -302,7 +302,7 @@ export interface L7PolicyV2Args {
      */
     position?: pulumi.Input<number | undefined>;
     /**
-     * Integer. Requests matching this policy will be  
+     * Integer. Requests matching this policy will be\
      * redirected to the specified URL or Prefix URL with the HTTP response code.
      * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
      * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
@@ -314,7 +314,7 @@ export interface L7PolicyV2Args {
      */
     redirectPoolId?: pulumi.Input<string | undefined>;
     /**
-     * Requests matching this policy will be redirected to 
+     * Requests matching this policy will be redirected to
      * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
      */
     redirectPrefix?: pulumi.Input<string | undefined>;

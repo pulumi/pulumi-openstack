@@ -347,20 +347,20 @@ class VolumeAttach(pulumi.CustomResource):
         import pulumi_openstack as openstack
         import pulumi_std as std
 
-        volumes: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            volumes.append(openstack.blockstorage.Volume(f"volumes-{range['value']}",
+        volumes: list[openstack.blockstorage.Volume] = []
+        for volumes_range in [{"value": i} for i in range(0, 2)]:
+            volumes.append(openstack.blockstorage.Volume(f"volumes-{volumes_range['value']}",
                 name=std.format(input="vol-%02d",
-                    args=[range["value"] + 1]).result,
+                    args=[volumes_range["value"] + 1]).result,
                 size=1))
         instance1 = openstack.compute.Instance("instance_1",
             name="instance_1",
             security_groups=["default"])
-        attachments: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            attachments.append(openstack.compute.VolumeAttach(f"attachments-{range['value']}",
+        attachments: list[openstack.compute.VolumeAttach] = []
+        for attachments_range in [{"value": i} for i in range(0, 2)]:
+            attachments.append(openstack.compute.VolumeAttach(f"attachments-{attachments_range['value']}",
                 instance_id=instance1.id,
-                volume_id=volumes[range["value"]].id))
+                volume_id=volumes[attachments_range["value"]].id))
         pulumi.export("volumeDevices", [__item.device for __item in attachments])
         ```
 
@@ -377,11 +377,11 @@ class VolumeAttach(pulumi.CustomResource):
         import pulumi_openstack as openstack
         import pulumi_std as std
 
-        volumes: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            volumes.append(openstack.blockstorage.Volume(f"volumes-{range['value']}",
+        volumes: list[openstack.blockstorage.Volume] = []
+        for volumes_range in [{"value": i} for i in range(0, 2)]:
+            volumes.append(openstack.blockstorage.Volume(f"volumes-{volumes_range['value']}",
                 name=std.format(input="vol-%02d",
-                    args=[range["value"] + 1]).result,
+                    args=[volumes_range["value"] + 1]).result,
                 size=1))
         instance1 = openstack.compute.Instance("instance_1",
             name="instance_1",
@@ -497,20 +497,20 @@ class VolumeAttach(pulumi.CustomResource):
         import pulumi_openstack as openstack
         import pulumi_std as std
 
-        volumes: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            volumes.append(openstack.blockstorage.Volume(f"volumes-{range['value']}",
+        volumes: list[openstack.blockstorage.Volume] = []
+        for volumes_range in [{"value": i} for i in range(0, 2)]:
+            volumes.append(openstack.blockstorage.Volume(f"volumes-{volumes_range['value']}",
                 name=std.format(input="vol-%02d",
-                    args=[range["value"] + 1]).result,
+                    args=[volumes_range["value"] + 1]).result,
                 size=1))
         instance1 = openstack.compute.Instance("instance_1",
             name="instance_1",
             security_groups=["default"])
-        attachments: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            attachments.append(openstack.compute.VolumeAttach(f"attachments-{range['value']}",
+        attachments: list[openstack.compute.VolumeAttach] = []
+        for attachments_range in [{"value": i} for i in range(0, 2)]:
+            attachments.append(openstack.compute.VolumeAttach(f"attachments-{attachments_range['value']}",
                 instance_id=instance1.id,
-                volume_id=volumes[range["value"]].id))
+                volume_id=volumes[attachments_range["value"]].id))
         pulumi.export("volumeDevices", [__item.device for __item in attachments])
         ```
 
@@ -527,11 +527,11 @@ class VolumeAttach(pulumi.CustomResource):
         import pulumi_openstack as openstack
         import pulumi_std as std
 
-        volumes: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            volumes.append(openstack.blockstorage.Volume(f"volumes-{range['value']}",
+        volumes: list[openstack.blockstorage.Volume] = []
+        for volumes_range in [{"value": i} for i in range(0, 2)]:
+            volumes.append(openstack.blockstorage.Volume(f"volumes-{volumes_range['value']}",
                 name=std.format(input="vol-%02d",
-                    args=[range["value"] + 1]).result,
+                    args=[volumes_range["value"] + 1]).result,
                 size=1))
         instance1 = openstack.compute.Instance("instance_1",
             name="instance_1",
