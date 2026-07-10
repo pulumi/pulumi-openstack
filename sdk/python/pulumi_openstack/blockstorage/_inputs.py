@@ -75,12 +75,12 @@ class VolumeSchedulerHintArgsDict(TypedDict):
     """
     different_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    The volume should be scheduled on a 
+    The volume should be scheduled on a
     different host from the set of volumes specified in the list provided.
     """
     local_to_instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    An instance UUID. The volume should be 
+    An instance UUID. The volume should be
     scheduled on the same host as the instance.
     """
     query: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -113,9 +113,9 @@ class VolumeSchedulerHintArgs:
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] additional_properties: Arbitrary key/value pairs of additional
                properties to pass to the scheduler.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] different_hosts: The volume should be scheduled on a 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] different_hosts: The volume should be scheduled on a
                different host from the set of volumes specified in the list provided.
-        :param pulumi.Input[_builtins.str] local_to_instance: An instance UUID. The volume should be 
+        :param pulumi.Input[_builtins.str] local_to_instance: An instance UUID. The volume should be
                scheduled on the same host as the instance.
         :param pulumi.Input[_builtins.str] query: A conditional query that a back-end must pass in
                order to host a volume. The query must use the `JsonFilter` syntax
@@ -158,7 +158,7 @@ class VolumeSchedulerHintArgs:
     @pulumi.getter(name="differentHosts")
     def different_hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The volume should be scheduled on a 
+        The volume should be scheduled on a
         different host from the set of volumes specified in the list provided.
         """
         return pulumi.get(self, "different_hosts")
@@ -171,7 +171,7 @@ class VolumeSchedulerHintArgs:
     @pulumi.getter(name="localToInstance")
     def local_to_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        An instance UUID. The volume should be 
+        An instance UUID. The volume should be
         scheduled on the same host as the instance.
         """
         return pulumi.get(self, "local_to_instance")

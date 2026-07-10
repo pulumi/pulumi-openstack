@@ -88,11 +88,11 @@ import * as utilities from "../utilities";
  *     adminStateUp: true,
  * });
  * const ports: openstack.networking.Port[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     ports.push(new openstack.networking.Port(`ports-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     ports.push(new openstack.networking.Port(`ports-${range}`, {
  *         name: std.format({
  *             input: "port-%02d",
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
  *         networkId: network1.id,
  *         adminStateUp: true,
@@ -103,9 +103,9 @@ import * as utilities from "../utilities";
  *     securityGroups: ["default"],
  * });
  * const attachments: openstack.compute.InterfaceAttach[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     attachments.push(new openstack.compute.InterfaceAttach(`attachments-${range.value}`, {
- *         portId: ports[range.value].id,
+ * for (let range = 0; range < 2; range++) {
+ *     attachments.push(new openstack.compute.InterfaceAttach(`attachments-${range}`, {
+ *         portId: ports[range].id,
  *         instanceId: instance1.id,
  *     }));
  * }
@@ -128,11 +128,11 @@ import * as utilities from "../utilities";
  *     adminStateUp: true,
  * });
  * const ports: openstack.networking.Port[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     ports.push(new openstack.networking.Port(`ports-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     ports.push(new openstack.networking.Port(`ports-${range}`, {
  *         name: std.format({
  *             input: "port-%02d",
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
  *         networkId: network1.id,
  *         adminStateUp: true,

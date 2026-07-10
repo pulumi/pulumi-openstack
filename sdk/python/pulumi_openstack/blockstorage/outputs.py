@@ -100,9 +100,9 @@ class VolumeSchedulerHint(dict):
         """
         :param Mapping[str, _builtins.str] additional_properties: Arbitrary key/value pairs of additional
                properties to pass to the scheduler.
-        :param Sequence[_builtins.str] different_hosts: The volume should be scheduled on a 
+        :param Sequence[_builtins.str] different_hosts: The volume should be scheduled on a
                different host from the set of volumes specified in the list provided.
-        :param _builtins.str local_to_instance: An instance UUID. The volume should be 
+        :param _builtins.str local_to_instance: An instance UUID. The volume should be
                scheduled on the same host as the instance.
         :param _builtins.str query: A conditional query that a back-end must pass in
                order to host a volume. The query must use the `JsonFilter` syntax
@@ -141,7 +141,7 @@ class VolumeSchedulerHint(dict):
     @pulumi.getter(name="differentHosts")
     def different_hosts(self) -> Optional[Sequence[_builtins.str]]:
         """
-        The volume should be scheduled on a 
+        The volume should be scheduled on a
         different host from the set of volumes specified in the list provided.
         """
         return pulumi.get(self, "different_hosts")
@@ -150,7 +150,7 @@ class VolumeSchedulerHint(dict):
     @pulumi.getter(name="localToInstance")
     def local_to_instance(self) -> Optional[_builtins.str]:
         """
-        An instance UUID. The volume should be 
+        An instance UUID. The volume should be
         scheduled on the same host as the instance.
         """
         return pulumi.get(self, "local_to_instance")

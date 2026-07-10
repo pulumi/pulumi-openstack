@@ -40,11 +40,11 @@ import * as utilities from "../utilities";
  * import * as std from "@pulumi/std";
  *
  * const volumes: openstack.blockstorage.Volume[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     volumes.push(new openstack.blockstorage.Volume(`volumes-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     volumes.push(new openstack.blockstorage.Volume(`volumes-${range}`, {
  *         name: std.format({
  *             input: "vol-%02d",
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
  *         size: 1,
  *     }));
@@ -54,10 +54,10 @@ import * as utilities from "../utilities";
  *     securityGroups: ["default"],
  * });
  * const attachments: openstack.compute.VolumeAttach[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     attachments.push(new openstack.compute.VolumeAttach(`attachments-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     attachments.push(new openstack.compute.VolumeAttach(`attachments-${range}`, {
  *         instanceId: instance1.id,
- *         volumeId: volumes[range.value].id,
+ *         volumeId: volumes[range].id,
  *     }));
  * }
  * export const volumeDevices = attachments.map(__item => __item.device);
@@ -76,11 +76,11 @@ import * as utilities from "../utilities";
  * import * as std from "@pulumi/std";
  *
  * const volumes: openstack.blockstorage.Volume[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     volumes.push(new openstack.blockstorage.Volume(`volumes-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     volumes.push(new openstack.blockstorage.Volume(`volumes-${range}`, {
  *         name: std.format({
  *             input: "vol-%02d",
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
  *         size: 1,
  *     }));

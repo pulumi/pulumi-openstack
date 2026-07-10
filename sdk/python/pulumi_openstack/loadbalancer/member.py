@@ -43,7 +43,7 @@ class MemberArgs:
                Changing this creates a new member.
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the member.
                A valid value is true (UP) or false (DOWN). Defaults to true.
-        :param pulumi.Input[_builtins.bool] backup: Boolean that indicates whether that member works as a backup or not. Available 
+        :param pulumi.Input[_builtins.bool] backup: Boolean that indicates whether that member works as a backup or not. Available
                only for Octavia >= 2.1.
         :param pulumi.Input[_builtins.str] monitor_address: An alternate IP address used for health monitoring a backend member.
                Available only for Octavia
@@ -145,7 +145,7 @@ class MemberArgs:
     @pulumi.getter
     def backup(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Boolean that indicates whether that member works as a backup or not. Available 
+        Boolean that indicates whether that member works as a backup or not. Available
         only for Octavia >= 2.1.
         """
         return pulumi.get(self, "backup")
@@ -285,7 +285,7 @@ class _MemberState:
                the load balancer. Changing this creates a new member.
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the member.
                A valid value is true (UP) or false (DOWN). Defaults to true.
-        :param pulumi.Input[_builtins.bool] backup: Boolean that indicates whether that member works as a backup or not. Available 
+        :param pulumi.Input[_builtins.bool] backup: Boolean that indicates whether that member works as a backup or not. Available
                only for Octavia >= 2.1.
         :param pulumi.Input[_builtins.str] monitor_address: An alternate IP address used for health monitoring a backend member.
                Available only for Octavia
@@ -368,7 +368,7 @@ class _MemberState:
     @pulumi.getter
     def backup(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Boolean that indicates whether that member works as a backup or not. Available 
+        Boolean that indicates whether that member works as a backup or not. Available
         only for Octavia >= 2.1.
         """
         return pulumi.get(self, "backup")
@@ -562,7 +562,7 @@ class Member(pulumi.CustomResource):
                the load balancer. Changing this creates a new member.
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the member.
                A valid value is true (UP) or false (DOWN). Defaults to true.
-        :param pulumi.Input[_builtins.bool] backup: Boolean that indicates whether that member works as a backup or not. Available 
+        :param pulumi.Input[_builtins.bool] backup: Boolean that indicates whether that member works as a backup or not. Available
                only for Octavia >= 2.1.
         :param pulumi.Input[_builtins.str] monitor_address: An alternate IP address used for health monitoring a backend member.
                Available only for Octavia
@@ -709,7 +709,7 @@ class Member(pulumi.CustomResource):
                the load balancer. Changing this creates a new member.
         :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the member.
                A valid value is true (UP) or false (DOWN). Defaults to true.
-        :param pulumi.Input[_builtins.bool] backup: Boolean that indicates whether that member works as a backup or not. Available 
+        :param pulumi.Input[_builtins.bool] backup: Boolean that indicates whether that member works as a backup or not. Available
                only for Octavia >= 2.1.
         :param pulumi.Input[_builtins.str] monitor_address: An alternate IP address used for health monitoring a backend member.
                Available only for Octavia
@@ -776,7 +776,7 @@ class Member(pulumi.CustomResource):
     @pulumi.getter
     def backup(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Boolean that indicates whether that member works as a backup or not. Available 
+        Boolean that indicates whether that member works as a backup or not. Available
         only for Octavia >= 2.1.
         """
         return pulumi.get(self, "backup")

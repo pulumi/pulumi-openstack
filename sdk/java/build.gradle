@@ -95,7 +95,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-openstack"
                 packaging = "jar"
-                description = "A Pulumi package for creating and managing OpenStack cloud resources."
+                description = $/A Pulumi package for creating and managing OpenStack cloud resources./$
 
                 url = "https://github.com/pulumi/pulumi-openstack"
 

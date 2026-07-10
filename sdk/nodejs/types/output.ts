@@ -91,12 +91,12 @@ export namespace blockstorage {
          */
         additionalProperties?: {[key: string]: string};
         /**
-         * The volume should be scheduled on a 
+         * The volume should be scheduled on a
          * different host from the set of volumes specified in the list provided.
          */
         differentHosts?: string[];
         /**
-         * An instance UUID. The volume should be 
+         * An instance UUID. The volume should be
          * scheduled on the same host as the instance.
          */
         localToInstance?: string;
@@ -816,12 +816,12 @@ export namespace loadbalancer {
          */
         id: string;
         /**
-         * An alternate IP address used for health 
+         * An alternate IP address used for health
          * monitoring a backend member.
          */
         monitorAddress?: string;
         /**
-         * An alternate protocol port used for health 
+         * An alternate protocol port used for health
          * monitoring a backend member.
          */
         monitorPort?: number;

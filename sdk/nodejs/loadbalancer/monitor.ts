@@ -85,15 +85,15 @@ export class Monitor extends pulumi.CustomResource {
      */
     declare public readonly expectedCodes: pulumi.Output<string>;
     /**
-     * Required for HTTP(S) types. The HTTP method that 
+     * Required for HTTP(S) types. The HTTP method that
      * the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
      * OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
      */
     declare public readonly httpMethod: pulumi.Output<string>;
     /**
      * Required for HTTP(S) types. The HTTP version that
-     * the health monitor uses for requests. One of `1.0` or 1.1` is supported
-     * for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+     * the health monitor uses for requests. One of `1.0` or 1.1`is supported
+     * for HTTP(S) monitors. The default is`1.0`. Supported in Octavia API version
      * 2.10 or later.
      */
     declare public readonly httpVersion: pulumi.Output<string | undefined>;
@@ -104,7 +104,7 @@ export class Monitor extends pulumi.CustomResource {
      */
     declare public readonly maxRetries: pulumi.Output<number>;
     /**
-     * Number of permissible ping failures before 
+     * Number of permissible ping failures before
      * changing the member's status to ERROR. Must be a number between 1 and 10.
      * The default is 3. Changing this updates the maxRetriesDown of the
      * existing monitor.
@@ -240,15 +240,15 @@ export interface MonitorState {
      */
     expectedCodes?: pulumi.Input<string | undefined>;
     /**
-     * Required for HTTP(S) types. The HTTP method that 
+     * Required for HTTP(S) types. The HTTP method that
      * the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
      * OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
      */
     httpMethod?: pulumi.Input<string | undefined>;
     /**
      * Required for HTTP(S) types. The HTTP version that
-     * the health monitor uses for requests. One of `1.0` or 1.1` is supported
-     * for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+     * the health monitor uses for requests. One of `1.0` or 1.1`is supported
+     * for HTTP(S) monitors. The default is`1.0`. Supported in Octavia API version
      * 2.10 or later.
      */
     httpVersion?: pulumi.Input<string | undefined>;
@@ -259,7 +259,7 @@ export interface MonitorState {
      */
     maxRetries?: pulumi.Input<number | undefined>;
     /**
-     * Number of permissible ping failures before 
+     * Number of permissible ping failures before
      * changing the member's status to ERROR. Must be a number between 1 and 10.
      * The default is 3. Changing this updates the maxRetriesDown of the
      * existing monitor.
@@ -330,15 +330,15 @@ export interface MonitorArgs {
      */
     expectedCodes?: pulumi.Input<string | undefined>;
     /**
-     * Required for HTTP(S) types. The HTTP method that 
+     * Required for HTTP(S) types. The HTTP method that
      * the health monitor uses for requests. One of CONNECT, DELETE, GET, HEAD,
      * OPTIONS, PATCH, POST, PUT, or TRACE. The default is GET.
      */
     httpMethod?: pulumi.Input<string | undefined>;
     /**
      * Required for HTTP(S) types. The HTTP version that
-     * the health monitor uses for requests. One of `1.0` or 1.1` is supported
-     * for HTTP(S) monitors. The default is `1.0`. Supported in Octavia API version
+     * the health monitor uses for requests. One of `1.0` or 1.1`is supported
+     * for HTTP(S) monitors. The default is`1.0`. Supported in Octavia API version
      * 2.10 or later.
      */
     httpVersion?: pulumi.Input<string | undefined>;
@@ -349,7 +349,7 @@ export interface MonitorArgs {
      */
     maxRetries: pulumi.Input<number>;
     /**
-     * Number of permissible ping failures before 
+     * Number of permissible ping failures before
      * changing the member's status to ERROR. Must be a number between 1 and 10.
      * The default is 3. Changing this updates the maxRetriesDown of the
      * existing monitor.
