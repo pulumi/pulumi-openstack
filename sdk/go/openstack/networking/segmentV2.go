@@ -43,7 +43,7 @@ import (
 //			_, err = networking.NewSegmentV2(ctx, "segment_1", &networking.SegmentV2Args{
 //				Name:            pulumi.String("flat-segment"),
 //				Description:     pulumi.String("Example flat segment"),
-//				NetworkId:       net1.ID(),
+//				NetworkId:       net1.ID().ToIDOutput().ToStringOutput(),
 //				NetworkType:     pulumi.String("flat"),
 //				PhysicalNetwork: pulumi.String("public"),
 //			})

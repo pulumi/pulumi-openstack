@@ -114,7 +114,7 @@ import (
 //				Name:                    pulumi.String("https"),
 //				Protocol:                pulumi.String("TERMINATED_HTTPS"),
 //				ProtocolPort:            pulumi.Int(443),
-//				LoadbalancerId:          lb1.ID(),
+//				LoadbalancerId:          lb1.ID().ToIDOutput().ToStringOutput(),
 //				DefaultTlsContainerRef:  certificate1,
 //				ClientAuthentication:    pulumi.String("OPTIONAL"),
 //				ClientCaTlsContainerRef: pulumi.Any(caCertificate2.SecretRef),

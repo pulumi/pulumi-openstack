@@ -30,7 +30,7 @@ import (
 //			_, err := images.LookupImage(ctx, &images.LookupImageArgs{
 //				Name:       pulumi.StringRef("Ubuntu 16.04"),
 //				MostRecent: pulumi.BoolRef(true),
-//				Properties: map[string]interface{}{
+//				Properties: map[string]string{
 //					"key": "value",
 //				},
 //			}, nil)

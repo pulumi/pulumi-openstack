@@ -41,7 +41,7 @@ import (
 //			}
 //			user1, err := identity.NewUser(ctx, "user_1", &identity.UserArgs{
 //				Name:             pulumi.String("user_1"),
-//				DefaultProjectId: project1.ID(),
+//				DefaultProjectId: project1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -60,16 +60,16 @@ import (
 //				return err
 //			}
 //			_, err = identity.NewUserMembershipV3(ctx, "user_membership_1", &identity.UserMembershipV3Args{
-//				UserId:  user1.ID(),
-//				GroupId: group1.ID(),
+//				UserId:  user1.ID().ToIDOutput().ToStringOutput(),
+//				GroupId: group1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = identity.NewRoleAssignment(ctx, "role_assignment_1", &identity.RoleAssignmentArgs{
-//				GroupId:   group1.ID(),
-//				ProjectId: project1.ID(),
-//				RoleId:    role1.ID(),
+//				GroupId:   group1.ID().ToIDOutput().ToStringOutput(),
+//				ProjectId: project1.ID().ToIDOutput().ToStringOutput(),
+//				RoleId:    role1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

@@ -38,7 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewQosMinimumBandwidthRule(ctx, "minimum_bandwidth_rule_1", &networking.QosMinimumBandwidthRuleArgs{
-//				QosPolicyId: qosPolicy1.ID(),
+//				QosPolicyId: qosPolicy1.ID().ToIDOutput().ToStringOutput(),
 //				MinKbps:     pulumi.Int(200),
 //			})
 //			if err != nil {

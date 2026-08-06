@@ -45,7 +45,7 @@ import (
 //				Name:      pulumi.String("subnet_1"),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //				IpVersion: pulumi.Int(4),
-//				NetworkId: network1.ID(),
+//				NetworkId: network1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -53,8 +53,8 @@ import (
 //			_, err = sharedfilesystem.NewShareNetwork(ctx, "sharenetwork_1", &sharedfilesystem.ShareNetworkArgs{
 //				Name:            pulumi.String("test_sharenetwork"),
 //				Description:     pulumi.String("test share network"),
-//				NeutronNetId:    network1.ID(),
-//				NeutronSubnetId: subnet1.ID(),
+//				NeutronNetId:    network1.ID().ToIDOutput().ToStringOutput(),
+//				NeutronSubnetId: subnet1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -91,7 +91,7 @@ import (
 //				Name:      pulumi.String("subnet_1"),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //				IpVersion: pulumi.Int(4),
-//				NetworkId: network1.ID(),
+//				NetworkId: network1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -113,10 +113,10 @@ import (
 //			_, err = sharedfilesystem.NewShareNetwork(ctx, "sharenetwork_1", &sharedfilesystem.ShareNetworkArgs{
 //				Name:            pulumi.String("test_sharenetwork"),
 //				Description:     pulumi.String("test share network with security services"),
-//				NeutronNetId:    network1.ID(),
-//				NeutronSubnetId: subnet1.ID(),
+//				NeutronNetId:    network1.ID().ToIDOutput().ToStringOutput(),
+//				NeutronSubnetId: subnet1.ID().ToIDOutput().ToStringOutput(),
 //				SecurityServiceIds: pulumi.StringArray{
-//					securityservice1.ID(),
+//					securityservice1.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

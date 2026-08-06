@@ -47,8 +47,8 @@ import (
 //				return err
 //			}
 //			_, err = blockstorage.NewQosAssociationV3(ctx, "qos_association", &blockstorage.QosAssociationV3Args{
-//				QosId:        qos.ID(),
-//				VolumeTypeId: volumeType.ID(),
+//				QosId:        qos.ID().ToIDOutput().ToStringOutput(),
+//				VolumeTypeId: volumeType.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

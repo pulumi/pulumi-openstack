@@ -38,7 +38,7 @@ import (
 //			}
 //			subnet1, err := networking.NewSubnet(ctx, "subnet_1", &networking.SubnetArgs{
 //				Name:       pulumi.String("subnet_1"),
-//				NetworkId:  network1.ID(),
+//				NetworkId:  network1.ID().ToIDOutput().ToStringOutput(),
 //				Cidr:       pulumi.String("192.168.1.0/24"),
 //				IpVersion:  pulumi.Int(4),
 //				EnableDhcp: pulumi.Bool(true),
@@ -49,7 +49,7 @@ import (
 //			}
 //			parentPort1, err := networking.NewPort(ctx, "parent_port_1", &networking.PortArgs{
 //				Name:         pulumi.String("parent_port_1"),
-//				NetworkId:    network1.ID(),
+//				NetworkId:    network1.ID().ToIDOutput().ToStringOutput(),
 //				AdminStateUp: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				subnet1,
@@ -59,7 +59,7 @@ import (
 //			}
 //			subport1, err := networking.NewPort(ctx, "subport_1", &networking.PortArgs{
 //				Name:         pulumi.String("subport_1"),
-//				NetworkId:    network1.ID(),
+//				NetworkId:    network1.ID().ToIDOutput().ToStringOutput(),
 //				AdminStateUp: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				subnet1,
@@ -70,10 +70,10 @@ import (
 //			trunk1, err := networking.NewTrunk(ctx, "trunk_1", &networking.TrunkArgs{
 //				Name:         pulumi.String("trunk_1"),
 //				AdminStateUp: pulumi.Bool(true),
-//				PortId:       parentPort1.ID(),
+//				PortId:       parentPort1.ID().ToIDOutput().ToStringOutput(),
 //				SubPorts: networking.TrunkSubPortArray{
 //					&networking.TrunkSubPortArgs{
-//						PortId:           subport1.ID(),
+//						PortId:           subport1.ID().ToIDOutput().ToStringOutput(),
 //						SegmentationId:   pulumi.Int(1),
 //						SegmentationType: pulumi.String("vlan"),
 //					},

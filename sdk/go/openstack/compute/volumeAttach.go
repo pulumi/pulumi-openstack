@@ -49,8 +49,8 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewVolumeAttach(ctx, "va_1", &compute.VolumeAttachArgs{
-//				InstanceId: instance1.ID(),
-//				VolumeId:   volume1.ID(),
+//				InstanceId: instance1.ID().ToIDOutput().ToStringOutput(),
+//				VolumeId:   volume1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -118,8 +118,8 @@ import (
 //	    val0 := index
 //
 // __res, err := compute.NewVolumeAttach(ctx, fmt.Sprintf("attachments-%v", key0), &compute.VolumeAttachArgs{
-// InstanceId: instance1.ID(),
-// VolumeId: volumes[val0].ID(),
+// InstanceId: instance1.ID().ToIDOutput().ToStringOutput(),
+// VolumeId: volumes[val0].ID().ToIDOutput().ToStringOutput(),
 // })
 // if err != nil {
 // return err
@@ -188,15 +188,15 @@ import (
 // return err
 // }
 // attach1, err := compute.NewVolumeAttach(ctx, "attach_1", &compute.VolumeAttachArgs{
-// InstanceId: instance1.ID(),
-// VolumeId: volumes[0].ID(),
+// InstanceId: instance1.ID().ToIDOutput().ToStringOutput(),
+// VolumeId: volumes[0].ID().ToIDOutput().ToStringOutput(),
 // })
 // if err != nil {
 // return err
 // }
 // _, err = compute.NewVolumeAttach(ctx, "attach_2", &compute.VolumeAttachArgs{
-// InstanceId: instance1.ID(),
-// VolumeId: volumes[1].ID(),
+// InstanceId: instance1.ID().ToIDOutput().ToStringOutput(),
+// VolumeId: volumes[1].ID().ToIDOutput().ToStringOutput(),
 // }, pulumi.DependsOn([]pulumi.Resource{
 // attach1,
 // }))
@@ -254,16 +254,16 @@ import (
 //				return err
 //			}
 //			va1, err := compute.NewVolumeAttach(ctx, "va_1", &compute.VolumeAttachArgs{
-//				InstanceId:  instance1.ID(),
-//				VolumeId:    volume1.ID(),
+//				InstanceId:  instance1.ID().ToIDOutput().ToStringOutput(),
+//				VolumeId:    volume1.ID().ToIDOutput().ToStringOutput(),
 //				Multiattach: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewVolumeAttach(ctx, "va_2", &compute.VolumeAttachArgs{
-//				InstanceId:  instance2.ID(),
-//				VolumeId:    volume1.ID(),
+//				InstanceId:  instance2.ID().ToIDOutput().ToStringOutput(),
+//				VolumeId:    volume1.ID().ToIDOutput().ToStringOutput(),
 //				Multiattach: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				va1,

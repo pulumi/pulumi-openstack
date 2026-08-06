@@ -40,14 +40,14 @@ import (
 //				Name:      pulumi.String("subnet_1"),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //				IpVersion: pulumi.Int(4),
-//				NetworkId: network1.ID(),
+//				NetworkId: network1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			loadbalancer1, err := loadbalancer.NewLoadBalancer(ctx, "loadbalancer_1", &loadbalancer.LoadBalancerArgs{
 //				Name:        pulumi.String("loadbalancer_1"),
-//				VipSubnetId: subnet1.ID(),
+//				VipSubnetId: subnet1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -56,7 +56,7 @@ import (
 //				Name:           pulumi.String("listener_1"),
 //				Protocol:       pulumi.String("HTTP"),
 //				ProtocolPort:   pulumi.Int(8080),
-//				LoadbalancerId: loadbalancer1.ID(),
+//				LoadbalancerId: loadbalancer1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -65,7 +65,7 @@ import (
 //				Name:           pulumi.String("pool_1"),
 //				Protocol:       pulumi.String("HTTP"),
 //				LbMethod:       pulumi.String("ROUND_ROBIN"),
-//				LoadbalancerId: loadbalancer1.ID(),
+//				LoadbalancerId: loadbalancer1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -75,14 +75,14 @@ import (
 //				Action:      pulumi.String("REDIRECT_TO_URL"),
 //				Description: pulumi.String("test description"),
 //				Position:    pulumi.Int(1),
-//				ListenerId:  listener1.ID(),
+//				ListenerId:  listener1.ID().ToIDOutput().ToStringOutput(),
 //				RedirectUrl: pulumi.String("http://www.example.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = loadbalancer.NewL7RuleV2(ctx, "l7rule_1", &loadbalancer.L7RuleV2Args{
-//				L7policyId:  l7policy1.ID(),
+//				L7policyId:  l7policy1.ID().ToIDOutput().ToStringOutput(),
 //				Type:        pulumi.String("PATH"),
 //				CompareType: pulumi.String("EQUAL_TO"),
 //				Value:       pulumi.String("/api"),

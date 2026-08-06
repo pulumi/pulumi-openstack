@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"loadbalancer_topology": "ACTIVE_STANDBY",
 //			})
 //			if err != nil {
@@ -50,7 +50,7 @@ import (
 //			_, err = loadbalancer.NewFlavorV2(ctx, "flavor_1", &loadbalancer.FlavorV2Args{
 //				Name:            pulumi.String("test"),
 //				Description:     pulumi.String("This is a test flavor"),
-//				FlavorProfileId: fp1.ID(),
+//				FlavorProfileId: fp1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

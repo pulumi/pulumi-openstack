@@ -45,8 +45,8 @@ import (
 //				return err
 //			}
 //			_, err = blockstorage.NewVolumeTypeAccessV3(ctx, "volume_type_access", &blockstorage.VolumeTypeAccessV3Args{
-//				ProjectId:    project1.ID(),
-//				VolumeTypeId: volumeType1.ID(),
+//				ProjectId:    project1.ID().ToIDOutput().ToStringOutput(),
+//				VolumeTypeId: volumeType1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

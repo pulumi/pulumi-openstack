@@ -38,7 +38,7 @@ import (
 //			}
 //			_, err = networking.NewFloatingIpAssociate(ctx, "fip_1", &networking.FloatingIpAssociateArgs{
 //				FloatingIp: pulumi.String("1.2.3.4"),
-//				PortId:     port1.ID(),
+//				PortId:     port1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

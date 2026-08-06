@@ -120,8 +120,8 @@ import (
 //				return err
 //			}
 //			invokeTimeadd1, err := std.Timeadd(ctx, &std.TimeaddArgs{
-//				Duration: std.Timestamp(ctx, &std.TimestampArgs{}, nil).Result,
-//				Timestamp: std.Format(ctx, &std.FormatArgs{
+//				Duration: std.Timestamp(ctx, std.TimestampArgs{}, nil).Result,
+//				Timestamp: std.Format(ctx, std.FormatArgs{
 //					Input: "%dh",
 //					Args: []int{
 //						8760,

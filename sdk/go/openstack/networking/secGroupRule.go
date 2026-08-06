@@ -44,7 +44,7 @@ import (
 //				PortRangeMin:    pulumi.Int(22),
 //				PortRangeMax:    pulumi.Int(22),
 //				RemoteIpPrefix:  pulumi.String("0.0.0.0/0"),
-//				SecurityGroupId: secgroup1.ID(),
+//				SecurityGroupId: secgroup1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

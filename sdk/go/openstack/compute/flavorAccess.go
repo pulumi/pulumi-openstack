@@ -51,8 +51,8 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewFlavorAccess(ctx, "access_1", &compute.FlavorAccessArgs{
-//				TenantId: project1.ID(),
-//				FlavorId: flavor1.ID(),
+//				TenantId: project1.ID().ToIDOutput().ToStringOutput(),
+//				FlavorId: flavor1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

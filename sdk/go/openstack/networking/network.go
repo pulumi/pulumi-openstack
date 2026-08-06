@@ -37,7 +37,7 @@ import (
 //			}
 //			subnet1, err := networking.NewSubnet(ctx, "subnet_1", &networking.SubnetArgs{
 //				Name:      pulumi.String("subnet_1"),
-//				NetworkId: network1.ID(),
+//				NetworkId: network1.ID().ToIDOutput().ToStringOutput(),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //				IpVersion: pulumi.Int(4),
 //			})
@@ -58,21 +58,21 @@ import (
 //				PortRangeMin:    pulumi.Int(22),
 //				PortRangeMax:    pulumi.Int(22),
 //				RemoteIpPrefix:  pulumi.String("0.0.0.0/0"),
-//				SecurityGroupId: secgroup1.ID(),
+//				SecurityGroupId: secgroup1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			port1, err := networking.NewPort(ctx, "port_1", &networking.PortArgs{
 //				Name:         pulumi.String("port_1"),
-//				NetworkId:    network1.ID(),
+//				NetworkId:    network1.ID().ToIDOutput().ToStringOutput(),
 //				AdminStateUp: pulumi.Bool(true),
 //				SecurityGroupIds: pulumi.StringArray{
-//					secgroup1.ID(),
+//					secgroup1.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				FixedIps: networking.PortFixedIpArray{
 //					&networking.PortFixedIpArgs{
-//						SubnetId:  subnet1.ID(),
+//						SubnetId:  subnet1.ID().ToIDOutput().ToStringOutput(),
 //						IpAddress: pulumi.String("192.168.199.10"),
 //					},
 //				},
@@ -87,7 +87,7 @@ import (
 //				},
 //				Networks: compute.InstanceNetworkArray{
 //					&compute.InstanceNetworkArgs{
-//						Port: port1.ID(),
+//						Port: port1.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})

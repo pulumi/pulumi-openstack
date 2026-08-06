@@ -69,7 +69,7 @@ import (
 //					pulumi.String("fdf7:b13d:dead:beef::/64"),
 //					pulumi.String("fd65:86cc:a334:39b7::/64"),
 //				},
-//				AddressScopeId: addressscope1.ID(),
+//				AddressScopeId: addressscope1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

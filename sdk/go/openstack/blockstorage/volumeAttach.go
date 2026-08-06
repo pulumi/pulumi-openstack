@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			_, err = blockstorage.NewVolumeAttach(ctx, "va_1", &blockstorage.VolumeAttachArgs{
-//				VolumeId:  volume1.ID(),
+//				VolumeId:  volume1.ID().ToIDOutput().ToStringOutput(),
 //				Device:    pulumi.String("auto"),
 //				HostName:  pulumi.String("devstack"),
 //				IpAddress: pulumi.String("192.168.255.10"),

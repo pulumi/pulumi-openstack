@@ -54,8 +54,8 @@ import (
 //			_, err = firewall.NewPolicyV2(ctx, "policy_1", &firewall.PolicyV2Args{
 //				Name: pulumi.String("firewall_policy"),
 //				Rules: pulumi.StringArray{
-//					rule1.ID(),
-//					rule2.ID(),
+//					rule1.ID().ToIDOutput().ToStringOutput(),
+//					rule2.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

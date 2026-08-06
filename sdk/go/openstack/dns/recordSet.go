@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = dns.NewRecordSet(ctx, "rs_example_com", &dns.RecordSetArgs{
-//				ZoneId:      exampleZone.ID(),
+//				ZoneId:      exampleZone.ID().ToIDOutput().ToStringOutput(),
 //				Name:        pulumi.String("rs.example.com."),
 //				Description: pulumi.String("An example record set"),
 //				Ttl:         pulumi.Int(3000),

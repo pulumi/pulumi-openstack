@@ -48,7 +48,7 @@ import (
 //				Name:      pulumi.String("subnet_1"),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //				IpVersion: pulumi.Int(4),
-//				NetworkId: network1.ID(),
+//				NetworkId: network1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -56,8 +56,8 @@ import (
 //			sharenetwork1, err := sharedfilesystem.NewShareNetwork(ctx, "sharenetwork_1", &sharedfilesystem.ShareNetworkArgs{
 //				Name:            pulumi.String("test_sharenetwork"),
 //				Description:     pulumi.String("test share network with security services"),
-//				NeutronNetId:    network1.ID(),
-//				NeutronSubnetId: subnet1.ID(),
+//				NeutronNetId:    network1.ID().ToIDOutput().ToStringOutput(),
+//				NeutronSubnetId: subnet1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -67,13 +67,13 @@ import (
 //				Description:    pulumi.String("test share description"),
 //				ShareProto:     pulumi.String("NFS"),
 //				Size:           pulumi.Int(1),
-//				ShareNetworkId: sharenetwork1.ID(),
+//				ShareNetworkId: sharenetwork1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sharedfilesystem.NewShareAccess(ctx, "share_access_1", &sharedfilesystem.ShareAccessArgs{
-//				ShareId:     share1.ID(),
+//				ShareId:     share1.ID().ToIDOutput().ToStringOutput(),
 //				AccessType:  pulumi.String("ip"),
 //				AccessTo:    pulumi.String("192.168.199.10"),
 //				AccessLevel: pulumi.String("rw"),
@@ -113,7 +113,7 @@ import (
 //				Name:      pulumi.String("subnet_1"),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //				IpVersion: pulumi.Int(4),
-//				NetworkId: network1.ID(),
+//				NetworkId: network1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -135,10 +135,10 @@ import (
 //			sharenetwork1, err := sharedfilesystem.NewShareNetwork(ctx, "sharenetwork_1", &sharedfilesystem.ShareNetworkArgs{
 //				Name:            pulumi.String("test_sharenetwork_secure"),
 //				Description:     pulumi.String("share the secure love"),
-//				NeutronNetId:    network1.ID(),
-//				NeutronSubnetId: subnet1.ID(),
+//				NeutronNetId:    network1.ID().ToIDOutput().ToStringOutput(),
+//				NeutronSubnetId: subnet1.ID().ToIDOutput().ToStringOutput(),
 //				SecurityServiceIds: pulumi.StringArray{
-//					securityservice1.ID(),
+//					securityservice1.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -148,13 +148,13 @@ import (
 //				Name:           pulumi.String("cifs_share"),
 //				ShareProto:     pulumi.String("CIFS"),
 //				Size:           pulumi.Int(1),
-//				ShareNetworkId: sharenetwork1.ID(),
+//				ShareNetworkId: sharenetwork1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sharedfilesystem.NewShareAccess(ctx, "share_access_1", &sharedfilesystem.ShareAccessArgs{
-//				ShareId:     share1.ID(),
+//				ShareId:     share1.ID().ToIDOutput().ToStringOutput(),
 //				AccessType:  pulumi.String("user"),
 //				AccessTo:    pulumi.String("windows"),
 //				AccessLevel: pulumi.String("ro"),
@@ -163,7 +163,7 @@ import (
 //				return err
 //			}
 //			_, err = sharedfilesystem.NewShareAccess(ctx, "share_access_2", &sharedfilesystem.ShareAccessArgs{
-//				ShareId:     share1.ID(),
+//				ShareId:     share1.ID().ToIDOutput().ToStringOutput(),
 //				AccessType:  pulumi.String("user"),
 //				AccessTo:    pulumi.String("linux"),
 //				AccessLevel: pulumi.String("rw"),
