@@ -80,8 +80,8 @@ import (
 //			_, err = networking.NewSubnet(ctx, "subnet_1", &networking.SubnetArgs{
 //				Name:         pulumi.String("subnet_1"),
 //				Cidr:         pulumi.String("10.11.12.0/25"),
-//				NetworkId:    network1.ID(),
-//				SubnetpoolId: subnetpool1.ID(),
+//				NetworkId:    network1.ID().ToIDOutput().ToStringOutput(),
+//				SubnetpoolId: subnetpool1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

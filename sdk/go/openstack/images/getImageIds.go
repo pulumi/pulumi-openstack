@@ -31,7 +31,7 @@ import (
 //			_, err := images.GetImageIds(ctx, &images.GetImageIdsArgs{
 //				NameRegex: pulumi.StringRef("^Ubuntu 16\\.04.*-amd64"),
 //				Sort:      pulumi.StringRef("updated_at"),
-//				Properties: map[string]interface{}{
+//				Properties: map[string]string{
 //					"key": "value",
 //				},
 //			}, nil)

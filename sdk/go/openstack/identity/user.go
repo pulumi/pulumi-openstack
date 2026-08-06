@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = identity.NewUser(ctx, "user_1", &identity.UserArgs{
-//				DefaultProjectId:                 project1.ID(),
+//				DefaultProjectId:                 project1.ID().ToIDOutput().ToStringOutput(),
 //				Name:                             pulumi.String("user_1"),
 //				Description:                      pulumi.String("A user"),
 //				Password:                         pulumi.String("password123"),

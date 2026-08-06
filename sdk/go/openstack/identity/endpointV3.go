@@ -39,7 +39,7 @@ import (
 //			}
 //			_, err = identity.NewEndpointV3(ctx, "endpoint_1", &identity.EndpointV3Args{
 //				Name:           pulumi.String("my-endpoint"),
-//				ServiceId:      service1.ID(),
+//				ServiceId:      service1.ID().ToIDOutput().ToStringOutput(),
 //				EndpointRegion: service1.Region,
 //				Url:            pulumi.String("http://my-endpoint"),
 //			})

@@ -38,7 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewQosBandwidthLimitRule(ctx, "bw_limit_rule_1", &networking.QosBandwidthLimitRuleArgs{
-//				QosPolicyId:  qosPolicy1.ID(),
+//				QosPolicyId:  qosPolicy1.ID().ToIDOutput().ToStringOutput(),
 //				MaxKbps:      pulumi.Int(3000),
 //				MaxBurstKbps: pulumi.Int(300),
 //				Direction:    pulumi.String("egress"),

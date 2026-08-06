@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = loadbalancer.NewQuota(ctx, "quota_1", &loadbalancer.QuotaArgs{
-//				ProjectId:     project1.ID(),
+//				ProjectId:     project1.ID().ToIDOutput().ToStringOutput(),
 //				Loadbalancer:  pulumi.Int(6),
 //				Listener:      pulumi.Int(7),
 //				Member:        pulumi.Int(8),

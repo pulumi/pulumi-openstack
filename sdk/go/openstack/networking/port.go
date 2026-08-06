@@ -45,7 +45,7 @@ import (
 //			}
 //			_, err = networking.NewPort(ctx, "port_1", &networking.PortArgs{
 //				Name:         pulumi.String("port_1"),
-//				NetworkId:    network1.ID(),
+//				NetworkId:    network1.ID().ToIDOutput().ToStringOutput(),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -80,7 +80,7 @@ import (
 //			}
 //			subnet1, err := networking.NewSubnet(ctx, "subnet_1", &networking.SubnetArgs{
 //				Name:      pulumi.String("subnet_1"),
-//				NetworkId: network1.ID(),
+//				NetworkId: network1.ID().ToIDOutput().ToStringOutput(),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //			})
 //			if err != nil {
@@ -88,11 +88,11 @@ import (
 //			}
 //			_, err = networking.NewPort(ctx, "port_1", &networking.PortArgs{
 //				Name:         pulumi.String("port_1"),
-//				NetworkId:    network1.ID(),
+//				NetworkId:    network1.ID().ToIDOutput().ToStringOutput(),
 //				AdminStateUp: pulumi.Bool(true),
 //				FixedIps: networking.PortFixedIpArray{
 //					&networking.PortFixedIpArgs{
-//						SubnetId: subnet1.ID(),
+//						SubnetId: subnet1.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -128,7 +128,7 @@ import (
 //			}
 //			_, err = networking.NewPort(ctx, "port_1", &networking.PortArgs{
 //				Name:         pulumi.String("port_1"),
-//				NetworkId:    network1.ID(),
+//				NetworkId:    network1.ID().ToIDOutput().ToStringOutput(),
 //				DeviceId:     pulumi.String("cdf70fcf-c161-4f24-9c70-96b3f5a54b71"),
 //				DeviceOwner:  pulumi.String("baremetal:none"),
 //				AdminStateUp: pulumi.Bool(true),

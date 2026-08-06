@@ -99,8 +99,8 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewVolumeAttach(ctx, "attached", &compute.VolumeAttachArgs{
-//				InstanceId: myinstance.ID(),
-//				VolumeId:   myvol.ID(),
+//				InstanceId: myinstance.ID().ToIDOutput().ToStringOutput(),
+//				VolumeId:   myvol.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -189,7 +189,7 @@ import (
 //				},
 //				BlockDevices: compute.InstanceBlockDeviceArray{
 //					&compute.InstanceBlockDeviceArgs{
-//						Uuid:                myvol.ID(),
+//						Uuid:                myvol.ID().ToIDOutput().ToStringOutput(),
 //						SourceType:          pulumi.String("volume"),
 //						BootIndex:           pulumi.Int(0),
 //						DestinationType:     pulumi.String("volume"),
@@ -298,7 +298,7 @@ import (
 //						DeleteOnTermination: pulumi.Bool(true),
 //					},
 //					&compute.InstanceBlockDeviceArgs{
-//						Uuid:                volume1.ID(),
+//						Uuid:                volume1.ID().ToIDOutput().ToStringOutput(),
 //						SourceType:          pulumi.String("volume"),
 //						DestinationType:     pulumi.String("volume"),
 //						BootIndex:           pulumi.Int(1),
@@ -357,16 +357,14 @@ import (
 //				return err
 //			}
 //			vm_port := networking.LookupPortOutput(ctx, networking.GetPortOutputArgs{
-//				DeviceId: multi_net.ID(),
+//				DeviceId: multi_net.ID().ToIDOutput().ToStringOutput(),
 //				NetworkId: multi_net.Networks.ApplyT(func(networks []compute.InstanceNetwork) (*string, error) {
 //					return networks[1].Uuid, nil
 //				}).(pulumi.StringPtrOutput),
 //			}, nil)
 //			_, err = networking.NewFloatingIpAssociate(ctx, "fip_vm", &networking.FloatingIpAssociateArgs{
 //				FloatingIp: myip.Address,
-//				PortId: pulumi.String(vm_port.ApplyT(func(vm_port networking.GetPortResult) (*string, error) {
-//					return vm_port.Id, nil
-//				}).(pulumi.StringPtrOutput)),
+//				PortId:     vm_port.Id(),
 //			})
 //			if err != nil {
 //				return err
@@ -502,7 +500,7 @@ import (
 //			}
 //			_, err = compute.NewInstance(ctx, "vm-swap", &compute.InstanceArgs{
 //				Name:     pulumi.String("vm_swap"),
-//				FlavorId: flavor_with_swap.ID(),
+//				FlavorId: flavor_with_swap.ID().ToIDOutput().ToStringOutput(),
 //				KeyPair:  pulumi.String("my_key_pair_name"),
 //				SecurityGroups: pulumi.StringArray{
 //					pulumi.String("default"),
@@ -733,7 +731,7 @@ import (
 //				Name: pulumi.String("instance_1"),
 //				Networks: compute.InstanceNetworkArray{
 //					&compute.InstanceNetworkArgs{
-//						Port: port1.ID(),
+//						Port: port1.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -941,8 +939,8 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewVolumeAttach(ctx, "va_1", &compute.VolumeAttachArgs{
-//				VolumeId:   volume1.ID(),
-//				InstanceId: instance2.ID(),
+//				VolumeId:   volume1.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: instance2.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

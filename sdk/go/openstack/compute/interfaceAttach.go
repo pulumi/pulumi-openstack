@@ -49,8 +49,8 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewInterfaceAttach(ctx, "ai_1", &compute.InterfaceAttachArgs{
-//				InstanceId: instance1.ID(),
-//				NetworkId:  network1.ID(),
+//				InstanceId: instance1.ID().ToIDOutput().ToStringOutput(),
+//				NetworkId:  network1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -93,7 +93,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewInterfaceAttach(ctx, "ai_1", &compute.InterfaceAttachArgs{
-//				InstanceId: instance1.ID(),
+//				InstanceId: instance1.ID().ToIDOutput().ToStringOutput(),
 //				NetworkId:  pulumi.Any(network1OpenstackNetworkingPortV2.Id),
 //				FixedIp:    pulumi.String("10.0.10.10"),
 //			})
@@ -130,7 +130,7 @@ import (
 //			}
 //			port1, err := networking.NewPort(ctx, "port_1", &networking.PortArgs{
 //				Name:         pulumi.String("port_1"),
-//				NetworkId:    network1.ID(),
+//				NetworkId:    network1.ID().ToIDOutput().ToStringOutput(),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -146,8 +146,8 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewInterfaceAttach(ctx, "ai_1", &compute.InterfaceAttachArgs{
-//				InstanceId: instance1.ID(),
-//				PortId:     port1.ID(),
+//				InstanceId: instance1.ID().ToIDOutput().ToStringOutput(),
+//				PortId:     port1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -198,7 +198,7 @@ import (
 //				_ := index
 //				__res, err := networking.NewPort(ctx, fmt.Sprintf("ports-%v", key0), &networking.PortArgs{
 //					Name:         pulumi.String(invokeFormat.Result),
-//					NetworkId:    network1.ID(),
+//					NetworkId:    network1.ID().ToIDOutput().ToStringOutput(),
 //					AdminStateUp: pulumi.Bool(true),
 //				})
 //				if err != nil {
@@ -220,8 +220,8 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := compute.NewInterfaceAttach(ctx, fmt.Sprintf("attachments-%v", key0), &compute.InterfaceAttachArgs{
-//					PortId:     ports[val0].ID(),
-//					InstanceId: instance1.ID(),
+//					PortId:     ports[val0].ID().ToIDOutput().ToStringOutput(),
+//					InstanceId: instance1.ID().ToIDOutput().ToStringOutput(),
 //				})
 //				if err != nil {
 //					return err
@@ -279,7 +279,7 @@ import (
 //				_ := index
 //				__res, err := networking.NewPort(ctx, fmt.Sprintf("ports-%v", key0), &networking.PortArgs{
 //					Name:         pulumi.String(invokeFormat.Result),
-//					NetworkId:    network1.ID(),
+//					NetworkId:    network1.ID().ToIDOutput().ToStringOutput(),
 //					AdminStateUp: pulumi.Bool(true),
 //				})
 //				if err != nil {
@@ -297,15 +297,15 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewInterfaceAttach(ctx, "ai_1", &compute.InterfaceAttachArgs{
-//				InstanceId: instance1.ID(),
-//				PortId:     ports[0].ID(),
+//				InstanceId: instance1.ID().ToIDOutput().ToStringOutput(),
+//				PortId:     ports[0].ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewInterfaceAttach(ctx, "ai_2", &compute.InterfaceAttachArgs{
-//				InstanceId: instance1.ID(),
-//				PortId:     ports[1].ID(),
+//				InstanceId: instance1.ID().ToIDOutput().ToStringOutput(),
+//				PortId:     ports[1].ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

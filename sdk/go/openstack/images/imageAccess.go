@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			_, err = images.NewImageAccess(ctx, "rancheros_member", &images.ImageAccessArgs{
-//				ImageId:  rancheros.ID(),
+//				ImageId:  rancheros.ID().ToIDOutput().ToStringOutput(),
 //				MemberId: pulumi.String("bed6b6cbb86a4e2d8dc2735c2f1000e4"),
 //			})
 //			if err != nil {
@@ -91,7 +91,7 @@ import (
 //				return err
 //			}
 //			_, err = images.NewImageAccess(ctx, "rancheros_member", &images.ImageAccessArgs{
-//				ImageId:  rancheros.ID(),
+//				ImageId:  rancheros.ID().ToIDOutput().ToStringOutput(),
 //				MemberId: pulumi.String("bed6b6cbb86a4e2d8dc2735c2f1000e4"),
 //				Status:   pulumi.String("accepted"),
 //			})

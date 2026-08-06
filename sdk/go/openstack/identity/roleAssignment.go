@@ -39,7 +39,7 @@ import (
 //			}
 //			user1, err := identity.NewUser(ctx, "user_1", &identity.UserArgs{
 //				Name:             pulumi.String("user_1"),
-//				DefaultProjectId: project1.ID(),
+//				DefaultProjectId: project1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -51,9 +51,9 @@ import (
 //				return err
 //			}
 //			_, err = identity.NewRoleAssignment(ctx, "role_assignment_1", &identity.RoleAssignmentArgs{
-//				UserId:    user1.ID(),
-//				ProjectId: project1.ID(),
-//				RoleId:    role1.ID(),
+//				UserId:    user1.ID().ToIDOutput().ToStringOutput(),
+//				ProjectId: project1.ID().ToIDOutput().ToStringOutput(),
+//				RoleId:    role1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

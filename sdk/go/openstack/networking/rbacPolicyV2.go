@@ -49,7 +49,7 @@ import (
 //			}
 //			_, err = networking.NewRbacPolicyV2(ctx, "rbac_policy_1", &networking.RbacPolicyV2Args{
 //				Action:       pulumi.String("access_as_shared"),
-//				ObjectId:     network1.ID(),
+//				ObjectId:     network1.ID().ToIDOutput().ToStringOutput(),
 //				ObjectType:   pulumi.String("network"),
 //				TargetTenant: pulumi.String("20415a973c9e45d3917f078950644697"),
 //			})
