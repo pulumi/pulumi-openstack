@@ -106,12 +106,8 @@ type LookupShareNetworkResult struct {
 }
 
 func LookupShareNetworkOutput(ctx *pulumi.Context, args LookupShareNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupShareNetworkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupShareNetworkResultOutput, error) {
-			args := v.(LookupShareNetworkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", args, LookupShareNetworkResultOutput{}, options).(LookupShareNetworkResultOutput), nil
-		}).(LookupShareNetworkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", args, LookupShareNetworkResultOutput{}, options).(LookupShareNetworkResultOutput)
 }
 
 // A collection of arguments for invoking getShareNetwork.

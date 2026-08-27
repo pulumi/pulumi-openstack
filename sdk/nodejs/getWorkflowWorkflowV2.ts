@@ -18,12 +18,10 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-/** @deprecated openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2 */
-export function workflowWorkflowV2(args?: WorkflowWorkflowV2Args, opts?: pulumi.InvokeOptions): Promise<WorkflowWorkflowV2Result> {
-    pulumi.log.warn("workflowWorkflowV2 is deprecated: openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2")
+export function getWorkflowWorkflowV2(args?: GetWorkflowWorkflowV2Args, opts?: pulumi.InvokeOptions): Promise<GetWorkflowWorkflowV2Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("openstack:index/workflowWorkflowV2:WorkflowWorkflowV2", {
+    return pulumi.runtime.invoke("openstack:index/getWorkflowWorkflowV2:getWorkflowWorkflowV2", {
         "name": args.name,
         "namespace": args.namespace,
         "projectId": args.projectId,
@@ -32,9 +30,9 @@ export function workflowWorkflowV2(args?: WorkflowWorkflowV2Args, opts?: pulumi.
 }
 
 /**
- * A collection of arguments for invoking WorkflowWorkflowV2.
+ * A collection of arguments for invoking getWorkflowWorkflowV2.
  */
-export interface WorkflowWorkflowV2Args {
+export interface GetWorkflowWorkflowV2Args {
     /**
      * The name of the workflow.
      */
@@ -55,9 +53,9 @@ export interface WorkflowWorkflowV2Args {
 }
 
 /**
- * A collection of values returned by WorkflowWorkflowV2.
+ * A collection of values returned by getWorkflowWorkflowV2.
  */
-export interface WorkflowWorkflowV2Result {
+export interface GetWorkflowWorkflowV2Result {
     /**
      * The date the workflow was created.
      */
@@ -113,12 +111,10 @@ export interface WorkflowWorkflowV2Result {
  * });
  * ```
  */
-/** @deprecated openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2 */
-export function workflowWorkflowV2Output(args?: WorkflowWorkflowV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<WorkflowWorkflowV2Result> {
-    pulumi.log.warn("workflowWorkflowV2 is deprecated: openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2")
+export function getWorkflowWorkflowV2Output(args?: GetWorkflowWorkflowV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkflowWorkflowV2Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("openstack:index/workflowWorkflowV2:WorkflowWorkflowV2", {
+    return pulumi.runtime.invokeOutput("openstack:index/getWorkflowWorkflowV2:getWorkflowWorkflowV2", {
         "name": args.name,
         "namespace": args.namespace,
         "projectId": args.projectId,
@@ -127,9 +123,9 @@ export function workflowWorkflowV2Output(args?: WorkflowWorkflowV2OutputArgs, op
 }
 
 /**
- * A collection of arguments for invoking WorkflowWorkflowV2.
+ * A collection of arguments for invoking getWorkflowWorkflowV2.
  */
-export interface WorkflowWorkflowV2OutputArgs {
+export interface GetWorkflowWorkflowV2OutputArgs {
     /**
      * The name of the workflow.
      */

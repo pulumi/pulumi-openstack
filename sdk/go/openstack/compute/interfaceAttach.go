@@ -195,7 +195,6 @@ import (
 //			var ports []*networking.Port
 //			for index := 0; index < 2; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := networking.NewPort(ctx, fmt.Sprintf("ports-%v", key0), &networking.PortArgs{
 //					Name:         pulumi.String(invokeFormat.Result),
 //					NetworkId:    network1.ID().ToIDOutput().ToStringOutput(),
@@ -276,7 +275,6 @@ import (
 //			var ports []*networking.Port
 //			for index := 0; index < 2; index++ {
 //				key0 := index
-//				_ := index
 //				__res, err := networking.NewPort(ctx, fmt.Sprintf("ports-%v", key0), &networking.PortArgs{
 //					Name:         pulumi.String(invokeFormat.Result),
 //					NetworkId:    network1.ID().ToIDOutput().ToStringOutput(),

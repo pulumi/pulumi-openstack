@@ -79,12 +79,8 @@ type GetLbFlavorDeprecatedResult struct {
 }
 
 func GetLbFlavorDeprecatedOutput(ctx *pulumi.Context, args GetLbFlavorDeprecatedOutputArgs, opts ...pulumi.InvokeOption) GetLbFlavorDeprecatedResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLbFlavorDeprecatedResultOutput, error) {
-			args := v.(GetLbFlavorDeprecatedArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:loadbalancer/getLbFlavorDeprecated:getLbFlavorDeprecated", args, GetLbFlavorDeprecatedResultOutput{}, options).(GetLbFlavorDeprecatedResultOutput), nil
-		}).(GetLbFlavorDeprecatedResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:loadbalancer/getLbFlavorDeprecated:getLbFlavorDeprecated", args, GetLbFlavorDeprecatedResultOutput{}, options).(GetLbFlavorDeprecatedResultOutput)
 }
 
 // A collection of arguments for invoking getLbFlavorDeprecated.

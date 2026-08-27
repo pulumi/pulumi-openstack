@@ -88,12 +88,8 @@ type GetSnapshotResult struct {
 }
 
 func GetSnapshotOutput(ctx *pulumi.Context, args GetSnapshotOutputArgs, opts ...pulumi.InvokeOption) GetSnapshotResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSnapshotResultOutput, error) {
-			args := v.(GetSnapshotArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:sharedfilesystem/getSnapshot:getSnapshot", args, GetSnapshotResultOutput{}, options).(GetSnapshotResultOutput), nil
-		}).(GetSnapshotResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:sharedfilesystem/getSnapshot:getSnapshot", args, GetSnapshotResultOutput{}, options).(GetSnapshotResultOutput)
 }
 
 // A collection of arguments for invoking getSnapshot.

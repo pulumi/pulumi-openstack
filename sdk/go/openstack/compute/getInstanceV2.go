@@ -102,12 +102,8 @@ type GetInstanceV2Result struct {
 }
 
 func GetInstanceV2Output(ctx *pulumi.Context, args GetInstanceV2OutputArgs, opts ...pulumi.InvokeOption) GetInstanceV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInstanceV2ResultOutput, error) {
-			args := v.(GetInstanceV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:compute/getInstanceV2:getInstanceV2", args, GetInstanceV2ResultOutput{}, options).(GetInstanceV2ResultOutput), nil
-		}).(GetInstanceV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:compute/getInstanceV2:getInstanceV2", args, GetInstanceV2ResultOutput{}, options).(GetInstanceV2ResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceV2.

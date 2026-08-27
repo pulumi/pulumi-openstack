@@ -96,12 +96,8 @@ type GetVolumeV3Result struct {
 }
 
 func GetVolumeV3Output(ctx *pulumi.Context, args GetVolumeV3OutputArgs, opts ...pulumi.InvokeOption) GetVolumeV3ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVolumeV3ResultOutput, error) {
-			args := v.(GetVolumeV3Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:blockstorage/getVolumeV3:getVolumeV3", args, GetVolumeV3ResultOutput{}, options).(GetVolumeV3ResultOutput), nil
-		}).(GetVolumeV3ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:blockstorage/getVolumeV3:getVolumeV3", args, GetVolumeV3ResultOutput{}, options).(GetVolumeV3ResultOutput)
 }
 
 // A collection of arguments for invoking getVolumeV3.

@@ -91,7 +91,6 @@ import (
 //
 //	for index := 0; index < 2; index++ {
 //	    key0 := index
-//	    _ := index
 //
 // __res, err := blockstorage.NewVolume(ctx, fmt.Sprintf("volumes-%v", key0), &blockstorage.VolumeArgs{
 // Name: pulumi.String(invokeFormat.Result),
@@ -167,7 +166,6 @@ import (
 //
 //	for index := 0; index < 2; index++ {
 //	    key0 := index
-//	    _ := index
 //
 // __res, err := blockstorage.NewVolume(ctx, fmt.Sprintf("volumes-%v", key0), &blockstorage.VolumeArgs{
 // Name: pulumi.String(invokeFormat.Result),

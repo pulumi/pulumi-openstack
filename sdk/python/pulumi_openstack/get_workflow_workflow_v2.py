@@ -15,18 +15,16 @@ else:
 from . import _utilities
 
 __all__ = [
-    'WorkflowWorkflowV2Result',
-    'AwaitableWorkflowWorkflowV2Result',
-    'workflow_workflow_v2',
-    'workflow_workflow_v2_output',
+    'GetWorkflowWorkflowV2Result',
+    'AwaitableGetWorkflowWorkflowV2Result',
+    'get_workflow_workflow_v2',
+    'get_workflow_workflow_v2_output',
 ]
 
-warnings.warn("""openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2""", DeprecationWarning)
-
 @pulumi.output_type
-class WorkflowWorkflowV2Result:
+class GetWorkflowWorkflowV2Result:
     """
-    A collection of values returned by WorkflowWorkflowV2.
+    A collection of values returned by getWorkflowWorkflowV2.
     """
     def __init__(__self__, created_at=None, definition=None, id=None, input=None, name=None, namespace=None, project_id=None, region=None, scope=None, tags=None):
         if created_at and not isinstance(created_at, str):
@@ -141,12 +139,12 @@ class WorkflowWorkflowV2Result:
         return pulumi.get(self, "tags")
 
 
-class AwaitableWorkflowWorkflowV2Result(WorkflowWorkflowV2Result):
+class AwaitableGetWorkflowWorkflowV2Result(GetWorkflowWorkflowV2Result):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return WorkflowWorkflowV2Result(
+        return GetWorkflowWorkflowV2Result(
             created_at=self.created_at,
             definition=self.definition,
             id=self.id,
@@ -159,11 +157,11 @@ class AwaitableWorkflowWorkflowV2Result(WorkflowWorkflowV2Result):
             tags=self.tags)
 
 
-def workflow_workflow_v2(name: Optional[_builtins.str] = None,
-                         namespace: Optional[_builtins.str] = None,
-                         project_id: Optional[_builtins.str] = None,
-                         region: Optional[_builtins.str] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableWorkflowWorkflowV2Result:
+def get_workflow_workflow_v2(name: Optional[_builtins.str] = None,
+                             namespace: Optional[_builtins.str] = None,
+                             project_id: Optional[_builtins.str] = None,
+                             region: Optional[_builtins.str] = None,
+                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkflowWorkflowV2Result:
     """
     Use this data source to get the ID of an available workflow.
 
@@ -183,16 +181,15 @@ def workflow_workflow_v2(name: Optional[_builtins.str] = None,
            Requires admin privileges.
     :param _builtins.str region: The region in which to obtain the V2 Workflow client.
     """
-    pulumi.log.warn("""workflow_workflow_v2 is deprecated: openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2""")
     __args__ = dict()
     __args__['name'] = name
     __args__['namespace'] = namespace
     __args__['projectId'] = project_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('openstack:index/workflowWorkflowV2:WorkflowWorkflowV2', __args__, opts=opts, typ=WorkflowWorkflowV2Result).value
+    __ret__ = pulumi.runtime.invoke('openstack:index/getWorkflowWorkflowV2:getWorkflowWorkflowV2', __args__, opts=opts, typ=GetWorkflowWorkflowV2Result).value
 
-    return AwaitableWorkflowWorkflowV2Result(
+    return AwaitableGetWorkflowWorkflowV2Result(
         created_at=pulumi.get(__ret__, 'created_at'),
         definition=pulumi.get(__ret__, 'definition'),
         id=pulumi.get(__ret__, 'id'),
@@ -203,11 +200,11 @@ def workflow_workflow_v2(name: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         scope=pulumi.get(__ret__, 'scope'),
         tags=pulumi.get(__ret__, 'tags'))
-def workflow_workflow_v2_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[WorkflowWorkflowV2Result]:
+def get_workflow_workflow_v2_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkflowWorkflowV2Result]:
     """
     Use this data source to get the ID of an available workflow.
 
@@ -227,15 +224,14 @@ def workflow_workflow_v2_output(name: pulumi.Input[Optional[Optional[_builtins.s
            Requires admin privileges.
     :param _builtins.str region: The region in which to obtain the V2 Workflow client.
     """
-    pulumi.log.warn("""workflow_workflow_v2 is deprecated: openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2""")
     __args__ = dict()
     __args__['name'] = name
     __args__['namespace'] = namespace
     __args__['projectId'] = project_id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('openstack:index/workflowWorkflowV2:WorkflowWorkflowV2', __args__, opts=opts, typ=WorkflowWorkflowV2Result)
-    return __ret__.apply(lambda __response__: WorkflowWorkflowV2Result(
+    __ret__ = pulumi.runtime.invoke_output('openstack:index/getWorkflowWorkflowV2:getWorkflowWorkflowV2', __args__, opts=opts, typ=GetWorkflowWorkflowV2Result)
+    return __ret__.apply(lambda __response__: GetWorkflowWorkflowV2Result(
         created_at=pulumi.get(__response__, 'created_at'),
         definition=pulumi.get(__response__, 'definition'),
         id=pulumi.get(__response__, 'id'),

@@ -93,12 +93,8 @@ type GetProjectIdsV3Result struct {
 }
 
 func GetProjectIdsV3Output(ctx *pulumi.Context, args GetProjectIdsV3OutputArgs, opts ...pulumi.InvokeOption) GetProjectIdsV3ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectIdsV3ResultOutput, error) {
-			args := v.(GetProjectIdsV3Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:identity/getProjectIdsV3:getProjectIdsV3", args, GetProjectIdsV3ResultOutput{}, options).(GetProjectIdsV3ResultOutput), nil
-		}).(GetProjectIdsV3ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:identity/getProjectIdsV3:getProjectIdsV3", args, GetProjectIdsV3ResultOutput{}, options).(GetProjectIdsV3ResultOutput)
 }
 
 // A collection of arguments for invoking getProjectIdsV3.

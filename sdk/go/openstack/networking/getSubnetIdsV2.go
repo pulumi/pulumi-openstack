@@ -123,12 +123,8 @@ type GetSubnetIdsV2Result struct {
 }
 
 func GetSubnetIdsV2Output(ctx *pulumi.Context, args GetSubnetIdsV2OutputArgs, opts ...pulumi.InvokeOption) GetSubnetIdsV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSubnetIdsV2ResultOutput, error) {
-			args := v.(GetSubnetIdsV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", args, GetSubnetIdsV2ResultOutput{}, options).(GetSubnetIdsV2ResultOutput), nil
-		}).(GetSubnetIdsV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", args, GetSubnetIdsV2ResultOutput{}, options).(GetSubnetIdsV2ResultOutput)
 }
 
 // A collection of arguments for invoking getSubnetIdsV2.

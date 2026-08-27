@@ -73,12 +73,8 @@ type LookupQosDscpMarkingRuleResult struct {
 }
 
 func LookupQosDscpMarkingRuleOutput(ctx *pulumi.Context, args LookupQosDscpMarkingRuleOutputArgs, opts ...pulumi.InvokeOption) LookupQosDscpMarkingRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupQosDscpMarkingRuleResultOutput, error) {
-			args := v.(LookupQosDscpMarkingRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args, LookupQosDscpMarkingRuleResultOutput{}, options).(LookupQosDscpMarkingRuleResultOutput), nil
-		}).(LookupQosDscpMarkingRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args, LookupQosDscpMarkingRuleResultOutput{}, options).(LookupQosDscpMarkingRuleResultOutput)
 }
 
 // A collection of arguments for invoking getQosDscpMarkingRule.

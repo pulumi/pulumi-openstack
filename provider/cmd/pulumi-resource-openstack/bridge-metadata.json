@@ -1661,7 +1661,14 @@
                 "majorVersion": 5
             },
             "openstack_workflow_workflow_v2": {
-                "current": "openstack:index/workflowWorkflowV2:WorkflowWorkflowV2",
+                "current": "openstack:index/getWorkflowWorkflowV2:getWorkflowWorkflowV2",
+                "past": [
+                    {
+                        "name": "openstack:index/workflowWorkflowV2:WorkflowWorkflowV2",
+                        "inCodegen": true,
+                        "majorVersion": 5
+                    }
+                ],
                 "majorVersion": 5,
                 "fields": {
                     "tags": {
@@ -1718,6 +1725,11 @@
             "openstack_fw_rule_v2": {
                 "renames": [
                     "openstack:index/getFwRuleV2:getFwRuleV2"
+                ]
+            },
+            "openstack_workflow_workflow_v2": {
+                "renames": [
+                    "openstack:index/workflowWorkflowV2:WorkflowWorkflowV2"
                 ]
             }
         }

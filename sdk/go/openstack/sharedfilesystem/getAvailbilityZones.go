@@ -65,12 +65,8 @@ type GetAvailbilityZonesResult struct {
 }
 
 func GetAvailbilityZonesOutput(ctx *pulumi.Context, args GetAvailbilityZonesOutputArgs, opts ...pulumi.InvokeOption) GetAvailbilityZonesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAvailbilityZonesResultOutput, error) {
-			args := v.(GetAvailbilityZonesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", args, GetAvailbilityZonesResultOutput{}, options).(GetAvailbilityZonesResultOutput), nil
-		}).(GetAvailbilityZonesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", args, GetAvailbilityZonesResultOutput{}, options).(GetAvailbilityZonesResultOutput)
 }
 
 // A collection of arguments for invoking getAvailbilityZones.

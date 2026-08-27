@@ -13,6 +13,7 @@ from .bgpvpn_v2 import *
 from .get_fw_group_v2 import *
 from .get_fw_policy_v2 import *
 from .get_fw_rule_v2 import *
+from .get_workflow_workflow_v2 import *
 from .lb_flavorprofile_v2 import *
 from .lb_loadbalancer_v2 import *
 from .provider import *

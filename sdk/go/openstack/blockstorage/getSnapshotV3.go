@@ -87,12 +87,8 @@ type GetSnapshotV3Result struct {
 }
 
 func GetSnapshotV3Output(ctx *pulumi.Context, args GetSnapshotV3OutputArgs, opts ...pulumi.InvokeOption) GetSnapshotV3ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSnapshotV3ResultOutput, error) {
-			args := v.(GetSnapshotV3Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:blockstorage/getSnapshotV3:getSnapshotV3", args, GetSnapshotV3ResultOutput{}, options).(GetSnapshotV3ResultOutput), nil
-		}).(GetSnapshotV3ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:blockstorage/getSnapshotV3:getSnapshotV3", args, GetSnapshotV3ResultOutput{}, options).(GetSnapshotV3ResultOutput)
 }
 
 // A collection of arguments for invoking getSnapshotV3.

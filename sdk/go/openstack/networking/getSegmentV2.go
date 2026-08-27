@@ -101,12 +101,8 @@ type LookupSegmentV2Result struct {
 }
 
 func LookupSegmentV2Output(ctx *pulumi.Context, args LookupSegmentV2OutputArgs, opts ...pulumi.InvokeOption) LookupSegmentV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSegmentV2ResultOutput, error) {
-			args := v.(LookupSegmentV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:networking/getSegmentV2:getSegmentV2", args, LookupSegmentV2ResultOutput{}, options).(LookupSegmentV2ResultOutput), nil
-		}).(LookupSegmentV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:networking/getSegmentV2:getSegmentV2", args, LookupSegmentV2ResultOutput{}, options).(LookupSegmentV2ResultOutput)
 }
 
 // A collection of arguments for invoking getSegmentV2.

@@ -83,12 +83,8 @@ type GetHypervisorV2Result struct {
 }
 
 func GetHypervisorV2Output(ctx *pulumi.Context, args GetHypervisorV2OutputArgs, opts ...pulumi.InvokeOption) GetHypervisorV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHypervisorV2ResultOutput, error) {
-			args := v.(GetHypervisorV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:compute/getHypervisorV2:getHypervisorV2", args, GetHypervisorV2ResultOutput{}, options).(GetHypervisorV2ResultOutput), nil
-		}).(GetHypervisorV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:compute/getHypervisorV2:getHypervisorV2", args, GetHypervisorV2ResultOutput{}, options).(GetHypervisorV2ResultOutput)
 }
 
 // A collection of arguments for invoking getHypervisorV2.
