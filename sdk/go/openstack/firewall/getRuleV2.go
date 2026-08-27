@@ -131,12 +131,8 @@ type LookupRuleV2Result struct {
 }
 
 func LookupRuleV2Output(ctx *pulumi.Context, args LookupRuleV2OutputArgs, opts ...pulumi.InvokeOption) LookupRuleV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRuleV2ResultOutput, error) {
-			args := v.(LookupRuleV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:firewall/getRuleV2:getRuleV2", args, LookupRuleV2ResultOutput{}, options).(LookupRuleV2ResultOutput), nil
-		}).(LookupRuleV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:firewall/getRuleV2:getRuleV2", args, LookupRuleV2ResultOutput{}, options).(LookupRuleV2ResultOutput)
 }
 
 // A collection of arguments for invoking getRuleV2.

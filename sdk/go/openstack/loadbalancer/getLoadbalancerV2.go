@@ -127,12 +127,8 @@ type GetLoadbalancerV2Result struct {
 }
 
 func GetLoadbalancerV2Output(ctx *pulumi.Context, args GetLoadbalancerV2OutputArgs, opts ...pulumi.InvokeOption) GetLoadbalancerV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLoadbalancerV2ResultOutput, error) {
-			args := v.(GetLoadbalancerV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:loadbalancer/getLoadbalancerV2:getLoadbalancerV2", args, GetLoadbalancerV2ResultOutput{}, options).(GetLoadbalancerV2ResultOutput), nil
-		}).(GetLoadbalancerV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:loadbalancer/getLoadbalancerV2:getLoadbalancerV2", args, GetLoadbalancerV2ResultOutput{}, options).(GetLoadbalancerV2ResultOutput)
 }
 
 // A collection of arguments for invoking getLoadbalancerV2.

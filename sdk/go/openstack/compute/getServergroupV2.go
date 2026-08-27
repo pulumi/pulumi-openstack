@@ -80,12 +80,8 @@ type GetServergroupV2Result struct {
 }
 
 func GetServergroupV2Output(ctx *pulumi.Context, args GetServergroupV2OutputArgs, opts ...pulumi.InvokeOption) GetServergroupV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServergroupV2ResultOutput, error) {
-			args := v.(GetServergroupV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:compute/getServergroupV2:getServergroupV2", args, GetServergroupV2ResultOutput{}, options).(GetServergroupV2ResultOutput), nil
-		}).(GetServergroupV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:compute/getServergroupV2:getServergroupV2", args, GetServergroupV2ResultOutput{}, options).(GetServergroupV2ResultOutput)
 }
 
 // A collection of arguments for invoking getServergroupV2.

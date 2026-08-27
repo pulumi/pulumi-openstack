@@ -77,12 +77,8 @@ type LookupFlavorV2Result struct {
 }
 
 func LookupFlavorV2Output(ctx *pulumi.Context, args LookupFlavorV2OutputArgs, opts ...pulumi.InvokeOption) LookupFlavorV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFlavorV2ResultOutput, error) {
-			args := v.(LookupFlavorV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:loadbalancer/getFlavorV2:getFlavorV2", args, LookupFlavorV2ResultOutput{}, options).(LookupFlavorV2ResultOutput), nil
-		}).(LookupFlavorV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:loadbalancer/getFlavorV2:getFlavorV2", args, LookupFlavorV2ResultOutput{}, options).(LookupFlavorV2ResultOutput)
 }
 
 // A collection of arguments for invoking getFlavorV2.

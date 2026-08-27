@@ -132,12 +132,8 @@ type GetPoolV2Result struct {
 }
 
 func GetPoolV2Output(ctx *pulumi.Context, args GetPoolV2OutputArgs, opts ...pulumi.InvokeOption) GetPoolV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPoolV2ResultOutput, error) {
-			args := v.(GetPoolV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:loadbalancer/getPoolV2:getPoolV2", args, GetPoolV2ResultOutput{}, options).(GetPoolV2ResultOutput), nil
-		}).(GetPoolV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:loadbalancer/getPoolV2:getPoolV2", args, GetPoolV2ResultOutput{}, options).(GetPoolV2ResultOutput)
 }
 
 // A collection of arguments for invoking getPoolV2.

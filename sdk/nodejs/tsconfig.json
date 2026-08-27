@@ -92,6 +92,7 @@
         "getFwGroupV2.ts",
         "getFwPolicyV2.ts",
         "getFwRuleV2.ts",
+        "getWorkflowWorkflowV2.ts",
         "identity/applicationCredential.ts",
         "identity/ec2CredentialV3.ts",
         "identity/endpointV3.ts",

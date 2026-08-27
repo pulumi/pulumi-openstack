@@ -96,12 +96,8 @@ type LookupQuotaSetV2Result struct {
 }
 
 func LookupQuotaSetV2Output(ctx *pulumi.Context, args LookupQuotaSetV2OutputArgs, opts ...pulumi.InvokeOption) LookupQuotaSetV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupQuotaSetV2ResultOutput, error) {
-			args := v.(LookupQuotaSetV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:compute/getQuotaSetV2:getQuotaSetV2", args, LookupQuotaSetV2ResultOutput{}, options).(LookupQuotaSetV2ResultOutput), nil
-		}).(LookupQuotaSetV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:compute/getQuotaSetV2:getQuotaSetV2", args, LookupQuotaSetV2ResultOutput{}, options).(LookupQuotaSetV2ResultOutput)
 }
 
 // A collection of arguments for invoking getQuotaSetV2.

@@ -106,12 +106,8 @@ type GetLimitsV2Result struct {
 }
 
 func GetLimitsV2Output(ctx *pulumi.Context, args GetLimitsV2OutputArgs, opts ...pulumi.InvokeOption) GetLimitsV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLimitsV2ResultOutput, error) {
-			args := v.(GetLimitsV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:compute/getLimitsV2:getLimitsV2", args, GetLimitsV2ResultOutput{}, options).(GetLimitsV2ResultOutput), nil
-		}).(GetLimitsV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:compute/getLimitsV2:getLimitsV2", args, GetLimitsV2ResultOutput{}, options).(GetLimitsV2ResultOutput)
 }
 
 // A collection of arguments for invoking getLimitsV2.

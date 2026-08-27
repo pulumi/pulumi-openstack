@@ -15,11 +15,14 @@ import com.pulumi.openstack.inputs.GetFwPolicyV2Args;
 import com.pulumi.openstack.inputs.GetFwPolicyV2PlainArgs;
 import com.pulumi.openstack.inputs.GetFwRuleV2Args;
 import com.pulumi.openstack.inputs.GetFwRuleV2PlainArgs;
+import com.pulumi.openstack.inputs.GetWorkflowWorkflowV2Args;
+import com.pulumi.openstack.inputs.GetWorkflowWorkflowV2PlainArgs;
 import com.pulumi.openstack.inputs.WorkflowWorkflowV2Args;
 import com.pulumi.openstack.inputs.WorkflowWorkflowV2PlainArgs;
 import com.pulumi.openstack.outputs.GetFwGroupV2Result;
 import com.pulumi.openstack.outputs.GetFwPolicyV2Result;
 import com.pulumi.openstack.outputs.GetFwRuleV2Result;
+import com.pulumi.openstack.outputs.GetWorkflowWorkflowV2Result;
 import com.pulumi.openstack.outputs.WorkflowWorkflowV2Result;
 import java.util.concurrent.CompletableFuture;
 
@@ -961,7 +964,7 @@ public final class OpenstackFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.OpenstackFunctions;
-     * import com.pulumi.openstack.inputs.WorkflowWorkflowV2Args;
+     * import com.pulumi.openstack.inputs.GetWorkflowWorkflowV2Args;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -975,7 +978,7 @@ public final class OpenstackFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var workflow1 = OpenstackFunctions.WorkflowWorkflowV2(WorkflowWorkflowV2Args.builder()
+     *         final var workflow1 = OpenstackFunctions.getWorkflowWorkflowV2(GetWorkflowWorkflowV2Args.builder()
      *             .name("workflow_1")
      *             .build());
      * 
@@ -985,6 +988,290 @@ public final class OpenstackFunctions {
      * </pre>
      * 
      */
+    public static Output<GetWorkflowWorkflowV2Result> getWorkflowWorkflowV2() {
+        return getWorkflowWorkflowV2(GetWorkflowWorkflowV2Args.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an available workflow.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.OpenstackFunctions;
+     * import com.pulumi.openstack.inputs.GetWorkflowWorkflowV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var workflow1 = OpenstackFunctions.getWorkflowWorkflowV2(GetWorkflowWorkflowV2Args.builder()
+     *             .name("workflow_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkflowWorkflowV2Result> getWorkflowWorkflowV2Plain() {
+        return getWorkflowWorkflowV2Plain(GetWorkflowWorkflowV2PlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an available workflow.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.OpenstackFunctions;
+     * import com.pulumi.openstack.inputs.GetWorkflowWorkflowV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var workflow1 = OpenstackFunctions.getWorkflowWorkflowV2(GetWorkflowWorkflowV2Args.builder()
+     *             .name("workflow_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkflowWorkflowV2Result> getWorkflowWorkflowV2(GetWorkflowWorkflowV2Args args) {
+        return getWorkflowWorkflowV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an available workflow.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.OpenstackFunctions;
+     * import com.pulumi.openstack.inputs.GetWorkflowWorkflowV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var workflow1 = OpenstackFunctions.getWorkflowWorkflowV2(GetWorkflowWorkflowV2Args.builder()
+     *             .name("workflow_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkflowWorkflowV2Result> getWorkflowWorkflowV2Plain(GetWorkflowWorkflowV2PlainArgs args) {
+        return getWorkflowWorkflowV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the ID of an available workflow.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.OpenstackFunctions;
+     * import com.pulumi.openstack.inputs.GetWorkflowWorkflowV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var workflow1 = OpenstackFunctions.getWorkflowWorkflowV2(GetWorkflowWorkflowV2Args.builder()
+     *             .name("workflow_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkflowWorkflowV2Result> getWorkflowWorkflowV2(GetWorkflowWorkflowV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("openstack:index/getWorkflowWorkflowV2:getWorkflowWorkflowV2", TypeShape.of(GetWorkflowWorkflowV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available workflow.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.OpenstackFunctions;
+     * import com.pulumi.openstack.inputs.GetWorkflowWorkflowV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var workflow1 = OpenstackFunctions.getWorkflowWorkflowV2(GetWorkflowWorkflowV2Args.builder()
+     *             .name("workflow_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkflowWorkflowV2Result> getWorkflowWorkflowV2(GetWorkflowWorkflowV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("openstack:index/getWorkflowWorkflowV2:getWorkflowWorkflowV2", TypeShape.of(GetWorkflowWorkflowV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available workflow.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.OpenstackFunctions;
+     * import com.pulumi.openstack.inputs.GetWorkflowWorkflowV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var workflow1 = OpenstackFunctions.getWorkflowWorkflowV2(GetWorkflowWorkflowV2Args.builder()
+     *             .name("workflow_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkflowWorkflowV2Result> getWorkflowWorkflowV2Plain(GetWorkflowWorkflowV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("openstack:index/getWorkflowWorkflowV2:getWorkflowWorkflowV2", TypeShape.of(GetWorkflowWorkflowV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the ID of an available workflow.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.OpenstackFunctions;
+     * import com.pulumi.openstack.inputs.GetWorkflowWorkflowV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var workflow1 = OpenstackFunctions.getWorkflowWorkflowV2(GetWorkflowWorkflowV2Args.builder()
+     *             .name("workflow_1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
+     * 
+     */
+    @Deprecated /* openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2 */
     public static Output<WorkflowWorkflowV2Result> workflowWorkflowV2() {
         return workflowWorkflowV2(WorkflowWorkflowV2Args.Empty, InvokeOptions.Empty);
     }
@@ -1001,7 +1288,7 @@ public final class OpenstackFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.OpenstackFunctions;
-     * import com.pulumi.openstack.inputs.WorkflowWorkflowV2Args;
+     * import com.pulumi.openstack.inputs.GetWorkflowWorkflowV2Args;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1015,7 +1302,7 @@ public final class OpenstackFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var workflow1 = OpenstackFunctions.WorkflowWorkflowV2(WorkflowWorkflowV2Args.builder()
+     *         final var workflow1 = OpenstackFunctions.getWorkflowWorkflowV2(GetWorkflowWorkflowV2Args.builder()
      *             .name("workflow_1")
      *             .build());
      * 
@@ -1024,7 +1311,11 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
+     * 
      */
+    @Deprecated /* openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2 */
     public static CompletableFuture<WorkflowWorkflowV2Result> workflowWorkflowV2Plain() {
         return workflowWorkflowV2Plain(WorkflowWorkflowV2PlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -1041,7 +1332,7 @@ public final class OpenstackFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.OpenstackFunctions;
-     * import com.pulumi.openstack.inputs.WorkflowWorkflowV2Args;
+     * import com.pulumi.openstack.inputs.GetWorkflowWorkflowV2Args;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1055,7 +1346,7 @@ public final class OpenstackFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var workflow1 = OpenstackFunctions.WorkflowWorkflowV2(WorkflowWorkflowV2Args.builder()
+     *         final var workflow1 = OpenstackFunctions.getWorkflowWorkflowV2(GetWorkflowWorkflowV2Args.builder()
      *             .name("workflow_1")
      *             .build());
      * 
@@ -1064,7 +1355,11 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
+     * 
      */
+    @Deprecated /* openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2 */
     public static Output<WorkflowWorkflowV2Result> workflowWorkflowV2(WorkflowWorkflowV2Args args) {
         return workflowWorkflowV2(args, InvokeOptions.Empty);
     }
@@ -1081,7 +1376,7 @@ public final class OpenstackFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.OpenstackFunctions;
-     * import com.pulumi.openstack.inputs.WorkflowWorkflowV2Args;
+     * import com.pulumi.openstack.inputs.GetWorkflowWorkflowV2Args;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1095,7 +1390,7 @@ public final class OpenstackFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var workflow1 = OpenstackFunctions.WorkflowWorkflowV2(WorkflowWorkflowV2Args.builder()
+     *         final var workflow1 = OpenstackFunctions.getWorkflowWorkflowV2(GetWorkflowWorkflowV2Args.builder()
      *             .name("workflow_1")
      *             .build());
      * 
@@ -1104,7 +1399,11 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
+     * 
      */
+    @Deprecated /* openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2 */
     public static CompletableFuture<WorkflowWorkflowV2Result> workflowWorkflowV2Plain(WorkflowWorkflowV2PlainArgs args) {
         return workflowWorkflowV2Plain(args, InvokeOptions.Empty);
     }
@@ -1121,7 +1420,7 @@ public final class OpenstackFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.OpenstackFunctions;
-     * import com.pulumi.openstack.inputs.WorkflowWorkflowV2Args;
+     * import com.pulumi.openstack.inputs.GetWorkflowWorkflowV2Args;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1135,7 +1434,7 @@ public final class OpenstackFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var workflow1 = OpenstackFunctions.WorkflowWorkflowV2(WorkflowWorkflowV2Args.builder()
+     *         final var workflow1 = OpenstackFunctions.getWorkflowWorkflowV2(GetWorkflowWorkflowV2Args.builder()
      *             .name("workflow_1")
      *             .build());
      * 
@@ -1144,7 +1443,11 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
+     * 
      */
+    @Deprecated /* openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2 */
     public static Output<WorkflowWorkflowV2Result> workflowWorkflowV2(WorkflowWorkflowV2Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("openstack:index/workflowWorkflowV2:WorkflowWorkflowV2", TypeShape.of(WorkflowWorkflowV2Result.class), args, Utilities.withVersion(options));
     }
@@ -1161,7 +1464,7 @@ public final class OpenstackFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.OpenstackFunctions;
-     * import com.pulumi.openstack.inputs.WorkflowWorkflowV2Args;
+     * import com.pulumi.openstack.inputs.GetWorkflowWorkflowV2Args;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1175,7 +1478,7 @@ public final class OpenstackFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var workflow1 = OpenstackFunctions.WorkflowWorkflowV2(WorkflowWorkflowV2Args.builder()
+     *         final var workflow1 = OpenstackFunctions.getWorkflowWorkflowV2(GetWorkflowWorkflowV2Args.builder()
      *             .name("workflow_1")
      *             .build());
      * 
@@ -1184,7 +1487,11 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
+     * 
      */
+    @Deprecated /* openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2 */
     public static Output<WorkflowWorkflowV2Result> workflowWorkflowV2(WorkflowWorkflowV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:index/workflowWorkflowV2:WorkflowWorkflowV2", TypeShape.of(WorkflowWorkflowV2Result.class), args, Utilities.withVersion(options));
     }
@@ -1201,7 +1508,7 @@ public final class OpenstackFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.openstack.OpenstackFunctions;
-     * import com.pulumi.openstack.inputs.WorkflowWorkflowV2Args;
+     * import com.pulumi.openstack.inputs.GetWorkflowWorkflowV2Args;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1215,7 +1522,7 @@ public final class OpenstackFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var workflow1 = OpenstackFunctions.WorkflowWorkflowV2(WorkflowWorkflowV2Args.builder()
+     *         final var workflow1 = OpenstackFunctions.getWorkflowWorkflowV2(GetWorkflowWorkflowV2Args.builder()
      *             .name("workflow_1")
      *             .build());
      * 
@@ -1224,7 +1531,11 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
+     * 
      */
+    @Deprecated /* openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2 */
     public static CompletableFuture<WorkflowWorkflowV2Result> workflowWorkflowV2Plain(WorkflowWorkflowV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:index/workflowWorkflowV2:WorkflowWorkflowV2", TypeShape.of(WorkflowWorkflowV2Result.class), args, Utilities.withVersion(options));
     }

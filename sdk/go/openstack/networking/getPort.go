@@ -138,12 +138,8 @@ type LookupPortResult struct {
 }
 
 func LookupPortOutput(ctx *pulumi.Context, args LookupPortOutputArgs, opts ...pulumi.InvokeOption) LookupPortResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPortResultOutput, error) {
-			args := v.(LookupPortArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:networking/getPort:getPort", args, LookupPortResultOutput{}, options).(LookupPortResultOutput), nil
-		}).(LookupPortResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:networking/getPort:getPort", args, LookupPortResultOutput{}, options).(LookupPortResultOutput)
 }
 
 // A collection of arguments for invoking getPort.

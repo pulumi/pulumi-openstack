@@ -75,12 +75,8 @@ type LookupQosMinimumBandwidthRuleResult struct {
 }
 
 func LookupQosMinimumBandwidthRuleOutput(ctx *pulumi.Context, args LookupQosMinimumBandwidthRuleOutputArgs, opts ...pulumi.InvokeOption) LookupQosMinimumBandwidthRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupQosMinimumBandwidthRuleResultOutput, error) {
-			args := v.(LookupQosMinimumBandwidthRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", args, LookupQosMinimumBandwidthRuleResultOutput{}, options).(LookupQosMinimumBandwidthRuleResultOutput), nil
-		}).(LookupQosMinimumBandwidthRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", args, LookupQosMinimumBandwidthRuleResultOutput{}, options).(LookupQosMinimumBandwidthRuleResultOutput)
 }
 
 // A collection of arguments for invoking getQosMinimumBandwidthRule.

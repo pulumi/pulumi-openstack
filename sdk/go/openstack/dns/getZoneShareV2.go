@@ -92,12 +92,8 @@ type LookupZoneShareV2Result struct {
 }
 
 func LookupZoneShareV2Output(ctx *pulumi.Context, args LookupZoneShareV2OutputArgs, opts ...pulumi.InvokeOption) LookupZoneShareV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupZoneShareV2ResultOutput, error) {
-			args := v.(LookupZoneShareV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:dns/getZoneShareV2:getZoneShareV2", args, LookupZoneShareV2ResultOutput{}, options).(LookupZoneShareV2ResultOutput), nil
-		}).(LookupZoneShareV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:dns/getZoneShareV2:getZoneShareV2", args, LookupZoneShareV2ResultOutput{}, options).(LookupZoneShareV2ResultOutput)
 }
 
 // A collection of arguments for invoking getZoneShareV2.

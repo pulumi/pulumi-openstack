@@ -98,12 +98,8 @@ type GetFwPolicyV2Result struct {
 }
 
 func GetFwPolicyV2Output(ctx *pulumi.Context, args GetFwPolicyV2OutputArgs, opts ...pulumi.InvokeOption) GetFwPolicyV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFwPolicyV2ResultOutput, error) {
-			args := v.(GetFwPolicyV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:index/getFwPolicyV2:getFwPolicyV2", args, GetFwPolicyV2ResultOutput{}, options).(GetFwPolicyV2ResultOutput), nil
-		}).(GetFwPolicyV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:index/getFwPolicyV2:getFwPolicyV2", args, GetFwPolicyV2ResultOutput{}, options).(GetFwPolicyV2ResultOutput)
 }
 
 // A collection of arguments for invoking getFwPolicyV2.

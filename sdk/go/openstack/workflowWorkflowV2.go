@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := openstack.WorkflowWorkflowV2(ctx, &openstack.WorkflowWorkflowV2Args{
+//			_, err := openstack.GetWorkflowWorkflowV2(ctx, &openstack.GetWorkflowWorkflowV2Args{
 //				Name: pulumi.StringRef("workflow_1"),
 //			}, nil)
 //			if err != nil {
@@ -38,6 +38,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
 func WorkflowWorkflowV2(ctx *pulumi.Context, args *WorkflowWorkflowV2Args, opts ...pulumi.InvokeOption) (*WorkflowWorkflowV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv WorkflowWorkflowV2Result
@@ -86,12 +88,8 @@ type WorkflowWorkflowV2Result struct {
 }
 
 func WorkflowWorkflowV2Output(ctx *pulumi.Context, args WorkflowWorkflowV2OutputArgs, opts ...pulumi.InvokeOption) WorkflowWorkflowV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (WorkflowWorkflowV2ResultOutput, error) {
-			args := v.(WorkflowWorkflowV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:index/workflowWorkflowV2:WorkflowWorkflowV2", args, WorkflowWorkflowV2ResultOutput{}, options).(WorkflowWorkflowV2ResultOutput), nil
-		}).(WorkflowWorkflowV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:index/workflowWorkflowV2:WorkflowWorkflowV2", args, WorkflowWorkflowV2ResultOutput{}, options).(WorkflowWorkflowV2ResultOutput)
 }
 
 // A collection of arguments for invoking WorkflowWorkflowV2.

@@ -83,12 +83,8 @@ type LookupAddressScopeResult struct {
 }
 
 func LookupAddressScopeOutput(ctx *pulumi.Context, args LookupAddressScopeOutputArgs, opts ...pulumi.InvokeOption) LookupAddressScopeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAddressScopeResultOutput, error) {
-			args := v.(LookupAddressScopeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:networking/getAddressScope:getAddressScope", args, LookupAddressScopeResultOutput{}, options).(LookupAddressScopeResultOutput), nil
-		}).(LookupAddressScopeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:networking/getAddressScope:getAddressScope", args, LookupAddressScopeResultOutput{}, options).(LookupAddressScopeResultOutput)
 }
 
 // A collection of arguments for invoking getAddressScope.

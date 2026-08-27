@@ -95,12 +95,8 @@ type LookupQosPolicyResult struct {
 }
 
 func LookupQosPolicyOutput(ctx *pulumi.Context, args LookupQosPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupQosPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupQosPolicyResultOutput, error) {
-			args := v.(LookupQosPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:networking/getQosPolicy:getQosPolicy", args, LookupQosPolicyResultOutput{}, options).(LookupQosPolicyResultOutput), nil
-		}).(LookupQosPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:networking/getQosPolicy:getQosPolicy", args, LookupQosPolicyResultOutput{}, options).(LookupQosPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getQosPolicy.

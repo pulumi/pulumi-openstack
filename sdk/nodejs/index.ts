@@ -40,6 +40,11 @@ export const getFwRuleV2: typeof import("./getFwRuleV2").getFwRuleV2 = null as a
 export const getFwRuleV2Output: typeof import("./getFwRuleV2").getFwRuleV2Output = null as any;
 utilities.lazyLoad(exports, ["getFwRuleV2","getFwRuleV2Output"], () => require("./getFwRuleV2"));
 
+export { GetWorkflowWorkflowV2Args, GetWorkflowWorkflowV2Result, GetWorkflowWorkflowV2OutputArgs } from "./getWorkflowWorkflowV2";
+export const getWorkflowWorkflowV2: typeof import("./getWorkflowWorkflowV2").getWorkflowWorkflowV2 = null as any;
+export const getWorkflowWorkflowV2Output: typeof import("./getWorkflowWorkflowV2").getWorkflowWorkflowV2Output = null as any;
+utilities.lazyLoad(exports, ["getWorkflowWorkflowV2","getWorkflowWorkflowV2Output"], () => require("./getWorkflowWorkflowV2"));
+
 export { LbFlavorprofileV2Args, LbFlavorprofileV2State } from "./lbFlavorprofileV2";
 export type LbFlavorprofileV2 = import("./lbFlavorprofileV2").LbFlavorprofileV2;
 export const LbFlavorprofileV2: typeof import("./lbFlavorprofileV2").LbFlavorprofileV2 = null as any;

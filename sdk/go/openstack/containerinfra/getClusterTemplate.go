@@ -144,12 +144,8 @@ type LookupClusterTemplateResult struct {
 }
 
 func LookupClusterTemplateOutput(ctx *pulumi.Context, args LookupClusterTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupClusterTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupClusterTemplateResultOutput, error) {
-			args := v.(LookupClusterTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:containerinfra/getClusterTemplate:getClusterTemplate", args, LookupClusterTemplateResultOutput{}, options).(LookupClusterTemplateResultOutput), nil
-		}).(LookupClusterTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:containerinfra/getClusterTemplate:getClusterTemplate", args, LookupClusterTemplateResultOutput{}, options).(LookupClusterTemplateResultOutput)
 }
 
 // A collection of arguments for invoking getClusterTemplate.

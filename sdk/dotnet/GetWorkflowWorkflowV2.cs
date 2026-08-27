@@ -9,8 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack
 {
-    [Obsolete(@"openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2")]
-    public static class WorkflowWorkflowV2
+    public static class GetWorkflowWorkflowV2
     {
         /// <summary>
         /// Use this data source to get the ID of an available workflow.
@@ -33,8 +32,8 @@ namespace Pulumi.OpenStack
         /// });
         /// ```
         /// </summary>
-        public static Task<WorkflowWorkflowV2Result> InvokeAsync(WorkflowWorkflowV2Args? args = null, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<WorkflowWorkflowV2Result>("openstack:index/workflowWorkflowV2:WorkflowWorkflowV2", args ?? new WorkflowWorkflowV2Args(), options.WithDefaults());
+        public static Task<GetWorkflowWorkflowV2Result> InvokeAsync(GetWorkflowWorkflowV2Args? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowWorkflowV2Result>("openstack:index/getWorkflowWorkflowV2:getWorkflowWorkflowV2", args ?? new GetWorkflowWorkflowV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available workflow.
@@ -57,8 +56,8 @@ namespace Pulumi.OpenStack
         /// });
         /// ```
         /// </summary>
-        public static Output<WorkflowWorkflowV2Result> Invoke(WorkflowWorkflowV2InvokeArgs? args = null, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<WorkflowWorkflowV2Result>("openstack:index/workflowWorkflowV2:WorkflowWorkflowV2", args ?? new WorkflowWorkflowV2InvokeArgs(), options.WithDefaults());
+        public static Output<GetWorkflowWorkflowV2Result> Invoke(GetWorkflowWorkflowV2InvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetWorkflowWorkflowV2Result>("openstack:index/getWorkflowWorkflowV2:getWorkflowWorkflowV2", args ?? new GetWorkflowWorkflowV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available workflow.
@@ -81,12 +80,12 @@ namespace Pulumi.OpenStack
         /// });
         /// ```
         /// </summary>
-        public static Output<WorkflowWorkflowV2Result> Invoke(WorkflowWorkflowV2InvokeArgs args, InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<WorkflowWorkflowV2Result>("openstack:index/workflowWorkflowV2:WorkflowWorkflowV2", args ?? new WorkflowWorkflowV2InvokeArgs(), options.WithDefaults());
+        public static Output<GetWorkflowWorkflowV2Result> Invoke(GetWorkflowWorkflowV2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetWorkflowWorkflowV2Result>("openstack:index/getWorkflowWorkflowV2:getWorkflowWorkflowV2", args ?? new GetWorkflowWorkflowV2InvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class WorkflowWorkflowV2Args : global::Pulumi.InvokeArgs
+    public sealed class GetWorkflowWorkflowV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the workflow.
@@ -113,13 +112,13 @@ namespace Pulumi.OpenStack
         [Input("region")]
         public string? Region { get; set; }
 
-        public WorkflowWorkflowV2Args()
+        public GetWorkflowWorkflowV2Args()
         {
         }
-        public static new WorkflowWorkflowV2Args Empty => new WorkflowWorkflowV2Args();
+        public static new GetWorkflowWorkflowV2Args Empty => new GetWorkflowWorkflowV2Args();
     }
 
-    public sealed class WorkflowWorkflowV2InvokeArgs : global::Pulumi.InvokeArgs
+    public sealed class GetWorkflowWorkflowV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the workflow.
@@ -146,15 +145,15 @@ namespace Pulumi.OpenStack
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        public WorkflowWorkflowV2InvokeArgs()
+        public GetWorkflowWorkflowV2InvokeArgs()
         {
         }
-        public static new WorkflowWorkflowV2InvokeArgs Empty => new WorkflowWorkflowV2InvokeArgs();
+        public static new GetWorkflowWorkflowV2InvokeArgs Empty => new GetWorkflowWorkflowV2InvokeArgs();
     }
 
 
     [OutputType]
-    public sealed class WorkflowWorkflowV2Result
+    public sealed class GetWorkflowWorkflowV2Result
     {
         /// <summary>
         /// The date the workflow was created.
@@ -198,7 +197,7 @@ namespace Pulumi.OpenStack
         public readonly ImmutableArray<string> Tags;
 
         [OutputConstructor]
-        private WorkflowWorkflowV2Result(
+        private GetWorkflowWorkflowV2Result(
             string createdAt,
 
             string definition,

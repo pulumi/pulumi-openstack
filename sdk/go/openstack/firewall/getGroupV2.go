@@ -109,12 +109,8 @@ type LookupGroupV2Result struct {
 }
 
 func LookupGroupV2Output(ctx *pulumi.Context, args LookupGroupV2OutputArgs, opts ...pulumi.InvokeOption) LookupGroupV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGroupV2ResultOutput, error) {
-			args := v.(LookupGroupV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:firewall/getGroupV2:getGroupV2", args, LookupGroupV2ResultOutput{}, options).(LookupGroupV2ResultOutput), nil
-		}).(LookupGroupV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:firewall/getGroupV2:getGroupV2", args, LookupGroupV2ResultOutput{}, options).(LookupGroupV2ResultOutput)
 }
 
 // A collection of arguments for invoking getGroupV2.

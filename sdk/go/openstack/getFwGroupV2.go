@@ -111,12 +111,8 @@ type GetFwGroupV2Result struct {
 }
 
 func GetFwGroupV2Output(ctx *pulumi.Context, args GetFwGroupV2OutputArgs, opts ...pulumi.InvokeOption) GetFwGroupV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFwGroupV2ResultOutput, error) {
-			args := v.(GetFwGroupV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:index/getFwGroupV2:getFwGroupV2", args, GetFwGroupV2ResultOutput{}, options).(GetFwGroupV2ResultOutput), nil
-		}).(GetFwGroupV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:index/getFwGroupV2:getFwGroupV2", args, GetFwGroupV2ResultOutput{}, options).(GetFwGroupV2ResultOutput)
 }
 
 // A collection of arguments for invoking getFwGroupV2.

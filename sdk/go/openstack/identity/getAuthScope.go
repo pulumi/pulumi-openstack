@@ -145,12 +145,8 @@ type GetAuthScopeResult struct {
 }
 
 func GetAuthScopeOutput(ctx *pulumi.Context, args GetAuthScopeOutputArgs, opts ...pulumi.InvokeOption) GetAuthScopeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAuthScopeResultOutput, error) {
-			args := v.(GetAuthScopeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:identity/getAuthScope:getAuthScope", args, GetAuthScopeResultOutput{}, options).(GetAuthScopeResultOutput), nil
-		}).(GetAuthScopeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:identity/getAuthScope:getAuthScope", args, GetAuthScopeResultOutput{}, options).(GetAuthScopeResultOutput)
 }
 
 // A collection of arguments for invoking getAuthScope.

@@ -153,12 +153,8 @@ type GetListenerV2Result struct {
 }
 
 func GetListenerV2Output(ctx *pulumi.Context, args GetListenerV2OutputArgs, opts ...pulumi.InvokeOption) GetListenerV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetListenerV2ResultOutput, error) {
-			args := v.(GetListenerV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("openstack:loadbalancer/getListenerV2:getListenerV2", args, GetListenerV2ResultOutput{}, options).(GetListenerV2ResultOutput), nil
-		}).(GetListenerV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("openstack:loadbalancer/getListenerV2:getListenerV2", args, GetListenerV2ResultOutput{}, options).(GetListenerV2ResultOutput)
 }
 
 // A collection of arguments for invoking getListenerV2.
