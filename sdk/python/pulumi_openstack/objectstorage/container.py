@@ -574,7 +574,7 @@ class Container(pulumi.CustomResource):
                  storage_class: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  versioning: pulumi.Input[Optional[_builtins.bool]] = None,
-                 versioning_legacy: pulumi.Input[Optional[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict']]] = None,
+                 versioning_legacy: pulumi.Input[Optional[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict', 'outputs.ContainerVersioningLegacy']]] = None,
                  __props__=None):
         """
         Manages a V1 container resource within OpenStack.
@@ -724,7 +724,7 @@ class Container(pulumi.CustomResource):
                and a cloud administrator must have set the `allow_object_versioning = true`
                configuration option in Swift. If you cannot set this versioning type, you
                may want to consider using `versioning_legacy` instead.
-        :param pulumi.Input[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict']] versioning_legacy: Enable legacy object versioning. The
+        :param pulumi.Input[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict', 'outputs.ContainerVersioningLegacy']] versioning_legacy: Enable legacy object versioning. The
                structure is described below.
         """
         ...
@@ -871,7 +871,7 @@ class Container(pulumi.CustomResource):
                  storage_class: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  versioning: pulumi.Input[Optional[_builtins.bool]] = None,
-                 versioning_legacy: pulumi.Input[Optional[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict']]] = None,
+                 versioning_legacy: pulumi.Input[Optional[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict', 'outputs.ContainerVersioningLegacy']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -916,7 +916,7 @@ class Container(pulumi.CustomResource):
             storage_class: pulumi.Input[Optional[_builtins.str]] = None,
             storage_policy: pulumi.Input[Optional[_builtins.str]] = None,
             versioning: pulumi.Input[Optional[_builtins.bool]] = None,
-            versioning_legacy: pulumi.Input[Optional[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict']]] = None) -> 'Container':
+            versioning_legacy: pulumi.Input[Optional[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict', 'outputs.ContainerVersioningLegacy']]] = None) -> 'Container':
         """
         Get an existing Container resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -959,7 +959,7 @@ class Container(pulumi.CustomResource):
                and a cloud administrator must have set the `allow_object_versioning = true`
                configuration option in Swift. If you cannot set this versioning type, you
                may want to consider using `versioning_legacy` instead.
-        :param pulumi.Input[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict']] versioning_legacy: Enable legacy object versioning. The
+        :param pulumi.Input[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict', 'outputs.ContainerVersioningLegacy']] versioning_legacy: Enable legacy object versioning. The
                structure is described below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

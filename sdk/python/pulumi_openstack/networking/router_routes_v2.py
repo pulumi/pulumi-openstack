@@ -155,7 +155,7 @@ class RouterRoutesV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  router_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutesV2RouteArgs', 'RouterRoutesV2RouteArgsDict']]]]] = None,
+                 routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutesV2RouteArgs', 'RouterRoutesV2RouteArgsDict', 'outputs.RouterRoutesV2Route']]]]] = None,
                  __props__=None):
         """
         Creates routing entries on a OpenStack V2 router.
@@ -222,7 +222,7 @@ class RouterRoutesV2(pulumi.CustomResource):
                new routing entries.
         :param pulumi.Input[_builtins.str] router_id: ID of the router these routing entries belong to.
                Changing this creates new routing entries.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterRoutesV2RouteArgs', 'RouterRoutesV2RouteArgsDict']]]] routes: A set of routing entries to add to the router.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterRoutesV2RouteArgs', 'RouterRoutesV2RouteArgsDict', 'outputs.RouterRoutesV2Route']]]] routes: A set of routing entries to add to the router.
         """
         ...
     @overload
@@ -304,7 +304,7 @@ class RouterRoutesV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  router_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutesV2RouteArgs', 'RouterRoutesV2RouteArgsDict']]]]] = None,
+                 routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutesV2RouteArgs', 'RouterRoutesV2RouteArgsDict', 'outputs.RouterRoutesV2Route']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -331,7 +331,7 @@ class RouterRoutesV2(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             router_id: pulumi.Input[Optional[_builtins.str]] = None,
-            routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutesV2RouteArgs', 'RouterRoutesV2RouteArgsDict']]]]] = None) -> 'RouterRoutesV2':
+            routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutesV2RouteArgs', 'RouterRoutesV2RouteArgsDict', 'outputs.RouterRoutesV2Route']]]]] = None) -> 'RouterRoutesV2':
         """
         Get an existing RouterRoutesV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -345,7 +345,7 @@ class RouterRoutesV2(pulumi.CustomResource):
                new routing entries.
         :param pulumi.Input[_builtins.str] router_id: ID of the router these routing entries belong to.
                Changing this creates new routing entries.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterRoutesV2RouteArgs', 'RouterRoutesV2RouteArgsDict']]]] routes: A set of routing entries to add to the router.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterRoutesV2RouteArgs', 'RouterRoutesV2RouteArgsDict', 'outputs.RouterRoutesV2Route']]]] routes: A set of routing entries to add to the router.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

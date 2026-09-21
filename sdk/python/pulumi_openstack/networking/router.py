@@ -661,7 +661,7 @@ class Router(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  distributed: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_snat: pulumi.Input[Optional[_builtins.bool]] = None,
-                 external_fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict']]]]] = None,
+                 external_fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict', 'outputs.RouterExternalFixedIp']]]]] = None,
                  external_network_id: pulumi.Input[Optional[_builtins.str]] = None,
                  external_qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  external_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -670,7 +670,7 @@ class Router(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vendor_options: pulumi.Input[Optional[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict']]] = None,
+                 vendor_options: pulumi.Input[Optional[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict', 'outputs.RouterVendorOptions']]] = None,
                  __props__=None):
         """
         Manages a V2 router resource within OpenStack.
@@ -714,7 +714,7 @@ class Router(pulumi.CustomResource):
                set this property. Changing this updates the `enable_snat` of the router.
                Setting this value **requires** an **ext-gw-mode** extension to be enabled
                in OpenStack Neutron.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict']]]] external_fixed_ips: An external fixed IP for the router. This
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict', 'outputs.RouterExternalFixedIp']]]] external_fixed_ips: An external fixed IP for the router. This
                can be repeated. The structure is described below. An `external_network_id`
                has to be set in order to set this property. Changing this updates the
                external fixed IPs of the router.
@@ -740,7 +740,7 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] tenant_id: The owner of the floating IP. Required if admin wants
                to create a router for another tenant. Changing this creates a new router.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] value_specs: Map of additional driver-specific options.
-        :param pulumi.Input[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict']] vendor_options: Map of additional vendor-specific options.
+        :param pulumi.Input[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict', 'outputs.RouterVendorOptions']] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         """
         ...
@@ -793,7 +793,7 @@ class Router(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  distributed: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_snat: pulumi.Input[Optional[_builtins.bool]] = None,
-                 external_fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict']]]]] = None,
+                 external_fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict', 'outputs.RouterExternalFixedIp']]]]] = None,
                  external_network_id: pulumi.Input[Optional[_builtins.str]] = None,
                  external_qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  external_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -802,7 +802,7 @@ class Router(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vendor_options: pulumi.Input[Optional[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict']]] = None,
+                 vendor_options: pulumi.Input[Optional[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict', 'outputs.RouterVendorOptions']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -844,7 +844,7 @@ class Router(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             distributed: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_snat: pulumi.Input[Optional[_builtins.bool]] = None,
-            external_fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict']]]]] = None,
+            external_fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict', 'outputs.RouterExternalFixedIp']]]]] = None,
             external_network_id: pulumi.Input[Optional[_builtins.str]] = None,
             external_qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             external_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -853,7 +853,7 @@ class Router(pulumi.CustomResource):
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
             value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vendor_options: pulumi.Input[Optional[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict']]] = None) -> 'Router':
+            vendor_options: pulumi.Input[Optional[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict', 'outputs.RouterVendorOptions']]] = None) -> 'Router':
         """
         Get an existing Router resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -879,7 +879,7 @@ class Router(pulumi.CustomResource):
                set this property. Changing this updates the `enable_snat` of the router.
                Setting this value **requires** an **ext-gw-mode** extension to be enabled
                in OpenStack Neutron.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict']]]] external_fixed_ips: An external fixed IP for the router. This
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict', 'outputs.RouterExternalFixedIp']]]] external_fixed_ips: An external fixed IP for the router. This
                can be repeated. The structure is described below. An `external_network_id`
                has to be set in order to set this property. Changing this updates the
                external fixed IPs of the router.
@@ -905,7 +905,7 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] tenant_id: The owner of the floating IP. Required if admin wants
                to create a router for another tenant. Changing this creates a new router.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] value_specs: Map of additional driver-specific options.
-        :param pulumi.Input[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict']] vendor_options: Map of additional vendor-specific options.
+        :param pulumi.Input[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict', 'outputs.RouterVendorOptions']] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

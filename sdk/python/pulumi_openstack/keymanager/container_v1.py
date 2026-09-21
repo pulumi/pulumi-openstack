@@ -325,10 +325,10 @@ class ContainerV1(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: pulumi.Input[Optional[Union['ContainerV1AclArgs', 'ContainerV1AclArgsDict']]] = None,
+                 acl: pulumi.Input[Optional[Union['ContainerV1AclArgs', 'ContainerV1AclArgsDict', 'outputs.ContainerV1Acl']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 secret_refs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerV1SecretRefArgs', 'ContainerV1SecretRefArgsDict']]]]] = None,
+                 secret_refs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerV1SecretRefArgs', 'ContainerV1SecretRefArgsDict', 'outputs.ContainerV1SecretRef']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -426,7 +426,7 @@ class ContainerV1(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ContainerV1AclArgs', 'ContainerV1AclArgsDict']] acl: Allows to control an access to a container. Currently only
+        :param pulumi.Input[Union['ContainerV1AclArgs', 'ContainerV1AclArgsDict', 'outputs.ContainerV1Acl']] acl: Allows to control an access to a container. Currently only
                the `read` operation is supported. If not specified, the container is
                accessible project wide. The `read` structure is described below.
         :param pulumi.Input[_builtins.str] name: Human-readable name for the Container. Does not have
@@ -435,7 +435,7 @@ class ContainerV1(pulumi.CustomResource):
                A KeyManager client is needed to create a container. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                V1 container.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerV1SecretRefArgs', 'ContainerV1SecretRefArgsDict']]]] secret_refs: A set of dictionaries containing references to secrets. The structure is described
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerV1SecretRefArgs', 'ContainerV1SecretRefArgsDict', 'outputs.ContainerV1SecretRef']]]] secret_refs: A set of dictionaries containing references to secrets. The structure is described
                below.
         :param pulumi.Input[_builtins.str] type: Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
         """
@@ -553,10 +553,10 @@ class ContainerV1(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: pulumi.Input[Optional[Union['ContainerV1AclArgs', 'ContainerV1AclArgsDict']]] = None,
+                 acl: pulumi.Input[Optional[Union['ContainerV1AclArgs', 'ContainerV1AclArgsDict', 'outputs.ContainerV1Acl']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 secret_refs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerV1SecretRefArgs', 'ContainerV1SecretRefArgsDict']]]]] = None,
+                 secret_refs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerV1SecretRefArgs', 'ContainerV1SecretRefArgsDict', 'outputs.ContainerV1SecretRef']]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -590,14 +590,14 @@ class ContainerV1(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl: pulumi.Input[Optional[Union['ContainerV1AclArgs', 'ContainerV1AclArgsDict']]] = None,
-            consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerV1ConsumerArgs', 'ContainerV1ConsumerArgsDict']]]]] = None,
+            acl: pulumi.Input[Optional[Union['ContainerV1AclArgs', 'ContainerV1AclArgsDict', 'outputs.ContainerV1Acl']]] = None,
+            consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerV1ConsumerArgs', 'ContainerV1ConsumerArgsDict', 'outputs.ContainerV1Consumer']]]]] = None,
             container_ref: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             creator_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            secret_refs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerV1SecretRefArgs', 'ContainerV1SecretRefArgsDict']]]]] = None,
+            secret_refs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerV1SecretRefArgs', 'ContainerV1SecretRefArgsDict', 'outputs.ContainerV1SecretRef']]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'ContainerV1':
@@ -608,10 +608,10 @@ class ContainerV1(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ContainerV1AclArgs', 'ContainerV1AclArgsDict']] acl: Allows to control an access to a container. Currently only
+        :param pulumi.Input[Union['ContainerV1AclArgs', 'ContainerV1AclArgsDict', 'outputs.ContainerV1Acl']] acl: Allows to control an access to a container. Currently only
                the `read` operation is supported. If not specified, the container is
                accessible project wide. The `read` structure is described below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerV1ConsumerArgs', 'ContainerV1ConsumerArgsDict']]]] consumers: The list of the container consumers. The structure is described below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerV1ConsumerArgs', 'ContainerV1ConsumerArgsDict', 'outputs.ContainerV1Consumer']]]] consumers: The list of the container consumers. The structure is described below.
         :param pulumi.Input[_builtins.str] container_ref: The container reference / where to find the container.
         :param pulumi.Input[_builtins.str] created_at: The date the container was created.
         :param pulumi.Input[_builtins.str] creator_id: The creator of the container.
@@ -621,7 +621,7 @@ class ContainerV1(pulumi.CustomResource):
                A KeyManager client is needed to create a container. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                V1 container.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerV1SecretRefArgs', 'ContainerV1SecretRefArgsDict']]]] secret_refs: A set of dictionaries containing references to secrets. The structure is described
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerV1SecretRefArgs', 'ContainerV1SecretRefArgsDict', 'outputs.ContainerV1SecretRef']]]] secret_refs: A set of dictionaries containing references to secrets. The structure is described
                below.
         :param pulumi.Input[_builtins.str] status: The status of the container.
         :param pulumi.Input[_builtins.str] type: Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.

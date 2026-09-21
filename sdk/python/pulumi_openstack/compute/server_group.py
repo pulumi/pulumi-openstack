@@ -245,7 +245,7 @@ class ServerGroup(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  policies: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']]] = None,
+                 rules: pulumi.Input[Optional[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict', 'outputs.ServerGroupRules']]] = None,
                  value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -335,7 +335,7 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 Compute client.
                If omitted, the `region` argument of the provider is used. Changing
                this creates a new server group.
-        :param pulumi.Input[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']] rules: The rules which are applied to specified `policy`. Currently,
+        :param pulumi.Input[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict', 'outputs.ServerGroupRules']] rules: The rules which are applied to specified `policy`. Currently,
                only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] value_specs: Map of additional options.
         """
@@ -440,7 +440,7 @@ class ServerGroup(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  policies: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']]] = None,
+                 rules: pulumi.Input[Optional[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict', 'outputs.ServerGroupRules']]] = None,
                  value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -471,7 +471,7 @@ class ServerGroup(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             policies: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']]] = None,
+            rules: pulumi.Input[Optional[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict', 'outputs.ServerGroupRules']]] = None,
             value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ServerGroup':
         """
         Get an existing ServerGroup resource's state with the given name, id, and optional extra
@@ -489,7 +489,7 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 Compute client.
                If omitted, the `region` argument of the provider is used. Changing
                this creates a new server group.
-        :param pulumi.Input[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict']] rules: The rules which are applied to specified `policy`. Currently,
+        :param pulumi.Input[Union['ServerGroupRulesArgs', 'ServerGroupRulesArgsDict', 'outputs.ServerGroupRules']] rules: The rules which are applied to specified `policy`. Currently,
                only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] value_specs: Map of additional options.
         """

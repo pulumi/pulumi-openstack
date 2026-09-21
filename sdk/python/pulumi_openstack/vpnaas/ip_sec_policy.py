@@ -450,7 +450,7 @@ class IpSecPolicy(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  encapsulation_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
-                 lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]]] = None,
+                 lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict', 'outputs.IpSecPolicyLifetime']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  pfs: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -491,7 +491,7 @@ class IpSecPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] encryption_algorithm: The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
                aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
                The default value is aes-128. Changing this updates the existing policy.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict', 'outputs.IpSecPolicyLifetime']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[_builtins.str] name: The name of the policy. Changing this updates the name of
                the existing policy.
         :param pulumi.Input[_builtins.str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
@@ -552,7 +552,7 @@ class IpSecPolicy(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  encapsulation_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
-                 lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]]] = None,
+                 lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict', 'outputs.IpSecPolicyLifetime']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  pfs: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -593,7 +593,7 @@ class IpSecPolicy(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             encapsulation_mode: pulumi.Input[Optional[_builtins.str]] = None,
             encryption_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
-            lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]]] = None,
+            lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict', 'outputs.IpSecPolicyLifetime']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             pfs: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -617,7 +617,7 @@ class IpSecPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] encryption_algorithm: The encryption algorithm. Valid values are 3des, aes-128, aes-192, aes-256,
                aes-KKK-ctr, aes-KKK-ccm-II, aes-KKK-gcm-II (with KKK = 128/192/256 bits key size and II = 8/12/16 octets ICV).
                The default value is aes-128. Changing this updates the existing policy.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IpSecPolicyLifetimeArgs', 'IpSecPolicyLifetimeArgsDict', 'outputs.IpSecPolicyLifetime']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[_builtins.str] name: The name of the policy. Changing this updates the name of
                the existing policy.
         :param pulumi.Input[_builtins.str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.

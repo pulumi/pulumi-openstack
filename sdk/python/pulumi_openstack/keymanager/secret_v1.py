@@ -564,7 +564,7 @@ class SecretV1(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: pulumi.Input[Optional[Union['SecretV1AclArgs', 'SecretV1AclArgsDict']]] = None,
+                 acl: pulumi.Input[Optional[Union['SecretV1AclArgs', 'SecretV1AclArgsDict', 'outputs.SecretV1Acl']]] = None,
                  algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  bit_length: pulumi.Input[Optional[_builtins.int]] = None,
                  expiration: pulumi.Input[Optional[_builtins.str]] = None,
@@ -680,7 +680,7 @@ class SecretV1(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SecretV1AclArgs', 'SecretV1AclArgsDict']] acl: Allows to control an access to a secret. Currently only the
+        :param pulumi.Input[Union['SecretV1AclArgs', 'SecretV1AclArgsDict', 'outputs.SecretV1Acl']] acl: Allows to control an access to a secret. Currently only the
                `read` operation is supported. If not specified, the secret is accessible
                project wide.
         :param pulumi.Input[_builtins.str] algorithm: Metadata provided by a user or system for informational purposes.
@@ -821,7 +821,7 @@ class SecretV1(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: pulumi.Input[Optional[Union['SecretV1AclArgs', 'SecretV1AclArgsDict']]] = None,
+                 acl: pulumi.Input[Optional[Union['SecretV1AclArgs', 'SecretV1AclArgsDict', 'outputs.SecretV1Acl']]] = None,
                  algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  bit_length: pulumi.Input[Optional[_builtins.int]] = None,
                  expiration: pulumi.Input[Optional[_builtins.str]] = None,
@@ -873,7 +873,7 @@ class SecretV1(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl: pulumi.Input[Optional[Union['SecretV1AclArgs', 'SecretV1AclArgsDict']]] = None,
+            acl: pulumi.Input[Optional[Union['SecretV1AclArgs', 'SecretV1AclArgsDict', 'outputs.SecretV1Acl']]] = None,
             algorithm: pulumi.Input[Optional[_builtins.str]] = None,
             all_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             bit_length: pulumi.Input[Optional[_builtins.int]] = None,
@@ -899,7 +899,7 @@ class SecretV1(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['SecretV1AclArgs', 'SecretV1AclArgsDict']] acl: Allows to control an access to a secret. Currently only the
+        :param pulumi.Input[Union['SecretV1AclArgs', 'SecretV1AclArgsDict', 'outputs.SecretV1Acl']] acl: Allows to control an access to a secret. Currently only the
                `read` operation is supported. If not specified, the secret is accessible
                project wide.
         :param pulumi.Input[_builtins.str] algorithm: Metadata provided by a user or system for informational purposes.

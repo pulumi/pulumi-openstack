@@ -702,7 +702,7 @@ class Network(pulumi.CustomResource):
                  port_security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 segments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict']]]]] = None,
+                 segments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict', 'outputs.NetworkSegment']]]]] = None,
                  shared: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -796,7 +796,7 @@ class Network(pulumi.CustomResource):
                A Networking client is needed to create a Neutron network. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                network.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict']]]] segments: An array of one or more provider segment objects.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict', 'outputs.NetworkSegment']]]] segments: An array of one or more provider segment objects.
                Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
                updating any provider related segments attributes. Check your plug-in whether
                it supports updating.
@@ -897,7 +897,7 @@ class Network(pulumi.CustomResource):
                  port_security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 segments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict']]]]] = None,
+                 segments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict', 'outputs.NetworkSegment']]]]] = None,
                  shared: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -950,7 +950,7 @@ class Network(pulumi.CustomResource):
             port_security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            segments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict']]]]] = None,
+            segments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict', 'outputs.NetworkSegment']]]]] = None,
             shared: pulumi.Input[Optional[_builtins.bool]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -996,7 +996,7 @@ class Network(pulumi.CustomResource):
                A Networking client is needed to create a Neutron network. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                network.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict']]]] segments: An array of one or more provider segment objects.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict', 'outputs.NetworkSegment']]]] segments: An array of one or more provider segment objects.
                Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
                updating any provider related segments attributes. Check your plug-in whether
                it supports updating.
