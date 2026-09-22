@@ -553,7 +553,7 @@ class BgpSpeakerV2(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             advertise_floating_ip_host_routes: pulumi.Input[Optional[_builtins.bool]] = None,
             advertise_tenant_networks: pulumi.Input[Optional[_builtins.bool]] = None,
-            advertised_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BgpSpeakerV2AdvertisedRouteArgs', 'BgpSpeakerV2AdvertisedRouteArgsDict']]]]] = None,
+            advertised_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BgpSpeakerV2AdvertisedRouteArgs', 'BgpSpeakerV2AdvertisedRouteArgsDict', 'outputs.BgpSpeakerV2AdvertisedRoute']]]]] = None,
             ip_version: pulumi.Input[Optional[_builtins.int]] = None,
             local_as: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -572,7 +572,7 @@ class BgpSpeakerV2(pulumi.CustomResource):
                whether to advertise floating IP host routes. Defaults to `true`.
         :param pulumi.Input[_builtins.bool] advertise_tenant_networks: A boolean value indicating whether to
                advertise tenant networks. Defaults to `true`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BgpSpeakerV2AdvertisedRouteArgs', 'BgpSpeakerV2AdvertisedRouteArgsDict']]]] advertised_routes: A list of dictionaries containing the `destination` and
+        :param pulumi.Input[Sequence[pulumi.Input[Union['BgpSpeakerV2AdvertisedRouteArgs', 'BgpSpeakerV2AdvertisedRouteArgsDict', 'outputs.BgpSpeakerV2AdvertisedRoute']]]] advertised_routes: A list of dictionaries containing the `destination` and
                `next_hop` for each route advertised by the BGP speaker. This attribute is
                only populated after the BGP speaker has been created and has established BGP
                sessions with its peers.

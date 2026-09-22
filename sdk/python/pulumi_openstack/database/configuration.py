@@ -208,8 +208,8 @@ class Configuration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict']]]]] = None,
-                 datastore: pulumi.Input[Optional[Union['ConfigurationDatastoreArgs', 'ConfigurationDatastoreArgsDict']]] = None,
+                 configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict', 'outputs.ConfigurationConfiguration']]]]] = None,
+                 datastore: pulumi.Input[Optional[Union['ConfigurationDatastoreArgs', 'ConfigurationDatastoreArgsDict', 'outputs.ConfigurationDatastore']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -246,8 +246,8 @@ class Configuration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict']]]] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
-        :param pulumi.Input[Union['ConfigurationDatastoreArgs', 'ConfigurationDatastoreArgsDict']] datastore: An array of database engine type and version. The datastore
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict', 'outputs.ConfigurationConfiguration']]]] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
+        :param pulumi.Input[Union['ConfigurationDatastoreArgs', 'ConfigurationDatastoreArgsDict', 'outputs.ConfigurationDatastore']] datastore: An array of database engine type and version. The datastore
                object structure is documented below. Changing this creates resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] name: A unique name for the resource.
@@ -305,8 +305,8 @@ class Configuration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict']]]]] = None,
-                 datastore: pulumi.Input[Optional[Union['ConfigurationDatastoreArgs', 'ConfigurationDatastoreArgsDict']]] = None,
+                 configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict', 'outputs.ConfigurationConfiguration']]]]] = None,
+                 datastore: pulumi.Input[Optional[Union['ConfigurationDatastoreArgs', 'ConfigurationDatastoreArgsDict', 'outputs.ConfigurationDatastore']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -338,8 +338,8 @@ class Configuration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict']]]]] = None,
-            datastore: pulumi.Input[Optional[Union['ConfigurationDatastoreArgs', 'ConfigurationDatastoreArgsDict']]] = None,
+            configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict', 'outputs.ConfigurationConfiguration']]]]] = None,
+            datastore: pulumi.Input[Optional[Union['ConfigurationDatastoreArgs', 'ConfigurationDatastoreArgsDict', 'outputs.ConfigurationDatastore']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None) -> 'Configuration':
@@ -350,8 +350,8 @@ class Configuration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict']]]] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
-        :param pulumi.Input[Union['ConfigurationDatastoreArgs', 'ConfigurationDatastoreArgsDict']] datastore: An array of database engine type and version. The datastore
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict', 'outputs.ConfigurationConfiguration']]]] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
+        :param pulumi.Input[Union['ConfigurationDatastoreArgs', 'ConfigurationDatastoreArgsDict', 'outputs.ConfigurationDatastore']] datastore: An array of database engine type and version. The datastore
                object structure is documented below. Changing this creates resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] name: A unique name for the resource.

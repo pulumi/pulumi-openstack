@@ -262,7 +262,7 @@ class AwaitableGetInstanceV2Result(GetInstanceV2Result):
 
 
 def get_instance_v2(id: Optional[_builtins.str] = None,
-                    networks: Optional[Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict']]] = None,
+                    networks: Optional[Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict', 'outputs.GetInstanceV2NetworkResult']]] = None,
                     region: Optional[_builtins.str] = None,
                     user_data: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceV2Result:
@@ -280,7 +280,7 @@ def get_instance_v2(id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str id: The UUID of the instance
-    :param Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict']] networks: An array of maps, detailed below.
+    :param Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict', 'outputs.GetInstanceV2NetworkResult']] networks: An array of maps, detailed below.
     :param _builtins.str region: The region in which to obtain the V2 Compute client.
            If omitted, the `region` argument of the provider is used.
     :param _builtins.str user_data: The user data added when the server was created.
@@ -314,7 +314,7 @@ def get_instance_v2(id: Optional[_builtins.str] = None,
         updated=pulumi.get(__ret__, 'updated'),
         user_data=pulumi.get(__ret__, 'user_data'))
 def get_instance_v2_output(id: pulumi.Input[Optional[_builtins.str]] = None,
-                           networks: pulumi.Input[Optional[Optional[Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict']]]]] = None,
+                           networks: pulumi.Input[Optional[Optional[Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict', 'outputs.GetInstanceV2NetworkResult']]]]] = None,
                            region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            user_data: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceV2Result]:
@@ -332,7 +332,7 @@ def get_instance_v2_output(id: pulumi.Input[Optional[_builtins.str]] = None,
 
 
     :param _builtins.str id: The UUID of the instance
-    :param Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict']] networks: An array of maps, detailed below.
+    :param Sequence[Union['GetInstanceV2NetworkArgs', 'GetInstanceV2NetworkArgsDict', 'outputs.GetInstanceV2NetworkResult']] networks: An array of maps, detailed below.
     :param _builtins.str region: The region in which to obtain the V2 Compute client.
            If omitted, the `region` argument of the provider is used.
     :param _builtins.str user_data: The user data added when the server was created.

@@ -657,7 +657,7 @@ class StackV1(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 stack_outputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict']]]]] = None,
+                 stack_outputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict', 'outputs.StackV1StackOutput']]]]] = None,
                  capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  creation_time: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -721,7 +721,7 @@ class StackV1(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict']]]] stack_outputs: A list of stack outputs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict', 'outputs.StackV1StackOutput']]]] stack_outputs: A list of stack outputs.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] capabilities: List of stack capabilities for stack.
         :param pulumi.Input[_builtins.str] creation_time: The date and time when the resource was created. The date
                and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
@@ -822,7 +822,7 @@ class StackV1(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 stack_outputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict']]]]] = None,
+                 stack_outputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict', 'outputs.StackV1StackOutput']]]]] = None,
                  capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  creation_time: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -877,7 +877,7 @@ class StackV1(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            stack_outputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict']]]]] = None,
+            stack_outputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict', 'outputs.StackV1StackOutput']]]]] = None,
             capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             creation_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -901,7 +901,7 @@ class StackV1(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict']]]] stack_outputs: A list of stack outputs.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict', 'outputs.StackV1StackOutput']]]] stack_outputs: A list of stack outputs.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] capabilities: List of stack capabilities for stack.
         :param pulumi.Input[_builtins.str] creation_time: The date and time when the resource was created. The date
                and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm

@@ -859,7 +859,7 @@ class Subnet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetAllocationPoolArgs', 'SubnetAllocationPoolArgsDict']]]]] = None,
+                 allocation_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetAllocationPoolArgs', 'SubnetAllocationPoolArgsDict', 'outputs.SubnetAllocationPool']]]]] = None,
                  cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dns_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -909,7 +909,7 @@ class Subnet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SubnetAllocationPoolArgs', 'SubnetAllocationPoolArgsDict']]]] allocation_pools: A block declaring the start and end range of
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SubnetAllocationPoolArgs', 'SubnetAllocationPoolArgsDict', 'outputs.SubnetAllocationPool']]]] allocation_pools: A block declaring the start and end range of
                the IP addresses available for use with DHCP in this subnet. Multiple
                `allocation_pool` blocks can be declared, providing the subnet with more
                than one range of IP addresses to use with DHCP. However, each IP range
@@ -1010,7 +1010,7 @@ class Subnet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetAllocationPoolArgs', 'SubnetAllocationPoolArgsDict']]]]] = None,
+                 allocation_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetAllocationPoolArgs', 'SubnetAllocationPoolArgsDict', 'outputs.SubnetAllocationPool']]]]] = None,
                  cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dns_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1075,7 +1075,7 @@ class Subnet(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             all_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            allocation_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetAllocationPoolArgs', 'SubnetAllocationPoolArgsDict']]]]] = None,
+            allocation_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetAllocationPoolArgs', 'SubnetAllocationPoolArgsDict', 'outputs.SubnetAllocationPool']]]]] = None,
             cidr: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             dns_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1105,7 +1105,7 @@ class Subnet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] all_tags: The collection of ags assigned on the subnet, which have been
                explicitly and implicitly added.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SubnetAllocationPoolArgs', 'SubnetAllocationPoolArgsDict']]]] allocation_pools: A block declaring the start and end range of
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SubnetAllocationPoolArgs', 'SubnetAllocationPoolArgsDict', 'outputs.SubnetAllocationPool']]]] allocation_pools: A block declaring the start and end range of
                the IP addresses available for use with DHCP in this subnet. Multiple
                `allocation_pool` blocks can be declared, providing the subnet with more
                than one range of IP addresses to use with DHCP. However, each IP range

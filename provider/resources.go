@@ -78,7 +78,7 @@ var moduleMapping = map[string]string{
 }
 
 var namespaceMap = map[string]string{
-	"openstack": "OpenStack",
+	openstackPkg: "OpenStack",
 }
 
 // openstackMember manufactures a type token for the OpenStack package and the given module and type.  It automatically
@@ -110,9 +110,9 @@ func openstackResource(mod string, res string) tokens.Type {
 func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
 		P:                       shimv2.NewProvider(openstack.Provider()),
-		Name:                    "openstack",
+		Name:                    openstackPkg,
 		Description:             "A Pulumi package for creating and managing OpenStack cloud resources.",
-		Keywords:                []string{"pulumi", "openstack"},
+		Keywords:                []string{"pulumi", openstackPkg},
 		Homepage:                "https://pulumi.io",
 		License:                 "Apache-2.0",
 		GitHubOrg:               "terraform-provider-openstack",

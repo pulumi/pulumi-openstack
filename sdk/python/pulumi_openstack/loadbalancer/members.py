@@ -157,7 +157,7 @@ class Members(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MembersMemberArgs', 'MembersMemberArgsDict']]]]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MembersMemberArgs', 'MembersMemberArgsDict', 'outputs.MembersMember']]]]] = None,
                  pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -198,7 +198,7 @@ class Members(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MembersMemberArgs', 'MembersMemberArgsDict']]]] members: A set of dictionaries containing member parameters. The
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MembersMemberArgs', 'MembersMemberArgsDict', 'outputs.MembersMember']]]] members: A set of dictionaries containing member parameters. The
                structure is described below.
         :param pulumi.Input[_builtins.str] pool_id: The id of the pool that members will be assigned to.
                Changing this creates a new members resource.
@@ -263,7 +263,7 @@ class Members(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MembersMemberArgs', 'MembersMemberArgsDict']]]]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MembersMemberArgs', 'MembersMemberArgsDict', 'outputs.MembersMember']]]]] = None,
                  pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -290,7 +290,7 @@ class Members(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MembersMemberArgs', 'MembersMemberArgsDict']]]]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MembersMemberArgs', 'MembersMemberArgsDict', 'outputs.MembersMember']]]]] = None,
             pool_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None) -> 'Members':
         """
@@ -300,7 +300,7 @@ class Members(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MembersMemberArgs', 'MembersMemberArgsDict']]]] members: A set of dictionaries containing member parameters. The
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MembersMemberArgs', 'MembersMemberArgsDict', 'outputs.MembersMember']]]] members: A set of dictionaries containing member parameters. The
                structure is described below.
         :param pulumi.Input[_builtins.str] pool_id: The id of the pool that members will be assigned to.
                Changing this creates a new members resource.

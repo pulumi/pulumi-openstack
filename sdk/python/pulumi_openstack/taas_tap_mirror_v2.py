@@ -363,7 +363,7 @@ class TaasTapMirrorV2(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 directions: pulumi.Input[Optional[Union['TaasTapMirrorV2DirectionsArgs', 'TaasTapMirrorV2DirectionsArgsDict']]] = None,
+                 directions: pulumi.Input[Optional[Union['TaasTapMirrorV2DirectionsArgs', 'TaasTapMirrorV2DirectionsArgsDict', 'outputs.TaasTapMirrorV2Directions']]] = None,
                  mirror_type: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  port_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -403,7 +403,7 @@ class TaasTapMirrorV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The human-readable description for the Tap Mirror.
                Changing this updates the description of the existing Tap Mirror.
-        :param pulumi.Input[Union['TaasTapMirrorV2DirectionsArgs', 'TaasTapMirrorV2DirectionsArgsDict']] directions: A block declaring the directions to be mirrored and their
+        :param pulumi.Input[Union['TaasTapMirrorV2DirectionsArgs', 'TaasTapMirrorV2DirectionsArgsDict', 'outputs.TaasTapMirrorV2Directions']] directions: A block declaring the directions to be mirrored and their
                identifiers. One block has to be declared with at least one direction. Changing
                this creates a new Tap Mirror.
         :param pulumi.Input[_builtins.str] mirror_type: The type of the mirroring, can be `gre` or `erspanv1`.
@@ -473,7 +473,7 @@ class TaasTapMirrorV2(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 directions: pulumi.Input[Optional[Union['TaasTapMirrorV2DirectionsArgs', 'TaasTapMirrorV2DirectionsArgsDict']]] = None,
+                 directions: pulumi.Input[Optional[Union['TaasTapMirrorV2DirectionsArgs', 'TaasTapMirrorV2DirectionsArgsDict', 'outputs.TaasTapMirrorV2Directions']]] = None,
                  mirror_type: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  port_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -517,7 +517,7 @@ class TaasTapMirrorV2(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            directions: pulumi.Input[Optional[Union['TaasTapMirrorV2DirectionsArgs', 'TaasTapMirrorV2DirectionsArgsDict']]] = None,
+            directions: pulumi.Input[Optional[Union['TaasTapMirrorV2DirectionsArgs', 'TaasTapMirrorV2DirectionsArgsDict', 'outputs.TaasTapMirrorV2Directions']]] = None,
             mirror_type: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             port_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -534,7 +534,7 @@ class TaasTapMirrorV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The human-readable description for the Tap Mirror.
                Changing this updates the description of the existing Tap Mirror.
-        :param pulumi.Input[Union['TaasTapMirrorV2DirectionsArgs', 'TaasTapMirrorV2DirectionsArgsDict']] directions: A block declaring the directions to be mirrored and their
+        :param pulumi.Input[Union['TaasTapMirrorV2DirectionsArgs', 'TaasTapMirrorV2DirectionsArgsDict', 'outputs.TaasTapMirrorV2Directions']] directions: A block declaring the directions to be mirrored and their
                identifiers. One block has to be declared with at least one direction. Changing
                this creates a new Tap Mirror.
         :param pulumi.Input[_builtins.str] mirror_type: The type of the mirroring, can be `gre` or `erspanv1`.

@@ -450,7 +450,7 @@ class IkePolicy(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  ike_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IkePolicyLifetimeArgs', 'IkePolicyLifetimeArgsDict']]]]] = None,
+                 lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IkePolicyLifetimeArgs', 'IkePolicyLifetimeArgsDict', 'outputs.IkePolicyLifetime']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  pfs: pulumi.Input[Optional[_builtins.str]] = None,
                  phase1_negotiation_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -491,7 +491,7 @@ class IkePolicy(pulumi.CustomResource):
                The default value is aes-128. Changing this updates the existing policy.
         :param pulumi.Input[_builtins.str] ike_version: The IKE version. A valid value is v1 or v2. Default is v1.
                Changing this updates the existing policy.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IkePolicyLifetimeArgs', 'IkePolicyLifetimeArgsDict']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IkePolicyLifetimeArgs', 'IkePolicyLifetimeArgsDict', 'outputs.IkePolicyLifetime']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[_builtins.str] name: The name of the policy. Changing this updates the name of
                the existing policy.
         :param pulumi.Input[_builtins.str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
@@ -552,7 +552,7 @@ class IkePolicy(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  ike_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IkePolicyLifetimeArgs', 'IkePolicyLifetimeArgsDict']]]]] = None,
+                 lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IkePolicyLifetimeArgs', 'IkePolicyLifetimeArgsDict', 'outputs.IkePolicyLifetime']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  pfs: pulumi.Input[Optional[_builtins.str]] = None,
                  phase1_negotiation_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -593,7 +593,7 @@ class IkePolicy(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             encryption_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
             ike_version: pulumi.Input[Optional[_builtins.str]] = None,
-            lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IkePolicyLifetimeArgs', 'IkePolicyLifetimeArgsDict']]]]] = None,
+            lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IkePolicyLifetimeArgs', 'IkePolicyLifetimeArgsDict', 'outputs.IkePolicyLifetime']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             pfs: pulumi.Input[Optional[_builtins.str]] = None,
             phase1_negotiation_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -617,7 +617,7 @@ class IkePolicy(pulumi.CustomResource):
                The default value is aes-128. Changing this updates the existing policy.
         :param pulumi.Input[_builtins.str] ike_version: The IKE version. A valid value is v1 or v2. Default is v1.
                Changing this updates the existing policy.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IkePolicyLifetimeArgs', 'IkePolicyLifetimeArgsDict']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IkePolicyLifetimeArgs', 'IkePolicyLifetimeArgsDict', 'outputs.IkePolicyLifetime']]]] lifetimes: The lifetime of the security association. Consists of Unit and Value.
         :param pulumi.Input[_builtins.str] name: The name of the policy. Changing this updates the name of
                the existing policy.
         :param pulumi.Input[_builtins.str] pfs: The perfect forward secrecy mode. Valid values are group2, group5 and group14 to group31.
