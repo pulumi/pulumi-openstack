@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var mydb = new Database("mydb", DatabaseArgs.builder()
  *             .name("mydb")
- *             .instanceId(basic.id())
+ *             .instanceId(basic.get("id"))
  *             .build());
  * 
  *     }

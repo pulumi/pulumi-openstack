@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  *             .loadbalancerId(lb1.id())
  *             .defaultTlsContainerRef(certificate1)
  *             .clientAuthentication("OPTIONAL")
- *             .clientCaTlsContainerRef(caCertificate2.secretRef())
+ *             .clientCaTlsContainerRef(caCertificate2.get("secretRef"))
  *             .build());
  * 
  *     }

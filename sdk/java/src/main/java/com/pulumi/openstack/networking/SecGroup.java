@@ -88,13 +88,13 @@ import javax.annotation.Nullable;
  *         var secgroupRuleV4 = new SecGroupRule("secgroupRuleV4", SecGroupRuleArgs.builder()
  *             .direction("egress")
  *             .ethertype("IPv4")
- *             .securityGroupId(secgroup.id())
+ *             .securityGroupId(secgroup.get("id"))
  *             .build());
  * 
  *         var secgroupRuleV6 = new SecGroupRule("secgroupRuleV6", SecGroupRuleArgs.builder()
  *             .direction("egress")
  *             .ethertype("IPv6")
- *             .securityGroupId(secgroup.id())
+ *             .securityGroupId(secgroup.get("id"))
  *             .build());
  * 
  *     }

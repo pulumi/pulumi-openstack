@@ -186,17 +186,17 @@ import javax.annotation.Nullable;
  * 
  *         var attach1 = new VolumeAttach("attach1", VolumeAttachArgs.builder()
  *             .instanceId(instance1.id())
- *             .volumeId(volumes[0].id())
+ *             .volumeId(volumes.get(0).id())
  *             .build());
  * 
  *         var attach2 = new VolumeAttach("attach2", VolumeAttachArgs.builder()
  *             .instanceId(instance1.id())
- *             .volumeId(volumes[1].id())
+ *             .volumeId(volumes.get(1).id())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(attach1)
  *                 .build());
  * 
- *         ctx.export("volumeDevices", attachments.stream().map(element -> element.device()).collect(toList()));
+ *         ctx.export("volumeDevices", attachments.stream().map(element -> element.get("device")).collect(toList()));
  *     }
  * }
  * }

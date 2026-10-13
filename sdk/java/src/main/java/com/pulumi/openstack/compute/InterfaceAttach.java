@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  * 
  *         var ai1 = new InterfaceAttach("ai1", InterfaceAttachArgs.builder()
  *             .instanceId(instance1.id())
- *             .networkId(network1OpenstackNetworkingPortV2.id())
+ *             .networkId(network1OpenstackNetworkingPortV2.get("id"))
  *             .fixedIp("10.0.10.10")
  *             .build());
  * 
@@ -302,12 +302,12 @@ import javax.annotation.Nullable;
  * 
  *         var ai1 = new InterfaceAttach("ai1", InterfaceAttachArgs.builder()
  *             .instanceId(instance1.id())
- *             .portId(ports[0].id())
+ *             .portId(ports.get(0).id())
  *             .build());
  * 
  *         var ai2 = new InterfaceAttach("ai2", InterfaceAttachArgs.builder()
  *             .instanceId(instance1.id())
- *             .portId(ports[1].id())
+ *             .portId(ports.get(1).id())
  *             .build());
  * 
  *     }

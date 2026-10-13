@@ -108,7 +108,7 @@ namespace Pulumi.OpenStack.Networking
     ///     {
     ///         PortId = systemPort.Apply(getPortResult =&gt; getPortResult.Id),
     ///         Enforce = true,
-    ///         SecurityGroupIds = new[] {},
+    ///         SecurityGroupIds = new() {},
     ///     });
     /// 
     /// });

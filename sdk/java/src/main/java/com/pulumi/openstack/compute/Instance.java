@@ -398,7 +398,7 @@ import javax.annotation.Nullable;
  * 
  *         final var vm-port = NetworkingFunctions.getPort(GetPortArgs.builder()
  *             .deviceId(multi_net.id())
- *             .networkId(multi_net.networks().applyValue(_networks -> _networks[1].uuid()))
+ *             .networkId(multi_net.networks().applyValue(_networks -> _networks.get(1).uuid()))
  *             .build());
  * 
  *         var fipVm = new FloatingIpAssociate("fipVm", FloatingIpAssociateArgs.builder()

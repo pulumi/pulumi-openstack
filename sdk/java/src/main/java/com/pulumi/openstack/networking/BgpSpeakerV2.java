@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .ipVersion(4)
  *             .localAs(65000)
  *             .networks(network1.id())
- *             .peers(peer1OpestackNetworkingBgpPeerV2.id())
+ *             .peers(peer1OpestackNetworkingBgpPeerV2.get("id"))
  *             .build());
  * 
  *     }

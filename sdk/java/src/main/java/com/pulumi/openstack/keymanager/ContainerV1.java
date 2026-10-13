@@ -139,15 +139,15 @@ import javax.annotation.Nullable;
  *             .secretRefs(            
  *                 ContainerV1SecretRefArgs.builder()
  *                     .name("certificate")
- *                     .secretRef(certificate1.secretRef())
+ *                     .secretRef(certificate1.get("secretRef"))
  *                     .build(),
  *                 ContainerV1SecretRefArgs.builder()
  *                     .name("private_key")
- *                     .secretRef(privateKey1.secretRef())
+ *                     .secretRef(privateKey1.get("secretRef"))
  *                     .build(),
  *                 ContainerV1SecretRefArgs.builder()
  *                     .name("intermediates")
- *                     .secretRef(intermediate1.secretRef())
+ *                     .secretRef(intermediate1.get("secretRef"))
  *                     .build())
  *             .acl(ContainerV1AclArgs.builder()
  *                 .read(ContainerV1AclReadArgs.builder()
