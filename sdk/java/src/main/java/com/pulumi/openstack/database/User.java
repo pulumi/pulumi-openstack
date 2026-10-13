@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var basic = new User("basic", UserArgs.builder()
  *             .name("basic")
- *             .instanceId(basicOpenstackDbInstanceV1.id())
+ *             .instanceId(basicOpenstackDbInstanceV1.get("id"))
  *             .password("password")
  *             .databases("testdb")
  *             .build());

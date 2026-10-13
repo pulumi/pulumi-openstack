@@ -232,7 +232,7 @@ public class App {
 {{% /choosable %}}
 {{% choosable language hcl %}}
 ```hcl
-pulumi {
+terraform {
   required_providers {
     openstack = {
       source = "pulumi/openstack"
@@ -242,6 +242,9 @@ pulumi {
 
 # Create a web server
 resource "openstack_compute_instance" "test-server" {
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 ```
 
@@ -687,7 +690,7 @@ public class App {
 {{% /choosable %}}
 {{% choosable language hcl %}}
 ```hcl
-pulumi {
+terraform {
   required_providers {
     openstack = {
       source = "pulumi/openstack"
@@ -696,6 +699,9 @@ pulumi {
 }
 
 resource "openstack_compute_instance" "my_instance" {
+  lifecycle {
+    create_before_destroy = true
+  }
   name      = "my_instance"
   region    = "DFW"
   image_id  = "fabe045f-43f8-4991-9e6c-5cabd617538c"
