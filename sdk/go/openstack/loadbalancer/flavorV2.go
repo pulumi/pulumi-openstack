@@ -50,7 +50,7 @@ import (
 //			_, err = loadbalancer.NewFlavorV2(ctx, "flavor_1", &loadbalancer.FlavorV2Args{
 //				Name:            pulumi.String("test"),
 //				Description:     pulumi.String("This is a test flavor"),
-//				FlavorProfileId: fp1.ID().ToIDOutput().ToStringOutput(),
+//				FlavorProfileId: fp1.ID(),
 //			})
 //			if err != nil {
 //				return err

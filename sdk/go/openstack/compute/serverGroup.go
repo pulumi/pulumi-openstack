@@ -42,7 +42,7 @@ import (
 //				FlavorId: pulumi.String("3"),
 //				SchedulerHints: compute.InstanceSchedulerHintArray{
 //					&compute.InstanceSchedulerHintArgs{
-//						Group: test_sg.ID().ToIDOutput().ToStringOutput(),
+//						Group: test_sg.ID(),
 //					},
 //				},
 //				Networks: compute.InstanceNetworkArray{
@@ -90,7 +90,7 @@ import (
 //				FlavorId: pulumi.String("3"),
 //				SchedulerHints: compute.InstanceSchedulerHintArray{
 //					&compute.InstanceSchedulerHintArgs{
-//						Group: test_sg.ID().ToIDOutput().ToStringOutput(),
+//						Group: test_sg.ID(),
 //					},
 //				},
 //				Networks: compute.InstanceNetworkArray{

@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			subnet1, err := networking.NewSubnet(ctx, "subnet_1", &networking.SubnetArgs{
-//				NetworkId: network1.ID().ToIDOutput().ToStringOutput(),
+//				NetworkId: network1.ID(),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //				IpVersion: pulumi.Int(4),
 //			})
@@ -51,8 +51,8 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewRouterInterface(ctx, "router_interface_1", &networking.RouterInterfaceArgs{
-//				RouterId: router1.ID().ToIDOutput().ToStringOutput(),
-//				SubnetId: subnet1.ID().ToIDOutput().ToStringOutput(),
+//				RouterId: router1.ID(),
+//				SubnetId: subnet1.ID(),
 //			})
 //			if err != nil {
 //				return err

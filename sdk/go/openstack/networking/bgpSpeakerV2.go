@@ -52,7 +52,7 @@ import (
 //				IpVersion: pulumi.Int(4),
 //				LocalAs:   pulumi.Int(65000),
 //				Networks: pulumi.StringArray{
-//					network1.ID().ToIDOutput().ToStringOutput(),
+//					network1.ID(),
 //				},
 //				Peers: pulumi.StringArray{
 //					peer1OpestackNetworkingBgpPeerV2.Id,

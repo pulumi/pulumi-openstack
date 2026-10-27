@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = dns.NewTransferRequest(ctx, "request_1", &dns.TransferRequestArgs{
-//				ZoneId:      exampleZone.ID().ToIDOutput().ToStringOutput(),
+//				ZoneId:      exampleZone.ID(),
 //				Description: pulumi.String("a transfer request"),
 //			})
 //			if err != nil {

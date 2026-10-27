@@ -38,7 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewQosDscpMarkingRule(ctx, "dscp_marking_rule_1", &networking.QosDscpMarkingRuleArgs{
-//				QosPolicyId: qosPolicy1.ID().ToIDOutput().ToStringOutput(),
+//				QosPolicyId: qosPolicy1.ID(),
 //				DscpMark:    pulumi.Int(26),
 //			})
 //			if err != nil {

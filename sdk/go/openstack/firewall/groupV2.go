@@ -54,7 +54,7 @@ import (
 //			policy1, err := firewall.NewPolicyV2(ctx, "policy_1", &firewall.PolicyV2Args{
 //				Name: pulumi.String("firewall_ingress_policy"),
 //				Rules: pulumi.StringArray{
-//					rule1.ID().ToIDOutput().ToStringOutput(),
+//					rule1.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -63,7 +63,7 @@ import (
 //			policy2, err := firewall.NewPolicyV2(ctx, "policy_2", &firewall.PolicyV2Args{
 //				Name: pulumi.String("firewall_egress_policy"),
 //				Rules: pulumi.StringArray{
-//					rule2.ID().ToIDOutput().ToStringOutput(),
+//					rule2.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -71,8 +71,8 @@ import (
 //			}
 //			_, err = firewall.NewGroupV2(ctx, "group_1", &firewall.GroupV2Args{
 //				Name:                    pulumi.String("firewall_group"),
-//				IngressFirewallPolicyId: policy1.ID().ToIDOutput().ToStringOutput(),
-//				EgressFirewallPolicyId:  policy2.ID().ToIDOutput().ToStringOutput(),
+//				IngressFirewallPolicyId: policy1.ID(),
+//				EgressFirewallPolicyId:  policy2.ID(),
 //			})
 //			if err != nil {
 //				return err
