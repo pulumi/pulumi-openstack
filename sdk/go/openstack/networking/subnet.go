@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewSubnet(ctx, "subnet_1", &networking.SubnetArgs{
-//				NetworkId: network1.ID().ToIDOutput().ToStringOutput(),
+//				NetworkId: network1.ID(),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //			})
 //			if err != nil {

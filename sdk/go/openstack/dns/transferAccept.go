@@ -41,14 +41,14 @@ import (
 //				return err
 //			}
 //			request1, err := dns.NewTransferRequest(ctx, "request_1", &dns.TransferRequestArgs{
-//				ZoneId:      exampleZone.ID().ToIDOutput().ToStringOutput(),
+//				ZoneId:      exampleZone.ID(),
 //				Description: pulumi.String("a transfer accept"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dns.NewTransferAccept(ctx, "accept_1", &dns.TransferAcceptArgs{
-//				ZoneTransferRequestId: request1.ID().ToIDOutput().ToStringOutput(),
+//				ZoneTransferRequestId: request1.ID(),
 //				Key:                   request1.Key,
 //			})
 //			if err != nil {

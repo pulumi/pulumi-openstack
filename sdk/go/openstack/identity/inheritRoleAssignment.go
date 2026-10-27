@@ -48,9 +48,9 @@ import (
 //				return err
 //			}
 //			_, err = identity.NewInheritRoleAssignment(ctx, "role_assignment_1", &identity.InheritRoleAssignmentArgs{
-//				UserId:   user1.ID().ToIDOutput().ToStringOutput(),
+//				UserId:   user1.ID(),
 //				DomainId: pulumi.String("default"),
-//				RoleId:   role1.ID().ToIDOutput().ToStringOutput(),
+//				RoleId:   role1.ID(),
 //			})
 //			if err != nil {
 //				return err

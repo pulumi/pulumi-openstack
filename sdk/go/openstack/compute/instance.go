@@ -99,8 +99,8 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewVolumeAttach(ctx, "attached", &compute.VolumeAttachArgs{
-//				InstanceId: myinstance.ID().ToIDOutput().ToStringOutput(),
-//				VolumeId:   myvol.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: myinstance.ID(),
+//				VolumeId:   myvol.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -189,7 +189,7 @@ import (
 //				},
 //				BlockDevices: compute.InstanceBlockDeviceArray{
 //					&compute.InstanceBlockDeviceArgs{
-//						Uuid:                myvol.ID().ToIDOutput().ToStringOutput(),
+//						Uuid:                myvol.ID(),
 //						SourceType:          pulumi.String("volume"),
 //						BootIndex:           pulumi.Int(0),
 //						DestinationType:     pulumi.String("volume"),
@@ -298,7 +298,7 @@ import (
 //						DeleteOnTermination: pulumi.Bool(true),
 //					},
 //					&compute.InstanceBlockDeviceArgs{
-//						Uuid:                volume1.ID().ToIDOutput().ToStringOutput(),
+//						Uuid:                volume1.ID(),
 //						SourceType:          pulumi.String("volume"),
 //						DestinationType:     pulumi.String("volume"),
 //						BootIndex:           pulumi.Int(1),
@@ -357,7 +357,7 @@ import (
 //				return err
 //			}
 //			vm_port := networking.LookupPortOutput(ctx, networking.GetPortOutputArgs{
-//				DeviceId: multi_net.ID().ToIDOutput().ToStringOutput(),
+//				DeviceId: multi_net.ID(),
 //				NetworkId: multi_net.Networks.ApplyT(func(networks []compute.InstanceNetwork) (*string, error) {
 //					return networks[1].Uuid, nil
 //				}).(pulumi.StringPtrOutput),
@@ -500,7 +500,7 @@ import (
 //			}
 //			_, err = compute.NewInstance(ctx, "vm-swap", &compute.InstanceArgs{
 //				Name:     pulumi.String("vm_swap"),
-//				FlavorId: flavor_with_swap.ID().ToIDOutput().ToStringOutput(),
+//				FlavorId: flavor_with_swap.ID(),
 //				KeyPair:  pulumi.String("my_key_pair_name"),
 //				SecurityGroups: pulumi.StringArray{
 //					pulumi.String("default"),
@@ -731,7 +731,7 @@ import (
 //				Name: pulumi.String("instance_1"),
 //				Networks: compute.InstanceNetworkArray{
 //					&compute.InstanceNetworkArgs{
-//						Port: port1.ID().ToIDOutput().ToStringOutput(),
+//						Port: port1.ID(),
 //					},
 //				},
 //			})
@@ -939,8 +939,8 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewVolumeAttach(ctx, "va_1", &compute.VolumeAttachArgs{
-//				VolumeId:   volume1.ID().ToIDOutput().ToStringOutput(),
-//				InstanceId: instance2.ID().ToIDOutput().ToStringOutput(),
+//				VolumeId:   volume1.ID(),
+//				InstanceId: instance2.ID(),
 //			})
 //			if err != nil {
 //				return err
